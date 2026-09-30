@@ -1,0 +1,8 @@
+# Core pipeline. All have prebuilt wheels for Python 3.13 and 3.14 on Windows and Linux (checked 2026-09-30).
+pyyaml
+feedparser
+trafilatura
+scikit-learn
+numpy
+onnxruntime
+tokenizers

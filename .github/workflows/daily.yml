@@ -1,0 +1,71 @@
+name: Daily digest
+
+# Builds the site once a day and publishes it to Cloudflare Pages.
+# 21:00 UTC is 04:00 in Vietnam (UTC+7): the run takes well under two hours, so the digest is ready before 07:00.
+# GitHub can start scheduled jobs up to an hour late when it is busy, which is why there is a margin.
+on:
+  schedule:
+    - cron: "0 21 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: daily-digest
+  cancel-in-progress: false
+
+env:
+  ARGOS_DATA_DIR: ${{ github.workspace }}/.argos-data
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      # The database is kept between runs, so each run only reads what is new.
+      - name: Restore database
+        uses: actions/cache/restore@v4
+        with:
+          path: .argos-data/argos.db
+          key: argos-db-${{ github.run_id }}
+          restore-keys: argos-db-
+
+      - name: Restore embedding model
+        id: model
+        uses: actions/cache@v4
+        with:
+          path: .argos-data/models
+          key: e5-small-onnx-v1
+
+      - name: Download embedding model (first run only)
+        if: steps.model.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p .argos-data/models/multilingual-e5-small
+          base=https://huggingface.co/intfloat/multilingual-e5-small/resolve/main/onnx
+          curl -fL -o .argos-data/models/multilingual-e5-small/model.onnx "$base/model.onnx"
+          curl -fL -o .argos-data/models/multilingual-e5-small/tokenizer.json "$base/tokenizer.json"
+
+      - name: Collect, analyse and export
+        run: python run.py ingest extract normalise relevance embed cluster classify rank excerpts verify export prune report
+
+      - name: Save database
+        uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: .argos-data/argos.db
+          key: argos-db-${{ github.run_id }}
+
+      # Needs two repository secrets (Settings > Secrets and variables > Actions):
+      # CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID.
+      - name: Publish to Cloudflare Pages
+        run: npx --yes wrangler@4 pages deploy site --project-name=argos-monitor --branch=main
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

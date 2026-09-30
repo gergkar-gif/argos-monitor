@@ -1,0 +1,19 @@
+name: Cloud probe
+
+# One-off test: do the news sites accept requests from GitHub's computers? Run it by hand
+# (Actions tab, "Cloud probe", "Run workflow"). It changes nothing and publishes nothing.
+on: workflow_dispatch
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: pip install pyyaml feedparser trafilatura
+      - run: python tools/cloud_probe.py
+        env:
+          ARGOS_DATA_DIR: ${{ runner.temp }}/argos

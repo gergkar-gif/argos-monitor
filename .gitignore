@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.db
+*.db-journal
+.argos-data/
+site/data/
+.impeccable/review/
+.impeccable/build/
+.claude/settings.local.json
+.claude/

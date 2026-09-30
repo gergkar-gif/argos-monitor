@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Argos Monitor</title>
+<meta name="description" content="Press cuttings on one country's news. Every line is an article's own headline or a verbatim quote, linked to its source.">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><filter id="ink" x="-5%" y="-10%" width="110%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="2" seed="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
+<header class="bureau">
+  <div class="bureau-inner">
+    <div class="masthead">
+      <h1>Argos Monitor</h1>
+      <p>Press cuttings on one country's news. Every line is an article's own headline or a word-for-word quote, stamped with the outlet it came from.</p>
+    </div>
+    <form id="slip" class="slip" aria-label="Research request">
+      <label class="field"><span>Country</span><select id="country" name="country"></select></label>
+      <label class="field"><span>Period</span><select id="period" name="period"></select></label>
+      <label class="field"><span>Topic</span><select id="topic" name="topic"></select></label>
+      <button type="submit" class="research">Research</button>
+    </form>
+  </div>
+</header>
+
+<main id="results" aria-live="polite" tabindex="-1">
+  <p class="state">Loading the latest collection…</p>
+</main>
+
+<footer class="legend">
+  <div class="legend-inner">
+    <h2>How to read the stamps</h2>
+    <dl>
+      <div><dt><span class="stamp indigo">Reported</span></dt><dd>One or more outlets published it. Nothing more is claimed.</dd></div>
+      <div><dt><span class="stamp red">Official</span></dt><dd>At least one source is a government or Party outlet. This means "officially stated", not "independently verified".</dd></div>
+      <div><dt><span class="stamp teal">Not in domestic press</span></dt><dd>Covered by Vietnamese-language outlets abroad or by international outlets, but by no outlet inside the country.</dd></div>
+      <div><dt><span class="typed">7 independent outlets</span></dt><dd>Outlets counted once each. Reprints of the same text by another outlet are not counted as separate sources.</dd></div>
+    </dl>
+    <p class="fine">Stories are grouped and sorted by topic automatically, so some will be misplaced. Quotes are copied from the original article and checked against it by the machine. To read a headline in English, use your browser's translate feature.</p>
+  </div>
+</footer>
+
+<script src="data/index.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

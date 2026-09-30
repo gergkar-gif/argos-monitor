@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-30T00:00:00Z",
+  "title": "Design System: Argos Monitor",
+  "extensions": {
+    "colorMeta": {
+      "desk": { "role": "neutral", "displayName": "Index-Card Grey-Green", "canonical": "#d9e0d8", "tonalRamp": ["#1f2621", "#38443b", "#526157", "#6f8074", "#8fa093", "#b0bfb3", "#d9e0d8", "#eef2ee"] },
+      "card": { "role": "neutral", "displayName": "Newsprint", "canonical": "#f6f7f3", "tonalRamp": ["#22231f", "#3d3f38", "#5c5e55", "#7f8177", "#a4a69c", "#c8cac1", "#e4e6df", "#f6f7f3"] },
+      "ink": { "role": "neutral", "displayName": "Green-Cast Ink", "canonical": "#1a201d", "tonalRamp": ["#0b0e0c", "#1a201d", "#2c3530", "#414a45", "#5d6862", "#7f8a84", "#a6b0aa", "#d0d7d2"] },
+      "indigo": { "role": "primary", "displayName": "Outlet Indigo", "canonical": "#2b3a8c", "tonalRamp": ["#0f1540", "#182262", "#2b3a8c", "#3f50a8", "#6070bf", "#8896d3", "#b3bce6", "#dde1f4"] },
+      "red": { "role": "secondary", "displayName": "Oxide Red", "canonical": "#a82a1f", "tonalRamp": ["#3d0f0b", "#661912", "#a82a1f", "#c44a3f", "#d57369", "#e39d95", "#f0c6c1", "#f8e6e4"] },
+      "teal": { "role": "secondary", "displayName": "Not-Domestic Teal", "canonical": "#0b6262", "tonalRamp": ["#032222", "#064040", "#0b6262", "#238080", "#4a9f9f", "#79bcbc", "#addada", "#dcf0f0"] }
+    },
+    "typographyMeta": {
+      "headline-lead": { "displayName": "Lead headline", "purpose": "First clipping of each topic drawer." },
+      "headline": { "displayName": "Headline", "purpose": "Article headlines on clippings." },
+      "masthead": { "displayName": "Masthead", "purpose": "Site title." },
+      "body": { "displayName": "Body", "purpose": "Quoted strips, capped at 62ch." },
+      "stamp": { "displayName": "Stamp", "purpose": "Source stamps; also tabs and buttons at 1rem." },
+      "tab": { "displayName": "Tab", "purpose": "Index tabs, Research and More buttons." },
+      "typed": { "displayName": "Typed", "purpose": "Slip labels, select values, counts, meta." }
+    },
+    "shadows": [
+      { "name": "clipping-drop", "value": "0 1px 0 rgba(26,32,29,0.06), 0 8px 16px -10px rgba(26,32,29,0.4)", "purpose": "The only shadow; lifts a clipping off the desk." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Clipping settle-in (380ms, 45ms stagger); disabled under reduced motion." },
+      { "name": "button-fill", "value": "background 120ms, color 120ms", "purpose": "Research button hover fill." }
+    ],
+    "breakpoints": [
+      { "name": "wide", "value": "46rem" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Research Button",
+      "kind": "button",
+      "refersTo": "button-research",
+      "description": "Outlined indigo stamp; the primary action on the request slip.",
+      "html": "<button class=\"ds-research\">Research</button>",
+      "css": ".ds-research { min-height: 2.75rem; padding: 0.5rem 1.6rem; font: 600 1.15rem/1 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif; letter-spacing: 0.14em; text-transform: uppercase; color: #2b3a8c; background: transparent; border: 2px solid #2b3a8c; border-radius: 3px; cursor: pointer; transition: background 120ms, color 120ms; } .ds-research:hover { background: #2b3a8c; color: #fff; } .ds-research:active { transform: translateY(1px); } .ds-research:focus-visible { outline: 2px solid #2b3a8c; outline-offset: 3px; }"
+    },
+    {
+      "name": "Topic Tab",
+      "kind": "nav",
+      "refersTo": "tab",
+      "description": "Index tab with topic-ink top edge and typed count; pressed fills with the ink.",
+      "html": "<button class=\"ds-tab\" style=\"--tab:#24508f\">Economics <span class=\"ds-n\">14</span></button> <button class=\"ds-tab\" style=\"--tab:#24508f\" aria-pressed=\"true\">Economics <span class=\"ds-n\">14</span></button>",
+      "css": ".ds-tab { min-height: 2.5rem; padding: 0.4rem 0.9rem 0.35rem; font: 600 1rem/1 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif; letter-spacing: 0.08em; text-transform: uppercase; color: #414a45; background: #f6f7f3; border: 1px solid #bfc8bf; border-top: 4px solid var(--tab, #414a45); border-radius: 0; cursor: pointer; } .ds-tab .ds-n { margin-left: 0.4rem; font: 400 0.85rem/1 'Courier Prime', 'Courier New', monospace; letter-spacing: 0; } .ds-tab:hover { color: #1a201d; } .ds-tab[aria-pressed=true] { background: var(--tab); color: #fff; border-color: var(--tab); } .ds-tab:focus-visible { outline: 2px solid #2b3a8c; outline-offset: 3px; }"
+    },
+    {
+      "name": "Source Stamp",
+      "kind": "chip",
+      "refersTo": "stamp",
+      "description": "Tilted outlined caps carrying outlet or provenance meaning.",
+      "html": "<a class=\"ds-stamp\" href=\"#\">VnExpress</a> <span class=\"ds-stamp ds-red\">Official</span>",
+      "css": ".ds-stamp { display: inline-block; padding: 0.18rem 0.5rem 0.12rem; font: 600 0.85rem/1.1 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif; letter-spacing: 0.1em; text-transform: uppercase; color: #2b3a8c; border: 1.5px solid currentColor; border-radius: 3px; text-decoration: none; white-space: nowrap; transform: rotate(-2deg); } .ds-stamp.ds-red { color: #a82a1f; } a.ds-stamp:hover { background: #2b3a8c; color: #fff; }"
+    },
+    {
+      "name": "Clipping",
+      "kind": "card",
+      "refersTo": "clipping",
+      "description": "Newsprint clipping with tape strip, headline, and pasted strip.",
+      "html": "<article class=\"ds-clip\"><h3 class=\"ds-headline\">Headline as the outlet printed it</h3><blockquote class=\"ds-strip\"><p>A verbatim quote from the article.</p></blockquote></article>",
+      "css": ".ds-clip { position: relative; background: #f6f7f3; border: 1px solid #bfc8bf; border-radius: 2px; padding: 1.1rem 1.15rem 1rem; box-shadow: 0 1px 0 rgba(26,32,29,0.06), 0 8px 16px -10px rgba(26,32,29,0.4); display: flex; flex-direction: column; gap: 0.8rem; color: #1a201d; font: 400 1.0625rem/1.55 'Source Serif 4', Georgia, serif; } .ds-clip::before { content: ''; position: absolute; top: -0.55rem; left: 1.4rem; width: 3.6rem; height: 1.1rem; background: rgba(196,206,194,0.7); border: 1px solid rgba(140,152,142,0.35); transform: rotate(-2.5deg); } .ds-headline { margin: 0; font: 700 1.25rem/1.28 'Source Serif 4', Georgia, serif; } .ds-strip { margin: 0; padding-top: 0.55rem; border-top: 1px solid #bfc8bf; }"
+    },
+    {
+      "name": "Request Select",
+      "kind": "input",
+      "refersTo": "select-field",
+      "description": "Typewriter-set select on the dashed request slip.",
+      "html": "<label class=\"ds-field\"><span>Period</span><select class=\"ds-select\"><option>Last 7 days</option></select></label>",
+      "css": ".ds-field { display: grid; gap: 0.2rem; } .ds-field span { font: 600 0.8rem/1 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif; letter-spacing: 0.1em; text-transform: uppercase; color: #414a45; } .ds-select { min-height: 2.75rem; width: 100%; padding: 0.5rem 0.75rem; font: 400 1rem/1.2 'Courier Prime', 'Courier New', monospace; color: #1a201d; background: #f6f7f3; border: 1px solid #8c988e; border-radius: 2px; } .ds-select:hover { border-color: #414a45; } .ds-select:focus-visible { outline: 2px solid #2b3a8c; outline-offset: 3px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Press-Cuttings Bureau",
+    "overview": "This is a new world, not an inherited one: the site was built from a chosen direction (seed key 18c8e847) and this file records what shipped. A client folder at a cuttings agency: cool grey-green index-card stock is the desk, each story is a newsprint clipping taped to a card, and every claim carries a rubber source stamp. It is quiet and clerical, dense but ruled, and carries meaning through ink color rather than decoration.\n\nThe physical metaphor is deliberately modest and done in CSS only. Stamps tilt a couple of degrees and pass through one SVG rough-edge filter (#ink) so edges look pressed. Clippings carry a small tilted translucent tape strip and a single soft drop. There are no raster assets anywhere.",
+    "keyCharacteristics": [
+      "Grey-green desk, near-white newsprint clippings, ink with a green cast; nothing cream.",
+      "Meaning lives in stamp inks (indigo, oxide red, teal) and six topic tab inks.",
+      "Three faces with fixed jobs: serif for reading, condensed caps for stamps and tabs, typewriter for slip labels and numerals.",
+      "Hairline rules, square-ish corners (2px to 3px), one soft shadow, no cards inside cards."
+    ],
+    "rules": [
+      { "name": "The Ink Means Something Rule", "body": "Indigo, red, and teal are stamp inks with fixed meanings; topic inks belong to tabs and their drawers. Never use a stamp ink as decoration or a topic ink as a stamp.", "section": "colors" },
+      { "name": "The Three Jobs Rule", "body": "Serif reads, condensed caps assert, typewriter files. Do not set headlines in Barlow or slip numerals in the serif.", "section": "typography" },
+      { "name": "The One Drop Rule", "body": "Only the clipping has a shadow, and it is soft. Nested containers stay flat and separate with a hairline.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep cards flat inside clippings: strips are hairline-separated, not boxed.",
+      "Do pair every asserted fact with its source stamp and link.",
+      "Do keep stamp tilt within about 2deg and apply the #ink filter to stamps only (and Research).",
+      "Do honor prefers-reduced-motion for entrance animation."
+    ],
+    "donts": [
+      "Don't add photographs or raster textures; the paper feel is CSS-only and no raster assets exist.",
+      "Don't tint the desk cream or warm; it is cool grey-green.",
+      "Don't add shadows beyond the clipping's single drop.",
+      "Don't nest boxes inside clippings."
+    ]
+  }
+}

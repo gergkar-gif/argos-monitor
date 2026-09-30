@@ -1,0 +1,396 @@
+# Argos Monitor source registry. Edited by hand. Verified 2026-09-30 (see docs/sources.md).
+# scope: domestic | abroad_vi | international     kind: media | official | wire
+# reprints_vna: does the outlet often reprint Vietnam News Agency copy (syndication check)
+# feed.active: false = known not to work today; kept so we remember why (see notes)
+# category_hint: internal_politics | economics | foreign_policy | defence_security | society | general
+# Fetch note: use a browser-like User-Agent. QDND needs cookies kept across requests (it redirects once to set one).
+
+sources:
+  - id: vnexpress
+    name: VnExpress
+    homepage: https://vnexpress.net
+    language: vi
+    scope: domestic
+    kind: media
+    governing_body: Ministry of Science and Technology (to confirm)
+    state_affiliated: true
+    reprints_vna: false
+    feeds:
+      - {url: "https://vnexpress.net/rss/thoi-su.rss", section: Thời sự, category_hint: internal_politics}
+      - {url: "https://vnexpress.net/rss/kinh-doanh.rss", section: Kinh doanh, category_hint: economics}
+      - {url: "https://vnexpress.net/rss/the-gioi.rss", section: Thế giới, category_hint: foreign_policy}
+      - {url: "https://vnexpress.net/rss/phap-luat.rss", section: Pháp luật, category_hint: society}
+      - {url: "https://vnexpress.net/rss/giao-duc.rss", section: Giáo dục, category_hint: society}
+      - {url: "https://vnexpress.net/rss/suc-khoe.rss", section: Sức khỏe, category_hint: society}
+
+  - id: vnexpress_intl
+    name: VnExpress International
+    homepage: https://e.vnexpress.net
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: as VnExpress
+    state_affiliated: true
+    reprints_vna: false
+    feeds:
+      - {url: "https://e.vnexpress.net/rss/news.rss", section: News, category_hint: general}
+
+  - id: tuoitre
+    name: Tuổi Trẻ
+    homepage: https://tuoitre.vn
+    language: vi
+    scope: domestic
+    kind: media
+    governing_body: Ho Chi Minh City Communist Youth Union (to confirm)
+    state_affiliated: true
+    reprints_vna: false
+    notes: Dates in the feed look like 9/30/2026 (month first), not the usual RSS format.
+    feeds:
+      - {url: "https://tuoitre.vn/rss/thoi-su.rss", section: Thời sự, category_hint: internal_politics}
+      - {url: "https://tuoitre.vn/rss/kinh-doanh.rss", section: Kinh doanh, category_hint: economics}
+      - {url: "https://tuoitre.vn/rss/the-gioi.rss", section: Thế giới, category_hint: foreign_policy}
+      - {url: "https://tuoitre.vn/rss/phap-luat.rss", section: Pháp luật, category_hint: society}
+      - {url: "https://tuoitre.vn/rss/giao-duc.rss", section: Giáo dục, category_hint: society}
+
+  - id: thanhnien
+    name: Thanh Niên
+    homepage: https://thanhnien.vn
+    language: vi
+    scope: domestic
+    kind: media
+    governing_body: Vietnam Youth Federation (to confirm)
+    state_affiliated: true
+    reprints_vna: false
+    feeds:
+      - {url: "https://thanhnien.vn/rss/thoi-su.rss", section: Thời sự, category_hint: internal_politics}
+      - {url: "https://thanhnien.vn/rss/kinh-te.rss", section: Kinh tế, category_hint: economics}
+      - {url: "https://thanhnien.vn/rss/the-gioi.rss", section: Thế giới, category_hint: foreign_policy}
+      - {url: "https://thanhnien.vn/rss/giao-duc.rss", section: Giáo dục, category_hint: society}
+
+  - id: dantri
+    name: Dân trí
+    homepage: https://dantri.com.vn
+    language: vi
+    scope: domestic
+    kind: media
+    governing_body: Ministry of Home Affairs (to confirm)
+    state_affiliated: true
+    reprints_vna: false
+    notes: Python's own TLS check rejects the certificate chain (curl accepts it). Fetch with curl or a client that uses the Windows certificate store. The Xã hội feed was stale on 2026-09-30 (newest item Sep 2025); Thời sự works.
+    feeds:
+      - {url: "https://dantri.com.vn/rss/thoi-su.rss", section: Thời sự, category_hint: internal_politics}
+      - {url: "https://dantri.com.vn/rss/kinh-doanh.rss", section: Kinh doanh, category_hint: economics}
+      - {url: "https://dantri.com.vn/rss/the-gioi.rss", section: Thế giới, category_hint: foreign_policy}
+      - {url: "https://dantri.com.vn/rss/phap-luat.rss", section: Pháp luật, category_hint: society}
+      - {url: "https://dantri.com.vn/rss/xa-hoi.rss", section: Xã hội, category_hint: society, active: false}
+
+  - id: vietnamnet
+    name: VietnamNet
+    homepage: https://vietnamnet.vn
+    language: vi
+    scope: domestic
+    kind: media
+    governing_body: Ministry of Science and Technology (to confirm)
+    state_affiliated: true
+    reprints_vna: false
+    notes: Feeds return about 1000 items; keep only the newest in the window. The /rss/ URLs redirect to /<section>.rss.
+    feeds:
+      - {url: "https://vietnamnet.vn/thoi-su.rss", section: Thời sự, category_hint: internal_politics}
+      - {url: "https://vietnamnet.vn/chinh-tri.rss", section: Chính trị, category_hint: internal_politics}
+      - {url: "https://vietnamnet.vn/kinh-doanh.rss", section: Kinh doanh, category_hint: economics}
+      - {url: "https://vietnamnet.vn/the-gioi.rss", section: Thế giới, category_hint: foreign_policy}
+
+  - id: nhandan
+    name: Nhân Dân
+    homepage: https://nhandan.vn
+    language: vi
+    scope: domestic
+    kind: media
+    governing_body: Communist Party of Vietnam Central Committee
+    state_affiliated: true
+    reprints_vna: true
+    notes: Full section list at https://nhandan.vn/rss.html. The defence feed (quocphong-1237) returned an empty body.
+    feeds:
+      - {url: "https://nhandan.vn/rss/chinhtri-1171.rss", section: Chính trị, category_hint: internal_politics}
+      - {url: "https://nhandan.vn/rss/kinhte-1185.rss", section: Kinh tế, category_hint: economics}
+      - {url: "https://nhandan.vn/rss/quocte-1309.rss", section: Quốc tế, category_hint: foreign_policy}
+
+  - id: qdnd
+    name: Quân đội Nhân dân
+    homepage: https://www.qdnd.vn
+    language: vi
+    scope: domestic
+    kind: media
+    governing_body: Ministry of National Defence
+    state_affiliated: true
+    reprints_vna: true
+    notes: Needs cookies kept across requests. Only one working feed found (all latest news, 50 items, so hint is general, not defence). Section feed URLs not found yet; open https://www.qdnd.vn/rss in a browser later.
+    feeds:
+      - {url: "https://www.qdnd.vn/rss/cate/tin-tuc-moi-nhat.rss", section: Tin mới nhất, category_hint: general}
+
+  - id: vietnamplus
+    name: VietnamPlus (Vietnam News Agency)
+    homepage: https://www.vietnamplus.vn
+    language: vi
+    scope: domestic
+    kind: wire
+    governing_body: Vietnam News Agency (VNA)
+    state_affiliated: true
+    reprints_vna: false
+    notes: This IS the VNA wire. Its copy is what other outlets reprint. Full section list at https://www.vietnamplus.vn/rss.html.
+    feeds:
+      - {url: "https://www.vietnamplus.vn/rss/chinhtri-291.rss", section: Chính trị, category_hint: internal_politics}
+      - {url: "https://www.vietnamplus.vn/rss/kinhte-311.rss", section: Kinh tế, category_hint: economics}
+      - {url: "https://www.vietnamplus.vn/rss/thegioi-209.rss", section: Thế giới, category_hint: foreign_policy}
+      - {url: "https://www.vietnamplus.vn/rss/doisong-320.rss", section: Đời sống, category_hint: society}
+
+  - id: vietnamplus_en
+    name: VietnamPlus English (Vietnam News Agency)
+    homepage: https://en.vietnamplus.vn
+    language: en
+    scope: domestic
+    kind: wire
+    governing_body: Vietnam News Agency (VNA)
+    state_affiliated: true
+    reprints_vna: false
+    feeds:
+      - {url: "https://en.vietnamplus.vn/rss/home.rss", section: Home, category_hint: general}
+
+  - id: vov
+    name: VOV (Voice of Vietnam)
+    homepage: https://vov.vn
+    language: vi
+    scope: domestic
+    kind: media
+    governing_body: Voice of Vietnam (state broadcaster)
+    state_affiliated: true
+    reprints_vna: true
+    notes: The main /rss/ page is stale (last updated May 2025). The section feeds below are current.
+    feeds:
+      - {url: "https://vov.vn/rss/chinh-tri.rss", section: Chính trị, category_hint: internal_politics}
+      - {url: "https://vov.vn/rss/kinh-te.rss", section: Kinh tế, category_hint: economics}
+      - {url: "https://vov.vn/rss/the-gioi.rss", section: Thế giới, category_hint: foreign_policy}
+
+  - id: baochinhphu
+    name: Báo điện tử Chính phủ
+    homepage: https://baochinhphu.vn
+    language: vi
+    scope: domestic
+    kind: official
+    governing_body: Government Office
+    state_affiliated: true
+    reprints_vna: true
+    notes: Feeds are at /<section>.rss (not /rss/). On 2026-09-30 the quoc-te feed looked older than the rest (newest around Sep 9); recheck when step 3 runs.
+    feeds:
+      - {url: "https://baochinhphu.vn/chinh-tri.rss", section: Chính trị, category_hint: internal_politics}
+      - {url: "https://baochinhphu.vn/kinh-te.rss", section: Kinh tế, category_hint: economics}
+      - {url: "https://baochinhphu.vn/thoi-su.rss", section: Thời sự, category_hint: internal_politics}
+      - {url: "https://baochinhphu.vn/quoc-te.rss", section: Quốc tế, category_hint: foreign_policy}
+
+  - id: nso
+    name: National Statistics Office
+    homepage: https://www.nso.gov.vn
+    language: vi
+    scope: domestic
+    kind: official
+    governing_body: Ministry of Finance (to confirm)
+    state_affiliated: true
+    reprints_vna: false
+    notes: WordPress feed, low volume (about 10 items).
+    feeds:
+      - {url: "https://www.nso.gov.vn/feed/", section: Tin tức, category_hint: economics}
+
+  # Official sites with no working RSS on 2026-09-30. Would need listing-page scraping; not needed for the MVP.
+  - id: mofa
+    name: Ministry of Foreign Affairs
+    homepage: https://mofa.gov.vn
+    language: vi
+    scope: domestic
+    kind: official
+    governing_body: Ministry of Foreign Affairs
+    state_affiliated: true
+    reprints_vna: false
+    notes: No RSS found. Needs scraping of the spokesperson-statement listing page.
+    feeds: []
+
+  - id: sbv
+    name: State Bank of Vietnam
+    homepage: https://www.sbv.gov.vn
+    language: vi
+    scope: domestic
+    kind: official
+    governing_body: State Bank of Vietnam
+    state_affiliated: true
+    reprints_vna: false
+    notes: No RSS found (the page shows an RSS icon but no working URL was found).
+    feeds: []
+
+  - id: quochoi
+    name: National Assembly
+    homepage: https://quochoi.vn
+    language: vi
+    scope: domestic
+    kind: official
+    governing_body: National Assembly
+    state_affiliated: true
+    reprints_vna: false
+    notes: The /rss URL answers 200 but contains no items.
+    feeds: []
+
+  - id: tapchicongsan
+    name: Tạp chí Cộng sản
+    homepage: https://www.tapchicongsan.org.vn
+    language: vi
+    scope: domestic
+    kind: official
+    governing_body: Communist Party of Vietnam Central Committee
+    state_affiliated: true
+    reprints_vna: false
+    notes: RSS answers 200 but is empty; the site sets a cookie and reloads (anti-bot). dangcongsan.vn had no RSS either.
+    feeds: []
+
+  # ---- Vietnamese-language outlets outside Vietnam ----
+  - id: bbc_vi
+    name: BBC News Tiếng Việt
+    homepage: https://www.bbc.com/vietnamese
+    language: vi
+    scope: abroad_vi
+    kind: media
+    governing_body: BBC (UK public broadcaster)
+    state_affiliated: false
+    reprints_vna: false
+    feeds:
+      - {url: "https://feeds.bbci.co.uk/vietnamese/rss.xml", section: All, category_hint: general}
+
+  - id: rfi_vi
+    name: RFI Tiếng Việt
+    homepage: https://www.rfi.fr/vi
+    language: vi
+    scope: abroad_vi
+    kind: media
+    governing_body: France Médias Monde (French public broadcaster)
+    state_affiliated: false
+    reprints_vna: false
+    feeds:
+      - {url: "https://www.rfi.fr/vi/rss", section: All, category_hint: general}
+      - {url: "https://www.rfi.fr/vi/việt-nam/rss", section: Việt Nam, category_hint: general}
+
+  - id: luatkhoa
+    name: Luật Khoa tạp chí (The Vietnamese Magazine)
+    homepage: https://luatkhoa.news
+    language: vi
+    scope: abroad_vi
+    kind: media
+    governing_body: Independent
+    state_affiliated: false
+    reprints_vna: false
+    notes: The old domain luatkhoa.org redirects here. Low volume (about 10 items in the feed).
+    feeds:
+      - {url: "https://luatkhoa.news/feed/", section: All, category_hint: internal_politics}
+
+  - id: rfa_vi
+    name: RFA Tiếng Việt
+    homepage: https://www.rfa.org/vietnamese/
+    language: vi
+    scope: abroad_vi
+    kind: media
+    governing_body: Radio Free Asia (US-funded)
+    state_affiliated: false
+    reprints_vna: false
+    notes: The site still publishes (items dated 2026-09-29) but its RSS URL returns an empty feed. Would need scraping of the homepage.
+    feeds: []
+
+  - id: voa_vi
+    name: VOA Tiếng Việt
+    homepage: https://www.voatiengviet.com
+    language: vi
+    scope: abroad_vi
+    kind: media
+    governing_body: Voice of America (US-funded)
+    state_affiliated: false
+    reprints_vna: false
+    notes: DEAD. The feeds still respond, but the newest item is from March 2025. Do not use.
+    feeds: []
+
+  - id: nguoiviet
+    name: Người Việt (California)
+    homepage: https://www.nguoi-viet.com
+    language: vi
+    scope: abroad_vi
+    kind: media
+    governing_body: Independent (diaspora press)
+    state_affiliated: false
+    reprints_vna: false
+    notes: Could not connect on 2026-09-30 (TLS handshake fails from this PC). Retry later.
+    feeds: []
+
+  # DW Tiếng Việt: not listed. dw.com/vi now redirects to the English site, so it appears to have closed.
+
+  # ---- International ----
+  - id: gdelt
+    name: GDELT DOC API
+    homepage: https://api.gdeltproject.org
+    language: multi
+    scope: international
+    kind: media
+    governing_body: n/a (discovery service; returns URLs and metadata, not text)
+    state_affiliated: false
+    reprints_vna: false
+    notes: Works. Limit is one request per 5 seconds (returns 429 otherwise). Not an RSS feed, so the feed checker tests api_queries separately.
+    feeds: []
+    api_queries:
+      - "https://api.gdeltproject.org/api/v2/doc/doc?query=vietnam%20sourcelang:eng&mode=artlist&format=json&maxrecords=250&timespan=1d"
+
+  - id: diplomat
+    name: The Diplomat
+    homepage: https://thediplomat.com
+    language: en
+    scope: international
+    kind: media
+    governing_body: Independent
+    state_affiliated: false
+    reprints_vna: false
+    notes: Feed covers all topics, so filter for Vietnam.
+    feeds:
+      - {url: "https://thediplomat.com/feed/", section: All, category_hint: general}
+
+  - id: scmp
+    name: South China Morning Post (Southeast Asia)
+    homepage: https://www.scmp.com
+    language: en
+    scope: international
+    kind: media
+    governing_body: Alibaba-owned
+    state_affiliated: false
+    reprints_vna: false
+    notes: Feed covers Southeast Asia, so filter for Vietnam.
+    feeds:
+      - {url: "https://www.scmp.com/rss/91/feed/", section: Southeast Asia, category_hint: general}
+
+  - id: cna
+    name: Channel NewsAsia
+    homepage: https://www.channelnewsasia.com
+    language: en
+    scope: international
+    kind: media
+    governing_body: Mediacorp (Singapore)
+    state_affiliated: true
+    reprints_vna: false
+    notes: Feed covers Asia, so filter for Vietnam. Singapore state-linked broadcaster.
+    feeds:
+      - {url: "https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml", section: Asia, category_hint: general}
+
+  - id: nikkei
+    name: Nikkei Asia
+    homepage: https://asia.nikkei.com
+    language: en
+    scope: international
+    kind: media
+    governing_body: Nikkei Inc.
+    state_affiliated: false
+    reprints_vna: false
+    notes: Paywalled. The feed gives headlines only (RSS 1.0 format, 50 items). Full text will not extract.
+    feeds:
+      - {url: "https://asia.nikkei.com/rss/feed/nar", section: All, category_hint: general}
+
+  # Reuters: HTTP 401 for scripts and no public RSS. Not listed; rely on GDELT for discovery.
