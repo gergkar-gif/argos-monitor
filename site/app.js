@@ -182,7 +182,7 @@
     const headOrig = h('p', { class: 'orig', hidden: true, title: 'Original headline' });
     track(headLink, s.headline.title, s.headline.language, headOrig);
 
-    clip.append(
+    clip.append(...[
       h('div', null,
         h('h3', { class: 'headline' }, headLink),
         headOrig,
@@ -198,7 +198,7 @@
       ),
       SCOPES.filter(([id]) => s.by_scope[id]).length > 1 && h('div', { class: 'cover', 'aria-label': 'Where the coverage comes from' },
         SCOPES.filter(([id]) => s.by_scope[id]).map(([id, label]) => h('span', null, h('b', { text: String(s.by_scope[id]) }), ` ${s.by_scope[id] === 1 ? 'article' : 'articles'} from ${label}`))),
-    );
+    ].filter(Boolean));   // a missing optional row must not be appended as the text "false"
 
     const shown = opts.lead ? s.excerpts : s.excerpts.slice(0, 1);
     if (shown.length) {
