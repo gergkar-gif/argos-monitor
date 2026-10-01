@@ -1,38 +1,45 @@
-"""Stage: keep only articles that are about Vietnam or involve Vietnam.
+"""Stage: keep only articles that are about the country or involve it. The country's words come from its pack.
 
 Rule (no LLM):
-- Domestic outlets, in any section except the world/international one: relevant by default.
-- World sections of domestic outlets, and every abroad_vi / international outlet: relevant only if
-  Vietnam is mentioned in the headline or lead, or at least twice in the article text.
+- A skipped section (sport, culture, lifestyle: see url_sections in pack.yaml) is never relevant.
+- A domestic outlet's article is relevant by default, unless its feed section or its web address says it is a
+  foreign or world section.
+- A source marked needs_mention (its addresses show no section) is treated like a world section.
+- Everything else (world sections, outlets abroad, international outlets) is relevant only if the country is
+  mentioned in the headline or summary, or at least twice in the article text.
 """
-import re
+from . import packs
 
-MENTION = re.compile(
-    r"vi[eệ]t\s?nam|vietnamese|việt kiều|người việt|gốc việt|h[aà]\s?n[oộ]i|hà nội|ho chi minh|hồ chí minh|tp\.?\s?hcm|tphcm|"
-    r"s[aà]i g[oò]n|sài gòn|đà nẵng|da nang|hải phòng|hai phong|mekong|mê ?kông|biển đông|east sea|south china sea",
-    re.I)
 MIN_TEXT_MENTIONS = 2
 
 
-def is_relevant(scope, category_hint, section, title, lead, text):
-    if scope == "domestic" and category_hint != "foreign_policy":
+def is_relevant(pack, scope, category_hint, section, url, title, lead, text, needs_mention=False):
+    web_section = packs.url_section(url)
+    if web_section in pack["skip_sections"]:
+        return False
+    if scope == "domestic" and not needs_mention and category_hint != "foreign_policy" and web_section not in pack["foreign_sections"]:
         return True
-    if section == "Việt Nam":            # e.g. RFI's Vietnam section
+    if pack.get("mention_section") and section == pack["mention_section"]:   # e.g. RFI's own Vietnam section
         return True
-    if MENTION.search(f"{title} {lead}"):
+    if pack["mention_re"].search(f"{title} {lead}"):
         return True
-    return len(MENTION.findall(text or "")) >= MIN_TEXT_MENTIONS
+    return len(pack["mention_re"].findall(text or "")) >= MIN_TEXT_MENTIONS
 
 
 def run(db):
     rows = db.execute(
-        "SELECT a.id, s.scope, f.category_hint, f.section_label, a.title, a.lead, a.text "
+        "SELECT a.id, a.country, a.source_id, a.url, s.scope, f.category_hint, f.section_label, a.title, a.lead, a.text "
         "FROM article a JOIN source s ON s.id=a.source_id LEFT JOIN feed f ON f.id=a.feed_id").fetchall()
-    keep = [(int(is_relevant(r["scope"], r["category_hint"], r["section_label"], r["title"], r["lead"], r["text"])), r["id"])
-            for r in rows]
-    db.executemany("UPDATE article SET vn_relevant=? WHERE id=?", keep)
+    needs = {s["id"]: s.get("needs_mention", False) for c in packs.pack_ids() for s in packs.load(c)["sources"]}
+    keep = []
+    for r in rows:
+        pack = packs.load(r["country"])
+        keep.append((int(is_relevant(pack, r["scope"], r["category_hint"], r["section_label"], r["url"],
+                                     r["title"], r["lead"], r["text"], needs.get(r["source_id"], False))), r["id"]))
+    db.executemany("UPDATE article SET relevant=? WHERE id=?", keep)
     db.commit()
-    print(f"relevance: {sum(k for k, _ in keep)} of {len(rows)} articles are about or involve Vietnam")
-    q = ("SELECT s.scope, SUM(a.vn_relevant), COUNT(*) FROM article a JOIN source s ON s.id=a.source_id GROUP BY 1")
-    for scope, kept, total in db.execute(q):
-        print(f"  {scope:14} {kept} / {total}")
+    print(f"relevance: {sum(k for k, _ in keep)} of {len(rows)} articles are about or involve their country")
+    q = ("SELECT a.country, s.scope, SUM(a.relevant), COUNT(*) FROM article a JOIN source s ON s.id=a.source_id "
+         "GROUP BY 1, 2 ORDER BY 1, 2")
+    for country, scope, kept, total in db.execute(q):
+        print(f"  {country:9} {scope:13} {kept} / {total}")

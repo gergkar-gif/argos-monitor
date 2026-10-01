@@ -1,11 +1,11 @@
-# What matters to a foreign-office press reviewer (decision D14). Each theme has a weight (how much a story on this theme
-# should count), keywords (matched against the headlines and summaries of a story's articles) and short descriptions
-# (compared with the story by the embedding model). Keywords are matched in lower case; they mix Vietnamese and English.
+# What matters to a foreign-office press reviewer (decisions D14, D15). Shared by every country.
+# Each theme has a weight (how much a story on this theme counts), keywords (matched in lower case against the
+# headlines and summaries of a story's articles) and short descriptions (compared with the story by the embedding
+# model). This file holds the language-neutral part: English keywords and descriptions. Each country pack adds its
+# own language's keywords and descriptions, and may add themes of its own, in countries/<id>/themes.yaml.
 #
-# A story's policy weight is the highest weight among its high themes. A story with only low themes keeps the lowest
-# weight; a story with no theme gets the default. Edit freely: this file is the editorial judgement, not code.
-#
-# Vietnam-specific words belong in a country pack later; they are here for now.
+# A story's policy weight is the highest weight among its high themes; with only low themes it gets the lowest of
+# them; with none, the default. Edit freely: this file is editorial judgement, not code.
 
 default_weight: 0.3
 
@@ -15,64 +15,56 @@ themes:
     weight: 1.0
     describe:
       - state visit, bilateral talks, diplomatic relations, strategic partnership, ambassador, foreign minister meeting
-      - chuyến thăm cấp nhà nước, hội đàm song phương, quan hệ ngoại giao, đối tác chiến lược, đại sứ, ngoại trưởng
-    keywords: ["thăm cấp nhà nước", "chuyến thăm", "hội đàm", "đối tác chiến lược", "quan hệ ngoại giao", "quan hệ song phương", "đại sứ", "ngoại trưởng", "bộ trưởng ngoại giao", "asean", "liên hợp quốc", "apec", "g20", "state visit", "bilateral", "diplomatic", "ambassador", "foreign minister", "strategic partnership", "summit"]
+    keywords: ["state visit", "bilateral", "diplomatic", "ambassador", "foreign minister", "strategic partnership", "summit", "asean", "apec", "g20", "nato", "united nations"]
 
   - id: trade
     label: Trade
     weight: 1.0
     describe:
       - trade agreement, tariffs, exports and imports, trade surplus, anti-dumping, customs
-      - hiệp định thương mại, thuế quan, xuất nhập khẩu, thặng dư thương mại, chống bán phá giá, hải quan
-    keywords: ["xuất nhập khẩu", "xuất khẩu", "nhập khẩu", "thương mại", "thuế quan", "hiệp định thương mại", "hiệp định tự do", "cptpp", "evfta", "rcep", "chống bán phá giá", "thặng dư", "kim ngạch", "tariff", "trade", "export", "import", "anti-dumping", "customs"]
+    keywords: ["tariff", "trade", "export", "import", "anti-dumping", "customs", "free trade"]
 
   - id: investment
     label: Investment
     weight: 1.0
     describe:
-      - foreign direct investment, investors, large investment projects, industrial zones, semiconductors, data centres
-      - đầu tư nước ngoài, nhà đầu tư, dự án đầu tư lớn, khu công nghiệp, bán dẫn, trung tâm dữ liệu
-    keywords: ["đầu tư nước ngoài", "fdi", "nhà đầu tư", "vốn đầu tư", "dự án đầu tư", "thu hút đầu tư", "khu công nghiệp", "bán dẫn", "trung tâm dữ liệu", "investment", "investor", "foreign direct", "semiconductor", "data centre", "data center"]
+      - foreign direct investment, investors, large investment projects, industrial zones, semiconductors, battery plants, data centres
+    keywords: ["investment", "investor", "foreign direct", "fdi", "semiconductor", "data centre", "data center", "battery plant"]
 
   - id: econ_policy
     label: Economic policy
     weight: 1.0
     describe:
       - economic and regulatory policy, new decree or law, central bank, interest rates, exchange rate, taxes, state budget, public debt, reform
-      - chính sách kinh tế, nghị định, thông tư, luật sửa đổi, ngân hàng nhà nước, lãi suất điều hành, tỷ giá, thuế, ngân sách, nợ công, cải cách
-    keywords: ["nghị định", "thông tư", "dự thảo luật", "sửa đổi luật", "luật sửa đổi", "chính sách", "ngân hàng nhà nước", "nhnn", "lãi suất điều hành", "tỷ giá", "ngân sách", "nợ công", "tăng trưởng gdp", "gdp", "lạm phát", "cải cách", "tháo gỡ", "quỹ bình ổn", "policy", "regulation", "decree", "central bank", "interest rate", "inflation", "reform"]
+    keywords: ["economic policy", "regulation", "decree", "central bank", "interest rate", "inflation", "reform", "state budget", "public debt", "gdp"]
 
   - id: party_gov
-    label: Party and government
+    label: Government and parliament
     weight: 0.8
     describe:
-      - Communist Party leadership decisions, Politburo resolutions, National Assembly session, government restructuring, Prime Minister directives
-      - Tổng Bí thư, Bộ Chính trị, Ban Chấp hành Trung ương, Quốc hội, Thủ tướng chỉ đạo, nghị quyết, sắp xếp bộ máy
-    keywords: ["tổng bí thư", "bộ chính trị", "ban chấp hành trung ương", "quốc hội", "kỳ họp", "nghị quyết", "chủ trương", "sắp xếp bộ máy", "sáp nhập", "thủ tướng chỉ đạo", "politburo", "national assembly", "general secretary", "prime minister"]
+      - ruling party and government decisions, parliament session, cabinet reshuffle, prime minister directives, election
+    keywords: ["parliament", "cabinet", "prime minister", "election", "government decree", "national assembly"]
 
   - id: security
     label: Security and defence
     weight: 0.9
     describe:
-      - defence cooperation, South China Sea, maritime security, military exercises, cybersecurity, national security
-      - hợp tác quốc phòng, Biển Đông, an ninh hàng hải, diễn tập, an ninh mạng, an ninh quốc gia
-    keywords: ["quốc phòng", "biển đông", "hoàng sa", "trường sa", "diễn tập", "an ninh mạng", "an ninh quốc gia", "quân ủy", "south china sea", "east sea", "defence", "defense", "military", "maritime", "cybersecurity"]
+      - defence cooperation, maritime security, military exercises, cybersecurity, national security
+    keywords: ["defence", "defense", "military", "maritime", "cybersecurity", "national security"]
 
   - id: anticorruption
     label: Anti-corruption drive
     weight: 0.8
     describe:
-      - anti-corruption campaign, discipline of senior officials, former ministers prosecuted, Central Inspection Commission
-      - chống tham nhũng, kỷ luật cán bộ cấp cao, cựu bộ trưởng bị truy tố, Ủy ban Kiểm tra Trung ương, đại án
-    keywords: ["chống tham nhũng", "phòng, chống tham nhũng", "ủy ban kiểm tra trung ương", "đại án", "cựu bộ trưởng", "cựu thứ trưởng", "cựu ủy viên trung ương", "kỷ luật ban bí thư", "anti-corruption", "corruption crackdown"]
+      - anti-corruption campaign, discipline of senior officials, former ministers prosecuted, anti-corruption watchdog
+    keywords: ["anti-corruption", "corruption crackdown", "corruption"]
 
   - id: energy_infra
     label: Energy and infrastructure
     weight: 0.7
     describe:
-      - energy policy, power plants, nuclear power, renewable energy, LNG, ports, airports, high-speed rail, supply chains
-      - chính sách năng lượng, nhà máy điện, điện hạt nhân, năng lượng tái tạo, cảng biển, sân bay, đường sắt tốc độ cao, chuỗi cung ứng
-    keywords: ["năng lượng", "điện hạt nhân", "quy hoạch điện", "năng lượng tái tạo", "điện gió", "điện mặt trời", "lng", "cảng biển", "sân bay long thành", "đường sắt tốc độ cao", "chuỗi cung ứng", "energy", "power plant", "nuclear", "renewable", "high-speed rail", "supply chain"]
+      - energy policy, power plants, nuclear power, renewable energy, ports, airports, railways, supply chains
+    keywords: ["energy", "power plant", "nuclear", "renewable", "high-speed rail", "supply chain", "pipeline"]
 
   # Low themes: they only matter when no high theme is present.
   - id: crime_local
@@ -81,23 +73,20 @@ themes:
     low: true
     describe:
       - an individual crime, arrest, criminal trial, fraud case, police investigation
-      - vụ án, bắt tạm giam, khởi tố, xét xử bị cáo, lừa đảo, cướp, giết người, truy nã
-    keywords: ["khởi tố", "bắt tạm giam", "tạm giữ", "xét xử", "bị cáo", "lừa đảo", "cướp", "giết người", "truy nã", "hầu tòa", "án tù", "giả mạo", "đòi nợ", "hồ sơ khống", "chiếm đoạt", "bắt giám đốc", "bắt nhóm", "bị bắt", "arrested", "trial", "sentenced", "fraud"]
+    keywords: ["arrested", "trial", "sentenced", "fraud", "murder", "robbery"]
 
   - id: accident_weather
     label: Accidents and weather
     weight: 0.2
     low: true
     describe:
-      - traffic accident, fire, weather forecast, storm, flood, cold air, heat wave
-      - tai nạn giao thông, cháy, dự báo thời tiết, bão, mưa lũ, không khí lạnh, nắng nóng
-    keywords: ["tai nạn", "cháy", "thời tiết", "không khí lạnh", "bão", "mưa lớn", "lũ", "ngập", "nắng nóng", "sạt lở", "accident", "weather", "storm", "flood"]
+      - traffic accident, fire, weather forecast, storm, flood, heat wave
+    keywords: ["accident", "weather", "storm", "flood", "heatwave", "wildfire"]
 
   - id: sport_culture
     label: Sport and entertainment
     weight: 0.05
     low: true
     describe:
-      - football match, sports championship, singer, film, beauty pageant, celebrity news
-      - bóng đá, giải đấu thể thao, ca sĩ, phim, hoa hậu, người nổi tiếng
-    keywords: ["bóng đá", "v-league", "sea games", "giải vô địch", "ca sĩ", "nghệ sĩ", "hoa hậu", "phim", "football", "championship", "singer", "film"]
+      - football match, sports championship, singer, film, celebrity news
+    keywords: ["football", "championship", "singer", "film", "celebrity"]

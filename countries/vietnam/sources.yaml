@@ -254,7 +254,7 @@ sources:
     name: BBC News Tiếng Việt
     homepage: https://www.bbc.com/vietnamese
     language: vi
-    scope: abroad_vi
+    scope: abroad_local
     kind: media
     governing_body: BBC (UK public broadcaster)
     state_affiliated: false
@@ -266,7 +266,7 @@ sources:
     name: RFI Tiếng Việt
     homepage: https://www.rfi.fr/vi
     language: vi
-    scope: abroad_vi
+    scope: abroad_local
     kind: media
     governing_body: France Médias Monde (French public broadcaster)
     state_affiliated: false
@@ -279,7 +279,7 @@ sources:
     name: Luật Khoa tạp chí (The Vietnamese Magazine)
     homepage: https://luatkhoa.news
     language: vi
-    scope: abroad_vi
+    scope: abroad_local
     kind: media
     governing_body: Independent
     state_affiliated: false
@@ -292,7 +292,7 @@ sources:
     name: RFA Tiếng Việt
     homepage: https://www.rfa.org/vietnamese/
     language: vi
-    scope: abroad_vi
+    scope: abroad_local
     kind: media
     governing_body: Radio Free Asia (US-funded)
     state_affiliated: false
@@ -304,7 +304,7 @@ sources:
     name: VOA Tiếng Việt
     homepage: https://www.voatiengviet.com
     language: vi
-    scope: abroad_vi
+    scope: abroad_local
     kind: media
     governing_body: Voice of America (US-funded)
     state_affiliated: false
@@ -316,7 +316,7 @@ sources:
     name: Người Việt (California)
     homepage: https://www.nguoi-viet.com
     language: vi
-    scope: abroad_vi
+    scope: abroad_local
     kind: media
     governing_body: Independent (diaspora press)
     state_affiliated: false
@@ -327,19 +327,7 @@ sources:
   # DW Tiếng Việt: not listed. dw.com/vi now redirects to the English site, so it appears to have closed.
 
   # ---- International ----
-  - id: gdelt
-    name: GDELT DOC API
-    homepage: https://api.gdeltproject.org
-    language: multi
-    scope: international
-    kind: media
-    governing_body: n/a (discovery service; returns URLs and metadata, not text)
-    state_affiliated: false
-    reprints_vna: false
-    notes: Works. Limit is one request per 5 seconds (returns 429 otherwise). Not an RSS feed, so the feed checker tests api_queries separately.
-    feeds: []
-    api_queries:
-      - "https://api.gdeltproject.org/api/v2/doc/doc?query=vietnam%20sourcelang:eng&mode=artlist&format=json&maxrecords=250&timespan=1d"
+  # GDELT (api.gdeltproject.org) is not used: it answered "too many requests" to every call, from this PC and from the cloud.
 
   - id: diplomat
     name: The Diplomat

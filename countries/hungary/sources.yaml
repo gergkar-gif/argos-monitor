@@ -1,0 +1,198 @@
+# Hungary source registry. Verified 2026-10-01 from this PC (see docs/sources.md). Same fields as Vietnam's.
+# scope: domestic | abroad_local | international     kind: media | official | wire
+# Ownership and alignment notes are marked "(to confirm)" where they come from memory, not from a checked source.
+# Fetch note: use the plain ArgosMonitor User-Agent. Most outlets publish ONE all-topics feed of their latest 30-60
+# items, which a busy outlet fills in a few hours, so the collector must run several times a day.
+
+sources:
+  - id: telex
+    name: Telex
+    homepage: https://telex.hu
+    language: hu
+    scope: domestic
+    kind: media
+    governing_body: Independent online outlet founded in 2020 by former Index staff (to confirm)
+    state_affiliated: false
+    feeds:
+      - {url: "https://telex.hu/rss", section: Latest, category_hint: general}
+
+  - id: hvg
+    name: HVG
+    homepage: https://hvg.hu
+    language: hu
+    scope: domestic
+    kind: media
+    governing_body: Independent weekly magazine and site (to confirm)
+    state_affiliated: false
+    feeds:
+      - {url: "https://hvg.hu/rss", section: Latest, category_hint: general}
+
+  - id: 444
+    name: 444
+    homepage: https://444.hu
+    language: hu
+    scope: domestic
+    kind: media
+    governing_body: Independent online outlet (to confirm)
+    state_affiliated: false
+    needs_mention: true     # article addresses carry no section, so every article must mention Hungary to count
+    notes: Article addresses carry no section, so foreign and domestic items cannot be told apart by address.
+    feeds:
+      - {url: "https://444.hu/feed", section: Latest, category_hint: general}
+
+  - id: 24hu
+    name: 24.hu
+    homepage: https://24.hu
+    language: hu
+    scope: domestic
+    kind: media
+    governing_body: Private online outlet; ownership to confirm
+    state_affiliated: false
+    notes: The feed holds only 10 items, so a busy day is partly missed.
+    feeds:
+      - {url: "https://24.hu/feed/", section: Latest, category_hint: general}
+
+  - id: index
+    name: Index
+    homepage: https://index.hu
+    language: hu
+    scope: domestic
+    kind: media
+    governing_body: Private; reported to have moved closer to the government camp after ownership changes around 2020 (to confirm)
+    state_affiliated: false
+    feeds:
+      - {url: "https://index.hu/belfold/rss/", section: Belföld (domestic), category_hint: internal_politics}
+      - {url: "https://index.hu/gazdasag/rss/", section: Gazdaság (economy), category_hint: economics}
+      - {url: "https://index.hu/24ora/rss/", section: 24 óra, category_hint: general}
+
+  - id: origo
+    name: Origo
+    homepage: https://www.origo.hu
+    language: hu
+    scope: domestic
+    kind: media
+    governing_body: Widely reported to belong to the pro-government KESMA media foundation (to confirm)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.origo.hu/publicapi/hu/rss/origo/articles", section: Latest, category_hint: general}
+
+  - id: magyarnemzet
+    name: Magyar Nemzet
+    homepage: https://magyarnemzet.hu
+    language: hu
+    scope: domestic
+    kind: media
+    governing_body: Widely reported to belong to the pro-government KESMA media foundation (to confirm)
+    state_affiliated: false
+    feeds:
+      - {url: "https://magyarnemzet.hu/feed", section: Latest, category_hint: general}
+
+  - id: magyarhirlap
+    name: Magyar Hírlap
+    homepage: https://magyarhirlap.hu
+    language: hu
+    scope: domestic
+    kind: media
+    governing_body: Widely reported to belong to the pro-government KESMA media foundation (to confirm)
+    state_affiliated: false
+    feeds:
+      - {url: "https://magyarhirlap.hu/rss", section: Latest, category_hint: general}
+
+  - id: portfolio
+    name: Portfolio.hu
+    homepage: https://www.portfolio.hu
+    language: hu
+    scope: domestic
+    kind: media
+    governing_body: Private business news site; ownership to confirm
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.portfolio.hu/rss/all.xml", section: All news, category_hint: economics}
+
+  - id: hungarytoday
+    name: Hungary Today
+    homepage: https://hungarytoday.hu
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: English-language news site with a generally pro-government line; ownership to confirm
+    state_affiliated: false
+    notes: Only 5 items in the feed.
+    feeds:
+      - {url: "https://hungarytoday.hu/feed/", section: Latest, category_hint: general}
+
+  - id: hungarianconservative
+    name: Hungarian Conservative
+    homepage: https://www.hungarianconservative.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: English-language conservative journal linked to the Danube Institute (to confirm)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.hungarianconservative.com/feed/", section: Latest, category_hint: general}
+
+  # ---- Hungarian-language outlets outside Hungary ----
+  - id: maszol
+    name: Maszol.ro
+    homepage: https://maszol.ro
+    language: hu
+    scope: abroad_local
+    kind: media
+    governing_body: Hungarian-language news site in Romania (Transylvania); ownership to confirm
+    state_affiliated: false
+    feeds:
+      - {url: "https://maszol.ro/rss", section: Latest, category_hint: general}
+
+  - id: euronews_hu
+    name: Euronews (Hungarian edition)
+    homepage: https://hu.euronews.com
+    language: hu
+    scope: abroad_local
+    kind: media
+    governing_body: Euronews, European broadcaster (Hungarian-language service)
+    state_affiliated: false
+    notes: Covers all of Europe; only items that mention Hungary are kept.
+    feeds:
+      - {url: "https://hu.euronews.com/rss", section: Latest, category_hint: general}
+
+  # ---- International ----
+  - id: balkaninsight
+    name: Balkan Insight (BIRN)
+    homepage: https://balkaninsight.com
+    language: en
+    scope: international
+    kind: media
+    governing_body: Balkan Investigative Reporting Network, independent
+    state_affiliated: false
+    notes: Covers the whole region; only items that mention Hungary are kept.
+    feeds:
+      - {url: "https://balkaninsight.com/feed/", section: All, category_hint: general}
+
+  - id: euronews_en
+    name: Euronews
+    homepage: https://www.euronews.com
+    language: en
+    scope: international
+    kind: media
+    governing_body: Euronews, European broadcaster
+    state_affiliated: false
+    notes: Covers the whole world; only items that mention Hungary are kept.
+    feeds:
+      - {url: "https://www.euronews.com/rss", section: All, category_hint: general}
+
+  - id: dw_eu
+    name: Deutsche Welle (Europe)
+    homepage: https://www.dw.com
+    language: en
+    scope: international
+    kind: media
+    governing_body: German public international broadcaster
+    state_affiliated: true
+    notes: Only items that mention Hungary are kept.
+    feeds:
+      - {url: "https://rss.dw.com/xml/rss-en-eu", section: Europe, category_hint: general}
+
+  # Not usable on 2026-10-01 (see docs/sources.md): Népszava, Átlátszó, Daily News Hungary, Székelyhon, Krónika, Új Szó,
+  # Politico Europe and Euractiv refuse automated requests (HTTP 403); Mandiner's feed is stale (last item 4 Sept);
+  # the public broadcaster (hirado.hu / MTI) and Szabad Európa (RFE/RL) expose no working feed.

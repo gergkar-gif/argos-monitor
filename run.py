@@ -20,10 +20,10 @@ def top(db, n=10, per_category=3):
         arts = db.execute("SELECT s.scope, a.source_id, a.syndicated_of FROM story_article sa JOIN article a ON a.id=sa.article_id "
                           "JOIN source s ON s.id=a.source_id WHERE sa.story_id=?", (r["id"],)).fetchall()
         indep = len({a["source_id"] for a in arts if a["syndicated_of"] is None})
-        by = {sc: sum(a["scope"] == sc for a in arts) for sc in ("domestic", "abroad_vi", "international")}
+        by = {sc: sum(a["scope"] == sc for a in arts) for sc in ("domestic", "abroad_local", "international")}
         title = db.execute("SELECT title FROM article WHERE id=?", (r["representative_article_id"],)).fetchone()[0]
         print(f"  {r['score']:5.1f}  {r['category'][:10]:10} {len(arts)} articles, {indep} independent "
-              f"(dom {by['domestic']}, vi-abroad {by['abroad_vi']}, intl {by['international']})\n         {title[:120]}")
+              f"(dom {by['domestic']}, abroad {by['abroad_local']}, intl {by['international']})\n         {title[:120]}")
     print(f"== TOP {n} OVERALL")
     for r in db.execute("SELECT * FROM story ORDER BY score DESC LIMIT ?", (n,)):
         line(r)

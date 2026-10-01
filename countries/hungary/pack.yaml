@@ -1,0 +1,42 @@
+# Hungary country pack (decision D15). See ../vietnam/pack.yaml for what each field means.
+id: hungary
+name: Hungary
+language: hu
+abroad_label: Hungarian-language outlets abroad
+
+mention: ["magyarország", "magyarorszag", "hungary", "hungarian", "budapest", "orbán", "orban", "fidesz", "tisza párt",
+          "tisza party", "magyar péter", "szijjártó", "szijjarto", "magyar kormány", "magyar nemzeti bank", "forint",
+          "mol group", "paks", "viktor orbán", "hungarians"]
+# Raw regular expressions, for word forms a plain list cannot catch: "magyar" (Hungarian) and its endings, but not
+# "magyarázat" (explanation) or "magyarít".
+mention_regex: ['\bmagyar(?!áz|ít|ul\b)', '\bmagyaro']
+mention_section: null
+
+# Most Hungarian outlets publish one feed for everything, so the section is read from the article's web address:
+# the first part of the path (for example telex.hu/kulfold/...). "foreign" sections need a mention of Hungary to
+# count; "skip" sections (sport, culture, lifestyle) are left out.
+url_sections:
+  foreign: [kulfold, kulpol, vilag, nagyvilag, global, nemzetkozi, europa]
+  skip: [sport, kultura, kultur, teve, tv, sztarvilag, bulvar, elet, elet-stilus, eletmod, mindekozben, cegauto, otthon, auto,
+         tudomany, techtud, podcast, jo, szorakozas, utazas, gasztro, egeszseg, ingatlan, fomo, kiralyi-csalad,
+         itthon-hirdetes, auto-motor, auto-motor-2, mozaik, montazs]
+
+excerpt:
+  dateline: '^\s*(?:MTI|\(MTI\)|Telex|hvg\.hu|24\.hu)\s*[-–—:]\s*'
+  noise: '^(fotó|forrás|videó|kép|olvasd tovább|hirdetés|ez is érdekelheti|\(|\[)'
+
+classify:
+  internal_politics:
+    - "kormány, országgyűlés, parlament, miniszterelnök, minisztérium, Fidesz, Tisza, ellenzék"
+    - "választás, kormányzati döntés, törvényjavaslat, kinevezés, lemondás, politikai botrány"
+  economics:
+    - "gazdaság, infláció, forint, jegybank, kamat, költségvetés, adó, GDP"
+    - "vállalatok, beruházás, export, import, kereskedelem, gyár, munkahelyek, bérek"
+  foreign_policy:
+    - "külpolitika, külügyminiszter, nagykövet, kétoldalú tárgyalás, uniós csúcs, Brüsszel, NATO"
+    - "uniós források, jogállamiság, szankciók, vétó, kapcsolat Oroszországgal, Ukrajnával, Kínával"
+  defence_security:
+    - "honvédség, védelem, haderő, nemzetbiztonság, kibervédelem, fegyverbeszerzés"
+  society:
+    - "oktatás, egészségügy, kórház, iskola, tanárok, nyugdíj, szociális ügyek"
+    - "bűnügy, baleset, időjárás, természeti csapás, rendőrség, bíróság, ítélet"

@@ -12,11 +12,11 @@
   ];
   const PER_TOPIC_IN_OVERVIEW = 4;
   const STALE_HOURS = 12;
-  const SCOPES = [
-    ['domestic', 'domestic outlets'],
-    ['abroad_vi', 'Vietnamese-language outlets abroad'],
-    ['international', 'international outlets'],
-  ];
+  // Where coverage comes from; the middle label is the country's own ("Vietnamese-language outlets abroad").
+  function scopes() {
+    const c = index.countries.find((x) => x.id === country.value);
+    return [['domestic', 'domestic outlets'], ['abroad_local', c.abroad_label], ['international', 'international outlets']];
+  }
 
   const $ = (sel) => document.querySelector(sel);
   const fmtDay = new Intl.DateTimeFormat(undefined, { day: 'numeric', month: 'short' });
@@ -103,11 +103,11 @@
   }
   try { if (localStorage.getItem('argos.showOriginal') === '1') document.body.classList.add('show-orig'); } catch { /* ignore */ }
 
-  const T = { state: 'checking', translator: null, cache: new Map(), queue: [], running: false };
+  const T = { lang: 'en', state: 'checking', translator: null, cache: new Map(), queue: [], running: false };
   const withTimeout = (p, ms) => Promise.race([p, new Promise((_, no) => setTimeout(() => no(new Error('timeout')), ms))]);
 
   function track(el, text, lang, origEl) {
-    if (lang === 'en') return;                      // already English
+    if (lang === 'en' || lang !== T.lang) return;   // already English, or not the language the translator is set up for
     T.queue.push({ el, text, origEl });
   }
   async function translatePending() {
@@ -122,7 +122,7 @@
         it.el.textContent = en;
         it.el.lang = 'en';
         it.origEl.textContent = it.text;
-        it.origEl.lang = 'vi';
+        it.origEl.lang = T.lang;
         it.origEl.hidden = false;
       } catch { /* keep the original text as it is */ }
     }
@@ -130,15 +130,21 @@
   }
   async function startTranslator(button) {
     T.translator = await Translator.create({
-      sourceLanguage: 'vi', targetLanguage: 'en',
+      sourceLanguage: T.lang, targetLanguage: 'en',
       monitor(m) { m.addEventListener('downloadprogress', (e) => { if (button) button.textContent = `Downloading English… ${Math.round(e.loaded * 100)}%`; }); },
     });
     T.state = 'ready';
   }
+  function useLanguage(lang) {
+    if (lang === T.lang) return;
+    T.lang = lang; T.state = 'checking'; T.translator = null;
+    initTranslator().then(() => { paintTranslationBar(); translatePending(); });
+  }
   async function initTranslator() {
+    if (T.lang === 'en') { T.state = 'none'; return; }
     if (typeof Translator === 'undefined') { T.state = 'none'; return; }
     try {
-      const a = await withTimeout(Translator.availability({ sourceLanguage: 'vi', targetLanguage: 'en' }), 4000);
+      const a = await withTimeout(Translator.availability({ sourceLanguage: T.lang, targetLanguage: 'en' }), 4000);
       if (a === 'available') await startTranslator();
       else if (a === 'downloadable' || a === 'downloading') T.state = 'offer';
       else T.state = 'none';
@@ -173,7 +179,7 @@
   // ---------- rendering ----------
   function story(s, opts) {
     const first = s.sources[0];
-    const present = SCOPES.filter(([id]) => s.by_scope[id]);
+    const present = scopes().filter(([id]) => s.by_scope[id]);
     const single = present.length === 1 ? present[0][1] : '';
     const outlets = plural(s.independent_sources, 'independent outlet', 'independent outlets');
     const clip = h('article', { class: 'clip' + (opts.lead ? ' lead' : ''), style: `--i:${opts.i}` });
@@ -196,16 +202,16 @@
         (s.themes || []).length > 0 && h('span', { class: 'themes', title: 'Why this story ranks where it does', text: s.themes.join(' · ') }),
         h('span', null, h('strong', { text: outlets }), ` · ${plural(s.articles, 'article', 'articles')}`, single && ` · all ${single}`),
       ),
-      SCOPES.filter(([id]) => s.by_scope[id]).length > 1 && h('div', { class: 'cover', 'aria-label': 'Where the coverage comes from' },
-        SCOPES.filter(([id]) => s.by_scope[id]).map(([id, label]) => h('span', null, h('b', { text: String(s.by_scope[id]) }), ` ${s.by_scope[id] === 1 ? 'article' : 'articles'} from ${label}`))),
+      scopes().filter(([id]) => s.by_scope[id]).length > 1 && h('div', { class: 'cover', 'aria-label': 'Where the coverage comes from' },
+        scopes().filter(([id]) => s.by_scope[id]).map(([id, label]) => h('span', null, h('b', { text: String(s.by_scope[id]) }), ` ${s.by_scope[id] === 1 ? 'article' : 'articles'} from ${label}`))),
     ].filter(Boolean));   // a missing optional row must not be appended as the text "false"
 
     const shown = opts.lead ? s.excerpts : s.excerpts.slice(0, 1);
     if (shown.length) {
       clip.append(h('div', { class: 'strips' }, shown.map((x) => {
-        const main = h('p', { lang: 'vi', text: x.text });
+        const main = h('p', { lang: T.lang, text: x.text });
         const orig = h('p', { class: 'orig', hidden: true, title: 'Original quote' });
-        track(main, x.text, 'vi', orig);
+        track(main, x.text, T.lang, orig);
         return h('blockquote', { class: 'strip' }, main, orig,
           h('footer', null, h('a', { class: 'stamp indigo', href: safeUrl(x.url), target: '_blank', rel: 'noopener', text: x.source })));
       })));
@@ -254,7 +260,7 @@
     const d = current;
     results.classList.toggle('still', !animate);
     T.queue.length = 0;    // items from the previous render are gone
-    const noOutside = d.stories.every((s) => !s.by_scope.abroad_vi && !s.by_scope.international);
+    const noOutside = d.stories.every((s) => !s.by_scope.abroad_local && !s.by_scope.international);
     const byTopic = (id) => d.stories.filter((s) => s.category === id);
     const totalStories = Object.values(d.totals).reduce((a, b) => a + b, 0);
     const updated = new Date(d.generated_at);
@@ -302,6 +308,7 @@
   async function research() {
     const c = index.countries.find((x) => x.id === country.value);
     const p = c.periods.find((x) => x.id === period.value);
+    useLanguage(c.language);
     openTopic = topic.value;
     setHash(`#${country.value}/${period.value}/${topic.value}`);
     results.replaceChildren(h('p', { class: 'state', text: 'Gathering the clippings…' }));
@@ -325,6 +332,5 @@
   $('#slip').addEventListener('submit', (e) => { e.preventDefault(); research(); });
   country.addEventListener('change', fillPeriods);
   window.addEventListener('hashchange', () => { readHash(); research(); });
-  research();
-  initTranslator().then(() => { paintTranslationBar(); translatePending(); });
+  research();     // also sets up the translator for the country's language
 })();

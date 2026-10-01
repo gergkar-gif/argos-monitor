@@ -1,9 +1,10 @@
-"""Roadmap step 1 check: fetch every active feed in sources.yaml; OK = valid feed with at least one item."""
+"""Roadmap step 1 check: fetch every active feed in every country pack's sources.yaml; OK = valid feed with at least one item."""
 import sys, pathlib, concurrent.futures as cf, yaml
 from probe import probe
 sys.stdout.reconfigure(encoding="utf-8")
 root = pathlib.Path(__file__).resolve().parent.parent
-sources = yaml.safe_load((root / "sources.yaml").read_text(encoding="utf8"))["sources"]
+sources = [s for d in sorted((root / "countries").iterdir()) if (d / "sources.yaml").exists()
+           for s in yaml.safe_load((d / "sources.yaml").read_text(encoding="utf8"))["sources"]]
 jobs = [(s["id"], f["url"]) for s in sources for f in s.get("feeds", []) if f.get("active", True)]
 with cf.ThreadPoolExecutor(6) as ex:
     results = list(ex.map(lambda j: probe(j[1])[1], jobs))

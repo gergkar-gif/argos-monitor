@@ -1,12 +1,13 @@
 name: Daily digest
 
-# Builds the site once a day and publishes it to Cloudflare Pages.
-# 18:17 UTC is 01:17 in Vietnam (UTC+7). A normal run takes about 10 minutes, but GitHub starts scheduled jobs late
-# when it is busy (one run started more than three hours late), so this leaves a wide margin for the digest to be
-# ready before 07:00. The odd minute avoids the busiest moment, the top of the hour.
+# Collects the news for every country pack and publishes the site to Cloudflare Pages, every 3 hours.
+# Most outlets publish one feed of their latest 30-60 items, which a busy outlet fills in a few hours, so a single
+# daily run would miss most of the day's news. A normal run takes about 10 minutes. GitHub starts scheduled jobs
+# late when it is busy (one run started more than three hours late), so the run at 21:17 UTC (04:17 in Vietnam,
+# 23:17 in Hungary) leaves a margin for the page to be fresh by 07:00. The odd minute avoids the top of the hour.
 on:
   schedule:
-    - cron: "17 18 * * *"
+    - cron: "17 */3 * * *"
   workflow_dispatch:
 
 concurrency:

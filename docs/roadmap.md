@@ -23,6 +23,6 @@ Each step has a check that shows it is done. Work in order.
 - 24h / 30d windows and "what changed?" comparison with the previous period
 - Optional LLM layer for the top stories, with the verbatim-quote check
 - Offline headline translation (`opus-mt-vi-en`)
-- A second country (Poland or Ukraine)
+- ~~A second country~~ Done: Hungary (D15). More countries follow the same pack recipe.
 - Basic Social Watch from accessible sources (YouTube, Google Trends; Telegram and Bluesky for other countries)
 - Saved watches and a morning brief

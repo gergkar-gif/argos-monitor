@@ -51,7 +51,8 @@ Evidence label for a story (D3): `OFFICIAL` if any member article comes from a s
 Argos Monitor/            (on Google Drive: code and docs only)
   CLAUDE.md
   docs/
-  sources.yaml            source + feed registry (edited by hand)
+  countries/<id>/         one folder per country: pack.yaml, sources.yaml (outlets + feeds), themes.yaml (D15)
+  themes.yaml             shared themes and weights for ranking (D14)
   requirements.txt
   run.py                  runs the whole pipeline
   argos/                  one module per stage

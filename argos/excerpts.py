@@ -8,14 +8,13 @@ import re
 
 import numpy as np
 
+from . import packs
 from .embed import DIM, Embedder
 from .rank import dashboard_story_ids
 
 MAX_EXCERPTS = 3
 MIN_LEN, MAX_LEN = 60, 320
 SENTENCE_END = re.compile(r"(?<=[.!?…])\s+")
-DATELINE = re.compile(r"^\s*(?:[\w.]+\.vn|VOV|VNA|TTXVN|Hà Nội \(TTXVN\)|[\w\s]{2,25}\((?:TTXVN|VNA)\))\s*[-–—]\s*", re.I)
-NOISE =re.compile(r"^(ảnh|video|clip|xem thêm|đọc thêm|photo|theo |nguồn|\(|\[)", re.I)
 
 
 def _glued_place(part):
@@ -29,7 +28,7 @@ def _glued_place(part):
     return 0
 
 
-def sentences(text, first_n=8):
+def sentences(text, pack, first_n=8):
     """Yield (start, end) offsets of the first sentences of an article, skipping the title line."""
     found = []
     lines = list(re.finditer(r"[^\n]+", text))
@@ -42,11 +41,11 @@ def sentences(text, first_n=8):
             start, part = start + lead, part.lstrip()
             cut = _glued_place(part)                  # "Đồng NaiHành khách..." -> the extractor glued a place name on
             start, part = start + cut, part[cut:]
-            tag = DATELINE.match(part)            # drop "VOV.VN -" style bylines: still a verbatim substring
+            tag = pack["dateline_re"].match(part) if pack["dateline_re"] else None   # drop bylines such as "VOV.VN -": still a verbatim substring
             if tag:
                 start += tag.end()
                 part = part[tag.end():]
-            if MIN_LEN <= len(part) <= MAX_LEN and not NOISE.match(part) and part[-1] in ".!?…\"”":
+            if MIN_LEN <= len(part) <= MAX_LEN and not (pack["noise_re"] and pack["noise_re"].match(part)) and part[-1] in ".!?…\"”":
                 found.append((start, start + len(part)))
         if len(found) >= first_n:
             break
@@ -59,6 +58,7 @@ def run(db):
     db.execute("DELETE FROM excerpt")
     total = 0
     for sid in ids:
+        pack = packs.load(db.execute("SELECT country FROM story WHERE id=?", (sid,)).fetchone()[0])
         arts = db.execute(
             "SELECT a.id, a.source_id, a.text, s.scope, e.vec FROM story_article sa JOIN article a ON a.id=sa.article_id "
             "JOIN source s ON s.id=a.source_id JOIN embedding e ON e.article_id=a.id "
@@ -69,7 +69,7 @@ def run(db):
         centre /= np.linalg.norm(centre)
         best_per_source = {}
         for a in arts:
-            spans = sentences(a["text"])
+            spans = sentences(a["text"], pack)
             if not spans:
                 continue
             vecs = emb.encode(["passage: " + a["text"][s:e] for s, e in spans])

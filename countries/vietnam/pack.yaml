@@ -1,0 +1,45 @@
+# Vietnam country pack. Everything that is specific to one country lives in this folder (decision D15):
+# pack.yaml (this file), sources.yaml (outlets and feeds), themes.yaml (local-language additions to ../../themes.yaml).
+id: vietnam
+name: Vietnam
+language: vi                     # the country's main language; the browser translates from it
+abroad_label: Vietnamese-language outlets abroad
+
+# How an article is judged to be about the country. Domestic outlets are relevant by default except in their
+# world sections; every other outlet, and every world section, needs one of these words in the headline or summary,
+# or two of them in the text.
+mention: ["việt nam", "viet nam", "vietnam", "vietnamese", "việt kiều", "người việt", "gốc việt", "hà nội", "hanoi", "ha noi",
+          "hồ chí minh", "ho chi minh", "tp.hcm", "tphcm", "tp hcm", "sài gòn", "saigon", "đà nẵng", "da nang", "hải phòng",
+          "hai phong", "mekong", "mê kông", "biển đông", "east sea", "south china sea"]
+mention_section: "Việt Nam"      # a feed section with this exact name counts as about the country (e.g. RFI's Vietnam section)
+
+# Pull-quote cleanup: bylines glued to the first sentence, and lines that are not sentences.
+excerpt:
+  dateline: '^\s*(?:[\w.]+\.vn|VOV|VNA|TTXVN|Hà Nội \(TTXVN\)|[\w\s]{2,25}\((?:TTXVN|VNA)\))\s*[-–—]\s*'
+  noise: '^(ảnh|video|clip|xem thêm|đọc thêm|photo|theo |nguồn|\(|\[)'
+
+# Extra wording for the topic classifier, in the country's language (the English wording is shared).
+classify:
+  internal_politics:
+    - "Đảng, Quốc hội, Chính phủ, Bộ Chính trị, Ban Chấp hành Trung ương"
+    - "nhân sự, bổ nhiệm, kỷ luật cán bộ, chống tham nhũng, khởi tố quan chức"
+    - "luật, nghị quyết, chính sách của Nhà nước, bầu cử, đại hội Đảng"
+    - "Tổng Bí thư chỉ đạo, Ủy ban Kiểm tra Trung ương, thi hành kỷ luật Đảng viên"
+  economics:
+    - "kinh tế, tăng trưởng GDP, lạm phát, lãi suất, ngân hàng"
+    - "giá vàng, giá xăng dầu, chứng khoán, tỷ giá"
+    - "doanh nghiệp, đầu tư, xuất nhập khẩu, thương mại, thuế"
+    - "hạ tầng giao thông, cao tốc, sân bay, dự án đầu tư công, bất động sản"
+  foreign_policy:
+    - "quan hệ ngoại giao, thăm cấp nhà nước, hội đàm, hiệp định, đối tác chiến lược"
+    - "Biển Đông, ASEAN, Liên Hợp Quốc, Trung Quốc, Hoa Kỳ quan hệ với Việt Nam"
+    - "Thủ tướng tiếp Bộ trưởng nước ngoài, tiếp đại sứ, chuyến thăm chính thức, hợp tác song phương"
+  defence_security:
+    - "quân đội, quốc phòng, tập trận, lực lượng vũ trang, biên phòng"
+    - "an ninh mạng, tình báo, khủng bố, an ninh quốc gia, chiến tranh"
+    - "Quân ủy Trung ương, Bộ Quốc phòng, Bộ Công an, Quân đội nhân dân Việt Nam"
+  society:
+    - "giáo dục, học sinh, trường học, thi cử, giáo viên"
+    - "y tế, bệnh viện, dịch bệnh, vaccine, sức khỏe"
+    - "tai nạn giao thông, thiên tai, bão lũ, thời tiết, môi trường"
+    - "vụ án, xét xử, bắt giữ, lừa đảo, tội phạm, đời sống người dân"

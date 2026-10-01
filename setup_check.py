@@ -23,11 +23,12 @@ for mod in ("yaml", "feedparser", "trafilatura", "sklearn", "jinja2"):
 if not shutil.which("curl"):
     problems.append("curl not found (needed to fetch some feeds).")
 try:
-    import yaml
-    n = len(yaml.safe_load((HERE / "sources.yaml").read_text(encoding="utf8"))["sources"])
-    print(f"sources.yaml loads: {n} sources")
+    sys.path.insert(0, str(HERE))
+    from argos import packs
+    for c in packs.pack_ids():
+        print(f"country pack {c} loads: {len(packs.load(c)['sources'])} sources")
 except Exception as e:
-    problems.append(f"sources.yaml problem: {e}")
+    problems.append(f"country pack problem: {e}")
 
 if problems:
     print("\nSetup FAILED:")

@@ -1,0 +1,37 @@
+# Vietnam's additions to the shared themes: Vietnamese keywords and descriptions, and Vietnam-specific English terms.
+# An entry whose id matches a shared theme extends it; a new id adds a theme.
+themes:
+  - id: diplomacy
+    describe: ["chuyến thăm cấp nhà nước, hội đàm song phương, quan hệ ngoại giao, đối tác chiến lược, đại sứ, ngoại trưởng"]
+    keywords: ["thăm cấp nhà nước", "chuyến thăm", "hội đàm", "đối tác chiến lược", "quan hệ ngoại giao", "quan hệ song phương", "đại sứ", "ngoại trưởng", "bộ trưởng ngoại giao", "asean", "liên hợp quốc"]
+  - id: trade
+    describe: ["hiệp định thương mại, thuế quan, xuất nhập khẩu, thặng dư thương mại, chống bán phá giá, hải quan"]
+    keywords: ["xuất nhập khẩu", "xuất khẩu", "nhập khẩu", "thương mại", "thuế quan", "hiệp định thương mại", "hiệp định tự do", "cptpp", "evfta", "rcep", "chống bán phá giá", "thặng dư", "kim ngạch"]
+  - id: investment
+    describe: ["đầu tư nước ngoài, nhà đầu tư, dự án đầu tư lớn, khu công nghiệp, bán dẫn, trung tâm dữ liệu"]
+    keywords: ["đầu tư nước ngoài", "nhà đầu tư", "vốn đầu tư", "dự án đầu tư", "thu hút đầu tư", "khu công nghiệp", "bán dẫn", "trung tâm dữ liệu"]
+  - id: econ_policy
+    describe: ["chính sách kinh tế, nghị định, thông tư, luật sửa đổi, ngân hàng nhà nước, lãi suất điều hành, tỷ giá, thuế, ngân sách, nợ công, cải cách"]
+    keywords: ["nghị định", "thông tư", "dự thảo luật", "sửa đổi luật", "luật sửa đổi", "chính sách", "ngân hàng nhà nước", "nhnn", "lãi suất điều hành", "tỷ giá", "ngân sách", "nợ công", "tăng trưởng gdp", "lạm phát", "cải cách", "tháo gỡ", "quỹ bình ổn"]
+  - id: party_gov
+    label: Party and government
+    describe: ["Communist Party leadership decisions, Politburo resolutions, National Assembly session", "Tổng Bí thư, Bộ Chính trị, Ban Chấp hành Trung ương, Quốc hội, Thủ tướng chỉ đạo, nghị quyết, sắp xếp bộ máy"]
+    keywords: ["tổng bí thư", "bộ chính trị", "ban chấp hành trung ương", "quốc hội", "kỳ họp", "nghị quyết", "chủ trương", "sắp xếp bộ máy", "sáp nhập", "thủ tướng chỉ đạo", "politburo", "general secretary"]
+  - id: security
+    describe: ["hợp tác quốc phòng, Biển Đông, an ninh hàng hải, diễn tập, an ninh mạng, an ninh quốc gia"]
+    keywords: ["quốc phòng", "biển đông", "hoàng sa", "trường sa", "diễn tập", "an ninh mạng", "an ninh quốc gia", "quân ủy", "south china sea", "east sea"]
+  - id: anticorruption
+    describe: ["chống tham nhũng, kỷ luật cán bộ cấp cao, cựu bộ trưởng bị truy tố, Ủy ban Kiểm tra Trung ương, đại án"]
+    keywords: ["chống tham nhũng", "phòng, chống tham nhũng", "ủy ban kiểm tra trung ương", "đại án", "cựu bộ trưởng", "cựu thứ trưởng", "cựu ủy viên trung ương", "kỷ luật ban bí thư"]
+  - id: energy_infra
+    describe: ["chính sách năng lượng, nhà máy điện, điện hạt nhân, năng lượng tái tạo, cảng biển, sân bay, đường sắt tốc độ cao, chuỗi cung ứng"]
+    keywords: ["năng lượng", "điện hạt nhân", "quy hoạch điện", "năng lượng tái tạo", "điện gió", "điện mặt trời", "lng", "cảng biển", "sân bay long thành", "đường sắt tốc độ cao", "chuỗi cung ứng"]
+  - id: crime_local
+    describe: ["vụ án, bắt tạm giam, khởi tố, xét xử bị cáo, lừa đảo, cướp, giết người, truy nã"]
+    keywords: ["khởi tố", "bắt tạm giam", "tạm giữ", "xét xử", "bị cáo", "lừa đảo", "cướp", "giết người", "truy nã", "hầu tòa", "án tù", "giả mạo", "đòi nợ", "hồ sơ khống", "chiếm đoạt", "bắt giám đốc", "bắt nhóm", "bị bắt"]
+  - id: accident_weather
+    describe: ["tai nạn giao thông, cháy, dự báo thời tiết, bão, mưa lũ, không khí lạnh, nắng nóng"]
+    keywords: ["tai nạn", "cháy", "thời tiết", "không khí lạnh", "bão", "mưa lớn", "lũ", "ngập", "nắng nóng", "sạt lở"]
+  - id: sport_culture
+    describe: ["bóng đá, giải đấu thể thao, ca sĩ, phim, hoa hậu, người nổi tiếng"]
+    keywords: ["bóng đá", "v-league", "sea games", "giải vô địch", "ca sĩ", "nghệ sĩ", "hoa hậu", "phim"]

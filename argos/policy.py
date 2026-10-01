@@ -9,10 +9,11 @@ Tags are saved on the story so the page can show why it ranked where it did. No 
 """
 import json
 
-import numpy as np
-import yaml
+import re
 
-from .config import ROOT
+import numpy as np
+
+from . import packs
 from .embed import DIM, Embedder
 
 KEYWORD_SHARE = 0.4   # headline-weighted share of a story's articles that must match a theme's keywords
@@ -20,9 +21,13 @@ SIM_Z = 4.0           # similarity alone needs this many standard deviations abo
 ALWAYS = {"anticorruption", "security", "diplomacy"}   # themes that stay even on a crime- or accident-flavoured story
 
 
-def _themes():
-    cfg = yaml.safe_load((ROOT / "themes.yaml").read_text(encoding="utf8"))
-    return cfg["default_weight"], cfg["themes"]
+def _matcher(keywords):
+    """Short plain-letter keywords ("nato", "gdp", "fdi") match whole words only, otherwise they hit the inside of
+    ordinary words ("Bocsánatot" contains "nato"). Longer keywords and stems ("ukrajn") match anywhere."""
+    short = [k for k in keywords if k.isascii() and k.replace(" ", "").replace("-", "").isalnum() and len(k) <= 5]
+    rest = [k for k in keywords if k not in short]
+    pattern_short = re.compile(r"(?<!\w)(?:" + "|".join(re.escape(k) for k in short) + r")(?!\w)") if short else None
+    return lambda text: (pattern_short is not None and bool(pattern_short.search(text))) or any(k in text for k in rest)
 
 
 def _keyword_share(texts, keywords):
@@ -31,25 +36,36 @@ def _keyword_share(texts, keywords):
     if not texts:
         return 0.0
     score = 0.0
+    match = _matcher(keywords)
     for title, lead in texts:
-        if any(k in title for k in keywords):
+        if match(title):
             score += 1.0
-        elif any(k in lead for k in keywords):
+        elif match(lead):
             score += 0.3
     return score / len(texts)
 
 
 def run(db):
-    default, themes = _themes()
     emb = Embedder()
+    for country in packs.pack_ids():
+        _run_country(db, emb, country)
+    db.commit()
+    rows = db.execute("SELECT country, window_days, COUNT(*), SUM(policy>=0.8), SUM(policy<=0.2) FROM story GROUP BY 1, 2").fetchall()
+    for r in rows:
+        print(f"policy {r[0]} {r[1]}d: {r[2]} stories; {r[3]} high-weight (>=0.8), {r[4]} low-weight (<=0.2)")
+
+
+def _run_country(db, emb, country):
+    cfg = packs.load(country)["themes"]
+    default, themes = cfg["default_weight"], cfg["themes"]
     protos = []
     for t in themes:
         v = emb.encode(["passage: " + d for d in t["describe"]]).mean(0)
         protos.append(v / np.linalg.norm(v))
     protos = np.array(protos)
 
-    for days, in db.execute("SELECT DISTINCT window_days FROM story").fetchall():
-        stories = db.execute("SELECT id FROM story WHERE window_days=?", (days,)).fetchall()
+    for days, in db.execute("SELECT DISTINCT window_days FROM story WHERE country=?", (country,)).fetchall():
+        stories = db.execute("SELECT id FROM story WHERE country=? AND window_days=?", (country, days)).fetchall()
         data = []
         for (sid,) in stories:
             rows = db.execute("SELECT a.title, a.lead, e.vec FROM story_article sa JOIN article a ON a.id=sa.article_id "
@@ -82,7 +98,3 @@ def run(db):
             shown = high or low
             db.execute("UPDATE story SET policy=?, themes=? WHERE id=?",
                        (weight, json.dumps([t["label"] for t in shown], ensure_ascii=False), sid))
-    db.commit()
-    rows = db.execute("SELECT window_days, COUNT(*), SUM(policy>=0.8), SUM(policy<=0.2) FROM story GROUP BY 1").fetchall()
-    for r in rows:
-        print(f"policy {r[0]}d: {r[1]} stories; {r[2]} high-weight (>=0.8), {r[3]} low-weight (<=0.2)")

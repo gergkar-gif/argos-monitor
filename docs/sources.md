@@ -77,3 +77,21 @@ These may lack RSS. If so, scraping the listing pages may be needed, so check ea
 ## Category hints for section feeds
 Map section names to categories when adding a feed, for example:
 `Thời sự / Chính trị` → internal_politics · `Kinh doanh / Kinh tế` → economics · `Thế giới` → foreign_policy (only if Vietnam is involved; otherwise skip) · `Pháp luật` → internal_politics or security (decide per story) · `Quân sự / Quốc phòng` → defence_security · `Giáo dục / Sức khỏe / Xã hội` → society.
+
+
+# Hungary (verified 2026-10-01 from the author's PC; the cloud has not been tested yet)
+
+The registry is [`countries/hungary/sources.yaml`](../countries/hungary/sources.yaml). Vietnam's is `countries/vietnam/sources.yaml`.
+
+| Outlet | Result |
+|---|---|
+| Telex, HVG, 444, 24.hu, Index, Origo, Magyar Nemzet, Magyar Hírlap, Portfolio, Hungary Today, Hungarian Conservative | **Working**, fresh items. Most give one all-topics feed of the latest 30 to 60 items (24.hu 10, Hungary Today 5). |
+| Maszol.ro (Hungarian press in Transylvania), Euronews (Hungarian edition) | Working. Euronews covers all of Europe, so only items that mention Hungary are kept. |
+| Balkan Insight, Euronews (English), DW (Europe) | Working; only items that mention Hungary are kept. |
+| Népszava, Átlátszó, Daily News Hungary, Székelyhon, Krónika, Új Szó, Politico Europe, Euractiv | **Blocked** (HTTP 403 to automated requests, also with a browser User-Agent). |
+| Mandiner | Feed stale (last item 4 September). |
+| Public broadcaster (hirado.hu, MTI) | **No working feed found.** This is the state voice and matters for a press review: worth another look (scraping). |
+| Szabad Európa (RFE/RL Hungarian) | Site up, its 17 feeds are empty. Treat as closed or reduced. |
+| Reuters | Blocks scripts (HTTP 401). |
+
+Ownership and political alignment notes in the yaml are from memory and marked "(to confirm)". The government-aligned group (Magyar Nemzet, Origo, Magyar Hírlap) is widely reported to belong to the KESMA media foundation; check before relying on that wording.

@@ -6,11 +6,11 @@ no full article text ever leaves the local database.
 import json
 from datetime import datetime, timezone
 
+from . import packs
 from .config import ROOT
 from .rank import dashboard_story_ids
 
 SITE_DATA = ROOT / "site" / "data"
-COUNTRY = {"id": "vietnam", "name": "Vietnam"}
 WINDOWS = {1: "24h", 7: "7d"}
 CATEGORIES = ["internal_politics", "economics", "foreign_policy", "defence_security", "society", "other"]
 MAX_ARTICLES_LISTED = 12
@@ -22,7 +22,7 @@ def _story(db, s):
         "src.scope, src.kind FROM story_article sa JOIN article a ON a.id=sa.article_id JOIN source src ON src.id=a.source_id "
         "WHERE sa.story_id=? ORDER BY (a.syndicated_of IS NOT NULL), a.published_at", (s["id"],)).fetchall()
     independent = {r["source_id"] for r in rows if r["syndicated_of"] is None}
-    by_scope = {sc: sum(r["scope"] == sc for r in rows) for sc in ("domestic", "abroad_vi", "international")}
+    by_scope = {sc: sum(r["scope"] == sc for r in rows) for sc in ("domestic", "abroad_local", "international")}
     rep = next(r for r in rows if r["id"] == s["representative_article_id"])
     excerpts = db.execute(
         "SELECT x.id, x.text, a.url, src.name AS source, src.scope FROM excerpt x JOIN article a ON a.id=x.article_id "
@@ -39,7 +39,7 @@ def _story(db, s):
         "independent_sources": len(independent),
         "by_scope": by_scope,
         "evidence": "OFFICIAL" if any(r["kind"] == "official" for r in rows) else "REPORTED",
-        "abroad_only": by_scope["domestic"] == 0 and (by_scope["abroad_vi"] + by_scope["international"]) > 0,
+        "abroad_only": by_scope["domestic"] == 0 and (by_scope["abroad_local"] + by_scope["international"]) > 0,
         "excerpts": [{"text": x["text"], "source": x["source"], "scope": x["scope"], "url": x["url"]} for x in excerpts],
         "sources": [{"title": r["title"], "url": r["url"], "source": r["source"], "scope": r["scope"],
                      "language": r["language"], "published": r["published_at"], "copy": r["syndicated_of"] is not None}
@@ -60,19 +60,24 @@ def _write(name, payload, var):
 def run(db):
     SITE_DATA.mkdir(parents=True, exist_ok=True)
     now = datetime.now(timezone.utc).isoformat(timespec="seconds")
-    periods = []
-    for days, label in WINDOWS.items():
-        ids = dashboard_story_ids(db, days)
-        if not ids:
-            continue
-        stories = [_story(db, db.execute("SELECT * FROM story WHERE id=?", (i,)).fetchone()) for i in ids]
-        stories.sort(key=lambda st: -st["score"])
-        payload = {"country": COUNTRY["id"], "period": label, "days": days, "generated_at": now, "categories": CATEGORIES,
-                   "totals": {c: db.execute("SELECT COUNT(*) FROM story WHERE window_days=? AND category=?", (days, c)).fetchone()[0]
-                              for c in CATEGORIES},          # all stories found in the window, of which the top ones are exported
-                   "stories": stories}
-        _write(f"{COUNTRY['id']}-{label}", payload, "ARGOS_DATA")
-        periods.append({"id": label, "label": {"24h": "Last 24 hours", "7d": "Last 7 days"}[label], "file": f"{COUNTRY['id']}-{label}.json"})
-        print(f"export: {COUNTRY['id']}-{label}.json with {len(stories)} stories")
-    index = {"generated_at": now, "countries": [{**COUNTRY, "periods": periods}]}
-    _write("index", index, "ARGOS_INDEX")
+    countries = []
+    for cid in packs.pack_ids():
+        pack = packs.load(cid)
+        periods = []
+        for days, label in WINDOWS.items():
+            ids = dashboard_story_ids(db, cid, days)
+            if not ids:
+                continue
+            stories = [_story(db, db.execute("SELECT * FROM story WHERE id=?", (i,)).fetchone()) for i in ids]
+            stories.sort(key=lambda st: -st["score"])
+            totals = {c: db.execute("SELECT COUNT(*) FROM story WHERE country=? AND window_days=? AND category=?", (cid, days, c)).fetchone()[0]
+                      for c in CATEGORIES}          # all stories found in the window, of which the top ones are exported
+            payload = {"country": cid, "period": label, "days": days, "generated_at": now, "categories": CATEGORIES,
+                       "totals": totals, "stories": stories}
+            _write(f"{cid}-{label}", payload, "ARGOS_DATA")
+            periods.append({"id": label, "label": {"24h": "Last 24 hours", "7d": "Last 7 days"}[label], "file": f"{cid}-{label}.json"})
+            print(f"export: {cid}-{label}.json with {len(stories)} stories")
+        if periods:
+            countries.append({"id": cid, "name": pack["name"], "language": pack["language"],
+                              "abroad_label": pack["abroad_label"], "periods": periods})
+    _write("index", {"generated_at": now, "countries": countries}, "ARGOS_INDEX")

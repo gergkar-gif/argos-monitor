@@ -19,7 +19,8 @@ DATA_DIR.mkdir(parents=True, exist_ok=True)
 sys.stdout.reconfigure(encoding="utf-8")
 PAGES_PER_OUTLET = 3
 
-sources = yaml.safe_load((ROOT / "sources.yaml").read_text(encoding="utf8"))["sources"]
+sources = [s for d in sorted((ROOT / "countries").iterdir()) if (d / "sources.yaml").exists()
+           for s in yaml.safe_load((d / "sources.yaml").read_text(encoding="utf8"))["sources"]]
 print(f"Running on: {os.environ.get('RUNNER_OS', 'unknown')} | data dir {DATA_DIR}\n")
 
 print("== FEEDS")

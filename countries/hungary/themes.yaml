@@ -1,0 +1,45 @@
+# Hungary's additions to the shared themes (../../themes.yaml): Hungarian keywords and descriptions, plus one theme
+# that matters a great deal in Hungary's case: its relations with the EU and with Russia, Ukraine and China.
+themes:
+  - id: diplomacy
+    describe: ["állami látogatás, kétoldalú tárgyalás, diplomáciai kapcsolatok, nagykövet, külügyminiszter, Szijjártó Péter"]
+    keywords: ["állami látogatás", "kétoldalú", "nagykövet", "külügyminiszter", "szijjártó", "csúcstalálkozó", "külügyminisztérium", "diplomáciai"]
+  - id: trade
+    describe: ["kereskedelmi megállapodás, vámok, export és import, külkereskedelmi többlet, szabadkereskedelem"]
+    keywords: ["kereskedelem", "kereskedelmi", "vámok", "vámot", "szabadkereskedelmi", "külkereskedelmi", "kivitel", "behozatal"]
+  - id: investment
+    describe: ["külföldi működőtőke, befektetők, nagy beruházások, ipari parkok, akkumulátorgyár, félvezető, adatközpont"]
+    keywords: ["beruházás", "befektető", "külföldi működőtőke", "ipari park", "akkumulátor", "félvezető", "adatközpont", "byd", "catl", "gyárat"]
+  - id: econ_policy
+    describe: ["gazdaságpolitika, új rendelet, törvényjavaslat, jegybank, alapkamat, forintárfolyam, adó, költségvetés, államadósság, reform"]
+    keywords: ["rendelet", "törvényjavaslat", "költségvetés", "jegybank", "mnb", "alapkamat", "infláció", "forintárfolyam", "forint árfolyam", "erős forint", "gyenge forint", "adócsomag", "államadósság", "reform", "árrésstop", "kamatstop", "gazdaságpolitika"]
+  - id: party_gov
+    describe: ["kormányzati döntések, országgyűlési ülés, kormányátalakítás, miniszterelnöki utasítás, választás, Fidesz, Tisza"]
+    keywords: ["országgyűlés", "miniszterelnök", "kormányülés", "kormányinfó", "fidesz", "tisza", "választás", "parlament"]
+  - id: security
+    describe: ["védelmi együttműködés, honvédség, katonai gyakorlat, kibervédelem, nemzetbiztonság"]
+    keywords: ["honvédség", "védelmi", "haderő", "hadsereg", "nemzetbiztonság", "kibervédelem", "katonai"]
+  - id: anticorruption
+    describe: ["korrupcióellenes küzdelem, Európai Ügyészség, OLAF, közbeszerzési botrány, vagyonvisszaszerzés"]
+    keywords: ["korrupció", "korrupciós", "európai ügyészség", "olaf", "vagyonvisszaszerzési", "közbeszerzés"]
+  - id: energy_infra
+    describe: ["energiapolitika, Paks, atomerőmű, olaj és földgáz, gázszállítás, napenergia, vasút, autópálya"]
+    keywords: ["energia", "paks", "atomerőmű", "földgáz", "kőolaj", "barátság kőolajvezeték", "napelem", "vasút", "autópálya"]
+  - id: crime_local
+    describe: ["bűncselekmény, őrizetbe vétel, vádemelés, bírósági ítélet, csalás, rendőrségi nyomozás"]
+    keywords: ["őrizetbe", "letartóztat", "gyanúsított", "vádemelés", "ítélet", "csalás", "gyilkosság", "rablás", "rendőrség"]
+  - id: accident_weather
+    describe: ["közlekedési baleset, tűz, időjárás-előrejelzés, vihar, árvíz, hőség"]
+    keywords: ["baleset", "időjárás", "vihar", "árvíz", "hőség", "lángol"]
+  - id: sport_culture
+    describe: ["labdarúgó-mérkőzés, bajnokság, énekes, színész, film, hírességek"]
+    keywords: ["labdarúgás", "foci", "bajnokság", "olimpia", "énekes", "színész", "celeb"]
+
+  # Hungary-specific theme: the EU funds and rule-of-law dispute, and Hungary's line on Russia, Ukraine and China.
+  - id: eu_relations
+    label: EU, Russia and Ukraine
+    weight: 1.0
+    describe:
+      - EU funding and rule-of-law dispute, Brussels, sanctions and vetoes, Hungary's stance on Ukraine and Russia, ties with China
+      - uniós források, jogállamiság, Brüsszel, szankciók, vétó, ukrajnai háború, kapcsolat Oroszországgal és Kínával
+    keywords: ["uniós forrás", "uniós pénz", "jogállamiság", "brüsszel", "európai bizottság", "európai parlament", "szankció", "vétó", "eu funds", "rule of law", "brussels", "european commission", "sanctions", "veto", "ukraine", "russia", "ukrajn", "oroszország"]
