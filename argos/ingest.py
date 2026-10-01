@@ -1,5 +1,6 @@
 """Stage 1: for every country pack, fetch every active feed (and any GDELT query) and store new article URLs."""
 import json
+import re
 import time
 from datetime import datetime, timedelta, timezone
 
@@ -12,6 +13,49 @@ from .textutil import clean, parse_date
 WINDOW_DAYS = 7      # the longest window the site shows
 MAX_PER_FEED = 100   # feeds like VietnamNet return ~1000 items; keep the newest
 LANGS = {"English": "en", "Vietnamese": "vi", "Hungarian": "hu"}
+OUTLET_SUFFIX = re.compile(r"\s+[-–—|]\s+[^-–—|]{2,60}$")   # " - Reuters" at the end of a headline
+
+
+def title_key(title):
+    """Lower-case letters and digits only: the same headline compares equal across outlets and punctuation styles."""
+    return re.sub(r"[\W_]+", "", (title or "").lower())
+
+
+def _known_titles(db, country):
+    cutoff = (datetime.now(timezone.utc) - timedelta(days=10)).isoformat(timespec="seconds")
+    return {title_key(r[0]) for r in db.execute("SELECT title FROM article WHERE country=? AND COALESCE(published_at, fetched_at) >= ?",
+                                                (country, cutoff))}
+
+
+def ingest_aggregator(db, pack, src, feed, parsed, known):
+    """A news aggregator feed (Google News search). Each item names its outlet, which becomes its own source, so
+    independent-outlet counts stay honest. Only the headline is available: the item links to a redirect, so the
+    page is never fetched ('nofetch') and such stories get no quoted sentences. An item whose headline we already
+    hold is skipped, so a story is not counted twice."""
+    overrides = {}
+    for scope, names in (pack.get("aggregator_outlets") or {}).items():
+        overrides.update({n.lower(): scope for n in names})
+    added = 0
+    for e in parsed.entries[:MAX_PER_FEED]:
+        outlet = ((e.get("source") or {}).get("title") or "").strip(" |-–—")
+        title = clean(e.get("title"))
+        if outlet and title.endswith(outlet) and OUTLET_SUFFIX.search(title):
+            title = clean(OUTLET_SUFFIX.sub("", title))
+        url = e.get("link")
+        if not (outlet and title and url) or title_key(title) in known:
+            continue
+        sid = "gn:" + re.sub(r"[^a-z0-9]+", "-", outlet.lower()).strip("-")
+        scope = overrides.get(outlet.lower(), src["scope"])
+        db.execute("INSERT OR IGNORE INTO source VALUES (?,?,?,?,?,'media','found via Google News',0,0,'aggregator item')",
+                   (sid, outlet, ((e.get("source") or {}).get("href") or ""), src["language"], scope))
+        cur = db.execute(
+            "INSERT OR IGNORE INTO article (source_id,feed_id,url,title,lead,language,published_at,fetched_at,extract_status,country) "
+            "VALUES (?,?,?,?,'',?,?,?,'nofetch',?)",
+            (sid, feed["id"], url, title, src["language"], parse_date(e), now(), pack["id"]))
+        if cur.rowcount:
+            known.add(title_key(title))
+            added += 1
+    return added
 
 
 def now():
@@ -20,9 +64,11 @@ def now():
 
 def load_registry(db):
     """Write every pack's outlets and feeds into the database. A feed address may belong to one pack only."""
-    seen = {}
+    seen, owners = {}, {}
     for country in packs.pack_ids():
         for s in packs.load(country)["sources"]:
+            if owners.setdefault(s["id"], country) != country:
+                raise SystemExit(f"Source id {s['id']} is used by two country packs ({owners[s['id']]} and {country}): ids must be unique.")
             db.execute("INSERT OR REPLACE INTO source VALUES (?,?,?,?,?,?,?,?,?,?)",
                        (s["id"], s["name"], s["homepage"], s["language"], s["scope"], s["kind"],
                         s["governing_body"], int(s["state_affiliated"]), int(s.get("reprints_vna", False)), s.get("notes")))
@@ -46,12 +92,23 @@ def ingest_feeds(db, country):
     feeds = db.execute(f"SELECT f.*, s.language FROM feed f JOIN source s ON s.id=f.source_id WHERE f.active=1 "
                        f"AND f.source_id IN ({','.join('?' * len(ids))})", ids).fetchall()
     added = 0
+    by_id = {s["id"]: s for s in pack["sources"]}
+    known = _known_titles(db, country)
+    # Direct feeds first and aggregators last, so a headline we already hold directly is not added a second time.
+    feeds = sorted(feeds, key=lambda f: bool(by_id[f["source_id"]].get("aggregator")))
     for feed in feeds:
         code, body = get(feed["url"])
         parsed = feedparser.parse(body) if code == 200 else None
         if not parsed or not parsed.entries:
             db.execute("UPDATE feed SET last_error=? WHERE id=?", (f"HTTP {code}, no items", feed["id"]))
             print(f"  FAIL {feed['url']} (HTTP {code})")
+            continue
+        if by_id[feed["source_id"]].get("aggregator"):
+            n = ingest_aggregator(db, pack, by_id[feed["source_id"]], feed, parsed, known)
+            db.execute("UPDATE feed SET last_ok_at=?, last_error=NULL WHERE id=?", (now(), feed["id"]))
+            added += n
+            print(f"  ok   {country[:4]} {feed['source_id']:15} {feed['section_label'] or '':22} +{n}")
+            db.commit()
             continue
         n = 0
         cutoff = (datetime.now(timezone.utc) - timedelta(days=WINDOW_DAYS)).isoformat(timespec="seconds")
@@ -70,6 +127,8 @@ def ingest_feeds(db, country):
                 "VALUES (?,?,?,?,?,?,?,?,'pending',?)",
                 (feed["source_id"], feed["id"], url, title, lead, feed["language"], parse_date(e), now(), country))
             n += cur.rowcount
+            if cur.rowcount:
+                known.add(title_key(title))
         db.execute("UPDATE feed SET last_ok_at=?, last_error=NULL WHERE id=?", (now(), feed["id"]))
         added += n
         print(f"  ok   {country[:4]} {feed['source_id']:15} {feed['section_label'] or '':22} +{n}")

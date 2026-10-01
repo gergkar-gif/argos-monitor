@@ -33,7 +33,7 @@ themes:
     keywords: ["baleset", "időjárás", "vihar", "árvíz", "hőség", "lángol"]
   - id: sport_culture
     describe: ["labdarúgó-mérkőzés, bajnokság, énekes, színész, film, hírességek"]
-    keywords: ["labdarúgás", "foci", "bajnokság", "olimpia", "énekes", "színész", "celeb"]
+    keywords: ["labdarúgás", "foci", "bajnokság", "olimpia", "énekes", "színész", "celeb", "meccs", "válogatott", "nemzetek ligája", "uefa"]
 
   # Hungary-specific theme: the EU funds and rule-of-law dispute, and Hungary's line on Russia, Ukraine and China.
   - id: eu_relations

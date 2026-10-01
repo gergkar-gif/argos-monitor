@@ -13,6 +13,14 @@ mention: ["việt nam", "viet nam", "vietnam", "vietnamese", "việt kiều", "n
           "hai phong", "mekong", "mê kông", "biển đông", "east sea", "south china sea"]
 mention_section: "Việt Nam"      # a feed section with this exact name counts as about the country (e.g. RFI's Vietnam section)
 
+# Outlets that Google News names, sorted by where they belong (lower-case names). An outlet in neither list takes the
+# default of the feed it came from (international for the English edition).
+aggregator_outlets:
+  domestic: ["vnexpress international", "vietnamplus", "vietnam news", "viet nam news", "tuoi tre news", "hanoi times", "vietnam investment review",
+             "the saigon times", "saigon times", "nhan dan", "voice of vietnam", "vov world", "vietnamnet", "vietnamnet global",
+             "thanh nien news", "vietnam.vn", "vietnam plus", "the hanoi times", "vir", "vietnam breaking news"]
+  abroad_local: []
+
 # Pull-quote cleanup: bylines glued to the first sentence, and lines that are not sentences.
 excerpt:
   dateline: '^\s*(?:[\w.]+\.vn|VOV|VNA|TTXVN|Hà Nội \(TTXVN\)|[\w\s]{2,25}\((?:TTXVN|VNA)\))\s*[-–—]\s*'

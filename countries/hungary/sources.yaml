@@ -193,6 +193,41 @@ sources:
     feeds:
       - {url: "https://rss.dw.com/xml/rss-en-eu", section: Europe, category_hint: general}
 
+  # ---- Aggregators (decision D16): Google News search feeds. Each item names its outlet, which becomes its own
+  # source ("gn:<outlet>"). Only headlines are available, so these stories get no quoted sentences. The English
+  # edition brings international coverage; the Hungarian edition brings Hungarian outlets that block us directly
+  # (Népszava, Átlátszó and others). Which outlets count as domestic or abroad: aggregator_outlets in pack.yaml.
+  - id: gnews_en_hu
+    name: Google News (English)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Hungary+when:1d&hl=en-US&gl=US&ceid=US:en", section: Hungary, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=Hungary+(EU+funds+OR+%22rule+of+law%22+OR+Brussels+OR+sanctions)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Hungary and the EU, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=Hungary+(trade+OR+investment+OR+tariff+OR+economy+OR+forint)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Hungary economy, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=Hungary+(Ukraine+OR+Russia+OR+NATO+OR+energy+OR+China)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Hungary and its neighbours, category_hint: general}
+
+  - id: gnews_hu
+    name: Google News (Hungarian)
+    homepage: https://news.google.com
+    language: hu
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    needs_mention: true     # Hungarian outlets also print foreign news; only items that mention Hungary count
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=korm%C3%A1ny+when:1d&hl=hu&gl=HU&ceid=HU:hu", section: Kormány, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=gazdas%C3%A1g+when:1d&hl=hu&gl=HU&ceid=HU:hu", section: Gazdaság, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=(k%C3%BCl%C3%BCgyminiszter+OR+nagyk%C3%B6vet+OR+Br%C3%BCsszel)+when:1d&hl=hu&gl=HU&ceid=HU:hu", section: Külügy, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=(Magyar+P%C3%A9ter+OR+Orb%C3%A1n+Viktor)+when:1d&hl=hu&gl=HU&ceid=HU:hu", section: Politika, category_hint: general}
+
   # Not usable on 2026-10-01 (see docs/sources.md): Népszava, Átlátszó, Daily News Hungary, Székelyhon, Krónika, Új Szó,
   # Politico Europe and Euractiv refuse automated requests (HTTP 403); Mandiner's feed is stale (last item 4 Sept);
   # the public broadcaster (hirado.hu / MTI) and Szabad Európa (RFE/RL) expose no working feed.

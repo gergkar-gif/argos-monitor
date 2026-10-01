@@ -95,3 +95,6 @@ The registry is [`countries/hungary/sources.yaml`](../countries/hungary/sources.
 | Reuters | Blocks scripts (HTTP 401). |
 
 Ownership and political alignment notes in the yaml are from memory and marked "(to confirm)". The government-aligned group (Magyar Nemzet, Origo, Magyar Hírlap) is widely reported to belong to the KESMA media foundation; check before relying on that wording.
+
+## Aggregators (added 2026-10-01, decision D16)
+Google News search feeds work from this PC and give 100 items per search with the outlet named on each item (a Hungary search: 63 outlets). They are listed as sources in each country's `sources.yaml` (`gnews_*`). Headlines only; the page behind the link is not fetched. Bing News works but gave only 9 to 11 items. GDELT never worked. Crisis and official feeds that work are saved in [ideas.md](ideas.md).

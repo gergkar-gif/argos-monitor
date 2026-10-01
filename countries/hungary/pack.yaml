@@ -21,6 +21,15 @@ url_sections:
          tudomany, techtud, podcast, jo, szorakozas, utazas, gasztro, egeszseg, ingatlan, fomo, kiralyi-csalad,
          itthon-hirdetes, auto-motor, auto-motor-2, mozaik, montazs]
 
+# Outlets that Google News names, sorted by where they belong (lower-case names). An outlet in neither list takes the
+# default of the Google News feed it came from: international for the English edition, domestic for the Hungarian one.
+aggregator_outlets:
+  domestic: ["daily news hungary", "hungary today", "hungarian conservative", "hungarian spectrum", "telex", "telex english",
+             "444", "444.hu", "index", "index.hu", "hvg", "hvg.hu", "24.hu", "magyar nemzet", "budapest business journal",
+             "budapest times", "hungarian insider", "about hungary", "hír tv", "origo", "magyar hírlap", "portfolio.hu", "blikk"]
+  abroad_local: ["vietnam.vn", "informat.ro", "euronews", "euronews magyar", "szabad európa", "bbc news magyar", "deutsche welle", "maszol.ro", "székelyhon",
+                 "krónika", "krónika online", "transtelex", "új szó", "ujszo.com", "magyar szó", "erdélyma", "erdély ma"]
+
 excerpt:
   dateline: '^\s*(?:MTI|\(MTI\)|Telex|hvg\.hu|24\.hu)\s*[-–—:]\s*'
   noise: '^(fotó|forrás|videó|kép|olvasd tovább|hirdetés|ez is érdekelheti|\(|\[)'

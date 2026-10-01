@@ -381,4 +381,22 @@ sources:
     feeds:
       - {url: "https://asia.nikkei.com/rss/feed/nar", section: All, category_hint: general}
 
-  # Reuters: HTTP 401 for scripts and no public RSS. Not listed; rely on GDELT for discovery.
+  # ---- Aggregator (decision D16): Google News search feeds, English edition. Each item names its outlet, which
+  # becomes its own source ("gn:<outlet>"). Only headlines are available, so these stories get no quoted sentences.
+  # English-language Vietnamese state outlets that appear here are sorted into domestic by aggregator_outlets in pack.yaml.
+  - id: gnews_en_vn
+    name: Google News (English)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Vietnam+when:1d&hl=en-US&gl=US&ceid=US:en", section: Vietnam, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=Vietnam+(trade+OR+investment+OR+tariff+OR+economy+OR+FDI)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Vietnam economy, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=Vietnam+(diplomacy+OR+visit+OR+summit+OR+ASEAN+OR+%22strategic+partnership%22)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Vietnam diplomacy, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=Vietnam+(%22South+China+Sea%22+OR+%22East+Sea%22+OR+defence+OR+military)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Vietnam security, category_hint: general}
+
+  # Reuters: HTTP 401 for scripts and no public RSS. Not listed; Google News (above) carries Reuters headlines.

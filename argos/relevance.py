@@ -28,14 +28,14 @@ def is_relevant(pack, scope, category_hint, section, url, title, lead, text, nee
 
 def run(db):
     rows = db.execute(
-        "SELECT a.id, a.country, a.source_id, a.url, s.scope, f.category_hint, f.section_label, a.title, a.lead, a.text "
+        "SELECT a.id, a.country, a.source_id, f.source_id AS feed_source, a.url, s.scope, f.category_hint, f.section_label, a.title, a.lead, a.text "
         "FROM article a JOIN source s ON s.id=a.source_id LEFT JOIN feed f ON f.id=a.feed_id").fetchall()
     needs = {s["id"]: s.get("needs_mention", False) for c in packs.pack_ids() for s in packs.load(c)["sources"]}
     keep = []
     for r in rows:
         pack = packs.load(r["country"])
         keep.append((int(is_relevant(pack, r["scope"], r["category_hint"], r["section_label"], r["url"],
-                                     r["title"], r["lead"], r["text"], needs.get(r["source_id"], False))), r["id"]))
+                                     r["title"], r["lead"], r["text"], needs.get(r["source_id"], False) or needs.get(r["feed_source"], False))), r["id"]))
     db.executemany("UPDATE article SET relevant=? WHERE id=?", keep)
     db.commit()
     print(f"relevance: {sum(k for k, _ in keep)} of {len(rows)} articles are about or involve their country")
