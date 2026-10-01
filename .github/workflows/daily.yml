@@ -1,11 +1,12 @@
 name: Daily digest
 
 # Builds the site once a day and publishes it to Cloudflare Pages.
-# 21:00 UTC is 04:00 in Vietnam (UTC+7): the run takes well under two hours, so the digest is ready before 07:00.
-# GitHub can start scheduled jobs up to an hour late when it is busy, which is why there is a margin.
+# 18:17 UTC is 01:17 in Vietnam (UTC+7). A normal run takes about 10 minutes, but GitHub starts scheduled jobs late
+# when it is busy (one run started more than three hours late), so this leaves a wide margin for the digest to be
+# ready before 07:00. The odd minute avoids the busiest moment, the top of the hour.
 on:
   schedule:
-    - cron: "0 21 * * *"
+    - cron: "17 18 * * *"
   workflow_dispatch:
 
 concurrency:
