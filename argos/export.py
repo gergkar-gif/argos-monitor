@@ -31,6 +31,7 @@ def _story(db, s):
         "id": s["id"],
         "category": s["category"],
         "score": s["score"],
+        "themes": json.loads(s["themes"] or "[]"),         # why it ranks where it does (themes.yaml)
         "headline": {"title": rep["title"], "url": rep["url"], "source": rep["source"], "language": rep["language"]},
         "first_seen": s["first_seen"],
         "last_seen": s["last_seen"],

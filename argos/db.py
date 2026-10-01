@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS article (
 CREATE TABLE IF NOT EXISTS embedding (article_id INTEGER PRIMARY KEY REFERENCES article(id), vec BLOB);
 CREATE TABLE IF NOT EXISTS story (
   id INTEGER PRIMARY KEY, window_days INTEGER, window_start TEXT, window_end TEXT, category TEXT, score REAL,
-  first_seen TEXT, last_seen TEXT, representative_article_id INTEGER);
+  first_seen TEXT, last_seen TEXT, representative_article_id INTEGER, policy REAL, themes TEXT);
 CREATE TABLE IF NOT EXISTS story_article (story_id INTEGER REFERENCES story(id), article_id INTEGER REFERENCES article(id),
   PRIMARY KEY (story_id, article_id));
 CREATE TABLE IF NOT EXISTS translation (article_id INTEGER PRIMARY KEY REFERENCES article(id), text_en TEXT, model TEXT);
@@ -36,6 +36,10 @@ def connect():
     if cols and "window_days" not in cols:      # stories are derived data: rebuilt by the cluster stage
         db.executescript("DROP TABLE IF EXISTS excerpt; DROP TABLE IF EXISTS story_article; DROP TABLE IF EXISTS story;")
     db.executescript(SCHEMA)
+    story_cols = {r[1] for r in db.execute("PRAGMA table_info(story)")}
+    for col, kind in (("policy", "REAL"), ("themes", "TEXT")):
+        if col not in story_cols:
+            db.execute(f"ALTER TABLE story ADD COLUMN {col} {kind}")   # columns added after the first databases existed
     if "vn_relevant" not in {r[1] for r in db.execute("PRAGMA table_info(article)")}:
         db.execute("ALTER TABLE article ADD COLUMN vn_relevant INTEGER")  # database created before this column existed
     return db

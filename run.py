@@ -1,8 +1,8 @@
 """Run the pipeline. `python run.py` runs every stage; `python run.py extract` runs one
-(ingest | extract | normalise | relevance | embed | cluster | classify | rank | excerpts | verify | export | prune | report | top | sample)."""
+(ingest | extract | normalise | relevance | embed | cluster | classify | policy | rank | excerpts | verify | export | prune | report | top | sample)."""
 import sys
 
-from argos import classify, cluster, db as dbmod, embed, excerpts, export, extract, ingest, normalise, prune, rank, relevance, translate
+from argos import classify, cluster, db as dbmod, embed, excerpts, export, extract, ingest, normalise, policy, prune, rank, relevance, translate
 
 
 def report(db):
@@ -56,13 +56,13 @@ def sample(db, k=30):
 
 
 STAGES = {"ingest": ingest.run, "extract": extract.run, "normalise": normalise.run, "relevance": relevance.run,
-          "embed": embed.run, "cluster": cluster.run, "classify": classify.run, "rank": rank.run,
+          "embed": embed.run, "cluster": cluster.run, "classify": classify.run, "policy": policy.run, "rank": rank.run,
           "translate": translate.run, "excerpts": excerpts.run, "verify": excerpts.verify, "export": export.run, "prune": prune.run,
           "report": report, "top": top, "sample": sample}
 
 if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
     db = dbmod.connect()
-    for name in sys.argv[1:] or ["ingest", "extract", "normalise", "relevance", "embed", "cluster", "classify", "rank", "excerpts", "verify", "export", "prune", "report"]:
+    for name in sys.argv[1:] or ["ingest", "extract", "normalise", "relevance", "embed", "cluster", "classify", "policy", "rank", "excerpts", "verify", "export", "prune", "report"]:
         print(f"\n== {name}")
         STAGES[name](db)

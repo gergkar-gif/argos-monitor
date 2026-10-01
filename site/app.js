@@ -193,6 +193,7 @@
           title: s.evidence === 'OFFICIAL' ? 'A government or Party outlet is among the sources. Officially stated, not independently verified.' : 'Reported by one or more outlets.',
           text: s.evidence === 'OFFICIAL' ? 'Official' : 'Reported' }),
         s.abroad_only && h('span', { class: 'stamp teal', title: 'No outlet inside the country covered it.', text: 'Not in domestic press' }),
+        (s.themes || []).length > 0 && h('span', { class: 'themes', title: 'Why this story ranks where it does', text: s.themes.join(' · ') }),
         h('span', null, h('strong', { text: outlets }), ` · ${plural(s.articles, 'article', 'articles')}`, single && ` · all ${single}`),
       ),
       SCOPES.filter(([id]) => s.by_scope[id]).length > 1 && h('div', { class: 'cover', 'aria-label': 'Where the coverage comes from' },

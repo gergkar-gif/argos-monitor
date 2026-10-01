@@ -244,3 +244,6 @@ body:not(.show-orig) .orig { display: none; }   /* English only unless the reade
 .trans { margin-top: 0.75rem; }
 .trans .notice { margin-top: 0; }
 .trans .more { margin-top: 0.6rem; }
+
+/* Themes: why a story ranks where it does */
+.themes { font: 600 0.85rem/1.2 var(--stamp); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); }
