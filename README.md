@@ -1,3 +1,5 @@
+<img src="site/assets/logo.webp" alt="Argos Monitor logo" width="80">
+
 # Argos Monitor
 
 A news monitoring dashboard, starting with Vietnam. See [CLAUDE.md](CLAUDE.md) for what it does and the rules it follows.

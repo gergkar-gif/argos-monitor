@@ -39,7 +39,8 @@ h1, h2, h3, p { margin: 0; }
 /* ---- Bureau header and request slip ---- */
 .bureau { background: var(--card); border-bottom: 1px solid var(--rule); }
 .bureau-inner { max-width: 68rem; margin: 0 auto; padding: 1.5rem 1rem 1.25rem; display: grid; gap: 1.25rem; }
-.masthead h1 { font: 700 1.9rem/1.1 var(--serif); letter-spacing: -0.01em; }
+.masthead h1 { display: flex; align-items: center; gap: 0.5rem; font: 700 1.9rem/1.1 var(--serif); letter-spacing: -0.01em; }
+.masthead h1 .logo { width: 1.7rem; height: 1.7rem; }
 .masthead p { margin-top: 0.35rem; max-width: 46rem; color: var(--ink-2); font-size: 1rem; text-wrap: pretty; }
 
 .slip {
