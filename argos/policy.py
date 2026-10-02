@@ -98,3 +98,8 @@ def _run_country(db, emb, country):
             shown = high or low
             db.execute("UPDATE story SET policy=?, themes=? WHERE id=?",
                        (weight, json.dumps([t["label"] for t in shown], ensure_ascii=False), sid))
+            # When the classify stage found no topic, a strong theme decides it: a story tagged Trade is Economy.
+            if high and db.execute("SELECT category FROM story WHERE id=?", (sid,)).fetchone()[0] == "other":
+                best = max(high, key=lambda t: t["weight"])
+                if best.get("category"):
+                    db.execute("UPDATE story SET category=? WHERE id=?", (best["category"], sid))

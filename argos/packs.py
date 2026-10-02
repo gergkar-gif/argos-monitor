@@ -49,7 +49,7 @@ def merged_themes(country_dir):
             cur = themes[t["id"]]
             cur["keywords"] += t.get("keywords", [])
             cur["describe"] += t.get("describe", [])
-            for k in ("label", "weight"):
+            for k in ("label", "weight", "category"):
                 if k in t:
                     cur[k] = t[k]
         else:

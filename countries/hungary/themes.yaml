@@ -39,6 +39,7 @@ themes:
   - id: eu_relations
     label: EU, Russia and Ukraine
     weight: 1.0
+    category: foreign_policy
     describe:
       - EU funding and rule-of-law dispute, Brussels, sanctions and vetoes, Hungary's stance on Ukraine and Russia, ties with China
       - uniós források, jogállamiság, Brüsszel, szankciók, vétó, ukrajnai háború, kapcsolat Oroszországgal és Kínával

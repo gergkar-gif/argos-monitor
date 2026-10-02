@@ -17,6 +17,7 @@ from .embed import DIM, Embedder
 RELIABLE = ("economics", "foreign_policy", "defence_security")
 SECTION_SHARE = 0.5     # share of a story's articles needed for a section hint to decide
 MIN_SIMILARITY = 0.80   # below this, a story fits no category description
+MIN_SIMILARITY_EN = 0.78   # English headlines score a little lower against English descriptions (hand-checked 2026-10-02)
 
 DESCRIPTIONS = {
     "internal_politics": [
@@ -42,8 +43,11 @@ DESCRIPTIONS = {
 }
 
 
-def _prototypes(emb, country):
-    local = packs.load(country).get("classify") or {}
+def _prototypes(emb, country, english_only=False):
+    """One vector per topic. The country's own wording is averaged in, which pulls the vectors towards its language,
+    so an English story is compared with the English-only set (an English headline scored below the cut-off against
+    the mixed set and was dropped into 'other' although it was plainly about trade)."""
+    local = {} if english_only else (packs.load(country).get("classify") or {})
     names, vecs = [], []
     for cat, texts in DESCRIPTIONS.items():
         v = emb.encode(["passage: " + t for t in texts + local.get(cat, [])]).mean(0)
@@ -57,8 +61,9 @@ def run(db, min_similarity=MIN_SIMILARITY):
     counts, sims = Counter(), []
     for country in packs.pack_ids():
         names, protos = _prototypes(emb, country)
+        _, protos_en = _prototypes(emb, country, english_only=True)
         for (sid,) in db.execute("SELECT id FROM story WHERE country=?", (country,)).fetchall():
-            rows = db.execute("SELECT f.category_hint, e.vec FROM story_article sa JOIN article a ON a.id=sa.article_id "
+            rows = db.execute("SELECT f.category_hint, e.vec, a.language FROM story_article sa JOIN article a ON a.id=sa.article_id "
                               "JOIN embedding e ON e.article_id=a.id LEFT JOIN feed f ON f.id=a.feed_id "
                               "WHERE sa.story_id=?", (sid,)).fetchall()
             hints = Counter(r["category_hint"] for r in rows if r["category_hint"] in RELIABLE)
@@ -68,10 +73,11 @@ def run(db, min_similarity=MIN_SIMILARITY):
             else:
                 centroid = np.frombuffer(b"".join(r["vec"] for r in rows), dtype=np.float32).reshape(len(rows), DIM).mean(0)
                 centroid /= np.linalg.norm(centroid)
-                s = protos @ centroid
+                english = sum(r["language"] == "en" for r in rows) * 2 > len(rows)
+                s = (protos_en if english else protos) @ centroid
                 best = int(np.argmax(s))
                 sims.append(float(s[best]))
-                cat = names[best] if s[best] >= min_similarity else "other"
+                cat = names[best] if s[best] >= (MIN_SIMILARITY_EN if english else min_similarity) else "other"
             db.execute("UPDATE story SET category=? WHERE id=?", (cat, sid))
             counts[(country, cat)] += 1
     db.commit()

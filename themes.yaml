@@ -13,6 +13,7 @@ themes:
   - id: diplomacy
     label: Diplomacy
     weight: 1.0
+    category: foreign_policy        # the topic a story falls back to when its wording alone decides nothing
     describe:
       - state visit, bilateral talks, diplomatic relations, strategic partnership, ambassador, foreign minister meeting
     keywords: ["state visit", "bilateral", "diplomatic", "ambassador", "foreign minister", "strategic partnership", "summit", "asean", "apec", "g20", "nato", "united nations"]
@@ -20,6 +21,7 @@ themes:
   - id: trade
     label: Trade
     weight: 1.0
+    category: economics        # the topic a story falls back to when its wording alone decides nothing
     describe:
       - trade agreement, tariffs, exports and imports, trade surplus, anti-dumping, customs
     keywords: ["tariff", "trade", "export", "import", "anti-dumping", "customs", "free trade"]
@@ -27,13 +29,15 @@ themes:
   - id: investment
     label: Investment
     weight: 1.0
+    category: economics        # the topic a story falls back to when its wording alone decides nothing
     describe:
       - foreign direct investment, investors, large investment projects, industrial zones, semiconductors, battery plants, data centres
-    keywords: ["investment", "investor", "foreign direct", "fdi", "semiconductor", "data centre", "data center", "battery plant"]
+    keywords: ["investment", "investor", "to invest", "invests", "invested", "invest in", "foreign direct", "fdi", "semiconductor", "data centre", "data center", "battery plant"]
 
   - id: econ_policy
     label: Economic policy
     weight: 1.0
+    category: economics        # the topic a story falls back to when its wording alone decides nothing
     describe:
       - economic and regulatory policy, new decree or law, central bank, interest rates, exchange rate, taxes, state budget, public debt, reform
     keywords: ["economic policy", "regulation", "decree", "central bank", "interest rate", "inflation", "reform", "state budget", "public debt", "gdp"]
@@ -41,6 +45,7 @@ themes:
   - id: party_gov
     label: Government and parliament
     weight: 0.8
+    category: internal_politics        # the topic a story falls back to when its wording alone decides nothing
     describe:
       - ruling party and government decisions, parliament session, cabinet reshuffle, prime minister directives, election
     keywords: ["parliament", "cabinet", "prime minister", "election", "government decree", "national assembly"]
@@ -48,6 +53,7 @@ themes:
   - id: security
     label: Security and defence
     weight: 0.9
+    category: defence_security        # the topic a story falls back to when its wording alone decides nothing
     describe:
       - defence cooperation, maritime security, military exercises, cybersecurity, national security
     keywords: ["defence", "defense", "military", "maritime", "cybersecurity", "national security"]
@@ -55,6 +61,7 @@ themes:
   - id: anticorruption
     label: Anti-corruption drive
     weight: 0.8
+    category: internal_politics        # the topic a story falls back to when its wording alone decides nothing
     describe:
       - anti-corruption campaign, discipline of senior officials, former ministers prosecuted, anti-corruption watchdog
     keywords: ["anti-corruption", "corruption crackdown", "corruption"]
@@ -62,6 +69,7 @@ themes:
   - id: energy_infra
     label: Energy and infrastructure
     weight: 0.7
+    category: economics        # the topic a story falls back to when its wording alone decides nothing
     describe:
       - energy policy, power plants, nuclear power, renewable energy, ports, airports, railways, supply chains
     keywords: ["energy", "power plant", "nuclear", "renewable", "high-speed rail", "supply chain", "pipeline"]
