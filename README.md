@@ -1,4 +1,4 @@
-<img src="site/assets/logo.webp" alt="Argos Monitor logo" width="80">
+<img src="site/assets/eye.png" alt="Argos Monitor logo" width="80">
 
 # Argos Monitor
 
