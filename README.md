@@ -33,7 +33,7 @@ python run.py
 ```
 This fetches the feeds of every country, reads the articles, groups them into stories, ranks them and writes the data files the website reads. The first run takes most of an hour (thousands of articles); later runs only read what is new. You can also run one stage, for example `python run.py export`.
 
-**5. Open the website.** Double-click `site\index.html`. Choose a country, a period and a topic, then press Research. (Vietnam and Hungary are set up so far; each country is a folder under `countries`.) If you see "No data found", run step 4 first.
+**5. Open the website.** Double-click `site\index.html`. Choose a country, a period and a topic, then press Research. (Vietnam, Hungary, Cambodia and South Africa are set up so far; each country is a folder under `countries`.) If you see "No data found", run step 4 first.
 
 If the page looks broken or your browser complains about a `file:` address, open it over a local address instead. It's one command:
 ```

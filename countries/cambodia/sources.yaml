@@ -1,0 +1,141 @@
+# Cambodia source registry (decision D15).
+# scope: domestic | abroad_local | international
+# kind: media | official | wire
+# feed.category_hint: internal_politics | economics | foreign_policy | defence_security | society | general
+
+sources:
+  - id: phnom_penh_post
+    name: Phnom Penh Post
+    homepage: https://phnompenhpost.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Post Media Co Ltd (pro-government alignment)
+    state_affiliated: true
+    reprints_vna: false
+    feeds:
+      - {url: "https://phnompenhpost.com/feed/", section: Latest, category_hint: general}
+
+  - id: camboja
+    name: CamboJA News
+    homepage: https://cambojanews.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Cambodian Journalists Alliance Association (independent)
+    state_affiliated: false
+    reprints_vna: false
+    feeds:
+      - {url: "https://cambojanews.com/feed/", section: News, category_hint: general}
+
+  - id: camboja_km
+    name: CamboJA News (Khmer)
+    homepage: https://khmer.cambojanews.com
+    language: km
+    scope: domestic
+    kind: media
+    governing_body: Cambodian Journalists Alliance Association (independent)
+    state_affiliated: false
+    reprints_vna: false
+    feeds:
+      - {url: "https://khmer.cambojanews.com/feed/", section: News, category_hint: general}
+
+  - id: fresh_news_en
+    name: Fresh News Asia
+    homepage: https://en.freshnewsasia.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Fresh News Media (pro-government wire)
+    state_affiliated: true
+    reprints_vna: false
+    feeds:
+      - {url: "https://en.freshnewsasia.com/index.php/en/?format=feed&type=rss", section: News, category_hint: general}
+
+  - id: kampuchea_thmey
+    name: Kampuchea Thmey Daily
+    homepage: https://www.kampucheathmey.com
+    language: km
+    scope: domestic
+    kind: media
+    governing_body: Kampuchea Thmey Media (pro-government)
+    state_affiliated: true
+    reprints_vna: false
+    feeds:
+      - {url: "https://www.kampucheathmey.com/feed", section: News, category_hint: general}
+
+  - id: dap_news
+    name: DAP News
+    homepage: https://dap-news.com
+    language: km
+    scope: domestic
+    kind: media
+    governing_body: Deum Ampil Media Center (pro-government)
+    state_affiliated: true
+    reprints_vna: false
+    feeds:
+      - {url: "https://dap-news.com/feed/", section: News, category_hint: general}
+
+  - id: kbn_news
+    name: Khmer Breaking News (KBN)
+    homepage: https://kbn.news
+    language: km
+    scope: domestic
+    kind: media
+    governing_body: KBN Media
+    state_affiliated: true
+    reprints_vna: false
+    feeds:
+      - {url: "https://kbn.news/feed", section: News, category_hint: general}
+
+  - id: vod_khmer
+    name: VOD Khmer
+    homepage: https://vodkhmer.news
+    language: km
+    scope: abroad_local
+    kind: media
+    governing_body: Cambodian Center for Independent Media (operating in exile)
+    state_affiliated: false
+    reprints_vna: false
+    feeds:
+      - {url: "https://vodkhmer.news/feed/", section: News, category_hint: general}
+
+  - id: rfi_km
+    name: RFI Khmer
+    homepage: https://www.rfi.fr/km/
+    language: km
+    scope: abroad_local
+    kind: media
+    governing_body: France Médias Monde (public)
+    state_affiliated: false
+    reprints_vna: false
+    feeds:
+      - {url: "https://www.rfi.fr/km/general/rss", section: General, category_hint: general}
+
+  - id: rfa_km
+    name: RFA Khmer
+    homepage: https://www.rfa.org/khmer/
+    language: km
+    scope: abroad_local
+    kind: media
+    governing_body: Radio Free Asia (USAGM)
+    state_affiliated: false
+    reprints_vna: false
+    feeds:
+      - {url: "https://www.rfa.org/arc/outboundfeeds/khmer/rss/", section: News, category_hint: general}
+
+  - id: gnews_kh
+    name: Google News (Cambodia)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Cambodia+when:1d&hl=en-US&gl=US&ceid=US:en", section: Cambodia, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=Cambodia+(trade+OR+investment+OR+tariff+OR+economy+OR+FDI)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Cambodia economy, category_hint: economics}
+      - {url: "https://news.google.com/rss/search?q=Cambodia+(Hun+Manet+OR+Hun+Sen+OR+border+OR+opposition)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Cambodia politics, category_hint: internal_politics}
+      - {url: "https://news.google.com/rss/search?q=Cambodia+(diplomacy+OR+China+OR+Vietnam+OR+Thailand+OR+ASEAN)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Cambodia diplomacy, category_hint: foreign_policy}
+      - {url: "https://news.google.com/rss/search?q=Cambodia+(scam+OR+trafficking+OR+military+OR+Ream)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Cambodia security, category_hint: defence_security}

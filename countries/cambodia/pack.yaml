@@ -1,0 +1,60 @@
+# Cambodia country pack (decision D15).
+id: cambodia
+name: Cambodia
+language: km                     # the country's main local language; the browser translates from it
+abroad_label: Khmer-language outlets abroad
+
+# How an article is judged to be about the country. Domestic outlets are relevant by default except in their
+# world sections; every other outlet, and every world section, needs one of these words in the headline or summary,
+# or two of them in the text.
+mention: ["cambodia", "cambodian", "khmer", "phnom penh", "hun manet", "hun sen", "siem reap", "sihanoukville",
+          "kampong", "battambang", "ream", "mekong", "tonle sap", "funan techo", "angkor", "kandal", "koh kong",
+          "kpc", "cpp", "កម្ពុជា", "ភ្នំពេញ", "ហ៊ុន ម៉ាណែត", "ហ៊ុន សែន", "សៀមរាប", "ព្រះសីហនុ",
+          "ខេត្តកណ្តាល", "ទន្លេសាប", "មេគង្គ", "ព្រែកជីកហ្វូណនតេជោ", "អង្គរ"]
+mention_section: null
+
+# Most outlets publish one feed for everything, so the section is read from the article's web address:
+# the first part of the path (for example phnompenhpost.com/lifestyle/...). "foreign" sections need a mention of Cambodia to
+# count; "skip" sections (sport, lifestyle, entertainment) are left out.
+url_sections:
+  foreign: [world, international]
+  skip: [sport, sports, lifestyle, entertainment, travel, food, culture, arts, celebrity]
+
+# Outlets that Google News names, sorted by where they belong (lower-case names). An outlet in neither list takes the
+# default of the feed it came from (international for the English edition).
+aggregator_outlets:
+  domestic: ["phnom penh post", "the phnom penh post", "cambodianess", "camboja news", "camboja", "khmer times",
+             "kiripost", "fresh news", "fresh news asia", "akp", "dap news", "kampuchea thmey", "koh santepheap",
+             "cen", "kbn", "construction & property news"]
+  abroad_local: ["rfa khmer", "rfa", "rfi khmer", "rfi", "vod", "vod khmer", "voa khmer", "voa cambodia", "kamnotra"]
+
+# Pull-quote cleanup: bylines glued to the first sentence, and lines that are not sentences.
+excerpt:
+  dateline: '^\s*(?:Phnom Penh Post|CamboJA|AKP|Fresh News|VOD|RFA|RFI|DAP News)\s*[-–—:]\s*'
+  noise: '^(photo|image|read more|source|\(|\[|ស្តាប់|ទាញយក|រូបភាព|អានបន្ថែម)'
+
+# Topic classifier wording in English and Khmer
+classify:
+  internal_politics:
+    - "Hun Manet, Hun Sen, CPP, National Assembly, Senate, government reshuffle, opposition party, election"
+    - "រាជរដ្ឋាភិបាល នាយករដ្ឋមន្ត្រី ហ៊ុន ម៉ាណែត ហ៊ុន សែន រដ្ឋសភា ព្រឹទ្ធសភា គណបក្សប្រជាជនកម្ពុជា"
+    - "ការបោះឆ្នោត ការតែងតាំង មន្ត្រីរាជការ គណបក្សប្រឆាំង ច្បាប់ វិសោធនកម្ម"
+  economics:
+    - "economy, trade, investment, export, import, National Bank of Cambodia, GDP growth, inflation, tax"
+    - "infrastructure, Funan Techo Canal, garments, footwear, manufacturing, real estate, Sihanoukville"
+    - "សេដ្ឋកិច្ច ធនាគារជាតិ ពាណិជ្ជកម្ម ការវិនិយោគ នាំចេញ នាំចូល កំណើន GDP អតិផរណា"
+    - "គម្រោងហេដ្ឋារចនាសម្ព័ន្ធ កំពង់ផែ ព្រែកជីកហ្វូណនតេជោ រោងចក្រ កាត់ដេរ អចលនទ្រព្យ"
+  foreign_policy:
+    - "foreign policy, diplomacy, state visit, bilateral talks, ASEAN, China, Vietnam, Thailand, United States"
+    - "ការទូត ទំនាក់ទំនងអន្តរជាតិ ទស្សនកិច្ចផ្លូវការ កិច្ចប្រជុំកំពូល អាស៊ាន ចិន វៀតណាម ថៃ អាមេរិក"
+    - "កិច្ចព្រមព្រៀងទ្វេភាគី ឯកអគ្គរាជទូត ព្រំដែន ទំនាក់ទំនងការទូត"
+  defence_security:
+    - "Royal Cambodian Armed Forces, defence, Ream Naval Base, national security, border security, military exercise"
+    - "online scam centres, human trafficking, cyber crime, cross-border crime"
+    - "កងយោធពលខេមរភូមិន្ទ ក្រសួងការពារជាតិ មូលដ្ឋានទ័ពជើងទឹករាម សន្តិសុខជាតិ ការពារព្រំដែន"
+    - "បង្ក្រាបល្បែងស៊ីសងអនឡាញ បទល្មើសបច្ចេកវិទ្យា ការជួញដូរមនុស្ស"
+  society:
+    - "education, health, hospitals, schools, environment, flood, drought, climate"
+    - "traffic accidents, court trial, criminal cases, human rights"
+    - "អប់រំ សុខាភិបាល មន្ទីរពេទ្យ សាលារៀន បរិស្ថាន ការប្រែប្រួលអាកាសធាតុ ទឹកជំនន់"
+    - "គ្រោះថ្នាក់ចរាចរណ៍ តុលាការ ជំនុំជម្រះ បទល្មើស ជីវភាពប្រជាជន"

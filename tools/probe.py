@@ -14,7 +14,7 @@ def probe(url):
     if code != "200":
         return url, f"HTTP {code}"
     try:
-        root = ET.fromstring(body)
+        root = ET.fromstring(body.strip())
     except ET.ParseError:
         links = sorted(set(re.findall(rb'href="([^"]*(?:rss|feed)[^"]*)"', body, re.I)))[:8]
         return url, f"200 {ct[:25]} NOT-XML len={len(body)} rsslinks={[l.decode('utf8','ignore') for l in links]}"

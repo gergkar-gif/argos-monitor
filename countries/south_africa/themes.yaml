@@ -1,0 +1,87 @@
+# South Africa's additions to the shared themes (../../themes.yaml):
+# English & local keywords and descriptions, plus South Africa-specific policy themes:
+# 1. Government of National Unity (GNU) coalition dynamics
+# 2. Eskom & Transnet SOE logistical and energy crisis
+# 3. BRICS, ICJ and non-alignment geopolitics
+themes:
+  - id: diplomacy
+    describe:
+      - state visit, bilateral talks, diplomatic relations, DIRCO foreign ministry, Ronald Lamola, African Union, SADC, G20 presidency, BRICS summit
+    keywords: ["dirco", "ronald lamola", "state visit", "bilateral", "ambassador", "diplomatic", "brics", "african union", "sadc", "g20", "international court of justice", "icj", "united nations"]
+
+  - id: trade
+    describe:
+      - trade agreements, tariffs, AGOA trade access, AfCFTA, mineral and agricultural exports, wine, citrus
+    keywords: ["agoa", "afcfta", "trade agreement", "tariff", "export", "import", "citrus export", "wine export", "mineral export", "customs", "trade surplus"]
+
+  - id: investment
+    describe:
+      - foreign direct investment, South Africa Investment Conference, renewable energy investment, mining capital, automotive manufacturing plants
+    keywords: ["investment", "investor", "fdi", "sa investment conference", "automotive plant", "reipppp", "renewable investment", "data centre", "mining investment"]
+
+  - id: econ_policy
+    describe:
+      - National Treasury, Enoch Godongwana, SARB central bank, Lesetja Kganyago, repo rate, rand exchange rate, budget deficit, fiscal policy, debt-to-GDP
+    keywords: ["sarb", "reserve bank", "repo rate", "interest rate", "rand", "zar", "national treasury", "godongwana", "budget", "fiscal policy", "inflation", "gdp growth", "public debt"]
+
+  - id: party_gov
+    describe:
+      - Government of National Unity, GNU, President Cyril Ramaphosa, ANC, Democratic Alliance, DA, EFF, MK Party, Parliament, National Assembly, cabinet
+    keywords: ["gnu", "government of national unity", "ramaphosa", "cyril ramaphosa", "anc", "democratic alliance", "steenhuisen", "eff", "malema", "mk party", "zuma", "parliament", "national assembly", "cabinet"]
+
+  - id: security
+    describe:
+      - SANDF national defence force, border management authority, SAPS police, Hawks, SIU, peacekeeping missions, defence cooperation
+    keywords: ["sandf", "defence", "defense", "military", "peacekeeping", "saps", "hawks", "siu", "border management", "national security", "samidrc"]
+
+  - id: anticorruption
+    describe:
+      - State Capture, Zondo Commission recommendations, SIU investigations, Hawks arrests, corruption prosecution, procurement fraud
+    keywords: ["state capture", "zondo", "siu", "hawks", "corruption", "graft", "tender corruption", "procurement fraud", "anti-corruption", "investigating directorate"]
+
+  - id: energy_infra
+    describe:
+      - Eskom power utility, power grid, load shedding, energy transition, Transnet freight rail, port logistics, water supply infrastructure
+    keywords: ["eskom", "load shedding", "power grid", "electricity", "transnet", "freight rail", "port of durban", "logistics", "water crisis", "infrastructure"]
+
+  - id: crime_local
+    describe:
+      - violent crime, murder, robbery, shooting, arrest, court sentencing, extortion syndicates, gang violence, zama zamas
+    keywords: ["arrested", "court", "sentenced", "murder", "robbery", "shooting", "gang", "extortion", "construction mafia", "zama zama", "cash-in-transit"]
+
+  - id: accident_weather
+    describe:
+      - fatal road crash, taxi accident, storm, flooding, wildfire, drought, weather alert
+    keywords: ["accident", "crash", "fatal", "flood", "storm", "wildfire", "fire", "weather", "warning", "drought"]
+
+  - id: sport_culture
+    describe:
+      - Springboks rugby, Bafana Bafana soccer, Proteas cricket, arts, music, heritage, tourism
+    keywords: ["springboks", "rugby", "bafana bafana", "proteas", "cricket", "soccer", "premier soccer league", "psl", "tourism", "artist", "film"]
+
+  # South Africa-specific policy theme 1: Government of National Unity (GNU)
+  - id: gnu_coalition
+    label: Government of National Unity (GNU)
+    weight: 1.0
+    category: internal_politics
+    describe:
+      - Government of National Unity coalition governance, ANC and DA cabinet pact, coalition disputes, policy alignment, parliamentary votes
+    keywords: ["government of national unity", "gnu", "coalition government", "coalition pact", "anc-da", "national unity", "cabinet dispute", "coalition partners", "statement of intent"]
+
+  # South Africa-specific policy theme 2: Eskom, Transnet & SOE logistics
+  - id: soe_logistics
+    label: Eskom & Transnet SOE reforms
+    weight: 1.0
+    category: economics
+    describe:
+      - state-owned enterprise crisis and restructuring, Eskom unbundling, generation capacity, Transnet freight rail recovery, port logistics reform, private sector participation
+    keywords: ["eskom", "load shedding", "transnet", "freight rail", "port of durban", "rail recovery", "soe reform", "unbundling", "private rail access", "national energy crisis committee", "necom"]
+
+  # South Africa-specific policy theme 3: BRICS, ICJ & Non-alignment
+  - id: brics_geopolitics
+    label: BRICS, ICJ & Non-alignment
+    weight: 1.0
+    category: foreign_policy
+    describe:
+      - South African foreign policy posture, BRICS bloc, ICJ litigation against Israel, non-alignment between West, Russia and China, AGOA trade status
+    keywords: ["brics", "icj", "international court of justice", "genocide case", "non-aligned", "agoa", "south africa-us relations", "russia-south africa", "china-south africa", "peace mission"]

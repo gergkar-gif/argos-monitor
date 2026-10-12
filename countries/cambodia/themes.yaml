@@ -1,0 +1,88 @@
+# Cambodia's additions to the shared themes (../../themes.yaml): English & Khmer keywords and descriptions,
+# plus Cambodia-specific policy themes: Ream Naval Base & China ties, and the online scam compounds.
+themes:
+  - id: diplomacy
+    describe:
+      - state visit, bilateral talks, diplomatic relations, strategic partnership, ambassador, foreign minister meeting
+      - ដំណើរទស្សនកិច្ចផ្លូវការ កិច្ចប្រជុំទ្វេភាគី ទំនាក់ទំនងការទូត ដៃគូយុទ្ធសាស្ត្រ ឯកអគ្គរាជទូត រដ្ឋមន្ត្រីការបរទេស សុខ ចិន្តាសោភា
+    keywords: ["hun manet visit", "bilateral", "ambassador", "foreign minister", "sok chenda sophea", "asean", "china-cambodia", "vietnam-cambodia", "thailand-cambodia", "ទស្សនកិច្ច", "ទ្វេភាគី", "ឯកអគ្គរាជទូត", "រដ្ឋមន្ត្រីការបរទេស", "ការទូត", "អាស៊ាន"]
+
+  - id: trade
+    describe:
+      - trade agreements, tariffs, garment and footwear exports, agricultural export, cross-border trade, customs
+      - កិច្ចព្រមព្រៀងពាណិជ្ជកម្ម ពន្ធគយ ការនាំចេញកាត់ដេរ ផលិតផលកសិកម្ម ពាណិជ្ជកម្មឆ្លងដែន
+    keywords: ["garment export", "footwear export", "rice export", "customs", "trade agreement", "rcep", "bilateral trade", "នាំចេញ", "នាំចូល", "ពាណិជ្ជកម្ម", "ពន្ធគយ", "កាត់ដេរ", "អង្ករ"]
+
+  - id: investment
+    describe:
+      - foreign direct investment, special economic zones, chinese investment, factories, industrial parks
+      - ការវិនិយោគផ្ទាល់ពីបរទេស តំបន់សេដ្ឋកិច្ចពិសេស វិនិយោគចិន រោងចក្រ សួនឧស្សាហកម្ម
+    keywords: ["fdi", "special economic zone", "sez", "investment project", "council for the development of cambodia", "cdc", "chinese investment", "វិនិយោគ", "តំបន់សេដ្ឋកិច្ចពិសេស", "រោងចក្រ", "គម្រោងវិនិយោគ"]
+
+  - id: econ_policy
+    describe:
+      - economic policy, national bank of cambodia, riel exchange rate, dedollarization, inflation, banking, public debt
+      - គោលនយោបាយសេដ្ឋកិច្ច ធនាគារជាតិនៃកម្ពុជា អត្រាប្តូរប្រាក់រៀល អតិផរណា ធនាគារ បំណុលសាធារណៈ
+    keywords: ["national bank of cambodia", "nbc", "riel", "khmer riel", "bakong", "exchange rate", "inflation", "gdp growth", "macroeconomic", "ធនាគារជាតិ", "ប្រាក់រៀល", "បាគង", "អតិផរណា", "កំណើនសេដ្ឋកិច្ច", "គោលនយោបាយ"]
+
+  - id: party_gov
+    describe:
+      - cambodian people's party leadership decisions, hun manet government, hun sen senate, national assembly, election, cabinet reshuffle
+      - គណបក្សប្រជាជនកម្ពុជា រាជរដ្ឋាភិបាល ហ៊ុន ម៉ាណែត ហ៊ុន សែន ព្រឹទ្ធសភា រដ្ឋសភា ការបោះឆ្នោត គណបក្សប្រឆាំង
+    keywords: ["hun manet", "hun sen", "cpp", "cambodian people's party", "senate", "national assembly", "cabinet reshuffle", "opposition", "candlelight party", "sam rainsy", "kem sokha", "គណបក្សប្រជាជន", "ហ៊ុន ម៉ាណែត", "ហ៊ុន សែន", "រដ្ឋសភា", "ព្រឹទ្ធសភា", "រាជរដ្ឋាភិបាល", "បោះឆ្នោត"]
+
+  - id: security
+    describe:
+      - royal cambodian armed forces, border security, joint exercises, military ties, national defence
+      - កងយោធពលខេមរភូមិន្ទ សន្តិសុខព្រំដែន សមយុទ្ធយោធា កិច្ចការពារជាតិ
+    keywords: ["rcaf", "royal cambodian armed forces", "border dispute", "border security", "military exercise", "tea banh", "tea seiha", "កងទ័ព", "យោធា", "ការពារជាតិ", "សន្តិសុខព្រំដែន", "សមយុទ្ធ"]
+
+  - id: anticorruption
+    describe:
+      - anti-corruption unit, corruption investigations, oknha crackdown, official misconduct, judicial reform
+      - អង្គភាពប្រឆាំងអំពើពុករលួយ ការស៊ើបអង្កេត ឧកញ៉ា កំណែទម្រង់ច្បាប់
+    keywords: ["anti-corruption", "acu", "corruption", "oknha", "graft", "embezzlement", "ប្រឆាំងអំពើពុករលួយ", "ពុករលួយ", "ឧកញ៉ា"]
+
+  - id: energy_infra
+    describe:
+      - funan techo canal, expressway, techo international airport, sihanoukville deep seaport, hydropower, renewable energy
+      - ព្រែកជីកហ្វូណនតេជោ ផ្លូវល្បឿនលឿន ព្រលានយន្តហោះអន្តរជាតិតេជោ កំពង់ផែស្វយ័តក្រុងព្រះសីហនុ វារីអគ្គិសនី
+    keywords: ["funan techo", "techo canal", "expressway", "techo international airport", "sihanoukville port", "hydropower", "renewable energy", "grid", "ព្រែកជីក", "ហ្វូណនតេជោ", "ផ្លូវល្បឿនលឿន", "ព្រលានយន្តហោះ", "កំពង់ផែ", "វារីអគ្គិសនី", "ថាមពល"]
+
+  - id: crime_local
+    describe:
+      - local crime, robbery, drug trafficking, arrests, criminal court cases
+      - បទល្មើសក្នុងស្រុក ប្លន់ គ្រឿងញៀន ការចាប់ខ្លួន តុលាការ
+    keywords: ["drug bust", "methamphetamine", "arrest", "court sentence", "robbery", "murder", "គ្រឿងញៀន", "ចាប់ខ្លួន", "ឃាត់ខ្លួន", "ប្លន់", "ឃាតកម្ម"]
+
+  - id: accident_weather
+    describe:
+      - traffic accidents, road fatalities, flooding, drought, storm, mekong river water levels
+      - គ្រោះថ្នាក់ចរាចរណ៍ ទឹកជំនន់ គ្រោះរាំងស្ងួត ព្យុះ កម្ពស់ទឹកទន្លេមេគង្គ
+    keywords: ["traffic accident", "flood", "drought", "storm", "mekong flood", "rainfall", "គ្រោះថ្នាក់ចរាចរណ៍", "ទឹកជំនន់", "រាំងស្ងួត", "ខ្យល់ព្យុះ", "ភ្លៀងធ្លាក់"]
+
+  - id: sport_culture
+    describe:
+      - angkor wat, tourism, kun khmer kickboxing, water festival, khmer new year
+      - ប្រាសាទអង្គរវត្ត ទេសចរណ៍ គុនខ្មែរ ព្រះរាជពិធីបុណ្យអុំទូក ពិធីបុណ្យចូលឆ្នាំខ្មែរ
+    keywords: ["angkor wat", "angkor", "kun khmer", "water festival", "bon om touk", "khmer new year", "tourism", "អង្គរ", "អង្គរវត្ត", "គុនខ្មែរ", "បុណ្យអុំទូក", "ចូលឆ្នាំ", "ទេសចរណ៍"]
+
+  # Cambodia-specific policy theme 1: Ream Naval Base and geopolitical friction
+  - id: ream_and_china
+    label: Ream Naval Base and China ties
+    weight: 1.0
+    category: defence_security
+    describe:
+      - Ream Naval Base expansion, Chinese naval presence and warships, Beijing military ties, Washington concerns
+      - មូលដ្ឋានទ័ពជើងទឹករាម ការធ្វើទំនើបកម្ម វត្តមានកងទ័ពជើងទឹកចិន នាវាចម្បាំងចិន ទំនាក់ទំនងយោធាជាមួយប៉េកាំង
+    keywords: ["ream naval base", "ream base", "ream", "chinese warship", "chinese military", "beijing", "golden dragon", "cambodia-china military", "មូលដ្ឋានទ័ពជើងទឹករាម", "កងទ័ពជើងទឹកចិន", "នាវាចម្បាំងចិន", "សមយុទ្ធនាគមាស"]
+
+  # Cambodia-specific policy theme 2: Cyber scams, compound hubs and human trafficking
+  - id: scam_syndicates
+    label: Scam syndicates & cyber compounds
+    weight: 0.9
+    category: society
+    describe:
+      - online scam compounds, forced cyber slavery, telecom fraud syndicates in Sihanoukville and border towns, human trafficking
+      - មជ្ឈមណ្ឌលឆបោកតាមអនឡាញ ការបង្ខំឱ្យធ្វើការងារខុសច្បាប់ ការជួញដូរមនុស្ស នៅក្រុងព្រះសីហនុ ប៉ោយប៉ែត បាវិត
+    keywords: ["scam compound", "scam center", "scam centres", "cyber scam", "online scam", "human trafficking", "forced labor", "sihanoukville scam", "poipet", "bavet", "pig butchering", "ការជួញដូរមនុស្ស", "ល្បែងស៊ីសងអនឡាញ", "មជ្ឈមណ្ឌលឆបោក", "ឆបោក"]

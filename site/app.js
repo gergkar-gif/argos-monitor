@@ -153,12 +153,16 @@
   function paintTranslationBar() {
     const bar = $('#trans');
     if (!bar) return;
+    if (T.lang === 'en') {
+      bar.replaceChildren();
+      return;
+    }
     if (T.state === 'ready') {
       const on = document.body.classList.contains('show-orig');
-      const toggle = h('button', { type: 'button', class: 'more', 'aria-pressed': String(on), text: on ? 'Hide original Vietnamese' : 'Show original Vietnamese' });
+      const toggle = h('button', { type: 'button', class: 'more', 'aria-pressed': String(on), text: on ? 'Hide original text' : 'Show original text' });
       toggle.addEventListener('click', () => { setShowOriginal(!document.body.classList.contains('show-orig')); paintTranslationBar(); });
       bar.replaceChildren(
-        h('p', { class: 'notice quiet', text: 'English lines are machine translations made by your browser and can be wrong. The original Vietnamese is hidden; every headline links to the original article.' }),
+        h('p', { class: 'notice quiet', text: 'English lines are machine translations made by your browser and can be wrong. The original text is hidden; every headline links to the original article.' }),
         toggle);
     } else if (T.state === 'offer') {
       const btn = h('button', { type: 'button', class: 'more', text: 'Show English (one-time download of a small language pack)' });
@@ -170,7 +174,7 @@
       });
       bar.replaceChildren(btn);
     } else if (T.state === 'none') {
-      bar.replaceChildren(h('p', { class: 'notice quiet', text: 'Your browser cannot translate on its own device here, so headlines show in Vietnamese. Use the browser\'s Translate feature (Chrome or Edge on a computer work best).' }));
+      bar.replaceChildren(h('p', { class: 'notice quiet', text: 'Your browser cannot translate on its own device here, so headlines show in the original language. Use the browser\'s Translate feature (Chrome or Edge on a computer work best).' }));
     } else {
       bar.replaceChildren();
     }
@@ -287,7 +291,7 @@
     results.replaceChildren(...[
       h('p', { class: 'result-line' }, h('b', { text: country.options[country.selectedIndex].text }),
         ` · ${periodLabel} · ${plural(totalStories, 'story', 'stories')} found · updated ${fmtTime.format(updated)}`),
-      noOutside && h('p', { class: 'notice quiet', text: 'No coverage from Vietnamese-language outlets abroad or from international outlets has been collected for this period yet, so the "not in domestic press" check cannot run.' }),
+      noOutside && h('p', { class: 'notice quiet', text: `No coverage from ${(index.countries.find((x) => x.id === country.value) || {}).abroad_label || 'outlets abroad'} or from international outlets has been collected for this period yet, so the "not in domestic press" check cannot run.` }),
       ageH > STALE_HOURS && h('p', { class: 'notice', text: `This collection is ${Math.round(ageH)} hours old. Run the collector to refresh it.` }),
       h('div', { id: 'trans', class: 'trans' }),
       tabs,

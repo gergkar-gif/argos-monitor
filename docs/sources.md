@@ -97,4 +97,25 @@ The registry is [`countries/hungary/sources.yaml`](../countries/hungary/sources.
 Ownership and political alignment notes in the yaml are from memory and marked "(to confirm)". The government-aligned group (Magyar Nemzet, Origo, Magyar Hírlap) is widely reported to belong to the KESMA media foundation; check before relying on that wording.
 
 ## Aggregators (added 2026-10-01, decision D16)
-Google News search feeds work from this PC and give 100 items per search with the outlet named on each item (a Hungary search: 63 outlets). They are listed as sources in each country's `sources.yaml` (`gnews_*`). Headlines only; the page behind the link is not fetched. Bing News works but gave only 9 to 11 items. GDELT never worked. Crisis and official feeds that work are saved in [ideas.md](ideas.md).
+# Cambodia (verified 2026-10-12)
+
+The registry is [`countries/cambodia/sources.yaml`](../countries/cambodia/sources.yaml).
+
+| Outlet | Result |
+|---|---|
+| Phnom Penh Post, CamboJA News (en + km), Fresh News Asia, Kampuchea Thmey, DAP News, Khmer Breaking News (KBN) | **Working**, fresh items. |
+| VOD Khmer, RFI Khmer, RFA Khmer | Working (outlets abroad / exile / public international broadcasters). |
+| Google News (Cambodia search feeds) | Working (topical searches for politics, economy, diplomacy, security). |
+
+# South Africa (verified 2026-10-12)
+
+The registry is [`countries/south_africa/sources.yaml`](../countries/south_africa/sources.yaml).
+
+| Outlet | Result |
+|---|---|
+| Daily Maverick, Mail & Guardian, SABC News, SAnews, eNCA, IOL, GroundUp, Moneyweb, The South African, defenceWeb, SAIIA, Daily Friend, Maroela Media (Afrikaans) | **Working**, fresh items. Full-text article extraction verified with trafilatura. |
+| AllAfrica (South Africa) | Working; Pan-African/regional distribution feed. |
+| Google News (South Africa search feeds) | Working (100 items per search; topical searches for GNU, economy, diplomacy, security). Outlets sorted via `aggregator_outlets` into domestic or abroad. |
+| News24, BusinessLIVE / Business Day, The Citizen, BusinessTech, MyBroadband | Direct feeds blocked (HTTP 403 or paywall); covered effectively via Google News aggregator items. |
+| gov.za (official portal speeches/news) | Times out on direct RSS; official government coverage provided by SAnews (GCIS wire). |
+

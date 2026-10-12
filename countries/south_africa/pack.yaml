@@ -1,0 +1,64 @@
+# South Africa country pack (decision D15).
+id: south_africa
+name: South Africa
+language: en                     # the country's primary national news media language
+abroad_label: African regional outlets
+
+# How an article is judged to be about the country. Domestic outlets are relevant by default except in their
+# world sections; every other outlet, and every world section, needs one of these words in the headline or summary,
+# or two of them in the text.
+mention: ["south africa", "south african", "south africans", "rsa", "mzansi", "suid-afrika",
+          "pretoria", "johannesburg", "joburg", "cape town", "durban", "soweto", "bloemfontein", "gqeberha",
+          "gauteng", "kwazulu-natal", "kzn", "western cape", "eastern cape", "limpopo", "mpumalanga", "free state", "north west", "northern cape",
+          "ramaphosa", "cyril ramaphosa", "anc", "african national congress", "democratic alliance", "economic freedom fighters", "eff",
+          "umkhonto we sizwe", "mk party", "inkatha freedom party", "ifp", "government of national unity", "gnu",
+          "union buildings", "parliament", "concourt", "constitutional court",
+          "eskom", "transnet", "sarb", "reserve bank", "rand", "zar", "load shedding", "saps", "sandf", "hawks", "siu", "zondo"]
+mention_section: null
+
+# Most outlets publish one feed for everything, so the section is read from the article's web address:
+# the first part of the path (for example iol.co.za/news/world/...). "foreign" sections need a mention of South Africa to
+# count; "skip" sections (sport, lifestyle, entertainment) are left out.
+url_sections:
+  foreign: [world, international, africa, global]
+  skip: [sport, sports, rugby, cricket, soccer, football, lifestyle, entertainment, travel, food, recipes, motoring, horoscopes, gaming, celebrity, gossip]
+
+# Outlets that Google News names, sorted by where they belong (lower-case names). An outlet in neither list takes the
+# default of the feed it came from (international for the English edition).
+aggregator_outlets:
+  domestic: ["daily maverick", "news24", "business day", "businesslive", "fin24", "financial mail",
+             "businesstech", "the citizen", "citizen", "sabc news", "sabc", "enca", "ewn", "eyewitness news",
+             "iol", "independent online", "mail & guardian", "mail and guardian", "mg", "moneyweb",
+             "daily investor", "the south african", "groundup", "defenceweb", "mybroadband", "timeslive",
+             "sunday times", "heraldlive", "cape times", "the star", "city press", "rapport", "beeld",
+             "maroela media", "central news south africa", "briefly news", "biznews", "daily friend"]
+  abroad_local: ["allafrica", "the continent", "african arguments", "the eastafrican", "panapress", "bbc news africa", "rfi afrique"]
+
+# Pull-quote cleanup: bylines glued to the first sentence, and lines that are not sentences.
+excerpt:
+  dateline: '^\s*(?:Daily Maverick|Mail & Guardian|M&G|SABC News|SABC|SAnews|IOL|GroundUp|eNCA|The South African|defenceWeb|JOHANNESBURG|CAPE TOWN|PRETORIA|DURBAN|BLOEMFONTEIN|Reuters|AFP|News24)\s*[-–—:]\s*'
+  noise: '^(photo|image|read more|source|\(|\[|video|picture|sign up|subscribe|advertisement|watch:)'
+
+# Extra wording for the topic classifier
+classify:
+  internal_politics:
+    - "Government of National Unity, GNU, President Cyril Ramaphosa, ANC, Democratic Alliance, DA, EFF, MK Party, Jacob Zuma, John Steenhuisen"
+    - "Parliament, National Assembly, cabinet, coalition agreement, provincial government, municipal coalition, ConCourt, IEC, elections"
+    - "State Capture, Zondo Commission recommendations, Public Protector, parliamentary inquiry, motion of no confidence"
+  economics:
+    - "South African Reserve Bank, SARB, repo rate, interest rate, inflation, rand, ZAR exchange rate, JSE, GDP growth"
+    - "Eskom, load shedding, electricity grid, power supply, Transnet, freight rail, port backlog, mining production, gold, platinum"
+    - "National Treasury, Enoch Godongwana, budget deficit, fiscal policy, debt-to-GDP, taxes, unemployment, jobs, manufacturing"
+  foreign_policy:
+    - "foreign policy, DIRCO, Ronald Lamola, bilateral relations, state visit, diplomatic mission, ambassador, summit"
+    - "BRICS, BRICS expansion, G20 presidency, African Union, SADC, Southern African Development Community"
+    - "International Court of Justice, ICJ, genocide convention, Middle East, Israel, AGOA, trade relations with United States, China, European Union"
+  defence_security:
+    - "South African National Defence Force, SANDF, border management authority, peacekeeping mission, SAMIDRC, DRC, Mozambique"
+    - "South African Police Service, SAPS, police commissioner, Hawks, DPCI, Special Investigating Unit, SIU, crime statistics"
+    - "gang violence, organised crime, extortion syndicates, construction mafia, illegal mining, zama zamas, cash-in-transit"
+  society:
+    - "National Health Insurance, NHI, public health, state hospitals, healthcare workers, medical aid"
+    - "basic education, matric results, universities, NSFAS student funding, schools"
+    - "municipal service delivery, water crisis, sanitation, electricity outages, local protests, civil society"
+    - "courts, sentencing, criminal trial, road accidents, flooding, weather disaster"

@@ -85,3 +85,9 @@ Hungary-specific design: most Hungarian outlets publish one all-topics feed, so 
 **D16. Google News search feeds are used as a news aggregator, headlines only.**
 The user accepted headline-only items provided the same story is not counted twice. Each country pack lists Google News search feeds as sources (`aggregator: google_news`). Every item names its outlet; the outlet becomes its own source (`gn:<outlet>`), and `aggregator_outlets` in pack.yaml sorts known outlets into domestic or abroad (anything else takes the default of its feed: international for the English edition, domestic for a local-language edition). The article page is not fetched (`extract_status = nofetch`), so these stories get no quoted sentences. An item whose headline already exists is skipped; identical headlines from different outlets are marked as copies of the first, so a wire story counts once. The Hungarian edition also surfaces headlines from outlets that block us directly (Népszava, Átlátszó, Székelyhon and others). Terms: the feeds are meant for personal use; republishing only headlines and links is low risk but it is not a licensed data source, so it should be reviewed before official use.
 The crisis and official feeds (travel advisories, GDACS, Crisis Group) are saved in docs/ideas.md for later.
+
+## 2026-10-12: South Africa pack
+
+**D17. South Africa pack added (`countries/south_africa/`).**
+Media in South Africa is predominantly English-language with high press freedom, diverse private media, and official coverage through the public broadcaster (SABC) and GCIS wire (SAnews). Scope `abroad_local` maps to Pan-African and regional African distributors (such as AllAfrica and The Continent). Policy themes are tuned to the Government of National Unity (GNU), Eskom and Transnet state-owned enterprise logistics reforms, and South Africa's global geopolitical posture (BRICS, ICJ litigation, and non-alignment).
+
