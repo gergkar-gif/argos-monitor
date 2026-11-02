@@ -39,7 +39,7 @@ def run(db):
         rows = db.execute(
             "SELECT a.source_id, a.syndicated_of, COALESCE(a.published_at, a.fetched_at) t, s.scope, s.kind "
             "FROM story_article sa JOIN article a ON a.id=sa.article_id JOIN source s ON s.id=a.source_id "
-            "WHERE sa.story_id=? AND COALESCE(sa.similarity, 1.0) >= 0.85", (sid,)).fetchall()
+            "WHERE sa.story_id=? AND COALESCE(sa.similarity, 1.0) >= 0.93", (sid,)).fetchall()
         independent = {r["source_id"] for r in rows if r["syndicated_of"] is None}
         scopes = {r["scope"] for r in rows}
         growing = sum(r["t"] >= recent for r in rows) / len(rows) >= 0.4

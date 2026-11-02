@@ -1160,8 +1160,16 @@
     if ($('#nav-alerts')) $('#nav-alerts').setAttribute('aria-current', activeTab === 'alerts' ? 'page' : 'false');
     if ($('#nav-disasters')) $('#nav-disasters').setAttribute('aria-current', activeTab === 'disasters' ? 'page' : 'false');
     if ($('#nav-violence')) $('#nav-violence').setAttribute('aria-current', activeTab === 'violence' ? 'page' : 'false');
+    if ($('#brief')) {
+      if (activeTab === 'home' || activeTab === 'relations') {
+        $('#brief').href = 'brief.html';
+      } else if (activeTab === 'alerts' || activeTab === 'disasters' || activeTab === 'violence') {
+        $('#brief').href = monitorCountry !== 'all' ? `brief.html#${monitorCountry}` : 'brief.html';
+      } else {
+        $('#brief').href = `brief.html#${country.value}`;
+      }
+    }
     if (activeTab === 'home') {
-      $('#brief').href = 'brief.html';
       setHash(hashFor('all'));
       renderHome();
       useLanguage('multi');
@@ -1169,20 +1177,17 @@
     }
     if (activeTab === 'relations') {
       useLanguage('multi');
-      $('#brief').href = 'brief.html';
       setHash(hashFor('all'));
       renderRelations();
       return;
     }
     if (activeTab === 'alerts') {
       useLanguage('en');
-      $('#brief').href = monitorCountry !== 'all' ? `brief.html#${monitorCountry}` : 'brief.html';
       setHash(hashFor('all'));
       renderAlerts();
       return;
     }
     if (activeTab === 'disasters' || activeTab === 'violence') {
-      $('#brief').href = monitorCountry !== 'all' ? `brief.html#${monitorCountry}` : 'brief.html';
       setHash(hashFor('all'));
       renderEventMonitor(activeTab);
       useLanguage('multi');
@@ -1191,7 +1196,6 @@
     const c = index.countries.find((x) => x.id === country.value) || index.countries[0];
     const targetFile = `${c.id}-${period.value}.json`;
     useLanguage(c.language);
-    $('#brief').href = `brief.html#${country.value}`;
     openTopic = topic.value;
     setHash(hashFor(topic.value)); extra = {};
     results.replaceChildren(h('p', { class: 'state', text: 'Loading…' }));

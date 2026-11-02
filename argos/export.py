@@ -49,18 +49,19 @@ def _story(db, s):
         "FROM story_article sa JOIN article a ON a.id=sa.article_id JOIN source src ON src.id=a.source_id "
         "WHERE sa.story_id=? ORDER BY (COALESCE(sa.similarity, 1.0) >= 0.93) DESC, (COALESCE(sa.similarity, 1.0) >= 0.85) DESC, "
         "(a.syndicated_of IS NOT NULL), COALESCE(sa.similarity, 1.0) DESC, a.published_at", (s["id"],)).fetchall()
-    core_rows = [r for r in rows if r["similarity"] >= 0.85] or rows
+    core_rows = [r for r in rows if r["similarity"] >= 0.93] or rows
     independent = {r["source_id"] for r in core_rows if r["syndicated_of"] is None}
     by_scope = {sc: sum(r["scope"] == sc for r in core_rows) for sc in ("domestic", "abroad_local", "international")}
     rep = next((r for r in rows if r["id"] == s["representative_article_id"]), rows[0])
-    lead_val = (rep["lead"] or "").strip() or next(((r["lead"] or "").strip() for r in rows if (r["lead"] or "").strip()), "")
+    raw_lead = (rep["lead"] or "").strip() or next(((r["lead"] or "").strip() for r in rows if (r["lead"] or "").strip()), "")
+    lead_val = (raw_lead[:220].rsplit(" ", 1)[0] + "…") if len(raw_lead) > 220 else raw_lead
     excerpts = db.execute(
         "SELECT x.id, x.text, a.url, src.name AS source, src.scope FROM excerpt x JOIN article a ON a.id=x.article_id "
         "JOIN source src ON src.id=a.source_id WHERE x.story_id=? ORDER BY x.id", (s["id"],)).fetchall()
     related = db.execute(
-        "SELECT o.id, a.title, a.url, src.name AS source, (SELECT COUNT(*) FROM story_article WHERE story_id=r.related_id AND COALESCE(similarity, 1.0) >= 0.85) AS n, "
+        "SELECT o.id, a.title, a.url, src.name AS source, (SELECT COUNT(*) FROM story_article WHERE story_id=r.related_id AND COALESCE(similarity, 1.0) >= 0.93) AS n, "
         "(SELECT COUNT(*) FROM story_article sa2 JOIN article a2 ON a2.id=sa2.article_id JOIN source s2 ON s2.id=a2.source_id "
-        " WHERE sa2.story_id=r.related_id AND COALESCE(sa2.similarity, 1.0) >= 0.85 AND s2.scope='domestic') AS dom "
+        " WHERE sa2.story_id=r.related_id AND COALESCE(sa2.similarity, 1.0) >= 0.93 AND s2.scope='domestic') AS dom "
         "FROM story_related r JOIN story o ON o.id=r.related_id JOIN article a ON a.id=o.representative_article_id "
         "JOIN source src ON src.id=a.source_id WHERE r.story_id=? ORDER BY r.similarity DESC LIMIT 4", (s["id"],)).fetchall()
     has_related_domestic = any(r["dom"] > 0 for r in related)

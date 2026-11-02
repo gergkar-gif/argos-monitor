@@ -122,6 +122,12 @@ def _cluster_window(db, country, days, similarity):
             absorbed[b] = best_a
 
     active_labels = [l for l in core_labels if l not in absorbed]
+    # Close/Broader bands only borrow single-article stories, each placed in its closest story only,
+    # so an article never shows up inside two multi-article stories (live data had ~40% repeated rows).
+    absorbers = set(absorbed.values())
+    single = {l for l in active_labels if sizes[l] == 1 and l not in absorbers}
+    loose = np.array([m for l in single for m in np.where(labels == l)[0]], dtype=int)
+    best = {}   # article index -> (raw similarity, story label)
     sa_rows = []
     for l in active_labels:
         core_m = np.where(labels == l)[0]
@@ -134,28 +140,33 @@ def _cluster_window(db, country, days, similarity):
         sid = cur.lastrowid
         ids[l] = sid
         c = centres[l]
-        seen_idx = set()
         for m in core_m:
             raw_s = 1.0 if m == rep_idx else max(float(X[m] @ c), float(X[m] @ X[rep_idx]))
             cal_s = 1.0 if m == rep_idx else max(0.93, round(float(_calibrate(raw_s)), 3))
             sa_rows.append((sid, rows[m]["id"], cal_s))
-            seen_idx.add(int(m))
         for m in abs_m:
             raw_s = max(float(X[m] @ c), float(X[m] @ X[rep_idx]))
             cal_s = min(0.929, max(0.85, round(float(_calibrate(raw_s)), 3)))
             sa_rows.append((sid, rows[m]["id"], cal_s))
-            seen_idx.add(int(m))
-        # Attach additional 85-93% (Close coverage) and 75-85% (Broader context) articles within MAX_GAP_DAYS.
-        sims = np.maximum(X @ c, X @ X[rep_idx])
-        near_time = (np.maximum(his[l], t) - np.minimum(los[l], t)) <= MAX_GAP_DAYS * 86400
-        cand_85 = [int(m) for m in np.argsort(-sims) if near_time[m] and int(m) not in seen_idx and RAW_85 <= sims[m] < 0.925][:6]
-        for m in cand_85:
-            sa_rows.append((sid, rows[m]["id"], min(0.929, max(0.85, round(float(_calibrate(float(sims[m]))), 3)))))
-            seen_idx.add(m)
-        cand_75 = [int(m) for m in np.argsort(-sims) if near_time[m] and int(m) not in seen_idx and RAW_75 <= sims[m] < RAW_85][:MAX_BROAD_PER_STORY]
-        for m in cand_75:
-            sa_rows.append((sid, rows[m]["id"], min(0.849, max(0.75, round(float(_calibrate(float(sims[m]))), 3)))))
-            seen_idx.add(m)
+        # Candidate 85-93% (Close coverage) and 75-85% (Broader context) articles within MAX_GAP_DAYS.
+        if l in single or not len(loose):
+            continue
+        sims = np.maximum(X[loose] @ c, X[loose] @ X[rep_idx])
+        near_time = (np.maximum(his[l], t[loose]) - np.minimum(los[l], t[loose])) <= MAX_GAP_DAYS * 86400
+        ok = near_time & (sims >= RAW_75) & (sims < 0.925)
+        for m, s in zip(loose[ok], sims[ok]):
+            if s > best.get(int(m), (0.0, None))[0]:
+                best[int(m)] = (float(s), l)
+
+    by_story = {}
+    for m, (s, l) in best.items():
+        by_story.setdefault(l, []).append((s, m))
+    for l, cands in by_story.items():
+        cands.sort(reverse=True)
+        close_c = [(s, m) for s, m in cands if s >= RAW_85][:6]
+        broad_c = [(s, m) for s, m in cands if s < RAW_85][:MAX_BROAD_PER_STORY]
+        sa_rows += [(ids[l], rows[m]["id"], min(0.929, max(0.85, round(float(_calibrate(s)), 3)))) for s, m in close_c]
+        sa_rows += [(ids[l], rows[m]["id"], min(0.849, max(0.75, round(float(_calibrate(s)), 3)))) for s, m in broad_c]
 
     db.executemany("INSERT OR REPLACE INTO story_article (story_id, article_id, similarity) VALUES (?,?,?)", sa_rows)
     rel_rows = [(ids[a], ids[b], s) for s, _, _, a, b in close if a in ids and b in ids]

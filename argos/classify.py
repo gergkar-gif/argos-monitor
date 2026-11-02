@@ -65,7 +65,7 @@ def run(db, min_similarity=MIN_SIMILARITY):
         for (sid,) in db.execute("SELECT id FROM story WHERE country=?", (country,)).fetchall():
             rows = db.execute("SELECT f.category_hint, e.vec, a.language FROM story_article sa JOIN article a ON a.id=sa.article_id "
                               "JOIN embedding e ON e.article_id=a.id LEFT JOIN feed f ON f.id=a.feed_id "
-                              "WHERE sa.story_id=? AND COALESCE(sa.similarity, 1.0) >= 0.85", (sid,)).fetchall()
+                              "WHERE sa.story_id=? AND COALESCE(sa.similarity, 1.0) >= 0.93", (sid,)).fetchall()
             hints = Counter(r["category_hint"] for r in rows if r["category_hint"] in RELIABLE)
             top, n = hints.most_common(1)[0] if hints else (None, 0)
             if top and n / len(rows) >= SECTION_SHARE:
