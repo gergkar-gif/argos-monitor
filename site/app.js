@@ -163,7 +163,7 @@
   const hashFor = (t) => {
     const qPart = $('#q').value.trim() ? `/${encodeURIComponent($('#q').value.trim())}` : '';
     if (activeTab === 'home') return `#home${qPart ? '//' + qPart.slice(1) : ''}`;
-    if (activeTab === 'relations') return `#relations/${relCountryA}/${relCountryB}/${relPeriod}`;
+    if (activeTab === 'relations') return `#relations/${selectedCountries.join(',')}/${relPeriod}`;
     if (activeTab === 'alerts' || activeTab === 'disasters' || activeTab === 'violence') {
       const c = monitorCountry !== 'all' ? monitorCountry : 'all';
       return `#${activeTab}/${c}${qPart}`;
@@ -175,9 +175,21 @@
     if (c === 'relations') {
       activeTab = 'relations';
       country.value = 'all';
-      if (p) relCountryA = p;
-      if (t) relCountryB = t;
-      if (q) relPeriod = q;
+      if (p) {
+        if (p.includes(',')) {
+          selectedCountries = p.split(',').filter(Boolean);
+          if (t) relPeriod = t;
+        } else {
+          selectedCountries = [p];
+          if (t && t !== '30d' && t !== '14d' && t !== '7d') {
+            selectedCountries.push(t);
+            if (q) relPeriod = q;
+          } else if (t) {
+            relPeriod = t;
+          }
+        }
+      }
+      if (!selectedCountries.length) selectedCountries = ['cambodia', 'vietnam'];
     } else if (c === 'alerts' || c === 'disasters' || c === 'violence') {
       activeTab = c;
       monitorCountry = (p && index.countries.some((x) => x.id === p)) ? p : 'all';
@@ -740,22 +752,20 @@
     { id: 'south_korea', name: 'South Korea', terms: ['south korea', 'korean', 'seoul', 'hàn quốc', 'dél-korea'] },
   ];
 
-  const POPULAR_PAIRS = [
-    ['cambodia', 'vietnam', 'Cambodia ⇄ Vietnam'],
-    ['cambodia', 'laos', 'Cambodia ⇄ Laos'],
-    ['serbia', 'kosovo', 'Serbia ⇄ Kosovo'],
-    ['armenia', 'azerbaijan', 'Armenia ⇄ Azerbaijan'],
-    ['hungary', 'poland', 'Hungary ⇄ Poland'],
-    ['malaysia', 'indonesia', 'Malaysia ⇄ Indonesia'],
-    ['colombia', 'argentina', 'Colombia ⇄ Argentina'],
-    ['uzbekistan', 'kazakhstan', 'Uzbekistan ⇄ Kazakhstan'],
-    ['kenya', 'ethiopia', 'Kenya ⇄ Ethiopia'],
+  const QUICK_PRESETS = [
+    [['cambodia', 'vietnam'], 'Cambodia & Vietnam'],
+    [['cambodia', 'laos'], 'Cambodia & Laos'],
+    [['cambodia', 'laos', 'vietnam'], 'Cambodia, Laos & Vietnam'],
+    [['serbia', 'kosovo'], 'Serbia & Kosovo'],
+    [['hungary', 'poland', 'slovakia'], 'V4 (Hungary, Poland & Slovakia)'],
+    [['uzbekistan', 'kazakhstan', 'kyrgyzstan'], 'Central Asia Trio'],
+    [['armenia', 'azerbaijan'], 'Armenia & Azerbaijan'],
+    [['malaysia', 'indonesia'], 'Malaysia & Indonesia'],
+    [['kenya', 'ethiopia'], 'Kenya & Ethiopia'],
   ];
 
-  let relCountryA = 'cambodia';
-  let relCountryB = 'vietnam';
+  let selectedCountries = ['cambodia', 'vietnam'];
   let relPeriod = '30d';
-  let relCustom = '';
 
   function getCountryName(id) {
     const c = index.countries.find((x) => x.id === id);
@@ -797,67 +807,58 @@
 
   async function renderRelations() {
     T.queue.length = 0;
-    const nameA = getCountryName(relCountryA);
-    const nameB = relCountryB === 'custom' && relCustom ? relCustom : getCountryName(relCountryB);
-    const termsA = getCountryTerms(relCountryA);
-    const termsB = relCountryB === 'custom' && relCustom ? [fold(relCustom)] : getCountryTerms(relCountryB);
+    if (!selectedCountries.length) selectedCountries = ['cambodia', 'vietnam'];
+    const names = selectedCountries.map(getCountryName);
+    const titleStr = names.join(names.length === 2 ? ' & ' : ', ');
 
-    const isBMonitored = index.countries.some((x) => x.id === relCountryB);
+    const unselectedCountries = index.countries.filter((c) => !selectedCountries.includes(c.id));
+    const unselectedPartners = COMMON_PARTNERS.filter((p) => !selectedCountries.includes(p.id));
+
+    const chips = h('div', { class: 'country-chips' },
+      ...selectedCountries.map((cid) =>
+        h('span', { class: 'country-chip notranslate', translate: 'no' },
+          getCountryName(cid),
+          selectedCountries.length > 1 && h('button', {
+            type: 'button',
+            class: 'x',
+            title: `Remove ${getCountryName(cid)}`,
+            'aria-label': `Remove ${getCountryName(cid)}`,
+            onclick: () => {
+              selectedCountries = selectedCountries.filter((x) => x !== cid);
+              setHash(hashFor('all'));
+              renderRelations();
+            }
+          }, '×')
+        )
+      ),
+      h('select', {
+        class: 'add-country-sel notranslate',
+        translate: 'no',
+        onchange: (e) => {
+          const val = e.target.value;
+          if (val && !selectedCountries.includes(val)) {
+            selectedCountries.push(val);
+            setHash(hashFor('all'));
+            renderRelations();
+          }
+        }
+      },
+        h('option', { value: '', text: '+ Add country / partner…' }),
+        h('optgroup', { label: 'Major Partners & Powers', class: 'notranslate', translate: 'no' },
+          ...unselectedPartners.map((p) => h('option', { value: p.id, text: p.name, class: 'notranslate', translate: 'no' }))),
+        ...REGIONS.flatMap((r) => {
+          const items = unselectedCountries.filter((c) => getRegion(c.id) === r);
+          return items.length ? [h('optgroup', { label: r, class: 'notranslate', translate: 'no' }, ...items.map((c) => h('option', { value: c.id, text: c.name, class: 'notranslate', translate: 'no' })))] : [];
+        })
+      )
+    );
 
     const bar = h('div', { class: 'bilateral-bar' },
       h('div', { class: 'bilateral-controls' },
-        h('label', { class: 'field' },
-          h('span', { text: 'Country A' }),
-          h('select', {
-            id: 'rel-sel-a',
-            translate: 'no',
-            class: 'notranslate',
-            onchange: (e) => { relCountryA = e.target.value; setHash(hashFor('all')); renderRelations(); }
-          }, ...REGIONS.flatMap((r) => {
-            const items = index.countries.filter((c) => getRegion(c.id) === r);
-            return items.length ? [h('optgroup', { label: r }, ...items.map((c) => h('option', { value: c.id, text: c.name, selected: c.id === relCountryA })))] : [];
-          }))),
-        h('button', {
-          type: 'button', class: 'bilateral-swap', title: 'Swap Country A and B',
-          onclick: () => {
-            if (isBMonitored) {
-              const tmp = relCountryA; relCountryA = relCountryB; relCountryB = tmp;
-              setHash(hashFor('all'));
-              renderRelations();
-            }
-          }
-        }, '⇄'),
-        h('label', { class: 'field' },
-          h('span', { text: 'Country B / Partner' }),
-          h('select', {
-            id: 'rel-sel-b',
-            translate: 'no',
-            class: 'notranslate',
-            onchange: (e) => {
-              relCountryB = e.target.value;
-              setHash(hashFor('all'));
-              renderRelations();
-            }
-          },
-            h('optgroup', { label: 'Popular Partners & Powers' },
-              ...COMMON_PARTNERS.map((p) => h('option', { value: p.id, text: p.name, selected: p.id === relCountryB }))),
-            ...REGIONS.flatMap((r) => {
-              const items = index.countries.filter((c) => getRegion(c.id) === r && c.id !== relCountryA);
-              return items.length ? [h('optgroup', { label: r }, ...items.map((c) => h('option', { value: c.id, text: c.name, selected: c.id === relCountryB })))] : [];
-            }),
-            h('optgroup', { label: 'Search' },
-              h('option', { value: 'custom', text: 'Custom entity / keyword…', selected: relCountryB === 'custom' })))),
-        relCountryB === 'custom' && h('label', { class: 'field' },
-          h('span', { text: 'Keyword / Entity' }),
-          h('input', {
-            type: 'text', placeholder: 'e.g. Laos, ASEAN, IMF', value: relCustom,
-            oninput: (e) => { relCustom = e.target.value.trim(); },
-            onkeydown: (e) => { if (e.key === 'Enter') { e.preventDefault(); renderRelations(); } }
-          })),
-        relCountryB === 'custom' && h('button', {
-          type: 'button', class: 'research', style: 'height: 2.15rem;',
-          onclick: () => renderRelations(), text: 'Search'
-        }),
+        h('div', { class: 'field' },
+          h('span', { text: selectedCountries.length === 2 ? 'Bilateral Partners' : 'Selected Countries' }),
+          chips
+        ),
         h('label', { class: 'field' },
           h('span', { text: 'Time Window' }),
           h('select', {
@@ -868,113 +869,84 @@
               h('option', { value: v, text: label, selected: v === relPeriod })))),
       ),
       h('div', { class: 'bilateral-pairs' },
-        h('span', { class: 'pair-label', text: 'Quick pairs:' }),
-        ...POPULAR_PAIRS.map(([ca, cb, label]) => h('button', {
-          type: 'button',
-          class: 'pair-pill' + (relCountryA === ca && relCountryB === cb ? ' active' : ''),
-          text: label,
-          onclick: () => {
-            relCountryA = ca; relCountryB = cb;
-            setHash(hashFor('all'));
-            renderRelations();
-          }
-        }))
+        h('span', { class: 'pair-label', text: 'Quick presets:' }),
+        ...QUICK_PRESETS.map(([cids, label]) => {
+          const isActive = cids.length === selectedCountries.length && cids.every((c, i) => c === selectedCountries[i]);
+          return h('button', {
+            type: 'button',
+            class: 'pair-pill' + (isActive ? ' active' : ''),
+            text: label,
+            onclick: () => {
+              selectedCountries = [...cids];
+              setHash(hashFor('all'));
+              renderRelations();
+            }
+          });
+        })
       )
     );
 
-    const loadingState = h('p', { class: 'state', text: `Analyzing bilateral reporting between ${nameA} and ${nameB}…` });
+    const loadingState = h('p', { class: 'state', text: `Analyzing reporting for ${titleStr}…` });
     results.replaceChildren(
       h('p', { class: 'result-line' },
-        h('b', { text: `Bilateral & Joint Affairs · ${nameA} ⇄ ${nameB}` }),
+        h('b', { text: `Joint & Multilateral Affairs · ${titleStr}` }),
         ` · ${relPeriod === '30d' ? 'Last 30 days' : relPeriod === '14d' ? 'Last 14 days' : 'Last 7 days'} · `,
         h('button', { type: 'button', class: 'desk-link', text: '← Back to Overview', onclick: () => openCountry('home') })),
       bar,
       loadingState
     );
 
-    // Fetch datasets
-    const [rawA, rawB] = await Promise.all([
-      loadCountryStories(relCountryA, relPeriod),
-      isBMonitored ? loadCountryStories(relCountryB, relPeriod) : Promise.resolve([])
-    ]);
+    // Fetch datasets for all monitored desks in selectedCountries
+    const monitoredSelected = selectedCountries.filter((cid) => index.countries.some((x) => x.id === cid));
+    const rawDatasets = await Promise.all(monitoredSelected.map((cid) => loadCountryStories(cid, relPeriod)));
 
-    // Matching stories
-    const matchesTerms = (s, terms) => {
+    // Combine pool: all stories from selected desks + global pool (ARGOS_HOME)
+    const hm = window.ARGOS_HOME;
+    const globalPool = hm ? [...(hm.most_reported || []), ...(hm.growing || []), ...(hm.abroad_only || [])] : [];
+    const pool = [...rawDatasets.flat(), ...globalPool];
+
+    // Deduplicate stories by url / title
+    const seen = new Set();
+    const candidateStories = [];
+    for (const s of pool) {
+      const key = s.url || (s.title + (s.country || ''));
+      if (!seen.has(key)) {
+        seen.add(key);
+        candidateStories.push(s);
+      }
+    }
+
+    // Matching: story must involve EVERY selected country
+    const termsMap = new Map(selectedCountries.map((cid) => [cid, getCountryTerms(cid)]));
+    const storyInvolvesCountry = (s, cid) => {
+      if (s.country === cid) return true;
+      const terms = termsMap.get(cid) || [];
       const txt = storyText(s);
       return terms.some((t) => t && txt.includes(t));
     };
 
-    const storiesA = rawA.filter((s) => matchesTerms(s, termsB));
-    const storiesB = rawB.filter((s) => matchesTerms(s, termsA));
-
-    // Global / third-party stories from ARGOS_HOME
-    const hm = window.ARGOS_HOME;
-    const globalPool = hm ? [...(hm.most_reported || []), ...(hm.growing || []), ...(hm.abroad_only || [])] : [];
-    const jointThirdParty = globalPool.filter((s) => {
-      if (s.country === relCountryA || (isBMonitored && s.country === relCountryB)) return false;
-      return matchesTerms(s, termsA) && matchesTerms(s, termsB);
-    });
-
-    const totalCount = storiesA.length + storiesB.length + jointThirdParty.length;
-
-    const content = [];
-    if (isBMonitored) {
-      content.push(
-        h('div', { class: 'bilateral-grid' },
-          h('div', { class: 'bilateral-col' },
-            h('div', { class: 'bilateral-col-head' },
-              h('h2', { text: `${nameA} Media Perspective` }),
-              h('span', { text: plural(storiesA.length, 'story', 'stories') })),
-            storiesA.length
-              ? storiesA.map((s, i) => story(s, { lead: i === 0, i }))
-              : h('p', { class: 'state', text: `No stories in ${nameA} media mentioning ${nameB} in the ${relPeriod === '30d' ? 'last 30 days' : relPeriod === '14d' ? 'last 14 days' : 'last 7 days'}.` })),
-          h('div', { class: 'bilateral-col' },
-            h('div', { class: 'bilateral-col-head' },
-              h('h2', { text: `${nameB} Media Perspective` }),
-              h('span', { text: plural(storiesB.length, 'story', 'stories') })),
-            storiesB.length
-              ? storiesB.map((s, i) => story(s, { lead: i === 0, i }))
-              : h('p', { class: 'state', text: `No stories in ${nameB} media mentioning ${nameA} in the ${relPeriod === '30d' ? 'last 30 days' : relPeriod === '14d' ? 'last 14 days' : 'last 7 days'}.` })),
-        )
-      );
-    } else {
-      content.push(
-        h('section', { class: 'drawer' },
-          h('div', { class: 'drawer-head' },
-            h('h2', { text: `${nameA} Media Coverage of ${nameB}` }),
-            h('span', { class: 'count', text: plural(storiesA.length, 'story', 'stories') })),
-          storiesA.length
-            ? h('div', { class: 'grid' }, storiesA.map((s, i) => story(s, { lead: i === 0, i })))
-            : h('p', { class: 'state', text: `No stories in ${nameA} media mentioning "${nameB}" in the ${relPeriod === '30d' ? 'last 30 days' : relPeriod === '14d' ? 'last 14 days' : 'last 7 days'}.` }))
-      );
-    }
-
-    if (jointThirdParty.length) {
-      content.push(
-        h('section', { class: 'drawer bilateral-joint' },
-          h('div', { class: 'drawer-head' },
-            h('h2', { text: `Regional & International Coverage involving both ${nameA} & ${nameB}` }),
-            h('span', { class: 'count', text: plural(jointThirdParty.length, 'story', 'stories') })),
-          h('div', { class: 'grid' }, jointThirdParty.map((s, i) => story(s, { lead: false, i }))))
-      );
-    }
-
-    content.push(
-      h('p', { class: 'fine' },
-        `Cross-country intelligence monitor: cross-references domestic, diaspora, and international reporting across monitored desks to isolate bilateral agreements, diplomatic visits, territorial disputes, and trade interaction without external search engine bias.`
-      )
+    const matchedStories = candidateStories.filter((s) =>
+      selectedCountries.every((cid) => storyInvolvesCountry(s, cid))
     );
+
+    // Sort by recency
+    matchedStories.sort((a, b) => new Date(b.date || 0).getTime() - new Date(a.date || 0).getTime());
 
     loadingState.remove();
     results.replaceChildren(
       h('p', { class: 'result-line' },
-        h('b', { text: `Bilateral & Joint Affairs · ${nameA} ⇄ ${nameB}` }),
-        ` · ${plural(totalCount, 'story', 'stories')} found · ${relPeriod === '30d' ? 'Last 30 days' : relPeriod === '14d' ? 'Last 14 days' : 'Last 7 days'} · `,
+        h('b', { text: `Joint & Multilateral Affairs · ${titleStr}` }),
+        ` · ${plural(matchedStories.length, 'story', 'stories')} found · ${relPeriod === '30d' ? 'Last 30 days' : relPeriod === '14d' ? 'Last 14 days' : 'Last 7 days'} · `,
         h('button', { type: 'button', class: 'desk-link', text: '← Back to Overview', onclick: () => openCountry('home') })),
       bar,
-      ...content
+      matchedStories.length
+        ? h('div', { class: 'grid' }, matchedStories.map((s, i) => story(s, { lead: i === 0, i })))
+        : h('p', { class: 'state', text: `No stories found involving all selected partners (${titleStr}) in the ${relPeriod === '30d' ? 'last 30 days' : relPeriod === '14d' ? 'last 14 days' : 'last 7 days'}.` }),
+      h('p', { class: 'fine' },
+        `Cross-country intelligence monitor: cross-references reporting across monitored desks to isolate joint communiqués, multilateral agreements, diplomatic summits, territorial disputes, and trade interaction.`
+      ),
+      h('div', { id: 'trans', class: 'trans' })
     );
-
     paintTranslationBar();
     translatePending();
   }

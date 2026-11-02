@@ -333,14 +333,40 @@ summary:hover { color: var(--ink); }
 .desk-link { padding: 0; border: 0; background: none; font: 700 0.78rem/1.2 var(--sans); letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink); cursor: pointer; }
 .desk-link:hover { color: var(--red); text-decoration: underline; }
 
-/* ---- Bilateral Affairs ---- */
+/* ---- Joint & Multilateral Affairs ---- */
 .bilateral-bar { background: var(--paper-warm, #fbfaf8); border: 1px solid var(--rule); padding: 1rem 1.25rem; margin: 1rem 0 1.5rem; }
-.bilateral-controls { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; align-items: flex-end; }
-.bilateral-controls .field { display: flex; flex-direction: column; gap: 0.3rem; }
+.bilateral-controls { display: flex; flex-wrap: wrap; gap: 0.75rem 1.5rem; align-items: flex-end; }
+.bilateral-controls .field { display: flex; flex-direction: column; gap: 0.35rem; }
 .bilateral-controls .field span { font: 700 0.72rem/1.2 var(--sans); letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-2); }
 .bilateral-controls select, .bilateral-controls input { font: 500 0.88rem/1.3 var(--sans); padding: 0.4rem 0.6rem; border: 1px solid var(--ink-3); background: #fff; }
-.bilateral-swap { height: 2.15rem; padding: 0 0.75rem; align-self: flex-end; font: 700 1.1rem/1 var(--sans); background: #fff; border: 1px solid var(--ink-3); cursor: pointer; }
-.bilateral-swap:hover { background: var(--ink); color: #fff; }
+.country-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; min-height: 2.15rem; }
+.country-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.55rem;
+  background: #fff;
+  border: 1px solid var(--ink);
+  font: 600 0.82rem/1.2 var(--sans);
+  color: var(--ink);
+}
+.country-chip .x {
+  background: none;
+  border: 0;
+  font-size: 1.05rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--ink-3);
+  padding: 0 0.15rem;
+}
+.country-chip .x:hover { color: var(--red); }
+.add-country-sel {
+  font: 500 0.82rem/1.2 var(--sans);
+  padding: 0.35rem 0.6rem;
+  border: 1px dashed var(--ink-3);
+  background: #fff;
+  cursor: pointer;
+}
 .bilateral-pairs { margin-top: 0.85rem; display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
 .bilateral-pairs .pair-label { font: 700 0.72rem/1.2 var(--sans); text-transform: uppercase; color: var(--ink-3); margin-right: 0.25rem; }
 .pair-pill { font: 600 0.76rem/1.2 var(--sans); padding: 0.2rem 0.55rem; background: #fff; border: 1px solid var(--rule); cursor: pointer; text-decoration: none; color: var(--ink); }
