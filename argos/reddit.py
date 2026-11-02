@@ -1,20 +1,57 @@
 """Stage: what people talk about on the country's subreddits today (top posts of the day, via Reddit's public RSS).
 
-Supports a list of subreddits per country in pack.yaml (e.g. [Vietnam, vozforums, TroChuyenLinhTinh, hanoi, Saigon])
-and fetches all countries in one multireddit RSS request first to avoid Reddit's 1-request-per-minute IP rate limit.
+Supports a list of subreddits per country in pack.yaml (e.g. [Vietnam, vozforums, TroChuyenLinhTinh, hanoi, Saigon]),
+filters out personal/tourist/meme noise using the country's foreign-desk themes (themes.yaml) and multilingual embeddings,
+and batches requests to respect Reddit's IP rate limit.
 """
+import html
 import re
 import time
 from datetime import datetime, timezone
 
 import feedparser
+import numpy as np
 
-from . import fetch, packs
+from . import fetch, packs, policy
+from .embed import Embedder
 from .export import SITE_DATA, _write
 
 URL = "https://www.reddit.com/r/{}/top/.rss?t=day&limit=100"
+WEEK_URL = "https://www.reddit.com/r/{}/top/.rss?t=week&limit=100"
 POSTS = 6
 SUB_RE = re.compile(r"/r/([^/]+)/")
+TAG_RE = re.compile(r"<[^>]+>")
+FOOT_RE = re.compile(r"(?:&#32;)?\s*submitted by\s+/u/\S+.*", re.I | re.S)
+
+# Non-desk Reddit noise (personal anecdotes, tourist/expat Q&A, nightlife, pets/wildlife photos, vague clickbait).
+NOISE_TEXTS = [
+    "personal story, my friend died, family memory, grief, relationship advice, dating, girlfriend, boyfriend",
+    "tourist question, question for locals, travel itinerary, hotel, restaurant, clubbing, nightlife, where to buy",
+    "cute animal, pet, dog, cat, bird, owl in the city, nature photo, sunset, street photo, meme, joke",
+    "what is this called, oh the irony, this should be illegal, look at this, random question, halloween candy",
+]
+FLUFF_RE = re.compile(
+    r"(\[removed|removed by reddit|\b(?:what is this called|question for|oh the irony|this should be illegal|"
+    r"clubbing|dating|tinder|bumble|itinerary|first time visiting|what would you recommend|what can i skip|"
+    r"recommendations|advice needed|planning to move|need help looking for|can i make an|getting back into|"
+    r"english teaching|noise complain|where can i buy|looking for friends|rate my|shitpost|ama|ask me anything|"
+    r"e-?visa|return ticket|postcards|dna test)\b|^i want\b)",
+    re.I,
+)
+# Extra civic/political/economic terms often used in Reddit discussions (supplementing themes.yaml keywords).
+CIVIC_EXTRA = {
+    "econ_policy": [
+        "prices", "cost of living", "rent", "salary", "wages", "tax", "taxes", "property", "housing",
+        "fizetés", "albérlet", "drágulás", "árak", "lương", "giá nhà", "thuế", "តម្លៃ", "ពន្ធ", "កម្មករ",
+    ],
+    "party_gov": [
+        "magyar péter", "orbán", "mészáros", "várkonyi", "fidelitas", "tisza", "kormány", "polgármester",
+        "councillor", "municipality", "afriforum", "politician", "minister", "government", "protest",
+        "bộ công an", "đại biểu", "cộng sản",
+    ],
+    "anticorruption": ["lavish", "taxpayer", "oligarch", "magángép", "ner", "közpénz", "bribe", "scandal"],
+    "accident_weather": ["stranded", "cruise ship", "typhoon", "cyclone", "power outage", "blackout"],
+}
 
 
 def _subs(pack):
@@ -22,12 +59,80 @@ def _subs(pack):
     return [r] if isinstance(r, str) else list(r)
 
 
+def _clean_body(e):
+    raw = e.get("summary") or (e.get("content") or [{}])[0].get("value") or ""
+    txt = FOOT_RE.sub("", TAG_RE.sub(" ", html.unescape(raw)))
+    return " ".join(txt.split())
+
+
 def _post(e):
     m = SUB_RE.search(e.get("link") or "")
-    return {"title": e.title, "url": e.link, "sub": m.group(1) if m else ""}
+    return {"title": (e.get("title") or "").strip(), "body": _clean_body(e), "url": e.get("link") or "", "sub": m.group(1) if m else ""}
+
+
+def _filter_country(cid, raw_posts, emb, noise_vecs):
+    if not raw_posts:
+        return []
+    themes = packs.load(cid)["themes"]["themes"]
+    protos = np.array([
+        (v := emb.encode(["passage: " + d for d in t["describe"]]).mean(0)) / np.linalg.norm(v)
+        for t in themes
+    ])
+    matchers = {
+        t["id"]: policy._matcher(list(t["keywords"]) + CIVIC_EXTRA.get(t["id"], []))
+        for t in themes
+    }
+
+    candidates = []
+    for p in raw_posts:
+        title = p["title"]
+        if not title or FLUFF_RE.search(title):
+            continue
+        candidates.append(p)
+    if not candidates:
+        return []
+
+    texts = [f"query: {p['title']}" for p in candidates]
+    vecs = emb.encode(texts)
+
+    kept = []
+    for p, vec in zip(candidates, vecs):
+        title_low = p["title"].lower()
+        kw_hits = [t for t in themes if matchers[t["id"]](title_low)]
+        sims = protos @ vec
+        noise_sim = float(np.max(noise_vecs @ vec))
+        best_idx = int(np.argmax(sims))
+        best_sim = float(sims[best_idx])
+        best_theme = themes[best_idx]
+
+        # Without a keyword match, drop open-ended questions (tourist/personal Q&A) and require a substantive
+        # statement (>= 6 words) with strong theme similarity (>= 0.815) that beats the noise prototypes.
+        if kw_hits:
+            chosen = max(kw_hits, key=lambda t: t.get("weight", 0.5))
+        else:
+            if p["title"].strip().endswith("?") or len(p["title"].split()) < 6 or best_sim < 0.815 or best_sim <= noise_sim + 0.015:
+                continue
+            chosen = best_theme
+
+        kept.append((
+            bool(kw_hits),
+            chosen.get("weight", 0.5),
+            {
+                "title": p["title"],
+                "url": p["url"],
+                "sub": p["sub"],
+                "tag": chosen.get("label") or chosen["id"].replace("_", " ").title(),
+            },
+        ))
+    kept.sort(key=lambda x: (x[0], x[1]), reverse=True)
+    return [x[2] for x in kept[:POSTS]]
 
 
 def run(db=None):
+    emb = Embedder()
+    noise_vecs = emb.encode(["passage: " + t for t in NOISE_TEXTS])
+    noise_vecs = noise_vecs / np.linalg.norm(noise_vecs, axis=1, keepdims=True)
+
     by_country = {cid: _subs(packs.load(cid)) for cid in packs.pack_ids()}
     owner = {s.lower(): cid for cid, subs in by_country.items() for s in subs}
     out = {}
@@ -36,31 +141,39 @@ def run(db=None):
     if status == 429:
         time.sleep(60)
         status, body = fetch.get(URL.format(all_subs))
+    buckets = {cid: [] for cid in by_country}
     if status == 200:
-        buckets = {cid: [] for cid in by_country}
         for e in feedparser.parse(body).entries:
             p = _post(e)
             cid = owner.get(p["sub"].lower())
-            if cid and len(buckets[cid]) < POSTS:
+            if cid:
                 buckets[cid].append(p)
         for cid, subs in by_country.items():
-            if buckets[cid]:
-                out[cid] = {"subreddit": ", ".join(f"r/{s}" for s in subs), "posts": buckets[cid]}
-                print(f"reddit: {cid}: {len(buckets[cid])} posts across {out[cid]['subreddit']}")
-    # Top up any country that had no posts in the global top-100 (e.g. smaller subreddits like Cambodia).
+            kept = _filter_country(cid, buckets[cid], emb, noise_vecs)
+            if len(kept) >= 3:
+                out[cid] = {"subreddit": ", ".join(f"r/{s}" for s in subs), "posts": kept}
+                print(f"reddit: {cid}: {len(kept)}/{len(buckets[cid])} desk-relevant posts across {out[cid]['subreddit']}")
+    # Top up any country with fewer than 3 kept posts from the global top-100 by querying its own multireddit (week window).
     for cid, subs in by_country.items():
         if cid in out or not subs:
             continue
-        status, body = fetch.get(URL.format("+".join(subs)))
+        status, body = fetch.get(WEEK_URL.format("+".join(subs)))
         if status == 429:
             time.sleep(60)
-            status, body = fetch.get(URL.format("+".join(subs)))
+            status, body = fetch.get(WEEK_URL.format("+".join(subs)))
         if status != 200:
+            if buckets[cid]:
+                kept = _filter_country(cid, buckets[cid], emb, noise_vecs)
+                if kept:
+                    out[cid] = {"subreddit": ", ".join(f"r/{s}" for s in subs), "posts": kept}
             print(f"reddit: {cid}: HTTP {status}, skipped")
             continue
-        posts = [_post(e) for e in feedparser.parse(body).entries[:POSTS]]
-        if posts:
-            out[cid] = {"subreddit": ", ".join(f"r/{s}" for s in subs), "posts": posts}
-            print(f"reddit: {cid}: {len(posts)} posts across {out[cid]['subreddit']}")
+        seen = {p["url"] for p in buckets[cid]}
+        raw = list(buckets[cid]) + [p for p in (_post(e) for e in feedparser.parse(body).entries) if p["url"] not in seen]
+        kept = _filter_country(cid, raw, emb, noise_vecs)
+        if kept:
+            out[cid] = {"subreddit": ", ".join(f"r/{s}" for s in subs), "posts": kept}
+            print(f"reddit: {cid}: {len(kept)}/{len(raw)} desk-relevant posts across {out[cid]['subreddit']}")
     SITE_DATA.mkdir(parents=True, exist_ok=True)
     _write("reddit", {"generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"), "countries": out}, "ARGOS_REDDIT")
+

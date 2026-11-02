@@ -137,9 +137,11 @@
         }
         it.el.textContent = en;
         it.el.lang = 'en';
-        it.origEl.textContent = it.text;
-        it.origEl.lang = it.lang;
-        it.origEl.hidden = false;
+        if (en.trim().toLowerCase() !== it.text.trim().toLowerCase()) {
+          it.origEl.textContent = it.text;
+          it.origEl.lang = it.lang;
+          it.origEl.hidden = false;
+        }
       } catch { /* keep the original text as it is */ }
     }
     T.running = false;
@@ -299,12 +301,16 @@
   function trends() {
     const tr = (window.ARGOS_TRENDS && (window.ARGOS_TRENDS.countries || (window.ARGOS_TRENDS.trends || {}).countries) || {})[country.value];
     if (!tr || !tr.length) return null;
+    const cLang = (index.countries.find((c) => c.id === country.value) || {}).language || 'en';
     return h('section', { class: 'alerts', 'aria-label': 'Trending searches' },
       h('h2', { text: 'Trending searches' }),
       h('ul', { class: 'trend-list' }, tr.map((x) => {
         const n = current.stories.filter((s) => storyText(s).includes(x.term.toLowerCase())).length;
+        const termEl = h('span', { class: 'term', lang: cLang, text: x.term });
+        const origEl = h('span', { class: 'orig', hidden: true });
+        track(termEl, x.term, cLang, origEl);
         return h('li', null,
-          h('span', { class: 'term', text: x.term }),
+          termEl, origEl,
           x.traffic && h('span', { class: 'meta', text: x.traffic }),
           n > 0 && h('button', { type: 'button', class: 'desk-link', text: `${plural(n, 'story', 'stories')} →`,
             onclick: () => { $('#q').value = x.term; setHash(hashFor(openTopic)); render(false); results.scrollIntoView({ block: 'start' }); } }));
@@ -315,12 +321,19 @@
   function reddit() {
     const r = (window.ARGOS_REDDIT && (window.ARGOS_REDDIT.countries || (window.ARGOS_REDDIT.reddit || {}).countries) || {})[country.value];
     if (!r || !r.posts.length) return null;
+    const cLang = (index.countries.find((c) => c.id === country.value) || {}).language || 'en';
     return h('section', { class: 'alerts', 'aria-label': 'On Reddit' },
       h('h2', { text: 'On Reddit today' }),
-      h('ul', null, r.posts.map((x) => h('li', null,
-        x.sub && h('span', { class: 'stamp indigo', text: `r/${x.sub}` }),
-        h('a', { href: safeUrl(x.url), target: '_blank', rel: 'noopener', text: x.title })))),
-      h('p', { class: 'byline', text: `Top discussions across ${r.subreddit}. Unverified.` }));
+      h('ul', null, r.posts.map((x) => {
+        const a = h('a', { href: safeUrl(x.url), target: '_blank', rel: 'noopener', lang: cLang, text: x.title });
+        const origEl = h('span', { class: 'orig', hidden: true });
+        track(a, x.title, cLang, origEl);
+        return h('li', null,
+          x.sub && h('span', { class: 'stamp indigo', text: `r/${x.sub}` }),
+          x.tag && h('span', { class: 'stamp', text: x.tag }),
+          a, origEl);
+      })),
+      h('p', { class: 'byline', text: `Desk-relevant posts across ${r.subreddit}. Unverified.` }));
   }
 
   const watched = () => { try { return JSON.parse(localStorage.getItem('argos.watch') || '[]'); } catch { return []; } };
