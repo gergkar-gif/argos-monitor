@@ -184,6 +184,15 @@
   }
 
   // ---------- rendering ----------
+  // New, growing or quiet, judged from when its articles were published (the last 24 hours against the whole story).
+  function trend(s) {
+    if (s.last_24h == null || s.articles < 2) return null;
+    if (s.last_24h === s.articles) return ['New', 'indigo', 'Every article is from the last 24 hours.'];
+    if (s.last_24h >= 3 && s.last_24h * 2 >= s.articles) return ['Growing', 'indigo', 'Half or more of the articles are from the last 24 hours.'];
+    if (s.last_24h === 0) return ['Quiet', 'indigo', 'No new articles in the last 24 hours.'];
+    return null;
+  }
+
   function story(s, opts) {
     const first = s.sources[0];
     const present = scopes().filter(([id]) => s.by_scope[id]);
@@ -205,6 +214,7 @@
         h('span', { class: 'stamp ' + (s.evidence === 'OFFICIAL' ? 'red' : 'indigo'),
           title: s.evidence === 'OFFICIAL' ? 'A government or Party outlet is among the sources. Officially stated, not independently verified.' : 'Reported by one or more outlets.',
           text: s.evidence === 'OFFICIAL' ? 'Official' : 'Reported' }),
+        trend(s) && h('span', { class: 'stamp ' + trend(s)[1], title: trend(s)[2], text: trend(s)[0] }),
         s.abroad_only && h('span', { class: 'stamp teal', title: 'No outlet inside the country covered it.', text: 'Not in domestic press' }),
         (s.themes || []).length > 0 && h('span', { class: 'themes', title: 'Why this story ranks where it does', text: s.themes.join(' · ') }),
         h('span', null, h('strong', { text: outlets }), ` · ${plural(s.articles, 'article', 'articles')}`, single && ` · all ${single}`),
@@ -224,6 +234,13 @@
       })));
     }
 
+    if (s.first && s.articles > 2) {
+      const max = Math.max(...s.per_day.map((d) => d[1]));
+      clip.append(h('div', { class: 'timeline' },
+        h('span', { class: 'bars', 'aria-hidden': 'true' }, s.per_day.map(([day, n]) =>
+          h('i', { style: `height:${Math.max(15, Math.round(100 * n / max))}%`, title: `${fmtDay.format(new Date(day))}: ${plural(n, 'article', 'articles')}` }))),
+        h('span', { text: `First seen in ${s.first.source}, ${fmtTime.format(new Date(s.first.at))}. ${plural(s.per_day.length, 'day', 'days')} of coverage.` })));
+    }
     if ((s.related || []).length) {
       clip.append(h('p', { class: 'byline related' }, 'May be the same event: ', s.related.map((r) =>
         h('span', null, h('a', { href: safeUrl(r.url), target: '_blank', rel: 'noopener', text: r.title }), ` (${plural(r.articles, 'article', 'articles')}, ${r.source}) `))));
@@ -270,6 +287,56 @@
     return sec;
   }
 
+  const storyText = (s) => [s.headline.title, ...s.sources.map((r) => r.title + ' ' + r.source), ...s.excerpts.map((x) => x.text)].join(' ').toLowerCase();
+
+  // What people search for (Google Trends): how many collected stories mention each term, one click to read them.
+  function trends() {
+    const tr = window.ARGOS_TRENDS && window.ARGOS_TRENDS.countries[country.value];
+    if (!tr || !tr.length) return null;
+    return h('section', { class: 'alerts', 'aria-label': 'Trending searches' },
+      h('h2', { text: 'Trending searches' }),
+      h('ul', null, tr.map((x) => {
+        const n = current.stories.filter((s) => storyText(s).includes(x.term.toLowerCase())).length;
+        return h('li', null,
+          h('span', { text: x.term }),
+          x.traffic && h('span', { class: 'meta', text: `${x.traffic} searches` }),
+          n ? h('button', { type: 'button', class: 'more', text: `${plural(n, 'story', 'stories')} here`,
+            onclick: () => { $('#q').value = x.term; setHash(hashFor(openTopic)); render(false); results.scrollIntoView({ block: 'start' }); } })
+            : h('span', { class: 'meta', text: 'no matching story' }),
+          x.url && h('a', { href: safeUrl(x.url), target: '_blank', rel: 'noopener', text: x.source || 'news' }));
+      })),
+      h('p', { class: 'byline', text: 'Google Trends, top searches in the country right now. Matching is by exact words in our headlines and quotes.' }));
+  }
+
+  // Top posts of the day on the country's subreddit; hidden when Reddit did not answer.
+  function reddit() {
+    const r = window.ARGOS_REDDIT && window.ARGOS_REDDIT.countries[country.value];
+    if (!r || !r.posts.length) return null;
+    return h('section', { class: 'alerts', 'aria-label': 'On Reddit' },
+      h('h2', { text: `On Reddit today, r/${r.subreddit}` }),
+      h('ul', null, r.posts.map((x) => h('li', null, h('a', { href: safeUrl(x.url), target: '_blank', rel: 'noopener', text: x.title })))),
+      h('p', { class: 'byline', text: 'Top posts of the day. What people discuss, not verified news.' }));
+  }
+
+  // Watchlist: words the reader follows, kept in this browser only. Each chip shows how many stories mention it here.
+  const watched = () => { try { return JSON.parse(localStorage.getItem('argos.watch') || '[]'); } catch { return []; } };
+  function setWatched(list) {
+    try { localStorage.setItem('argos.watch', JSON.stringify(list)); } catch { /* storage not available: ignore */ }
+    render(false);
+  }
+  function watchbar(q) {
+    const list = watched();
+    if (!list.length && !q) return null;
+    return h('div', { class: 'watch' },
+      h('span', { class: 'meta', text: 'Watching' }),
+      list.map((w) => h('span', { class: 'chip' },
+        h('button', { type: 'button', class: 'more', title: 'Show these stories',
+          text: `${w} (${current.stories.filter((s) => storyText(s).includes(w)).length})`,
+          onclick: () => { $('#q').value = w; setHash(hashFor(openTopic)); render(false); } }),
+        h('button', { type: 'button', class: 'x', 'aria-label': `Stop watching ${w}`, text: '?', onclick: () => setWatched(list.filter((x) => x !== w)) }))),
+      q && !list.includes(q) && h('button', { type: 'button', class: 'more', text: `Watch "${q}"`, onclick: () => setWatched([...list, q]) }));
+  }
+
   // Official alerts from free feeds (GDACS, USGS, travel advice): each line is the feed's own title, linked to it.
   function alerts() {
     const c = window.ARGOS_CRISIS;
@@ -292,7 +359,7 @@
     results.classList.toggle('still', !animate);
     T.queue.length = 0;    // items from the previous render are gone
     const q = ($('#q').value || '').trim().toLowerCase();   // search narrows the loaded stories in the browser
-    const stories = q ? d.stories.filter((s) => [s.headline.title, ...s.sources.map((r) => r.title + ' ' + r.source), ...s.excerpts.map((x) => x.text)].join(' ').toLowerCase().includes(q)) : d.stories;
+    const stories = q ? d.stories.filter((s) => storyText(s).includes(q)) : d.stories;
     const count = (id) => (q ? stories.filter((s) => s.category === id).length : d.totals[id]);
     const noOutside = d.stories.every((s) => !s.by_scope.abroad_local && !s.by_scope.international);
     const byTopic = (id) => stories.filter((s) => s.category === id);
@@ -324,7 +391,10 @@
       noOutside && h('p', { class: 'notice quiet', text: `No coverage from ${(index.countries.find((x) => x.id === country.value) || {}).abroad_label || 'outlets abroad'} or from international outlets has been collected for this period yet, so the "not in domestic press" check cannot run.` }),
       ageH > STALE_HOURS && h('p', { class: 'notice', text: `This collection is ${Math.round(ageH)} hours old. Run the collector to refresh it.` }),
       h('div', { id: 'trans', class: 'trans' }),
+      watchbar(q),
       alerts(),
+      trends(),
+      reddit(),
       tabs,
       ...body,
     ].filter(Boolean));
@@ -344,6 +414,7 @@
     const c = index.countries.find((x) => x.id === country.value);
     const p = c.periods.find((x) => x.id === period.value);
     useLanguage(c.language);
+    $('#brief').href = `brief.html#${country.value}`;
     openTopic = topic.value;
     setHash(hashFor(topic.value)); extra = {};
     results.replaceChildren(h('p', { class: 'state', text: 'Gathering the clippings…' }));

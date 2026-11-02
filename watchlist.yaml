@@ -1,0 +1,5 @@
+﻿watch:
+  # Words to follow. Every run writes site/watch.xml (an RSS feed of the stories that mention any of them),
+  # so a feed reader can alert you. Edit this list and push.
+  - hun sen
+  - Orbán

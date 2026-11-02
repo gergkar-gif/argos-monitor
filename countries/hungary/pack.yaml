@@ -49,3 +49,9 @@ classify:
   society:
     - "oktatás, egészségügy, kórház, iskola, tanárok, nyugdíj, szociális ügyek"
     - "bűnügy, baleset, időjárás, természeti csapás, rendőrség, bíróság, ítélet"
+
+# Country code for Google Trends.
+geo: HU
+
+# Main subreddit for the Reddit panel.
+reddit: hungary

@@ -58,3 +58,9 @@ classify:
     - "traffic accidents, court trial, criminal cases, human rights"
     - "អប់រំ សុខាភិបាល មន្ទីរពេទ្យ សាលារៀន បរិស្ថាន ការប្រែប្រួលអាកាសធាតុ ទឹកជំនន់"
     - "គ្រោះថ្នាក់ចរាចរណ៍ តុលាការ ជំនុំជម្រះ បទល្មើស ជីវភាពប្រជាជន"
+
+# Country code for Google Trends.
+geo: KH
+
+# Main subreddit for the Reddit panel.
+reddit: cambodia

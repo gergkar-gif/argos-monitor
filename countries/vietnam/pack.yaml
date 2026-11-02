@@ -54,3 +54,9 @@ classify:
 
 # Other spellings of the country name in crisis feeds.
 crisis_names: ["Viet Nam"]
+
+# Country code for Google Trends.
+geo: VN
+
+# Main subreddit for the Reddit panel.
+reddit: Vietnam

@@ -1,8 +1,8 @@
 """Run the pipeline. `python run.py` runs every stage; `python run.py extract` runs one
-(ingest | extract | normalise | relevance | embed | cluster | classify | policy | rank | excerpts | verify | export | crisis | prune | report | top | sample)."""
+(ingest | extract | normalise | relevance | embed | cluster | classify | policy | rank | excerpts | verify | export | crisis | trends | reddit | watch | prune | report | top | sample)."""
 import sys
 
-from argos import classify, cluster, db as dbmod, embed, crisis, excerpts, export, extract, ingest, normalise, policy, prune, rank, relevance, translate
+from argos import classify, cluster, db as dbmod, embed, crisis, excerpts, export, extract, ingest, normalise, policy, prune, rank, relevance, translate, trends, reddit, watch
 
 
 def report(db):
@@ -57,12 +57,12 @@ def sample(db, k=30):
 
 STAGES = {"ingest": ingest.run, "extract": extract.run, "normalise": normalise.run, "relevance": relevance.run,
           "embed": embed.run, "cluster": cluster.run, "classify": classify.run, "policy": policy.run, "rank": rank.run,
-          "translate": translate.run, "excerpts": excerpts.run, "verify": excerpts.verify, "export": export.run, "crisis": crisis.run, "prune": prune.run,
+          "translate": translate.run, "excerpts": excerpts.run, "verify": excerpts.verify, "export": export.run, "crisis": crisis.run, "trends": trends.run, "reddit": reddit.run, "watch": watch.run, "prune": prune.run,
           "report": report, "top": top, "sample": sample}
 
 if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
     db = dbmod.connect()
-    for name in sys.argv[1:] or ["ingest", "extract", "normalise", "relevance", "embed", "cluster", "classify", "policy", "rank", "excerpts", "verify", "export", "crisis", "prune", "report"]:
+    for name in sys.argv[1:] or ["ingest", "extract", "normalise", "relevance", "embed", "cluster", "classify", "policy", "rank", "excerpts", "verify", "export", "crisis", "trends", "reddit", "watch", "prune", "report"]:
         print(f"\n== {name}")
         STAGES[name](db)

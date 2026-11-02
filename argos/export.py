@@ -4,7 +4,7 @@ One file per country and time window. Only headlines, short verified excerpts an
 no full article text ever leaves the local database.
 """
 import json
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 from . import packs
 from .config import ROOT
@@ -31,8 +31,16 @@ def _story(db, s):
         "SELECT a.title, a.url, src.name AS source, (SELECT COUNT(*) FROM story_article WHERE story_id=r.related_id) AS n "
         "FROM story_related r JOIN story o ON o.id=r.related_id JOIN article a ON a.id=o.representative_article_id "
         "JOIN source src ON src.id=a.source_id WHERE r.story_id=? ORDER BY r.similarity DESC LIMIT 2", (s["id"],)).fetchall()
+    cutoff_24h = (datetime.now(timezone.utc) - timedelta(hours=24)).isoformat(timespec="seconds")
+    dated = sorted((r for r in rows if r["published_at"]), key=lambda r: r["published_at"])
+    days = {}
+    for r in dated:
+        days[r["published_at"][:10]] = days.get(r["published_at"][:10], 0) + 1
     return {
         "id": s["id"],
+        "first": {"source": dated[0]["source"], "at": dated[0]["published_at"]} if dated else None,   # earliest article in the story
+        "per_day": sorted(days.items()),
+        "last_24h": sum(r["published_at"] >= cutoff_24h for r in dated),   # articles in the last day: new, growing or quiet
         "category": s["category"],
         "score": s["score"],
         "themes": json.loads(s["themes"] or "[]"),         # why it ranks where it does (themes.yaml)
@@ -71,18 +79,20 @@ def run(db):
         periods = []
         for days, label in WINDOWS.items():
             ids = dashboard_story_ids(db, cid, days)
-            if not ids:
-                continue
-            stories = [_story(db, db.execute("SELECT * FROM story WHERE id=?", (i,)).fetchone()) for i in ids]
-            stories.sort(key=lambda st: -st["score"])
-            totals = {c: db.execute("SELECT COUNT(*) FROM story WHERE country=? AND window_days=? AND category=?", (cid, days, c)).fetchone()[0]
-                      for c in CATEGORIES}          # all stories found in the window, of which the top ones are exported
-            payload = {"country": cid, "period": label, "days": days, "generated_at": now, "categories": CATEGORIES,
-                       "totals": totals, "stories": stories}
-            _write(f"{cid}-{label}", payload, "ARGOS_DATA")
-            periods.append({"id": label, "label": {"24h": "Last 24 hours", "7d": "Last 7 days"}[label], "file": f"{cid}-{label}.json"})
-            print(f"export: {cid}-{label}.json with {len(stories)} stories")
+            if ids:
+                stories = [_story(db, db.execute("SELECT * FROM story WHERE id=?", (i,)).fetchone()) for i in ids]
+                stories.sort(key=lambda st: -st["score"])
+                totals = {c: db.execute("SELECT COUNT(*) FROM story WHERE country=? AND window_days=? AND category=?", (cid, days, c)).fetchone()[0]
+                          for c in CATEGORIES}          # all stories found in the window, of which the top ones are exported
+                payload = {"country": cid, "period": label, "days": days, "generated_at": now, "categories": CATEGORIES,
+                           "totals": totals, "stories": stories}
+                _write(f"{cid}-{label}", payload, "ARGOS_DATA")
+                print(f"export: {cid}-{label}.json with {len(stories)} stories")
+            if ids or (SITE_DATA / f"{cid}-{label}.json").exists():
+                periods.append({"id": label, "label": {"24h": "Last 24 hours", "7d": "Last 7 days"}[label], "file": f"{cid}-{label}.json"})
         if periods:
             countries.append({"id": cid, "name": pack["name"], "language": pack["language"],
                               "abroad_label": pack["abroad_label"], "periods": periods})
+    keep = ("name", "homepage", "language", "scope", "kind", "governing_body", "state_affiliated", "notes")
+    _write("sources", {c: [{k: s.get(k) for k in keep} for s in packs.load(c)["sources"]] for c in packs.pack_ids()}, "ARGOS_SOURCES")
     _write("index", {"generated_at": now, "countries": countries}, "ARGOS_INDEX")

@@ -1,0 +1,51 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily brief · Argos Monitor</title>
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="style.css">
+<style>
+  .brief { max-width: 46rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+  .brief h1 { font: 700 1.8rem/1.2 var(--serif, 'Source Serif 4', serif); margin: 0 0 0.25rem; }
+  .brief ol { padding: 0; list-style: none; display: grid; gap: 1.25rem; margin-top: 1.25rem; }
+  .brief li { padding-bottom: 1rem; border-bottom: 1px solid var(--rule); }
+  .brief h2 { font: 600 1.25rem/1.3 'Source Serif 4', serif; margin: 0 0 0.3rem; }
+  .brief .nav { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; }
+  @media print { .nav button, .nav a, .nav select { display: none; } body { background: #fff; } }
+</style>
+</head>
+<body>
+<main class="brief" id="brief">
+  <p class="state">Loading…</p>
+</main>
+<script src="data/index.js"></script>
+<script>
+(() => {
+  const index = window.ARGOS_INDEX, root = document.getElementById('brief');
+  const el = (tag, attrs, ...kids) => { const e = document.createElement(tag); for (const [k, v] of Object.entries(attrs || {})) { if (v == null || v === false) continue; k === 'text' ? e.textContent = v : e.setAttribute(k, v); } e.append(...kids.flat().filter((x) => x != null && x !== false)); return e; };
+  const safe = (u) => { try { const x = new URL(u); return /^https?:$/.test(x.protocol) ? x.href : '#'; } catch { return '#'; } };
+  if (!index) { root.replaceChildren(el('p', { class: 'state error', text: 'No data found.' })); return; }
+  const cid = location.hash.slice(1) || index.countries[0].id;
+  const c = index.countries.find((x) => x.id === cid) || index.countries[0];
+  const p = c.periods.find((x) => x.id === '24h') || c.periods[0];
+  const load = (key) => new Promise((ok, no) => { const s = document.createElement('script'); s.src = `data/${key}.js`; s.onload = () => ok(window.ARGOS_DATA[key]); s.onerror = no; document.head.append(s); });
+  load(p.file.replace(/\.json$/, '')).then((d) => {
+    const top = [...d.stories].sort((a, b) => b.score - a.score).slice(0, 5);
+    root.replaceChildren(
+      el('div', { class: 'nav' }, el('a', { href: 'index.html', text: '← Back to Argos' }),
+        ...index.countries.map((x) => el('a', { href: `#${x.id}`, onclick: 'setTimeout(()=>location.reload())', text: x.name })),
+        el('button', { type: 'button', class: 'more', onclick: 'print()', text: 'Print' })),
+      el('h1', { text: `${c.name}: top stories, ${p.label.toLowerCase()}` }),
+      el('p', { class: 'byline', text: `Updated ${new Date(d.generated_at).toLocaleString()}. Headlines are the articles' own; quotes are word for word.` }),
+      el('ol', null, top.map((s) => el('li', null,
+        el('h2', null, el('a', { href: safe(s.headline.url), text: s.headline.title })),
+        el('p', { class: 'byline', text: `${s.headline.source} · ${s.independent_sources} independent outlets · ${s.articles} articles${s.evidence === 'OFFICIAL' ? ' · official source' : ''}${s.abroad_only ? ' · not in domestic press' : ''}` }),
+        s.excerpts[0] && el('blockquote', { class: 'strip' }, el('p', { text: s.excerpts[0].text }), el('footer', null, el('a', { href: safe(s.excerpts[0].url), text: s.excerpts[0].source })))))));
+  }).catch(() => root.replaceChildren(el('p', { class: 'state error', text: 'Could not load the stories.' })));
+})();
+</script>
+</body>
+</html>

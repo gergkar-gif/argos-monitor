@@ -62,3 +62,9 @@ classify:
     - "basic education, matric results, universities, NSFAS student funding, schools"
     - "municipal service delivery, water crisis, sanitation, electricity outages, local protests, civil society"
     - "courts, sentencing, criminal trial, road accidents, flooding, weather disaster"
+
+# Country code for Google Trends.
+geo: ZA
+
+# Main subreddit for the Reddit panel.
+reddit: southafrica
