@@ -1,6 +1,6 @@
-﻿"""Stage: crisis and official alerts per country, from free official feeds (GDACS, USGS, UK and US travel advice).
-Only each feed's own title, link and date are kept: no sentences of our own. A feed that fails is skipped."""
-import json
+"""Stage: crisis and official alerts per country, from free official feeds (GDACS, USGS, UK and US travel advice).
+Only each feed's own title, verbatim summary, link and date are kept: no sentences of our own."""
+import html
 import re
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
@@ -22,7 +22,7 @@ def _feed(url):
     if status != 200:
         print(f"crisis: {url} -> HTTP {status}, skipped")
         return []
-    return feedparser.parse(body).entries
+    return feedparser.parse(body.decode("utf-8", errors="replace")).entries
 
 
 def _when(e):
@@ -34,9 +34,24 @@ def _when(e):
         return None
 
 
+def _summary(kind, e):
+    raw = html.unescape(re.sub(r"<[^>]+>", " ", e.get("summary") or ""))
+    raw = re.sub(r"\s+([.,;:])", r"\1", re.sub(r"\s+", " ", raw)).strip()
+    if kind == "US travel advisory":
+        for s in re.split(r"(?<=\.)\s+", raw):
+            if "due to" in s.lower() or "precaution" in s.lower():
+                return s
+    return raw.split(". ")[0] + ("." if raw and not raw.split(". ")[0].endswith(".") else "") if raw else ""
+
+
 def _item(kind, e, level=None):
     d = _when(e)
-    return {"kind": kind, "title": re.sub(r"\s+", " ", e.title).strip(), "url": e.link, "level": level,
+    title = re.sub(r"\s+", " ", e.title).strip()
+    summary = _summary(kind, e)
+    # UK atom feeds set every title to "<Country> travel advice" and put the actual change note in <summary>.
+    if kind == "UK travel advice" and summary:
+        title, summary = summary, ""
+    return {"kind": kind, "title": title, "summary": summary, "url": e.link, "level": level,
             "date": d.isoformat(timespec="seconds") if d else None}
 
 
@@ -52,9 +67,12 @@ def run(db=None):
         items = []
         items += [_item("GDACS", e, e.get("gdacs_alertlevel")) for e in gdacs if has(e.get("gdacs_country")) or has(e.title)]
         items += [_item("USGS", e) for e in usgs if has(e.title)]
-        items += [_item("US travel advisory", e) for e in us if has(e.title.split(" - ")[0])]
-        items += [_item("UK travel advice", e) for e in _feed(UK.format(pack["name"].lower().replace(" ", "-")))[:1]]
-        # disasters older than a week are history; travel advice stays until the government changes it
+        # Skip routine "Level 1: Exercise Normal Precautions" so the alerts list only shows elevated advisories (Level 2-4).
+        items += [_item("US travel advisory", e) for e in us if has(e.title.split(" - ")[0]) and "Level 1" not in e.title]
+        # Only include UK travel advice if it was updated within the last 30 days.
+        uk = [_item("UK travel advice", e) for e in _feed(UK.format(pack["name"].lower().replace(" ", "-")))[:1]]
+        items += [i for i in uk if i["date"] and datetime.fromisoformat(i["date"]) >= now - timedelta(days=30)]
+        # Disasters older than a week are history; active elevated travel advisories stay.
         items = [i for i in items if "travel" in i["kind"] or (i["date"] and datetime.fromisoformat(i["date"]) >= recent)]
         out[cid] = sorted(items, key=lambda i: i["date"] or "", reverse=True)
         print(f"crisis: {cid}: {len(items)} items")

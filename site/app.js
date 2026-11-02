@@ -366,14 +366,16 @@
     const first = items[0];
     return h('div', { class: 'crisis-strip', role: 'region', 'aria-label': 'Official alerts' },
       h('span', { class: 'stamp ' + (items.some(isHotAlert) ? 'red' : 'indigo'), text: `${plural(items.length, 'official alert', 'official alerts')}` }),
+      h('span', { class: 'stamp indigo', text: first.kind }),
       h('a', { href: safeUrl(first.url), target: '_blank', rel: 'noopener', text: first.title }),
+      first.summary && h('span', { class: 'meta', text: `— ${first.summary}` }),
       items.length > 1 && h('button', { type: 'button', class: 'desk-link', text: `+${items.length - 1} more →`, onclick: () => openCountry('alerts') }));
   }
 
   function renderAlerts() {
     const c = getCrisis();
     const q = ($('#q').value || '').trim().toLowerCase();
-    const items = allCrisisAlerts().filter((i) => !q || `${i.cname} ${i.kind} ${i.title}`.toLowerCase().includes(q));
+    const items = allCrisisAlerts().filter((i) => !q || `${i.cname} ${i.kind} ${i.title} ${i.summary || ''}`.toLowerCase().includes(q));
     results.replaceChildren(
       h('p', { class: 'result-line' },
         h('b', { text: 'Active crisis & official travel alerts' }),
@@ -382,14 +384,16 @@
       items.length
         ? h('div', { class: 'desk-wrap' },
           h('table', { class: 'desk-table' },
-            h('thead', null, h('tr', null, ['Country', 'Source', 'Alert / Advisory', 'Date'].map((x) => h('th', { text: x })))),
+            h('thead', null, h('tr', null, ['Country', 'Source', 'Alert / Advisory & Details', 'Date'].map((x) => h('th', { text: x })))),
             h('tbody', null, items.map((i) => h('tr', null,
               h('td', null, h('button', { type: 'button', class: 'stamp country-tag', text: i.cname, onclick: () => openCountry(i.cid) })),
               h('td', null, h('span', { class: 'stamp ' + (isHotAlert(i) ? 'red' : 'indigo'), text: i.kind })),
-              h('td', null, h('a', { href: safeUrl(i.url), target: '_blank', rel: 'noopener', text: i.title })),
+              h('td', null,
+                h('a', { href: safeUrl(i.url), target: '_blank', rel: 'noopener', text: i.title }),
+                i.summary && h('p', { class: 'byline', text: i.summary })),
               h('td', { class: 'typed', text: i.date ? fmtDay.format(new Date(i.date)) : '—' }))))))
         : h('p', { class: 'state', text: 'No matching alerts.' }),
-      h('p', { class: 'fine', text: 'Sources: Global Disaster Alert and Coordination System (GDACS), US Geological Survey (USGS M4.5+ earthquakes), UK Foreign, Commonwealth & Development Office (FCDO), and US Department of State travel advisories.' }));
+      h('p', { class: 'fine', text: 'Sources: Global Disaster Alert and Coordination System (GDACS), US Geological Survey (USGS M4.5+ earthquakes), UK Foreign, Commonwealth & Development Office (FCDO updates within 30 days), and US Department of State elevated travel advisories (Levels 2–4).' }));
   }
 
   // ---------- Overview homepage (scales to any number of countries via site/data/home.js) ----------
@@ -423,6 +427,7 @@
           h('button', { type: 'button', class: 'desk-link', text: `${i.cname}:`, onclick: () => openCountry(i.cid) }),
           ' ',
           h('a', { href: safeUrl(i.url), target: '_blank', rel: 'noopener', text: i.title }),
+          i.summary && h('span', { class: 'meta', text: ` (${i.summary})` }),
           ' · ')),
         h('button', { type: 'button', class: 'desk-link', text: `View all ${allAlerts.length} alerts →`, onclick: () => openCountry('alerts') })),
       homeSection('Most reported (last 7 days)', 'Ranked by independent outlet count across all countries', filter(hm.most_reported)),
