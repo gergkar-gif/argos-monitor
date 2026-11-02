@@ -351,6 +351,13 @@ summary:hover { color: var(--ink); }
 .bilateral-col-head span { font: 600 0.78rem/1.2 var(--sans); color: var(--ink-2); }
 .bilateral-joint { margin-top: 2rem; padding-top: 1.5rem; border-top: 2px solid var(--ink); }
 
+/* ---- Monitor Bar & Inline Country Picker ---- */
+.monitor-bar { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; align-items: center; justify-content: space-between; margin: 0.75rem 0 1rem; padding: 0.65rem 0.9rem; background: var(--paper-warm, #fbfaf8); border: 1px solid var(--rule); }
+.monitor-filter { display: flex; align-items: center; gap: 0.6rem; }
+.monitor-filter label { font: 700 0.72rem/1.2 var(--sans); letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-2); }
+.monitor-filter select { font: 500 0.88rem/1.3 var(--sans); padding: 0.35rem 0.6rem; border: 1px solid var(--ink-3); background: #fff; }
+.slip[hidden], [hidden] { display: none !important; }
+
 /* ---- Footer Legend ---- */
 .legend { border-top: 2px solid var(--ink); margin-top: 2rem; }
 .legend-inner { max-width: 68rem; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
