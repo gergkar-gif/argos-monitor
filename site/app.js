@@ -224,6 +224,11 @@
       })));
     }
 
+    if ((s.related || []).length) {
+      clip.append(h('p', { class: 'byline related' }, 'May be the same event: ', s.related.map((r) =>
+        h('span', null, h('a', { href: safeUrl(r.url), target: '_blank', rel: 'noopener', text: r.title }), ` (${plural(r.articles, 'article', 'articles')}, ${r.source}) `))));
+    }
+
     const rest = s.sources;
     const lateItems = [];   // source-list titles are translated only when the list is opened
     const details = h('details', null,

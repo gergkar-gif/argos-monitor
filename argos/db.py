@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS story (
   first_seen TEXT, last_seen TEXT, representative_article_id INTEGER, policy REAL, themes TEXT);
 CREATE TABLE IF NOT EXISTS story_article (story_id INTEGER REFERENCES story(id), article_id INTEGER REFERENCES article(id),
   PRIMARY KEY (story_id, article_id));
+CREATE TABLE IF NOT EXISTS story_related (story_id INTEGER REFERENCES story(id), related_id INTEGER REFERENCES story(id), similarity REAL);
 CREATE TABLE IF NOT EXISTS translation (article_id INTEGER PRIMARY KEY REFERENCES article(id), text_en TEXT, model TEXT);
 CREATE TABLE IF NOT EXISTS excerpt (
   id INTEGER PRIMARY KEY, story_id INTEGER REFERENCES story(id), article_id INTEGER REFERENCES article(id),
