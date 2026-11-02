@@ -150,9 +150,9 @@
 
     const telemBar = telem ? el('div', { class: 'monitor-bar', style: 'margin: 0.5rem 0 1.25rem; padding: 0.65rem 1rem;' },
       el('div', { style: 'display: flex; flex-wrap: wrap; gap: 1.25rem; align-items: center;' },
-        el('span', { class: 'typed', text: `📡 ${allCountries.length} Country Desks` }),
-        el('span', { class: 'typed', text: `📰 ${totalFeeds || '120+'} Live Feeds Polled` }),
-        el('span', { class: 'typed', text: `⚡ ${totalArticles ? totalArticles.toLocaleString() : '20,000+'} Articles Corroborated` }),
+        el('span', { class: 'typed', text: `${allCountries.length} Country Desks` }),
+        el('span', { class: 'typed', text: `${totalFeeds || '120+'} Live Feeds Polled` }),
+        el('span', { class: 'typed', text: `${totalArticles ? totalArticles.toLocaleString() : '20,000+'} Articles Corroborated` }),
         raw.generated_at && el('span', { class: 'meta', text: `Cycle: ${new Date(raw.generated_at).toLocaleDateString()}` })
       )
     ) : null;

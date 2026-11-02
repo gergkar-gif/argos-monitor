@@ -210,7 +210,7 @@
       </select></label>
       <div class="field" style="display:flex; gap:0.4rem;">
         <button type="button" class="research" style="margin:0; height:2.2rem;" onclick="window.print()">Print / PDF</button>
-        <button type="button" class="research" style="margin:0; height:2.2rem; background:var(--ink); color:#fff;" onclick="window.copyBriefCable(this)">📋 Copy as Cable</button>
+        <button type="button" class="research" style="margin:0; height:2.2rem; background:var(--ink); color:#fff;" onclick="window.copyBriefCable(this)">Copy as Cable</button>
       </div>
     </form>
   </div>
@@ -218,8 +218,8 @@
 
 <main class="brief-wrap">
   <div class="print-action-bar no-print" style="display:flex; gap:0.6rem; align-items:center;">
-    <button type="button" class="more" onclick="window.print()" style="margin:0; font-weight:700;">📄 Print / Export PDF Brief</button>
-    <button type="button" class="more" onclick="window.copyBriefCable(this)" style="margin:0; font-weight:700; border-color:var(--ink);">📋 Copy as Cable / Markdown</button>
+    <button type="button" class="more" onclick="window.print()" style="margin:0; font-weight:700;">Print / Export PDF Brief</button>
+    <button type="button" class="more" onclick="window.copyBriefCable(this)" style="margin:0; font-weight:700; border-color:var(--ink);">Copy as Cable / Markdown</button>
   </div>
   <div class="diplomatic-doc" id="doc">
     <p class="state">Generating diplomatic intelligence brief…</p>
@@ -551,7 +551,7 @@
     const text = lines.join('\n');
     navigator.clipboard.writeText(text).then(() => {
       const orig = btn.textContent;
-      btn.textContent = '✓ Copied to clipboard!';
+      btn.textContent = 'Copied to clipboard';
       btn.style.color = '#fff';
       setTimeout(() => {
         btn.textContent = orig;
