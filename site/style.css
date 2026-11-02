@@ -88,8 +88,8 @@ h1, h2, h3, p { margin: 0; }
   gap: 0.75rem;
   padding: 0.65rem 0 0.85rem;
 }
-.field { display: flex; align-items: center; gap: 0.45rem; }
-.field span { font: 700 0.72rem/1 var(--sans); letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-3); white-space: nowrap; }
+.field { display: flex; align-items: center; gap: 0.45rem; min-width: 0; }
+.field span { font: 700 0.72rem/1 var(--sans); letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-3); white-space: nowrap; flex-shrink: 0; }
 select, input[type=search] {
   appearance: none;
   height: 1.9rem;
@@ -102,6 +102,8 @@ select, input[type=search] {
   border-bottom: 1px solid var(--rule);
   border-radius: 0;
   cursor: pointer;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 input[type=search] { background: transparent; padding-right: 0.4rem; cursor: text; }
 select:hover, input[type=search]:hover, select:focus, input[type=search]:focus { outline: none; border-bottom-color: var(--ink); }
@@ -116,7 +118,7 @@ select:disabled { opacity: 0.35; cursor: not-allowed; }
   .slip .field:nth-child(n+3) { grid-column: 1 / -1; }
 }
 @media (min-width: 46rem) {
-  .slip { grid-template-columns: 1.1fr 0.9fr 1fr 1.6fr; align-items: center; gap: 1.5rem; }
+  .slip { grid-template-columns: minmax(13.5rem, 1.4fr) minmax(7rem, 0.8fr) minmax(8rem, 1fr) minmax(10rem, 1.6fr); align-items: center; gap: 1.5rem; }
 }
 
 /* ---- Main Canvas ---- */

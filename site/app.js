@@ -104,7 +104,7 @@
       if (!groups.has(r)) groups.set(r, []);
       groups.get(r).push(c);
     }
-    return h('div', { class: 'monitor-filter' },
+    return h('div', { class: 'monitor-filter notranslate', translate: 'no' },
       h('label', { for: 'mon-country-sel', text: 'Filter by Country:' }),
       h('select', {
         id: 'mon-country-sel',
@@ -112,9 +112,9 @@
         class: 'notranslate',
         onchange: (e) => onChange(e.target.value)
       },
-        h('option', { value: 'all', text: 'All Countries', selected: currentVal === 'all' }),
+        h('option', { value: 'all', text: 'All Countries', selected: currentVal === 'all', class: 'notranslate', translate: 'no' }),
         ...[...groups.entries()].filter(([, list]) => list.length).map(([reg, list]) =>
-          h('optgroup', { label: reg }, ...list.map((c) => h('option', { value: c.id, text: c.name, selected: c.id === currentVal }))))
+          h('optgroup', { label: reg, class: 'notranslate', translate: 'no' }, ...list.map((c) => h('option', { value: c.id, text: c.name, selected: c.id === currentVal, class: 'notranslate', translate: 'no' }))))
       )
     );
   }
@@ -128,7 +128,7 @@
     }
     country.replaceChildren(
       ...[...groups.entries()].filter(([, list]) => list.length).map(([reg, list]) =>
-        h('optgroup', { label: reg }, ...list.map((c) => h('option', { value: c.id, text: c.name }))))
+        h('optgroup', { label: reg, class: 'notranslate', translate: 'no' }, ...list.map((c) => h('option', { value: c.id, text: c.name, class: 'notranslate', translate: 'no' }))))
     );
     if (value != null && index.countries.some((c) => c.id === value)) country.value = value;
     else if (index.countries.length) country.value = index.countries[0].id;

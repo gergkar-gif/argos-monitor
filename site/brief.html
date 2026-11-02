@@ -199,8 +199,8 @@
         <a href="about.html">About</a>
       </nav>
     </div>
-    <form class="slip" aria-label="Top reported stories options" onsubmit="event.preventDefault()">
-      <label class="field"><span>Country</span><select id="b-country" translate="no" class="notranslate"></select></label>
+    <form class="slip notranslate" translate="no" aria-label="Top reported stories options" onsubmit="event.preventDefault()">
+      <label class="field notranslate" translate="no"><span>Country</span><select id="b-country" translate="no" class="notranslate"></select></label>
       <label class="field"><span>Period</span><select id="b-period" translate="no" class="notranslate"></select></label>
       <label class="field"><span>Items</span><select id="b-limit">
         <option value="10" selected>Top 10</option>
@@ -320,7 +320,7 @@
 
   cSel.replaceChildren(...REGIONS.flatMap((r) => {
     const items = index.countries.filter((c) => getRegion(c) === r);
-    return items.length ? [el('optgroup', { label: r }, ...items.map((x) => el('option', { value: x.id, text: x.name })))] : [];
+    return items.length ? [el('optgroup', { label: r, class: 'notranslate', translate: 'no' }, ...items.map((x) => el('option', { value: x.id, text: x.name, class: 'notranslate', translate: 'no' })))] : [];
   }));
 
   const ALL_PERIODS = [
