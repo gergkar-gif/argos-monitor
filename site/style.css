@@ -43,7 +43,7 @@ h1, h2, h3, p { margin: 0; }
 .masthead h1 { display: flex; align-items: center; gap: 0.55rem; font: 600 2.2rem/1 var(--stamp); letter-spacing: 0.06em; text-transform: uppercase; }
 .masthead h1 a { display: inline-flex; align-items: center; gap: 0.55rem; text-decoration: none; }
 .masthead h1 .logo { width: 1.6rem; height: 1.6rem; }
-.masthead p { margin-top: 0.25rem; max-width: 42rem; color: var(--ink-2); font-size: 0.95rem; text-wrap: pretty; }
+.masthead p { margin-top: 0.25rem; font: 600 0.82rem/1 var(--stamp); letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-2); }
 .topnav { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 0; border: 1px solid var(--ink); background: var(--card); }
 .topnav a { padding: 0.45rem 0.85rem; font: 600 0.88rem/1 var(--stamp); letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; color: var(--ink); border-right: 1px solid var(--ink); white-space: nowrap; }
 .topnav a:last-child { border-right: 0; }
