@@ -54,7 +54,7 @@ h1, h2, h3, p { margin: 0; }
 }
 .field { display: grid; gap: 0.2rem; }
 .field span { font: 600 0.8rem/1 var(--stamp); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); }
-select {
+select, input[type=search] {
   appearance: none;
   min-height: 2.75rem;
   width: 100%;
@@ -66,7 +66,7 @@ select {
   border-radius: 2px;
   cursor: pointer;
 }
-select:hover { border-color: var(--ink-2); }
+select:hover, input[type=search]:hover { border-color: var(--ink-2); }
 .research {
   min-height: 2.75rem;
   padding: 0.5rem 1.6rem;
@@ -89,13 +89,13 @@ select:hover { border-color: var(--ink-2); }
   .bureau-inner { padding-top: 1rem; gap: 0.8rem; }
   .masthead h1 { font-size: 1.6rem; }
   .slip { grid-template-columns: 1fr 1fr; gap: 0.6rem; padding: 0.7rem; }
-  .slip .field:nth-child(3), .slip .research { grid-column: 1 / -1; }
+  .slip .field:nth-child(n+3), .slip .research { grid-column: 1 / -1; }
   .tab { white-space: nowrap; }
   ul.tabs { flex-wrap: nowrap; overflow-x: auto; margin-inline: -1rem; padding: 0 1rem 0.3rem; scrollbar-width: thin; }
   .tab { flex: none; }
 }
 @media (min-width: 46rem) {
-  .slip { grid-template-columns: repeat(3, minmax(0, 1fr)) auto; align-items: end; }
+  .slip { grid-template-columns: repeat(4, minmax(0, 1fr)) auto; align-items: end; }
 }
 
 /* ---- Results ---- */
@@ -248,3 +248,14 @@ body:not(.show-orig) .orig { display: none; }   /* English only unless the reade
 
 /* Themes: why a story ranks where it does */
 .themes { font: 600 0.85rem/1.2 var(--stamp); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); }
+
+input[type=search] { background: var(--card); padding-right: 0.75rem; }
+
+/* Topic tabs stay in view while scrolling; one row that scrolls sideways if it must. */
+.tabs { position: sticky; top: 0; z-index: 5; flex-wrap: nowrap; overflow-x: auto; margin-inline: -1rem; padding: 0.6rem 1rem; background: var(--desk); scrollbar-width: thin; }
+.tab { flex: none; white-space: nowrap; }
+.trans .offer { min-height: 2.75rem; padding: 0.6rem 1.2rem; font-size: 1.05rem; color: #fff; background: var(--indigo); border-color: var(--indigo); }
+.trans .offer:hover { background: var(--ink); border-color: var(--ink); }
+.drawer .more + .more { margin-left: 0.5rem; }
+.totop { position: fixed; right: 1rem; bottom: 1rem; z-index: 6; min-height: 2.75rem; min-width: 2.75rem; font: 600 1rem/1 var(--stamp); color: var(--indigo); background: var(--card); border: 2px solid var(--indigo); border-radius: 3px; cursor: pointer; }
+.totop[hidden] { display: none; }

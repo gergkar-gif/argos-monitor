@@ -50,6 +50,7 @@
   const country = $('#country'), period = $('#period'), topic = $('#topic'), results = $('#results');
   let current = null;   // the loaded data file
   let openTopic = 'all';
+  let extra = {};   // extra stories revealed per topic in the overview ("Show more")
 
   // ---------- data loading (script tags, so it works when the page is opened from a folder) ----------
   function load(file) {
@@ -78,8 +79,10 @@
     fillSelect(topic, [['all', 'All topics'], ...TOPICS.map((t) => [t.id, t.name])], value);
   }
 
+  const hashFor = (t) => `#${country.value}/${period.value}/${t}` + ($('#q').value.trim() ? `/${encodeURIComponent($('#q').value.trim())}` : '');
   function readHash() {
-    const [c, p, t] = location.hash.replace(/^#/, '').split('/');
+    const [c, p, t, q] = location.hash.replace(/^#/, '').split('/');
+    try { $('#q').value = q ? decodeURIComponent(q) : ''; } catch { /* bad link text: ignore */ }
     if (c && index.countries.some((x) => x.id === c)) country.value = c;
     fillPeriods();
     if (p && [...period.options].some((o) => o.value === p)) period.value = p;
@@ -165,7 +168,7 @@
         h('p', { class: 'notice quiet', text: 'English lines are machine translations made by your browser and can be wrong. The original text is hidden; every headline links to the original article.' }),
         toggle);
     } else if (T.state === 'offer') {
-      const btn = h('button', { type: 'button', class: 'more', text: 'Show English (one-time download of a small language pack)' });
+      const btn = h('button', { type: 'button', class: 'more offer', text: 'Translate headlines to English (one-time download of a small language pack)' });
       btn.addEventListener('click', async () => {
         btn.disabled = true;
         try { await startTranslator(btn); } catch { T.state = 'none'; }
@@ -255,7 +258,9 @@
       h('div', { class: 'grid' }, shown.map((s, i) => story(s, { lead: i === 0, i }))),
     );
     if (limit && stories.length > limit) {
-      sec.append(h('button', { type: 'button', class: 'more', onclick: () => choose(id), text: `More in ${topicName(id)}` }));
+      sec.append(
+        h('button', { type: 'button', class: 'more', onclick: () => { extra[id] = (extra[id] || 0) + 8; render(false); }, text: `Show ${Math.min(8, stories.length - limit)} more` }),
+        h('button', { type: 'button', class: 'more', onclick: () => choose(id), text: `Open all ${topicName(id)}` }));
     }
     return sec;
   }
@@ -264,9 +269,12 @@
     const d = current;
     results.classList.toggle('still', !animate);
     T.queue.length = 0;    // items from the previous render are gone
+    const q = ($('#q').value || '').trim().toLowerCase();   // search narrows the loaded stories in the browser
+    const stories = q ? d.stories.filter((s) => [s.headline.title, ...s.sources.map((r) => r.title + ' ' + r.source), ...s.excerpts.map((x) => x.text)].join(' ').toLowerCase().includes(q)) : d.stories;
+    const count = (id) => (q ? stories.filter((s) => s.category === id).length : d.totals[id]);
     const noOutside = d.stories.every((s) => !s.by_scope.abroad_local && !s.by_scope.international);
-    const byTopic = (id) => d.stories.filter((s) => s.category === id);
-    const totalStories = Object.values(d.totals).reduce((a, b) => a + b, 0);
+    const byTopic = (id) => stories.filter((s) => s.category === id);
+    const totalStories = q ? stories.length : Object.values(d.totals).reduce((a, b) => a + b, 0);
     const updated = new Date(d.generated_at);
     const ageH = (Date.now() - updated) / 3.6e6;
     const periodLabel = period.options[period.selectedIndex].text.toLowerCase();
@@ -275,17 +283,17 @@
       [['all', 'All topics'], ...TOPICS.map((t) => [t.id, t.name])].map(([id, label]) =>
         h('li', null, h('button', { type: 'button', class: 'tab', style: id === 'all' ? '' : topicVar(id),
           'aria-pressed': String(openTopic === id), onclick: () => choose(id) }, label,
-          h('span', { class: 'n', text: String(id === 'all' ? totalStories : d.totals[id]) })))));
+          h('span', { class: 'n', text: String(id === 'all' ? totalStories : count(id)) })))));
 
     const body = [];
     if (openTopic === 'all') {
       const order = TOPICS.map((t) => t.id).filter((id) => byTopic(id).length)
         .sort((a, b) => (a === 'other') - (b === 'other') || byTopic(b)[0].score - byTopic(a)[0].score);
-      order.forEach((id) => body.push(drawer(id, byTopic(id), d.totals[id], PER_TOPIC_IN_OVERVIEW)));
+      order.forEach((id) => body.push(drawer(id, byTopic(id), count(id), PER_TOPIC_IN_OVERVIEW + (extra[id] || 0))));
     } else if (byTopic(openTopic).length) {
-      body.push(drawer(openTopic, byTopic(openTopic), d.totals[openTopic], 0));
+      body.push(drawer(openTopic, byTopic(openTopic), count(openTopic), 0));
     } else {
-      body.push(h('p', { class: 'state', text: `No ${topicName(openTopic).toLowerCase()} stories in this period.` }));
+      body.push(h('p', { class: 'state', text: q ? `No stories match "${q}" here.` : `No ${topicName(openTopic).toLowerCase()} stories in this period.` }));
     }
 
     results.replaceChildren(...[
@@ -304,7 +312,7 @@
   function choose(id) {
     openTopic = id;
     topic.value = id;
-    setHash(`#${country.value}/${period.value}/${id}`);
+    setHash(hashFor(id));
     render(false);
     if (id !== 'all') results.scrollIntoView({ block: 'start' });
   }
@@ -314,7 +322,7 @@
     const p = c.periods.find((x) => x.id === period.value);
     useLanguage(c.language);
     openTopic = topic.value;
-    setHash(`#${country.value}/${period.value}/${topic.value}`);
+    setHash(hashFor(topic.value)); extra = {};
     results.replaceChildren(h('p', { class: 'state', text: 'Gathering the clippings…' }));
     try {
       current = await load(p.file);
@@ -334,7 +342,14 @@
   fillTopics('all');
   readHash();
   $('#slip').addEventListener('submit', (e) => { e.preventDefault(); research(); });
-  country.addEventListener('change', fillPeriods);
+  // Choosing a country, period or topic searches straight away; the Research button stays for habit.
+  country.addEventListener('change', () => { fillPeriods(); research(); });
+  period.addEventListener('change', research);
+  topic.addEventListener('change', research);
+  $('#q').addEventListener('input', () => { setHash(hashFor(openTopic)); if (current) render(false); });
+  const totop = $('#totop');
+  addEventListener('scroll', () => { totop.hidden = scrollY < 800; }, { passive: true });
+  totop.addEventListener('click', () => scrollTo({ top: 0, behavior: 'smooth' }));
   window.addEventListener('hashchange', () => { readHash(); research(); });
   research();     // also sets up the translator for the country's language
 })();
