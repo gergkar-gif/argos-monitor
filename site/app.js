@@ -317,10 +317,13 @@
   function reddit() {
     const r = (window.ARGOS_REDDIT && (window.ARGOS_REDDIT.countries || (window.ARGOS_REDDIT.reddit || {}).countries) || {})[country.value];
     if (!r || !r.posts.length) return null;
+    const label = r.subreddit.startsWith('r/') ? r.subreddit : `r/${r.subreddit}`;
     return h('section', { class: 'alerts', 'aria-label': 'On Reddit' },
-      h('h2', { text: `On Reddit today, r/${r.subreddit}` }),
-      h('ul', null, r.posts.map((x) => h('li', null, h('a', { href: safeUrl(x.url), target: '_blank', rel: 'noopener', text: x.title })))),
-      h('p', { class: 'byline', text: 'Top posts of the day. What people discuss, not verified news.' }));
+      h('h2', { text: `On Reddit today · ${label}` }),
+      h('ul', null, r.posts.map((x) => h('li', null,
+        x.sub && h('span', { class: 'stamp indigo', text: `r/${x.sub}` }),
+        h('a', { href: safeUrl(x.url), target: '_blank', rel: 'noopener', text: x.title })))),
+      h('p', { class: 'byline', text: 'Top posts of the day across these communities. What people discuss, not verified news.' }));
   }
 
   const watched = () => { try { return JSON.parse(localStorage.getItem('argos.watch') || '[]'); } catch { return []; } };

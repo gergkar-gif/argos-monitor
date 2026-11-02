@@ -53,5 +53,5 @@ classify:
 # Country code for Google Trends.
 geo: HU
 
-# Main subreddit for the Reddit panel.
-reddit: hungary
+# Subreddits for the Reddit panel (first is primary; all are polled in one combined feed).
+reddit: [hungary, kiszamolo, budapest, Debrecen, szeged]

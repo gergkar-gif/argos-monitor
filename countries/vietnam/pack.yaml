@@ -58,5 +58,5 @@ crisis_names: ["Viet Nam"]
 # Country code for Google Trends.
 geo: VN
 
-# Main subreddit for the Reddit panel.
-reddit: Vietnam
+# Subreddits for the Reddit panel (first is primary; all are polled in one combined feed).
+reddit: [Vietnam, vozforums, TroChuyenLinhTinh, hanoi, Saigon]

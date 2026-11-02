@@ -62,5 +62,5 @@ classify:
 # Country code for Google Trends.
 geo: KH
 
-# Main subreddit for the Reddit panel.
-reddit: cambodia
+# Subreddits for the Reddit panel (first is primary; all are polled in one combined feed).
+reddit: [cambodia, phnompenh, siemreap]

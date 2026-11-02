@@ -66,5 +66,5 @@ classify:
 # Country code for Google Trends.
 geo: ZA
 
-# Main subreddit for the Reddit panel.
-reddit: southafrica
+# Subreddits for the Reddit panel (first is primary; all are polled in one combined feed).
+reddit: [southafrica, DownSouth, PersonalFinanceZA, johannesburg, capetown, durban]
