@@ -10,6 +10,9 @@ concurrency:
   group: deploy-site
   cancel-in-progress: true
 
+env:
+  ARGOS_DATA_DIR: ${{ github.workspace }}/.argos-data
+
 jobs:
   deploy:
     runs-on: ubuntu-24.04
@@ -44,7 +47,11 @@ jobs:
         if: steps.data-cache.outputs.cache-hit != 'true'
         run: |
           pip install -r requirements.txt
-          python run.py export crisis trends reddit watch report
+          if [ -f .argos-data/argos.db ]; then
+            python run.py export crisis trends reddit watch report
+          else
+            echo "Database cache not yet available; skipping export"
+          fi
 
       # Fast publish directly to Cloudflare Pages
       - name: Publish to Cloudflare Pages
