@@ -140,9 +140,15 @@
           onclick: () => { openRegion = id; onChoose(); } }, label,
           h('span', { class: 'n', text: String(countFn(id)) })))));
   }
+  const ALL_PERIODS = [
+    ['24h', 'Last 24 hours'],
+    ['7d', 'Last 7 days'],
+    ['14d', 'Last 14 days'],
+    ['30d', 'Last 30 days'],
+  ];
+
   function fillPeriods() {
-    const c = index.countries.find((x) => x.id === country.value) || index.countries[0];
-    fillSelect(period, c.periods.map((p) => [p.id, p.label]), period.value || '7d');
+    fillSelect(period, ALL_PERIODS, period.value || '7d');
     period.disabled = topic.disabled = activeTab !== 'country';
   }
   function fillTopics(value) {
@@ -1139,18 +1145,23 @@
       return;
     }
     const c = index.countries.find((x) => x.id === country.value) || index.countries[0];
-    const p = c.periods.find((x) => x.id === period.value) || c.periods[0];
+    const targetFile = `${c.id}-${period.value}.json`;
     useLanguage(c.language);
     $('#brief').href = `brief.html#${country.value}`;
     openTopic = topic.value;
     setHash(hashFor(topic.value)); extra = {};
     results.replaceChildren(h('p', { class: 'state', text: 'Loading…' }));
     try {
-      current = await load(p.file);
+      current = await load(targetFile);
       render();
     } catch {
-      results.replaceChildren(h('p', { class: 'state error',
-        text: 'Could not load the results for this choice. Keep the "data" folder next to this page, and run the collector if it is missing.' }));
+      try {
+        current = await load(`${c.id}-7d.json`);
+        render();
+      } catch {
+        results.replaceChildren(h('p', { class: 'state error',
+          text: 'Could not load the results for this choice. Keep the "data" folder next to this page, and run the collector if it is missing.' }));
+      }
     }
   }
 
