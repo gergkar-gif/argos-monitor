@@ -44,7 +44,7 @@ def _classify_events(s):
 
 def _story(db, s):
     rows = db.execute(
-        "SELECT a.id, a.title, a.url, a.language, a.published_at, a.syndicated_of, COALESCE(sa.similarity, 1.0) AS similarity, "
+        "SELECT a.id, a.title, a.lead, a.url, a.language, a.published_at, a.syndicated_of, COALESCE(sa.similarity, 1.0) AS similarity, "
         "src.id AS source_id, src.name AS source, src.scope, src.kind "
         "FROM story_article sa JOIN article a ON a.id=sa.article_id JOIN source src ON src.id=a.source_id "
         "WHERE sa.story_id=? ORDER BY (COALESCE(sa.similarity, 1.0) >= 0.93) DESC, (COALESCE(sa.similarity, 1.0) >= 0.85) DESC, "
@@ -53,6 +53,7 @@ def _story(db, s):
     independent = {r["source_id"] for r in core_rows if r["syndicated_of"] is None}
     by_scope = {sc: sum(r["scope"] == sc for r in core_rows) for sc in ("domestic", "abroad_local", "international")}
     rep = next((r for r in rows if r["id"] == s["representative_article_id"]), rows[0])
+    lead_val = (rep["lead"] or "").strip() or next(((r["lead"] or "").strip() for r in rows if (r["lead"] or "").strip()), "")
     excerpts = db.execute(
         "SELECT x.id, x.text, a.url, src.name AS source, src.scope FROM excerpt x JOIN article a ON a.id=x.article_id "
         "JOIN source src ON src.id=a.source_id WHERE x.story_id=? ORDER BY x.id", (s["id"],)).fetchall()
@@ -81,6 +82,7 @@ def _story(db, s):
         "score": s["score"],
         "themes": json.loads(s["themes"] or "[]"),         # why it ranks where it does (themes.yaml)
         "headline": {"title": rep["title"], "url": rep["url"], "source": rep["source"], "language": rep["language"]},
+        "lead": lead_val,
         "first_seen": s["first_seen"],
         "last_seen": s["last_seen"],
         "articles": len(rows),

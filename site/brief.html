@@ -104,6 +104,14 @@
     font-style: italic;
     margin: 0;
   }
+  .dispatch-lead {
+    font: 400 0.95rem/1.55 var(--sans);
+    color: var(--ink-1);
+    margin: 0.35rem 0 0.25rem;
+  }
+  .dispatch-lead p {
+    margin: 0;
+  }
   .dispatch-quote {
     margin: 0.35rem 0 0.2rem;
     padding: 0.5rem 0.85rem;
@@ -165,6 +173,7 @@
       border-left-color: #333 !important;
       margin-bottom: 1.6rem !important;
     }
+    .dispatch-lead { font-size: 9.5pt !important; line-height: 1.45 !important; color: #111 !important; }
     .dispatch-quote { background: #f9f9f9 !important; border-left-color: #555 !important; }
     .doc-closing { margin-top: 2rem !important; }
   }
@@ -364,19 +373,46 @@
         enTitle = await toEnglish(s.headline.title, s.headline.language || c.language);
       }
 
+      let rawSummary = (s.lead || '').trim();
+      if (!rawSummary && s.excerpts && s.excerpts[0]) {
+        rawSummary = (s.excerpts[0].text || '').trim();
+      }
+
+      if (rawSummary) {
+        const paras = rawSummary.split(/\n+/).map((p) => p.trim()).filter(Boolean);
+        if (paras.length > 0) {
+          rawSummary = paras[0];
+          if (rawSummary.length < 120 && paras[1]) {
+            rawSummary += ' ' + paras[1];
+          }
+        }
+        if (rawSummary.length > 400) {
+          const cut = rawSummary.slice(0, 400);
+          const lastSpace = cut.lastIndexOf(' ');
+          rawSummary = (lastSpace > 250 ? cut.slice(0, lastSpace) : cut) + '…';
+        }
+      }
+
+      let enSummary = '';
+      if (rawSummary) {
+        enSummary = await toEnglish(rawSummary, s.headline.language || c.language);
+      }
+
       let enQuote = null;
       if (s.excerpts && s.excerpts[0]) {
         const origQuote = s.excerpts[0];
         const translatedQuoteText = await toEnglish(origQuote.text, c.language);
-        enQuote = {
-          text: translatedQuoteText,
-          origText: origQuote.text !== translatedQuoteText ? origQuote.text : null,
-          source: origQuote.source,
-          scope: origQuote.scope
-        };
+        if (!enSummary || !enSummary.toLowerCase().includes(translatedQuoteText.slice(0, 30).toLowerCase())) {
+          enQuote = {
+            text: translatedQuoteText,
+            origText: origQuote.text !== translatedQuoteText ? origQuote.text : null,
+            source: origQuote.source,
+            scope: origQuote.scope
+          };
+        }
       }
 
-      const reportingOutlets = (s.sources || []).slice(0, 5).map((r) => `${r.source} (${r.scope || 'media'})`);
+      const reportingOutlets = (s.sources || []).slice(0, 5).map((r) => r.source);
       const isOfficial = s.evidence === 'OFFICIAL';
       const isAbroadOnly = s.abroad_only;
 
@@ -392,12 +428,15 @@
           el('a', { href: safe(s.headline.url), target: '_blank', rel: 'noopener', text: enTitle })
         ),
         s.headline.language !== 'en' && el('p', { class: 'dispatch-orig', text: `Original headline (${s.headline.source}): "${s.headline.title}"` }),
+        enSummary && el('div', { class: 'dispatch-lead' },
+          el('p', { text: enSummary })
+        ),
         enQuote && el('blockquote', { class: 'dispatch-quote' },
           el('p', { text: `“${enQuote.text}”` }),
           el('cite', { text: `— Quoted verbatim from: ${enQuote.source} [${enQuote.scope.replace('_', ' ')}]` })
         ),
-        el('div', { class: 'dispatch-foot' },
-          el('span', { text: `Corroborating coverage: ${reportingOutlets.join(', ')}${(s.sources || []).length > 5 ? ` +${(s.sources || []).length - 5} more` : ''}` })
+        reportingOutlets.length > 0 && el('div', { class: 'dispatch-foot' },
+          el('span', { text: `Sources: ${reportingOutlets.join(', ')}${(s.sources || []).length > 5 ? ` +${(s.sources || []).length - 5} more` : ''}` })
         )
       );
     }));
