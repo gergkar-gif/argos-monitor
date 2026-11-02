@@ -102,11 +102,7 @@
       groups.get(r).push(c);
     }
     country.replaceChildren(
-      h('option', { value: 'home', text: 'Overview (all countries)' }),
-      h('option', { value: 'relations', text: 'Bilateral & Joint Affairs' }),
-      h('option', { value: 'alerts', text: 'Active alerts (all countries)' }),
-      h('option', { value: 'disasters', text: 'Natural disasters (all countries)' }),
-      h('option', { value: 'violence', text: 'Violent events (all countries)' }),
+      h('option', { value: 'all', text: 'All Countries' }),
       ...[...groups.entries()].filter(([, list]) => list.length).map(([reg, list]) =>
         h('optgroup', { label: reg }, ...list.map((c) => h('option', { value: c.id, text: c.name }))))
     );
@@ -125,7 +121,7 @@
   function fillPeriods() {
     const c = index.countries.find((x) => x.id === country.value) || index.countries[0];
     fillSelect(period, c.periods.map((p) => [p.id, p.label]), period.value || '7d');
-    period.disabled = topic.disabled = GLOBAL_VIEWS.has(country.value);
+    period.disabled = topic.disabled = activeTab !== 'country';
   }
   function fillTopics(value) {
     fillSelect(topic, [['all', 'All topics'], ...TOPICS.map((t) => [t.id, t.name])], value);
@@ -138,7 +134,7 @@
     if (activeTab === 'home') return `#home${qPart ? '//' + qPart.slice(1) : ''}`;
     if (activeTab === 'relations') return `#relations/${relCountryA}/${relCountryB}/${relPeriod}`;
     if (activeTab === 'alerts' || activeTab === 'disasters' || activeTab === 'violence') {
-      const c = country.value || 'all';
+      const c = country.value !== 'all' ? country.value : 'all';
       return `#${activeTab}/${c}${qPart}`;
     }
     return `#${country.value}/${period.value}/${t}${qPart}`;
@@ -147,22 +143,23 @@
     const [c, p, t, q] = location.hash.replace(/^#/, '').split('/');
     if (c === 'relations') {
       activeTab = 'relations';
-      country.value = 'relations';
+      country.value = 'all';
       if (p) relCountryA = p;
       if (t) relCountryB = t;
       if (q) relPeriod = q;
     } else if (c === 'alerts' || c === 'disasters' || c === 'violence') {
       activeTab = c;
-      const targetCountry = p && index.countries.some((x) => x.id === p) ? p : c;
-      country.value = targetCountry;
+      country.value = (p && index.countries.some((x) => x.id === p)) ? p : 'all';
       try { $('#q').value = t ? decodeURIComponent(t) : ''; } catch {}
-    } else if (c === 'home') {
+    } else if (c === 'home' || !c) {
       activeTab = 'home';
-      country.value = 'home';
+      country.value = 'all';
       try { $('#q').value = p ? decodeURIComponent(p) : ''; } catch {}
     } else {
       activeTab = 'country';
-      country.value = c === 'country' ? (lastCountry || index.countries[0].id) : (c && index.countries.some((x) => x.id === c) ? c : 'home');
+      const cid = c === 'country' ? (lastCountry || index.countries[0].id) : (index.countries.some((x) => x.id === c) ? c : index.countries[0].id);
+      country.value = cid;
+      lastCountry = cid;
       try { $('#q').value = q ? decodeURIComponent(q) : ''; } catch {}
     }
     fillPeriods();
@@ -226,7 +223,7 @@
     }
     // Pre-translate unrendered lead headlines in the current view so English search finds them too.
     const hm = window.ARGOS_HOME;
-    const bgPool = country.value === 'home' && hm
+    const bgPool = activeTab === 'home' && hm
       ? [...(hm.most_reported || []), ...(hm.growing || []), ...(hm.abroad_only || [])]
       : (current && current.stories) || [];
     if (bgPool.length) {
@@ -249,7 +246,7 @@
       }
       if (added && ($('#q').value || '').trim()) {
         T.running = false;
-        country.value === 'home' ? renderHome() : render(false);
+        activeTab === 'home' ? renderHome() : render(false);
         return;
       }
     }
@@ -315,13 +312,19 @@
   function openCountry(cid) {
     if (cid === 'home') {
       activeTab = 'home';
-      country.value = 'home';
-    } else if (cid === 'alerts' || cid === 'disasters' || cid === 'violence' || cid === 'relations') {
+      country.value = 'all';
+    } else if (cid === 'alerts' || cid === 'disasters' || cid === 'violence') {
       activeTab = cid;
-      country.value = cid;
+      if (country.value !== 'all' && !index.countries.some((x) => x.id === country.value)) {
+        country.value = 'all';
+      }
+    } else if (cid === 'relations') {
+      activeTab = 'relations';
+      country.value = 'all';
     } else {
       activeTab = 'country';
       country.value = cid;
+      lastCountry = cid;
     }
     fillPeriods();
     research();
@@ -476,7 +479,7 @@
   const watched = () => { try { return JSON.parse(localStorage.getItem('argos.watch') || '[]'); } catch { return []; } };
   function setWatched(list) {
     try { localStorage.setItem('argos.watch', JSON.stringify(list)); } catch { /* storage not available: ignore */ }
-    country.value === 'home' ? renderHome() : render(false);
+    activeTab === 'home' ? renderHome() : render(false);
   }
   function watchbar(q, pool = current ? current.stories : []) {
     const list = watched();
@@ -486,7 +489,7 @@
       list.map((w) => h('span', { class: 'chip' },
         h('button', { type: 'button', class: 'more', title: 'Show these stories',
           text: `${w} (${pool.filter((s) => matchStory(s, w)).length})`,
-          onclick: () => { $('#q').value = w; setHash(hashFor(openTopic)); country.value === 'home' ? renderHome() : render(false); } }),
+          onclick: () => { $('#q').value = w; setHash(hashFor(openTopic)); activeTab === 'home' ? renderHome() : render(false); } }),
         h('button', { type: 'button', class: 'x', 'aria-label': `Stop watching ${w}`, text: '×', onclick: () => setWatched(list.filter((x) => x !== w)) }))),
       q && !list.includes(q) && h('button', { type: 'button', class: 'more', text: `Watch "${q}"`, onclick: () => setWatched([...list, q]) }));
   }
@@ -522,7 +525,7 @@
   function renderAlerts() {
     const c = getCrisis();
     const q = fold(($('#q').value || '').trim());
-    const filterCountry = country.value !== 'alerts' ? country.value : null;
+    const filterCountry = country.value !== 'all' ? country.value : null;
     const all = allCrisisAlerts().filter((i) => {
       if (filterCountry && i.cid !== filterCountry) return false;
       return !q || fold(`${i.cname} ${i.region} ${i.kind} ${i.title} ${i.summary || ''}`).includes(q);
@@ -535,7 +538,7 @@
       h('p', { class: 'result-line' },
         h('b', { text: filterCountry ? `Official alerts · ${countryName}` : openRegion === 'all' ? 'Active crisis & official travel alerts' : `Active alerts · ${openRegion}` }),
         ` · ${plural(items.length, 'alert', 'alerts')}${c ? ` · checked ${fmtTime.format(new Date(c.generated_at))}` : ''} · `,
-        filterCountry && h('button', { type: 'button', class: 'desk-link', text: `View all country alerts (${allCrisisAlerts().length})`, onclick: () => { country.value = 'alerts'; research(); } }),
+        filterCountry && h('button', { type: 'button', class: 'desk-link', text: `View all country alerts (${allCrisisAlerts().length})`, onclick: () => { country.value = 'all'; research(); } }),
         filterCountry && ' · ',
         h('button', { type: 'button', class: 'desk-link', text: '← Back to Overview', onclick: () => openCountry('home') })),
       tabs,
@@ -602,7 +605,7 @@
     if (!loadedAll7d) {
       loadedAll7d = true;
       Promise.allSettled(index.countries.map((c) => load(`${c.id}-7d.json`))).then(() => {
-        if (country.value === 'disasters' || country.value === 'violence') renderEventMonitor(country.value);
+        if (activeTab === 'disasters' || activeTab === 'violence') renderEventMonitor(activeTab);
       });
     }
     return out.sort((a, b) => b.independent_sources - a.independent_sources || b.score - a.score);
@@ -615,7 +618,7 @@
     const key = isDis ? 'disaster_type' : 'violence_type';
     const q = ($('#q').value || '').trim();
     const qf = fold(q);
-    const filterCountry = (country.value !== 'disasters' && country.value !== 'violence') ? country.value : null;
+    const filterCountry = country.value !== 'all' ? country.value : null;
     const allStories = collectEventPool(mode).filter((s) => {
       if (filterCountry && s.country !== filterCountry) return false;
       return !q || matchStory(s, q);
@@ -653,7 +656,7 @@
       h('p', { class: 'result-line' },
         h('b', { text: titleText }),
         ` · ${plural(official.length, isDis ? 'official sensor alert' : 'official security advisory', isDis ? 'official sensor alerts' : 'official security advisories')} · ${plural(stories.length, 'reported story cluster', 'reported story clusters')} · `,
-        filterCountry && h('button', { type: 'button', class: 'desk-link', text: `View all country ${isDis ? 'disasters' : 'violent events'}`, onclick: () => { country.value = mode; research(); } }),
+        filterCountry && h('button', { type: 'button', class: 'desk-link', text: `View all country ${isDis ? 'disasters' : 'violent events'}`, onclick: () => { country.value = 'all'; research(); } }),
         filterCountry && ' · ',
         h('button', { type: 'button', class: 'desk-link', text: '← Back to Overview', onclick: () => openCountry('home') })),
       h('div', { id: 'trans', class: 'trans' }),
@@ -1068,9 +1071,8 @@
 
   async function research() {
     fillPeriods();
-    const isCountry = !GLOBAL_VIEWS.has(country.value);
-    if (isCountry) lastCountry = country.value;
-    if ($('#nav-home')) $('#nav-home').setAttribute('aria-current', country.value === 'home' ? 'page' : 'false');
+    if (activeTab === 'country' && country.value !== 'all') lastCountry = country.value;
+    if ($('#nav-home')) $('#nav-home').setAttribute('aria-current', activeTab === 'home' ? 'page' : 'false');
     if ($('#nav-country')) $('#nav-country').setAttribute('aria-current', activeTab === 'country' ? 'page' : 'false');
     if ($('#nav-relations')) $('#nav-relations').setAttribute('aria-current', activeTab === 'relations' ? 'page' : 'false');
     if ($('#nav-alerts')) $('#nav-alerts').setAttribute('aria-current', activeTab === 'alerts' ? 'page' : 'false');
@@ -1092,20 +1094,20 @@
     }
     if (activeTab === 'alerts') {
       useLanguage('en');
-      $('#brief').href = 'brief.html';
+      $('#brief').href = country.value !== 'all' ? `brief.html#${country.value}` : 'brief.html';
       setHash(hashFor('all'));
       renderAlerts();
       return;
     }
     if (activeTab === 'disasters' || activeTab === 'violence') {
-      $('#brief').href = 'brief.html';
+      $('#brief').href = country.value !== 'all' ? `brief.html#${country.value}` : 'brief.html';
       setHash(hashFor('all'));
       renderEventMonitor(activeTab);
       useLanguage('multi');
       return;
     }
     const c = index.countries.find((x) => x.id === country.value) || index.countries[0];
-    const p = c.periods.find((x) => x.id === period.value);
+    const p = c.periods.find((x) => x.id === period.value) || c.periods[0];
     useLanguage(c.language);
     $('#brief').href = `brief.html#${country.value}`;
     openTopic = topic.value;
@@ -1125,7 +1127,7 @@
     results.replaceChildren(h('p', { class: 'state error', text: 'No data found. Run "python run.py" once, then reload this page.' }));
     return;
   }
-  fillCountrySelect('home');
+  fillCountrySelect('all');
   fillTopics('all');
   if ($('#alert-count')) { const n = allCrisisAlerts().length; if (n) $('#alert-count').textContent = `[${n}]`; }
   readHash();
@@ -1138,23 +1140,23 @@
   if ($('#nav-violence')) $('#nav-violence').addEventListener('click', (e) => { e.preventDefault(); openSubType = 'all'; activeTab = 'violence'; openCountry('violence'); });
   $('#slip').addEventListener('submit', (e) => { e.preventDefault(); research(); });
   country.addEventListener('change', () => {
-    if (country.value === 'home') activeTab = 'home';
-    else if (country.value === 'relations') activeTab = 'relations';
-    else if (country.value === 'alerts') activeTab = 'alerts';
-    else if (country.value === 'disasters') activeTab = 'disasters';
-    else if (country.value === 'violence') activeTab = 'violence';
-    // If user was on alerts/disasters/violence and chooses a country from the dropdown, stay on that view filtered to that country
-    fillPeriods();
-    research();
+    if (activeTab === 'alerts' || activeTab === 'disasters' || activeTab === 'violence') {
+      fillPeriods();
+      research();
+    } else if (country.value === 'all') {
+      openCountry('home');
+    } else {
+      openCountry(country.value);
+    }
   });
   period.addEventListener('change', research);
   topic.addEventListener('change', research);
   $('#q').addEventListener('input', () => {
     setHash(hashFor(openTopic));
-    if (country.value === 'home') renderHome();
-    else if (country.value === 'relations') renderRelations();
-    else if (country.value === 'alerts') renderAlerts();
-    else if (country.value === 'disasters' || country.value === 'violence') renderEventMonitor(country.value);
+    if (activeTab === 'home') renderHome();
+    else if (activeTab === 'relations') renderRelations();
+    else if (activeTab === 'alerts') renderAlerts();
+    else if (activeTab === 'disasters' || activeTab === 'violence') renderEventMonitor(activeTab);
     else if (current) render(false);
   });
   const totop = $('#totop');
