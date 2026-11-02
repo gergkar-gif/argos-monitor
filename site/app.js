@@ -50,7 +50,19 @@
   const country = $('#country'), period = $('#period'), topic = $('#topic'), results = $('#results');
   let current = null;   // the loaded data file
   let openTopic = 'all';
+  let openRegion = 'all';
   let extra = {};   // extra stories revealed per topic in the overview ("Show more")
+
+  const REGIONS = ['Southeast Asia', 'Europe & Balkans', 'Eurasia & Caucasus', 'Africa & Americas'];
+  const COUNTRY_REGION = {
+    cambodia: 'Southeast Asia', indonesia: 'Southeast Asia', myanmar: 'Southeast Asia',
+    philippines: 'Southeast Asia', thailand: 'Southeast Asia', vietnam: 'Southeast Asia',
+    hungary: 'Europe & Balkans', poland: 'Europe & Balkans', serbia: 'Europe & Balkans',
+    azerbaijan: 'Eurasia & Caucasus', georgia: 'Eurasia & Caucasus', kazakhstan: 'Eurasia & Caucasus', turkey: 'Eurasia & Caucasus',
+    brazil: 'Africa & Americas', ethiopia: 'Africa & Americas', south_africa: 'Africa & Americas',
+  };
+  const getRegion = (cid) => ((index && index.countries.find((x) => x.id === cid) || {}).region) || COUNTRY_REGION[cid] || 'Other';
+  const prettyName = (cid) => ((index && index.countries.find((x) => x.id === cid) || {}).name) || cid.replace(/_/g, ' ').replace(/\b\w/g, (m) => m.toUpperCase());
 
   // ---------- data loading (script tags, so it works when the page is opened from a folder) ----------
   function load(file) {
@@ -70,6 +82,31 @@
   function fillSelect(sel, options, value) {
     sel.replaceChildren(...options.map(([v, label]) => h('option', { value: v, text: label })));
     if (value != null && options.some(([v]) => v === value)) sel.value = value;
+  }
+  function fillCountrySelect(value) {
+    const groups = new Map(REGIONS.map((r) => [r, []]));
+    for (const c of index.countries) {
+      const r = getRegion(c.id);
+      if (!groups.has(r)) groups.set(r, []);
+      groups.get(r).push(c);
+    }
+    country.replaceChildren(
+      h('option', { value: 'home', text: 'Overview (all countries)' }),
+      h('option', { value: 'alerts', text: 'Active alerts (all countries)' }),
+      ...[...groups.entries()].filter(([, list]) => list.length).map(([reg, list]) =>
+        h('optgroup', { label: reg }, ...list.map((c) => h('option', { value: c.id, text: c.name }))))
+    );
+    if (value != null) country.value = value;
+  }
+  function regionTabs(countFn, onChoose) {
+    const active = REGIONS.filter((r) => countFn(r) > 0);
+    if (active.length < 2) return null;
+    return h('ul', { class: 'tabs', role: 'list', 'aria-label': 'Filter by region' },
+      [['all', 'All regions'], ...active.map((r) => [r, r])].map(([id, label]) =>
+        h('li', null, h('button', { type: 'button', class: 'tab',
+          'aria-pressed': String(openRegion === id),
+          onclick: () => { openRegion = id; onChoose(); } }, label,
+          h('span', { class: 'n', text: String(countFn(id)) })))));
   }
   function fillPeriods() {
     const c = index.countries.find((x) => x.id === country.value) || index.countries[0];
@@ -361,8 +398,9 @@
     const out = [];
     if (c && c.countries) {
       for (const [cid, list] of Object.entries(c.countries)) {
-        const cname = (index.countries.find((x) => x.id === cid) || {}).name || cid;
-        for (const item of list) out.push({ ...item, cid, cname });
+        const cname = prettyName(cid);
+        const region = getRegion(cid);
+        for (const item of list) out.push({ ...item, cid, cname, region });
       }
     }
     return out.sort((a, b) => isHotAlert(b) - isHotAlert(a));
@@ -384,25 +422,33 @@
   function renderAlerts() {
     const c = getCrisis();
     const q = ($('#q').value || '').trim().toLowerCase();
-    const items = allCrisisAlerts().filter((i) => !q || `${i.cname} ${i.kind} ${i.title} ${i.summary || ''}`.toLowerCase().includes(q));
-    results.replaceChildren(
+    const all = allCrisisAlerts().filter((i) => !q || `${i.cname} ${i.region} ${i.kind} ${i.title} ${i.summary || ''}`.toLowerCase().includes(q));
+    if (openRegion !== 'all' && !all.some((i) => i.region === openRegion)) openRegion = 'all';
+    const items = openRegion === 'all' ? all : all.filter((i) => i.region === openRegion);
+    const tabs = regionTabs((r) => r === 'all' ? all.length : all.filter((i) => i.region === r).length, renderAlerts);
+    results.replaceChildren(...[
       h('p', { class: 'result-line' },
-        h('b', { text: 'Active crisis & official travel alerts' }),
+        h('b', { text: openRegion === 'all' ? 'Active crisis & official travel alerts' : `Active alerts · ${openRegion}` }),
         ` · ${plural(items.length, 'alert', 'alerts')}${c ? ` · checked ${fmtTime.format(new Date(c.generated_at))}` : ''} · `,
         h('button', { type: 'button', class: 'desk-link', text: '← Back to Overview', onclick: () => openCountry('home') })),
+      tabs,
       items.length
         ? h('div', { class: 'desk-wrap' },
           h('table', { class: 'desk-table' },
-            h('thead', null, h('tr', null, ['Country', 'Source', 'Alert / Advisory & Details', 'Date'].map((x) => h('th', { text: x })))),
+            h('thead', null, h('tr', null, ['Country', 'Region', 'Source', 'Alert / Advisory & Details', 'Date'].map((x) => h('th', { text: x })))),
             h('tbody', null, items.map((i) => h('tr', null,
-              h('td', null, h('button', { type: 'button', class: 'stamp country-tag', text: i.cname, onclick: () => openCountry(i.cid) })),
+              h('td', null, index.countries.some((x) => x.id === i.cid)
+                ? h('button', { type: 'button', class: 'stamp country-tag', text: i.cname, onclick: () => openCountry(i.cid) })
+                : h('span', { class: 'stamp', text: i.cname })),
+              h('td', { class: 'meta', text: i.region }),
               h('td', null, h('span', { class: 'stamp ' + (isHotAlert(i) ? 'red' : 'indigo'), text: i.kind })),
               h('td', null,
                 h('a', { href: safeUrl(i.url), target: '_blank', rel: 'noopener', text: i.title }),
                 i.summary && h('p', { class: 'byline', text: i.summary })),
               h('td', { class: 'typed', text: i.date ? fmtDay.format(new Date(i.date)) : '—' }))))))
         : h('p', { class: 'state', text: 'No matching alerts.' }),
-      h('p', { class: 'fine', text: 'Sources: Global Disaster Alert and Coordination System (GDACS), US Geological Survey (USGS M4.5+ earthquakes), UK Foreign, Commonwealth & Development Office (FCDO updates within 30 days), and US Department of State elevated travel advisories (Levels 2–4).' }));
+      h('p', { class: 'fine', text: 'Sources: Global Disaster Alert and Coordination System (GDACS), US Geological Survey (USGS M4.5+ earthquakes), UK Foreign, Commonwealth & Development Office (FCDO updates within 30 days), and US Department of State elevated travel advisories (Levels 2–4).' }),
+    ].filter(Boolean));
   }
 
   // ---------- Overview homepage (scales to any number of countries via site/data/home.js) ----------
@@ -418,27 +464,33 @@
     if (!hm) { openCountry(index.countries[0].id); return; }
     T.queue.length = 0;
     const q = ($('#q').value || '').trim().toLowerCase();
-    const filter = (arr) => (q ? (arr || []).filter((s) => storyText(s).includes(q)) : (arr || []));
+    const allDesks = [...(hm.desks || [])].map((d) => ({ ...d, region: d.region || getRegion(d.id) })).sort((a, b) => b.stories_7d - a.stories_7d);
+    if (openRegion !== 'all' && !allDesks.some((d) => d.region === openRegion)) openRegion = 'all';
+    const inReg = (x) => openRegion === 'all' || (x.region || getRegion(x.country || x.id)) === openRegion;
+    const filter = (arr, limit) => (arr || [])
+      .filter((s) => inReg(s) && (!q || storyText(s).includes(q)))
+      .slice(0, limit);
     const c = getCrisis();
-    const allAlerts = allCrisisAlerts();
+    const allAlerts = allCrisisAlerts().filter(inReg);
     const pool = [...(hm.most_reported || []), ...(hm.abroad_only || []), ...(hm.growing || [])]
-      .filter((s, i, a) => a.findIndex((x) => x.id === s.id) === i);
-
-    const desks = [...(hm.desks || [])].sort((a, b) => b.stories_7d - a.stories_7d);
+      .filter((s, i, a) => inReg(s) && a.findIndex((x) => x.id === s.id) === i);
+    const desks = allDesks.filter(inReg);
+    const tabs = regionTabs((r) => r === 'all' ? allDesks.length : allDesks.filter((d) => d.region === r).length, renderHome);
 
     results.replaceChildren(...[
       h('p', { class: 'result-line' },
-        h('b', { text: 'Overview across all monitored countries' }),
+        h('b', { text: openRegion === 'all' ? 'Overview across all monitored countries' : `Regional Desk · ${openRegion}` }),
         ` · ${plural(desks.length, 'country', 'countries')} · updated ${fmtTime.format(new Date(hm.generated_at))}`),
       h('div', { id: 'trans', class: 'trans' }),
       watchbar(q, pool),
+      tabs,
       allAlerts.length > 0 && h('div', { class: 'crisis-strip', role: 'region', 'aria-label': 'Active crisis alerts' },
         h('span', { class: 'stamp red', text: `${plural(allAlerts.length, 'active alert', 'active alerts')}` }),
         h('span', { text: `${allAlerts[0].cname} — ${allAlerts[0].summary || allAlerts[0].title}` }),
         h('button', { type: 'button', class: 'desk-link', text: `All ${allAlerts.length} alerts →`, onclick: () => openCountry('alerts') })),
-      homeSection('Most reported (last 7 days)', 'Ranked by independent outlet count across all countries', filter(hm.most_reported)),
-      homeSection('Fastest growing (last 24 hours)', 'Most new coverage in the last 24 hours', filter(hm.growing)),
-      homeSection('Blind spots · Not in domestic press', 'Covered by international or diaspora outlets, zero domestic coverage', filter(hm.abroad_only)),
+      homeSection('Most reported (last 7 days)', 'Ranked by independent outlet count', filter(hm.most_reported, openRegion === 'all' ? 8 : 6)),
+      homeSection('Fastest growing (last 24 hours)', 'Most new coverage in the last 24 hours', filter(hm.growing, 6)),
+      homeSection('Blind spots · Not in domestic press', 'Covered by international or diaspora outlets, zero domestic coverage', filter(hm.abroad_only, 6)),
       h('section', { class: 'drawer' },
         h('div', { class: 'drawer-head' },
           h('h2', { text: 'Monitored countries directory' }),
@@ -447,6 +499,7 @@
           h('table', { class: 'desk-table' },
             h('thead', null, h('tr', null,
               h('th', { text: 'Country' }),
+              h('th', { text: 'Region' }),
               h('th', { text: '24h' }),
               h('th', { text: '7d' }),
               h('th', { text: 'Alerts' }),
@@ -455,6 +508,7 @@
               const nAlerts = (c && c.countries && c.countries[d.id] || []).length;
               return h('tr', null,
                 h('td', null, h('button', { type: 'button', class: 'desk-link', text: `${d.name} →`, onclick: () => openCountry(d.id) })),
+                h('td', { class: 'meta', text: d.region }),
                 h('td', { class: 'typed', text: String(d.stories_24h) }),
                 h('td', { class: 'typed', text: String(d.stories_7d) }),
                 h('td', null, nAlerts ? h('span', { class: 'stamp red', text: String(nAlerts) }) : h('span', { class: 'meta', text: '—' })),
@@ -572,7 +626,7 @@
     results.replaceChildren(h('p', { class: 'state error', text: 'No data found. Run "python run.py" once, then reload this page.' }));
     return;
   }
-  fillSelect(country, [['home', 'Overview (all countries)'], ['alerts', 'Active alerts (all countries)'], ...index.countries.map((c) => [c.id, c.name])], 'home');
+  fillCountrySelect('home');
   fillTopics('all');
   if ($('#alert-count')) { const n = allCrisisAlerts().length; if (n) $('#alert-count').textContent = `[${n}]`; }
   readHash();

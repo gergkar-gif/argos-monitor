@@ -1,6 +1,7 @@
 # Cambodia country pack (decision D15).
 id: cambodia
 name: Cambodia
+region: Southeast Asia
 language: km                     # the country's main local language; the browser translates from it
 abroad_label: Khmer-language outlets abroad
 

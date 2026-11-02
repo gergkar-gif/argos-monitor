@@ -72,28 +72,45 @@ def _write(name, payload, var):
     (SITE_DATA / f"{name}.js").write_text(head + "\n", encoding="utf8")
 
 
+def _top_global_and_regional(items, key, g_limit, r_limit=6):
+    ranked = sorted(items, key=key, reverse=True)
+    out, seen, r_counts = [], set(), {}
+    for s in ranked[:g_limit]:
+        out.append(s)
+        seen.add(s["id"])
+    for s in ranked:
+        reg = s.get("region") or "Other"
+        if r_counts.get(reg, 0) < r_limit:
+            r_counts[reg] = r_counts.get(reg, 0) + 1
+            if s["id"] not in seen:
+                out.append(s)
+                seen.add(s["id"])
+    return out
+
+
 def _home(now, countries):
     """Build a compact cross-country overview (site/data/home.json) so the front page stays fast at 100+ countries."""
     pool, desks = [], []
     for c in countries:
         cid = c["id"]
+        reg = c.get("region", "Other")
         f7 = SITE_DATA / f"{cid}-7d.json"
         f24 = SITE_DATA / f"{cid}-24h.json"
         d7 = json.loads(f7.read_text(encoding="utf8")) if f7.exists() else {"stories": [], "totals": {}}
         d24 = json.loads(f24.read_text(encoding="utf8")) if f24.exists() else {"stories": [], "totals": {}}
         for s in d7["stories"]:
-            pool.append({**s, "country": cid, "country_name": c["name"], "excerpts": s.get("excerpts", [])[:1], "sources": s.get("sources", [])[:5]})
+            pool.append({**s, "country": cid, "country_name": c["name"], "region": reg, "excerpts": s.get("excerpts", [])[:1], "sources": s.get("sources", [])[:5]})
         top = d7["stories"][0] if d7["stories"] else None
         desks.append({
-            "id": cid, "name": c["name"],
+            "id": cid, "name": c["name"], "region": reg,
             "stories_24h": sum(d24.get("totals", {}).values()) or len(d24["stories"]),
             "stories_7d": sum(d7.get("totals", {}).values()) or len(d7["stories"]),
             "lead": {"title": top["headline"]["title"], "url": top["headline"]["url"], "source": top["headline"]["source"],
                      "outlets": top["independent_sources"]} if top else None,
         })
-    most = sorted(pool, key=lambda s: (s["independent_sources"], s["score"]), reverse=True)[:8]
-    abroad = sorted((s for s in pool if s.get("abroad_only")), key=lambda s: (s["independent_sources"], s["score"]), reverse=True)[:6]
-    growing = sorted((s for s in pool if (s.get("last_24h") or 0) >= 2), key=lambda s: (s.get("last_24h") or 0, s["score"]), reverse=True)[:6]
+    most = _top_global_and_regional(pool, lambda s: (s["independent_sources"], s["score"]), 8)
+    abroad = _top_global_and_regional((s for s in pool if s.get("abroad_only")), lambda s: (s["independent_sources"], s["score"]), 6)
+    growing = _top_global_and_regional((s for s in pool if (s.get("last_24h") or 0) >= 2), lambda s: (s.get("last_24h") or 0, s["score"]), 6)
     return {"generated_at": now, "desks": desks, "most_reported": most, "abroad_only": abroad, "growing": growing}
 
 
@@ -118,8 +135,8 @@ def run(db):
             if ids or (SITE_DATA / f"{cid}-{label}.json").exists():
                 periods.append({"id": label, "label": {"24h": "Last 24 hours", "7d": "Last 7 days"}[label], "file": f"{cid}-{label}.json"})
         if periods:
-            countries.append({"id": cid, "name": pack["name"], "language": pack["language"],
-                              "abroad_label": pack["abroad_label"], "periods": periods})
+            countries.append({"id": cid, "name": pack["name"], "region": pack.get("region", "Other"),
+                              "language": pack["language"], "abroad_label": pack["abroad_label"], "periods": periods})
     keep = ("name", "homepage", "language", "scope", "kind", "governing_body", "state_affiliated", "notes")
     _write("sources", {c: [{k: s.get(k) for k in keep} for s in packs.load(c)["sources"]] for c in packs.pack_ids()}, "ARGOS_SOURCES")
     _write("index", {"generated_at": now, "countries": countries}, "ARGOS_INDEX")

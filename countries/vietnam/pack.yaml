@@ -2,6 +2,7 @@
 # pack.yaml (this file), sources.yaml (outlets and feeds), themes.yaml (local-language additions to ../../themes.yaml).
 id: vietnam
 name: Vietnam
+region: Southeast Asia
 language: vi                     # the country's main language; the browser translates from it
 abroad_label: Vietnamese-language outlets abroad
 

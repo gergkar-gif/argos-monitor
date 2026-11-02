@@ -117,7 +117,19 @@
       } }));
   }
 
-  cSel.replaceChildren(...index.countries.map((x) => el('option', { value: x.id, text: x.name })));
+  const REGIONS = ['Southeast Asia', 'Europe & Balkans', 'Eurasia & Caucasus', 'Africa & Americas'];
+  const COUNTRY_REGION = {
+    cambodia: 'Southeast Asia', indonesia: 'Southeast Asia', myanmar: 'Southeast Asia',
+    philippines: 'Southeast Asia', thailand: 'Southeast Asia', vietnam: 'Southeast Asia',
+    hungary: 'Europe & Balkans', poland: 'Europe & Balkans', serbia: 'Europe & Balkans',
+    azerbaijan: 'Eurasia & Caucasus', georgia: 'Eurasia & Caucasus', kazakhstan: 'Eurasia & Caucasus', turkey: 'Eurasia & Caucasus',
+    brazil: 'Africa & Americas', ethiopia: 'Africa & Americas', south_africa: 'Africa & Americas',
+  };
+  const getRegion = (c) => c.region || COUNTRY_REGION[c.id] || 'Other';
+  cSel.replaceChildren(...REGIONS.flatMap((r) => {
+    const items = index.countries.filter((c) => getRegion(c) === r);
+    return items.length ? [el('optgroup', { label: r }, ...items.map((x) => el('option', { value: x.id, text: x.name })))] : [];
+  }));
   const initCid = location.hash.slice(1);
   if (index.countries.some((x) => x.id === initCid)) cSel.value = initCid;
 

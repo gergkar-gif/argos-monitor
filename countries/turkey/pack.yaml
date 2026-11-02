@@ -1,6 +1,7 @@
 # Turkey country pack (decision D15).
 id: turkey
 name: Turkey
+region: Eurasia & Caucasus
 language: tr
 crisis_names: ["Turkey", "Türkiye", "Turkiye"]
 abroad_label: Independent & diaspora Turkish outlets

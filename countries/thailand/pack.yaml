@@ -1,6 +1,7 @@
 # Thailand country pack (decision D15).
 id: thailand
 name: Thailand
+region: Southeast Asia
 language: th
 abroad_label: Regional & diaspora Thai outlets
 

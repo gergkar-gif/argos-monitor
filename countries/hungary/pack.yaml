@@ -1,6 +1,7 @@
 # Hungary country pack (decision D15). See ../vietnam/pack.yaml for what each field means.
 id: hungary
 name: Hungary
+region: Europe & Balkans
 language: hu
 abroad_label: Hungarian-language outlets abroad
 

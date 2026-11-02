@@ -1,6 +1,7 @@
 # Myanmar country pack (decision D15).
 id: myanmar
 name: Myanmar
+region: Southeast Asia
 language: my
 crisis_names: ["Burma", "Myanmar"]
 abroad_label: Independent Burmese outlets in exile

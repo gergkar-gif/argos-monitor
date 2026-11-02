@@ -44,19 +44,42 @@
 (() => {
   const root = document.getElementById('src'), idx = window.ARGOS_INDEX, raw = window.ARGOS_SOURCES, data = raw && (raw.sources || raw);
   const cSel = document.getElementById('s-country'), scSel = document.getElementById('s-scope'), qIn = document.getElementById('s-q');
-  const el = (tag, attrs, ...kids) => { const e = document.createElement(tag); for (const [k, v] of Object.entries(attrs || {})) { if (v == null || v === false) continue; k === 'text' ? e.textContent = v : e.setAttribute(k, v); } e.append(...kids.flat(Infinity).filter((x) => x != null && x !== false)); return e; };
+  const el = (tag, attrs, ...kids) => { const e = document.createElement(tag); for (const [k, v] of Object.entries(attrs || {})) { if (v == null || v === false) continue; if (k === 'text') e.textContent = v; else if (k.startsWith('on')) e.addEventListener(k.slice(2), v); else e.setAttribute(k, v); } e.append(...kids.flat(Infinity).filter((x) => x != null && x !== false)); return e; };
   const safe = (u) => { try { const x = new URL(u); return /^https?:$/.test(x.protocol) ? x.href : '#'; } catch { return '#'; } };
   if (!data) { root.replaceChildren(el('p', { class: 'state error', text: 'No data found.' })); return; }
+  const REGIONS = ['Southeast Asia', 'Europe & Balkans', 'Eurasia & Caucasus', 'Africa & Americas'];
+  const COUNTRY_REGION = {
+    cambodia: 'Southeast Asia', indonesia: 'Southeast Asia', myanmar: 'Southeast Asia',
+    philippines: 'Southeast Asia', thailand: 'Southeast Asia', vietnam: 'Southeast Asia',
+    hungary: 'Europe & Balkans', poland: 'Europe & Balkans', serbia: 'Europe & Balkans',
+    azerbaijan: 'Eurasia & Caucasus', georgia: 'Eurasia & Caucasus', kazakhstan: 'Eurasia & Caucasus', turkey: 'Eurasia & Caucasus',
+    brazil: 'Africa & Americas', ethiopia: 'Africa & Americas', south_africa: 'Africa & Americas',
+  };
   const scope = { domestic: 'In the country', abroad_local: 'Local-language, abroad', international: 'International' };
-  const byId = Object.fromEntries(((idx && idx.countries) || []).map((c) => [c.id, c.name]));
-  const allCountries = Object.keys(data).sort().map((id) => ({ id, name: byId[id] || id.replace(/_/g, ' ').replace(/\b\w/g, (m) => m.toUpperCase()) }));
-  cSel.replaceChildren(el('option', { value: 'all', text: 'All countries' }), ...allCountries.map((c) => el('option', { value: c.id, text: c.name })));
+  const byId = Object.fromEntries(((idx && idx.countries) || []).map((c) => [c.id, c]));
+  const allCountries = Object.keys(data).sort().map((id) => ({
+    id,
+    name: (byId[id] && byId[id].name) || id.replace(/_/g, ' ').replace(/\b\w/g, (m) => m.toUpperCase()),
+    region: (byId[id] && byId[id].region) || COUNTRY_REGION[id] || 'Other',
+  }));
+  let openRegion = 'all';
+  cSel.replaceChildren(
+    el('option', { value: 'all', text: 'All countries' }),
+    ...REGIONS.flatMap((r) => {
+      const items = allCountries.filter((c) => c.region === r);
+      return items.length ? [el('optgroup', { label: r }, ...items.map((c) => el('option', { value: c.id, text: c.name })))] : [];
+    }));
 
   function render() {
     const cid = cSel.value, sc = scSel.value, q = qIn.value.trim().toLowerCase();
-    const countries = cid === 'all' ? allCountries : allCountries.filter((c) => c.id === cid);
+    const countries = cid === 'all'
+      ? allCountries.filter((c) => openRegion === 'all' || c.region === openRegion)
+      : allCountries.filter((c) => c.id === cid);
     root.replaceChildren(
       el('p', { class: 'result-line' }, el('b', { text: 'Source directory' }), ' · Every outlet Argos reads, who runs it, and state-affiliation classification'),
+      el('div', { class: 'tabs', role: 'tablist', 'aria-label': 'Filter by region' },
+        ...[['all', 'All regions'], ...REGIONS.map((r) => [r, r])].map(([id, label]) =>
+          el('button', { type: 'button', role: 'tab', class: openRegion === id && cid === 'all' ? 'active' : '', text: label, onclick: () => { openRegion = id; cSel.value = 'all'; render(); } }))),
       ...countries.flatMap((c) => {
         const rows = (data[c.id] || []).filter((s) => (sc === 'all' || s.scope === sc) && (!q || `${s.name} ${s.governing_body || ''} ${s.kind || ''}`.toLowerCase().includes(q)));
         if (!rows.length) return [];

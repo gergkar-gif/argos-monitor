@@ -1,6 +1,7 @@
 # Serbia country pack (decision D15).
 id: serbia
 name: Serbia
+region: Europe & Balkans
 language: sr
 abroad_label: Regional & Serbian-language outlets outside Serbia
 
