@@ -187,8 +187,6 @@
         translatePending();
       });
       bar.replaceChildren(btn);
-    } else if (T.state === 'none') {
-      bar.replaceChildren(h('p', { class: 'notice quiet', text: 'Your browser cannot translate on its own device here, so headlines show in the original language. Use the browser\'s Translate feature (Chrome or Edge on a computer work best).' }));
     } else {
       bar.replaceChildren();
     }
@@ -303,29 +301,26 @@
     if (!tr || !tr.length) return null;
     return h('section', { class: 'alerts', 'aria-label': 'Trending searches' },
       h('h2', { text: 'Trending searches' }),
-      h('ul', null, tr.map((x) => {
+      h('ul', { class: 'trend-list' }, tr.map((x) => {
         const n = current.stories.filter((s) => storyText(s).includes(x.term.toLowerCase())).length;
         return h('li', null,
-          h('span', { text: x.term }),
-          x.traffic && h('span', { class: 'meta', text: `${x.traffic} searches` }),
-          n ? h('button', { type: 'button', class: 'more', text: `${plural(n, 'story', 'stories')} here`,
-            onclick: () => { $('#q').value = x.term; setHash(hashFor(openTopic)); render(false); results.scrollIntoView({ block: 'start' }); } })
-            : h('span', { class: 'meta', text: 'no matching story' }),
-          x.url && h('a', { href: safeUrl(x.url), target: '_blank', rel: 'noopener', text: x.source || 'news' }));
+          h('span', { class: 'term', text: x.term }),
+          x.traffic && h('span', { class: 'meta', text: x.traffic }),
+          n > 0 && h('button', { type: 'button', class: 'desk-link', text: `${plural(n, 'story', 'stories')} →`,
+            onclick: () => { $('#q').value = x.term; setHash(hashFor(openTopic)); render(false); results.scrollIntoView({ block: 'start' }); } }));
       })),
-      h('p', { class: 'byline', text: 'Google Trends, top searches in the country right now. Matching is by exact words in our headlines and quotes.' }));
+      h('p', { class: 'byline', text: 'Google Trends right now.' }));
   }
 
   function reddit() {
     const r = (window.ARGOS_REDDIT && (window.ARGOS_REDDIT.countries || (window.ARGOS_REDDIT.reddit || {}).countries) || {})[country.value];
     if (!r || !r.posts.length) return null;
-    const label = r.subreddit.startsWith('r/') ? r.subreddit : `r/${r.subreddit}`;
     return h('section', { class: 'alerts', 'aria-label': 'On Reddit' },
-      h('h2', { text: `On Reddit today · ${label}` }),
+      h('h2', { text: 'On Reddit today' }),
       h('ul', null, r.posts.map((x) => h('li', null,
         x.sub && h('span', { class: 'stamp indigo', text: `r/${x.sub}` }),
         h('a', { href: safeUrl(x.url), target: '_blank', rel: 'noopener', text: x.title })))),
-      h('p', { class: 'byline', text: 'Top posts of the day across these communities. What people discuss, not verified news.' }));
+      h('p', { class: 'byline', text: `Top discussions across ${r.subreddit}. Unverified.` }));
   }
 
   const watched = () => { try { return JSON.parse(localStorage.getItem('argos.watch') || '[]'); } catch { return []; } };
@@ -365,13 +360,12 @@
     if (!c) return null;
     const items = c.countries[country.value] || [];
     if (!items.length) return null;
-    const first = items[0];
-    return h('div', { class: 'crisis-strip', role: 'region', 'aria-label': 'Official alerts' },
-      h('span', { class: 'stamp ' + (items.some(isHotAlert) ? 'red' : 'indigo'), text: `${plural(items.length, 'official alert', 'official alerts')}` }),
-      h('span', { class: 'stamp indigo', text: first.kind }),
-      h('a', { href: safeUrl(first.url), target: '_blank', rel: 'noopener', text: first.title }),
-      first.summary && h('span', { class: 'meta', text: `— ${first.summary}` }),
-      items.length > 1 && h('button', { type: 'button', class: 'desk-link', text: `+${items.length - 1} more →`, onclick: () => openCountry('alerts') }));
+    return h('section', { class: 'alerts side-alert', 'aria-label': 'Official alerts' },
+      h('h2', { text: plural(items.length, 'Official alert', 'Official alerts') }),
+      h('ul', null, items.map((item) => h('li', null,
+        h('span', { class: 'stamp ' + (isHotAlert(item) ? 'red' : 'indigo'), text: item.kind }),
+        h('a', { href: safeUrl(item.url), target: '_blank', rel: 'noopener', text: item.title }),
+        item.summary && h('p', { class: 'byline', text: item.summary })))));
   }
 
   function renderAlerts() {
@@ -495,19 +489,21 @@
       body.push(h('p', { class: 'state', text: q ? `No stories match "${q}" here.` : `No ${topicName(openTopic).toLowerCase()} stories in this period.` }));
     }
 
+    const side = [alerts(), trends(), reddit()].filter(Boolean);
+
     results.replaceChildren(...[
       h('p', { class: 'result-line' }, h('b', { text: country.options[country.selectedIndex].text }),
-        ` · ${periodLabel} · ${plural(totalStories, 'story', 'stories')} found · updated ${fmtTime.format(updated)} · `,
+        ` · ${periodLabel} · ${plural(totalStories, 'story', 'stories')} found · updated ${fmtTime.format(updated)}${ageH > STALE_HOURS ? ` (${Math.round(ageH / 24)}d old)` : ''} · `,
         h('button', { type: 'button', class: 'desk-link', text: '← All countries overview', onclick: () => openCountry('home') })),
       noOutside && h('p', { class: 'notice quiet', text: `No coverage from ${(index.countries.find((x) => x.id === country.value) || {}).abroad_label || 'outlets abroad'} or from international outlets has been collected for this period yet, so the "not in domestic press" check cannot run.` }),
-      ageH > STALE_HOURS && h('p', { class: 'notice', text: `This collection is ${Math.round(ageH)} hours old. Run the collector to refresh it.` }),
       h('div', { id: 'trans', class: 'trans' }),
       watchbar(q),
-      alerts(),
-      trends(),
-      reddit(),
       tabs,
-      ...body,
+      side.length
+        ? h('div', { class: 'country-layout' },
+            h('div', { class: 'country-main' }, ...body),
+            h('aside', { class: 'country-side', 'aria-label': 'Country signals' }, ...side))
+        : h('div', { class: 'country-main' }, ...body),
     ].filter(Boolean));
     paintTranslationBar();
     translatePending();

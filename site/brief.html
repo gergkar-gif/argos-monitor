@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Daily Brief · Argos Monitor</title>
+<title>Top Reported Stories · Argos Monitor</title>
 <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png">
 <link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="style.css">
@@ -29,12 +29,12 @@
         <a href="index.html#home">Overview</a>
         <a href="index.html#country">Country Brief</a>
         <a href="index.html#alerts">Alerts</a>
-        <a href="brief.html" aria-current="page">Daily Brief</a>
+        <a href="brief.html" aria-current="page">Top Reported Stories</a>
         <a href="sources.html">Sources</a>
         <a href="about.html">About</a>
       </nav>
     </div>
-    <form class="slip" aria-label="Daily brief options" onsubmit="event.preventDefault()">
+    <form class="slip" aria-label="Top reported stories options" onsubmit="event.preventDefault()">
       <label class="field"><span>Country</span><select id="b-country"></select></label>
       <label class="field"><span>Period</span><select id="b-period"></select></label>
       <div class="field"><button type="button" class="more" style="margin:0" onclick="print()">Print / Save PDF</button></div>
@@ -82,7 +82,7 @@
     const bar = document.getElementById('trans');
     if (!bar || lang === 'en') return;
     if (typeof Translator === 'undefined') {
-      bar.replaceChildren(el('p', { class: 'notice quiet', text: 'Use your browser\'s Translate feature to read headlines in English.' }));
+      bar.replaceChildren();
       return;
     }
     try {
@@ -136,7 +136,7 @@
     load(p.file.replace(/\.json$/, '')).then((d) => {
       const top = [...d.stories].sort((a, b) => b.score - a.score).slice(0, 5);
       root.replaceChildren(
-        el('p', { class: 'result-line' }, el('b', { text: `${c.name} · Top 5 stories` }), ` · ${p.label.toLowerCase()} · updated ${new Date(d.generated_at).toLocaleString()}`),
+        el('p', { class: 'result-line' }, el('b', { text: `${c.name} · Top reported stories` }), ` · ${p.label.toLowerCase()} · updated ${new Date(d.generated_at).toLocaleString()}`),
         el('div', { id: 'trans', class: 'trans' }),
         el('ol', null, top.map((s) => {
           const a = el('a', { href: safe(s.headline.url), target: '_blank', rel: 'noopener', lang: s.headline.language, text: s.headline.title });
