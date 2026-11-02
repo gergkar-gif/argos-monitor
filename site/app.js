@@ -96,6 +96,36 @@
     if (value != null && options.some(([v]) => v === value)) sel.value = value;
   }
   let monitorCountry = 'all';
+  let monitorPeriod = '7d';
+
+  const MONITOR_PERIODS = [
+    ['24h', 'Past 24 hours'],
+    ['7d', 'Past 7 days'],
+    ['14d', 'Past 14 days'],
+    ['30d', 'Past 30 days'],
+  ];
+
+  const periodCutoff = (per) => {
+    const now = Date.now();
+    if (per === '24h') return now - 24 * 3600 * 1000;
+    if (per === '7d') return now - 7 * 86400 * 1000;
+    if (per === '14d') return now - 14 * 86400 * 1000;
+    if (per === '30d') return now - 30 * 86400 * 1000;
+    return 0;
+  };
+
+  function periodPicker(currentVal, onChange) {
+    return h('div', { class: 'monitor-filter' },
+      h('label', { for: 'mon-period-sel', text: 'Time Window:' }),
+      h('select', {
+        id: 'mon-period-sel',
+        onchange: (e) => onChange(e.target.value)
+      },
+        ...MONITOR_PERIODS.map(([v, label]) =>
+          h('option', { value: v, text: label, selected: v === currentVal }))
+      )
+    );
+  }
 
   function countryPicker(currentVal, onChange) {
     const groups = new Map(REGIONS.map((r) => [r, []]));
@@ -166,7 +196,7 @@
     if (activeTab === 'relations') return `#relations/${selectedCountries.join(',')}/${relPeriod}`;
     if (activeTab === 'alerts' || activeTab === 'disasters' || activeTab === 'violence') {
       const c = monitorCountry !== 'all' ? monitorCountry : 'all';
-      return `#${activeTab}/${c}${qPart}`;
+      return `#${activeTab}/${c}/${monitorPeriod}${qPart}`;
     }
     return `#${country.value}/${period.value}/${t}${qPart}`;
   };
@@ -193,7 +223,12 @@
     } else if (c === 'alerts' || c === 'disasters' || c === 'violence') {
       activeTab = c;
       monitorCountry = (p && index.countries.some((x) => x.id === p)) ? p : 'all';
-      try { $('#q').value = t ? decodeURIComponent(t) : ''; } catch {}
+      if (t && ['24h', '7d', '14d', '30d'].includes(t)) {
+        monitorPeriod = t;
+        try { $('#q').value = q ? decodeURIComponent(q) : ''; } catch {}
+      } else {
+        try { $('#q').value = t ? decodeURIComponent(t) : ''; } catch {}
+      }
     } else if (c === 'home' || !c) {
       activeTab = 'home';
       country.value = 'all';
@@ -565,28 +600,38 @@
   function renderAlerts() {
     const c = getCrisis();
     const filterCountry = monitorCountry !== 'all' ? monitorCountry : null;
+    const cutoff = periodCutoff(monitorPeriod);
     const all = allCrisisAlerts().filter((i) => {
       if (filterCountry && i.cid !== filterCountry) return false;
+      if (cutoff && i.date && new Date(i.date).getTime() < cutoff) return false;
       return true;
     });
     // Organised by recency
     all.sort((a, b) => new Date(b.date || 0).getTime() - new Date(a.date || 0).getTime());
     const countryName = filterCountry ? prettyName(filterCountry) : null;
+    const periodLabel = (MONITOR_PERIODS.find(([v]) => v === monitorPeriod) || [])[1] || 'Past 7 days';
     const bar = h('div', { class: 'monitor-bar' },
-      countryPicker(monitorCountry, (val) => {
-        monitorCountry = val;
-        setHash(hashFor('all'));
-        renderAlerts();
-      }),
+      h('div', { class: 'monitor-filters' },
+        countryPicker(monitorCountry, (val) => {
+          monitorCountry = val;
+          setHash(hashFor('all'));
+          renderAlerts();
+        }),
+        periodPicker(monitorPeriod, (val) => {
+          monitorPeriod = val;
+          setHash(hashFor('all'));
+          renderAlerts();
+        })
+      ),
       filterCountry
         ? h('button', { type: 'button', class: 'desk-link', text: `View all country alerts (${allCrisisAlerts().length})`, onclick: () => { monitorCountry = 'all'; setHash(hashFor('all')); renderAlerts(); } })
-        : h('span', { class: 'typed', text: `${all.length} total active alerts` })
+        : h('span', { class: 'typed', text: `${all.length} active alerts (${periodLabel})` })
     );
 
     results.replaceChildren(...[
       h('p', { class: 'result-line' },
         h('b', { text: filterCountry ? `Official alerts · ${countryName}` : 'Active crisis & official travel alerts' }),
-        ` · ${plural(all.length, 'alert', 'alerts')}${c ? ` · checked ${fmtTime.format(new Date(c.generated_at))}` : ''} · `,
+        ` · ${periodLabel} · ${plural(all.length, 'alert', 'alerts')}${c ? ` · checked ${fmtTime.format(new Date(c.generated_at))}` : ''} · `,
         h('button', { type: 'button', class: 'desk-link', text: '← Back to Overview', onclick: () => openCountry('home') })),
       bar,
       all.length
@@ -633,30 +678,38 @@
 
   const storyRecency = (s) => new Date(s.last_seen || (s.headline && s.headline.published) || s.first_seen || 0).getTime();
 
-  let loadedAll7d = false;
-  function collectEventPool(mode) {
+  const loadedPeriods = new Set();
+  function ensurePeriodLoaded(per) {
+    if (loadedPeriods.has(per)) return;
+    loadedPeriods.add(per);
+    Promise.allSettled(index.countries.map((c) => load(`${c.id}-${per}.json`))).then(() => {
+      if (activeTab === 'disasters' || activeTab === 'violence') renderEventMonitor(activeTab);
+    });
+  }
+
+  function collectEventPool(mode, per = monitorPeriod) {
     const hm = window.ARGOS_HOME || {};
     const seen = new Set();
     const out = [];
     const key = mode === 'disasters' ? 'disaster_type' : 'violence_type';
+    const cutoff = periodCutoff(per);
+
     const add = (s, cid, cname, region) => {
       if (!s || seen.has(s.id)) return;
+      if (cutoff && storyRecency(s) < cutoff) return;
       const tagged = tagEventStory({ ...s, country: s.country || cid, country_name: s.country_name || cname, region: s.region || region || getRegion(s.country || cid) });
       if (tagged[key]) { seen.add(s.id); out.push(tagged); }
     };
+
     const preset = mode === 'disasters' ? (hm.disasters || []) : (hm.violent_events || []);
     preset.forEach((s) => add(s));
     [...(hm.most_reported || []), ...(hm.growing || []), ...(hm.abroad_only || [])].forEach((s) => add(s));
+
     for (const c of index.countries) {
-      const d = window.ARGOS_DATA && window.ARGOS_DATA[`${c.id}-7d`];
+      const d = window.ARGOS_DATA && window.ARGOS_DATA[`${c.id}-${per}`];
       if (d && d.stories) d.stories.forEach((s) => add(s, c.id, c.name, getRegion(c.id)));
     }
-    if (!loadedAll7d) {
-      loadedAll7d = true;
-      Promise.allSettled(index.countries.map((c) => load(`${c.id}-7d.json`))).then(() => {
-        if (activeTab === 'disasters' || activeTab === 'violence') renderEventMonitor(activeTab);
-      });
-    }
+    ensurePeriodLoaded(per);
     return out.sort((a, b) => storyRecency(b) - storyRecency(a));
   }
 
@@ -666,7 +719,9 @@
     const rules = isDis ? DISASTER_RULES : VIOLENCE_RULES;
     const key = isDis ? 'disaster_type' : 'violence_type';
     const filterCountry = monitorCountry !== 'all' ? monitorCountry : null;
-    const allStories = collectEventPool(mode).filter((s) => {
+    const cutoff = periodCutoff(monitorPeriod);
+
+    const allStories = collectEventPool(mode, monitorPeriod).filter((s) => {
       if (filterCountry && s.country !== filterCountry) return false;
       return true;
     });
@@ -674,6 +729,7 @@
 
     const allOfficial = allCrisisAlerts().filter((i) => {
       if (filterCountry && i.cid !== filterCountry) return false;
+      if (cutoff && i.date && new Date(i.date).getTime() < cutoff) return false;
       const hay = fold(`${i.cname} ${i.region} ${i.kind} ${i.title} ${i.summary || ''}`);
       if (isDis) return /^(GDACS|USGS|NASA EONET)$/.test(i.kind) || /\b(disaster|earthquake|flood|typhoon|cyclone|volcano|wildfire)\b/.test(hay);
       return /travel/.test(i.kind.toLowerCase()) && /\b(terror|unrest|conflict|armed|violence|violent|kidnap|crime|martial|security)\b/.test(hay);
@@ -690,25 +746,33 @@
           h('span', { class: 'n', text: String(n) })))));
 
     const countryName = filterCountry ? prettyName(filterCountry) : null;
+    const periodLabel = (MONITOR_PERIODS.find(([v]) => v === monitorPeriod) || [])[1] || 'Past 7 days';
     const titleText = filterCountry
       ? (isDis ? `Disasters & Severe Weather · ${countryName}` : `Violent Events · ${countryName}`)
       : (isDis ? 'Natural Disasters & Severe Weather Monitor' : 'Violent Events & Conflict Monitor (ACLED taxonomy)');
 
     const bar = h('div', { class: 'monitor-bar' },
-      countryPicker(monitorCountry, (val) => {
-        monitorCountry = val;
-        setHash(hashFor('all'));
-        renderEventMonitor(mode);
-      }),
+      h('div', { class: 'monitor-filters' },
+        countryPicker(monitorCountry, (val) => {
+          monitorCountry = val;
+          setHash(hashFor('all'));
+          renderEventMonitor(mode);
+        }),
+        periodPicker(monitorPeriod, (val) => {
+          monitorPeriod = val;
+          setHash(hashFor('all'));
+          renderEventMonitor(mode);
+        })
+      ),
       filterCountry
         ? h('button', { type: 'button', class: 'desk-link', text: `View all country ${isDis ? 'disasters' : 'violent events'}`, onclick: () => { monitorCountry = 'all'; setHash(hashFor('all')); renderEventMonitor(mode); } })
-        : h('span', { class: 'typed', text: `${allStories.length} event clusters · ${allOfficial.length} official alerts` })
+        : h('span', { class: 'typed', text: `${allStories.length} clusters · ${allOfficial.length} official alerts (${periodLabel})` })
     );
 
     results.replaceChildren(...[
       h('p', { class: 'result-line' },
         h('b', { text: titleText }),
-        ` · ${plural(allOfficial.length, isDis ? 'official sensor alert' : 'official security advisory', isDis ? 'official sensor alerts' : 'official security advisories')} · ${plural(stories.length, 'reported story cluster', 'reported story clusters')} · `,
+        ` · ${periodLabel} · ${plural(allOfficial.length, isDis ? 'official sensor alert' : 'official security advisory', isDis ? 'official sensor alerts' : 'official security advisories')} · ${plural(stories.length, 'reported story cluster', 'reported story clusters')} · `,
         h('button', { type: 'button', class: 'desk-link', text: '← Back to Overview', onclick: () => openCountry('home') })),
       bar,
       subTabs,
