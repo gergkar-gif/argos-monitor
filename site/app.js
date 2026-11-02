@@ -82,7 +82,8 @@
     if (window.ARGOS_DATA[key]) return Promise.resolve(window.ARGOS_DATA[key]);
     return new Promise((resolve, reject) => {
       const s = document.createElement('script');
-      s.src = `data/${key}.js`;
+      const v = (window.ARGOS_INDEX && window.ARGOS_INDEX.generated_at) ? `?v=${encodeURIComponent(window.ARGOS_INDEX.generated_at)}` : '';
+      s.src = `data/${key}.js${v}`;
       s.onload = () => (window.ARGOS_DATA[key] ? resolve(window.ARGOS_DATA[key]) : reject(new Error('empty')));
       s.onerror = () => reject(new Error('missing'));
       document.head.append(s);

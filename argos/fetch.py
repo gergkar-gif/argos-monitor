@@ -3,7 +3,7 @@ import subprocess
 from .config import COOKIE_JAR, USER_AGENT
 
 
-def get(url, timeout=30):
+def get(url, timeout=15):
     """Return (status_code, body_bytes). Status 0 means the connection failed."""
     p = subprocess.run(
         ["curl", "-sL", "-m", str(timeout), "--compressed", "-A", USER_AGENT,

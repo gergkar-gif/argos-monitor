@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ["site/**", "countries/**", "argos/**", "themes.yaml", ".github/workflows/daily.yml"]
+    paths: ["countries/**", "argos/**", "themes.yaml", ".github/workflows/daily.yml"]
 
 concurrency:
   group: daily-digest
@@ -66,6 +66,13 @@ jobs:
         with:
           path: .argos-data/argos.db
           key: argos-db-${{ github.run_id }}
+
+      - name: Save site data cache
+        uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: site/data
+          key: site-data-${{ github.run_id }}
 
       # Needs two repository secrets (Settings > Secrets and variables > Actions):
       # CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID.
