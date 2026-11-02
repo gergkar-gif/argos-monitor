@@ -53,7 +53,7 @@
   let openRegion = 'all';
   let openSubType = 'all';
   let extra = {};   // extra stories revealed per topic in the overview ("Show more")
-  const GLOBAL_VIEWS = new Set(['home', 'alerts', 'disasters', 'violence']);
+  const GLOBAL_VIEWS = new Set(['home', 'alerts', 'disasters', 'violence', 'relations']);
 
   const REGIONS = [
     'Southeast Asia', 'Central Europe', 'Balkans', 'Eastern Europe',
@@ -103,6 +103,7 @@
     }
     country.replaceChildren(
       h('option', { value: 'home', text: 'Overview (all countries)' }),
+      h('option', { value: 'relations', text: 'Bilateral & Joint Affairs' }),
       h('option', { value: 'alerts', text: 'Active alerts (all countries)' }),
       h('option', { value: 'disasters', text: 'Natural disasters (all countries)' }),
       h('option', { value: 'violence', text: 'Violent events (all countries)' }),
@@ -135,6 +136,7 @@
   const hashFor = (t) => {
     const qPart = $('#q').value.trim() ? `/${encodeURIComponent($('#q').value.trim())}` : '';
     if (activeTab === 'home') return `#home${qPart ? '//' + qPart.slice(1) : ''}`;
+    if (activeTab === 'relations') return `#relations/${relCountryA}/${relCountryB}/${relPeriod}`;
     if (activeTab === 'alerts' || activeTab === 'disasters' || activeTab === 'violence') {
       const c = country.value || 'all';
       return `#${activeTab}/${c}${qPart}`;
@@ -143,7 +145,13 @@
   };
   function readHash() {
     const [c, p, t, q] = location.hash.replace(/^#/, '').split('/');
-    if (c === 'alerts' || c === 'disasters' || c === 'violence') {
+    if (c === 'relations') {
+      activeTab = 'relations';
+      country.value = 'relations';
+      if (p) relCountryA = p;
+      if (t) relCountryB = t;
+      if (q) relPeriod = q;
+    } else if (c === 'alerts' || c === 'disasters' || c === 'violence') {
       activeTab = c;
       const targetCountry = p && index.countries.some((x) => x.id === p) ? p : c;
       country.value = targetCountry;
@@ -308,7 +316,7 @@
     if (cid === 'home') {
       activeTab = 'home';
       country.value = 'home';
-    } else if (cid === 'alerts' || cid === 'disasters' || cid === 'violence') {
+    } else if (cid === 'alerts' || cid === 'disasters' || cid === 'violence' || cid === 'relations') {
       activeTab = cid;
       country.value = cid;
     } else {
@@ -677,6 +685,254 @@
     translatePending();
   }
 
+  // ---------- Bilateral & Joint Affairs Monitor ----------
+  const COMMON_PARTNERS = [
+    { id: 'laos', name: 'Laos', terms: ['laos', 'lao', 'vientiane', 'lào', 'ລາວ'] },
+    { id: 'china', name: 'China', terms: ['china', 'chinese', 'beijing', 'trung quốc', 'kínai', 'chine', 'pekin', 'xi jinping'] },
+    { id: 'us', name: 'United States', terms: ['united states', 'usa', 'u.s.', 'washington', 'mỹ', 'hoa kỳ', 'amerika', 'américain', 'biden', 'trump'] },
+    { id: 'russia', name: 'Russia', terms: ['russia', 'russian', 'moscow', 'nga', 'orosz', 'kremlin', 'putin', 'россия'] },
+    { id: 'eu', name: 'European Union', terms: ['european union', 'eu', 'brussels', 'liên minh châu âu', 'európai unió', 'bruxelles'] },
+    { id: 'uk', name: 'United Kingdom', terms: ['united kingdom', 'britain', 'british', 'london', 'anh quốc', 'nagy-britannia'] },
+    { id: 'india', name: 'India', terms: ['india', 'indian', 'new delhi', 'ấn độ', 'delhi', 'modi'] },
+    { id: 'japan', name: 'Japan', terms: ['japan', 'japanese', 'tokyo', 'nhật bản', 'japán'] },
+    { id: 'south_korea', name: 'South Korea', terms: ['south korea', 'korean', 'seoul', 'hàn quốc', 'dél-korea'] },
+  ];
+
+  const POPULAR_PAIRS = [
+    ['cambodia', 'vietnam', 'Cambodia ⇄ Vietnam'],
+    ['cambodia', 'laos', 'Cambodia ⇄ Laos'],
+    ['serbia', 'kosovo', 'Serbia ⇄ Kosovo'],
+    ['armenia', 'azerbaijan', 'Armenia ⇄ Azerbaijan'],
+    ['hungary', 'poland', 'Hungary ⇄ Poland'],
+    ['malaysia', 'indonesia', 'Malaysia ⇄ Indonesia'],
+    ['colombia', 'argentina', 'Colombia ⇄ Argentina'],
+    ['uzbekistan', 'kazakhstan', 'Uzbekistan ⇄ Kazakhstan'],
+    ['kenya', 'ethiopia', 'Kenya ⇄ Ethiopia'],
+  ];
+
+  let relCountryA = 'cambodia';
+  let relCountryB = 'vietnam';
+  let relPeriod = '30d';
+  let relCustom = '';
+
+  function getCountryName(id) {
+    const c = index.countries.find((x) => x.id === id);
+    if (c) return c.name;
+    const p = COMMON_PARTNERS.find((x) => x.id === id);
+    if (p) return p.name;
+    return id ? id.charAt(0).toUpperCase() + id.slice(1) : '';
+  }
+
+  function getCountryTerms(id) {
+    const c = index.countries.find((x) => x.id === id);
+    if (c) {
+      const list = [fold(c.name), fold(c.id), ...(c.mentions || []).map(fold)];
+      return [...new Set(list.filter((x) => x && x.length > 2))];
+    }
+    const p = COMMON_PARTNERS.find((x) => x.id === id);
+    if (p) {
+      const list = [fold(p.name), fold(p.id), ...p.terms.map(fold)];
+      return [...new Set(list.filter((x) => x && x.length > 2))];
+    }
+    if (id) {
+      return [fold(id)];
+    }
+    return [];
+  }
+
+  async function loadCountryStories(cid, per) {
+    const c = index.countries.find((x) => x.id === cid);
+    if (!c) return [];
+    const p = c.periods.find((x) => x.id === per) || c.periods.find((x) => x.id === '30d') || c.periods.find((x) => x.id === '7d') || c.periods[0];
+    if (!p) return [];
+    try {
+      const d = await load(p.file);
+      return (d && d.stories) || [];
+    } catch {
+      return [];
+    }
+  }
+
+  async function renderRelations() {
+    T.queue.length = 0;
+    const nameA = getCountryName(relCountryA);
+    const nameB = relCountryB === 'custom' && relCustom ? relCustom : getCountryName(relCountryB);
+    const termsA = getCountryTerms(relCountryA);
+    const termsB = relCountryB === 'custom' && relCustom ? [fold(relCustom)] : getCountryTerms(relCountryB);
+
+    const isBMonitored = index.countries.some((x) => x.id === relCountryB);
+
+    const bar = h('div', { class: 'bilateral-bar' },
+      h('div', { class: 'bilateral-controls' },
+        h('label', { class: 'field' },
+          h('span', { text: 'Country A' }),
+          h('select', {
+            id: 'rel-sel-a',
+            onchange: (e) => { relCountryA = e.target.value; setHash(hashFor('all')); renderRelations(); }
+          }, ...REGIONS.flatMap((r) => {
+            const items = index.countries.filter((c) => getRegion(c.id) === r);
+            return items.length ? [h('optgroup', { label: r }, ...items.map((c) => h('option', { value: c.id, text: c.name, selected: c.id === relCountryA })))] : [];
+          }))),
+        h('button', {
+          type: 'button', class: 'bilateral-swap', title: 'Swap Country A and B',
+          onclick: () => {
+            if (isBMonitored) {
+              const tmp = relCountryA; relCountryA = relCountryB; relCountryB = tmp;
+              setHash(hashFor('all'));
+              renderRelations();
+            }
+          }
+        }, '⇄'),
+        h('label', { class: 'field' },
+          h('span', { text: 'Country B / Partner' }),
+          h('select', {
+            id: 'rel-sel-b',
+            onchange: (e) => {
+              relCountryB = e.target.value;
+              setHash(hashFor('all'));
+              renderRelations();
+            }
+          },
+            h('optgroup', { label: 'Popular Partners & Powers' },
+              ...COMMON_PARTNERS.map((p) => h('option', { value: p.id, text: p.name, selected: p.id === relCountryB }))),
+            ...REGIONS.flatMap((r) => {
+              const items = index.countries.filter((c) => getRegion(c.id) === r && c.id !== relCountryA);
+              return items.length ? [h('optgroup', { label: r }, ...items.map((c) => h('option', { value: c.id, text: c.name, selected: c.id === relCountryB })))] : [];
+            }),
+            h('optgroup', { label: 'Search' },
+              h('option', { value: 'custom', text: 'Custom entity / keyword…', selected: relCountryB === 'custom' })))),
+        relCountryB === 'custom' && h('label', { class: 'field' },
+          h('span', { text: 'Keyword / Entity' }),
+          h('input', {
+            type: 'text', placeholder: 'e.g. Laos, ASEAN, IMF', value: relCustom,
+            oninput: (e) => { relCustom = e.target.value.trim(); },
+            onkeydown: (e) => { if (e.key === 'Enter') { e.preventDefault(); renderRelations(); } }
+          })),
+        relCountryB === 'custom' && h('button', {
+          type: 'button', class: 'research', style: 'height: 2.15rem;',
+          onclick: () => renderRelations(), text: 'Search'
+        }),
+        h('label', { class: 'field' },
+          h('span', { text: 'Time Window' }),
+          h('select', {
+            id: 'rel-sel-period',
+            onchange: (e) => { relPeriod = e.target.value; setHash(hashFor('all')); renderRelations(); }
+          },
+            [['30d', 'Last 30 days'], ['14d', 'Last 14 days'], ['7d', 'Last 7 days']].map(([v, label]) =>
+              h('option', { value: v, text: label, selected: v === relPeriod })))),
+      ),
+      h('div', { class: 'bilateral-pairs' },
+        h('span', { class: 'pair-label', text: 'Quick pairs:' }),
+        ...POPULAR_PAIRS.map(([ca, cb, label]) => h('button', {
+          type: 'button',
+          class: 'pair-pill' + (relCountryA === ca && relCountryB === cb ? ' active' : ''),
+          text: label,
+          onclick: () => {
+            relCountryA = ca; relCountryB = cb;
+            setHash(hashFor('all'));
+            renderRelations();
+          }
+        }))
+      )
+    );
+
+    const loadingState = h('p', { class: 'state', text: `Analyzing bilateral reporting between ${nameA} and ${nameB}…` });
+    results.replaceChildren(
+      h('p', { class: 'result-line' },
+        h('b', { text: `Bilateral & Joint Affairs · ${nameA} ⇄ ${nameB}` }),
+        ` · ${relPeriod === '30d' ? 'Last 30 days' : relPeriod === '14d' ? 'Last 14 days' : 'Last 7 days'} · `,
+        h('button', { type: 'button', class: 'desk-link', text: '← Back to Overview', onclick: () => openCountry('home') })),
+      bar,
+      loadingState
+    );
+
+    // Fetch datasets
+    const [rawA, rawB] = await Promise.all([
+      loadCountryStories(relCountryA, relPeriod),
+      isBMonitored ? loadCountryStories(relCountryB, relPeriod) : Promise.resolve([])
+    ]);
+
+    // Matching stories
+    const matchesTerms = (s, terms) => {
+      const txt = storyText(s);
+      return terms.some((t) => t && txt.includes(t));
+    };
+
+    const storiesA = rawA.filter((s) => matchesTerms(s, termsB));
+    const storiesB = rawB.filter((s) => matchesTerms(s, termsA));
+
+    // Global / third-party stories from ARGOS_HOME
+    const hm = window.ARGOS_HOME;
+    const globalPool = hm ? [...(hm.most_reported || []), ...(hm.growing || []), ...(hm.abroad_only || [])] : [];
+    const jointThirdParty = globalPool.filter((s) => {
+      if (s.country === relCountryA || (isBMonitored && s.country === relCountryB)) return false;
+      return matchesTerms(s, termsA) && matchesTerms(s, termsB);
+    });
+
+    const totalCount = storiesA.length + storiesB.length + jointThirdParty.length;
+
+    const content = [];
+    if (isBMonitored) {
+      content.push(
+        h('div', { class: 'bilateral-grid' },
+          h('div', { class: 'bilateral-col' },
+            h('div', { class: 'bilateral-col-head' },
+              h('h2', { text: `${nameA} Media Perspective` }),
+              h('span', { text: plural(storiesA.length, 'story', 'stories') })),
+            storiesA.length
+              ? storiesA.map((s, i) => story(s, { lead: i === 0, i }))
+              : h('p', { class: 'state', text: `No stories in ${nameA} media mentioning ${nameB} in the ${relPeriod === '30d' ? 'last 30 days' : relPeriod === '14d' ? 'last 14 days' : 'last 7 days'}.` })),
+          h('div', { class: 'bilateral-col' },
+            h('div', { class: 'bilateral-col-head' },
+              h('h2', { text: `${nameB} Media Perspective` }),
+              h('span', { text: plural(storiesB.length, 'story', 'stories') })),
+            storiesB.length
+              ? storiesB.map((s, i) => story(s, { lead: i === 0, i }))
+              : h('p', { class: 'state', text: `No stories in ${nameB} media mentioning ${nameA} in the ${relPeriod === '30d' ? 'last 30 days' : relPeriod === '14d' ? 'last 14 days' : 'last 7 days'}.` })),
+        )
+      );
+    } else {
+      content.push(
+        h('section', { class: 'drawer' },
+          h('div', { class: 'drawer-head' },
+            h('h2', { text: `${nameA} Media Coverage of ${nameB}` }),
+            h('span', { class: 'count', text: plural(storiesA.length, 'story', 'stories') })),
+          storiesA.length
+            ? h('div', { class: 'grid' }, storiesA.map((s, i) => story(s, { lead: i === 0, i })))
+            : h('p', { class: 'state', text: `No stories in ${nameA} media mentioning "${nameB}" in the ${relPeriod === '30d' ? 'last 30 days' : relPeriod === '14d' ? 'last 14 days' : 'last 7 days'}.` }))
+      );
+    }
+
+    if (jointThirdParty.length) {
+      content.push(
+        h('section', { class: 'drawer bilateral-joint' },
+          h('div', { class: 'drawer-head' },
+            h('h2', { text: `Regional & International Coverage involving both ${nameA} & ${nameB}` }),
+            h('span', { class: 'count', text: plural(jointThirdParty.length, 'story', 'stories') })),
+          h('div', { class: 'grid' }, jointThirdParty.map((s, i) => story(s, { lead: false, i }))))
+      );
+    }
+
+    content.push(
+      h('p', { class: 'fine' },
+        `Cross-country intelligence monitor: cross-references domestic, diaspora, and international reporting across monitored desks to isolate bilateral agreements, diplomatic visits, territorial disputes, and trade interaction without external search engine bias.`
+      )
+    );
+
+    loadingState.remove();
+    results.replaceChildren(
+      h('p', { class: 'result-line' },
+        h('b', { text: `Bilateral & Joint Affairs · ${nameA} ⇄ ${nameB}` }),
+        ` · ${plural(totalCount, 'story', 'stories')} found · ${relPeriod === '30d' ? 'Last 30 days' : relPeriod === '14d' ? 'Last 14 days' : 'Last 7 days'} · `,
+        h('button', { type: 'button', class: 'desk-link', text: '← Back to Overview', onclick: () => openCountry('home') })),
+      bar,
+      ...content
+    );
+
+    paintTranslationBar();
+    translatePending();
+  }
+
   // ---------- Overview homepage (scales to any number of countries via site/data/home.js) ----------
   function homeSection(title, sub, list) {
     if (!list || !list.length) return null;
@@ -816,6 +1072,7 @@
     if (isCountry) lastCountry = country.value;
     if ($('#nav-home')) $('#nav-home').setAttribute('aria-current', country.value === 'home' ? 'page' : 'false');
     if ($('#nav-country')) $('#nav-country').setAttribute('aria-current', activeTab === 'country' ? 'page' : 'false');
+    if ($('#nav-relations')) $('#nav-relations').setAttribute('aria-current', activeTab === 'relations' ? 'page' : 'false');
     if ($('#nav-alerts')) $('#nav-alerts').setAttribute('aria-current', activeTab === 'alerts' ? 'page' : 'false');
     if ($('#nav-disasters')) $('#nav-disasters').setAttribute('aria-current', activeTab === 'disasters' ? 'page' : 'false');
     if ($('#nav-violence')) $('#nav-violence').setAttribute('aria-current', activeTab === 'violence' ? 'page' : 'false');
@@ -824,6 +1081,13 @@
       setHash(hashFor('all'));
       renderHome();
       useLanguage('multi');
+      return;
+    }
+    if (activeTab === 'relations') {
+      useLanguage('multi');
+      $('#brief').href = 'brief.html';
+      setHash(hashFor('all'));
+      renderRelations();
       return;
     }
     if (activeTab === 'alerts') {
@@ -868,12 +1132,14 @@
   $('#home-link').addEventListener('click', (e) => { e.preventDefault(); openCountry('home'); });
   if ($('#nav-home')) $('#nav-home').addEventListener('click', (e) => { e.preventDefault(); activeTab = 'home'; openCountry('home'); });
   if ($('#nav-country')) $('#nav-country').addEventListener('click', (e) => { e.preventDefault(); activeTab = 'country'; openCountry(lastCountry || index.countries[0].id); });
+  if ($('#nav-relations')) $('#nav-relations').addEventListener('click', (e) => { e.preventDefault(); activeTab = 'relations'; openCountry('relations'); });
   if ($('#nav-alerts')) $('#nav-alerts').addEventListener('click', (e) => { e.preventDefault(); activeTab = 'alerts'; openCountry('alerts'); });
   if ($('#nav-disasters')) $('#nav-disasters').addEventListener('click', (e) => { e.preventDefault(); openSubType = 'all'; activeTab = 'disasters'; openCountry('disasters'); });
   if ($('#nav-violence')) $('#nav-violence').addEventListener('click', (e) => { e.preventDefault(); openSubType = 'all'; activeTab = 'violence'; openCountry('violence'); });
   $('#slip').addEventListener('submit', (e) => { e.preventDefault(); research(); });
   country.addEventListener('change', () => {
     if (country.value === 'home') activeTab = 'home';
+    else if (country.value === 'relations') activeTab = 'relations';
     else if (country.value === 'alerts') activeTab = 'alerts';
     else if (country.value === 'disasters') activeTab = 'disasters';
     else if (country.value === 'violence') activeTab = 'violence';
@@ -886,6 +1152,7 @@
   $('#q').addEventListener('input', () => {
     setHash(hashFor(openTopic));
     if (country.value === 'home') renderHome();
+    else if (country.value === 'relations') renderRelations();
     else if (country.value === 'alerts') renderAlerts();
     else if (country.value === 'disasters' || country.value === 'violence') renderEventMonitor(country.value);
     else if (current) render(false);

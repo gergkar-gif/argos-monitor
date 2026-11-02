@@ -12,7 +12,8 @@ from .config import ROOT
 from .rank import dashboard_story_ids
 
 SITE_DATA = ROOT / "site" / "data"
-WINDOWS = {1: "24h", 7: "7d"}
+WINDOWS = {1: "24h", 7: "7d", 14: "14d", 30: "30d"}
+PERIOD_LABELS = {"24h": "Last 24 hours", "7d": "Last 7 days", "14d": "Last 14 days", "30d": "Last 30 days"}
 CATEGORIES = ["internal_politics", "economics", "foreign_policy", "defence_security", "society", "other"]
 MAX_ARTICLES_LISTED = 12
 
@@ -172,10 +173,12 @@ def run(db):
                 _write(f"{cid}-{label}", payload, "ARGOS_DATA")
                 print(f"export: {cid}-{label}.json with {len(stories)} stories")
             if ids or (SITE_DATA / f"{cid}-{label}.json").exists():
-                periods.append({"id": label, "label": {"24h": "Last 24 hours", "7d": "Last 7 days"}[label], "file": f"{cid}-{label}.json"})
+                periods.append({"id": label, "label": PERIOD_LABELS.get(label, label), "file": f"{cid}-{label}.json"})
         if periods:
+            distinctive_mentions = [pack["name"].lower()] + [m.lower() for m in pack.get("mention", [])[:12]]
             countries.append({"id": cid, "name": pack["name"], "region": pack.get("region", "Other"),
-                              "language": pack["language"], "abroad_label": pack["abroad_label"], "periods": periods})
+                              "language": pack["language"], "abroad_label": pack["abroad_label"],
+                              "mentions": list(dict.fromkeys(distinctive_mentions)), "periods": periods})
     keep = ("name", "homepage", "language", "scope", "kind", "governing_body", "state_affiliated", "notes")
     _write("sources", {c: [{k: s.get(k) for k in keep} for s in packs.load(c)["sources"]] for c in packs.pack_ids()}, "ARGOS_SOURCES")
     _write("index", {"generated_at": now, "countries": countries}, "ARGOS_INDEX")
