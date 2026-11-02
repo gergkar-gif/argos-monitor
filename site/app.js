@@ -51,7 +51,9 @@
   let current = null;   // the loaded data file
   let openTopic = 'all';
   let openRegion = 'all';
+  let openSubType = 'all';
   let extra = {};   // extra stories revealed per topic in the overview ("Show more")
+  const GLOBAL_VIEWS = new Set(['home', 'alerts', 'disasters', 'violence']);
 
   const REGIONS = ['Southeast Asia', 'Europe & Balkans', 'Eurasia & Caucasus', 'Africa & Americas'];
   const COUNTRY_REGION = {
@@ -93,6 +95,8 @@
     country.replaceChildren(
       h('option', { value: 'home', text: 'Overview (all countries)' }),
       h('option', { value: 'alerts', text: 'Active alerts (all countries)' }),
+      h('option', { value: 'disasters', text: 'Natural disasters (all countries)' }),
+      h('option', { value: 'violence', text: 'Violent events (all countries)' }),
       ...[...groups.entries()].filter(([, list]) => list.length).map(([reg, list]) =>
         h('optgroup', { label: reg }, ...list.map((c) => h('option', { value: c.id, text: c.name }))))
     );
@@ -111,20 +115,20 @@
   function fillPeriods() {
     const c = index.countries.find((x) => x.id === country.value) || index.countries[0];
     fillSelect(period, c.periods.map((p) => [p.id, p.label]), period.value || '7d');
-    period.disabled = topic.disabled = country.value === 'home' || country.value === 'alerts';
+    period.disabled = topic.disabled = GLOBAL_VIEWS.has(country.value);
   }
   function fillTopics(value) {
     fillSelect(topic, [['all', 'All topics'], ...TOPICS.map((t) => [t.id, t.name])], value);
   }
 
   let lastCountry = index && index.countries[0] ? index.countries[0].id : '';
-  const hashFor = (t) => (country.value === 'home' || country.value === 'alerts'
+  const hashFor = (t) => (GLOBAL_VIEWS.has(country.value)
     ? `#${country.value}` + ($('#q').value.trim() ? `///${encodeURIComponent($('#q').value.trim())}` : '')
     : `#${country.value}/${period.value}/${t}` + ($('#q').value.trim() ? `/${encodeURIComponent($('#q').value.trim())}` : ''));
   function readHash() {
     const [c, p, t, q] = location.hash.replace(/^#/, '').split('/');
     try { $('#q').value = q ? decodeURIComponent(q) : ''; } catch { /* bad link text: ignore */ }
-    country.value = c === 'alerts' ? 'alerts' : c === 'country' ? (lastCountry || index.countries[0].id) : (c && index.countries.some((x) => x.id === c) ? c : 'home');
+    country.value = GLOBAL_VIEWS.has(c) ? c : c === 'country' ? (lastCountry || index.countries[0].id) : (c && index.countries.some((x) => x.id === c) ? c : 'home');
     fillPeriods();
     if (p && [...period.options].some((o) => o.value === p)) period.value = p;
     if (t && (t === 'all' || TOPICS.some((x) => x.id === t))) topic.value = t;
@@ -304,6 +308,8 @@
       })),
       h('div', { class: 'slipline' },
         s.country_name && h('button', { type: 'button', class: 'stamp country-tag', title: `Open ${s.country_name} monitor`, text: s.country_name, onclick: () => openCountry(s.country) }),
+        s.violence_type && h('span', { class: 'stamp red', text: s.violence_type }),
+        s.disaster_type && h('span', { class: 'stamp teal', text: s.disaster_type }),
         h('span', { text: `${s.headline.source}, ${fmtDay.format(new Date(s.last_seen))} · ${outlets}` }),
         s.evidence === 'OFFICIAL' && h('span', { class: 'stamp red', title: 'A government or Party outlet is among the sources.', text: 'Official' }),
         s.abroad_only && h('span', { class: 'stamp teal', title: 'No outlet inside the country covered it.', text: 'Not in domestic press' }),
@@ -494,8 +500,123 @@
                 i.summary && h('p', { class: 'byline', text: i.summary })),
               h('td', { class: 'typed', text: i.date ? fmtDay.format(new Date(i.date)) : '—' }))))))
         : h('p', { class: 'state', text: 'No matching alerts.' }),
-      h('p', { class: 'fine', text: 'Sources: Global Disaster Alert and Coordination System (GDACS), US Geological Survey (USGS M4.5+ earthquakes), UK Foreign, Commonwealth & Development Office (FCDO updates within 30 days), and US Department of State elevated travel advisories (Levels 2–4).' }),
+      h('p', { class: 'fine', text: 'Sources: Global Disaster Alert and Coordination System (GDACS), US Geological Survey (USGS M4.5+ earthquakes), NASA Earth Observatory (EONET), UK Foreign, Commonwealth & Development Office (FCDO), and US Department of State elevated travel advisories (Levels 2–4).' }),
     ].filter(Boolean));
+  }
+
+  // ---------- Disasters & Violent Events (ACLED taxonomy) Monitors ----------
+  const DISASTER_RULES = [
+    ['Storm & Cyclone', /\b(typhoon|cyclone|hurricane|tropical storm|tornado|gale|bao|sieu bao|ap thap nhiet doi|loc xoay|taufan|badai|bagyo|พายุ|မုန်တိုင်း|vihar|orkan|burza|tufao|ciclone|firtina|kasirga)\b/],
+    ['Flood & Landslide', /\b(flood|floods|flooding|flash flood|landslide|mudslide|inundation|lu lut|ngap lut|ngap sau|sat lo|trieu cuong|banjir|longsor|baha|guho|น้ำท่วม|ดินถล่ม|ရေကြီး|arviz|powodz|poplava|heyelan|enchente|deslizamento)/],
+    ['Earthquake & Volcano', /\b(earthquake|tremor|seismic|tsunami|volcano|volcanic|eruption|dong dat|nui lua|song than|gempa|gunung berapi|lindol|bulkan|แผ่นดินไหว|ငလျင်|foldrenges|trzesienie ziemi|zemljotres|deprem|yanardag|terremoto|zelzele)/],
+    ['Wildfire & Drought', /\b(wildfire|forest fire|bushfire|drought|heatwave|chay rung|han han|kebakaran hutan|kekeringan|ไฟป่า|ภัยแล้ง|erdotuz|aszaly|pozar lasu|susa|orman yangini|kuraklik|incendio florestal|seca\b)/],
+  ];
+  const VIOLENCE_RULES = [
+    ['Armed Clash & Battle', /\b(armed clash|gunbattle|firefight|insurgent|insurgency|rebel|militia|junta troops|ambush|skirmish|giao tranh|dung do|phien quan|kontak tembak|kelompok bersenjata|sagupaan|npa\b|ปะทะ|กองกำลัง|တိုက်ပွဲ|စစ်ကောင်စီ|osszecsapas|sukob|catisma|pkk\b|confronto armado|faccao|fano\b|endf\b|al-shabaab)/],
+    ['Explosion & Strike', /\b(airstrike|air strike|drone strike|shelling|missile strike|artillery|mortar|ied\b|landmine|car bomb|bombing|khong kich|phao kich|ten lua|danh bom|serangan udara|rudal|ledakan bom|โจมตีทางอากาศ|ระเบิด|လေကြောင်းတိုက်ခိုက်|legicsapas|raketatamadas|robbanas|nalot|hava saldirisi|patlama|bombali)/],
+    ['Terrorism & Attack', /\b(terrorist|terrorism|suicide attack|gunman|gunmen|mass shooting|shooting|massacre|hostage|assassinat|armed attack|khung bo|xa sung|teroris|terorisme|penembakan|terorista|pamamaril|ก่อการร้าย|กราดยิง|အကြမ်းဖက်|merenylet|terrortamadas|lovoldozes|zamach|teror|silahli saldiri|atentado|tiroteio|chacina)/],
+    ['Protest & Riot', /\b(riot|riots|violent protest|tear gas|water cannon|clash with police|demonstration|protesters|civil unrest|bieu tinh|bao dong|unjuk rasa|kerusuhan|gas air mata|kilos-protesta|ชุมนุม|ประท้วง|ဆန္ဒပြ|tuntetes|zavargas|konnygaz|zamieszki|protest|gosteri|protesto|საპროტესტო|акция протеста)/],
+  ];
+
+  function tagEventStory(s) {
+    const th = (s.themes || []).join(' ').toLowerCase();
+    if (th.includes('sport') || th.includes('culture')) return s;
+    const text = fold([s.headline.title, T.byText.get(s.headline.title) || '', ...(s.sources || []).slice(0, 4).map((r) => r.title)].join(' '));
+    const dType = s.disaster_type || (DISASTER_RULES.find(([, re]) => re.test(text)) || [])[0] || null;
+    const vType = s.violence_type || (VIOLENCE_RULES.find(([, re]) => re.test(text)) || [])[0] || null;
+    return { ...s, disaster_type: dType, violence_type: vType };
+  }
+
+  let loadedAll7d = false;
+  function collectEventPool(mode) {
+    const hm = window.ARGOS_HOME || {};
+    const seen = new Set();
+    const out = [];
+    const key = mode === 'disasters' ? 'disaster_type' : 'violence_type';
+    const add = (s, cid, cname, region) => {
+      if (!s || seen.has(s.id)) return;
+      const tagged = tagEventStory({ ...s, country: s.country || cid, country_name: s.country_name || cname, region: s.region || region || getRegion(s.country || cid) });
+      if (tagged[key]) { seen.add(s.id); out.push(tagged); }
+    };
+    const preset = mode === 'disasters' ? (hm.disasters || []) : (hm.violent_events || []);
+    preset.forEach((s) => add(s));
+    [...(hm.most_reported || []), ...(hm.growing || []), ...(hm.abroad_only || [])].forEach((s) => add(s));
+    for (const c of index.countries) {
+      const d = window.ARGOS_DATA && window.ARGOS_DATA[`${c.id}-7d`];
+      if (d && d.stories) d.stories.forEach((s) => add(s, c.id, c.name, getRegion(c.id)));
+    }
+    if (!loadedAll7d) {
+      loadedAll7d = true;
+      Promise.allSettled(index.countries.map((c) => load(`${c.id}-7d.json`))).then(() => {
+        if (country.value === 'disasters' || country.value === 'violence') renderEventMonitor(country.value);
+      });
+    }
+    return out.sort((a, b) => b.independent_sources - a.independent_sources || b.score - a.score);
+  }
+
+  function renderEventMonitor(mode) {
+    T.queue.length = 0;
+    const isDis = mode === 'disasters';
+    const rules = isDis ? DISASTER_RULES : VIOLENCE_RULES;
+    const key = isDis ? 'disaster_type' : 'violence_type';
+    const q = ($('#q').value || '').trim();
+    const qf = fold(q);
+    const allStories = collectEventPool(mode).filter((s) => !q || matchStory(s, q));
+    const allOfficial = allCrisisAlerts().filter((i) => {
+      const hay = fold(`${i.cname} ${i.region} ${i.kind} ${i.title} ${i.summary || ''}`);
+      if (qf && !hay.includes(qf)) return false;
+      if (isDis) return /^(GDACS|USGS|NASA EONET)$/.test(i.kind) || /\b(disaster|earthquake|flood|typhoon|cyclone|volcano|wildfire)\b/.test(hay);
+      return /travel/.test(i.kind.toLowerCase()) && /\b(terror|unrest|conflict|armed|violence|violent|kidnap|crime|martial|security)\b/.test(hay);
+    });
+    if (openRegion !== 'all' && !allStories.some((s) => s.region === openRegion) && !allOfficial.some((i) => i.region === openRegion)) openRegion = 'all';
+    if (openSubType !== 'all' && !rules.some(([label]) => label === openSubType)) openSubType = 'all';
+    const inReg = (x) => openRegion === 'all' || x.region === openRegion;
+    const regStories = allStories.filter(inReg);
+    const stories = openSubType === 'all' ? regStories : regStories.filter((s) => s[key] === openSubType);
+    const official = allOfficial.filter(inReg);
+    const rTabs = regionTabs((r) => r === 'all'
+      ? allStories.length + allOfficial.length
+      : allStories.filter((s) => s.region === r).length + allOfficial.filter((i) => i.region === r).length,
+      () => renderEventMonitor(mode));
+    const subTabs = h('ul', { class: 'tabs', role: 'list', 'aria-label': 'Filter by event type' },
+      [['all', 'All types', regStories.length], ...rules.map(([label]) => [label, label, regStories.filter((s) => s[key] === label).length])].map(([id, label, n]) =>
+        h('li', null, h('button', { type: 'button', class: 'tab',
+          'aria-pressed': String(openSubType === id),
+          onclick: () => { openSubType = id; renderEventMonitor(mode); } }, label,
+          h('span', { class: 'n', text: String(n) })))));
+
+    results.replaceChildren(...[
+      h('p', { class: 'result-line' },
+        h('b', { text: isDis ? 'Natural Disasters & Severe Weather Monitor' : 'Violent Events & Conflict Monitor (ACLED taxonomy)' }),
+        ` · ${plural(official.length, isDis ? 'official sensor alert' : 'official security advisory', isDis ? 'official sensor alerts' : 'official security advisories')} · ${plural(stories.length, 'reported story cluster', 'reported story clusters')} · `,
+        h('button', { type: 'button', class: 'desk-link', text: '← Back to Overview', onclick: () => openCountry('home') })),
+      h('div', { id: 'trans', class: 'trans' }),
+      rTabs,
+      subTabs,
+      official.length > 0 && h('section', { class: 'drawer' },
+        h('div', { class: 'drawer-head' },
+          h('h2', { text: isDis ? 'Official satellite & seismic sensor alerts' : 'Official conflict, terrorism & unrest advisories' }),
+          h('span', { class: 'count', text: isDis ? 'GDACS · USGS · NASA EONET' : 'US State Dept · UK FCDO' })),
+        h('div', { class: 'desk-wrap' },
+          h('table', { class: 'desk-table' },
+            h('thead', null, h('tr', null, ['Country', 'Region', 'Source', 'Event / Advisory & Details', 'Date'].map((x) => h('th', { text: x })))),
+            h('tbody', null, official.map((i) => h('tr', null,
+              h('td', null, h('button', { type: 'button', class: 'stamp country-tag', text: i.cname, onclick: () => openCountry(i.cid) })),
+              h('td', { class: 'meta', text: i.region }),
+              h('td', null, h('span', { class: 'stamp ' + (isHotAlert(i) ? 'red' : 'indigo'), text: i.kind })),
+              h('td', null,
+                h('a', { href: safeUrl(i.url), target: '_blank', rel: 'noopener', text: i.title }),
+                i.summary && h('p', { class: 'byline', text: i.summary })),
+              h('td', { class: 'typed', text: i.date ? fmtDay.format(new Date(i.date)) : '—' }))))))),
+      stories.length > 0
+        ? homeSection(
+            isDis ? 'Reported disaster & severe weather clusters (last 7 days)' : 'Reported violent & conflict event clusters (last 7 days)',
+            'Ranked by independent outlet count across 248 monitored feeds',
+            stories.slice(0, 24))
+        : h('p', { class: 'state', text: 'No matching reported story clusters in this filter.' }),
+    ].filter(Boolean));
+    paintTranslationBar();
+    translatePending();
   }
 
   // ---------- Overview homepage (scales to any number of countries via site/data/home.js) ----------
@@ -633,11 +754,13 @@
 
   async function research() {
     fillPeriods();
-    const isCountry = country.value !== 'home' && country.value !== 'alerts';
+    const isCountry = !GLOBAL_VIEWS.has(country.value);
     if (isCountry) lastCountry = country.value;
     if ($('#nav-home')) $('#nav-home').setAttribute('aria-current', country.value === 'home' ? 'page' : 'false');
     if ($('#nav-country')) $('#nav-country').setAttribute('aria-current', isCountry ? 'page' : 'false');
     if ($('#nav-alerts')) $('#nav-alerts').setAttribute('aria-current', country.value === 'alerts' ? 'page' : 'false');
+    if ($('#nav-disasters')) $('#nav-disasters').setAttribute('aria-current', country.value === 'disasters' ? 'page' : 'false');
+    if ($('#nav-violence')) $('#nav-violence').setAttribute('aria-current', country.value === 'violence' ? 'page' : 'false');
     if (country.value === 'home') {
       $('#brief').href = 'brief.html';
       setHash(hashFor('all'));
@@ -650,6 +773,13 @@
       $('#brief').href = 'brief.html';
       setHash(hashFor('all'));
       renderAlerts();
+      return;
+    }
+    if (country.value === 'disasters' || country.value === 'violence') {
+      $('#brief').href = 'brief.html';
+      setHash(hashFor('all'));
+      renderEventMonitor(country.value);
+      useLanguage('multi');
       return;
     }
     const c = index.countries.find((x) => x.id === country.value);
@@ -681,6 +811,8 @@
   if ($('#nav-home')) $('#nav-home').addEventListener('click', (e) => { e.preventDefault(); openCountry('home'); });
   if ($('#nav-country')) $('#nav-country').addEventListener('click', (e) => { e.preventDefault(); openCountry(lastCountry || index.countries[0].id); });
   if ($('#nav-alerts')) $('#nav-alerts').addEventListener('click', (e) => { e.preventDefault(); openCountry('alerts'); });
+  if ($('#nav-disasters')) $('#nav-disasters').addEventListener('click', (e) => { e.preventDefault(); openSubType = 'all'; openCountry('disasters'); });
+  if ($('#nav-violence')) $('#nav-violence').addEventListener('click', (e) => { e.preventDefault(); openSubType = 'all'; openCountry('violence'); });
   $('#slip').addEventListener('submit', (e) => { e.preventDefault(); research(); });
   country.addEventListener('change', () => { fillPeriods(); research(); });
   period.addEventListener('change', research);
@@ -689,6 +821,7 @@
     setHash(hashFor(openTopic));
     if (country.value === 'home') renderHome();
     else if (country.value === 'alerts') renderAlerts();
+    else if (country.value === 'disasters' || country.value === 'violence') renderEventMonitor(country.value);
     else if (current) render(false);
   });
   const totop = $('#totop');

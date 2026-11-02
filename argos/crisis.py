@@ -1,6 +1,7 @@
 """Stage: crisis and official alerts per country, from free official feeds (GDACS, USGS, UK and US travel advice).
 Only each feed's own title, verbatim summary, link and date are kept: no sentences of our own."""
 import html
+import json
 import re
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
@@ -12,9 +13,20 @@ from .export import SITE_DATA, _write
 
 GDACS = "https://www.gdacs.org/xml/rss.xml"
 USGS = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.atom"
+EONET = "https://eonet.gsfc.nasa.gov/api/v3/events?status=open&days=14&limit=80"
 US = "https://travel.state.gov/_res/rss/TAsTWs.xml"
 UK = "https://www.gov.uk/foreign-travel-advice/{}.atom"
 RECENT_DAYS = 7
+
+
+def _eonet():
+    status, body = fetch.get(EONET)
+    if status != 200:
+        return []
+    try:
+        return json.loads(body.decode("utf-8", errors="replace")).get("events") or []
+    except ValueError:
+        return []
 
 
 def _feed(url):
@@ -58,7 +70,7 @@ def _item(kind, e, level=None):
 def run(db=None):
     now = datetime.now(timezone.utc)
     recent = now - timedelta(days=RECENT_DAYS)
-    gdacs, usgs, us = _feed(GDACS), _feed(USGS), _feed(US)
+    gdacs, usgs, eonet, us = _feed(GDACS), _feed(USGS), _eonet(), _feed(US)
     out = {}
     for cid in packs.pack_ids():
         pack = packs.load(cid)
@@ -67,6 +79,12 @@ def run(db=None):
         items = []
         items += [_item("GDACS", e, e.get("gdacs_alertlevel")) for e in gdacs if has(e.get("gdacs_country")) or has(e.title)]
         items += [_item("USGS", e) for e in usgs if has(e.title)]
+        for ev in eonet:
+            if has(ev.get("title")):
+                cat = ((ev.get("categories") or [{}])[0]).get("title") or "Natural event"
+                src_url = ((ev.get("sources") or [{}])[0]).get("url") or ev.get("link") or ""
+                dt = ((ev.get("geometry") or [{}])[-1]).get("date")
+                items.append({"kind": "NASA EONET", "title": ev["title"], "summary": cat, "url": src_url, "level": None, "date": dt})
         # Skip routine "Level 1: Exercise Normal Precautions" so the alerts list only shows elevated advisories (Level 2-4).
         items += [_item("US travel advisory", e) for e in us if has(e.title.split(" - ")[0]) and "Level 1" not in e.title]
         # Only include UK travel advice if it was updated within the last 30 days.
