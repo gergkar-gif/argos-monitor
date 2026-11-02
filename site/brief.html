@@ -44,7 +44,7 @@
 <script>
 (() => {
   const index = window.ARGOS_INDEX, root = document.getElementById('brief');
-  const el = (tag, attrs, ...kids) => { const e = document.createElement(tag); for (const [k, v] of Object.entries(attrs || {})) { if (v == null || v === false) continue; k === 'text' ? e.textContent = v : e.setAttribute(k, v); } e.append(...kids.flat().filter((x) => x != null && x !== false)); return e; };
+  const el = (tag, attrs, ...kids) => { const e = document.createElement(tag); for (const [k, v] of Object.entries(attrs || {})) { if (v == null || v === false) continue; k === 'text' ? e.textContent = v : e.setAttribute(k, v); } e.append(...kids.flat(Infinity).filter((x) => x != null && x !== false)); return e; };
   const safe = (u) => { try { const x = new URL(u); return /^https?:$/.test(x.protocol) ? x.href : '#'; } catch { return '#'; } };
   if (!index) { root.replaceChildren(el('p', { class: 'state error', text: 'No data found.' })); return; }
   const cid = location.hash.slice(1) || index.countries[0].id;

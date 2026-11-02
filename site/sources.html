@@ -37,14 +37,14 @@
 <script>
 (() => {
   const root = document.getElementById('src'), idx = window.ARGOS_INDEX, raw = window.ARGOS_SOURCES, data = raw && (raw.sources || raw);
-  const el = (tag, attrs, ...kids) => { const e = document.createElement(tag); for (const [k, v] of Object.entries(attrs || {})) { if (v == null || v === false) continue; k === 'text' ? e.textContent = v : e.setAttribute(k, v); } e.append(...kids.flat().filter((x) => x != null && x !== false)); return e; };
+  const el = (tag, attrs, ...kids) => { const e = document.createElement(tag); for (const [k, v] of Object.entries(attrs || {})) { if (v == null || v === false) continue; k === 'text' ? e.textContent = v : e.setAttribute(k, v); } e.append(...kids.flat(Infinity).filter((x) => x != null && x !== false)); return e; };
   const safe = (u) => { try { const x = new URL(u); return /^https?:$/.test(x.protocol) ? x.href : '#'; } catch { return '#'; } };
   if (!idx || !data) { root.replaceChildren(el('p', { class: 'state error', text: 'No data found.' })); return; }
   const scope = { domestic: 'In the country', abroad_local: 'Local-language, abroad', international: 'International' };
   root.replaceChildren(
     el('h1', { text: 'Where the stories come from' }),
     el('p', { class: 'byline', text: 'Every outlet Argos reads, who runs it and how it is classified. "State-linked" means a government or ruling-party body runs or controls the outlet.' }),
-    idx.countries.map((c) => [
+    ...idx.countries.flatMap((c) => [
       el('h2', { text: `${c.name} (${(data[c.id] || []).length} outlets)` }),
       el('div', { class: 'desk-wrap' }, el('table', { class: 'desk-table' },
         el('thead', null, el('tr', null, ['Outlet', 'Where', 'Type', 'Run by', 'State-linked'].map((x) => el('th', { text: x })))),
