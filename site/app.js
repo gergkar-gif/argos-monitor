@@ -80,13 +80,14 @@
     fillSelect(topic, [['all', 'All topics'], ...TOPICS.map((t) => [t.id, t.name])], value);
   }
 
+  let lastCountry = index && index.countries[0] ? index.countries[0].id : '';
   const hashFor = (t) => (country.value === 'home' || country.value === 'alerts'
     ? `#${country.value}` + ($('#q').value.trim() ? `///${encodeURIComponent($('#q').value.trim())}` : '')
     : `#${country.value}/${period.value}/${t}` + ($('#q').value.trim() ? `/${encodeURIComponent($('#q').value.trim())}` : ''));
   function readHash() {
     const [c, p, t, q] = location.hash.replace(/^#/, '').split('/');
     try { $('#q').value = q ? decodeURIComponent(q) : ''; } catch { /* bad link text: ignore */ }
-    country.value = c === 'alerts' ? 'alerts' : (c && index.countries.some((x) => x.id === c) ? c : 'home');
+    country.value = c === 'alerts' ? 'alerts' : c === 'country' ? (lastCountry || index.countries[0].id) : (c && index.countries.some((x) => x.id === c) ? c : 'home');
     fillPeriods();
     if (p && [...period.options].some((o) => o.value === p)) period.value = p;
     if (t && (t === 'all' || TOPICS.some((x) => x.id === t))) topic.value = t;
@@ -522,7 +523,10 @@
 
   async function research() {
     fillPeriods();
+    const isCountry = country.value !== 'home' && country.value !== 'alerts';
+    if (isCountry) lastCountry = country.value;
     if ($('#nav-home')) $('#nav-home').setAttribute('aria-current', country.value === 'home' ? 'page' : 'false');
+    if ($('#nav-country')) $('#nav-country').setAttribute('aria-current', isCountry ? 'page' : 'false');
     if ($('#nav-alerts')) $('#nav-alerts').setAttribute('aria-current', country.value === 'alerts' ? 'page' : 'false');
     if (country.value === 'home') {
       $('#brief').href = 'brief.html';
@@ -565,6 +569,7 @@
   readHash();
   $('#home-link').addEventListener('click', (e) => { e.preventDefault(); openCountry('home'); });
   if ($('#nav-home')) $('#nav-home').addEventListener('click', (e) => { e.preventDefault(); openCountry('home'); });
+  if ($('#nav-country')) $('#nav-country').addEventListener('click', (e) => { e.preventDefault(); openCountry(lastCountry || index.countries[0].id); });
   if ($('#nav-alerts')) $('#nav-alerts').addEventListener('click', (e) => { e.preventDefault(); openCountry('alerts'); });
   $('#slip').addEventListener('submit', (e) => { e.preventDefault(); research(); });
   country.addEventListener('change', () => { fillPeriods(); research(); });
