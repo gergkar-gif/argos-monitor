@@ -46,13 +46,15 @@
   const cSel = document.getElementById('s-country'), scSel = document.getElementById('s-scope'), qIn = document.getElementById('s-q');
   const el = (tag, attrs, ...kids) => { const e = document.createElement(tag); for (const [k, v] of Object.entries(attrs || {})) { if (v == null || v === false) continue; k === 'text' ? e.textContent = v : e.setAttribute(k, v); } e.append(...kids.flat(Infinity).filter((x) => x != null && x !== false)); return e; };
   const safe = (u) => { try { const x = new URL(u); return /^https?:$/.test(x.protocol) ? x.href : '#'; } catch { return '#'; } };
-  if (!idx || !data) { root.replaceChildren(el('p', { class: 'state error', text: 'No data found.' })); return; }
+  if (!data) { root.replaceChildren(el('p', { class: 'state error', text: 'No data found.' })); return; }
   const scope = { domestic: 'In the country', abroad_local: 'Local-language, abroad', international: 'International' };
-  cSel.replaceChildren(el('option', { value: 'all', text: 'All countries' }), ...idx.countries.map((c) => el('option', { value: c.id, text: c.name })));
+  const byId = Object.fromEntries(((idx && idx.countries) || []).map((c) => [c.id, c.name]));
+  const allCountries = Object.keys(data).sort().map((id) => ({ id, name: byId[id] || id.replace(/_/g, ' ').replace(/\b\w/g, (m) => m.toUpperCase()) }));
+  cSel.replaceChildren(el('option', { value: 'all', text: 'All countries' }), ...allCountries.map((c) => el('option', { value: c.id, text: c.name })));
 
   function render() {
     const cid = cSel.value, sc = scSel.value, q = qIn.value.trim().toLowerCase();
-    const countries = cid === 'all' ? idx.countries : idx.countries.filter((c) => c.id === cid);
+    const countries = cid === 'all' ? allCountries : allCountries.filter((c) => c.id === cid);
     root.replaceChildren(
       el('p', { class: 'result-line' }, el('b', { text: 'Source directory' }), ' · Every outlet Argos reads, who runs it, and state-affiliation classification'),
       ...countries.flatMap((c) => {
