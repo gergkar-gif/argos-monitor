@@ -1,0 +1,74 @@
+# Malaysia source registry (decision D15).
+# Combines independent Malaysian digital dailies (Free Malaysia Today, Malay Mail), national and financial press via Google News (The Star, New Straits Times, The Edge, Malaysiakini), national news agency Bernama via Google News, regional Singapore coverage, and international wires.
+
+sources:
+  - id: fmt_my
+    name: Free Malaysia Today (FMT)
+    homepage: https://www.freemalaysiatoday.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: FMT Media Sdn Bhd (independent bilingual daily portal in Petaling Jaya)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.freemalaysiatoday.com/feed/", section: Top News, category_hint: general}
+
+  - id: malaymail_my
+    name: Malay Mail
+    homepage: https://www.malaymail.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Malay Mail Sdn Bhd (established national daily newspaper of record)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.malaymail.com/feed/rss/malaysia", section: Malaysia, category_hint: general}
+
+  - id: gnews_my_domestic
+    name: The Star / New Straits Times / The Edge (National Press via Google News)
+    homepage: https://www.thestar.com.my
+    language: en
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: Star Media Group / Media Prima / The Edge Communications
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:thestar.com.my+OR+site:nst.com.my+OR+site:theedgemalaysia.com)+when:1d&hl=en-MY&gl=MY&ceid=MY:en", section: Top Stories, category_hint: general}
+
+  - id: gnews_my_official
+    name: Bernama (Malaysian National News Agency via Google News)
+    homepage: https://www.bernama.com
+    language: en
+    scope: domestic
+    kind: official
+    aggregator: google_news
+    governing_body: Pertubuhan Berita Nasional Malaysia (BERNAMA, statutory news agency)
+    state_affiliated: true
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:bernama.com+when:7d&hl=en-MY&gl=MY&ceid=MY:en", section: Bernama General, category_hint: general}
+
+  - id: gnews_my_abroad
+    name: The Straits Times / CNA (Regional ASEAN Coverage of Malaysia via Google News)
+    homepage: https://www.straitstimes.com
+    language: en
+    scope: abroad_local
+    kind: media
+    aggregator: google_news
+    governing_body: SPH Media & Mediacorp (Singapore regional reporting on Malaysia)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:straitstimes.com+OR+site:channelnewsasia.com)+(Malaysia+OR+Anwar)+when:7d&hl=en-SG&gl=SG&ceid=SG:en", section: Regional, category_hint: general}
+
+  - id: gnews_en_my
+    name: Google News (Malaysia - International)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Malaysia+(Kuala+Lumpur+OR+Anwar+OR+parliament+OR+MACC)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Malaysia politics & governance, category_hint: internal_politics}
+      - {url: "https://news.google.com/rss/search?q=Malaysia+(ASEAN+OR+%22South+China+Sea%22+OR+semiconductor+OR+ringgit+OR+Petronas)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Malaysia economy & diplomacy, category_hint: foreign_policy}

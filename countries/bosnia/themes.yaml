@@ -1,0 +1,19 @@
+# Bosnia's additions to the shared themes (../../themes.yaml).
+themes:
+  - id: security
+    label: Dayton System, Dodik / RS Secession Threats & OHR Rulings
+    weight: 1.0
+    category: defence_security
+    describe:
+      - Dayton Peace Agreement constitutional structure, Milorad Dodik and Republika Srpska secession threats and parallel institutions, High Representative Christian Schmidt Bonn powers, EUFOR Althea troop levels
+      - Dejtonski mirovni sporazum, Milorad Dodik, Republika Srpska, Christian Schmidt, OHR, bonske ovlasti, EUFOR, secesija
+    keywords: ["dayton", "dejton", "dodik", "republika srpska", "schmidt", "ohr", "eufor", "secession", "secesij", "ustavni sud bih", "bonske ovlasti"]
+
+  - id: diplomacy
+    label: EU Accession Negotiations, Reform Agenda & Regional Relations
+    weight: 1.0
+    category: foreign_policy
+    describe:
+      - EU candidate status and opening of accession negotiations, judicial and electoral reform conditions, relations with Belgrade and Zagreb
+      - pristupanje Evropskoj uniji, pregovarački okvir, reformski zakoni, odnosi sa Srbijom i Hrvatskom
+    keywords: ["evropska unija", "pristupni pregovori", "eu candidate", "reformski zakoni", "plan rasta", "zagreb", "beograd"]

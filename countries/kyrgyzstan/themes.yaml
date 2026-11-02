@@ -1,0 +1,19 @@
+# Kyrgyzstan's additions to the shared themes (../../themes.yaml).
+themes:
+  - id: security
+    label: GKNB Operations, Border Delimitations (Tajikistan/Uzbekistan) & Security
+    weight: 1.0
+    category: defence_security
+    describe:
+      - GKNB State Committee for National Security under Kamchybek Tashiev, border demarcation protocols with Tajikistan and Uzbekistan, security surveillance and drones
+      - УКМК, Камчыбек Ташиев, Баткен чек арасы, Тажикстан чек ара делимитациясы, коопсуздук
+    keywords: ["gknb", "укмк", "ташиев", "tashiev", "batken", "баткен", "чек ара", "delimitation", "tajikistan border"]
+
+  - id: trade_invest
+    label: Kumtor Gold, CKU Railway & Hydropower Infrastructure
+    weight: 0.95
+    category: economics
+    describe:
+      - Kumtor gold production and revenue, China-Kyrgyzstan-Uzbekistan (CKU) railway construction, Kambarata-1 hydropower project, banking sanctions compliance
+      - Кумтөр алтыны, Кытай-Кыргызстан-Өзбекстан темир жолу, Камбар-Ата ГЭСи, банк системасы
+    keywords: ["kumtor", "кумтөр", "railway", "темир жол", "kambarata", "камбар-ата", "санкт", "улуттук банк"]

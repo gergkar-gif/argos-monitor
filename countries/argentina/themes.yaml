@@ -1,0 +1,19 @@
+# Argentina's additions to the shared themes (../../themes.yaml).
+themes:
+  - id: macro_fx
+    label: Milei Shock Therapy, Fiscal Surplus & IMF Program
+    weight: 1.0
+    category: economics
+    describe:
+      - President Javier Milei and Luis Caputo economic deregulation, fiscal zero-deficit policy, inflation deceleration, lifting of currency controls (cepo), IMF negotiations
+      - Javier Milei, Luis Caputo, superávit fiscal, desregulación, inflación, cepo cambiario, FMI, reservas BCRA
+    keywords: ["milei", "caputo", "superávit", "inflación", "cepo", "bcra", "fmi", "dólar", "motosierra", "desregulación"]
+
+  - id: party_gov
+    label: Congress Relations, Presidential Vetoes & Provincial Governors
+    weight: 0.95
+    category: internal_politics
+    describe:
+      - National Congress battles, presidential vetoes on pensions and university funding, alliance with PRO and negotiations with provincial governors
+      - Congreso de la Nación, veto presidencial, jubilaciones, financiamiento universitario, gobernadores
+    keywords: ["congreso", "veto", "diputados", "senado", "gobernadores", "jubilaciones", "universidades", "la libertad avanza", "villarruel"]

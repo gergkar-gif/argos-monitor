@@ -1,0 +1,62 @@
+# Kenya source registry (decision D15).
+# Combines independent Kenyan dailies & broadcasters (The Standard, Kenya Broadcasting Corporation KBC, Daily Nation / The Star / Citizen TV via Google News), regional East African press (The EastAfrican), and international wires.
+
+sources:
+  - id: standard_ke
+    name: The Standard
+    homepage: https://www.standardmedia.co.ke
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: The Standard Group PLC (national daily newspaper of record in Nairobi)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.standardmedia.co.ke/rss/headlines.php", section: Headlines, category_hint: general}
+
+  - id: kbc_ke
+    name: Kenya Broadcasting Corporation (KBC)
+    homepage: https://www.kbc.co.ke
+    language: en
+    scope: domestic
+    kind: official
+    governing_body: Government of Kenya (public state broadcaster)
+    state_affiliated: true
+    feeds:
+      - {url: "https://www.kbc.co.ke/feed/", section: Top News, category_hint: general}
+
+  - id: gnews_ke_domestic
+    name: Daily Nation / The Star / Citizen TV (National Media via Google News)
+    homepage: https://nation.africa/kenya
+    language: en
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: Nation Media Group / Radio Africa Group / Royal Media Services
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:nation.africa/kenya+OR+site:the-star.co.ke+OR+site:citizen.digital)+when:1d&hl=en-KE&gl=KE&ceid=KE:en", section: Top Stories, category_hint: general}
+
+  - id: gnews_ke_abroad
+    name: The EastAfrican (Regional Press via Google News)
+    homepage: https://www.theeastafrican.co.ke
+    language: en
+    scope: abroad_local
+    kind: media
+    aggregator: google_news
+    governing_body: Nation Media Group (Regional East African weekly)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:theeastafrican.co.ke+Kenya+when:7d&hl=en-KE&gl=KE&ceid=KE:en", section: East Africa, category_hint: general}
+
+  - id: gnews_en_ke
+    name: Google News (Kenya - International)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Kenya+(Nairobi+OR+Ruto+OR+Gachagua+OR+Kindiki+OR+parliament)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Kenya politics & governance, category_hint: internal_politics}
+      - {url: "https://news.google.com/rss/search?q=Kenya+(IMF+OR+economy+OR+Haiti+OR+EAC+OR+shilling)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Kenya economy & diplomacy, category_hint: foreign_policy}

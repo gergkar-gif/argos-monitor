@@ -1,0 +1,19 @@
+# Kosovo's additions to the shared themes (../../themes.yaml).
+themes:
+  - id: security
+    label: North Kosovo Security, NATO KFOR & Banjska Follow-up
+    weight: 1.0
+    category: defence_security
+    describe:
+      - North Kosovo security dynamics, Kosovo Police operations, NATO KFOR peacekeeping presence, Banjska attack investigations and trial, border management with Serbia
+      - Siguria në veri të Kosovës, Policia e Kosovës, KFOR, sulmi në Banjskë, kufiri me Serbinë
+    keywords: ["kfor", "mitrovica", "banjska", "policia e kosovës", "serb list", "lista serbe", "nato", "eulek", "veriu i kosovës", "barrikad"]
+
+  - id: diplomacy
+    label: Belgrade-Pristina Dialogue, Ohrid Agreement & Western Alliances
+    weight: 1.0
+    category: foreign_policy
+    describe:
+      - EU-mediated dialogue with Serbia, implementation of the Ohrid Agreement, Association of Serb-majority Municipalities (ASM), Council of Europe accession and US/EU diplomacy
+      - Dialogu Prishtinë-Beograd, marrëveshja e Ohrit, Asociacioni, Këshilli i Evropës, raportet me SHBA dhe BE
+    keywords: ["dialogue", "ohrid agreement", "association of serb", "asociacioni", "këshilli i evropës", "council of europe", "lajcak", "shba"]

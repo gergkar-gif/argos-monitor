@@ -1,0 +1,19 @@
+# Malaysia's additions to the shared themes (../../themes.yaml).
+themes:
+  - id: trade_invest
+    label: Semiconductor Hub, Energy Transition (Petronas) & Subsidy Reform
+    weight: 1.0
+    category: economics
+    describe:
+      - Penang semiconductor packaging hub, Johor-Singapore special economic zone and data centres, fuel subsidy rationalisation, Petronas oil & gas and clean energy transition
+      - semikonduktor, pelaburan digital, subsidi bersasar, ringgit, Petronas, Bank Negara
+    keywords: ["semiconductor", "data centre", "fuel subsidy", "ringgit", "petronas", "bank negara", "johor-singapore", "epf", "kwsp"]
+
+  - id: diplomacy
+    label: ASEAN 2025 Chairmanship, South China Sea & Non-Aligned Hedging
+    weight: 1.0
+    category: foreign_policy
+    describe:
+      - Malaysia 2025 ASEAN Chairmanship, maritime sovereignty in the South China Sea, BRICS engagement and balancing between the United States and China
+      - Pengerusi ASEAN 2025, Laut China Selatan, BRICS, hubungan China dan Amerika Syarikat
+    keywords: ["asean chair", "south china sea", "laut china selatan", "brics", "beijing", "kashmir", "palestine", "wisma putra"]

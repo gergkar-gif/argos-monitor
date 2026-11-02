@@ -1,0 +1,74 @@
+# Argentina source registry (decision D15).
+# Combines premier Argentine independent dailies & portals (Infobae, La Nación, Clarín & Ámbito via Google News), official communications, regional Latin American press, and international wires.
+
+sources:
+  - id: infobae_ar
+    name: Infobae (Argentina)
+    homepage: https://www.infobae.com
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Infobae Media Group (Buenos Aires digital daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.infobae.com/arc/outboundfeeds/rss/?outputType=xml", section: Política y Economía, category_hint: general}
+
+  - id: lanacion_ar
+    name: La Nación
+    homepage: https://www.lanacion.com.ar
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: SA La Nación (national paper of record in Buenos Aires)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.lanacion.com.ar/arc/outboundfeeds/rss/", section: Últimas Noticias, category_hint: general}
+
+  - id: gnews_ar_domestic
+    name: Clarín / Ámbito Financiero / El Cronista (National Media via Google News)
+    homepage: https://www.clarin.com
+    language: es
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: Grupo Clarín / Grupo Indalo / Editorial Sarmiento
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:clarin.com+OR+site:ambito.com+OR+site:cronista.com)+when:1d&hl=es-419&gl=AR&ceid=AR:es-419", section: Economía y Política, category_hint: general}
+
+  - id: gnews_ar_official
+    name: Casa Rosada / Télam Archives (Official State Communications via Google News)
+    homepage: https://www.casarosada.gob.ar
+    language: es
+    scope: domestic
+    kind: official
+    aggregator: google_news
+    governing_body: Presidencia de la Nación Argentina / Vocería Presidencial
+    state_affiliated: true
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:casarosada.gob.ar+OR+site:argentina.gob.ar)+when:7d&hl=es-419&gl=AR&ceid=AR:es-419", section: Oficial, category_hint: general}
+
+  - id: gnews_ar_abroad
+    name: El País América / CNN en Español (Regional Media via Google News)
+    homepage: https://elpais.com/america-argentina
+    language: es
+    scope: abroad_local
+    kind: media
+    aggregator: google_news
+    governing_body: Ediciones El País & Warner Bros. Discovery
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:elpais.com/america-argentina+OR+(site:cnnespanol.cnn.com+Argentina))+when:7d&hl=es-419&gl=AR&ceid=AR:es-419", section: Región, category_hint: general}
+
+  - id: gnews_en_ar
+    name: Google News (Argentina - International)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Argentina+(Buenos+Aires+OR+Milei+OR+Caputo+OR+Congress+OR+inflation)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Argentina politics & economy, category_hint: internal_politics}
+      - {url: "https://news.google.com/rss/search?q=Argentina+(IMF+OR+reserves+OR+peso+OR+China+OR+debt)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Argentina economy & IMF, category_hint: economics}

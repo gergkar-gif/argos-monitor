@@ -1,0 +1,76 @@
+# Kenya country pack (decision D15).
+id: kenya
+name: Kenya
+region: Sub-Saharan Africa
+language: en
+abroad_label: East African regional & diaspora outlets
+
+mention:
+  - "kenya"
+  - "kenyan"
+  - "nairobi"
+  - "mombasa"
+  - "kisumu"
+  - "william ruto"
+  - "ruto"
+  - "rigathi gachagua"
+  - "gachagua"
+  - "kithure kindiki"
+  - "kindiki"
+  - "raila odinga"
+  - "raila"
+  - "state house nairobi"
+  - "kenyan parliament"
+  - "national assembly"
+  - "shilling"
+  - "cbk"
+  - "kdf"
+  - "finance bill"
+  - "gen z"
+
+mention_regex: ['\b(?:kenya|kenyan|nairobi|ruto|gachagua|kindiki|mombasa)\b']
+mention_section: null
+
+url_sections:
+  foreign: [world, international, africa]
+  skip: [sport, sports, entertainment, lifestyle, gossip]
+
+aggregator_outlets:
+  domestic:
+    - "standard media"
+    - "the standard"
+    - "standard digital"
+    - "kbc"
+    - "kenya broadcasting corporation"
+    - "nation africa"
+    - "daily nation"
+    - "the star"
+    - "the-star"
+    - "citizen tv"
+    - "citizen digital"
+    - "capital fm"
+    - "business daily"
+  abroad_local:
+    - "eastafrican"
+    - "the eastafrican"
+    - "the africa report"
+    - "bbc news swahili"
+
+excerpt:
+  dateline: '^\s*(?:NAIROBI|MOMBASA|KISUMU|KBC|The Standard|Nation)\s*[-–—:]\s*'
+  noise: '^(Photo|Credit|File photo|Also Read|READ ALSO|\(|\[)'
+
+classify:
+  internal_politics:
+    - "President William Ruto, Deputy President Kithure Kindiki, former DP Rigathi Gachagua impeachment and court cases, Raila Odinga broad-based government, Parliament (National Assembly & Senate), Gen Z protests and governance reforms"
+  economics:
+    - "Central Bank of Kenya (CBK) Kamau Thugge, Kenyan shilling exchange rate, IMF program and Eurobond debt repayments, taxes and revenue authority (KRA), inflation, energy tariffs, agriculture"
+  foreign_policy:
+    - "Kenya leadership in East African Community (EAC) and IGAD, Haiti multinational security support mission (MSS), Sudan and DRC mediation, US non-NATO ally status, trade with EU and China"
+  defence_security:
+    - "Kenya Defence Forces (KDF), police operations and Independent Policing Oversight Authority (IPOA), Al-Shabaab border threats in Mandera and Lamu, banditry in North Rift"
+  society:
+    - "Social Health Authority (SHA/SHIF) rollout, university funding model, strike actions, environment and weather, El Niño and river floods"
+
+geo: KE
+reddit: [Kenya, nairobi]

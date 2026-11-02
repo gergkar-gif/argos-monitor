@@ -61,15 +61,16 @@
     'Sub-Saharan Africa', 'South America'
   ];
   const COUNTRY_REGION = {
-    cambodia: 'Southeast Asia', indonesia: 'Southeast Asia', myanmar: 'Southeast Asia',
+    cambodia: 'Southeast Asia', indonesia: 'Southeast Asia', malaysia: 'Southeast Asia', myanmar: 'Southeast Asia',
     philippines: 'Southeast Asia', thailand: 'Southeast Asia', vietnam: 'Southeast Asia',
     hungary: 'Central Europe', poland: 'Central Europe', slovakia: 'Central Europe',
-    serbia: 'Balkans', moldova: 'Eastern Europe',
+    bosnia: 'Balkans', kosovo: 'Balkans', serbia: 'Balkans',
+    moldova: 'Eastern Europe',
     armenia: 'South Caucasus', azerbaijan: 'South Caucasus', georgia: 'South Caucasus',
-    kazakhstan: 'Central Asia', uzbekistan: 'Central Asia',
+    kazakhstan: 'Central Asia', kyrgyzstan: 'Central Asia', uzbekistan: 'Central Asia',
     turkey: 'Middle East & Mediterranean',
-    ethiopia: 'Sub-Saharan Africa', nigeria: 'Sub-Saharan Africa', south_africa: 'Sub-Saharan Africa',
-    brazil: 'South America', colombia: 'South America',
+    ethiopia: 'Sub-Saharan Africa', kenya: 'Sub-Saharan Africa', nigeria: 'Sub-Saharan Africa', south_africa: 'Sub-Saharan Africa',
+    argentina: 'South America', brazil: 'South America', colombia: 'South America',
   };
   const getRegion = (cid) => ((index && index.countries.find((x) => x.id === cid) || {}).region) || COUNTRY_REGION[cid] || 'Other';
   const prettyName = (cid) => ((index && index.countries.find((x) => x.id === cid) || {}).name) || cid.replace(/_/g, ' ').replace(/\b\w/g, (m) => m.toUpperCase());

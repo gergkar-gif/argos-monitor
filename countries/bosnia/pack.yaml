@@ -1,0 +1,84 @@
+# Bosnia and Herzegovina country pack (decision D15).
+id: bosnia
+name: Bosnia and Herzegovina
+region: Balkans
+language: bs
+abroad_label: Regional Balkan & diaspora outlets
+
+mention:
+  - "bosnia"
+  - "herzegovina"
+  - "bosnian"
+  - "sarajevo"
+  - "banja luka"
+  - "mostar"
+  - "tuzla"
+  - "republika srpska"
+  - "federation of bosnia"
+  - "dodik"
+  - "milorad dodik"
+  - "becirovic"
+  - "bećirović"
+  - "cvijanovic"
+  - "cvijanović"
+  - "komsic"
+  - "komšić"
+  - "christian schmidt"
+  - "ohr"
+  - "dayton"
+  - "bosna i hercegovina"
+
+mention_regex: ['\b(?:bosnia|herzegovina|bosna|sarajevo|banja luka|republika srpska|dodik)\b']
+mention_section: null
+
+url_sections:
+  foreign: [svijet, globus, world, international]
+  skip: [sport, magazin, showbiz, lifestyle, auto, tech]
+
+aggregator_outlets:
+  domestic:
+    - "cin.ba"
+    - "oslobođenje"
+    - "oslobodjenje"
+    - "klix"
+    - "klix.ba"
+    - "istraga.ba"
+    - "fena"
+    - "fena.ba"
+    - "dnevni avaz"
+    - "avaz"
+    - "nezavisne novine"
+    - "nezavisne"
+    - "rtrs"
+    - "federalna"
+    - "bht1"
+  abroad_local:
+    - "balkan insight"
+    - "slobodna evropa"
+    - "rfe/rl"
+    - "al jazeera balkans"
+    - "n1 bih"
+
+excerpt:
+  dateline: '^\s*(?:SARAJEVO|BANJA LUKA|MOSTAR|FENA|Srna)\s*[-–—:]\s*'
+  noise: '^(Foto|Izvor|Video|Pročitajte još|Photo|\(|\[)'
+
+classify:
+  internal_politics:
+    - "Presidency of Bosnia and Herzegovina (Bećirović, Cvijanović, Komšić), Parliamentary Assembly, Council of Ministers Borjana Krišto, Milorad Dodik and Republika Srpska National Assembly, High Representative Christian Schmidt, Dayton Accords"
+    - "Predsjedništvo BiH, Parlamentarna skupština, Vijeće ministara, Milorad Dodik, Republika Srpska, Christian Schmidt, OHR, Ustavni sud BiH, izbori"
+  economics:
+    - "Central Bank of Bosnia and Herzegovina, convertible mark, EU growth plan funds, energy and thermal power transition, foreign investment, inflation, infrastructure corridor Vc"
+    - "Centralna banka BiH, konvertibilna marka, ekonomija, inflacija, investicije, koridor 5c, energetska tranzicija, budžet"
+  foreign_policy:
+    - "Bosnia EU accession candidate status and negotiation framework, NATO Partnership and Commission for Cooperation, relations with Serbia, Croatia and Turkey"
+    - "evropske integracije, pristupanje Evropskoj uniji, NATO, Srbija, Hrvatska, diplomatija, međunarodna zajednica"
+  defence_security:
+    - "Armed Forces of Bosnia and Herzegovina (OSBiH), EUFOR Operation Althea, State Investigation and Protection Agency (SIPA), intelligence service OSA, border police"
+    - "Oružane snage BiH, EUFOR Althea, SIPA, OSA, sigurnost, policija, granica"
+  society:
+    - "judiciary, war crimes trials, education, healthcare, youth emigration, natural disasters, floods in Jablanica"
+    - "pravosuđe, ratni zločini, obrazovanje, zdravstvo, odlazak mladih, poplave, vremenske nepogode"
+
+geo: BA
+reddit: [bih, sarajevo]

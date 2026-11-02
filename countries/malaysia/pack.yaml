@@ -1,0 +1,84 @@
+# Malaysia country pack (decision D15).
+id: malaysia
+name: Malaysia
+region: Southeast Asia
+language: ms
+abroad_label: Regional ASEAN & diaspora outlets
+
+mention:
+  - "malaysia"
+  - "malaysian"
+  - "kuala lumpur"
+  - "putrajaya"
+  - "penang"
+  - "johor"
+  - "sabah"
+  - "sarawak"
+  - "anwar ibrahim"
+  - "anwar"
+  - "ahmad zahid"
+  - "muhyiddin yassin"
+  - "muhyiddin"
+  - "hadi awang"
+  - "kerajaan perpaduan"
+  - "pakatan harapan"
+  - "perikatan nasional"
+  - "ringgit"
+  - "bank negara"
+  - "petronas"
+  - "dewan rakyat"
+  - "parlimen"
+
+mention_regex: ['\b(?:malaysia|malaysian|kuala lumpur|putrajaya|anwar ibrahim|petronas|ringgit)\b']
+mention_section: null
+
+url_sections:
+  foreign: [world, international, global]
+  skip: [sport, sports, entertainment, lifestyle, viral]
+
+aggregator_outlets:
+  domestic:
+    - "free malaysia today"
+    - "fmt"
+    - "malay mail"
+    - "malaysiakini"
+    - "the star"
+    - "thestar"
+    - "new straits times"
+    - "nst"
+    - "the edge"
+    - "theedgemalaysia"
+    - "bernama"
+    - "berita harian"
+    - "utusan malaysia"
+    - "astro awani"
+  abroad_local:
+    - "straitstimes"
+    - "the straits times"
+    - "channel news asia"
+    - "cna"
+    - "benarnews"
+
+excerpt:
+  dateline: '^\s*(?:KUALA LUMPUR|PUTRAJAYA|GEORGE TOWN|JOHOR BAHRU|BERNAMA)\s*[-–—:]\s*'
+  noise: '^(Foto|Credit|File photo|Also Read|READ:|\(|\[)'
+
+classify:
+  internal_politics:
+    - "Prime Minister Anwar Ibrahim, Unity Government (Kerajaan Perpaduan), Pakatan Harapan (PH), Barisan Nasional (BN), Perikatan Nasional (PN) opposition (Muhyiddin Yassin, PAS Hadi Awang), Parliament (Dewan Rakyat), anti-corruption (SPRM/MACC)"
+    - "Anwar Ibrahim, Kerajaan Perpaduan, Parlimen, Dewan Rakyat, Perikatan Nasional, PAS, SPRM, rasuah, pilihan raya"
+  economics:
+    - "Bank Negara Malaysia, ringgit performance, targeted fuel subsidy rationalisation, semiconductor and semiconductor packaging hub in Penang, data centre investments in Johor, Petronas oil & gas, inflation, budget"
+    - "Bank Negara Malaysia, ringgit, subsidi bersasar, pelaburan, semikonduktor, Petronas, ekonomi, bajet, inflasi"
+  foreign_policy:
+    - "ASEAN 2025 Chairmanship, South China Sea claims and maritime boundary diplomacy, BRICS application, relations with China and United States, Palestine solidarity and Middle East diplomacy"
+    - "Pengerusi ASEAN, Laut China Selatan, BRICS, dasar luar, China, Amerika Syarikat, Palestin, diplomasi"
+  defence_security:
+    - "Malaysian Armed Forces (ATM), Royal Malaysian Navy, maritime enforcement agency (APMM/MMEA), Eastern Sabah Security Command (ESSCOM), border security"
+    - "Angkatan Tentera Malaysia, ATM, Tentera Laut Diraja Malaysia, ESSCOM, APMM, keselamatan maritim, sempadan"
+  society:
+    - "education, public healthcare reform, civil service salary adjustments, climate resilience, monsoon floods"
+    - "pendidikan, kesihatan, gaji penjawat awam, banjir kilat, cuaca, masyarakat"
+
+geo: MY
+reddit: [malaysia, kualalumpur]

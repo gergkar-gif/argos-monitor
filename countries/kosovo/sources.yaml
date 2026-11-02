@@ -1,0 +1,75 @@
+# Kosovo source registry (decision D15).
+# Combines independent Kosovo daily of record (Koha.net), public broadcaster RTK via Google News, northern Kosovo bilingual reporting (KoSSev via Google News), regional Balkan press (RFE/RL Evropa e Lirë), and international wires.
+
+sources:
+  - id: koha_net
+    name: Koha Ditore (Koha.net)
+    homepage: https://www.koha.net
+    language: sq
+    scope: domestic
+    kind: media
+    governing_body: Koha Group (independent daily newspaper of record in Pristina)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.koha.net/rss", section: Lajmet, category_hint: general}
+
+  - id: gnews_xk_domestic
+    name: Gazeta Express / Telegrafi / Kallxo (Digital Media via Google News)
+    homepage: https://www.gazetaexpress.com
+    language: sq
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: MediaWorks / Telegrafi / Internews Kosova
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:gazetaexpress.com+OR+site:telegrafi.com+OR+site:kallxo.com)+when:1d&hl=sq&gl=XK&ceid=XK:sq", section: Lajme, category_hint: general}
+
+  - id: gnews_xk_official
+    name: RTK / KosovaPress (Public Broadcaster & Agency via Google News)
+    homepage: https://www.rtklive.com
+    language: sq
+    scope: domestic
+    kind: official
+    aggregator: google_news
+    governing_body: Radio Television of Kosovo (RTK) & KosovaPress
+    state_affiliated: true
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:rtklive.com+OR+site:kosovapress.com)+when:7d&hl=sq&gl=XK&ceid=XK:sq", section: Zyrtare, category_hint: general}
+
+  - id: gnews_xk_north
+    name: KoSSev (North Mitrovica Independent Portal via Google News)
+    homepage: https://kossev.info
+    language: sr
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: Center for Community Development (North Mitrovica independent outlet)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:kossev.info+when:7d&hl=sr&gl=RS&ceid=RS:sr", section: KoSSev Vesti, category_hint: general}
+
+  - id: gnews_xk_abroad
+    name: Radio Evropa e Lirë (RFE/RL Kosovo Service via Google News)
+    homepage: https://www.evropaelire.org
+    language: sq
+    scope: abroad_local
+    kind: media
+    aggregator: google_news
+    governing_body: Radio Free Europe / Radio Liberty
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:evropaelire.org+when:7d&hl=sq&gl=AL&ceid=AL:sq", section: Evropa e Lirë, category_hint: general}
+
+  - id: gnews_en_xk
+    name: Google News (Kosovo - International)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Kosovo+(Pristina+OR+Kurti+OR+Mitrovica+OR+%22Serb+List%22)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Kosovo politics & north, category_hint: internal_politics}
+      - {url: "https://news.google.com/rss/search?q=Kosovo+(Serbia+OR+KFOR+OR+NATO+OR+EU+OR+Ohrid)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Kosovo dialogue & security, category_hint: defence_security}

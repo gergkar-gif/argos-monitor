@@ -1,0 +1,77 @@
+# Kosovo country pack (decision D15).
+id: kosovo
+name: Kosovo
+region: Balkans
+language: sq
+abroad_label: Regional Balkan & diaspora outlets
+
+mention:
+  - "kosovo"
+  - "kosovar"
+  - "pristina"
+  - "prishtina"
+  - "pristine"
+  - "mitrovica"
+  - "albin kurti"
+  - "kurti"
+  - "vjosa osmani"
+  - "osmani"
+  - "vetevendosje"
+  - "vetëvendosje"
+  - "kfor"
+  - "euleks"
+  - "eulek"
+  - "banjska"
+  - "kosova"
+  - "kosovës"
+
+mention_regex: ['\b(?:kosovo|kosovar|kosova|kosovës|pristina|prishtina|kurti|mitrovica)\b']
+mention_section: null
+
+url_sections:
+  foreign: [bote, botë, world, international]
+  skip: [sport, showbiz, lifestyle, auto, teknologji]
+
+aggregator_outlets:
+  domestic:
+    - "koha"
+    - "koha ditore"
+    - "koha.net"
+    - "rtk"
+    - "rtklive"
+    - "gazeta express"
+    - "kallxo"
+    - "kosovapress"
+    - "reporteri"
+    - "telegrafi"
+    - "kossev"
+  abroad_local:
+    - "balkan insight"
+    - "evropa e lire"
+    - "rfe/rl"
+    - "top channel"
+    - "danas"
+
+excerpt:
+  dateline: '^\s*(?:PRISHTINË|PRISTINA|MITROVICË|Koha|RTK)\s*[-–—:]\s*'
+  noise: '^(Foto|Burimi|Video|Lexo edhe|Photo|\(|\[)'
+
+classify:
+  internal_politics:
+    - "Prime Minister Albin Kurti, President Vjosa Osmani, Vetëvendosje (LVV), Assembly of Kosovo (Kuvendi), opposition parties (PDK, LDK, AAK), Serb List (Srpska Lista), local governance in northern municipalities"
+    - "Albin Kurti, Vjosa Osmani, Lëvizja Vetëvendosje, Kuvendi i Kosovës, Lista Serbe, zgjedhjet, opozita, komunat veriore"
+  economics:
+    - "Central Bank of the Republic of Kosovo (CBK), euro currency enforcement, energy imports and KEK lignite plants, trade and CEFTA regulations, diaspora remittances, inflation"
+    - "Banka Qendrore e Kosovës, BQK, euro, KEK, energjia elektrike, ekonomia, CEFTA, remitancat, tregtia"
+  foreign_policy:
+    - "EU-facilitated Belgrade-Pristina dialogue (Ohrid Agreement), Council of Europe accession, relations with Albania, United States, EU member states, visa liberalisation"
+    - "dialogu Kosovë-Serbi, marrëveshja e Ohrit, Këshilli i Evropës, Shqipëria, SHBA, Bashkimi Evropian, njohjet ndërkombëtare"
+  defence_security:
+    - "Kosovo Police (Policia e Kosovës), NATO KFOR peacekeeping force, Banjska attack investigation, border security with Serbia, EULEX mission, Kosovo Security Force (FSK)"
+    - "Policia e Kosovës, KFOR, NATO, EULEX, siguria në veri, Banjska, Forca e Sigurisë së Kosovës, FSK, kufiri"
+  society:
+    - "judiciary, minority rights, education, healthcare, air pollution, weather and natural hazards"
+    - "drejtësia, të drejtat e komuniteteve, arsimi, shëndetësia, shoqëria civile"
+
+geo: XK
+reddit: [kosovo, Pristina]

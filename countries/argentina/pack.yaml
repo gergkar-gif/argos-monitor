@@ -1,0 +1,84 @@
+# Argentina country pack (decision D15).
+id: argentina
+name: Argentina
+region: South America
+language: es
+abroad_label: Regional Latin American & diaspora outlets
+
+mention:
+  - "argentina"
+  - "argentino"
+  - "argentina"
+  - "argentinos"
+  - "buenos aires"
+  - "córdoba"
+  - "cordoba"
+  - "rosario"
+  - "mendoza"
+  - "javier milei"
+  - "milei"
+  - "victoria villarruel"
+  - "villarruel"
+  - "luis caputo"
+  - "caputo"
+  - "casa rosada"
+  - "congreso de la nación"
+  - "la libertad avanza"
+  - "banco central"
+  - "bcra"
+  - "kirchner"
+  - "peronismo"
+
+mention_regex: ['\b(?:argentina|argentino|argentinos|buenos aires|milei|caputo)\b']
+mention_section: null
+
+url_sections:
+  foreign: [el-mundo, mundo, internacional, world]
+  skip: [deportes, futbol, fútbol, espectaculos, espectáculos, farandula, estilo, autos]
+
+aggregator_outlets:
+  domestic:
+    - "infobae"
+    - "la nación"
+    - "la nacion"
+    - "clarín"
+    - "clarin"
+    - "ámbito"
+    - "ambito"
+    - "cronista"
+    - "el cronista"
+    - "página 12"
+    - "pagina 12"
+    - "perfil"
+    - "télam"
+    - "telam"
+    - "radio nacional"
+  abroad_local:
+    - "el país américa"
+    - "cnn en español"
+    - "infobae américa"
+    - "efe"
+
+excerpt:
+  dateline: '^\s*(?:BUENOS AIRES|CÓRDOBA|ROSARIO|Télam|NA|Infobae|La Nación)\s*[-–—:]\s*'
+  noise: '^(Foto|Crédito|Leé también|Mirá también|Photo|\(|\[)'
+
+classify:
+  internal_politics:
+    - "President Javier Milei, Vice President Victoria Villarruel, Casa Rosada, La Libertad Avanza (LLA), National Congress (Congreso de la Nación), Peronist opposition, provincial governors, presidential vetoes, state deregulation and privatisations"
+    - "Javier Milei, Casa Rosada, Congreso, La Libertad Avanza, peronismo, gobernadores, veto presidencial, desregulación del Estado"
+  economics:
+    - "Minister of Economy Luis Caputo, Central Bank (BCRA), Argentine peso and foreign exchange reserves, fiscal surplus, inflation reduction, IMF debt program, sovereign risk, poverty rates"
+    - "Luis Caputo, Banco Central, BCRA, inflación, superávit fiscal, reservas, FMI, cepo cambiario, dólar, riesgo país"
+  foreign_policy:
+    - "Argentina foreign policy realignment under Milei (strong US and Israel alignment, distancing from BRICS), relations with Brazil, China currency swap, Falkland Islands (Malvinas) diplomacy, OECD accession"
+    - "política exterior, Cancillería, Estados Unidos, Israel, Brasil, China, swap de monedas, Malvinas, OCDE, Mercosur"
+  defence_security:
+    - "Ministry of Security Patricia Bullrich, federal police operations and anti-picket protocol, narco-violence in Rosario, Armed Forces modernisation (F-16 acquisition), border security"
+    - "Patricia Bullrich, Ministerio de Seguridad, protocolo antipiquetes, narcotráfico en Rosario, Fuerzas Armadas, F-16, gendarmería"
+  society:
+    - "university funding protests, social assistance and food distribution audits, labour unions (CGT) strikes, healthcare, weather and climate emergencies"
+    - "universidades públicas, jubilaciones, CGT, paro general, comedores comunitarios, salud, clima, incendios"
+
+geo: AR
+reddit: [argentina, BuenosAires]

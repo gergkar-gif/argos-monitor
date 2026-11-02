@@ -1,0 +1,17 @@
+# Kenya's additions to the shared themes (../../themes.yaml).
+themes:
+  - id: party_gov
+    label: Ruto Presidency, Executive Politics & Governance Reforms
+    weight: 1.0
+    category: internal_politics
+    describe:
+      - President William Ruto, Deputy President appointments and impeachment litigation, broad-based government with opposition, parliamentary debates on taxes, Gen-Z civic accountability
+    keywords: ["ruto", "gachagua", "kindiki", "raila", "state house", "national assembly", "finance bill", "impeachment", "gen z", "high court"]
+
+  - id: diplomacy
+    label: Regional Mediation (Sudan/DRC), Haiti Mission & IMF Economic Programs
+    weight: 1.0
+    category: foreign_policy
+    describe:
+      - Kenya peacekeeping mission in Haiti, East African regional mediation in Sudan and Eastern DRC, IMF fiscal stabilization program and debt debt obligations
+    keywords: ["haiti", "mss", "imf", "eurobond", "eac", "igad", "sudan", "drc", "central bank of kenya", "cbk", "shilling"]

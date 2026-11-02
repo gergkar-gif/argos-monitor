@@ -1,0 +1,79 @@
+# Kyrgyzstan country pack (decision D15).
+id: kyrgyzstan
+name: Kyrgyzstan
+region: Central Asia
+language: ky
+abroad_label: Regional Central Asian & exiled Kyrgyz outlets
+
+mention:
+  - "kyrgyzstan"
+  - "kyrgyz"
+  - "bishkek"
+  - "osh"
+  - "jalal-abad"
+  - "issyk-kul"
+  - "sadyr japarov"
+  - "japarov"
+  - "kamchybek tashiev"
+  - "tashiev"
+  - "akylbek japarov"
+  - "jogorku kenesh"
+  - "som"
+  - "kumtor"
+  - "fergana"
+  - "кыргызстан"
+  - "кыргыз"
+  - "бишкек"
+  - "жапаров"
+  - "ташиев"
+  - "жогорку кеңеш"
+
+mention_regex: ['\b(?:kyrgyzstan|kyrgyz|bishkek|japarov|tashiev)\b', 'кыргызстан', 'бишкек', 'жапаров']
+mention_section: null
+
+url_sections:
+  foreign: [d дүйнө, дүйнө, мир, в мире, world, international]
+  skip: [спорт, sport, маданият, шоу-бизнес, lifestyle, авто]
+
+aggregator_outlets:
+  domestic:
+    - "kloop"
+    - "24.kg"
+    - "kaktus.media"
+    - "kaktus"
+    - "kabar"
+    - "akipress"
+    - "vesti.kg"
+    - "economist.kg"
+  abroad_local:
+    - "azattyk"
+    - "azattyk unalgyhy"
+    - "rfe/rl"
+    - "times of central asia"
+    - "timesca"
+    - "eurasianet"
+    - "fergana"
+
+excerpt:
+  dateline: '^\s*(?:БИШКЕК|BISHKEK|Кабар|24\.kg|Kloop|Kaktus)\s*[-–—:]\s*'
+  noise: '^(Сүрөт|Фото|Видео|Ошондой эле|Photo|\(|\[)'
+
+classify:
+  internal_politics:
+    - "President Sadyr Japarov, GKNB security chief Kamchybek Tashiev, Jogorku Kenesh parliament, Cabinet of Ministers Akylbek Japarov, foreign representatives NGO law, media closures, constitutional changes"
+    - "Садыр Жапаров, Камчыбек Ташиев, Жогорку Кеңеш, Министрлер кабинети, УКМК, сот, мыйзамдар, оппозиция"
+  economics:
+    - "National Bank of the Kyrgyz Republic, Kyrgyz som, Kumtor gold mine, China-Kyrgyzstan-Uzbekistan railway, Kambarata-1 hydropower plant, remittance flows from Russia, trade and transit"
+    - "Улуттук банк, сом, Кумтөр, Кытай-Кыргызстан-Өзбекстан темир жолу, Камбар-Ата-1 ГЭСи, алтын, экономика, бажы"
+  foreign_policy:
+    - "Kyrgyzstan relations with Russia, China, Uzbekistan, Tajikistan (border demarcation completion) and Kazakhstan, Eurasian Economic Union (EAEU), C5+1 diplomacy with the United States and EU"
+    - "тышкы саясат, Россия, Кытай, Өзбекстан, Тажикстан чек арасы, ЕАЭБ, ЕБ, дипломатия"
+  defence_security:
+    - "State Committee for National Security (GKNB) Kamchybek Tashiev, Armed Forces, border delimitations in the Batken and Fergana Valley, regional counter-terrorism, Bayraktar TB2 / Aksungur UAV deployments"
+    - "Улуттук коопсуздук мамлекеттик комитети, УКМК, Баткен чек арасы, куралдуу күчтөр, коопсуздук"
+  society:
+    - "civil society, independent media press freedom, air pollution in Bishkek, healthcare, schools, water availability, earthquakes and landslides"
+    - "эркин медиа, коом, экология, түтүн, саламаттык сактоо, билим берүү, жер титирөө"
+
+geo: KG
+reddit: [kyrgyzstan, bishkek]

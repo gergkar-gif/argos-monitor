@@ -1,0 +1,74 @@
+# Kyrgyzstan source registry (decision D15).
+# Combines independent investigative & news portals (Kloop, 24.kg, Kaktus.media via Google News), national news agency Kabar via Google News, regional & exile press (RFE/RL Azattyk, The Times of Central Asia), and international wires.
+
+sources:
+  - id: kloop_kg
+    name: Kloop Media
+    homepage: https://kloop.kg
+    language: ky
+    scope: domestic
+    kind: media
+    governing_body: Kloop Media Public Foundation (award-winning independent investigative outlet)
+    state_affiliated: false
+    feeds:
+      - {url: "https://kloop.kg/feed/", section: Жаңылыктар, category_hint: general}
+
+  - id: news24_kg
+    name: 24.kg
+    homepage: https://24.kg
+    language: ru
+    scope: domestic
+    kind: media
+    governing_body: 24.kg News Agency (independent national daily portal in Bishkek)
+    state_affiliated: false
+    feeds:
+      - {url: "https://24.kg/rss/", section: Новости, category_hint: general}
+
+  - id: gnews_kg_domestic
+    name: Kaktus.media / AKIpress (Independent Digital Media via Google News)
+    homepage: https://kaktus.media
+    language: ru
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: Kaktus Media & AKIpress News Agency
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:kaktus.media+OR+site:akipress.org)+when:1d&hl=ru&gl=RU&ceid=RU:ru", section: Главные новости, category_hint: general}
+
+  - id: gnews_kg_official
+    name: Kabar / President.kg (Official State Press via Google News)
+    homepage: https://kabar.kg
+    language: ky
+    scope: domestic
+    kind: official
+    aggregator: google_news
+    governing_body: Kyrgyz National News Agency Kabar & Administration of the President
+    state_affiliated: true
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:kabar.kg+OR+site:president.kg)+when:7d&hl=ru&gl=RU&ceid=RU:ru", section: Расмий, category_hint: general}
+
+  - id: gnews_kg_abroad
+    name: Azattyk / Times of Central Asia (Regional & Exile Press via Google News)
+    homepage: https://www.azattyk.org
+    language: ky
+    scope: abroad_local
+    kind: media
+    aggregator: google_news
+    governing_body: Radio Free Europe / Radio Liberty (Azattyk) & The Times of Central Asia
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:azattyk.org+OR+site:timesca.com)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Regional, category_hint: general}
+
+  - id: gnews_en_kg
+    name: Google News (Kyrgyzstan - International)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Kyrgyzstan+(Bishkek+OR+Japarov+OR+Tashiev+OR+parliament)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Kyrgyzstan politics & governance, category_hint: internal_politics}
+      - {url: "https://news.google.com/rss/search?q=Kyrgyzstan+(railway+OR+Kumtor+OR+Tajikistan+OR+China+OR+hydropower)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Kyrgyzstan economy & borders, category_hint: foreign_policy}
