@@ -51,3 +51,6 @@ classify:
     - "y tế, bệnh viện, dịch bệnh, vaccine, sức khỏe"
     - "tai nạn giao thông, thiên tai, bão lũ, thời tiết, môi trường"
     - "vụ án, xét xử, bắt giữ, lừa đảo, tội phạm, đời sống người dân"
+
+# Other spellings of the country name in crisis feeds.
+crisis_names: ["Viet Nam"]

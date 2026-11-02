@@ -270,6 +270,23 @@
     return sec;
   }
 
+  // Official alerts from free feeds (GDACS, USGS, travel advice): each line is the feed's own title, linked to it.
+  function alerts() {
+    const c = window.ARGOS_CRISIS;
+    if (!c) return null;
+    const items = c.countries[country.value] || [];
+    const hot = (i) => /^(Red|Orange)$/.test(i.level || '') || /Level [34]/.test(i.title);
+    return h('section', { class: 'alerts', 'aria-label': 'Official alerts' },
+      h('h2', { text: 'Official alerts' }),
+      items.length
+        ? h('ul', null, items.map((i) => h('li', null,
+          h('span', { class: 'stamp ' + (hot(i) ? 'red' : 'indigo'), text: i.kind }),
+          h('a', { href: safeUrl(i.url), target: '_blank', rel: 'noopener', text: i.title }),
+          i.date && h('span', { class: 'meta', text: fmtDay.format(new Date(i.date)) }))))
+        : h('p', { class: 'byline', text: 'No disaster alerts in the last 7 days.' }),
+      h('p', { class: 'byline', text: `GDACS, USGS, UK and US travel advice. Checked ${fmtTime.format(new Date(c.generated_at))}.` }));
+  }
+
   function render(animate = true) {
     const d = current;
     results.classList.toggle('still', !animate);
@@ -307,6 +324,7 @@
       noOutside && h('p', { class: 'notice quiet', text: `No coverage from ${(index.countries.find((x) => x.id === country.value) || {}).abroad_label || 'outlets abroad'} or from international outlets has been collected for this period yet, so the "not in domestic press" check cannot run.` }),
       ageH > STALE_HOURS && h('p', { class: 'notice', text: `This collection is ${Math.round(ageH)} hours old. Run the collector to refresh it.` }),
       h('div', { id: 'trans', class: 'trans' }),
+      alerts(),
       tabs,
       ...body,
     ].filter(Boolean));
