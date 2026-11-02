@@ -1,0 +1,31 @@
+# Myanmar's additions to the shared themes (../../themes.yaml).
+themes:
+  - id: security
+    label: Civil war & resistance offensives
+    weight: 1.0
+    category: defence_security
+    describe:
+      - armed clashes between the military junta (Tatmadaw/SAC) and People's Defence Force (PDF), Arakan Army (AA), KIA, KNU, TNLA, MNDAA, airstrikes and military conscription
+      - စစ်ကောင်စီတပ်နှင့် PDF၊ အာရက္ခတပ်တော် (AA)၊ KIA၊ KNU တိုက်ပွဲများ၊ လေကြောင်းတိုက်ခိုက်မှုနှင့် စစ်မှုထမ်းဥပဒေ
+    keywords: ["arakan army", "three brotherhood", "mndaa", "tnla", "kia", "knu", "pdf", "people's defence force", "tatmadaw", "junta", "airstrike", "conscription", "lashio", "rakhine", "စစ်ကောင်စီ", "တိုက်ပွဲ", "လေကြောင်း", "စစ်မှုထမ်း", "အာရက္ခတပ်တော်"]
+
+  - id: party_gov
+    label: Junta (SAC) & NUG parallel governance
+    weight: 0.9
+    category: internal_politics
+    describe:
+      - State Administration Council (SAC) decrees, Min Aung Hlaing, junta proposed elections, National Unity Government (NUG) administration
+      - စစ်ကောင်စီ၊ မင်းအောင်လှိုင်၊ ရွေးကောက်ပွဲအစီအစဉ်နှင့် အမျိုးသားညီညွတ်ရေးအစိုးရ (NUG)
+    keywords: ["min aung hlaing", "state administration council", "sac", "national unity government", "nug", "aung san suu kyi", "junta election", "မင်းအောင်လှိုင်", "အမျိုးသားညီညွတ်ရေးအစိုးရ", "ရွေးကောက်ပွဲ"]
+
+  - id: diplomacy
+    describe:
+      - China-Myanmar border stabilization and mediation, ASEAN Five-Point Consensus, Thailand border policy, Russia military ties, international sanctions
+      - တရုတ်-မြန်မာ ဆက်ဆံရေး၊ အာဆီယံ မူ ၅ ချက်၊ ထိုင်းနယ်စပ်နှင့် နိုင်ငံတကာ ပိတ်ဆို့အရေးယူမှု
+    keywords: ["five-point consensus", "asean envoy", "china-myanmar", "muse border", "ruili", "sanctions", "အာဆီယံ", "တရုတ်-မြန်မာ", "ပိတ်ဆို့အရေးယူ"]
+
+  - id: econ_policy
+    describe:
+      - kyat currency depreciation, Central Bank foreign exchange controls, fuel and electricity shortages, border trade closures
+      - ကျပ်ငွေတန်ဖိုးကျဆင်းမှု၊ ဗဟိုဘဏ်၊ စက်သုံးဆီပြတ်လပ်မှုနှင့် နယ်စပ်ကုန်သွယ်ရေး
+    keywords: ["kyat", "central bank of myanmar", "foreign exchange", "border trade", "fuel shortage", "ကျပ်ငွေ", "ဗဟိုဘဏ်", "နယ်စပ်ကုန်သွယ်ရေး", "စက်သုံးဆီ"]

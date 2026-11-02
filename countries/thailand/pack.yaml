@@ -1,0 +1,83 @@
+# Thailand country pack (decision D15).
+id: thailand
+name: Thailand
+language: th
+abroad_label: Regional & diaspora Thai outlets
+
+mention:
+  - "thailand"
+  - "thai"
+  - "bangkok"
+  - "paetongtarn"
+  - "shinawatra"
+  - "thaksin"
+  - "pheu thai"
+  - "bhumjaithai"
+  - "people's party"
+  - "bank of thailand"
+  - "thai baht"
+  - "phuket"
+  - "chiang mai"
+  - "pattaya"
+  - "ประเทศไทย"
+  - "ไทย"
+  - "กรุงเทพ"
+  - "รัฐบาล"
+  - "นายกรัฐมนตรี"
+  - "แพทองธาร"
+  - "ทักษิณ"
+  - "เพื่อไทย"
+  - "พรรคประชาชน"
+  - "ธนาคารแห่งประเทศไทย"
+  - "กองทัพ"
+
+mention_regex: ['\bthai(?:land|s)?\b']
+mention_section: null
+
+url_sections:
+  foreign: [world, international, foreign, global, asean]
+  skip: [sport, sports, entertainment, lifestyle, life, travel, auto, horoscope, lottery, showbiz, звезд]
+
+aggregator_outlets:
+  domestic:
+    - "bangkok post"
+    - "thai pbs world"
+    - "the nation"
+    - "nation thailand"
+    - "khaosod english"
+    - "prachatai english"
+    - "prachatai"
+    - "the thaiger"
+    - "thai examiner"
+    - "matichon"
+    - "thairath"
+    - "khaosod"
+    - "thai enquirer"
+    - "royal thai government"
+  abroad_local:
+    - "benarmews"
+    - "rfa"
+
+excerpt:
+  dateline: '^\s*(?:BANGKOK|Bangkok Post|TNA|NNT)\s*[-–—:]\s*'
+  noise: '^(Photo|Credit|File photo|Read more|ภาพ|ที่มา|\(|\[)'
+
+classify:
+  internal_politics:
+    - "รัฐบาล, นายกรัฐมนตรี, รัฐสภา, สภาผู้แทนราษฎร, วุฒิสภา, พรรคเพื่อไทย, พรรคประชาชน, การเมือง, เลือกตั้ง, แก้รัฐธรรมนูญ"
+    - "Royal Thai Government, parliament, cabinet reshuffle, Constitutional Court, Pheu Thai, People's Party, monarchy"
+  economics:
+    - "เศรษฐกิจ, ธนาคารแห่งประเทศไทย, ดอกเบี้ย, เงินเฟ้อ, ค่าเงินบาท, ส่งออก, การลงทุน, งบประมาณ, ตลาดหุ้น, ท่องเที่ยว"
+    - "Thai economy, Bank of Thailand, baht, exports, foreign investment, EEC, digital wallet, tourism revenue"
+  foreign_policy:
+    - "กระทรวงการต่างประเทศ, ความสัมพันธ์ระหว่างประเทศ, อาเซียน, การทูต, จีน, สหรัฐ, เมียนมา, กัมพูชา"
+    - "Thai foreign ministry, ASEAN diplomacy, bilateral relations with China, US, Myanmar and Cambodia"
+  defence_security:
+    - "กองทัพ, กระทรวงกลาโหม, ความมั่นคง, ชายแดน, ภาคใต้, ทหาร, ตำรวจ"
+    - "Royal Thai Armed Forces, border security, southern insurgency, defence procurement, cyber crime crackdown"
+  society:
+    - "การศึกษา, สาธารณสุข, โรงพยาบาล, น้ำท่วม, ฝุ่น PM2.5, อุบัติเหตุ, อาชญากรรม, ศาล"
+    - "floods, PM2.5 air pollution, public health, schools, labour, courts and society"
+
+geo: TH
+reddit: [Thailand, Bangkok, ChiangMai, Phuket]

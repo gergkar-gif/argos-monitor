@@ -1,0 +1,25 @@
+# Thailand's additions to the shared themes (../../themes.yaml): Thai & English keywords and descriptions.
+themes:
+  - id: party_gov
+    describe:
+      - Paetongtarn Shinawatra cabinet, Pheu Thai coalition, People's Party opposition, Constitutional Court rulings, Senate, lèse-majesté (Section 112)
+      - รัฐบาลแพทองธาร พรรคเพื่อไทย พรรคประชาชน ศาลรัฐธรรมนูญ รัฐสภา การแก้ไขรัฐธรรมนูญ มาตรา 112
+    keywords: ["paetongtarn", "thaksin", "pheu thai", "people's party", "bhumjaithai", "constitutional court", "section 112", "lese majeste", "แพทองธาร", "ทักษิณ", "เพื่อไทย", "พรรคประชาชน", "ภูมิใจไทย", "ศาลรัฐธรรมนูญ", "ยุบพรรค", "มาตรา 112"]
+
+  - id: econ_policy
+    describe:
+      - Bank of Thailand monetary policy, baht exchange rate, digital wallet stimulus, household debt, fiscal budget, EEC
+      - ธนาคารแห่งประเทศไทย นโยบายการเงิน ค่าเงินบาท ดิจิทัลวอลเล็ต หนี้ครัวเรือน งบประมาณแผ่นดิน
+    keywords: ["bank of thailand", "bot", "baht", "digital wallet", "household debt", "eec", "eastern economic corridor", "ธนาคารแห่งประเทศไทย", "ธปท", "ค่าเงินบาท", "ดิจิทัลวอลเล็ต", "เงินดิจิทัล", "หนี้ครัวเรือน", "งบประมาณ"]
+
+  - id: diplomacy
+    describe:
+      - Thai foreign policy, ASEAN diplomacy, Myanmar border diplomacy, US-China balancing, Mekong river cooperation
+      - กระทรวงการต่างประเทศ ความสัมพันธ์ระหว่างประเทศ อาเซียน ชายแดนเมียนมา แม่น้ำโขง
+    keywords: ["maris sangiampongsa", "asean", "mekong", "thai-chinese", "thai-myanmar", "thai-cambodian", "กระทรวงการต่างประเทศ", "อาเซียน", "ทูต", "ความสัมพันธ์"]
+
+  - id: security
+    describe:
+      - Royal Thai Armed Forces, Deep South insurgency, Myanmar border security, scam center crackdowns in Mae Sot
+      - กองทัพไทย ความมั่นคงชายแดน สามจังหวัดชายแดนภาคใต้ แก๊งคอลเซ็นเตอร์ แม่สอด
+    keywords: ["royal thai army", "royal thai navy", "southern insurgency", "mae sot", "call center gang", "border security", "กองทัพ", "กลาโหม", "ชายแดน", "ภาคใต้", "แก๊งคอลเซ็นเตอร์"]

@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ["site/**", ".github/workflows/daily.yml"]
+    paths: ["site/**", "countries/**", "argos/**", "themes.yaml", ".github/workflows/daily.yml"]
 
 concurrency:
   group: daily-digest

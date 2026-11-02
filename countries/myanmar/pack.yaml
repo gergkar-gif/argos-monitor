@@ -1,0 +1,86 @@
+# Myanmar country pack (decision D15).
+id: myanmar
+name: Myanmar
+language: my
+crisis_names: ["Burma", "Myanmar"]
+abroad_label: Independent Burmese outlets in exile
+
+mention:
+  - "myanmar"
+  - "burma"
+  - "burmese"
+  - "yangon"
+  - "naypyidaw"
+  - "nay pyi taw"
+  - "mandalay"
+  - "min aung hlaing"
+  - "sac"
+  - "state administration council"
+  - "nug"
+  - "national unity government"
+  - "pdf"
+  - "people's defence force"
+  - "arakan army"
+  - "rakhine"
+  - "kachin"
+  - "karen"
+  - "shan state"
+  - "tatmadaw"
+  - "မြန်မာ"
+  - "ရန်ကုန်"
+  - "နေပြည်တော်"
+  - "မန္တလေး"
+  - "စစ်ကောင်စီ"
+  - "မင်းအောင်လှိုင်"
+  - "အမျိုးသားညီညွတ်ရေးအစိုးရ"
+
+mention_regex: ['\b(?:myanmar|burma|burmese|tatmadaw|naypyidaw)\b']
+mention_section: null
+
+url_sections:
+  foreign: [world, international, asia]
+  skip: [sport, sports, lifestyle, culture, entertainment]
+
+aggregator_outlets:
+  domestic:
+    - "global new light of myanmar"
+    - "myawady"
+    - "popular news journal"
+    - "eleven media group"
+  abroad_local:
+    - "the irrawaddy"
+    - "myanmar now"
+    - "mizzima"
+    - "democratic voice of burma"
+    - "dvb"
+    - "frontier myanmar"
+    - "burma news international"
+    - "shan herald agency for news"
+    - "karen information center"
+    - "khit thit media"
+    - "rfa"
+    - "radio free asia"
+
+excerpt:
+  dateline: '^\s*(?:YANGON|CHIANG MAI|The Irrawaddy|Myanmar Now|Mizzima)\s*[-–—:]\s*'
+  noise: '^(Photo|Credit|File photo|Read more|\(|\[)'
+
+classify:
+  internal_politics:
+    - "State Administration Council, military junta, Min Aung Hlaing, National Unity Government, NUG, Aung San Suu Kyi, election plan"
+    - "စစ်ကောင်စီ, မင်းအောင်လှိုင်, အမျိုးသားညီညွတ်ရေးအစိုးရ, ရွေးကောက်ပွဲ, နိုင်ငံရေး"
+  economics:
+    - "Myanmar kyat, Central Bank of Myanmar, inflation, border trade with China and Thailand, fuel shortages, sanctions, garments"
+    - "စီးပွားရေး, ကျပ်ငွေ, ဗဟိုဘဏ်, နယ်စပ်ကုန်သွယ်ရေး, ကုန်ဈေးနှုန်း, ရွှေဈေး, ဒေါ်လာဈေး"
+  foreign_policy:
+    - "China-Myanmar relations, ASEAN Five-Point Consensus, Thailand border diplomacy, India, Russia arms and diplomacy, UN envoy"
+    - "နိုင်ငံခြားရေး, တရုတ်-မြန်မာ, အာဆီယံ, သံတမန်ရေး"
+  defence_security:
+    - "civil war, People's Defence Force, PDF, Three Brotherhood Alliance, Arakan Army, KIA, KNU, airstrikes, conscription, resistance offensive"
+    - "တိုက်ပွဲ, ပြည်သူ့ကာကွယ်ရေးတပ်ဖွဲ့, အာရက္ခတပ်တော်, လေကြောင်းတိုက်ခိုက်မှု, စစ်မှုထမ်းဥပဒေ"
+  society:
+    - "internally displaced people, refugees, humanitarian aid, Cyclone, floods, internet shutdown, education, health crisis"
+    - "စစ်ဘေးရှောင်, လူသားချင်းစာနာမှု, ရေကြီးမှု, ပညာရေး, ကျန်းမာရေး"
+
+geo: MM
+reddit: [myanmar, burma]

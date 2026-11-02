@@ -1,0 +1,107 @@
+# Myanmar source registry (decision D15).
+# Exiled independent Burmese outlets are classified as abroad_local so Argos can compare junta/domestic coverage with exile & international reporting.
+
+sources:
+  - id: irrawaddy_en
+    name: The Irrawaddy
+    homepage: https://www.irrawaddy.com
+    language: en
+    scope: abroad_local
+    kind: media
+    governing_body: Irrawaddy Publishing Group (independent, operating in exile in Thailand)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.irrawaddy.com/feed", section: Latest, category_hint: general}
+
+  - id: irrawaddy_my
+    name: The Irrawaddy (Burmese)
+    homepage: https://burma.irrawaddy.com
+    language: my
+    scope: abroad_local
+    kind: media
+    governing_body: Irrawaddy Publishing Group (independent, operating in exile)
+    state_affiliated: false
+    feeds:
+      - {url: "https://burma.irrawaddy.com/feed", section: Latest, category_hint: general}
+
+  - id: myanmar_now_en
+    name: Myanmar Now
+    homepage: https://myanmar-now.org/en
+    language: en
+    scope: abroad_local
+    kind: media
+    governing_body: Myanmar Now (independent investigative agency in exile)
+    state_affiliated: false
+    feeds:
+      - {url: "https://myanmar-now.org/en/feed/", section: English, category_hint: general}
+
+  - id: myanmar_now_my
+    name: Myanmar Now (Burmese)
+    homepage: https://myanmar-now.org/mm
+    language: my
+    scope: abroad_local
+    kind: media
+    governing_body: Myanmar Now (independent investigative agency in exile)
+    state_affiliated: false
+    feeds:
+      - {url: "https://myanmar-now.org/mm/feed/", section: Burmese, category_hint: general}
+
+  - id: dvb_en
+    name: Democratic Voice of Burma (DVB)
+    homepage: https://english.dvb.no
+    language: en
+    scope: abroad_local
+    kind: media
+    governing_body: DVB Multimedia Group (independent non-profit)
+    state_affiliated: false
+    feeds:
+      - {url: "https://english.dvb.no/feed/", section: Latest, category_hint: general}
+
+  - id: bnionline
+    name: Burma News International (BNI)
+    homepage: https://www.bnionline.net
+    language: en
+    scope: abroad_local
+    kind: media
+    governing_body: BNI Ethnic Media Network (coalition of independent ethnic news outlets)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.bnionline.net/en/rss.xml", section: News, category_hint: general}
+
+  - id: rfa_my
+    name: RFA Burmese
+    homepage: https://www.rfa.org/burmese
+    language: my
+    scope: abroad_local
+    kind: media
+    governing_body: Radio Free Asia (USAGM)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.rfa.org/arc/outboundfeeds/burmese/rss/", section: Burmese, category_hint: general}
+
+  - id: gnews_en_mm
+    name: Google News (Myanmar - English)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(Myanmar+OR+Burma)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Myanmar, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=(Myanmar+OR+Burma)+(junta+OR+military+OR+NUG+OR+Arakan+OR+PDF)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Myanmar conflict, category_hint: defence_security}
+      - {url: "https://news.google.com/rss/search?q=(Myanmar+OR+Burma)+(China+OR+ASEAN+OR+Thailand+OR+border+OR+sanctions)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Myanmar diplomacy & trade, category_hint: foreign_policy}
+
+  - id: gnews_mm_dom
+    name: Google News (Myanmar Junta / Domestic Press)
+    homepage: https://news.google.com
+    language: en
+    scope: domestic
+    kind: official
+    aggregator: google_news
+    governing_body: State Administration Council / domestic press via Google News
+    state_affiliated: true
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:gnlm.com.mm+when:7d&hl=en-US&gl=US&ceid=US:en", section: Global New Light of Myanmar, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=site:elevenmyanmar.com+when:7d&hl=en-US&gl=US&ceid=US:en", section: Eleven Media, category_hint: general}

@@ -19,7 +19,7 @@ NOISE_RE = re.compile(
     r"premier league|serie a|la liga|bundesliga|champions league|mls|nfl|nba|f1|formula 1|nagydíj|grand prix|"
     r"qualifying|standings|pole-ja|hat-trick|world champions|albo d'oro|onefootball|fociclub|bongda|the race|"
     r"yahoo sports|sky sports|espn|nemzeti sport|m4 sport|supersport|soccer|football|champions)\b", re.I)
-DOMAIN_RE = re.compile(r"^[\w-]+\.(hu|vn|kh|za|com|net|org)$", re.I)
+DOMAIN_RE = re.compile(r"^[\w-]+(?:\.co)?\.(hu|vn|kh|za|th|mm|rs|pl|tr|br|com|net|org)$", re.I)
 
 
 def _traffic(s):

@@ -1,0 +1,34 @@
+# Turkey's additions to the shared themes (../../themes.yaml).
+themes:
+  - id: econ_policy
+    label: TCMB disinflation, Lira & fiscal orthodoxy
+    weight: 1.0
+    category: economics
+    describe:
+      - Central Bank of Turkey (TCMB) interest rate decisions, inflation, Finance Minister Mehmet Şimşek economic program, Turkish lira, sovereign credit rating
+      - Türkiye Cumhuriyet Merkez Bankası (TCMB) faiz kararı, enflasyon, Mehmet Şimşek ekonomi programı, döviz kuru, Türk lirası
+    keywords: ["tcmb", "merkez bankası", "mehmet şimşek", "şimşek", "simsek", "faiz kararı", "enflasyon", "türk lirası", "lira", "tüik", "bütçe", "ovp"]
+
+  - id: diplomacy
+    label: NATO, Middle East & Black Sea balancing
+    weight: 1.0
+    category: foreign_policy
+    describe:
+      - Foreign Minister Hakan Fidan, Turkey-US and NATO relations, Syria normalization and border security, Russia-Ukraine Black Sea diplomacy, EU relations
+      - Dışişleri Bakanı Hakan Fidan, Türkiye-ABD ve NATO ilişkileri, Suriye, Rusya-Ukrayna, Avrupa Birliği, Doğu Akdeniz
+    keywords: ["hakan fidan", "fidan", "dışişleri", "nato", "suriye", "syria", "doğu akdeniz", "brics", "avrupa birliği", "f-16", "eurofighter"]
+
+  - id: security
+    label: Cross-border operations & Defence industry
+    weight: 0.95
+    category: defence_security
+    describe:
+      - Turkish Armed Forces (TSK) operations in northern Iraq and Syria against PKK/YPG, MIT intelligence operations, defence industry exports (Baykar, TUSAŞ, KAAN)
+      - Türk Silahlı Kuvvetleri (TSK) sınır ötesi operasyon, PKK/YPG, MİT, savunma sanayii, TUSAŞ, Baykar, KAAN, SİHA
+    keywords: ["tsk", "msb", "milli savunma", "pkk", "ypg", "sınır ötesi", "mit", "tusaş", "baykar", "bayraktar", "kaan", "siha", "terörle mücadele"]
+
+  - id: party_gov
+    describe:
+      - President Recep Tayyip Erdoğan, AKP-MHP People's Alliance, CHP opposition under Özgür Özel and Ekrem İmamoğlu, DEM Party, trustee (kayyum) appointments, constitutional debates
+      - Cumhurbaşkanı Erdoğan, AK Parti, MHP, CHP, Özgür Özel, Ekrem İmamoğlu, Mansur Yavaş, DEM Parti, kayyum, yeni anayasa
+    keywords: ["erdoğan", "erdogan", "akp", "ak parti", "chp", "özgür özel", "ekrem imamoğlu", "imamoğlu", "mansur yavaş", "bahçeli", "tbmm", "kayyum", "yeni anayasa"]

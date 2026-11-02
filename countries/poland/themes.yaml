@@ -1,0 +1,31 @@
+# Poland's additions to the shared themes (../../themes.yaml).
+themes:
+  - id: security
+    label: NATO eastern flank & East Shield defence
+    weight: 1.0
+    category: defence_security
+    describe:
+      - Polish Armed Forces modernization, defence spending (4-5% GDP), East Shield (Tarcza Wschód) border fortifications, Belarus border hybrid pressure, NATO operations
+      - modernizacja Wojska Polskiego, wydatki na obronność, Tarcza Wschód, granica polsko-białoruska, NATO
+    keywords: ["tarcza wschód", "east shield", "wojsko polskie", "mon", "kosiniak-kamysz", "granica z białorusią", "nato", "zbrojenia", "f-35", "abrams", "himars", "patriot"]
+
+  - id: party_gov
+    label: Tusk coalition, Rule of Law & Presidential politics
+    weight: 0.9
+    category: internal_politics
+    describe:
+      - Donald Tusk coalition government, Sejm legislation, judicial reform and rule-of-law restoration, PiS opposition investigations, presidential election
+      - rząd Donalda Tuska, Koalicja Obywatelska, Prawo i Sprawiedliwość (PiS), praworządność, reforma sądownictwa, wybory prezydenckie
+    keywords: ["donald tusk", "tusk", "kaczyński", "duda", "trzaskowski", "sikorski", "bodnar", "koalicja obywatelska", "prawo i sprawiedliwość", "pis", "sejm", "trybunał konstytucyjny", "krs", "praworządność"]
+
+  - id: diplomacy
+    describe:
+      - Poland's EU Council leadership, Ukraine military and diplomatic backing, Weimar Triangle, US-Poland strategic partnership
+      - polska prezydencja i rola w UE, wsparcie dla Ukrainy, Trójkąt Weimarski, relacje z USA i Niemcami
+    keywords: ["radosław sikorski", "sikorski", "msz", "trójkąt weimarski", "weimar triangle", "unia europejska", "ukraina", "relacje polsko-ukraińskie"]
+
+  - id: econ_policy
+    describe:
+      - National Bank of Poland (NBP) interest rates, EU KPO recovery funds, nuclear power plant construction, CPK transport hub, Orlen
+      - Narodowy Bank Polski (NBP), Glapiński, środki z KPO, elektrownia jądrowa, Centralny Port Komunikacyjny (CPK), Orlen
+    keywords: ["nbp", "glapiński", "kpo", "krajowy plan odbudowy", "cpk", "centralny port komunikacyjny", "elektrownia jądrowa", "orlen", "stopy procentowe"]

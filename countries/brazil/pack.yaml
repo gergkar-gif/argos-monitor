@@ -1,0 +1,91 @@
+# Brazil country pack (decision D15).
+id: brazil
+name: Brazil
+language: pt
+abroad_label: International Portuguese & Latin American outlets
+
+mention:
+  - "brazil"
+  - "brazilian"
+  - "brasil"
+  - "brasileiro"
+  - "brasileira"
+  - "brasília"
+  - "brasilia"
+  - "são paulo"
+  - "rio de janeiro"
+  - "lula"
+  - "luiz inácio lula da silva"
+  - "bolsonaro"
+  - "haddad"
+  - "fernando haddad"
+  - "alckmin"
+  - "itamaraty"
+  - "planalto"
+  - "stf"
+  - "supremo tribunal federal"
+  - "moraes"
+  - "alexandre de moraes"
+  - "congresso nacional"
+  - "câmara dos deputados"
+  - "senado federal"
+  - "banco central"
+  - "bc"
+  - "selic"
+  - "petrobras"
+  - "bndes"
+
+mention_regex: ['\bbrasil\w*\b', '\bbrazil\w*\b', '\bbrasíli\w*\b', '\bplanalto\b', '\bitamaraty\b']
+mention_section: null
+
+url_sections:
+  foreign: [mundo, internacional, world, international]
+  skip: [esporte, esportes, sport, entretenimento, cultura, celebridades, fofoca, carros, estilo, vida, horoscopo, futebol]
+
+aggregator_outlets:
+  domestic:
+    - "agência brasil"
+    - "g1"
+    - "o globo"
+    - "folha de s.paulo"
+    - "estadão"
+    - "poder360"
+    - "valor econômico"
+    - "infomoney"
+    - "exame"
+    - "carta capital"
+    - "nexo jornal"
+    - "metrópoles"
+    - "uol"
+    - "cnn brasil"
+    - "brazil reports"
+    - "the brazilian report"
+  abroad_local:
+    - "dw brasil"
+    - "bbc news brasil"
+    - "el país brasil"
+    - "rfi brasil"
+
+excerpt:
+  dateline: '^\s*(?:BRASÍLIA|SÃO PAULO|Agência Brasil|Folhapress|Estadão Conteúdo)\s*[-–—:]\s*'
+  noise: '^(Foto|Imagem|Fonte|Leia mais|Veja também|\(|\[)'
+
+classify:
+  internal_politics:
+    - "governo Lula, Palácio do Planalto, Congresso Nacional, Câmara dos Deputados, Senado, STF, Supremo Tribunal Federal, Alexandre de Moraes, Jair Bolsonaro, eleições"
+    - "Brazilian government, President Lula, Congress, Supreme Federal Court (STF), Bolsonaro investigations"
+  economics:
+    - "economia, Ministério da Fazenda, Fernando Haddad, Banco Central, taxa Selic, inflação, IPCA, arcabouço fiscal, dólar, real, reforma tributária, Petrobras, agronegócio"
+    - "Brazilian economy, Central Bank Selic rate, fiscal framework, tax reform, real exchange rate, Petrobras, agribusiness exports"
+  foreign_policy:
+    - "Itamaraty, política externa, BRICS, G20, COP30, Mercosul, União Europeia, relações com China, Estados Unidos, Argentina e Venezuela"
+    - "Brazilian foreign policy, Itamaraty, BRICS, G20, COP30 climate diplomacy, Mercosur-EU trade deal, China and US relations"
+  defence_security:
+    - "Forças Armadas, Ministério da Defesa, Amazônia, segurança pública, fronteiras, Polícia Federal, crime organizado"
+    - "Brazilian Armed Forces, Amazon border security, Federal Police operations, organized crime"
+  society:
+    - "Amazônia, desmatamento, meio ambiente, queimadas, enchentes, saúde, SUS, educação, direitos indígenas"
+    - "Amazon deforestation, wildfires, climate extremes, public health, education and indigenous affairs"
+
+geo: BR
+reddit: [brasil, investimentos, saopaulo]

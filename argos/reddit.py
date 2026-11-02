@@ -153,27 +153,41 @@ def run(db=None):
             if len(kept) >= 3:
                 out[cid] = {"subreddit": ", ".join(f"r/{s}" for s in subs), "posts": kept}
                 print(f"reddit: {cid}: {len(kept)}/{len(buckets[cid])} desk-relevant posts across {out[cid]['subreddit']}")
-    # Top up any country with fewer than 3 kept posts from the global top-100 by querying its own multireddit (week window).
-    for cid, subs in by_country.items():
-        if cid in out or not subs:
-            continue
-        status, body = fetch.get(WEEK_URL.format("+".join(subs)))
+    # Second batch: combine remaining countries into one multireddit request so smaller subs aren't crowded out by giant ones.
+    rem = [cid for cid, subs in by_country.items() if cid not in out and subs]
+    if rem:
+        rem_subs = "+".join(s for cid in rem for s in by_country[cid])
+        status, body = fetch.get(URL.format(rem_subs))
         if status == 429:
             time.sleep(60)
-            status, body = fetch.get(WEEK_URL.format("+".join(subs)))
-        if status != 200:
-            if buckets[cid]:
+            status, body = fetch.get(URL.format(rem_subs))
+        if status == 200:
+            for e in feedparser.parse(body).entries:
+                p = _post(e)
+                cid = owner.get(p["sub"].lower())
+                if cid in rem and p["url"] not in {x["url"] for x in buckets[cid]}:
+                    buckets[cid].append(p)
+            for cid in list(rem):
                 kept = _filter_country(cid, buckets[cid], emb, noise_vecs)
-                if kept:
-                    out[cid] = {"subreddit": ", ".join(f"r/{s}" for s in subs), "posts": kept}
-            print(f"reddit: {cid}: HTTP {status}, skipped")
-            continue
-        seen = {p["url"] for p in buckets[cid]}
-        raw = list(buckets[cid]) + [p for p in (_post(e) for e in feedparser.parse(body).entries) if p["url"] not in seen]
-        kept = _filter_country(cid, raw, emb, noise_vecs)
-        if kept:
-            out[cid] = {"subreddit": ", ".join(f"r/{s}" for s in subs), "posts": kept}
-            print(f"reddit: {cid}: {len(kept)}/{len(raw)} desk-relevant posts across {out[cid]['subreddit']}")
+                if len(kept) >= 2:
+                    out[cid] = {"subreddit": ", ".join(f"r/{s}" for s in by_country[cid]), "posts": kept}
+                    print(f"reddit: {cid}: {len(kept)}/{len(buckets[cid])} desk-relevant posts across {out[cid]['subreddit']}")
+                    rem.remove(cid)
+    # Final fallback for very low-volume country subreddits (week window, combined).
+    if rem:
+        rem_subs = "+".join(s for cid in rem for s in by_country[cid])
+        status, body = fetch.get(WEEK_URL.format(rem_subs))
+        if status == 200:
+            for e in feedparser.parse(body).entries:
+                p = _post(e)
+                cid = owner.get(p["sub"].lower())
+                if cid in rem and p["url"] not in {x["url"] for x in buckets[cid]}:
+                    buckets[cid].append(p)
+        for cid in rem:
+            kept = _filter_country(cid, buckets[cid], emb, noise_vecs)
+            if kept:
+                out[cid] = {"subreddit": ", ".join(f"r/{s}" for s in by_country[cid]), "posts": kept}
+                print(f"reddit: {cid}: {len(kept)}/{len(buckets[cid])} desk-relevant posts across {out[cid]['subreddit']}")
     SITE_DATA.mkdir(parents=True, exist_ok=True)
     _write("reddit", {"generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"), "countries": out}, "ARGOS_REDDIT")
 

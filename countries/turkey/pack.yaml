@@ -1,0 +1,91 @@
+# Turkey country pack (decision D15).
+id: turkey
+name: Turkey
+language: tr
+crisis_names: ["Turkey", "Türkiye", "Turkiye"]
+abroad_label: Independent & diaspora Turkish outlets
+
+mention:
+  - "turkey"
+  - "turkish"
+  - "türkiye"
+  - "turkiye"
+  - "ankara"
+  - "istanbul"
+  - "izmir"
+  - "erdoğan"
+  - "erdogan"
+  - "hakan fidan"
+  - "mehmet şimşek"
+  - "simsek"
+  - "özgür özel"
+  - "ekrem imamoğlu"
+  - "imamoglu"
+  - "akp"
+  - "ak parti"
+  - "chp"
+  - "tbmm"
+  - "tcmb"
+  - "merkez bankası"
+  - "türk lirası"
+  - "türk silahlı kuvvetleri"
+
+mention_regex: ['\btürkiy\w*\b', '\btürk\b', '\bturkey\b', '\bturkish\b', '\bankara\b', '\berdo[ğg]an\w*\b']
+mention_section: null
+
+url_sections:
+  foreign: [dunya, world, international, dis-haberler, global]
+  skip: [spor, sport, sports, magazin, yasam, kultur-sanat, astroloji, otomobil, teknoloji, saglik]
+
+aggregator_outlets:
+  domestic:
+    - "anadolu agency"
+    - "anadolu ajansı"
+    - "daily sabah"
+    - "trt world"
+    - "trt haber"
+    - "hürriyet daily news"
+    - "hürriyet"
+    - "sabah"
+    - "cumhuriyet"
+    - "sözcü"
+    - "birgün"
+    - "bianet"
+    - "t24"
+    - "medyascope"
+    - "diken"
+    - "habertürk"
+    - "ntv"
+    - "ekonomim"
+  abroad_local:
+    - "turkish minute"
+    - "stockholm center for freedom"
+    - "nordic monitor"
+    - "dw türkçe"
+    - "bbc türkçe"
+    - "euronews türkçe"
+    - "voa türkçe"
+
+excerpt:
+  dateline: '^\s*(?:ANKARA|ISTANBUL|AA|ANKA|DHA|İHA)\s*[-–—:]\s*'
+  noise: '^(Fotoğraf|Kaynak|Video|İlgili Haber|\(|\[)'
+
+classify:
+  internal_politics:
+    - "Cumhurbaşkanı Recep Tayyip Erdoğan, AK Parti, CHP, Özgür Özel, Ekrem İmamoğlu, TBMM, Meclis, yeni anayasa, belediyeler, kayyum"
+    - "Turkish government, President Erdogan, AKP, CHP opposition, parliament, constitutional debate, municipal mayors"
+  economics:
+    - "ekonomi, Türkiye Cumhuriyet Merkez Bankası (TCMB), faiz kararı, enflasyon, Mehmet Şimşek, döviz kuru, dolar, Türk lirası, bütçe, vergi, ihracat"
+    - "Turkish economy, Central Bank interest rates, inflation, lira exchange rate, Treasury and Finance Ministry, trade and investment"
+  foreign_policy:
+    - "Dışişleri Bakanlığı, Hakan Fidan, NATO, Avrupa Birliği, Suriye, Orta Doğu, Rusya, Ukrayna, Yunanistan, Doğu Akdeniz, BRICS"
+    - "Turkish foreign policy, NATO relations, Syria and Middle East diplomacy, Russia-Ukraine mediation, EU and US ties"
+  defence_security:
+    - "Milli Savunma Bakanlığı (MSB), TSK, sınır ötesi operasyon, PKK, YPG, savunma sanayii, Bayraktar, KAAN, SİHA, terörle mücadele"
+    - "Turkish Armed Forces, cross-border operations in northern Iraq and Syria, defence industry, UAVs, counter-terrorism"
+  society:
+    - "eğitim, sağlık, deprem, AFAD, adalet, mahkeme, yargı, çevre, göçmenler, sığınmacılar"
+    - "earthquakes, courts and judiciary, education, healthcare, migration and social issues"
+
+geo: TR
+reddit: [Turkey, istanbul, ankara, Yatirim]

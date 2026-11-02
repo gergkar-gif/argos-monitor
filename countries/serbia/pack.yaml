@@ -1,0 +1,92 @@
+# Serbia country pack (decision D15).
+id: serbia
+name: Serbia
+language: sr
+abroad_label: Regional & Serbian-language outlets outside Serbia
+
+mention:
+  - "serbia"
+  - "serbian"
+  - "belgrade"
+  - "srbija"
+  - "srbije"
+  - "srbiji"
+  - "srbiju"
+  - "srpski"
+  - "beograd"
+  - "novi sad"
+  - "niš"
+  - "vučić"
+  - "vucic"
+  - "vučević"
+  - "brnabić"
+  - "sns"
+  - "srpska napredna stranka"
+  - "narodna skupština"
+  - "narodna banka srbije"
+  - "kosovo"
+  - "priština"
+  - "србија"
+  - "србије"
+  - "београд"
+  - "вучић"
+
+mention_regex: ['\bsrbij[aeuoi]\b', '\bbeograd\w*\b', '\bvučić\w*\b']
+mention_section: null
+
+url_sections:
+  foreign: [svet, region, planeta, global, world]
+  skip: [sport, kultura, zabava, zvezde, showbiz, zivot, lifestyle, auto, magazin, horoskop, kosarka, fudbal, tenis]
+
+aggregator_outlets:
+  domestic:
+    - "n1"
+    - "n1 info"
+    - "danas"
+    - "nova.rs"
+    - "rts"
+    - "radio televizija srbije"
+    - "politika"
+    - "b92"
+    - "blic"
+    - "kurir"
+    - "informer"
+    - "telegraf.rs"
+    - "vreme"
+    - "insajder"
+    - "beta"
+    - "tanjug"
+    - "foNet"
+    - "juzne vesti"
+    - "021.rs"
+  abroad_local:
+    - "slobodna evropa"
+    - "radio slobodna evropa"
+    - "kossev"
+    - "glas amerike"
+    - "al jazeera balkans"
+    - "vijesti"
+
+excerpt:
+  dateline: '^\s*(?:Beta|FoNet|Tanjug|N1|RTS)\s*[-–—:]\s*'
+  noise: '^(Foto|Izvor|Video|Pročitajte još|\(|\[)'
+
+classify:
+  internal_politics:
+    - "Vlada Srbije, Narodna skupština, predsednik Aleksandar Vučić, SNS, opozicija, izbori, protesti, studenti"
+    - "Serbian government, parliament, President Vučić, Serbian Progressive Party, opposition protests, judicial reform"
+  economics:
+    - "ekonomija, Narodna banka Srbije, inflacija, budžet, dinar, investicije, EXPO 2027, litijum, Rio Tinto, energetika, NIS"
+    - "Serbian economy, foreign investment, lithium mining, Jadar project, energy, GDP, public debt, infrastructure"
+  foreign_policy:
+    - "evropske integracije, Evropska unija, dijalog Beograda i Prištine, Kosovo, odnosi sa Rusijom, Kinom, SAD, Mađarskom"
+    - "EU accession, Belgrade-Pristina dialogue, Kosovo, relations with Russia, China, Hungary and the European Union"
+  defence_security:
+    - "Vojska Srbije, Ministarstvo odbrane, BIA, bezbednost, naoružanje, Rafali, vojni rok, КФОР"
+    - "Serbian Armed Forces, defence procurement, military service, Kosovo security, intelligence"
+  society:
+    - "obrazovanje, zdravstvo, škole, univerzitet, ekologija, životna sredina, sudstvo, hronika, nesreća"
+    - "education, healthcare, environmental protests, Novi Sad railway station, courts, crime and weather"
+
+geo: RS
+reddit: [serbia, beograd, financije]

@@ -1,0 +1,112 @@
+# Thailand source registry (decision D15).
+# scope: domestic | abroad_local | international
+# kind: media | official | wire
+
+sources:
+  - id: bangkokpost
+    name: Bangkok Post
+    homepage: https://www.bangkokpost.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Bangkok Post Public Company Limited (private)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.bangkokpost.com/rss/data/topstories.xml", section: Top Stories, category_hint: general}
+      - {url: "https://www.bangkokpost.com/rss/data/most-recent.xml", section: Most Recent, category_hint: general}
+      - {url: "https://www.bangkokpost.com/rss/data/business.xml", section: Business, category_hint: economics}
+
+  - id: prachatai_en
+    name: Prachatai English
+    homepage: https://prachataienglish.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Foundation for Community Educational Media (independent non-profit)
+    state_affiliated: false
+    feeds:
+      - {url: "https://prachataienglish.com/rss.xml", section: Latest, category_hint: general}
+
+  - id: prachatai_th
+    name: Prachatai (Thai)
+    homepage: https://prachatai.com
+    language: th
+    scope: domestic
+    kind: media
+    governing_body: Foundation for Community Educational Media (independent non-profit)
+    state_affiliated: false
+    feeds:
+      - {url: "https://prachatai.com/rss.xml", section: Latest, category_hint: general}
+
+  - id: khaosod_en
+    name: Khaosod English
+    homepage: https://www.khaosodenglish.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Matichon Publishing Group (private)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.khaosodenglish.com/feed/", section: Latest, category_hint: general}
+
+  - id: matichon
+    name: Matichon Online
+    homepage: https://www.matichon.co.th
+    language: th
+    scope: domestic
+    kind: media
+    governing_body: Matichon Public Company Limited (private)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.matichon.co.th/feed", section: Latest, category_hint: general}
+
+  - id: thairath
+    name: Thairath
+    homepage: https://www.thairath.co.th
+    language: th
+    scope: domestic
+    kind: media
+    governing_body: Vacharaphol Co., Ltd. (private)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.thairath.co.th/rss/news", section: News, category_hint: general}
+
+  - id: thethaiger
+    name: The Thaiger
+    homepage: https://thethaiger.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Thaiger Media Group (private)
+    state_affiliated: false
+    feeds:
+      - {url: "https://thethaiger.com/news/national/feed", section: National, category_hint: general}
+
+  - id: gnews_en_th
+    name: Google News (Thailand - English)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Thailand+when:1d&hl=en-US&gl=US&ceid=US:en", section: Thailand, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=Thailand+(economy+OR+baht+OR+trade+OR+investment+OR+tariff)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Thailand economy, category_hint: economics}
+      - {url: "https://news.google.com/rss/search?q=Thailand+(government+OR+parliament+OR+Paetongtarn+OR+Thaksin+OR+court)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Thailand politics, category_hint: internal_politics}
+      - {url: "https://news.google.com/rss/search?q=Thailand+(China+OR+Myanmar+OR+Cambodia+OR+ASEAN+OR+military)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Thailand foreign & security, category_hint: foreign_policy}
+
+  - id: gnews_th
+    name: Google News (Thai)
+    homepage: https://news.google.com
+    language: th
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    needs_mention: true
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=%E0%B8%A3%E0%B8%B1%E0%B8%90%E0%B8%9A%E0%B8%B2%E0%B8%A5+when:1d&hl=th&gl=TH&ceid=TH:th", section: รัฐบาล (Government), category_hint: internal_politics}
+      - {url: "https://news.google.com/rss/search?q=%E0%B9%80%E0%B8%A8%E0%B8%A3%E0%B8%A9%E0%B8%90%E0%B8%81%E0%B8%B4%E0%B8%88+when:1d&hl=th&gl=TH&ceid=TH:th", section: เศรษฐกิจ (Economy), category_hint: economics}

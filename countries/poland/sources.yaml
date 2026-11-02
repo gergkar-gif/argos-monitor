@@ -1,0 +1,119 @@
+# Poland source registry (decision D15).
+# Combines state wire (PAP), major independent/commercial broadcasters (RMF24, TVN24, Polsat News), investigative media (OKO.press), English briefers (Notes from Poland), and financial press (Bankier.pl, Money.pl).
+
+sources:
+  - id: pap_en
+    name: Polish Press Agency (PAP)
+    homepage: https://www.pap.pl/en
+    language: en
+    scope: domestic
+    kind: official
+    governing_body: Polska Agencja Prasowa (state news agency)
+    state_affiliated: true
+    feeds:
+      - {url: "https://www.pap.pl/en/rss.xml", section: English, category_hint: general}
+
+  - id: notesfrompoland
+    name: Notes from Poland
+    homepage: https://notesfrompoland.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Notes from Poland Foundation (independent non-profit)
+    state_affiliated: false
+    feeds:
+      - {url: "https://notesfrompoland.com/feed/", section: Latest, category_hint: general}
+
+  - id: rmf24
+    name: RMF24
+    homepage: https://www.rmf24.pl
+    language: pl
+    scope: domestic
+    kind: media
+    governing_body: Grupa RMF / Bauer Media (private broadcaster)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.rmf24.pl/feed", section: Najnowsze, category_hint: general}
+
+  - id: tvn24
+    name: TVN24
+    homepage: https://tvn24.pl
+    language: pl
+    scope: domestic
+    kind: media
+    governing_body: TVN Warner Bros. Discovery (private broadcaster)
+    state_affiliated: false
+    feeds:
+      - {url: "https://tvn24.pl/najnowsze.xml", section: Najnowsze, category_hint: general}
+
+  - id: polsatnews
+    name: Polsat News
+    homepage: https://www.polsatnews.pl
+    language: pl
+    scope: domestic
+    kind: media
+    governing_body: Grupa Polsat Plus (private broadcaster)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.polsatnews.pl/rss/wszystkie.xml", section: Wszystkie, category_hint: general}
+
+  - id: oko_press
+    name: OKO.press
+    homepage: https://oko.press
+    language: pl
+    scope: domestic
+    kind: media
+    governing_body: Fundacja Ośrodek Kontroli Obywatelskiej (independent investigative non-profit)
+    state_affiliated: false
+    feeds:
+      - {url: "https://oko.press/feed", section: Najnowsze, category_hint: internal_politics}
+
+  - id: bankier_pl
+    name: Bankier.pl
+    homepage: https://www.bankier.pl
+    language: pl
+    scope: domestic
+    kind: media
+    governing_body: Bonnier Business Polska (private financial portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.bankier.pl/rss/wiadomosci.xml", section: Wiadomości, category_hint: economics}
+
+  - id: money_pl
+    name: Money.pl
+    homepage: https://www.money.pl
+    language: pl
+    scope: domestic
+    kind: media
+    governing_body: Wirtualna Polska Holding (private financial portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.money.pl/rss/rss.xml", section: Gospodarka, category_hint: economics}
+
+  - id: gnews_en_pl
+    name: Google News (Poland - English)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Poland+when:1d&hl=en-US&gl=US&ceid=US:en", section: Poland, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=Poland+(Tusk+OR+NATO+OR+defence+OR+Ukraine+OR+EU)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Poland security & EU, category_hint: foreign_policy}
+      - {url: "https://news.google.com/rss/search?q=Poland+(economy+OR+investment+OR+energy+OR+zloty)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Poland economy, category_hint: economics}
+
+  - id: gnews_pl
+    name: Google News (Polish)
+    homepage: https://news.google.com
+    language: pl
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    needs_mention: true
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(rz%C4%85d+OR+Sejm+OR+Tusk+OR+PiS)+when:1d&hl=pl&gl=PL&ceid=PL:pl", section: Polityka, category_hint: internal_politics}
+      - {url: "https://news.google.com/rss/search?q=(Wojsko+Polskie+OR+MON+OR+granica+OR+NATO)+when:1d&hl=pl&gl=PL&ceid=PL:pl", section: Obronność, category_hint: defence_security}

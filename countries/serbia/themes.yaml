@@ -1,0 +1,31 @@
+# Serbia's additions to the shared themes (../../themes.yaml).
+themes:
+  - id: diplomacy
+    label: Kosovo dialogue & Multi-vector diplomacy
+    weight: 1.0
+    category: foreign_policy
+    describe:
+      - Belgrade-Pristina dialogue, Kosovo status, EU accession negotiations, balancing ties with Russia, China, Hungary and the West
+      - dijalog Beograda i Prištine, Kosovo i Metohija, evropske integracije, odnosi sa Rusijom, Kinom, Mađarskom i EU
+    keywords: ["kosovo", "priština", "pristina", "belgrade-pristina", "eu accession", "vučić", "vucic", "brussels dialogue", "dijalog beograda", "evropska unija", "sankcije rusiji"]
+
+  - id: party_gov
+    describe:
+      - President Aleksandar Vučić, SNS ruling coalition, parliament sessions, student and civic anti-corruption protests, election conditions
+      - predsednik Aleksandar Vučić, Srpska napredna stranka (SNS), Vlada Srbije, Narodna skupština, studentski protesti, opozicija
+    keywords: ["vučić", "vucic", "vučević", "brnabić", "sns", "srpska napredna stranka", "narodna skupština", "protest", "blokada", "opozicija"]
+
+  - id: energy_infra
+    label: Lithium (Jadar), NIS & EXPO 2027 infrastructure
+    weight: 0.95
+    category: economics
+    describe:
+      - Rio Tinto Jadar lithium mining project, US/EU sanctions on NIS oil company, Belgrade-Budapest high-speed rail, EXPO 2027
+      - projekat Jadar, kopanje litijuma, Rio Tinto, sankcije NIS-u, gasovod, brza pruga Beograd-Budimpešta, EXPO 2027
+    keywords: ["rio tinto", "jadar", "litijum", "lithium", "nis", "naftna industrija srbije", "expo 2027", "beograd-budimpešta", "nuklearna"]
+
+  - id: anticorruption
+    describe:
+      - Novi Sad railway station canopy collapse investigation, prosecutor's office, public procurement transparency, rule of law
+      - istraga pada nadstrešnice u Novom Sadu, tužilaštvo, korupcija, javne nabavke, vladavina prava
+    keywords: ["nadstrešnica", "novi sad", "tužilaštvo", "korupcija", "javne nabavke", "canopy collapse"]

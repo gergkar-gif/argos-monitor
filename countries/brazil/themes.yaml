@@ -1,0 +1,37 @@
+# Brazil's additions to the shared themes (../../themes.yaml).
+themes:
+  - id: econ_policy
+    label: Fiscal framework, Selic & Tax reform
+    weight: 1.0
+    category: economics
+    describe:
+      - Finance Minister Fernando Haddad fiscal framework (arcabouço fiscal), Central Bank Selic rate decisions, IPCA inflation, tax reform, Brazilian real exchange rate
+      - Ministério da Fazenda, Fernando Haddad, arcabouço fiscal, Banco Central, taxa Selic, inflação IPCA, reforma tributária, câmbio
+    keywords: ["haddad", "arcabouço fiscal", "selic", "copom", "banco central", "galípolo", "reforma tributária", "ipca", "orçamento", "déficit fiscal", "petrobras"]
+
+  - id: diplomacy
+    label: BRICS, Mercosur-EU & COP30 diplomacy
+    weight: 1.0
+    category: foreign_policy
+    describe:
+      - Itamaraty foreign policy, BRICS summit and multipolar diplomacy, Mercosur-EU trade agreement, COP30 climate summit, relations with China, US and South America
+      - Itamaraty, política externa, BRICS, acordo Mercosul-União Europeia, COP30 em Belém, relações com China, EUA e América do Sul
+    keywords: ["itamaraty", "mauro vieira", "brics", "mercosul", "mercosur", "cop30", "união europeia", "acordo comercial", "china-brasil"]
+
+  - id: party_gov
+    label: Planalto, Congress & STF institutional balance
+    weight: 0.9
+    category: internal_politics
+    describe:
+      - President Lula administration, Congressional negotiations (Centrão), Supreme Federal Court (STF) rulings, Alexandre de Moraes, Jair Bolsonaro inquiries
+      - governo Lula, Palácio do Planalto, Congresso Nacional, Arthur Lira, Pacheco, Supremo Tribunal Federal (STF), Alexandre de Moraes, Jair Bolsonaro
+    keywords: ["lula", "planalto", "stf", "supremo tribunal federal", "alexandre de moraes", "bolsonaro", "congresso nacional", "câmara dos deputados", "senado", "emendas parlamentares"]
+
+  - id: energy_infra
+    label: Amazon, Energy transition & Agribusiness
+    weight: 0.85
+    category: economics
+    describe:
+      - Amazon deforestation enforcement (IBAMA), Equatorial Margin oil exploration, Petrobras, biofuels, critical minerals, agribusiness exports
+      - desmatamento na Amazônia, IBAMA, Margem Equatorial, Petrobras, transição energética, agronegócio, minerais críticos
+    keywords: ["amazônia", "desmatamento", "ibama", "margem equatorial", "petrobras", "transição energética", "agronegócio", "bndes"]

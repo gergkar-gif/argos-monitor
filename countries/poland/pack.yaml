@@ -1,0 +1,90 @@
+# Poland country pack (decision D15).
+id: poland
+name: Poland
+language: pl
+abroad_label: Polish-language & European regional outlets
+
+mention:
+  - "poland"
+  - "polish"
+  - "warsaw"
+  - "polska"
+  - "polski"
+  - "polsce"
+  - "polskę"
+  - "polaków"
+  - "warszawa"
+  - "warszawie"
+  - "kraków"
+  - "gdańsk"
+  - "tusk"
+  - "donald tusk"
+  - "duda"
+  - "andrzej duda"
+  - "sikorski"
+  - "kaczyński"
+  - "sejm"
+  - "pis"
+  - "prawo i sprawiedliwość"
+  - "koalicja obywatelska"
+  - "narodowy bank polski"
+  - "nbp"
+  - "złoty"
+  - "orlen"
+
+mention_regex: ['\bpolsk[aieąoęu]\b', '\bwarszaw\w*\b', '\bpoland\b', '\bpolish\b']
+mention_section: null
+
+url_sections:
+  foreign: [swiat, zagranica, world, international]
+  skip: [sport, kultura, rozrywka, styl-zycia, lifestyle, gwiazdy, plotki, moto, motoryzacja, kuchnia, podroze, horoskop]
+
+aggregator_outlets:
+  domestic:
+    - "notes from poland"
+    - "rmf24"
+    - "rmf fm"
+    - "tvn24"
+    - "polsat news"
+    - "rzeczpospolita"
+    - "gazeta wyborcza"
+    - "wyborcza.pl"
+    - "onet"
+    - "wirtualna polska"
+    - "oko.press"
+    - "bankier.pl"
+    - "money.pl"
+    - "puls biznesu"
+    - "pap"
+    - "polska agencja prasowa"
+    - "tvp info"
+    - "tvp world"
+    - "kresy.pl"
+  abroad_local:
+    - "belsat"
+    - "euronews po polsku"
+    - "dw.com"
+
+excerpt:
+  dateline: '^\s*(?:PAP|RMF24|TVN24|Polsat News)\s*[-–—:]\s*'
+  noise: '^(Fot\.|Źródło|Wideo|Czytaj także|Zobacz również|\(|\[)'
+
+classify:
+  internal_politics:
+    - "rząd Donalda Tuska, Sejm, Senat, prezydent, Koalicja Obywatelska, Prawo i Sprawiedliwość (PiS), wybory prezydenckie, sądownictwo, Trybunał Konstytucyjny"
+    - "Polish government, Prime Minister Donald Tusk, Sejm parliament, PiS opposition, judicial reform, presidential election"
+  economics:
+    - "gospodarka, Narodowy Bank Polski (NBP), inflacja, stopy procentowe, złoty, budżet, KPO, inwestycje, Orlen, podatki"
+    - "Polish economy, NBP central bank, zloty, EU recovery funds (KPO), inflation, energy prices, foreign investment"
+  foreign_policy:
+    - "polityka zagraniczna, MSZ, Radosław Sikorski, Unia Europejska, relacje z Ukrainą, USA, Niemcami, sankcje wobec Rosji"
+    - "Polish foreign policy, EU council, Ukraine support and grain dispute, US-Poland alliance, NATO diplomacy"
+  defence_security:
+    - "Wojsko Polskie, MON, obronność, wschodnia granica, Tarcza Wschód, zakupy zbrojeniowe, NATO, Białoruś, cyberbezpieczeństwo"
+    - "Polish Armed Forces, NATO eastern flank, East Shield border fortification, defence spending, Belarus hybrid border crisis"
+  society:
+    - "edukacja, ochrona zdrowia, szpitale, prawo aborcyjne, demografia, powódź, pogoda, sądy, policja"
+    - "healthcare, education, social policy, floods, courts and public safety"
+
+geo: PL
+reddit: [Polska, warszawa, inwestowanie]
