@@ -41,6 +41,7 @@ h1, h2, h3, p { margin: 0; }
 .bureau-inner { max-width: 72rem; margin: 0 auto; padding: 1.5rem 1.25rem 1.25rem; display: grid; gap: 1.1rem; }
 .masthead { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.5rem 2rem; border-bottom: 1px solid var(--ink); padding-bottom: 0.75rem; }
 .masthead h1 { display: flex; align-items: center; gap: 0.55rem; font: 600 2.2rem/1 var(--stamp); letter-spacing: 0.06em; text-transform: uppercase; }
+.masthead h1 a { display: inline-flex; align-items: center; gap: 0.55rem; text-decoration: none; }
 .masthead h1 .logo { width: 1.6rem; height: 1.6rem; }
 .masthead p { max-width: 42rem; color: var(--ink-2); font-size: 0.95rem; text-wrap: pretty; }
 
@@ -269,3 +270,14 @@ body:not(.show-orig) .orig { display: none; }
 .chip .x { min-width: 1.9rem; font: 600 0.95rem/1 var(--stamp); color: var(--ink); background: var(--card); border: 1px solid var(--ink); border-left: 0; cursor: pointer; }
 .chip .x:hover { background: var(--red); color: #fff; }
 .watch .more { margin-top: 0; }
+select:disabled { opacity: 0.45; cursor: not-allowed; }
+.stamp.country-tag { background: var(--ink); color: #fff; border-color: var(--ink); cursor: pointer; }
+.stamp.country-tag:hover { background: var(--red); border-color: var(--red); }
+.desk-wrap { overflow-x: auto; background: var(--card); border-bottom: 1px solid var(--ink); }
+.desk-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+.desk-table th, .desk-table td { text-align: left; padding: 0.55rem 0.75rem; border-bottom: 1px solid var(--rule-soft); vertical-align: baseline; }
+.desk-table th { font: 600 0.78rem/1 var(--stamp); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); border-bottom: 1px solid var(--ink); }
+.desk-table a { text-decoration: none; font-weight: 600; }
+.desk-table a:hover { color: var(--red); text-decoration: underline; }
+.desk-link { padding: 0; border: 0; background: none; font: 600 0.9rem/1 var(--stamp); letter-spacing: 0.08em; text-transform: uppercase; color: var(--indigo); cursor: pointer; }
+.desk-link:hover { color: var(--red); text-decoration: underline; }

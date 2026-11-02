@@ -1,4 +1,4 @@
-/* Argos Monitor page: reads the data files the pipeline wrote and renders the clippings. No framework. */
+/* Argos Monitor page: reads the data files the pipeline wrote and renders the broadsheet. No framework. */
 (() => {
   'use strict';
 
@@ -13,8 +13,8 @@
   const PER_TOPIC_IN_OVERVIEW = 4;
   const STALE_HOURS = 12;
   // Where coverage comes from; the middle label is the country's own ("Vietnamese-language outlets abroad").
-  function scopes() {
-    const c = index.countries.find((x) => x.id === country.value);
+  function scopes(cid = country.value) {
+    const c = index.countries.find((x) => x.id === cid) || index.countries[0];
     return [['domestic', 'domestic outlets'], ['abroad_local', c.abroad_label], ['international', 'international outlets']];
   }
 
@@ -72,34 +72,32 @@
     if (value != null && options.some(([v]) => v === value)) sel.value = value;
   }
   function fillPeriods() {
-    const c = index.countries.find((x) => x.id === country.value);
+    const c = index.countries.find((x) => x.id === country.value) || index.countries[0];
     fillSelect(period, c.periods.map((p) => [p.id, p.label]), period.value || '7d');
+    period.disabled = topic.disabled = country.value === 'home';
   }
   function fillTopics(value) {
     fillSelect(topic, [['all', 'All topics'], ...TOPICS.map((t) => [t.id, t.name])], value);
   }
 
-  const hashFor = (t) => `#${country.value}/${period.value}/${t}` + ($('#q').value.trim() ? `/${encodeURIComponent($('#q').value.trim())}` : '');
+  const hashFor = (t) => (country.value === 'home'
+    ? '#home' + ($('#q').value.trim() ? `///${encodeURIComponent($('#q').value.trim())}` : '')
+    : `#${country.value}/${period.value}/${t}` + ($('#q').value.trim() ? `/${encodeURIComponent($('#q').value.trim())}` : ''));
   function readHash() {
     const [c, p, t, q] = location.hash.replace(/^#/, '').split('/');
     try { $('#q').value = q ? decodeURIComponent(q) : ''; } catch { /* bad link text: ignore */ }
-    if (c && index.countries.some((x) => x.id === c)) country.value = c;
+    country.value = c && index.countries.some((x) => x.id === c) ? c : 'home';
     fillPeriods();
     if (p && [...period.options].some((o) => o.value === p)) period.value = p;
     if (t && (t === 'all' || TOPICS.some((x) => x.id === t))) topic.value = t;
   }
 
   // ---------- English, translated by the reader's own browser (decision D11) ----------
-  // Nothing is stored or written by this app: the browser's built-in translator makes the English on the
-  // reader's device. The original text stays on the page (muted) and is what the link and quotes rest on.
-  // Keep the choice in the address so a link can be shared. Some browsers refuse this for pages opened from a
-  // folder or a preview frame, so failing is harmless.
   function setHash(value) {
     if (location.protocol === 'file:') return;
     try { history.replaceState(null, '', value); } catch { /* not allowed here: ignore */ }
   }
 
-  // English only by default; the original stays one click away so a translation can always be checked.
   function setShowOriginal(on) {
     document.body.classList.toggle('show-orig', on);
     try { localStorage.setItem('argos.showOriginal', on ? '1' : '0'); } catch { /* storage not available: ignore */ }
@@ -110,7 +108,7 @@
   const withTimeout = (p, ms) => Promise.race([p, new Promise((_, no) => setTimeout(() => no(new Error('timeout')), ms))]);
 
   function track(el, text, lang, origEl) {
-    if (lang === 'en' || lang !== T.lang) return;   // already English, or not the language the translator is set up for
+    if (lang === 'en' || lang !== T.lang) return;
     T.queue.push({ el, text, origEl });
   }
   async function translatePending() {
@@ -184,7 +182,6 @@
   }
 
   // ---------- rendering ----------
-  // New, growing or quiet, judged from when its articles were published (the last 24 hours against the whole story).
   function trend(s) {
     if (s.last_24h == null || s.articles < 2) return null;
     if (s.last_24h === s.articles) return ['New', 'indigo', 'Every article is from the last 24 hours.'];
@@ -193,9 +190,16 @@
     return null;
   }
 
+  function openCountry(cid) {
+    country.value = cid;
+    fillPeriods();
+    research();
+    scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   function story(s, opts) {
-    const first = s.sources[0];
-    const present = scopes().filter(([id]) => s.by_scope[id]);
+    const sc = scopes(s.country || country.value);
+    const present = sc.filter(([id]) => s.by_scope[id]);
     const single = present.length === 1 ? present[0][1] : '';
     const outlets = plural(s.independent_sources, 'independent outlet', 'independent outlets');
     const clip = h('article', { class: 'clip' + (opts.lead ? ' lead' : ''), style: `--i:${opts.i}` });
@@ -211,6 +215,7 @@
         h('p', { class: 'byline', text: `${s.headline.source}, ${fmtDay.format(new Date(s.last_seen))}` }),
       ),
       h('div', { class: 'slipline' },
+        s.country_name && h('button', { type: 'button', class: 'stamp country-tag', title: `Open ${s.country_name} monitor`, text: s.country_name, onclick: () => openCountry(s.country) }),
         h('span', { class: 'stamp ' + (s.evidence === 'OFFICIAL' ? 'red' : 'indigo'),
           title: s.evidence === 'OFFICIAL' ? 'A government or Party outlet is among the sources. Officially stated, not independently verified.' : 'Reported by one or more outlets.',
           text: s.evidence === 'OFFICIAL' ? 'Official' : 'Reported' }),
@@ -219,9 +224,9 @@
         (s.themes || []).length > 0 && h('span', { class: 'themes', title: 'Why this story ranks where it does', text: s.themes.join(' · ') }),
         h('span', null, h('strong', { text: outlets }), ` · ${plural(s.articles, 'article', 'articles')}`, single && ` · all ${single}`),
       ),
-      scopes().filter(([id]) => s.by_scope[id]).length > 1 && h('div', { class: 'cover', 'aria-label': 'Where the coverage comes from' },
-        scopes().filter(([id]) => s.by_scope[id]).map(([id, label]) => h('span', null, h('b', { text: String(s.by_scope[id]) }), ` ${s.by_scope[id] === 1 ? 'article' : 'articles'} from ${label}`))),
-    ].filter(Boolean));   // a missing optional row must not be appended as the text "false"
+      present.length > 1 && h('div', { class: 'cover', 'aria-label': 'Where the coverage comes from' },
+        present.map(([id, label]) => h('span', null, h('b', { text: String(s.by_scope[id]) }), ` ${s.by_scope[id] === 1 ? 'article' : 'articles'} from ${label}`))),
+    ].filter(Boolean));
 
     const shown = opts.lead ? s.excerpts : s.excerpts.slice(0, 1);
     if (shown.length) {
@@ -246,28 +251,30 @@
         h('span', null, h('a', { href: safeUrl(r.url), target: '_blank', rel: 'noopener', text: r.title }), ` (${plural(r.articles, 'article', 'articles')}, ${r.source}) `))));
     }
 
-    const rest = s.sources;
-    const lateItems = [];   // source-list titles are translated only when the list is opened
-    const details = h('details', null,
-      h('summary', { text: `All sources (${plural(s.articles, 'article', 'articles')})` }),
-      h('ul', { class: 'sources' }, rest.map((r) => {
-        const a = h('a', { class: 't', href: safeUrl(r.url), target: '_blank', rel: 'noopener', lang: r.language, text: r.title });
-        const o = h('span', { class: 'orig', hidden: true, title: 'Original headline' });
-        lateItems.push([a, r.title, r.language, o]);
-        return h('li', null, a, o,
-        h('span', { class: 'meta' },
-          h('span', { class: 'stamp indigo', text: r.source }),
-          r.published && h('span', { text: fmtTime.format(new Date(r.published)) }),
-          r.copy && h('span', { text: 'reprint, counted once' })));
-      })),
-      s.articles > rest.length && h('p', { class: 'byline', text: `Showing ${rest.length} of ${s.articles}.` }),
-    );
-    details.addEventListener('toggle', () => {
-      if (!details.open) return;
-      lateItems.splice(0).forEach((it) => track(...it));
-      translatePending();
-    });
-    clip.append(details);
+    const rest = s.sources || [];
+    if (rest.length) {
+      const lateItems = [];
+      const details = h('details', null,
+        h('summary', { text: `All sources (${plural(s.articles, 'article', 'articles')})` }),
+        h('ul', { class: 'sources' }, rest.map((r) => {
+          const a = h('a', { class: 't', href: safeUrl(r.url), target: '_blank', rel: 'noopener', lang: r.language, text: r.title });
+          const o = h('span', { class: 'orig', hidden: true, title: 'Original headline' });
+          lateItems.push([a, r.title, r.language, o]);
+          return h('li', null, a, o,
+          h('span', { class: 'meta' },
+            h('span', { class: 'stamp indigo', text: r.source }),
+            r.published && h('span', { text: fmtTime.format(new Date(r.published)) }),
+            r.copy && h('span', { text: 'reprint, counted once' })));
+        })),
+        s.articles > rest.length && h('p', { class: 'byline', text: `Showing ${rest.length} of ${s.articles}.` }),
+      );
+      details.addEventListener('toggle', () => {
+        if (!details.open) return;
+        lateItems.splice(0).forEach((it) => track(...it));
+        translatePending();
+      });
+      clip.append(details);
+    }
     return clip;
   }
 
@@ -287,9 +294,8 @@
     return sec;
   }
 
-  const storyText = (s) => [s.headline.title, ...s.sources.map((r) => r.title + ' ' + r.source), ...s.excerpts.map((x) => x.text)].join(' ').toLowerCase();
+  const storyText = (s) => [s.country_name || '', s.headline.title, ...(s.sources || []).map((r) => r.title + ' ' + r.source), ...(s.excerpts || []).map((x) => x.text)].join(' ').toLowerCase();
 
-  // What people search for (Google Trends): how many collected stories mention each term, one click to read them.
   function trends() {
     const tr = (window.ARGOS_TRENDS && (window.ARGOS_TRENDS.countries || (window.ARGOS_TRENDS.trends || {}).countries) || {})[country.value];
     if (!tr || !tr.length) return null;
@@ -308,7 +314,6 @@
       h('p', { class: 'byline', text: 'Google Trends, top searches in the country right now. Matching is by exact words in our headlines and quotes.' }));
   }
 
-  // Top posts of the day on the country's subreddit; hidden when Reddit did not answer.
   function reddit() {
     const r = (window.ARGOS_REDDIT && (window.ARGOS_REDDIT.countries || (window.ARGOS_REDDIT.reddit || {}).countries) || {})[country.value];
     if (!r || !r.posts.length) return null;
@@ -318,47 +323,116 @@
       h('p', { class: 'byline', text: 'Top posts of the day. What people discuss, not verified news.' }));
   }
 
-  // Watchlist: words the reader follows, kept in this browser only. Each chip shows how many stories mention it here.
   const watched = () => { try { return JSON.parse(localStorage.getItem('argos.watch') || '[]'); } catch { return []; } };
   function setWatched(list) {
     try { localStorage.setItem('argos.watch', JSON.stringify(list)); } catch { /* storage not available: ignore */ }
-    render(false);
+    country.value === 'home' ? renderHome() : render(false);
   }
-  function watchbar(q) {
+  function watchbar(q, pool = current ? current.stories : []) {
     const list = watched();
     if (!list.length && !q) return null;
     return h('div', { class: 'watch' },
       h('span', { class: 'meta', text: 'Watching' }),
       list.map((w) => h('span', { class: 'chip' },
         h('button', { type: 'button', class: 'more', title: 'Show these stories',
-          text: `${w} (${current.stories.filter((s) => storyText(s).includes(w)).length})`,
-          onclick: () => { $('#q').value = w; setHash(hashFor(openTopic)); render(false); } }),
+          text: `${w} (${pool.filter((s) => storyText(s).includes(w)).length})`,
+          onclick: () => { $('#q').value = w; setHash(hashFor(openTopic)); country.value === 'home' ? renderHome() : render(false); } }),
         h('button', { type: 'button', class: 'x', 'aria-label': `Stop watching ${w}`, text: '×', onclick: () => setWatched(list.filter((x) => x !== w)) }))),
       q && !list.includes(q) && h('button', { type: 'button', class: 'more', text: `Watch "${q}"`, onclick: () => setWatched([...list, q]) }));
   }
 
-  // Official alerts from free feeds (GDACS, USGS, travel advice): each line is the feed's own title, linked to it.
+  const getCrisis = () => { const raw = window.ARGOS_CRISIS; return raw && (raw.countries ? raw : raw.crisis); };
+  const isHotAlert = (i) => /^(Red|Orange)$/.test(i.level || '') || /Level [34]/.test(i.title);
+
   function alerts() {
-    const raw = window.ARGOS_CRISIS; const c = raw && (raw.countries ? raw : raw.crisis);
+    const c = getCrisis();
     if (!c) return null;
     const items = c.countries[country.value] || [];
-    const hot = (i) => /^(Red|Orange)$/.test(i.level || '') || /Level [34]/.test(i.title);
     return h('section', { class: 'alerts', 'aria-label': 'Official alerts' },
       h('h2', { text: 'Official alerts' }),
       items.length
         ? h('ul', null, items.map((i) => h('li', null,
-          h('span', { class: 'stamp ' + (hot(i) ? 'red' : 'indigo'), text: i.kind }),
+          h('span', { class: 'stamp ' + (isHotAlert(i) ? 'red' : 'indigo'), text: i.kind }),
           h('a', { href: safeUrl(i.url), target: '_blank', rel: 'noopener', text: i.title }),
           i.date && h('span', { class: 'meta', text: fmtDay.format(new Date(i.date)) }))))
         : h('p', { class: 'byline', text: 'No disaster alerts in the last 7 days.' }),
       h('p', { class: 'byline', text: `GDACS, USGS, UK and US travel advice. Checked ${fmtTime.format(new Date(c.generated_at))}.` }));
   }
 
+  // ---------- Overview homepage (scales to any number of countries via site/data/home.js) ----------
+  function homeSection(title, sub, list) {
+    if (!list || !list.length) return null;
+    return h('section', { class: 'drawer' },
+      h('div', { class: 'drawer-head' }, h('h2', { text: title }), h('span', { class: 'count', text: sub })),
+      h('div', { class: 'grid' }, list.map((s, i) => story(s, { lead: i === 0, i }))));
+  }
+
+  function renderHome() {
+    const hm = window.ARGOS_HOME;
+    if (!hm) { openCountry(index.countries[0].id); return; }
+    const q = ($('#q').value || '').trim().toLowerCase();
+    const filter = (arr) => (q ? (arr || []).filter((s) => storyText(s).includes(q)) : (arr || []));
+    const c = getCrisis();
+    const allAlerts = [];
+    if (c && c.countries) {
+      for (const [cid, list] of Object.entries(c.countries)) {
+        const cname = (index.countries.find((x) => x.id === cid) || {}).name || cid;
+        for (const item of list) allAlerts.push({ ...item, cid, cname });
+      }
+    }
+    const pool = [...(hm.most_reported || []), ...(hm.abroad_only || []), ...(hm.growing || [])]
+      .filter((s, i, a) => a.findIndex((x) => x.id === s.id) === i);
+
+    const desks = [...(hm.desks || [])].sort((a, b) => b.stories_7d - a.stories_7d);
+
+    results.replaceChildren(...[
+      h('p', { class: 'result-line' },
+        h('b', { text: 'Overview across all monitored countries' }),
+        ` · ${plural(desks.length, 'country', 'countries')} · updated ${fmtTime.format(new Date(hm.generated_at))}`),
+      watchbar(q, pool),
+      allAlerts.length > 0 && h('section', { class: 'alerts', 'aria-label': 'Active crisis & travel alerts' },
+        h('h2', { text: 'Active crisis & official alerts' }),
+        h('ul', null, allAlerts.map((i) => h('li', null,
+          h('button', { type: 'button', class: 'stamp country-tag', text: i.cname, onclick: () => openCountry(i.cid) }),
+          h('span', { class: 'stamp ' + (isHotAlert(i) ? 'red' : 'indigo'), text: i.kind }),
+          h('a', { href: safeUrl(i.url), target: '_blank', rel: 'noopener', text: i.title }),
+          i.date && h('span', { class: 'meta', text: fmtDay.format(new Date(i.date)) })))),
+        h('p', { class: 'byline', text: 'Only countries with active alerts in the last 7 days are listed here (GDACS, USGS, UK FCDO, US State Dept).' })),
+      homeSection('Most reported (last 7 days)', 'Ranked by independent outlet count across all countries', filter(hm.most_reported)),
+      homeSection('Fastest growing (last 24 hours)', 'Most new coverage in the last 24 hours', filter(hm.growing)),
+      homeSection('Blind spots · Not in domestic press', 'Covered by international or diaspora outlets, zero domestic coverage', filter(hm.abroad_only)),
+      h('section', { class: 'drawer' },
+        h('div', { class: 'drawer-head' },
+          h('h2', { text: 'Monitored countries directory' }),
+          h('span', { class: 'count', text: `${desks.length} active packs` })),
+        h('div', { class: 'desk-wrap' },
+          h('table', { class: 'desk-table' },
+            h('thead', null, h('tr', null,
+              h('th', { text: 'Country' }),
+              h('th', { text: '24h' }),
+              h('th', { text: '7d' }),
+              h('th', { text: 'Alerts' }),
+              h('th', { text: 'Lead story (7d)' }))),
+            h('tbody', null, desks.map((d) => {
+              const nAlerts = (c && c.countries && c.countries[d.id] || []).length;
+              return h('tr', null,
+                h('td', null, h('button', { type: 'button', class: 'desk-link', text: `${d.name} →`, onclick: () => openCountry(d.id) })),
+                h('td', { class: 'typed', text: String(d.stories_24h) }),
+                h('td', { class: 'typed', text: String(d.stories_7d) }),
+                h('td', null, nAlerts ? h('span', { class: 'stamp red', text: String(nAlerts) }) : h('span', { class: 'meta', text: '—' })),
+                h('td', null, d.lead ? [
+                  h('a', { href: safeUrl(d.lead.url), target: '_blank', rel: 'noopener', text: d.lead.title }),
+                  h('span', { class: 'meta', text: ` (${d.lead.source} · ${d.lead.outlets} outlets)` }),
+                ] : '—'));
+            }))))),
+    ].filter(Boolean));
+  }
+
   function render(animate = true) {
     const d = current;
     results.classList.toggle('still', !animate);
-    T.queue.length = 0;    // items from the previous render are gone
-    const q = ($('#q').value || '').trim().toLowerCase();   // search narrows the loaded stories in the browser
+    T.queue.length = 0;
+    const q = ($('#q').value || '').trim().toLowerCase();
     const stories = q ? d.stories.filter((s) => storyText(s).includes(q)) : d.stories;
     const count = (id) => (q ? stories.filter((s) => s.category === id).length : d.totals[id]);
     const noOutside = d.stories.every((s) => !s.by_scope.abroad_local && !s.by_scope.international);
@@ -387,7 +461,8 @@
 
     results.replaceChildren(...[
       h('p', { class: 'result-line' }, h('b', { text: country.options[country.selectedIndex].text }),
-        ` · ${periodLabel} · ${plural(totalStories, 'story', 'stories')} found · updated ${fmtTime.format(updated)}`),
+        ` · ${periodLabel} · ${plural(totalStories, 'story', 'stories')} found · updated ${fmtTime.format(updated)} · `,
+        h('button', { type: 'button', class: 'desk-link', text: '← All countries overview', onclick: () => openCountry('home') })),
       noOutside && h('p', { class: 'notice quiet', text: `No coverage from ${(index.countries.find((x) => x.id === country.value) || {}).abroad_label || 'outlets abroad'} or from international outlets has been collected for this period yet, so the "not in domestic press" check cannot run.` }),
       ageH > STALE_HOURS && h('p', { class: 'notice', text: `This collection is ${Math.round(ageH)} hours old. Run the collector to refresh it.` }),
       h('div', { id: 'trans', class: 'trans' }),
@@ -411,6 +486,14 @@
   }
 
   async function research() {
+    fillPeriods();
+    if (country.value === 'home') {
+      useLanguage('en');
+      $('#brief').href = 'brief.html';
+      setHash(hashFor('all'));
+      renderHome();
+      return;
+    }
     const c = index.countries.find((x) => x.id === country.value);
     const p = c.periods.find((x) => x.id === period.value);
     useLanguage(c.language);
@@ -432,18 +515,22 @@
     results.replaceChildren(h('p', { class: 'state error', text: 'No data found. Run "python run.py" once, then reload this page.' }));
     return;
   }
-  fillSelect(country, index.countries.map((c) => [c.id, c.name]));
+  fillSelect(country, [['home', 'Overview (all countries)'], ...index.countries.map((c) => [c.id, c.name])], 'home');
   fillTopics('all');
   readHash();
+  $('#home-link').addEventListener('click', (e) => { e.preventDefault(); openCountry('home'); });
   $('#slip').addEventListener('submit', (e) => { e.preventDefault(); research(); });
-  // Choosing a country, period or topic searches straight away; the Research button stays for habit.
   country.addEventListener('change', () => { fillPeriods(); research(); });
   period.addEventListener('change', research);
   topic.addEventListener('change', research);
-  $('#q').addEventListener('input', () => { setHash(hashFor(openTopic)); if (current) render(false); });
+  $('#q').addEventListener('input', () => {
+    setHash(hashFor(openTopic));
+    if (country.value === 'home') renderHome();
+    else if (current) render(false);
+  });
   const totop = $('#totop');
   addEventListener('scroll', () => { totop.hidden = scrollY < 800; }, { passive: true });
   totop.addEventListener('click', () => scrollTo({ top: 0, behavior: 'smooth' }));
   window.addEventListener('hashchange', () => { readHash(); research(); });
-  research();     // also sets up the translator for the country's language
+  research();
 })();
