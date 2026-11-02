@@ -104,12 +104,21 @@
   }
   try { if (localStorage.getItem('argos.showOriginal') === '1') document.body.classList.add('show-orig'); } catch { /* ignore */ }
 
-  const T = { lang: 'en', state: 'checking', translator: null, cache: new Map(), queue: [], running: false };
+  const T = { lang: 'en', state: 'checking', translators: new Map(), cache: new Map(), queue: [], running: false };
   const withTimeout = (p, ms) => Promise.race([p, new Promise((_, no) => setTimeout(() => no(new Error('timeout')), ms))]);
 
   function track(el, text, lang, origEl) {
-    if (lang === 'en' || lang !== T.lang) return;
-    T.queue.push({ el, text, origEl });
+    if (!lang || lang === 'en') return;
+    T.queue.push({ el, text, lang, origEl });
+  }
+  async function getTranslator(lang, button) {
+    if (T.translators.has(lang)) return T.translators.get(lang);
+    const tr = await Translator.create({
+      sourceLanguage: lang, targetLanguage: 'en',
+      monitor(m) { m.addEventListener('downloadprogress', (e) => { if (button) button.textContent = `Downloading English… ${Math.round(e.loaded * 100)}%`; }); },
+    });
+    T.translators.set(lang, tr);
+    return tr;
   }
   async function translatePending() {
     if (T.state !== 'ready' || T.running) return;
@@ -118,35 +127,38 @@
       const it = T.queue.shift();
       if (!it.el.isConnected) continue;
       try {
-        let en = T.cache.get(it.text);
-        if (en == null) { en = await T.translator.translate(it.text); T.cache.set(it.text, en); }
+        const key = `${it.lang}:${it.text}`;
+        let en = T.cache.get(key);
+        if (en == null) {
+          const tr = await getTranslator(it.lang);
+          en = await tr.translate(it.text);
+          T.cache.set(key, en);
+        }
         it.el.textContent = en;
         it.el.lang = 'en';
         it.origEl.textContent = it.text;
-        it.origEl.lang = T.lang;
+        it.origEl.lang = it.lang;
         it.origEl.hidden = false;
       } catch { /* keep the original text as it is */ }
     }
     T.running = false;
   }
   async function startTranslator(button) {
-    T.translator = await Translator.create({
-      sourceLanguage: T.lang, targetLanguage: 'en',
-      monitor(m) { m.addEventListener('downloadprogress', (e) => { if (button) button.textContent = `Downloading English… ${Math.round(e.loaded * 100)}%`; }); },
-    });
+    const langs = T.lang === 'multi' ? [...new Set(T.queue.map((q) => q.lang))] : [T.lang];
+    for (const l of langs) await getTranslator(l, button);
     T.state = 'ready';
   }
   function useLanguage(lang) {
-    if (lang === T.lang) return;
-    T.lang = lang; T.state = 'checking'; T.translator = null;
+    T.lang = lang; T.state = 'checking';
     initTranslator().then(() => { paintTranslationBar(); translatePending(); });
   }
   async function initTranslator() {
     if (T.lang === 'en') { T.state = 'none'; return; }
     if (typeof Translator === 'undefined') { T.state = 'none'; return; }
     try {
-      const a = await withTimeout(Translator.availability({ sourceLanguage: T.lang, targetLanguage: 'en' }), 4000);
-      if (a === 'available') await startTranslator();
+      const probe = T.lang === 'multi' ? 'vi' : T.lang;
+      const a = await withTimeout(Translator.availability({ sourceLanguage: probe, targetLanguage: 'en' }), 4000);
+      if (a === 'available') { T.state = 'ready'; }
       else if (a === 'downloadable' || a === 'downloading') T.state = 'offer';
       else T.state = 'none';
     } catch { T.state = 'none'; }
@@ -215,9 +227,10 @@
         headOrig,
       ),
       shown.length > 0 && h('div', { class: 'strips' }, shown.map((x) => {
-        const main = h('p', { lang: T.lang, text: x.text });
+        const qLang = s.headline.language !== 'en' ? s.headline.language : (T.lang !== 'multi' ? T.lang : 'en');
+        const main = h('p', { lang: qLang, text: x.text });
         const orig = h('p', { class: 'orig', hidden: true, title: 'Original quote' });
-        track(main, x.text, T.lang, orig);
+        track(main, x.text, qLang, orig);
         return h('blockquote', { class: 'strip' }, main, orig,
           x.source !== s.headline.source && h('footer', null, h('a', { class: 'stamp indigo', href: safeUrl(x.url), target: '_blank', rel: 'noopener', text: x.source })));
       })),
@@ -395,6 +408,7 @@
   function renderHome() {
     const hm = window.ARGOS_HOME;
     if (!hm) { openCountry(index.countries[0].id); return; }
+    T.queue.length = 0;
     const q = ($('#q').value || '').trim().toLowerCase();
     const filter = (arr) => (q ? (arr || []).filter((s) => storyText(s).includes(q)) : (arr || []));
     const c = getCrisis();
@@ -408,6 +422,7 @@
       h('p', { class: 'result-line' },
         h('b', { text: 'Overview across all monitored countries' }),
         ` · ${plural(desks.length, 'country', 'countries')} · updated ${fmtTime.format(new Date(hm.generated_at))}`),
+      h('div', { id: 'trans', class: 'trans' }),
       watchbar(q, pool),
       allAlerts.length > 0 && h('div', { class: 'crisis-strip', role: 'region', 'aria-label': 'Active crisis alerts' },
         h('span', { class: 'stamp red', text: `${plural(allAlerts.length, 'active alert', 'active alerts')}` }),
@@ -435,12 +450,17 @@
                 h('td', { class: 'typed', text: String(d.stories_24h) }),
                 h('td', { class: 'typed', text: String(d.stories_7d) }),
                 h('td', null, nAlerts ? h('span', { class: 'stamp red', text: String(nAlerts) }) : h('span', { class: 'meta', text: '—' })),
-                h('td', null, d.lead ? [
-                  h('a', { href: safeUrl(d.lead.url), target: '_blank', rel: 'noopener', text: d.lead.title }),
-                  h('span', { class: 'meta', text: ` (${d.lead.source} · ${d.lead.outlets} outlets)` }),
-                ] : '—'));
+                h('td', null, d.lead ? (() => {
+                  const cl = (index.countries.find((x) => x.id === d.id) || {}).language || 'en';
+                  const a = h('a', { href: safeUrl(d.lead.url), target: '_blank', rel: 'noopener', lang: cl, text: d.lead.title });
+                  const o = h('span', { class: 'orig', hidden: true });
+                  track(a, d.lead.title, cl, o);
+                  return [a, o, h('span', { class: 'meta', text: ` (${d.lead.source} · ${d.lead.outlets} outlets)` })];
+                })() : '—'));
             }))))),
     ].filter(Boolean));
+    paintTranslationBar();
+    translatePending();
   }
 
   function render(animate = true) {
@@ -505,10 +525,10 @@
     if ($('#nav-home')) $('#nav-home').setAttribute('aria-current', country.value === 'home' ? 'page' : 'false');
     if ($('#nav-alerts')) $('#nav-alerts').setAttribute('aria-current', country.value === 'alerts' ? 'page' : 'false');
     if (country.value === 'home') {
-      useLanguage('en');
       $('#brief').href = 'brief.html';
       setHash(hashFor('all'));
       renderHome();
+      useLanguage('multi');
       return;
     }
     if (country.value === 'alerts') {

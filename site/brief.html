@@ -14,7 +14,7 @@
   .brief h2 { font: 700 1.22rem/1.32 var(--sans); margin: 0; }
   .brief h2 a { text-decoration: none; }
   .brief h2 a:hover { color: var(--indigo); }
-  @media print { .bureau { display: none; } }
+  @media print { .bureau, .trans { display: none; } }
 </style>
 </head>
 <body>
@@ -48,7 +48,7 @@
 (() => {
   const index = window.ARGOS_INDEX, root = document.getElementById('brief');
   const cSel = document.getElementById('b-country'), pSel = document.getElementById('b-period');
-  const el = (tag, attrs, ...kids) => { const e = document.createElement(tag); for (const [k, v] of Object.entries(attrs || {})) { if (v == null || v === false) continue; k === 'text' ? e.textContent = v : e.setAttribute(k, v); } e.append(...kids.flat(Infinity).filter((x) => x != null && x !== false)); return e; };
+  const el = (tag, attrs, ...kids) => { const e = document.createElement(tag); for (const [k, v] of Object.entries(attrs || {})) { if (v == null || v === false) continue; if (k === 'text') e.textContent = v; else if (k.startsWith('on')) e.addEventListener(k.slice(2), v); else e.setAttribute(k, v === true ? '' : v); } e.append(...kids.flat(Infinity).filter((x) => x != null && x !== false)); return e; };
   const safe = (u) => { try { const x = new URL(u); return /^https?:$/.test(x.protocol) ? x.href : '#'; } catch { return '#'; } };
   if (!index) { root.replaceChildren(el('p', { class: 'state error', text: 'No data found.' })); return; }
   const load = (key) => {
@@ -56,6 +56,66 @@
     if (window.ARGOS_DATA[key]) return Promise.resolve(window.ARGOS_DATA[key]);
     return new Promise((ok, no) => { const s = document.createElement('script'); s.src = `data/${key}.js`; s.onload = () => ok(window.ARGOS_DATA[key]); s.onerror = no; document.head.append(s); });
   };
+  try { if (localStorage.getItem('argos.showOriginal') === '1') document.body.classList.add('show-orig'); } catch {}
+  const T = { lang: 'en', state: 'checking', tr: null, queue: [] };
+  function track(node, text, lang, orig) {
+    if (!lang || lang === 'en') return;
+    T.queue.push({ node, text, lang, orig });
+  }
+  async function translateAll() {
+    if (T.state !== 'ready' || !T.tr) return;
+    while (T.queue.length) {
+      const it = T.queue.shift();
+      if (!it.node.isConnected) continue;
+      try {
+        it.node.textContent = await T.tr.translate(it.text);
+        it.node.lang = 'en';
+        it.orig.textContent = it.text;
+        it.orig.lang = it.lang;
+        it.orig.hidden = false;
+      } catch {}
+    }
+  }
+  async function setupTrans(lang) {
+    T.lang = lang; T.tr = null; T.state = 'none';
+    const bar = document.getElementById('trans');
+    if (!bar || lang === 'en') return;
+    if (typeof Translator === 'undefined') {
+      bar.replaceChildren(el('p', { class: 'notice quiet', text: 'Use your browser\'s Translate feature to read headlines in English.' }));
+      return;
+    }
+    try {
+      const a = await Translator.availability({ sourceLanguage: lang, targetLanguage: 'en' });
+      if (a === 'available') {
+        T.tr = await Translator.create({ sourceLanguage: lang, targetLanguage: 'en' });
+        T.state = 'ready';
+        paintBar();
+        translateAll();
+      } else if (a === 'downloadable' || a === 'downloading') {
+        const btn = el('button', { type: 'button', class: 'more offer', text: 'Translate headlines to English', onclick: async () => {
+          btn.disabled = true;
+          T.tr = await Translator.create({ sourceLanguage: lang, targetLanguage: 'en' });
+          T.state = 'ready';
+          paintBar();
+          translateAll();
+        } });
+        bar.replaceChildren(btn);
+      }
+    } catch {}
+  }
+  function paintBar() {
+    const bar = document.getElementById('trans');
+    if (!bar || T.state !== 'ready') return;
+    const on = document.body.classList.contains('show-orig');
+    bar.replaceChildren(
+      el('p', { class: 'notice quiet', text: 'English lines are machine translations made by your browser. Every headline links to the original article.' }),
+      el('button', { type: 'button', class: 'more', text: on ? 'Hide original text' : 'Show original text', onclick: () => {
+        document.body.classList.toggle('show-orig', !on);
+        try { localStorage.setItem('argos.showOriginal', !on ? '1' : '0'); } catch {}
+        paintBar();
+      } }));
+  }
+
   cSel.replaceChildren(...index.countries.map((x) => el('option', { value: x.id, text: x.name })));
   const initCid = location.hash.slice(1);
   if (index.countries.some((x) => x.id === initCid)) cSel.value = initCid;
@@ -70,18 +130,32 @@
   function render() {
     const c = index.countries.find((x) => x.id === cSel.value) || index.countries[0];
     const p = c.periods.find((x) => x.id === pSel.value) || c.periods[0];
+    T.queue.length = 0;
     try { if (location.protocol !== 'file:') history.replaceState(null, '', `#${c.id}`); } catch {}
     load(p.file.replace(/\.json$/, '')).then((d) => {
       const top = [...d.stories].sort((a, b) => b.score - a.score).slice(0, 5);
       root.replaceChildren(
         el('p', { class: 'result-line' }, el('b', { text: `${c.name} · Top 5 stories` }), ` · ${p.label.toLowerCase()} · updated ${new Date(d.generated_at).toLocaleString()}`),
-        el('ol', null, top.map((s) => el('li', null,
-          el('h2', null, el('a', { href: safe(s.headline.url), target: '_blank', rel: 'noopener', text: s.headline.title })),
-          s.excerpts[0] && el('blockquote', { class: 'strip' }, el('p', { text: s.excerpts[0].text })),
-          el('p', { class: 'slipline' },
-            el('span', { text: `${s.headline.source} · ${s.independent_sources} independent outlets · ${s.articles} articles` }),
-            s.evidence === 'OFFICIAL' && el('span', { class: 'stamp red', text: 'Official' }),
-            s.abroad_only && el('span', { class: 'stamp teal', text: 'Not in domestic press' }))))));
+        el('div', { id: 'trans', class: 'trans' }),
+        el('ol', null, top.map((s) => {
+          const a = el('a', { href: safe(s.headline.url), target: '_blank', rel: 'noopener', lang: s.headline.language, text: s.headline.title });
+          const o = el('p', { class: 'orig', hidden: true });
+          track(a, s.headline.title, s.headline.language, o);
+          let qBlock = null;
+          if (s.excerpts[0]) {
+            const qp = el('p', { lang: c.language, text: s.excerpts[0].text });
+            const qo = el('p', { class: 'orig', hidden: true });
+            track(qp, s.excerpts[0].text, c.language, qo);
+            qBlock = el('blockquote', { class: 'strip' }, qp, qo);
+          }
+          return el('li', null,
+            el('h2', null, a), o, qBlock,
+            el('p', { class: 'slipline' },
+              el('span', { text: `${s.headline.source} · ${s.independent_sources} independent outlets · ${s.articles} articles` }),
+              s.evidence === 'OFFICIAL' && el('span', { class: 'stamp red', text: 'Official' }),
+              s.abroad_only && el('span', { class: 'stamp teal', text: 'Not in domestic press' })));
+        })));
+      setupTrans(c.language);
     }).catch(() => root.replaceChildren(el('p', { class: 'state error', text: 'Could not load the stories.' })));
   }
 

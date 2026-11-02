@@ -28,9 +28,12 @@ def _story(db, s):
         "SELECT x.id, x.text, a.url, src.name AS source, src.scope FROM excerpt x JOIN article a ON a.id=x.article_id "
         "JOIN source src ON src.id=a.source_id WHERE x.story_id=? ORDER BY x.id", (s["id"],)).fetchall()
     related = db.execute(
-        "SELECT a.title, a.url, src.name AS source, (SELECT COUNT(*) FROM story_article WHERE story_id=r.related_id) AS n "
+        "SELECT o.id, a.title, a.url, src.name AS source, (SELECT COUNT(*) FROM story_article WHERE story_id=r.related_id) AS n, "
+        "(SELECT COUNT(*) FROM story_article sa2 JOIN article a2 ON a2.id=sa2.article_id JOIN source s2 ON s2.id=a2.source_id "
+        " WHERE sa2.story_id=r.related_id AND s2.scope='domestic') AS dom "
         "FROM story_related r JOIN story o ON o.id=r.related_id JOIN article a ON a.id=o.representative_article_id "
-        "JOIN source src ON src.id=a.source_id WHERE r.story_id=? ORDER BY r.similarity DESC LIMIT 2", (s["id"],)).fetchall()
+        "JOIN source src ON src.id=a.source_id WHERE r.story_id=? ORDER BY r.similarity DESC LIMIT 4", (s["id"],)).fetchall()
+    has_related_domestic = any(r["dom"] > 0 for r in related)
     cutoff_24h = (datetime.now(timezone.utc) - timedelta(hours=24)).isoformat(timespec="seconds")
     dated = sorted((r for r in rows if r["published_at"]), key=lambda r: r["published_at"])
     days = {}
@@ -51,8 +54,8 @@ def _story(db, s):
         "independent_sources": len(independent),
         "by_scope": by_scope,
         "evidence": "OFFICIAL" if any(r["kind"] == "official" for r in rows) else "REPORTED",
-        "abroad_only": by_scope["domestic"] == 0 and (by_scope["abroad_local"] + by_scope["international"]) > 0,
-        "related": [{"title": r["title"], "url": r["url"], "source": r["source"], "articles": r["n"]} for r in related],   # possibly the same event
+        "abroad_only": by_scope["domestic"] == 0 and not has_related_domestic and (by_scope["abroad_local"] + by_scope["international"]) > 0,
+        "related": [{"title": r["title"], "url": r["url"], "source": r["source"], "articles": r["n"]} for r in related[:2]],   # possibly the same event
         "excerpts": [{"text": x["text"], "source": x["source"], "scope": x["scope"], "url": x["url"]} for x in excerpts],
         "sources": [{"title": r["title"], "url": r["url"], "source": r["source"], "scope": r["scope"],
                      "language": r["language"], "published": r["published_at"], "copy": r["syndicated_of"] is not None}
