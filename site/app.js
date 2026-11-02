@@ -108,6 +108,8 @@
       h('label', { for: 'mon-country-sel', text: 'Filter by Country:' }),
       h('select', {
         id: 'mon-country-sel',
+        translate: 'no',
+        class: 'notranslate',
         onchange: (e) => onChange(e.target.value)
       },
         h('option', { value: 'all', text: 'All Countries', selected: currentVal === 'all' }),
@@ -808,6 +810,8 @@
           h('span', { text: 'Country A' }),
           h('select', {
             id: 'rel-sel-a',
+            translate: 'no',
+            class: 'notranslate',
             onchange: (e) => { relCountryA = e.target.value; setHash(hashFor('all')); renderRelations(); }
           }, ...REGIONS.flatMap((r) => {
             const items = index.countries.filter((c) => getRegion(c.id) === r);
@@ -827,6 +831,8 @@
           h('span', { text: 'Country B / Partner' }),
           h('select', {
             id: 'rel-sel-b',
+            translate: 'no',
+            class: 'notranslate',
             onchange: (e) => {
               relCountryB = e.target.value;
               setHash(hashFor('all'));
