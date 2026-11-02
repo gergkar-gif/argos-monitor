@@ -333,7 +333,7 @@
         h('button', { type: 'button', class: 'more', title: 'Show these stories',
           text: `${w} (${current.stories.filter((s) => storyText(s).includes(w)).length})`,
           onclick: () => { $('#q').value = w; setHash(hashFor(openTopic)); render(false); } }),
-        h('button', { type: 'button', class: 'x', 'aria-label': `Stop watching ${w}`, text: '?', onclick: () => setWatched(list.filter((x) => x !== w)) }))),
+        h('button', { type: 'button', class: 'x', 'aria-label': `Stop watching ${w}`, text: '×', onclick: () => setWatched(list.filter((x) => x !== w)) }))),
       q && !list.includes(q) && h('button', { type: 'button', class: 'more', text: `Watch "${q}"`, onclick: () => setWatched([...list, q]) }));
   }
 
@@ -417,7 +417,7 @@
     $('#brief').href = `brief.html#${country.value}`;
     openTopic = topic.value;
     setHash(hashFor(topic.value)); extra = {};
-    results.replaceChildren(h('p', { class: 'state', text: 'Gathering the clippings…' }));
+    results.replaceChildren(h('p', { class: 'state', text: 'Loading…' }));
     try {
       current = await load(p.file);
       render();

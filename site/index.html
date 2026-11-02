@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Argos Monitor</title>
-<meta name="description" content="Press cuttings on one country's news. Every line is an article's own headline or a verbatim quote, linked to its source.">
+<meta name="description" content="Multi-source news monitor. Every line is an article's own headline or a verbatim quote, linked to its source.">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/icon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/icon-180.png">
@@ -12,39 +12,38 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><filter id="ink" x="-5%" y="-10%" width="110%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="2" seed="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
 <header class="bureau">
   <div class="bureau-inner">
     <div class="masthead">
       <h1><img src="assets/eye.png" alt="" class="logo">Argos Monitor</h1>
-      <p>Press cuttings on one country's news. Every line is an article's own headline or a word-for-word quote, stamped with the outlet it came from.</p>
+      <p>Every line is an article's own headline or a verbatim quote, linked to the outlet it came from.</p>
     </div>
-    <form id="slip" class="slip" aria-label="Research request">
+    <form id="slip" class="slip" aria-label="Filter stories">
       <label class="field"><span>Country</span><select id="country" name="country"></select></label>
       <label class="field"><span>Period</span><select id="period" name="period"></select></label>
       <label class="field"><span>Topic</span><select id="topic" name="topic"></select></label>
       <label class="field"><span>Search</span><input id="q" name="q" type="search" placeholder="Words in a headline or quote" autocomplete="off"></label>
-      <button type="submit" class="research">Research</button>
+      <button type="submit" class="research">Filter</button>
     </form>
   </div>
 </header>
 
 <main id="results" aria-live="polite" tabindex="-1">
-  <p class="state">Loading the latest collection…</p>
+  <p class="state">Loading…</p>
 </main>
 
 <footer class="legend">
   <div class="legend-inner">
-    <h2>How to read the stamps</h2>
+    <h2>How to read the tags</h2>
     <dl>
       <div><dt><span class="stamp indigo">Reported</span></dt><dd>One or more outlets published it. Nothing more is claimed.</dd></div>
-      <div><dt><span class="stamp red">Official</span></dt><dd>At least one source is a government or Party outlet. This means "officially stated", not "independently verified".</dd></div>
+      <div><dt><span class="stamp red">Official</span></dt><dd>At least one source is a government or ruling-party outlet. This means "officially stated", not "independently verified".</dd></div>
       <div><dt><span class="stamp teal">Not in domestic press</span></dt><dd>Covered by outlets abroad that publish in the country's language, or by international outlets, but by no outlet inside the country.</dd></div>
       <div><dt><span class="stamp indigo">New</span> <span class="stamp indigo">Growing</span> <span class="stamp indigo">Quiet</span></dt><dd>From when the articles were published: all in the last 24 hours, half or more in the last 24 hours, or none in the last 24 hours.</dd></div>
       <div><dt><span class="typed">7 independent outlets</span></dt><dd>Outlets counted once each. Reprints of the same text by another outlet are not counted as separate sources.</dd></div>
     </dl>
-    <p class="fine"><a href="brief.html" id="brief">Daily brief (top 5, printable)</a> ? <a href="sources.html">Where the stories come from</a> ? <a href="watch.xml">Watchlist feed (RSS)</a></p>
-    <p class="fine">Stories are grouped and sorted by topic automatically, so some will be misplaced. Quotes are copied from the original article and checked against it by the machine. To read a headline in English, use your browser's translate feature.</p>
+    <p class="fine"><a href="brief.html" id="brief">Daily brief (top 5, printable)</a> · <a href="sources.html">Where the stories come from</a> · <a href="watch.xml">Watchlist feed (RSS)</a></p>
+    <p class="fine">Stories are grouped and sorted by topic automatically. Quotes are copied verbatim from the original article and verified against it.</p>
   </div>
 </footer>
 
