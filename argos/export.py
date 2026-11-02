@@ -102,6 +102,7 @@ def _story(db, s):
 def _write(name, payload, var):
     """Write <name>.json, and <name>.js which sets a global. The page loads the .js through a script tag,
     because browsers refuse to fetch() local files when the page is opened straight from a folder."""
+    SITE_DATA.mkdir(parents=True, exist_ok=True)
     text = json.dumps(payload, ensure_ascii=False, indent=1)
     (SITE_DATA / f"{name}.json").write_text(text, encoding="utf8")
     head = f'window.{var} = window.{var} || {{}}; window.{var}["{name}"] = {text};' if var == "ARGOS_DATA" else f"window.{var} = {text};"

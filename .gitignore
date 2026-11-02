@@ -3,7 +3,8 @@ __pycache__/
 *.db
 *.db-journal
 .argos-data/
-site/data/
+site/data/*
+!site/data/.gitkeep
 site/watch.xml
 .impeccable/review/
 .impeccable/build/
