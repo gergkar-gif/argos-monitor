@@ -1,0 +1,74 @@
+# Georgia source registry (decision D15).
+# Combines independent bilingual dailies (Civil.ge in English & Georgian), regional Caucasus investigative outlets (OC Media, JAMnews), government portal (Agenda.ge / 1TV via Google News), and international wires.
+
+sources:
+  - id: civil_ge_en
+    name: Civil Georgia (English)
+    homepage: https://civil.ge
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: UN Association of Georgia (independent non-profit daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://civil.ge/feed", section: Latest, category_hint: general}
+
+  - id: civil_ge_ka
+    name: Civil Georgia (Georgian)
+    homepage: https://civil.ge/ka
+    language: ka
+    scope: domestic
+    kind: media
+    governing_body: UN Association of Georgia (independent non-profit daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://civil.ge/ka/feed", section: სიახლეები, category_hint: general}
+
+  - id: ocmedia
+    name: OC Media
+    homepage: https://oc-media.org
+    language: en
+    scope: abroad_local
+    kind: media
+    governing_body: Open Caucasus Media (independent regional investigative outlet)
+    state_affiliated: false
+    needs_mention: true
+    feeds:
+      - {url: "https://oc-media.org/feed/", section: Caucasus, category_hint: general}
+
+  - id: jamnews_en
+    name: JAMnews
+    homepage: https://jam-news.net
+    language: en
+    scope: abroad_local
+    kind: media
+    governing_body: JAMnews Regional Media Network (independent Caucasus outlet)
+    state_affiliated: false
+    needs_mention: true
+    feeds:
+      - {url: "https://jam-news.net/feed/", section: Caucasus, category_hint: general}
+
+  - id: gnews_ge_official
+    name: Agenda.ge / 1TV (Official & Public Press via Google News)
+    homepage: https://agenda.ge
+    language: en
+    scope: domestic
+    kind: official
+    aggregator: google_news
+    governing_body: Administration of the Government of Georgia / Georgian Public Broadcaster
+    state_affiliated: true
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:agenda.ge+OR+site:1tv.ge)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Government & GPB, category_hint: general}
+
+  - id: gnews_en_ge
+    name: Google News (Georgia - International)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Georgia+(Tbilisi+OR+%22Georgian+Dream%22+OR+Kobakhidze+OR+Ivanishvili+OR+Zourabichvili)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Georgia politics, category_hint: internal_politics}
+      - {url: "https://news.google.com/rss/search?q=Georgia+(Tbilisi+OR+Abkhazia+OR+Anaklia+OR+Caucasus)+(EU+OR+Russia+OR+sanctions+OR+election)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Georgia EU & geopolitics, category_hint: foreign_policy}

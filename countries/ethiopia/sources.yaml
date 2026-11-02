@@ -1,0 +1,74 @@
+# Ethiopia source registry (decision D15).
+# Combines state broadcaster (Fana Broadcasting Corporate — official) with independent domestic weeklies & portals (The Reporter Ethiopia, Capital Ethiopia, Ethiopian Monitor) and diaspora/international coverage.
+
+sources:
+  - id: fanabc_en
+    name: Fana Broadcasting Corporate (FBC)
+    homepage: https://www.fanabc.com/english
+    language: en
+    scope: domestic
+    kind: official
+    governing_body: Fana Broadcasting Corporate (state-affiliated national broadcaster)
+    state_affiliated: true
+    feeds:
+      - {url: "https://www.fanabc.com/english/feed/", section: English News, category_hint: general}
+
+  - id: thereporter_et
+    name: The Reporter Ethiopia
+    homepage: https://www.thereporterethiopia.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Media & Communications Center (independent private weekly in Addis Ababa)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.thereporterethiopia.com/feed/", section: Latest, category_hint: general}
+
+  - id: capital_et
+    name: Capital Ethiopia
+    homepage: https://www.capitalethiopia.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Crown Publishing Plc (private business & economic weekly)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.capitalethiopia.com/feed/", section: Business & Economy, category_hint: economics}
+
+  - id: ethiopianmonitor
+    name: Ethiopian Monitor
+    homepage: https://ethiopianmonitor.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Ethiopian Monitor (independent digital news outlet)
+    state_affiliated: false
+    feeds:
+      - {url: "https://ethiopianmonitor.com/feed/", section: News, category_hint: general}
+
+  - id: gnews_et_abroad
+    name: Google News (Addis Standard & Diaspora / Regional Press)
+    homepage: https://news.google.com
+    language: en
+    scope: abroad_local
+    kind: media
+    aggregator: google_news
+    governing_body: Independent & diaspora Ethiopian outlets via Google News
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:addisstandard.com+OR+site:borkena.com+OR+site:theeastafrican.co.ke)+Ethiopia+when:7d&hl=en-US&gl=US&ceid=US:en", section: Addis Standard / Borkena / EastAfrican, category_hint: general}
+
+  - id: gnews_en_et
+    name: Google News (Ethiopia - International)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Ethiopia+when:1d&hl=en-US&gl=US&ceid=US:en", section: Ethiopia, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=Ethiopia+(%22Red+Sea%22+OR+Somalia+OR+Somaliland+OR+Egypt+OR+Eritrea+OR+GERD)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Horn of Africa & Red Sea, category_hint: foreign_policy}
+      - {url: "https://news.google.com/rss/search?q=Ethiopia+(Amhara+OR+Fano+OR+Oromia+OR+Tigray+OR+ENDF)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Internal security, category_hint: defence_security}
+      - {url: "https://news.google.com/rss/search?q=Ethiopia+(birr+OR+IMF+OR+%22National+Bank%22+OR+debt+OR+economy)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Economy & IMF reform, category_hint: economics}

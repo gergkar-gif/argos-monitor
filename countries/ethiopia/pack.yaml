@@ -1,0 +1,76 @@
+# Ethiopia country pack (decision D15).
+id: ethiopia
+name: Ethiopia
+language: en
+abroad_label: Regional African & diaspora Ethiopian outlets
+
+mention:
+  - "ethiopia"
+  - "ethiopian"
+  - "ethiopians"
+  - "addis ababa"
+  - "abiy ahmed"
+  - "abiy"
+  - "prosperity party"
+  - "amhara"
+  - "oromia"
+  - "tigray"
+  - "fano"
+  - "ola"
+  - "oromo liberation army"
+  - "tplf"
+  - "national bank of ethiopia"
+  - "birr"
+  - "gerd"
+  - "renaissance dam"
+  - "ethiopian airlines"
+  - "somaliland"
+  - "berbera"
+  - "ኢትዮጵያ"
+  - "አዲስ አበባ"
+
+mention_regex: ['\bethiopia\w*\b', '\baddis\s+ababa\b']
+mention_section: null
+
+url_sections:
+  foreign: [world, international, africa]
+  skip: [sport, sports, entertainment, lifestyle, art, culture]
+
+aggregator_outlets:
+  domestic:
+    - "fana broadcasting corporate"
+    - "fanabc"
+    - "ethiopian news agency"
+    - "ena"
+    - "the reporter ethiopia"
+    - "addis standard"
+    - "capital ethiopia"
+    - "ethiopian monitor"
+    - "addis fortune"
+    - "birrmetrics"
+  abroad_local:
+    - "borkena"
+    - "zehabesha"
+    - "wazema"
+    - "ethiopia insight"
+    - "the east african"
+    - "the africa report"
+
+excerpt:
+  dateline: '^\s*(?:ADDIS ABABA|FBC|ENA|The Reporter|Addis Standard)\s*[-–—:]\s*'
+  noise: '^(Photo|Credit|File photo|Read more|\(|\[)'
+
+classify:
+  internal_politics:
+    - "Prime Minister Abiy Ahmed, Prosperity Party, House of Peoples' Representatives, TPLF faction split in Tigray, National Dialogue Commission, opposition arrests"
+  economics:
+    - "National Bank of Ethiopia (NBE), floating of the Ethiopian birr, IMF and World Bank bailout program, sovereign debt restructuring, inflation, Ethiopian Airlines, Ethiopian Securities Exchange, coffee exports, BRICS"
+  foreign_policy:
+    - "Red Sea port access, Somaliland MoU, Ethiopia-Somalia Ankara mediation, Egypt and Sudan GERD Nile dam dispute, Eritrea relations, African Union summit in Addis Ababa"
+  defence_security:
+    - "Ethiopian National Defense Force (ENDF), Amhara region Fano insurgency, Oromia conflict with OLA, drone strikes, Eritrea-Tigray border security"
+  society:
+    - "humanitarian aid, drought, internally displaced persons (IDPs), education, public health, courts and media"
+
+geo: ET
+reddit: [Ethiopia]

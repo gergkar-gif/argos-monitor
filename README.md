@@ -72,22 +72,28 @@ Each monitored country is defined declaratively in `countries/<id>/` with zero c
 - **`sources.yaml`** — Curated media directory across three scopes (`domestic`, `abroad_local`, `international`) with ownership metadata and `state_affiliated` flags.
 - **`themes.yaml`** — Bilingual foreign-desk priority themes, weights, keywords, and semantic descriptions tailored to the country's geopolitical fault lines.
 
-### Currently Active Country Packs (10 Countries across 4 Regional Desks)
+### Currently Active Country Packs (16 Countries across 4 Regional Desks)
 
-- **ASEAN & Mainland Southeast Asia:**
+- **ASEAN & Indo-Pacific (6 Desks):**
   - **Vietnam** (`countries/vietnam/`) — Domestic state/party press, overseas Vietnamese media, and international wires (`vi` / `en`).
   - **Cambodia** (`countries/cambodia/`) — Khmer and English domestic press, exile/diaspora coverage, and regional ASEAN reporting (`km` / `en`).
   - **Thailand** (`countries/thailand/`) — Thai and English national press, independent civic outlets (*Prachatai*), and regional coverage (`th` / `en`).
   - **Myanmar** (`countries/myanmar/`) — State/domestic coverage contrasted against independent Burmese outlets in exile (*The Irrawaddy*, *Myanmar Now*, *DVB*, *BNI*) and international wires (`my` / `en`).
-- **Central/Eastern Europe & Western Balkans:**
+  - **Philippines** (`countries/philippines/`) — Major national dailies (*Rappler*, *Inquirer*, *Philstar*, *GMA*, *BusinessWorld*, *Manila Times*), state wire (*PNA*), and West Philippine Sea security coverage (`en`).
+  - **Indonesia** (`countries/indonesia/`) — State wire (*ANTARA* in Indonesian & English), financial press (*CNBC Indonesia*), and national/international coverage (`id` / `en`).
+- **Central/Eastern Europe & Western Balkans (3 Desks):**
   - **Hungary** (`countries/hungary/`) — Pro-government and independent domestic outlets, cross-border Hungarian press, and EU/international coverage (`hu` / `en`).
   - **Poland** (`countries/poland/`) — State wire (*PAP*), major independent/commercial broadcasters (*RMF24*, *TVN24*, *Polsat*), investigative press (*OKO.press*), and English briefers (*Notes from Poland*) (`pl` / `en`).
   - **Serbia** (`countries/serbia/`) — Public broadcaster (*RTS*) alongside independent national & regional investigative outlets (*N1*, *Danas*, *Nova.rs*, *Južne vesti*, *Autonomija*) (`sr` / `en`).
-- **Eurasia & Middle East Swing States:**
+- **Eurasia, South Caucasus & Central Asia (4 Desks):**
   - **Turkey** (`countries/turkey/`) — State wire & pro-government press (*Anadolu Agency*, *Daily Sabah*) contrasted with independent/opposition dailies (*Cumhuriyet*, *Sözcü*, *BirGün*, *Bianet*) and diaspora coverage (`tr` / `en`).
-- **Global South & BRICS Swing Powers:**
+  - **Georgia** (`countries/georgia/`) — Bilingual independent daily (*Civil.ge* in Georgian & English), Caucasus investigative outlets (*OC Media*, *JAMnews*), and official government press (`ka` / `en`).
+  - **Azerbaijan** (`countries/azerbaijan/`) — Official/pro-government Baku wires (*AZERTAC*, *Trend*, *APA*) contrasted against exiled independent outlets (*Meydan TV* in Azerbaijani & English, *OC Media*) (`az` / `en`).
+  - **Kazakhstan** (`countries/kazakhstan/`) — State-backed daily (*The Astana Times*), business & national press (*Kursiv Media* in Russian & English, *Tengrinews*), and regional coverage (*The Times of Central Asia*) (`ru` / `en`).
+- **Global South, Africa & BRICS Swing Powers (3 Desks):**
   - **South Africa** (`countries/south_africa/`) — Domestic national press, regional African outlets, and international coverage (`en`).
   - **Brazil** (`countries/brazil/`) — Federal public agency (*Agência Brasil*) alongside major political and financial dailies (*Folha de S.Paulo*, *Poder360*, *G1*, *InfoMoney*, *Nexo*) (`pt` / `en`).
+  - **Ethiopia** (`countries/ethiopia/`) — State-affiliated broadcaster (*Fana BC*) alongside independent Addis Ababa weeklies (*The Reporter*, *Capital Ethiopia*, *Ethiopian Monitor*) and diaspora/regional press (*Addis Standard*, *Borkena*) (`en`).
 
 ---
 

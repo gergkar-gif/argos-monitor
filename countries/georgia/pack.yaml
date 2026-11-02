@@ -1,0 +1,83 @@
+# Georgia country pack (decision D15).
+id: georgia
+name: Georgia
+language: ka
+abroad_label: Regional Caucasus & exiled outlets
+
+mention:
+  - "georgia"
+  - "georgian"
+  - "tbilisi"
+  - "batumi"
+  - "kutaisi"
+  - "georgian dream"
+  - "kobakhidze"
+  - "irakli kobakhidze"
+  - "ivanishvili"
+  - "bidzina ivanishvili"
+  - "zourabichvili"
+  - "zurabishvili"
+  - "salome zourabichvili"
+  - "abkhazia"
+  - "south ossetia"
+  - "anaklia"
+  - "საქართველო"
+  - "საქართველოს"
+  - "თბილისი"
+  - "ქართული ოცნება"
+  - "კობახიძე"
+  - "ივანიშვილი"
+  - "ზურაბიშვილი"
+  - "პარლამენტი"
+
+mention_regex: ['\b(?:georgia|georgian|tbilisi)\b', 'საქართველო', 'თბილის']
+mention_section: null
+
+url_sections:
+  foreign: [world, international, region]
+  skip: [sport, sports, culture, lifestyle]
+
+aggregator_outlets:
+  domestic:
+    - "civil.ge"
+    - "civil georgia"
+    - "agenda.ge"
+    - "georgia today"
+    - "1tv.ge"
+    - "georgian public broadcaster"
+    - "interpressnews"
+    - "bm.ge"
+    - "netgazeti"
+    - "publika"
+    - "formula"
+    - "mtavari"
+    - "imedi"
+  abroad_local:
+    - "oc media"
+    - "jamnews"
+    - "radio tavisupleba"
+    - "rfe/rl"
+
+excerpt:
+  dateline: '^\s*(?:TBILISI|Civil\.ge|Agenda\.ge|IPN|1TV)\s*[-–—:]\s*'
+  noise: '^(Photo|Credit|File photo|Read more|ფოტო|\(|\[)'
+
+classify:
+  internal_politics:
+    - "Georgian Dream ruling party, Prime Minister Irakli Kobakhidze, Bidzina Ivanishvili, President Salome Zourabichvili, Parliament of Georgia, elections, opposition coalition, protests, foreign agents law"
+    - "ქართული ოცნება, პარლამენტი, ირაკლი კობახიძე, ბიძინა ივანიშვილი, სალომე ზურაბიშვილი, ოპოზიცია, არჩევნები, აქცია"
+  economics:
+    - "National Bank of Georgia, lari exchange rate, Anaklia deep sea port, Middle Corridor transit, foreign investment, inflation, tourism, energy"
+    - "საქართველოს ეროვნული ბანკი, ლარის კურსი, ეკონომიკა, ანაკლიის პორტი, ინვესტიციები, ბიუჯეტი"
+  foreign_policy:
+    - "Georgia EU candidate status and accession suspension, US-Georgia relations and sanctions, Russia relations, China strategic partnership, South Caucasus diplomacy"
+    - "ევროკავშირი, ევროინტეგრაცია, აშშ, სანქციები, რუსეთი, ჩინეთი, საგარეო პოლიტიკა"
+  defence_security:
+    - "Georgian Defence Forces, occupied Abkhazia and South Ossetia (Tskhinvali), Russian military bases, Black Sea security, State Security Service (SSG)"
+    - "თავდაცვის სამინისტრო, აფხაზეთი, ცხინვალი, ოკუპაცია, უსაფრთხოების სამსახური, სუს-ი"
+  society:
+    - "civil society, media freedom, courts, education, public health, natural disasters"
+    - "სასამართლო, განათლება, ჯანდაცვა, მედია, სამოქალაქო საზოგადოება"
+
+geo: GE
+reddit: [Sakartvelo, tbilisi]

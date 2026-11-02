@@ -1,0 +1,34 @@
+# Indonesia's additions to the shared themes (../../themes.yaml).
+themes:
+  - id: investment
+    label: Critical minerals downstreaming (Hilirisasi) & Danantara
+    weight: 1.0
+    category: economics
+    describe:
+      - nickel, bauxite and copper downstreaming (hilirisasi), EV battery supply chain, Danantara sovereign wealth fund, IKN Nusantara capital construction, foreign direct investment
+      - hilirisasi nikel dan mineral kritis, baterai kendaraan listrik, badan pengelola investasi Danantara, pembangunan IKN Nusantara
+    keywords: ["hilirisasi", "downstreaming", "nickel", "nikel", "danantara", "ikn", "nusantara", "smelter", "ev battery", "freeport"]
+
+  - id: party_gov
+    label: Prabowo administration, DPR & KPK anti-corruption
+    weight: 0.95
+    category: internal_politics
+    describe:
+      - President Prabowo Subianto Red and White Cabinet, Gibran Rakabuming Raka, DPR legislation, Gerindra coalition, KPK corruption investigations, Free Nutritious Meal program
+      - pemerintahan Presiden Prabowo Subianto, Kabinet Merah Putih, DPR RI, KPK, program makan bergizi gratis
+    keywords: ["prabowo", "gibran", "kabinet merah putih", "dpr", "gerindra", "pdip", "jokowi", "kpk", "makan bergizi gratis"]
+
+  - id: diplomacy
+    label: Non-aligned diplomacy (BRICS, OECD & ASEAN)
+    weight: 1.0
+    category: foreign_policy
+    describe:
+      - Indonesia non-aligned (bebas aktif) diplomacy, BRICS and OECD engagement, ASEAN leadership, relations with China, US and Australia, North Natuna Sea
+      - politik luar negeri bebas aktif, Kemlu, Sugiono, BRICS, OECD, ASEAN, Laut Natuna Utara
+    keywords: ["bebas aktif", "sugiono", "kemlu", "brics", "oecd", "asean", "laut natuna utara", "north natuna sea", "bakamla"]
+
+  - id: econ_policy
+    describe:
+      - Bank Indonesia (BI) interest rate and rupiah stability, Finance Ministry (Sri Mulyani) APBN budget, VAT and tax policy, Pertamina energy subsidies
+      - Bank Indonesia, nilai tukar rupiah, Sri Mulyani, APBN, defisit anggaran, pajak PPN, subsidi energi
+    keywords: ["bank indonesia", "rupiah", "sri mulyani", "apbn", "ppn", "pajak", "pertamina", "subsidi"]

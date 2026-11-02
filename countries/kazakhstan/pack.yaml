@@ -1,0 +1,95 @@
+# Kazakhstan country pack (decision D15).
+id: kazakhstan
+name: Kazakhstan
+language: ru
+abroad_label: Regional Central Asian & international Russian-language outlets
+
+mention:
+  - "kazakhstan"
+  - "kazakh"
+  - "astana"
+  - "almaty"
+  - "tokayev"
+  - "kassym-jomart tokayev"
+  - "bektenov"
+  - "olzhas bektenov"
+  - "mazhilis"
+  - "tenge"
+  - "kazmunaygas"
+  - "kazatomprom"
+  - "tengiz"
+  - "kashagan"
+  - "cpc pipeline"
+  - "middle corridor"
+  - "казахстан"
+  - "казахстана"
+  - "казахстане"
+  - "казахстану"
+  - "казахстанский"
+  - "астана"
+  - "астане"
+  - "алматы"
+  - "токаев"
+  - "бектенов"
+  - "мажилис"
+  - "сенат"
+  - "нацбанк"
+  - "тенге"
+  - "казмунайгаз"
+  - "казатомпром"
+  - "қазақстан"
+  - "тоқаев"
+
+mention_regex: ['\b(?:kazakhstan\w*|kazakh\w*|astana|almaty|tokayev)\b', 'казахстан\w*', 'астан[аеыу]', 'токаев\w*']
+mention_section: null
+
+url_sections:
+  foreign: [world, international, mir]
+  skip: [sport, sports, culture, lifestyle, showbiz, auto]
+
+aggregator_outlets:
+  domestic:
+    - "the astana times"
+    - "kazinform"
+    - "qazinform"
+    - "tengrinews"
+    - "tengrinews.kz"
+    - "kursiv"
+    - "kursiv media"
+    - "vlast.kz"
+    - "orda.kz"
+    - "kapital.kz"
+    - "zakon.kz"
+    - "informburo.kz"
+    - "exclusive.kz"
+  abroad_local:
+    - "the times of central asia"
+    - "eurasianet"
+    - "radio azattyq"
+    - "rfe/rl"
+    - "fergana"
+    - "mediazona central asia"
+
+excerpt:
+  dateline: '^\s*(?:ASTANA|ALMATY|KAZINFORM|Qazinform|Tengrinews\.kz|Kursiv)\s*[-–—:]\s*'
+  noise: '^(Photo|Credit|Фото|Источник|Читайте также|\(|\[)'
+
+classify:
+  internal_politics:
+    - "President Kassym-Jomart Tokayev, Prime Minister Olzhas Bektenov, Mazhilis and Senate of Parliament, Akorda, constitutional and tax reforms, nuclear power referendum"
+    - "Президент Касым-Жомарт Токаев, правительство, премьер-министр Олжас Бектенов, Мажилис, Сенат, Акорда, кадровые перестановки, антикоррупционная служба"
+  economics:
+    - "National Bank of Kazakhstan, tenge exchange rate, National Fund, oil production (Tengiz, Kashagan, Karachaganak), CPC pipeline, KazMunayGas, Kazatomprom uranium, critical minerals, Middle Corridor transit"
+    - "экономика Казахстана, Нацбанк, курс тенге, инфляция, Нацфонд, добыча нефти, Тенгиз, Кашаган, КТК, КазМунайГаз, Казатомпром, бюджет, налоги"
+  foreign_policy:
+    - "Kazakhstan multi-vector foreign policy, relations with Russia, China, European Union, United States, Central Asia C5+1, Turkic States (OTS), SCO, EAEU, secondary sanctions compliance"
+    - "внешняя политика Казахстана, МИД, отношения с Россией, Китаем, ЕС, США, Центральная Азия, ЕАЭС, ШОС, ОТГ, санкции"
+  defence_security:
+    - "Armed Forces of Kazakhstan, Ministry of Defense, border security, CSTO, Caspian security, emergency situations"
+    - "Министерство обороны, Вооруженные силы Казахстана, КНБ, безопасность границ, ОДКБ"
+  society:
+    - "floods, heating and power plant infrastructure, education, healthcare, courts, human rights and media"
+    - "паводки, ТЭЦ, отопительный сезон, образование, здравоохранение, суды, полиция"
+
+geo: KZ
+reddit: [Kazakhstan, Almaty]

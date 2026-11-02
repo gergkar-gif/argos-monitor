@@ -1,0 +1,66 @@
+# Indonesia source registry (decision D15).
+# Combines state news agency (ANTARA in Indonesian & English — official) with major private financial & national media (CNBC Indonesia) and Google News Indonesian & English feeds (covering Tempo, Kompas, Jakarta Post, Katadata, etc.).
+
+sources:
+  - id: antaranews_en
+    name: ANTARA News (English)
+    homepage: https://en.antaranews.com
+    language: en
+    scope: domestic
+    kind: official
+    governing_body: Perum LKBN Antara (state-owned national news agency)
+    state_affiliated: true
+    feeds:
+      - {url: "https://en.antaranews.com/rss/news.xml", section: Latest News, category_hint: general}
+
+  - id: antaranews_id
+    name: ANTARA News (Indonesian)
+    homepage: https://www.antaranews.com
+    language: id
+    scope: domestic
+    kind: official
+    governing_body: Perum LKBN Antara (state-owned national news agency)
+    state_affiliated: true
+    feeds:
+      - {url: "https://www.antaranews.com/rss/terkini.xml", section: Terkini, category_hint: general}
+
+  - id: cnbcindonesia
+    name: CNBC Indonesia
+    homepage: https://www.cnbcindonesia.com
+    language: id
+    scope: domestic
+    kind: media
+    governing_body: Trans Media / CT Corp (private financial & news network)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.cnbcindonesia.com/news/rss", section: News & Economy, category_hint: economics}
+
+  - id: gnews_en_id
+    name: Google News (Indonesia - English)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Indonesia+when:1d&hl=en-US&gl=US&ceid=US:en", section: Indonesia, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=Indonesia+(Prabowo+OR+Cabinet+OR+DPR+OR+KPK+OR+Nusantara)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Indonesia politics, category_hint: internal_politics}
+      - {url: "https://news.google.com/rss/search?q=Indonesia+(nickel+OR+Danantara+OR+economy+OR+rupiah+OR+investment)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Indonesia economy & minerals, category_hint: economics}
+      - {url: "https://news.google.com/rss/search?q=Indonesia+(BRICS+OR+ASEAN+OR+China+OR+Natuna+OR+defence)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Indonesia diplomacy & security, category_hint: foreign_policy}
+
+  - id: gnews_id
+    name: Google News (Indonesian Press)
+    homepage: https://news.google.com
+    language: id
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    needs_mention: true
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(Prabowo+OR+DPR+OR+Kabinet+OR+KPK)+when:1d&hl=id&gl=ID&ceid=ID:id", section: Politik Nasional, category_hint: internal_politics}
+      - {url: "https://news.google.com/rss/search?q=(Bank+Indonesia+OR+rupiah+OR+hilirisasi+OR+Danantara+OR+APBN)+when:1d&hl=id&gl=ID&ceid=ID:id", section: Ekonomi & Hilirisasi, category_hint: economics}
+      - {url: "https://news.google.com/rss/search?q=(site:tempo.co+OR+site:kompas.com+OR+site:thejakartapost.com)+Indonesia+when:1d&hl=id&gl=ID&ceid=ID:id", section: Tempo / Kompas / Jakarta Post, category_hint: general}

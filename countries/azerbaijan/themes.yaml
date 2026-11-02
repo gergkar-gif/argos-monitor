@@ -1,0 +1,28 @@
+# Azerbaijan's additions to the shared themes (../../themes.yaml).
+themes:
+  - id: diplomacy
+    label: Armenia-Azerbaijan peace talks & Zangezur corridor
+    weight: 1.0
+    category: foreign_policy
+    describe:
+      - Armenia-Azerbaijan peace treaty negotiations, border delimitation, Zangezur transit corridor, relations with Turkey, Russia, Iran, Israel and the EU
+      - Ermənistan-Azərbaycan sülh müqaviləsi, sərhədlərin delimitasiyası, Zəngəzur dəhlizi, xarici siyasət
+    keywords: ["peace treaty", "delimitation", "zangezur", "karabakh", "garabagh", "jeyhun bayramov", "bayramov", "ilham aliyev", "pashinyan", "sülh müqaviləsi", "zəngəzur", "qarabağ"]
+
+  - id: energy_infra
+    label: Southern Gas Corridor, SOCAR & Middle Corridor transit
+    weight: 1.0
+    category: economics
+    describe:
+      - SOCAR oil and natural gas exports to Europe, Southern Gas Corridor expansion, Black Sea green energy cable, Trans-Caspian Middle Corridor
+      - SOCAR, Cənub Qaz Dəhlizi, yaşıl enerji dəhlizi, Orta Dəhliz, neft və qaz ixracı
+    keywords: ["socar", "southern gas corridor", "shah deniz", "middle corridor", "trans-caspian", "green energy corridor", "cənub qaz dəhlizi", "orta dəhliz"]
+
+  - id: party_gov
+    label: Presidential administration, Milli Majlis & Media crackdown
+    weight: 0.9
+    category: internal_politics
+    describe:
+      - President Ilham Aliyev decrees, Milli Majlis legislation, prosecution and arrests of independent journalists and NGOs (Abzas Media, Toplum TV, Meydan TV)
+      - Prezident İlham Əliyev, Milli Məclis, Abzas Media, Toplum TV, Meydan TV, jurnalistlərin həbsi
+    keywords: ["ilham aliyev", "milli majlis", "abzas media", "toplum tv", "meydan tv", "journalist arrested", "smuggling charges", "ilham əliyev", "milli məclis"]

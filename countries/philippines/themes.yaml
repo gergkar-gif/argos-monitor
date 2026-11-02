@@ -1,0 +1,22 @@
+# Philippines' additions to the shared themes (../../themes.yaml).
+themes:
+  - id: security
+    label: West Philippine Sea, US-PH alliance & POGO crackdown
+    weight: 1.0
+    category: defence_security
+    describe:
+      - West Philippine Sea / South China Sea maritime confrontations, Philippine Coast Guard, Ayungin Shoal, Scarborough Shoal, Sabina Shoal, US-Philippines EDCA sites and Balikatan exercises, offshore gaming (POGO) ban and espionage investigations
+    keywords: ["west philippine sea", "south china sea", "ayungin", "second thomas shoal", "scarborough shoal", "bajo de masinloc", "sabina shoal", "escoda shoal", "philippine coast guard", "pcg", "afp", "edca", "balikatan", "pogo", "alice guo"]
+
+  - id: party_gov
+    label: Marcos-Duterte rift, Congress & 2025/2028 politics
+    weight: 0.95
+    category: internal_politics
+    describe:
+      - President Ferdinand Marcos Jr. administration, Malacañang, Vice President Sara Duterte feud and impeachment inquiries, Rodrigo Duterte ICC war on drugs probe, Senate and House hearings, BARMM elections
+    keywords: ["bongbong marcos", "marcos jr", "sara duterte", "rodrigo duterte", "malacañang", "malacanang", "impeachment", "icc", "quad comm", "senate", "house of representatives", "barmm"]
+
+  - id: econ_policy
+    describe:
+      - Bangko Sentral ng Pilipinas (BSP) monetary policy, rice tariffication and food inflation, Maharlika Investment Fund, Luzon Economic Corridor, fiscal budget
+    keywords: ["bangko sentral", "bsp", "remolona", "recto", "maharlika", "rice tariff", "luzon economic corridor", "neda", "peso", "inflation"]

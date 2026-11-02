@@ -1,0 +1,25 @@
+# Kazakhstan's additions to the shared themes (../../themes.yaml).
+themes:
+  - id: energy_infra
+    label: Oil (Tengiz/Kashagan/CPC), Uranium & Nuclear power
+    weight: 1.0
+    category: economics
+    describe:
+      - Kazakhstan oil production and exports (Tengiz, Kashagan, Karachaganak, CPC Caspian Pipeline Consortium), KazMunayGas, Kazatomprom uranium supply, first nuclear power plant consortium, Trans-Caspian Middle Corridor
+      - добыча и экспорт нефти (Тенгиз, Кашаган, Карачаганак, КТК), КазМунайГаз, уран Казатомпром, строительство АЭС в Казахстане, Транскаспийский маршрут (Средний коридор)
+    keywords: ["tengiz", "kashagan", "karachaganak", "cpc pipeline", "caspian pipeline", "kazmunaygas", "kazatomprom", "uranium", "middle corridor", "trans-caspian", "тенгиз", "кашаган", "карачаганак", "ктк", "казмунайгаз", "казатомпром", "уран", "аэс", "средний коридор"]
+
+  - id: diplomacy
+    label: Multi-vector diplomacy (Russia, China, EU & Central Asia)
+    weight: 1.0
+    category: foreign_policy
+    describe:
+      - President Kassym-Jomart Tokayev multi-vector foreign policy, relations with Russia and EAEU, China Belt and Road, EU critical raw materials partnership, US C5+1, secondary sanctions compliance
+      - многовекторная внешняя политика Казахстана, Токаев, отношения с Россией, Китаем, ЕС и США, Центральная Азия, соблюдение санкционного режима
+    keywords: ["tokayev", "multi-vector", "eaeu", "c5+1", "secondary sanctions", "critical raw materials", "токаев", "многовекторн", "еаэс", "шoc", "санкци", "акорда"]
+
+  - id: econ_policy
+    describe:
+      - National Bank of Kazakhstan interest rate and tenge interventions, National Fund transfers, new Tax Code reform, state budget deficit, asset recovery from Old Kazakhstan oligarchs
+      - Национальный банк Казахстана, курс тенге, Национальный фонд, новый Налоговый кодекс, дефицит бюджета, возврат незаконно выведенных активов
+    keywords: ["national bank of kazakhstan", "tenge", "national fund", "tax code", "bektenov", "нацбанк", "тенге", "нацфонд", "налоговый кодекс", "бектенов", "возврат активов"]

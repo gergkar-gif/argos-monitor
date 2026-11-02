@@ -1,0 +1,87 @@
+# Indonesia country pack (decision D15).
+id: indonesia
+name: Indonesia
+language: id
+abroad_label: Regional ASEAN & international Indonesian-language outlets
+
+mention:
+  - "indonesia"
+  - "indonesian"
+  - "jakarta"
+  - "nusantara"
+  - "ikn"
+  - "prabowo"
+  - "prabowo subianto"
+  - "gibran"
+  - "jokowi"
+  - "joko widodo"
+  - "sri mulyani"
+  - "airlangga"
+  - "sugiono"
+  - "dpr"
+  - "kpk"
+  - "bank indonesia"
+  - "rupiah"
+  - "danantara"
+  - "pertamina"
+  - "tni"
+  - "papua"
+  - "bali"
+  - "surabaya"
+
+mention_regex: ['\bindonesi\w*\b', '\bjakarta\b', '\bprabowo\b']
+mention_section: null
+
+url_sections:
+  foreign: [internasional, dunia, world, global]
+  skip: [olahraga, sport, sports, hiburan, seleb, lifestyle, gaya-hidup, otomotif, bola, sepakbola, travel, kuliner]
+
+aggregator_outlets:
+  domestic:
+    - "antara"
+    - "antara news"
+    - "kompas"
+    - "kompas.com"
+    - "tempo"
+    - "tempo.co"
+    - "the jakarta post"
+    - "jakarta globe"
+    - "cnbc indonesia"
+    - "cnn indonesia"
+    - "detik"
+    - "detikcom"
+    - "bisnis.com"
+    - "kontan"
+    - "katadata"
+    - "republika"
+    - "liputan6"
+    - "tirto.id"
+  abroad_local:
+    - "bbc news indonesia"
+    - "dw indonesia"
+    - "voa indonesia"
+    - "benarmews"
+
+excerpt:
+  dateline: '^\s*(?:JAKARTA|ANTARA|Tempo\.co|Kompas\.com|CNBC Indonesia)\s*[-–—:]\s*'
+  noise: '^(Foto| Dokumentasi|Sumber|Baca juga|Lihat juga|\(|\[)'
+
+classify:
+  internal_politics:
+    - "Presiden Prabowo Subianto, Kabinet Merah Putih, Wakil Presiden Gibran, DPR RI, partai politik, Gerindra, PDIP, Golkar, KPK, pemberantasan korupsi, pilkada"
+    - "Indonesian government, President Prabowo Subianto, parliament (DPR), Red and White Cabinet, KPK anti-corruption, Jokowi"
+  economics:
+    - "ekonomi Indonesia, Bank Indonesia (BI), nilai tukar rupiah, suku bunga, inflasi, APBN, pajak, Danantara, hilirisasi nikel, investasi, IKN Nusantara, Pertamina"
+    - "Indonesian economy, Bank Indonesia, rupiah, nickel downstreaming, Danantara sovereign wealth fund, foreign investment, state budget"
+  foreign_policy:
+    - "Kementerian Luar Negeri, politik luar negeri bebas aktif, ASEAN, BRICS, OECD, hubungan dengan China, Amerika Serikat, Australia, Laut Natuna Utara"
+    - "Indonesian foreign policy, ASEAN, BRICS membership, OECD accession, China and US relations, North Natuna Sea"
+  defence_security:
+    - "TNI, Kementerian Pertahanan, Bakamla, keamanan maritim, Laut Natuna Utara, Papua, alutsista, pertahanan"
+    - "Indonesian National Armed Forces (TNI), maritime security in North Natuna Sea, defence modernization, Papua security"
+  society:
+    - "pendidikan, kesehatan, makan bergizi gratis, bencana alam, gempa bumi, gunung berapi, banjir, BMKG, hukum, pengadilan"
+    - "free nutritious meal program, earthquakes, volcanic eruptions, floods, education, healthcare and courts"
+
+geo: ID
+reddit: [indonesia, finansial, jakarta]

@@ -1,0 +1,95 @@
+# Philippines source registry (decision D15).
+# Combines major independent/commercial dailies (Rappler, Inquirer, Philstar, GMA News, BusinessWorld, Manila Times) and state agency (PNA via Google News) + international wires.
+
+sources:
+  - id: rappler
+    name: Rappler
+    homepage: https://www.rappler.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Rappler Inc. (independent investigative digital outlet)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.rappler.com/feed/", section: Latest, category_hint: general}
+
+  - id: inquirer
+    name: Philippine Daily Inquirer
+    homepage: https://newsinfo.inquirer.net
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Inquirer Group of Companies (private national daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://newsinfo.inquirer.net/feed", section: News, category_hint: general}
+
+  - id: philstar
+    name: Philstar (The Philippine Star)
+    homepage: https://www.philstar.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: PhilStar Media Group / MediaQuest Holdings (private)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.philstar.com/rss/headlines", section: Headlines, category_hint: general}
+
+  - id: gmanetwork
+    name: GMA News Online
+    homepage: https://www.gmanetwork.com/news
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: GMA Network Inc. (private national broadcaster)
+    state_affiliated: false
+    feeds:
+      - {url: "https://data.gmanetwork.com/gno/rss/news/feed.xml", section: News, category_hint: general}
+
+  - id: bworld_ph
+    name: BusinessWorld
+    homepage: https://www.bworldonline.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: BusinessWorld Publishing Corporation (private business daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.bworldonline.com/feed/", section: Business & Economy, category_hint: economics}
+
+  - id: manilatimes
+    name: The Manila Times
+    homepage: https://www.manilatimes.net
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: The Manila Times Publishing Corp. (private daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.manilatimes.net/news/feed/", section: News, category_hint: general}
+
+  - id: gnews_pna
+    name: Philippine News Agency (PNA via Google News)
+    homepage: https://www.pna.gov.ph
+    language: en
+    scope: domestic
+    kind: official
+    aggregator: google_news
+    governing_body: Presidential Communications Office (official government wire)
+    state_affiliated: true
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:pna.gov.ph+when:2d&hl=en-PH&gl=PH&ceid=PH:en", section: Official Wire, category_hint: general}
+
+  - id: gnews_en_ph
+    name: Google News (Philippines - International)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Philippines+when:1d&hl=en-US&gl=US&ceid=US:en", section: Philippines, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=Philippines+(%22West+Philippine+Sea%22+OR+%22South+China+Sea%22+OR+China+OR+US+OR+military)+when:1d&hl=en-US&gl=US&ceid=US:en", section: West Philippine Sea & Security, category_hint: defence_security}
+      - {url: "https://news.google.com/rss/search?q=Philippines+(Marcos+OR+Duterte+OR+Senate+OR+economy+OR+BSP)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Politics & Economy, category_hint: internal_politics}

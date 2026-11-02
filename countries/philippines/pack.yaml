@@ -1,0 +1,80 @@
+# Philippines country pack (decision D15).
+id: philippines
+name: Philippines
+language: en
+abroad_label: Regional Asian & diaspora outlets
+
+mention:
+  - "philippines"
+  - "philippine"
+  - "filipino"
+  - "filipinos"
+  - "manila"
+  - "marcos"
+  - "ferdinand marcos"
+  - "bongbong marcos"
+  - "duterte"
+  - "sara duterte"
+  - "malacañang"
+  - "malacanang"
+  - "west philippine sea"
+  - "ayungin"
+  - "scarborough shoal"
+  - "bajo de masinloc"
+  - "sabina shoal"
+  - "bangko sentral"
+  - "bsp"
+  - "philippine peso"
+  - "armed forces of the philippines"
+  - "philippine coast guard"
+  - "cebu"
+  - "davao"
+  - "mindanao"
+  - "barmm"
+
+mention_regex: ['\b(?:philippine|filipino)s?\b', '\bmanila\b']
+mention_section: null
+
+url_sections:
+  foreign: [world, international, global, asia-pacific]
+  skip: [sports, sport, entertainment, lifestyle, life, showbiz, celebrity, horoscopes, motoring]
+
+aggregator_outlets:
+  domestic:
+    - "rappler"
+    - "philippine daily inquirer"
+    - "inquirer.net"
+    - "philstar.com"
+    - "the philippine star"
+    - "gma network"
+    - "gma news online"
+    - "abs-cbn news"
+    - "businessworld"
+    - "businessworld online"
+    - "the manila times"
+    - "manila bulletin"
+    - "philippine news agency"
+    - "bilyonaryo"
+    - "mindanews"
+  abroad_local:
+    - "benarmews"
+    - "inquirer.net us bureau"
+
+excerpt:
+  dateline: '^\s*(?:MANILA,\s*Philippines|MANILA|PNA|Inquirer\.net|Rappler)\s*[-–—:]\s*'
+  noise: '^(Photo|File photo|Courtesy|Read more|WATCH:|LOOK:|\(|\[)'
+
+classify:
+  internal_politics:
+    - "President Ferdinand Bongbong Marcos Jr., Malacañang, Vice President Sara Duterte, Senate, House of Representatives, impeachment, Comelec, midterm elections, BARMM"
+  economics:
+    - "Philippine economy, Bangko Sentral ng Pilipinas (BSP), interest rates, inflation, peso exchange rate, Maharlika Investment Fund, NEDA, infrastructure, rice tariffs, BPO, OFW remittances"
+  foreign_policy:
+    - "Department of Foreign Affairs (DFA), West Philippine Sea diplomatic protests, US-Philippines Mutual Defense Treaty, EDCA sites, Japan RAA, ASEAN, China relations"
+  defence_security:
+    - "Armed Forces of the Philippines (AFP), Philippine Coast Guard (PCG), West Philippine Sea resupply missions, Ayungin Shoal, Scarborough Shoal, joint maritime patrols, Balikatan, POGO crackdown"
+  society:
+    - "typhoons, PAGASA weather, earthquakes, education, DepEd, public health, courts, crime, transport"
+
+geo: PH
+reddit: [Philippines, Manila, phinvest]

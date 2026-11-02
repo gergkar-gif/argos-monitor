@@ -1,0 +1,81 @@
+# Azerbaijan country pack (decision D15).
+id: azerbaijan
+name: Azerbaijan
+language: az
+abroad_label: Independent Azerbaijani outlets in exile & regional Caucasus press
+
+mention:
+  - "azerbaijan"
+  - "azerbaijani"
+  - "azeri"
+  - "baku"
+  - "aliyev"
+  - "ilham aliyev"
+  - "mehriban aliyeva"
+  - "bayramov"
+  - "jeyhun bayramov"
+  - "karabakh"
+  - "garabagh"
+  - "zangezur"
+  - "socar"
+  - "azərbaycan"
+  - "bakı"
+  - "əliyev"
+  - "ilham əliyev"
+  - "qarabağ"
+  - "milli məclis"
+  - "zəngəzur"
+
+mention_regex: ['\b(?:azerbaijan\w*|baku|aliyev|socar|karabakh)\b', '\bazərbaycan\w*\b', '\bbakı\w*\b', '\bəliyev\w*\b']
+mention_section: null
+
+url_sections:
+  foreign: [world, international, dunya]
+  skip: [sport, sports, idman, culture, medeniyyet, showbiz, lifestyle]
+
+aggregator_outlets:
+  domestic:
+    - "azertac"
+    - "azerbaijan state news agency"
+    - "trend news agency"
+    - "trend.az"
+    - "apa"
+    - "apa.az"
+    - "report.az"
+    - "report news agency"
+    - "caliber.az"
+    - "azernews"
+    - "haqqin.az"
+    - "oxu.az"
+    - "musavat"
+  abroad_local:
+    - "meydan tv"
+    - "oc media"
+    - "jamnews"
+    - "azadliq radiosu"
+    - "rfe/rl"
+    - "turan"
+
+excerpt:
+  dateline: '^\s*(?:BAKU,\s*Azerbaijan|BAKU|AZERTAC|Trend|APA|Report\.az)\s*[-–—:]\s*'
+  noise: '^(Photo|Credit|File photo|Read more|Foto|\(|\[)'
+
+classify:
+  internal_politics:
+    - "President Ilham Aliyev, Milli Majlis parliament, New Azerbaijan Party (YAP), arrests of journalists and activists, Abzas Media, Toplum TV, Meydan TV"
+    - "Prezident İlham Əliyev, Milli Məclis, Yeni Azərbaycan Partiyası, siyasi məhbuslar, jurnalistlərin həbsi"
+  economics:
+    - "SOCAR oil and gas exports, Southern Gas Corridor, green energy corridor to Europe, Middle Corridor transit, Central Bank of Azerbaijan, manat, state oil fund SOFAZ"
+    - "SOCAR, neft və qaz ixracı, Cənub Qaz Dəhlizi, Orta Dəhliz, Mərkəzi Bank, dövlət büdcəsi, manat"
+  foreign_policy:
+    - "Armenia-Azerbaijan peace treaty negotiations, border delimitation, Zangezur corridor, relations with Turkey, Russia, EU, Iran and Israel, COP29 legacy"
+    - "Ermənistan-Azərbaycan sülh müqaviləsi, sərhədlərin delimitasiyası, Zəngəzur dəhlizi, Türkiyə, Rusiya, Avropa İttifaqı, İran"
+  defence_security:
+    - "Azerbaijani Armed Forces, Defense Ministry, Karabakh security, border clashes, military exercises with Turkey, arms procurement"
+    - "Müdafiə Nazirliyi, Azərbaycan Ordusu, Qarabağ, hərbi təlimlər, sərhəd təhlükəsizliyi"
+  society:
+    - "Karabakh reconstruction and resettlement, education, public health, Caspian Sea environment, courts"
+    - "Qarabağa qayıdış, təhsil, səhiyyə, Xəzər dənizi, məhkəmə"
+
+geo: AZ
+reddit: [azerbaijan, baku]

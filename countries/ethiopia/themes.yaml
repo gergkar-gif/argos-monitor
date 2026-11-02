@@ -1,0 +1,25 @@
+# Ethiopia's additions to the shared themes (../../themes.yaml).
+themes:
+  - id: diplomacy
+    label: Red Sea access, Horn of Africa & GERD geopolitics
+    weight: 1.0
+    category: foreign_policy
+    describe:
+      - Ethiopia quest for Red Sea port access, Somaliland MoU and Somalia diplomatic tensions, Egypt-Ethiopia rivalry over the Grand Ethiopian Renaissance Dam (GERD), Eritrea relations, BRICS and African Union diplomacy
+    keywords: ["red sea", "somaliland", "somalia", "berbera", "ankara declaration", "gerd", "renaissance dam", "nile", "eritrea", "african union", "brics"]
+
+  - id: security
+    label: Amhara (Fano), Oromia & Tigray internal security
+    weight: 1.0
+    category: defence_security
+    describe:
+      - Ethiopian National Defense Force (ENDF) operations against Fano militia in Amhara region and Oromo Liberation Army (OLA) in Oromia, Pretoria Agreement implementation and TPLF split in Tigray
+    keywords: ["fano", "amhara", "ola", "oromo liberation army", "oromia", "tigray", "tplf", "pretoria agreement", "endf", "drone strike", "state of emergency"]
+
+  - id: econ_policy
+    label: IMF program, Floating Birr & Debt restructuring
+    weight: 0.95
+    category: economics
+    describe:
+      - National Bank of Ethiopia (NBE) market-based foreign exchange regime (floating birr), IMF and World Bank financing package, Eurobond debt restructuring, inflation, Ethiopian Securities Exchange (ESX)
+    keywords: ["national bank of ethiopia", "nbe", "mamo mihretu", "birr", "foreign exchange", "imf", "world bank", "debt restructuring", "eurobond", "esx", "ethiopian airlines"]

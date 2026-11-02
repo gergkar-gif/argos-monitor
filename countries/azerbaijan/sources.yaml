@@ -1,0 +1,84 @@
+# Azerbaijan source registry (decision D15).
+# Contrasts state/official and pro-government wires in Baku (AZERTAC, Trend, APA) with exiled independent Azerbaijani media (Meydan TV in Azerbaijani & English) and regional/international coverage.
+
+sources:
+  - id: azertag_en
+    name: AZERTAC (Azerbaijan State News Agency)
+    homepage: https://azertag.az/en
+    language: en
+    scope: domestic
+    kind: official
+    governing_body: Azerbaijan State News Agency (official state wire)
+    state_affiliated: true
+    feeds:
+      - {url: "https://azertag.az/en/rss", section: Latest, category_hint: general}
+
+  - id: trend_en
+    name: Trend News Agency
+    homepage: https://en.trend.az
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Trend News Agency (pro-government Baku wire)
+    state_affiliated: true
+    feeds:
+      - {url: "https://en.trend.az/feeds/index.rss", section: All News, category_hint: general}
+
+  - id: apa_en
+    name: APA (Azeri-Press Agency)
+    homepage: https://en.apa.az
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: APA Holding (pro-government Baku news agency)
+    state_affiliated: true
+    feeds:
+      - {url: "https://en.apa.az/rss", section: Latest, category_hint: general}
+
+  - id: meydan_en
+    name: Meydan TV (English)
+    homepage: https://www.meydan.tv/en
+    language: en
+    scope: abroad_local
+    kind: media
+    governing_body: Association for the Democracy in Azerbaijan (independent exiled media in Berlin)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.meydan.tv/en/feed/", section: English, category_hint: general}
+
+  - id: meydan_az
+    name: Meydan TV (Azerbaijani)
+    homepage: https://www.meydan.tv/az
+    language: az
+    scope: abroad_local
+    kind: media
+    governing_body: Association for the Democracy in Azerbaijan (independent exiled media in Berlin)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.meydan.tv/az/feed/", section: Azərbaycanca, category_hint: general}
+
+  - id: gnews_az_abroad
+    name: Google News (Independent Caucasus & Exile Press)
+    homepage: https://news.google.com
+    language: en
+    scope: abroad_local
+    kind: media
+    aggregator: google_news
+    governing_body: Regional Caucasus & exiled independent outlets via Google News
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:oc-media.org+OR+site:eurasianet.org+OR+site:rferl.org)+Azerbaijan+when:7d&hl=en-US&gl=US&ceid=US:en", section: OC Media / Eurasianet / RFE, category_hint: general}
+
+  - id: gnews_en_az
+    name: Google News (Azerbaijan - International)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Azerbaijan+when:1d&hl=en-US&gl=US&ceid=US:en", section: Azerbaijan, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=Azerbaijan+(Armenia+OR+peace+OR+Aliyev+OR+Zangezur+OR+Karabakh)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Peace talks & diplomacy, category_hint: foreign_policy}
+      - {url: "https://news.google.com/rss/search?q=Azerbaijan+(SOCAR+OR+gas+OR+energy+OR+corridor+OR+oil)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Energy & Middle Corridor, category_hint: economics}
