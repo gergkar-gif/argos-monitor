@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+title: "Argos Monitor: Open-Source Multilingual Media and Crisis Intelligence Monitor"
+message: "If you use Argos Monitor in your research or analysis, please cite it as below."
+type: software
+authors:
+  - family-names: "Károly"
+    given-names: "Gergely"
+repository-code: "https://github.com/gergkar-gif/argos-monitor"
+url: "https://argos-monitor.pages.dev"
+license: MIT
+keywords:
+  - open-source-intelligence
+  - media-monitoring
+  - foreign-policy
+  - crisis-monitoring
+  - multilingual-nlp
+  - onnx

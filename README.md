@@ -1,44 +1,114 @@
-<img src="site/assets/eye.png" alt="Argos Monitor logo" width="80">
+<p align="center">
+  <img src="site/assets/eye.png" alt="Argos Monitor logo" width="64">
+</p>
 
-# Argos Monitor
+<h1 align="center">Argos Monitor</h1>
 
-A news monitoring dashboard, starting with Vietnam. See [CLAUDE.md](CLAUDE.md) for what it does and the rules it follows.
+<p align="center">
+  <strong>Open-source multilingual media &amp; crisis intelligence monitor for foreign-affairs analysts</strong><br>
+  <em>Deterministic ONNX embedding clustering · Syndication deduplication · State-media tagging · Domestic blind-spot detection · Zero LLM hallucinations</em>
+</p>
 
-## How to run
+<p align="center">
+  <a href="https://argos-monitor.pages.dev"><strong>Live Platform (argos-monitor.pages.dev)</strong></a> ·
+  <a href="https://argos-monitor.pages.dev/about.html">Methodology</a> ·
+  <a href="https://argos-monitor.pages.dev/sources.html">Source Directory</a> ·
+  <a href="https://github.com/gergkar-gif/argos-monitor/actions/workflows/daily.yml"><img src="https://github.com/gergkar-gif/argos-monitor/actions/workflows/daily.yml/badge.svg" alt="Daily Digest CI"></a>
+</p>
 
-Open PowerShell in this project folder. Run each command on its own and wait for it to finish.
+---
 
-**1. Install the packages (once).**
+## Overview
+
+**Argos Monitor** (created by **Károly Gergely**) is an automated open-source media and crisis intelligence platform built for foreign-desk officers, country analysts, and researchers.
+
+Unlike LLM-based news summarizers—which risk hallucinated claims, flattened diplomatic nuance, or unattributed spin—Argos operates on a strict **evidence-first** architecture:
+
+1. **No source, no statement:** Every headline and pull-quote on the platform is extracted verbatim and verified character-for-character as an exact substring of the stored source article.
+2. **Zero LLM in the pipeline:** Event clustering, cross-lingual topic classification, policy-theme scoring, and quote selection are 100% deterministic, powered locally by ONNX Runtime (`intfloat/multilingual-e5-small`).
+3. **Independent outlet counting:** State wire reprints and syndicated copies (cosine similarity $\ge 0.95$) are collapsed so 20 reprints of a single wire dispatch never masquerade as 20 independent confirmations.
+4. **Domestic press blind-spot detection (`NOT IN DOMESTIC PRESS`):** Stories covered by international wires or local-language diaspora outlets abroad that receive zero coverage inside the country's domestic press are automatically flagged.
+5. **State-affiliation transparency (`OFFICIAL` vs. `REPORTED`):** Every monitored outlet is catalogued by ownership, governing body, and state/party affiliation so official government statements are immediately distinguishable from independent reporting.
+
+---
+
+## Architecture & 10-Stage Pipeline
+
+A scheduled GitHub Actions workflow runs every 3 hours, updating the SQLite store and publishing static JSON/JS data bundles to Cloudflare Pages:
+
+```mermaid
+flowchart LR
+    A["01 · Ingest<br/>120+ RSS & Google News feeds"] --> B["02 · Extract<br/>Trafilatura full-text"]
+    B --> C["03 · Normalise<br/>Unicode NFC"]
+    C --> D["04 · Relevance<br/>Section & mention gate"]
+    D --> E["05 · Embed<br/>ONNX multilingual-e5-small"]
+    E --> F["06 · Cluster<br/>Agglomerative + copy dedup"]
+    F --> G["07 · Classify<br/>Bilingual topic anchors"]
+    G --> H["08 · Policy & Rank<br/>themes.yaml + outlet diversity"]
+    H --> I["09 · Verify<br/>Substring-verified excerpts"]
+    I --> J["10 · Signals & Export<br/>Crisis alerts, Trends, Reddit"]
 ```
+
+| Stage | Module | Description |
+| :--- | :--- | :--- |
+| **01 · Ingest** | [`argos/ingest.py`](argos/ingest.py) | Polls domestic, diaspora (`abroad_local`), and international RSS/Atom feeds per country pack. |
+| **02 · Extract** | [`argos/extract.py`](argos/extract.py) | Fetches full article text via Trafilatura and resolves syndicated publisher names. |
+| **03 · Normalise** | [`argos/normalise.py`](argos/normalise.py) | Applies Unicode NFC normalisation across all text fields (essential for Vietnamese diacritics and Khmer script). |
+| **04 · Relevance** | [`argos/relevance.py`](argos/relevance.py) | Filters out lifestyle/sport noise and enforces country-mention rules on general international feeds. |
+| **05 · Embed** | [`argos/embed.py`](argos/embed.py) | Encodes headlines and leads into 384-d vectors via ONNX Runtime (`intfloat/multilingual-e5-small`). |
+| **06 · Cluster** | [`argos/cluster.py`](argos/cluster.py) | Two-pass agglomerative cosine clustering into event stories, flagging near-duplicate reprints ($\ge 0.95$) and related clusters. |
+| **07 · Classify** | [`argos/classify.py`](argos/classify.py) | Assigns stories to 6 policy desks (`Internal politics`, `Economy`, `Foreign policy`, `Defence & security`, `Society`, `Other`) using feed hints + bilingual anchor embeddings. |
+| **08 · Policy & Rank** | [`argos/policy.py`](argos/policy.py), [`argos/rank.py`](argos/rank.py) | Scores stories by foreign-desk priority themes (`themes.yaml`), independent outlet count, scope diversity, and recency. |
+| **09 · Excerpts & Verify** | [`argos/excerpts.py`](argos/excerpts.py), [`argos/verify.py`](argos/verify.py) | Selects informative sentences and asserts each excerpt is a verbatim substring of the source article. |
+| **10 · Signals & Export** | [`argos/crisis.py`](argos/crisis.py), [`argos/trends.py`](argos/trends.py), [`argos/reddit.py`](argos/reddit.py), [`argos/export.py`](argos/export.py) | Integrates GDACS/USGS disasters, UK FCDO & US State Dept travel advisories, Google Trends, and policy-filtered Reddit discussions into static bundles. |
+
+---
+
+## Declarative Country Pack System
+
+Each monitored country is defined declaratively in `countries/<id>/` with zero code changes required to onboard a new desk:
+
+- **`pack.yaml`** — ISO codes, primary language, country-mention terms, URL section classifier rules, bilingual topic anchor descriptions, and monitored subreddits.
+- **`sources.yaml`** — Curated media directory across three scopes (`domestic`, `abroad_local`, `international`) with ownership metadata and `state_affiliated` flags.
+- **`themes.yaml`** — Bilingual foreign-desk priority themes, weights, keywords, and semantic descriptions tailored to the country's geopolitical fault lines.
+
+### Currently Active Country Packs
+- **Vietnam** (`countries/vietnam/`) — Domestic state/party press, overseas Vietnamese media, and international wires (`vi` / `en`).
+- **Hungary** (`countries/hungary/`) — Pro-government and independent domestic outlets, cross-border Hungarian press, and EU/international coverage (`hu` / `en`).
+- **Cambodia** (`countries/cambodia/`) — Khmer and English domestic press, exile/diaspora coverage, and regional ASEAN reporting (`km` / `en`).
+- **South Africa** (`countries/south_africa/`) — Domestic national press, regional African outlets, and international coverage (`en`).
+
+---
+
+## Running Locally
+
+### 1. Install dependencies
+```powershell
 python -m pip install -r requirements.txt
 ```
 
-**2. Check the setup (once, and any time something seems broken).**
-```
+### 2. Verify environment & download ONNX model
+```powershell
 python setup_check.py
 ```
-It creates the data folder `C:\ArgosData` (outside Google Drive, because Drive corrupts database files) and checks that everything is in place. The last line should say `setup OK`. If it says `Setup FAILED`, it lists what to fix.
+Creates the local SQLite & model directory (`C:\ArgosData` by default, or set via `ARGOS_DATA_DIR`) and verifies dependencies.
 
-**3. Check that the news feeds still work (optional).**
-```
-python tools/check_feeds.py
-```
-The last line should say `50/50 feeds OK` (the number may change as feeds are added or removed).
-
-To keep the data somewhere other than `C:\ArgosData`, set the `ARGOS_DATA_DIR` environment variable to a local folder before running.
-
-**4. Collect the news and build the site.**
-```
+### 3. Run the full pipeline (or individual stages)
+```powershell
 python run.py
+# Or run specific stages:
+python run.py crisis trends reddit export
 ```
-This fetches the feeds of every country, reads the articles, groups them into stories, ranks them and writes the data files the website reads. The first run takes most of an hour (thousands of articles); later runs only read what is new. You can also run one stage, for example `python run.py export`.
 
-**5. Open the website.** Double-click `site\index.html`. Choose a country, a period and a topic, then press Research. (Vietnam, Hungary, Cambodia and South Africa are set up so far; each country is a folder under `countries`.) If you see "No data found", run step 4 first.
-
-If the page looks broken or your browser complains about a `file:` address, open it over a local address instead. It's one command:
-```
+### 4. View the site
+Open `site/index.html` directly in any browser (works over `file://`), or launch the local development server:
+```powershell
 python serve.py
 ```
-That opens the site in your browser at `http://localhost:8770/`. Press Ctrl+C in the window to stop it.
 
-The website lives in the `site` folder and is plain files, so it can be published to a free static host later (decision D12).
+---
+
+## Author & License
+
+Created and maintained by **Károly Gergely**.  
+Released under the [MIT License](LICENSE).
