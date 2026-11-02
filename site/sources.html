@@ -2,117 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sources · Argos Monitor</title>
-<link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png">
-<link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="style.css">
+<meta http-equiv="refresh" content="0; url=about.html#sources">
+<title>Sources Directory · Argos Monitor</title>
+<script>location.replace('about.html#sources');</script>
 </head>
 <body>
-<header class="bureau">
-  <div class="bureau-inner">
-    <div class="masthead">
-      <div>
-        <h1><a href="index.html#home"><img src="assets/eye.png" alt="" class="logo">Argos Monitor</a></h1>
-        <p>Open-source media &amp; crisis monitor</p>
-      </div>
-      <nav class="topnav" aria-label="Primary">
-        <a href="index.html#home">Overview</a>
-        <a href="index.html#country">Country Brief</a>
-        <a href="index.html#alerts">Alerts</a>
-        <a href="index.html#disasters">Disasters</a>
-        <a href="index.html#violence">Violent Events</a>
-        <a href="brief.html">Top Reported Stories</a>
-        <a href="sources.html" aria-current="page">Sources</a>
-        <a href="about.html">About</a>
-      </nav>
-    </div>
-    <form class="slip notranslate" translate="no" aria-label="Filter sources" onsubmit="event.preventDefault()">
-      <label class="field notranslate" translate="no"><span>Country</span><select id="s-country" translate="no" class="notranslate"></select></label>
-      <label class="field"><span>Scope</span><select id="s-scope">
-        <option value="all">All scopes</option>
-        <option value="domestic">In the country</option>
-        <option value="abroad_local">Local-language, abroad</option>
-        <option value="international">International</option>
-      </select></label>
-      <label class="field" style="grid-column: span 2"><span>Search</span><input id="s-q" type="search" placeholder="Outlet name or governing body" autocomplete="off"></label>
-    </form>
-  </div>
-</header>
-<main id="src"><p class="state">Loading…</p></main>
-<script src="data/index.js"></script>
-<script src="data/sources.js"></script>
-<script>
-(() => {
-  const root = document.getElementById('src'), idx = window.ARGOS_INDEX, raw = window.ARGOS_SOURCES, data = raw && (raw.sources || raw);
-  const cSel = document.getElementById('s-country'), scSel = document.getElementById('s-scope'), qIn = document.getElementById('s-q');
-  const el = (tag, attrs, ...kids) => { const e = document.createElement(tag); for (const [k, v] of Object.entries(attrs || {})) { if (v == null || v === false) continue; if (k === 'text') e.textContent = v; else if (k.startsWith('on')) e.addEventListener(k.slice(2), v); else e.setAttribute(k, v); } e.append(...kids.flat(Infinity).filter((x) => x != null && x !== false)); return e; };
-  const safe = (u) => { try { const x = new URL(u); return /^https?:$/.test(x.protocol) ? x.href : '#'; } catch { return '#'; } };
-  if (!data) { root.replaceChildren(el('p', { class: 'state error', text: 'No data found.' })); return; }
-  const REGIONS = [
-    'Southeast Asia', 'Central Europe', 'Balkans', 'Eastern Europe',
-    'South Caucasus', 'Central Asia', 'Middle East & Mediterranean',
-    'Sub-Saharan Africa', 'South America'
-  ];
-  const COUNTRY_REGION = {
-    cambodia: 'Southeast Asia', indonesia: 'Southeast Asia', malaysia: 'Southeast Asia', myanmar: 'Southeast Asia',
-    philippines: 'Southeast Asia', thailand: 'Southeast Asia', vietnam: 'Southeast Asia',
-    hungary: 'Central Europe', poland: 'Central Europe', slovakia: 'Central Europe',
-    bosnia: 'Balkans', kosovo: 'Balkans', serbia: 'Balkans',
-    moldova: 'Eastern Europe',
-    armenia: 'South Caucasus', azerbaijan: 'South Caucasus', georgia: 'South Caucasus',
-    kazakhstan: 'Central Asia', kyrgyzstan: 'Central Asia', uzbekistan: 'Central Asia',
-    turkey: 'Middle East & Mediterranean',
-    ethiopia: 'Sub-Saharan Africa', kenya: 'Sub-Saharan Africa', nigeria: 'Sub-Saharan Africa', south_africa: 'Sub-Saharan Africa',
-    argentina: 'South America', brazil: 'South America', colombia: 'South America',
-  };
-  const scope = { domestic: 'In the country', abroad_local: 'Local-language, abroad', international: 'International' };
-  const byId = Object.fromEntries(((idx && idx.countries) || []).map((c) => [c.id, c]));
-  const allCountries = Object.keys(data).sort().map((id) => ({
-    id,
-    name: (byId[id] && byId[id].name) || id.replace(/_/g, ' ').replace(/\b\w/g, (m) => m.toUpperCase()),
-    region: (byId[id] && byId[id].region) || COUNTRY_REGION[id] || 'Other',
-  }));
-  let openRegion = 'all';
-  cSel.replaceChildren(
-    el('option', { value: 'all', text: 'All countries', class: 'notranslate', translate: 'no' }),
-    ...REGIONS.flatMap((r) => {
-      const items = allCountries.filter((c) => c.region === r);
-      return items.length ? [el('optgroup', { label: r, class: 'notranslate', translate: 'no' }, ...items.map((c) => el('option', { value: c.id, text: c.name, class: 'notranslate', translate: 'no' })))] : [];
-    }));
-
-  const fold = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/ł/g, 'l').replace(/ı/g, 'i');
-  function render() {
-    const cid = cSel.value, sc = scSel.value, q = fold(qIn.value.trim());
-    const countries = cid === 'all'
-      ? allCountries.filter((c) => openRegion === 'all' || c.region === openRegion)
-      : allCountries.filter((c) => c.id === cid);
-    root.replaceChildren(
-      el('p', { class: 'result-line' }, el('b', { text: 'Source directory' }), ' · Every outlet Argos reads, who runs it, and state-affiliation classification'),
-      el('div', { class: 'tabs', role: 'tablist', 'aria-label': 'Filter by region' },
-        ...[['all', 'All regions'], ...REGIONS.map((r) => [r, r])].map(([id, label]) =>
-          el('button', { type: 'button', role: 'tab', class: openRegion === id && cid === 'all' ? 'active' : '', text: label, onclick: () => { openRegion = id; cSel.value = 'all'; render(); } }))),
-      ...countries.flatMap((c) => {
-        const rows = (data[c.id] || []).filter((s) => (sc === 'all' || s.scope === sc) && (!q || fold(`${s.name} ${s.governing_body || ''} ${s.kind || ''}`).includes(q)));
-        if (!rows.length) return [];
-        return [
-          el('section', { class: 'drawer' },
-            el('div', { class: 'drawer-head' }, el('h2', { text: c.name }), el('span', { class: 'count', text: `${rows.length} outlets` })),
-            el('div', { class: 'desk-wrap' }, el('table', { class: 'desk-table' },
-              el('thead', null, el('tr', null, ['Outlet', 'Where', 'Type', 'Run by', 'State-linked'].map((x) => el('th', { text: x })))),
-              el('tbody', null, rows.map((s) => el('tr', null,
-                el('td', null, el('a', { href: safe(s.homepage), target: '_blank', rel: 'noopener', text: s.name })),
-                el('td', { text: scope[s.scope] || s.scope }),
-                el('td', { class: 'typed', text: s.kind }),
-                el('td', { text: s.governing_body || '' }),
-                el('td', null, s.state_affiliated ? el('span', { class: 'stamp red', text: 'Yes' }) : el('span', { class: 'typed', text: 'No' }))))))))];
-      }));
-  }
-  cSel.addEventListener('change', render);
-  scSel.addEventListener('change', render);
-  qIn.addEventListener('input', render);
-  render();
-})();
-</script>
+<p>Redirecting to <a href="about.html#sources">Sources Directory in About</a>…</p>
+</body>
+</html>
 </body>
 </html>
