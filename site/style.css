@@ -377,9 +377,27 @@ summary:hover { color: var(--ink); }
 .orig[hidden], body:not(.show-orig) .orig { display: none; }
 .strip .orig { margin-top: 0.25rem; font-size: 0.82rem; max-width: 62ch; }
 .sources .orig { font-size: 0.8rem; margin: 0; }
-.trans { margin-top: 0.75rem; }
-.trans .notice { margin-top: 0; }
-.trans .more { margin-top: 0.5rem; }
+.trans {
+  margin-top: 2.5rem;
+  padding: 1rem 0 0.5rem;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+}
+.trans .notice {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--ink-3);
+  max-width: 75ch;
+  line-height: 1.45;
+}
+.trans .more {
+  margin-top: 0.2rem;
+  font-size: 0.72rem;
+  padding: 0.3rem 0.65rem;
+}
 .trans .offer { padding: 0.45rem 0.9rem; color: #fff; background: var(--ink); border-color: var(--ink); }
 
 .themes { font: 600 0.75rem/1.2 var(--sans); color: var(--ink-3); }

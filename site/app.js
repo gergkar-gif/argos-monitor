@@ -696,7 +696,6 @@
         h('b', { text: titleText }),
         ` · ${plural(allOfficial.length, isDis ? 'official sensor alert' : 'official security advisory', isDis ? 'official sensor alerts' : 'official security advisories')} · ${plural(stories.length, 'reported story cluster', 'reported story clusters')} · `,
         h('button', { type: 'button', class: 'desk-link', text: '← Back to Overview', onclick: () => openCountry('home') })),
-      h('div', { id: 'trans', class: 'trans' }),
       bar,
       subTabs,
       allOfficial.length > 0 && h('section', { class: 'drawer' },
@@ -720,6 +719,7 @@
             'Organized by recency across monitored feeds',
             stories.slice(0, 36))
         : h('p', { class: 'state', text: filterCountry ? `No matching reported events for ${countryName}.` : 'No matching reported story clusters.' }),
+      h('div', { id: 'trans', class: 'trans' }),
     ].filter(Boolean));
     paintTranslationBar();
     translatePending();
@@ -1003,7 +1003,6 @@
       h('p', { class: 'result-line' },
         h('b', { text: openRegion === 'all' ? 'Overview across all monitored countries' : `Regional Desk · ${openRegion}` }),
         ` · ${plural(desks.length, 'country', 'countries')} · updated ${fmtTime.format(new Date(hm.generated_at))}`),
-      h('div', { id: 'trans', class: 'trans' }),
       watchbar(q, pool),
       tabs,
       allAlerts.length > 0 && h('div', { class: 'crisis-strip', role: 'region', 'aria-label': 'Active crisis alerts' },
@@ -1042,6 +1041,7 @@
                   return [a, o, h('span', { class: 'meta', text: ` (${d.lead.source} · ${d.lead.outlets} outlets)` })];
                 })() : '—'));
             }))))),
+      h('div', { id: 'trans', class: 'trans' }),
     ].filter(Boolean));
     paintTranslationBar();
     translatePending();
@@ -1085,7 +1085,6 @@
         ` · ${periodLabel} · ${plural(totalStories, 'story', 'stories')} found · updated ${fmtTime.format(updated)}${ageH > STALE_HOURS ? ` (${Math.round(ageH / 24)}d old)` : ''} · `,
         h('button', { type: 'button', class: 'desk-link', text: '← All countries overview', onclick: () => openCountry('home') })),
       noOutside && h('p', { class: 'notice quiet', text: `No coverage from ${(index.countries.find((x) => x.id === country.value) || {}).abroad_label || 'outlets abroad'} or from international outlets has been collected for this period yet, so the "not in domestic press" check cannot run.` }),
-      h('div', { id: 'trans', class: 'trans' }),
       watchbar(q),
       tabs,
       side.length
@@ -1093,6 +1092,7 @@
             h('div', { class: 'country-main' }, ...body),
             h('aside', { class: 'country-side', 'aria-label': 'Country signals' }, ...side))
         : h('div', { class: 'country-main' }, ...body),
+      h('div', { id: 'trans', class: 'trans' }),
     ].filter(Boolean));
     paintTranslationBar();
     translatePending();
