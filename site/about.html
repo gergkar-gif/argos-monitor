@@ -10,14 +10,15 @@
 <link rel="stylesheet" href="style.css">
 <style>
   .doc { max-width: 52rem; margin: 0 auto; padding: 2rem 1.5rem 4rem; display: grid; gap: 2rem; }
-  .doc h2 { font: 700 1.25rem/1.25 var(--serif); padding-bottom: 0.45rem; border-bottom: 1px solid var(--rule); margin-bottom: 0.65rem; }
-  .doc p, .doc li { max-width: 65ch; line-height: 1.65; color: #292826; }
+  .doc h2 { font: 700 0.9rem/1.2 var(--sans); letter-spacing: 0.06em; text-transform: uppercase; padding-bottom: 0.4rem; border-bottom: 1px solid var(--ink); margin-bottom: 0.75rem; }
+  .doc p, .doc li { max-width: 65ch; line-height: 1.65; color: var(--ink-2); }
+  .doc strong { color: var(--ink); }
   .doc ul, .doc ol { margin: 0.4rem 0 0; padding-left: 1.3rem; display: grid; gap: 0.5rem; }
-  .pipeline { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; margin-top: 0.85rem; }
+  .pipeline { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem 2rem; margin-top: 1rem; }
   @media (max-width: 38rem) { .pipeline { grid-template-columns: 1fr; } }
-  .step { background: var(--card); border: 1px solid var(--rule); border-radius: 6px; padding: 0.85rem 1rem; display: grid; gap: 0.25rem; align-content: start; }
-  .step b { font: 600 0.78rem/1.2 var(--sans); color: var(--indigo); }
-  .step span { font-size: 0.875rem; line-height: 1.45; color: var(--ink-2); }
+  .step { border-left: 4px solid var(--bar); padding: 0.1rem 0 0.1rem 0.9rem; display: grid; gap: 0.2rem; align-content: start; }
+  .step b { font: 700 0.85rem/1.2 var(--sans); color: var(--ink); }
+  .step span { font-size: 0.88rem; line-height: 1.45; color: var(--ink-2); }
 </style>
 </head>
 <body>
