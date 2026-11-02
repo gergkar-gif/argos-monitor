@@ -1,0 +1,19 @@
+# Armenia's additions to the shared themes (../../themes.yaml).
+themes:
+  - id: diplomacy
+    label: Azerbaijan Peace Treaty, Border Demarcation & CSTO Freeze
+    weight: 1.0
+    category: foreign_policy
+    describe:
+      - Armenia-Azerbaijan peace treaty talks, border demarcation in Tavush and Syunik, Crossroads of Peace transit routes, CSTO freeze and EU/Western pivot
+      - Հայաստան-Ադրբեջան խաղաղության պայմանագիր, սահմանազատում, Խաղաղության խաչմերուկ, ՀԱՊԿ, Եվրամիություն
+    keywords: ["peace treaty", "border demarcation", "delimitation", "crossroads of peace", "zangezur", "syunik", "csto", "euma", "սահմանազատում", "խաղաղության պայմանագիր", "սյունիք", "հապկ"]
+
+  - id: party_gov
+    label: Pashinyan Government, Constitutional Reform & Opposition
+    weight: 0.95
+    category: internal_politics
+    describe:
+      - Prime Minister Nikol Pashinyan, National Assembly, constitutional referendum debates, opposition rallies, Armenian Apostolic Church tensions
+      - Նիկոլ Փաշինյան, Ազգային ժողով, սահմանադրական բարեփոխումներ, ընդդիմություն
+    keywords: ["pashinyan", "civil contract", "mirzoyan", "constitutional", "catholicos", "փաշինյան", "միրզոյան", "սահմանադրութ"]

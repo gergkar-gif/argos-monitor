@@ -1,0 +1,80 @@
+# Nigeria country pack (decision D15).
+id: nigeria
+name: Nigeria
+region: Africa & Americas
+language: en
+abroad_label: Nigerian diaspora & West African regional outlets
+
+mention:
+  - "nigeria"
+  - "nigerian"
+  - "abuja"
+  - "lagos"
+  - "kano"
+  - "port harcourt"
+  - "maiduguri"
+  - "kaduna"
+  - "tinubu"
+  - "bola tinubu"
+  - "shettima"
+  - "kashim shettima"
+  - "aso rock"
+  - "national assembly"
+  - "naira"
+  - "cbn"
+  - "nnpc"
+  - "dangote"
+  - "efcc"
+  - "inec"
+  - "boko haram"
+  - "iswap"
+  - "ecowas"
+
+mention_regex: ['\b(?:nigeria|nigerian|abuja|lagos|tinubu|naira|nnpc)\b']
+mention_section: null
+
+url_sections:
+  foreign: [world, international, global]
+  skip: [sport, sports, entertainment, nollywood, lifestyle, fashion, celebrity]
+
+aggregator_outlets:
+  domestic:
+    - "premium times"
+    - "punch"
+    - "punchng"
+    - "vanguard"
+    - "channels tv"
+    - "channelstv"
+    - "daily trust"
+    - "the cable"
+    - "thecable"
+    - "arise news"
+    - "thisday"
+    - "guardian.ng"
+    - "businessday"
+    - "nannews"
+    - "news agency of nigeria"
+  abroad_local:
+    - "sahara reporters"
+    - "saharareporters"
+    - "peoples gazette"
+    - "the africa report"
+
+excerpt:
+  dateline: '^\s*(?:ABUJA|LAGOS|KANO|PORT HARCOURT|NAN)\s*[-–—:]\s*'
+  noise: '^(Photo|Credit|File photo|Read also|READ ALSO|\(|\[)'
+
+classify:
+  internal_politics:
+    - "President Bola Tinubu, Aso Rock Villa, APC ruling party, PDP and Labour Party opposition, Senate and House of Representatives, INEC elections, state governors, EFCC anti-corruption"
+  economics:
+    - "Central Bank of Nigeria (CBN) Olayemi Cardoso, naira exchange rate, inflation, NNPC, Dangote Refinery, fuel prices, Niger Delta oil production, tax reform bills"
+  foreign_policy:
+    - "ECOWAS chairmanship and West African diplomacy, relations with Sahel states (Niger, Mali, Burkina Faso), US, UK, China and EU trade and security partnerships"
+  defence_security:
+    - "Nigerian Armed Forces, Boko Haram and ISWAP insurgency in Borno and Lake Chad, northwest banditry and kidnappings, IPOB in the southeast, Niger Delta pipeline security"
+  society:
+    - "ASUU universities, healthcare, national grid collapses, minimum wage and NLC labour strikes, floods and weather"
+
+geo: NG
+reddit: [Nigeria, Lagos]

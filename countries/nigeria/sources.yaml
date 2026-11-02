@@ -1,0 +1,83 @@
+# Nigeria source registry (decision D15).
+# Combines independent Nigerian dailies & broadcasters (Premium Times, The Punch, Vanguard, Channels TV), diaspora investigative press (Sahara Reporters), state wire NAN / Voice of Nigeria via Google News, and international wires.
+
+sources:
+  - id: premiumtimes_ng
+    name: Premium Times
+    homepage: https://www.premiumtimesng.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Premium Times Services Ltd (Abuja independent investigative newspaper)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.premiumtimesng.com/feed", section: Latest, category_hint: general}
+
+  - id: punch_ng
+    name: The Punch
+    homepage: https://punchng.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Punch Nigeria Limited (Lagos national daily newspaper)
+    state_affiliated: false
+    feeds:
+      - {url: "https://punchng.com/feed/", section: News, category_hint: general}
+
+  - id: vanguard_ng
+    name: Vanguard
+    homepage: https://www.vanguardngr.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Vanguard Media Limited (Lagos national daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.vanguardngr.com/feed/", section: News, category_hint: general}
+
+  - id: channelstv_ng
+    name: Channels Television
+    homepage: https://www.channelstv.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Channels Incorporated Limited (independent Nigerian 24-hour news broadcaster)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.channelstv.com/feed/", section: Top Stories, category_hint: general}
+
+  - id: saharareporters
+    name: Sahara Reporters
+    homepage: https://saharareporters.com
+    language: en
+    scope: abroad_local
+    kind: media
+    governing_body: Sahara Reporters Media Group (New York-based Nigerian diaspora investigative outlet)
+    state_affiliated: false
+    feeds:
+      - {url: "https://saharareporters.com/rss.xml", section: Latest, category_hint: general}
+
+  - id: gnews_ng_official
+    name: NAN / Voice of Nigeria (Official State Press via Google News)
+    homepage: https://nannews.ng
+    language: en
+    scope: domestic
+    kind: official
+    aggregator: google_news
+    governing_body: News Agency of Nigeria (NAN) / Voice of Nigeria (Federal Government)
+    state_affiliated: true
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:nannews.ng+OR+site:von.gov.ng+OR+site:statehouse.gov.ng)+when:7d&hl=en-NG&gl=NG&ceid=NG:en", section: NAN & State House, category_hint: general}
+
+  - id: gnews_en_ng
+    name: Google News (Nigeria - International)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Nigeria+(Abuja+OR+Tinubu+OR+CBN+OR+naira+OR+NNPC+OR+Dangote)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Nigeria politics & economy, category_hint: economics}
+      - {url: "https://news.google.com/rss/search?q=Nigeria+(ECOWAS+OR+Borno+OR+ISWAP+OR+%22Boko+Haram%22+OR+bandits+OR+security)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Nigeria security & ECOWAS, category_hint: defence_security}

@@ -1,0 +1,19 @@
+# Uzbekistan's additions to the shared themes (../../themes.yaml).
+themes:
+  - id: party_gov
+    label: Presidency, Governance & Karakalpakstan
+    weight: 1.0
+    category: internal_politics
+    describe:
+      - President Shavkat Mirziyoyev, Oliy Majlis, government reshuffles, Karakalpakstan autonomous republic, media and NGO regulations
+      - Shavkat Mirziyoyev, Oliy Majlis, prezident qarori, Qoraqalpog‘iston, hokimiyat
+    keywords: ["mirziyoyev", "aripov", "oliy majlis", "karakalpakstan", "nukus", "qoraqalpog", "prezident farmoni"]
+
+  - id: trade_invest
+    label: Energy Security, Critical Minerals & Transit Corridors
+    weight: 1.0
+    category: economics
+    describe:
+      - Natural gas imports and winter energy deficit, Rosatom small modular nuclear plant in Jizzakh, China-Kyrgyzstan-Uzbekistan railway, gold, copper and uranium mining, WTO accession
+      - tabiiy gaz, atom elektr stansiyasi, Xitoy-Qirg‘iziston-O‘zbekiston temir yo‘li, oltin, uran, JST
+    keywords: ["rosatom", "nuclear plant", "atom elektr", "critical minerals", "uranium", "china-kyrgyzstan-uzbekistan", "wto", "gazprom"]

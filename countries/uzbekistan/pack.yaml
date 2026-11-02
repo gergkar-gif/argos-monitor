@@ -1,0 +1,76 @@
+# Uzbekistan country pack (decision D15).
+id: uzbekistan
+name: Uzbekistan
+region: Eurasia & Caucasus
+language: uz
+abroad_label: Central Asian regional & exiled Uzbek outlets
+
+mention:
+  - "uzbekistan"
+  - "uzbek"
+  - "tashkent"
+  - "toshkent"
+  - "samarkand"
+  - "samarqand"
+  - "bukhara"
+  - "fergana"
+  - "karakalpakstan"
+  - "nukus"
+  - "mirziyoyev"
+  - "shavkat mirziyoyev"
+  - "aripov"
+  - "abdulla aripov"
+  - "saida mirziyoyeva"
+  - "o'zbekiston"
+  - "o‘zbekiston"
+  - "oʻzbekiston"
+  - "oliy majlis"
+
+mention_regex: ['\b(?:uzbekistan|uzbek|tashkent|toshkent|mirziyoyev)\b', "o['‘ʻ]zbekiston"]
+mention_section: null
+
+url_sections:
+  foreign: [jahon, dunyo, world, international]
+  skip: [sport, sports, madaniyat, lifestyle, avto]
+
+aggregator_outlets:
+  domestic:
+    - "uza.uz"
+    - "kun.uz"
+    - "gazeta.uz"
+    - "daryo.uz"
+    - "podrobno.uz"
+    - "qalampir.uz"
+    - "spot.uz"
+    - "uzdaily"
+  abroad_local:
+    - "ozodlik"
+    - "rfe/rl"
+    - "times of central asia"
+    - "timesca"
+    - "eurasianet"
+    - "fergana"
+
+excerpt:
+  dateline: '^\s*(?:TOSHKENT|TASHKENT|UzA|Kun\.uz|Gazeta\.uz|Daryo)\s*[-–—:]\s*'
+  noise: '^(Foto|Manba|Photo|Credit|\(|\[)'
+
+classify:
+  internal_politics:
+    - "President Shavkat Mirziyoyev, Prime Minister Abdulla Aripov, Oliy Majlis parliament, presidential decrees, regional hokims, Karakalpakstan autonomy, media and religious laws"
+    - "Shavkat Mirziyoyev, Abdulla Aripov, Oliy Majlis, prezident farmoni, hukumat, hokim, Qoraqalpog‘iston, qonunchilik"
+  economics:
+    - "Central Bank of Uzbekistan, Uzbek soum, gold and cotton exports, critical minerals and uranium, natural gas imports from Russia, Rosatom nuclear power plant, China-Kyrgyzstan-Uzbekistan railway"
+    - "Markaziy bank, iqtisodiyot, investitsiya, oltin, gaz va elektr energiyasi, atom elektr stansiyasi, temir yo‘l, inflyatsiya"
+  foreign_policy:
+    - "Uzbekistan relations with Russia, China, Kazakhstan, Kyrgyzstan, Tajikistan and Afghanistan, EU Enhanced Partnership, US C5+1 diplomacy, WTO accession"
+    - "tashqi siyosat, Rossiya, Xitoy, Markaziy Osiyo, Afg‘oniston, Yevropa Ittifoqi, AQSh, Jahon savdo tashkiloti"
+  defence_security:
+    - "Armed Forces of Uzbekistan, State Security Service (DXX), Afghanistan border security at Termez, counter-terrorism, labour migration security"
+    - "Mudofaa vazirligi, Davlat xavfsizlik xizmati, DXX, chegara xavfsizligi, Afg‘oniston chegarasi, xavfsizlik"
+  society:
+    - "education, healthcare, air quality in Tashkent, Aral Sea environment, courts, weather and earthquakes"
+    - "ta’lim, sog‘liqni saqlash, ekologiya, sud, jamiyat, ob-havo, zilzila"
+
+geo: UZ
+reddit: [Uzbekistan]

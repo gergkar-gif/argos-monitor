@@ -1,0 +1,19 @@
+# Slovakia's additions to the shared themes (../../themes.yaml).
+themes:
+  - id: party_gov
+    label: Fico Coalition, Rule of Law & Public Media (STVR)
+    weight: 1.0
+    category: internal_politics
+    describe:
+      - Prime Minister Robert Fico, President Peter Pellegrini, Smer-Hlas-SNS coalition, opposition protests led by Progressive Slovakia, STVR public broadcaster and judicial changes
+      - Robert Fico, Peter Pellegrini, vláda Smer-Hlas-SNS, Národná rada, Progresívne Slovensko, STVR, trestný zákon
+    keywords: ["fico", "pellegrini", "šimečka", "simecka", "kaliňák", "kalinak", "smer", "progresívne slovensko", "stvr", "národná rada", "ústavný súd"]
+
+  - id: diplomacy
+    label: EU Funds, Ukraine Policy & Visegrad Diplomacy
+    weight: 1.0
+    category: foreign_policy
+    describe:
+      - European Commission rule-of-law review and EU funds, Slovakia stance on Ukraine military aid and Russian energy transit, Visegrad Group relations
+      - Európska komisia, eurofondy, Ukrajina, tranzit plynu, V4, NATO
+    keywords: ["eurofond", "európska komisia", "ukrajin", "v4", "visegrad", "nato", "sankcie", "plyn", "družba"]

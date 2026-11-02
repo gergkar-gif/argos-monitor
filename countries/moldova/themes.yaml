@@ -1,0 +1,19 @@
+# Moldova's additions to the shared themes (../../themes.yaml).
+themes:
+  - id: party_gov
+    label: Presidency, PAS Government & Judicial Reform
+    weight: 1.0
+    category: internal_politics
+    describe:
+      - President Maia Sandu, Prime Minister Dorin Recean, PAS parliamentary majority, judicial vetting and anti-corruption prosecution, Ilan Shor illicit financing
+      - Maia Sandu, Dorin Recean, Parlamentul, PAS, reforma justiției, Procuratura Anticorupție
+    keywords: ["maia sandu", "recean", "igor grosu", "procuratura anticorupție", "vetting", "ilan șor", "ilan shor", "curtea constituțională"]
+
+  - id: security
+    label: Transnistria, Gagauzia & Russian Hybrid Interference
+    weight: 1.0
+    category: defence_security
+    describe:
+      - Transnistria separatist region in Tiraspol, Gagauzia autonomy in Comrat, Russian hybrid warfare, vote-buying networks, Moldovan airspace security
+      - Transnistria, Tiraspol, Găgăuzia, Comrat, război hibrid, interferență rusă, securitate
+    keywords: ["transnistria", "tiraspol", "găgăuzia", "gagauzia", "comrat", "cobasna", "război hibrid", "hybrid", "sis"]

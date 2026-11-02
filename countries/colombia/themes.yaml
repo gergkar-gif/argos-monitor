@@ -1,0 +1,19 @@
+# Colombia's additions to the shared themes (../../themes.yaml).
+themes:
+  - id: security
+    label: Paz Total, Armed Groups (ELN / FARC Dissidents) & Security
+    weight: 1.0
+    category: defence_security
+    describe:
+      - Paz Total peace talks and ceasefires, ELN guerrilla attacks, FARC dissidents (Estado Mayor Central) and Clan del Golfo clashes in Cauca and Catatumbo, military operations
+      - Paz Total, diálogos de paz, cese al fuego, ELN, disidencias de las FARC, Clan del Golfo, Cauca, Catatumbo, Ejército
+    keywords: ["paz total", "eln", "disidencias", "estado mayor central", "clan del golfo", "cauca", "catatumbo", "cese al fuego", "secuestro", "atentado"]
+
+  - id: party_gov
+    label: Petro Administration, Congress Reforms & High Courts
+    weight: 0.95
+    category: internal_politics
+    describe:
+      - President Gustavo Petro, Congress debates on health, labour and political reforms, CNE investigation, Constitutional Court and Fiscalía General
+      - Gustavo Petro, Congreso, reforma a la salud, reforma laboral, Consejo Nacional Electoral, Corte Constitucional, Fiscalía
+    keywords: ["gustavo petro", "casa de nariño", "pacto histórico", "corte constitucional", "consejo nacional electoral", "cne", "fiscalía", "reforma tributaria", "ecopetrol"]

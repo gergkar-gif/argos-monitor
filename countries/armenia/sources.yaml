@@ -1,0 +1,96 @@
+# Armenia source registry (decision D15).
+# Combines independent Armenian investigative & broadcast outlets (Hetq in Armenian & English, Factor.am, CivilNet), state news agency Armenpress via Google News, regional Caucasus press (OC Media, JAMnews, RFE/RL Azatutyun), and international wires.
+
+sources:
+  - id: hetq_hy
+    name: Hetq (Armenian)
+    homepage: https://hetq.am
+    language: hy
+    scope: domestic
+    kind: media
+    governing_body: Investigative Journalists NGO (Yerevan independent investigative outlet)
+    state_affiliated: false
+    feeds:
+      - {url: "https://hetq.am/hy/rss", section: Լուրեր, category_hint: general}
+
+  - id: hetq_en
+    name: Hetq (English)
+    homepage: https://hetq.am/en
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Investigative Journalists NGO (Yerevan independent investigative outlet)
+    state_affiliated: false
+    feeds:
+      - {url: "https://hetq.am/en/rss", section: News & Investigations, category_hint: general}
+
+  - id: factor_am
+    name: Factor.am
+    homepage: https://factor.am
+    language: hy
+    scope: domestic
+    kind: media
+    governing_body: Factor Information Center (independent Yerevan digital & TV outlet)
+    state_affiliated: false
+    feeds:
+      - {url: "https://factor.am/feed", section: Լրահոս, category_hint: general}
+
+  - id: civilnet_am
+    name: CivilNet
+    homepage: https://www.civilnet.am
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Civilitas Foundation (independent Yerevan media platform)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.civilnet.am/feed/", section: Latest, category_hint: general}
+
+  - id: gnews_am_official
+    name: Armenpress / 1Lurer (State Wire & Public TV via Google News)
+    homepage: https://armenpress.am
+    language: en
+    scope: domestic
+    kind: official
+    aggregator: google_news
+    governing_body: Armenpress State News Agency / Public Television of Armenia
+    state_affiliated: true
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:armenpress.am+OR+site:1lurer.am)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Armenpress & Public TV, category_hint: general}
+
+  - id: ocmedia_am
+    name: OC Media
+    homepage: https://oc-media.org
+    language: en
+    scope: abroad_local
+    kind: media
+    governing_body: Open Caucasus Media (independent regional outlet)
+    state_affiliated: false
+    needs_mention: true
+    feeds:
+      - {url: "https://oc-media.org/feed/", section: Caucasus, category_hint: general}
+
+  - id: jamnews_am
+    name: JAMnews
+    homepage: https://jam-news.net
+    language: en
+    scope: abroad_local
+    kind: media
+    governing_body: JAMnews Regional Media Network
+    state_affiliated: false
+    needs_mention: true
+    feeds:
+      - {url: "https://jam-news.net/feed/", section: Caucasus, category_hint: general}
+
+  - id: gnews_en_am
+    name: Google News (Armenia - International)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Armenia+(Yerevan+OR+Pashinyan+OR+Mirzoyan+OR+Syunik)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Armenia politics & diplomacy, category_hint: foreign_policy}
+      - {url: "https://news.google.com/rss/search?q=Armenia+(Azerbaijan+OR+Turkey+OR+CSTO+OR+Russia+OR+%22peace+treaty%22)+when:1d&hl=en-US&gl=US&ceid=US:en", section: South Caucasus security, category_hint: defence_security}

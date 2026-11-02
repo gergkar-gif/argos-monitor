@@ -1,0 +1,85 @@
+# Uzbekistan source registry (decision D15).
+# Combines Uzbek independent/private portals (Gazeta.uz, Kun.uz, Daryo), state news agency UzA via Google News, Central Asian regional & exile press (Times of Central Asia, RFE/RL Ozodlik), and international wires.
+
+sources:
+  - id: gazeta_uz
+    name: Gazeta.uz (Uzbek)
+    homepage: https://www.gazeta.uz/oz
+    language: uz
+    scope: domestic
+    kind: media
+    governing_body: Afisha Media (independent Tashkent online publication)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.gazeta.uz/oz/rss/", section: Yangiliklar, category_hint: general}
+
+  - id: kun_uz
+    name: Kun.uz
+    homepage: https://kun.uz
+    language: uz
+    scope: domestic
+    kind: media
+    governing_body: Web Expert LLC (major Uzbek digital news portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://kun.uz/news/rss", section: O‘zbekiston, category_hint: general}
+
+  - id: daryo_uz
+    name: Daryo
+    homepage: https://daryo.uz
+    language: uz
+    scope: domestic
+    kind: media
+    governing_body: Simple Networking Solutions LLC (Tashkent online daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://daryo.uz/rss", section: Asosiy, category_hint: general}
+
+  - id: gnews_uz_official
+    name: UzA / Gov.uz (Official State Press via Google News)
+    homepage: https://uza.uz
+    language: uz
+    scope: domestic
+    kind: official
+    aggregator: google_news
+    governing_body: Uzbekistan National News Agency (UzA) & Government Portal
+    state_affiliated: true
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:uza.uz+OR+site:president.uz)+when:7d&hl=en-US&gl=US&ceid=US:en", section: UzA & Presidency, category_hint: general}
+
+  - id: timesca_uz
+    name: The Times of Central Asia
+    homepage: https://timesca.com
+    language: en
+    scope: abroad_local
+    kind: media
+    governing_body: The Times of Central Asia (regional independent English daily)
+    state_affiliated: false
+    needs_mention: true
+    feeds:
+      - {url: "https://timesca.com/feed/", section: Central Asia, category_hint: general}
+
+  - id: gnews_uz_ozodlik
+    name: Ozodlik Radiosi (RFE/RL Uzbek Service via Google News)
+    homepage: https://www.ozodlik.org
+    language: uz
+    scope: abroad_local
+    kind: media
+    aggregator: google_news
+    governing_body: Radio Free Europe / Radio Liberty Uzbek Service (Prague)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:ozodlik.org+when:7d&hl=en-US&gl=US&ceid=US:en", section: Ozodlik, category_hint: general}
+
+  - id: gnews_en_uz
+    name: Google News (Uzbekistan - International)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Uzbekistan+(Tashkent+OR+Mirziyoyev+OR+economy+OR+gas+OR+nuclear+OR+railway)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Uzbekistan politics & economy, category_hint: economics}
+      - {url: "https://news.google.com/rss/search?q=Uzbekistan+(Russia+OR+China+OR+Afghanistan+OR+EU+OR+minerals)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Uzbekistan foreign policy, category_hint: foreign_policy}

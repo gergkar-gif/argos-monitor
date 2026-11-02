@@ -1,0 +1,17 @@
+# Nigeria's additions to the shared themes (../../themes.yaml).
+themes:
+  - id: macro_fx
+    label: CBN Monetary Policy, Naira & Oil/Refinery Sector
+    weight: 1.0
+    category: economics
+    describe:
+      - Central Bank of Nigeria interest rates and naira exchange rate, NNPC crude oil production, Dangote Refinery fuel supply, fiscal and tax reform bills
+    keywords: ["central bank of nigeria", "cbn", "naira", "nnpc", "dangote refinery", "crude oil", "tax reform", "fuel subsidy", "faac"]
+
+  - id: security
+    label: Counter-Insurgency (ISWAP/Boko Haram), Banditry & ECOWAS Security
+    weight: 1.0
+    category: defence_security
+    describe:
+      - Military operations against Boko Haram and ISWAP in Borno and Lake Chad, armed banditry and mass kidnappings in northwest Nigeria, Niger Delta security, ECOWAS regional security
+    keywords: ["boko haram", "iswap", "bandits", "kidnap", "abducted", "borno", "zamfara", "katsina", "ipob", "ecowas", "nigerian army", "airstrike"]

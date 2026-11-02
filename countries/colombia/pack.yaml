@@ -1,0 +1,84 @@
+# Colombia country pack (decision D15).
+id: colombia
+name: Colombia
+region: Africa & Americas
+language: es
+abroad_label: Latin American regional & exiled Spanish-language outlets
+
+mention:
+  - "colombia"
+  - "colombian"
+  - "colombiano"
+  - "colombiana"
+  - "bogota"
+  - "bogotá"
+  - "medellin"
+  - "medellín"
+  - "cali"
+  - "barranquilla"
+  - "catatumbo"
+  - "cauca"
+  - "gustavo petro"
+  - "petro"
+  - "francia márquez"
+  - "casa de nariño"
+  - "congreso de la república"
+  - "ecopetrol"
+  - "eln"
+  - "disidencias de las farc"
+  - "clan del golfo"
+  - "paz total"
+
+mention_regex: ['\b(?:colombia|colombian|colombiano|colombiana|bogota|bogotá|petro|ecopetrol)\b']
+mention_section: null
+
+url_sections:
+  foreign: [mundo, internacional, world, international]
+  skip: [deportes, futbol, fútbol, entretenimiento, cultura, farandula, estilo]
+
+aggregator_outlets:
+  domestic:
+    - "la silla vacía"
+    - "lasillavacia"
+    - "el tiempo"
+    - "eltiempo"
+    - "el espectador"
+    - "elespectador"
+    - "semana"
+    - "caracol"
+    - "blu radio"
+    - "w radio"
+    - "portafolio"
+    - "la república"
+    - "colombia reports"
+    - "rtvc"
+    - "presidencia"
+  abroad_local:
+    - "el país américa"
+    - "infobae"
+    - "cnn en español"
+    - "insight crime"
+
+excerpt:
+  dateline: '^\s*(?:BOGOTÁ|MEDELLÍN|CALI|Redacción|Colprensa|EFE)\s*[-–—:]\s*'
+  noise: '^(Foto|Crédito|Lea también|Le puede interesar|Photo|\(|\[)'
+
+classify:
+  internal_politics:
+    - "President Gustavo Petro, Casa de Nariño, Congress of Colombia (Senado y Cámara), Pacto Histórico, Constitutional Court, CNE campaign finance investigation, labour and health reforms"
+    - "Gustavo Petro, Casa de Nariño, Congreso de la República, Senado, Corte Constitucional, Consejo Nacional Electoral, reformas, Fiscalía"
+  economics:
+    - "Banco de la República interest rates, Colombian peso, Ecopetrol oil and gas transition, fiscal rule, tax reform, coffee and coal exports, inflation"
+    - "Banco de la República, Ecopetrol, economía, reforma tributaria, regla fiscal, inflación, inversión, presupuesto"
+  foreign_policy:
+    - "Colombia relations with the United States, Venezuela (Maduro border and diplomacy), Brazil and Mexico, CELAC, OAS, migration through the Darién Gap"
+    - "relaciones exteriores, Cancillería, Estados Unidos, Venezuela, frontera, diplomacia, Tapón del Darién"
+  defence_security:
+    - "Paz Total negotiations, ELN guerrillas, FARC dissidents (Estado Mayor Central), Clan del Golfo, armed clashes in Cauca and Catatumbo, Colombian Armed Forces and National Police"
+    - "Paz Total, ELN, disidencias de las FARC, Clan del Golfo, Cauca, Catatumbo, Ejército Nacional, fuerza pública, atentado"
+  society:
+    - "healthcare EPS system, education, indigenous and social leaders, El Niño drought and water rationing in Bogotá, floods and landslides"
+    - "salud, EPS, educación, líderes sociales, racionamiento de agua, lluvias, deslizamientos"
+
+geo: CO
+reddit: [Colombia, Bogota]

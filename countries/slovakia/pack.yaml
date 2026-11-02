@@ -1,0 +1,81 @@
+# Slovakia country pack (decision D15).
+id: slovakia
+name: Slovakia
+region: Europe & Balkans
+language: sk
+abroad_label: Czech & Central European regional outlets
+
+mention:
+  - "slovakia"
+  - "slovak"
+  - "bratislava"
+  - "košice"
+  - "kosice"
+  - "robert fico"
+  - "fico"
+  - "peter pellegrini"
+  - "pellegrini"
+  - "smer"
+  - "hlas"
+  - "progresívne slovensko"
+  - "šimečka"
+  - "simecka"
+  - "kaliňák"
+  - "kalinak"
+  - "slovensko"
+  - "slovenskej"
+  - "slovenská"
+  - "národná rada"
+
+mention_regex: ['\b(?:slovakia|slovak|bratislava|slovensko|slovenskej|fico|pellegrini)\b']
+mention_section: null
+
+url_sections:
+  foreign: [svet, zahraničie, zahranicie, world, international]
+  skip: [sport, šport, kultura, kultúra, lifestyle, auto, tech]
+
+aggregator_outlets:
+  domestic:
+    - "tasr"
+    - "teraz.sk"
+    - "stvr"
+    - "rtvs"
+    - "sme.sk"
+    - "slovak spectator"
+    - "denník n"
+    - "dennik n"
+    - "aktuality.sk"
+    - "pravda.sk"
+    - "hnonline"
+    - "hospodárske noviny"
+    - "ta3"
+  abroad_local:
+    - "čtk"
+    - "irozhlas"
+    - "seznam zprávy"
+    - "respekt"
+    - "balkan insight"
+
+excerpt:
+  dateline: '^\s*(?:BRATISLAVA|KOŠICE|TASR|SITA|STVR)\s*[-–—:]\s*'
+  noise: '^(Foto|Zdroj|Čítajte viac|Photo|Credit|\(|\[)'
+
+classify:
+  internal_politics:
+    - "Prime Minister Robert Fico, President Peter Pellegrini, Smer-SD, Hlas-SD, SNS coalition, Progressive Slovakia (PS) Michal Šimečka, National Council (Národná rada), criminal code and STVR media reforms"
+    - "Robert Fico, Peter Pellegrini, vláda, Národná rada, Smer, Hlas, SNS, Progresívne Slovensko, Michal Šimečka, koalícia, opozícia"
+  economics:
+    - "National Bank of Slovakia, fiscal consolidation package, EU recovery funds, automotive industry, Russian gas transit and nuclear energy, inflation"
+    - "Národná banka Slovenska, konsolidačný balíček, štátny rozpočet, eurofondy, priemysel, energetika, inflácia"
+  foreign_policy:
+    - "Slovakia policy inside the European Union and NATO, relations with Ukraine, Hungary and Czechia, Visegrad Four (V4), Brussels summits"
+    - "Európska únia, NATO, Ukrajina, V4, zahraničná politika, diplomacia, sankcie"
+  defence_security:
+    - "Slovak Armed Forces, Ministry of Defence Robert Kaliňák, air defence, border security, police and SIS intelligence service"
+    - "Ozbrojené sily SR, ministerstvo obrany, Robert Kaliňák, polícia, SIS, bezpečnosť"
+  society:
+    - "healthcare and hospital doctors, education, media freedom, culture ministry, environment, weather and floods"
+    - "zdravotníctvo, školstvo, kultúra, médiá, súdnictvo, počasie, povodne"
+
+geo: SK
+reddit: [Slovakia, Bratislava]

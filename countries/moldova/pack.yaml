@@ -1,0 +1,80 @@
+# Moldova country pack (decision D15).
+id: moldova
+name: Moldova
+region: Europe & Balkans
+language: ro
+abroad_label: Romanian & exiled Moldovan outlets
+
+mention:
+  - "moldova"
+  - "moldovan"
+  - "chisinau"
+  - "chișinău"
+  - "chisinaul"
+  - "maia sandu"
+  - "sandu"
+  - "dorin recean"
+  - "recean"
+  - "igor grosu"
+  - "transnistria"
+  - "transnistrian"
+  - "tiraspol"
+  - "gagauzia"
+  - "comrat"
+  - "ilan shor"
+  - "șor"
+  - "dodon"
+  - "republica moldova"
+  - "parlamentul de la chișinău"
+
+mention_regex: ['\b(?:moldova|moldovan|chisinau|chișinău|transnistria|gagauzia)\b']
+mention_section: null
+
+url_sections:
+  foreign: [world, international, extern, mapamond]
+  skip: [sport, sports, lifestyle, divertisment, horoscop]
+
+aggregator_outlets:
+  domestic:
+    - "moldpres"
+    - "trm.md"
+    - "moldova 1"
+    - "ziarul de gardă"
+    - "zdg.md"
+    - "newsmaker"
+    - "agora.md"
+    - "ipn.md"
+    - "jurnal.md"
+    - "unimedia"
+    - "tv8.md"
+    - "protv.md"
+  abroad_local:
+    - "europa liberă"
+    - "europalibera"
+    - "g4media"
+    - "hotnews"
+    - "digi24"
+
+excerpt:
+  dateline: '^\s*(?:CHIȘINĂU|CHISINAU|MOLDPRES|IPN|Ziarul de Gardă|Agora)\s*[-–—:]\s*'
+  noise: '^(Foto|Sursa foto|Citește și|Photo|Credit|\(|\[)'
+
+classify:
+  internal_politics:
+    - "President Maia Sandu, Prime Minister Dorin Recean, Action and Solidarity Party (PAS), Parliament of Moldova, judicial vetting, anti-corruption prosecutor, Ilan Shor network, elections"
+    - "Maia Sandu, Dorin Recean, Parlamentul Republicii Moldova, PAS, reforma justiției, Procuratura Anticorupție, alegeri"
+  economics:
+    - "National Bank of Moldova, Moldovan leu, Energocom, natural gas and electricity imports from Romania, inflation, EU growth plan for Moldova, agriculture exports"
+    - "Banca Națională a Moldovei, economie, buget, Energocom, gaze naturale, energie electrică, inflație, investiții"
+  foreign_policy:
+    - "Moldova EU accession negotiations, relations with Romania and Ukraine, Russian embassy and diplomatic expulsions, US and EU financial assistance"
+    - "aderarea la Uniunea Europeană, negocieri UE, România, Ucraina, Rusia, politică externă, diplomație"
+  defence_security:
+    - "Transnistria separatist region, Russian troops in Cobasna, Gagauzia autonomy, hybrid warfare, electoral interference, airspace violations, National Army of Moldova"
+    - "Transnistria, Tiraspol, Găgăuzia, securitate națională, război hibrid, Armata Națională, drone"
+  society:
+    - "education, healthcare, diaspora, courts, census, weather and natural disasters"
+    - "educație, sănătate, diasporă, justiție, societate, meteo"
+
+geo: MD
+reddit: [moldova]

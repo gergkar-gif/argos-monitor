@@ -1,0 +1,79 @@
+# Armenia country pack (decision D15).
+id: armenia
+name: Armenia
+region: Eurasia & Caucasus
+language: hy
+abroad_label: Caucasus regional & Armenian diaspora outlets
+
+mention:
+  - "armenia"
+  - "armenian"
+  - "yerevan"
+  - "gyumri"
+  - "syunik"
+  - "tavush"
+  - "pashinyan"
+  - "nikol pashinyan"
+  - "ararat mirzoyan"
+  - "mirzoyan"
+  - "vahagn khachaturyan"
+  - "zangezur"
+  - "crossroads of peace"
+  - "karabakh"
+  - "artsakh"
+  - "csto"
+  - "հայաստան"
+  - "հայաստանի"
+  - "երևան"
+  - "փաշինյան"
+  - "միրզոյան"
+  - "սյունիք"
+
+mention_regex: ['\b(?:armenia|armenian|yerevan|pashinyan|syunik)\b', 'հայաստան', 'երևան', 'փաշինյան']
+mention_section: null
+
+url_sections:
+  foreign: [world, international, region]
+  skip: [sport, sports, culture, lifestyle]
+
+aggregator_outlets:
+  domestic:
+    - "armenpress"
+    - "1lurer"
+    - "civilnet"
+    - "hetq"
+    - "factor.am"
+    - "news.am"
+    - "arka.am"
+    - "panarmenian"
+    - "aravot"
+  abroad_local:
+    - "azatutyun"
+    - "oc media"
+    - "jamnews"
+    - "asbarez"
+    - "armenian weekly"
+
+excerpt:
+  dateline: '^\s*(?:YEREVAN|ARMENPRESS|CivilNet|Hetq|NEWS\.am)\s*[-–—:]\s*'
+  noise: '^(Photo|Credit|File photo|Read more|Լուսանկար|\(|\[)'
+
+classify:
+  internal_politics:
+    - "Prime Minister Nikol Pashinyan, Civil Contract party, National Assembly of Armenia, President Vahagn Khachaturyan, opposition protests, constitutional reform, judiciary and anti-corruption"
+    - "Նիկոլ Փաշինյան, Ազգային ժողով, կառավարություն, Քաղաքացիական պայմանագիր, ընդդիմություն, սահմանադրություն"
+  economics:
+    - "Central Bank of Armenia, Armenian dram, Crossroads of Peace transit initiative, trade with Eurasian Economic Union and EU, Metsamor nuclear plant, mining and IT sector"
+    - "Կենտրոնական բանկ, տնտեսություն, բյուջե, ներդրումներ, Խաղաղության խաչմերուկ, էներգետիկա"
+  foreign_policy:
+    - "Armenia-Azerbaijan peace treaty negotiations, Turkey border normalisation, suspension of CSTO participation, EU-Armenia partnership and visa liberalisation, US and France strategic dialogue"
+    - "խաղաղության պայմանագիր, Ադրբեջան, Թուրքիա, ՀԱՊԿ, Եվրամիություն, ԱՄՆ, Ֆրանսիա, արտաքին քաղաքականություն"
+  defence_security:
+    - "Ministry of Defence of Armenia, Syunik and Tavush border demarcation and security, weapons procurement from France and India, EU monitoring mission in Armenia (EUMA)"
+    - "պաշտպանության նախարարություն, սահմանազատում, Սյունիք, Տավուշ, բանակ, անվտանգություն"
+  society:
+    - "Karabakh Armenian refugees housing and integration, education, healthcare, Armenian Apostolic Church, natural disasters"
+    - "բռնի տեղահանվածներ, կրթություն, առողջապահություն, եկեղեցի, հասարակություն"
+
+geo: AM
+reddit: [armenia, Yerevan]

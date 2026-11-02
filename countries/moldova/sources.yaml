@@ -1,0 +1,73 @@
+# Moldova source registry (decision D15).
+# Combines investigative & independent Moldovan press (Ziarul de Gardă, NewsMaker, Deschide.md), state wire & public broadcaster (Moldpres / TRM via Google News), Romanian regional coverage, and international wires.
+
+sources:
+  - id: zdg_md
+    name: Ziarul de Gardă
+    homepage: https://www.zdg.md
+    language: ro
+    scope: domestic
+    kind: media
+    governing_body: Ziarul de Gardă (independent investigative newspaper in Chișinău)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.zdg.md/feed/", section: Actualitate, category_hint: general}
+
+  - id: newsmaker_md
+    name: NewsMaker (Romanian)
+    homepage: https://newsmaker.md/ro
+    language: ro
+    scope: domestic
+    kind: media
+    governing_body: NewsMaker (independent Chișinău digital daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://newsmaker.md/ro/feed/", section: Știri, category_hint: general}
+
+  - id: deschide_md
+    name: Deschide.md
+    homepage: https://deschide.md
+    language: ro
+    scope: domestic
+    kind: media
+    governing_body: Deschide.md (independent news portal in Chișinău)
+    state_affiliated: false
+    feeds:
+      - {url: "https://deschide.md/rss.xml", section: Politic & Social, category_hint: general}
+
+  - id: gnews_md_official
+    name: Moldpres / Moldova 1 (Official & Public Press via Google News)
+    homepage: https://www.moldpres.md
+    language: ro
+    scope: domestic
+    kind: official
+    aggregator: google_news
+    governing_body: State Information Agency Moldpres / Teleradio-Moldova (TRM)
+    state_affiliated: true
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:moldpres.md+OR+site:trm.md)+when:7d&hl=ro&gl=MD&ceid=MD:ro", section: Oficial & Public, category_hint: general}
+
+  - id: gnews_md_abroad
+    name: Radio Europa Liberă Moldova / G4Media (Regional & Diaspora)
+    homepage: https://moldova.europalibera.org
+    language: ro
+    scope: abroad_local
+    kind: media
+    aggregator: google_news
+    governing_body: RFE/RL Moldovan Service & Romanian independent press
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:moldova.europalibera.org+OR+(site:g4media.ro+Moldova))+when:7d&hl=ro&gl=RO&ceid=RO:ro", section: Europa Liberă & România, category_hint: general}
+
+  - id: gnews_en_md
+    name: Google News (Moldova - International)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Moldova+(Chisinau+OR+%22Maia+Sandu%22+OR+Recean+OR+Transnistria+OR+Gagauzia)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Moldova politics & security, category_hint: internal_politics}
+      - {url: "https://news.google.com/rss/search?q=Moldova+(EU+OR+Russia+OR+Romania+OR+Ukraine+OR+energy)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Moldova EU & geopolitics, category_hint: foreign_policy}

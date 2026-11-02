@@ -59,9 +59,9 @@
   const COUNTRY_REGION = {
     cambodia: 'Southeast Asia', indonesia: 'Southeast Asia', myanmar: 'Southeast Asia',
     philippines: 'Southeast Asia', thailand: 'Southeast Asia', vietnam: 'Southeast Asia',
-    hungary: 'Europe & Balkans', poland: 'Europe & Balkans', serbia: 'Europe & Balkans',
-    azerbaijan: 'Eurasia & Caucasus', georgia: 'Eurasia & Caucasus', kazakhstan: 'Eurasia & Caucasus', turkey: 'Eurasia & Caucasus',
-    brazil: 'Africa & Americas', ethiopia: 'Africa & Americas', south_africa: 'Africa & Americas',
+    hungary: 'Europe & Balkans', moldova: 'Europe & Balkans', poland: 'Europe & Balkans', serbia: 'Europe & Balkans', slovakia: 'Europe & Balkans',
+    armenia: 'Eurasia & Caucasus', azerbaijan: 'Eurasia & Caucasus', georgia: 'Eurasia & Caucasus', kazakhstan: 'Eurasia & Caucasus', turkey: 'Eurasia & Caucasus', uzbekistan: 'Eurasia & Caucasus',
+    brazil: 'Africa & Americas', colombia: 'Africa & Americas', ethiopia: 'Africa & Americas', nigeria: 'Africa & Americas', south_africa: 'Africa & Americas',
   };
   const getRegion = (cid) => ((index && index.countries.find((x) => x.id === cid) || {}).region) || COUNTRY_REGION[cid] || 'Other';
   const prettyName = (cid) => ((index && index.countries.find((x) => x.id === cid) || {}).name) || cid.replace(/_/g, ' ').replace(/\b\w/g, (m) => m.toUpperCase());
