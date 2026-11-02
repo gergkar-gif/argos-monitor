@@ -8,21 +8,19 @@
 <link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="style.css">
 <style>
-  .brief { max-width: 52rem; margin: 0 auto; padding: 2rem 1.5rem 3.5rem; }
-  .brief h1 { font: 700 1.4rem/1.25 var(--sans); margin: 1.25rem 0 0.25rem; }
-  .brief ol { padding: 0; list-style: none; display: grid; gap: 1.75rem; margin-top: 1.5rem; }
-  .brief li { border-left: 5px solid var(--bar); padding: 0.15rem 0 0.15rem 1.15rem; }
-  .brief h2 { font: 700 1.2rem/1.3 var(--sans); margin: 0 0 0.3rem; }
+  .brief h1 { font: 700 1.35rem/1.25 var(--sans); margin: 0 0 0.25rem; }
+  .brief ol { padding: 0; list-style: none; display: grid; gap: 2rem; margin-top: 1.75rem; }
+  .brief li { border-left: 5px solid var(--bar); padding: 0.2rem 0 0.2rem 1.25rem; display: grid; gap: 0.45rem; }
+  .brief h2 { font: 700 1.22rem/1.32 var(--sans); margin: 0; }
   .brief h2 a { text-decoration: none; }
   .brief h2 a:hover { color: var(--indigo); }
-  .brief .nav { display: flex; gap: 0.4rem; flex-wrap: wrap; align-items: center; }
-  @media print { .bureau, .nav { display: none; } }
+  @media print { .bureau { display: none; } }
 </style>
 </head>
 <body>
 <header class="bureau">
   <div class="bureau-inner">
-    <div class="masthead" style="border-bottom:0;padding-bottom:0">
+    <div class="masthead">
       <div>
         <h1><a href="index.html#home"><img src="assets/eye.png" alt="" class="logo">Argos Monitor</a></h1>
         <p>Open-source media &amp; crisis monitor</p>
@@ -35,6 +33,11 @@
         <a href="about.html">About</a>
       </nav>
     </div>
+    <form class="slip" aria-label="Daily brief options" onsubmit="event.preventDefault()">
+      <label class="field"><span>Country</span><select id="b-country"></select></label>
+      <label class="field"><span>Period</span><select id="b-period"></select></label>
+      <div class="field"><button type="button" class="more" style="margin:0" onclick="print()">Print / Save PDF</button></div>
+    </form>
   </div>
 </header>
 <main class="brief" id="brief">
@@ -44,26 +47,48 @@
 <script>
 (() => {
   const index = window.ARGOS_INDEX, root = document.getElementById('brief');
+  const cSel = document.getElementById('b-country'), pSel = document.getElementById('b-period');
   const el = (tag, attrs, ...kids) => { const e = document.createElement(tag); for (const [k, v] of Object.entries(attrs || {})) { if (v == null || v === false) continue; k === 'text' ? e.textContent = v : e.setAttribute(k, v); } e.append(...kids.flat(Infinity).filter((x) => x != null && x !== false)); return e; };
   const safe = (u) => { try { const x = new URL(u); return /^https?:$/.test(x.protocol) ? x.href : '#'; } catch { return '#'; } };
   if (!index) { root.replaceChildren(el('p', { class: 'state error', text: 'No data found.' })); return; }
-  const cid = location.hash.slice(1) || index.countries[0].id;
-  const c = index.countries.find((x) => x.id === cid) || index.countries[0];
-  const p = c.periods.find((x) => x.id === '24h') || c.periods[0];
-  const load = (key) => new Promise((ok, no) => { const s = document.createElement('script'); s.src = `data/${key}.js`; s.onload = () => ok(window.ARGOS_DATA[key]); s.onerror = no; document.head.append(s); });
-  load(p.file.replace(/\.json$/, '')).then((d) => {
-    const top = [...d.stories].sort((a, b) => b.score - a.score).slice(0, 5);
-    root.replaceChildren(
-      el('div', { class: 'nav' },
-        ...index.countries.map((x) => el('a', { class: 'more', style: x.id === c.id ? 'background:var(--ink);color:#fff' : '', href: `#${x.id}`, onclick: 'setTimeout(()=>location.reload())', text: x.name })),
-        el('button', { type: 'button', class: 'more', onclick: 'print()', text: 'Print / Save PDF' })),
-      el('h1', { text: `${c.name} · top 5 stories (${p.label.toLowerCase()})` }),
-      el('p', { class: 'byline', text: `Updated ${new Date(d.generated_at).toLocaleString()}. Headlines are the articles' own; quotes are word for word.` }),
-      el('ol', null, top.map((s) => el('li', null,
-        el('h2', null, el('a', { href: safe(s.headline.url), target: '_blank', rel: 'noopener', text: s.headline.title })),
-        el('p', { class: 'byline', text: `${s.headline.source} · ${s.independent_sources} independent outlets · ${s.articles} articles${s.evidence === 'OFFICIAL' ? ' · official source' : ''}${s.abroad_only ? ' · not in domestic press' : ''}` }),
-        s.excerpts[0] && el('blockquote', { class: 'strip' }, el('p', { text: s.excerpts[0].text }), el('footer', null, el('a', { class: 'stamp indigo', href: safe(s.excerpts[0].url), target: '_blank', rel: 'noopener', text: s.excerpts[0].source })))))));
-  }).catch(() => root.replaceChildren(el('p', { class: 'state error', text: 'Could not load the stories.' })));
+  const load = (key) => {
+    window.ARGOS_DATA = window.ARGOS_DATA || {};
+    if (window.ARGOS_DATA[key]) return Promise.resolve(window.ARGOS_DATA[key]);
+    return new Promise((ok, no) => { const s = document.createElement('script'); s.src = `data/${key}.js`; s.onload = () => ok(window.ARGOS_DATA[key]); s.onerror = no; document.head.append(s); });
+  };
+  cSel.replaceChildren(...index.countries.map((x) => el('option', { value: x.id, text: x.name })));
+  const initCid = location.hash.slice(1);
+  if (index.countries.some((x) => x.id === initCid)) cSel.value = initCid;
+
+  function fillPeriods() {
+    const c = index.countries.find((x) => x.id === cSel.value) || index.countries[0];
+    const prev = pSel.value || '24h';
+    pSel.replaceChildren(...c.periods.map((p) => el('option', { value: p.id, text: p.label })));
+    if (c.periods.some((p) => p.id === prev)) pSel.value = prev;
+  }
+
+  function render() {
+    const c = index.countries.find((x) => x.id === cSel.value) || index.countries[0];
+    const p = c.periods.find((x) => x.id === pSel.value) || c.periods[0];
+    try { if (location.protocol !== 'file:') history.replaceState(null, '', `#${c.id}`); } catch {}
+    load(p.file.replace(/\.json$/, '')).then((d) => {
+      const top = [...d.stories].sort((a, b) => b.score - a.score).slice(0, 5);
+      root.replaceChildren(
+        el('p', { class: 'result-line' }, el('b', { text: `${c.name} · Top 5 stories` }), ` · ${p.label.toLowerCase()} · updated ${new Date(d.generated_at).toLocaleString()}`),
+        el('ol', null, top.map((s) => el('li', null,
+          el('h2', null, el('a', { href: safe(s.headline.url), target: '_blank', rel: 'noopener', text: s.headline.title })),
+          s.excerpts[0] && el('blockquote', { class: 'strip' }, el('p', { text: s.excerpts[0].text })),
+          el('p', { class: 'slipline' },
+            el('span', { text: `${s.headline.source} · ${s.independent_sources} independent outlets · ${s.articles} articles` }),
+            s.evidence === 'OFFICIAL' && el('span', { class: 'stamp red', text: 'Official' }),
+            s.abroad_only && el('span', { class: 'stamp teal', text: 'Not in domestic press' }))))));
+    }).catch(() => root.replaceChildren(el('p', { class: 'state error', text: 'Could not load the stories.' })));
+  }
+
+  fillPeriods();
+  cSel.addEventListener('change', () => { fillPeriods(); render(); });
+  pSel.addEventListener('change', render);
+  render();
 })();
 </script>
 </body>
