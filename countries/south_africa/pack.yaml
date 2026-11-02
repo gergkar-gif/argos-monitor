@@ -1,7 +1,7 @@
 # South Africa country pack (decision D15).
 id: south_africa
 name: South Africa
-region: Africa & Americas
+region: Sub-Saharan Africa
 language: en                     # the country's primary national news media language
 abroad_label: African regional outlets
 

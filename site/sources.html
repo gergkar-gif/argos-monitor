@@ -49,13 +49,21 @@
   const el = (tag, attrs, ...kids) => { const e = document.createElement(tag); for (const [k, v] of Object.entries(attrs || {})) { if (v == null || v === false) continue; if (k === 'text') e.textContent = v; else if (k.startsWith('on')) e.addEventListener(k.slice(2), v); else e.setAttribute(k, v); } e.append(...kids.flat(Infinity).filter((x) => x != null && x !== false)); return e; };
   const safe = (u) => { try { const x = new URL(u); return /^https?:$/.test(x.protocol) ? x.href : '#'; } catch { return '#'; } };
   if (!data) { root.replaceChildren(el('p', { class: 'state error', text: 'No data found.' })); return; }
-  const REGIONS = ['Southeast Asia', 'Europe & Balkans', 'Eurasia & Caucasus', 'Africa & Americas'];
+  const REGIONS = [
+    'Southeast Asia', 'Central Europe', 'Balkans', 'Eastern Europe',
+    'South Caucasus', 'Central Asia', 'Middle East & Mediterranean',
+    'Sub-Saharan Africa', 'South America'
+  ];
   const COUNTRY_REGION = {
     cambodia: 'Southeast Asia', indonesia: 'Southeast Asia', myanmar: 'Southeast Asia',
     philippines: 'Southeast Asia', thailand: 'Southeast Asia', vietnam: 'Southeast Asia',
-    hungary: 'Europe & Balkans', moldova: 'Europe & Balkans', poland: 'Europe & Balkans', serbia: 'Europe & Balkans', slovakia: 'Europe & Balkans',
-    armenia: 'Eurasia & Caucasus', azerbaijan: 'Eurasia & Caucasus', georgia: 'Eurasia & Caucasus', kazakhstan: 'Eurasia & Caucasus', turkey: 'Eurasia & Caucasus', uzbekistan: 'Eurasia & Caucasus',
-    brazil: 'Africa & Americas', colombia: 'Africa & Americas', ethiopia: 'Africa & Americas', nigeria: 'Africa & Americas', south_africa: 'Africa & Americas',
+    hungary: 'Central Europe', poland: 'Central Europe', slovakia: 'Central Europe',
+    serbia: 'Balkans', moldova: 'Eastern Europe',
+    armenia: 'South Caucasus', azerbaijan: 'South Caucasus', georgia: 'South Caucasus',
+    kazakhstan: 'Central Asia', uzbekistan: 'Central Asia',
+    turkey: 'Middle East & Mediterranean',
+    ethiopia: 'Sub-Saharan Africa', nigeria: 'Sub-Saharan Africa', south_africa: 'Sub-Saharan Africa',
+    brazil: 'South America', colombia: 'South America',
   };
   const scope = { domestic: 'In the country', abroad_local: 'Local-language, abroad', international: 'International' };
   const byId = Object.fromEntries(((idx && idx.countries) || []).map((c) => [c.id, c]));
