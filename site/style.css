@@ -35,45 +35,42 @@ a { color: inherit; }
 :focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 h1, h2, h3, p { margin: 0; }
 
-/* ---- Centered Broadsheet Masthead & Double Rule ---- */
+/* ---- Masthead & Double Rule ---- */
 .bureau {
   background: var(--bg);
   border-bottom: 1px solid var(--ink);
   box-shadow: 0 3px 0 0 var(--bg), 0 4px 0 0 var(--ink);   /* classic newspaper double rule */
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
-.bureau-inner { max-width: 68rem; margin: 0 auto; padding: 1.5rem 1.5rem 0; display: grid; gap: 0; }
+.bureau-inner { max-width: 68rem; margin: 0 auto; padding: 1.5rem 1.5rem 0; display: grid; gap: 0.5rem; }
 .masthead {
-  display: flex; flex-direction: column; align-items: center; text-align: center;
-  gap: 0.75rem;
+  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
+  gap: 0.75rem 2rem; padding-bottom: 0.85rem; border-bottom: 1px solid var(--rule);
 }
-.masthead > div { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; }
+.masthead > div { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35rem 0.9rem; }
 .masthead h1 {
-  font: 700 2.75rem/1 var(--serif);
-  letter-spacing: -0.03em;
+  font: 700 1.65rem/1 var(--sans);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: var(--ink);
 }
-.masthead h1 a { display: inline-flex; align-items: center; gap: 0.55rem; text-decoration: none; }
-.masthead h1 .logo { width: 1.75rem; height: 1.75rem; }
-.masthead p { font: 400 0.84rem/1.3 var(--serif); font-style: italic; color: var(--ink-2); }
+.masthead h1 a { display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; }
+.masthead h1 .logo { width: 1.35rem; height: 1.35rem; }
+.masthead p { font: 400 0.82rem/1.3 var(--sans); letter-spacing: 0.04em; color: var(--ink-3); }
 
 .topnav {
-  width: 100%;
-  display: flex; justify-content: center; flex-wrap: nowrap; overflow-x: auto;
-  gap: 2rem; align-items: center;
-  margin-top: 0.5rem; padding: 0.55rem 0;
-  border-top: 1px solid var(--rule);
-  border-bottom: 2px solid var(--ink);
+  display: flex; flex-wrap: nowrap; overflow-x: auto;
+  gap: 1.75rem; align-items: center;
 }
 .topnav a {
   font: 700 0.78rem/1.2 var(--sans);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   text-decoration: none;
-  color: var(--ink);
+  color: var(--ink-2);
   white-space: nowrap;
 }
-.topnav a:hover, .topnav a[aria-current="page"] { color: var(--red); }
+.topnav a:hover, .topnav a[aria-current="page"] { color: var(--ink); text-decoration: underline; text-underline-offset: 0.35rem; text-decoration-thickness: 2px; }
 .topnav .n {
   margin-left: 0.2rem;
   font: 700 0.75rem/1 var(--sans);
@@ -85,7 +82,7 @@ h1, h2, h3, p { margin: 0; }
   display: grid;
   grid-template-columns: 1fr;
   gap: 0.75rem;
-  padding: 0.65rem 0;
+  padding: 0.65rem 0 0.85rem;
 }
 .field { display: flex; align-items: center; gap: 0.45rem; }
 .field span { font: 700 0.72rem/1 var(--sans); letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-3); white-space: nowrap; }
@@ -119,38 +116,38 @@ select:disabled { opacity: 0.35; cursor: not-allowed; }
 }
 
 /* ---- Main Canvas ---- */
-main { max-width: 68rem; margin: 0 auto; padding: 1.5rem 1.5rem 4rem; outline: none; }
-@media (max-width: 45.99rem) { main { padding: 1.25rem 1rem 3rem; } }
+main { max-width: 68rem; margin: 0 auto; padding: 2rem 1.5rem 5rem; outline: none; }
+@media (max-width: 45.99rem) { main { padding: 1.5rem 1rem 3.5rem; } }
 .state { padding: 2rem 0; color: var(--ink-2); }
 .state.error { color: var(--red); }
 
 .result-line {
   font: 400 0.82rem/1.4 var(--sans);
-  color: var(--ink-3); padding-bottom: 0.75rem; border-bottom: 1px solid var(--rule);
+  color: var(--ink-3); padding-bottom: 1rem; margin-bottom: 2rem; border-bottom: 1px solid var(--rule);
 }
 .result-line b { color: var(--ink); font-weight: 700; }
 
 .notice {
-  margin-top: 0.85rem; padding: 0.5rem 0 0.5rem 0.9rem;
+  margin: 0 0 2rem; padding: 0.5rem 0 0.5rem 1.15rem;
   border-left: 4px solid var(--red); color: var(--red); font-size: 0.9rem;
 }
 .notice.quiet { border-left-color: var(--rule); color: var(--ink-2); }
 
 /* ---- Compact Crisis Strip ---- */
 .crisis-strip {
-  display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35rem 0.65rem;
-  margin: 1rem 0 0; padding: 0.5rem 0 0.5rem 0.9rem;
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 0.85rem;
+  margin: 0 0 2.75rem; padding: 0.45rem 0 0.45rem 1.15rem;
   border-left: 4px solid var(--red);
-  font-size: 0.9rem;
+  font-size: 0.9rem; color: var(--ink-2);
 }
-.crisis-strip a { text-decoration: none; font-weight: 700; color: var(--ink); }
+.crisis-strip a { text-decoration: none; font-weight: 600; color: var(--ink); }
 .crisis-strip a:hover { color: var(--red); text-decoration: underline; }
 
 /* ---- Topic Sub-navigation ---- */
 .tabs {
   position: sticky; top: 0; z-index: 5;
-  display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 1.5rem;
-  margin: 1.25rem 0 2rem; padding: 0.6rem 0;
+  display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 1.75rem;
+  margin: 2rem 0 2.75rem; padding: 0.75rem 0;
   list-style: none; background: rgba(255, 255, 255, 0.96);
   border-top: 1px solid var(--rule); border-bottom: 2px solid var(--ink);
   scrollbar-width: thin;
@@ -159,7 +156,7 @@ main { max-width: 68rem; margin: 0 auto; padding: 1.5rem 1.5rem 4rem; outline: n
 .tab {
   padding: 0;
   font: 700 0.78rem/1.2 var(--sans);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--ink-2);
   background: none;
@@ -173,24 +170,24 @@ main { max-width: 68rem; margin: 0 auto; padding: 1.5rem 1.5rem 4rem; outline: n
 .tab[aria-pressed="true"] .n { color: var(--red); }
 
 /* ---- Sections & Vertical-Bar Story Blocks (Magyar Nemzet style) ---- */
-.drawer { margin-bottom: 3rem; }
+.drawer { margin-bottom: 4rem; }
 .drawer-head {
   display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.25rem 1rem;
-  padding-bottom: 0.4rem; margin-bottom: 1.5rem;
+  padding-bottom: 0.55rem; margin-bottom: 2rem;
   border-bottom: 1px solid var(--ink);
 }
 .drawer-head h2 {
-  font: 700 0.95rem/1.2 var(--sans);
-  letter-spacing: 0.06em;
+  font: 700 0.88rem/1.2 var(--sans);
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink);
 }
 .drawer-head .count { font: 400 0.8rem/1.3 var(--sans); color: var(--ink-3); }
 
-/* Single-column or wide 2-column open flow — no boxed cards */
+/* Single-column or wide 2-column open flow — generous spacing */
 .grid {
   display: grid;
-  gap: 2rem 2.5rem;
+  gap: 2.5rem 3.25rem;
   grid-template-columns: minmax(0, 1fr);
 }
 @media (min-width: 52rem) {
@@ -199,7 +196,7 @@ main { max-width: 68rem; margin: 0 auto; padding: 1.5rem 1.5rem 4rem; outline: n
 }
 
 .more {
-  margin-top: 1.25rem; padding: 0.35rem 0.8rem;
+  margin-top: 1.75rem; padding: 0.4rem 0.9rem;
   font: 700 0.76rem/1.2 var(--sans); letter-spacing: 0.05em; text-transform: uppercase;
   color: var(--ink); background: transparent; border: 1px solid var(--ink); cursor: pointer;
 }
@@ -211,26 +208,26 @@ main { max-width: 68rem; margin: 0 auto; padding: 1.5rem 1.5rem 4rem; outline: n
   background: transparent;
   border: 0;
   border-left: 5px solid var(--bar);
-  padding: 0.15rem 0 0.15rem 1.15rem;
-  display: flex; flex-direction: column; gap: 0.45rem;
+  padding: 0.2rem 0 0.2rem 1.25rem;
+  display: flex; flex-direction: column; gap: 0.55rem;
   min-width: 0; overflow-wrap: anywhere;
 }
-.lead { border-left-width: 6px; padding-left: 1.35rem; }
+.lead { border-left-width: 6px; padding-left: 1.5rem; }
 
 .headline {
-  font: 700 1.2rem/1.32 var(--sans);
+  font: 700 1.22rem/1.34 var(--sans);
   letter-spacing: -0.015em;
   color: var(--ink);
   text-wrap: pretty;
 }
-.lead .headline { font-size: 1.55rem; line-height: 1.25; max-width: 48rem; }
+.lead .headline { font-size: 1.5rem; line-height: 1.28; max-width: 48rem; }
 .headline a { text-decoration: none; }
 .headline a:hover { color: var(--indigo); }
 .byline { margin-top: 0.2rem; font: 400 0.82rem/1.35 var(--sans); color: var(--ink-3); }
 
 .slipline {
-  display: flex; flex-wrap: wrap; gap: 0.3rem 0.55rem; align-items: baseline;
-  font: 400 0.82rem/1.35 var(--sans); color: var(--ink-2);
+  display: flex; flex-wrap: wrap; gap: 0.35rem 0.65rem; align-items: baseline;
+  font: 400 0.82rem/1.35 var(--sans); color: var(--ink-3);
 }
 .slipline strong { color: var(--ink); font-weight: 600; }
 
@@ -282,7 +279,7 @@ summary:hover { color: var(--ink); }
 
 /* ---- Auxiliary Panels (Trends, Reddit) ---- */
 .alerts {
-  margin: 1rem 0 0; padding: 0.2rem 0 0.2rem 1.15rem;
+  margin: 0 0 2.25rem; padding: 0.25rem 0 0.25rem 1.25rem;
   border-left: 5px solid var(--rule);
 }
 .alerts h2 { font: 700 0.78rem/1.2 var(--sans); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); margin: 0 0 0.45rem; }

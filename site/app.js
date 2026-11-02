@@ -207,55 +207,43 @@
     const headLink = h('a', { href: safeUrl(s.headline.url), target: '_blank', rel: 'noopener', lang: s.headline.language, text: s.headline.title });
     const headOrig = h('p', { class: 'orig', hidden: true, title: 'Original headline' });
     track(headLink, s.headline.title, s.headline.language, headOrig);
+    const shown = opts.lead ? s.excerpts : s.excerpts.slice(0, 1);
 
     clip.append(...[
       h('div', null,
         h('h3', { class: 'headline' }, headLink),
         headOrig,
-        h('p', { class: 'byline', text: `${s.headline.source}, ${fmtDay.format(new Date(s.last_seen))}` }),
       ),
-      h('div', { class: 'slipline' },
-        s.country_name && h('button', { type: 'button', class: 'stamp country-tag', title: `Open ${s.country_name} monitor`, text: s.country_name, onclick: () => openCountry(s.country) }),
-        h('span', { class: 'stamp ' + (s.evidence === 'OFFICIAL' ? 'red' : 'indigo'),
-          title: s.evidence === 'OFFICIAL' ? 'A government or Party outlet is among the sources. Officially stated, not independently verified.' : 'Reported by one or more outlets.',
-          text: s.evidence === 'OFFICIAL' ? 'Official' : 'Reported' }),
-        trend(s) && h('span', { class: 'stamp ' + trend(s)[1], title: trend(s)[2], text: trend(s)[0] }),
-        s.abroad_only && h('span', { class: 'stamp teal', title: 'No outlet inside the country covered it.', text: 'Not in domestic press' }),
-        (s.themes || []).length > 0 && h('span', { class: 'themes', title: 'Why this story ranks where it does', text: s.themes.join(' · ') }),
-        h('span', null, h('strong', { text: outlets }), ` · ${plural(s.articles, 'article', 'articles')}`, single && ` · all ${single}`),
-      ),
-      present.length > 1 && h('div', { class: 'cover', 'aria-label': 'Where the coverage comes from' },
-        present.map(([id, label]) => h('span', null, h('b', { text: String(s.by_scope[id]) }), ` ${s.by_scope[id] === 1 ? 'article' : 'articles'} from ${label}`))),
-    ].filter(Boolean));
-
-    const shown = opts.lead ? s.excerpts : s.excerpts.slice(0, 1);
-    if (shown.length) {
-      clip.append(h('div', { class: 'strips' }, shown.map((x) => {
+      shown.length > 0 && h('div', { class: 'strips' }, shown.map((x) => {
         const main = h('p', { lang: T.lang, text: x.text });
         const orig = h('p', { class: 'orig', hidden: true, title: 'Original quote' });
         track(main, x.text, T.lang, orig);
         return h('blockquote', { class: 'strip' }, main, orig,
-          h('footer', null, h('a', { class: 'stamp indigo', href: safeUrl(x.url), target: '_blank', rel: 'noopener', text: x.source })));
-      })));
-    }
-
-    if (s.first && s.articles > 2) {
-      const max = Math.max(...s.per_day.map((d) => d[1]));
-      clip.append(h('div', { class: 'timeline' },
-        h('span', { class: 'bars', 'aria-hidden': 'true' }, s.per_day.map(([day, n]) =>
-          h('i', { style: `height:${Math.max(15, Math.round(100 * n / max))}%`, title: `${fmtDay.format(new Date(day))}: ${plural(n, 'article', 'articles')}` }))),
-        h('span', { text: `First seen in ${s.first.source}, ${fmtTime.format(new Date(s.first.at))}. ${plural(s.per_day.length, 'day', 'days')} of coverage.` })));
-    }
-    if ((s.related || []).length) {
-      clip.append(h('p', { class: 'byline related' }, 'May be the same event: ', s.related.map((r) =>
-        h('span', null, h('a', { href: safeUrl(r.url), target: '_blank', rel: 'noopener', text: r.title }), ` (${plural(r.articles, 'article', 'articles')}, ${r.source}) `))));
-    }
+          x.source !== s.headline.source && h('footer', null, h('a', { class: 'stamp indigo', href: safeUrl(x.url), target: '_blank', rel: 'noopener', text: x.source })));
+      })),
+      h('div', { class: 'slipline' },
+        s.country_name && h('button', { type: 'button', class: 'stamp country-tag', title: `Open ${s.country_name} monitor`, text: s.country_name, onclick: () => openCountry(s.country) }),
+        h('span', { text: `${s.headline.source}, ${fmtDay.format(new Date(s.last_seen))} · ${outlets}` }),
+        s.evidence === 'OFFICIAL' && h('span', { class: 'stamp red', title: 'A government or Party outlet is among the sources.', text: 'Official' }),
+        s.abroad_only && h('span', { class: 'stamp teal', title: 'No outlet inside the country covered it.', text: 'Not in domestic press' }),
+        trend(s) && trend(s)[0] !== 'Quiet' && h('span', { class: 'stamp indigo', title: trend(s)[2], text: trend(s)[0] }),
+      ),
+    ].filter(Boolean));
 
     const rest = s.sources || [];
     if (rest.length) {
       const lateItems = [];
+      const max = s.per_day && s.per_day.length ? Math.max(...s.per_day.map((d) => d[1])) : 1;
       const details = h('details', null,
-        h('summary', { text: `All sources (${plural(s.articles, 'article', 'articles')})` }),
+        h('summary', { text: `All ${s.articles} articles` }),
+        present.length > 1 && h('div', { class: 'cover', 'aria-label': 'Where the coverage comes from' },
+          present.map(([id, label]) => h('span', null, h('b', { text: String(s.by_scope[id]) }), ` ${s.by_scope[id] === 1 ? 'article' : 'articles'} from ${label}`))),
+        s.first && s.articles > 2 && h('div', { class: 'timeline' },
+          h('span', { class: 'bars', 'aria-hidden': 'true' }, s.per_day.map(([day, n]) =>
+            h('i', { style: `height:${Math.max(15, Math.round(100 * n / max))}%`, title: `${fmtDay.format(new Date(day))}: ${plural(n, 'article', 'articles')}` }))),
+          h('span', { text: `First seen in ${s.first.source}, ${fmtTime.format(new Date(s.first.at))}.` })),
+        (s.related || []).length > 0 && h('p', { class: 'byline related' }, 'May be the same event: ', s.related.map((r) =>
+          h('span', null, h('a', { href: safeUrl(r.url), target: '_blank', rel: 'noopener', text: r.title }), ` (${plural(r.articles, 'article', 'articles')}, ${r.source}) `))),
         h('ul', { class: 'sources' }, rest.map((r) => {
           const a = h('a', { class: 't', href: safeUrl(r.url), target: '_blank', rel: 'noopener', lang: r.language, text: r.title });
           const o = h('span', { class: 'orig', hidden: true, title: 'Original headline' });
@@ -423,13 +411,8 @@
       watchbar(q, pool),
       allAlerts.length > 0 && h('div', { class: 'crisis-strip', role: 'region', 'aria-label': 'Active crisis alerts' },
         h('span', { class: 'stamp red', text: `${plural(allAlerts.length, 'active alert', 'active alerts')}` }),
-        ...allAlerts.slice(0, 2).map((i) => h('span', null,
-          h('button', { type: 'button', class: 'desk-link', text: `${i.cname}:`, onclick: () => openCountry(i.cid) }),
-          ' ',
-          h('a', { href: safeUrl(i.url), target: '_blank', rel: 'noopener', text: i.title }),
-          i.summary && h('span', { class: 'meta', text: ` (${i.summary})` }),
-          ' · ')),
-        h('button', { type: 'button', class: 'desk-link', text: `View all ${allAlerts.length} alerts →`, onclick: () => openCountry('alerts') })),
+        h('span', { text: `${allAlerts[0].cname} — ${allAlerts[0].summary || allAlerts[0].title}` }),
+        h('button', { type: 'button', class: 'desk-link', text: `All ${allAlerts.length} alerts →`, onclick: () => openCountry('alerts') })),
       homeSection('Most reported (last 7 days)', 'Ranked by independent outlet count across all countries', filter(hm.most_reported)),
       homeSection('Fastest growing (last 24 hours)', 'Most new coverage in the last 24 hours', filter(hm.growing)),
       homeSection('Blind spots · Not in domestic press', 'Covered by international or diaspora outlets, zero domestic coverage', filter(hm.abroad_only)),
