@@ -18,27 +18,34 @@ MAX_ARTICLES_LISTED = 12
 
 def _story(db, s):
     rows = db.execute(
-        "SELECT a.id, a.title, a.url, a.language, a.published_at, a.syndicated_of, src.id AS source_id, src.name AS source, "
-        "src.scope, src.kind FROM story_article sa JOIN article a ON a.id=sa.article_id JOIN source src ON src.id=a.source_id "
-        "WHERE sa.story_id=? ORDER BY (a.syndicated_of IS NOT NULL), a.published_at", (s["id"],)).fetchall()
-    independent = {r["source_id"] for r in rows if r["syndicated_of"] is None}
-    by_scope = {sc: sum(r["scope"] == sc for r in rows) for sc in ("domestic", "abroad_local", "international")}
-    rep = next(r for r in rows if r["id"] == s["representative_article_id"])
+        "SELECT a.id, a.title, a.url, a.language, a.published_at, a.syndicated_of, COALESCE(sa.similarity, 1.0) AS similarity, "
+        "src.id AS source_id, src.name AS source, src.scope, src.kind "
+        "FROM story_article sa JOIN article a ON a.id=sa.article_id JOIN source src ON src.id=a.source_id "
+        "WHERE sa.story_id=? ORDER BY (COALESCE(sa.similarity, 1.0) >= 0.93) DESC, (COALESCE(sa.similarity, 1.0) >= 0.85) DESC, "
+        "(a.syndicated_of IS NOT NULL), COALESCE(sa.similarity, 1.0) DESC, a.published_at", (s["id"],)).fetchall()
+    core_rows = [r for r in rows if r["similarity"] >= 0.85] or rows
+    independent = {r["source_id"] for r in core_rows if r["syndicated_of"] is None}
+    by_scope = {sc: sum(r["scope"] == sc for r in core_rows) for sc in ("domestic", "abroad_local", "international")}
+    rep = next((r for r in rows if r["id"] == s["representative_article_id"]), rows[0])
     excerpts = db.execute(
         "SELECT x.id, x.text, a.url, src.name AS source, src.scope FROM excerpt x JOIN article a ON a.id=x.article_id "
         "JOIN source src ON src.id=a.source_id WHERE x.story_id=? ORDER BY x.id", (s["id"],)).fetchall()
     related = db.execute(
-        "SELECT o.id, a.title, a.url, src.name AS source, (SELECT COUNT(*) FROM story_article WHERE story_id=r.related_id) AS n, "
+        "SELECT o.id, a.title, a.url, src.name AS source, (SELECT COUNT(*) FROM story_article WHERE story_id=r.related_id AND COALESCE(similarity, 1.0) >= 0.85) AS n, "
         "(SELECT COUNT(*) FROM story_article sa2 JOIN article a2 ON a2.id=sa2.article_id JOIN source s2 ON s2.id=a2.source_id "
-        " WHERE sa2.story_id=r.related_id AND s2.scope='domestic') AS dom "
+        " WHERE sa2.story_id=r.related_id AND COALESCE(sa2.similarity, 1.0) >= 0.85 AND s2.scope='domestic') AS dom "
         "FROM story_related r JOIN story o ON o.id=r.related_id JOIN article a ON a.id=o.representative_article_id "
         "JOIN source src ON src.id=a.source_id WHERE r.story_id=? ORDER BY r.similarity DESC LIMIT 4", (s["id"],)).fetchall()
     has_related_domestic = any(r["dom"] > 0 for r in related)
     cutoff_24h = (datetime.now(timezone.utc) - timedelta(hours=24)).isoformat(timespec="seconds")
-    dated = sorted((r for r in rows if r["published_at"]), key=lambda r: r["published_at"])
+    dated = sorted((r for r in core_rows if r["published_at"]), key=lambda r: r["published_at"])
     days = {}
     for r in dated:
         days[r["published_at"][:10]] = days.get(r["published_at"][:10], 0) + 1
+    b_high = [r for r in rows if r["similarity"] >= 0.93][:10]
+    b_mid = [r for r in rows if 0.85 <= r["similarity"] < 0.93][:8]
+    b_low = [r for r in rows if r["similarity"] < 0.85][:6]
+    listed = b_high + b_mid + b_low
     return {
         "id": s["id"],
         "first": {"source": dated[0]["source"], "at": dated[0]["published_at"]} if dated else None,   # earliest article in the story
@@ -53,13 +60,14 @@ def _story(db, s):
         "articles": len(rows),
         "independent_sources": len(independent),
         "by_scope": by_scope,
-        "evidence": "OFFICIAL" if any(r["kind"] == "official" for r in rows) else "REPORTED",
+        "evidence": "OFFICIAL" if any(r["kind"] == "official" for r in core_rows) else "REPORTED",
         "abroad_only": by_scope["domestic"] == 0 and not has_related_domestic and (by_scope["abroad_local"] + by_scope["international"]) > 0,
         "related": [{"title": r["title"], "url": r["url"], "source": r["source"], "articles": r["n"]} for r in related[:2]],   # possibly the same event
         "excerpts": [{"text": x["text"], "source": x["source"], "scope": x["scope"], "url": x["url"]} for x in excerpts],
         "sources": [{"title": r["title"], "url": r["url"], "source": r["source"], "scope": r["scope"],
-                     "language": r["language"], "published": r["published_at"], "copy": r["syndicated_of"] is not None}
-                    for r in rows[:MAX_ARTICLES_LISTED]],
+                     "language": r["language"], "published": r["published_at"], "copy": r["syndicated_of"] is not None,
+                     "sim": int(round(r["similarity"] * 100))}
+                    for r in listed],
     }
 
 
@@ -99,7 +107,7 @@ def _home(now, countries):
         d7 = json.loads(f7.read_text(encoding="utf8")) if f7.exists() else {"stories": [], "totals": {}}
         d24 = json.loads(f24.read_text(encoding="utf8")) if f24.exists() else {"stories": [], "totals": {}}
         for s in d7["stories"]:
-            pool.append({**s, "country": cid, "country_name": c["name"], "region": reg, "excerpts": s.get("excerpts", [])[:1], "sources": s.get("sources", [])[:5]})
+            pool.append({**s, "country": cid, "country_name": c["name"], "region": reg, "excerpts": s.get("excerpts", [])[:1], "sources": s.get("sources", [])[:12]})
         top = d7["stories"][0] if d7["stories"] else None
         desks.append({
             "id": cid, "name": c["name"], "region": reg,

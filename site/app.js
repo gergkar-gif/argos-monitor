@@ -315,6 +315,22 @@
     if (rest.length) {
       const lateItems = [];
       const max = s.per_day && s.per_day.length ? Math.max(...s.per_day.map((d) => d[1])) : 1;
+      const bands = [
+        ['> 93% · Direct match', rest.filter((r) => (r.sim ?? 100) >= 93)],
+        ['85–93% · Close coverage', rest.filter((r) => (r.sim ?? 100) >= 85 && (r.sim ?? 100) < 93)],
+        ['75–85% · Broader context', rest.filter((r) => (r.sim ?? 100) < 85)],
+      ].filter(([, list]) => list.length > 0);
+      const renderItem = (r) => {
+        const a = h('a', { class: 't', href: safeUrl(r.url), target: '_blank', rel: 'noopener', lang: r.language, text: r.title });
+        const o = h('span', { class: 'orig', hidden: true, title: 'Original headline' });
+        lateItems.push([a, r.title, r.language, o]);
+        return h('li', null, a, o,
+          h('span', { class: 'meta' },
+            h('span', { class: 'stamp indigo', text: r.source }),
+            r.sim != null && h('span', { class: 'typed', text: `${r.sim}%` }),
+            r.published && h('span', { text: fmtTime.format(new Date(r.published)) }),
+            r.copy && h('span', { text: 'reprint, counted once' })));
+      };
       const details = h('details', null,
         h('summary', { text: `All ${s.articles} articles` }),
         present.length > 1 && h('div', { class: 'cover', 'aria-label': 'Where the coverage comes from' },
@@ -325,16 +341,9 @@
           h('span', { text: `First seen in ${s.first.source}, ${fmtTime.format(new Date(s.first.at))}.` })),
         (s.related || []).length > 0 && h('p', { class: 'byline related' }, 'May be the same event: ', s.related.map((r) =>
           h('span', null, h('a', { href: safeUrl(r.url), target: '_blank', rel: 'noopener', text: r.title }), ` (${plural(r.articles, 'article', 'articles')}, ${r.source}) `))),
-        h('ul', { class: 'sources' }, rest.map((r) => {
-          const a = h('a', { class: 't', href: safeUrl(r.url), target: '_blank', rel: 'noopener', lang: r.language, text: r.title });
-          const o = h('span', { class: 'orig', hidden: true, title: 'Original headline' });
-          lateItems.push([a, r.title, r.language, o]);
-          return h('li', null, a, o,
-          h('span', { class: 'meta' },
-            h('span', { class: 'stamp indigo', text: r.source }),
-            r.published && h('span', { text: fmtTime.format(new Date(r.published)) }),
-            r.copy && h('span', { text: 'reprint, counted once' })));
-        })),
+        ...bands.map(([label, list]) => h('div', { class: 'sim-band' },
+          h('p', { class: 'band-head' }, h('b', { text: label }), ` (${list.length})`),
+          h('ul', { class: 'sources' }, list.map(renderItem)))),
         s.articles > rest.length && h('p', { class: 'byline', text: `Showing ${rest.length} of ${s.articles}.` }),
       );
       details.addEventListener('toggle', () => {

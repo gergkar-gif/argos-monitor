@@ -11,9 +11,17 @@ from .embed import DIM
 
 WINDOWS = (7, 1)     # days
 MAX_GAP_DAYS = 3
-MERGE_SIMILARITY = 0.96    # shortcut: untuned guess, read the "closest pairs" lines in the run log and adjust
-RELATED_SIMILARITY = 0.93  # below the merge level: shown on the site as related coverage
-SIMILARITY = 0.92    # cosine; e5 scores are compressed (unrelated pairs ~0.85). Hand-checked 0.90-0.94 on 2026-09-30.
+MERGE_SIMILARITY = 0.95    # shortcut: untuned guess, read the "closest pairs" lines in the run log and adjust
+RELATED_SIMILARITY = 0.925 # below the merge level: shown on the site as related coverage
+SIMILARITY = 0.92          # core cluster (>93% calibrated); 85-93% and 75-85% bands attach around the core centre
+RAW_85 = 0.895             # e5-small raw cosine corresponding to 85% calibrated similarity
+RAW_75 = 0.860             # e5-small raw cosine corresponding to 75% calibrated similarity
+MAX_BROAD_PER_STORY = 6
+
+
+def _calibrate(raw):
+    """Map e5-small's compressed cosine cone (0.860-0.925+) onto human-readable 75-85%, 85-93%, >93% bands."""
+    return np.interp(raw, [0.78, RAW_75, RAW_85, 0.925, 1.0], [0.0, 0.75, 0.85, 0.93, 1.0])
 
 
 def _time(row):
@@ -88,22 +96,72 @@ def _cluster_window(db, country, days, similarity):
         print(f"  closest pair kept apart {sim:.3f}: {_title(db, rows, a)} | {_title(db, rows, b)}")
     print(f"  merge pass: {len(merges)} merges, {len(close)} related pairs")
     ids = {}
-    for label in sorted(set(labels)):
-        members = np.where(labels == label)[0]
-        centre = X[members].mean(0)          # representative = the article closest to the cluster centre
-        rep = rows[members[int(np.argmax(X[members] @ centre))]]["id"]
-        times = sorted(datetime.fromtimestamp(t[m], timezone.utc).isoformat(timespec="seconds") for m in members)
+    core_labels = sorted(set(labels))
+    centres, los, his, sizes, reps = {}, {}, {}, {}, {}
+    for l in core_labels:
+        m = np.where(labels == l)[0]
+        c = X[m].mean(0); c /= np.linalg.norm(c)
+        centres[l], los[l], his[l], sizes[l] = c, float(t[m].min()), float(t[m].max()), len(m)
+        reps[l] = int(m[int(np.argmax(X[m] @ c))])
+
+    # Absorb small (1-2 article) clusters whose centre sits in the 85-93% band of a larger story within MAX_GAP_DAYS.
+    absorbed = {}
+    for b in core_labels:
+        if sizes[b] > 2:
+            continue
+        best_a, best_s = None, RAW_85
+        for a in core_labels:
+            if a == b or a in absorbed or (sizes[a], -a) <= (sizes[b], -b):
+                continue
+            if max(his[a], his[b]) - min(los[a], los[b]) > MAX_GAP_DAYS * 86400:
+                continue
+            s = float(centres[a] @ centres[b])
+            if s >= best_s:
+                best_a, best_s = a, s
+        if best_a is not None:
+            absorbed[b] = best_a
+
+    active_labels = [l for l in core_labels if l not in absorbed]
+    sa_rows = []
+    for l in active_labels:
+        core_m = np.where(labels == l)[0]
+        abs_m = [m for b, target in absorbed.items() if target == l for m in np.where(labels == b)[0]]
+        all_85 = list(core_m) + abs_m
+        times = sorted(datetime.fromtimestamp(t[m], timezone.utc).isoformat(timespec="seconds") for m in all_85)
+        rep_idx = reps[l]
         cur = db.execute("INSERT INTO story (country,window_days,window_start,window_end,first_seen,last_seen,representative_article_id) "
-                         "VALUES (?,?,?,?,?,?,?)", (country, days, cutoff, now.isoformat(timespec="seconds"), times[0], times[-1], rep))
-        ids[label] = cur.lastrowid
-    db.executemany("INSERT INTO story_article VALUES (?,?)", [(ids[l], r["id"]) for l, r in zip(labels, rows)])
-    db.executemany("INSERT INTO story_related VALUES (?,?,?)",
-                   [(ids[a], ids[b], s) for s, _, _, a, b in close] + [(ids[b], ids[a], s) for s, _, _, a, b in close])
+                         "VALUES (?,?,?,?,?,?,?)", (country, days, cutoff, now.isoformat(timespec="seconds"), times[0], times[-1], rows[rep_idx]["id"]))
+        sid = cur.lastrowid
+        ids[l] = sid
+        c = centres[l]
+        seen_idx = set()
+        for m in core_m:
+            raw_s = 1.0 if m == rep_idx else max(float(X[m] @ c), float(X[m] @ X[rep_idx]))
+            cal_s = 1.0 if m == rep_idx else max(0.93, round(float(_calibrate(raw_s)), 3))
+            sa_rows.append((sid, rows[m]["id"], cal_s))
+            seen_idx.add(int(m))
+        for m in abs_m:
+            raw_s = max(float(X[m] @ c), float(X[m] @ X[rep_idx]))
+            cal_s = min(0.929, max(0.85, round(float(_calibrate(raw_s)), 3)))
+            sa_rows.append((sid, rows[m]["id"], cal_s))
+            seen_idx.add(int(m))
+        # Attach additional 85-93% (Close coverage) and 75-85% (Broader context) articles within MAX_GAP_DAYS.
+        sims = np.maximum(X @ c, X @ X[rep_idx])
+        near_time = (np.maximum(his[l], t) - np.minimum(los[l], t)) <= MAX_GAP_DAYS * 86400
+        cand_85 = [int(m) for m in np.argsort(-sims) if near_time[m] and int(m) not in seen_idx and RAW_85 <= sims[m] < 0.925][:6]
+        for m in cand_85:
+            sa_rows.append((sid, rows[m]["id"], min(0.929, max(0.85, round(float(_calibrate(float(sims[m]))), 3)))))
+            seen_idx.add(m)
+        cand_75 = [int(m) for m in np.argsort(-sims) if near_time[m] and int(m) not in seen_idx and RAW_75 <= sims[m] < RAW_85][:MAX_BROAD_PER_STORY]
+        for m in cand_75:
+            sa_rows.append((sid, rows[m]["id"], min(0.849, max(0.75, round(float(_calibrate(float(sims[m]))), 3)))))
+            seen_idx.add(m)
+
+    db.executemany("INSERT OR REPLACE INTO story_article (story_id, article_id, similarity) VALUES (?,?,?)", sa_rows)
+    rel_rows = [(ids[a], ids[b], s) for s, _, _, a, b in close if a in ids and b in ids]
+    db.executemany("INSERT INTO story_related VALUES (?,?,?)", rel_rows + [(b, a, s) for a, b, s in rel_rows])
     db.commit()
-    sizes = np.bincount(labels)
-    sizes = sizes[sizes > 0]
-    print(f"cluster {country} {days}d: {n} articles -> {len(sizes)} stories; {int((sizes == 1).sum())} single-article, "
-          f"{int((sizes >= 3).sum())} with 3+ articles, largest {sizes.max()}")
+    print(f"cluster {country} {days}d: {n} articles -> {len(active_labels)} stories ({len(absorbed)} absorbed in 85-93% band)")
 
 
 def run(db, similarity=SIMILARITY):

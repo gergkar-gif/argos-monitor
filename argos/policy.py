@@ -69,7 +69,7 @@ def _run_country(db, emb, country):
         data = []
         for (sid,) in stories:
             rows = db.execute("SELECT a.title, a.lead, e.vec FROM story_article sa JOIN article a ON a.id=sa.article_id "
-                              "JOIN embedding e ON e.article_id=a.id WHERE sa.story_id=?", (sid,)).fetchall()
+                              "JOIN embedding e ON e.article_id=a.id WHERE sa.story_id=? AND COALESCE(sa.similarity, 1.0) >= 0.85", (sid,)).fetchall()
             if not rows:
                 data.append((sid, None, None))
                 continue

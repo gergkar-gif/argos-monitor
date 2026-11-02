@@ -62,7 +62,7 @@ def run(db):
         arts = db.execute(
             "SELECT a.id, a.source_id, a.text, s.scope, e.vec FROM story_article sa JOIN article a ON a.id=sa.article_id "
             "JOIN source s ON s.id=a.source_id JOIN embedding e ON e.article_id=a.id "
-            "WHERE sa.story_id=? AND a.text IS NOT NULL AND a.syndicated_of IS NULL", (sid,)).fetchall()
+            "WHERE sa.story_id=? AND COALESCE(sa.similarity, 1.0) >= 0.85 AND a.text IS NOT NULL AND a.syndicated_of IS NULL", (sid,)).fetchall()
         if not arts:
             continue
         centre = np.frombuffer(b"".join(a["vec"] for a in arts), dtype=np.float32).reshape(len(arts), DIM).mean(0)

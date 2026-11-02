@@ -275,7 +275,10 @@ summary {
   color: var(--ink-3); display: inline-flex; align-items: center;
 }
 summary:hover { color: var(--ink); }
-.sources { margin: 0.45rem 0 0; padding: 0; list-style: none; display: grid; gap: 0.45rem; }
+.sources { margin: 0.35rem 0 0; padding: 0; list-style: none; display: grid; gap: 0.45rem; }
+.sim-band { margin-top: 0.75rem; }
+.band-head { margin: 0; font: 400 0.72rem/1.2 var(--sans); letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-3); }
+.band-head b { font-weight: 700; color: var(--ink-2); }
 .sources li { display: grid; gap: 0.1rem; font-size: 0.86rem; line-height: 1.38; padding-top: 0.4rem; border-top: 1px solid var(--rule); }
 .sources a.t { text-decoration: none; color: var(--ink); }
 .sources a.t:hover { text-decoration: underline; }

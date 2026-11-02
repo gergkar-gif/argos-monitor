@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS story (
   id INTEGER PRIMARY KEY, country TEXT, window_days INTEGER, window_start TEXT, window_end TEXT, category TEXT, score REAL,
   first_seen TEXT, last_seen TEXT, representative_article_id INTEGER, policy REAL, themes TEXT);
 CREATE TABLE IF NOT EXISTS story_article (story_id INTEGER REFERENCES story(id), article_id INTEGER REFERENCES article(id),
-  PRIMARY KEY (story_id, article_id));
+  similarity REAL DEFAULT 1.0, PRIMARY KEY (story_id, article_id));
 CREATE TABLE IF NOT EXISTS story_related (story_id INTEGER REFERENCES story(id), related_id INTEGER REFERENCES story(id), similarity REAL);
 CREATE TABLE IF NOT EXISTS translation (article_id INTEGER PRIMARY KEY REFERENCES article(id), text_en TEXT, model TEXT);
 CREATE TABLE IF NOT EXISTS excerpt (
@@ -44,7 +44,7 @@ def connect():
 
     # Databases created before a column existed get it added.
     for table, col, kind in (("story", "policy", "REAL"), ("story", "themes", "TEXT"), ("story", "country", "TEXT"),
-                             ("article", "country", "TEXT")):
+                             ("article", "country", "TEXT"), ("story_article", "similarity", "REAL DEFAULT 1.0")):
         if col not in _columns(db, table):
             db.execute(f"ALTER TABLE {table} ADD COLUMN {col} {kind}")
     art = _columns(db, "article")
