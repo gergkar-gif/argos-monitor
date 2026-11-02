@@ -33,7 +33,7 @@ sources:
     governing_body: OUR MEDIA SR a.s. (national daily newspaper)
     state_affiliated: false
     feeds:
-      - {url: "https://spravy.pravda.sk/rss/xml/", section: Domáce & Svet, category_hint: general}
+      - {url: "https://spravy.pravda.sk/domace/rss/xml/", section: Domáce, category_hint: general}
 
   - id: spectator_sme
     name: The Slovak Spectator (SME)
@@ -53,6 +53,7 @@ sources:
     scope: domestic
     kind: official
     aggregator: google_news
+    needs_mention: true
     governing_body: News Agency of the Slovak Republic (TASR) / Slovak Television and Radio (STVR)
     state_affiliated: true
     feeds:

@@ -5,6 +5,7 @@
 """
 import re
 from functools import lru_cache
+from urllib.parse import urlparse
 
 import yaml
 
@@ -61,3 +62,9 @@ def url_section(url):
     """First part of an article address's path, lower case: 'https://telex.hu/kulfold/2026/..' -> 'kulfold'."""
     m = re.match(r"https?://[^/]+/([^/?#]+)", url or "")
     return m.group(1).lower() if m else ""
+
+
+def url_sections(url):
+    """All path parts of an article address, lower case: 'https://pravda.sk/spravy/svet/clanok/..' -> {'spravy', 'svet', 'clanok'}."""
+    path = urlparse(url or "").path.lower()
+    return {p for p in path.strip("/").split("/") if p}

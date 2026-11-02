@@ -35,8 +35,8 @@ def _keep(pack, outlets, item):
         return False   # navigational search for a news site itself ("dân trí", "bama.hu")
     if "data:video" in url or NOISE_RE.search(blob):
         return False   # pirated stream redirect or routine sports score
-    sec = packs.url_section(url)
-    if sec in pack["skip_sections"] or sec in ("sport", "sports", "f1", "bong-da", "the-thao", "entertainment", "celebrity", "sztarvilag"):
+    secs = packs.url_sections(url)
+    if (secs & pack["skip_sections"]) or (secs & {"sport", "sports", "f1", "bong-da", "the-thao", "entertainment", "celebrity", "sztarvilag"}):
         return False
     return True
 

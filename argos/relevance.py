@@ -14,10 +14,11 @@ MIN_TEXT_MENTIONS = 2
 
 
 def is_relevant(pack, scope, category_hint, section, url, title, lead, text, needs_mention=False):
-    web_section = packs.url_section(url)
-    if web_section in pack["skip_sections"]:
+    sections = packs.url_sections(url)
+    if sections & pack["skip_sections"]:
         return False
-    if scope == "domestic" and not needs_mention and category_hint != "foreign_policy" and web_section not in pack["foreign_sections"]:
+    is_foreign = bool(sections & pack["foreign_sections"]) or bool(section and section.lower() in pack["foreign_sections"])
+    if scope == "domestic" and not needs_mention and category_hint != "foreign_policy" and not is_foreign:
         return True
     if pack.get("mention_section") and section == pack["mention_section"]:   # e.g. RFI's own Vietnam section
         return True
