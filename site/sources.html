@@ -23,7 +23,7 @@
 <script src="data/sources.js"></script>
 <script>
 (() => {
-  const root = document.getElementById('src'), idx = window.ARGOS_INDEX, data = (window.ARGOS_SOURCES || {}).sources;
+  const root = document.getElementById('src'), idx = window.ARGOS_INDEX, data = window.ARGOS_SOURCES;
   const el = (tag, attrs, ...kids) => { const e = document.createElement(tag); for (const [k, v] of Object.entries(attrs || {})) { if (v == null || v === false) continue; k === 'text' ? e.textContent = v : e.setAttribute(k, v); } e.append(...kids.flat().filter((x) => x != null && x !== false)); return e; };
   const safe = (u) => { try { const x = new URL(u); return /^https?:$/.test(x.protocol) ? x.href : '#'; } catch { return '#'; } };
   if (!idx || !data) { root.replaceChildren(el('p', { class: 'state error', text: 'No data found.' })); return; }

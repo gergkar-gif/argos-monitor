@@ -65,8 +65,7 @@ def _write(name, payload, var):
     because browsers refuse to fetch() local files when the page is opened straight from a folder."""
     text = json.dumps(payload, ensure_ascii=False, indent=1)
     (SITE_DATA / f"{name}.json").write_text(text, encoding="utf8")
-    key = "" if var == "ARGOS_INDEX" else f'["{name}"]'
-    head = f"window.{var} = {text};" if not key else f"window.{var} = window.{var} || {{}}; window.{var}{key} = {text};"
+    head = f'window.{var} = window.{var} || {{}}; window.{var}["{name}"] = {text};' if var == "ARGOS_DATA" else f"window.{var} = {text};"
     (SITE_DATA / f"{name}.js").write_text(head + "\n", encoding="utf8")
 
 

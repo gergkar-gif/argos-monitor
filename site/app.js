@@ -291,7 +291,7 @@
 
   // What people search for (Google Trends): how many collected stories mention each term, one click to read them.
   function trends() {
-    const tr = window.ARGOS_TRENDS && window.ARGOS_TRENDS.countries[country.value];
+    const tr = (window.ARGOS_TRENDS && (window.ARGOS_TRENDS.countries || (window.ARGOS_TRENDS.trends || {}).countries) || {})[country.value];
     if (!tr || !tr.length) return null;
     return h('section', { class: 'alerts', 'aria-label': 'Trending searches' },
       h('h2', { text: 'Trending searches' }),
@@ -310,7 +310,7 @@
 
   // Top posts of the day on the country's subreddit; hidden when Reddit did not answer.
   function reddit() {
-    const r = window.ARGOS_REDDIT && window.ARGOS_REDDIT.countries[country.value];
+    const r = (window.ARGOS_REDDIT && (window.ARGOS_REDDIT.countries || (window.ARGOS_REDDIT.reddit || {}).countries) || {})[country.value];
     if (!r || !r.posts.length) return null;
     return h('section', { class: 'alerts', 'aria-label': 'On Reddit' },
       h('h2', { text: `On Reddit today, r/${r.subreddit}` }),
@@ -339,7 +339,7 @@
 
   // Official alerts from free feeds (GDACS, USGS, travel advice): each line is the feed's own title, linked to it.
   function alerts() {
-    const c = window.ARGOS_CRISIS;
+    const raw = window.ARGOS_CRISIS; const c = raw && (raw.countries ? raw : raw.crisis);
     if (!c) return null;
     const items = c.countries[country.value] || [];
     const hot = (i) => /^(Red|Orange)$/.test(i.level || '') || /Level [34]/.test(i.title);
