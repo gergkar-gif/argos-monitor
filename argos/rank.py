@@ -15,7 +15,7 @@ import math
 from datetime import datetime, timedelta, timezone
 
 
-def dashboard_story_ids(db, country=None, window_days=None, n=10, per_category=12):
+def dashboard_story_ids(db, country=None, window_days=None, n=50, per_category=12):
     """Stories the site shows for a country and window: the top n overall plus the top few in each category.
     With no country or window given, the union over every one."""
     where, args = [], []

@@ -39,6 +39,13 @@
     <form class="slip" aria-label="Top reported stories options" onsubmit="event.preventDefault()">
       <label class="field"><span>Country</span><select id="b-country"></select></label>
       <label class="field"><span>Period</span><select id="b-period"></select></label>
+      <label class="field"><span>Items</span><select id="b-limit">
+        <option value="10" selected>Top 10</option>
+        <option value="20">Top 20</option>
+        <option value="30">Top 30</option>
+        <option value="40">Top 40</option>
+        <option value="50">Top 50 (max)</option>
+      </select></label>
       <div class="field"><button type="button" class="more" style="margin:0" onclick="print()">Print / Save PDF</button></div>
     </form>
   </div>
@@ -50,7 +57,7 @@
 <script>
 (() => {
   const index = window.ARGOS_INDEX, root = document.getElementById('brief');
-  const cSel = document.getElementById('b-country'), pSel = document.getElementById('b-period');
+  const cSel = document.getElementById('b-country'), pSel = document.getElementById('b-period'), nSel = document.getElementById('b-limit');
   const el = (tag, attrs, ...kids) => { const e = document.createElement(tag); for (const [k, v] of Object.entries(attrs || {})) { if (v == null || v === false) continue; if (k === 'text') e.textContent = v; else if (k.startsWith('on')) e.addEventListener(k.slice(2), v); else e.setAttribute(k, v === true ? '' : v); } e.append(...kids.flat(Infinity).filter((x) => x != null && x !== false)); return e; };
   const safe = (u) => { try { const x = new URL(u); return /^https?:$/.test(x.protocol) ? x.href : '#'; } catch { return '#'; } };
   if (!index) { root.replaceChildren(el('p', { class: 'state error', text: 'No data found.' })); return; }
@@ -145,12 +152,13 @@
   function render() {
     const c = index.countries.find((x) => x.id === cSel.value) || index.countries[0];
     const p = c.periods.find((x) => x.id === pSel.value) || c.periods[0];
+    const limit = Math.min(50, Math.max(1, parseInt(nSel.value, 10) || 10));
     T.queue.length = 0;
     try { if (location.protocol !== 'file:') history.replaceState(null, '', `#${c.id}`); } catch {}
     load(p.file.replace(/\.json$/, '')).then((d) => {
-      const top = [...d.stories].sort((a, b) => b.score - a.score).slice(0, 5);
+      const top = [...d.stories].sort((a, b) => b.independent_sources - a.independent_sources || b.score - a.score).slice(0, limit);
       root.replaceChildren(
-        el('p', { class: 'result-line' }, el('b', { text: `${c.name} · Top reported stories` }), ` · ${p.label.toLowerCase()} · updated ${new Date(d.generated_at).toLocaleString()}`),
+        el('p', { class: 'result-line' }, el('b', { text: `${c.name} · Top ${top.length} reported stories` }), ` · ${p.label.toLowerCase()} · updated ${new Date(d.generated_at).toLocaleString()}`),
         el('div', { id: 'trans', class: 'trans' }),
         el('ol', null, top.map((s) => {
           const a = el('a', { href: safe(s.headline.url), target: '_blank', rel: 'noopener', lang: s.headline.language, text: s.headline.title });
@@ -177,6 +185,7 @@
   fillPeriods();
   cSel.addEventListener('change', () => { fillPeriods(); render(); });
   pSel.addEventListener('change', render);
+  nSel.addEventListener('change', render);
   render();
 })();
 </script>
