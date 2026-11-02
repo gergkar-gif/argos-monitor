@@ -74,19 +74,19 @@
   function fillPeriods() {
     const c = index.countries.find((x) => x.id === country.value) || index.countries[0];
     fillSelect(period, c.periods.map((p) => [p.id, p.label]), period.value || '7d');
-    period.disabled = topic.disabled = country.value === 'home';
+    period.disabled = topic.disabled = country.value === 'home' || country.value === 'alerts';
   }
   function fillTopics(value) {
     fillSelect(topic, [['all', 'All topics'], ...TOPICS.map((t) => [t.id, t.name])], value);
   }
 
-  const hashFor = (t) => (country.value === 'home'
-    ? '#home' + ($('#q').value.trim() ? `///${encodeURIComponent($('#q').value.trim())}` : '')
+  const hashFor = (t) => (country.value === 'home' || country.value === 'alerts'
+    ? `#${country.value}` + ($('#q').value.trim() ? `///${encodeURIComponent($('#q').value.trim())}` : '')
     : `#${country.value}/${period.value}/${t}` + ($('#q').value.trim() ? `/${encodeURIComponent($('#q').value.trim())}` : ''));
   function readHash() {
     const [c, p, t, q] = location.hash.replace(/^#/, '').split('/');
     try { $('#q').value = q ? decodeURIComponent(q) : ''; } catch { /* bad link text: ignore */ }
-    country.value = c && index.countries.some((x) => x.id === c) ? c : 'home';
+    country.value = c === 'alerts' ? 'alerts' : (c && index.countries.some((x) => x.id === c) ? c : 'home');
     fillPeriods();
     if (p && [...period.options].some((o) => o.value === p)) period.value = p;
     if (t && (t === 'all' || TOPICS.some((x) => x.id === t))) topic.value = t;
@@ -346,20 +346,50 @@
 
   const getCrisis = () => { const raw = window.ARGOS_CRISIS; return raw && (raw.countries ? raw : raw.crisis); };
   const isHotAlert = (i) => /^(Red|Orange)$/.test(i.level || '') || /Level [34]/.test(i.title);
+  function allCrisisAlerts() {
+    const c = getCrisis();
+    const out = [];
+    if (c && c.countries) {
+      for (const [cid, list] of Object.entries(c.countries)) {
+        const cname = (index.countries.find((x) => x.id === cid) || {}).name || cid;
+        for (const item of list) out.push({ ...item, cid, cname });
+      }
+    }
+    return out.sort((a, b) => isHotAlert(b) - isHotAlert(a));
+  }
 
   function alerts() {
     const c = getCrisis();
     if (!c) return null;
     const items = c.countries[country.value] || [];
-    return h('section', { class: 'alerts', 'aria-label': 'Official alerts' },
-      h('h2', { text: 'Official alerts' }),
+    if (!items.length) return null;
+    const first = items[0];
+    return h('div', { class: 'crisis-strip', role: 'region', 'aria-label': 'Official alerts' },
+      h('span', { class: 'stamp ' + (items.some(isHotAlert) ? 'red' : 'indigo'), text: `${plural(items.length, 'official alert', 'official alerts')}` }),
+      h('a', { href: safeUrl(first.url), target: '_blank', rel: 'noopener', text: first.title }),
+      items.length > 1 && h('button', { type: 'button', class: 'desk-link', text: `+${items.length - 1} more →`, onclick: () => openCountry('alerts') }));
+  }
+
+  function renderAlerts() {
+    const c = getCrisis();
+    const q = ($('#q').value || '').trim().toLowerCase();
+    const items = allCrisisAlerts().filter((i) => !q || `${i.cname} ${i.kind} ${i.title}`.toLowerCase().includes(q));
+    results.replaceChildren(
+      h('p', { class: 'result-line' },
+        h('b', { text: 'Active crisis & official travel alerts' }),
+        ` · ${plural(items.length, 'alert', 'alerts')}${c ? ` · checked ${fmtTime.format(new Date(c.generated_at))}` : ''} · `,
+        h('button', { type: 'button', class: 'desk-link', text: '← Back to Overview', onclick: () => openCountry('home') })),
       items.length
-        ? h('ul', null, items.map((i) => h('li', null,
-          h('span', { class: 'stamp ' + (isHotAlert(i) ? 'red' : 'indigo'), text: i.kind }),
-          h('a', { href: safeUrl(i.url), target: '_blank', rel: 'noopener', text: i.title }),
-          i.date && h('span', { class: 'meta', text: fmtDay.format(new Date(i.date)) }))))
-        : h('p', { class: 'byline', text: 'No disaster alerts in the last 7 days.' }),
-      h('p', { class: 'byline', text: `GDACS, USGS, UK and US travel advice. Checked ${fmtTime.format(new Date(c.generated_at))}.` }));
+        ? h('div', { class: 'desk-wrap' },
+          h('table', { class: 'desk-table' },
+            h('thead', null, h('tr', null, ['Country', 'Source', 'Alert / Advisory', 'Date'].map((x) => h('th', { text: x })))),
+            h('tbody', null, items.map((i) => h('tr', null,
+              h('td', null, h('button', { type: 'button', class: 'stamp country-tag', text: i.cname, onclick: () => openCountry(i.cid) })),
+              h('td', null, h('span', { class: 'stamp ' + (isHotAlert(i) ? 'red' : 'indigo'), text: i.kind })),
+              h('td', null, h('a', { href: safeUrl(i.url), target: '_blank', rel: 'noopener', text: i.title })),
+              h('td', { class: 'typed', text: i.date ? fmtDay.format(new Date(i.date)) : '—' }))))))
+        : h('p', { class: 'state', text: 'No matching alerts.' }),
+      h('p', { class: 'fine', text: 'Sources: Global Disaster Alert and Coordination System (GDACS), US Geological Survey (USGS M4.5+ earthquakes), UK Foreign, Commonwealth & Development Office (FCDO), and US Department of State travel advisories.' }));
   }
 
   // ---------- Overview homepage (scales to any number of countries via site/data/home.js) ----------
@@ -376,13 +406,7 @@
     const q = ($('#q').value || '').trim().toLowerCase();
     const filter = (arr) => (q ? (arr || []).filter((s) => storyText(s).includes(q)) : (arr || []));
     const c = getCrisis();
-    const allAlerts = [];
-    if (c && c.countries) {
-      for (const [cid, list] of Object.entries(c.countries)) {
-        const cname = (index.countries.find((x) => x.id === cid) || {}).name || cid;
-        for (const item of list) allAlerts.push({ ...item, cid, cname });
-      }
-    }
+    const allAlerts = allCrisisAlerts();
     const pool = [...(hm.most_reported || []), ...(hm.abroad_only || []), ...(hm.growing || [])]
       .filter((s, i, a) => a.findIndex((x) => x.id === s.id) === i);
 
@@ -393,14 +417,14 @@
         h('b', { text: 'Overview across all monitored countries' }),
         ` · ${plural(desks.length, 'country', 'countries')} · updated ${fmtTime.format(new Date(hm.generated_at))}`),
       watchbar(q, pool),
-      allAlerts.length > 0 && h('section', { class: 'alerts', 'aria-label': 'Active crisis & travel alerts' },
-        h('h2', { text: 'Active crisis & official alerts' }),
-        h('ul', null, allAlerts.map((i) => h('li', null,
-          h('button', { type: 'button', class: 'stamp country-tag', text: i.cname, onclick: () => openCountry(i.cid) }),
-          h('span', { class: 'stamp ' + (isHotAlert(i) ? 'red' : 'indigo'), text: i.kind }),
+      allAlerts.length > 0 && h('div', { class: 'crisis-strip', role: 'region', 'aria-label': 'Active crisis alerts' },
+        h('span', { class: 'stamp red', text: `${plural(allAlerts.length, 'active alert', 'active alerts')}` }),
+        ...allAlerts.slice(0, 2).map((i) => h('span', null,
+          h('button', { type: 'button', class: 'desk-link', text: `${i.cname}:`, onclick: () => openCountry(i.cid) }),
+          ' ',
           h('a', { href: safeUrl(i.url), target: '_blank', rel: 'noopener', text: i.title }),
-          i.date && h('span', { class: 'meta', text: fmtDay.format(new Date(i.date)) })))),
-        h('p', { class: 'byline', text: 'Only countries with active alerts in the last 7 days are listed here (GDACS, USGS, UK FCDO, US State Dept).' })),
+          ' · ')),
+        h('button', { type: 'button', class: 'desk-link', text: `View all ${allAlerts.length} alerts →`, onclick: () => openCountry('alerts') })),
       homeSection('Most reported (last 7 days)', 'Ranked by independent outlet count across all countries', filter(hm.most_reported)),
       homeSection('Fastest growing (last 24 hours)', 'Most new coverage in the last 24 hours', filter(hm.growing)),
       homeSection('Blind spots · Not in domestic press', 'Covered by international or diaspora outlets, zero domestic coverage', filter(hm.abroad_only)),
@@ -490,11 +514,20 @@
 
   async function research() {
     fillPeriods();
+    if ($('#nav-home')) $('#nav-home').setAttribute('aria-current', country.value === 'home' ? 'page' : 'false');
+    if ($('#nav-alerts')) $('#nav-alerts').setAttribute('aria-current', country.value === 'alerts' ? 'page' : 'false');
     if (country.value === 'home') {
       useLanguage('en');
       $('#brief').href = 'brief.html';
       setHash(hashFor('all'));
       renderHome();
+      return;
+    }
+    if (country.value === 'alerts') {
+      useLanguage('en');
+      $('#brief').href = 'brief.html';
+      setHash(hashFor('all'));
+      renderAlerts();
       return;
     }
     const c = index.countries.find((x) => x.id === country.value);
@@ -518,10 +551,13 @@
     results.replaceChildren(h('p', { class: 'state error', text: 'No data found. Run "python run.py" once, then reload this page.' }));
     return;
   }
-  fillSelect(country, [['home', 'Overview (all countries)'], ...index.countries.map((c) => [c.id, c.name])], 'home');
+  fillSelect(country, [['home', 'Overview (all countries)'], ['alerts', 'Active alerts (all countries)'], ...index.countries.map((c) => [c.id, c.name])], 'home');
   fillTopics('all');
+  if ($('#alert-count')) { const n = allCrisisAlerts().length; if (n) $('#alert-count').textContent = `[${n}]`; }
   readHash();
   $('#home-link').addEventListener('click', (e) => { e.preventDefault(); openCountry('home'); });
+  if ($('#nav-home')) $('#nav-home').addEventListener('click', (e) => { e.preventDefault(); openCountry('home'); });
+  if ($('#nav-alerts')) $('#nav-alerts').addEventListener('click', (e) => { e.preventDefault(); openCountry('alerts'); });
   $('#slip').addEventListener('submit', (e) => { e.preventDefault(); research(); });
   country.addEventListener('change', () => { fillPeriods(); research(); });
   period.addEventListener('change', research);
@@ -529,6 +565,7 @@
   $('#q').addEventListener('input', () => {
     setHash(hashFor(openTopic));
     if (country.value === 'home') renderHome();
+    else if (country.value === 'alerts') renderAlerts();
     else if (current) render(false);
   });
   const totop = $('#totop');

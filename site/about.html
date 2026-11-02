@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About · Argos Monitor</title>
+<meta name="description" content="How Argos Monitor collects, clusters, ranks and verifies multi-source news without generative AI.">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="style.css">
+<style>
+  .doc { max-width: 56rem; margin: 0 auto; padding: 1.75rem 1.25rem 3.5rem; display: grid; gap: 1.75rem; }
+  .doc h2 { font: 600 1.35rem/1.1 var(--stamp); letter-spacing: 0.08em; text-transform: uppercase; padding-top: 0.5rem; border-top: 3px solid var(--ink); margin-bottom: 0.6rem; }
+  .doc p, .doc li { max-width: 65ch; line-height: 1.6; }
+  .doc ul, .doc ol { margin: 0.4rem 0 0; padding-left: 1.3rem; display: grid; gap: 0.45rem; }
+  .pipeline { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 1px; background: var(--ink); border: 1px solid var(--ink); margin-top: 0.75rem; }
+  .step { background: var(--card); padding: 0.75rem 0.85rem; display: grid; gap: 0.25rem; align-content: start; }
+  .step b { font: 600 0.85rem/1.1 var(--stamp); letter-spacing: 0.1em; text-transform: uppercase; color: var(--red); }
+  .step span { font-size: 0.9rem; line-height: 1.38; color: var(--ink); }
+</style>
+</head>
+<body>
+<header class="bureau">
+  <div class="bureau-inner">
+    <div class="masthead" style="border-bottom:0;padding-bottom:0">
+      <div>
+        <h1><a href="index.html#home"><img src="assets/eye.png" alt="" class="logo">Argos Monitor</a></h1>
+        <p>Every line is an article's own headline or a verbatim quote, linked to the outlet it came from.</p>
+      </div>
+      <nav class="topnav" aria-label="Primary">
+        <a href="index.html#home">Overview</a>
+        <a href="index.html#alerts">Alerts</a>
+        <a href="brief.html">Daily Brief</a>
+        <a href="sources.html">Sources</a>
+        <a href="about.html" aria-current="page">About</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="doc">
+  <section>
+    <h2>What Argos Monitor is</h2>
+    <p>Argos Monitor is an automated open-source news and crisis monitor covering country media ecosystems across domestic press, local-language diaspora outlets abroad, and international reporting. Instead of asking a language model to summarize the news—which risks hallucinated claims, flattened nuance, or unattributed spin—Argos shows <strong>only original headlines and verbatim pull-quotes</strong> verified character-for-character against the source article.</p>
+  </section>
+
+  <section>
+    <h2>Five non-negotiable rules</h2>
+    <ol>
+      <li><strong>No source, no statement:</strong> Every headline and quote on the page links directly to the article it came from. Nothing is paraphrased or synthesized.</li>
+      <li><strong>Zero LLM in the pipeline:</strong> Clustering, topic classification, ranking, and quote extraction are 100% deterministic (multilingual embeddings + rules).</li>
+      <li><strong>Independent outlet counting:</strong> State wire reprints and syndicated copies are detected by text similarity (≥ 0.95 cosine similarity) and counted once, so 20 reprints of one wire dispatch never masquerade as 20 independent confirmations.</li>
+      <li><strong>Blind-spot detection (<span class="stamp teal">Not in domestic press</span>):</strong> Stories covered by international or diaspora outlets that have zero domestic press coverage inside the country are flagged automatically.</li>
+      <li><strong>Official vs. reported (<span class="stamp red">Official</span> / <span class="stamp indigo">Reported</span>):</strong> Government and ruling-party outlets are explicitly tagged so official statements are immediately distinguishable from independent reporting.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>How the 14-stage pipeline works</h2>
+    <p>A scheduled GitHub Actions runner executes the pipeline every 3 hours and publishes static JSON/JS bundles to Cloudflare Pages:</p>
+    <div class="pipeline">
+      <div class="step"><b>01 · Ingest</b><span>Polls 120+ RSS/Atom and Google News feeds per country pack via curl.</span></div>
+      <div class="step"><b>02 · Extract</b><span>Fetches full article text with Trafilatura for domestic and accessible sources.</span></div>
+      <div class="step"><b>03 · Normalise</b><span>Applies Unicode NFC normalisation (crucial for Vietnamese diacritics and Khmer script).</span></div>
+      <div class="step"><b>04 · Relevance</b><span>Filters out sports/lifestyle sections and requires country mentions on world feeds.</span></div>
+      <div class="step"><b>05 · Embed</b><span>Encodes headlines and leads locally using ONNX Runtime (<code>intfloat/multilingual-e5-small</code>).</span></div>
+      <div class="step"><b>06 · Cluster</b><span>Groups articles into stories via agglomerative cosine clustering + second-pass centroid merge, and flags syndicated reprints.</span></div>
+      <div class="step"><b>07 · Classify</b><span>Assigns each story to one of 6 policy topics by cosine similarity against bilingual topic anchors.</span></div>
+      <div class="step"><b>08 · Policy &amp; Rank</b><span>Scores stories by independent outlet count, scope diversity, recency, and policy themes (<code>themes.yaml</code>).</span></div>
+      <div class="step"><b>09 · Excerpts &amp; Verify</b><span>Selects informative sentences and asserts each quote is an exact substring of the stored article text.</span></div>
+      <div class="step"><b>10 · Signals &amp; Export</b><span>Merges GDACS/USGS/FCDO/US State Dept alerts, filtered Google Trends, and multi-subreddit discussions into static bundles.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Adding a new country pack</h2>
+    <p>Every country lives in a self-contained folder under <code>countries/&lt;id&gt;/</code> with three declarative YAML files: <code>pack.yaml</code> (language, mention terms, URL sections, topic anchors, subreddit list), <code>sources.yaml</code> (outlets, scope, ownership, and state-affiliation flags), and <code>themes.yaml</code> (local-language ranking weights).</p>
+  </section>
+</main>
+</body>
+</html>

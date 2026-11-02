@@ -39,11 +39,20 @@ h1, h2, h3, p { margin: 0; }
 /* ---- Masthead & control bar ---- */
 .bureau { background: var(--desk); border-bottom: 3px solid var(--ink); }
 .bureau-inner { max-width: 72rem; margin: 0 auto; padding: 1.5rem 1.25rem 1.25rem; display: grid; gap: 1.1rem; }
-.masthead { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.5rem 2rem; border-bottom: 1px solid var(--ink); padding-bottom: 0.75rem; }
+.masthead { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 0.75rem 2rem; border-bottom: 1px solid var(--ink); padding-bottom: 0.75rem; }
 .masthead h1 { display: flex; align-items: center; gap: 0.55rem; font: 600 2.2rem/1 var(--stamp); letter-spacing: 0.06em; text-transform: uppercase; }
 .masthead h1 a { display: inline-flex; align-items: center; gap: 0.55rem; text-decoration: none; }
 .masthead h1 .logo { width: 1.6rem; height: 1.6rem; }
-.masthead p { max-width: 42rem; color: var(--ink-2); font-size: 0.95rem; text-wrap: pretty; }
+.masthead p { margin-top: 0.25rem; max-width: 42rem; color: var(--ink-2); font-size: 0.95rem; text-wrap: pretty; }
+.topnav { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 0; border: 1px solid var(--ink); background: var(--card); }
+.topnav a { padding: 0.45rem 0.85rem; font: 600 0.88rem/1 var(--stamp); letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; color: var(--ink); border-right: 1px solid var(--ink); white-space: nowrap; }
+.topnav a:last-child { border-right: 0; }
+.topnav a:hover { background: var(--desk-deep); }
+.topnav a[aria-current="page"] { background: var(--ink); color: #fff; border-top: 3px solid var(--red); padding-top: calc(0.45rem - 3px); }
+.topnav .n { font: 400 0.78rem/1 var(--typed); margin-left: 0.2rem; }
+.crisis-strip { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.65rem; margin: 0.75rem 0 0; padding: 0.5rem 0.75rem; background: var(--card); border: 1px solid var(--ink); border-left: 4px solid var(--red); font-size: 0.92rem; }
+.crisis-strip a { text-decoration: none; font-weight: 600; }
+.crisis-strip a:hover { color: var(--red); text-decoration: underline; }
 
 .slip {
   display: grid;

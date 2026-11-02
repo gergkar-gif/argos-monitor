@@ -1,23 +1,42 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Daily brief · Argos Monitor</title>
+<title>Daily Brief · Argos Monitor</title>
 <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png">
 <link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="style.css">
 <style>
-  .brief { max-width: 46rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
-  .brief h1 { font: 700 1.8rem/1.2 var(--serif, 'Source Serif 4', serif); margin: 0 0 0.25rem; }
+  .brief { max-width: 56rem; margin: 0 auto; padding: 1.5rem 1.25rem 3rem; }
+  .brief h1 { font: 600 1.6rem/1.15 var(--stamp); letter-spacing: 0.06em; text-transform: uppercase; margin: 1rem 0 0.25rem; }
   .brief ol { padding: 0; list-style: none; display: grid; gap: 1.25rem; margin-top: 1.25rem; }
-  .brief li { padding-bottom: 1rem; border-bottom: 1px solid var(--rule); }
-  .brief h2 { font: 600 1.25rem/1.3 'Source Serif 4', serif; margin: 0 0 0.3rem; }
-  .brief .nav { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; }
-  @media print { .nav button, .nav a, .nav select { display: none; } body { background: #fff; } }
+  .brief li { padding: 1rem 1.15rem; background: var(--card); border: 1px solid var(--ink); border-left: 4px solid var(--ink); }
+  .brief h2 { font: 700 1.25rem/1.3 var(--serif); margin: 0 0 0.3rem; }
+  .brief h2 a { text-decoration: none; }
+  .brief h2 a:hover { color: var(--red); text-decoration: underline; }
+  .brief .nav { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
+  @media print { .bureau, .nav { display: none; } body { background: #fff; } .brief li { border: 0; border-bottom: 1px solid #000; padding: 0.75rem 0; } }
 </style>
 </head>
 <body>
+<header class="bureau">
+  <div class="bureau-inner">
+    <div class="masthead" style="border-bottom:0;padding-bottom:0">
+      <div>
+        <h1><a href="index.html#home"><img src="assets/eye.png" alt="" class="logo">Argos Monitor</a></h1>
+        <p>Every line is an article's own headline or a verbatim quote, linked to the outlet it came from.</p>
+      </div>
+      <nav class="topnav" aria-label="Primary">
+        <a href="index.html#home">Overview</a>
+        <a href="index.html#alerts">Alerts</a>
+        <a href="brief.html" aria-current="page">Daily Brief</a>
+        <a href="sources.html">Sources</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </div>
+</header>
 <main class="brief" id="brief">
   <p class="state">Loading…</p>
 </main>
@@ -35,15 +54,15 @@
   load(p.file.replace(/\.json$/, '')).then((d) => {
     const top = [...d.stories].sort((a, b) => b.score - a.score).slice(0, 5);
     root.replaceChildren(
-      el('div', { class: 'nav' }, el('a', { href: 'index.html', text: '← Back to Argos' }),
-        ...index.countries.map((x) => el('a', { href: `#${x.id}`, onclick: 'setTimeout(()=>location.reload())', text: x.name })),
-        el('button', { type: 'button', class: 'more', onclick: 'print()', text: 'Print' })),
-      el('h1', { text: `${c.name}: top stories, ${p.label.toLowerCase()}` }),
+      el('div', { class: 'nav' },
+        ...index.countries.map((x) => el('a', { class: 'more', style: x.id === c.id ? 'background:var(--ink);color:#fff' : '', href: `#${x.id}`, onclick: 'setTimeout(()=>location.reload())', text: x.name })),
+        el('button', { type: 'button', class: 'more', onclick: 'print()', text: 'Print / Save PDF' })),
+      el('h1', { text: `${c.name} · top 5 stories (${p.label.toLowerCase()})` }),
       el('p', { class: 'byline', text: `Updated ${new Date(d.generated_at).toLocaleString()}. Headlines are the articles' own; quotes are word for word.` }),
       el('ol', null, top.map((s) => el('li', null,
-        el('h2', null, el('a', { href: safe(s.headline.url), text: s.headline.title })),
+        el('h2', null, el('a', { href: safe(s.headline.url), target: '_blank', rel: 'noopener', text: s.headline.title })),
         el('p', { class: 'byline', text: `${s.headline.source} · ${s.independent_sources} independent outlets · ${s.articles} articles${s.evidence === 'OFFICIAL' ? ' · official source' : ''}${s.abroad_only ? ' · not in domestic press' : ''}` }),
-        s.excerpts[0] && el('blockquote', { class: 'strip' }, el('p', { text: s.excerpts[0].text }), el('footer', null, el('a', { href: safe(s.excerpts[0].url), text: s.excerpts[0].source })))))));
+        s.excerpts[0] && el('blockquote', { class: 'strip' }, el('p', { text: s.excerpts[0].text }), el('footer', null, el('a', { class: 'stamp indigo', href: safe(s.excerpts[0].url), target: '_blank', rel: 'noopener', text: s.excerpts[0].source })))))));
   }).catch(() => root.replaceChildren(el('p', { class: 'state error', text: 'Could not load the stories.' })));
 })();
 </script>
