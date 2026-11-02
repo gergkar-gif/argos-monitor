@@ -818,14 +818,15 @@
 
   const QUICK_PRESETS = [
     [['cambodia', 'vietnam'], 'Cambodia & Vietnam'],
-    [['cambodia', 'laos'], 'Cambodia & Laos'],
-    [['cambodia', 'laos', 'vietnam'], 'Cambodia, Laos & Vietnam'],
-    [['serbia', 'kosovo'], 'Serbia & Kosovo'],
-    [['hungary', 'poland', 'slovakia'], 'V4 (Hungary, Poland & Slovakia)'],
-    [['uzbekistan', 'kazakhstan', 'kyrgyzstan'], 'Central Asia Trio'],
+    [['cambodia', 'laos', 'vietnam'], 'Mekong Basin (KH, LA, VN)'],
+    [['kazakhstan', 'azerbaijan', 'georgia', 'turkey'], 'Middle Corridor (KZ, AZ, GE, TR)'],
+    [['hungary', 'poland', 'slovakia'], 'Visegrád Trio (HU, PL, SK)'],
+    [['serbia', 'kosovo', 'bosnia'], 'Balkans Triangle (RS, XK, BA)'],
+    [['uzbekistan', 'kazakhstan', 'kyrgyzstan'], 'Central Asia (UZ, KZ, KG)'],
     [['armenia', 'azerbaijan'], 'Armenia & Azerbaijan'],
     [['malaysia', 'indonesia'], 'Malaysia & Indonesia'],
-    [['kenya', 'ethiopia'], 'Kenya & Ethiopia'],
+    [['kenya', 'ethiopia'], 'Horn of Africa (KE, ET)'],
+    [['argentina', 'brazil', 'colombia'], 'South America (AR, BR, CO)'],
   ];
 
   let selectedCountries = ['cambodia', 'vietnam'];

@@ -208,21 +208,25 @@
         <option value="40">Top 40</option>
         <option value="50">Top 50 (max)</option>
       </select></label>
-      <div class="field"><button type="button" class="research" style="margin:0; height:2.2rem;" onclick="window.print()">Print / Save PDF</button></div>
+      <div class="field" style="display:flex; gap:0.4rem;">
+        <button type="button" class="research" style="margin:0; height:2.2rem;" onclick="window.print()">Print / PDF</button>
+        <button type="button" class="research" style="margin:0; height:2.2rem; background:var(--ink); color:#fff;" onclick="window.copyBriefCable(this)">📋 Copy as Cable</button>
+      </div>
     </form>
   </div>
 </header>
 
 <main class="brief-wrap">
-  <div class="print-action-bar no-print">
+  <div class="print-action-bar no-print" style="display:flex; gap:0.6rem; align-items:center;">
     <button type="button" class="more" onclick="window.print()" style="margin:0; font-weight:700;">📄 Print / Export PDF Brief</button>
+    <button type="button" class="more" onclick="window.copyBriefCable(this)" style="margin:0; font-weight:700; border-color:var(--ink);">📋 Copy as Cable / Markdown</button>
   </div>
   <div class="diplomatic-doc" id="doc">
     <p class="state">Generating diplomatic intelligence brief…</p>
   </div>
 </main>
 
-<script src="data/index.js?v=2.2"></script>
+<script src="data/index.js?v=2.8"></script>
 <script>
 (() => {
   'use strict';
@@ -416,30 +420,57 @@
       const isOfficial = s.evidence === 'OFFICIAL';
       const isAbroadOnly = s.abroad_only;
 
-      return el('li', { class: 'dispatch-item' },
-        el('div', { class: 'dispatch-num' },
-          el('strong', { text: `DISPATCH #${String(idx + 1).padStart(2, '0')}` }),
-          el('span', { text: `· ${(s.category || 'general').replace(/_/g, ' ').toUpperCase()}` }),
-          isOfficial && el('span', { class: 'stamp red', text: 'OFFICIAL RECORD' }),
-          isAbroadOnly && el('span', { class: 'stamp teal', text: 'NOT IN DOMESTIC PRESS' }),
-          el('span', { class: 'typed', text: `${s.independent_sources} independent outlets · ${s.articles} articles` })
+      return {
+        dom: el('li', { class: 'dispatch-item' },
+          el('div', { class: 'dispatch-num' },
+            el('strong', { text: `DISPATCH #${String(idx + 1).padStart(2, '0')}` }),
+            el('span', { text: `· ${(s.category || 'general').replace(/_/g, ' ').toUpperCase()}` }),
+            isOfficial && el('span', { class: 'stamp red', text: 'OFFICIAL RECORD' }),
+            isAbroadOnly && el('span', { class: 'stamp teal', text: 'NOT IN DOMESTIC PRESS' }),
+            el('span', { class: 'typed', text: `${s.independent_sources} independent outlets · ${s.articles} articles` })
+          ),
+          el('h2', { class: 'dispatch-headline' },
+            el('a', { href: safe(s.headline.url), target: '_blank', rel: 'noopener', text: enTitle })
+          ),
+          s.headline.language !== 'en' && el('p', { class: 'dispatch-orig', text: `Original headline (${s.headline.source}): "${s.headline.title}"` }),
+          enSummary && el('div', { class: 'dispatch-lead' },
+            el('p', { text: enSummary })
+          ),
+          enQuote && el('blockquote', { class: 'dispatch-quote' },
+            el('p', { text: `“${enQuote.text}”` }),
+            el('cite', { text: `— Quoted verbatim from: ${enQuote.source} [${enQuote.scope.replace('_', ' ')}]` })
+          ),
+          reportingOutlets.length > 0 && el('div', { class: 'dispatch-foot' },
+            el('span', { text: `Sources: ${reportingOutlets.join(', ')}${(s.sources || []).length > 5 ? ` +${(s.sources || []).length - 5} more` : ''}` })
+          )
         ),
-        el('h2', { class: 'dispatch-headline' },
-          el('a', { href: safe(s.headline.url), target: '_blank', rel: 'noopener', text: enTitle })
-        ),
-        s.headline.language !== 'en' && el('p', { class: 'dispatch-orig', text: `Original headline (${s.headline.source}): "${s.headline.title}"` }),
-        enSummary && el('div', { class: 'dispatch-lead' },
-          el('p', { text: enSummary })
-        ),
-        enQuote && el('blockquote', { class: 'dispatch-quote' },
-          el('p', { text: `“${enQuote.text}”` }),
-          el('cite', { text: `— Quoted verbatim from: ${enQuote.source} [${enQuote.scope.replace('_', ' ')}]` })
-        ),
-        reportingOutlets.length > 0 && el('div', { class: 'dispatch-foot' },
-          el('span', { text: `Sources: ${reportingOutlets.join(', ')}${(s.sources || []).length > 5 ? ` +${(s.sources || []).length - 5} more` : ''}` })
-        )
-      );
+        cable: {
+          num: idx + 1,
+          category: (s.category || 'general').replace(/_/g, ' ').toUpperCase(),
+          isOfficial,
+          isAbroadOnly,
+          sourcesCount: s.independent_sources,
+          articlesCount: s.articles,
+          title: enTitle,
+          origTitle: s.headline.language !== 'en' ? s.headline.title : null,
+          origSource: s.headline.source,
+          url: safe(s.headline.url),
+          lead: enSummary,
+          quote: enQuote ? enQuote.text : null,
+          quoteSource: enQuote ? `${enQuote.source} [${enQuote.scope.replace('_', ' ')}]` : null,
+          outlets: reportingOutlets.join(', ') + ((s.sources || []).length > 5 ? ` +${(s.sources || []).length - 5} more` : '')
+        }
+      };
     }));
+
+    window.currentBriefCable = {
+      country: c.name,
+      region: getRegion(c),
+      window: periodLabel,
+      date: now.toUTCString(),
+      volume: `Top ${dispatches.length} stories · ${stories.reduce((acc, s) => acc + (s.articles || 0), 0)} articles corroborated`,
+      items: dispatches.map((d) => d.cable)
+    };
 
     // Build the Foreign Ministry Document DOM
     const docHeader = el('header', { class: 'doc-masthead' },
@@ -463,10 +494,73 @@
 
     doc.replaceChildren(
       docHeader,
-      el('ol', { class: 'dispatch-list' }, dispatches),
+      el('ol', { class: 'dispatch-list' }, dispatches.map((d) => d.dom)),
       docClosing
     );
   }
+
+  window.copyBriefCable = function(btn) {
+    const data = window.currentBriefCable;
+    if (!data || !data.items || !data.items.length) return;
+    const lines = [
+      `# ARGOS MONITOR · DIPLOMATIC EXECUTIVE BRIEF`,
+      `TARGET: ${data.country.toUpperCase()} (${data.region.toUpperCase()})`,
+      `TIME WINDOW: ${data.window}`,
+      `ASSESSMENT DATE: ${data.date}`,
+      `COVERAGE: ${data.volume}`,
+      `CLASSIFICATION: UNCLASSIFIED // OSINT`,
+      ``,
+      `═══════════════════════════════════════════════════════════════`,
+      ``
+    ];
+
+    for (const item of data.items) {
+      const flags = [
+        item.isOfficial ? '[OFFICIAL RECORD]' : '',
+        item.isAbroadOnly ? '[NOT IN DOMESTIC PRESS]' : '',
+        `(${item.sourcesCount} independent outlets, ${item.articlesCount} articles)`
+      ].filter(Boolean).join(' ');
+
+      lines.push(`### DISPATCH #${String(item.num).padStart(2, '0')} · ${item.category} ${flags}`);
+      lines.push(`**${item.title}**`);
+      lines.push(`Link: ${item.url}`);
+      if (item.origTitle) {
+        lines.push(`Original (${item.origSource}): "${item.origTitle}"`);
+      }
+      if (item.lead) {
+        lines.push(``);
+        lines.push(item.lead);
+      }
+      if (item.quote) {
+        lines.push(``);
+        lines.push(`> "${item.quote}"`);
+        lines.push(`> — Quoted verbatim from: ${item.quoteSource}`);
+      }
+      if (item.outlets) {
+        lines.push(``);
+        lines.push(`Sources: ${item.outlets}`);
+      }
+      lines.push(``);
+      lines.push(`---`);
+      lines.push(``);
+    }
+
+    lines.push(`CONFIDENTIALITY: PUBLIC OPEN-SOURCE INTELLIGENCE (OSINT)`);
+    lines.push(`COMPILED DETERMINISTICALLY WITHOUT EDITORIAL ALTERATION · ARGOS MONITOR`);
+
+    const text = lines.join('\n');
+    navigator.clipboard.writeText(text).then(() => {
+      const orig = btn.textContent;
+      btn.textContent = '✓ Copied to clipboard!';
+      btn.style.color = '#fff';
+      setTimeout(() => {
+        btn.textContent = orig;
+        btn.style.color = '';
+      }, 2500);
+    }).catch(() => {
+      prompt('Copy cable text below:', text);
+    });
+  };
 
   cSel.addEventListener('change', renderBrief);
   pSel.addEventListener('change', renderBrief);

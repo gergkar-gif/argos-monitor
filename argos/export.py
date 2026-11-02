@@ -182,7 +182,22 @@ def run(db):
             countries.append({"id": cid, "name": pack["name"], "region": pack.get("region", "Other"),
                               "language": pack["language"], "abroad_label": pack["abroad_label"],
                               "mentions": list(dict.fromkeys(distinctive_mentions)), "periods": periods})
-    keep = ("name", "homepage", "language", "scope", "kind", "governing_body", "state_affiliated", "notes")
-    _write("sources", {c: [{k: s.get(k) for k in keep} for s in packs.load(c)["sources"]] for c in packs.pack_ids()}, "ARGOS_SOURCES")
+    keep = ("id", "name", "homepage", "language", "scope", "kind", "governing_body", "state_affiliated", "notes")
+    sources_by_country = {c: [{k: s.get(k) for k in keep} for s in packs.load(c)["sources"]] for c in packs.pack_ids()}
+    telemetry = {}
+    for c in packs.pack_ids():
+        p = packs.load(c)
+        total_feeds = sum(len(s.get("feeds") or []) for s in p["sources"])
+        art_row = db.execute("SELECT COUNT(*), MAX(fetched_at) FROM article WHERE country=?", (c,)).fetchone()
+        art_count = art_row[0] if art_row else 0
+        last_fetched = art_row[1] if art_row and art_row[1] else now
+        telemetry[c] = {
+            "total_outlets": len(p["sources"]),
+            "total_feeds": total_feeds,
+            "articles_indexed": art_count,
+            "last_fetched": last_fetched,
+            "status": "healthy" if art_count > 0 else "standby"
+        }
+    _write("sources", {"generated_at": now, "telemetry": telemetry, "sources": sources_by_country}, "ARGOS_SOURCES")
     _write("index", {"generated_at": now, "countries": countries}, "ARGOS_INDEX")
     _write("home", _home(now, countries), "ARGOS_HOME")
