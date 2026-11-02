@@ -47,17 +47,17 @@ sources:
     feeds:
       - {url: "https://news.google.com/rss/search?q=(site:uza.uz+OR+site:president.uz)+when:7d&hl=en-US&gl=US&ceid=US:en", section: UzA & Presidency, category_hint: general}
 
-  - id: timesca_uz
-    name: The Times of Central Asia
+  - id: gnews_uz_timesca
+    name: The Times of Central Asia (via Google News)
     homepage: https://timesca.com
     language: en
     scope: abroad_local
     kind: media
+    aggregator: google_news
     governing_body: The Times of Central Asia (regional independent English daily)
     state_affiliated: false
-    needs_mention: true
     feeds:
-      - {url: "https://timesca.com/feed/", section: Central Asia, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=site:timesca.com+(Uzbekistan+OR+Tashkent)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Central Asia, category_hint: general}
 
   - id: gnews_uz_ozodlik
     name: Ozodlik Radiosi (RFE/RL Uzbek Service via Google News)

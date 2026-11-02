@@ -58,29 +58,17 @@ sources:
     feeds:
       - {url: "https://news.google.com/rss/search?q=(site:armenpress.am+OR+site:1lurer.am)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Armenpress & Public TV, category_hint: general}
 
-  - id: ocmedia_am
-    name: OC Media
+  - id: gnews_am_regional
+    name: OC Media / JAMnews (Caucasus Regional Press via Google News)
     homepage: https://oc-media.org
     language: en
     scope: abroad_local
     kind: media
-    governing_body: Open Caucasus Media (independent regional outlet)
+    aggregator: google_news
+    governing_body: Open Caucasus Media & JAMnews Regional Media Network
     state_affiliated: false
-    needs_mention: true
     feeds:
-      - {url: "https://oc-media.org/feed/", section: Caucasus, category_hint: general}
-
-  - id: jamnews_am
-    name: JAMnews
-    homepage: https://jam-news.net
-    language: en
-    scope: abroad_local
-    kind: media
-    governing_body: JAMnews Regional Media Network
-    state_affiliated: false
-    needs_mention: true
-    feeds:
-      - {url: "https://jam-news.net/feed/", section: Caucasus, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=(site:oc-media.org+OR+site:jam-news.net)+(Armenia+OR+Yerevan)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Regional Caucasus, category_hint: general}
 
   - id: gnews_en_am
     name: Google News (Armenia - International)
