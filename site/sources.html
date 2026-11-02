@@ -70,8 +70,9 @@
       return items.length ? [el('optgroup', { label: r }, ...items.map((c) => el('option', { value: c.id, text: c.name })))] : [];
     }));
 
+  const fold = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/ł/g, 'l').replace(/ı/g, 'i');
   function render() {
-    const cid = cSel.value, sc = scSel.value, q = qIn.value.trim().toLowerCase();
+    const cid = cSel.value, sc = scSel.value, q = fold(qIn.value.trim());
     const countries = cid === 'all'
       ? allCountries.filter((c) => openRegion === 'all' || c.region === openRegion)
       : allCountries.filter((c) => c.id === cid);
@@ -81,7 +82,7 @@
         ...[['all', 'All regions'], ...REGIONS.map((r) => [r, r])].map(([id, label]) =>
           el('button', { type: 'button', role: 'tab', class: openRegion === id && cid === 'all' ? 'active' : '', text: label, onclick: () => { openRegion = id; cSel.value = 'all'; render(); } }))),
       ...countries.flatMap((c) => {
-        const rows = (data[c.id] || []).filter((s) => (sc === 'all' || s.scope === sc) && (!q || `${s.name} ${s.governing_body || ''} ${s.kind || ''}`.toLowerCase().includes(q)));
+        const rows = (data[c.id] || []).filter((s) => (sc === 'all' || s.scope === sc) && (!q || fold(`${s.name} ${s.governing_body || ''} ${s.kind || ''}`).includes(q)));
         if (!rows.length) return [];
         return [
           el('section', { class: 'drawer' },

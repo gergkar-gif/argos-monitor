@@ -142,7 +142,7 @@
   }
   try { if (localStorage.getItem('argos.showOriginal') === '1') document.body.classList.add('show-orig'); } catch { /* ignore */ }
 
-  const T = { lang: 'en', state: 'checking', translators: new Map(), cache: new Map(), queue: [], running: false };
+  const T = { lang: 'en', state: 'checking', translators: new Map(), cache: new Map(), byText: new Map(), queue: [], running: false };
   const withTimeout = (p, ms) => Promise.race([p, new Promise((_, no) => setTimeout(() => no(new Error('timeout')), ms))]);
 
   function track(el, text, lang, origEl) {
@@ -172,6 +172,7 @@
           en = await tr.translate(it.text);
           T.cache.set(key, en);
         }
+        T.byText.set(it.text, en);
         it.el.textContent = en;
         it.el.lang = 'en';
         if (en.trim().toLowerCase() !== it.text.trim().toLowerCase()) {
@@ -180,6 +181,35 @@
           it.origEl.hidden = false;
         }
       } catch { /* keep the original text as it is */ }
+    }
+    // Pre-translate unrendered lead headlines in the current view so English search finds them too.
+    const hm = window.ARGOS_HOME;
+    const bgPool = country.value === 'home' && hm
+      ? [...(hm.most_reported || []), ...(hm.growing || []), ...(hm.abroad_only || [])]
+      : (current && current.stories) || [];
+    if (bgPool.length) {
+      let added = 0;
+      for (const s of bgPool) {
+        const lang = s.headline && s.headline.language;
+        const text = s.headline && s.headline.title;
+        if (!lang || lang === 'en' || !text || T.byText.has(text)) continue;
+        try {
+          const key = `${lang}:${text}`;
+          let en = T.cache.get(key);
+          if (en == null) {
+            const tr = await getTranslator(lang);
+            en = await tr.translate(text);
+            T.cache.set(key, en);
+          }
+          T.byText.set(text, en);
+          added++;
+        } catch { break; }
+      }
+      if (added && ($('#q').value || '').trim()) {
+        T.running = false;
+        country.value === 'home' ? renderHome() : render(false);
+        return;
+      }
     }
     T.running = false;
   }
@@ -333,7 +363,15 @@
     return sec;
   }
 
-  const storyText = (s) => [s.country_name || '', s.headline.title, ...(s.sources || []).map((r) => r.title + ' ' + r.source), ...(s.excerpts || []).map((x) => x.text)].join(' ').toLowerCase();
+  const fold = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/ł/g, 'l').replace(/ı/g, 'i');
+  const trText = (t) => (t ? `${t} ${T.byText.get(t) || ''}` : '');
+  const storyText = (s) => fold([
+    s.country_name || '',
+    trText(s.headline.title),
+    ...(s.sources || []).map((r) => `${trText(r.title)} ${r.source}`),
+    ...(s.excerpts || []).map((x) => trText(x.text)),
+  ].join(' '));
+  const matchStory = (s, q) => storyText(s).includes(fold(q));
 
   function trends() {
     const tr = (window.ARGOS_TRENDS && (window.ARGOS_TRENDS.countries || (window.ARGOS_TRENDS.trends || {}).countries) || {})[country.value];
@@ -342,7 +380,7 @@
     return h('section', { class: 'alerts', 'aria-label': 'Trending searches' },
       h('h2', { text: 'Trending searches' }),
       h('ul', { class: 'trend-list' }, tr.map((x) => {
-        const n = current.stories.filter((s) => storyText(s).includes(x.term.toLowerCase())).length;
+        const n = current.stories.filter((s) => matchStory(s, x.term)).length;
         const termEl = h('span', { class: 'term', lang: cLang, text: x.term });
         const origEl = h('span', { class: 'orig', hidden: true });
         track(termEl, x.term, cLang, origEl);
@@ -385,7 +423,7 @@
       h('span', { class: 'meta', text: 'Watching' }),
       list.map((w) => h('span', { class: 'chip' },
         h('button', { type: 'button', class: 'more', title: 'Show these stories',
-          text: `${w} (${pool.filter((s) => storyText(s).includes(w)).length})`,
+          text: `${w} (${pool.filter((s) => matchStory(s, w)).length})`,
           onclick: () => { $('#q').value = w; setHash(hashFor(openTopic)); country.value === 'home' ? renderHome() : render(false); } }),
         h('button', { type: 'button', class: 'x', 'aria-label': `Stop watching ${w}`, text: '×', onclick: () => setWatched(list.filter((x) => x !== w)) }))),
       q && !list.includes(q) && h('button', { type: 'button', class: 'more', text: `Watch "${q}"`, onclick: () => setWatched([...list, q]) }));
@@ -421,8 +459,8 @@
 
   function renderAlerts() {
     const c = getCrisis();
-    const q = ($('#q').value || '').trim().toLowerCase();
-    const all = allCrisisAlerts().filter((i) => !q || `${i.cname} ${i.region} ${i.kind} ${i.title} ${i.summary || ''}`.toLowerCase().includes(q));
+    const q = fold(($('#q').value || '').trim());
+    const all = allCrisisAlerts().filter((i) => !q || fold(`${i.cname} ${i.region} ${i.kind} ${i.title} ${i.summary || ''}`).includes(q));
     if (openRegion !== 'all' && !all.some((i) => i.region === openRegion)) openRegion = 'all';
     const items = openRegion === 'all' ? all : all.filter((i) => i.region === openRegion);
     const tabs = regionTabs((r) => r === 'all' ? all.length : all.filter((i) => i.region === r).length, renderAlerts);
@@ -468,7 +506,7 @@
     if (openRegion !== 'all' && !allDesks.some((d) => d.region === openRegion)) openRegion = 'all';
     const inReg = (x) => openRegion === 'all' || (x.region || getRegion(x.country || x.id)) === openRegion;
     const filter = (arr, limit) => (arr || [])
-      .filter((s) => inReg(s) && (!q || storyText(s).includes(q)))
+      .filter((s) => inReg(s) && (!q || matchStory(s, q)))
       .slice(0, limit);
     const c = getCrisis();
     const allAlerts = allCrisisAlerts().filter(inReg);
@@ -530,7 +568,7 @@
     results.classList.toggle('still', !animate);
     T.queue.length = 0;
     const q = ($('#q').value || '').trim().toLowerCase();
-    const stories = q ? d.stories.filter((s) => storyText(s).includes(q)) : d.stories;
+    const stories = q ? d.stories.filter((s) => matchStory(s, q)) : d.stories;
     const count = (id) => (q ? stories.filter((s) => s.category === id).length : d.totals[id]);
     const noOutside = d.stories.every((s) => !s.by_scope.abroad_local && !s.by_scope.international);
     const byTopic = (id) => stories.filter((s) => s.category === id);
