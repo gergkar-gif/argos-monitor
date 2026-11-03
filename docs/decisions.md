@@ -146,6 +146,29 @@ The experimental "ACLED-style" violent event classifier (introduced in f83eb72) 
 - **Verified Sensor & Advisory Layer:** Conflict and security tracking is anchored in verified external feeds: US Department of State (Levels 2–4), UK FCDO foreign travel advice, and International Crisis Group conflict briefs, alongside existing GDACS, USGS, and NASA EONET feeds.
 - **Truthful Press Coverage:** The Conflict & Security view surfaces genuine story clusters classified into `defence_security` by section feeds and embeddings, preserving original headlines without synthetic tactical badges.
 
+## 2026-11-03: zero-emoji policy and delta comparisons specification
+
+**D24. Strict zero-emoji policy for diplomatic broadsheet aesthetic and data hygiene.**
+Argos Monitor is built for foreign-ministry press review and institutional analysis. Emojis diminish the seriousness of diplomatic monitoring, introduce unpredictable font rendering, and break character-width grid alignment.
+- **Rules:** Exactly 0 emojis across the entire project (UI, badges, alerts, documentation, commit messages, and metadata).
+- **Ingestion Hygiene:** `clean()` in `argos/textutil.py` strips all SMP pictographs, dingbats, and emoji variation selectors from incoming RSS headlines and leads so third-party feed formatting cannot leak into the broadsheet interface.
+- **Visual Vocabulary:** Visual distinctions use restrained broadsheet typography: bordered text pills (`[NEW]`, `[SURGE +12]`, `[OFFICIAL]`, `[INTL PICKUP]`), ISO mathematical arrows (`↑`, `↓`), and integer counts (`+14`).
+
+**D25. Deterministic delta comparison architecture ("What changed?") between time windows.**
+Following section 10 of the product brief, analysts require direct visibility into news cycle momentum rather than static cumulative volume.
+- **Window Slicing:** For any active window $T$ (e.g. 24h or 7d), compare against the preceding contiguous window $T_{-1}$ of identical duration ($[now - 2 \cdot W, now - W]$).
+- **Story Movement Metrics:**
+  - `state`: `new` ($T_{-1} = 0, T \ge 2$), `surging` ($T - T_{-1} \ge 3$ and $T / T_{-1} \ge 1.75$), `cooling` ($T_{-1} - T \ge 3$ and $T / T_{-1} \le 0.4$), `steady` (consistent volume), or `trace` ($< 2$ articles).
+  - `net`: integer difference $T - T_{-1}$.
+  - `ratio`: $T / \max(T_{-1}, 1)$ rounded to 1 decimal place.
+  - `scope_escalation`: flags stories whose $T_{-1}$ coverage was exclusively `domestic` but whose $T$ window incorporates `international` or `abroad_local` reporting (`international_pickup`).
+- **Macro Agenda Delta:**
+  - Net category volume change ($\Delta N$) and percentage-point share shifts ($\Delta S$) across the 6 core policy categories.
+- **Perspective Delta:**
+  - Tracks shifts in state-affiliated media share ($\Delta \text{state\_share}$) to flag narrative surges or sudden state silence.
+- **Zero-LLM & Evidence Integrity:**
+  - All delta metrics are computed deterministically in SQLite during export and embedded in the static `.json` export bundles. Every movement badge links to the verified underlying article cluster. Detailed schema in `docs/delta_spec.md`.
+
 
 
 

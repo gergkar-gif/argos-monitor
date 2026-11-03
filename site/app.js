@@ -831,9 +831,6 @@
     paintTranslationBar();
     translatePending();
   }
-    paintTranslationBar();
-    translatePending();
-  }
 
   // ---------- Bilateral & Joint Affairs Monitor ----------
   const COMMON_PARTNERS = [

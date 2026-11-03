@@ -17,6 +17,7 @@ The project has not been built yet. Read these before doing any work:
 4. **The original-language article is the authoritative source.** A translation is never evidence. Translation is left to the browser.
 5. **Don't count syndicated copies as separate sources.** Many domestic outlets reprint VNA (Vietnam News Agency) copy. The story page must show *independent* source counts.
 6. **The About page (`site/about.html`) is CRUCIAL and must always be kept up-to-date.** Whenever adding country desks, changing pipeline stages, or introducing new analytical features (such as political alignment, editorial leaning, factuality, or state-affiliated corroboration), the About page's explanatory sections, telemetry badges, desk lists, and methodology must be updated in the same change.
+7. **Zero emojis across the entire project.** Argos Monitor is designed for serious diplomatic, institutional, and foreign-office press review. Never use emojis in dashboard UI, badges, alerts, charts, documentation, commit messages, or metadata. Strip emojis during text ingestion/normalisation (`clean()`) so external RSS symbols do not leak into the broadsheet interface. Use clean typographic labels (`[NEW]`, `[SURGE]`, `[OFFICIAL]`), plain integers (`+14`), or standard directional indicators (`↑`, `↓`).
 
 ## Environment
 - Windows 11, 8 GB RAM, Python 3.14. Everything must run on CPU and stay light on memory.

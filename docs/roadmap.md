@@ -19,8 +19,10 @@ Each step has a check that shows it is done. Work in order.
 7. **Schedule in the cloud (D13).** GitHub Actions runs the pipeline once a day (04:00 Vietnam time) and publishes the site to Cloudflare Pages.
    → Done when: the cloud probe shows most outlets reachable, and a scheduled run publishes a fresh site before 07:00 without help.
 
-## Phase 2: later (not yet planned in detail)
-- 24h / 30d windows and "what changed?" comparison with the previous period
+## Phase 2: active & planned items
+- **"What changed?" delta comparisons between windows (D24, D25, docs/delta_spec.md)**
+  - State: Mathematical model, classification state machine (new, surging, cooling, steady), scope escalation logic, and export JSON schemas specified in docs/delta_spec.md. Broadsheet zero-emoji policy codified (Rule 7, D24) and verified via textutil normalisation.
+  - Next: Implement window partitioning and delta metric calculation in `argos/export.py` for 24h and 7d feeds.
 - Optional LLM layer for the top stories, with the verbatim-quote check
 - Offline headline translation (`opus-mt-vi-en`)
 - ~~A second country~~ Done: Hungary (D15). More countries follow the same pack recipe (33 country desks active).
