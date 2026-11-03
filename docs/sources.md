@@ -119,3 +119,46 @@ The registry is [`countries/south_africa/sources.yaml`](../countries/south_afric
 | News24, BusinessLIVE / Business Day, The Citizen, BusinessTech, MyBroadband | Direct feeds blocked (HTTP 403 or paywall); covered effectively via Google News aggregator items. |
 | gov.za (official portal speeches/news) | Times out on direct RSS; official government coverage provided by SAnews (GCIS wire). |
 
+# Laos (verified 2026-11-03)
+
+The registry is [`countries/laos/sources.yaml`](../countries/laos/sources.yaml).
+
+| Outlet | Result |
+|---|---|
+| The Laotian Times (Top Stories, Business) | **Working**, fresh items. Independent Vientiane digital daily. |
+| Radio Free Asia (Lao Service) | **Working**, outbound RSS with Lao-language (`lo`) coverage. |
+| Google News (Laos domestic & international search feeds) | **Working**, topical searches covering general, economy/hydropower/railway, governance/diplomacy, and Golden Triangle/Mekong security. |
+
+# Japan (verified 2026-11-03)
+
+The registry is [`countries/japan/sources.yaml`](../countries/japan/sources.yaml).
+
+| Outlet | Result |
+|---|---|
+| The Japan Times, The Mainichi (English), Mainichi Shimbun (Flash, Japanese), Asahi Shimbun (Headlines, Japanese) | **Working**, fresh items. |
+| BBC News Japan & Newsweek Japan (via Google News) | **Working**, Japanese-language international reporting (`abroad_local`). |
+| Kyodo News & Nikkei Asia (via Google News) | **Working**, comprehensive wire and business coverage. |
+| Google News (Japan Japanese & English search feeds) | **Working**, topical coverage across top stories, Diet politics, and BOJ/market economics. |
+
+# South Korea (verified 2026-11-03)
+
+The registry is [`countries/south_korea/sources.yaml`](../countries/south_korea/sources.yaml).
+
+| Outlet | Result |
+|---|---|
+| Yonhap News Agency (English & Korean), The Korea Times, Dong-A Ilbo | **Working**, fresh items. Statutory wire and national dailies of record. |
+| BBC News Korean & RFA Korean (via Google News) | **Working**, diaspora Korean-language coverage (`abroad_local`). |
+| Google News (South Korea Korean & English search feeds) | **Working**, topical coverage across top stories, National Assembly politics, BOK/semiconductors, and North Korea defense. |
+
+# Taiwan (verified 2026-11-03)
+
+The registry is [`countries/taiwan/sources.yaml`](../countries/taiwan/sources.yaml).
+
+| Outlet | Result |
+|---|---|
+| Taipei Times (English daily), Liberty Times (Politics & Business, Traditional Chinese) | **Working**, fresh items from leading national dailies. |
+| BBC News Chinese & RFA Chinese (via Google News) | **Working**, Chinese-language international reporting (`abroad_local`). |
+| CNA / Focus Taiwan & Taiwan News (via Google News) | **Working**, comprehensive national wire coverage. |
+| Google News (Taiwan Traditional Chinese & English search feeds) | **Working**, topical coverage across top stories, TSMC/chips, and Taiwan Strait security. |
+
+

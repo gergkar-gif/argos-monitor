@@ -91,3 +91,17 @@ The crisis and official feeds (travel advisories, GDACS, Crisis Group) are saved
 **D17. South Africa pack added (`countries/south_africa/`).**
 Media in South Africa is predominantly English-language with high press freedom, diverse private media, and official coverage through the public broadcaster (SABC) and GCIS wire (SAnews). Scope `abroad_local` maps to Pan-African and regional African distributors (such as AllAfrica and The Continent). Policy themes are tuned to the Government of National Unity (GNU), Eskom and Transnet state-owned enterprise logistics reforms, and South Africa's global geopolitical posture (BRICS, ICJ litigation, and non-alignment).
 
+## 2026-11-03: Laos and Japan packs
+
+**D18. Laos and Japan packs added (`countries/laos/`, `countries/japan/`).**
+- **Laos (`countries/laos/`):** Primary language Lao (`lo`) with bilingual domestic press (The Laotian Times, Vientiane Times, KPL wire) and diaspora/independent reporting via Radio Free Asia Lao. Policy themes capture Mekong River hydropower dam politics and energy export, sovereign debt restructuring with Chinese creditors, the Laos-China railway corridor, and Golden Triangle SEZ crime and scam compound crackdowns.
+- **Japan (`countries/japan/`):** Primary language Japanese (`ja`) in the new `East Asia` desk. Media spans independent national dailies (The Japan Times, Mainichi Shimbun, Asahi Shimbun), national wires (Kyodo News via Google News), business press (Nikkei Asia), and international Japanese-language coverage (BBC News Japan, Newsweek Japan). Policy themes focus on Shigeru Ishiba's government and Diet politics, Bank of Japan (BOJ) monetary policy and yen dynamics, semiconductor security (Rapidus, TSMC Kumamoto), defense expansion (2% GDP target, counterstrike capabilities, Okinawa), and demographic aging.
+
+## 2026-11-03: South Korea and Taiwan packs (completing East Asia desk)
+
+**D19. South Korea and Taiwan packs added (`countries/south_korea/`, `countries/taiwan/`).**
+- **South Korea (`countries/south_korea/`):** Primary language Korean (`ko`) in `East Asia`. Sources combine statutory national wire Yonhap (English & Korean), independent national press (The Korea Times, Dong-A Ilbo), diaspora broadcasting (BBC Korean, RFA Korean), and Google News aggregators. Policy themes focus on Yoon Suk Yeol administration and National Assembly politics, Bank of Korea monetary policy and KRW dynamics, semiconductor memory supply chain (Samsung, SK Hynix HBM), defense exports (K-defense), North Korean nuclear/missile deterrence and troop dispatch to Russia, and medical quota disputes.
+- **Taiwan (`countries/taiwan/`):** Primary language Traditional Chinese (`zh`) in `East Asia`. Sources feature leading English daily Taipei Times, premier national daily Liberty Times (Chinese Politics & Business feeds), national wire CNA / Focus Taiwan via Google News, and diaspora reporting. Policy themes center on Lai Ching-te administration and Legislative Yuan gridlock, TSMC advanced 2nm silicon shield and AI hardware supply chain, Taiwan Strait defense and PLA deterrence (ADIZ incursions, Hai Kun submarines), and energy transition.
+
+
+

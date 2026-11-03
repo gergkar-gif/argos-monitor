@@ -1,0 +1,118 @@
+# South Korea country pack (decision D15).
+id: south_korea
+name: South Korea
+region: East Asia
+language: ko
+abroad_label: International & diaspora Korean-language outlets
+
+mention:
+  - "south korea"
+  - "korea"
+  - "korean"
+  - "seoul"
+  - "busan"
+  - "incheon"
+  - "daegu"
+  - "daejeon"
+  - "yoon suk yeol"
+  - "yoon"
+  - "han dong-hoon"
+  - "lee jae-myung"
+  - "ppp"
+  - "people power party"
+  - "dpk"
+  - "democratic party of korea"
+  - "national assembly"
+  - "bank of korea"
+  - "bok"
+  - "won"
+  - "samsung"
+  - "sk hynix"
+  - "hyundai"
+  - "chaebol"
+  - "dmz"
+  - "roka"
+  - "pyongyang"
+  - "north korea"
+  - "한국"
+  - "대한민국"
+  - "서울"
+  - "부산"
+  - "인천"
+  - "대구"
+  - "윤석열"
+  - "한동훈"
+  - "이재명"
+  - "국민의힘"
+  - "더불어민주당"
+  - "국회"
+  - "한국은행"
+  - "원화"
+  - "삼성"
+  - "SK하이닉스"
+  - "현대차"
+  - "재벌"
+  - "국방부"
+  - "합참"
+  - "외교부"
+  - "북한"
+
+mention_regex: ['\b(?:south korea|korean?|seoul|yoon suk yeol|chaebol|won)\b', '한국', '대한민국', '서울', '윤석열', '국회']
+mention_section: null
+
+url_sections:
+  foreign: [world, international, global, foreign]
+  skip: [sports, sport, entertainment, lifestyle, celebrity, enter]
+
+aggregator_outlets:
+  domestic:
+    - "yonhap"
+    - "yonhap news"
+    - "yna"
+    - "the korea herald"
+    - "korea herald"
+    - "the korea times"
+    - "korea times"
+    - "donga"
+    - "donga ilbo"
+    - "chosun"
+    - "chosun ilbo"
+    - "joongang"
+    - "joongang ilbo"
+    - "korea joongang daily"
+    - "hankyoreh"
+    - "the hankyoreh"
+    - "kbs"
+    - "kbs world"
+    - "mbc"
+    - "sbs"
+    - "ytn"
+  abroad_local:
+    - "bbc news korean"
+    - "bbc korean"
+    - "rfa korean"
+    - "voa korean"
+
+excerpt:
+  dateline: '^\s*(?:SEOUL|SEJONG|BUSAN|YONHAP|KBS|연합뉴스)\s*[-–—:]\s*'
+  noise: '^(Photo|Credit|File photo|Read also|사진|\(|\[)'
+
+classify:
+  internal_politics:
+    - "President Yoon Suk Yeol, First Lady Kim Keon-hee allegations, People Power Party (Han Dong-hoon), Democratic Party of Korea (Lee Jae-myung), National Assembly partisan clash, special counsel probe bills, cabinet"
+    - "대통령, 윤석열, 김건희, 국민의힘, 한동훈, 더불어민주당, 이재명, 국회, 특검, 청문회, 탄핵, 총선, 정당"
+  economics:
+    - "Bank of Korea monetary policy, interest rates, Korean won exchange rate, semiconductor memory exports (Samsung Electronics, SK Hynix HBM chips), chaebol reform, household debt, real estate project finance"
+    - "한국은행, 이창용, 기준금리, 원달러 환율, 원화, 반도체, 삼성전자, SK하이닉스, HBM, 현대차, 가계부채, 부동산, 물가, 무역수지"
+  foreign_policy:
+    - "Ministry of Foreign Affairs (MOFA), ROK-US Alliance, Camp David trilateral partnership with US & Japan, ROK-Japan diplomatic thaw, China relations, K-defense weapons exports (Poland, Australia), ASEAN engagement"
+    - "외교부, 조태열, 한미동맹, 한미일 협력, 한일관계, 대중관계, 방산수출, K-방산, 다자외교, 아세안"
+  defence_security:
+    - "Ministry of National Defense, Joint Chiefs of Staff, North Korean ballistic missile tests, North Korea-Russia military pact and troop deployment, DMZ border security, USFK, solid-fuel spy satellites"
+    - "국방부, 합동참모본부, 군, 북한 미사일 도발, 핵위협, 북러 군사협력, 파병, DMZ, 주한미군, 방위비, 안보"
+  society:
+    - "World's lowest fertility rate, aging demographics, doctors' strike and medical school quota dispute, university admissions, Seoul housing costs, environmental green transition"
+    - "저출산, 저출생, 초고령사회, 의대정원, 전공의 파업, 의료대란, 사교육, 킬러문항, 부동산, 사회"
+
+geo: KR
+reddit: [korea, seoul, southkorea]

@@ -1,0 +1,118 @@
+# Taiwan country pack (decision D15).
+id: taiwan
+name: Taiwan
+region: East Asia
+language: zh
+abroad_label: International & diaspora Chinese-language outlets
+
+mention:
+  - "taiwan"
+  - "taiwanese"
+  - "taipei"
+  - "kaohsiung"
+  - "taichung"
+  - "tainan"
+  - "lai ching-te"
+  - "william lai"
+  - "hsiao bi-khim"
+  - "dpp"
+  - "democratic progressive party"
+  - "kmt"
+  - "kuomintang"
+  - "tpp"
+  - "taiwan people's party"
+  - "ko wen-je"
+  - "han kuo-yu"
+  - "legislative yuan"
+  - "central bank of the roc"
+  - "new taiwan dollar"
+  - "ntd"
+  - "tsmc"
+  - "semiconductor"
+  - "taiwan strait"
+  - "pla"
+  - "adiz"
+  - "rocmnd"
+  - "台灣"
+  - "臺灣"
+  - "台北"
+  - "高雄"
+  - "台中"
+  - "台南"
+  - "賴清德"
+  - "蕭美琴"
+  - "民進黨"
+  - "國民黨"
+  - "民眾黨"
+  - "柯文哲"
+  - "韓國瑜"
+  - "立法院"
+  - "中央銀行"
+  - "新台幣"
+  - "台積電"
+  - "半導體"
+  - "台海"
+  - "台灣海峽"
+  - "國防部"
+  - "外交部"
+  - "陸委會"
+  - "共機"
+  - "灰色地帶"
+
+mention_regex: ['\b(?:taiwan|taiwanese|taipei|lai ching-te|tsmc|ntd)\b', '台灣', '臺灣', '賴清德', '台積電', '立法院', '台海']
+mention_section: null
+
+url_sections:
+  foreign: [world, international, global, foreign]
+  skip: [sports, sport, entertainment, lifestyle, celebrity]
+
+aggregator_outlets:
+  domestic:
+    - "taipei times"
+    - "liberty times"
+    - "ltn"
+    - "central news agency"
+    - "cna"
+    - "focus taiwan"
+    - "focustaiwan"
+    - "taiwan news"
+    - "united daily news"
+    - "udn"
+    - "china times"
+    - "chinatimes"
+    - "commercial times"
+    - "pts"
+    - "tvbs"
+    - "setn"
+  abroad_local:
+    - "bbc news chinese"
+    - "bbc chinese"
+    - "rfa chinese"
+    - "rfa"
+    - "voa chinese"
+    - "voa"
+    - "dw chinese"
+
+excerpt:
+  dateline: '^\s*(?:TAIPEI|KAOHSIUNG|CNA|Taipei Times|中央社|自由時報)\s*[-–—:]\s*'
+  noise: '^(Photo|Credit|File photo|Read also|相關新聞|記者|\(|\[)'
+
+classify:
+  internal_politics:
+    - "President Lai Ching-te administration, Vice President Hsiao Bi-khim, Democratic Progressive Party (DPP), opposition Kuomintang (KMT Han Kuo-yu) & Taiwan People's Party (TPP Ko Wen-je), Legislative Yuan reforms, judicial yuan"
+    - "總統, 賴清德, 蕭美琴, 民進黨, 國民黨, 民眾黨, 柯文哲, 韓國瑜, 立法院, 國會職權, 釋憲, 內閣, 覆議案"
+  economics:
+    - "Central Bank of the ROC, New Taiwan Dollar (NTD), TSMC 2nm/A16 advanced fab expansion, AI server hardware boom (Foxconn, Quanta), foreign direct investment, power grid capacity, export orders"
+    - "中央銀行, 央行, 楊金龍, 新台幣, 利率, 台積電, 晶圓代工, 半導體, AI伺服器, 鴻海, 廣達, 輝達供應鏈, 出口訂單, 電價, 綠能"
+  foreign_policy:
+    - "Ministry of Foreign Affairs, US-Taiwan relations (Taiwan Relations Act, arms shipments), European Parliament support, official diplomatic allies, unofficial bilateral ties with Japan, Australia and ASEAN"
+    - "外交部, 林佳龍, 台美關係, 台灣關係法, 美國軍援, 歐洲議會, 邦交國, 實質外交, 雙邊關係, 台日"
+  defence_security:
+    - "Ministry of National Defense, Taiwanese Armed Forces, PLA combat readiness patrols, ADIZ incursions, joint sword encirclement drills, Taiwan Strait grey-zone coercion, Indigenous Defense Submarine (Hai Kun)"
+    - "國防部, 國軍, 中共軍演, 共機擾台, 防空識別區, ADIZ, 灰色地帶衝突, 聯合利劍, 封鎖演練, 海鯤軍艦, 潛艦國造, 不對稱戰力"
+  society:
+    - "Low birthrate, aging demographic, housing costs and youth subsidies, nuclear power plant phase-out (Maanshan shutdown), disaster resilience (typhoon recovery), anti-fraud telecommunication crackdown"
+    - "少子化, 超高齡社會, 青年安心成家, 房價, 核三廠除役, 能源政策, 颱風災情, 韌性社會, 打詐"
+
+geo: TW
+reddit: [taiwan, taipei]

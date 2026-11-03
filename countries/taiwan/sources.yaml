@@ -1,0 +1,120 @@
+# Taiwan source registry (decision D15).
+# Combines premier English daily Taipei Times, leading national daily Liberty Times (Chinese), national wires (CNA / Focus Taiwan via Google News), and diaspora Chinese reporting.
+
+sources:
+  - id: taipeitimes_en
+    name: Taipei Times
+    homepage: https://www.taipeitimes.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Liberty Times Group (independent English daily newspaper of record in Taipei)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.taipeitimes.com/xml/index.rss", section: Top Stories, category_hint: general}
+
+  - id: ltn_politics
+    name: Liberty Times (Politics - Traditional Chinese)
+    homepage: https://news.ltn.com.tw
+    language: zh
+    scope: domestic
+    kind: media
+    governing_body: The Liberty Times Group (major national daily newspaper)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.ltn.com.tw/rss/politics.xml", section: Politics, category_hint: internal_politics}
+
+  - id: ltn_business
+    name: Liberty Times (Business & Tech - Traditional Chinese)
+    homepage: https://news.ltn.com.tw
+    language: zh
+    scope: domestic
+    kind: media
+    governing_body: The Liberty Times Group (major national daily newspaper)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.ltn.com.tw/rss/business.xml", section: Business, category_hint: economics}
+
+  - id: gnews_tw_domestic
+    name: Focus Taiwan / CNA / Taiwan News (via Google News)
+    homepage: https://focustaiwan.tw
+    language: en
+    scope: domestic
+    kind: wire
+    aggregator: google_news
+    governing_body: Central News Agency (CNA, national news agency of Taiwan)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:focustaiwan.tw+OR+site:taipeitimes.com+OR+site:taiwannews.com.tw)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Domestic Wires, category_hint: general}
+
+  - id: gnews_zh_tw_top
+    name: Google News (Taiwan Top Stories - Traditional Chinese)
+    homepage: https://news.google.com
+    language: zh
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss?hl=zh-TW&gl=TW&ceid=TW:zh-Hant", section: Top Stories, category_hint: general}
+
+  - id: gnews_zh_tw_business
+    name: Google News (Taiwan Business & Tech - Traditional Chinese)
+    homepage: https://news.google.com
+    language: zh
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/headlines/section/topic/BUSINESS?hl=zh-TW&gl=TW&ceid=TW:zh-Hant", section: Business, category_hint: economics}
+
+  - id: gnews_zh_tw_abroad
+    name: BBC News Chinese & RFA Chinese (via Google News)
+    homepage: https://www.bbc.com/zhongwen
+    language: zh
+    scope: abroad_local
+    kind: media
+    aggregator: google_news
+    governing_body: BBC World Service / Radio Free Asia Mandarin Service
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:bbc.com/zhongwen+OR+site:rfa.org/mandarin)+(Taiwan+OR+%E5%8F%B0%E7%81%A3)+when:7d&hl=zh-TW&gl=TW&ceid=TW:zh-Hant", section: Diaspora Chinese, category_hint: general}
+
+  - id: gnews_en_tw
+    name: Google News (Taiwan - International English)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Taiwan+when:1d&hl=en-US&gl=US&ceid=US:en", section: Taiwan, category_hint: general}
+
+  - id: gnews_en_tw_econ
+    name: Google News (Taiwan TSMC, Chips & Economy - English)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Taiwan+(economy+OR+TSMC+OR+semiconductor+OR+chips+OR+NTD)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Economy, category_hint: economics}
+
+  - id: gnews_en_tw_sec
+    name: Google News (Taiwan Strait Defense & Military - English)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Taiwan+(China+OR+military+OR+PLA+OR+Strait+OR+blockade+OR+defense)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Security, category_hint: defence_security}

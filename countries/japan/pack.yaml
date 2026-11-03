@@ -1,0 +1,118 @@
+# Japan country pack (decision D15).
+id: japan
+name: Japan
+region: East Asia
+language: ja
+abroad_label: International & diaspora Japanese-language outlets
+
+mention:
+  - "japan"
+  - "japanese"
+  - "tokyo"
+  - "osaka"
+  - "kyoto"
+  - "yokohama"
+  - "hokkaido"
+  - "okinawa"
+  - "kishida"
+  - "ishiba"
+  - "shigeru ishiba"
+  - "ldp"
+  - "liberal democratic party"
+  - "komeito"
+  - "cdp"
+  - "bank of japan"
+  - "boj"
+  - "kazuo ueda"
+  - "yen"
+  - "nikkei"
+  - "diet"
+  - "jsdf"
+  - "fukushima"
+  - "rapidus"
+  - "日本"
+  - "東京"
+  - "大阪"
+  - "京都"
+  - "横浜"
+  - "北海道"
+  - "沖縄"
+  - "石破"
+  - "石破茂"
+  - "岸田"
+  - "自民党"
+  - "公明党"
+  - "立憲民主党"
+  - "国会"
+  - "衆議院"
+  - "参議院"
+  - "日銀"
+  - "日本銀行"
+  - "円安"
+  - "円高"
+  - "自衛隊"
+  - "防衛省"
+  - "外務省"
+  - "福島"
+
+mention_regex: ['\b(?:japan|japanese|tokyo|ishiba|nikkei|yen)\b', '日本', '日銀', '自衛隊', '石破']
+mention_section: null
+
+url_sections:
+  foreign: [world, international, global, foreign, kokusai, asia]
+  skip: [sports, sport, entertainment, lifestyle, gourmet, travel, geinou]
+
+aggregator_outlets:
+  domestic:
+    - "the japan times"
+    - "japantimes"
+    - "kyodo news"
+    - "kyodo"
+    - "mainichi"
+    - "the mainichi"
+    - "mainichi shimbun"
+    - "asahi"
+    - "asahi shimbun"
+    - "the asahi shimbun"
+    - "yomiuri"
+    - "yomiuri shimbun"
+    - "the yomiuri shimbun"
+    - "nikkei"
+    - "nikkei asia"
+    - "nihon keizai shimbun"
+    - "jiji press"
+    - "jiji"
+    - "sankei"
+    - "sankei shimbun"
+    - "nhk"
+    - "nhk world"
+  abroad_local:
+    - "bbc news japan"
+    - "bbc japan"
+    - "newsweek japan"
+    - "reuters japan"
+    - "bloomberg japan"
+
+excerpt:
+  dateline: '^\s*(?:TOKYO|OSAKA|NAGOYA|KYODO|JIJI|NHK|共同通信|時事通信)\s*[-–—:]\s*'
+  noise: '^(Photo|Credit|File photo|Read also|関連記事|写真|\(|\[)'
+
+classify:
+  internal_politics:
+    - "Prime Minister Shigeru Ishiba, cabinet, Liberal Democratic Party (LDP), Komeito coalition, Constitutional Democratic Party (CDP Yoshihiko Noda), National Diet (House of Representatives, House of Councillors), snap elections, political funding scandal, political reform"
+    - "首相, 内閣, 石破茂, 岸田文雄, 自民党, 公明党, 立憲民主党, 国会, 衆議院, 参議院, 選挙, 政治改革, 政治資金問題, 連立政権"
+  economics:
+    - "Bank of Japan (BOJ Governor Kazuo Ueda), monetary policy, interest rate hike, yen exchange rate (USD/JPY), inflation, wage negotiations (shunto), Nikkei 225 stock average, semiconductor investment (Rapidus, TSMC Kumamoto), supplemental budget"
+    - "日本銀行, 日銀, 植田和男, 利上げ, マイナス金利解除, 為替, 円安, 円高, 物価高, インフレ, 賃上げ, 春闘, 日経平均, 半導体, ラピダス, 補正予算, 財政"
+  foreign_policy:
+    - "Ministry of Foreign Affairs (MOFA), Japan-US Security Alliance, Free and Open Indo-Pacific (FOIP), Japan-China relations, Japan-South Korea bilateral cooperation, QUAD, G7, ASEAN-Japan relations, North Korea abduction issue"
+    - "外務省, 日米同盟, インド太平洋, 日中関係, 日韓関係, クアッド, G7, アセアン, 北朝鮮, 拉致問題, 外交"
+  defence_security:
+    - "Japan Self-Defense Forces (JSDF), Ministry of Defense, 2% GDP defense spending, counterstrike capabilities, Tomahawk missiles, US military bases in Okinawa, Senkaku Islands maritime defense, Taiwan Strait contingency"
+    - "自衛隊, 防衛省, 防衛費, 反撃能力, トマホーク, 尖閣諸島, 沖縄基地, 台湾有事, 安全保障, ミサイル防衛"
+  society:
+    - "Declining birthrate, population aging, demographic crisis, foreign worker visa expansion, labor shortages, Noto Peninsula earthquake recovery, Fukushima treated water release, nuclear power plant restarts"
+    - "少子化対策, 高齢化, 人口減少, 外国人材, 人手不足, 能登半島地震, 復興, 福島第一原発, 処理水, 原発再稼働, 社会問題"
+
+geo: JP
+reddit: [japan, tokyo, japannews]

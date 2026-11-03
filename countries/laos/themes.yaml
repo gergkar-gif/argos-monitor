@@ -1,0 +1,34 @@
+# Laos's additions to the shared themes (../../themes.yaml): English & Lao keywords and descriptions.
+themes:
+  - id: party_gov
+    describe:
+      - Lao People's Revolutionary Party Central Committee, National Assembly, President Thongloun Sisoulith, Prime Minister Sonexay Siphandone, state inspection, corruption cases
+      - ພັກປະຊາຊົນປະຕິວັດລາວ, ສະພາແຫ່ງຊາດ, ທອງລຸນ ສີສຸລິດ, ສອນໄຊ ສີພັນດອນ, ລັດຖະບານ, ກວດກາລັດ
+    keywords: ["thongloun sisoulith", "sonexay siphandone", "lprp", "politburo", "central committee", "national assembly", "anti-corruption", "vientiane mayor", "party congress", "ທອງລຸນ", "ສອນໄຊ", "ພັກປະຊາຊົນປະຕິວັດລາວ", "ສະພາແຫ່ງຊາດ", "ລັດຖະບານ", "ສູນກາງພັກ"]
+
+  - id: econ_policy
+    describe:
+      - Bank of the Lao PDR, kip exchange rate, inflation control, fuel pricing, sovereign debt restructuring with Chinese creditors, Laos-China railway logistics
+      - ທະນາຄານແຫ່ງ ສປປ ລາວ, ອັດຕາແລກປ່ຽນ, ເງິນກີບ, ເງິນເຟີ້, ໜີ້ສິນຕ່າງປະເທດ, ທາງລົດໄຟລາວ-ຈີນ
+    keywords: ["bank of the lao pdr", "bol", "lao kip", "kip", "inflation", "external debt", "debt restructuring", "laos-china railway", "boteng", "special economic zone", "sez", "ທະນາຄານແຫ່ງ ສປປ ລາວ", "ເງິນກີບ", "ເງິນເຟີ້", "ໜີ້ສິນ", "ລົດໄຟລາວ-ຈີນ", "ເຂດເສດຖະກິດພິເສດ"]
+
+  - id: diplomacy
+    describe:
+      - Laos foreign ministry, ASEAN 2024/2025 summits, comprehensive strategic partnership with Vietnam, Belt and Road with China, Mekong-Ganga, Mekong River Commission
+      - ກະຊວງການຕ່າງປະເທດ, ອາຊຽນ, ສາຍພົວພັນພິເສດ ລາວ-ຫວຽດນາມ, ໜຶ່ງແລວໜຶ່ງເສັ້ນທາງ ລາວ-ຈີນ, ຄະນະກຳມາທິການແມ່ນ້ຳຂອງ
+    keywords: ["saleumxay kommasith", "asean", "mekong river commission", "mrc", "lao-vietnamese", "lao-chinese", "special solidarity", "vientiane summit", "belt and road", "bri", "ກະຊວງການຕ່າງປະເທດ", "ອາຊຽນ", "ແມ່ນ້ຳຂອງ", "ລາວ-ຫວຽດນາມ", "ລາວ-ຈີນ"]
+
+  - id: security
+    describe:
+      - Lao People's Armed Forces, Ministry of Public Security, Golden Triangle SEZ crackdowns, telecom and online scam syndicates, drug busts, cross-border smuggling
+      - ກອງທັບປະຊາຊົນລາວ, ກະຊວງປ້ອງກັນຄວາມສະຫງົບ, ສາມຫຼ່ຽມທອງຄຳ, ແກ໊ງຄອນເຊັນເຕີ, ຢາເສບຕິດ, ປ້ອງກັນຊາດ
+    keywords: ["lao people's armed forces", "ministry of public security", "golden triangle", "kings romans", "scam compound", "human trafficking", "methamphetamine", "border patrol", "ກອງທັບ", "ປ້ອງກັນຄວາມສະຫງົບ", "ສາມຫຼ່ຽມທອງຄຳ", "ຢາເສບຕິດ", "ແກ໊ງຄອນເຊັນເຕີ"]
+
+  - id: hydropower_mekong
+    category: economics
+    weight: 0.95
+    label: Hydropower & Mekong River
+    describe:
+      - Mekong River mainstream dams, hydropower exports to Thailand and Vietnam, water discharge, drought, battery of Southeast Asia
+      - ເຂື່ອນໄຟຟ້າແມ່ນ້ຳຂອງ, ສົ່ງອອກກະແສໄຟຟ້າ, ແມ່ນ້ຳຂອງ, ໄພແຫ້ງແລ້ງ
+    keywords: ["hydropower", "dam", "mekong river", "battery of southeast asia", "xayaburi", "luang prabang dam", "nam theun", "edl", "electricite du laos", "power purchase agreement", "ເຂື່ອນ", "ແມ່ນ້ຳຂອງ", "ໄຟຟ້າລາວ", "ເຂື່ອນໄຊຍະບູລີ"]

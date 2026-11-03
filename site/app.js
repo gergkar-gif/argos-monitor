@@ -56,13 +56,14 @@
   const GLOBAL_VIEWS = new Set(['home', 'alerts', 'disasters', 'violence', 'relations']);
 
   const REGIONS = [
-    'Southeast Asia', 'Central Europe', 'Balkans', 'Eastern Europe',
+    'Southeast Asia', 'East Asia', 'Central Europe', 'Balkans', 'Eastern Europe',
     'South Caucasus', 'Central Asia', 'Middle East & Mediterranean',
     'Sub-Saharan Africa', 'South America'
   ];
   const COUNTRY_REGION = {
-    cambodia: 'Southeast Asia', indonesia: 'Southeast Asia', malaysia: 'Southeast Asia', myanmar: 'Southeast Asia',
+    cambodia: 'Southeast Asia', indonesia: 'Southeast Asia', laos: 'Southeast Asia', malaysia: 'Southeast Asia', myanmar: 'Southeast Asia',
     philippines: 'Southeast Asia', thailand: 'Southeast Asia', vietnam: 'Southeast Asia',
+    japan: 'East Asia', south_korea: 'East Asia', taiwan: 'East Asia',
     hungary: 'Central Europe', poland: 'Central Europe', slovakia: 'Central Europe',
     bosnia: 'Balkans', kosovo: 'Balkans', serbia: 'Balkans',
     moldova: 'Eastern Europe',
@@ -819,6 +820,8 @@
   const QUICK_PRESETS = [
     [['cambodia', 'vietnam'], 'Cambodia & Vietnam'],
     [['cambodia', 'laos', 'vietnam'], 'Mekong Basin (KH, LA, VN)'],
+    [['japan', 'south_korea', 'taiwan'], 'East Asia Tech & Security (JP, KR, TW)'],
+    [['japan', 'malaysia', 'indonesia', 'cambodia', 'laos'], 'East & SE Asia Corridor (JP, MY, ID, KH, LA)'],
     [['kazakhstan', 'azerbaijan', 'georgia', 'turkey'], 'Middle Corridor (KZ, AZ, GE, TR)'],
     [['hungary', 'poland', 'slovakia'], 'Visegrád Trio (HU, PL, SK)'],
     [['serbia', 'kosovo', 'bosnia'], 'Balkans Triangle (RS, XK, BA)'],

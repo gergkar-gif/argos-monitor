@@ -1,0 +1,155 @@
+# Japan source registry (decision D15).
+# Combines leading national dailies (The Japan Times, Mainichi Shimbun, Asahi Shimbun), national wires (Kyodo News via Google News), business press (Nikkei Asia), and international/diaspora reporting.
+
+sources:
+  - id: japantimes
+    name: The Japan Times
+    homepage: https://www.japantimes.co.jp
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: The Japan Times, Ltd. (independent English-language daily newspaper in Tokyo)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.japantimes.co.jp/feed/", section: Top Stories, category_hint: general}
+
+  - id: mainichi_en
+    name: The Mainichi
+    homepage: https://mainichi.jp/english/
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: The Mainichi Newspapers Co., Ltd. (major national daily newspaper)
+    state_affiliated: false
+    feeds:
+      - {url: "https://mainichi.jp/rss/etc/english_latest.rss", section: Latest News, category_hint: general}
+
+  - id: mainichi_ja
+    name: Mainichi Shimbun (Flash)
+    homepage: https://mainichi.jp
+    language: ja
+    scope: domestic
+    kind: media
+    governing_body: The Mainichi Newspapers Co., Ltd. (major national daily newspaper)
+    state_affiliated: false
+    feeds:
+      - {url: "https://mainichi.jp/rss/etc/mainichi-flash.rss", section: Domestic Flash, category_hint: general}
+
+  - id: asahi_ja
+    name: Asahi Shimbun
+    homepage: https://www.asahi.com
+    language: ja
+    scope: domestic
+    kind: media
+    governing_body: The Asahi Shimbun Company (major national newspaper of record)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.asahi.com/rss/asahi/newsheadlines.rdf", section: Headlines, category_hint: general}
+
+  - id: gnews_jp_kyodo
+    name: Kyodo News (via Google News)
+    homepage: https://english.kyodonews.net
+    language: en
+    scope: domestic
+    kind: wire
+    aggregator: google_news
+    governing_body: Kyodo News (non-profit cooperative news agency)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:kyodonews.net+when:1d&hl=en-US&gl=US&ceid=US:en", section: Kyodo Wire, category_hint: general}
+
+  - id: gnews_jp_nikkei
+    name: Nikkei Asia (via Google News)
+    homepage: https://asia.nikkei.com
+    language: en
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: Nikkei, Inc. (financial news publisher)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:asia.nikkei.com+Japan+when:1d&hl=en-US&gl=US&ceid=US:en", section: Business & Tech, category_hint: economics}
+
+  - id: gnews_ja_top
+    name: Google News (Japan Top Stories - Japanese)
+    homepage: https://news.google.com
+    language: ja
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss?hl=ja&gl=JP&ceid=JP:ja", section: Top Stories, category_hint: general}
+
+  - id: gnews_ja_politics
+    name: Google News (Japan Politics - Japanese)
+    homepage: https://news.google.com
+    language: ja
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/headlines/section/topic/POLITICS?hl=ja&gl=JP&ceid=JP:ja", section: Politics, category_hint: internal_politics}
+
+  - id: gnews_ja_business
+    name: Google News (Japan Business & Economy - Japanese)
+    homepage: https://news.google.com
+    language: ja
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/headlines/section/topic/BUSINESS?hl=ja&gl=JP&ceid=JP:ja", section: Business, category_hint: economics}
+
+  - id: gnews_ja_abroad
+    name: BBC News Japan & Newsweek Japan (via Google News)
+    homepage: https://www.bbc.com/japanese
+    language: ja
+    scope: abroad_local
+    kind: media
+    aggregator: google_news
+    governing_body: BBC World Service / Newsweek Japan
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:bbc.com/japanese+OR+site:newsweekjapan.jp)+when:7d&hl=ja&gl=JP&ceid=JP:ja", section: International Japanese, category_hint: general}
+
+  - id: gnews_en_jp
+    name: Google News (Japan - International English)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Japan+when:1d&hl=en-US&gl=US&ceid=US:en", section: Japan, category_hint: general}
+
+  - id: gnews_en_jp_econ
+    name: Google News (Japan Economy & BOJ - English)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Japan+(economy+OR+yen+OR+BOJ+OR+semiconductor+OR+Nikkei)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Economy, category_hint: economics}
+
+  - id: gnews_en_jp_pol
+    name: Google News (Japan Politics & Diplomacy - English)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Japan+(Ishiba+OR+Diet+OR+LDP+OR+cabinet+OR+election)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Politics, category_hint: internal_politics}

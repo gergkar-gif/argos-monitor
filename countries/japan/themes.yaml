@@ -1,0 +1,43 @@
+# Japan's additions to the shared themes (../../themes.yaml): English & Japanese keywords and descriptions.
+themes:
+  - id: party_gov
+    describe:
+      - Shigeru Ishiba administration, Liberal Democratic Party (LDP), Komeito, opposition Constitutional Democratic Party (CDP), National Diet, snap elections, political funds control act
+      - 石破内閣, 自民党, 公明党, 立憲民主党, 国会, 衆議院選挙, 政治改革, 政治資金問題, 連立政権
+    keywords: ["shigeru ishiba", "ishiba", "fumio kishida", "kishida", "ldp", "liberal democratic party", "komeito", "cdp", "yoshihiko noda", "diet", "house of representatives", "snap election", "political funding", "slush fund", "political reform", "石破茂", "石破", "岸田", "自民党", "公明党", "立憲民主党", "野田佳彦", "国会", "衆議院", "参議院", "解散総選挙", "政治資金", "裏金", "政治改革"]
+
+  - id: econ_policy
+    describe:
+      - Bank of Japan (BOJ), Governor Kazuo Ueda, interest rate hike, monetary tightening, yen carry trade, USD/JPY rate, inflation, shunto wage growth, Nikkei 225
+      - 日本銀行, 植田和男, 利上げ, 追加利上げ, 為替介入, 円安, 円高, 物価高, 春闘, 賃上げ, 日経平均株価
+    keywords: ["bank of japan", "boj", "kazuo ueda", "interest rate hike", "rate hike", "monetary policy", "yen", "usd/jpy", "carry trade", "inflation", "shunto", "wage growth", "nikkei 225", "tse", "tokyo stock exchange", "日本銀行", "日銀", "植田和男", "利上げ", "金融政策", "円安", "円高", "為替", "インフレ", "物価高", "春闘", "賃上げ", "日経平均"]
+
+  - id: diplomacy
+    describe:
+      - Japanese diplomacy, Japan-US Alliance, Free and Open Indo-Pacific, Japan-China relations, Japan-South Korea bilateral cooperation, QUAD, G7, ASEAN-Japan relations, North Korea abduction
+      - 外務省, 日米同盟, インド太平洋, 日中首脳会談, 日韓関係, クアッド, G7, アセアン, 北朝鮮拉致問題
+    keywords: ["takeshi iwaya", "mofa", "japan-us alliance", "indo-pacific", "foip", "quad", "g7", "japan-china", "japan-korea", "yoon suk yeol", "abduction issue", "asean-japan", "外務省", "岩屋毅", "日米同盟", "インド太平洋", "クアッド", "日中", "日韓", "拉致問題", "アセアン"]
+
+  - id: security
+    describe:
+      - Japan Self-Defense Forces, Ministry of Defense, 2% defense budget target, counterstrike capabilities, Tomahawk cruise missiles, Okinawa US bases, Senkaku Islands defense, Taiwan contingency
+      - 自衛隊, 防衛省, 防衛費増額, 反撃能力, 敵基地攻撃能力, トマホーク, 尖閣諸島, 沖縄米軍基地, 台湾有事
+    keywords: ["jsdf", "japan self-defense forces", "ministry of defense", "defense budget", "counterstrike capability", "tomahawk", "senkaku", "okinawa", "futenma", "henoko", "taiwan contingency", "pac-3", "自衛隊", "陸上自衛隊", "海上自衛隊", "航空自衛隊", "防衛省", "防衛費", "反撃能力", "トマホーク", "尖閣諸島", "尖閣", "沖縄基地", "辺野古", "台湾有事"]
+
+  - id: demographics_labor
+    category: society
+    weight: 0.8
+    label: Demographics & Foreign Workers
+    describe:
+      - Low birthrate, population decline, childcare allowance, elderly healthcare, foreign worker visa (Specified Skilled Worker), labor shortages
+      - 少子化対策, 人口減少, 児童手当, 異次元の少子化対策, 高齢化, 特定技能, 育成就労, 外国人材, 人手不足
+    keywords: ["birthrate", "fertility rate", "childcare allowance", "demographic decline", "aging population", "foreign workers", "specified skilled worker", "labor shortage", "少子化", "出生率", "異次元の少子化対策", "児童手当", "人口減少", "高齢化", "特定技能", "育成就労", "人手不足"]
+
+  - id: semiconductors_tech
+    category: economics
+    weight: 0.9
+    label: Semiconductors & Advanced Tech
+    describe:
+      - Rapidus semiconductor project in Hokkaido, TSMC fab in Kumamoto, silicon island Kyushu, generative AI subsidies
+      - 半導体戦略, ラピダス, 北海道千歳, TSMC熊本工場, 九州半導体, 先端半導体支援
+    keywords: ["rapidus", "tsmc kumamoto", "semiconductor", "hokkaido chitose", "chips act", "advanced packaging", "silicon island", "半導体", "ラピダス", "TSMC", "熊本", "千歳", "日の丸半導体"]

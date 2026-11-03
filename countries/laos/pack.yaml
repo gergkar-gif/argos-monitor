@@ -1,0 +1,89 @@
+# Laos country pack (decision D15).
+id: laos
+name: Laos
+region: Southeast Asia
+language: lo
+abroad_label: Regional ASEAN & diaspora Lao outlets
+
+mention:
+  - "laos"
+  - "lao"
+  - "laotian"
+  - "vientiane"
+  - "luang prabang"
+  - "champasak"
+  - "pakse"
+  - "savannakhet"
+  - "thongloun sisoulith"
+  - "thongloun"
+  - "sonexay siphandone"
+  - "sonexay"
+  - "lprp"
+  - "lao people's revolutionary party"
+  - "lao-china railway"
+  - "boteng"
+  - "lao kip"
+  - "kip"
+  - "bank of the lao pdr"
+  - "nam theun"
+  - "xayaburi"
+  - "ລາວ"
+  - "ວຽງຈັນ"
+  - "ຫຼວງພະບາງ"
+  - "ຈຳປາສັກ"
+  - "ປາກເຊ"
+  - "ສະຫວັນນະເຂດ"
+  - "ທອງລຸນ ສີສຸລິດ"
+  - "ສອນໄຊ ສີພັນດອນ"
+  - "ພັກປະຊາຊົນປະຕິວັດລາວ"
+  - "ເງິນກີບ"
+  - "ລົດໄຟລາວ-ຈີນ"
+
+mention_regex: ['\b(?:laos|lao|laotian|vientiane|sonexay|thongloun|kip)\b', 'ລາວ', 'ວຽງຈັນ']
+mention_section: null
+
+url_sections:
+  foreign: [world, international, global, asean]
+  skip: [sport, sports, entertainment, lifestyle, viral]
+
+aggregator_outlets:
+  domestic:
+    - "laotian times"
+    - "the laotian times"
+    - "vientiane times"
+    - "the vientiane times"
+    - "kpl"
+    - "kpl news"
+    - "pasaxon"
+    - "pathet lao"
+  abroad_local:
+    - "rfa"
+    - "rfa lao"
+    - "radio free asia"
+    - "voa lao"
+    - "voa"
+    - "benarnews"
+
+excerpt:
+  dateline: '^\s*(?:VIENTIANE|LUANG PRABANG|PAKSE|KPL)\s*[-–—:]\s*'
+  noise: '^(Photo|Credit|File photo|Also Read|READ:|\(|\[)'
+
+classify:
+  internal_politics:
+    - "Lao People's Revolutionary Party (LPRP), General Secretary and President Thongloun Sisoulith, Prime Minister Sonexay Siphandone, National Assembly, government reshuffle, anti-corruption, Party Central Committee"
+    - "ພັກປະຊາຊົນປະຕິວັດລາວ, ທອງລຸນ ສີສຸລິດ, ສອນໄຊ ສີພັນດອນ, ສະພາແຫ່ງຊາດ, ລັດຖະບານ, ການເມືອງ"
+  economics:
+    - "Bank of the Lao PDR (BOL), Lao kip depreciation, inflation, external debt crisis, debt restructuring with China, public debt, fuel shortages, Laos-China railway freight and passengers, special economic zones (SEZ)"
+    - "ທະນາຄານແຫ່ງ ສປປ ລາວ, ເງິນກີບ, ເງິນເຟີ້, ໜີ້ສິນ, ທາງລົດໄຟລາວ-ຈີນ, ເສດຖະກິດ, ເຂດເສດຖະກິດພິເສດ"
+  foreign_policy:
+    - "ASEAN chairmanship, relations with Vietnam (special solidarity), relations with China (Belt and Road Initiative), Mekong River Commission (MRC), relations with Thailand and Cambodia"
+    - "ອາຊຽນ, ສາຍພົວພັນ ລາວ-ຫວຽດນາມ, ສາຍພົວພັນ ລາວ-ຈີນ, ແມ່ນ້ຳຂອງ, ການຕ່າງປະເທດ"
+  defence_security:
+    - "Lao People's Armed Forces (LPAF), border security with Myanmar and Thailand, Golden Triangle Special Economic Zone crackdown, online scam compounds, cross-border drug trafficking, Mekong river patrols"
+    - "ກອງທັບປະຊາຊົນລາວ, ປ້ອງກັນຊາດ, ຄວາມສະຫງົບ, ສາມຫຼ່ຽມທອງຄຳ, ຢາເສບຕິດ, ຊາຍແດນ"
+  society:
+    - "Hydropower dams (Battery of Southeast Asia), Mekong water levels and drought, floods, education, labor migration to Thailand, healthcare, UXO (unexploded ordnance) clearance"
+    - "ເຂື່ອນໄຟຟ້າ, ແມ່ນ້ຳຂອງ, ນ້ຳຖ້ວມ, ການສຶກສາ, ແຮງງານ, ສາທາລະນະສຸກ, ລູກລະເບີດບໍ່ທັນແຕກ"
+
+geo: LA
+reddit: [laos, vientiane]

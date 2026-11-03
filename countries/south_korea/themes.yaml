@@ -1,0 +1,43 @@
+# South Korea's additions to the shared themes (../../themes.yaml): English & Korean keywords and descriptions.
+themes:
+  - id: party_gov
+    describe:
+      - President Yoon Suk Yeol, First Lady Kim Keon-hee allegations, People Power Party (PPP Han Dong-hoon), Democratic Party of Korea (DPK Lee Jae-myung), National Assembly partisan clash, special counsel probe bills
+      - 윤석열 대통령, 김건희 여사 특검, 국민의힘, 한동훈, 더불어민주당, 이재명, 국회, 청문회, 거부권, 탄핵, 정국
+    keywords: ["yoon suk yeol", "yoon", "kim keon-hee", "han dong-hoon", "lee jae-myung", "people power party", "ppp", "democratic party of korea", "dpk", "national assembly", "special counsel", "veto", "impeachment", "hearing", "윤석열", "김건희", "한동훈", "이재명", "국민의힘", "민주당", "국회", "특검", "거부권", "탄핵", "청문회"]
+
+  - id: econ_policy
+    describe:
+      - Bank of Korea monetary policy, interest rates, KRW exchange rate (won/dollar), semiconductor memory cycle, AI HBM chips, Samsung Electronics, SK Hynix, household debt
+      - 한국은행, 이창용, 기준금리, 원달러 환율, 원화, 반도체 수출, 삼성전자, SK하이닉스, HBM, 고대역폭메모리, 가계부채, 부동산 PF
+    keywords: ["bank of korea", "bok", "rhee chang-yong", "interest rate", "won", "krw", "exchange rate", "semiconductor", "samsung electronics", "sk hynix", "hbm", "high bandwidth memory", "household debt", "real estate pf", "한국은행", "한은", "이창용", "기준금리", "환율", "원화", "반도체", "삼성전자", "SK하이닉스", "HBM", "가계부채", "수출"]
+
+  - id: diplomacy
+    describe:
+      - South Korean diplomacy, ROK-US Alliance, Camp David trilateral with US & Japan, ROK-Japan bilateral cooperation, China relations, K-defense weapons export diplomacy, ASEAN
+      - 외교부, 한미동맹, 한미일 협력, 한일관계 정상화, 대중외교, 방산수출, K-방산 수출, 폴란드 방산, 아세안
+    keywords: ["cho tae-yul", "mofa", "rok-us alliance", "camp david", "trilateral", "korea-japan", "shigeru ishiba", "fumio kishida", "k-defense", "hanwha aerospace", "k9 howitzer", "kf-21", "외교부", "조태열", "한미동맹", "한미일", "캠프데이비드", "한일", "방산수출", "K-방산", "한화에어로스페이스"]
+
+  - id: security
+    describe:
+      - ROK Armed Forces, Ministry of National Defense, North Korean ballistic missile and nuclear tests, North Korea-Russia military pact, North Korean troop dispatch, DMZ, USFK
+      - 국방부, 합동참모본부, 북한 미사일, 핵도발, 북러 조약, 북한군 러시아 파병, 휴전선, 비무장지대, 주한미군
+    keywords: ["defense ministry", "joint chiefs of staff", "jcs", "north korea", "dprk", "pyongyang", "kim jong un", "icbm", "ballistic missile", "north korea-russia", "troop dispatch", "dmz", "usfk", "국방부", "합참", "북한", "김정은", "탄도미사일", "ICBM", "핵실험", "북러", "파병", "DMZ", "주한미군", "안보"]
+
+  - id: demographics_doctors
+    category: society
+    weight: 0.85
+    label: Demographics & Medical Quota Dispute
+    describe:
+      - Lowest fertility rate in the world, population aging, junior doctors' walkout, medical school quota expansion, emergency room crisis
+      - 초저출산, 합계출산율, 인구감소, 의대정원 확대, 전공의 사직, 의료공백, 응급실 위기
+    keywords: ["fertility rate", "birthrate", "lowest fertility", "population crisis", "medical school quota", "trainee doctors", "junior doctors walkout", "emergency room", "medical strike", "저출산", "출산율", "인구위기", "의대증원", "전공의", "의료공백", "응급실", "의사파업"]
+
+  - id: ai_chips_tech
+    category: economics
+    weight: 0.9
+    label: AI Memory Chips & Advanced Tech
+    describe:
+      - Next-generation AI semiconductors, High Bandwidth Memory (HBM3E, HBM4), Nvidia supplier competition, Yongin mega semiconductor cluster
+      - 차세대 AI 반도체, 고대역폭메모리, 엔비디아 공급, 용인 반도체 메가 클러스터, 첨단기술
+    keywords: ["hbm", "hbm3e", "hbm4", "nvidia", "sk hynix", "samsung", "yongin cluster", "advanced packaging", "foundry", "메모리", "엔비디아", "용인 클러스터", "파운드리", "첨단반도체"]

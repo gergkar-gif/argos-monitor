@@ -1,0 +1,131 @@
+# South Korea source registry (decision D15).
+# Combines national news agency Yonhap (English & Korean), established national dailies (The Korea Times, Dong-A Ilbo), regional Korean diaspora broadcasters, and Google News aggregators.
+
+sources:
+  - id: yna_en
+    name: Yonhap News Agency (English)
+    homepage: https://en.yna.co.kr
+    language: en
+    scope: domestic
+    kind: wire
+    governing_body: Yonhap News Agency (South Korea's public statutory national wire service)
+    state_affiliated: false
+    feeds:
+      - {url: "https://en.yna.co.kr/RSS/news.xml", section: Top News, category_hint: general}
+
+  - id: yna_ko
+    name: Yonhap News (Korean)
+    homepage: https://www.yna.co.kr
+    language: ko
+    scope: domestic
+    kind: wire
+    governing_body: Yonhap News Agency (South Korea's public statutory national wire service)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.yna.co.kr/rss/news.xml", section: Headlines, category_hint: general}
+
+  - id: koreatimes_en
+    name: The Korea Times
+    homepage: https://www.koreatimes.co.kr
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Hankook Ilbo Media Group (independent national English daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.koreatimes.co.kr/www/rss/rss.xml", section: All News, category_hint: general}
+
+  - id: donga_ko
+    name: Dong-A Ilbo
+    homepage: https://www.donga.com
+    language: ko
+    scope: domestic
+    kind: media
+    governing_body: Dong-A Media Group (major national daily newspaper of record)
+    state_affiliated: false
+    feeds:
+      - {url: "https://rss.donga.com/total.xml", section: Domestic, category_hint: general}
+
+  - id: gnews_ko_top
+    name: Google News (South Korea Top Stories - Korean)
+    homepage: https://news.google.com
+    language: ko
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss?hl=ko&gl=KR&ceid=KR:ko", section: Top Stories, category_hint: general}
+
+  - id: gnews_ko_politics
+    name: Google News (South Korea Politics - Korean)
+    homepage: https://news.google.com
+    language: ko
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/headlines/section/topic/POLITICS?hl=ko&gl=KR&ceid=KR:ko", section: Politics, category_hint: internal_politics}
+
+  - id: gnews_ko_business
+    name: Google News (South Korea Economy & Business - Korean)
+    homepage: https://news.google.com
+    language: ko
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/headlines/section/topic/BUSINESS?hl=ko&gl=KR&ceid=KR:ko", section: Business, category_hint: economics}
+
+  - id: gnews_ko_abroad
+    name: BBC News Korean & RFA Korean (via Google News)
+    homepage: https://www.bbc.com/korean
+    language: ko
+    scope: abroad_local
+    kind: media
+    aggregator: google_news
+    governing_body: BBC World Service / Radio Free Asia Korean Service
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:bbc.com/korean+OR+site:rfa.org/korean)+when:7d&hl=ko&gl=KR&ceid=KR:ko", section: Diaspora Korean, category_hint: general}
+
+  - id: gnews_en_kr
+    name: Google News (South Korea - International English)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=%22South+Korea%22+when:1d&hl=en-US&gl=US&ceid=US:en", section: South Korea, category_hint: general}
+
+  - id: gnews_en_kr_econ
+    name: Google News (South Korea Economy, Won & Tech - English)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=%22South+Korea%22+(economy+OR+won+OR+Samsung+OR+semiconductor+OR+BOK)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Economy, category_hint: economics}
+
+  - id: gnews_en_kr_sec
+    name: Google News (South Korea Defense & North Korea - English)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=%22South+Korea%22+(missile+OR+defense+OR+military+OR+%22North+Korea%22)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Security, category_hint: defence_security}
