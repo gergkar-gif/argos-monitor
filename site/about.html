@@ -7,7 +7,7 @@
 <meta name="description" content="How Argos Monitor collects, clusters, ranks and verifies multi-source news without generative AI.">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png">
 <link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=3.1">
 <style>
   .doc { max-width: 68rem; margin: 0 auto; padding: 2rem 1.5rem 4rem; display: grid; gap: 2.25rem; }
   .doc h2 { font: 700 0.9rem/1.2 var(--sans); letter-spacing: 0.06em; text-transform: uppercase; padding-bottom: 0.4rem; border-bottom: 1px solid var(--ink); margin-bottom: 0.75rem; }
@@ -131,7 +131,6 @@
     name: (byId[id] && byId[id].name) || id.replace(/_/g, ' ').replace(/\b\w/g, (m) => m.toUpperCase()),
     region: (byId[id] && byId[id].region) || COUNTRY_REGION[id] || 'Other',
   }));
-  let openRegion = 'all';
   cSel.replaceChildren(
     el('option', { value: 'all', text: 'All countries', class: 'notranslate', translate: 'no' }),
     ...REGIONS.flatMap((r) => {
@@ -143,7 +142,7 @@
   function render() {
     const cid = cSel.value, sc = scSel.value, q = fold(qIn.value.trim());
     const countries = cid === 'all'
-      ? allCountries.filter((c) => openRegion === 'all' || c.region === openRegion)
+      ? allCountries
       : allCountries.filter((c) => c.id === cid);
     const telem = raw && raw.telemetry;
     const totalFeeds = telem ? Object.values(telem).reduce((a, b) => a + (b.total_feeds || 0), 0) : 0;
@@ -160,9 +159,6 @@
 
     root.replaceChildren(
       telemBar,
-      el('div', { class: 'tabs', role: 'tablist', 'aria-label': 'Filter by region' },
-        ...[['all', 'All regions'], ...REGIONS.map((r) => [r, r])].map(([id, label]) =>
-          el('button', { type: 'button', role: 'tab', class: openRegion === id && cid === 'all' ? 'active' : '', text: label, onclick: () => { openRegion = id; cSel.value = 'all'; render(); } }))),
       ...countries.flatMap((c) => {
         const rows = (data[c.id] || []).filter((s) => (sc === 'all' || s.scope === sc) && (!q || fold(`${s.name} ${s.governing_body || ''} ${s.kind || ''}`).includes(q)));
         if (!rows.length) return [];
@@ -174,7 +170,7 @@
           el('section', { class: 'drawer' },
             el('div', { class: 'drawer-head' }, el('h2', { text: c.name }), el('span', { class: 'count', text: countLabel })),
             el('div', { class: 'desk-wrap' }, el('table', { class: 'desk-table' },
-              el('thead', null, el('tr', null, ['Outlet', 'Where', 'Type', 'Run by', 'State-linked'].map((x) => h => h, ['Outlet', 'Where', 'Type', 'Run by', 'State-linked'].map((x) => el('th', { text: x }))))),
+              el('thead', null, el('tr', null, ['Outlet', 'Where', 'Type', 'Run by', 'State-linked'].map((x) => el('th', { text: x })))),
               el('tbody', null, rows.map((s) => el('tr', null,
                 el('td', null, el('a', { href: safe(s.homepage), target: '_blank', rel: 'noopener', text: s.name })),
                 el('td', { text: scope[s.scope] || s.scope }),
