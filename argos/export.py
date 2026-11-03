@@ -59,12 +59,9 @@ def _story(db, s):
         "SELECT x.id, x.text, a.url, src.name AS source, src.scope FROM excerpt x JOIN article a ON a.id=x.article_id "
         "JOIN source src ON src.id=a.source_id WHERE x.story_id=? ORDER BY x.id", (s["id"],)).fetchall()
     related = db.execute(
-        "SELECT o.id, a.title, a.url, src.name AS source, (SELECT COUNT(*) FROM story_article WHERE story_id=r.related_id AND COALESCE(similarity, 1.0) >= 0.93) AS n, "
-        "(SELECT COUNT(*) FROM story_article sa2 JOIN article a2 ON a2.id=sa2.article_id JOIN source s2 ON s2.id=a2.source_id "
-        " WHERE sa2.story_id=r.related_id AND COALESCE(sa2.similarity, 1.0) >= 0.93 AND s2.scope='domestic') AS dom "
+        "SELECT o.id, a.title, a.url, src.name AS source, (SELECT COUNT(*) FROM story_article WHERE story_id=r.related_id AND COALESCE(similarity, 1.0) >= 0.93) AS n "
         "FROM story_related r JOIN story o ON o.id=r.related_id JOIN article a ON a.id=o.representative_article_id "
         "JOIN source src ON src.id=a.source_id WHERE r.story_id=? ORDER BY r.similarity DESC LIMIT 4", (s["id"],)).fetchall()
-    has_related_domestic = any(r["dom"] > 0 for r in related)
     cutoff_24h = (datetime.now(timezone.utc) - timedelta(hours=24)).isoformat(timespec="seconds")
     dated = sorted((r for r in core_rows if r["published_at"]), key=lambda r: r["published_at"])
     days = {}
@@ -90,7 +87,7 @@ def _story(db, s):
         "independent_sources": len(independent),
         "by_scope": by_scope,
         "evidence": "OFFICIAL" if any(r["kind"] == "official" for r in core_rows) else "REPORTED",
-        "abroad_only": by_scope["domestic"] == 0 and not has_related_domestic and (by_scope["abroad_local"] + by_scope["international"]) > 0,
+        "abroad_only": False,
         "related": [{"title": r["title"], "url": r["url"], "source": r["source"], "articles": r["n"]} for r in related[:2]],   # possibly the same event
         "excerpts": [{"text": x["text"], "source": x["source"], "scope": x["scope"], "url": x["url"]} for x in excerpts],
         "sources": [{"title": r["title"], "url": r["url"], "source": r["source"], "scope": r["scope"],
@@ -150,11 +147,10 @@ def _home(now, countries):
                      "outlets": top["independent_sources"]} if top else None,
         })
     most = _top_global_and_regional(pool, lambda s: (s["independent_sources"], s["score"]), 8)
-    abroad = _top_global_and_regional((s for s in pool if s.get("abroad_only")), lambda s: (s["independent_sources"], s["score"]), 6)
     growing = _top_global_and_regional((s for s in pool if (s.get("last_24h") or 0) >= 2), lambda s: (s.get("last_24h") or 0, s["score"]), 6)
     disasters = _top_global_and_regional((s for s in pool if s.get("disaster_type")), lambda s: (s["independent_sources"], s["score"]), 12, r_limit=8)
     violent = _top_global_and_regional((s for s in pool if s.get("violence_type")), lambda s: (s["independent_sources"], s["score"]), 12, r_limit=8)
-    return {"generated_at": now, "desks": desks, "most_reported": most, "abroad_only": abroad,
+    return {"generated_at": now, "desks": desks, "most_reported": most, "abroad_only": [],
             "growing": growing, "disasters": disasters, "violent_events": violent}
 
 

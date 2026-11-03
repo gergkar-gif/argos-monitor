@@ -303,7 +303,7 @@
     // Pre-translate unrendered lead headlines in the current view so English search finds them too.
     const hm = window.ARGOS_HOME;
     const bgPool = activeTab === 'home' && hm
-      ? [...(hm.most_reported || []), ...(hm.growing || []), ...(hm.abroad_only || [])]
+      ? [...(hm.most_reported || []), ...(hm.growing || [])]
       : (current && current.stories) || [];
     if (bgPool.length) {
       let added = 0;
@@ -438,7 +438,6 @@
         s.disaster_type && h('span', { class: 'stamp teal', text: s.disaster_type }),
         h('span', { text: `${s.headline.source}, ${fmtDay.format(new Date(s.last_seen))} · ${outlets}` }),
         s.evidence === 'OFFICIAL' && h('span', { class: 'stamp red', title: 'A government or Party outlet is among the sources.', text: 'Official' }),
-        s.abroad_only && h('span', { class: 'stamp teal', title: 'No outlet inside the country covered it.', text: 'Not in domestic press' }),
         trend(s) && trend(s)[0] !== 'Quiet' && h('span', { class: 'stamp indigo', title: trend(s)[2], text: trend(s)[0] }),
       ),
     ].filter(Boolean));
@@ -704,7 +703,7 @@
 
     const preset = mode === 'disasters' ? (hm.disasters || []) : (hm.violent_events || []);
     preset.forEach((s) => add(s));
-    [...(hm.most_reported || []), ...(hm.growing || []), ...(hm.abroad_only || [])].forEach((s) => add(s));
+    [...(hm.most_reported || []), ...(hm.growing || [])].forEach((s) => add(s));
 
     for (const c of index.countries) {
       const d = window.ARGOS_DATA && window.ARGOS_DATA[`${c.id}-${per}`];
@@ -970,7 +969,7 @@
 
     // Combine pool: all stories from selected desks + global pool (ARGOS_HOME)
     const hm = window.ARGOS_HOME;
-    const globalPool = hm ? [...(hm.most_reported || []), ...(hm.growing || []), ...(hm.abroad_only || [])] : [];
+    const globalPool = hm ? [...(hm.most_reported || []), ...(hm.growing || [])] : [];
     const pool = [...rawDatasets.flat(), ...globalPool];
 
     // Deduplicate stories by url / title
@@ -1040,7 +1039,7 @@
       .slice(0, limit);
     const c = getCrisis();
     const allAlerts = allCrisisAlerts().filter(inReg);
-    const pool = [...(hm.most_reported || []), ...(hm.abroad_only || []), ...(hm.growing || [])]
+    const pool = [...(hm.most_reported || []), ...(hm.growing || [])]
       .filter((s, i, a) => inReg(s) && a.findIndex((x) => x.id === s.id) === i);
     const desks = allDesks.filter(inReg);
     const tabs = regionTabs((r) => r === 'all' ? allDesks.length : allDesks.filter((d) => d.region === r).length, renderHome);
@@ -1057,7 +1056,6 @@
         h('button', { type: 'button', class: 'desk-link', text: `All ${allAlerts.length} alerts →`, onclick: () => openCountry('alerts') })),
       homeSection('Most reported (last 7 days)', 'Ranked by independent outlet count', filter(hm.most_reported, openRegion === 'all' ? 8 : 6)),
       homeSection('Fastest growing (last 24 hours)', 'Most new coverage in the last 24 hours', filter(hm.growing, 6)),
-      homeSection('Blind spots · Not in domestic press', 'Covered by international or diaspora outlets, zero domestic coverage', filter(hm.abroad_only, 6)),
       h('section', { class: 'drawer' },
         h('div', { class: 'drawer-head' },
           h('h2', { text: 'Monitored countries directory' }),

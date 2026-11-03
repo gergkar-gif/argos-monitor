@@ -6,7 +6,7 @@
 
 <p align="center">
   <strong>Open-source multilingual media &amp; crisis intelligence monitor for foreign-affairs analysts</strong><br>
-  <em>Deterministic ONNX embedding clustering · Syndication deduplication · State-media tagging · Domestic blind-spot detection · Zero LLM hallucinations</em>
+  <em>Deterministic ONNX embedding clustering · Syndication deduplication · State-media tagging · Perspective balance · Zero LLM hallucinations</em>
 </p>
 
 <p align="center">
@@ -27,7 +27,7 @@ Unlike LLM-based news summarizers—which risk hallucinated claims, flattened di
 1. **No source, no statement:** Every headline and pull-quote on the platform is extracted verbatim and verified character-for-character as an exact substring of the stored source article.
 2. **Zero LLM in the pipeline:** Event clustering, cross-lingual topic classification, policy-theme scoring, and quote selection are 100% deterministic, powered locally by ONNX Runtime (`intfloat/multilingual-e5-small`).
 3. **Independent outlet counting:** State wire reprints and syndicated copies (cosine similarity $\ge 0.95$) are collapsed so 20 reprints of a single wire dispatch never masquerade as 20 independent confirmations.
-4. **Domestic press blind-spot detection (`NOT IN DOMESTIC PRESS`):** Stories covered by international wires or local-language diaspora outlets abroad that receive zero coverage inside the country's domestic press are automatically flagged.
+4. **Tri-scope coverage breakdown (`DOMESTIC`, `DIASPORA`, `INTERNATIONAL`):** Every story exposes its exact balance across state/licensed domestic media, local-language diaspora/exile press abroad, and international reporting.
 5. **State-affiliation transparency (`OFFICIAL` vs. `REPORTED`):** Every monitored outlet is catalogued by ownership, governing body, and state/party affiliation so official government statements are immediately distinguishable from independent reporting.
 
 ---
