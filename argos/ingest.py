@@ -59,7 +59,8 @@ def ingest_aggregator(db, pack, src, feed, parsed, known):
         url = e.get("link")
         if not (outlet and title and url) or title_key(title) in known:
             continue
-        sid = "gn:" + re.sub(r"[^a-z0-9]+", "-", outlet.lower()).strip("-")
+        slug = re.sub(r"[^\w]+", "-", outlet.lower(), flags=re.UNICODE).strip("-")
+        sid = f"gn:{slug}" if slug else f"gn:{re.sub(r'[^a-z0-9]+', '', url.lower())[-12:]}"
         scope = _match_outlet_scope(outlet, overrides, src["scope"])
         rating = lookup_rating(outlet, False, "media")
         db.execute(

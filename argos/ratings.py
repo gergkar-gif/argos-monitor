@@ -246,12 +246,62 @@ RATINGS = {
     "philippine daily inquirer": {"bias": "center", "alignment": "independent", "factuality": "high"},
     "inquirer": {"bias": "center", "alignment": "independent", "factuality": "high"},
     "philstar": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "the straits times": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+    "straits times": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+    "philippine news agency": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mostly_factual"},
+    "pna": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mostly_factual"},
+    "bernama": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mostly_factual"},
+    "khmer times": {"bias": "state_aligned", "alignment": "pro_government", "factuality": "mixed"},
+    "global new light of myanmar": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mixed"},
+
+    # --- Regional & Aggregator Wires (Central Asia, Caucasus, Balkans, Africa) ---
+    "радио-телевизија војводине": {"bias": "center", "alignment": "public_broadcaster", "factuality": "high"},
+    "rtv vojvodina": {"bias": "center", "alignment": "public_broadcaster", "factuality": "high"},
+    "rtv": {"bias": "center", "alignment": "public_broadcaster", "factuality": "high"},
+    "акиpress": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "akipress": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "gazeta express": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "kossev": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "kosovapress": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "radio slobodna evropa": {"bias": "center", "alignment": "public_broadcaster", "factuality": "high"},
+    "rtrs": {"bias": "right", "alignment": "state_controlled", "factuality": "mixed"},
+    "armenpress": {"bias": "center", "alignment": "state_controlled", "factuality": "high"},
+    "1tv": {"bias": "center", "alignment": "public_broadcaster", "factuality": "high"},
+    "moldpres": {"bias": "center", "alignment": "state_controlled", "factuality": "high"},
+    "cotidianul": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "g4media": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "vlast": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "qazinform": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "high"},
+    "kazinform": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "high"},
+    "uza": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mostly_factual"},
+    "uzdaily": {"bias": "center", "alignment": "independent", "factuality": "mostly_factual"},
+    "trend news agency": {"bias": "state_aligned", "alignment": "pro_government", "factuality": "mostly_factual"},
+    "trend": {"bias": "state_aligned", "alignment": "pro_government", "factuality": "mostly_factual"},
+    "apa": {"bias": "state_aligned", "alignment": "pro_government", "factuality": "mostly_factual"},
+    "report": {"bias": "state_aligned", "alignment": "pro_government", "factuality": "mostly_factual"},
+    "azernews": {"bias": "state_aligned", "alignment": "pro_government", "factuality": "mostly_factual"},
+    "news agency of nigeria": {"bias": "center", "alignment": "state_controlled", "factuality": "high"},
+    "nan": {"bias": "center", "alignment": "state_controlled", "factuality": "high"},
+    "the eastafrican": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "iol": {"bias": "center-left", "alignment": "independent", "factuality": "mostly_factual"},
+    "turkish minute": {"bias": "center-left", "alignment": "opposition", "factuality": "high"},
+    "kyodo": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "kyodo news": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "focus taiwan": {"bias": "center", "alignment": "state_controlled", "factuality": "high"},
+    "chosun": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+    "chosunbiz": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+    "chosun ilbo": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+    "portfolio": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "világgazdaság": {"bias": "right", "alignment": "pro_government", "factuality": "mixed"},
+    "vilaggazdasag": {"bias": "right", "alignment": "pro_government", "factuality": "mixed"},
+    "rtvc noticias": {"bias": "center-left", "alignment": "public_broadcaster", "factuality": "high"},
 }
 
 
 def clean_name(name):
     n = re.split(r"\s+[|\-–—·]\s+|\s*\(", str(name or "").lower())[0].strip()
-    return re.sub(r"^(the|báo|gazeta)\s+", "", n).strip()
+    n = re.sub(r"^(the|báo|gazeta)\s+", "", n).strip()
+    return re.sub(r"\.(hu|sk|cz|kz|uz|md|ge|az|rs|vn|com|org|net|tv|ro|pl|kg)$", "", n).strip()
 
 
 _COMPILED_PATTERNS = [
@@ -272,6 +322,10 @@ def lookup_rating(name, state_affiliated=False, kind="media"):
     for reg, r in _COMPILED_PATTERNS:
         if reg.search(nl) or reg.search(cl):
             return r
+
+    # Government portal domain patterns (.gov, .gob)
+    if re.search(r"\.(gov|gob)(\.[a-z]{2})?$", nl) or nl.endswith(".gov") or nl.endswith(".gob"):
+        return {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "high"}
 
     # Fallback heuristics based on structural properties
     if state_affiliated or kind == "official":
