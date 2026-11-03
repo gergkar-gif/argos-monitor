@@ -16,6 +16,7 @@ The project has not been built yet. Read these before doing any work:
 3. **Unicode NFC normalisation** is applied to all Vietnamese text as soon as it is ingested, before hashing, embedding or quote matching. Vietnamese sites mix composed and decomposed diacritics.
 4. **The original-language article is the authoritative source.** A translation is never evidence. Translation is left to the browser.
 5. **Don't count syndicated copies as separate sources.** Many domestic outlets reprint VNA (Vietnam News Agency) copy. The story page must show *independent* source counts.
+6. **The About page (`site/about.html`) is CRUCIAL and must always be kept up-to-date.** Whenever adding country desks, changing pipeline stages, or introducing new analytical features (such as political alignment, editorial leaning, factuality, or state-affiliated corroboration), the About page's explanatory sections, telemetry badges, desk lists, and methodology must be updated in the same change.
 
 ## Environment
 - Windows 11, 8 GB RAM, Python 3.14. Everything must run on CPU and stay light on memory.

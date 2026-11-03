@@ -54,7 +54,7 @@
       <li><strong>No source, no statement:</strong> Every headline and quote on the page links directly to the article it came from. Nothing is paraphrased or synthesized.</li>
       <li><strong>Zero LLM in the pipeline:</strong> Clustering, topic classification, ranking, and quote extraction are 100% deterministic (multilingual embeddings + rules).</li>
       <li><strong>Independent outlet counting:</strong> State wire reprints and syndicated copies are detected by text similarity (≥ 0.95 cosine similarity) and counted once, so 20 reprints of one wire dispatch never masquerade as 20 independent confirmations.</li>
-      <li><strong>Tri-scope perspective balance:</strong> Every story displays its distribution across domestic licensed media, local-language diaspora/exile press, and international reporting, letting readers see the composition of coverage directly.</li>
+      <li><strong>Tri-scope perspective balance:</strong> Every story displays its distribution across domestic licensed media, local-language diaspora/exile press, and international reporting, alongside editorial alignment, political leaning, and factuality.</li>
       <li><strong>Official vs. reported (<span class="stamp red">Official</span> / <span class="stamp indigo">Reported</span>):</strong> Government and ruling-party outlets are explicitly tagged so official statements are immediately distinguishable from independent reporting.</li>
     </ol>
   </section>
@@ -63,7 +63,7 @@
     <h2>How the 10-stage pipeline works</h2>
     <p>A scheduled GitHub Actions runner executes the pipeline every 3 hours and publishes static JSON/JS bundles to Cloudflare Pages:</p>
     <div class="pipeline">
-      <div class="step"><b>01 · Ingest</b><span>Polls 120+ RSS/Atom and Google News feeds per country pack via curl.</span></div>
+      <div class="step"><b>01 · Ingest</b><span>Polls 240+ RSS/Atom and Google News feeds across 33 country desks via curl.</span></div>
       <div class="step"><b>02 · Extract</b><span>Fetches full article text with Trafilatura for domestic and accessible sources.</span></div>
       <div class="step"><b>03 · Normalise</b><span>Applies Unicode NFC normalisation (crucial for Vietnamese diacritics and Khmer script).</span></div>
       <div class="step"><b>04 · Relevance</b><span>Filters out sports/lifestyle sections and requires country mentions on world feeds.</span></div>
@@ -73,6 +73,29 @@
       <div class="step"><b>08 · Policy &amp; Rank</b><span>Scores stories by independent outlet count, scope diversity, recency, and policy themes (<code>themes.yaml</code>).</span></div>
       <div class="step"><b>09 · Excerpts &amp; Verify</b><span>Selects informative sentences and asserts each quote is an exact substring of the stored article text.</span></div>
       <div class="step"><b>10 · Signals &amp; Export</b><span>Merges GDACS/USGS/FCDO/US State Dept alerts, filtered Google Trends, and multi-subreddit discussions into static bundles.</span></div>
+    </div>
+  </section>
+
+  <section id="methodology">
+    <h2>Source Analysis Methodology</h2>
+    <p>Argos evaluates every monitored publication across four structural dimensions to deliver objective media-intelligence analysis across democratic, hybrid, and authoritarian media systems:</p>
+    <div class="pipeline">
+      <div class="step">
+        <b>01 · Alignment (Power &amp; Ownership Structure)</b>
+        <span>Measures structural relationship to political authority: <strong>State-controlled</strong> (statutory news agencies and ministry organs), <strong>Pro-government</strong> (private commercial media editorially allied with the ruling coalition), <strong>Public broadcaster</strong> (chartered public-service media with statutory editorial safeguards), <strong>Independent</strong> (commercial, cooperative, or investigative press free of government ownership), and <strong>Opposition</strong> (dissident, diaspora, or exile press).</span>
+      </div>
+      <div class="step">
+        <b>02 · Editorial Leaning (Political Spectrum)</b>
+        <span>Calibrated using international registries (Media Bias/Fact Check, AllSides, Reuters Institute): <strong>Left</strong>, <strong>Center-Left</strong>, <strong>Center</strong>, <strong>Center-Right</strong>, and <strong>Right</strong>. In state-directed media ecosystems (e.g. Vietnam, China), outlets are classified as <strong>State-aligned</strong> to reflect official diplomatic messaging rather than domestic electoral competition.</span>
+      </div>
+      <div class="step">
+        <b>03 · Factuality (Verification &amp; Correction Standards)</b>
+        <span>Assesses sourcing transparent attribution, primary corroboration, and correction practices: <strong>Very High</strong> (stringent primary-source corroboration, e.g. major wires), <strong>High</strong> (credible mainstream reporting with professional editorial oversight), <strong>Mostly Factual</strong> (factual core but prone to partisan framing or sensationalism), and <strong>Mixed</strong> (vulnerable to state censorship, selective omission, or unverified claims).</span>
+      </div>
+      <div class="step">
+        <b>04 · State-linked (Official Corroboration Flag)</b>
+        <span>A binary indicator (<span class="stamp red">Yes</span> / <span class="stamp typed">No</span>) designating statutory organs and state-funded broadcasters. When any state-linked source covers a story cluster, it is tagged <span class="stamp red">Official</span> to distinguish state messaging from independent reporting. When over 70% of corroborating coverage originates from state media, the story is stamped <span class="stamp red">State-Dominated</span>.</span>
+      </div>
     </div>
   </section>
 
@@ -151,8 +174,8 @@
     const telemBar = telem ? el('div', { class: 'monitor-bar', style: 'margin: 0.5rem 0 1.25rem; padding: 0.65rem 1rem;' },
       el('div', { style: 'display: flex; flex-wrap: wrap; gap: 1.25rem; align-items: center;' },
         el('span', { class: 'typed', text: `${allCountries.length} Country Desks` }),
-        el('span', { class: 'typed', text: `${totalFeeds || '120+'} Live Feeds Polled` }),
-        el('span', { class: 'typed', text: `${totalArticles ? totalArticles.toLocaleString() : '20,000+'} Articles Corroborated` }),
+        el('span', { class: 'typed', text: `${totalFeeds || '240+'} Live Feeds Polled` }),
+        el('span', { class: 'typed', text: `${totalArticles ? totalArticles.toLocaleString() : '35,000+'} Articles Corroborated` }),
         raw.generated_at && el('span', { class: 'meta', text: `Cycle: ${new Date(raw.generated_at).toLocaleDateString()}` })
       )
     ) : null;
