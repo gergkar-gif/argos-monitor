@@ -270,6 +270,8 @@ main { max-width: 68rem; margin: 0 auto; padding: 2rem 1.5rem 5rem; outline: non
 .stamp.indigo { color: var(--indigo); }
 .stamp.red { color: var(--red); }
 .stamp.teal { color: var(--teal); }
+.stamp.orange { color: #c2410c; }
+.stamp.typed { color: var(--ink-3); font-weight: 600; text-transform: none; letter-spacing: 0; }
 .stamp.country-tag {
   padding: 0.1rem 0.4rem;
   background: var(--ink); color: #fff;

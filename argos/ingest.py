@@ -8,6 +8,7 @@ import feedparser
 
 from . import packs
 from .fetch import get
+from .ratings import lookup_rating
 from .textutil import clean, parse_date
 
 WINDOW_DAYS = 7      # the longest window the site shows
@@ -60,12 +61,14 @@ def ingest_aggregator(db, pack, src, feed, parsed, known):
             continue
         sid = "gn:" + re.sub(r"[^a-z0-9]+", "-", outlet.lower()).strip("-")
         scope = _match_outlet_scope(outlet, overrides, src["scope"])
+        rating = lookup_rating(outlet, False, "media")
         db.execute(
-            "INSERT INTO source (id, name, homepage, language, scope, kind, governing_body, state_affiliated, reprints_vna, notes) "
-            "VALUES (?,?,?,?,?,'media','found via Google News',0,0,'aggregator item') "
-            "ON CONFLICT(id) DO UPDATE SET scope=excluded.scope WHERE (scope='international' AND excluded.scope != 'international') "
-            "OR (excluded.scope='domestic' AND scope != 'domestic')",
-                   (sid, outlet, ((e.get("source") or {}).get("href") or ""), src["language"], scope))
+            "INSERT INTO source (id, name, homepage, language, scope, kind, governing_body, state_affiliated, reprints_vna, notes, bias, alignment, factuality) "
+            "VALUES (?,?,?,?,?,'media','found via Google News',0,0,'aggregator item',?,?,?) "
+            "ON CONFLICT(id) DO UPDATE SET "
+            "scope=CASE WHEN (scope='international' AND excluded.scope != 'international') OR (excluded.scope='domestic' AND scope != 'domestic') THEN excluded.scope ELSE scope END, "
+            "bias=COALESCE(excluded.bias, bias), alignment=COALESCE(excluded.alignment, alignment), factuality=COALESCE(excluded.factuality, factuality)",
+            (sid, outlet, ((e.get("source") or {}).get("href") or ""), src["language"], scope, rating["bias"], rating["alignment"], rating["factuality"]))
         cur = db.execute(
             "INSERT OR IGNORE INTO article (source_id,feed_id,url,title,lead,language,published_at,fetched_at,extract_status,country) "
             "VALUES (?,?,?,?,'',?,?,?,'nofetch',?)",
@@ -87,9 +90,12 @@ def load_registry(db):
         for s in packs.load(country)["sources"]:
             if owners.setdefault(s["id"], country) != country:
                 raise SystemExit(f"Source id {s['id']} is used by two country packs ({owners[s['id']]} and {country}): ids must be unique.")
-            db.execute("INSERT OR REPLACE INTO source VALUES (?,?,?,?,?,?,?,?,?,?)",
+            rating = lookup_rating(s["name"], bool(s.get("state_affiliated")), s.get("kind", "media"))
+            db.execute("INSERT OR REPLACE INTO source (id, name, homepage, language, scope, kind, governing_body, state_affiliated, reprints_vna, notes, bias, alignment, factuality) "
+                       "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)",
                        (s["id"], s["name"], s["homepage"], s["language"], s["scope"], s["kind"],
-                        s["governing_body"], int(s["state_affiliated"]), int(s.get("reprints_vna", False)), s.get("notes")))
+                        s["governing_body"], int(s["state_affiliated"]), int(s.get("reprints_vna", False)), s.get("notes"),
+                        rating["bias"], rating["alignment"], rating["factuality"]))
             for f in s.get("feeds", []):
                 if seen.setdefault(f["url"], country) != country:
                     raise SystemExit(f"Feed {f['url']} is listed in two country packs ({seen[f['url']]} and {country}).")
@@ -101,6 +107,7 @@ def load_registry(db):
     db.execute(f"UPDATE feed SET active=0 WHERE url NOT IN ({','.join('?' * len(urls))})", urls)   # feeds removed from a yaml
     db.commit()
     reconcile_aggregator_sources(db)
+    reconcile_ratings(db)
 
 
 def ingest_feeds(db, country):
@@ -175,8 +182,10 @@ def ingest_gdelt(db, country):
                 domain = a["domain"].removeprefix("www.")
                 sid = "gdelt:" + domain
                 lang = LANGS.get(a.get("language"), (a.get("language") or "")[:2].lower())
-                db.execute("INSERT OR IGNORE INTO source VALUES (?,?,?,?,'international','media','unknown',0,0,'found via GDELT')",
-                           (sid, domain, "https://" + domain, lang))
+                rating = lookup_rating(domain, False, "media")
+                db.execute("INSERT OR IGNORE INTO source (id, name, homepage, language, scope, kind, governing_body, state_affiliated, reprints_vna, notes, bias, alignment, factuality) "
+                           "VALUES (?,?,?,?,'international','media','unknown',0,0,'found via GDELT',?,?,?)",
+                           (sid, domain, "https://" + domain, lang, rating["bias"], rating["alignment"], rating["factuality"]))
                 seen = datetime.strptime(a["seendate"], "%Y%m%dT%H%M%SZ").replace(tzinfo=timezone.utc)
                 cur = db.execute(
                     "INSERT OR IGNORE INTO article (source_id,url,title,lead,language,published_at,fetched_at,extract_status,country) "
@@ -213,4 +222,17 @@ def reconcile_aggregator_sources(db):
             updates.append((target, sid))
     if updates:
         db.executemany("UPDATE source SET scope=? WHERE id=?", updates)
+        db.commit()
+
+
+def reconcile_ratings(db):
+    """Ensure all sources in the database (including gn: and gdelt:) have updated ratings."""
+    rows = db.execute("SELECT id, name, state_affiliated, kind, bias, alignment, factuality FROM source").fetchall()
+    updates = []
+    for r in rows:
+        rating = lookup_rating(r["name"], bool(r["state_affiliated"]), r["kind"])
+        if r["bias"] != rating["bias"] or r["alignment"] != rating["alignment"] or r["factuality"] != rating["factuality"]:
+            updates.append((rating["bias"], rating["alignment"], rating["factuality"], r["id"]))
+    if updates:
+        db.executemany("UPDATE source SET bias=?, alignment=?, factuality=? WHERE id=?", updates)
         db.commit()

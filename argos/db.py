@@ -4,7 +4,8 @@ from .config import DATA_DIR, DB_PATH
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS source (
   id TEXT PRIMARY KEY, name TEXT, homepage TEXT, language TEXT, scope TEXT, kind TEXT,
-  governing_body TEXT, state_affiliated INTEGER, reprints_vna INTEGER, notes TEXT);
+  governing_body TEXT, state_affiliated INTEGER, reprints_vna INTEGER, notes TEXT,
+  bias TEXT, alignment TEXT, factuality TEXT);
 CREATE TABLE IF NOT EXISTS feed (
   id INTEGER PRIMARY KEY, source_id TEXT REFERENCES source(id), url TEXT UNIQUE,
   section_label TEXT, category_hint TEXT, active INTEGER, last_ok_at TEXT, last_error TEXT);
@@ -44,7 +45,8 @@ def connect():
 
     # Databases created before a column existed get it added.
     for table, col, kind in (("story", "policy", "REAL"), ("story", "themes", "TEXT"), ("story", "country", "TEXT"),
-                             ("article", "country", "TEXT"), ("story_article", "similarity", "REAL DEFAULT 1.0")):
+                             ("article", "country", "TEXT"), ("story_article", "similarity", "REAL DEFAULT 1.0"),
+                             ("source", "bias", "TEXT"), ("source", "alignment", "TEXT"), ("source", "factuality", "TEXT")):
         if col not in _columns(db, table):
             db.execute(f"ALTER TABLE {table} ADD COLUMN {col} {kind}")
     art = _columns(db, "article")

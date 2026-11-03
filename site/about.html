@@ -7,7 +7,7 @@
 <meta name="description" content="How Argos Monitor collects, clusters, ranks and verifies multi-source news without generative AI.">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png">
 <link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="style.css?v=3.3">
+<link rel="stylesheet" href="style.css?v=3.4">
 <style>
   .doc { max-width: 68rem; margin: 0 auto; padding: 2rem 1.5rem 4rem; display: grid; gap: 2.25rem; }
   .doc h2 { font: 700 0.9rem/1.2 var(--sans); letter-spacing: 0.06em; text-transform: uppercase; padding-bottom: 0.4rem; border-bottom: 1px solid var(--ink); margin-bottom: 0.75rem; }
@@ -78,7 +78,7 @@
 
   <section id="sources">
     <h2>Monitored Outlets &amp; Source Directory</h2>
-    <p>Every publication Argos monitors across all 28 country desks, classified by reporting scope (domestic, diaspora abroad, international), governing body, and state affiliation.</p>
+    <p>Every publication Argos monitors across all 33 country desks, classified by reporting scope (domestic, diaspora abroad, international), editorial alignment, political leaning, factuality, and state affiliation.</p>
     <form class="slip notranslate" translate="no" aria-label="Filter sources" onsubmit="event.preventDefault()" style="margin-top: 1rem;">
       <label class="field notranslate" translate="no"><span>Country</span><select id="s-country" translate="no" class="notranslate"></select></label>
       <label class="field"><span>Scope</span><select id="s-scope">
@@ -157,10 +157,32 @@
       )
     ) : null;
 
+    const formatAlignment = (a) => ({
+      state_controlled: 'State-controlled',
+      pro_government: 'Pro-government',
+      public_broadcaster: 'Public broadcaster',
+      independent: 'Independent',
+      opposition: 'Opposition',
+    }[a] || (a && a !== 'unrated' ? a : '—'));
+    const formatBias = (b) => ({
+      left: 'Left',
+      'center-left': 'Center-Left',
+      center: 'Center',
+      'center-right': 'Center-Right',
+      right: 'Right',
+      state_aligned: 'State-aligned',
+    }[b] || (b && b !== 'unrated' ? b : '—'));
+    const formatFactuality = (f) => ({
+      very_high: 'Very High',
+      high: 'High',
+      mostly_factual: 'Mostly Factual',
+      mixed: 'Mixed',
+    }[f] || (f && f !== 'unrated' ? f : '—'));
+
     root.replaceChildren(
       telemBar,
       ...countries.flatMap((c) => {
-        const rows = (data[c.id] || []).filter((s) => (sc === 'all' || s.scope === sc) && (!q || fold(`${s.name} ${s.governing_body || ''} ${s.kind || ''}`).includes(q)));
+        const rows = (data[c.id] || []).filter((s) => (sc === 'all' || s.scope === sc) && (!q || fold(`${s.name} ${s.governing_body || ''} ${s.kind || ''} ${s.alignment || ''} ${s.bias || ''}`).includes(q)));
         if (!rows.length) return [];
         const t = telem && telem[c.id];
         const countLabel = t
@@ -170,12 +192,14 @@
           el('section', { class: 'drawer' },
             el('div', { class: 'drawer-head' }, el('h2', { text: c.name }), el('span', { class: 'count', text: countLabel })),
             el('div', { class: 'desk-wrap' }, el('table', { class: 'desk-table' },
-              el('thead', null, el('tr', null, ['Outlet', 'Where', 'Type', 'Run by', 'State-linked'].map((x) => el('th', { text: x })))),
+              el('thead', null, el('tr', null, ['Outlet', 'Where', 'Type', 'Alignment', 'Editorial Leaning', 'Factuality', 'State-linked'].map((x) => el('th', { text: x })))),
               el('tbody', null, rows.map((s) => el('tr', null,
                 el('td', null, el('a', { href: safe(s.homepage), target: '_blank', rel: 'noopener', text: s.name })),
                 el('td', { text: scope[s.scope] || s.scope }),
                 el('td', { class: 'typed', text: s.kind }),
-                el('td', { text: s.governing_body || '' }),
+                el('td', { class: 'typed', text: formatAlignment(s.alignment) }),
+                el('td', { class: 'typed', text: formatBias(s.bias) }),
+                el('td', { class: 'typed', text: formatFactuality(s.factuality) }),
                 el('td', null, s.state_affiliated ? el('span', { class: 'stamp red', text: 'Yes' }) : el('span', { class: 'typed', text: 'No' }))))))))];
       }));
   }

@@ -113,6 +113,25 @@ The binary `abroad_only` ("Not in domestic press") flag proved unreliable across
 **D21. Czechia pack added (`countries/czechia/`), completing the Visegrad Four (V4) desk.**
 - **Czechia (`countries/czechia/`):** Primary language Czech (`cs`) in `Central Europe`. Sources combine independent investigative dailies (Deník N, Seznam Zprávy, Novinky.cz), English reporting (Prague Morning), Czech Public Radio (iROZHLAS), state wire ČTK / public television ČT24 via Google News, and Slovak regional coverage. Policy themes capture Petr Fiala SPOLU coalition governance vs. Andrej Babiš ANO opposition, the Czech artillery ammunition initiative for Ukraine, Dukovany nuclear power plant expansion (KHNP contract), and V4 diplomatic divergence between Prague/Warsaw and Bratislava/Budapest.
 
+## 2026-11-03: political alignment, editorial leaning, and perspective analysis
+
+**D22. Source political alignment, editorial leaning, and factuality integration.**
+To move beyond generic outlet lists toward actionable media-intelligence analysis, Argos integrates structured rating taxonomy across domestic, regional, and international media:
+- **Taxonomy:**
+  - `alignment`: `state_controlled`, `pro_government`, `public_broadcaster`, `independent`, `opposition`, `unrated`
+  - `bias`: `left`, `center-left`, `center`, `center-right`, `right`, `state_aligned`, `unrated`
+  - `factuality`: `very_high`, `high`, `mostly_factual`, `mixed`, `unrated`
+- **Data & Ingestion (`argos/ratings.py`, `argos/db.py`, `argos/ingest.py`):**
+  - Ratings cover international wires, global broadcasters, and domestic publishers across all monitored desks, with structural fallbacks based on `state_affiliated` flags and outlet kind. Precompiled regex matching evaluates 2,000+ sources in 0.3s.
+  - `source` table schema expanded with `bias`, `alignment`, `factuality` columns; `reconcile_ratings(db)` auto-populates ratings across all registered and aggregator sources.
+- **Story Export (`argos/export.py`):**
+  - Computes story-level perspective metrics: `state_share` (share of sources that are state-controlled or pro-government), plus distribution counters for `alignment` and `bias`.
+  - Attaches source-level alignment, bias, and factuality tags to all listed articles.
+- **UI Presentation (`site/app.js`, `site/about.html`):**
+  - Story cards/drawers display perspective badges (`State-Dominated`, `State & Indep`, `Cross-Spectrum`, `Independent`) and detailed perspective breakdowns.
+  - Story drawer lists show compact affiliation/bias chips (`[State · State-aligned]`, `[Public · Center-Left]`, `[Indep · Center]`) with hover tooltips for factuality ratings.
+  - About page directory includes filterable `Alignment`, `Editorial Leaning`, and `Factuality` columns across all monitored desks.
+
 
 
 

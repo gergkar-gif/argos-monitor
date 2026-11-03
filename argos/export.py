@@ -45,13 +45,29 @@ def _classify_events(s):
 def _story(db, s):
     rows = db.execute(
         "SELECT a.id, a.title, a.lead, a.url, a.language, a.published_at, a.syndicated_of, COALESCE(sa.similarity, 1.0) AS similarity, "
-        "src.id AS source_id, src.name AS source, src.scope, src.kind "
+        "src.id AS source_id, src.name AS source, src.scope, src.kind, src.bias, src.alignment, src.factuality "
         "FROM story_article sa JOIN article a ON a.id=sa.article_id JOIN source src ON src.id=a.source_id "
         "WHERE sa.story_id=? ORDER BY (COALESCE(sa.similarity, 1.0) >= 0.93) DESC, (COALESCE(sa.similarity, 1.0) >= 0.85) DESC, "
         "(a.syndicated_of IS NOT NULL), COALESCE(sa.similarity, 1.0) DESC, a.published_at", (s["id"],)).fetchall()
     core_rows = [r for r in rows if r["similarity"] >= 0.93] or rows
     independent = {r["source_id"] for r in core_rows if r["syndicated_of"] is None}
     by_scope = {sc: sum(r["scope"] == sc for r in core_rows) for sc in ("domestic", "abroad_local", "international")}
+
+    align_counts, bias_counts = {}, {}
+    state_count, total_rated = 0, 0
+    for r in core_rows:
+        al = r["alignment"] or "unrated"
+        bi = r["bias"] or "unrated"
+        if al != "unrated":
+            align_counts[al] = align_counts.get(al, 0) + 1
+        if bi != "unrated":
+            bias_counts[bi] = bias_counts.get(bi, 0) + 1
+        if al in ("state_controlled", "pro_government") or r["kind"] == "official":
+            state_count += 1
+        total_rated += 1
+    state_share = round(state_count / total_rated, 2) if total_rated else 0.0
+    perspectives = {"state_share": state_share, "alignment": align_counts, "bias": bias_counts}
+
     rep = next((r for r in rows if r["id"] == s["representative_article_id"]), rows[0])
     raw_lead = (rep["lead"] or "").strip() or next(((r["lead"] or "").strip() for r in rows if (r["lead"] or "").strip()), "")
     lead_val = (raw_lead[:220].rsplit(" ", 1)[0] + "…") if len(raw_lead) > 220 else raw_lead
@@ -87,12 +103,14 @@ def _story(db, s):
         "independent_sources": len(independent),
         "by_scope": by_scope,
         "evidence": "OFFICIAL" if any(r["kind"] == "official" for r in core_rows) else "REPORTED",
+        "perspectives": perspectives,
         "abroad_only": False,
         "related": [{"title": r["title"], "url": r["url"], "source": r["source"], "articles": r["n"]} for r in related[:2]],   # possibly the same event
         "excerpts": [{"text": x["text"], "source": x["source"], "scope": x["scope"], "url": x["url"]} for x in excerpts],
         "sources": [{"title": r["title"], "url": r["url"], "source": r["source"], "scope": r["scope"],
                      "language": r["language"], "published": r["published_at"], "copy": r["syndicated_of"] is not None,
-                     "sim": int(round(r["similarity"] * 100))}
+                     "sim": int(round(r["similarity"] * 100)),
+                     "bias": r["bias"] or "unrated", "alignment": r["alignment"] or "unrated", "factuality": r["factuality"] or "unrated"}
                     for r in listed],
     }
 
@@ -180,7 +198,17 @@ def run(db):
                               "language": pack["language"], "abroad_label": pack["abroad_label"],
                               "mentions": list(dict.fromkeys(distinctive_mentions)), "periods": periods})
     keep = ("id", "name", "homepage", "language", "scope", "kind", "governing_body", "state_affiliated", "notes")
-    sources_by_country = {c: [{k: s.get(k) for k in keep} for s in packs.load(c)["sources"]] for c in packs.pack_ids()}
+    db_sources = {r["id"]: dict(r) for r in db.execute("SELECT id, bias, alignment, factuality FROM source").fetchall()}
+    sources_by_country = {
+        c: [
+            {**{k: s.get(k) for k in keep},
+             "bias": (db_sources.get(s["id"]) or {}).get("bias") or "unrated",
+             "alignment": (db_sources.get(s["id"]) or {}).get("alignment") or "unrated",
+             "factuality": (db_sources.get(s["id"]) or {}).get("factuality") or "unrated"}
+            for s in packs.load(c)["sources"]
+        ]
+        for c in packs.pack_ids()
+    }
     telemetry = {}
     for c in packs.pack_ids():
         p = packs.load(c)

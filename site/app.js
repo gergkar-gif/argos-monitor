@@ -438,6 +438,17 @@
         s.disaster_type && h('span', { class: 'stamp teal', text: s.disaster_type }),
         h('span', { text: `${s.headline.source}, ${fmtDay.format(new Date(s.last_seen))} · ${outlets}` }),
         s.evidence === 'OFFICIAL' && h('span', { class: 'stamp red', title: 'A government or Party outlet is among the sources.', text: 'Official' }),
+        (() => {
+          if (!s.perspectives) return null;
+          const sh = s.perspectives.state_share;
+          if (sh >= 0.7) return h('span', { class: 'stamp red', title: `${Math.round(sh * 100)}% of corroborating coverage is from state-controlled or pro-government outlets`, text: 'State-Dominated' });
+          if (sh >= 0.35) return h('span', { class: 'stamp orange', title: 'Mixed reporting between state and independent outlets', text: 'State & Indep' });
+          const nAlign = Object.keys(s.perspectives.alignment || {}).length;
+          const nBias = Object.keys(s.perspectives.bias || {}).length;
+          if (nAlign > 1 || nBias > 1) return h('span', { class: 'stamp indigo', title: 'Coverage spans multiple editorial perspectives and affiliations', text: 'Cross-Spectrum' });
+          if (s.independent_sources >= 2) return h('span', { class: 'stamp teal', title: 'Predominantly reported by independent press', text: 'Independent' });
+          return null;
+        })(),
         trend(s) && trend(s)[0] !== 'Quiet' && h('span', { class: 'stamp indigo', title: trend(s)[2], text: trend(s)[0] }),
       ),
     ].filter(Boolean));
@@ -455,9 +466,26 @@
         const a = h('a', { class: 't', href: safeUrl(r.url), target: '_blank', rel: 'noopener', lang: r.language, text: r.title });
         const o = h('span', { class: 'orig', hidden: true, title: 'Original headline' });
         lateItems.push([a, r.title, r.language, o]);
+        const alignLabel = {
+          state_controlled: 'State',
+          pro_government: 'Pro-Gov',
+          public_broadcaster: 'Public',
+          independent: 'Indep',
+          opposition: 'Opposition',
+        }[r.alignment];
+        const biasLabel = {
+          left: 'Left',
+          'center-left': 'Center-Left',
+          center: 'Center',
+          'center-right': 'Center-Right',
+          right: 'Right',
+          state_aligned: 'State-aligned',
+        }[r.bias];
+        const ratingTag = [alignLabel, biasLabel].filter(Boolean).join(' · ');
         return h('li', null, a, o,
           h('span', { class: 'meta' },
             h('span', { class: 'stamp indigo', text: r.source }),
+            ratingTag && h('span', { class: 'stamp typed', title: `Affiliation: ${r.alignment || 'unrated'} | Bias: ${r.bias || 'unrated'} | Factuality: ${r.factuality || 'unrated'}`, text: ratingTag }),
             r.sim != null && h('span', { class: 'typed', text: `${r.sim}%` }),
             r.published && h('span', { text: fmtTime.format(new Date(r.published)) }),
             r.copy && h('span', { text: 'reprint, counted once' })));
@@ -466,6 +494,12 @@
         h('summary', { text: `All ${s.articles} articles` }),
         present.length > 1 && h('div', { class: 'cover', 'aria-label': 'Where the coverage comes from' },
           present.map(([id, label]) => h('span', null, h('b', { text: String(s.by_scope[id]) }), ` ${s.by_scope[id] === 1 ? 'article' : 'articles'} from ${label}`))),
+        s.perspectives && (Object.keys(s.perspectives.alignment || {}).length > 0 || Object.keys(s.perspectives.bias || {}).length > 0) && h('div', { class: 'cover', 'aria-label': 'Perspective breakdown' },
+          h('span', null, h('b', { text: 'Perspectives: ' }),
+            [
+              ...Object.entries(s.perspectives.alignment || {}).map(([k, v]) => `${v} ${k.replace(/_/g, ' ')}`),
+              ...Object.entries(s.perspectives.bias || {}).map(([k, v]) => `${v} ${k.replace(/_/g, ' ')} leaning`)
+            ].join(' · '))),
         s.first && s.articles > 2 && h('div', { class: 'timeline' },
           h('span', { class: 'bars', 'aria-hidden': 'true' }, s.per_day.map(([day, n]) =>
             h('i', { style: `height:${Math.max(15, Math.round(100 * n / max))}%`, title: `${fmtDay.format(new Date(day))}: ${plural(n, 'article', 'articles')}` }))),
