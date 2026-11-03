@@ -132,6 +132,20 @@ To move beyond generic outlet lists toward actionable media-intelligence analysi
   - Story drawer lists show compact affiliation/bias chips (`[State · State-aligned]`, `[Public · Center-Left]`, `[Indep · Center]`) with hover tooltips for factuality ratings.
   - About page directory includes filterable `Alignment`, `Editorial Leaning`, and `Factuality` columns across all monitored desks.
 
+## 2026-11-03: retirement of heuristic violence taxonomy in favor of sensor/advisory model
+
+**D23. Transition to verified sensor and official advisory model for conflict & security monitoring.**
+The experimental "ACLED-style" violent event classifier (introduced in f83eb72) applied broad multilingual regexes across general news headlines. This produced severe false positives and directly violated Rule 1 (*No source, no statement*):
+1. **Administrative & Diplomatic Misclassifications:** Routine military leadership handovers (e.g. Border Guard Artillery-Missile command handovers) were stamped `EXPLOSION & STRIKE` simply because weapon unit nouns appeared in administrative texts; bilateral defense diplomacy (e.g. Vietnam-Japan defense cooperation) was stamped `ARMED CLASH & BATTLE`.
+2. **Cross-Language Polysemy & Normalization Collisions:** Polish mold cleaning (*różowy nalot*) was tagged as an air raid (*nalot*); frontend diacritic stripping turned Vietnamese `cảnh báo` / `thông báo` into `bao`, colliding directly with `bão` and tagging consular embassy alerts as `STORM & CYCLONE`.
+3. **Absence of Real ACLED 24/7 Access:** Real ACLED data is human-curated and delayed by a week on the open tier; commercial enterprise platforms (Crisis24, GardaWorld) offer no public feeds. Simulating ACLED by heuristic guessing on RSS feeds invented claims of violence where none occurred.
+
+**Architecture under D23 (Option A):**
+- **Retired:** `VIOLENCE_RULES` regexes, synthetic tactical badges (`EXPLOSION & STRIKE`, `ARMED CLASH & BATTLE`), and client-side violent event keyword guessing.
+- **Fixed:** Vietnamese storm regex in `DISASTER_RULES` now explicitly requires compound patterns (`siêu bão`, `áp thấp`, `lốc xoáy`, `cơn bão`), preventing `cảnh báo` / `thông báo` collisions.
+- **Verified Sensor & Advisory Layer:** Conflict and security tracking is anchored in verified external feeds: US Department of State (Levels 2–4), UK FCDO foreign travel advice, and International Crisis Group conflict briefs, alongside existing GDACS, USGS, and NASA EONET feeds.
+- **Truthful Press Coverage:** The Conflict & Security view surfaces genuine story clusters classified into `defence_security` by section feeds and embeddings, preserving original headlines without synthetic tactical badges.
+
 
 
 

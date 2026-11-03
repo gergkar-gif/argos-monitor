@@ -25,5 +25,6 @@ Each step has a check that shows it is done. Work in order.
 - Offline headline translation (`opus-mt-vi-en`)
 - ~~A second country~~ Done: Hungary (D15). More countries follow the same pack recipe (33 country desks active).
 - ~~Source political alignment, editorial leaning, and perspective analysis~~ Done (D22).
+- ~~Conflict & Security sensor and official advisory model (D23)~~ Done: retired heuristic pseudo-ACLED regex tagging and false positive badges; anchored conflict/security in verified external feeds (US State Dept, UK FCDO, Crisis Group) and deterministic defence/security story clusters.
 - Basic Social Watch from accessible sources (YouTube, Google Trends; Telegram and Bluesky for other countries)
 - Saved watches and a morning brief

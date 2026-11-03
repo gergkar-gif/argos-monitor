@@ -35,7 +35,7 @@
         <a href="index.html#relations">Joint &amp; Multilateral</a>
         <a href="index.html#alerts">Alerts</a>
         <a href="index.html#disasters">Disasters</a>
-        <a href="index.html#violence">Violent Events</a>
+        <a href="index.html#violence">Conflict &amp; Security</a>
         <a href="about.html" aria-current="page">About</a>
       </nav>
     </div>
@@ -95,6 +95,21 @@
       <div class="step">
         <b>04 · State-linked (Official Corroboration Flag)</b>
         <span>A binary indicator (<span class="stamp red">Yes</span> / <span class="stamp typed">No</span>) designating statutory organs and state-funded broadcasters. When any state-linked source covers a story cluster, it is tagged <span class="stamp red">Official</span> to distinguish state messaging from independent reporting. When over 70% of corroborating coverage originates from state media, the story is stamped <span class="stamp red">State-Dominated</span>.</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="crisis-methodology">
+    <h2>Crisis, Conflict &amp; Security Methodology</h2>
+    <p>To adhere strictly to Rule 1 (<em>No source, no statement</em>), Argos rejects speculative heuristic keyword tagging of general news headlines for violent events. Instead, the Disasters and Conflict &amp; Security monitors rely on an authoritative dual-track model:</p>
+    <div class="pipeline">
+      <div class="step">
+        <b>Track 1 · Verified External Sensor &amp; Advisory Layer</b>
+        <span>Integrates structured feeds from international sensor networks and statutory foreign ministry alerts: <strong>Natural Hazards &amp; Disasters</strong> via Global Disaster Alert and Coordination System (GDACS), US Geological Survey (USGS M4.5+ seismic events), and NASA EONET; <strong>Conflict, Terrorism &amp; Security Advisories</strong> via US Department of State (elevated Levels 2–4), UK Foreign, Commonwealth &amp; Development Office (FCDO), and the International Crisis Group.</span>
+      </div>
+      <div class="step">
+        <b>Track 2 · Monitored Defence &amp; Security Press Coverage</b>
+        <span>Presents actual story clusters deterministically classified into the <code>defence_security</code> domain by section feeds and multilingual embeddings. Stories report their own headlines and verified quotes without synthetic combat badges, ensuring administrative military handovers and diplomatic cooperation are never misclassified as kinetic violence.</span>
       </div>
     </div>
   </section>

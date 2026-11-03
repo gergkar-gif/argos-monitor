@@ -24,22 +24,12 @@ DISASTER_RULES = [
     ("Wildfire & Drought", r"\b(wildfire|forest fire|bushfire|drought|heatwave|cháy rừng|hạn hán|kebakaran hutan|kekeringan|ไฟป่า|ภัยแล้ง|erdőtűz|aszály|pożar lasu|suša|orman yangını|kuraklık|incêndio florestal|seca\b)"),
 ]
 
-VIOLENCE_RULES = [
-    ("Armed Clash & Battle", r"\b(armed clash|gunbattle|firefight|insurgent|insurgency|rebel|militia|junta troops|ambush|skirmish|giao tranh|đụng độ|phiến quân|kontak tembak|kelompok bersenjata|sagupaan|npa\b|ปะทะ|กองกำลัง|တိုက်ပွဲ|စစ်ကောင်စီ|összecsapás|sukob|çatışma|pkk\b|confronto armado|facção|fano\b|endf\b|al-shabaab)"),
-    ("Explosion & Strike", r"\b(airstrike|air strike|drone strike|shelling|missile strike|artillery|mortar|ied\b|landmine|car bomb|bombing|không kích|pháo kích|tên lửa|đánh bom|serangan udara|rudal|ledakan bom|โจมตีทางอากาศ|ระเบิด|လေကြောင်းတိုက်ခိုက်|légicsapás|rakétatámadás|robbanás|nalot|hava saldırısı|patlama|bombalı)"),
-    ("Terrorism & Attack", r"\b(terrorist|terrorism|suicide attack|gunman|gunmen|mass shooting|shooting|massacre|hostage|assassinat|armed attack|khủng bố|xả súng|teroris|terorisme|penembakan|terorista|pamamaril|ก่อการร้าย|กราดยิง|အကြမ်းဖက်|merénylet|terrortámadás|lövöldözés|zamach|terör|silahlı saldırı|atentado|tiroteio|chacina)"),
-    ("Protest & Riot", r"\b(riot|riots|violent protest|tear gas|water cannon|clash with police|demonstration|protesters|civil unrest|biểu tình|bạo động|unjuk rasa|kerusuhan|gas air mata|kilos-protesta|ชุมนุม|ประท้วง|ဆန္ဒပြ|tüntetés|zavargás|könnygáz|zamieszki|protest|gösteri|protesto|საპროტესტო|акция протеста)"),
-]
-
-
-def _classify_events(s):
+def _classify_disaster(s):
     themes = " ".join(s.get("themes") or []).lower()
     if "sport" in themes or "culture" in themes:
-        return None, None
+        return None
     blob = " ".join([s["headline"]["title"], *(r["title"] for r in (s.get("sources") or [])[:4])]).lower()
-    d_type = next((label for label, pat in DISASTER_RULES if re.search(pat, blob)), None)
-    v_type = next((label for label, pat in VIOLENCE_RULES if re.search(pat, blob)), None)
-    return d_type, v_type
+    return next((label for label, pat in DISASTER_RULES if re.search(pat, blob)), None)
 
 
 def _story(db, s):
@@ -152,9 +142,9 @@ def _home(now, countries):
         d7 = json.loads(f7.read_text(encoding="utf8")) if f7.exists() else {"stories": [], "totals": {}}
         d24 = json.loads(f24.read_text(encoding="utf8")) if f24.exists() else {"stories": [], "totals": {}}
         for s in d7["stories"]:
-            d_type, v_type = _classify_events(s)
+            d_type = _classify_disaster(s)
             pool.append({**s, "country": cid, "country_name": c["name"], "region": reg,
-                         "disaster_type": d_type, "violence_type": v_type,
+                         "disaster_type": d_type,
                          "excerpts": s.get("excerpts", [])[:1], "sources": s.get("sources", [])[:12]})
         top = d7["stories"][0] if d7["stories"] else None
         desks.append({
@@ -167,7 +157,9 @@ def _home(now, countries):
     most = _top_global_and_regional(pool, lambda s: (s["independent_sources"], s["score"]), 8)
     growing = _top_global_and_regional((s for s in pool if (s.get("last_24h") or 0) >= 2), lambda s: (s.get("last_24h") or 0, s["score"]), 6)
     disasters = _top_global_and_regional((s for s in pool if s.get("disaster_type")), lambda s: (s["independent_sources"], s["score"]), 12, r_limit=8)
-    violent = _top_global_and_regional((s for s in pool if s.get("violence_type")), lambda s: (s["independent_sources"], s["score"]), 12, r_limit=8)
+    violent = _top_global_and_regional(
+        (s for s in pool if s.get("category") == "defence_security" or "Security and defence" in (s.get("themes") or [])),
+        lambda s: (s["independent_sources"], s["score"]), 12, r_limit=8)
     return {"generated_at": now, "desks": desks, "most_reported": most, "abroad_only": [],
             "growing": growing, "disasters": disasters, "violent_events": violent}
 
