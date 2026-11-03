@@ -108,5 +108,11 @@ Media in South Africa is predominantly English-language with high press freedom,
 **D20. Automated blind-spot detection retired in favor of transparent source-scope composition.**
 The binary `abroad_only` ("Not in domestic press") flag proved unreliable across 32 countries for two reasons: (1) cross-lingual cluster fractures—when domestic press reports an event in the local language (e.g. Turkish, Portuguese, Vietnamese) and international press reports it in English, embedding models frequently placed them in separate clusters, falsely stamping mainstream events (such as Lula's election in Brazil or Kurdish peace process developments in Turkey) as 'Not in domestic press'; (2) proving a negative from an RSS sample violates Rule 1 ('No source, no statement'). Furthermore, true exile/diaspora media only exists for a handful of countries (Vietnam, Myanmar, Cambodia). The automated flag and Home section are retired. Instead, stories retain truthful `by_scope` metrics (`domestic`, `abroad_local`, `international`), allowing analysts to inspect the source distribution directly in the story drawer without the system making unverified claims of censorship.
 
+## 2026-11-03: Czechia country pack (completing Visegrad Four - V4)
+
+**D21. Czechia pack added (`countries/czechia/`), completing the Visegrad Four (V4) desk.**
+- **Czechia (`countries/czechia/`):** Primary language Czech (`cs`) in `Central Europe`. Sources combine independent investigative dailies (Deník N, Seznam Zprávy, Novinky.cz), English reporting (Prague Morning), Czech Public Radio (iROZHLAS), state wire ČTK / public television ČT24 via Google News, and Slovak regional coverage. Policy themes capture Petr Fiala SPOLU coalition governance vs. Andrej Babiš ANO opposition, the Czech artillery ammunition initiative for Ukraine, Dukovany nuclear power plant expansion (KHNP contract), and V4 diplomatic divergence between Prague/Warsaw and Bratislava/Budapest.
+
+
 
 

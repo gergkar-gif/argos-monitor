@@ -1,0 +1,28 @@
+# Czechia's additions to the shared themes (../../themes.yaml).
+themes:
+  - id: party_gov
+    label: Fiala Coalition, Babiš Opposition & Presidential Politics
+    weight: 1.0
+    category: internal_politics
+    describe:
+      - Prime Minister Petr Fiala, President Petr Pavel, SPOLU coalition governance, Andrej Babiš and ANO opposition, parliamentary politics and upcoming elections
+      - Petr Fiala, Petr Pavel, Andrej Babiš, vláda SPOLU, hnutí ANO, Poslanecká sněmovna, Senát, ODS, STAN, Piráti
+    keywords: ["fiala", "pavel", "babiš", "babis", "ano", "spolu", "ods", "stan", "piráti", "sněmovna", "senát", "vláda", "volby"]
+
+  - id: diplomacy
+    label: Ukraine Ammunition Initiative, V4 & EU/NATO Policy
+    weight: 1.0
+    category: foreign_policy
+    describe:
+      - Czech international artillery ammunition initiative for Ukraine, foreign policy led by Jan Lipavský, Visegrad Four (V4) relations with Slovakia and Hungary, NATO eastern deterrence
+      - muniční iniciativa pro Ukrajinu, Jan Lipavský, V4, Visegrád, NATO, Evropská unie, vztahy se Slovenskem a Polskem
+    keywords: ["muniční iniciativa", "munice", "lipavský", "lipavsky", "ukrajin", "v4", "visegrad", "nato", "černochová", "cernochova"]
+
+  - id: econ_policy
+    label: Dukovany Nuclear Expansion, ČEZ & Energy Security
+    weight: 1.0
+    category: economics
+    describe:
+      - Nuclear tender for new reactors at Dukovany power plant (KHNP contract), ČEZ utility, end of Russian energy dependence via TAL-PLUS pipeline, ČNB monetary policy
+      - jaderná elektrárna Dukovany, KHNP, ČEZ, energetická bezpečnost, ropovod TAL, Česká národní banka, ČNB
+    keywords: ["dukovany", "khnp", "čez", "cez", "jádro", "jadern", "tal", "ropovod", "čnb", "cnb", "škoda auto"]
