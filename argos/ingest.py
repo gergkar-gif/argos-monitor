@@ -27,6 +27,20 @@ def _known_titles(db, country):
                                                 (country, cutoff))}
 
 
+def _match_outlet_scope(outlet, overrides, default_scope):
+    nl = outlet.lower().strip()
+    if nl in overrides:
+        return overrides[nl]
+    cl = re.split(r"\s+[|\-–—·]\s+|\s*\(", nl)[0].strip()
+    cl = re.sub(r"^(the|báo)\s+", "", cl).strip()
+    if cl in overrides:
+        return overrides[cl]
+    for pat, sc in overrides.items():
+        if len(pat) >= 4 and (re.search(r"\b" + re.escape(pat) + r"\b", nl) or re.search(r"\b" + re.escape(pat) + r"\b", cl)):
+            return sc
+    return default_scope
+
+
 def ingest_aggregator(db, pack, src, feed, parsed, known):
     """A news aggregator feed (Google News search). Each item names its outlet, which becomes its own source, so
     independent-outlet counts stay honest. Only the headline is available: the item links to a redirect, so the
@@ -45,8 +59,12 @@ def ingest_aggregator(db, pack, src, feed, parsed, known):
         if not (outlet and title and url) or title_key(title) in known:
             continue
         sid = "gn:" + re.sub(r"[^a-z0-9]+", "-", outlet.lower()).strip("-")
-        scope = overrides.get(outlet.lower(), src["scope"])
-        db.execute("INSERT OR IGNORE INTO source VALUES (?,?,?,?,?,'media','found via Google News',0,0,'aggregator item')",
+        scope = _match_outlet_scope(outlet, overrides, src["scope"])
+        db.execute(
+            "INSERT INTO source (id, name, homepage, language, scope, kind, governing_body, state_affiliated, reprints_vna, notes) "
+            "VALUES (?,?,?,?,?,'media','found via Google News',0,0,'aggregator item') "
+            "ON CONFLICT(id) DO UPDATE SET scope=excluded.scope WHERE (scope='international' AND excluded.scope != 'international') "
+            "OR (excluded.scope='domestic' AND scope != 'domestic')",
                    (sid, outlet, ((e.get("source") or {}).get("href") or ""), src["language"], scope))
         cur = db.execute(
             "INSERT OR IGNORE INTO article (source_id,feed_id,url,title,lead,language,published_at,fetched_at,extract_status,country) "
@@ -82,6 +100,7 @@ def load_registry(db):
     urls = list(seen)
     db.execute(f"UPDATE feed SET active=0 WHERE url NOT IN ({','.join('?' * len(urls))})", urls)   # feeds removed from a yaml
     db.commit()
+    reconcile_aggregator_sources(db)
 
 
 def ingest_feeds(db, country):
@@ -175,3 +194,23 @@ def run(db):
         a = ingest_feeds(db, country)
         b = ingest_gdelt(db, country)
         print(f"ingest {country}: {a} new from feeds, {b} new from GDELT")
+
+
+def reconcile_aggregator_sources(db):
+    """Align gn: aggregator sources in the database with each pack's aggregator_outlets rules."""
+    all_overrides = {}
+    for country in packs.pack_ids():
+        p = packs.load(country)
+        ao = p.get("aggregator_outlets") or {}
+        for sc in ("domestic", "abroad_local"):
+            for n in ao.get(sc, []):
+                all_overrides[n.lower()] = sc
+    rows = db.execute("SELECT id, name, scope FROM source WHERE id LIKE 'gn:%'").fetchall()
+    updates = []
+    for sid, name, scope in rows:
+        target = _match_outlet_scope(name, all_overrides, None)
+        if target and target != scope:
+            updates.append((target, sid))
+    if updates:
+        db.executemany("UPDATE source SET scope=? WHERE id=?", updates)
+        db.commit()
