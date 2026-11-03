@@ -12,8 +12,8 @@ from .config import ROOT
 from .rank import dashboard_story_ids
 
 SITE_DATA = ROOT / "site" / "data"
-WINDOWS = {1: "24h", 7: "7d", 14: "14d", 30: "30d"}
-PERIOD_LABELS = {"24h": "Last 24 hours", "7d": "Last 7 days", "14d": "Last 14 days", "30d": "Last 30 days"}
+WINDOWS = {1: "24h", 7: "7d"}
+PERIOD_LABELS = {"24h": "Last 24 hours", "7d": "Last 7 days"}
 CATEGORIES = ["internal_politics", "economics", "foreign_policy", "defence_security", "society", "other"]
 MAX_ARTICLES_LISTED = 12
 

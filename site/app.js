@@ -830,7 +830,7 @@
   ];
 
   let selectedCountries = ['cambodia', 'vietnam'];
-  let relPeriod = '30d';
+  let relPeriod = '7d';
 
   function getCountryName(id) {
     const c = index.countries.find((x) => x.id === id);
@@ -930,7 +930,7 @@
             id: 'rel-sel-period',
             onchange: (e) => { relPeriod = e.target.value; setHash(hashFor('all')); renderRelations(); }
           },
-            [['30d', 'Last 30 days'], ['14d', 'Last 14 days'], ['7d', 'Last 7 days']].map(([v, label]) =>
+            [['7d', 'Last 7 days'], ['24h', 'Last 24 hours']].map(([v, label]) =>
               h('option', { value: v, text: label, selected: v === relPeriod })))),
       ),
       h('div', { class: 'bilateral-pairs' },
@@ -955,7 +955,7 @@
     results.replaceChildren(
       h('p', { class: 'result-line' },
         h('b', { text: `Joint & Multilateral Affairs · ${titleStr}` }),
-        ` · ${relPeriod === '30d' ? 'Last 30 days' : relPeriod === '14d' ? 'Last 14 days' : 'Last 7 days'} · `,
+        ` · ${relPeriod === '24h' ? 'Last 24 hours' : 'Last 7 days'} · `,
         h('button', { type: 'button', class: 'desk-link', text: '← Back to Overview', onclick: () => openCountry('home') })),
       bar,
       loadingState
@@ -1001,12 +1001,12 @@
     results.replaceChildren(
       h('p', { class: 'result-line' },
         h('b', { text: `Joint & Multilateral Affairs · ${titleStr}` }),
-        ` · ${plural(matchedStories.length, 'story', 'stories')} found · ${relPeriod === '30d' ? 'Last 30 days' : relPeriod === '14d' ? 'Last 14 days' : 'Last 7 days'} · `,
+        ` · ${plural(matchedStories.length, 'story', 'stories')} found · ${relPeriod === '24h' ? 'Last 24 hours' : 'Last 7 days'} · `,
         h('button', { type: 'button', class: 'desk-link', text: '← Back to Overview', onclick: () => openCountry('home') })),
       bar,
       matchedStories.length
         ? h('div', { class: 'grid' }, matchedStories.map((s, i) => story(s, { lead: i === 0, i })))
-        : h('p', { class: 'state', text: `No stories found involving all selected partners (${titleStr}) in the ${relPeriod === '30d' ? 'last 30 days' : relPeriod === '14d' ? 'last 14 days' : 'last 7 days'}.` }),
+        : h('p', { class: 'state', text: `No stories found involving all selected partners (${titleStr}) in the ${relPeriod === '24h' ? 'last 24 hours' : 'last 7 days'}.` }),
       h('p', { class: 'fine' },
         `Cross-country intelligence monitor: cross-references reporting across monitored desks to isolate joint communiqués, multilateral agreements, diplomatic summits, territorial disputes, and trade interaction.`
       ),

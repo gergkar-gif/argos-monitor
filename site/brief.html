@@ -328,9 +328,7 @@
 
   const ALL_PERIODS = [
     ['24h', 'Last 24 hours'],
-    ['7d', 'Last 7 days'],
-    ['14d', 'Last 14 days'],
-    ['30d', 'Last 30 days']
+    ['7d', 'Last 7 days']
   ];
   pSel.replaceChildren(...ALL_PERIODS.map(([v, l]) => el('option', { value: v, text: l })));
   pSel.value = '7d';

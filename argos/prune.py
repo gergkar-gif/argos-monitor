@@ -1,7 +1,7 @@
 """Housekeeping: drop articles older than RETAIN_DAYS so the database stays small (it is kept between cloud runs)."""
 from datetime import datetime, timedelta, timezone
 
-RETAIN_DAYS = 60
+RETAIN_DAYS = 45
 
 
 def run(db):

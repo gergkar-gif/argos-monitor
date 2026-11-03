@@ -9,7 +9,7 @@ from sklearn.cluster import AgglomerativeClustering
 from . import packs
 from .embed import DIM
 
-WINDOWS = (30, 14, 7, 1)     # days
+WINDOWS = (7, 1)     # days
 MAX_GAP_DAYS = 3
 MERGE_SIMILARITY = 0.95    # shortcut: untuned guess, read the "closest pairs" lines in the run log and adjust
 RELATED_SIMILARITY = 0.925 # below the merge level: shown on the site as related coverage
