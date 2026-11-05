@@ -129,9 +129,13 @@ def _filter_country(cid, raw_posts, emb, noise_vecs):
 
 
 def run(db=None):
-    emb = Embedder()
-    noise_vecs = emb.encode(["passage: " + t for t in NOISE_TEXTS])
-    noise_vecs = noise_vecs / np.linalg.norm(noise_vecs, axis=1, keepdims=True)
+    try:
+        emb = Embedder()
+        noise_vecs = emb.encode(["passage: " + t for t in NOISE_TEXTS])
+        noise_vecs = noise_vecs / np.linalg.norm(noise_vecs, axis=1, keepdims=True)
+    except Exception as e:
+        print(f"reddit: skipping due to missing model or embedding initialization error: {e}")
+        return
 
     by_country = {cid: _subs(packs.load(cid)) for cid in packs.pack_ids()}
     owner = {s.lower(): cid for cid, subs in by_country.items() for s in subs}

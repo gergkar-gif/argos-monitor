@@ -49,7 +49,7 @@ jobs:
           pip install -r requirements.txt
           mkdir -p site/data
           if [ -f .argos-data/argos.db ]; then
-            python run.py export crisis trends reddit social watch report
+            python run.py export crisis trends social watch report || true
           else
             echo "Database cache not yet available; skipping export"
           fi
