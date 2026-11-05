@@ -1,0 +1,117 @@
+sources:
+- id: tass_en
+  name: TASS (English)
+  homepage: https://tass.com
+  language: en
+  scope: domestic
+  kind: official
+  governing_body: Government of the Russian Federation
+  state_affiliated: true
+  notes: Statutory state news agency of Russia.
+  feeds:
+  - url: https://tass.com/rss/v2.xml
+    category_hint: internal_politics
+- id: interfax_ru
+  name: Interfax
+  homepage: https://interfax.ru
+  language: ru
+  scope: domestic
+  kind: wire
+  governing_body: Interfax Information Services Group
+  state_affiliated: false
+  notes: Leading non-governmental Russian wire agency covering politics and business.
+  feeds:
+  - url: https://www.interfax.ru/rss.asp
+    category_hint: internal_politics
+- id: kommersant
+  name: Kommersant
+  homepage: https://www.kommersant.ru
+  language: ru
+  scope: domestic
+  kind: media
+  governing_body: Kommersant Publishing House
+  state_affiliated: false
+  notes: Premier Russian business and political daily of record.
+  feeds:
+  - url: https://www.kommersant.ru/RSS/news.xml
+    category_hint: economics
+  - url: https://www.kommersant.ru/RSS/main.xml
+    category_hint: internal_politics
+- id: meduza_en
+  name: Meduza (English)
+  homepage: https://meduza.io/en
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Meduza (Riga, Latvia)
+  state_affiliated: false
+  notes: Premier exiled independent Russian investigative daily.
+  feeds:
+  - url: https://meduza.io/rss/en/all
+    category_hint: internal_politics
+- id: the_moscow_times
+  name: The Moscow Times
+  homepage: https://www.themoscowtimes.com
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Stichting 2 Oktober (Amsterdam)
+  state_affiliated: false
+  notes: Independent English-language daily covering Russia from exile.
+  feeds:
+  - url: https://www.themoscowtimes.com/feeds/rss
+    category_hint: internal_politics
+- id: radio_svoboda
+  name: Radio Svoboda (RFE/RL Russian)
+  homepage: https://www.svoboda.org
+  language: ru
+  scope: abroad_local
+  kind: media
+  governing_body: Radio Free Europe / Radio Liberty
+  state_affiliated: false
+  notes: US-funded independent Russian-language service covering human rights and
+    politics.
+  feeds:
+  - url: https://www.svoboda.org/api/z$rqiteu_i
+    category_hint: internal_politics
+- id: google_news_russia_kremlin
+  name: Google News (Russia Kremlin & Domestic Politics)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator feed tracking Putin, Kremlin decrees, and State Duma actions.
+  feeds:
+  - url: https://news.google.com/rss/search?q=Putin+OR+Kremlin+OR+%22State+Duma%22+OR+%22Federation+Council%22+Russia+when:3d&hl=en-US&gl=US&ceid=US:en
+    category_hint: internal_politics
+- id: google_news_russia_economy
+  name: Google News (Russian Economy, Sanctions & Central Bank)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator feed tracking Bank of Russia interest rates, ruble, oil revenue,
+    and sanctions.
+  feeds:
+  - url: https://news.google.com/rss/search?q=%22Bank+of+Russia%22+OR+Nabiullina+OR+%22Russian+economy%22+OR+ruble+OR+sanctions+Russia+when:3d&hl=en-US&gl=US&ceid=US:en
+    category_hint: economics
+- id: google_news_russia_military
+  name: Google News (Russian Defense & Ukraine War Operations)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator feed tracking Ministry of Defense, missile strikes, and battlefield
+    maneuvers.
+  feeds:
+  - url: https://news.google.com/rss/search?q=%22Russian+Defense+Ministry%22+OR+Belousov+OR+Gerasimov+OR+Rostec+when:3d&hl=en-US&gl=US&ceid=US:en
+    category_hint: defence_security

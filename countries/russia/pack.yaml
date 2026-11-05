@@ -1,0 +1,88 @@
+# Russia country pack.
+id: russia
+name: Russia
+region: Eastern Europe
+language: ru
+abroad_label: Independent Russian exile & international outlets
+
+mention:
+  - "russia"
+  - "russian"
+  - "moscow"
+  - "kremlin"
+  - "putin"
+  - "vladimir putin"
+  - "mishustin"
+  - "lavrov"
+  - "belousov"
+  - "shoigu"
+  - "state duma"
+  - "federation council"
+  - "fsb"
+  - "sputnik"
+  - "tass"
+  - "россия"
+  - "москва"
+  - "кремль"
+  - "путин"
+  - "владимир путин"
+  - "мишустин"
+  - "лавров"
+  - "белоусов"
+  - "госдума"
+  - "фсб"
+  - "сво"
+
+mention_regex: ['\b(?:russia|russian|moscow|kremlin|putin|belousov|lavrov)\b', 'россия', 'москва', 'кремль', 'путин', 'лавров', 'госдума']
+mention_section: "Russia"
+
+url_sections:
+  foreign: [world, international, mir, planet]
+  skip: [sport, sports, lifestyle, culture, entertainment, auto, tabloid, horoscopes, weather]
+
+aggregator_outlets:
+  domestic:
+    - "tass"
+    - "ria novosti"
+    - "interfax"
+    - "kommersant"
+    - "rbc"
+    - "vedomosti"
+    - "izvestia"
+    - "rg.ru"
+    - "rt"
+    - "sputnik"
+  abroad_local:
+    - "meduza"
+    - "the moscow times"
+    - "novaya gazeta europe"
+    - "radio svoboda"
+    - "bbc news russian"
+    - "dw russian"
+    - "current time"
+    - "holod"
+    - "the insider"
+
+excerpt:
+  dateline: '^\s*(?:MOSCOW|TASS|RIA NOVOSTI|INTERFAX|МОСКВА|ТАСС|РИА НОВОСТИ)\s*[-–—:]\s*'
+  noise: '^(Фото|Источник|Читайте также|Photo|Credit|\(|\[)'
+
+classify:
+  internal_politics:
+    - "President Vladimir Putin, Presidential Executive Office, State Duma, Federation Council, Prime Minister Mikhail Mishustin, United Russia, regional governors, FSB counter-intelligence, opposition crackdowns"
+    - "Владимир Путин, Кремль, Администрация Президента, Госдума, Совет Федерации, Михаил Мишустин, ФСБ, выборы, внутренняя политика, иноагенты"
+  economics:
+    - "Bank of Russia (Elvira Nabiullina), key interest rate hikes, inflation, ruble exchange rate, federal budget deficit, oil and gas tax revenues, shadow tanker fleet, Western sanctions evasion, Chinese yuan trade settlements"
+    - "Банк России, Эльвира Набиуллина, ключевая ставка, инфляция, курс рубля, бюджет, нефтегазовые доходы, санкции, импортозамещение, юань"
+  foreign_policy:
+    - "Ministry of Foreign Affairs (MFA), Sergey Lavrov, relations with China, North Korea (mutual defense pact), Iran, India, BRICS Kazan summit, Global South diplomacy, negotiations and ultimatums to the West"
+    - "МИД РФ, Сергей Лавров, БРИКС, отношения с Китаем, КНДР, Ираном, Индией, переговоры, ультиматум, глобальный юг, дипломатия"
+  defence_security:
+    - "Ministry of Defense (Andrey Belousov), General Staff (Valery Gerasimov), military industrial complex (Rostec), missile strikes, nuclear exercises, contract soldier recruitment, frontline operations in Ukraine"
+    - "Минобороны РФ, Андрей Белоусов, Генштаб, Валерий Герасимов, СВО, Ростех, ОПК, ракетные удары, ядерные учения, контрактники, мобилизация"
+  society:
+    - "Wartime demographic pressure, veteran integration, casualty compensations, national patriotic curriculum, domestic internet censorship (RKN blocks), utility infrastructure breakdowns"
+    - "Демография, выплаты участникам СВО, ветераны, цензура, Роскомнадзор, блокировки, ЖКХ, здравоохранение, образование"
+
+geo: RU
+reddit: [geopolitics, russianpolitics, liberta]

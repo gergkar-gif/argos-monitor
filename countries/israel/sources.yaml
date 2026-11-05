@@ -1,0 +1,99 @@
+sources:
+- id: haaretz_en
+  name: Haaretz (English)
+  homepage: https://www.haaretz.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: M. Schocken & Co.
+  state_affiliated: false
+  notes: Israel's oldest independent daily paper of record, center-left editorial
+    stance.
+  feeds:
+  - url: https://www.haaretz.com/cmlink/1.4605912
+    category_hint: internal_politics
+  - url: https://www.haaretz.com/cmlink/1.4605916
+    category_hint: defence_security
+- id: times_of_israel
+  name: The Times of Israel
+  homepage: https://www.timesofisrael.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Times of Israel Group
+  state_affiliated: false
+  notes: Fast-breaking, independent digital daily of record covering politics, security
+    and regional diplomacy.
+  feeds:
+  - url: https://www.timesofisrael.com/feed/
+    category_hint: internal_politics
+- id: jerusalem_post
+  name: The Jerusalem Post
+  homepage: https://www.jpost.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Jerusalem Post Group
+  state_affiliated: false
+  notes: Major English-language broadsheet covering defense, regional politics, and
+    diplomacy.
+  feeds:
+  - url: https://www.jpost.com/rss/rssfeedsfrontpage.aspx
+    category_hint: internal_politics
+  - url: https://www.jpost.com/rss/rssfeedsdefense.aspx
+    category_hint: defence_security
+- id: ynetnews
+  name: Ynetnews
+  homepage: https://www.ynetnews.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Yedioth Media Group
+  state_affiliated: false
+  notes: Online English edition of Israel's largest circulation daily Yedioth Ahronoth.
+  feeds:
+  - url: https://www.ynetnews.com/Integration/StoryRss3089.xml
+    category_hint: internal_politics
+  - url: https://www.ynetnews.com/Integration/StoryRss3082.xml
+    category_hint: defence_security
+- id: google_news_israel_politics
+  name: Google News (Israel Knesset & Coalition)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator feed tracking Netanyahu, Knesset coalition, and judicial policy.
+  feeds:
+  - url: https://news.google.com/rss/search?q=Netanyahu+OR+Knesset+OR+%22war+cabinet%22+OR+%22Haredi+draft%22+Israel+when:3d&hl=en-IL&gl=IL&ceid=IL:en
+    category_hint: internal_politics
+- id: google_news_israel_economy
+  name: Google News (Israel Wartime Economy & Budget)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator feed tracking Bank of Israel, credit rating, deficit, and high-tech
+    sector.
+  feeds:
+  - url: https://news.google.com/rss/search?q=%22Bank+of+Israel%22+OR+%22credit+rating%22+OR+%22wartime+budget%22+Israel+when:3d&hl=en-IL&gl=IL&ceid=IL:en
+    category_hint: economics
+- id: google_news_israel_defense
+  name: Google News (Israel Defense Forces & Multi-Front Security)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator feed tracking IDF operations, air defense interceptions, and border
+    security.
+  feeds:
+  - url: https://news.google.com/rss/search?q=%22Israel+Defense+Forces%22+OR+IDF+OR+%22Iron+Dome%22+OR+Hezbollah+OR+Mossad+when:3d&hl=en-IL&gl=IL&ceid=IL:en
+    category_hint: defence_security

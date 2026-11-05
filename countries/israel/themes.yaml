@@ -1,0 +1,62 @@
+# Israel editorial policy priority themes.
+# High-weight themes for foreign-affairs analysts and diplomatic observers.
+
+themes:
+  - id: knesset_coalition_wartime_governance
+    label: "Wartime Coalition & Knesset Politics"
+    weight: 1.0
+    keywords:
+      - "netanyahu"
+      - "knesset"
+      - "coalition"
+      - "haredi draft"
+      - "conscription"
+      - "ben-gvir"
+      - "smotrich"
+      - "attorney general"
+      - "opposition"
+    description: "Netanyahu government stability, ultra-Orthodox draft exemption controversy, budget approvals, and ministerial tensions."
+
+  - id: multi_front_military_operations
+    label: "Multi-Front Defense Operations & Deterrence"
+    weight: 0.95
+    keywords:
+      - "idf"
+      - "iron dome"
+      - "david's sling"
+      - "arrow"
+      - "hezbollah"
+      - "lebanon"
+      - "gaza"
+      - "iran deterrence"
+      - "iaf"
+      - "airstrike"
+    description: "IDF ground and air operations, missile defense interceptions against ballistic attacks, targeted strikes, and deterrence."
+
+  - id: hostage_diplomacy_international_law
+    label: "Hostage Negotiations & International Legal Scrutiny"
+    weight: 0.9
+    keywords:
+      - "hostage deal"
+      - "ceasefire"
+      - "qatar"
+      - "icj"
+      - "icc arrest warrants"
+      - "un security council"
+      - "humanitarian aid"
+      - "abraham accords"
+    description: "Hostage release talks mediated by US and Qatar, ICC arrest warrant proceedings, ICJ hearings, and regional normalization diplomacy."
+
+  - id: wartime_macroeconomy_credit_ratings
+    label: "Wartime Fiscal Deficit & Tech Sector"
+    weight: 0.85
+    keywords:
+      - "bank of israel"
+      - "amir yaron"
+      - "budget deficit"
+      - "credit rating downgrade"
+      - "moody's"
+      - "shekel"
+      - "high-tech"
+      - "defense expenditure"
+    description: "Sovereign credit rating downgrades, defense spending spikes, high-tech venture capital resiliency, and currency stability."

@@ -1,0 +1,109 @@
+sources:
+- id: le_monde
+  name: Le Monde
+  homepage: https://www.lemonde.fr
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Société Éditrice du Monde
+  state_affiliated: false
+  notes: France's national newspaper of record.
+  feeds:
+  - url: https://www.lemonde.fr/politique/rss_full.xml
+    category_hint: internal_politics
+  - url: https://www.lemonde.fr/economie/rss_full.xml
+    category_hint: economics
+- id: le_figaro
+  name: Le Figaro
+  homepage: https://www.lefigaro.fr
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Dassault Group
+  state_affiliated: false
+  notes: Leading French center-right daily of record.
+  feeds:
+  - url: https://www.lefigaro.fr/rss/figaro_politique.xml
+    category_hint: internal_politics
+  - url: https://www.lefigaro.fr/rss/figaro_economie.xml
+    category_hint: economics
+- id: france_info
+  name: France Info
+  homepage: https://www.francetvinfo.fr
+  language: fr
+  scope: domestic
+  kind: official
+  governing_body: France Télévisions / Radio France
+  state_affiliated: false
+  notes: French national public service broadcast news.
+  feeds:
+  - url: https://www.francetvinfo.fr/politique.rss
+    category_hint: internal_politics
+  - url: https://www.francetvinfo.fr/economie.rss
+    category_hint: economics
+- id: les_echos
+  name: Les Echos
+  homepage: https://www.lesechos.fr
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: LVMH Media
+  state_affiliated: false
+  notes: Premier French business, macroeconomic and financial daily.
+  feeds:
+  - url: https://services.lesechos.fr/rss/les-echos-politique.xml
+    category_hint: internal_politics
+  - url: https://services.lesechos.fr/rss/les-echos-economie.xml
+    category_hint: economics
+- id: france_24_fr
+  name: France 24 (Français)
+  homepage: https://www.france24.com/fr
+  language: fr
+  scope: abroad_local
+  kind: media
+  governing_body: France Médias Monde
+  state_affiliated: false
+  notes: French international public news network.
+  feeds:
+  - url: https://www.france24.com/fr/france/rss
+    category_hint: internal_politics
+- id: google_news_france_politics
+  name: Google News (France Élysée & Assemblée Nationale)
+  homepage: https://news.google.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator feed tracking Macron, Barnier government, and legislative votes.
+  feeds:
+  - url: https://news.google.com/rss/search?q=Macron+OR+Barnier+OR+%22Assembl%C3%A9e+nationale%22+OR+%22motion+de+censure%22+when:3d&hl=fr&gl=FR&ceid=FR:fr
+    category_hint: internal_politics
+- id: google_news_france_economy
+  name: Google News (France Public Debt & Deficit)
+  homepage: https://news.google.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator feed tracking sovereign deficit, budget negotiations, and Banque
+    de France.
+  feeds:
+  - url: https://news.google.com/rss/search?q=%22d%C3%A9ficit+public%22+OR+%22Banque+de+France%22+OR+budget+2025+France+when:3d&hl=fr&gl=FR&ceid=FR:fr
+    category_hint: economics
+- id: google_news_france_defense
+  name: Google News (France Strategic Autonomy & Defense)
+  homepage: https://news.google.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator feed tracking French military posture, Lecornu, and European defense.
+  feeds:
+  - url: https://news.google.com/rss/search?q=%22Minist%C3%A8re+des+Arm%C3%A9es%22+OR+Lecornu+OR+%22autonomie+strat%C3%A9gique%22+OR+dissuasion+France+when:3d&hl=fr&gl=FR&ceid=FR:fr
+    category_hint: defence_security

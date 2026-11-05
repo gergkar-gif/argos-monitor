@@ -1,0 +1,112 @@
+sources:
+- id: bbc_uk
+  name: BBC News (UK)
+  homepage: https://www.bbc.com/news/uk
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: BBC Trust / Royal Charter
+  state_affiliated: false
+  notes: British public broadcaster of record.
+  feeds:
+  - url: https://feeds.bbci.co.uk/news/uk/rss.xml
+    category_hint: internal_politics
+  - url: https://feeds.bbci.co.uk/news/business/rss.xml
+    category_hint: economics
+  - url: https://feeds.bbci.co.uk/news/politics/rss.xml
+    category_hint: internal_politics
+- id: the_guardian_uk
+  name: The Guardian (UK)
+  homepage: https://www.theguardian.com/uk
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Scott Trust Limited
+  state_affiliated: false
+  notes: Leading British independent progressive daily.
+  feeds:
+  - url: https://www.theguardian.com/uk/rss
+    category_hint: internal_politics
+  - url: https://www.theguardian.com/politics/rss
+    category_hint: internal_politics
+- id: the_telegraph_uk
+  name: The Daily Telegraph
+  homepage: https://www.telegraph.co.uk
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Telegraph Media Group
+  state_affiliated: false
+  notes: Major center-right national broadsheet of record.
+  feeds:
+  - url: https://www.telegraph.co.uk/politics/rss.xml
+    category_hint: internal_politics
+  - url: https://www.telegraph.co.uk/business/rss.xml
+    category_hint: economics
+- id: sky_news_uk
+  name: Sky News
+  homepage: https://news.sky.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Comcast / Sky Group
+  state_affiliated: false
+  notes: Major commercial news broadcaster with fast political breaking coverage.
+  feeds:
+  - url: https://feeds.skynews.com/feeds/rss/uk.xml
+    category_hint: internal_politics
+  - url: https://feeds.skynews.com/feeds/rss/politics.xml
+    category_hint: internal_politics
+- id: gov_uk_press
+  name: UK Government (GOV.UK)
+  homepage: https://www.gov.uk
+  language: en
+  scope: domestic
+  kind: official
+  governing_body: His Majesty's Government
+  state_affiliated: true
+  notes: Official press announcements and ministerial speeches.
+  feeds:
+  - url: https://www.gov.uk/government/announcements.atom
+    category_hint: internal_politics
+- id: google_news_uk_politics
+  name: Google News (UK Westminster & Government)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator feed tracking Downing Street, Parliament, and legislative bills.
+  feeds:
+  - url: https://news.google.com/rss/search?q=%22Keir+Starmer%22+OR+Westminster+OR+Parliament+OR+%22Downing+Street%22+UK+when:3d&hl=en-GB&gl=GB&ceid=GB:en
+    category_hint: internal_politics
+- id: google_news_uk_economy
+  name: Google News (UK Treasury & Bank of England)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator feed tracking Bank of England, inflation, gilt market, and Treasury
+    budget.
+  feeds:
+  - url: https://news.google.com/rss/search?q=%22Bank+of+England%22+OR+%22Rachel+Reeves%22+OR+inflation+OR+%22UK+budget%22+when:3d&hl=en-GB&gl=GB&ceid=GB:en
+    category_hint: economics
+- id: google_news_uk_defense
+  name: Google News (UK Defense & Foreign Policy)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator feed tracking Ministry of Defence, Ukraine security assistance,
+    and FCDO diplomacy.
+  feeds:
+  - url: https://news.google.com/rss/search?q=%22Ministry+of+Defence%22+OR+%22David+Lammy%22+OR+FCDO+OR+%22Strategic+Defence+Review%22+UK+when:3d&hl=en-GB&gl=GB&ceid=GB:en
+    category_hint: defence_security

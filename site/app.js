@@ -56,21 +56,23 @@
   const GLOBAL_VIEWS = new Set(['home', 'alerts', 'disasters', 'violence', 'relations']);
 
   const REGIONS = [
-    'Southeast Asia', 'East Asia', 'South Asia', 'Central Europe', 'Balkans', 'Eastern Europe',
-    'South Caucasus', 'Central Asia', 'Middle East & Mediterranean',
-    'Sub-Saharan Africa', 'South America'
+    'North America', 'Western Europe', 'Central Europe', 'Eastern Europe', 'Balkans',
+    'South Caucasus', 'Middle East & Mediterranean', 'Central Asia', 'South Asia',
+    'East Asia', 'Southeast Asia', 'Sub-Saharan Africa', 'South America'
   ];
   const COUNTRY_REGION = {
+    united_states: 'North America',
+    france: 'Western Europe', germany: 'Western Europe', united_kingdom: 'Western Europe',
+    czechia: 'Central Europe', hungary: 'Central Europe', poland: 'Central Europe', slovakia: 'Central Europe',
+    moldova: 'Eastern Europe', russia: 'Eastern Europe', ukraine: 'Eastern Europe',
+    bosnia: 'Balkans', kosovo: 'Balkans', serbia: 'Balkans',
+    armenia: 'South Caucasus', azerbaijan: 'South Caucasus', georgia: 'South Caucasus',
+    iran: 'Middle East & Mediterranean', israel: 'Middle East & Mediterranean', turkey: 'Middle East & Mediterranean',
+    kazakhstan: 'Central Asia', kyrgyzstan: 'Central Asia', uzbekistan: 'Central Asia',
+    india: 'South Asia',
+    china: 'East Asia', japan: 'East Asia', south_korea: 'East Asia', taiwan: 'East Asia',
     cambodia: 'Southeast Asia', indonesia: 'Southeast Asia', laos: 'Southeast Asia', malaysia: 'Southeast Asia', myanmar: 'Southeast Asia',
     philippines: 'Southeast Asia', thailand: 'Southeast Asia', vietnam: 'Southeast Asia',
-    japan: 'East Asia', south_korea: 'East Asia', taiwan: 'East Asia',
-    india: 'South Asia',
-    czechia: 'Central Europe', hungary: 'Central Europe', poland: 'Central Europe', slovakia: 'Central Europe',
-    bosnia: 'Balkans', kosovo: 'Balkans', serbia: 'Balkans',
-    moldova: 'Eastern Europe', ukraine: 'Eastern Europe',
-    armenia: 'South Caucasus', azerbaijan: 'South Caucasus', georgia: 'South Caucasus',
-    kazakhstan: 'Central Asia', kyrgyzstan: 'Central Asia', uzbekistan: 'Central Asia',
-    iran: 'Middle East & Mediterranean', turkey: 'Middle East & Mediterranean',
     ethiopia: 'Sub-Saharan Africa', dr_congo: 'Sub-Saharan Africa', kenya: 'Sub-Saharan Africa', nigeria: 'Sub-Saharan Africa', south_africa: 'Sub-Saharan Africa',
     argentina: 'South America', brazil: 'South America', colombia: 'South America', mexico: 'South America',
   };

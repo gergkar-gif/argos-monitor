@@ -1,0 +1,80 @@
+# United States editorial policy priority themes.
+# High-weight themes for foreign-affairs analysts and diplomatic observers.
+
+themes:
+  - id: executive_congressional_governance
+    label: "Executive & Congressional Governance"
+    weight: 1.0
+    keywords:
+      - "white house"
+      - "executive order"
+      - "capitol hill"
+      - "senate confirmation"
+      - "debt ceiling"
+      - "house speaker"
+      - "appropriations"
+      - "veto"
+      - "filibuster"
+      - "special counsel"
+    description: "Executive branch decisions, cabinet nominations, legislative gridlock, congressional investigations, and federal budget enactments."
+
+  - id: federal_reserve_macroeconomics
+    label: "Federal Reserve & Monetary Policy"
+    weight: 0.95
+    keywords:
+      - "federal reserve"
+      - "fomc"
+      - "jerome powell"
+      - "interest rates"
+      - "treasury yields"
+      - "inflation"
+      - "cpi"
+      - "quantitative tightening"
+      - "nonfarm payrolls"
+      - "tariff"
+    description: "Federal Reserve interest rate decisions, inflation telemetry, bond market liquidity, and trade tariff implementations."
+
+  - id: strategic_deterrence_alliances
+    label: "Strategic Deterrence & Alliances"
+    weight: 0.95
+    keywords:
+      - "indo-pacific"
+      - "aukus"
+      - "quad"
+      - "nato article 5"
+      - "taiwan strait"
+      - "arms transfer"
+      - "foreign military sales"
+      - "security assistance"
+      - "deterrence"
+      - "sanctions"
+    description: "Bilateral defense pacts, Indo-Pacific containment, NATO readiness, and foreign military aid packages."
+
+  - id: defense_modernization_procurement
+    label: "Defense Procurement & Modernization"
+    weight: 0.85
+    keywords:
+      - "pentagon"
+      - "ndaa"
+      - "defense budget"
+      - "hypersonic"
+      - "nuclear triad"
+      - "naval shipbuilding"
+      - "darpa"
+      - "cyber command"
+      - "space force"
+    description: "US military budget allocations, naval fleet modernization, hypersonic weapons development, and strategic cyber operations."
+
+  - id: judicial_regulatory_framework
+    label: "Supreme Court & Federal Regulation"
+    weight: 0.75
+    keywords:
+      - "supreme court"
+      - "scotus"
+      - "constitutional"
+      - "antitrust"
+      - "ftc"
+      - "sec"
+      - "chevron deference"
+      - "regulatory authority"
+    description: "Major Supreme Court jurisprudence, antitrust enforcement against big tech, and federal agency regulatory scope."

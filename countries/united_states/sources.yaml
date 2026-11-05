@@ -1,0 +1,147 @@
+sources:
+- id: ap_news
+  name: Associated Press
+  homepage: https://apnews.com
+  language: en
+  scope: domestic
+  kind: wire
+  governing_body: Independent non-profit news agency
+  state_affiliated: false
+  notes: Primary American wire service and paper of record.
+  feeds:
+  - url: https://feedx.net/rss/apnews.xml
+    category_hint: internal_politics
+  - url: https://apnews.com/hub/politics.rss
+    category_hint: internal_politics
+- id: politico_us
+  name: Politico
+  homepage: https://www.politico.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Axel Springer SE
+  state_affiliated: false
+  notes: Leading Washington political and policy daily.
+  feeds:
+  - url: https://rss.politico.com/politics-news.xml
+    category_hint: internal_politics
+  - url: https://rss.politico.com/economy.xml
+    category_hint: economics
+- id: the_hill
+  name: The Hill
+  homepage: https://thehill.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Nexstar Media Group
+  state_affiliated: false
+  notes: Specialized Capitol Hill legislative and policy reporting.
+  feeds:
+  - url: https://thehill.com/homenews/feed/
+    category_hint: internal_politics
+  - url: https://thehill.com/policy/feed/
+    category_hint: internal_politics
+- id: npr_news
+  name: NPR
+  homepage: https://www.npr.org
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: National Public Radio Board
+  state_affiliated: false
+  notes: US national public broadcaster.
+  feeds:
+  - url: https://feeds.npr.org/1001/rss.xml
+    category_hint: internal_politics
+  - url: https://feeds.npr.org/1014/rss.xml
+    category_hint: internal_politics
+- id: defense_news
+  name: Defense News
+  homepage: https://www.defensenews.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Sightline Media Group
+  state_affiliated: false
+  notes: Specialized defense policy and Pentagon procurement reporting.
+  feeds:
+  - url: https://www.defensenews.com/arc/outboundfeeds/rss/category/pentagon/?outputType=xml
+    category_hint: defence_security
+  - url: https://www.defensenews.com/arc/outboundfeeds/rss/category/congress/?outputType=xml
+    category_hint: defence_security
+- id: state_dept
+  name: US Department of State
+  homepage: https://www.state.gov
+  language: en
+  scope: domestic
+  kind: official
+  governing_body: United States Federal Government
+  state_affiliated: true
+  notes: Official US diplomatic releases and spokesperson briefings.
+  feeds:
+  - url: https://www.state.gov/rss-feed/press-releases/feed/
+    category_hint: foreign_policy
+- id: bbc_us_canada
+  name: BBC News (US & Canada)
+  homepage: https://www.bbc.com/news/world/us_and_canada
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: BBC Trust / Royal Charter (UK)
+  state_affiliated: false
+  notes: UK public broadcaster coverage of US national affairs.
+  feeds:
+  - url: https://feeds.bbci.co.uk/news/world/us_and_canada/rss.xml
+    category_hint: internal_politics
+- id: the_guardian_us
+  name: The Guardian (US)
+  homepage: https://www.theguardian.com/us-news
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Scott Trust Limited (UK)
+  state_affiliated: false
+  notes: UK independent progressive daily US edition.
+  feeds:
+  - url: https://www.theguardian.com/us-news/rss
+    category_hint: internal_politics
+- id: google_news_us_politics
+  name: Google News (US Politics & Governance)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator feed tracking top US political and executive developments.
+  feeds:
+  - url: https://news.google.com/rss/search?q=White+House+OR+Congress+OR+Senate+OR+%22Supreme+Court%22+when:3d&hl=en-US&gl=US&ceid=US:en
+    category_hint: internal_politics
+- id: google_news_us_economy
+  name: Google News (US Federal Reserve & Macroeconomy)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator feed tracking Federal Reserve, inflation, Treasury yields, and
+    labor data.
+  feeds:
+  - url: https://news.google.com/rss/search?q=%22Federal+Reserve%22+OR+inflation+OR+%22Treasury+yields%22+OR+%22interest+rates%22+when:3d&hl=en-US&gl=US&ceid=US:en
+    category_hint: economics
+- id: google_news_us_security
+  name: Google News (US Defense & National Security)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator feed tracking Pentagon, military posture, and Indo-Pacific defense.
+  feeds:
+  - url: https://news.google.com/rss/search?q=Pentagon+OR+%22Department+of+Defense%22+OR+%22Indo-Pacific+Command%22+OR+NORAD+when:3d&hl=en-US&gl=US&ceid=US:en
+    category_hint: defence_security

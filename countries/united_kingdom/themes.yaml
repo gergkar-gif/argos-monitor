@@ -1,0 +1,60 @@
+# United Kingdom editorial policy priority themes.
+# High-weight themes for foreign-affairs analysts and diplomatic observers.
+
+themes:
+  - id: labour_fiscal_governance
+    label: "Fiscal Governance & Public Sector Reform"
+    weight: 1.0
+    keywords:
+      - "starmer"
+      - "rachel reeves"
+      - "autumn budget"
+      - "fiscal rules"
+      - "national wealth fund"
+      - "gilt market"
+      - "public spending"
+      - "tax policy"
+      - "nhs reform"
+    description: "Chancellor Rachel Reeves' fiscal framework, tax hikes, public infrastructure borrowing, NHS waiting list reductions, and labor reforms."
+
+  - id: uk_eu_diplomatic_reset
+    label: "UK-EU Strategic Reset & European Security"
+    weight: 0.95
+    keywords:
+      - "eu reset"
+      - "european union"
+      - "david lammy"
+      - "security pact"
+      - "sanitary and phytosanitary"
+      - "windsor framework"
+      - "northern ireland"
+      - "bilateral treaty"
+    description: "Post-Brexit defense and trade harmonization with Brussels, bilateral security pacts with Germany and France, and Northern Ireland stability."
+
+  - id: defence_readiness_ukraine_support
+    label: "Strategic Defence Review & Ukraine Commitment"
+    weight: 0.9
+    keywords:
+      - "strategic defence review"
+      - "john healey"
+      - "storm shadow"
+      - "defence spending target"
+      - "royal navy"
+      - "carrier strike group"
+      - "trident"
+      - "military assistance"
+    description: "UK Strategic Defence Review recommendations, 2.5% GDP defense spending roadmap, Storm Shadow cruise missile supplies, and military readiness."
+
+  - id: monetary_policy_inflation
+    label: "Bank of England & Macroeconomic Stability"
+    weight: 0.85
+    keywords:
+      - "bank of england"
+      - "monetary policy committee"
+      - "andrew bailey"
+      - "interest rate cut"
+      - "cpi inflation"
+      - "wage growth"
+      - "productivity"
+      - "sterling"
+    description: "Bank of England interest rate trajectory, persistent services inflation, productivity bottlenecks, and sterling stability."

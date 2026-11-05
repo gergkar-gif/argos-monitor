@@ -1,0 +1,59 @@
+# Germany editorial policy priority themes.
+# High-weight themes for foreign-affairs analysts and diplomatic observers.
+
+themes:
+  - id: coalition_governance_budget
+    label: "Coalition Stability & Debt Brake Controversy"
+    weight: 1.0
+    keywords:
+      - "scholz"
+      - "habeck"
+      - "lindner"
+      - "schuldenbremse"
+      - "haushalt"
+      - "bundestag"
+      - "vertrauensfrage"
+      - "neuwahlen"
+      - "koalition"
+    description: "Federal budget negotiations, constitutional debt brake enforcement, coalition friction, and early election maneuvering."
+
+  - id: industrial_competitiveness_crisis
+    label: "Industrial Competitiveness & De-Industrialization"
+    weight: 0.95
+    keywords:
+      - "volkswagen"
+      - "basf"
+      - "automobilindustrie"
+      - "de-industrialisierung"
+      - "energiepreise"
+      - "standort deutschland"
+      - "kurzarbeit"
+      - "rezession"
+    description: "Factory closures at Volkswagen, chemical sector stagnation, high electricity prices, and corporate restructuring."
+
+  - id: zeitenwende_bundeswehr_rearmament
+    label: "Zeitenwende & NATO Eastern Flank Commitment"
+    weight: 0.9
+    keywords:
+      - "zeitenwende"
+      - "bundeswehr"
+      - "pistorius"
+      - "sonderverm%c3%b6gen"
+      - "litauen-brigade"
+      - "iris-t"
+      - "taurus"
+      - "nato-ziel"
+      - "wehrpflicht"
+    description: "Modernization of the German armed forces, deployment of the permanent brigade to Lithuania, and arms procurement."
+
+  - id: european_diplomacy_ukraine_aid
+    label: "EU Leadership & Ukraine Defense Assistance"
+    weight: 0.85
+    keywords:
+      - "baerbock"
+      - "ukraine-hilfe"
+      - "deutsch-franz%c3%b6sische"
+      - "eu-erweiterung"
+      - "china de-risking"
+      - "sanktionen"
+    description: "German bilateral military aid to Ukraine, diplomatic relations with Paris and Warsaw, and de-risking from Beijing."

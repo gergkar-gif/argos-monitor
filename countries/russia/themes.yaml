@@ -1,0 +1,65 @@
+# Russia editorial policy priority themes.
+# High-weight themes for foreign-affairs analysts and diplomatic observers.
+
+themes:
+  - id: kremlin_decision_making_security_services
+    label: "Kremlin Decision-Making & Security Services"
+    weight: 1.0
+    keywords:
+      - "putin"
+      - "kremlin"
+      - "presidential decree"
+      - "security council"
+      - "fsb"
+      - "state duma"
+      - "federation council"
+      - "belousov"
+      - "patrushev"
+      - "foreign agent"
+    description: "Presidential decrees, Security Council meetings, FSB operations, personnel rotations, and state suppression of internal dissent."
+
+  - id: wartime_defense_mobilization
+    label: "Wartime Defense Production & Operations"
+    weight: 0.95
+    keywords:
+      - "rostec"
+      - "defense ministry"
+      - "special military operation"
+      - "military industrial complex"
+      - "contract soldiers"
+      - "nuclear drills"
+      - "missile strike"
+      - "geran drone"
+      - "su-57"
+      - "ammunition production"
+    description: "State defense orders, Rostec output, recruitment bounties, nuclear deterrence posturing, and high-intensity missile/drone strikes."
+
+  - id: sanctions_resistance_macroeconomy
+    label: "Sanctions Evasion & Wartime Economy"
+    weight: 0.9
+    keywords:
+      - "bank of russia"
+      - "nabiullina"
+      - "key rate"
+      - "inflation"
+      - "shadow fleet"
+      - "oil price cap"
+      - "ruble"
+      - "sanctions evasion"
+      - "parallel import"
+      - "budget deficit"
+    description: "Central bank monetary tightening to tame wartime inflation, shadow tanker exports, sovereign wealth fund drawdowns, and secondary sanctions."
+
+  - id: anti_western_geopolitical_coalition
+    label: "Eurasian Coalition & Global South Diplomacy"
+    weight: 0.85
+    keywords:
+      - "brics"
+      - "north korea troops"
+      - "iran missiles"
+      - "china trade"
+      - "sergey lavrov"
+      - "multipolar world"
+      - "de-dollarization"
+      - "global south"
+    description: "Strategic partnerships with China, arms and troop agreements with North Korea, Iranian drone transfers, and diplomatic rallies at BRICS."

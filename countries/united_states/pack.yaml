@@ -1,0 +1,88 @@
+# United States country pack.
+id: united_states
+name: United States
+region: North America
+language: en
+abroad_label: International & foreign coverage
+
+mention:
+  - "united states"
+  - "u.s."
+  - "us"
+  - "america"
+  - "american"
+  - "washington"
+  - "white house"
+  - "capitol hill"
+  - "congress"
+  - "senate"
+  - "house of representatives"
+  - "pentagon"
+  - "federal reserve"
+  - "supreme court"
+  - "biden"
+  - "trump"
+  - "harris"
+  - "state department"
+  - "blinken"
+  - "treasury"
+
+mention_regex: ['\b(?:united states|u\.s\.|washington|white house|capitol hill|congress|senate|pentagon|federal reserve|supreme court)\b']
+mention_section: "US"
+
+url_sections:
+  foreign: [world, international, global]
+  skip: [sport, sports, lifestyle, entertainment, celebrity, culture, travel, auto, food, tech/gadgets, astrology, weather]
+
+aggregator_outlets:
+  domestic:
+    - "associated press"
+    - "ap news"
+    - "reuters"
+    - "the new york times"
+    - "the washington post"
+    - "the wall street journal"
+    - "politico"
+    - "the hill"
+    - "bloomberg"
+    - "cnn"
+    - "nbc news"
+    - "cbs news"
+    - "abc news"
+    - "fox news"
+    - "npr"
+    - "axios"
+    - "defense news"
+    - "foreign policy"
+    - "foreign affairs"
+    - "usa today"
+    - "cnbc"
+  abroad_local:
+    - "bbc news us"
+    - "the guardian us"
+    - "al jazeera us"
+    - "financial times"
+
+excerpt:
+  dateline: '^\s*(?:WASHINGTON|NEW YORK|AP|REUTERS|WASHINGTON \(AP\)|WASHINGTON \(Reuters\))\s*[-–—:]\s*'
+  noise: '^(Photo|Credit|Read more|Watch|Listen|\(|\[)'
+
+classify:
+  internal_politics:
+    - "White House executive orders, Congressional legislation, Senate confirmations, House oversight, Supreme Court decisions, federal election campaigns, Department of Justice special counsel, Cabinet governance"
+    - "President, Congress, Senate, House of Representatives, Capitol Hill, Supreme Court, Department of Justice, federal budget, debt ceiling, electoral politics"
+  economics:
+    - "Federal Reserve monetary policy, Jerome Powell, interest rates, inflation (CPI/PCE), Bureau of Labor Statistics nonfarm payrolls, US Treasury yields, GDP growth, trade tariffs, antitrust enforcement"
+    - "Federal Reserve, inflation, interest rates, Wall Street, S&P 500, Treasury bonds, employment, trade deficit, tariff policy, corporate earnings, antitrust"
+  foreign_policy:
+    - "State Department diplomacy, Antony Blinken, NATO alliance coordination, Indo-Pacific deterrence, US-China strategic competition, Middle East diplomacy, foreign military sales, bilateral treaties"
+    - "State Department, foreign policy, diplomacy, NATO, Indo-Pacific, Taiwan defense commitment, Ukraine security assistance, sanctions enforcement, bilateral summits"
+  defence_security:
+    - "Department of Defense, Pentagon, Lloyd Austin, Joint Chiefs of Staff, US Indo-Pacific Command, US Central Command, defense budget (NDAA), naval carrier strike groups, NORAD, DARPA, cybersecurity CISA"
+    - "Pentagon, Department of Defense, military procurement, carrier strike group, missile defense, nuclear triad, NORAD, Special Operations, Cyber Command, defense industry"
+  society:
+    - "Southern border security, immigration enforcement (CBP, ICE), healthcare policy, disaster relief (FEMA), civil rights, federal education policy, public health CDC"
+    - "Border security, immigration, FEMA disaster relief, federal healthcare, CDC, gun policy, infrastructure investment, veteran affairs"
+
+geo: US
+reddit: [geopolitics, politics, economics, foreignpolicy]

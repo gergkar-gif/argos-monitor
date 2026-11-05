@@ -1,0 +1,78 @@
+# France country pack.
+id: france
+name: France
+region: Western Europe
+language: fr
+abroad_label: International & regional European outlets
+
+mention:
+  - "france"
+  - "french"
+  - "paris"
+  - "elysee"
+  - "élysée"
+  - "macron"
+  - "emmanuel macron"
+  - "barnier"
+  - "michel barnier"
+  - "assemblee nationale"
+  - "assemblée nationale"
+  - "senat"
+  - "sénat"
+  - "matignon"
+  - "banque de france"
+  - "quai d'orsay"
+  - "marine le pen"
+  - "rn"
+  - "nfp"
+
+mention_regex: ['\b(?:france|french|macron|barnier|matignon)\b', 'élysée', 'assemblée nationale', 'macron', 'barnier']
+mention_section: "France"
+
+url_sections:
+  foreign: [international, monde, planet]
+  skip: [sport, sports, culture, style, voyages, automobile, people, cuisine, meteo]
+
+aggregator_outlets:
+  domestic:
+    - "le monde"
+    - "le figaro"
+    - "france info"
+    - "franceinfo"
+    - "les echos"
+    - "liberation"
+    - "libération"
+    - "la tribune"
+    - "l'opinion"
+    - "mediapart"
+    - "afp"
+  abroad_local:
+    - "france 24"
+    - "rfi"
+    - "politico europe"
+    - "reuters"
+    - "le soir"
+
+excerpt:
+  dateline: '^\s*(?:PARIS|AFP|REUTERS|LE MONDE)\s*[-–—:]\s*'
+  noise: '^(Photo|Crédit|Lire aussi|Photo|Credit|\(|\[)'
+
+classify:
+  internal_politics:
+    - "President Emmanuel Macron, Élysée Palace, Prime Minister Michel Barnier, Matignon, Assemblée nationale no-confidence votes (motion de censure), Rassemblement National (RN), Nouveau Front Populaire (NFP), constitutional court"
+    - "Emmanuel Macron, Élysée, Michel Barnier, Matignon, Assemblée nationale, motion de censure, budget 2025, dissolution, RN, NFP, politique intérieure"
+  economics:
+    - "Banque de France, sovereign debt deficit, EU excessive deficit procedure, bond spread against German Bunds (OAT-Bund spread), tax hikes, CAC 40, pension reform sustainability, industrial energy policy"
+    - "Banque de France, déficit public, dette souveraine, taux OAT, budget, impôts, CAC 40, inflation, pouvoir d'achat, compétitivité"
+  foreign_policy:
+    - "Quai d'Orsay, Ministry for Europe and Foreign Affairs, European strategic autonomy, Franco-German coordination, Ukraine defense coalitions (Mirage-2000 transfers), Middle East diplomacy (Lebanon ceasefire), Indo-Pacific posture"
+    - "Quai d'Orsay, diplomatie française, autonomie stratégique européenne, coalition Ukraine, Mirage 2000, Liban, Moyen-Orient, Union européenne"
+  defence_security:
+    - "Ministry of Armed Forces (Sébastien Lecornu), Military Programming Law (Loi de programmation militaire - LPM), nuclear deterrence (Force de frappe), naval operations (Charles de Gaulle carrier), defense industry (Dassault, Thales, Naval Group)"
+    - "Ministère des Armées, Sébastien Lecornu, LPM, dissuasion nucléaire, Rafale, porte-avions Charles de Gaulle, industrie de défense, renseignement DGSE"
+  society:
+    - "Immigration bill implementation, secularism (laïcité), public hospital crisis, agricultural protests, school security, overseas territories (New Caledonia)"
+    - "Immigration, laïcité, hôpital public, agriculteurs, colère paysanne, Nouvelle-Calédonie, éducation nationale"
+
+geo: FR
+reddit: [geopolitics, france, frenchpolitics]

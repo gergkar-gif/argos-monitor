@@ -1,0 +1,91 @@
+# China country pack.
+id: china
+name: China
+region: East Asia
+language: zh
+abroad_label: Overseas Chinese & international outlets
+
+mention:
+  - "china"
+  - "chinese"
+  - "prc"
+  - "beijing"
+  - "shanghai"
+  - "shenzhen"
+  - "guangdong"
+  - "xi jinping"
+  - "li qiang"
+  - "wang yi"
+  - "ccp"
+  - "pla"
+  - "politburo"
+  - "state council"
+  - "zhongnanhai"
+  - "taiwan strait"
+  - "south china sea"
+  - "belt and road"
+  - "中国"
+  - "中共"
+  - "北京"
+  - "习近平"
+  - "李强"
+  - "王毅"
+  - "国务院"
+  - "中央政治局"
+  - "解放军"
+
+mention_regex: ['\b(?:china|chinese|beijing|xi jinping|ccp|pla|zhongnanhai)\b', '中国', '中共', '北京', '习近平', '解放军']
+mention_section: "China"
+
+url_sections:
+  foreign: [world, international, global, shijie]
+  skip: [sports, tiyu, entertainment, yule, lifestyle, fashion, travel, horoscope]
+
+aggregator_outlets:
+  domestic:
+    - "xinhua"
+    - "xinhua news agency"
+    - "global times"
+    - "china daily"
+    - "people's daily"
+    - "cgtn"
+    - "caixin"
+    - "caixin global"
+    - "scmp"
+    - "south china morning post"
+    - "the paper"
+    - "yicai"
+  abroad_local:
+    - "bbc news zhongwen"
+    - "bbc chinese"
+    - "rfi chinese"
+    - "rfa chinese"
+    - "voice of america chinese"
+    - "voa chinese"
+    - "zaobao"
+    - "lianhe zaobao"
+    - "dw chinese"
+
+excerpt:
+  dateline: '^\s*(?:BEIJING|SHANGHAI|HONG KONG|XINHUA|GLOBAL TIMES|SCMP)\s*[-–—:]\s*'
+  noise: '^(Photo|Credit|Source|Editor|责任编辑|来源|\(|\[)'
+
+classify:
+  internal_politics:
+    - "Chinese Communist Party (CCP), Central Committee plenums, Politburo Standing Committee, General Secretary Xi Jinping, National People's Congress (NPC), anti-corruption CCDI probes, provincial leadership rotations"
+    - "中共中央, 政治局常委会, 习近平, 全国人大, 国务院, 中纪委, 反腐败, 人事任免, 统战部"
+  economics:
+    - "People's Bank of China (PBOC) monetary policy, GDP growth targets, real estate debt restructuring, local government debt swaps, export subsidies, semiconductor self-reliance, electric vehicles (BYD, CATL), industrial policy"
+    - "中国人民银行, 人民币汇率, GDP增速, 房地产市场, 地方债, 半导体自主可控, 新能源汽车, 出口贸易, 产业政策"
+  foreign_policy:
+    - "Ministry of Foreign Affairs (MFA), Wang Yi, Belt and Road Initiative (BRI), BRICS cooperation, Shanghai Cooperation Organisation (SCO), relations with Global South, US-China strategic dialogue, EU trade disputes"
+    - "外交部, 王毅, 一带一路, 金砖国家, 上海合作组织, 中美关系, 中欧经贸, 战略合作, 峰会外交"
+  defence_security:
+    - "People's Liberation Army (PLA), Central Military Commission (CMC), Eastern Theater Command, Taiwan Strait encirclement exercises, South China Sea coast guard patrols, hypersonic DF missiles, carrier strike groups"
+    - "中国人民解放军, 中央军委, 东部战区, 联合利剑, 台海局势, 南海巡航, 航空母舰, 高超音速导弹, 军费预算"
+  society:
+    - "Demographic decline, birth rate policies, urban youth unemployment, social welfare reforms, food security, extreme weather disaster relief, public security surveillance"
+    - "人口结构, 生育政策, 青年失业率, 社会保障, 粮食安全, 防汛抗旱, 公共安全"
+
+geo: CN
+reddit: [geopolitics, china, chinanews]

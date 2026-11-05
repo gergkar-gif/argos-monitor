@@ -1,0 +1,108 @@
+sources:
+- id: tagesschau
+  name: Tagesschau (ARD)
+  homepage: https://www.tagesschau.de
+  language: de
+  scope: domestic
+  kind: official
+  governing_body: ARD (Consortium of public broadcasters in Germany)
+  state_affiliated: false
+  notes: German public broadcaster flagship television news and digital paper of record.
+  feeds:
+  - url: https://www.tagesschau.de/inland/index~rss2.xml
+    category_hint: internal_politics
+  - url: https://www.tagesschau.de/wirtschaft/index~rss2.xml
+    category_hint: economics
+  - url: https://www.tagesschau.de/investigativ/index~rss2.xml
+    category_hint: internal_politics
+- id: zdf_heute
+  name: ZDFheute
+  homepage: https://www.zdf.de/nachrichten
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Zweites Deutsches Fernsehen (Public Television)
+  state_affiliated: false
+  notes: German national public television news service.
+  feeds:
+  - url: https://www.zdf.de/rss/zdf/nachrichten
+    category_hint: internal_politics
+- id: der_spiegel
+  name: Der Spiegel
+  homepage: https://www.spiegel.de
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Spiegel-Verlag Rudolf Augstein GmbH
+  state_affiliated: false
+  notes: Germany's leading investigative and political weekly.
+  feeds:
+  - url: https://www.spiegel.de/politik/deutschland/index.rss
+    category_hint: internal_politics
+  - url: https://www.spiegel.de/wirtschaft/index.rss
+    category_hint: economics
+- id: handelsblatt
+  name: Handelsblatt
+  homepage: https://www.handelsblatt.com
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Handelsblatt Media Group
+  state_affiliated: false
+  notes: Germany's premier business and financial daily of record.
+  feeds:
+  - url: https://www.handelsblatt.com/contentexport/feed/politik
+    category_hint: internal_politics
+  - url: https://www.handelsblatt.com/contentexport/feed/unternehmen
+    category_hint: economics
+- id: dw_deutsch
+  name: Deutsche Welle (Deutsch)
+  homepage: https://www.dw.com/de
+  language: de
+  scope: abroad_local
+  kind: media
+  governing_body: Deutsche Welle (German public international broadcaster)
+  state_affiliated: false
+  notes: International public broadcaster coverage of German politics and diplomacy.
+  feeds:
+  - url: https://rss.dw.com/rdf/rss-de-all
+    category_hint: internal_politics
+- id: google_news_germany_politics
+  name: Google News (Germany Politics & Coalition)
+  homepage: https://news.google.com
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator feed tracking Federal Chancellery, Bundestag, and party politics.
+  feeds:
+  - url: https://news.google.com/rss/search?q=Scholz+OR+Bundestag+OR+Koalition+OR+Bundesregierung+when:3d&hl=de&gl=DE&ceid=DE:de
+    category_hint: internal_politics
+- id: google_news_germany_economy
+  name: Google News (Germany Industry & Economy)
+  homepage: https://news.google.com
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator feed tracking German auto industry, energy transition, and recession.
+  feeds:
+  - url: https://news.google.com/rss/search?q=Bundesbank+OR+Schuldenbremse+OR+Wirtschaftskrise+OR+Industrie+Deutschland+when:3d&hl=de&gl=DE&ceid=DE:de
+    category_hint: economics
+- id: google_news_germany_security
+  name: Google News (Germany Bundeswehr & Zeitenwende)
+  homepage: https://news.google.com
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator feed tracking Bundeswehr rearmament, Pistorius, and NATO deterrence.
+  feeds:
+  - url: https://news.google.com/rss/search?q=Bundeswehr+OR+Pistorius+OR+Zeitenwende+OR+R%C3%BCstungsausgaben+when:3d&hl=de&gl=DE&ceid=DE:de
+    category_hint: defence_security

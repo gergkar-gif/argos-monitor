@@ -518,13 +518,80 @@ RATINGS = {
     "politico.cd": {"bias": "center", "alignment": "independent", "factuality": "mostly_factual"},
     "agence congolaise de presse": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mostly_factual"},
     "acp": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mostly_factual"},
+
+    # --- Tier 1 Global Powers ---
+    # United States
+    "associated press": {"bias": "center", "alignment": "independent", "factuality": "very_high"},
+    "ap news": {"bias": "center", "alignment": "independent", "factuality": "very_high"},
+    "the hill": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "defense news": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "us department of state": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "high"},
+
+    # China
+    "xinhua": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mixed"},
+    "xinhua news agency": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mixed"},
+    "global times": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mixed"},
+    "china daily": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mixed"},
+    "scmp": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "south china morning post": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "caixin": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "caixin global": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "lianhe zaobao": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "zaobao": {"bias": "center", "alignment": "independent", "factuality": "high"},
+
+    # Russia
+    "tass": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mixed"},
+    "ria novosti": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mixed"},
+    "interfax": {"bias": "center-right", "alignment": "independent", "factuality": "mostly_factual"},
+    "kommersant": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "meduza": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "the moscow times": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "moscow times": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "novaya gazeta europe": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+
+    # United Kingdom
+    "the telegraph": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+    "daily telegraph": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+    "the times": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+    "sky news": {"bias": "center", "alignment": "independent", "factuality": "high"},
+
+    # Germany
+    "tagesschau": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "zdf": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "zdfheute": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "der spiegel": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "spiegel": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "handelsblatt": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+    "die zeit": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "zeit online": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "süddeutsche zeitung": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "frankfurter allgemeine": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+    "faz": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+
+    # France
+    "le monde": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "le figaro": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+    "france info": {"bias": "center", "alignment": "public_broadcaster", "factuality": "high"},
+    "franceinfo": {"bias": "center", "alignment": "public_broadcaster", "factuality": "high"},
+    "les echos": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+    "libération": {"bias": "left", "alignment": "independent", "factuality": "high"},
+    "liberation": {"bias": "left", "alignment": "independent", "factuality": "high"},
+
+    # Israel
+    "haaretz": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "the times of israel": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "times of israel": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "the jerusalem post": {"bias": "center-right", "alignment": "independent", "factuality": "mostly_factual"},
+    "jerusalem post": {"bias": "center-right", "alignment": "independent", "factuality": "mostly_factual"},
+    "ynet": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "ynetnews": {"bias": "center", "alignment": "independent", "factuality": "high"},
 }
 
 
 def clean_name(name):
     n = re.split(r"\s+[|\-–—·]\s+|\s*\(", str(name or "").lower())[0].strip()
     n = re.sub(r"^(the|báo|gazeta)\s+", "", n).strip()
-    return re.sub(r"\.(hu|sk|cz|kz|uz|md|ge|az|rs|vn|com|org|net|tv|ro|pl|kg|ba|et|za|ng|tr|jp|kr|tw|ph|id|my|th|mm|kh|la|co|ar|br|ua|ir|in|mx|cd)$", "", n).strip()
+    return re.sub(r"\.(hu|sk|cz|kz|uz|md|ge|az|rs|vn|com|org|net|tv|ro|pl|kg|ba|et|za|ng|tr|jp|kr|tw|ph|id|my|th|mm|kh|la|co|ar|br|ua|ir|in|mx|cd|us|uk|cn|ru|de|fr|il)$", "", n).strip()
 
 
 _COMPILED_PATTERNS = [

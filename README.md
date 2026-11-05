@@ -72,8 +72,46 @@ Each monitored country is defined declaratively in `countries/<id>/` with zero c
 - **`sources.yaml`** — Curated media directory across three scopes (`domestic`, `abroad_local`, `international`) with ownership metadata and `state_affiliated` flags.
 - **`themes.yaml`** — Bilingual foreign-desk priority themes, weights, keywords, and semantic descriptions tailored to the country's geopolitical fault lines.
 
-### Currently Active Country Packs (38 Countries across 11 Regional Desks)
+### Currently Active Country Packs (45 Countries across 13 Regional Desks)
 
+- **North America (1 Desk):**
+  - **United States** (`countries/united_states/`) — Papers of record (*AP*, *Politico*, *The Hill*, *NPR*, *Defense News*), official White House / State Dept briefings, and international perspectives (`en`).
+- **Western Europe (3 Desks):**
+  - **United Kingdom** (`countries/united_kingdom/`) — National papers of record and broadcasters (*BBC News*, *The Guardian*, *The Telegraph*, *Sky News*), official Downing Street releases, and global European coverage (`en`).
+  - **Germany** (`countries/germany/`) — Public broadcasters (*Tagesschau / ARD*, *ZDFheute*), leading news weeklies (*Der Spiegel*), and financial dailies (*Handelsblatt*) (`de` / `en`).
+  - **France** (`countries/france/`) — Papers of record (*Le Monde*, *Le Figaro*), public broadcaster (*France Info*, *France 24*), and macroeconomic daily (*Les Echos*) (`fr` / `en`).
+- **Central Europe (4 Desks - Visegrad Four / V4):**
+  - **Hungary** (`countries/hungary/`) — Pro-government and independent domestic outlets, cross-border Hungarian press, and EU/international coverage (`hu` / `en`).
+  - **Poland** (`countries/poland/`) — State wire (*PAP* via Google News), major independent/commercial broadcasters (*RMF24*, *TVN24*, *Polsat*), investigative press (*OKO.press*), and English briefers (*Notes from Poland*) (`pl` / `en`).
+  - **Czechia** (`countries/czechia/`) — Public broadcasters (*ČT24*, *Český rozhlas*), national wires (*ČTK*), leading dailies (*Seznam Zprávy*, *Novinky*, *Deník N*), and investigative weeklies (*Respekt*) (`cs` / `en`).
+  - **Slovakia** (`countries/slovakia/`) — Independent Bratislava dailies (*Denník N*, *Aktuality.sk*, *Pravda*, *The Slovak Spectator*), state wire/broadcaster (*TASR* / *STVR*), and Czech/Visegrád coverage (`sk` / `en`).
+- **Eastern Europe (3 Desks):**
+  - **Russia** (`countries/russia/`) — State wire agencies and financial dailies (*TASS*, *Interfax*, *Kommersant*) contrasted against exiled independent journalism (*Meduza*, *The Moscow Times*, *Radio Svoboda*) (`ru` / `en`).
+  - **Ukraine** (`countries/ukraine/`) — State wire (*Ukrinform*), leading independent wartime press (*The Kyiv Independent*, *Ukrainska Pravda*, *NV*, *Babel*, *Interfax-Ukraine*), and diaspora coverage (*Radio Svoboda*) (`uk` / `en`).
+  - **Moldova** (`countries/moldova/`) — Investigative & independent Chișinău press (*Ziarul de Gardă*, *NewsMaker*, *Deschide.md*), state wire (*Moldpres* / *TRM*), and Romanian/EU regional coverage (`ro` / `en`).
+- **Balkans (3 Desks):**
+  - **Serbia** (`countries/serbia/`) — Public broadcaster (*RTS*) alongside independent national & regional investigative outlets (*N1*, *Danas*, *Nova.rs*, *Južne vesti*, *Autonomija*) (`sr` / `en`).
+  - **Bosnia and Herzegovina** (`countries/bosnia/`) — Investigative centers (*CIN*, *Istraga.ba*), daily paper of record (*Oslobođenje*), state wire (*FENA*), and regional Balkan coverage (*Al Jazeera Balkans*, *RFE/RL*) (`bs` / `en`).
+  - **Kosovo** (`countries/kosovo/`) — Paper of record (*Koha Ditore*), public broadcaster (*RTK*), digital media (*Gazeta Express*, *Kallxo*), and North Mitrovica local coverage (*KoSSev*) (`sq` / `sr` / `en`).
+- **South Caucasus (3 Desks):**
+  - **Georgia** (`countries/georgia/`) — Bilingual independent daily (*Civil.ge* in Georgian & English), Caucasus investigative outlets (*OC Media*, *JAMnews*), and official government press (`ka` / `en`).
+  - **Azerbaijan** (`countries/azerbaijan/`) — Official/pro-government Baku wires (*AZERTAC*, *Trend*, *APA*) contrasted against exiled independent outlets (*Meydan TV* in Azerbaijani & English, *OC Media*) (`az` / `en`).
+  - **Armenia** (`countries/armenia/`) — Investigative & independent Yerevan outlets (*Hetq* in Armenian & English, *Factor.am*, *CivilNet*), state wire (*Armenpress*), and Caucasus regional press (`hy` / `en`).
+- **Middle East & Mediterranean (3 Desks):**
+  - **Israel** (`countries/israel/`) — Independent papers of record (*Haaretz*, *The Times of Israel*, *Ynetnews*, *The Jerusalem Post*) and regional security reporting (`he` / `en`).
+  - **Turkey** (`countries/turkey/`) — State wire & pro-government press (*Anadolu Agency*, *Daily Sabah*) contrasted with independent/opposition dailies (*Cumhuriyet*, *Sözcü*, *BirGün*, *Bianet*) and diaspora coverage (`tr` / `en`).
+  - **Iran** (`countries/iran/`) — Statutory news agencies and state media (*IRNA*, *Mehr*, *Tehran Times*) contrasted with prominent Persian exile and diaspora journalism (*BBC Persian*, *Iran International*, *Radio Farda*, *IranWire*) (`fa` / `en`).
+- **Central Asia (3 Desks):**
+  - **Kazakhstan** (`countries/kazakhstan/`) — State-backed daily (*The Astana Times*), business & national press (*Kursiv Media* in Russian & English, *Tengrinews*), and regional coverage (*The Times of Central Asia*) (`ru` / `en`).
+  - **Uzbekistan** (`countries/uzbekistan/`) — Tashkent digital dailies (*Gazeta.uz*, *Kun.uz*, *Daryo*), state wire (*UzA*), and exiled/regional coverage (*RFE/RL Ozodlik*, *The Times of Central Asia*) (`uz` / `en`).
+  - **Kyrgyzstan** (`countries/kyrgyzstan/`) — Independent investigative & digital outlets (*Kloop*, *24.kg*, *Kaktus.media*), state news agency (*Kabar*), and regional/exile coverage (*RFE/RL Azattyk*) (`ky` / `ru` / `en`).
+- **South Asia (1 Desk):**
+  - **India** (`countries/india/`) — National papers of record (*The Hindu*, *The Indian Express*, *The Times of India*), macroeconomic daily (*Mint*), and investigative digital journalism (*The Wire*, *Scroll.in*) (`en`).
+- **East Asia (4 Desks):**
+  - **China** (`countries/china/`) — Statutory state media (*Xinhua*, *Global Times*, *China Daily*) contrasted with Hong Kong papers of record (*SCMP*), financial dailies (*Caixin*), and diaspora coverage (*Lianhe Zaobao*, *BBC Chinese*) (`zh` / `en`).
+  - **Japan** (`countries/japan/`) — Leading national dailies (*The Mainichi*, *Asahi Shimbun*, *The Japan Times*), state/independent wires (*Kyodo News*), and East Asian security coverage (`ja` / `en`).
+  - **South Korea** (`countries/south_korea/`) — Papers of record (*Dong-A Ilbo*, *Chosun Ilbo*, *The Korea Herald*, *The Korea Times*), state agency (*Yonhap*), and inter-Korean affairs (`ko` / `en`).
+  - **Taiwan** (`countries/taiwan/`) — Central news agency (*Focus Taiwan* / *CNA*), national press (*Taipei Times*, *Taiwan News*), and Cross-Strait security reporting (`zh` / `en`).
 - **Southeast Asia (8 Desks):**
   - **Vietnam** (`countries/vietnam/`) — Domestic state/party press, overseas Vietnamese media, and international wires (`vi` / `en`).
   - **Cambodia** (`countries/cambodia/`) — Khmer and English domestic press, exile/diaspora coverage, and regional ASEAN reporting (`km` / `en`).
@@ -83,35 +121,6 @@ Each monitored country is defined declaratively in `countries/<id>/` with zero c
   - **Philippines** (`countries/philippines/`) — Major national dailies (*Rappler*, *Inquirer*, *Philstar*, *GMA*, *BusinessWorld*, *Manila Times*), state wire (*PNA*), and West Philippine Sea security coverage (`en`).
   - **Indonesia** (`countries/indonesia/`) — State wire (*ANTARA* in Indonesian & English), financial press (*CNBC Indonesia*), and national/international coverage (`id` / `en`).
   - **Malaysia** (`countries/malaysia/`) — National and financial dailies (*Free Malaysia Today*, *Malay Mail*, *The Star*, *New Straits Times*, *The Edge*), state agency (*BERNAMA*), and ASEAN regional reporting (`ms` / `en`).
-- **East Asia (3 Desks):**
-  - **Japan** (`countries/japan/`) — Leading national dailies (*The Mainichi*, *Asahi Shimbun*, *The Japan Times*), state/independent wires (*Kyodo News*), and East Asian security coverage (`ja` / `en`).
-  - **South Korea** (`countries/south_korea/`) — Papers of record (*Dong-A Ilbo*, *Chosun Ilbo*, *The Korea Herald*, *The Korea Times*), state agency (*Yonhap*), and inter-Korean affairs (`ko` / `en`).
-  - **Taiwan** (`countries/taiwan/`) — Central news agency (*Focus Taiwan* / *CNA*), national press (*Taipei Times*, *Taiwan News*), and Cross-Strait security reporting (`zh` / `en`).
-- **South Asia (1 Desk):**
-  - **India** (`countries/india/`) — National papers of record (*The Hindu*, *The Indian Express*, *The Times of India*), macroeconomic daily (*Mint*), and investigative digital journalism (*The Wire*, *Scroll.in*) (`en`).
-- **Central Europe (4 Desks - Visegrad Four / V4):**
-  - **Hungary** (`countries/hungary/`) — Pro-government and independent domestic outlets, cross-border Hungarian press, and EU/international coverage (`hu` / `en`).
-  - **Poland** (`countries/poland/`) — State wire (*PAP* via Google News), major independent/commercial broadcasters (*RMF24*, *TVN24*, *Polsat*), investigative press (*OKO.press*), and English briefers (*Notes from Poland*) (`pl` / `en`).
-  - **Czechia** (`countries/czechia/`) — Public broadcasters (*ČT24*, *Český rozhlas*), national wires (*ČTK*), leading dailies (*Seznam Zprávy*, *Novinky*, *Deník N*), and investigative weeklies (*Respekt*) (`cs` / `en`).
-  - **Slovakia** (`countries/slovakia/`) — Independent Bratislava dailies (*Denník N*, *Aktuality.sk*, *Pravda*, *The Slovak Spectator*), state wire/broadcaster (*TASR* / *STVR*), and Czech/Visegrád coverage (`sk` / `en`).
-- **Balkans (3 Desks):**
-  - **Serbia** (`countries/serbia/`) — Public broadcaster (*RTS*) alongside independent national & regional investigative outlets (*N1*, *Danas*, *Nova.rs*, *Južne vesti*, *Autonomija*) (`sr` / `en`).
-  - **Bosnia and Herzegovina** (`countries/bosnia/`) — Investigative centers (*CIN*, *Istraga.ba*), daily paper of record (*Oslobođenje*), state wire (*FENA*), and regional Balkan coverage (*Al Jazeera Balkans*, *RFE/RL*) (`bs` / `en`).
-  - **Kosovo** (`countries/kosovo/`) — Paper of record (*Koha Ditore*), public broadcaster (*RTK*), digital media (*Gazeta Express*, *Kallxo*), and North Mitrovica local coverage (*KoSSev*) (`sq` / `sr` / `en`).
-- **Eastern Europe (2 Desks):**
-  - **Ukraine** (`countries/ukraine/`) — State wire (*Ukrinform*), leading independent wartime press (*The Kyiv Independent*, *Ukrainska Pravda*, *NV*, *Babel*, *Interfax-Ukraine*), and diaspora coverage (*Radio Svoboda*) (`uk` / `en`).
-  - **Moldova** (`countries/moldova/`) — Investigative & independent Chișinău press (*Ziarul de Gardă*, *NewsMaker*, *Deschide.md*), state wire (*Moldpres* / *TRM*), and Romanian/EU regional coverage (`ro` / `en`).
-- **South Caucasus (3 Desks):**
-  - **Georgia** (`countries/georgia/`) — Bilingual independent daily (*Civil.ge* in Georgian & English), Caucasus investigative outlets (*OC Media*, *JAMnews*), and official government press (`ka` / `en`).
-  - **Azerbaijan** (`countries/azerbaijan/`) — Official/pro-government Baku wires (*AZERTAC*, *Trend*, *APA*) contrasted against exiled independent outlets (*Meydan TV* in Azerbaijani & English, *OC Media*) (`az` / `en`).
-  - **Armenia** (`countries/armenia/`) — Investigative & independent Yerevan outlets (*Hetq* in Armenian & English, *Factor.am*, *CivilNet*), state wire (*Armenpress*), and Caucasus regional press (`hy` / `en`).
-- **Central Asia (3 Desks):**
-  - **Kazakhstan** (`countries/kazakhstan/`) — State-backed daily (*The Astana Times*), business & national press (*Kursiv Media* in Russian & English, *Tengrinews*), and regional coverage (*The Times of Central Asia*) (`ru` / `en`).
-  - **Uzbekistan** (`countries/uzbekistan/`) — Tashkent digital dailies (*Gazeta.uz*, *Kun.uz*, *Daryo*), state wire (*UzA*), and exiled/regional coverage (*RFE/RL Ozodlik*, *The Times of Central Asia*) (`uz` / `en`).
-  - **Kyrgyzstan** (`countries/kyrgyzstan/`) — Independent investigative & digital outlets (*Kloop*, *24.kg*, *Kaktus.media*), state news agency (*Kabar*), and regional/exile coverage (*RFE/RL Azattyk*) (`ky` / `ru` / `en`).
-- **Middle East & Mediterranean (2 Desks):**
-  - **Turkey** (`countries/turkey/`) — State wire & pro-government press (*Anadolu Agency*, *Daily Sabah*) contrasted with independent/opposition dailies (*Cumhuriyet*, *Sözcü*, *BirGün*, *Bianet*) and diaspora coverage (`tr` / `en`).
-  - **Iran** (`countries/iran/`) — Statutory news agencies and state media (*IRNA*, *Mehr*, *Tehran Times*) contrasted with prominent Persian exile and diaspora journalism (*BBC Persian*, *Iran International*, *Radio Farda*, *IranWire*) (`fa` / `en`).
 - **Sub-Saharan Africa (5 Desks):**
   - **South Africa** (`countries/south_africa/`) — Domestic national press, regional African outlets, and international coverage (`en`).
   - **DR Congo** (`countries/dr_congo/`) — Kinshasa digital press (*Actualite.cd*), UN public service broadcaster (*Radio Okapi*), M23 conflict monitors, and critical minerals coverage (`fr` / `en`).

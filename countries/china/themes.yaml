@@ -1,0 +1,80 @@
+# China editorial policy priority themes.
+# High-weight themes for foreign-affairs analysts and diplomatic observers.
+
+themes:
+  - id: party_state_consolidation
+    label: "Party-State Consolidation & Personnel"
+    weight: 1.0
+    keywords:
+      - "xi jinping"
+      - "politburo"
+      - "central committee"
+      - "standing committee"
+      - "ccdi"
+      - "anti-corruption"
+      - "national people's congress"
+      - "two sessions"
+      - "party plenum"
+      - "ideological discipline"
+    description: "CCP leadership decisions, anti-corruption purges, Central Committee plenums, personnel changes in the military and provinces."
+
+  - id: industrial_policy_decoupling
+    label: "Industrial Policy & Tech Self-Reliance"
+    weight: 0.95
+    keywords:
+      - "semiconductor"
+      - "smic"
+      - "huawei"
+      - "electric vehicle"
+      - "byd"
+      - "catl"
+      - "export controls"
+      - "rare earths"
+      - "self-reliance"
+      - "supply chain"
+    description: "Chinese industrial upgrading, semiconductor fabrication under US sanctions, green energy manufacturing, and critical mineral restrictions."
+
+  - id: cross_strait_maritime_security
+    label: "Cross-Strait & Maritime Sovereignty"
+    weight: 0.95
+    keywords:
+      - "taiwan strait"
+      - "joint sword"
+      - "air defense identification zone"
+      - "adiz"
+      - "south china sea"
+      - "second thomas shoal"
+      - "coast guard"
+      - "aircraft carrier"
+      - "pla eastern theater"
+      - "blockade simulation"
+    description: "PLA military exercises around Taiwan, grey-zone incursions, South China Sea territorial confrontations, and naval power projection."
+
+  - id: macroeconomic_debt_real_estate
+    label: "Macroeconomic Rebalancing & Debt"
+    weight: 0.85
+    keywords:
+      - "pboc"
+      - "gdp target"
+      - "real estate crisis"
+      - "local government debt"
+      - "deflation"
+      - "stimulus package"
+      - "bond issuance"
+      - "consumer spending"
+      - "youth unemployment"
+    description: "Property sector defaults, local government debt swaps, fiscal stimulus measures, deflationary pressures, and central bank liquidity."
+
+  - id: global_south_brics_diplomacy
+    label: "Global South & Multilateral Diplomacy"
+    weight: 0.8
+    keywords:
+      - "belt and road"
+      - "brics"
+      - "shanghai cooperation organisation"
+      - "sco"
+      - "global security initiative"
+      - "wang yi"
+      - "strategic partnership"
+      - "de-dollarization"
+    description: "Chinese diplomatic initiatives across Africa, Latin America, Middle East, and Eurasia challenging Western-led international governance."

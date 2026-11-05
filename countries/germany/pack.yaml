@@ -1,0 +1,82 @@
+# Germany country pack.
+id: germany
+name: Germany
+region: Western Europe
+language: de
+abroad_label: International & regional European outlets
+
+mention:
+  - "germany"
+  - "german"
+  - "berlin"
+  - "bundestag"
+  - "bundesrat"
+  - "scholz"
+  - "olaf scholz"
+  - "habeck"
+  - "robert habeck"
+  - "lindner"
+  - "christian lindner"
+  - "baerbock"
+  - "annalena baerbock"
+  - "bundesbank"
+  - "bundeswehr"
+  - "chancellery"
+  - "deutschland"
+  - "deutsche"
+  - "bundesregierung"
+
+mention_regex: ['\b(?:germany|german|bundestag|scholz|bundeswehr|bundesbank)\b', 'deutschland', 'bundesregierung', 'bundestag', 'scholz']
+mention_section: "Germany"
+
+url_sections:
+  foreign: [ausland, international, world]
+  skip: [sport, lifestyle, kultur, panorama, unterhaltung, auto, reise, wetter]
+
+aggregator_outlets:
+  domestic:
+    - "tagesschau"
+    - "zdf"
+    - "der spiegel"
+    - "spiegel"
+    - "die zeit"
+    - "zeit online"
+    - "handelsblatt"
+    - "frankfurter allgemeine"
+    - "faz"
+    - "süddeutsche zeitung"
+    - "sz"
+    - "die welt"
+    - "welt"
+    - "t-online"
+    - "focus online"
+  abroad_local:
+    - "dw"
+    - "deutsche welle"
+    - "politico europe"
+    - "ft"
+    - "reuters"
+
+excerpt:
+  dateline: '^\s*(?:BERLIN|FRANKFURT|HAMBURG|DPA|REUTERS|AFP|TAGESSCHAU)\s*[-–—:]\s*'
+  noise: '^(Foto|Quelle|Lesen Sie auch|Photo|Credit|\(|\[)'
+
+classify:
+  internal_politics:
+    - "Federal Chancellor Olaf Scholz, Bundestag legislative debates, coalition dynamics (SPD, Greens, FDP), CDU/CSU opposition (Friedrich Merz), AfD, BSW, state parliamentary elections, federal constitutional court (BVerfG)"
+    - "Bundeskanzler, Olaf Scholz, Bundestag, Bundesrat, Koalition, CDU/CSU, Friedrich Merz, AfD, BSW, Landtagswahlen, Bundesverfassungsgericht, Innenpolitik"
+  economics:
+    - "Deutsche Bundesbank, German GDP stagnation, industrial de-industrialization (Volkswagen, BASF, Siemens), high energy costs, debt brake (Schuldenbremse), export headwinds, chemical and automotive sectors"
+    - "Bundesbank, Wirtschaftswachstum, Rezession, Industrie, Automobilindustrie, Volkswagen, Energiepreise, Schuldenbremse, Haushalt, Inflation"
+  foreign_policy:
+    - "Federal Foreign Office, Annalena Baerbock, European Union diplomacy, Franco-German engine, transatlantic relations with the US, military and humanitarian aid to Ukraine, China de-risking strategy"
+    - "Auswärtiges Amt, Annalena Baerbock, EU-Politik, deutsch-französische Beziehungen, Ukraine-Hilfe, Außenpolitik, China-Strategie, NATO"
+  defence_security:
+    - "Bundeswehr, Federal Minister of Defence Boris Pistorius, Zeitenwende special fund (Sondervermögen), brigade deployment in Lithuania, air defense (Iris-T, Arrow 3), defense spending (2% GDP)"
+    - "Bundeswehr, Boris Pistorius, Zeitenwende, Sondervermögen, Litauen-Brigade, Rüstungsbeschaffung, NATO-Ostflanke, Luftverteidigung, Verteidigungsetat"
+  society:
+    - "Migration and asylum policy, border controls, skilled labor shortages, pension reforms (Rentenpaket), housing crisis, healthcare restructuring"
+    - "Migration, Asylpolitik, Grenzkontrollen, Fachkräftemangel, Rente, Wohnungsnot, Gesundheitssystem, Bildung"
+
+geo: DE
+reddit: [geopolitics, de, germanpolitics]

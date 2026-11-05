@@ -1,0 +1,133 @@
+sources:
+- id: xinhua_en
+  name: Xinhua News Agency (English)
+  homepage: https://www.news.cn/english
+  language: en
+  scope: domestic
+  kind: official
+  governing_body: State Council of the People's Republic of China
+  state_affiliated: true
+  notes: Primary statutory state wire agency of the People's Republic of China.
+  feeds:
+  - url: https://www.news.cn/english/rss/topnews.xml
+    category_hint: internal_politics
+  - url: https://www.news.cn/english/rss/chinanews.xml
+    category_hint: internal_politics
+- id: global_times
+  name: Global Times
+  homepage: https://www.globaltimes.cn
+  language: en
+  scope: domestic
+  kind: official
+  governing_body: People's Daily / CCP Central Committee
+  state_affiliated: true
+  notes: Nationalistic English-language daily reflecting official foreign and security
+    perspectives.
+  feeds:
+  - url: https://www.globaltimes.cn/rss/outbound.xml
+    category_hint: foreign_policy
+- id: scmp
+  name: South China Morning Post
+  homepage: https://www.scmp.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Alibaba Group
+  state_affiliated: false
+  notes: Hong Kong English daily of record covering mainland politics, economy, and
+    diplomacy.
+  feeds:
+  - url: https://www.scmp.com/rss/91/feed
+    category_hint: internal_politics
+  - url: https://www.scmp.com/rss/92/feed
+    category_hint: economics
+- id: caixin_global
+  name: Caixin Global
+  homepage: https://www.caixinglobal.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Caixin Media Company
+  state_affiliated: false
+  notes: Premier independent Chinese financial and investigative business news daily.
+  feeds:
+  - url: https://www.caixinglobal.com/rss/index.xml
+    category_hint: economics
+- id: bbc_zhongwen
+  name: BBC News Chinese
+  homepage: https://www.bbc.com/zhongwen/simp
+  language: zh
+  scope: abroad_local
+  kind: media
+  governing_body: BBC World Service (UK)
+  state_affiliated: false
+  notes: Independent Chinese-language reporting outside mainland censorship.
+  feeds:
+  - url: https://feeds.bbci.co.uk/zhongwen/simp/rss.xml
+    category_hint: internal_politics
+- id: rfa_chinese
+  name: Radio Free Asia (Chinese)
+  homepage: https://www.rfa.org/mandarin
+  language: zh
+  scope: abroad_local
+  kind: media
+  governing_body: US Agency for Global Media (USAGM)
+  state_affiliated: false
+  notes: US-funded diaspora Mandarin news covering human rights, politics, and defense.
+  feeds:
+  - url: https://www.rfa.org/mandarin/rss2.xml
+    category_hint: internal_politics
+- id: lianhe_zaobao
+  name: Lianhe Zaobao
+  homepage: https://www.zaobao.com.sg
+  language: zh
+  scope: abroad_local
+  kind: media
+  governing_body: SPH Media (Singapore)
+  state_affiliated: false
+  notes: Leading Southeast Asian Chinese-language paper of record with extensive China
+    reporting.
+  feeds:
+  - url: https://www.zaobao.com.sg/rss/realtime/china
+    category_hint: internal_politics
+- id: google_news_china_politics
+  name: Google News (China Politics & Governance)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator feed tracking top Chinese Communist Party and State Council developments.
+  feeds:
+  - url: https://news.google.com/rss/search?q=%22Xi+Jinping%22+OR+%22Politburo%22+OR+%22State+Council%22+OR+%22National+People%27s+Congress%22+when:3d&hl=en-US&gl=US&ceid=US:en
+    category_hint: internal_politics
+- id: google_news_china_economy
+  name: Google News (China Macroeconomy & Industrial Policy)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator feed tracking Chinese stimulus, PBOC policy, real estate, and
+    tech sanctions.
+  feeds:
+  - url: https://news.google.com/rss/search?q=%22People%27s+Bank+of+China%22+OR+%22Chinese+economy%22+OR+PBOC+OR+%22real+estate%22+China+when:3d&hl=en-US&gl=US&ceid=US:en
+    category_hint: economics
+- id: google_news_china_pla
+  name: Google News (China PLA & Taiwan Strait Security)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator feed tracking PLA exercises, Taiwan Strait security, and South
+    China Sea maneuvers.
+  feeds:
+  - url: https://news.google.com/rss/search?q=%22People%27s+Liberation+Army%22+OR+%22Taiwan+Strait%22+OR+%22South+China+Sea%22+PLA+when:3d&hl=en-US&gl=US&ceid=US:en
+    category_hint: defence_security

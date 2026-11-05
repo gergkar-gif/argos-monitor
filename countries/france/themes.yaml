@@ -1,0 +1,58 @@
+# France editorial policy priority themes.
+# High-weight themes for foreign-affairs analysts and diplomatic observers.
+
+themes:
+  - id: parliamentary_cohabitation_budget
+    label: "Parliamentary Fragility & Budget Austerity"
+    weight: 1.0
+    keywords:
+      - "macron"
+      - "barnier"
+      - "motion de censure"
+      - "assembl%c3%a9e nationale"
+      - "d%c3%a9ficit"
+      - "budget 2025"
+      - "oat-bund"
+      - "49.3"
+      - "marine le pen"
+    description: "Barnier government survival, no-confidence motions, parliamentary deadlock, sovereign deficit targets, and bond spread stability."
+
+  - id: european_strategic_autonomy
+    label: "Strategic Autonomy & Defense Industrial Base"
+    weight: 0.95
+    keywords:
+      - "autonomie strat%c3%a9gique"
+      - "dassault"
+      - "rafale"
+      - "lecornu"
+      - "loi de programmation militaire"
+      - "lpm"
+      - "dissuasion"
+      - "coalition artillerie"
+      - "mirage 2000"
+    description: "Advocacy for European defense sovereignty, Rafale export contracts, military programming budget implementation, and Ukraine aircraft transfers."
+
+  - id: quai_dorsay_crisis_diplomacy
+    label: "Crisis Diplomacy & Global Influence"
+    weight: 0.85
+    keywords:
+      - "quai d'orsay"
+      - "liban"
+      - "francophonie"
+      - "moyen-orient"
+      - "indo-pacifique"
+      - "onu"
+      - "traite bilat%c3%a9ral"
+    description: "French diplomatic leadership in Lebanon, Mediterranean stability, UN peacekeeping oversight (UNIFIL), and bilateral European treaties."
+
+  - id: institutional_social_cohesion
+    label: "Social Cohesion & Overseas Governance"
+    weight: 0.75
+    keywords:
+      - "nouvelle-cal%c3%a9donie"
+      - "immigration"
+      - "la%c3%afcit%c3%a9"
+      - "pouvoir d'achat"
+      - "agriculteurs"
+      - "services publics"
+    description: "New Caledonia political settlements, agricultural trade disputes (Mercosur opposition), secularism, and domestic public safety."

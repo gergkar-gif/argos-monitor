@@ -1,0 +1,87 @@
+# Israel country pack.
+id: israel
+name: Israel
+region: Middle East & Mediterranean
+language: he
+abroad_label: International & regional Middle Eastern outlets
+
+mention:
+  - "israel"
+  - "israeli"
+  - "jerusalem"
+  - "tel aviv"
+  - "knesset"
+  - "netanyahu"
+  - "benjamin netanyahu"
+  - "gallant"
+  - "yoav gallant"
+  - "israel katz"
+  - "gideon sa'ar"
+  - "idf"
+  - "mossad"
+  - "shin bet"
+  - "gaza"
+  - "lebanon"
+  - "hezbollah"
+  - "hamas"
+  - "bank of israel"
+  - "ישראל"
+  - "נתניהו"
+  - "צה\"ל"
+  - "כנסת"
+  - "עזה"
+  - "לבנון"
+  - "חיזבאללה"
+
+mention_regex: ['\b(?:israel|israeli|netanyahu|knesset|idf|mossad|shin bet)\b', 'ישראל', 'נתניהו', 'צה"ל', 'כנסת', 'עזה']
+mention_section: "Israel"
+
+url_sections:
+  foreign: [world, international, global]
+  skip: [sport, sports, lifestyle, culture, entertainment, travel, food, tech/gadgets, astrology, weather]
+
+aggregator_outlets:
+  domestic:
+    - "haaretz"
+    - "the times of israel"
+    - "times of israel"
+    - "ynet"
+    - "ynetnews"
+    - "the jerusalem post"
+    - "jerusalem post"
+    - "globes"
+    - "calcalist"
+    - "kan"
+    - "israel hayom"
+    - "channel 12"
+    - "channel 13"
+  abroad_local:
+    - "al jazeera"
+    - "bbc news middle east"
+    - "reuters"
+    - "ap news"
+    - "the guardian"
+
+excerpt:
+  dateline: '^\s*(?:JERUSALEM|TEL AVIV|HAARETZ|TIMES OF ISRAEL|REUTERS|AFP)\s*[-–—:]\s*'
+  noise: '^(Photo|Credit|Source|Read more|Watch|\(|\[)'
+
+classify:
+  internal_politics:
+    - "Prime Minister Benjamin Netanyahu, Knesset coalition governance, Likud, ultra-Orthodox conscription dispute (Haredi draft bill), Judicial overhaul status, Attorney General Gali Baharav-Miara, opposition leaders (Yair Lapid, Benny Gantz)"
+    - "בנימין נתניהו, כנסת, קואליציה, חוק הגיוס, חרדים, גלי בהרב מיארה, יאיר לפיד, בני גנץ, ממשלה, פוליטיקה"
+  economics:
+    - "Bank of Israel monetary policy, Governor Amir Yaron, wartime budget deficit, credit rating downgrades (Moody's, S&P, Fitch), defense spending allocation, shekel exchange rate, high-tech sector resilience"
+    - "בנק ישראל, אמיר ירון, תקציב המדינה, גירעון, דירוג אשראי, שער השקל, אינפלציה, הייטק, מלחמה"
+  foreign_policy:
+    - "Hostage negotiations and ceasefire diplomacy (US, Qatar, Egypt), normalization agreements (Abraham Accords), relations with Washington, International Court of Justice (ICJ) and ICC arrest warrants, UN resolutions"
+    - "משא ומתן לחטופים, הפסקת אש, ארצות הברית, קטאר, מצרים, הסכמי אברהם, בית הדין בהאג, האג, דיפלומטיה"
+  defence_security:
+    - "Israel Defense Forces (IDF), Chief of Staff Herzi Halevi, multi-front operations in Gaza, Lebanon (Hezbollah), Iran deterrence, air defense systems (Iron Dome, David's Sling, Arrow), Mossad, Shin Bet"
+    - "צה\"ל, הרצי הלוי, חיל האוויר, כיפת ברזל, חץ, עזה, לבנון, חיזבאללה, איראן, מוסד, שב\"כ, ביטחון"
+  society:
+    - "Hostage families protest movement, northern and southern border evacuees, reserve duty burden on families, civilian casualty relief, national mental health impact"
+    - "מטה המשפחות להחזרת החטופים, מפונים, מילואים, שכול, פצועים, בריאות הנפש, חברה ישראלית"
+
+geo: IL
+reddit: [geopolitics, israel, israelpalestine]
