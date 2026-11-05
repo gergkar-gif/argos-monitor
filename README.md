@@ -6,7 +6,7 @@
 
 <p align="center">
   <strong>Open-source multilingual media &amp; crisis intelligence monitor for foreign-affairs analysts</strong><br>
-  <em>Deterministic ONNX embedding clustering · Syndication deduplication · State-media tagging · Perspective balance · Zero LLM hallucinations</em>
+  <em>87 country desks · 760+ feeds · Deterministic ONNX clustering · Syndication deduplication · State-media tagging · Offline MarianMT translation · Zero LLM hallucinations</em>
 </p>
 
 <p align="center">
@@ -32,13 +32,13 @@ Unlike LLM-based news summarizers—which risk hallucinated claims, flattened di
 
 ---
 
-## Architecture & 10-Stage Pipeline
+## Architecture & 11-Stage Pipeline
 
 A scheduled GitHub Actions workflow runs every 3 hours, updating the SQLite store and publishing static JSON/JS data bundles to Cloudflare Pages:
 
 ```mermaid
 flowchart LR
-    A["01 · Ingest<br/>430+ RSS & Google News feeds"] --> B["02 · Extract<br/>Trafilatura full-text"]
+    A["01 · Ingest<br/>760+ RSS & Google News feeds"] --> B["02 · Extract<br/>Trafilatura full-text"]
     B --> C["03 · Normalise<br/>Unicode NFC"]
     C --> D["04 · Relevance<br/>Section & mention gate"]
     D --> E["05 · Embed<br/>ONNX multilingual-e5-small"]
@@ -46,12 +46,13 @@ flowchart LR
     F --> G["07 · Classify<br/>Bilingual topic anchors"]
     G --> H["08 · Policy & Rank<br/>themes.yaml + outlet diversity"]
     H --> I["09 · Verify<br/>Substring-verified excerpts"]
-    I --> J["10 · Signals & Export<br/>Crisis alerts, Trends, Reddit"]
+    I --> J["10 · Translate<br/>MarianMT headline translation"]
+    J --> K["11 · Signals & Export<br/>Crisis alerts, Trends, Reddit"]
 ```
 
 | Stage | Module | Description |
 | :--- | :--- | :--- |
-| **01 · Ingest** | [`argos/ingest.py`](argos/ingest.py) | Polls domestic, diaspora (`abroad_local`), and international RSS/Atom feeds per country pack. |
+| **01 · Ingest** | [`argos/ingest.py`](argos/ingest.py) | Polls domestic, diaspora (`abroad_local`), and international RSS/Atom feeds across 87 country desks. |
 | **02 · Extract** | [`argos/extract.py`](argos/extract.py) | Fetches full article text via Trafilatura and resolves syndicated publisher names. |
 | **03 · Normalise** | [`argos/normalise.py`](argos/normalise.py) | Applies Unicode NFC normalisation across all text fields (essential for Vietnamese diacritics and Khmer script). |
 | **04 · Relevance** | [`argos/relevance.py`](argos/relevance.py) | Filters out lifestyle/sport noise and enforces country-mention rules on general international feeds. |
@@ -60,7 +61,8 @@ flowchart LR
 | **07 · Classify** | [`argos/classify.py`](argos/classify.py) | Assigns stories to 6 policy desks (`Internal politics`, `Economy`, `Foreign policy`, `Defence & security`, `Society`, `Other`) using feed hints + bilingual anchor embeddings. |
 | **08 · Policy & Rank** | [`argos/policy.py`](argos/policy.py), [`argos/rank.py`](argos/rank.py) | Scores stories by foreign-desk priority themes (`themes.yaml`), independent outlet count, scope diversity, and recency. |
 | **09 · Excerpts & Verify** | [`argos/excerpts.py`](argos/excerpts.py), [`argos/verify.py`](argos/verify.py) | Selects informative sentences and asserts each excerpt is a verbatim substring of the source article. |
-| **10 · Signals & Export** | [`argos/crisis.py`](argos/crisis.py), [`argos/trends.py`](argos/trends.py), [`argos/reddit.py`](argos/reddit.py), [`argos/export.py`](argos/export.py) | Integrates GDACS/USGS disasters, UK FCDO & US State Dept travel advisories, Google Trends, and policy-filtered Reddit discussions into static bundles. |
+| **10 · Offline Translation** | [`argos/translate.py`](argos/translate.py) | Translates non-English representative headlines into English using CPU-friendly MarianMT sequence-to-sequence models with entity glossaries, caching results in SQLite while keeping original text authoritative. |
+| **11 · Signals & Export** | [`argos/crisis.py`](argos/crisis.py), [`argos/trends.py`](argos/trends.py), [`argos/social.py`](argos/social.py), [`argos/reddit.py`](argos/reddit.py), [`argos/export.py`](argos/export.py) | Integrates GDACS/USGS disasters, UK FCDO & US State Dept travel advisories, auxiliary Telegram/Bluesky crisis signals, Google Trends, and policy-filtered Reddit discussions into static bundles. |
 
 ---
 
