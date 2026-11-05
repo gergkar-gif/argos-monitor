@@ -56,3 +56,5 @@ geo: HU
 
 # Subreddits for the Reddit panel (first is primary; all are polled in one combined feed).
 reddit: [hungary, kiszamolo, budapest, Debrecen, szeged]
+telegram: [telexhu]
+bluesky: [444.hu]

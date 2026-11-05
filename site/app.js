@@ -627,6 +627,27 @@
       h('p', { class: 'byline', text: `Desk-relevant posts across ${r.subreddit}. Unverified.` }));
   }
 
+  function social() {
+    const sData = (window.ARGOS_SOCIAL && (window.ARGOS_SOCIAL.countries || (window.ARGOS_SOCIAL.social || {}).countries) || {})[country.value];
+    if (!sData || !sData.length) return null;
+    const cLang = (index.countries.find((c) => c.id === country.value) || {}).language || 'en';
+    return h('section', { class: 'alerts', 'aria-label': 'Telegram & Bluesky Signals' },
+      h('h2', { text: 'Telegram & Bluesky signals' }),
+      h('ul', null, sData.map((x) => {
+        const a = h('a', { href: safeUrl(x.url), target: '_blank', rel: 'noopener', lang: cLang, text: x.text });
+        const origEl = h('span', { class: 'orig', hidden: true });
+        track(a, x.text, cLang, origEl);
+        const platTag = x.platform === 'telegram' ? 'TG' : 'BSKY';
+        return h('li', null,
+          h('span', { class: 'meta' },
+            h('span', { class: 'stamp ' + (x.platform === 'telegram' ? 'indigo' : 'teal'), text: `[${platTag}: ${x.author}]` }),
+            x.published && h('span', { text: fmtTime.format(new Date(x.published)) })
+          ),
+          a, origEl);
+      })),
+      h('p', { class: 'byline', text: 'Real-time open channels & verified accounts. Unverified desk signals.' }));
+  }
+
   const watched = () => { try { return JSON.parse(localStorage.getItem('argos.watch') || '[]'); } catch { return []; } };
   function setWatched(list) {
     try { localStorage.setItem('argos.watch', JSON.stringify(list)); } catch { /* storage not available: ignore */ }
@@ -1316,7 +1337,7 @@
       body.push(h('p', { class: 'state', text: q ? `No stories match "${q}" here.` : `No ${topicName(openTopic).toLowerCase()} stories in this period.` }));
     }
 
-    const side = [alerts(), trends(), reddit()].filter(Boolean);
+    const side = [alerts(), trends(), reddit(), social()].filter(Boolean);
 
     results.replaceChildren(...[
       h('p', { class: 'result-line' }, h('b', { text: country.options[country.selectedIndex].text }),

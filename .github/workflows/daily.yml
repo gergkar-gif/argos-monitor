@@ -58,7 +58,7 @@ jobs:
           curl -fL -o .argos-data/models/multilingual-e5-small/tokenizer.json "$base/tokenizer.json"
 
       - name: Collect, analyse and export
-        run: python run.py ingest extract normalise relevance embed cluster classify policy rank excerpts verify export crisis trends reddit watch prune report
+        run: python run.py ingest extract normalise relevance embed cluster classify policy rank excerpts verify export crisis trends reddit social watch prune report
 
       - name: Save database
         uses: actions/cache/save@v4

@@ -23,3 +23,5 @@ Completed items moved from `docs/roadmap.md` per project handover rules.
     Deterministic two-window partitioning ($T$ vs $T_{-1}$), story movement states (`[NEW]`, `[SURGE +ΔN]`, `[COOLING]`), international/diaspora scope escalation (`[INTL PICKUP]`, `[DIASPORA PICKUP]`), state media narrative drift (`[STATE SURGE]`), and Macro Agenda Movement Bar (`site/app.js`, `site/style.css`, `site/about.html`) with zero emojis.
   - **Bilateral delta cross-comparisons in Multilateral Affairs** — **Done 2026-11-05.**
     Scoreboard calculating bilateral news cycle momentum multipliers, net article growth (&Delta;N), breakout badges, and lead policy domain concentration in the Joint & Multilateral Affairs monitor.
+  - **Basic Social Watch from accessible sources (Telegram, Bluesky, Reddit, Google Trends)** — **Done 2026-11-05.**
+    Ingests open Telegram channel web previews (t.me/s/) and open AT Protocol Bluesky feeds without API keys or authentication, with NFC diacritic normalisation (Rule 3) and zero-emoji scrubbing (Rule 7), displaying unverified auxiliary signals in the desk sidebar.
