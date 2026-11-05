@@ -280,6 +280,12 @@ main { max-width: 68rem; margin: 0 auto; padding: 2rem 1.5rem 5rem; outline: non
 .stamp.country-tag:hover { background: var(--red); }
 a.stamp:hover { text-decoration: underline; }
 
+/* Delta Movement Stamps & Badges (Broadsheet style - zero emoji) */
+.stamp.stamp-new { color: var(--teal); border: 1px solid var(--teal); padding: 0 0.3rem; letter-spacing: 0.05em; }
+.stamp.stamp-surge { color: var(--red); border: 1px solid var(--red); padding: 0 0.3rem; font-weight: 700; letter-spacing: 0.04em; }
+.stamp.stamp-cooling { color: var(--ink-3); border: 1px solid var(--ink-3); padding: 0 0.3rem; }
+.stamp.stamp-pickup { color: var(--indigo); border: 1px solid var(--indigo); padding: 0 0.3rem; font-weight: 700; }
+
 .cover { display: flex; flex-wrap: wrap; gap: 0.2rem 0.85rem; font: 400 0.8rem/1.35 var(--sans); color: var(--ink-3); }
 .cover b { color: var(--ink-2); font-weight: 600; }
 
@@ -408,6 +414,88 @@ summary:hover { color: var(--ink); }
 .monitor-filter label { font: 700 0.72rem/1.2 var(--sans); letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-2); }
 .monitor-filter select { font: 500 0.88rem/1.3 var(--sans); padding: 0.35rem 0.6rem; border: 1px solid var(--ink-3); background: #fff; }
 .slip[hidden], [hidden] { display: none !important; }
+
+/* ---- Macro Agenda Movement Bar ---- */
+.agenda-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0.5rem 0 1rem;
+  padding: 0.6rem 0.85rem;
+  background: var(--paper-warm, #fbfaf8);
+  border: 1px solid var(--rule);
+  font: 400 0.82rem/1.3 var(--sans);
+}
+.agenda-title {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+.agenda-title strong {
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-size: 0.76rem;
+}
+.agenda-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+.agenda-btn {
+  background: none;
+  border: 0;
+  padding: 0.15rem 0.35rem;
+  font: 600 0.8rem/1.2 var(--sans);
+  color: var(--ink-2);
+  cursor: pointer;
+  border-radius: 2px;
+}
+.agenda-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--ink);
+  text-decoration: underline;
+}
+.agenda-item.surging .agenda-btn {
+  color: var(--red);
+  font-weight: 700;
+}
+.agenda-item.cooling .agenda-btn {
+  color: var(--ink-3);
+}
+.agenda-filters {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-left: auto;
+}
+.agenda-filter-btn {
+  background: none;
+  border: 1px solid var(--ink-3);
+  padding: 0.2rem 0.5rem;
+  font: 600 0.74rem/1.2 var(--sans);
+  color: var(--ink-2);
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.agenda-filter-btn:hover {
+  background: var(--ink-3);
+  color: #fff;
+}
+.agenda-filter-btn.active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
 
 /* ---- Footer Legend ---- */
 .legend { border-top: 2px solid var(--ink); margin-top: 2rem; }

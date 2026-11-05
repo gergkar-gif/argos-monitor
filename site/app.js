@@ -53,6 +53,7 @@
   let openTopic = 'all';
   let openRegion = 'all';
   let openSubType = 'all';
+  let movementFilter = 'all';
   let extra = {};   // extra stories revealed per topic in the overview ("Show more")
   const GLOBAL_VIEWS = new Set(['home', 'alerts', 'disasters', 'violence', 'relations']);
 
@@ -414,6 +415,7 @@
       }
     }
     fillPeriods();
+    movementFilter = 'all';
     research();
     scrollTo({ top: 0, behavior: 'smooth' });
   }
@@ -459,7 +461,28 @@
           if (s.independent_sources >= 2) return h('span', { class: 'stamp teal', title: 'Predominantly reported by independent press', text: 'Independent' });
           return null;
         })(),
-        trend(s) && trend(s)[0] !== 'Quiet' && h('span', { class: 'stamp indigo', title: trend(s)[2], text: trend(s)[0] }),
+        (() => {
+          if (!s.delta) return null;
+          const badges = [];
+          if (s.delta.state === 'new') {
+            badges.push(h('span', { class: 'stamp stamp-new', title: 'Fresh emergence: no recorded coverage in prior reference window', text: '[NEW]' }));
+          } else if (s.delta.state === 'surging') {
+            const netStr = s.delta.net > 0 ? `+${s.delta.net}` : String(s.delta.net);
+            badges.push(h('span', { class: 'stamp stamp-surge', title: `Surging coverage: ${s.delta.curr} articles vs ${s.delta.prev} in prior window (${s.delta.ratio}x velocity)`, text: `[SURGE ${netStr}]` }));
+          } else if (s.delta.state === 'cooling') {
+            badges.push(h('span', { class: 'stamp stamp-cooling', title: `Cooling coverage: ${s.delta.curr} articles vs ${s.delta.prev} in prior window`, text: '[COOLING]' }));
+          }
+          if (s.delta.scope_shift === 'international_pickup') {
+            badges.push(h('span', { class: 'stamp stamp-pickup', title: 'International wire pickup of domestic reporting', text: '[INTL PICKUP]' }));
+          } else if (s.delta.scope_shift === 'diaspora_pickup') {
+            badges.push(h('span', { class: 'stamp stamp-pickup', title: 'Diaspora / foreign-language pickup of domestic reporting', text: '[DIASPORA PICKUP]' }));
+          }
+          if (s.delta.state_surge) {
+            badges.push(h('span', { class: 'stamp red', title: `Official state narrative surge: state-affiliated share increased by ${Math.round((s.delta.state_share_curr - s.delta.state_share_prev) * 100)}%`, text: '[STATE SURGE]' }));
+          }
+          return badges.length ? badges : null;
+        })(),
+        (!s.delta || s.delta.state === 'steady' || s.delta.state === 'trace') && trend(s) && trend(s)[0] !== 'Quiet' && h('span', { class: 'stamp indigo', title: trend(s)[2], text: trend(s)[0] }),
       ),
     ].filter(Boolean));
 
@@ -1140,16 +1163,72 @@
     translatePending();
   }
 
+  function agendaBar(d) {
+    const delta = d.agenda_delta;
+    if (!delta) return null;
+    const items = Object.entries(delta)
+      .map(([cat, info]) => ({ cat, name: topicName(cat), ...info }))
+      .filter((x) => x.curr > 0 || x.prev > 0)
+      .sort((a, b) => Math.abs(b.share_delta_pct) - Math.abs(a.share_delta_pct));
+    if (!items.length) return null;
+
+    const periodStr = d.period || 'window';
+    return h('div', { class: 'agenda-bar', role: 'region', 'aria-label': 'Macro agenda movement' },
+      h('div', { class: 'agenda-title' },
+        h('strong', { text: 'Agenda Movement' }),
+        h('span', { class: 'meta', text: `(vs prior ${periodStr}):` })
+      ),
+      h('ul', { class: 'agenda-list' },
+        items.map((it) => {
+          const sign = it.share_delta_pct > 0 ? '+' : '';
+          const arrow = it.share_delta_pct > 0 ? '↑' : (it.share_delta_pct < 0 ? '↓' : '·');
+          const dirClass = it.share_delta_pct >= 5.0 ? 'surging' : (it.share_delta_pct <= -5.0 ? 'cooling' : 'flat');
+          return h('li', { class: `agenda-item ${dirClass}` },
+            h('button', {
+              type: 'button',
+              class: 'agenda-btn',
+              title: `${it.name}: ${it.curr} articles (${it.share_pct}%), ${sign}${it.share_delta_pct}% share vs prior ${periodStr}`,
+              onclick: () => choose(it.cat)
+            }, `${it.name} ${arrow} ${sign}${it.share_delta_pct}%`)
+          );
+        })
+      ),
+      h('div', { class: 'agenda-filters' },
+        h('span', { class: 'meta', text: 'Filter:' }),
+        h('button', {
+          type: 'button',
+          class: 'agenda-filter-btn' + (movementFilter === 'all' ? ' active' : ''),
+          onclick: () => { movementFilter = 'all'; render(false); }
+        }, 'All'),
+        h('button', {
+          type: 'button',
+          class: 'agenda-filter-btn' + (movementFilter === 'surge_new' ? ' active' : ''),
+          onclick: () => { movementFilter = 'surge_new'; render(false); }
+        }, 'Surging & New'),
+        h('button', {
+          type: 'button',
+          class: 'agenda-filter-btn' + (movementFilter === 'pickup' ? ' active' : ''),
+          onclick: () => { movementFilter = 'pickup'; render(false); }
+        }, 'Intl Pickups')
+      )
+    );
+  }
+
   function render(animate = true) {
     const d = current;
     results.classList.toggle('still', !animate);
     T.queue.length = 0;
     const q = ($('#q').value || '').trim().toLowerCase();
-    const stories = q ? d.stories.filter((s) => matchStory(s, q)) : d.stories;
-    const count = (id) => (q ? stories.filter((s) => s.category === id).length : d.totals[id]);
+    let stories = q ? d.stories.filter((s) => matchStory(s, q)) : d.stories;
+    if (movementFilter === 'surge_new') {
+      stories = stories.filter((s) => s.delta && (s.delta.state === 'surging' || s.delta.state === 'new'));
+    } else if (movementFilter === 'pickup') {
+      stories = stories.filter((s) => s.delta && s.delta.scope_shift);
+    }
+    const count = (id) => (q || movementFilter !== 'all' ? stories.filter((s) => s.category === id).length : d.totals[id]);
     const noOutside = d.stories.every((s) => !s.by_scope.abroad_local && !s.by_scope.international);
     const byTopic = (id) => stories.filter((s) => s.category === id);
-    const totalStories = q ? stories.length : Object.values(d.totals).reduce((a, b) => a + b, 0);
+    const totalStories = (q || movementFilter !== 'all') ? stories.length : Object.values(d.totals).reduce((a, b) => a + b, 0);
     const updated = new Date(d.generated_at);
     const ageH = (Date.now() - updated) / 3.6e6;
     const periodLabel = period.options[period.selectedIndex].text.toLowerCase();
@@ -1182,6 +1261,7 @@
         h('button', { type: 'button', class: 'desk-link', text: '← All countries overview', onclick: () => openCountry('home') })),
       noOutside && h('p', { class: 'notice quiet', text: `No coverage from ${(index.countries.find((x) => x.id === country.value) || {}).abroad_label || 'outlets abroad'} or from international outlets has been collected for this period yet, so the "not in domestic press" check cannot run.` }),
       watchbar(q),
+      agendaBar(d),
       tabs,
       side.length
         ? h('div', { class: 'country-layout' },

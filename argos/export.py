@@ -32,9 +32,9 @@ def _classify_disaster(s):
     return next((label for label, pat in DISASTER_RULES if re.search(pat, blob)), None)
 
 
-def _story(db, s):
+def _story(db, s, now_iso=None, days=None):
     rows = db.execute(
-        "SELECT a.id, a.title, a.lead, a.url, a.language, a.published_at, a.syndicated_of, COALESCE(sa.similarity, 1.0) AS similarity, "
+        "SELECT a.id, a.title, a.lead, a.url, a.language, a.published_at, a.fetched_at, a.syndicated_of, COALESCE(sa.similarity, 1.0) AS similarity, "
         "src.id AS source_id, src.name AS source, src.scope, src.kind, src.bias, src.alignment, src.factuality "
         "FROM story_article sa JOIN article a ON a.id=sa.article_id JOIN source src ON src.id=a.source_id "
         "WHERE sa.story_id=? ORDER BY (COALESCE(sa.similarity, 1.0) >= 0.93) DESC, (COALESCE(sa.similarity, 1.0) >= 0.85) DESC, "
@@ -70,17 +70,74 @@ def _story(db, s):
         "JOIN source src ON src.id=a.source_id WHERE r.story_id=? ORDER BY r.similarity DESC LIMIT 4", (s["id"],)).fetchall()
     cutoff_24h = (datetime.now(timezone.utc) - timedelta(hours=24)).isoformat(timespec="seconds")
     dated = sorted((r for r in core_rows if r["published_at"]), key=lambda r: r["published_at"])
-    days = {}
+    days_hist = {}
     for r in dated:
-        days[r["published_at"][:10]] = days.get(r["published_at"][:10], 0) + 1
+        days_hist[r["published_at"][:10]] = days_hist.get(r["published_at"][:10], 0) + 1
     b_high = [r for r in rows if r["similarity"] >= 0.93][:10]
     b_mid = [r for r in rows if 0.85 <= r["similarity"] < 0.93][:8]
     b_low = [r for r in rows if r["similarity"] < 0.85][:6]
     listed = b_high + b_mid + b_low
+
+    delta = None
+    if now_iso and days:
+        now_dt = datetime.fromisoformat(now_iso)
+        curr_start = (now_dt - timedelta(days=days)).isoformat(timespec="seconds")
+        prev_start = (now_dt - timedelta(days=2 * days)).isoformat(timespec="seconds")
+        t_curr, t_prev = [], []
+        core_t_curr, core_t_prev = [], []
+        for r in rows:
+            t = r["published_at"] or r["fetched_at"]
+            if not t:
+                continue
+            is_core = (r["similarity"] >= 0.93)
+            if t >= curr_start:
+                t_curr.append(r)
+                if is_core:
+                    core_t_curr.append(r)
+            elif t >= prev_start and t < curr_start:
+                t_prev.append(r)
+                if is_core:
+                    core_t_prev.append(r)
+        n_curr, n_prev = len(t_curr), len(t_prev)
+        delta_n = n_curr - n_prev
+        v = round(n_curr / max(1, n_prev), 2)
+        if n_prev == 0 and n_curr >= 2:
+            st = "new"
+        elif delta_n >= 3 and v >= 1.75:
+            st = "surging"
+        elif -delta_n >= 3 and v <= 0.40:
+            st = "cooling"
+        elif n_curr >= 2:
+            st = "steady"
+        else:
+            st = "trace"
+
+        scopes_curr = {r["scope"] for r in t_curr}
+        scopes_prev = {r["scope"] for r in t_prev}
+        if scopes_prev == {"domestic"} and "international" in scopes_curr:
+            scope_shift = "international_pickup"
+        elif scopes_prev == {"domestic"} and "abroad_local" in scopes_curr and "international" not in scopes_curr:
+            scope_shift = "diaspora_pickup"
+        else:
+            scope_shift = None
+
+        c_state_curr = sum(1 for r in core_t_curr if (r["alignment"] in ("state_controlled", "pro_government") or r["kind"] == "official"))
+        c_state_prev = sum(1 for r in core_t_prev if (r["alignment"] in ("state_controlled", "pro_government") or r["kind"] == "official"))
+        sh_curr = round(c_state_curr / len(core_t_curr), 2) if core_t_curr else 0.0
+        sh_prev = round(c_state_prev / len(core_t_prev), 2) if core_t_prev else 0.0
+        state_surge = bool(len(core_t_curr) >= 4 and len(core_t_prev) >= 4 and (sh_curr - sh_prev >= 0.30))
+        state_recede = bool(len(core_t_curr) >= 4 and len(core_t_prev) >= 4 and (sh_curr - sh_prev <= -0.30))
+
+        delta = {
+            "curr": n_curr, "prev": n_prev, "net": delta_n, "ratio": v, "state": st,
+            "scope_shift": scope_shift, "state_share_curr": sh_curr, "state_share_prev": sh_prev,
+            "state_surge": state_surge, "state_recede": state_recede
+        }
+
     return {
         "id": s["id"],
         "first": {"source": dated[0]["source"], "at": dated[0]["published_at"]} if dated else None,   # earliest article in the story
-        "per_day": sorted(days.items()),
+        "per_day": sorted(days_hist.items()),
         "last_24h": sum(r["published_at"] >= cutoff_24h for r in dated),   # articles in the last day: new, growing or quiet
         "category": s["category"],
         "score": s["score"],
@@ -94,6 +151,7 @@ def _story(db, s):
         "by_scope": by_scope,
         "evidence": "OFFICIAL" if any(r["kind"] == "official" for r in core_rows) else "REPORTED",
         "perspectives": perspectives,
+        "delta": delta,
         "abroad_only": False,
         "related": [{"title": r["title"], "url": r["url"], "source": r["source"], "articles": r["n"]} for r in related[:2]],   # possibly the same event
         "excerpts": [{"text": x["text"], "source": x["source"], "scope": x["scope"], "url": x["url"]} for x in excerpts],
@@ -103,6 +161,36 @@ def _story(db, s):
                      "bias": r["bias"] or "unrated", "alignment": r["alignment"] or "unrated", "factuality": r["factuality"] or "unrated"}
                     for r in listed],
     }
+
+
+def _agenda_delta(db, cid, days, now_iso):
+    now_dt = datetime.fromisoformat(now_iso)
+    curr_start = (now_dt - timedelta(days=days)).isoformat(timespec="seconds")
+    prev_start = (now_dt - timedelta(days=2 * days)).isoformat(timespec="seconds")
+    q = """
+        SELECT s.category,
+               SUM(CASE WHEN COALESCE(a.published_at, a.fetched_at) >= ? THEN 1 ELSE 0 END) AS curr_cnt,
+               SUM(CASE WHEN COALESCE(a.published_at, a.fetched_at) >= ? AND COALESCE(a.published_at, a.fetched_at) < ? THEN 1 ELSE 0 END) AS prev_cnt
+        FROM story_article sa
+        JOIN story s ON s.id = sa.story_id
+        JOIN article a ON a.id = sa.article_id
+        WHERE s.country = ? AND s.window_days = ?
+        GROUP BY s.category
+    """
+    rows = db.execute(q, (curr_start, prev_start, curr_start, cid, days)).fetchall()
+    by_cat = {r["category"]: (r["curr_cnt"] or 0, r["prev_cnt"] or 0) for r in rows}
+    total_curr = sum(c for c, p in by_cat.values())
+    total_prev = sum(p for c, p in by_cat.values())
+    agenda = {}
+    for cat in CATEGORIES:
+        curr, prev = by_cat.get(cat, (0, 0))
+        sc = round((curr / total_curr * 100.0), 1) if total_curr else 0.0
+        sp = round((prev / total_prev * 100.0), 1) if total_prev else 0.0
+        agenda[cat] = {
+            "curr": curr, "prev": prev, "net": curr - prev,
+            "share_pct": sc, "share_delta_pct": round(sc - sp, 1),
+        }
+    return agenda
 
 
 def _write(name, payload, var):
@@ -154,12 +242,12 @@ def _home(now, countries):
             "lead": {"title": top["headline"]["title"], "url": top["headline"]["url"], "source": top["headline"]["source"],
                      "outlets": top["independent_sources"]} if top else None,
         })
-    most = _top_global_and_regional(pool, lambda s: (s["independent_sources"], s["score"]), 8)
-    growing = _top_global_and_regional((s for s in pool if (s.get("last_24h") or 0) >= 2), lambda s: (s.get("last_24h") or 0, s["score"]), 6)
-    disasters = _top_global_and_regional((s for s in pool if s.get("disaster_type")), lambda s: (s["independent_sources"], s["score"]), 12, r_limit=8)
+    most = _top_global_and_regional(pool, lambda s: (s["independent_sources"], s.get("score") or 0.0), 8)
+    growing = _top_global_and_regional((s for s in pool if (s.get("last_24h") or 0) >= 2), lambda s: (s.get("last_24h") or 0, s.get("score") or 0.0), 6)
+    disasters = _top_global_and_regional((s for s in pool if s.get("disaster_type")), lambda s: (s["independent_sources"], s.get("score") or 0.0), 12, r_limit=8)
     violent = _top_global_and_regional(
         (s for s in pool if s.get("category") == "defence_security" or "Security and defence" in (s.get("themes") or [])),
-        lambda s: (s["independent_sources"], s["score"]), 12, r_limit=8)
+        lambda s: (s["independent_sources"], s.get("score") or 0.0), 12, r_limit=8)
     return {"generated_at": now, "desks": desks, "most_reported": most, "abroad_only": [],
             "growing": growing, "disasters": disasters, "violent_events": violent}
 
@@ -174,12 +262,13 @@ def run(db):
         for days, label in WINDOWS.items():
             ids = dashboard_story_ids(db, cid, days)
             if ids:
-                stories = [_story(db, db.execute("SELECT * FROM story WHERE id=?", (i,)).fetchone()) for i in ids]
+                stories = [_story(db, db.execute("SELECT * FROM story WHERE id=?", (i,)).fetchone(), now, days) for i in ids]
                 stories.sort(key=lambda st: -(st["score"] or 0.0))
                 totals = {c: db.execute("SELECT COUNT(*) FROM story WHERE country=? AND window_days=? AND category=?", (cid, days, c)).fetchone()[0]
                           for c in CATEGORIES}          # all stories found in the window, of which the top ones are exported
+                agenda_delta = _agenda_delta(db, cid, days, now)
                 payload = {"country": cid, "period": label, "days": days, "generated_at": now, "categories": CATEGORIES,
-                           "totals": totals, "stories": stories}
+                           "totals": totals, "agenda_delta": agenda_delta, "stories": stories}
                 _write(f"{cid}-{label}", payload, "ARGOS_DATA")
                 print(f"export: {cid}-{label}.json with {len(stories)} stories")
             if ids or (SITE_DATA / f"{cid}-{label}.json").exists():

@@ -118,23 +118,23 @@
 
   <section id="delta-methodology">
     <h2>Delta Analysis Methodology (&quot;What Changed?&quot;)</h2>
-    <p>To evaluate news cycle momentum rather than static cumulative volume, Argos compares the active monitoring window (e.g. last 24h or last 7d) against the immediately preceding contiguous period of equal length:</p>
+    <p>To evaluate news cycle momentum rather than static cumulative volume, Argos compares the active monitoring window (e.g. last 24h or last 7d) against the immediately preceding contiguous period of equal length without LLMs or synthetic claims:</p>
     <div class="pipeline">
       <div class="step">
         <b>01 · Story Velocity &amp; Emergence</b>
-        <span>Identifies fresh outbreaks (<code>[NEW]</code>, zero articles in the prior period) and escalating stories (<code>[SURGE +X]</code>, reporting velocity multiplier &ge; 1.75x) versus fading coverage (<code>[COOLING]</code>).</span>
+        <span>Deterministic movement states classify stories by publication timestamp: fresh emergence (<span class="stamp stamp-new">[NEW]</span>, zero articles in the prior period), accelerating reporting (<span class="stamp stamp-surge">[SURGE +&Delta;N]</span>, volume gain &ge; 3 articles and velocity multiplier &ge; 1.75x), and fading cycles (<span class="stamp stamp-cooling">[COOLING]</span>, volume decline &ge; 3 and velocity &le; 0.40x).</span>
       </div>
       <div class="step">
         <b>02 · Scope Escalation (&quot;Going Global&quot;)</b>
-        <span>Detects when a strictly domestic controversy is picked up by international or foreign-language diaspora outlets (<code>[INTL PICKUP]</code>), flagging emerging diplomatic risks.</span>
+        <span>Detects when a strictly domestic controversy is picked up by international wires (<span class="stamp stamp-pickup">[INTL PICKUP]</span>) or foreign-language diaspora outlets (<span class="stamp stamp-pickup">[DIASPORA PICKUP]</span>), flagging emerging diplomatic escalation.</span>
       </div>
       <div class="step">
         <b>03 · Macro Agenda Shifts</b>
-        <span>Calculates percentage-point shifts in national attention across the 6 core policy categories (e.g. <code>Politics &uarr; +14%</code>, <code>Economy &darr; -11%</code>).</span>
+        <span>Calculates percentage-point attention shifts (&Delta;S) across the 6 core policy categories (e.g. <code>Economics &uarr; +23.8%</code>, <code>Politics &darr; -19.4%</code>) displayed in the country Agenda Movement Bar with quick one-click filtering.</span>
       </div>
       <div class="step">
-        <b>04 · Narrative Drift</b>
-        <span>Monitors changes in state-affiliated media share to flag official communication campaigns or sudden state silence on emerging controversies.</span>
+        <b>04 · State Media Narrative Drift</b>
+        <span>Calculates shifts in state-affiliated media share (&Delta;state_share &ge; +30%) to flag official state narrative campaigns (<span class="stamp red">[STATE SURGE]</span>) or sudden state withdrawal from an active controversy.</span>
       </div>
     </div>
   </section>
