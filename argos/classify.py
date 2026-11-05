@@ -47,7 +47,7 @@ def _prototypes(emb, country, english_only=False):
     """One vector per topic. The country's own wording is averaged in, which pulls the vectors towards its language,
     so an English story is compared with the English-only set (an English headline scored below the cut-off against
     the mixed set and was dropped into 'other' although it was plainly about trade)."""
-    local = {} if english_only else (packs.load(country).get("classify") or {})
+    local = {} if (english_only or not country) else (packs.load(country).get("classify") or {})
     names, vecs = [], []
     for cat, texts in DESCRIPTIONS.items():
         v = emb.encode(["passage: " + t for t in texts + local.get(cat, [])]).mean(0)
@@ -59,10 +59,13 @@ def _prototypes(emb, country, english_only=False):
 def run(db, min_similarity=MIN_SIMILARITY):
     emb = Embedder()
     counts, sims = Counter(), []
+    names_en, protos_en = _prototypes(emb, None, english_only=True)
     for country in packs.pack_ids():
+        sids = [r[0] for r in db.execute("SELECT id FROM story WHERE country=?", (country,)).fetchall()]
+        if not sids:
+            continue
         names, protos = _prototypes(emb, country)
-        _, protos_en = _prototypes(emb, country, english_only=True)
-        for (sid,) in db.execute("SELECT id FROM story WHERE country=?", (country,)).fetchall():
+        for sid in sids:
             rows = db.execute("SELECT f.category_hint, e.vec, a.language FROM story_article sa JOIN article a ON a.id=sa.article_id "
                               "JOIN embedding e ON e.article_id=a.id LEFT JOIN feed f ON f.id=a.feed_id "
                               "WHERE sa.story_id=? AND COALESCE(sa.similarity, 1.0) >= 0.93", (sid,)).fetchall()
