@@ -10,7 +10,7 @@ sources:
   notes: Pioneering Central American digital investigative newsroom covering authoritarianism,
     corruption, and migration.
   feeds:
-  - url: https://elfaro.net/es/rss
+  - url: https://news.google.com/rss/search?q=site:elfaro.net+when:7d&hl=es-419&gl=US&ceid=US:es-419
     category_hint: internal_politics
 - id: la_prensa_pa
   name: La Prensa (Panamá)
@@ -23,7 +23,7 @@ sources:
   notes: Panama daily paper of record covering executive politics, canal operations,
     and maritime trade.
   feeds:
-  - url: https://www.prensa.com/arc/outboundfeeds/rss/category/politica/
+  - url: https://news.google.com/rss/search?q=site:prensa.com+when:7d&hl=es-419&gl=US&ceid=US:es-419
     category_hint: internal_politics
 - id: la_nacion_cr
   name: La Nación (Costa Rica)
@@ -36,7 +36,19 @@ sources:
   notes: San José paper of record covering Costa Rican constitutional democracy, social
     security, and economy.
   feeds:
-  - url: https://www.nacion.com/arc/outboundfeeds/rss/category/el-pais/politica/
+  - url: https://www.nacion.com/rss/
+    category_hint: internal_politics
+- id: confidencial_ni
+  name: Confidencial (Nicaragua)
+  homepage: https://confidencial.digital
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Carlos Fernando Chamorro (independent exile newsroom)
+  state_affiliated: false
+  notes: Premier independent Nicaraguan investigative newsroom operating from exile in Costa Rica.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:confidencial.digital+when:7d&hl=es-419&gl=US&ceid=US:es-419
     category_hint: internal_politics
 - id: gnews_centralamerica_intl
   name: Google News (Central America Migration & Governance - International)

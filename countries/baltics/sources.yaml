@@ -10,7 +10,7 @@ sources:
   notes: English-language service of Estonian statutory public broadcaster covering
     Baltic defense, digital governance, and regional security.
   feeds:
-  - url: https://news.err.ee/rss
+  - url: https://news.google.com/rss/search?q=site:news.err.ee+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: lsm_eng_lv
   name: LSM.lv English
@@ -34,7 +34,7 @@ sources:
   state_affiliated: false
   notes: Independent English-language service of Lithuanian public broadcaster.
   feeds:
-  - url: https://www.lrt.lt/en/news-in-english/rss
+  - url: https://news.google.com/rss/search?q=site:lrt.lt/en+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: the_baltic_times
   name: The Baltic Times
@@ -47,7 +47,7 @@ sources:
   notes: Independent pan-Baltic English weekly newspaper covering political and economic
     developments across Estonia, Latvia, and Lithuania.
   feeds:
-  - url: https://www.baltictimes.com/rss/
+  - url: https://news.google.com/rss/search?q=site:baltictimes.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: economics
 - id: gnews_baltics_intl
   name: Google News (Baltic Security & Defense - International)
@@ -59,6 +59,6 @@ sources:
   state_affiliated: false
   aggregator: google_news
   feeds:
-  - url: https://news.google.com/rss/search?q=(Baltic+OR+Estonia+OR+Latvia+OR+Lithuania)+(NATO+OR+defense+OR+border+OR+security)+when:3d&hl=en-US&gl=US&ceid=US:en
+  - url: https://news.google.com/rss/search?q=(Baltics+OR+Estonia+OR+Latvia+OR+Lithuania)+(NATO+OR+Russia+OR+border+OR+defense)+when:3d&hl=en-US&gl=US&ceid=US:en
     section: Security & Defense
     category_hint: defence_security
