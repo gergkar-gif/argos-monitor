@@ -65,4 +65,12 @@ if __name__ == "__main__":
     db = dbmod.connect()
     for name in sys.argv[1:] or ["ingest", "extract", "normalise", "relevance", "embed", "cluster", "classify", "policy", "rank", "excerpts", "verify", "export", "crisis", "trends", "reddit", "social", "watch", "prune", "report"]:
         print(f"\n== {name}")
-        STAGES[name](db)
+        try:
+            STAGES[name](db)
+        except Exception as e:
+            import traceback
+            traceback.print_exc()
+            if name in ("crisis", "trends", "reddit", "social", "watch", "prune", "report"):
+                print(f"WARNING: auxiliary stage '{name}' failed ({e}), continuing pipeline...")
+            else:
+                raise

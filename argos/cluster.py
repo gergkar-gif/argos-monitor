@@ -83,13 +83,16 @@ def _cluster_window(db, country, days, similarity):
         return
     X = np.frombuffer(b"".join(r["vec"] for r in rows), dtype=np.float32).reshape(n, DIM)
     t = np.array([_time(r) for r in rows])
-    D = 1.0 - X @ X.T
-    D[np.abs(t[:, None] - t[None, :]) > MAX_GAP_DAYS * 86400] = 2.0
-    np.fill_diagonal(D, 0.0)
-    labels = AgglomerativeClustering(n_clusters=None, metric="precomputed", linkage="average",
-                                     distance_threshold=1.0 - similarity).fit_predict(D.astype(np.float64))
-    del D
-    labels, merges, close = _merge(X, t, labels)
+    if n == 1:
+        labels, merges, close = np.array([0]), [], []
+    else:
+        D = 1.0 - X @ X.T
+        D[np.abs(t[:, None] - t[None, :]) > MAX_GAP_DAYS * 86400] = 2.0
+        np.fill_diagonal(D, 0.0)
+        labels = AgglomerativeClustering(n_clusters=None, metric="precomputed", linkage="average",
+                                         distance_threshold=1.0 - similarity).fit_predict(D.astype(np.float64))
+        del D
+        labels, merges, close = _merge(X, t, labels)
     for sim, a, b, na, nb in merges[:10]:
         print(f"  merged {sim:.3f} ({na}+{nb} articles): {_title(db, rows, a)} | {_title(db, rows, b)}")
     for sim, a, b, _, _ in close[:10]:
