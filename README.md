@@ -72,12 +72,12 @@ Each monitored country is defined declaratively in `countries/<id>/` with zero c
 - **`sources.yaml`** — Curated media directory across three scopes (`domestic`, `abroad_local`, `international`) with ownership metadata and `state_affiliated` flags.
 - **`themes.yaml`** — Bilingual foreign-desk priority themes, weights, keywords, and semantic descriptions tailored to the country's geopolitical fault lines.
 
-### Currently Active Country Packs (69 Countries across 15 Regional Desks)
+### Currently Active Country Packs (75 Countries across 15 Regional Desks)
 
 - **North America (2 Desks):**
   - **United States** (`countries/united_states/`) — Papers of record (*AP*, *Politico*, *The Hill*, *NPR*, *Defense News*), official White House / State Dept briefings, and international perspectives (`en`).
   - **Canada** (`countries/canada/`) — National papers of record and public broadcaster (*CBC News*, *The Globe and Mail*, *National Post*, *Toronto Star*), and Bank of Canada/trade reporting (`en`).
-- **Western Europe (9 Desks):**
+- **Western Europe (11 Desks):**
   - **United Kingdom** (`countries/united_kingdom/`) — National papers of record and broadcasters (*BBC News*, *The Guardian*, *The Telegraph*, *Sky News*), official Downing Street releases, and global European coverage (`en`).
   - **Germany** (`countries/germany/`) — Public broadcasters (*Tagesschau / ARD*, *ZDFheute*), leading news weeklies (*Der Spiegel*), and financial dailies (*Handelsblatt*) (`de` / `en`).
   - **France** (`countries/france/`) — Papers of record (*Le Monde*, *Le Figaro*), public broadcaster (*France Info*, *France 24*), and macroeconomic daily (*Les Echos*) (`fr` / `en`).
@@ -85,9 +85,12 @@ Each monitored country is defined declaratively in `countries/<id>/` with zero c
   - **Spain** (`countries/spain/`) — Statutory wire (*EFE*), major national dailies (*El País*, *El Mundo*, *La Vanguardia*), and financial press (*Cinco Días*) (`es` / `en`).
   - **Netherlands** (`countries/netherlands/`) — Statutory public broadcaster (*NOS Nieuws*), leading news portal (*NU.nl*), national paper of record (*De Telegraaf*), and English daily (*DutchNews.nl*) (`nl` / `en`).
   - **Switzerland** (`countries/switzerland/`) — Multi-language public broadcasters (*SWI swissinfo.ch*, *SRF News*), papers of record (*NZZ*, *Le Temps*), and financial/neutrality reporting (`de` / `fr` / `en`).
+  - **Norway** (`countries/norway/`) — National public broadcaster (*NRK*), subscription paper of record (*Aftenposten*), and English daily (*The Local Norway*) (`no` / `en`).
+  - **Portugal** (`countries/portugal/`) — National broadsheet of record (*Público*), public broadcaster (*RTP*), and English service (*Portugal Resident*) (`pt` / `en`).
   - **Sweden** (`countries/sweden/`) — National public broadcasters (*SVT*, *Sveriges Radio*), and leading morning broadsheets (*Dagens Nyheter*, *Svenska Dagbladet*) (`sv` / `en`).
   - **Finland** (`countries/finland/`) — Statutory national broadcaster (*Yle Uutiset* / *Yle News*), subscription paper of record (*Helsingin Sanomat*), and financial daily (*Kauppalehti*) (`fi` / `en`).
-- **Central Europe (4 Desks - Visegrad Four / V4):**
+- **Central Europe (5 Desks):**
+  - **Austria** (`countries/austria/`) — Statutory public broadcaster (*ORF*), national broadsheet paper of record (*Der Standard*), and Vienna coalition monitors (`de` / `en`).
   - **Hungary** (`countries/hungary/`) — Pro-government and independent domestic outlets, cross-border Hungarian press, and EU/international coverage (`hu` / `en`).
   - **Poland** (`countries/poland/`) — State wire (*PAP* via Google News), major independent/commercial broadcasters (*RMF24*, *TVN24*, *Polsat*), investigative press (*OKO.press*), and English briefers (*Notes from Poland*) (`pl` / `en`).
   - **Czechia** (`countries/czechia/`) — Public broadcasters (*ČT24*, *Český rozhlas*), national wires (*ČTK*), leading dailies (*Seznam Zprávy*, *Novinky*, *Deník N*), and investigative weeklies (*Respekt*) (`cs` / `en`).
@@ -105,12 +108,13 @@ Each monitored country is defined declaratively in `countries/<id>/` with zero c
   - **Georgia** (`countries/georgia/`) — Bilingual independent daily (*Civil.ge* in Georgian & English), Caucasus investigative outlets (*OC Media*, *JAMnews*), and official government press (`ka` / `en`).
   - **Azerbaijan** (`countries/azerbaijan/`) — Official/pro-government Baku wires (*AZERTAC*, *Trend*, *APA*) contrasted against exiled independent outlets (*Meydan TV* in Azerbaijani & English, *OC Media*) (`az` / `en`).
   - **Armenia** (`countries/armenia/`) — Investigative & independent Yerevan outlets (*Hetq* in Armenian & English, *Factor.am*, *CivilNet*), state wire (*Armenpress*), and Caucasus regional press (`hy` / `en`).
-- **Middle East & Mediterranean (9 Desks):**
+- **Middle East & Mediterranean (10 Desks):**
   - **Saudi Arabia** (`countries/saudi_arabia/`) — State news agency (*SPA*), major pan-Arab English/Arabic broadsheets (*Arab News*, *Asharq Al-Awsat*, *Al Arabiya*), and Vision 2030/OPEC+ monitors (`ar` / `en`).
   - **United Arab Emirates** (`countries/united_arab_emirates/`) — Statutory wire (*WAM*), leading English dailies (*The National*, *Gulf News*, *Khaleej Times*), and sovereign tech/trade reporting (`ar` / `en`).
   - **Egypt** (`countries/egypt/`) — Historical daily paper of record (*Al-Ahram* / *Ahram Online*), financial press (*Daily News Egypt*), and independent investigative journalism (*Mada Masr*) (`ar` / `en`).
   - **Qatar** (`countries/qatar/`) — State news agency (*QNA*), international broadcast network (*Al Jazeera*), and English broadsheet (*The Peninsula*) (`ar` / `en`).
   - **Israel** (`countries/israel/`) — Independent papers of record (*Haaretz*, *The Times of Israel*, *Ynetnews*, *The Jerusalem Post*) and regional security reporting (`he` / `en`).
+  - **Greece** (`countries/greece/`) — English daily of record (*Ekathimerini*), state news agency (*ANA-MPA*), and Aegean/Balkans reporting (`el` / `en`).
   - **Lebanon** (`countries/lebanon/`) — Independent English paper of record (*L'Orient Today*), digital portal (*Naharnet*), and statutory wire (*NNA*) (`en` / `fr`).
   - **Morocco** (`countries/morocco/`) — Statutory news agency (*MAP*), independent digital dailies (*Le360*, *Hespress*), and English paper of record (*Morocco World News*) (`fr` / `en`).
   - **Turkey** (`countries/turkey/`) — State wire & pro-government press (*Anadolu Agency*, *Daily Sabah*) contrasted with independent/opposition dailies (*Cumhuriyet*, *Sözcü*, *BirGün*, *Bianet*) and diaspora coverage (`tr` / `en`).
@@ -149,12 +153,14 @@ Each monitored country is defined declaratively in `countries/<id>/` with zero c
   - **Nigeria** (`countries/nigeria/`) — National dailies & broadcasters (*Premium Times*, *The Punch*, *Vanguard*, *Channels TV*), state wire (*NAN*), and diaspora investigative press (*Sahara Reporters*) (`en`).
   - **Kenya** (`countries/kenya/`) — National daily paper of record (*The Standard*), public broadcaster (*KBC*), major national press (*Daily Nation*, *The Star*), and regional East African media (*The EastAfrican*) (`en`).
   - **West Africa** (`countries/west_africa/`) — Pan-African weeklies of record (*Jeune Afrique*), public broadcaster (*RFI Afrique*), and regional ECOWAS / Sahel coverage (`fr` / `en`).
-- **South America (6 Desks):**
+- **South America (8 Desks):**
   - **Mexico** (`countries/mexico/`) — National papers of record (*El Universal*, *La Jornada*), financial press (*El Financiero*), and investigative digital dailies (*Animal Político*, *Aristegui Noticias*) (`es` / `en`).
   - **Brazil** (`countries/brazil/`) — Federal public agency (*Agência Brasil*) alongside major political and financial dailies (*Folha de S.Paulo*, *Poder360*, *G1*, *InfoMoney*, *Nexo*) (`pt` / `en`).
   - **Colombia** (`countries/colombia/`) — Independent political & investigative press (*La Silla Vacía*, *Colombia Reports*, *El Tiempo*, *El Espectador*, *Semana*), official *Presidencia / RTVC*, and regional security press (*InSight Crime*) (`es` / `en`).
   - **Argentina** (`countries/argentina/`) — National papers of record and digital dailies (*Infobae*, *La Nación*, *Clarín*, *Ámbito Financiero*), official communications, and regional Latin American press (`es` / `en`).
   - **Chile** (`countries/chile/`) — Papers of record (*El Mercurio / Emol*, *La Tercera*), independent broadcaster (*BioBioChile*), and lithium/mining reporting (`es` / `en`).
+  - **Peru** (`countries/peru/`) — Historical daily of record (*El Comercio*), state wire (*Agencia Andina*), and financial press (*Gestión*) (`es` / `en`).
+  - **Ecuador** (`countries/ecuador/`) — Leading national broadsheets (*El Universo*, *El Comercio Ecuador*) and digital investigative daily (*Primicias*) (`es` / `en`).
   - **Venezuela** (`countries/venezuela/`) — State wire (*AVN*) contrasted with independent investigative journalism in exile (*Efecto Cocuyo*, *El Nacional*, *Tal Cual*, *Armando.info*) (`es` / `en`).
 - **Caribbean (1 Desk - Regional Grouping):**
   - **Caribbean** (`countries/caribbean/`) — Official intergovernmental organ (*CARICOM Today*), historic daily of record (*The Gleaner*), and regional diaspora weeklies (*Caribbean National Weekly*, *Caribbean News Global*) (`en`).

@@ -1,0 +1,43 @@
+id: greece
+name: Greece
+region: Middle East & Mediterranean
+language: el
+abroad_label: International & English-language Greek outlets
+mention:
+- greece
+- greek
+- hellas
+- ellada
+- athens
+- thessaloniki
+- kyriakos mitsotakis
+- mitsotakis
+- syriza
+- new democracy
+- pasok
+- vouli
+- aegean
+- evros
+dateline: ^\s*(?:ATHENS|THESSALONIKI|ANA-MPA|AMNA|GREECE)\s*[-–:]\s*
+subreddits:
+- greece
+- greececirclejerk
+skip_sections:
+- sport
+- sports
+- football
+- lifestyle
+- lifestyle-showbiz
+geo: GR
+aggregator_outlets:
+  domestic:
+  - Ekathimerini
+  - Kathimerini
+  - AMNA
+  - To Vima
+  - Ta Nea
+  - Protothema
+  - Naftemporiki
+  abroad_local:
+  - Greek Reporter
+  - Athens News

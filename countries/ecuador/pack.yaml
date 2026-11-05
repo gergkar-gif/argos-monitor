@@ -1,0 +1,43 @@
+id: ecuador
+name: Ecuador
+region: South America
+language: es
+abroad_label: International & regional Latin American outlets
+mention:
+- ecuador
+- ecuatoriano
+- ecuatoriana
+- quito
+- guayaquil
+- cuenca
+- daniel noboa
+- noboa
+- asamblea nacional
+- carondelet
+- petroecuador
+- conflicto armado interno
+- correa
+- revolución ciudadana
+dateline: ^\s*(?:QUITO|GUAYAQUIL|CUENCA|ECUADOR)\s*[-–:]\s*
+subreddits:
+- ecuador
+- guayaquil
+skip_sections:
+- deportes
+- futbol
+- entretenimiento
+- farandula
+- gente
+geo: EC
+aggregator_outlets:
+  domestic:
+  - El Universo
+  - El Comercio Ecuador
+  - Primicias
+  - Expreso
+  - Teleamazonas
+  - Ecuavisa
+  abroad_local:
+  - InSight Crime
+  - El País América
+  - Infobae Ecuador

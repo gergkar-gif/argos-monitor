@@ -1,0 +1,43 @@
+id: portugal
+name: Portugal
+region: Western Europe
+language: pt
+abroad_label: International & English-language Portuguese outlets
+mention:
+- portugal
+- portuguese
+- português
+- lisboa
+- lisbon
+- porto
+- luís montenegro
+- montenegro
+- marcelo rebelo de sousa
+- assembleia da república
+- psd
+- ps
+- chega
+- banco de portugal
+dateline: ^\s*(?:LISBOA|LISBON|PORTO|LUSA|PORTUGAL)\s*[-–:]\s*
+subreddits:
+- portugal
+- portugueses
+skip_sections:
+- desporto
+- futebol
+- fama
+- vida
+- gente
+geo: PT
+aggregator_outlets:
+  domestic:
+  - Público
+  - RTP
+  - Diário de Notícias
+  - Jornal de Notícias
+  - Expresso
+  - Observador
+  - Jornal de Negócios
+  abroad_local:
+  - The Portugal News
+  - Portugal Resident

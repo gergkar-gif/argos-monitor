@@ -1,0 +1,39 @@
+sources:
+- id: kathimerini_en_gr
+  name: Ekathimerini
+  homepage: https://www.ekathimerini.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Kathimerini Publishing
+  state_affiliated: false
+  notes: Leading independent English-language Greek daily broadsheet of record covering
+    cabinet governance, Aegean diplomacy, and economy.
+  feeds:
+  - url: https://www.ekathimerini.com/feed/
+    category_hint: internal_politics
+- id: amna_news_gr
+  name: Athens-Macedonian News Agency (ANA-MPA)
+  homepage: https://www.amna.gr
+  language: el
+  scope: domestic
+  kind: official
+  governing_body: Hellenic Republic
+  state_affiliated: true
+  notes: Statutory national news agency of Greece.
+  feeds:
+  - url: https://www.amna.gr/rss/general.xml
+    category_hint: internal_politics
+- id: gnews_greece_intl
+  name: Google News (Greece Mediterranean & Economy - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Greece+OR+Athens)+(Mitsotakis+OR+economy+OR+Turkey+OR+defense)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Politics & Diplomacy
+    category_hint: foreign_policy

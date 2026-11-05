@@ -1,0 +1,55 @@
+sources:
+- id: andina_pe
+  name: Agencia Andina
+  homepage: https://andina.pe
+  language: es
+  scope: domestic
+  kind: official
+  governing_body: Editora Perú (State news agency)
+  state_affiliated: true
+  notes: Statutory national wire agency of Peru covering official executive decrees,
+    ministerial actions, and regional developments.
+  feeds:
+  - url: https://andina.pe/agencia/rss/politica.aspx
+    category_hint: internal_politics
+  - url: https://andina.pe/agencia/rss/economia.aspx
+    category_hint: economics
+- id: el_comercio_pe
+  name: El Comercio (Perú)
+  homepage: https://elcomercio.pe
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Empresa Editora El Comercio
+  state_affiliated: false
+  notes: Lima paper of record founded in 1839 covering institutional politics, justice
+    investigations, and macroeconomic policy.
+  feeds:
+  - url: https://elcomercio.pe/arc/outboundfeeds/rss/category/politica/
+    category_hint: internal_politics
+- id: gestion_pe
+  name: Gestión
+  homepage: https://gestion.pe
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Grupo El Comercio
+  state_affiliated: false
+  notes: Premier Peruvian financial and economic daily covering mining investments,
+    central bank decisions, and trade.
+  feeds:
+  - url: https://gestion.pe/arc/outboundfeeds/rss/category/economia/
+    category_hint: economics
+- id: gnews_peru_intl
+  name: Google News (Peru Politics & Mining - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=Peru+(Boluarte+OR+mining+OR+copper+OR+protest+OR+Congress)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Governance & Resources
+    category_hint: economics

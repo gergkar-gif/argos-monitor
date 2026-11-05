@@ -1,0 +1,42 @@
+sources:
+- id: orf_at
+  name: ORF News
+  homepage: https://orf.at
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Österreichischer Rundfunk (public broadcaster)
+  state_affiliated: false
+  notes: Austrian public-service broadcaster providing comprehensive federal and international
+    news.
+  feeds:
+  - url: https://rss.orf.at/news.xml
+    category_hint: internal_politics
+- id: der_standard_at
+  name: Der Standard
+  homepage: https://www.derstandard.at
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Standard Verlagsgesellschaft
+  state_affiliated: false
+  notes: Vienna broadsheet paper of record covering parliamentary politics, coalition
+    negotiations, and EU policy.
+  feeds:
+  - url: https://www.derstandard.at/rss/inland
+    category_hint: internal_politics
+  - url: https://www.derstandard.at/rss/wirtschaft
+    category_hint: economics
+- id: gnews_austria_intl
+  name: Google News (Austria Coalition & Central Europe)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Austria+OR+Vienna)+(coalition+OR+parliament+OR+neutrality+OR+election)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Governance & Diplomacy
+    category_hint: foreign_policy

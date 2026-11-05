@@ -1,0 +1,40 @@
+sources:
+- id: el_universo_ec
+  name: El Universo
+  homepage: https://www.eluniverso.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Grupo El Universo
+  state_affiliated: false
+  notes: Guayaquil daily broadsheet of record founded in 1921 covering national security,
+    port operations, and presidential policy.
+  feeds:
+  - url: https://www.eluniverso.com/arc/outboundfeeds/rss/category/noticias/politica/
+    category_hint: internal_politics
+- id: primicias_ec
+  name: Primicias
+  homepage: https://www.primicias.ec
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Primicias S.A.
+  state_affiliated: false
+  notes: Independent Quito digital investigative newsroom specializing in organized
+    crime, energy crisis, and institutional reform.
+  feeds:
+  - url: https://www.primicias.ec/feed/
+    category_hint: defence_security
+- id: gnews_ecuador_intl
+  name: Google News (Ecuador Security & Energy - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=Ecuador+(Noboa+OR+blackout+OR+security+OR+drought+OR+cartel)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Security & Governance
+    category_hint: defence_security

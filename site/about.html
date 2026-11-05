@@ -65,7 +65,7 @@
     <h2>How the 10-stage pipeline works</h2>
     <p>A scheduled GitHub Actions runner executes the pipeline every 3 hours and publishes static JSON/JS bundles to Cloudflare Pages:</p>
     <div class="pipeline">
-      <div class="step"><b>01 · Ingest</b><span>Polls 680+ RSS/Atom and Google News feeds across 69 country desks via curl.</span></div>
+      <div class="step"><b>01 · Ingest</b><span>Polls 700+ RSS/Atom and Google News feeds across 75 country desks via curl.</span></div>
       <div class="step"><b>02 · Extract</b><span>Fetches full article text with Trafilatura for domestic and accessible sources.</span></div>
       <div class="step"><b>03 · Normalise</b><span>Applies Unicode NFC normalisation (crucial for Vietnamese diacritics and Khmer script).</span></div>
       <div class="step"><b>04 · Relevance</b><span>Filters out sports/lifestyle sections and requires country mentions on world feeds.</span></div>
@@ -177,12 +177,12 @@
   const COUNTRY_REGION = {
     canada: 'North America', united_states: 'North America',
     finland: 'Western Europe', france: 'Western Europe', germany: 'Western Europe', italy: 'Western Europe',
-    netherlands: 'Western Europe', spain: 'Western Europe', sweden: 'Western Europe', switzerland: 'Western Europe', united_kingdom: 'Western Europe',
-    czechia: 'Central Europe', hungary: 'Central Europe', poland: 'Central Europe', slovakia: 'Central Europe',
+    netherlands: 'Western Europe', norway: 'Western Europe', portugal: 'Western Europe', spain: 'Western Europe', sweden: 'Western Europe', switzerland: 'Western Europe', united_kingdom: 'Western Europe',
+    austria: 'Central Europe', czechia: 'Central Europe', hungary: 'Central Europe', poland: 'Central Europe', slovakia: 'Central Europe',
     belarus: 'Eastern Europe', moldova: 'Eastern Europe', russia: 'Eastern Europe', ukraine: 'Eastern Europe',
     bosnia: 'Balkans', kosovo: 'Balkans', serbia: 'Balkans',
     armenia: 'South Caucasus', azerbaijan: 'South Caucasus', georgia: 'South Caucasus',
-    egypt: 'Middle East & Mediterranean', iran: 'Middle East & Mediterranean', israel: 'Middle East & Mediterranean',
+    egypt: 'Middle East & Mediterranean', greece: 'Middle East & Mediterranean', iran: 'Middle East & Mediterranean', israel: 'Middle East & Mediterranean',
     lebanon: 'Middle East & Mediterranean', morocco: 'Middle East & Mediterranean',
     qatar: 'Middle East & Mediterranean', saudi_arabia: 'Middle East & Mediterranean', turkey: 'Middle East & Mediterranean',
     united_arab_emirates: 'Middle East & Mediterranean',
@@ -193,7 +193,7 @@
     philippines: 'Southeast Asia', singapore: 'Southeast Asia', thailand: 'Southeast Asia', vietnam: 'Southeast Asia',
     australia: 'Oceania', pacific_islands: 'Oceania',
     ethiopia: 'Sub-Saharan Africa', dr_congo: 'Sub-Saharan Africa', kenya: 'Sub-Saharan Africa', nigeria: 'Sub-Saharan Africa', south_africa: 'Sub-Saharan Africa', west_africa: 'Sub-Saharan Africa',
-    argentina: 'South America', brazil: 'South America', chile: 'South America', colombia: 'South America', mexico: 'South America', venezuela: 'South America',
+    argentina: 'South America', brazil: 'South America', chile: 'South America', colombia: 'South America', ecuador: 'South America', mexico: 'South America', peru: 'South America', venezuela: 'South America',
     caribbean: 'Caribbean',
   };
   const scope = { domestic: 'In the country', abroad_local: 'Local-language, abroad', international: 'International' };
@@ -223,7 +223,7 @@
     const telemBar = telem ? el('div', { class: 'monitor-bar', style: 'margin: 0.5rem 0 1.25rem; padding: 0.65rem 1rem;' },
       el('div', { style: 'display: flex; flex-wrap: wrap; gap: 1.25rem; align-items: center;' },
         el('span', { class: 'typed', text: `${allCountries.length} Country Desks` }),
-        el('span', { class: 'typed', text: `${totalFeeds || '680+'} Live Feeds Polled` }),
+        el('span', { class: 'typed', text: `${totalFeeds || '700+'} Live Feeds Polled` }),
         el('span', { class: 'typed', text: `${totalArticles ? totalArticles.toLocaleString() : '35,000+'} Articles Corroborated` }),
         raw.generated_at && el('span', { class: 'meta', text: `Cycle: ${new Date(raw.generated_at).toLocaleDateString()}` })
       )

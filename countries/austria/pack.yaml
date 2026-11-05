@@ -1,0 +1,46 @@
+id: austria
+name: Austria
+region: Central Europe
+language: de
+abroad_label: International & regional German-language outlets
+mention:
+- österreich
+- austria
+- austrian
+- wien
+- vienna
+- salzburg
+- graz
+- karl nehammer
+- nehammer
+- herbert kickl
+- kickl
+- nationalrat
+- övp
+- fpö
+- spö
+- oenb
+- bundeskanzler
+dateline: ^\s*(?:WIEN|VIENNA|APA|SALZBURG|AUSTRIA)\s*[-–:]\s*
+subreddits:
+- Austria
+- wien
+skip_sections:
+- sport
+- fussball
+- lifestyle
+- leute
+- stars
+- boulevard
+geo: AT
+aggregator_outlets:
+  domestic:
+  - ORF
+  - Der Standard
+  - Die Presse
+  - Kurier
+  - Kleine Zeitung
+  - Salzburger Nachrichten
+  abroad_local:
+  - The Local Austria
+  - Vindobona

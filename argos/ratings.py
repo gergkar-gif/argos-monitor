@@ -742,13 +742,38 @@ RATINGS = {
     "naharnet": {"bias": "center", "alignment": "independent", "factuality": "high"},
     "the daily star": {"bias": "center", "alignment": "independent", "factuality": "high"},
     "dhaka tribune": {"bias": "center", "alignment": "independent", "factuality": "high"},
+
+    # --- Batch 2: Tier 3 European & Latin American Desks ---
+    "nrk": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "nrk nyheter": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "aftenposten": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+    "the local norway": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "orf": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "orf news": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "der standard": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "ekathimerini": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "kathimerini": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+    "athens-macedonian news agency": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "high"},
+    "amna": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "high"},
+    "público": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "publico": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "rtp": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "rtp notícias": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "portugal resident": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "agencia andina": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "high"},
+    "andina": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "high"},
+    "el comercio": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+    "gestión": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+    "gestion": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+    "el universo": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "primicias": {"bias": "center", "alignment": "independent", "factuality": "high"},
 }
 
 
 def clean_name(name):
     n = re.split(r"\s+[|\-–—·]\s+|\s*\(", str(name or "").lower())[0].strip()
     n = re.sub(r"^(the|báo|gazeta)\s+", "", n).strip()
-    return re.sub(r"\.(hu|sk|cz|kz|uz|md|ge|az|rs|vn|com|org|net|tv|ro|pl|kg|ba|et|za|ng|tr|jp|kr|tw|ph|id|my|th|mm|kh|la|co|ar|br|ua|ir|in|mx|cd|us|uk|cn|ru|de|fr|il|sa|ae|eg|qa|pk|kp|sg|au|by|ca|ve|se|fi|it|es|jm|fj|sn|nl|ch|cl|ma|lb|bd)$", "", n).strip()
+    return re.sub(r"\.(hu|sk|cz|kz|uz|md|ge|az|rs|vn|com|org|net|tv|ro|pl|kg|ba|et|za|ng|tr|jp|kr|tw|ph|id|my|th|mm|kh|la|co|ar|br|ua|ir|in|mx|cd|us|uk|cn|ru|de|fr|il|sa|ae|eg|qa|pk|kp|sg|au|by|ca|ve|se|fi|it|es|jm|fj|sn|nl|ch|cl|ma|lb|bd|no|at|gr|pt|pe|ec)$", "", n).strip()
 
 
 _COMPILED_PATTERNS = [

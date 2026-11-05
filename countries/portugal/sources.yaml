@@ -1,0 +1,53 @@
+sources:
+- id: publico_pt
+  name: Público
+  homepage: https://www.publico.pt
+  language: pt
+  scope: domestic
+  kind: media
+  governing_body: Sonaecom
+  state_affiliated: false
+  notes: Lisbon national daily paper of record covering executive policy, European
+    governance, and economic reforms.
+  feeds:
+  - url: https://feeds.feedburner.com/PublicoRSS
+    category_hint: internal_politics
+- id: rtp_noticias_pt
+  name: RTP Notícias
+  homepage: https://www.rtp.pt/noticias
+  language: pt
+  scope: domestic
+  kind: media
+  governing_body: Rádio e Televisão de Portugal (public broadcaster)
+  state_affiliated: false
+  notes: Statutory public broadcaster of Portugal providing objective public-service
+    journalism.
+  feeds:
+  - url: https://www.rtp.pt/noticias/rss
+    category_hint: internal_politics
+- id: portugal_resident
+  name: Portugal Resident
+  homepage: https://www.portugalresident.com
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Open Media Group
+  state_affiliated: false
+  notes: Leading independent English-language Portuguese news service covering politics,
+    taxation, and immigration.
+  feeds:
+  - url: https://www.portugalresident.com/feed/
+    category_hint: general
+- id: gnews_portugal_intl
+  name: Google News (Portugal Politics & Economy - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Portugal+OR+Lisbon)+(parliament+OR+budget+OR+housing+OR+economy)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Governance & Economy
+    category_hint: internal_politics

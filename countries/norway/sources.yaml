@@ -1,0 +1,53 @@
+sources:
+- id: nrk_no
+  name: NRK Nyheter
+  homepage: https://www.nrk.no
+  language: 'no'
+  scope: domestic
+  kind: media
+  governing_body: Norsk rikskringkasting (public broadcaster)
+  state_affiliated: false
+  notes: Norwegian statutory public broadcaster providing independent editorial reporting
+    across all regions.
+  feeds:
+  - url: https://www.nrk.no/nyheter/siste.rss
+    category_hint: internal_politics
+- id: aftenposten_no
+  name: Aftenposten
+  homepage: https://www.aftenposten.no
+  language: 'no'
+  scope: domestic
+  kind: media
+  governing_body: Schibsted
+  state_affiliated: false
+  notes: Oslo subscription broadsheet paper of record covering Storting policy, defense,
+    and foreign affairs.
+  feeds:
+  - url: https://www.aftenposten.no/rss
+    category_hint: internal_politics
+- id: the_local_no
+  name: The Local Norway
+  homepage: https://www.thelocal.no
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: The Local Europe AB
+  state_affiliated: false
+  notes: Independent English-language digital news service covering Norwegian governance,
+    energy, and economy.
+  feeds:
+  - url: https://www.thelocal.no/feed
+    category_hint: general
+- id: gnews_norway_intl
+  name: Google News (Norway Energy & Security - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Norway+OR+Norwegian)+(oil+OR+gas+OR+NATO+OR+Arctic+OR+defense)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Energy & Security
+    category_hint: defence_security

@@ -1,0 +1,44 @@
+id: peru
+name: Peru
+region: South America
+language: es
+abroad_label: International & regional Latin American outlets
+mention:
+- perú
+- peru
+- peruano
+- peruana
+- lima
+- arequipa
+- cusco
+- dina boluarte
+- boluarte
+- congreso de la república
+- torre tagle
+- minería
+- southern copper
+- fujimorismo
+- bcrp
+dateline: ^\s*(?:LIMA|AREQUIPA|ANDINA|CUSCO|PERU)\s*[-–:]\s*
+subreddits:
+- PERU
+- Lima
+skip_sections:
+- deportes
+- futbol
+- espectaculos
+- farandula
+- tendencias
+geo: PE
+aggregator_outlets:
+  domestic:
+  - El Comercio
+  - La República
+  - Agencia Andina
+  - Gestión
+  - RPP Noticias
+  - Caretas
+  abroad_local:
+  - InSight Crime
+  - El País América
+  - Infobae Perú

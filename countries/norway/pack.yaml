@@ -1,0 +1,44 @@
+id: norway
+name: Norway
+region: Western Europe
+language: 'no'
+abroad_label: International & English-language Nordic outlets
+mention:
+- norge
+- norway
+- norwegian
+- oslo
+- bergen
+- trondheim
+- jonas gahr støre
+- støre
+- stortinget
+- norges bank
+- oljefondet
+- equinor
+- høyre
+- erna solberg
+dateline: ^\s*(?:OSLO|BERGEN|TRONDHEIM|NTB|NORWAY)\s*[-–:]\s*
+subreddits:
+- norge
+- norway
+skip_sections:
+- sport
+- sports
+- fotball
+- lifestyle
+- rampelys
+- kjendis
+geo: 'NO'
+aggregator_outlets:
+  domestic:
+  - NRK
+  - Aftenposten
+  - VG
+  - Dagbladet
+  - E24
+  - Dagens Næringsliv
+  abroad_local:
+  - The Local Norway
+  - News in English Norway
+  - Barents Observer
