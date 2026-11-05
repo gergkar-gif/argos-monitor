@@ -25,7 +25,7 @@ Each step has a check that shows it is done. Work in order.
   - Next: Implement window partitioning and delta metric calculation in `argos/export.py` for 24h and 7d feeds.
 - Optional LLM layer for the top stories, with the verbatim-quote check
 - Offline headline translation (`opus-mt-vi-en`)
-- ~~A second country~~ Done: Hungary (D15). More countries follow the same pack recipe (33 country desks active).
+- ~~A second country~~ Done: Hungary (D15). Expanded to 60 country desks across 14 regional desks (Tiers 1 & 2 fully scaffolded).
 - ~~Source political alignment, editorial leaning, and perspective analysis~~ Done (D22).
 - ~~Conflict & Security sensor and official advisory model (D23)~~ Done: retired heuristic pseudo-ACLED regex tagging and false positive badges; anchored conflict/security in verified external feeds (US State Dept, UK FCDO, Crisis Group) and deterministic defence/security story clusters.
 - Basic Social Watch from accessible sources (YouTube, Google Trends; Telegram and Bluesky for other countries)
