@@ -1,0 +1,78 @@
+# Australia country pack.
+id: australia
+name: Australia
+region: Oceania
+language: en
+abroad_label: International & Pacific perspectives on Australia
+
+mention:
+  - "australia"
+  - "australian"
+  - "canberra"
+  - "sydney"
+  - "melbourne"
+  - "brisbane"
+  - "perth"
+  - "anthony albanese"
+  - "albanese"
+  - "peter dutton"
+  - "penny wong"
+  - "richard marles"
+  - "labor party"
+  - "liberal party"
+  - "reserve bank of australia"
+  - "rba"
+  - "aukus"
+  - "quad"
+  - "dfat"
+
+mention_regex: ['\b(?:australia|australian|canberra|albanese|peter dutton|aukus|rba)\b']
+mention_section: "Australia"
+
+url_sections:
+  foreign: [world, international, asia-pacific]
+  skip: [sport, sports, afl, nrl, lifestyle, entertainment, celebrity, travel, property, weather]
+
+aggregator_outlets:
+  domestic:
+    - "abc news"
+    - "abc"
+    - "the australian financial review"
+    - "afr"
+    - "the sydney morning herald"
+    - "smh"
+    - "the age"
+    - "the australian"
+    - "sbs news"
+    - "sbs"
+    - "the guardian australia"
+    - "news.com.au"
+  abroad_local:
+    - "bbc news australia"
+    - "reuters"
+    - "bloomberg"
+    - "the diplomat"
+
+excerpt:
+  dateline: '^\s*(?:CANBERRA|SYDNEY|MELBOURNE|ABC|AAP|REUTERS)\s*[-–—:]\s*'
+  noise: '^(Photo|Credit|Source|Read more|Watch|\(|\[)'
+
+classify:
+  internal_politics:
+    - "Prime Minister Anthony Albanese, Federal Cabinet, Opposition Leader Peter Dutton, Parliament of Australia in Canberra, Senate crossbench, federal election campaigns, National Anti-Corruption Commission"
+    - "Prime Minister, Albanese, Parliament, Canberra, Labor, Coalition, Peter Dutton, legislation, Senate, electoral politics"
+  economics:
+    - "Reserve Bank of Australia (RBA) cash rate decisions, Governor Michele Bullock, inflation (CPI), iron ore and coal commodity prices, critical minerals export (lithium, rare earths), housing supply and rental crisis"
+    - "RBA, interest rates, inflation, mining sector, iron ore, lithium, critical minerals, housing market, GDP growth, federal budget surplus"
+  foreign_policy:
+    - "Department of Foreign Affairs and Trade (DFAT), Foreign Minister Penny Wong, Pacific Islands Forum diplomacy, stabilizing trade relations with China, Quad partnership, international law in South China Sea"
+    - "DFAT, Penny Wong, foreign policy, Pacific Islands, China trade, Quad, Southeast Asia relations, bilateral diplomacy"
+  defence_security:
+    - "Department of Defence, Defence Minister Richard Marles, AUKUS nuclear-powered submarine acquisition, Defence Strategic Review (DSR) implementation, northern base hardening, Australian Defence Force (ADF)"
+    - "Defence, AUKUS, Richard Marles, nuclear submarines, ADF, military capability, missile defense, Indo-Pacific deterrence, naval surface fleet"
+  society:
+    - "Indigenous affairs post-Voice referendum, immigration and international student visa caps, cost of living relief, energy transition targets, disaster resilience (bushfire and flood mitigation)"
+    - "Immigration, student visas, housing crisis, climate policy, energy transition, bushfire readiness, healthcare"
+
+geo: AU
+reddit: [geopolitics, auspolitics, australia]

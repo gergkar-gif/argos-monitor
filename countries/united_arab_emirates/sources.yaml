@@ -1,0 +1,100 @@
+sources:
+  - id: wam_en
+    name: Emirates News Agency (WAM)
+    homepage: https://www.wam.ae/en
+    language: en
+    scope: domestic
+    kind: official
+    governing_body: "National Media Council / UAE Federal Government"
+    state_affiliated: true
+    notes: "Official statutory news agency of the United Arab Emirates."
+    feeds:
+      - url: https://www.wam.ae/en/rss/all.xml
+        category_hint: internal_politics
+
+  - id: the_national
+    name: The National
+    homepage: https://www.thenationalnews.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "International Media Investments (IMI)"
+    state_affiliated: true
+    notes: "Leading Abu Dhabi English-language daily broadsheet of record."
+    feeds:
+      - url: https://www.thenationalnews.com/arc/outboundfeeds/rss/category/uae/?outputType=xml
+        category_hint: internal_politics
+      - url: https://www.thenationalnews.com/arc/outboundfeeds/rss/category/business/?outputType=xml
+        category_hint: economics
+
+  - id: gulf_news
+    name: Gulf News
+    homepage: https://gulfnews.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Al Nisr Publishing LLC"
+    state_affiliated: false
+    notes: "Major English-language Dubai daily covering UAE politics, business and society."
+    feeds:
+      - url: https://gulfnews.com/rss/uae
+        category_hint: internal_politics
+      - url: https://gulfnews.com/rss/business
+        category_hint: economics
+
+  - id: khaleej_times
+    name: Khaleej Times
+    homepage: https://www.khaleejtimes.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Galadari Printing and Publishing Co."
+    state_affiliated: false
+    notes: "Longest-running English-language daily in the UAE."
+    feeds:
+      - url: https://www.khaleejtimes.com/rss/uae
+        category_hint: internal_politics
+      - url: https://www.khaleejtimes.com/rss/business
+        category_hint: economics
+
+  - id: google_news_uae_politics
+    name: Google News (UAE Leadership & Governance)
+    homepage: https://news.google.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator feed tracking Sheikh Mohamed bin Zayed, cabinet decrees, and Abu Dhabi/Dubai governance."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=%22Mohamed+bin+Zayed%22+OR+MBZ+OR+%22UAE+cabinet%22+OR+%22Abu+Dhabi%22+government+when:3d&hl=en-AE&gl=AE&ceid=AE:en"
+        category_hint: internal_politics
+
+  - id: google_news_uae_economy
+    name: Google News (UAE Economy, Sovereign Funds & ADNOC)
+    homepage: https://news.google.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator feed tracking ADNOC, Mubadala, ADIA, G42 AI investments, and Dubai trade."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=ADNOC+OR+Mubadala+OR+ADIA+OR+%22G42%22+OR+%22Dubai+economy%22+when:3d&hl=en-AE&gl=AE&ceid=AE:en"
+        category_hint: economics
+
+  - id: google_news_uae_diplomacy
+    name: Google News (UAE Foreign Policy & Defense)
+    homepage: https://news.google.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator feed tracking UAE diplomacy, BRICS participation, and regional security."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=%22UAE+foreign+ministry%22+OR+%22Abdullah+bin+Zayed%22+OR+%22EDGE+group%22+OR+BRICS+UAE+when:3d&hl=en-AE&gl=AE&ceid=AE:en"
+        category_hint: defence_security

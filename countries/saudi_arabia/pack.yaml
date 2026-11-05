@@ -1,0 +1,79 @@
+# Saudi Arabia country pack.
+id: saudi_arabia
+name: Saudi Arabia
+region: Middle East & Mediterranean
+language: ar
+abroad_label: Regional Middle Eastern & international outlets
+
+mention:
+  - "saudi arabia"
+  - "saudi"
+  - "ksa"
+  - "riyadh"
+  - "jeddah"
+  - "mbs"
+  - "mohammed bin salman"
+  - "king salman"
+  - "aramco"
+  - "saudi aramco"
+  - "opec"
+  - "opec+"
+  - "pif"
+  - "public investment fund"
+  - "vision 2030"
+  - "neom"
+  - "السعودية"
+  - "المملكة العربية السعودية"
+  - "الرياض"
+  - "محمد بن سلمان"
+  - "أرامكو"
+  - "نيوم"
+
+mention_regex: ['\b(?:saudi arabia|saudi|riyadh|mbs|mohammed bin salman|aramco|neom)\b', 'السعودية', 'الرياض', 'محمد بن سلمان', 'أرامكو']
+mention_section: "Saudi Arabia"
+
+url_sections:
+  foreign: [world, international, global]
+  skip: [sport, sports, lifestyle, entertainment, travel, automotive, food, astrology, weather]
+
+aggregator_outlets:
+  domestic:
+    - "saudi press agency"
+    - "spa"
+    - "arab news"
+    - "asharq al-awsat"
+    - "asharq al awsat"
+    - "al arabiya"
+    - "saudi gazette"
+    - "argaam"
+    - "al eqtisadiah"
+  abroad_local:
+    - "al jazeera"
+    - "the national"
+    - "reuters"
+    - "bloomberg"
+    - "financial times"
+
+excerpt:
+  dateline: '^\s*(?:RIYADH|JEDDAH|SPA|ARAB NEWS|REUTERS|AFP)\s*[-–—:]\s*'
+  noise: '^(Photo|Credit|Source|Read more|Watch|\(|\[)'
+
+classify:
+  internal_politics:
+    - "Crown Prince Mohammed bin Salman (MBS), King Salman, Council of Ministers, Shura Council, Royal Court decrees, social liberalization reforms, internal security and anti-corruption oversight (Nazaha)"
+    - "محمد بن سلمان, الملك سلمان, مجلس الوزراء, مجلس الشورى, أوامر ملكية, نزاهة, رؤية 2030, السياسة الداخلية"
+  economics:
+    - "Saudi Aramco crude production, OPEC+ quotas, Public Investment Fund (PIF) sovereign investments, Vision 2030 giga-projects (NEOM, Red Sea Project), non-oil revenue growth, SAR currency peg"
+    - "أرامكو, صندوق الاستثمارات العامة, أوبك بلس, نيوم, أسعار النفط, الإيرادات غير النفطية, التضخم, ميزانية السعودية"
+  foreign_policy:
+    - "Ministry of Foreign Affairs (Prince Faisal bin Farhan), bilateral security talks with Washington, diplomatic detente with Iran, Yemen peace negotiations, GCC leadership, Arab League summits"
+    - "وزارة الخارجية, فيصل بن فرحان, العلاقات السعودية الأمريكية, مفاوضات اليمن, العلاقات مع إيران, القمة العربية"
+  defence_security:
+    - "Ministry of Defense, Royal Saudi Armed Forces, air defense (Patriot interceptors), Red Sea maritime security, defense industrial localization (SAMI), military procurement"
+    - "وزارة الدفاع, القوات المسلحة السعودية, الدفاع الجوي, أمن البحر الأحمر, سامي, توطين الصناعات العسكرية"
+  society:
+    - "Saudization employment quotas, entertainment sector expansion (General Entertainment Authority), tourism influx, religious pilgrimage (Hajj and Umrah) logistics, youth demography"
+    - "التوطين, نطاقات, هيئة الترفيه, موسم الرياض, الحج والعمرة, السياحة, تمكين المرأة"
+
+geo: SA
+reddit: [geopolitics, saudiarabia, gulf]

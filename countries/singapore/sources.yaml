@@ -1,0 +1,98 @@
+sources:
+  - id: the_straits_times
+    name: The Straits Times
+    homepage: https://www.straitstimes.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "SPH Media Trust"
+    state_affiliated: true
+    notes: "Singapore's English-language daily newspaper of record."
+    feeds:
+      - url: https://www.straitstimes.com/news/singapore/rss.xml
+        category_hint: internal_politics
+      - url: https://www.straitstimes.com/news/business/rss.xml
+        category_hint: economics
+
+  - id: cna_sg
+    name: Channel NewsAsia (CNA)
+    homepage: https://www.channelnewsasia.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Mediacorp (Temasek shareholding)"
+    state_affiliated: true
+    notes: "Singapore-headquartered pan-Asian broadcaster of record."
+    feeds:
+      - url: https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml&category=6511
+        category_hint: internal_politics
+      - url: https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml&category=6936
+        category_hint: economics
+
+  - id: business_times_sg
+    name: The Business Times
+    homepage: https://www.businesstimes.com.sg
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "SPH Media Trust"
+    state_affiliated: true
+    notes: "Singapore's financial, macroeconomic and corporate daily."
+    feeds:
+      - url: https://www.businesstimes.com.sg/rss.xml
+        category_hint: economics
+
+  - id: mothership_sg
+    name: Mothership
+    homepage: https://mothership.sg
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Bright Sprout Pte Ltd"
+    state_affiliated: false
+    notes: "High-reach digital news platform covering domestic politics and society."
+    feeds:
+      - url: https://mothership.sg/feed/
+        category_hint: society
+
+  - id: google_news_sg_politics
+    name: Google News (Singapore Government & 4G Leadership)
+    homepage: https://news.google.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking Lawrence Wong, Cabinet policies, and Parliament."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=%22Lawrence+Wong%22+OR+%22Singapore+Parliament%22+OR+%22Forward+Singapore%22+when:3d&hl=en-SG&gl=SG&ceid=SG:en"
+        category_hint: internal_politics
+
+  - id: google_news_sg_economy
+    name: Google News (Singapore MAS, Temasek & Financial Hub)
+    homepage: https://news.google.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking MAS monetary policy, Temasek, wealth management, and trade."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=%22Monetary+Authority+of+Singapore%22+OR+Temasek+OR+GIC+OR+%22Singapore+economy%22+when:3d&hl=en-SG&gl=SG&ceid=SG:en"
+        category_hint: economics
+
+  - id: google_news_sg_diplomacy
+    name: Google News (Singapore Foreign Policy & Maritime Security)
+    homepage: https://news.google.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking Singapore diplomacy, US-China relations, and ASEAN defense."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=%22Vivian+Balakrishnan%22+OR+%22Singapore+foreign+ministry%22+OR+%22Singapore+Strait%22+when:3d&hl=en-SG&gl=SG&ceid=SG:en"
+        category_hint: foreign_policy

@@ -1,0 +1,76 @@
+# United Arab Emirates country pack.
+id: united_arab_emirates
+name: United Arab Emirates
+region: Middle East & Mediterranean
+language: ar
+abroad_label: Regional Gulf & international outlets
+
+mention:
+  - "united arab emirates"
+  - "uae"
+  - "emirates"
+  - "emirati"
+  - "abu dhabi"
+  - "dubai"
+  - "sharjah"
+  - "mbz"
+  - "mohamed bin zayed"
+  - "sheikh mohammed"
+  - "al nahyan"
+  - "al maktoum"
+  - "adnoc"
+  - "mubadala"
+  - "adia"
+  - "adq"
+  - "g42"
+  - "dp world"
+  - "الإمارات"
+  - "أبوظبي"
+  - "دبي"
+  - "محمد بن زايد"
+  - "أدنوك"
+
+mention_regex: ['\b(?:united arab emirates|uae|abu dhabi|dubai|mbz|mohamed bin zayed|adnoc|mubadala)\b', 'الإمارات', 'أبوظبي', 'دبي', 'محمد بن زايد']
+mention_section: "UAE"
+
+url_sections:
+  foreign: [world, international, global]
+  skip: [sport, sports, lifestyle, entertainment, travel, automotive, food, weather]
+
+aggregator_outlets:
+  domestic:
+    - "wam"
+    - "emirates news agency"
+    - "the national"
+    - "gulf news"
+    - "khaleej times"
+    - "arabian business"
+  abroad_local:
+    - "al jazeera"
+    - "reuters"
+    - "bloomberg"
+    - "financial times"
+
+excerpt:
+  dateline: '^\s*(?:ABU DHABI|DUBAI|WAM|THE NATIONAL|REUTERS)\s*[-–—:]\s*'
+  noise: '^(Photo|Credit|Source|Read more|Watch|\(|\[)'
+
+classify:
+  internal_politics:
+    - "President Sheikh Mohamed bin Zayed Al Nahyan (MBZ), Vice President and Prime Minister Sheikh Mohammed bin Rashid Al Maktoum, Federal Supreme Council, federal cabinet reshuffles, legal modernization"
+    - "محمد بن زايد, محمد بن راشد, المجلس الأعلى للاتحاد, مجلس الوزراء, أبوظبي, دبي, السياسة الداخلية, مراسيم اتحادية"
+  economics:
+    - "ADNOC energy production, sovereign wealth funds (ADIA, Mubadala, ADQ), Dubai real estate and financial hub (DIFC), DP World global logistics, non-oil GDP growth, corporate tax implementation"
+    - "أدنوك, مبادلة, جهاز أبوظبي للاستثمار, موانئ دبي العالمية, اقتصاد الإمارات, التضخم, العقارات, الضرائب"
+  foreign_policy:
+    - "Ministry of Foreign Affairs (Sheikh Abdullah bin Zayed), BRICS membership, Abraham Accords implementation, strategic autonomy between US and China, Sudan and Red Sea diplomacy, Horn of Africa influence"
+    - "عبدالله بن زايد, وزارة الخارجية, بريكس, الاتفاقيات الإبراهيمية, العلاقات مع واشنطن, العلاقات مع بكين, الدبلوماسية الإماراتية"
+  defence_security:
+    - "UAE Armed Forces, EDGE Group defense conglomerate, defense technology partnerships, air defense and missile security, counter-terrorism, maritime security in the Arabian Gulf and Strait of Hormuz"
+    - "القوات المسلحة الإماراتية, مجموعة إيدج, الصناعات الدفاعية, مضيق هرمز, الأمن البحري, الدفاع الجوي"
+  society:
+    - "Golden Visa residency framework, Emiratisation private sector targets, international expatriate integration, climate and renewable energy policy (Masdar), COP legacy"
+    - "الإقامة الذهبية, التوطين, مصدر, الطاقة المتجددة, العمالة الوافدة, المجتمع الإماراتي"
+
+geo: AE
+reddit: [geopolitics, uae, dubai]

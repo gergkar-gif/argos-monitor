@@ -1,0 +1,61 @@
+# Australia editorial policy priority themes.
+# High-weight themes for foreign-affairs analysts and diplomatic observers.
+
+themes:
+  - id: aukus_defense_deterrence
+    label: "AUKUS Submarine Pillar & Pacific Deterrence"
+    weight: 1.0
+    keywords:
+      - "aukus"
+      - "nuclear submarine"
+      - "ssn-aukus"
+      - "virginia class"
+      - "richard marles"
+      - "defence strategic review"
+      - "northern bases"
+      - "missile defense"
+      - "quad"
+    description: "Trilateral AUKUS submarine acquisition roadmap, industrial shipyard readiness, base hardening in northern Australia, and Quad defense deterrence."
+
+  - id: critical_minerals_clean_energy
+    label: "Critical Minerals & Resource Sovereign Supply"
+    weight: 0.95
+    keywords:
+      - "critical minerals"
+      - "lithium"
+      - "rare earths"
+      - "iron ore"
+      - "lynas"
+      - "clean energy future"
+      - "made in australia"
+      - "resource tax"
+      - "lng export"
+    description: "Government subsidies under Future Made in Australia, lithium and rare earth supply chains counteracting Chinese dominance, and bulk commodity revenue."
+
+  - id: pacific_island_diplomacy_security
+    label: "Pacific Islands Security & Regional Aid"
+    weight: 0.9
+    keywords:
+      - "pacific islands forum"
+      - "penny wong"
+      - "solomon islands"
+      - "papua new guinea"
+      - "tuvalu treaty"
+      - "falepili union"
+      - "maritime surveillance"
+      - "climate diplomacy"
+    description: "Countering Chinese security inroads in Melanesia, the Tuvalu Falepili Union treaty, PNG bilateral security pact, and Pacific development aid."
+
+  - id: macroeconomic_rba_monetary_policy
+    label: "Reserve Bank Monetary Policy & Housing Inflation"
+    weight: 0.85
+    keywords:
+      - "reserve bank of australia"
+      - "rba"
+      - "michele bullock"
+      - "cash rate"
+      - "cpi inflation"
+      - "housing crisis"
+      - "rental affordability"
+      - "student visa cap"
+    description: "RBA interest rate decisions to tame persistent inflation, housing supply gridlock, and immigration/foreign student visa caps."

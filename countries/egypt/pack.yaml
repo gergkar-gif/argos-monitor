@@ -1,0 +1,78 @@
+# Egypt country pack.
+id: egypt
+name: Egypt
+region: Middle East & Mediterranean
+language: ar
+abroad_label: Regional Middle Eastern & international outlets
+
+mention:
+  - "egypt"
+  - "egyptian"
+  - "cairo"
+  - "alexandria"
+  - "sisi"
+  - "abdel fattah el-sisi"
+  - "mostafa madbouly"
+  - "madbouly"
+  - "suez canal"
+  - "sinai"
+  - "rafah"
+  - "central bank of egypt"
+  - "ras el-hekma"
+  - "new administrative capital"
+  - "مصر"
+  - "المصرية"
+  - "القاهرة"
+  - "السيسي"
+  - "قناة السويس"
+  - "سيناء"
+  - "رفح"
+
+mention_regex: ['\b(?:egypt|egyptian|cairo|sisi|suez canal|rafah|madbouly)\b', 'مصر', 'القاهرة', 'السيسي', 'قناة السويس', 'رفح']
+mention_section: "Egypt"
+
+url_sections:
+  foreign: [world, international, arab-world]
+  skip: [sport, sports, lifestyle, entertainment, arts, culture, travel, weather]
+
+aggregator_outlets:
+  domestic:
+    - "ahram online"
+    - "al-ahram"
+    - "al ahram"
+    - "daily news egypt"
+    - "egypt today"
+    - "al masry al youm"
+    - "al-masry al-youm"
+    - "youm7"
+    - "enterprise egypt"
+  abroad_local:
+    - "mada masr"
+    - "the new arab"
+    - "middle east eye"
+    - "reuters"
+    - "al jazeera"
+
+excerpt:
+  dateline: '^\s*(?:CAIRO|ALEXANDRIA|MENA|AHRAM|REUTERS|AFP)\s*[-–—:]\s*'
+  noise: '^(Photo|Credit|Source|Read more|Watch|\(|\[)'
+
+classify:
+  internal_politics:
+    - "President Abdel Fattah el-Sisi, Prime Minister Mostafa Madbouly, Cabinet meetings, House of Representatives, National Dialogue, political party dynamics, administrative relocation to New Administrative Capital"
+    - "عبد الفتاح السيسي, مصطفى مدبولي, مجلس الوزراء, البرلمان, العاصمة الإدارية, الحوار الوطني, السياسة الداخلية"
+  economics:
+    - "Central Bank of Egypt monetary policy, interest rates, Egyptian pound devaluation, IMF loan reviews and conditionalities, Ras El-Hekma investment funds, inflation, food subsidies (bread subsidy reforms)"
+    - "البنك المركزي المصري, سعر الصرف, الجنيه المصري, صندوق النقد الدولي, رأس الحكمة, التضخم, الدعم, عجز الموازنة"
+  foreign_policy:
+    - "Ministry of Foreign Affairs (Badr Abdelatty), Gaza ceasefire mediation with US and Qatar, Rafah border crossing, Grand Ethiopian Renaissance Dam (GERD) dispute, Sudan conflict spillover and refugee response"
+    - "وزارة الخارجية, بدر عبد العاطي, وساطة غزة, معبر رفح, سد النهضة, أزمة السودان, اللاجئين, الدبلوماسية المصرية"
+  defence_security:
+    - "Egyptian Armed Forces, North Sinai counter-terrorism and border fortifications, Red Sea naval task forces, Mediterranean energy security (Zohr gas field), defense procurement (Rafale, naval frigates)"
+    - "القوات المسلحة المصرية, الجيش المصري, شمال سيناء, تأمين الحدود, البحر الأحمر, حقل ظهر, صفقات التسليح"
+  society:
+    - "Cost of living pressures, electricity load-shedding power cuts, population growth challenges, public health, social safety net programs (Takaful and Karama)"
+    - "غلاء المعيشة, انقطاع الكهرباء, تخفيف الأحمال, الزيادة السكانية, تكافل وكرامة, الرعاية الصحية"
+
+geo: EG
+reddit: [geopolitics, egypt]

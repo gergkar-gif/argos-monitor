@@ -1,0 +1,75 @@
+# North Korea country pack.
+id: north_korea
+name: North Korea
+region: East Asia
+language: ko
+abroad_label: Specialist DPRK monitors & international outlets
+
+mention:
+  - "north korea"
+  - "dprk"
+  - "pyongyang"
+  - "kim jong un"
+  - "kim yo jong"
+  - "workers' party of korea"
+  - "kpa"
+  - "korean people's army"
+  - "hwasong"
+  - "icbm"
+  - "nuclear test"
+  - "kcna"
+  - "rodong sinmun"
+  - "북한"
+  - "조선"
+  - "김정은"
+  - "김여정"
+  - "평양"
+  - "조선로동당"
+  - "인민군"
+  - "화성"
+
+mention_regex: ['\b(?:north korea|dprk|pyongyang|kim jong un|kim yo jong|icbm|hwasong)\b', '북한', '조선', '김정은', '평양', '조선로동당']
+mention_section: "North Korea"
+
+url_sections:
+  foreign: [world, international, global]
+  skip: [sport, sports, lifestyle, entertainment, travel, automotive, weather]
+
+aggregator_outlets:
+  domestic:
+    - "kcna"
+    - "rodong sinmun"
+  abroad_local:
+    - "nk news"
+    - "daily nk"
+    - "nk pro"
+    - "38 north"
+    - "yonhap"
+    - "rfa korean"
+    - "bbc news korean"
+    - "reuters"
+    - "ap news"
+
+excerpt:
+  dateline: '^\s*(?:PYONGYANG|SEOUL|KCNA|YONHAP|NK NEWS|REUTERS)\s*[-–—:]\s*'
+  noise: '^(Photo|Credit|Source|Read more|Watch|\(|\[)'
+
+classify:
+  internal_politics:
+    - "Kim Jong Un, Workers' Party of Korea (WPK) Central Committee, Supreme People's Assembly, Kim Yo Jong statements, Kim Ju Ae succession signals, ideological elimination of reunification concepts"
+    - "김정은, 조선로동당, 당중앙위원회, 최고인민회의, 김여정 담화, 김주애, 2국가론, 통일 지우기, 내부 정치"
+  economics:
+    - "State economic planning, grain and food rations, border trade with China (Dandong-Sinuiju corridor), illicit coal and oil ship-to-ship transfers, cryptocurrency theft, Russian fuel supplies"
+    - "국가경제발전 5개년 계획, 배급제, 북중무역, 대북제재 회피, 암호화폐 탈취, 러시아 유류 공급"
+  foreign_policy:
+    - "Comprehensive Strategic Partnership with Russia, Vladimir Putin summit, mutual defense pact, diplomatic confrontations with US and South Korea, relations with Beijing, arms deliveries"
+    - "조러 조약, 북러 군사동맹, 푸틴, 대미 적대관계, 대남 적대, 북중관계, 외교 정책"
+  defence_security:
+    - "Korean People's Army (KPA), North Korean troop deployments to Russia, Hwasong-19 ICBM launches, solid-fuel missiles, tactical nuclear warheads, nuclear submarine projects, military reconnaissance satellites"
+    - "조선인민군, 러시아 파병, 화성-19형, ICBM 발사, 고체연료 미사일, 전술핵, 군사정찰위성, 국방발전"
+  society:
+    - "Reactionary Ideology and Culture Rejection Law, strict surveillance by Ministry of State Security, border defectors, energy shortages, flood reconstruction in North Pyongan province"
+    - "반동사상문화배격법, 국가보위성, 국경 경비, 압록강 수해 복구, 탈북, 주민 통제"
+
+geo: KP
+reddit: [geopolitics, northkorea]

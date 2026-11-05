@@ -1,0 +1,81 @@
+sources:
+  - id: nk_news
+    name: NK News
+    homepage: https://www.nknews.org
+    language: en
+    scope: abroad_local
+    kind: media
+    governing_body: "Korea Risk Group"
+    state_affiliated: false
+    notes: "Premier independent specialist news service monitoring North Korea."
+    feeds:
+      - url: https://www.nknews.org/feed/
+        category_hint: internal_politics
+
+  - id: daily_nk
+    name: Daily NK (English)
+    homepage: https://www.dailynk.com/english
+    language: en
+    scope: abroad_local
+    kind: media
+    governing_body: "Daily NK / Unification Media Group"
+    state_affiliated: false
+    notes: "Specialist human rights and internal source network inside North Korea."
+    feeds:
+      - url: https://www.dailynk.com/english/feed/
+        category_hint: internal_politics
+
+  - id: rfa_korean_dprk
+    name: Radio Free Asia (Korean - DPRK focus)
+    homepage: https://www.rfa.org/korean
+    language: ko
+    scope: abroad_local
+    kind: media
+    governing_body: "US Agency for Global Media (USAGM)"
+    state_affiliated: false
+    notes: "US-funded independent Korean service with extensive investigative DPRK coverage."
+    feeds:
+      - url: https://www.rfa.org/korean/rss2.xml
+        category_hint: internal_politics
+
+  - id: google_news_dprk_nuclear
+    name: Google News (North Korea ICBM & Nuclear Tests)
+    homepage: https://news.google.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking DPRK missile launches, Hwasong ICBMs, and nuclear posturing."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=%22North+Korea%22+OR+DPRK+OR+%22Kim+Jong+Un%22+missile+OR+nuclear+when:3d&hl=en-US&gl=US&ceid=US:en"
+        category_hint: defence_security
+
+  - id: google_news_dprk_russia
+    name: Google News (North Korea Russia Military Pact & Troops)
+    homepage: https://news.google.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking North Korean troop deployment to Russia and bilateral treaty."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=%22North+Korea%22+troops+Russia+OR+Pyongyang+Moscow+treaty+when:3d&hl=en-US&gl=US&ceid=US:en"
+        category_hint: foreign_policy
+
+  - id: google_news_dprk_internal
+    name: Google News (North Korea Regime & Economy)
+    homepage: https://news.google.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking internal Workers' Party directives, Kim Yo Jong, and sanctions evasion."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=%22Kim+Jong+Un%22+OR+%22Kim+Yo+Jong%22+OR+%22Workers%27+Party%22+Pyongyang+when:3d&hl=en-US&gl=US&ceid=US:en"
+        category_hint: internal_politics

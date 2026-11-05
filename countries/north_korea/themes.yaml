@@ -1,0 +1,56 @@
+# North Korea editorial policy priority themes.
+# High-weight themes for foreign-affairs analysts and diplomatic observers.
+
+themes:
+  - id: russia_dprk_military_alliance
+    label: "Russia-DPRK Defense Pact & Troop Deployment"
+    weight: 1.0
+    keywords:
+      - "russia troops"
+      - "mutual defense treaty"
+      - "vladimir putin"
+      - "artillery shells"
+      - "ballistic missiles"
+      - "technology transfer"
+      - "kursk"
+      - "space technology"
+    description: "North Korean military personnel deployed to Russian war zones, ammunition transfers, and Russian technical assistance for satellites and submarines."
+
+  - id: strategic_deterrence_icbm_testing
+    label: "Strategic Nuclear & ICBM Development"
+    weight: 0.95
+    keywords:
+      - "hwasong"
+      - "icbm"
+      - "solid-fuel"
+      - "nuclear warhead"
+      - "hypersonic glide"
+      - "submarine launched"
+      - "reconnaissance satellite"
+      - "missile test"
+    description: "High-angle ICBM test launches, multi-warhead guidance testing, solid-fuel rocket motor advances, and nuclear doctrine formalization."
+
+  - id: regime_succession_ideological_doctrine
+    label: "Regime Succession & Anti-Reunification Shift"
+    weight: 0.85
+    keywords:
+      - "kim ju ae"
+      - "kim yo jong"
+      - "two-state doctrine"
+      - "constitutional revision"
+      - "hostile state"
+      - "workers party"
+      - "monument demolition"
+    description: "Designation of South Korea as primary hostile state, abandonment of peaceful reunification rhetoric, and promotion of Kim Ju Ae."
+
+  - id: sanctions_evasion_cyber_operations
+    label: "Sanctions Evasion & State Cyber Operations"
+    weight: 0.8
+    keywords:
+      - "lazarus group"
+      - "cryptocurrency theft"
+      - "illicit finance"
+      - "ship-to-ship transfer"
+      - "dandong border"
+      - "labor exports"
+    description: "State-sponsored cyber espionage and cryptocurrency heists, maritime sanctions evasion for refined petroleum, and border smuggling networks."

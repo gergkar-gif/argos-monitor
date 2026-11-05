@@ -1,0 +1,82 @@
+sources:
+  - id: qna_en
+    name: Qatar News Agency (English)
+    homepage: https://www.qna.org.qa/en
+    language: en
+    scope: domestic
+    kind: official
+    governing_body: "Government of the State of Qatar"
+    state_affiliated: true
+    notes: "Official statutory wire agency of the State of Qatar."
+    feeds:
+      - url: https://www.qna.org.qa/en/Rss-Feed
+        category_hint: internal_politics
+
+  - id: al_jazeera_en
+    name: Al Jazeera English
+    homepage: https://www.aljazeera.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Al Jazeera Media Network (Qatari state-funded)"
+    state_affiliated: true
+    notes: "International flagship news network based in Doha."
+    feeds:
+      - url: https://www.aljazeera.com/xml/rss/all.xml
+        category_hint: foreign_policy
+
+  - id: the_peninsula
+    name: The Peninsula
+    homepage: https://thepeninsulaqatar.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Dar Al Sharq Group"
+    state_affiliated: false
+    notes: "Leading English-language daily newspaper in Qatar."
+    feeds:
+      - url: https://thepeninsulaqatar.com/rss
+        category_hint: internal_politics
+
+  - id: gulf_times
+    name: Gulf Times
+    homepage: https://www.gulf-times.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Gulf Publishing and Printing Company"
+    state_affiliated: false
+    notes: "First English-language daily newspaper published in Qatar."
+    feeds:
+      - url: https://www.gulf-times.com/rss/qatar
+        category_hint: internal_politics
+      - url: https://www.gulf-times.com/rss/business
+        category_hint: economics
+
+  - id: google_news_qatar_politics
+    name: Google News (Qatar Leadership & Mediation)
+    homepage: https://news.google.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking Emir Sheikh Tamim, Gaza mediation, and Doha diplomacy."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=%22Tamim+bin+Hamad%22+OR+%22Qatari+mediation%22+OR+%22Doha+talks%22+when:3d&hl=en-QA&gl=QA&ceid=QA:en"
+        category_hint: foreign_policy
+
+  - id: google_news_qatar_energy
+    name: Google News (QatarEnergy & North Field LNG)
+    homepage: https://news.google.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking QatarEnergy, LNG contracts, North Field, and QIA investments."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=QatarEnergy+OR+%22North+Field%22+OR+%22Qatar+Investment+Authority%22+OR+LNG+Qatar+when:3d&hl=en-QA&gl=QA&ceid=QA:en"
+        category_hint: economics

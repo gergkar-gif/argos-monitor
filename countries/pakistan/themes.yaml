@@ -1,0 +1,62 @@
+# Pakistan editorial policy priority themes.
+# High-weight themes for foreign-affairs analysts and diplomatic observers.
+
+themes:
+  - id: civil_military_governance_stability
+    label: "Civil-Military Dynamics & Judicial Reform"
+    weight: 1.0
+    keywords:
+      - "shehbaz sharif"
+      - "asim munir"
+      - "imran khan"
+      - "constitutional amendment"
+      - "sifc"
+      - "parliament"
+      - "supreme court"
+      - "pti protest"
+      - "military establishment"
+    description: "Army leadership influence via SIFC, constitutional court restructuring, political imprisonment of Imran Khan, and coalition stability."
+
+  - id: internal_security_insurgency_ttp
+    label: "Internal Security & Counter-Insurgency"
+    weight: 0.95
+    keywords:
+      - "ttp"
+      - "tehreek-e-taliban"
+      - "bla"
+      - "balochistan liberation army"
+      - "ispr"
+      - "suicide attack"
+      - "chinese nationals"
+      - "afghan border"
+      - "azm-e-istehkam"
+    description: "Surge in TTP attacks in Khyber Pakhtunkhwa, Baloch insurgent ambushes targeting CPEC and Chinese engineers, and border clashes with Kabul."
+
+  - id: imf_debt_macroeconomic_crisis
+    label: "IMF Bailout Program & Debt Sustainability"
+    weight: 0.9
+    keywords:
+      - "imf"
+      - "state bank of pakistan"
+      - "sbp"
+      - "fbr"
+      - "external debt"
+      - "power tariffs"
+      - "privatization"
+      - "pia sale"
+      - "remittances"
+    description: "IMF EFF conditionalities, soaring utility tariffs, tax base broadening, state-owned enterprise privatizations, and default risk management."
+
+  - id: cpec_regional_geopolitics
+    label: "CPEC Phase 2 & Strategic Alignment"
+    weight: 0.85
+    keywords:
+      - "cpec"
+      - "china-pakistan"
+      - "gwadar"
+      - "belt and road"
+      - "sco"
+      - "saudi investment"
+      - "india relations"
+      - "nuclear deterrence"
+    description: "Launch of CPEC Phase 2, security protocols for Chinese personnel, GCC sovereign investment pledges, and strategic nuclear posture."

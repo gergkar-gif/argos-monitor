@@ -1,0 +1,84 @@
+# Pakistan country pack.
+id: pakistan
+name: Pakistan
+region: South Asia
+language: ur
+abroad_label: South Asian regional & international outlets
+
+mention:
+  - "pakistan"
+  - "pakistani"
+  - "islamabad"
+  - "lahore"
+  - "karachi"
+  - "rawalpindi"
+  - "shehbaz sharif"
+  - "sharif"
+  - "asim munir"
+  - "general asim munir"
+  - "imran khan"
+  - "pti"
+  - "pml-n"
+  - "ppp"
+  - "bilawal bhutto"
+  - "cpec"
+  - "state bank of pakistan"
+  - "balochistan"
+  - "khyber pakhtunkhwa"
+  - "ttp"
+  - "پاکستان"
+  - "اسلام آباد"
+  - "شہباز شریف"
+  - "عاصم منیر"
+  - "عمران خان"
+
+mention_regex: ['\b(?:pakistan|pakistani|islamabad|shehbaz sharif|asim munir|imran khan|cpec)\b', 'پاکستان', 'اسلام آباد', 'شہباز شریف', 'عمران خان']
+mention_section: "Pakistan"
+
+url_sections:
+  foreign: [world, international, global]
+  skip: [sport, sports, cricket, lifestyle, entertainment, glamour, horoscope, weather]
+
+aggregator_outlets:
+  domestic:
+    - "dawn"
+    - "the express tribune"
+    - "express tribune"
+    - "the news international"
+    - "the news"
+    - "radio pakistan"
+    - "associated press of pakistan"
+    - "app"
+    - "daily times"
+    - "geo news"
+    - "ary news"
+  abroad_local:
+    - "bbc news urdu"
+    - "dw urdu"
+    - "independent urdu"
+    - "reuters"
+    - "al jazeera"
+
+excerpt:
+  dateline: '^\s*(?:ISLAMABAD|LAHORE|KARACHI|RAWALPINDI|APP|DAWN|REUTERS)\s*[-–—:]\s*'
+  noise: '^(Photo|Credit|Source|Read more|Watch|\(|\[)'
+
+classify:
+  internal_politics:
+    - "Prime Minister Shehbaz Sharif, Federal Cabinet, Chief of Army Staff General Asim Munir, Special Investment Facilitation Council (SIFC), Imran Khan legal battles, PTI protests, constitutional amendments (26th amendment), judiciary"
+    - "شہباز شریف, عاصم منیر, عمران خان, تحریک انصاف, پارلیمنٹ, آئینی ترمیم, سپریم کورٹ, عدلیہ, سیاسی صورتحال"
+  economics:
+    - "State Bank of Pakistan (SBP) monetary policy, interest rates, IMF Extended Fund Facility (EFF) loan compliance, tax revenue targets (FBR), privatization of state enterprises (PIA), external debt servicing, inflation"
+    - "اسٹیٹ بینک, آئی ایم ایف, قرضہ, مہنگائی, بجٹ, ایف بی آر, روپے کی قدر, نجکاری, اقتصادی بحران"
+  foreign_policy:
+    - "China-Pakistan Economic Corridor (CPEC Phase 2), bilateral relations with Beijing, diplomatic ties with Washington, Afghanistan border friction, cross-border shelling, Shanghai Cooperation Organisation (SCO), Saudi investments"
+    - "سی پیک, پاک چین تعلقات, افغانستان, طالبان, خارجہ پالیسی, سعودی سرمایہ کاری, شنگھائی تعاون تنظیم"
+  defence_security:
+    - "Pakistan Armed Forces, Inter-Services Intelligence (ISI), Tehreek-e-Taliban Pakistan (TTP) counter-insurgency, Balochistan Liberation Army (BLA) insurgent attacks, Chinese citizen security, nuclear command"
+    - "پاک فوج, آئی ایس آئی, کالعدم ٹی ٹی پی, بلوچستان, دہشت گردی, سیکیورٹی فورسز, آپریشن عزم استحکام"
+  society:
+    - "Severe air quality and smog crisis (Lahore, Punjab), flood recovery and climate resilience, public health, energy tariff protests, education funding"
+    - "سموگ, ماحولیاتی تبدیلی, سیلاب, بجلی کے بل, عوامی احتجاج, تعلیم, صحت"
+
+geo: PK
+reddit: [geopolitics, pakistan]

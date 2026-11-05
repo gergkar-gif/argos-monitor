@@ -1,0 +1,56 @@
+# Qatar editorial policy priority themes.
+# High-weight themes for foreign-affairs analysts and diplomatic observers.
+
+themes:
+  - id: global_mediation_conflict_resolution
+    label: "Conflict Mediation & Crisis Diplomacy"
+    weight: 1.0
+    keywords:
+      - "mediation"
+      - "gaza talks"
+      - "ceasefire"
+      - "hostage negotiation"
+      - "doha diplomacy"
+      - "taliban office"
+      - "sheikh mohammed bin abdulrahman"
+      - "shuttle diplomacy"
+    description: "High-stakes diplomatic mediation between Israel and Hamas, hosting international peace talks, and humanitarian prisoner swaps."
+
+  - id: lng_expansion_energy_security
+    label: "North Field LNG Expansion & Energy Geopolitics"
+    weight: 0.95
+    keywords:
+      - "qatarenergy"
+      - "north field east"
+      - "north field south"
+      - "lng export"
+      - "saad al-kaabi"
+      - "long-term contracts"
+      - "energy security"
+      - "lng fleet"
+    description: "North Field mega-expansion project, securing 27-year LNG supply agreements with European and Asian buyers, and shipping fleet expansion."
+
+  - id: sovereign_wealth_qia_portfolio
+    label: "QIA Sovereign Wealth & Global Investments"
+    weight: 0.85
+    keywords:
+      - "qia"
+      - "qatar investment authority"
+      - "sovereign wealth fund"
+      - "foreign investment"
+      - "infrastructure"
+      - "real estate assets"
+      - "fintech"
+    description: "Strategic global asset allocation by QIA, investing in European infrastructure, US real estate, tech ventures, and green energy."
+
+  - id: strategic_defense_us_partnership
+    label: "Al Udeid Base & Strategic Deterrence"
+    weight: 0.8
+    keywords:
+      - "al udeid"
+      - "major non-nato ally"
+      - "us-qatar defense"
+      - "centcom"
+      - "air defense"
+      - "qatar armed forces"
+    description: "Major Non-NATO Ally status, hosting US CENTCOM forward headquarters at Al Udeid Air Base, and bilateral defense modernization."

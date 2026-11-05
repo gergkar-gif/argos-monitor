@@ -1,0 +1,100 @@
+sources:
+  - id: dawn
+    name: Dawn
+    homepage: https://www.dawn.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Pakistan Herald Publications"
+    state_affiliated: false
+    notes: "Pakistan's premier English-language newspaper of record, founded by Muhammad Ali Jinnah."
+    feeds:
+      - url: https://www.dawn.com/feeds/home/
+        category_hint: internal_politics
+      - url: https://www.dawn.com/feeds/business/
+        category_hint: economics
+
+  - id: express_tribune
+    name: The Express Tribune
+    homepage: https://tribune.com.pk
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Lakson Group / International New York Times affiliate"
+    state_affiliated: false
+    notes: "Leading English-language broadsheet covering politics, economy and security."
+    feeds:
+      - url: https://tribune.com.pk/feed/pakistan
+        category_hint: internal_politics
+      - url: https://tribune.com.pk/feed/business
+        category_hint: economics
+
+  - id: the_news_pk
+    name: The News International
+    homepage: https://www.thenews.com.pk
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Jang Media Group"
+    state_affiliated: false
+    notes: "One of the largest English-language daily circulations in Pakistan."
+    feeds:
+      - url: https://www.thenews.com.pk/rss/1/1
+        category_hint: internal_politics
+      - url: https://www.thenews.com.pk/rss/1/2
+        category_hint: economics
+
+  - id: radio_pakistan
+    name: Radio Pakistan
+    homepage: https://radio.gov.pk
+    language: en
+    scope: domestic
+    kind: official
+    governing_body: "Pakistan Broadcasting Corporation (PBC)"
+    state_affiliated: true
+    notes: "Official public radio broadcaster of Pakistan."
+    feeds:
+      - url: https://radio.gov.pk/rss/national
+        category_hint: internal_politics
+
+  - id: google_news_pakistan_politics
+    name: Google News (Pakistan Government & Politics)
+    homepage: https://news.google.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking Shehbaz Sharif, Asim Munir, Parliament, and PTI."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=%22Shehbaz+Sharif%22+OR+%22Asim+Munir%22+OR+%22Imran+Khan%22+OR+PTI+Pakistan+when:3d&hl=en-PK&gl=PK&ceid=PK:en"
+        category_hint: internal_politics
+
+  - id: google_news_pakistan_economy
+    name: Google News (Pakistan Economy, IMF & State Bank)
+    homepage: https://news.google.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking IMF loan reviews, State Bank rates, privatization, and inflation."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=%22State+Bank+of+Pakistan%22+OR+IMF+Pakistan+OR+%22Pakistani+rupee%22+OR+CPEC+when:3d&hl=en-PK&gl=PK&ceid=PK:en"
+        category_hint: economics
+
+  - id: google_news_pakistan_security
+    name: Google News (Pakistan Security & Counter-Terrorism)
+    homepage: https://news.google.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking military operations, TTP attacks, and Balochistan insurgency."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=%22Pakistan+Army%22+OR+ISPR+OR+TTP+OR+BLA+Balochistan+when:3d&hl=en-PK&gl=PK&ceid=PK:en"
+        category_hint: defence_security

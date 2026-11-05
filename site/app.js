@@ -58,7 +58,7 @@
   const REGIONS = [
     'North America', 'Western Europe', 'Central Europe', 'Eastern Europe', 'Balkans',
     'South Caucasus', 'Middle East & Mediterranean', 'Central Asia', 'South Asia',
-    'East Asia', 'Southeast Asia', 'Sub-Saharan Africa', 'South America'
+    'East Asia', 'Southeast Asia', 'Oceania', 'Sub-Saharan Africa', 'South America'
   ];
   const COUNTRY_REGION = {
     united_states: 'North America',
@@ -67,12 +67,15 @@
     moldova: 'Eastern Europe', russia: 'Eastern Europe', ukraine: 'Eastern Europe',
     bosnia: 'Balkans', kosovo: 'Balkans', serbia: 'Balkans',
     armenia: 'South Caucasus', azerbaijan: 'South Caucasus', georgia: 'South Caucasus',
-    iran: 'Middle East & Mediterranean', israel: 'Middle East & Mediterranean', turkey: 'Middle East & Mediterranean',
+    egypt: 'Middle East & Mediterranean', iran: 'Middle East & Mediterranean', israel: 'Middle East & Mediterranean',
+    qatar: 'Middle East & Mediterranean', saudi_arabia: 'Middle East & Mediterranean', turkey: 'Middle East & Mediterranean',
+    united_arab_emirates: 'Middle East & Mediterranean',
     kazakhstan: 'Central Asia', kyrgyzstan: 'Central Asia', uzbekistan: 'Central Asia',
-    india: 'South Asia',
-    china: 'East Asia', japan: 'East Asia', south_korea: 'East Asia', taiwan: 'East Asia',
+    india: 'South Asia', pakistan: 'South Asia',
+    china: 'East Asia', japan: 'East Asia', north_korea: 'East Asia', south_korea: 'East Asia', taiwan: 'East Asia',
     cambodia: 'Southeast Asia', indonesia: 'Southeast Asia', laos: 'Southeast Asia', malaysia: 'Southeast Asia', myanmar: 'Southeast Asia',
-    philippines: 'Southeast Asia', thailand: 'Southeast Asia', vietnam: 'Southeast Asia',
+    philippines: 'Southeast Asia', singapore: 'Southeast Asia', thailand: 'Southeast Asia', vietnam: 'Southeast Asia',
+    australia: 'Oceania',
     ethiopia: 'Sub-Saharan Africa', dr_congo: 'Sub-Saharan Africa', kenya: 'Sub-Saharan Africa', nigeria: 'Sub-Saharan Africa', south_africa: 'Sub-Saharan Africa',
     argentina: 'South America', brazil: 'South America', colombia: 'South America', mexico: 'South America',
   };

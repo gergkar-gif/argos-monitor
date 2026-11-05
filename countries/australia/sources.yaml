@@ -1,0 +1,100 @@
+sources:
+  - id: abc_news_au
+    name: ABC News (Australia)
+    homepage: https://www.abc.net.au/news
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Australian Broadcasting Corporation (National Public Broadcaster)"
+    state_affiliated: false
+    notes: "Australia's national public broadcaster of record."
+    feeds:
+      - url: https://www.abc.net.au/news/feed/51120/rss.xml
+        category_hint: internal_politics
+      - url: https://www.abc.net.au/news/feed/45910/rss.xml
+        category_hint: economics
+
+  - id: afr
+    name: The Australian Financial Review
+    homepage: https://www.afr.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Nine Entertainment"
+    state_affiliated: false
+    notes: "Australia's premier national financial and business broadsheet."
+    feeds:
+      - url: https://www.afr.com/rss/politics/federal
+        category_hint: internal_politics
+      - url: https://www.afr.com/rss/policy/economy
+        category_hint: economics
+
+  - id: smh_au
+    name: The Sydney Morning Herald
+    homepage: https://www.smh.com.au
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Nine Entertainment"
+    state_affiliated: false
+    notes: "Australia's oldest continuously published daily broadsheet."
+    feeds:
+      - url: https://www.smh.com.au/rss/national.xml
+        category_hint: internal_politics
+      - url: https://www.smh.com.au/rss/politics/federal.xml
+        category_hint: internal_politics
+
+  - id: sbs_news_au
+    name: SBS News
+    homepage: https://www.sbs.com.au/news
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Special Broadcasting Service"
+    state_affiliated: false
+    notes: "Australian multicultural public service news network."
+    feeds:
+      - url: https://www.sbs.com.au/news/feed
+        category_hint: internal_politics
+
+  - id: google_news_au_politics
+    name: Google News (Australia Federal Politics & Canberra)
+    homepage: https://news.google.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking Albanese, Dutton, federal parliament, and legislation."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=%22Anthony+Albanese%22+OR+%22Peter+Dutton%22+OR+%22federal+parliament%22+Canberra+when:3d&hl=en-AU&gl=AU&ceid=AU:en"
+        category_hint: internal_politics
+
+  - id: google_news_au_economy
+    name: Google News (Australia RBA, Mining & Economy)
+    homepage: https://news.google.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking RBA interest rates, iron ore, lithium, and inflation."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=%22Reserve+Bank+of+Australia%22+OR+RBA+OR+%22critical+minerals%22+OR+%22iron+ore%22+Australia+when:3d&hl=en-AU&gl=AU&ceid=AU:en"
+        category_hint: economics
+
+  - id: google_news_au_defense
+    name: Google News (Australia AUKUS & Indo-Pacific Defense)
+    homepage: https://news.google.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking AUKUS submarines, Richard Marles, and Pacific diplomacy."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=AUKUS+OR+%22Richard+Marles%22+OR+%22Penny+Wong%22+OR+%22Pacific+Islands%22+Australia+when:3d&hl=en-AU&gl=AU&ceid=AU:en"
+        category_hint: defence_security

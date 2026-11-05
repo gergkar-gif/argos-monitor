@@ -1,0 +1,98 @@
+sources:
+  - id: ahram_online
+    name: Ahram Online
+    homepage: https://english.ahram.org.eg
+    language: en
+    scope: domestic
+    kind: official
+    governing_body: "Al-Ahram Establishment / National Press Authority"
+    state_affiliated: true
+    notes: "English-language digital paper of record from state-owned publisher."
+    feeds:
+      - url: https://english.ahram.org.eg/rss/politics.xml
+        category_hint: internal_politics
+      - url: https://english.ahram.org.eg/rss/economy.xml
+        category_hint: economics
+
+  - id: daily_news_egypt
+    name: Daily News Egypt
+    homepage: https://www.dailynewsegypt.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Egyptian Media Group"
+    state_affiliated: false
+    notes: "Independent English-language business and political daily."
+    feeds:
+      - url: https://www.dailynewsegypt.com/feed/
+        category_hint: internal_politics
+
+  - id: egypt_today
+    name: Egypt Today
+    homepage: https://www.egypttoday.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "United Media Services"
+    state_affiliated: true
+    notes: "Major English-language news daily affiliated with state media group."
+    feeds:
+      - url: https://www.egypttoday.com/RSS/Politics
+        category_hint: internal_politics
+      - url: https://www.egypttoday.com/RSS/Business
+        category_hint: economics
+
+  - id: mada_masr_en
+    name: Mada Masr (English)
+    homepage: https://www.madamasr.com/en
+    language: en
+    scope: abroad_local
+    kind: media
+    governing_body: "Mada Masr Media"
+    state_affiliated: false
+    notes: "Premier independent, critically investigative Egyptian digital daily."
+    feeds:
+      - url: https://www.madamasr.com/en/feed/
+        category_hint: internal_politics
+
+  - id: google_news_egypt_politics
+    name: Google News (Egypt Government & Presidency)
+    homepage: https://news.google.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking Sisi, Madbouly cabinet, and New Administrative Capital."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=Sisi+OR+Madbouly+OR+%22Egyptian+cabinet%22+OR+%22New+Administrative+Capital%22+Cairo+when:3d&hl=en-EG&gl=EG&ceid=EG:en"
+        category_hint: internal_politics
+
+  - id: google_news_egypt_economy
+    name: Google News (Egypt Economy, IMF & Suez Canal)
+    homepage: https://news.google.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking Egyptian pound, IMF reviews, Ras El-Hekma, and Suez Canal revenues."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=%22Central+Bank+of+Egypt%22+OR+%22Suez+Canal%22+OR+IMF+Egypt+OR+%22Egyptian+pound%22+when:3d&hl=en-EG&gl=EG&ceid=EG:en"
+        category_hint: economics
+
+  - id: google_news_egypt_diplomacy
+    name: Google News (Egypt Gaza Mediation & Regional Security)
+    homepage: https://news.google.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking Gaza ceasefire talks, Rafah border security, and GERD dam dispute."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=Egypt+Gaza+ceasefire+OR+%22Rafah+crossing%22+OR+%22Grand+Ethiopian+Renaissance+Dam%22+when:3d&hl=en-EG&gl=EG&ceid=EG:en"
+        category_hint: foreign_policy

@@ -1,0 +1,73 @@
+# Qatar country pack.
+id: qatar
+name: Qatar
+region: Middle East & Mediterranean
+language: ar
+abroad_label: Regional Gulf & international outlets
+
+mention:
+  - "qatar"
+  - "qatari"
+  - "doha"
+  - "tamim bin hamad"
+  - "sheikh tamim"
+  - "al thani"
+  - "al jazeera"
+  - "qatarenergy"
+  - "qatar energy"
+  - "qia"
+  - "qatar investment authority"
+  - "north field"
+  - "al udeid"
+  - "قطر"
+  - "الدوحة"
+  - "تميم بن حمد"
+  - "آل ثاني"
+  - "الجزيرة"
+  - "قطر للطاقة"
+
+mention_regex: ['\b(?:qatar|qatari|doha|sheikh tamim|al thani|qatarenergy|qia)\b', 'قطر', 'الدوحة', 'تميم بن حمد', 'الجزيرة']
+mention_section: "Qatar"
+
+url_sections:
+  foreign: [world, international, global]
+  skip: [sport, sports, lifestyle, entertainment, travel, automotive, food, weather]
+
+aggregator_outlets:
+  domestic:
+    - "qna"
+    - "qatar news agency"
+    - "the peninsula"
+    - "gulf times"
+    - "qatar tribune"
+    - "al jazeera"
+    - "al jazeera english"
+  abroad_local:
+    - "reuters"
+    - "bloomberg"
+    - "financial times"
+    - "the national"
+
+excerpt:
+  dateline: '^\s*(?:DOHA|QNA|THE PENINSULA|AL JAZEERA|REUTERS)\s*[-–—:]\s*'
+  noise: '^(Photo|Credit|Source|Read more|Watch|\(|\[)'
+
+classify:
+  internal_politics:
+    - "Emir Sheikh Tamim bin Hamad Al Thani, Prime Minister and Foreign Minister Sheikh Mohammed bin Abdulrahman Al Thani, Shura Council constitutional amendments, Cabinet appointments"
+    - "تميم بن حمد, محمد بن عبد الرحمن, مجلس الشورى, التعديلات الدستورية, مجلس الوزراء, الدوحة, السياسة الداخلية"
+  economics:
+    - "QatarEnergy North Field LNG expansion, long-term liquefied natural gas supply contracts (China, Europe), Qatar Investment Authority (QIA) sovereign asset allocation, non-energy diversification"
+    - "قطر للطاقة, توسعة حقل الشمال, الغاز الطبيعي المسال, جهاز قطر للاستثمار, ميزانية قطر, التضخم, عقود الغاز"
+  foreign_policy:
+    - "Diplomatic mediation in Gaza and hostage negotiations, Taliban communication channel, relations with Washington, bilateral GCC diplomacy, strategic balancing between West and regional actors"
+    - "وساطة الدوحة, مفاوضات الهدنة, العلاقات القطرية الأمريكية, مجلس التعاون الخليجي, الدبلوماسية القطرية"
+  defence_security:
+    - "Qatar Armed Forces, Al Udeid Air Base strategic US defense hub, naval security in the Arabian Gulf, air defense (Patriot, NASAMS), cyber defense infrastructure"
+    - "القوات المسلحة القطرية, قاعدة العديد, الدفاع الجوي, أمن الخليج العربي, التعاون العسكري"
+  society:
+    - "Post-World Cup institutional transition, National Vision 2030 social pillars, labor market standards, Education City academic research, cultural diplomacy"
+    - "رؤية قطر 2030, المدينة التعليمية, سوق العمل, الثقافة والرياضة, المجتمع القطري"
+
+geo: QA
+reddit: [geopolitics, qatar]

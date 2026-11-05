@@ -1,0 +1,98 @@
+sources:
+  - id: spa_en
+    name: Saudi Press Agency (English)
+    homepage: https://www.spa.gov.sa/en
+    language: en
+    scope: domestic
+    kind: official
+    governing_body: "Ministry of Media (Kingdom of Saudi Arabia)"
+    state_affiliated: true
+    notes: "Official statutory wire agency of the Kingdom of Saudi Arabia."
+    feeds:
+      - url: https://www.spa.gov.sa/en/rss/General.xml
+        category_hint: internal_politics
+      - url: https://www.spa.gov.sa/en/rss/Economic.xml
+        category_hint: economics
+
+  - id: arab_news
+    name: Arab News
+    homepage: https://www.arabnews.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Saudi Research and Media Group (SRMG)"
+    state_affiliated: true
+    notes: "Leading English-language Saudi daily paper of record."
+    feeds:
+      - url: https://www.arabnews.com/rss.xml
+        category_hint: internal_politics
+      - url: https://www.arabnews.com/cat/4/rss.xml
+        category_hint: economics
+
+  - id: asharq_alawsat_en
+    name: Asharq Al-Awsat (English)
+    homepage: https://english.aawsat.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Saudi Research and Media Group (SRMG)"
+    state_affiliated: true
+    notes: "Pan-Arab international broadsheet owned by Saudi media group."
+    feeds:
+      - url: https://english.aawsat.com/feed/all
+        category_hint: internal_politics
+
+  - id: al_arabiya_en
+    name: Al Arabiya (English)
+    homepage: https://english.alarabiya.net
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "MBC Group / Saudi State Shareholding"
+    state_affiliated: true
+    notes: "Saudi-owned regional broadcast network."
+    feeds:
+      - url: https://english.alarabiya.net/.mrss/en.xml
+        category_hint: internal_politics
+
+  - id: google_news_saudi_politics
+    name: Google News (Saudi Leadership & Governance)
+    homepage: https://news.google.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking King Salman, Crown Prince MBS, and Royal Court decrees."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=%22Mohammed+bin+Salman%22+OR+MBS+OR+%22Saudi+cabinet%22+OR+%22Royal+Court%22+Riyadh+when:3d&hl=en-SA&gl=SA&ceid=SA:en"
+        category_hint: internal_politics
+
+  - id: google_news_saudi_economy
+    name: Google News (Saudi Aramco, OPEC & Vision 2030)
+    homepage: https://news.google.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking Aramco, OPEC+ production decisions, PIF investments, and NEOM."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=%22Saudi+Aramco%22+OR+OPEC+OR+%22Public+Investment+Fund%22+OR+%22Vision+2030%22+OR+NEOM+when:3d&hl=en-SA&gl=SA&ceid=SA:en"
+        category_hint: economics
+
+  - id: google_news_saudi_security
+    name: Google News (Saudi Defense & Regional Diplomacy)
+    homepage: https://news.google.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking Saudi diplomacy with US, Iran, Yemen, and defense procurements."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=%22Saudi+foreign+ministry%22+OR+%22Faisal+bin+Farhan%22+OR+%22Saudi+defense%22+OR+%22Red+Sea%22+Saudi+when:3d&hl=en-SA&gl=SA&ceid=SA:en"
+        category_hint: defence_security

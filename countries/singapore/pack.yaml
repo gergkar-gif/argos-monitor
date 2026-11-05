@@ -1,0 +1,74 @@
+# Singapore country pack.
+id: singapore
+name: Singapore
+region: Southeast Asia
+language: en
+abroad_label: Regional ASEAN & international outlets
+
+mention:
+  - "singapore"
+  - "singaporean"
+  - "lawrence wong"
+  - "lee hsien loong"
+  - "people's action party"
+  - "pap"
+  - "workers' party"
+  - "pritam singh"
+  - "monetary authority of singapore"
+  - "mas"
+  - "temasek"
+  - "gic"
+  - "straits times"
+  - "channel newsasia"
+  - "cna"
+  - "tuas port"
+
+mention_regex: ['\b(?:singapore|singaporean|lawrence wong|lee hsien loong|temasek|gic)\b']
+mention_section: "Singapore"
+
+url_sections:
+  foreign: [world, international, asia]
+  skip: [sport, sports, lifestyle, entertainment, food, travel, luxury, weather]
+
+aggregator_outlets:
+  domestic:
+    - "the straits times"
+    - "straits times"
+    - "cna"
+    - "channel newsasia"
+    - "the business times"
+    - "business times"
+    - "today"
+    - "today online"
+    - "mothership"
+    - "zaobao"
+    - "lianhe zaobao"
+  abroad_local:
+    - "south china morning post"
+    - "nikkei asia"
+    - "reuters"
+    - "bloomberg"
+
+excerpt:
+  dateline: '^\s*(?:SINGAPORE|CNA|STRAITS TIMES|REUTERS|BLOOMBERG)\s*[-–—:]\s*'
+  noise: '^(Photo|Credit|Source|Read more|Watch|\(|\[)'
+
+classify:
+  internal_politics:
+    - "Prime Minister Lawrence Wong, Senior Minister Lee Hsien Loong, 4G Cabinet transition, Parliament debates, general election preparations, Forward Singapore agenda, Workers' Party opposition"
+    - "Prime Minister, Lawrence Wong, PAP, Cabinet, Parliament, election, governance, Forward Singapore, public housing HDB"
+  economics:
+    - "Monetary Authority of Singapore (MAS) exchange rate policy (S$NEER), inflation, Temasek Holdings, GIC sovereign investments, wealth management inflows, family offices, GDP growth, corporate tax"
+    - "MAS, monetary policy, inflation, Temasek, GIC, banking sector, financial hub, wealth management, trade volume, manufacturing"
+  foreign_policy:
+    - "Ministry of Foreign Affairs (Vivian Balakrishnan), US-China strategic neutrality, ASEAN unity and Myanmar crisis diplomacy, South China Sea international law (UNCLOS), bilateral ties with Malaysia and Indonesia"
+    - "MFA, foreign policy, diplomacy, ASEAN, US-China relations, South China Sea, UNCLOS, bilateral relations"
+  defence_security:
+    - "Singapore Armed Forces (SAF), Ministry of Defence (Ng Eng Hen), National Service, defense technology (DSTA, ST Engineering), maritime chokepoints security (Singapore Strait), digital and intelligence service"
+    - "SAF, Ministry of Defence, National Service, naval patrols, Singapore Strait, air defense, cybersecurity, military procurement"
+  society:
+    - "Cost of living pressures, Central Provident Fund (CPF) adjustments, aging population care, foreign talent policies (COMPASS framework), public housing affordability"
+    - "Cost of living, CPF, public housing, healthcare subsidies, foreign workforce, immigration, education system"
+
+geo: SG
+reddit: [geopolitics, singapore]

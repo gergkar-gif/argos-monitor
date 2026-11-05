@@ -1,0 +1,60 @@
+# Saudi Arabia editorial policy priority themes.
+# High-weight themes for foreign-affairs analysts and diplomatic observers.
+
+themes:
+  - id: vision_2030_giga_projects
+    label: "Vision 2030 & PIF Capital Deployment"
+    weight: 1.0
+    keywords:
+      - "vision 2030"
+      - "public investment fund"
+      - "pif"
+      - "neom"
+      - "the line"
+      - "red sea project"
+      - "giga-project"
+      - "diversification"
+      - "sovereign wealth fund"
+    description: "PIF capital allocation, debt issuance, giga-project construction milestones, foreign direct investment, and post-oil economic transition."
+
+  - id: opec_oil_strategy_aramco
+    label: "OPEC+ Strategy & Aramco Production"
+    weight: 0.95
+    keywords:
+      - "aramco"
+      - "saudi aramco"
+      - "opec"
+      - "opec+"
+      - "crude oil"
+      - "oil output"
+      - "production cuts"
+      - "energy transition"
+      - "hydrogen"
+    description: "OPEC+ output quotas, oil revenue budgeting, Aramco dividend payouts, refining capacity, and renewable energy investments."
+
+  - id: regional_diplomacy_defense_treaties
+    label: "Regional Detente & Strategic Treaties"
+    weight: 0.9
+    keywords:
+      - "security pact"
+      - "us-saudi treaty"
+      - "iran detente"
+      - "houthi talks"
+      - "yemen peace"
+      - "faisal bin farhan"
+      - "normalization"
+      - "arab league"
+    description: "US-Saudi mutual defense negotiations, normalization conditions, Beijing-brokered detente with Tehran, and Yemen peace talks."
+
+  - id: royal_court_internal_governance
+    label: "Royal Governance & Social Transformation"
+    weight: 0.8
+    keywords:
+      - "mbs"
+      - "mohammed bin salman"
+      - "royal decree"
+      - "shura council"
+      - "nazaha"
+      - "saudization"
+      - "entertainment authority"
+    description: "Crown Prince policy directives, anti-corruption proceedings, legal codification, labor market nationalization, and social reforms."

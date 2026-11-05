@@ -585,13 +585,77 @@ RATINGS = {
     "jerusalem post": {"bias": "center-right", "alignment": "independent", "factuality": "mostly_factual"},
     "ynet": {"bias": "center", "alignment": "independent", "factuality": "high"},
     "ynetnews": {"bias": "center", "alignment": "independent", "factuality": "high"},
+
+    # --- Tier 2 Regional Powers ---
+    # Saudi Arabia
+    "saudi press agency": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "high"},
+    "spa": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "high"},
+    "arab news": {"bias": "center-right", "alignment": "pro_government", "factuality": "high"},
+    "asharq al-awsat": {"bias": "center-right", "alignment": "pro_government", "factuality": "high"},
+    "asharq al awsat": {"bias": "center-right", "alignment": "pro_government", "factuality": "high"},
+    "al arabiya": {"bias": "center-right", "alignment": "pro_government", "factuality": "high"},
+    "saudi gazette": {"bias": "center-right", "alignment": "pro_government", "factuality": "high"},
+
+    # United Arab Emirates
+    "wam": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "high"},
+    "emirates news agency": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "high"},
+    "the national": {"bias": "center", "alignment": "pro_government", "factuality": "high"},
+    "gulf news": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "khaleej times": {"bias": "center", "alignment": "independent", "factuality": "high"},
+
+    # Egypt
+    "ahram online": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mostly_factual"},
+    "al-ahram": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mostly_factual"},
+    "al ahram": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mostly_factual"},
+    "daily news egypt": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "egypt today": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mostly_factual"},
+    "mada masr": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+
+    # Qatar
+    "qatar news agency": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "high"},
+    "qna": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "high"},
+    "al jazeera": {"bias": "center-left", "alignment": "pro_government", "factuality": "high"},
+    "al jazeera english": {"bias": "center-left", "alignment": "pro_government", "factuality": "high"},
+    "the peninsula": {"bias": "center", "alignment": "pro_government", "factuality": "high"},
+    "gulf times": {"bias": "center", "alignment": "pro_government", "factuality": "high"},
+
+    # Pakistan
+    "dawn": {"bias": "center-left", "alignment": "independent", "factuality": "very_high"},
+    "the express tribune": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "express tribune": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "the news international": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+    "radio pakistan": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mostly_factual"},
+
+    # North Korea
+    "nk news": {"bias": "center", "alignment": "independent", "factuality": "very_high"},
+    "daily nk": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "kcna": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mixed"},
+    "rodong sinmun": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mixed"},
+
+    # Singapore
+    "the straits times": {"bias": "center", "alignment": "pro_government", "factuality": "high"},
+    "straits times": {"bias": "center", "alignment": "pro_government", "factuality": "high"},
+    "cna": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "channel newsasia": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "the business times": {"bias": "center", "alignment": "pro_government", "factuality": "high"},
+    "business times": {"bias": "center", "alignment": "pro_government", "factuality": "high"},
+    "mothership": {"bias": "center", "alignment": "independent", "factuality": "high"},
+
+    # Australia
+    "abc news": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "the australian financial review": {"bias": "center-right", "alignment": "independent", "factuality": "very_high"},
+    "afr": {"bias": "center-right", "alignment": "independent", "factuality": "very_high"},
+    "the sydney morning herald": {"bias": "center-left", "alignment": "independent", "factuality": "very_high"},
+    "smh": {"bias": "center-left", "alignment": "independent", "factuality": "very_high"},
+    "the age": {"bias": "center-left", "alignment": "independent", "factuality": "very_high"},
+    "sbs news": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
 }
 
 
 def clean_name(name):
     n = re.split(r"\s+[|\-–—·]\s+|\s*\(", str(name or "").lower())[0].strip()
     n = re.sub(r"^(the|báo|gazeta)\s+", "", n).strip()
-    return re.sub(r"\.(hu|sk|cz|kz|uz|md|ge|az|rs|vn|com|org|net|tv|ro|pl|kg|ba|et|za|ng|tr|jp|kr|tw|ph|id|my|th|mm|kh|la|co|ar|br|ua|ir|in|mx|cd|us|uk|cn|ru|de|fr|il)$", "", n).strip()
+    return re.sub(r"\.(hu|sk|cz|kz|uz|md|ge|az|rs|vn|com|org|net|tv|ro|pl|kg|ba|et|za|ng|tr|jp|kr|tw|ph|id|my|th|mm|kh|la|co|ar|br|ua|ir|in|mx|cd|us|uk|cn|ru|de|fr|il|sa|ae|eg|qa|pk|kp|sg|au)$", "", n).strip()
 
 
 _COMPILED_PATTERNS = [

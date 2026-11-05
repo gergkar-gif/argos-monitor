@@ -1,0 +1,61 @@
+# United Arab Emirates editorial policy priority themes.
+# High-weight themes for foreign-affairs analysts and diplomatic observers.
+
+themes:
+  - id: sovereign_capital_ai_technology
+    label: "Sovereign Wealth & AI Technology Hub"
+    weight: 1.0
+    keywords:
+      - "mubadala"
+      - "adia"
+      - "adq"
+      - "g42"
+      - "artificial intelligence"
+      - "semiconductor"
+      - "data center"
+      - "sovereign fund"
+      - "microsoft"
+      - "mgx"
+    description: "Sovereign capital deployment into global AI infrastructure, G42 partnerships, advanced compute data centers, and semiconductor fabrication."
+
+  - id: trade_corridors_logistics
+    label: "Global Trade Corridors & Maritime Logistics"
+    weight: 0.95
+    keywords:
+      - "dp world"
+      - "adnoc"
+      - "energy export"
+      - "ceeph"
+      - "india-middle east-europe corridor"
+      - "imec"
+      - "free zone"
+      - "difc"
+      - "aviation"
+    description: "DP World port concessions worldwide, ADNOC gas/oil expansions, IMEC trade corridor diplomacy, and financial free zone growth."
+
+  - id: multipolar_diplomatic_hedging
+    label: "Multipolar Hedging & Global South Leadership"
+    weight: 0.9
+    keywords:
+      - "brics"
+      - "abraham accords"
+      - "abdullah bin zayed"
+      - "us-uae relations"
+      - "china trade"
+      - "sudan conflict"
+      - "horn of africa"
+      - "red sea"
+    description: "Balancing strategic US defense partnerships with Chinese tech integration, BRICS membership, and assertive regional diplomacy in Africa."
+
+  - id: domestic_legal_talent_framework
+    label: "Legal Modernization & Expatriate Talent"
+    weight: 0.8
+    keywords:
+      - "golden visa"
+      - "emiratisation"
+      - "corporate tax"
+      - "civil law"
+      - "commercial court"
+      - "foreign direct investment"
+      - "dubai economic agenda"
+    description: "Commercial legal reforms, Golden Visa residency frameworks, private sector Emiratisation quotas, and fiscal tax compliance."

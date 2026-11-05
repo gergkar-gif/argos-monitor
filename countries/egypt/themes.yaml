@@ -1,0 +1,58 @@
+# Egypt editorial policy priority themes.
+# High-weight themes for foreign-affairs analysts and diplomatic observers.
+
+themes:
+  - id: gaza_mediation_sinai_border
+    label: "Gaza Ceasefire Mediation & Border Security"
+    weight: 1.0
+    keywords:
+      - "gaza"
+      - "ceasefire"
+      - "rafah"
+      - "philadelphi corridor"
+      - "hostage negotiation"
+      - "sinai"
+      - "badr abdelatty"
+      - "humanitarian aid"
+      - "displacement"
+    description: "Egyptian diplomatic mediation alongside the US and Qatar, security over the Philadelphi corridor, Rafah crossing operations, and rejection of forced displacement."
+
+  - id: suez_canal_red_sea_crisis
+    label: "Suez Canal Revenues & Red Sea Security"
+    weight: 0.95
+    keywords:
+      - "suez canal"
+      - "suez canal authority"
+      - "houthi attacks"
+      - "transit fees"
+      - "red sea disruption"
+      - "maritime shipping"
+      - "cape of good hope"
+    description: "Suez Canal transit volume drops due to Houthi Red Sea shipping attacks, foreign exchange revenue erosion, and maritime security measures."
+
+  - id: imf_program_macroeconomic_stabilization
+    label: "Macroeconomic Stabilization & IMF Program"
+    weight: 0.9
+    keywords:
+      - "central bank of egypt"
+      - "egyptian pound"
+      - "imf"
+      - "ras el-hekma"
+      - "devaluation"
+      - "inflation"
+      - "foreign reserves"
+      - "subsidy reform"
+      - "bread subsidy"
+    description: "Central bank foreign exchange management, IMF loan tranche reviews, Ras El-Hekma investment inflows, subsidy cuts, and public debt sustainability."
+
+  - id: regional_hydropolitics_gerd
+    label: "Nile Hydropolitics & Horn of Africa Friction"
+    weight: 0.8
+    keywords:
+      - "gerd"
+      - "grand ethiopian renaissance dam"
+      - "nile basin"
+      - "somalia military pact"
+      - "sudan conflict"
+      - "water security"
+    description: "Nile water quota negotiations with Addis Ababa, Egypt-Somalia defense cooperation, and diplomatic containment in the Horn of Africa."

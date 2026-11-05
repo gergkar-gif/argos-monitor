@@ -65,7 +65,7 @@
     <h2>How the 10-stage pipeline works</h2>
     <p>A scheduled GitHub Actions runner executes the pipeline every 3 hours and publishes static JSON/JS bundles to Cloudflare Pages:</p>
     <div class="pipeline">
-      <div class="step"><b>01 · Ingest</b><span>Polls 500+ RSS/Atom and Google News feeds across 45 country desks via curl.</span></div>
+      <div class="step"><b>01 · Ingest</b><span>Polls 570+ RSS/Atom and Google News feeds across 53 country desks via curl.</span></div>
       <div class="step"><b>02 · Extract</b><span>Fetches full article text with Trafilatura for domestic and accessible sources.</span></div>
       <div class="step"><b>03 · Normalise</b><span>Applies Unicode NFC normalisation (crucial for Vietnamese diacritics and Khmer script).</span></div>
       <div class="step"><b>04 · Relevance</b><span>Filters out sports/lifestyle sections and requires country mentions on world feeds.</span></div>
@@ -141,7 +141,7 @@
 
   <section id="sources">
     <h2>Monitored Outlets &amp; Source Directory</h2>
-    <p>Every publication Argos monitors across all 45 country desks, classified by reporting scope (domestic, diaspora abroad, international), editorial alignment, political leaning, factuality, and state affiliation.</p>
+    <p>Every publication Argos monitors across all 53 country desks, classified by reporting scope (domestic, diaspora abroad, international), editorial alignment, political leaning, factuality, and state affiliation.</p>
     <form class="slip notranslate" translate="no" aria-label="Filter sources" onsubmit="event.preventDefault()" style="margin-top: 1rem;">
       <label class="field notranslate" translate="no"><span>Country</span><select id="s-country" translate="no" class="notranslate"></select></label>
       <label class="field"><span>Scope</span><select id="s-scope">
@@ -172,7 +172,7 @@
   const REGIONS = [
     'North America', 'Western Europe', 'Central Europe', 'Eastern Europe', 'Balkans',
     'South Caucasus', 'Middle East & Mediterranean', 'Central Asia', 'South Asia',
-    'East Asia', 'Southeast Asia', 'Sub-Saharan Africa', 'South America'
+    'East Asia', 'Southeast Asia', 'Oceania', 'Sub-Saharan Africa', 'South America'
   ];
   const COUNTRY_REGION = {
     united_states: 'North America',
@@ -181,12 +181,15 @@
     moldova: 'Eastern Europe', russia: 'Eastern Europe', ukraine: 'Eastern Europe',
     bosnia: 'Balkans', kosovo: 'Balkans', serbia: 'Balkans',
     armenia: 'South Caucasus', azerbaijan: 'South Caucasus', georgia: 'South Caucasus',
-    iran: 'Middle East & Mediterranean', israel: 'Middle East & Mediterranean', turkey: 'Middle East & Mediterranean',
+    egypt: 'Middle East & Mediterranean', iran: 'Middle East & Mediterranean', israel: 'Middle East & Mediterranean',
+    qatar: 'Middle East & Mediterranean', saudi_arabia: 'Middle East & Mediterranean', turkey: 'Middle East & Mediterranean',
+    united_arab_emirates: 'Middle East & Mediterranean',
     kazakhstan: 'Central Asia', kyrgyzstan: 'Central Asia', uzbekistan: 'Central Asia',
-    india: 'South Asia',
-    china: 'East Asia', japan: 'East Asia', south_korea: 'East Asia', taiwan: 'East Asia',
+    india: 'South Asia', pakistan: 'South Asia',
+    china: 'East Asia', japan: 'East Asia', north_korea: 'East Asia', south_korea: 'East Asia', taiwan: 'East Asia',
     cambodia: 'Southeast Asia', indonesia: 'Southeast Asia', laos: 'Southeast Asia', malaysia: 'Southeast Asia', myanmar: 'Southeast Asia',
-    philippines: 'Southeast Asia', thailand: 'Southeast Asia', vietnam: 'Southeast Asia',
+    philippines: 'Southeast Asia', singapore: 'Southeast Asia', thailand: 'Southeast Asia', vietnam: 'Southeast Asia',
+    australia: 'Oceania',
     ethiopia: 'Sub-Saharan Africa', dr_congo: 'Sub-Saharan Africa', kenya: 'Sub-Saharan Africa', nigeria: 'Sub-Saharan Africa', south_africa: 'Sub-Saharan Africa',
     argentina: 'South America', brazil: 'South America', colombia: 'South America', mexico: 'South America',
   };

@@ -1,0 +1,58 @@
+# Singapore editorial policy priority themes.
+# High-weight themes for foreign-affairs analysts and diplomatic observers.
+
+themes:
+  - id: 4g_governance_political_transition
+    label: "4G Political Transition & Social Compact"
+    weight: 1.0
+    keywords:
+      - "lawrence wong"
+      - "forward singapore"
+      - "general election"
+      - "pap"
+      - "workers' party"
+      - "hdb housing"
+      - "cost of living"
+      - "parliament"
+    description: "Policy initiatives under Prime Minister Lawrence Wong, social compact renewal, electoral competitiveness, and public housing affordability."
+
+  - id: financial_hub_wealth_management
+    label: "Global Financial Center & Capital Inflows"
+    weight: 0.95
+    keywords:
+      - "monetary authority of singapore"
+      - "mas"
+      - "temasek"
+      - "gic"
+      - "family office"
+      - "wealth management"
+      - "anti-money laundering"
+      - "fintech"
+      - "singapore dollar"
+    description: "Regulatory tightening following money-laundering probes, massive Asian wealth management inflows, family office growth, and MAS exchange rate slope."
+
+  - id: geopolitical_neutrality_asean
+    label: "Geopolitical Neutrality & International Law"
+    weight: 0.9
+    keywords:
+      - "us-china balance"
+      - "asean centrality"
+      - "vivian balakrishnan"
+      - "unclos"
+      - "south china sea"
+      - "myanmar 5pc"
+      - "strategic autonomy"
+    description: "Defending international rule of law and freedom of navigation, navigating US-China tech rivalry, and strengthening ASEAN collective diplomacy."
+
+  - id: critical_infrastructure_semiconductors
+    label: "Supply Chain Resiliency & Critical Tech"
+    weight: 0.8
+    keywords:
+      - "semiconductor wafer"
+      - "globalfoundries"
+      - "tsmc"
+      - "tuas mega port"
+      - "data center moratorium"
+      - "green energy imports"
+      - "subsea cables"
+    description: "Advanced semiconductor foundry expansions, Tuas mega-port automation, regional green electricity interconnections, and subsea digital resilience."
