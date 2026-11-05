@@ -1,0 +1,47 @@
+id: belgium
+name: Belgium
+region: Western Europe
+language: fr
+abroad_label: International & English-language Brussels outlets
+mention:
+- belgique
+- belgië
+- belgium
+- brussels
+- bruxelles
+- brussel
+- alexander de croo
+- de croo
+- bart de wever
+- de wever
+- nato
+- otan
+- european commission
+- vlaanderen
+- wallonie
+dateline: ^\s*(?:BRUXELLES|BRUSSEL|BELGA|BELGIUM)\s*[-–:]\s*
+subreddits:
+- belgium
+- brussels
+- wallonia
+- vlaanderen
+skip_sections:
+- sport
+- football
+- lifestyle
+- people
+- buzz
+geo: BE
+aggregator_outlets:
+  domestic:
+  - RTBF
+  - Le Soir
+  - VRT
+  - De Standaard
+  - L'Echo
+  - De Tijd
+  - The Brussels Times
+  abroad_local:
+  - Politico Europe
+  - Euractiv
+  - EUobserver

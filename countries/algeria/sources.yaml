@@ -1,0 +1,39 @@
+sources:
+- id: aps_news_dz
+  name: Algérie Presse Service (APS)
+  homepage: https://www.aps.dz/fr
+  language: fr
+  scope: domestic
+  kind: official
+  governing_body: Democratic and Popular Republic of Algeria
+  state_affiliated: true
+  notes: Statutory state news agency of the Republic of Algeria.
+  feeds:
+  - url: https://www.aps.dz/algerie/feed
+    category_hint: internal_politics
+- id: tsa_algerie_dz
+  name: Tout Sur l'Algérie (TSA)
+  homepage: https://www.tsa-algerie.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: TSA Media
+  state_affiliated: false
+  notes: Premier independent Algerian digital news daily covering executive decrees,
+    energy contracts, and society.
+  feeds:
+  - url: https://www.tsa-algerie.com/feed/
+    category_hint: internal_politics
+- id: gnews_algeria_intl
+  name: Google News (Algeria Energy & Diplomacy - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Algeria+OR+Algiers)+(Tebboune+OR+gas+OR+energy+OR+diplomacy)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Energy & Politics
+    category_hint: economics

@@ -1,0 +1,40 @@
+id: algeria
+name: Algeria
+region: Middle East & Mediterranean
+language: fr
+abroad_label: International & French-language diaspora outlets
+mention:
+- algeria
+- algérie
+- algérien
+- alger
+- algiers
+- oran
+- constantine
+- abdelmadjid tebboune
+- tebboune
+- nadir larbaoui
+- ahmed attaf
+- sonatrach
+dateline: ^\s*(?:ALGER|ALGIERS|APS|ALGÉRIE)\s*[-–:]\s*
+subreddits:
+- algeria
+- algerie
+skip_sections:
+- sport
+- sports
+- football
+- lifestyle
+- people
+geo: DZ
+aggregator_outlets:
+  domestic:
+  - APS
+  - TSA Algérie
+  - El Watan
+  - Liberté
+  - El Khabar
+  - Echorouk
+  abroad_local:
+  - Jeune Afrique
+  - Le Matin d'Algérie

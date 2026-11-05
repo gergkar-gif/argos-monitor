@@ -1,0 +1,41 @@
+id: ireland
+name: Ireland
+region: Western Europe
+language: en
+abroad_label: International & British Isles regional outlets
+mention:
+- ireland
+- irish
+- dublin
+- cork
+- simon harris
+- harris
+- mícheál martin
+- dáil
+- taoiseach
+- tánaiste
+- fianna fáil
+- fine gael
+- sinn féin
+dateline: ^\s*(?:DUBLIN|CORK|BELFAST|IRELAND)\s*[-–:]\s*
+subreddits:
+- ireland
+- irishpolitics
+skip_sections:
+- sport
+- sports
+- rugby
+- gaa
+- lifestyle
+- showbiz
+geo: IE
+aggregator_outlets:
+  domestic:
+  - RTÉ
+  - The Irish Times
+  - Irish Independent
+  - TheJournal.ie
+  - Irish Examiner
+  abroad_local:
+  - BBC Northern Ireland
+  - Belfast Telegraph

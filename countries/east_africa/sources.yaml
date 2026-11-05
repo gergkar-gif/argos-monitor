@@ -1,0 +1,53 @@
+sources:
+- id: the_citizen_tz
+  name: The Citizen (Tanzania)
+  homepage: https://www.thecitizen.co.tz
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Mwananchi Communications (Nation Media Group)
+  state_affiliated: false
+  notes: Premier independent English-language Tanzanian daily covering EAC integration,
+    port trade, and energy.
+  feeds:
+  - url: https://www.thecitizen.co.tz/tanzania/news/rss.xml
+    category_hint: internal_politics
+- id: daily_monitor_ug
+  name: Daily Monitor (Uganda)
+  homepage: https://www.monitor.co.ug
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Monitor Publications (Nation Media Group)
+  state_affiliated: false
+  notes: Leading independent Kampala daily broadsheet covering parliamentary politics,
+    oil pipeline projects, and Great Lakes security.
+  feeds:
+  - url: https://www.monitor.co.ug/uganda/news/national/rss.xml
+    category_hint: internal_politics
+- id: sudan_tribune_ea
+  name: Sudan Tribune
+  homepage: https://sudantribune.com
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Sudan Tribune Media
+  state_affiliated: false
+  notes: Independent Paris/Khartoum diaspora newsroom providing authoritative coverage
+    of the Sudan conflict and peace diplomacy.
+  feeds:
+  - url: https://sudantribune.com/feed/
+    category_hint: defence_security
+- id: gnews_eastafrica_intl
+  name: Google News (East Africa & Horn Regional Affairs)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=(%22East+African+Community%22+OR+Tanzania+OR+Uganda+OR+Sudan)+(summit+OR+treaty+OR+conflict+OR+trade)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Regional Affairs
+    category_hint: foreign_policy

@@ -1,0 +1,39 @@
+sources:
+- id: sana_news_sy
+  name: Syrian Arab News Agency (SANA)
+  homepage: https://sana.sy/en
+  language: en
+  scope: domestic
+  kind: official
+  governing_body: Ministry of Information (Syrian Arab Republic)
+  state_affiliated: true
+  notes: Statutory state news agency of the Syrian government in Damascus.
+  feeds:
+  - url: https://sana.sy/en/?feed=rss2
+    category_hint: internal_politics
+- id: enab_baladi_en
+  name: Enab Baladi (English)
+  homepage: https://english.enabbaladi.net
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Enab Baladi Foundation
+  state_affiliated: false
+  notes: Independent exiled Syrian investigative news organization covering humanitarian
+    conditions, civil society, and economy.
+  feeds:
+  - url: https://english.enabbaladi.net/feed/
+    category_hint: society
+- id: gnews_syria_intl
+  name: Google News (Syria Conflict & Regional Diplomacy - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Syria+OR+Damascus)+(Assad+OR+airstrike+OR+ceasefire+OR+diplomacy)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Security & Diplomacy
+    category_hint: defence_security

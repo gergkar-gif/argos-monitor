@@ -1,0 +1,46 @@
+id: baltics
+name: Baltic States
+region: Eastern Europe
+language: en
+abroad_label: International & regional Baltic outlets
+mention:
+- baltic
+- baltics
+- estonia
+- latvia
+- lithuania
+- tallinn
+- riga
+- vilnius
+- kallas
+- kristen michal
+- siliņa
+- ingrida šimonytė
+- nausėda
+- riigikogu
+- saeima
+- seimas
+dateline: ^\s*(?:TALLINN|RIGA|VILNIUS|BNS|BALTICS)\s*[-–:]\s*
+subreddits:
+- BalticStates
+- eesti
+- latvia
+- lithuania
+skip_sections:
+- sport
+- sports
+- entertainment
+- lifestyle
+geo: EE
+aggregator_outlets:
+  domestic:
+  - ERR
+  - LSM
+  - LRT
+  - Delfi
+  - Postimees
+  - Verslo Žinios
+  abroad_local:
+  - The Baltic Times
+  - Barents Observer
+  - Balkan Insight

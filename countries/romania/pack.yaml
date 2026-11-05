@@ -1,0 +1,42 @@
+id: romania
+name: Romania
+region: Eastern Europe
+language: ro
+abroad_label: International & English-language Romanian outlets
+mention:
+- românia
+- romania
+- bucurești
+- bucharest
+- marcel ciolacu
+- ciolacu
+- nicolae ciucă
+- klaus iohannis
+- iohannis
+- parlamentul româniei
+- psd
+- pnl
+- aur
+- usr
+dateline: ^\s*(?:BUCUREȘTI|BUCHAREST|AGERPRES|ROMANIA)\s*[-–:]\s*
+subreddits:
+- romania
+- RomaniaPorn
+skip_sections:
+- sport
+- fotbal
+- monden
+- life
+- vedete
+geo: RO
+aggregator_outlets:
+  domestic:
+  - Agerpres
+  - Digi24
+  - HotNews.ro
+  - Adevărul
+  - G4Media
+  - Ziarul Financiar
+  abroad_local:
+  - Romania Insider
+  - Balkan Insight

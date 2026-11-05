@@ -1,0 +1,42 @@
+id: iraq
+name: Iraq
+region: Middle East & Mediterranean
+language: ar
+abroad_label: International & Kurdish regional outlets
+mention:
+- iraq
+- iraqi
+- baghdad
+- erbil
+- basra
+- sulaymaniyah
+- mohammed shia al-sudani
+- sudani
+- al-sudani
+- abdul latif rashid
+- council of representatives
+- pmu
+- hashd
+dateline: ^\s*(?:BAGHDAD|ERBIL|BASRA|INA|IRAQ)\s*[-–:]\s*
+subreddits:
+- iraq
+- kurdistan
+skip_sections:
+- sport
+- sports
+- football
+- lifestyle
+- celebrity
+geo: IQ
+aggregator_outlets:
+  domestic:
+  - INA
+  - Shafaq News
+  - Rudaw
+  - Alsumaria
+  - Al Mada
+  - BasNews
+  abroad_local:
+  - Al Arabiya English
+  - The National
+  - Al-Monitor

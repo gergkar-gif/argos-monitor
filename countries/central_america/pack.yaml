@@ -1,0 +1,56 @@
+id: central_america
+name: Central America
+region: Central America
+language: es
+abroad_label: International & regional Central American outlets
+mention:
+- centroamérica
+- central america
+- sica
+- guatemala
+- el salvador
+- honduras
+- nicaragua
+- costa rica
+- panama
+- panamá
+- ciudad de guatemala
+- san salvador
+- tegucigalpa
+- managua
+- san josé
+- arevalo
+- bernardo arévalo
+- bukele
+- nayib bukele
+- xiomara castro
+- rodrigo chaves
+- josé raúl mulino
+dateline: ^\s*(?:CIUDAD DE GUATEMALA|SAN SALVADOR|TEGUCIGALPA|MANAGUA|SAN JOSÉ|CIUDAD
+  DE PANAMÁ|PANAMÁ|SICA)\s*[-–:]\s*
+subreddits:
+- CentralAmerica
+- guatemala
+- elsalvador
+- Honduras
+- Ticos
+- Panama
+skip_sections:
+- deportes
+- futbol
+- espectaculos
+- fama
+- vida
+geo: PA
+aggregator_outlets:
+  domestic:
+  - La Prensa Panamá
+  - La Nación Costa Rica
+  - Prensa Libre
+  - El Faro
+  - La Prensa Gráfica
+  - El Heraldo
+  abroad_local:
+  - InSight Crime
+  - El País América
+  - Confidencial Nicaragua

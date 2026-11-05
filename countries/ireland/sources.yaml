@@ -1,0 +1,41 @@
+sources:
+- id: rte_news_ie
+  name: RTÉ News
+  homepage: https://www.rte.ie/news
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Raidió Teilifís Éireann (public broadcaster)
+  state_affiliated: false
+  notes: Statutory national public service broadcaster of Ireland.
+  feeds:
+  - url: https://www.rte.ie/feeds/rss/?index=/news/politics/
+    category_hint: internal_politics
+  - url: https://www.rte.ie/feeds/rss/?index=/news/business/
+    category_hint: economics
+- id: irish_times_ie
+  name: The Irish Times
+  homepage: https://www.irishtimes.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: The Irish Times Trust
+  state_affiliated: false
+  notes: Dublin daily broadsheet paper of record founded in 1859 covering parliamentary
+    politics and European affairs.
+  feeds:
+  - url: https://www.irishtimes.com/arc/outboundfeeds/rss/category/politics/
+    category_hint: internal_politics
+- id: gnews_ireland_intl
+  name: Google News (Ireland Politics & Economy - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Ireland+OR+Irish)+(Taoiseach+OR+parliament+OR+election+OR+budget)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Governance & Economy
+    category_hint: internal_politics

@@ -1,0 +1,50 @@
+id: east_africa
+name: East Africa
+region: Sub-Saharan Africa
+language: en
+abroad_label: International & pan-African outlets
+mention:
+- east africa
+- east african community
+- eac
+- tanzania
+- uganda
+- rwanda
+- sudan
+- somalia
+- dodoma
+- dar es salaam
+- kampala
+- kigali
+- khartoum
+- mogadishu
+- samia suluhu
+- yoweri museveni
+- paul kagame
+- al-burhan
+- hemeti
+dateline: ^\s*(?:DAR ES SALAAM|KAMPALA|KIGALI|KHARTOUM|MOGADISHU|EAC)\s*[-–:]\s*
+subreddits:
+- EastAfrica
+- tanzania
+- uganda
+- rwanda
+- Sudan
+skip_sections:
+- sport
+- sports
+- football
+- lifestyle
+- showbiz
+geo: TZ
+aggregator_outlets:
+  domestic:
+  - The Citizen Tanzania
+  - Daily Monitor Uganda
+  - The New Times Rwanda
+  - Daily News Tanzania
+  - New Vision
+  abroad_local:
+  - The EastAfrican
+  - Sudan Tribune
+  - The Africa Report

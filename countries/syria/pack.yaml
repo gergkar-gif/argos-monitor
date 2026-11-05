@@ -1,0 +1,39 @@
+id: syria
+name: Syria
+region: Middle East & Mediterranean
+language: ar
+abroad_label: International & independent Syrian exile outlets
+mention:
+- syria
+- syrian
+- damascus
+- aleppo
+- idlib
+- homs
+- latakia
+- bashar al-assad
+- assad
+- sna
+- sdf
+- htsh
+- sohr
+- syrian observatory
+dateline: ^\s*(?:DAMASCUS|ALEPPO|SANA|SYRIA)\s*[-–:]\s*
+subreddits:
+- syriancivilwar
+- syria
+skip_sections:
+- sport
+- sports
+- football
+- lifestyle
+geo: SY
+aggregator_outlets:
+  domestic:
+  - SANA
+  - Al-Watan Syria
+  abroad_local:
+  - Enab Baladi
+  - The Syria Report
+  - Syrian Observatory
+  - North Press Agency

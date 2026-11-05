@@ -1,0 +1,40 @@
+id: jordan
+name: Jordan
+region: Middle East & Mediterranean
+language: en
+abroad_label: International & regional Middle Eastern outlets
+mention:
+- jordan
+- jordanian
+- amman
+- aqaba
+- zarqa
+- king abdullah
+- abdullah ii
+- jaafar hassan
+- ayman safadi
+- safadi
+- hashemite
+- petra
+dateline: ^\s*(?:AMMAN|AQABA|PETRA|JORDAN)\s*[-–:]\s*
+subreddits:
+- jordan
+- amman
+skip_sections:
+- sport
+- sports
+- football
+- lifestyle
+- celebrity
+geo: JO
+aggregator_outlets:
+  domestic:
+  - Petra
+  - The Jordan Times
+  - Roya News
+  - Al Rai
+  - Al Ghad
+  abroad_local:
+  - Al Arabiya English
+  - The National
+  - Al-Monitor

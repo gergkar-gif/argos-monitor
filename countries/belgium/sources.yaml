@@ -1,0 +1,52 @@
+sources:
+- id: rtbf_info_be
+  name: RTBF Info
+  homepage: https://www.rtbf.be/info
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Radio-Télévision belge de la Communauté française (public broadcaster)
+  state_affiliated: false
+  notes: Belgian French-language statutory public-service broadcaster.
+  feeds:
+  - url: https://rss.rtbf.be/article/rss/highlight_rtbf_info.xml
+    category_hint: internal_politics
+- id: le_soir_be
+  name: Le Soir
+  homepage: https://www.lesoir.be
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Rossel & Cie
+  state_affiliated: false
+  notes: Brussels broadsheet paper of record covering federal governance, coalition
+    talks, and EU affairs.
+  feeds:
+  - url: https://www.lesoir.be/rss/8186/actualite/belgique
+    category_hint: internal_politics
+- id: brussels_times
+  name: The Brussels Times
+  homepage: https://www.brusselstimes.com
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: The Brussels Times BV
+  state_affiliated: false
+  notes: Independent English-language Belgian daily covering national politics, EU
+    institutions, and expat community affairs.
+  feeds:
+  - url: https://www.brusselstimes.com/feed
+    category_hint: general
+- id: gnews_belgium_intl
+  name: Google News (Belgium Politics & NATO - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Belgium+OR+Brussels)+(coalition+OR+parliament+OR+NATO+OR+EU)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Governance & Diplomacy
+    category_hint: foreign_policy

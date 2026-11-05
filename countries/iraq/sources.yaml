@@ -1,0 +1,52 @@
+sources:
+- id: ina_news_iq
+  name: Iraqi News Agency (INA)
+  homepage: https://ina.iq
+  language: ar
+  scope: domestic
+  kind: official
+  governing_body: Republic of Iraq
+  state_affiliated: true
+  notes: Statutory official news wire agency of the Republic of Iraq.
+  feeds:
+  - url: https://ina.iq/rss.xml
+    category_hint: internal_politics
+- id: shafaq_news_en
+  name: Shafaq News (English)
+  homepage: https://shafaq.com/en
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Shafaq Media
+  state_affiliated: false
+  notes: Independent Iraqi digital news agency covering federal politics, Kurdistan
+    disputes, and security developments.
+  feeds:
+  - url: https://shafaq.com/en/rss/iraq-news
+    category_hint: internal_politics
+- id: rudaw_english_iq
+  name: Rudaw English
+  homepage: https://www.rudaw.net/english
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Rudaw Media Network
+  state_affiliated: false
+  notes: Major Iraqi Kurdish media network broadcasting from Erbil covering KRG affairs,
+    federal treaties, and energy.
+  feeds:
+  - url: https://www.rudaw.net/english/rss
+    category_hint: internal_politics
+- id: gnews_iraq_intl
+  name: Google News (Iraq Oil & Security - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Iraq+OR+Baghdad)+(Sudani+OR+oil+OR+militia+OR+defense)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Politics & Security
+    category_hint: defence_security

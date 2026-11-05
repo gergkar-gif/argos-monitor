@@ -1,0 +1,53 @@
+sources:
+- id: agerpres_ro
+  name: Agerpres
+  homepage: https://agerpres.ro
+  language: ro
+  scope: domestic
+  kind: official
+  governing_body: Romanian State
+  state_affiliated: true
+  notes: Statutory national news agency of Romania.
+  feeds:
+  - url: https://www.agerpres.ro/politica.xml
+    category_hint: internal_politics
+  - url: https://www.agerpres.ro/economic.xml
+    category_hint: economics
+- id: digi24_ro
+  name: Digi24
+  homepage: https://www.digi24.ro
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: RCS & RDS (Digi Communications)
+  state_affiliated: false
+  notes: Leading Romanian 24-hour news television broadcaster and digital portal.
+  feeds:
+  - url: https://www.digi24.ro/rss
+    category_hint: internal_politics
+- id: romania_insider
+  name: Romania Insider
+  homepage: https://www.romania-insider.com
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: City Compass Media
+  state_affiliated: false
+  notes: Independent English-language Romanian news platform covering governance,
+    business, and Black Sea security.
+  feeds:
+  - url: https://www.romania-insider.com/rss
+    category_hint: general
+- id: gnews_romania_intl
+  name: Google News (Romania Governance & Black Sea - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=Romania+(election+OR+parliament+OR+NATO+OR+%22Black+Sea%22)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Politics & Defense
+    category_hint: defence_security

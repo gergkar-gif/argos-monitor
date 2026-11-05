@@ -767,13 +767,64 @@ RATINGS = {
     "gestion": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
     "el universo": {"bias": "center", "alignment": "independent", "factuality": "high"},
     "primicias": {"bias": "center", "alignment": "independent", "factuality": "high"},
+
+    # --- Batch 3: Global Strategic & Regional Desks ---
+    "rtbf": {"bias": "center-left", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "rtbf info": {"bias": "center-left", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "le soir": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "the brussels times": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "brussels times": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "dr": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "dr nyheder": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "politiken": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "the local denmark": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "rté": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "rté news": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "rte news": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "the irish times": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "irish times": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "agerpres": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "high"},
+    "digi24": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "romania insider": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "err": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "err news": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "lsm": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "lsm.lv": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "lrt": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "lrt english": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "the baltic times": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "el faro": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "la prensa panamá": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "la prensa panama": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "la nación costa rica": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+    "iraqi news agency": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "high"},
+    "ina": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "high"},
+    "shafaq news": {"bias": "center", "alignment": "independent", "factuality": "mostly_factual"},
+    "rudaw": {"bias": "center", "alignment": "independent", "factuality": "mostly_factual"},
+    "rudaw english": {"bias": "center", "alignment": "independent", "factuality": "mostly_factual"},
+    "syrian arab news agency": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mixed"},
+    "sana": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mixed"},
+    "enab baladi": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "jordan news agency": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "high"},
+    "petra": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "high"},
+    "the jordan times": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+    "roya news": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "algérie presse service": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mostly_factual"},
+    "aps": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mostly_factual"},
+    "tout sur l'algérie": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "tsa algérie": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "daily mirror sri lanka": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "ada derana": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "the citizen tanzania": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "daily monitor uganda": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "sudan tribune": {"bias": "center", "alignment": "independent", "factuality": "high"},
 }
 
 
 def clean_name(name):
     n = re.split(r"\s+[|\-–—·]\s+|\s*\(", str(name or "").lower())[0].strip()
     n = re.sub(r"^(the|báo|gazeta)\s+", "", n).strip()
-    return re.sub(r"\.(hu|sk|cz|kz|uz|md|ge|az|rs|vn|com|org|net|tv|ro|pl|kg|ba|et|za|ng|tr|jp|kr|tw|ph|id|my|th|mm|kh|la|co|ar|br|ua|ir|in|mx|cd|us|uk|cn|ru|de|fr|il|sa|ae|eg|qa|pk|kp|sg|au|by|ca|ve|se|fi|it|es|jm|fj|sn|nl|ch|cl|ma|lb|bd|no|at|gr|pt|pe|ec)$", "", n).strip()
+    return re.sub(r"\.(hu|sk|cz|kz|uz|md|ge|az|rs|vn|com|org|net|tv|ro|pl|kg|ba|et|za|ng|tr|jp|kr|tw|ph|id|my|th|mm|kh|la|co|ar|br|ua|ir|in|mx|cd|us|uk|cn|ru|de|fr|il|sa|ae|eg|qa|pk|kp|sg|au|by|ca|ve|se|fi|it|es|jm|fj|sn|nl|ch|cl|ma|lb|bd|no|at|gr|pt|pe|ec|be|dk|ie|ee|lv|lt|pa|cr|gt|sv|hn|ni|iq|sy|jo|dz|lk|tz|ug|rw|sd)$", "", n).strip()
 
 
 _COMPILED_PATTERNS = [

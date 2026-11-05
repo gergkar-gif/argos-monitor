@@ -1,0 +1,39 @@
+id: denmark
+name: Denmark
+region: Western Europe
+language: da
+abroad_label: International & English-language Nordic outlets
+mention:
+- danmark
+- denmark
+- danish
+- københavn
+- copenhagen
+- mette frederiksen
+- frederiksen
+- folketinget
+- lars løkke rasmussen
+- novonordisk
+- novo nordisk
+- mærsk
+dateline: ^\s*(?:KØBENHAVN|COPENHAGEN|RITZAU|DENMARK)\s*[-–:]\s*
+subreddits:
+- denmark
+- copenhagen
+skip_sections:
+- sport
+- sporten
+- fodbold
+- underholdning
+- kendte
+geo: DK
+aggregator_outlets:
+  domestic:
+  - DR
+  - Politiken
+  - Berlingske
+  - Jyllands-Posten
+  - Børsen
+  abroad_local:
+  - The Local Denmark
+  - Copenhagen Post

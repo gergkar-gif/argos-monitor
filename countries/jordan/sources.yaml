@@ -1,0 +1,39 @@
+sources:
+- id: jordan_times_jo
+  name: The Jordan Times
+  homepage: https://jordantimes.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Jordan Press Foundation
+  state_affiliated: false
+  notes: Amman daily broadsheet paper of record covering royal decrees, foreign policy,
+    and economic reforms.
+  feeds:
+  - url: https://jordantimes.com/rss.xml
+    category_hint: internal_politics
+- id: roya_news_en_jo
+  name: Roya News (English)
+  homepage: https://en.royanews.tv
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Sayegh Group
+  state_affiliated: false
+  notes: Leading independent Jordanian commercial television network and news service.
+  feeds:
+  - url: https://en.royanews.tv/rss/local
+    category_hint: internal_politics
+- id: gnews_jordan_intl
+  name: Google News (Jordan Diplomacy & Regional Stability - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Jordan+OR+Amman)+(King+Abdullah+OR+diplomacy+OR+refugees+OR+aid)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Diplomacy & Governance
+    category_hint: foreign_policy

@@ -1,0 +1,40 @@
+sources:
+- id: daily_mirror_lk
+  name: Daily Mirror (Sri Lanka)
+  homepage: https://www.dailymirror.lk
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Wijeya Newspapers
+  state_affiliated: false
+  notes: Leading independent Colombo English broadsheet paper of record covering executive
+    governance and economy.
+  feeds:
+  - url: https://www.dailymirror.lk/RSS_Feeds/breaking-news
+    category_hint: internal_politics
+- id: ada_derana_lk
+  name: Ada Derana
+  homepage: http://www.adaderana.lk
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Derana Macro Entertainment
+  state_affiliated: false
+  notes: Premier 24-hour Sri Lankan news broadcaster covering parliamentary reforms
+    and national affairs.
+  feeds:
+  - url: http://www.adaderana.lk/rss.php
+    category_hint: internal_politics
+- id: gnews_srilanka_intl
+  name: Google News (Sri Lanka Economy & Governance - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=(%22Sri+Lanka%22+OR+Colombo)+(Dissanayake+OR+IMF+OR+debt+OR+economy)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Economy & Governance
+    category_hint: economics

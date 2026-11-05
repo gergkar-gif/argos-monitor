@@ -1,0 +1,54 @@
+sources:
+- id: dr_dk
+  name: DR Nyheder
+  homepage: https://www.dr.dk/nyheder
+  language: da
+  scope: domestic
+  kind: media
+  governing_body: Danmarks Radio (public broadcaster)
+  state_affiliated: false
+  notes: Danish statutory public service broadcasting corporation.
+  feeds:
+  - url: https://www.dr.dk/nyheder/service/feeds/politik
+    category_hint: internal_politics
+  - url: https://www.dr.dk/nyheder/service/feeds/penge
+    category_hint: economics
+- id: politiken_dk
+  name: Politiken
+  homepage: https://politiken.dk
+  language: da
+  scope: domestic
+  kind: media
+  governing_body: JP/Politikens Hus
+  state_affiliated: false
+  notes: Copenhagen morning broadsheet paper of record covering executive policy,
+    Nordic defense, and welfare economics.
+  feeds:
+  - url: https://politiken.dk/rss/indland.rss
+    category_hint: internal_politics
+- id: the_local_dk
+  name: The Local Denmark
+  homepage: https://www.thelocal.dk
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: The Local Europe AB
+  state_affiliated: false
+  notes: Independent English-language Danish news daily covering cabinet decrees,
+    immigration rules, and economy.
+  feeds:
+  - url: https://www.thelocal.dk/feed
+    category_hint: general
+- id: gnews_denmark_intl
+  name: Google News (Denmark Politics & Pharma - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Denmark+OR+Danish)+(Frederiksen+OR+Folketinget+OR+Greenland+OR+defense)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Governance & Diplomacy
+    category_hint: foreign_policy

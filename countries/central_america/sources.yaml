@@ -1,0 +1,53 @@
+sources:
+- id: el_faro_sv
+  name: El Faro
+  homepage: https://elfaro.net
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Trípode S.A. de C.V. (independent investigative digital newsroom)
+  state_affiliated: false
+  notes: Pioneering Central American digital investigative newsroom covering authoritarianism,
+    corruption, and migration.
+  feeds:
+  - url: https://elfaro.net/es/rss
+    category_hint: internal_politics
+- id: la_prensa_pa
+  name: La Prensa (Panamá)
+  homepage: https://www.prensa.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Corporación La Prensa
+  state_affiliated: false
+  notes: Panama daily paper of record covering executive politics, canal operations,
+    and maritime trade.
+  feeds:
+  - url: https://www.prensa.com/arc/outboundfeeds/rss/category/politica/
+    category_hint: internal_politics
+- id: la_nacion_cr
+  name: La Nación (Costa Rica)
+  homepage: https://www.nacion.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Grupo Nación
+  state_affiliated: false
+  notes: San José paper of record covering Costa Rican constitutional democracy, social
+    security, and economy.
+  feeds:
+  - url: https://www.nacion.com/arc/outboundfeeds/rss/category/el-pais/politica/
+    category_hint: internal_politics
+- id: gnews_centralamerica_intl
+  name: Google News (Central America Migration & Governance - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=(%22Central+America%22+OR+Guatemala+OR+%22El+Salvador%22+OR+Panama)+(Bukele+OR+migration+OR+Canal+OR+governance)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Governance & Migration
+    category_hint: foreign_policy

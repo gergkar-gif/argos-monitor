@@ -1,0 +1,39 @@
+id: sri_lanka
+name: Sri Lanka
+region: South Asia
+language: en
+abroad_label: International & regional South Asian outlets
+mention:
+- sri lanka
+- sri lankan
+- colombo
+- kandy
+- galle
+- anura kumara dissanayake
+- dissanayake
+- npp
+- jvp
+- harini amarasuriya
+- central bank of sri lanka
+- cbsl
+- imf sri lanka
+dateline: ^\s*(?:COLOMBO|KANDY|SRI LANKA)\s*[-–:]\s*
+subreddits:
+- srilanka
+- srilankasports
+skip_sections:
+- cricket
+- sports
+- entertainment
+- lifestyle
+geo: LK
+aggregator_outlets:
+  domestic:
+  - Daily Mirror Sri Lanka
+  - Ada Derana
+  - The Sunday Times Sri Lanka
+  - News First
+  - Daily FT
+  abroad_local:
+  - BBC Sinhala
+  - The Hindu Sri Lanka
