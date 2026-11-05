@@ -4,14 +4,16 @@
 sources:
   - id: pap_en
     name: Polish Press Agency (PAP)
-    homepage: https://www.pap.pl/en
-    language: en
+    homepage: https://www.pap.pl
+    language: pl
     scope: domestic
     kind: official
+    aggregator: google_news
     governing_body: Polska Agencja Prasowa (state news agency)
     state_affiliated: true
     feeds:
-      - {url: "https://www.pap.pl/en/rss.xml", section: English, category_hint: general}
+      # Direct English RSS stale since mid-2025; routed via Google News search
+      - {url: "https://news.google.com/rss/search?q=site:pap.pl+when:7d&hl=pl&gl=PL&ceid=PL:pl", section: PAP Kraj, category_hint: general}
 
   - id: notesfrompoland
     name: Notes from Poland

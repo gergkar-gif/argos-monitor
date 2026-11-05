@@ -1,0 +1,37 @@
+# Iran's additions to the shared themes (../../themes.yaml).
+themes:
+  - id: nuclear_diplomacy
+    label: Nuclear Program, IAEA Inspections & Sanctions Relief
+    weight: 1.0
+    category: defence_security
+    describe:
+      - Atomic Energy Organization of Iran (AEOI), uranium enrichment to 60%, IAEA safeguards and Rafael Grossi inspections, Fordow and Natanz underground facilities, potential nuclear doctrine shift
+      - سازمان انرژی اتمی, غنی‌سازی ۶۰ درصد, آژانس بین‌المللی انرژی اتمی, رافائل گروسی, فردو, نطنز, دکترین هسته‌ای, تحریم
+    keywords: ["هسته‌ای", "nuclear", "iaea", "آژانس", "غنی‌سازی", "enrichment", "فردو", "نطنز", "fordow", "natanz", "گروسی", "grossi", "سانتریفیوژ"]
+
+  - id: regional_security
+    label: Axis of Resistance, Ballistic Missiles & Regional Deterrence
+    weight: 1.0
+    category: defence_security
+    describe:
+      - IRGC Quds Force operations, proxy deterrence (Hezbollah, Hamas, Ansar Allah Houthis), ballistic and hypersonic missile strikes, drone warfare, Strait of Hormuz naval security
+      - سپاه پاسداران, نیروی قدس, محور مقاومت, حزب‌الله, حماس, موشک‌های بالستیک, پهپادها, تنگه هرمز, خلیج فارس, اسرائیل
+    keywords: ["سپاه", "irgc", "قدس", "موشک", "missile", "پهپاد", "drone", "اسرائیل", "israel", "حزب‌الله", "هرمز", "hormuz", "مقاومت"]
+
+  - id: domestic_politics
+    label: Pezeshkian Administration, Factional Rivalry & Social Governance
+    weight: 1.0
+    category: internal_politics
+    describe:
+      - President Masoud Pezeshkian reformist policies, interactions with Supreme Leader Ayatollah Khamenei, conservative Majlis pushback, enforcement of mandatory hijab laws, political prisoner amnesties
+      - مسعود پزشکیان, دولت چهاردهم, علی خامنه‌ای, مجلس شورای اسلامی, قالیباف, گشت ارشاد, قانون عفاف و حجاب, زندانیان سیاسی, اصلاح‌طلبان
+    keywords: ["پزشکیان", "pezeshkian", "خامنه‌ای", "khamenei", "مجلس", "قالیباف", "حجاب", "hijab", "گشت ارشاد", "اصلاح‌طلب", "اصولگرا"]
+
+  - id: economy_sanctions
+    label: Rial Currency Depreciation, Oil Exports & Sanctions Evasion
+    weight: 1.0
+    category: economics
+    describe:
+      - Rial depreciation against US dollar, Central Bank monetary interventions, oil tanker shipments to Chinese teapots, trade via Russia and China, double-digit inflation and fuel subsidy pressures
+      - نرخ ارز, قیمت دلار, ریال, بانک مرکزی, صادرات نفت, تحریم‌ها, دور زدن تحریم, تورم, کسری بودجه, بنزین, تجارت با چین
+    keywords: ["دلار", "ریال", "ارز", "تورم", "نفت", "صادرات", "تحریم", "بانک مرکزی", "بنزین", "بودجه", "اقتصاد"]

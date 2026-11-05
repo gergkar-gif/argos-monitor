@@ -41,10 +41,12 @@ sources:
     language: en
     scope: domestic
     kind: media
+    aggregator: google_news
     governing_body: Civilitas Foundation (independent Yerevan media platform)
     state_affiliated: false
     feeds:
-      - {url: "https://www.civilnet.am/feed/", section: Latest, category_hint: general}
+      # Direct feed blocked by Cloudflare challenge; routed via Google News aggregator
+      - {url: "https://news.google.com/rss/search?q=site:civilnet.am+when:7d&hl=en-US&gl=US&ceid=US:en", section: Latest, category_hint: general}
 
   - id: gnews_am_official
     name: Armenpress / 1Lurer (State Wire & Public TV via Google News)

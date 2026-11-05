@@ -1,0 +1,107 @@
+# India source registry (decision D15).
+# Combines national papers of record (The Hindu, The Indian Express, Times of India), financial press (Mint), investigative digital journalism (The Wire, Scroll.in), and topical intelligence monitors.
+
+sources:
+  - id: the_hindu
+    name: The Hindu
+    homepage: https://www.thehindu.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Kasturi & Sons Ltd (Chennai paper of record)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.thehindu.com/news/national/feeder/default.rss", section: National, category_hint: internal_politics}
+
+  - id: indian_express
+    name: The Indian Express
+    homepage: https://indianexpress.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Indian Express Group (national paper of record)
+    state_affiliated: false
+    feeds:
+      - {url: "https://indianexpress.com/section/india/feed/", section: India, category_hint: internal_politics}
+
+  - id: times_of_india
+    name: The Times of India
+    homepage: https://timesofindia.indiatimes.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Bennett, Coleman & Co. Ltd. (The Times Group)
+    state_affiliated: false
+    feeds:
+      - {url: "https://timesofindia.indiatimes.com/rssfeedstopstories.cms", section: Top Stories, category_hint: general}
+
+  - id: livemint
+    name: Mint
+    homepage: https://www.livemint.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: HT Media Ltd (financial and macroeconomic daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.livemint.com/rss/news", section: News & Markets, category_hint: economics}
+
+  - id: the_wire
+    name: The Wire
+    homepage: https://thewire.in
+    language: en
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: Foundation for Independent Journalism (civic investigative portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:thewire.in+when:7d&hl=en-IN&gl=IN&ceid=IN:en", section: Investigations, category_hint: internal_politics}
+
+  - id: scroll_in
+    name: Scroll.in
+    homepage: https://scroll.in
+    language: en
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: Scroll Media Inc. (independent digital daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:scroll.in+when:7d&hl=en-IN&gl=IN&ceid=IN:en", section: Politics & Society, category_hint: general}
+
+  - id: gnews_in_national
+    name: Google News (Indian National Politics & Parliament)
+    homepage: https://news.google.com
+    language: en
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(Modi+OR+BJP+OR+Congress+OR+Lok+Sabha)+when:1d&hl=en-IN&gl=IN&ceid=IN:en", section: National Politics, category_hint: internal_politics}
+
+  - id: gnews_in_foreign
+    name: Google News (Indian Diplomacy & Quad)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=India+(Jaishankar+OR+Quad+OR+BRICS+OR+LAC+OR+diplomacy)+when:1d&hl=en-IN&gl=IN&ceid=IN:en", section: Foreign Policy, category_hint: foreign_policy}
+
+  - id: gnews_in_security
+    name: Google News (Indian Defence & Strategic Forces)
+    homepage: https://news.google.com
+    language: en
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=India+(Army+OR+Navy+OR+Air+Force+OR+DRDO+OR+missile+OR+border)+when:1d&hl=en-IN&gl=IN&ceid=IN:en", section: Defence & Security, category_hint: defence_security}

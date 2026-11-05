@@ -50,7 +50,8 @@ sources:
     state_affiliated: true
     reprints_vna: false
     feeds:
-      - {url: "https://en.freshnewsasia.com/index.php/en/?format=feed&type=rss", section: News, category_hint: general}
+      # Direct feed returns HTML (dynamic CMS without RSS); marked inactive
+      - {url: "https://en.freshnewsasia.com/index.php/en/?format=feed&type=rss", section: News, category_hint: general, active: false}
 
   - id: kampuchea_thmey
     name: Kampuchea Thmey Daily

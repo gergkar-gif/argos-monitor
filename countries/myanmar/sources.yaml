@@ -66,7 +66,8 @@ sources:
     governing_body: BNI Ethnic Media Network (coalition of independent ethnic news outlets)
     state_affiliated: false
     feeds:
-      - {url: "https://www.bnionline.net/en/rss.xml", section: News, category_hint: general}
+      # Feed stale since 2023 (BNI Drupal site stopped updating static RSS feed); marked inactive
+      - {url: "https://www.bnionline.net/en/rss.xml", section: News, category_hint: general, active: false}
 
   - id: rfa_my
     name: RFA Burmese

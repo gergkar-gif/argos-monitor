@@ -1,8 +1,15 @@
 """Stage 1: for every country pack, fetch every active feed (and any GDELT query) and store new article URLs."""
 import json
 import re
+import sys
 import time
 from datetime import datetime, timedelta, timezone
+
+if sys.stdout and hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+    except Exception:
+        pass
 
 import feedparser
 

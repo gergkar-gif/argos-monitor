@@ -1,0 +1,104 @@
+# Iran country pack (decision D15).
+id: iran
+name: Iran
+region: Middle East
+language: fa
+abroad_label: Persian diaspora & exile press abroad
+
+mention:
+  - "iran"
+  - "iranian"
+  - "tehran"
+  - "isfahan"
+  - "mashhad"
+  - "shiraz"
+  - "tabriz"
+  - "qom"
+  - "pezeshkian"
+  - "masoud pezeshkian"
+  - "khamenei"
+  - "ali khamenei"
+  - "irgc"
+  - "quds force"
+  - "revolutionary guards"
+  - "strait of hormuz"
+  - "fordow"
+  - "natanz"
+  - "majlis"
+  - "ایران"
+  - "ایرانی"
+  - "تهران"
+  - "اصفهان"
+  - "مشهد"
+  - "تبریز"
+  - "قم"
+  - "پزشکیان"
+  - "مسعود پزشکیان"
+  - "خامنه‌ای"
+  - "علی خامنه‌ای"
+  - "سپاه"
+  - "سپاه پاسداران"
+  - "قدس"
+  - "نطنز"
+  - "فردو"
+  - "مجلس"
+  - "تنگه هرمز"
+
+mention_regex: ['\b(?:iran|iranian|tehran|pezeshkian|khamenei|irgc|hormuz)\b', 'ایران', 'تهران', 'پزشکیان', 'خامنه‌ای', 'سپاه']
+mention_section: null
+
+url_sections:
+  foreign: [world, international, region, jahan, kharej]
+  skip: [sport, sports, varzesh, culture, entertainment, cinema, lifestyle, food, horoscope]
+
+aggregator_outlets:
+  domestic:
+    - "irna"
+    - "islamic republic news agency"
+    - "tehran times"
+    - "mehr"
+    - "mehr news agency"
+    - "tasnim"
+    - "tasnim news"
+    - "fars"
+    - "fars news"
+    - "press tv"
+    - "isna"
+    - "ilna"
+    - "shargh"
+    - "etemad"
+    - "kayhan"
+  abroad_local:
+    - "iran international"
+    - "radio farda"
+    - "bbc persian"
+    - "bbc news farsi"
+    - "iranwire"
+    - "kayhan london"
+    - "manoto"
+    - "voa persian"
+    - "dw persian"
+
+excerpt:
+  dateline: '^\s*(?:TEHRAN|IRNA|MEHR|TASNIM|FARS|BEIRUT)\s*[-–—:]\s*'
+  noise: '^(عکس|منبع|بخوانید|Photo|Credit|\(|\[)'
+
+classify:
+  internal_politics:
+    - "President Masoud Pezeshkian, Supreme Leader Ayatollah Ali Khamenei, Guardian Council, Majlis (Parliament), reformist vs principlist rivalries, hijab law enforcement, leadership succession"
+    - "مسعود پزشکیان, آیت‌الله علی خامنه‌ای, رهبر معظم, شورای نگهبان, مجلس شورای اسلامی, اصولگرایان, اصلاح‌طلبان, گشت ارشاد, حجاب, جانشینی"
+  economics:
+    - "Central Bank of Iran (CBI), rial exchange rate, US and European sanctions, oil sales to China, inflation and cost of living, BRICS integration, North-South transport corridor"
+    - "بانک مرکزی, نرخ دلار, ریال, تحریم, صادرات نفت, تورم, معیشت, بریکس, کریدور شمال جنوب, تجارت با چین و روسیه"
+  foreign_policy:
+    - "Regional axis of resistance (Hezbollah, Hamas, Houthis), Arab de-escalation (Saudi Arabia, UAE, Oman), indirect US diplomacy, 25-year strategic cooperation with China, Russia partnership"
+    - "محور مقاومت, حزب‌الله, حماس, روابط با عربستان و امارات, مذاکرات با آمریکا, عمان, قطر, توافق ۲۵ ساله با چین, روسیه, دیپلماسی"
+  defence_security:
+    - "Islamic Revolutionary Guard Corps (IRGC), Artesh armed forces, ballistic missile and hypersonic tests, drone production (Shahed), Strait of Hormuz naval patrols, Israel strikes and air defense"
+    - "سپاه پاسداران, ارتش, موشک بالستیک, پهپاد شاهد, پدافند هوایی, تقابل با اسرائیل, امنیت خلیج فارس, تنگه هرمز"
+  society:
+    - "Civil liberties, Woman Life Freedom movement, university students, mandatory hijab patrols, internet filtering, environmental water crisis (Lake Urmia), brain drain"
+    - "حقوق زنان, فعالان مدنی, اعتراضات, فیلترینگ اینترنت, بحران آب, دریاچه ارومیه, دانشگاه, مهاجرت نخبگان"
+
+geo: IR
+reddit: [iran, newiran]

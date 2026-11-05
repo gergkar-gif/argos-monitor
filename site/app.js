@@ -56,7 +56,7 @@
   const GLOBAL_VIEWS = new Set(['home', 'alerts', 'disasters', 'violence', 'relations']);
 
   const REGIONS = [
-    'Southeast Asia', 'East Asia', 'Central Europe', 'Balkans', 'Eastern Europe',
+    'Southeast Asia', 'East Asia', 'South Asia', 'Central Europe', 'Balkans', 'Eastern Europe',
     'South Caucasus', 'Central Asia', 'Middle East & Mediterranean',
     'Sub-Saharan Africa', 'South America'
   ];
@@ -64,14 +64,15 @@
     cambodia: 'Southeast Asia', indonesia: 'Southeast Asia', laos: 'Southeast Asia', malaysia: 'Southeast Asia', myanmar: 'Southeast Asia',
     philippines: 'Southeast Asia', thailand: 'Southeast Asia', vietnam: 'Southeast Asia',
     japan: 'East Asia', south_korea: 'East Asia', taiwan: 'East Asia',
+    india: 'South Asia',
     czechia: 'Central Europe', hungary: 'Central Europe', poland: 'Central Europe', slovakia: 'Central Europe',
     bosnia: 'Balkans', kosovo: 'Balkans', serbia: 'Balkans',
-    moldova: 'Eastern Europe',
+    moldova: 'Eastern Europe', ukraine: 'Eastern Europe',
     armenia: 'South Caucasus', azerbaijan: 'South Caucasus', georgia: 'South Caucasus',
     kazakhstan: 'Central Asia', kyrgyzstan: 'Central Asia', uzbekistan: 'Central Asia',
-    turkey: 'Middle East & Mediterranean',
-    ethiopia: 'Sub-Saharan Africa', kenya: 'Sub-Saharan Africa', nigeria: 'Sub-Saharan Africa', south_africa: 'Sub-Saharan Africa',
-    argentina: 'South America', brazil: 'South America', colombia: 'South America',
+    iran: 'Middle East & Mediterranean', turkey: 'Middle East & Mediterranean',
+    ethiopia: 'Sub-Saharan Africa', dr_congo: 'Sub-Saharan Africa', kenya: 'Sub-Saharan Africa', nigeria: 'Sub-Saharan Africa', south_africa: 'Sub-Saharan Africa',
+    argentina: 'South America', brazil: 'South America', colombia: 'South America', mexico: 'South America',
   };
   const getRegion = (cid) => ((index && index.countries.find((x) => x.id === cid) || {}).region) || COUNTRY_REGION[cid] || 'Other';
   const prettyName = (cid) => ((index && index.countries.find((x) => x.id === cid) || {}).name) || cid.replace(/_/g, ' ').replace(/\b\w/g, (m) => m.toUpperCase());

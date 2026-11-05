@@ -367,13 +367,164 @@ RATINGS = {
     "világgazdaság": {"bias": "right", "alignment": "pro_government", "factuality": "mixed"},
     "vilaggazdasag": {"bias": "right", "alignment": "pro_government", "factuality": "mixed"},
     "rtvc noticias": {"bias": "center-left", "alignment": "public_broadcaster", "factuality": "high"},
+
+    # --- Expanded Coverage: Monitored Desks (Africa, Central Asia, Balkans, V4, East Asia) ---
+    # Balkans & South Caucasus
+    "cin": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "center for investigative reporting": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "n1": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "n1 srbija": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "južne vesti": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "juzne vesti": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "autonomija": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "civil georgia": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "civil.ge": {"bias": "center", "alignment": "independent", "factuality": "high"},
+
+    # Central & Eastern Europe
+    "magyar hírlap": {"bias": "right", "alignment": "pro_government", "factuality": "mostly_factual"},
+    "magyar hirlap": {"bias": "right", "alignment": "pro_government", "factuality": "mostly_factual"},
+    "hungary today": {"bias": "center-right", "alignment": "pro_government", "factuality": "high"},
+    "hungarian conservative": {"bias": "right", "alignment": "pro_government", "factuality": "high"},
+    "maszol": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+    "maszol.ro": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+    "balkan insight": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "birn": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "denník n": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "dennik n": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "notes from poland": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "rmf24": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "polsat news": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+    "polsat": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+    "oko.press": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "bankier": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "bankier.pl": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "money.pl": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "ziarul de gardă": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+    "ziarul de garda": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+    "newsmaker": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "deschide": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+    "deschide.md": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+
+    # Central Asia
+    "kursiv media": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "kursiv": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "tengrinews": {"bias": "center", "alignment": "independent", "factuality": "mostly_factual"},
+    "kloop media": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "kloop": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "24.kg": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "gazeta.uz": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "kun.uz": {"bias": "center", "alignment": "independent", "factuality": "mostly_factual"},
+    "daryo": {"bias": "center", "alignment": "independent", "factuality": "mostly_factual"},
+
+    # Sub-Saharan Africa
+    "the reporter ethiopia": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "reporter ethiopia": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "capital ethiopia": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "ethiopian monitor": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "channels television": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "channels tv": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "sahara reporters": {"bias": "left", "alignment": "independent", "factuality": "mostly_factual"},
+    "enca": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "groundup": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "moneyweb": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "the south african": {"bias": "center", "alignment": "independent", "factuality": "mostly_factual"},
+    "defenceweb": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "saiia": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "daily friend": {"bias": "right", "alignment": "independent", "factuality": "mostly_factual"},
+    "maroela media": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+    "allafrica": {"bias": "center", "alignment": "independent", "factuality": "high"},
+
+    # Middle East & East Asia
+    "sözcü": {"bias": "center-left", "alignment": "opposition", "factuality": "mostly_factual"},
+    "sozcu": {"bias": "center-left", "alignment": "opposition", "factuality": "mostly_factual"},
+    "bianet": {"bias": "left", "alignment": "independent", "factuality": "high"},
+    "mainichi": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "the mainichi": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "dong-a": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+    "dong-a ilbo": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+
+    # Ukraine Desk
+    "ukrinform": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "high"},
+    "ukrainska pravda": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "pravda.com.ua": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "the kyiv independent": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "kyiv independent": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "nv": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "novoye vremya": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "babel": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "babel.ua": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "interfax-ukraine": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "rbc-ukraine": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "radio svoboda": {"bias": "center", "alignment": "public_broadcaster", "factuality": "high"},
+    "suspilne": {"bias": "center", "alignment": "public_broadcaster", "factuality": "high"},
+    "censor.net": {"bias": "center-right", "alignment": "independent", "factuality": "mostly_factual"},
+    "liga.net": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "hromadske": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+
+    # Iran Desk
+    "irna": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mostly_factual"},
+    "islamic republic news agency": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mostly_factual"},
+    "mehr": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mixed"},
+    "mehr news agency": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mixed"},
+    "tehran times": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mostly_factual"},
+    "tasnim": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mixed"},
+    "tasnim news": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mixed"},
+    "fars": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mixed"},
+    "fars news": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mixed"},
+    "press tv": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mixed"},
+    "iran international": {"bias": "center-right", "alignment": "independent", "factuality": "mostly_factual"},
+    "radio farda": {"bias": "center", "alignment": "public_broadcaster", "factuality": "high"},
+    "bbc persian": {"bias": "center-left", "alignment": "public_broadcaster", "factuality": "high"},
+    "iranwire": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "kayhan london": {"bias": "center-right", "alignment": "opposition", "factuality": "mostly_factual"},
+
+    # India Desk
+    "the hindu": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "the indian express": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "indian express": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "the times of india": {"bias": "center-right", "alignment": "independent", "factuality": "mostly_factual"},
+    "times of india": {"bias": "center-right", "alignment": "independent", "factuality": "mostly_factual"},
+    "livemint": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "mint": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "the wire": {"bias": "left", "alignment": "independent", "factuality": "high"},
+    "scroll.in": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "scroll": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "ndtv": {"bias": "center-right", "alignment": "independent", "factuality": "mostly_factual"},
+    "hindustan times": {"bias": "center", "alignment": "independent", "factuality": "mostly_factual"},
+    "business standard": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "the economic times": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "economic times": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "dd news": {"bias": "state_aligned", "alignment": "public_broadcaster", "factuality": "mostly_factual"},
+    "press trust of india": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "pti": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "ani": {"bias": "center-right", "alignment": "independent", "factuality": "mostly_factual"},
+
+    # Mexico Desk
+    "el universal": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+    "la jornada": {"bias": "left", "alignment": "pro_government", "factuality": "mostly_factual"},
+    "el financiero": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "animal político": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "animal politico": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "aristegui noticias": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "aristegui": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "reforma": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+    "milenio": {"bias": "center", "alignment": "independent", "factuality": "mostly_factual"},
+    "proceso": {"bias": "left", "alignment": "independent", "factuality": "high"},
+
+    # DR Congo Desk
+    "actualite.cd": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "actualite": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "radio okapi": {"bias": "center", "alignment": "public_broadcaster", "factuality": "high"},
+    "politico.cd": {"bias": "center", "alignment": "independent", "factuality": "mostly_factual"},
+    "agence congolaise de presse": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mostly_factual"},
+    "acp": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mostly_factual"},
 }
 
 
 def clean_name(name):
     n = re.split(r"\s+[|\-–—·]\s+|\s*\(", str(name or "").lower())[0].strip()
     n = re.sub(r"^(the|báo|gazeta)\s+", "", n).strip()
-    return re.sub(r"\.(hu|sk|cz|kz|uz|md|ge|az|rs|vn|com|org|net|tv|ro|pl|kg)$", "", n).strip()
+    return re.sub(r"\.(hu|sk|cz|kz|uz|md|ge|az|rs|vn|com|org|net|tv|ro|pl|kg|ba|et|za|ng|tr|jp|kr|tw|ph|id|my|th|mm|kh|la|co|ar|br|ua|ir|in|mx|cd)$", "", n).strip()
 
 
 _COMPILED_PATTERNS = [

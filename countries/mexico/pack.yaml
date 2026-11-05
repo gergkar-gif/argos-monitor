@@ -1,0 +1,95 @@
+# Mexico country pack (decision D15).
+id: mexico
+name: Mexico
+region: South America
+language: es
+abroad_label: Regional Latin American & US Hispanic outlets
+
+mention:
+  - "mexico"
+  - "méxico"
+  - "mexicano"
+  - "mexicana"
+  - "cdmx"
+  - "ciudad de méxico"
+  - "palacio nacional"
+  - "sheinbaum"
+  - "claudia sheinbaum"
+  - "lópez obrador"
+  - "amlo"
+  - "morena"
+  - "pan"
+  - "pri"
+  - "congreso de la unión"
+  - "senado"
+  - "cámara de diputados"
+  - "scjn"
+  - "suprema corte"
+  - "reforma judicial"
+  - "banxico"
+  - "pemex"
+  - "cfe"
+  - "t-mec"
+  - "usmca"
+  - "sedena"
+  - "guardia nacional"
+  - "sinaloa"
+  - "jalisco"
+
+mention_regex: ['\b(?:mexico|méxico|mexican\w*|sheinbaum|amlo|morena|banxico|pemex|t-mec)\b']
+mention_section: null
+
+url_sections:
+  foreign: [mundo, internacional, world, global]
+  skip: [deportes, futbol, espectaculos, farandula, estilo, celebridades, horoscopos, autos, viral]
+
+aggregator_outlets:
+  domestic:
+    - "el universal"
+    - "la jornada"
+    - "el financiero"
+    - "reforma"
+    - "milenio"
+    - "animal político"
+    - "animal politico"
+    - "aristegui noticias"
+    - "aristegui"
+    - "proceso"
+    - "el economista"
+    - "expansion"
+    - "excelsior"
+    - "noticieros televisa"
+    - "televisa"
+    - "tv azteca"
+  abroad_local:
+    - "el país méxico"
+    - "el pais"
+    - "telemundo"
+    - "univision"
+    - "la opinión"
+    - "bbc mundo"
+    - "dw español"
+
+excerpt:
+  dateline: '^\s*(?:CIUDAD DE MÉXICO|CDMX|MÉXICO|EL UNIVERSAL|LA JORNADA|REUTERS|EFE)\s*[-–—:]\s*'
+  noise: '^(Foto|Crédito|Fuente|Te puede interesar|Lee también|Da clic|\(|\[)'
+
+classify:
+  internal_politics:
+    - "President Claudia Sheinbaum, Morena ruling party, judicial reform (popular election of judges), Supreme Court (SCJN), Chamber of Deputies and Senate, opposition parties (PAN, PRI, MC)"
+    - "Claudia Sheinbaum, Morena, reforma judicial, SCJN, Suprema Corte, jueces, Congreso, Senado, Cámara de Diputados, López Obrador, oposición, gobierno"
+  economics:
+    - "Banco de México (Banxico) interest rates, nearshoring investment, peso exchange rate, Pemex debt and energy sovereignty, CFE power grid, GDP forecast, inflation"
+    - "Banco de México, Banxico, nearshoring, tipo de cambio, peso, Pemex, CFE, inflación, PIB, inversión extranjera, finanzas públicas"
+  foreign_policy:
+    - "US-Mexico bilateral diplomacy, T-MEC / USMCA trade negotiations, border security, tariffs, migration corridors, Latin American integration (CELAC, Pacific Alliance)"
+    - "T-MEC, Estados Unidos, relación bilateral, aranceles, frontera, migración, Cancillería, SRE, comercio exterior, diplomacia"
+  defence_security:
+    - "Secretaría de la Defensa Nacional (Sedena), Secretaría de Marina (Semar), Guardia Nacional, Sinaloa cartel conflict, CJNG, fentanyl trafficking, public security strategy"
+    - "Sedena, Marina, Guardia Nacional, seguridad pública, cárteles, narcotráfico, violencia, homicidios, Sinaloa, fentanilo, armas"
+  society:
+    - "Public healthcare system (IMSS-Bienestar), public water distribution crisis, indigenous rights, minimum wage increases, environmental protection, educational reform"
+    - "Salud, IMSS, crisis del agua, sequía, salario mínimo, programas sociales, educación, derechos humanos, medio ambiente"
+
+geo: MX
+reddit: [mexico]

@@ -1,0 +1,84 @@
+# DR Congo country pack (decision D15).
+id: dr_congo
+name: DR Congo
+region: Sub-Saharan Africa
+language: fr
+abroad_label: Pan-African & international French-language outlets
+
+mention:
+  - "congo"
+  - "rdc"
+  - "drc"
+  - "dr congo"
+  - "kinshasa"
+  - "lubumbashi"
+  - "goma"
+  - "bukavu"
+  - "kisangani"
+  - "kivu"
+  - "nord-kivu"
+  - "sud-kivu"
+  - "ituri"
+  - "katanga"
+  - "tshisekedi"
+  - "félix tshisekedi"
+  - "suminwa"
+  - "judith suminwa"
+  - "fardc"
+  - "m23"
+  - "afc"
+  - "monusco"
+  - "gécamines"
+  - "cobalt"
+  - "coltan"
+
+mention_regex: ['\b(?:congo|rdc|drc|kinshasa|goma|kivu|tshisekedi|m23|fardc|monusco)\b']
+mention_section: null
+
+url_sections:
+  foreign: [monde, international, afrique, world]
+  skip: [sports, football, culture, musique, people, lifestyle, buzz]
+
+aggregator_outlets:
+  domestic:
+    - "actualite.cd"
+    - "actualité.cd"
+    - "radio okapi"
+    - "politico.cd"
+    - "acp"
+    - "agence congolaise de presse"
+    - "7sur7.cd"
+    - "mediacongo"
+    - "forum des as"
+    - "le potentiel"
+  abroad_local:
+    - "jeune afrique"
+    - "rfi"
+    - "rfi afrique"
+    - "france 24"
+    - "dw afrique"
+    - "bbc news afrique"
+
+excerpt:
+  dateline: '^\s*(?:KINSHASA|GOMA|LUBUMBASHI|ACP|RFI|AFP)\s*[-–—:]\s*'
+  noise: '^(Photo|Crédit|Lire aussi|Source|\(|\[)'
+
+classify:
+  internal_politics:
+    - "President Félix Tshisekedi, Prime Minister Judith Suminwa, Union Sacrée coalition, National Assembly (Assemblée Nationale), opposition leaders (Martin Fayulu, Moïse Katumbi), constitutional reform debate"
+    - "Félix Tshisekedi, Judith Suminwa, gouvernement, Assemblée nationale, Union sacrée, opposition, Fayulu, Katumbi, Cour constitutionnelle, révision constitutionnelle, politique"
+  economics:
+    - "Critical minerals governance, Gécamines, cobalt, copper, and coltan concessions, Chinese mining contracts (Sicomines), Congolese franc (CDF) stability, IMF program, infrastructure contracts"
+    - "Gécamines, secteur minier, cobalt, cuivre, coltan, mines, franc congolais, inflation, FMI, budget, Sicomines, investissements"
+  foreign_policy:
+    - "Luanda peace talks under Angolan mediation, diplomatic crisis with Rwanda, SADC regional defense mission (SAMIDRC), EAC relations, United States partnership, Chinese resource diplomacy"
+    - "Processus de Luanda, médiation angolaise, Rwanda, Kagame, SADC, SAMIDRC, diplomatie, Nations Unies, États-Unis, Chine"
+  defence_security:
+    - "Armed Forces of the DRC (FARDC), M23 rebellion, Alliance Fleuve Congo (AFC), conflict in North Kivu and Ituri, Wazalendo armed groups, MONUSCO drawdown, ceasefire monitoring"
+    - "FARDC, M23, AFC, Corneille Nangaa, Nord-Kivu, Goma, Rutshuru, Ituri, Wazalendo, MONUSCO, cessez-le-feu, sécurité, armée"
+  society:
+    - "Internally displaced persons (IDPs) in North Kivu, humanitarian emergencies, mpox viral outbreak containment, public health clinics, education sector, human rights monitoring"
+    - "Déplacés de guerre, crise humanitaire, épidémie de mpox, variole du singe, santé publique, éducation, société civile, droits humains"
+
+geo: CD
+reddit: [congo]

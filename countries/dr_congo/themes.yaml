@@ -1,0 +1,33 @@
+# DR Congo's additions to the shared themes (../../themes.yaml).
+themes:
+  - id: eastern_conflict_m23
+    label: Eastern DRC Conflict, M23 Insurgency & FARDC Operations
+    weight: 1.0
+    category: defence_security
+    describe:
+      - Military clashes in North Kivu and Ituri, M23 rebel offensive and Alliance Fleuve Congo (AFC), FARDC armed forces deployment, Wazalendo self-defense groups, MONUSCO peacekeeping mission transition
+    keywords: ["fardc", "m23", "afc", "kivu", "nord-kivu", "goma", "rutshuru", "ituri", "wazalendo", "monusco", "rebelles", "sécurité", "armé"]
+
+  - id: critical_minerals_mining
+    label: Critical Minerals Governance, Cobalt Concessions & Mining Revenue
+    weight: 1.0
+    category: economics
+    describe:
+      - Gécamines state oversight, industrial cobalt and copper concessions in Katanga, artisanal coltan mining supply chains, Chinese joint ventures (Sicomines), US critical mineral security initiatives
+    keywords: ["mines", "minier", "cobalt", "cuivre", "coltan", "gécamines", "gecamines", "katanga", "sicomines", "redevance", "contrats", "exportations"]
+
+  - id: luanda_diplomacy_rwanda
+    label: Luanda Peace Process, Rwanda Tensions & SADC Regional Force
+    weight: 1.0
+    category: foreign_policy
+    describe:
+      - Angolan mediation under President João Lourenço, ceasefire negotiations between Kinshasa and Kigali, SADC deployment (SAMIDRC), United Nations Security Council diplomatic appeals
+    keywords: ["luanda", "médiation", "angola", "rwanda", "kigali", "kagame", "sadc", "samidrc", "diplomatie", "cessez-le-feu", "nations unies"]
+
+  - id: tshisekedi_gov_coalition
+    label: Tshisekedi Administration, Union Sacrée & Institutional Reform
+    weight: 1.0
+    category: internal_politics
+    describe:
+      - President Félix Tshisekedi second-term agenda, Prime Minister Judith Suminwa cabinet governance, Union Sacrée coalition negotiations, National Assembly leadership, proposed constitutional changes
+    keywords: ["tshisekedi", "félix tshisekedi", "suminwa", "premier ministre", "union sacrée", "assemblée nationale", "gouvernement", "constitution", "opposition", "fayulu", "katumbi"]

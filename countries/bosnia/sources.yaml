@@ -22,7 +22,8 @@ sources:
     governing_body: Oslobođenje d.o.o. (Sarajevo daily paper of record)
     state_affiliated: false
     feeds:
-      - {url: "https://www.oslobodjenje.ba/feed", section: Vijesti, category_hint: general}
+      # Direct RSS 404 after Next.js migration; covered reliably via Google News aggregator below
+      - {url: "https://www.oslobodjenje.ba/feed", section: Vijesti, category_hint: general, active: false}
 
   - id: istraga_ba
     name: Istraga.ba
@@ -36,16 +37,16 @@ sources:
       - {url: "https://istraga.ba/feed/", section: Politika, category_hint: internal_politics}
 
   - id: gnews_ba_domestic
-    name: Klix.ba / Dnevni Avaz / Nezavisne (National Press via Google News)
+    name: Klix.ba / Dnevni Avaz / Nezavisne / Oslobođenje (National Press via Google News)
     homepage: https://www.klix.ba
     language: bs
     scope: domestic
     kind: media
     aggregator: google_news
-    governing_body: InterSoft d.o.o. / Avaz-roto press / NIGD Dnevne nezavisne novine
+    governing_body: InterSoft d.o.o. / Avaz-roto press / NIGD Dnevne nezavisne novine / Oslobođenje
     state_affiliated: false
     feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:klix.ba+OR+site:avaz.ba+OR+site:nezavisne.com)+when:1d&hl=bs&gl=BA&ceid=BA:bs", section: Vijesti, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=(site:klix.ba+OR+site:avaz.ba+OR+site:nezavisne.com+OR+site:oslobodjenje.ba)+when:1d&hl=bs&gl=BA&ceid=BA:bs", section: Vijesti, category_hint: general}
 
   - id: gnews_ba_official
     name: FENA / RTRS / BHRT (State Wire & Public Broadcasters via Google News)

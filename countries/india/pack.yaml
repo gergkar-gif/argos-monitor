@@ -1,0 +1,95 @@
+# India country pack (decision D15).
+id: india
+name: India
+region: South Asia
+language: en
+abroad_label: Regional South Asian & international outlets
+
+mention:
+  - "india"
+  - "indian"
+  - "new delhi"
+  - "delhi"
+  - "mumbai"
+  - "bengaluru"
+  - "bangalore"
+  - "chennai"
+  - "kolkata"
+  - "hyderabad"
+  - "ahmedabad"
+  - "modi"
+  - "narendra modi"
+  - "amit shah"
+  - "rahul gandhi"
+  - "rajnath singh"
+  - "jaishankar"
+  - "s jaishankar"
+  - "lok sabha"
+  - "rajya sabha"
+  - "bjp"
+  - "congress"
+  - "rbi"
+  - "reserve bank of india"
+  - "supreme court of india"
+  - "lac"
+  - "ladakh"
+  - "kashmir"
+
+mention_regex: ['\b(?:india|indian|delhi|mumbai|modi|jaishankar|bjp|congress|ladakh)\b']
+mention_section: null
+
+url_sections:
+  foreign: [world, international, global]
+  skip: [sports, cricket, entertainment, bollywood, lifestyle, horoscope, viral, astrology, tech, gadgets, auto]
+
+aggregator_outlets:
+  domestic:
+    - "the hindu"
+    - "the indian express"
+    - "indian express"
+    - "times of india"
+    - "the times of india"
+    - "mint"
+    - "livemint"
+    - "the wire"
+    - "scroll.in"
+    - "scroll"
+    - "ndtv"
+    - "hindustan times"
+    - "business standard"
+    - "the economic times"
+    - "economic times"
+    - "dd news"
+    - "pib"
+    - "ani"
+    - "press trust of india"
+    - "pti"
+  abroad_local:
+    - "bbc hindi"
+    - "bbc news india"
+    - "dawn"
+    - "the daily star"
+
+excerpt:
+  dateline: '^\s*(?:NEW DELHI|DELHI|MUMBAI|BENGALURU|PTI|ANI)\s*[-–—:]\s*'
+  noise: '^(Also Read|READ|Photo|Credit|Source|\(|\[)'
+
+classify:
+  internal_politics:
+    - "Prime Minister Narendra Modi, BJP government, Home Minister Amit Shah, Rahul Gandhi and Congress opposition, Lok Sabha, state assembly elections, Supreme Court of India"
+    - "Narendra Modi, Amit Shah, Rahul Gandhi, BJP, Congress, Lok Sabha, Rajya Sabha, Supreme Court, elections, Parliament, government"
+  economics:
+    - "Reserve Bank of India (RBI) repo rates, inflation, GDP economic expansion, manufacturing (Make in India), rupee exchange rate, trade deficits, Reliance, Tata, Adani"
+    - "Reserve Bank of India, RBI, GDP, inflation, rupee, manufacturing, exports, trade, fiscal deficit, infrastructure, stock market"
+  foreign_policy:
+    - "External Affairs Minister S. Jaishankar, Quad partnership, BRICS summit, relations with United States, China border diplomacy (LAC), Russia energy ties, South Asia neighborhood policy"
+    - "S Jaishankar, MEA, Quad, BRICS, United States, China, LAC, Russia, Pakistan, Bangladesh, foreign policy, diplomacy"
+  defence_security:
+    - "Indian Armed Forces (Army, Navy, Air Force), Line of Actual Control (LAC) border patrols, DRDO defense procurement, aircraft carriers, missile tests, counter-insurgency in Jammu & Kashmir"
+    - "Indian Army, Indian Navy, Indian Air Force, LAC, Ladakh, DRDO, defence procurement, ballistic missiles, security, Kashmir"
+  society:
+    - "Monsoon weather and climate vulnerability, air quality in Northern India, public health infrastructure, universities and NEET exams, railway modernization, digital public infrastructure"
+    - "Air pollution, healthcare, education, railways, monsoon, climate change, welfare schemes, digital public infrastructure"
+
+geo: IN
+reddit: [india, indianews]

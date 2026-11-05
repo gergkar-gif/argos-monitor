@@ -1,0 +1,105 @@
+# Ukraine country pack (decision D15).
+id: ukraine
+name: Ukraine
+region: Eastern Europe
+language: uk
+abroad_label: International & regional Eastern European outlets
+
+mention:
+  - "ukraine"
+  - "ukrainian"
+  - "kyiv"
+  - "kiev"
+  - "kharkiv"
+  - "odesa"
+  - "dnipro"
+  - "lviv"
+  - "zaporizhzhia"
+  - "donetsk"
+  - "luhansk"
+  - "crimea"
+  - "donbas"
+  - "pokrovsk"
+  - "kupiansk"
+  - "zelenskyy"
+  - "zelensky"
+  - "volodymyr zelenskyy"
+  - "syrskyi"
+  - "zaluzhnyi"
+  - "yermak"
+  - "shmyhal"
+  - "umierov"
+  - "verkhovna rada"
+  - "україна"
+  - "україни"
+  - "український"
+  - "київ"
+  - "харків"
+  - "одеса"
+  - "львів"
+  - "дніпро"
+  - "запоріжжя"
+  - "покровськ"
+  - "крим"
+  - "донбас"
+  - "зеленський"
+  - "сирський"
+  - "єрмак"
+  - "уряду"
+  - "верховна рада"
+  - "зсу"
+
+mention_regex: ['\b(?:ukraine|ukrainian|kyiv|kiev|zelenskyy|zelensky|pokrovsk|donbas)\b', 'україна', 'україни', 'київ', 'зеленський', 'зсу']
+mention_section: null
+
+url_sections:
+  foreign: [world, international, svit, mir, planet]
+  skip: [sport, sports, lifestyle, culture, show, tabloid, auto, tech, entertainment, horoscopes, weather]
+
+aggregator_outlets:
+  domestic:
+    - "ukrinform"
+    - "ukrainska pravda"
+    - "the kyiv independent"
+    - "kyiv independent"
+    - "babel"
+    - "nv"
+    - "novoye vremya"
+    - "rbc-ukraine"
+    - "rbc"
+    - "interfax-ukraine"
+    - "hromadske"
+    - "suspilne"
+    - "censor.net"
+    - "liga.net"
+    - "espreso"
+  abroad_local:
+    - "rfe/rl ukrainian"
+    - "radio svoboda"
+    - "bbc news ukrainian"
+    - "dw ukrainian"
+    - "voice of america ukrainian"
+
+excerpt:
+  dateline: '^\s*(?:KYIV|KIEV|UKRINFORM|INTERFAX|RBC)\s*[-–—:]\s*'
+  noise: '^(Фото|Джерело|Читайте також|Photo|Credit|\(|\[)'
+
+classify:
+  internal_politics:
+    - "President Volodymyr Zelenskyy, Office of the President (Andriy Yermak), Verkhovna Rada (Parliament), government cabinet (Denys Shmyhal), anti-corruption agencies (NABU, SAPO), martial law governance"
+    - "Володимир Зеленський, Офіс Президента, Верховна Рада, Кабінет Міністрів, Денис Шмигаль, НАБУ, САП, воєнний стан, вибори, уряд, політика"
+  economics:
+    - "National Bank of Ukraine (NBU), state budget and Western financial aid, IMF loans, grain corridor export, Black Sea maritime shipping, energy infrastructure repairs (Ukrenergo, DTEK), hryvnia rate"
+    - "Національний банк України, НБУ, держбюджет, фінансова допомога, МВФ, експорт зерна, чорноморський коридор, енергетика, Укренерго, ДТЕК, гривня"
+  foreign_policy:
+    - "Peace formula diplomacy, peace summits, European Union accession talks, NATO integration and bilateral security agreements, relations with US, Poland, Germany, UK, France, and Global South"
+    - "Формула миру, саміт миру, вступ до ЄС, інтеграція в НАТО, безпекові угоди, США, Польща, Німеччина, Велика Британія, дипломатія"
+  defence_security:
+    - "Armed Forces of Ukraine (ZSU), Commander-in-Chief Oleksandr Syrskyi, frontline battles (Pokrovsk, Kupiansk, Kursk), Western weapons (Patriot, F-16, ATACMS), drone warfare, defense industry Ukroboronprom"
+    - "Генеральний штаб ЗСУ, Олександр Сирський, фронт, бойові дії, Покровськ, Куп'янськ, Курська операція, ППО Patriot, винищувачі F-16, далекобійна зброя, дрони, Укроборонпром"
+  society:
+    - "Internally displaced persons (IDPs), refugees, civilian war casualties, power outages, winter heating, medical rehabilitation of wounded veterans, wartime schooling"
+    - "Переселенці, біженці, цивільні втрати, відключення світла, опалювальний сезон, ветерани, реабілітація, охорона здоров'я, освіта"
+
+geo: UA
+reddit: [ukraine, ukraina]

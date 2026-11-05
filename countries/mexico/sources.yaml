@@ -1,0 +1,96 @@
+# Mexico source registry (decision D15).
+# Combines papers of record (El Universal, La Jornada), financial daily (El Financiero), investigative digital journalism (Animal Político, Aristegui Noticias), and topical intelligence feeds.
+
+sources:
+  - id: el_universal_mx
+    name: El Universal
+    homepage: https://www.eluniversal.com.mx
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: El Universal Compañía Periodística Nacional (paper of record)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.eluniversal.com.mx/arc/outboundfeeds/rss/?outputType=xml", section: Portada, category_hint: general}
+
+  - id: la_jornada_mx
+    name: La Jornada
+    homepage: https://www.jornada.com.mx
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Demos Desarrollo de Medios (left-leaning paper of record)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.jornada.com.mx/rss/edicion.xml", section: Edición Digital, category_hint: internal_politics}
+
+  - id: el_financiero_mx
+    name: El Financiero
+    homepage: https://www.elfinanciero.com.mx
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Grupo Multimedia Lauman (financial and macroeconomic paper of record)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.elfinanciero.com.mx/arc/outboundfeeds/rss/?outputType=xml", section: Economía y Mercados, category_hint: economics}
+
+  - id: animal_politico_mx
+    name: Animal Político
+    homepage: https://animalpolitico.com
+    language: es
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: Editorial Animal S. de R.L. de C.V. (independent investigative portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:animalpolitico.com+when:7d&hl=es-419&gl=MX&ceid=MX:es-419", section: Investigaciones, category_hint: internal_politics}
+
+  - id: aristegui_mx
+    name: Aristegui Noticias
+    homepage: https://aristeguinoticias.com
+    language: es
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: Aristegui Noticias (independent investigative daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:aristeguinoticias.com+when:7d&hl=es-419&gl=MX&ceid=MX:es-419", section: Noticias, category_hint: general}
+
+  - id: gnews_mx_politics
+    name: Google News (Presidency, Judicial Reform & Congress)
+    homepage: https://news.google.com
+    language: es
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(Sheinbaum+OR+Reforma+Judicial+OR+Congreso)+when:1d&hl=es-419&gl=MX&ceid=MX:es-419", section: Política Nacional, category_hint: internal_politics}
+
+  - id: gnews_mx_security
+    name: Google News (Security, Sedena & Cartels)
+    homepage: https://news.google.com
+    language: es
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Mexico+(seguridad+OR+narcotrafico+OR+violencia+OR+GN+OR+Sedena)+when:1d&hl=es-419&gl=MX&ceid=MX:es-419", section: Seguridad, category_hint: defence_security}
+
+  - id: gnews_mx_tmec
+    name: Google News (T-MEC / USMCA, Tariffs & Border Diplomacy)
+    homepage: https://news.google.com
+    language: es
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Mexico+(T-MEC+OR+frontera+OR+aranceles+OR+migracion)+when:1d&hl=es-419&gl=MX&ceid=MX:es-419", section: T-MEC y Diplomacia, category_hint: foreign_policy}

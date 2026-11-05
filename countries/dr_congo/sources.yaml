@@ -1,0 +1,74 @@
+# DR Congo source registry (decision D15).
+# Combines Kinshasa digital press (Actualite.cd), UN-backed public-interest broadcaster (Radio Okapi), and topical regional security and critical minerals monitors.
+
+sources:
+  - id: actualite_cd
+    name: Actualite.cd
+    homepage: https://actualite.cd
+    language: fr
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: Groupe Next Corp (independent Kinshasa digital daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:actualite.cd+when:7d&hl=fr&gl=CD&ceid=CD:fr", section: Toutes les actualités, category_hint: general}
+
+  - id: radio_okapi
+    name: Radio Okapi
+    homepage: https://www.radiookapi.net
+    language: fr
+    scope: domestic
+    kind: media
+    governing_body: Fondation Hirondelle / MONUSCO (UN peacekeeping public service broadcaster)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.radiookapi.net/rss.xml", section: Actualités, category_hint: general}
+
+  - id: gnews_cd_security
+    name: Google News (Eastern DRC Conflict & M23)
+    homepage: https://news.google.com
+    language: fr
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(RDC+OR+Congo)+(M23+OR+Kivu+OR+FARDC+OR+Goma)+when:1d&hl=fr&gl=CD&ceid=CD:fr", section: Sécurité et Nord-Kivu, category_hint: defence_security}
+
+  - id: gnews_cd_politics
+    name: Google News (Tshisekedi Governance & Luanda Diplomacy)
+    homepage: https://news.google.com
+    language: fr
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(RDC+OR+Congo)+(Tshisekedi+OR+Gouvernement+OR+Luanda+OR+Rwanda)+when:1d&hl=fr&gl=CD&ceid=CD:fr", section: Politique et Diplomatie, category_hint: internal_politics}
+
+  - id: gnews_cd_mining
+    name: Google News (Critical Minerals, Cobalt & Copper)
+    homepage: https://news.google.com
+    language: fr
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(Congo+OR+RDC)+(cobalt+OR+cuivre+OR+coltan+OR+mines)+when:7d&hl=fr&gl=CD&ceid=CD:fr", section: Secteur Minier, category_hint: economics}
+
+  - id: gnews_cd_intl
+    name: Google News (DR Congo International Reporting)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(DRC+OR+%22DR+Congo%22)+(M23+OR+Tshisekedi+OR+minerals+OR+cobalt)+when:1d&hl=en-US&gl=US&ceid=US:en", section: International DRC Monitor, category_hint: defence_security}

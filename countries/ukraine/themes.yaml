@@ -1,0 +1,37 @@
+# Ukraine's additions to the shared themes (../../themes.yaml).
+themes:
+  - id: party_gov
+    label: Wartime Governance, Presidential Administration & Anti-Corruption
+    weight: 1.0
+    category: internal_politics
+    describe:
+      - President Volodymyr Zelenskyy, Office of the President under Andriy Yermak, cabinet of ministers led by Denys Shmyhal, Verkhovna Rada legislation, anti-corruption enforcement by NABU and SAPO
+      - Володимир Зеленський, Офіс Президента, Андрій Єрмак, Денис Шмигаль, уряд, Верховна Рада, НАБУ, САП, антикорупція, воєнний стан
+    keywords: ["зеленський", "zelensky", "zelenskyy", "єрмак", "yermak", "шмигаль", "shmyhal", "рада", "уряд", "набу", "сап", "корупція", "воєнний стан"]
+
+  - id: defence_security
+    label: Frontline Operations, Air Defense & Long-Range Strikes
+    weight: 1.0
+    category: defence_security
+    describe:
+      - General Staff operations under Commander Oleksandr Syrskyi, battles in Pokrovsk, Kupiansk, Toretsk, and Kursk, air defense against missile and drone barrages (Patriot, NASAMS), long-range strikes
+      - Генеральний штаб, Олександр Сирський, бойові дії, фронт, Покровськ, Куп'янськ, Курськ, ППО Patriot, далекобійні удари, дрони, зброя
+    keywords: ["зсу", "сирський", "syrskyi", "покровськ", "pokrovsk", "куп'янськ", "курськ", "kursk", "фронт", "ппо", "patriot", "ракет", "дрон", "атака", "зброя"]
+
+  - id: diplomacy
+    label: Peace Formula, EU Accession & Transatlantic Alliances
+    weight: 1.0
+    category: foreign_policy
+    describe:
+      - Ukraine peace formula, international peace summits, European Union accession cluster negotiations, bilateral security agreements, relations with United States, NATO members, and Global South
+      - Формула миру, саміт миру, переговори про вступ до ЄС, безпекові угоди, НАТО, США, Польща, Німеччина, військова допомога
+    keywords: ["формула миру", "peace formula", "єс", "nato", "нато", "євросоюз", "саміт", "допомога", "союзник", "дипломат"]
+
+  - id: energy_econ
+    label: Energy Grid Resilience, Black Sea Shipping & Reconstruction
+    weight: 1.0
+    category: economics
+    describe:
+      - Restoration of power grid after Russian strikes (Ukrenergo, DTEK, Energoatom), decentralized generation, Black Sea maritime export corridor, IMF lending benchmarks, and state budget financing
+      - Енергосистема, Укренерго, ДТЕК, Енергоатом, блекаут, електроенергія, зерновий коридор, Чорне море, експорт, МВФ, бюджет
+    keywords: ["укренерго", "дтек", "енергоатом", "енергет", "блекаут", "світло", "експорт", "зерно", "чорне море", "мвф", "бюджет", "гривня"]

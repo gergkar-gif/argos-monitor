@@ -1,0 +1,33 @@
+# Mexico's additions to the shared themes (../../themes.yaml).
+themes:
+  - id: sheinbaum_judiciary
+    label: Sheinbaum Administration & Judicial Reform
+    weight: 1.0
+    category: internal_politics
+    describe:
+      - President Claudia Sheinbaum, Morena supermajority, constitutional overhaul of the judiciary (popular election of supreme court ministers and federal judges), opposition parties (PAN, PRI, MC)
+    keywords: ["sheinbaum", "claudia sheinbaum", "morena", "reforma judicial", "scjn", "suprema corte", "jueces", "magistrados", "congreso", "senado", "diputados"]
+
+  - id: security_sedena
+    label: Public Security, Cartel Conflicts & Militarization
+    weight: 1.0
+    category: defence_security
+    describe:
+      - Federal security policy led by Omar García Harfuch, Sedena and Semar operations, Guardia Nacional integration, factional violence in Sinaloa, cartel conflicts (CJNG, Santa Rosa)
+    keywords: ["seguridad", "sedena", "marina", "guardia nacional", "harfuch", "cártel", "sinaloa", "cjng", "narcotráfico", "violencia", "homicidios", "fentanilo"]
+
+  - id: usmca_border_trade
+    label: T-MEC / USMCA Review, Tariffs & Border Diplomacy
+    weight: 1.0
+    category: foreign_policy
+    describe:
+      - Bilateral negotiations with Washington, 2026 T-MEC / USMCA joint review, tariff threats, northern border enforcement, migrant containment and bilateral repatriation agreements
+    keywords: ["t-mec", "usmca", "estados unidos", "aranceles", "comercio", "frontera", "migración", "cancillería", "sre", "de la fuente", "relación bilateral"]
+
+  - id: nearshoring_energy
+    label: Nearshoring Industrialization, Pemex & Banxico Policy
+    weight: 1.0
+    category: economics
+    describe:
+      - Nearshoring industrial plant relocation, Banco de México interest rate decisions, peso currency volatility, Pemex financial restructuring and debt relief, CFE electric grid capacity
+    keywords: ["nearshoring", "banxico", "peso", "tipo de cambio", "pemex", "cfe", "energía", "inversión", "inflación", "pib", "deuda pública", "economía"]

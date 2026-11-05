@@ -1,0 +1,33 @@
+# India's additions to the shared themes (../../themes.yaml).
+themes:
+  - id: modi_gov_elections
+    label: Modi Government, Parliament & Opposition Politics
+    weight: 1.0
+    category: internal_politics
+    describe:
+      - Prime Minister Narendra Modi, BJP national leadership, Home Minister Amit Shah, Rahul Gandhi and Congress opposition, Lok Sabha legislative battles, state elections, Supreme Court constitutional rulings
+    keywords: ["modi", "narendra modi", "amit shah", "rahul gandhi", "bjp", "congress", "lok sabha", "rajya sabha", "election", "parliament", "supreme court", "governance"]
+
+  - id: strategic_foreign_policy
+    label: Indo-Pacific Strategy, Quad, BRICS & China Border
+    weight: 1.0
+    category: foreign_policy
+    describe:
+      - External Affairs Minister S. Jaishankar, Quad maritime security, BRICS engagement, Line of Actual Control (LAC) disengagement with China, bilateral relations with United States, Russia, and Indian Ocean neighbors
+    keywords: ["jaishankar", "quad", "brics", "lac", "china", "ladakh", "united states", "russia", "pakistan", "bangladesh", "diplomacy", "foreign minister"]
+
+  - id: defence_procurement
+    label: Defence Modernization, Indigenous Production & Border Security
+    weight: 1.0
+    category: defence_security
+    describe:
+      - Modernization of Indian Army, Navy, and Air Force, indigenous defense hardware (DRDO, Tejas fighter, nuclear submarine fleet), border infrastructure in Himalayas and Indian Ocean Region (IOR)
+    keywords: ["army", "navy", "air force", "drdo", "tejas", "missile", "defence", "border", "kashmir", "military", "submarine", "artillery"]
+
+  - id: macro_economy_trade
+    label: Monetary Policy, Manufacturing Growth & Corporate Investment
+    weight: 1.0
+    category: economics
+    describe:
+      - Reserve Bank of India monetary policy committee, repo rate decisions, GDP expansion, Make in India manufacturing (PLI), major industrial conglomerates (Tata, Reliance, Adani), foreign direct investment and trade
+    keywords: ["rbi", "reserve bank", "inflation", "gdp", "rupee", "manufacturing", "exports", "trade", "tata", "reliance", "adani", "fiscal", "economy"]
