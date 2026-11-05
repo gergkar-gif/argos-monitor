@@ -661,20 +661,20 @@
           if (!s.delta) return null;
           const badges = [];
           if (s.delta.state === 'new') {
-            badges.push(h('span', { class: 'stamp stamp-new', title: 'Fresh emergence: no recorded coverage in prior reference window', text: '[NEW]' }));
+            badges.push(h('span', { class: 'stamp stamp-new', title: 'Fresh emergence: no recorded coverage in prior reference window', text: 'NEW' }));
           } else if (s.delta.state === 'surging') {
             const netStr = s.delta.net > 0 ? `+${s.delta.net}` : String(s.delta.net);
-            badges.push(h('span', { class: 'stamp stamp-surge', title: `Surging coverage: ${s.delta.curr} articles vs ${s.delta.prev} in prior window (${s.delta.ratio}x velocity)`, text: `[SURGE ${netStr}]` }));
+            badges.push(h('span', { class: 'stamp stamp-surge', title: `Surging coverage: ${s.delta.curr} articles vs ${s.delta.prev} in prior window (${s.delta.ratio}x velocity)`, text: `SURGE ${netStr}` }));
           } else if (s.delta.state === 'cooling') {
-            badges.push(h('span', { class: 'stamp stamp-cooling', title: `Cooling coverage: ${s.delta.curr} articles vs ${s.delta.prev} in prior window`, text: '[COOLING]' }));
+            badges.push(h('span', { class: 'stamp stamp-cooling', title: `Cooling coverage: ${s.delta.curr} articles vs ${s.delta.prev} in prior window`, text: 'COOLING' }));
           }
           if (s.delta.scope_shift === 'international_pickup') {
-            badges.push(h('span', { class: 'stamp stamp-pickup', title: 'International wire pickup of domestic reporting', text: '[INTL PICKUP]' }));
+            badges.push(h('span', { class: 'stamp stamp-pickup', title: 'International wire pickup of domestic reporting', text: 'INTL PICKUP' }));
           } else if (s.delta.scope_shift === 'diaspora_pickup') {
-            badges.push(h('span', { class: 'stamp stamp-pickup', title: 'Diaspora / foreign-language pickup of domestic reporting', text: '[DIASPORA PICKUP]' }));
+            badges.push(h('span', { class: 'stamp stamp-pickup', title: 'Diaspora / foreign-language pickup of domestic reporting', text: 'DIASPORA PICKUP' }));
           }
           if (s.delta.state_surge) {
-            badges.push(h('span', { class: 'stamp red', title: `Official state narrative surge: state-affiliated share increased by ${Math.round((s.delta.state_share_curr - s.delta.state_share_prev) * 100)}%`, text: '[STATE SURGE]' }));
+            badges.push(h('span', { class: 'stamp red', title: `Official state narrative surge: state-affiliated share increased by ${Math.round((s.delta.state_share_curr - s.delta.state_share_prev) * 100)}%`, text: 'STATE SURGE' }));
           }
           return badges.length ? badges : null;
         })(),
@@ -1188,15 +1188,15 @@
     const arrow = netArticles > 0 ? '↑' : (netArticles < 0 ? '↓' : '·');
 
     const pills = [];
-    if (overallState === 'surging') pills.push(h('span', { class: 'stamp stamp-surge', text: `[SURGE ${sign}${netArticles}]` }));
-    else if (overallState === 'new') pills.push(h('span', { class: 'stamp stamp-new', text: '[NEW EMERGENCE]' }));
-    else if (overallState === 'cooling') pills.push(h('span', { class: 'stamp stamp-cooling', text: '[COOLING]' }));
+    if (overallState === 'surging') pills.push(h('span', { class: 'stamp stamp-surge', text: `SURGE ${sign}${netArticles}` }));
+    else if (overallState === 'new') pills.push(h('span', { class: 'stamp stamp-new', text: 'NEW EMERGENCE' }));
+    else if (overallState === 'cooling') pills.push(h('span', { class: 'stamp stamp-cooling', text: 'COOLING' }));
 
-    if (nNew > 0 && overallState !== 'new') pills.push(h('span', { class: 'stamp stamp-new', text: `${nNew} [NEW]` }));
-    if (nSurge > 0 && overallState !== 'surging') pills.push(h('span', { class: 'stamp stamp-surge', text: `${nSurge} [SURGE]` }));
-    if (nIntl > 0) pills.push(h('span', { class: 'stamp stamp-pickup', text: `${nIntl} [INTL PICKUP]` }));
-    if (nDiaspora > 0) pills.push(h('span', { class: 'stamp stamp-pickup', text: `${nDiaspora} [DIASPORA]` }));
-    if (nStateSurge > 0) pills.push(h('span', { class: 'stamp red', text: `${nStateSurge} [STATE SURGE]` }));
+    if (nNew > 0 && overallState !== 'new') pills.push(h('span', { class: 'stamp stamp-new', text: `${nNew} NEW` }));
+    if (nSurge > 0 && overallState !== 'surging') pills.push(h('span', { class: 'stamp stamp-surge', text: `${nSurge} SURGE` }));
+    if (nIntl > 0) pills.push(h('span', { class: 'stamp stamp-pickup', text: `${nIntl} INTL PICKUP` }));
+    if (nDiaspora > 0) pills.push(h('span', { class: 'stamp stamp-pickup', text: `${nDiaspora} DIASPORA` }));
+    if (nStateSurge > 0) pills.push(h('span', { class: 'stamp red', text: `${nStateSurge} STATE SURGE` }));
 
     return h('div', { class: 'bilateral-delta-panel', role: 'region', 'aria-label': 'Bilateral delta comparisons' },
       h('div', { class: 'bilateral-delta-head' },
