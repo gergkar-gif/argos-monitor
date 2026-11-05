@@ -86,7 +86,7 @@ sources:
     feeds:
       - {url: "https://news.google.com/rss/search?q=site:rbc.ua+when:3d&hl=uk&gl=UA&ceid=UA:uk", section: Новини, category_hint: general}
 
-  - id: radio_svoboda
+  - id: radio_svoboda_ua
     name: Radio Svoboda (RFE/RL Ukrainian)
     homepage: https://www.radiosvoboda.org
     language: uk

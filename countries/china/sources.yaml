@@ -26,7 +26,7 @@ sources:
   feeds:
   - url: https://www.globaltimes.cn/rss/outbound.xml
     category_hint: foreign_policy
-- id: scmp
+- id: scmp_hk
   name: South China Morning Post
   homepage: https://www.scmp.com
   language: en
@@ -37,7 +37,7 @@ sources:
   notes: Hong Kong English daily of record covering mainland politics, economy, and
     diplomacy.
   feeds:
-  - url: https://www.scmp.com/rss/91/feed
+  - url: https://www.scmp.com/rss/4/feed
     category_hint: internal_politics
   - url: https://www.scmp.com/rss/92/feed
     category_hint: economics

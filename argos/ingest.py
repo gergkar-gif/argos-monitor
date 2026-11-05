@@ -35,7 +35,7 @@ def _known_titles(db, country):
                                                 (country, cutoff))}
 
 
-def _match_outlet_scope(outlet, overrides, default_scope):
+def _match_outlet_scope(outlet, overrides, default_scope, patterns=None):
     nl = outlet.lower().strip()
     if nl in overrides:
         return overrides[nl]
@@ -43,9 +43,14 @@ def _match_outlet_scope(outlet, overrides, default_scope):
     cl = re.sub(r"^(the|báo)\s+", "", cl).strip()
     if cl in overrides:
         return overrides[cl]
-    for pat, sc in overrides.items():
-        if len(pat) >= 4 and (re.search(r"\b" + re.escape(pat) + r"\b", nl) or re.search(r"\b" + re.escape(pat) + r"\b", cl)):
-            return sc
+    if patterns is not None:
+        for reg, sc in patterns:
+            if reg.search(nl) or reg.search(cl):
+                return sc
+    else:
+        for pat, sc in overrides.items():
+            if len(pat) >= 4 and (re.search(r"\b" + re.escape(pat) + r"\b", nl) or re.search(r"\b" + re.escape(pat) + r"\b", cl)):
+                return sc
     return default_scope
 
 
@@ -222,10 +227,11 @@ def reconcile_aggregator_sources(db):
         for sc in ("domestic", "abroad_local"):
             for n in ao.get(sc, []):
                 all_overrides[n.lower()] = sc
+    patterns = [(re.compile(r"\b" + re.escape(pat) + r"\b"), sc) for pat, sc in all_overrides.items() if len(pat) >= 4]
     rows = db.execute("SELECT id, name, scope FROM source WHERE id LIKE 'gn:%'").fetchall()
     updates = []
     for sid, name, scope in rows:
-        target = _match_outlet_scope(name, all_overrides, None)
+        target = _match_outlet_scope(name, all_overrides, None, patterns=patterns)
         if target and target != scope:
             updates.append((target, sid))
     if updates:
