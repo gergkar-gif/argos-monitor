@@ -1,0 +1,102 @@
+sources:
+  - id: cbc_news_ca
+    name: CBC News
+    homepage: https://www.cbc.ca/news
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Canadian Broadcasting Corporation (Public Broadcaster)"
+    state_affiliated: false
+    notes: "Canada's national public broadcaster of record."
+    feeds:
+      - url: https://www.cbc.ca/webfeed/rss/rss-topstories
+        category_hint: internal_politics
+      - url: https://www.cbc.ca/webfeed/rss/rss-politics
+        category_hint: internal_politics
+      - url: https://www.cbc.ca/webfeed/rss/rss-business
+        category_hint: economics
+
+  - id: the_globe_and_mail
+    name: The Globe and Mail
+    homepage: https://www.theglobeandmail.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Woodbridge Company"
+    state_affiliated: false
+    notes: "Canada's national newspaper of record, based in Toronto."
+    feeds:
+      - url: https://www.theglobeandmail.com/arc/outboundfeeds/rss/category/politics/
+        category_hint: internal_politics
+      - url: https://www.theglobeandmail.com/arc/outboundfeeds/rss/category/business/
+        category_hint: economics
+
+  - id: national_post_ca
+    name: National Post
+    homepage: https://nationalpost.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Postmedia Network"
+    state_affiliated: false
+    notes: "Major national conservative broadsheet of record."
+    feeds:
+      - url: https://nationalpost.com/feed
+        category_hint: internal_politics
+      - url: https://nationalpost.com/category/news/politics/feed
+        category_hint: internal_politics
+
+  - id: toronto_star_ca
+    name: Toronto Star
+    homepage: https://www.thestar.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Torstar / Nordstar Capital"
+    state_affiliated: false
+    notes: "High-circulation center-left national daily."
+    feeds:
+      - url: https://www.thestar.com/search/?f=rss&t=article&c=news/canada*&l=50&s=start_time&sd=desc
+        category_hint: internal_politics
+
+  - id: google_news_canada_politics
+    name: Google News (Canada Parliament & Federal Politics)
+    homepage: https://news.google.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking Justin Trudeau, Pierre Poilievre, and Parliament Hill."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=%22Justin+Trudeau%22+OR+%22Pierre+Poilievre%22+OR+%22House+of+Commons%22+Canada+when:3d&hl=en-CA&gl=CA&ceid=CA:en"
+        category_hint: internal_politics
+
+  - id: google_news_canada_economy
+    name: Google News (Canada Economy, Bank of Canada & Trade)
+    homepage: https://news.google.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking Bank of Canada rate cuts, housing crisis, and US trade."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=%22Bank+of+Canada%22+OR+%22Canadian+economy%22+OR+%22housing+crisis%22+Canada+when:3d&hl=en-CA&gl=CA&ceid=CA:en"
+        category_hint: economics
+
+  - id: google_news_canada_defense
+    name: Google News (Canada Defense & Arctic Security)
+    homepage: https://news.google.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking NORAD, Arctic patrols, NATO spending, and military procurement."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=%22National+Defence%22+Canada+OR+NORAD+OR+%22Arctic+sovereignty%22+Canada+when:3d&hl=en-CA&gl=CA&ceid=CA:en"
+        category_hint: defence_security

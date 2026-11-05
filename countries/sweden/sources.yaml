@@ -1,0 +1,100 @@
+sources:
+  - id: svt_nyheter
+    name: SVT Nyheter
+    homepage: https://www.svt.se/nyheter
+    language: sv
+    scope: domestic
+    kind: official
+    governing_body: "Sveriges Television (National Public Broadcaster)"
+    state_affiliated: false
+    notes: "Swedish national public television news service of record."
+    feeds:
+      - url: https://www.svt.se/nyheter/rss.xml
+        category_hint: internal_politics
+      - url: https://www.svt.se/nyheter/inrikes/rss.xml
+        category_hint: internal_politics
+      - url: https://www.svt.se/nyheter/ekonomi/rss.xml
+        category_hint: economics
+
+  - id: sr_nyheter
+    name: Sveriges Radio (Ekot)
+    homepage: https://sverigesradio.se/ekot
+    language: sv
+    scope: domestic
+    kind: media
+    governing_body: "Sveriges Radio (National Public Radio)"
+    state_affiliated: false
+    notes: "Flagship public radio news broadcasting service in Sweden."
+    feeds:
+      - url: https://api.sr.se/api/rss/program/83
+        category_hint: internal_politics
+
+  - id: dagens_nyheter
+    name: Dagens Nyheter
+    homepage: https://www.dn.se
+    language: sv
+    scope: domestic
+    kind: media
+    governing_body: "Bonnier News"
+    state_affiliated: false
+    notes: "Sweden's leading morning newspaper of record, independent liberal stance."
+    feeds:
+      - url: https://www.dn.se/rss/nyheter/sverige/
+        category_hint: internal_politics
+      - url: https://www.dn.se/rss/ekonomi/
+        category_hint: economics
+
+  - id: svenska_dagbladet
+    name: Svenska Dagbladet
+    homepage: https://www.svd.se
+    language: sv
+    scope: domestic
+    kind: media
+    governing_body: "Schibsted Media"
+    state_affiliated: false
+    notes: "Leading Swedish national morning broadsheet, independent conservative stance."
+    feeds:
+      - url: https://www.svd.se/?service=rss
+        category_hint: internal_politics
+
+  - id: google_news_sweden_politics
+    name: Google News (Sweden Government & Riksdag)
+    homepage: https://news.google.com
+    language: sv
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking Kristersson, Tidö agreement, and Riksdag legislation."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=Kristersson+OR+Tid%C3%B6avtalet+OR+Riksdagen+OR+Sverigedemokraterna+when:3d&hl=sv&gl=SE&ceid=SE:sv"
+        category_hint: internal_politics
+
+  - id: google_news_sweden_economy
+    name: Google News (Sweden Riksbank & Green Industry)
+    homepage: https://news.google.com
+    language: sv
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking Riksbank rate cuts, inflation, housing, and Northvolt."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=Riksbanken+OR+styrr%C3%A4nta+OR+Northvolt+OR+bostadsmarknaden+Sverige+when:3d&hl=sv&gl=SE&ceid=SE:sv"
+        category_hint: economics
+
+  - id: google_news_sweden_defense
+    name: Google News (Sweden NATO & Defense Posture)
+    homepage: https://news.google.com
+    language: sv
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking Swedish Armed Forces, NATO Baltic integration, and Gotland."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=F%C3%B6rsvarsmakten+OR+Nato+Sverige+OR+Gotland+OR+Saab+Gripen+when:3d&hl=sv&gl=SE&ceid=SE:sv"
+        category_hint: defence_security

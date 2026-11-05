@@ -61,10 +61,11 @@
     'East Asia', 'Southeast Asia', 'Oceania', 'Sub-Saharan Africa', 'South America'
   ];
   const COUNTRY_REGION = {
-    united_states: 'North America',
-    france: 'Western Europe', germany: 'Western Europe', united_kingdom: 'Western Europe',
+    canada: 'North America', united_states: 'North America',
+    finland: 'Western Europe', france: 'Western Europe', germany: 'Western Europe', italy: 'Western Europe',
+    spain: 'Western Europe', sweden: 'Western Europe', united_kingdom: 'Western Europe',
     czechia: 'Central Europe', hungary: 'Central Europe', poland: 'Central Europe', slovakia: 'Central Europe',
-    moldova: 'Eastern Europe', russia: 'Eastern Europe', ukraine: 'Eastern Europe',
+    belarus: 'Eastern Europe', moldova: 'Eastern Europe', russia: 'Eastern Europe', ukraine: 'Eastern Europe',
     bosnia: 'Balkans', kosovo: 'Balkans', serbia: 'Balkans',
     armenia: 'South Caucasus', azerbaijan: 'South Caucasus', georgia: 'South Caucasus',
     egypt: 'Middle East & Mediterranean', iran: 'Middle East & Mediterranean', israel: 'Middle East & Mediterranean',
@@ -77,7 +78,7 @@
     philippines: 'Southeast Asia', singapore: 'Southeast Asia', thailand: 'Southeast Asia', vietnam: 'Southeast Asia',
     australia: 'Oceania',
     ethiopia: 'Sub-Saharan Africa', dr_congo: 'Sub-Saharan Africa', kenya: 'Sub-Saharan Africa', nigeria: 'Sub-Saharan Africa', south_africa: 'Sub-Saharan Africa',
-    argentina: 'South America', brazil: 'South America', colombia: 'South America', mexico: 'South America',
+    argentina: 'South America', brazil: 'South America', colombia: 'South America', mexico: 'South America', venezuela: 'South America',
   };
   const getRegion = (cid) => ((index && index.countries.find((x) => x.id === cid) || {}).region) || COUNTRY_REGION[cid] || 'Other';
   const prettyName = (cid) => ((index && index.countries.find((x) => x.id === cid) || {}).name) || cid.replace(/_/g, ' ').replace(/\b\w/g, (m) => m.toUpperCase());

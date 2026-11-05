@@ -1,0 +1,59 @@
+# Italy editorial policy priority themes.
+# High-weight themes for foreign-affairs analysts and diplomatic observers.
+
+themes:
+  - id: right_wing_governance_premierato
+    label: "Meloni Coalition Stability & Premierato Reform"
+    weight: 1.0
+    keywords:
+      - "giorgia meloni"
+      - "premierato"
+      - "fratelli d'italia"
+      - "matteo salvini"
+      - "antonio tajani"
+      - "palazzo chigi"
+      - "autonomia differenziata"
+      - "maggioranza"
+    description: "Stability of the right-wing coalition, flagship constitutional reforms directly electing the premier, and northern regional autonomy disputes."
+
+  - id: btp_spread_deficit_fiscal_governance
+    label: "Public Debt, BTP-Bund Spread & EU Rules"
+    weight: 0.95
+    keywords:
+      - "btp"
+      - "spread"
+      - "debito pubblico"
+      - "banca d'italia"
+      - "pnrr"
+      - "legge di bilancio"
+      - "patto di stabilit%c3%a0"
+      - "fabio panetta"
+    description: "Sovereign bond yield spreads against German Bunds, excessive deficit procedure fiscal consolidation, and PNRR investment execution."
+
+  - id: mattei_plan_mediterranean_migration
+    label: "Mattei Plan & Mediterranean Migration Policy"
+    weight: 0.9
+    keywords:
+      - "piano mattei"
+      - "protocollo albania"
+      - "migranti"
+      - "lampedusa"
+      - "cpr"
+      - "tunisia"
+      - "libia"
+      - "rimpatri"
+      - "eni"
+    description: "Bilateral migration processing centers in Albania, Eni energy partnerships across North Africa, and maritime border enforcement."
+
+  - id: defense_modernization_gcap
+    label: "Defense Modernization & Sixth-Gen Fighter"
+    weight: 0.8
+    keywords:
+      - "gcap"
+      - "guido crosetto"
+      - "leonardo"
+      - "aspides"
+      - "mar rosso"
+      - "samp/t"
+      - "fincantieri"
+    description: "Trilateral Global Combat Air Programme with Britain and Japan, Italian naval command of Red Sea Operation Aspides, and Leonardo defense tech."

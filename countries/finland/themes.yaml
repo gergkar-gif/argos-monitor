@@ -1,0 +1,59 @@
+# Finland editorial policy priority themes.
+# High-weight themes for foreign-affairs analysts and diplomatic observers.
+
+themes:
+  - id: eastern_border_hybrid_security
+    label: "Eastern Border Closure & Russian Hybrid Threats"
+    weight: 1.0
+    keywords:
+      - "it%c3%a4raja"
+      - "rajavartiolaitos"
+      - "ven%c3%a4j%c3%a4n raja"
+      - "hybridivaikuttaminen"
+      - "rajavartiolaki"
+      - "k%c3%a4%c3%a4ntytyslaki"
+      - "suljettu raja"
+      - "rajaturvallisuus"
+    description: "Complete closure of checkpoints along the 1,340 km border with Russia, pushback emergency legislation, and border fence construction."
+
+  - id: nato_integration_total_defense
+    label: "NATO Land Command & Total Defense Model"
+    weight: 0.95
+    keywords:
+      - "nato"
+      - "puolustusvoimat"
+      - "mikkeli"
+      - "f-35"
+      - "asevelvollisuus"
+      - "varautuminen"
+      - "v%c3%a4est%c3%b6nsuojelu"
+      - "it%c3%a4meri"
+      - "sukellusveneet"
+    description: "Hosting the NATO Multi-Corps Land Component Command in Mikkeli, universal conscription readiness, F-35 integration, and undersea cable protection."
+
+  - id: fiscal_austerity_labor_strife
+    label: "Fiscal Austerity & Labor Market Reform"
+    weight: 0.9
+    keywords:
+      - "petteri orpo"
+      - "riikka purra"
+      - "sosiaaliturvaleikkaukset"
+      - "lakot"
+      - "sak"
+      - "valtionvelka"
+      - "suomen pankki"
+      - "ty%c3%b6markkinat"
+    description: "Government public deficit reduction programs, trade union general strikes, unemployment benefit cuts, and export competitiveness disputes."
+
+  - id: nordic_security_cooperation_nordefco
+    label: "Nordic Defense Alignment & Arctic Security"
+    weight: 0.8
+    keywords:
+      - "alexander stubb"
+      - "nordefco"
+      - "pohjoismainen yhteisty%c3%b6"
+      - "elina valtonen"
+      - "arktinen"
+      - "lappi"
+      - "dca-sopimus"
+    description: "Bilateral Defense Cooperation Agreement (DCA) with the US, military logistics corridors across Lapland, and Arctic infrastructure readiness."

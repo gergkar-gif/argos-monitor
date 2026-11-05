@@ -1,0 +1,60 @@
+# Canada editorial policy priority themes.
+# High-weight themes for foreign-affairs analysts and diplomatic observers.
+
+themes:
+  - id: federal_parliament_election_posture
+    label: "Parliamentary Fragility & Federal Election Posture"
+    weight: 1.0
+    keywords:
+      - "justin trudeau"
+      - "pierre poilievre"
+      - "confidence vote"
+      - "minority government"
+      - "house of commons"
+      - "carbon tax"
+      - "ndp agreement"
+      - "election readiness"
+    description: "Minority government survival, non-confidence motions, parliamentary polarization, carbon pricing debates, and Conservative electoral momentum."
+
+  - id: boc_monetary_policy_housing
+    label: "Monetary Easing & Housing Affordability Crisis"
+    weight: 0.95
+    keywords:
+      - "bank of canada"
+      - "boc"
+      - "tiff macklem"
+      - "rate cut"
+      - "mortgage renewal"
+      - "housing crisis"
+      - "rental costs"
+      - "immigration cap"
+      - "gdp per capita"
+    description: "Bank of Canada monetary easing, mortgage renewal payment shocks, national housing deficit, and international student visa reductions."
+
+  - id: us_trade_cusma_protectionism
+    label: "US Trade Relations & Critical Mineral Supply"
+    weight: 0.9
+    keywords:
+      - "cusma"
+      - "us-canada trade"
+      - "cross-border tariffs"
+      - "critical minerals"
+      - "ev supply chain"
+      - "trans mountain"
+      - "oil sands"
+      - "chrystia freeland"
+    description: "Protection of North American integrated supply chains, preparations for CUSMA renegotiation, energy exports, and battery supply chain subsidies."
+
+  - id: arctic_sovereignty_norad_defense
+    label: "Arctic Defense & NATO Spending Target"
+    weight: 0.85
+    keywords:
+      - "norad"
+      - "arctic sovereignty"
+      - "nato target"
+      - "defence policy update"
+      - "bill blair"
+      - "f-35 fighter"
+      - "canadian armed forces"
+      - "foreign interference"
+    description: "Meeting the NATO 2% GDP benchmark, radar coverage in the High Arctic, submarine procurement programs, and counteracting foreign interference."

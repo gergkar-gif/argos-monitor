@@ -1,0 +1,75 @@
+# Canada country pack.
+id: canada
+name: Canada
+region: North America
+language: en
+abroad_label: International & US perspectives on Canada
+
+mention:
+  - "canada"
+  - "canadian"
+  - "ottawa"
+  - "toronto"
+  - "montreal"
+  - "vancouver"
+  - "calgary"
+  - "justin trudeau"
+  - "trudeau"
+  - "pierre poilievre"
+  - "poilievre"
+  - "chrystia freeland"
+  - "parliament hill"
+  - "house of commons"
+  - "bank of canada"
+  - "boc"
+  - "norad"
+
+mention_regex: ['\b(?:canada|canadian|ottawa|trudeau|poilievre|chrystia freeland|bank of canada)\b']
+mention_section: "Canada"
+
+url_sections:
+  foreign: [world, international, global]
+  skip: [sports, hockey, lifestyle, entertainment, arts, celebrity, real-estate, weather]
+
+aggregator_outlets:
+  domestic:
+    - "cbc news"
+    - "cbc"
+    - "the globe and mail"
+    - "globe and mail"
+    - "national post"
+    - "toronto star"
+    - "the star"
+    - "financial post"
+    - "ctv news"
+    - "ctv"
+    - "global news"
+  abroad_local:
+    - "bbc news us & canada"
+    - "reuters"
+    - "bloomberg"
+    - "the new york times"
+
+excerpt:
+  dateline: '^\s*(?:OTTAWA|TORONTO|MONTREAL|VANCOUVER|CBC|THE CANADIAN PRESS|CP|REUTERS)\s*[-–—:]\s*'
+  noise: '^(Photo|Credit|Source|Read more|Watch|\(|\[)'
+
+classify:
+  internal_politics:
+    - "Prime Minister Justin Trudeau, Liberal government, Conservative Opposition Leader Pierre Poilievre, House of Commons confidence votes, NDP relations, Bloc Québécois, federal election preparations, provincial premiers"
+    - "Prime Minister, Trudeau, Poilievre, Parliament, House of Commons, federal politics, legislation, Senate, elections, Ottawa"
+  economics:
+    - "Bank of Canada (BoC) interest rates, Governor Tiff Macklem, housing crisis and mortgage renewals, inflation (CPI), federal deficit, Trans Mountain pipeline oil exports, critical minerals (lithium, nickel)"
+    - "Bank of Canada, interest rate cuts, inflation, housing market, GDP growth, deficit, oil and gas, mining, trade deficit, productivity"
+  foreign_policy:
+    - "Global Affairs Canada, Foreign Affairs Minister Mélanie Joly, Canada-US trade relations and CUSMA review, G7 coordination, Indo-Pacific strategy, NATO 2% defense target, diplomatic disputes with India"
+    - "Global Affairs, foreign policy, United States trade, CUSMA, NATO, Indo-Pacific, Ukraine aid, bilateral diplomacy"
+  defence_security:
+    - "Department of National Defence, Defence Minister Bill Blair, Canadian Armed Forces (CAF), NORAD radar modernization, Arctic sovereignty patrols, F-35 fighter procurement, foreign interference inquiries"
+    - "National Defence, CAF, Arctic sovereignty, NORAD, military procurement, F-35, intelligence CSIS, foreign interference"
+  society:
+    - "Immigration cuts and temporary foreign worker caps, international student limits, healthcare transfers, carbon tax disputes, Indigenous reconciliation, wildfire disaster preparedness"
+    - "Immigration, temporary foreign workers, housing affordability, carbon pricing, healthcare, climate disasters, Indigenous affairs"
+
+geo: CA
+reddit: [geopolitics, canadapolitics, canada]

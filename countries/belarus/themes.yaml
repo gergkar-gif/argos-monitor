@@ -1,0 +1,57 @@
+# Belarus editorial policy priority themes.
+# High-weight themes for foreign-affairs analysts and diplomatic observers.
+
+themes:
+  - id: union_state_nuclear_basing
+    label: "Union State Integration & Tactical Nuclear Basing"
+    weight: 1.0
+    keywords:
+      - "union state"
+      - "nuclear weapons"
+      - "iskander"
+      - "joint military"
+      - "odkb"
+      - "csto"
+      - "putin summit"
+      - "suwalki gap"
+    description: "Military subordination to Moscow, hosting Russian tactical nuclear warheads, joint air defense, and staging posturing against NATO."
+
+  - id: border_militarization_migration_pressure
+    label: "EU Border Militarization & Hybrid Tactics"
+    weight: 0.95
+    keywords:
+      - "poland border"
+      - "lithuania border"
+      - "border wall"
+      - "migrant crisis"
+      - "hybrid warfare"
+      - "border closure"
+      - "checkpoint"
+    description: "Fortifications and closures along the Polish and Lithuanian frontiers, weaponized migration corridors, and border skirmishes."
+
+  - id: regime_repression_exile_opposition
+    label: "Internal Repression & Exiled Opposition"
+    weight: 0.9
+    keywords:
+      - "lukashenko"
+      - "tsikhanouskaya"
+      - "united transitional cabinet"
+      - "political prisoners"
+      - "kgb"
+      - "gubopik"
+      - "extremist list"
+      - "presidential election"
+    description: "Crackdowns on domestic dissent, long prison sentences for dissidents, and diplomatic advocacy by Sviatlana Tsikhanouskaya abroad."
+
+  - id: sanctions_reorientation_potash
+    label: "Sanctions Evasion & Trade Reorientation"
+    weight: 0.8
+    keywords:
+      - "belaruskali"
+      - "potash"
+      - "oil refinery"
+      - "mozyr"
+      - "russian ports"
+      - "western sanctions"
+      - "china trade"
+    description: "Exporting fertilizers via Russian Baltic terminals, secondary sanctions circumvention, currency dependency on the Russian ruble, and China ties."

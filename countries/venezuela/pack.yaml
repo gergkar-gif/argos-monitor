@@ -1,0 +1,77 @@
+# Venezuela country pack.
+id: venezuela
+name: Venezuela
+region: South America
+language: es
+abroad_label: Exiled Venezuelan & regional Latin American outlets
+
+mention:
+  - "venezuela"
+  - "venezuelan"
+  - "caracas"
+  - "nicolás maduro"
+  - "maduro"
+  - "edmundo gonzález"
+  - "maría corina machado"
+  - "machado"
+  - "diosdado cabello"
+  - "delcy rodríguez"
+  - "pdvsa"
+  - "miraflores"
+  - "cne"
+  - "bcv"
+  - "tren de aragua"
+  - "esequibo"
+  - "venezolano"
+  - "venezolanos"
+  - "venezolana"
+
+mention_regex: ['\b(?:venezuela|venezuelan|caracas|maduro|edmundo gonzález|maría corina machado|pdvsa|esequibo)\b', 'venezolano', 'maduro', 'caracas', 'pdvsa']
+mention_section: "Venezuela"
+
+url_sections:
+  foreign: [mundo, internacional, global]
+  skip: [deportes, beisbol, entretenimiento, farandula, estilo, viajes, horoscopo, clima]
+
+aggregator_outlets:
+  domestic:
+    - "avn"
+    - "agencia venezolana de noticias"
+    - "vtv"
+    - "últimas noticias"
+    - "ultimas noticias"
+    - "el universal caracas"
+  abroad_local:
+    - "efecto cocuyo"
+    - "el nacional"
+    - "tal cual"
+    - "armando.info"
+    - "el pitazo"
+    - "cronica uno"
+    - "runrunes"
+    - "infobae"
+    - "reuters"
+
+excerpt:
+  dateline: '^\s*(?:CARACAS|MARACAIBO|AVN|REUTERS|EFE|AFP)\s*[-–—:]\s*'
+  noise: '^(Foto|Crédito|Fuente|Lea también|Photo|Credit|\(|\[)'
+
+classify:
+  internal_politics:
+    - "President Nicolás Maduro, Miraflores Palace, Minister Diosdado Cabello, Vice President Delcy Rodríguez, National Electoral Council (CNE), opposition leaders Edmundo González Urrutia and María Corina Machado, Supreme Court (TSJ), arbitrary detentions"
+    - "Nicolás Maduro, Miraflores, Diosdado Cabello, Delcy Rodríguez, CNE, Edmundo González, María Corina Machado, actas electorales, detenciones, política interna"
+  economics:
+    - "State oil company PDVSA crude output, US Treasury OFAC sanctions and license renewals, Chevron joint ventures, Central Bank of Venezuela (BCV) exchange rate, hyperinflation, dollarization, black market currency rates"
+    - "PDVSA, producción petrolera, sanciones, licencias OFAC, Chevron, Banco Central de Venezuela, tipo de cambio, inflación, salarios, ingresos petroleros"
+  foreign_policy:
+    - "Diplomatic recognition disputes, relations with Washington, strategic alliance with Russia, China, and Iran, diplomatic ruptures with regional Latin American governments, BRICS application, relations with Colombia and Brazil"
+    - "Reconocimiento diplomático, relaciones con Estados Unidos, alianza con Rusia, Irán, China, cancillería, Petro, Lula, diplomacia regional"
+  defence_security:
+    - "National Bolivarian Armed Forces (FANB), Minister Vladimir Padrino López, territorial dispute over Guayana Esequiba, military deployments along Guyana border, SEBIN and DGCIM intelligence services, Tren de Aragua criminal syndicate"
+    - "Fuerza Armada Nacional Bolivariana, FANB, Padrino López, Esequibo, frontera con Guyana, SEBIN, DGCIM, Tren de Aragua, seguridad nacional"
+  society:
+    - "Mass migration outflows, refugee situation across Latin America and the US, humanitarian medical shortages, utility blackouts and water rationing, political prisoner human rights documentation (Foro Penal)"
+    - "Migración venezolana, éxodo, crisis humanitaria, Foro Penal, presos políticos, cortes de luz, salud pública, derechos humanos"
+
+geo: VE
+reddit: [geopolitics, venezuela]

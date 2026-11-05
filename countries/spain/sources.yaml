@@ -1,0 +1,115 @@
+sources:
+  - id: efe_es
+    name: Agencia EFE
+    homepage: https://efe.com
+    language: es
+    scope: domestic
+    kind: wire
+    governing_body: "Sociedad Estatal de Participaciones Industriales (SEPI)"
+    state_affiliated: true
+    notes: "Spain's statutory state news agency and the world's premier Spanish-language wire."
+    feeds:
+      - url: https://efe.com/espana/politica/feed/
+        category_hint: internal_politics
+      - url: https://efe.com/economia/feed/
+        category_hint: economics
+
+  - id: el_pais_es
+    name: El País
+    homepage: https://elpais.com
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: "PRISA (Promotora de Informaciones, S.A.)"
+    state_affiliated: false
+    notes: "Spain's newspaper of record and highest-circulation general daily, center-left."
+    feeds:
+      - url: https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/espana/portada
+        category_hint: internal_politics
+      - url: https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/economia/portada
+        category_hint: economics
+
+  - id: el_mundo_es
+    name: El Mundo
+    homepage: https://www.elmundo.es
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: "Unidad Editorial / RCS MediaGroup"
+    state_affiliated: false
+    notes: "Major national broadsheet of record, center-right editorial stance."
+    feeds:
+      - url: https://e00-elmundo.uecdn.es/elmundo/rss/espana.xml
+        category_hint: internal_politics
+      - url: https://e00-elmundo.uecdn.es/elmundo/rss/economia.xml
+        category_hint: economics
+
+  - id: la_vanguardia_es
+    name: La Vanguardia
+    homepage: https://www.lavanguardia.com
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: "Grupo Godó"
+    state_affiliated: false
+    notes: "Leading national daily broadsheet based in Barcelona, moderate centrist."
+    feeds:
+      - url: https://www.lavanguardia.com/rss/politica.xml
+        category_hint: internal_politics
+      - url: https://www.lavanguardia.com/rss/economia.xml
+        category_hint: economics
+
+  - id: cinco_dias
+    name: Cinco Días
+    homepage: https://cincodias.elpais.com
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: "PRISA"
+    state_affiliated: false
+    notes: "Spain's premier financial, corporate and economic daily broadsheet."
+    feeds:
+      - url: https://feeds.elpais.com/mrss-s/pages/ep/site/cincodias.com/portada
+        category_hint: economics
+
+  - id: google_news_spain_politics
+    name: Google News (Spain Government & Congreso)
+    homepage: https://news.google.com
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking Pedro Sánchez, La Moncloa, Amnesty Law, and Feijóo."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=%22Pedro+S%C3%A1nchez%22+OR+%22La+Moncloa%22+OR+%22Congreso+de+los+Diputados%22+OR+amnist%C3%ADa+when:3d&hl=es&gl=ES&ceid=ES:es"
+        category_hint: internal_politics
+
+  - id: google_news_spain_economy
+    name: Google News (Spain Economy & Banco de España)
+    homepage: https://news.google.com
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking Banco de España, GDP growth, deficit, and housing market."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=%22Banco+de+Espa%C3%B1a%22+OR+%22PIB+espa%C3%B1ol%22+OR+%22d%C3%A9ficit+p%C3%BAblico%22+Espa%C3%B1a+when:3d&hl=es&gl=ES&ceid=ES:es"
+        category_hint: economics
+
+  - id: google_news_spain_defense
+    name: Google News (Spain Defense & Foreign Affairs)
+    homepage: https://news.google.com
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking Margarita Robles, NATO battlegroups, and Spanish diplomacy."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=%22Margarita+Robles%22+OR+%22Ministerio+de+Defensa%22+Espa%C3%B1a+OR+%22Jos%C3%A9+Manuel+Albares%22+when:3d&hl=es&gl=ES&ceid=ES:es"
+        category_hint: defence_security

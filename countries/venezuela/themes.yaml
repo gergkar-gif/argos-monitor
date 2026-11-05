@@ -1,0 +1,59 @@
+# Venezuela editorial policy priority themes.
+# High-weight themes for foreign-affairs analysts and diplomatic observers.
+
+themes:
+  - id: electoral_legitimacy_political_transition
+    label: "Electoral Legitimacy & Opposition Resistance"
+    weight: 1.0
+    keywords:
+      - "nicol%c3%a1s maduro"
+      - "edmundo gonz%c3%a1lez"
+      - "mar%c3%ada corina machado"
+      - "actas electorales"
+      - "cne"
+      - "fraude"
+      - "presos pol%c3%adticos"
+      - "diosdado cabello"
+      - "represi%c3%b3n"
+    description: "Post-presidential election dispute, international withholding of recognition, tally sheet verification, and security force crackdowns on opposition."
+
+  - id: oil_sanctions_pdvsa_production
+    label: "PDVSA Crude Output & Sanctions Architecture"
+    weight: 0.95
+    keywords:
+      - "pdvsa"
+      - "chevron"
+      - "general license"
+      - "ofac"
+      - "crude export"
+      - "shadow fleet"
+      - "oil revenue"
+      - "diluent"
+      - "orinoco belt"
+    description: "Oil production recovery under US OFAC licenses, secondary sanctions risk, tanker shipments to China, and state revenue allocation."
+
+  - id: regional_migration_criminal_syndicates
+    label: "Diaspora Exodus & Transnational Security"
+    weight: 0.9
+    keywords:
+      - "migraci%c3%b3n venezolana"
+      - "%c3%a9xodo"
+      - "darien gap"
+      - "tren de aragua"
+      - "extradition"
+      - "colombia border"
+      - "deportation flights"
+    description: "Surge in migration across the Americas, transnational operations of the Tren de Aragua criminal organization, and border control policies."
+
+  - id: territorial_sovereignty_esequibo
+    label: "Esequibo Border Friction & Military Posture"
+    weight: 0.85
+    keywords:
+      - "esequibo"
+      - "guyana border"
+      - "exxonmobil"
+      - "fanb"
+      - "icj jurisdiction"
+      - "military buildup"
+      - "argyle agreement"
+    description: "Venezuela territorial annexation rhetoric over Guayana Esequiba, naval exercises, ICJ proceedings, and border security agreements."

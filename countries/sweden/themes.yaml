@@ -1,0 +1,60 @@
+# Sweden editorial policy priority themes.
+# High-weight themes for foreign-affairs analysts and diplomatic observers.
+
+themes:
+  - id: nato_baltic_defense_gotland
+    label: "NATO Baltic Sea Defense & Gotland Fortification"
+    weight: 1.0
+    keywords:
+      - "nato"
+      - "gotland"
+      - "f%c3%b6rsvarsmakten"
+      - "%c3%b6stersj%c3%b6n"
+      - "saab"
+      - "gripen"
+      - "submarines"
+      - "archer"
+      - "totalf%c3%b6rsvar"
+    description: "Operational integration into NATO command structures, naval and air surveillance in the Baltic Sea, Gotland garrison reinforcements, and defense exports."
+
+  - id: tido_coalition_parliamentary_stability
+    label: "Tidö Coalition Stability & Migration Policies"
+    weight: 0.95
+    keywords:
+      - "ulf kristersson"
+      - "tid%c3%b6avtalet"
+      - "sverigedemokraterna"
+      - "jimmie %c3%a5kesson"
+      - "migrationsverket"
+      - "asylpolitik"
+      - "riksdagen"
+      - "socialdemokraterna"
+    description: "Policy delivery under the Tidö agreement with the Sweden Democrats, strict asylum legislation, citizenship requirements, and coalition friction."
+
+  - id: organized_crime_internal_security
+    label: "Organized Gang Violence & Judicial Crackdowns"
+    weight: 0.9
+    keywords:
+      - "g%c3%a4ngkriminalitet"
+      - "skjutningar"
+      - "spr%c3%a4ngningar"
+      - "foxtrot"
+      - "anonyma vittnen"
+      - "visitationszoner"
+      - "polismyndigheten"
+      - "str%c3%a4ngare straff"
+    description: "Surge in gang-related gun violence, introduction of stop-and-search zones, anonymous witness laws, and juvenile detention reforms."
+
+  - id: green_industry_battery_supply_chain
+    label: "Green Industrial Transition & Battery Tech"
+    weight: 0.8
+    keywords:
+      - "northvolt"
+      - "gr%c3%b6nt st%c3%a5l"
+      - "batteritillverkning"
+      - "h2 green steel"
+      - "riksbanken"
+      - "r%c3%a4ntes%c3%a4nkning"
+      - "energipolitik"
+      - "k%c3%a4rnkraft"
+    description: "Financial solvency of Northvolt and European EV battery sovereignty, green steel projects in northern Sweden, and nuclear plant expansion plans."

@@ -1,0 +1,95 @@
+sources:
+  - id: belta_en
+    name: BelTA (English)
+    homepage: https://eng.belta.by
+    language: en
+    scope: domestic
+    kind: official
+    governing_body: "Presidential Administration of Belarus"
+    state_affiliated: true
+    notes: "Official statutory wire agency of the Republic of Belarus."
+    feeds:
+      - url: https://eng.belta.by/rss/all/
+        category_hint: internal_politics
+      - url: https://eng.belta.by/rss/president/
+        category_hint: internal_politics
+
+  - id: zerkalo_io
+    name: Zerkalo.io
+    homepage: https://zerkalo.io
+    language: ru
+    scope: abroad_local
+    kind: media
+    governing_body: "Zerkalo Media (exiled in Poland/Lithuania)"
+    state_affiliated: false
+    notes: "Premier exiled independent Belarusian newsroom, successor to TUT.BY."
+    feeds:
+      - url: https://zerkalo.io/rss/all.rss
+        category_hint: internal_politics
+
+  - id: nasha_niva
+    name: Nasha Niva
+    homepage: https://nashaniva.com
+    language: be
+    scope: abroad_local
+    kind: media
+    governing_body: "Nasha Niva Foundation (exile)"
+    state_affiliated: false
+    notes: "Oldest independent Belarusian cultural and political daily."
+    feeds:
+      - url: https://nashaniva.com/rss.php
+        category_hint: internal_politics
+
+  - id: euroradio_fm
+    name: Euroradio
+    homepage: https://euroradio.fm
+    language: be
+    scope: abroad_local
+    kind: media
+    governing_body: "European Radio for Belarus (Warsaw)"
+    state_affiliated: false
+    notes: "Independent broadcasting service covering Belarusian politics and society."
+    feeds:
+      - url: https://euroradio.fm/rss.xml
+        category_hint: internal_politics
+
+  - id: svaboda_by
+    name: Radio Svaboda (Belarusian)
+    homepage: https://www.svaboda.org
+    language: be
+    scope: abroad_local
+    kind: media
+    governing_body: "Radio Free Europe / Radio Liberty"
+    state_affiliated: false
+    notes: "US-funded independent Belarusian service covering politics and human rights."
+    feeds:
+      - url: https://www.svaboda.org/api/z$rq_teu_i
+        category_hint: internal_politics
+
+  - id: google_news_belarus_politics
+    name: Google News (Belarus Regime & Opposition)
+    homepage: https://news.google.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking Lukashenko, Tsikhanouskaya, and Minsk political developments."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=Lukashenko+OR+Tsikhanouskaya+OR+Minsk+regime+when:3d&hl=en-US&gl=US&ceid=US:en"
+        category_hint: internal_politics
+
+  - id: google_news_belarus_security
+    name: Google News (Belarus Nuclear Weapons & Border Tensions)
+    homepage: https://news.google.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking tactical nuclear deployment, Poland border, and Russian military alliance."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=Belarus+nuclear+OR+%22Poland+border%22+Belarus+OR+%22Union+State%22+military+when:3d&hl=en-US&gl=US&ceid=US:en"
+        category_hint: defence_security

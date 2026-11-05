@@ -1,0 +1,78 @@
+# Belarus country pack.
+id: belarus
+name: Belarus
+region: Eastern Europe
+language: be
+abroad_label: Exiled independent Belarusian & regional outlets
+
+mention:
+  - "belarus"
+  - "belarusian"
+  - "minsk"
+  - "lukashenko"
+  - "alexander lukashenko"
+  - "tsikhanouskaya"
+  - "sviatlana tsikhanouskaya"
+  - "belta"
+  - "union state"
+  - "belneftekhim"
+  - "belaruskali"
+  - "kgb belarus"
+  - "беларусь"
+  - "беларускі"
+  - "лукашэнка"
+  - "мінск"
+  - "ціханоўская"
+  - "лукашенко"
+  - "минск"
+  - "тихановская"
+
+mention_regex: ['\b(?:belarus|belarusian|minsk|lukashenko|tsikhanouskaya|belta)\b', 'беларусь', 'лукашэнка', 'мінск', 'лукашенко', 'минск']
+mention_section: "Belarus"
+
+url_sections:
+  foreign: [world, international, planet, mir]
+  skip: [sport, sports, lifestyle, culture, entertainment, auto, weather]
+
+aggregator_outlets:
+  domestic:
+    - "belta"
+    - "belarusian telegraph agency"
+    - "sb.by"
+    - "sovetskaya belorussiya"
+    - "ont"
+    - "belarus 1"
+  abroad_local:
+    - "zerkalo"
+    - "zerkalo.io"
+    - "nasha niva"
+    - "euroradio"
+    - "radio svaboda"
+    - "belsat"
+    - "kyky"
+    - "reform.news"
+    - "reuters"
+
+excerpt:
+  dateline: '^\s*(?:MINSK|BELTA|REUTERS|AFP|МІНСК|МИНСК|БЕЛТА)\s*[-–—:]\s*'
+  noise: '^(Фота|Фото|Крыніца|Источник|Photo|Credit|\(|\[)'
+
+classify:
+  internal_politics:
+    - "President Alexander Lukashenko, Presidential Administration, All-Belarusian People's Assembly, security apparatus (KGB, GUBOPIK), democratic opposition in exile (Sviatlana Tsikhanouskaya, United Transitional Cabinet), political prisoners"
+    - "Аляксандр Лукашэнка, Усебеларускі народны сход, КДБ, ГУБАЗіК, Святлана Ціханоўская, Аб'яднаны пераходны кабінет, палітвязні, выбары"
+  economics:
+    - "National Bank of the Republic of Belarus, Belarusian ruble (BYN), Belaruskali potash export re-routing via Russian ports, oil refining (Mozyr, Naftan), Western sanctions evasion, trade integration with Russia and China"
+    - "Нацыянальны банк, беларускі рубель, Беларуськалій, экспарт калія, Мазырскі НПЗ, Нафтан, санкцыі, гандаль з Расіяй"
+  foreign_policy:
+    - "Union State of Russia and Belarus, Vladimir Putin summits, diplomatic isolation from the European Union, relations with China and Global South, SCO accession, reciprocal sanctions on Western nations"
+    - "Саюзная дзяржава, адносіны з Расіяй, ШАС, адносіны з Кітаем, дыпламатычная ізаляцыя, санкцыі Захаду"
+  defence_security:
+    - "Armed Forces of Belarus, Russian tactical nuclear weapons deployment, joint military exercises with Russian forces, Suwalki gap posturing, border militarization, border fortifications against Poland and Baltic states"
+    - "Узброеныя сілы, тактычная ядзерная зброя, вайсковыя вучэнні, Сувалкскі калідор, мяжа з Польшчай, мяжа з Літвой, абарона"
+  society:
+    - "Repression of civil society, mass emigration and diaspora communities (Poland, Lithuania), linguistic Russification vs. Belarusian cultural preservation, healthcare standards"
+    - "Рэпрэсіі, эміграцыя, дыяспара, беларуская мова, адукацыя, ахова здароўя"
+
+geo: BY
+reddit: [geopolitics, belarus]

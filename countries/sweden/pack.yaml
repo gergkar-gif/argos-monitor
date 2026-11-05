@@ -1,0 +1,78 @@
+# Sweden country pack.
+id: sweden
+name: Sweden
+region: Western Europe
+language: sv
+abroad_label: Nordic regional & international outlets
+
+mention:
+  - "sweden"
+  - "swedish"
+  - "stockholm"
+  - "gothenburg"
+  - "malmo"
+  - "malmö"
+  - "kristersson"
+  - "ulf kristersson"
+  - "riksdag"
+  - "sveriges riksbank"
+  - "riksbank"
+  - "försvarsmakten"
+  - "forsvarsmakten"
+  - "saab"
+  - "gripen"
+  - "gotland"
+  - "sverige"
+  - "svenska"
+  - "regeringen"
+
+mention_regex: ['\b(?:sweden|swedish|stockholm|kristersson|riksdag|riksbank|forsvarsmakten|gotland)\b', 'sverige', 'svenska', 'regeringen', 'riksdag']
+mention_section: "Sweden"
+
+url_sections:
+  foreign: [varlden, utrikes, internationellt, world]
+  skip: [sport, kultur, noje, underhallning, livsstil, motor, vader]
+
+aggregator_outlets:
+  domestic:
+    - "svt nyheter"
+    - "svt"
+    - "sveriges radio"
+    - "dagens nyheter"
+    - "dn"
+    - "svenska dagbladet"
+    - "svd"
+    - "aftonbladet"
+    - "expressen"
+    - "dagens industri"
+    - "di"
+    - "the local sweden"
+  abroad_local:
+    - "reuters"
+    - "politico europe"
+    - "bbc news europe"
+    - "financial times"
+
+excerpt:
+  dateline: '^\s*(?:STOCKHOLM|GÖTEBORG|MALMÖ|TT|REUTERS|AFP)\s*[-–—:]\s*'
+  noise: '^(Foto|Källa|Läs mer|Photo|Credit|\(|\[)'
+
+classify:
+  internal_politics:
+    - "Prime Minister Ulf Kristersson, Moderate Party, Tidö Agreement coalition governance, Sweden Democrats (Jimmie Åkesson) confidence support, Riksdag legislative bills, Social Democratic opposition (Magdalena Andersson)"
+    - "Statsminister Ulf Kristersson, Tidöavtalet, Sverigedemokraterna, Jimmie Åkesson, Riksdagen, Socialdemokraterna, Magdalena Andersson, regeringen, inrikespolitik"
+  economics:
+    - "Sveriges Riksbank monetary policy, Governor Erik Thedéen, interest rate cuts, Swedish krona (SEK) exchange rate, inflation, real estate mortgage market, green industrial transition struggles (Northvolt), battery production"
+    - "Riksbanken, Erik Thedéen, styrränta, räntesänkning, inflation, kronan, bostadsmarknaden, Northvolt, batteritillverkning, grön omställning"
+  foreign_policy:
+    - "Ministry for Foreign Affairs (Maria Malmer Stenergard), NATO membership integration, Baltic Sea security (Mare Nostrum), defense aid to Ukraine (Archer artillery, CV90), Nordic-Baltic Eight (NB8) cooperation"
+    - "Utrikesdepartementet, Maria Malmer Stenergard, Nato, Östersjön, Ukraina-stöd, Archer, CV90, nordiskt samarbete, utrikespolitik"
+  defence_security:
+    - "Swedish Armed Forces (Försvarsmakten), Supreme Commander Michael Claesson, defense budget expansion, Gotland garrison fortification, Saab defense industrial base (JAS 39 Gripen, submarines), civil defense (MSB)"
+    - "Försvarsmakten, ÖB, försvarsbudget, Gotland, Saab, JAS 39 Gripen, ubåtar, totalförsvar, MSB, militär beredskap"
+  society:
+    - "Organized gang crime shootings and bombings (Foxtrot network), anonymous witness legislation, migration and asylum restriction, healthcare waiting times, school segregation"
+    - "Gängkriminalitet, skjutningar, sprängningar, anonyma vittnen, migrationspolitik, asylregler, vårdköer, skola"
+
+geo: SE
+reddit: [geopolitics, sweden, svenskpolitik]

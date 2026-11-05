@@ -1,0 +1,60 @@
+# Spain editorial policy priority themes.
+# High-weight themes for foreign-affairs analysts and diplomatic observers.
+
+themes:
+  - id: coalition_fragility_amnesty_law
+    label: "Parliamentary Fragility & Catalan Amnesty"
+    weight: 1.0
+    keywords:
+      - "pedro s%c3%a1nchez"
+      - "la moncloa"
+      - "ley de amnist%c3%ada"
+      - "carles puigdemont"
+      - "junts"
+      - "erc"
+      - "alberto n%c3%ba%c3%b1ez feij%c3%b3o"
+      - "congreso de los diputados"
+      - "moci%c3%b3n"
+    description: "Sánchez minority coalition dependence on Catalan pro-independence votes, judicial challenges to the Amnesty Law, and conservative opposition rallies."
+
+  - id: macroeconomic_growth_fiscal_consolidation
+    label: "Macroeconomic Growth & Fiscal Compliance"
+    weight: 0.95
+    keywords:
+      - "banco de espa%c3%b1a"
+      - "jos%c3%a9 luis escriv%c3%a1"
+      - "crecimiento del pib"
+      - "inflaci%c3%b3n"
+      - "deuda p%c3%bablica"
+      - "d%c3%a9ficit"
+      - "turismo"
+      - "next generation eu"
+      - "vivienda"
+    description: "Stronger GDP expansion relative to European peers, tourism sector records, housing affordability tensions, and EU fiscal consolidation."
+
+  - id: foreign_policy_palestine_latin_america
+    label: "Diplomatic Activism & Strategic Bridges"
+    weight: 0.9
+    keywords:
+      - "jos%c3%a9 manuel albares"
+      - "reconocimiento de palestina"
+      - "marrecuecos"
+      - "sahara occidental"
+      - "am%c3%a9rica latina"
+      - "venezuela mediaci%c3%b3n"
+      - "presidencia europea"
+    description: "Unilateral Spanish recognition of Palestinian statehood, bilateral reconciliation with Morocco over Western Sahara, and Latin American diplomatic posture."
+
+  - id: climate_disaster_dana_crisis
+    label: "Extreme Climate Disaster & Emergency Management"
+    weight: 0.85
+    keywords:
+      - "dana"
+      - "inundaciones"
+      - "valencia"
+      - "cat%c3%a1strofe"
+      - "cambio clim%c3%a1tico"
+      - "gesti%c3%b3n de emergencias"
+      - "reconstrucci%c3%b3n"
+      - "aemet"
+    description: "Catastrophic Valencia flash floods, civil protection failures, mutual recriminations between central government and regional generalitat, and reconstruction aid."

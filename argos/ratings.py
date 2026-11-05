@@ -649,13 +649,78 @@ RATINGS = {
     "smh": {"bias": "center-left", "alignment": "independent", "factuality": "very_high"},
     "the age": {"bias": "center-left", "alignment": "independent", "factuality": "very_high"},
     "sbs news": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+
+    # --- Tier 2 Remaining Regional Anchors ---
+    # Belarus
+    "belta": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mixed"},
+    "belarusian telegraph agency": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mixed"},
+    "sb.by": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mixed"},
+    "sovetskaya belorussiya": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mixed"},
+    "zerkalo": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "zerkalo.io": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "nasha niva": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "euroradio": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+
+    # Canada
+    "cbc news": {"bias": "center-left", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "cbc": {"bias": "center-left", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "the globe and mail": {"bias": "center-right", "alignment": "independent", "factuality": "very_high"},
+    "globe and mail": {"bias": "center-right", "alignment": "independent", "factuality": "very_high"},
+    "national post": {"bias": "right", "alignment": "independent", "factuality": "high"},
+    "toronto star": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "financial post": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+
+    # Venezuela
+    "avn": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mixed"},
+    "agencia venezolana de noticias": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mixed"},
+    "vtv": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mixed"},
+    "efecto cocuyo": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "tal cual": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
+    "armando.info": {"bias": "center", "alignment": "independent", "factuality": "very_high"},
+
+    # Sweden
+    "svt nyheter": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "svt": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "sveriges radio": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "dagens nyheter": {"bias": "center-left", "alignment": "independent", "factuality": "very_high"},
+    "dn": {"bias": "center-left", "alignment": "independent", "factuality": "very_high"},
+    "svenska dagbladet": {"bias": "center-right", "alignment": "independent", "factuality": "very_high"},
+    "svd": {"bias": "center-right", "alignment": "independent", "factuality": "very_high"},
+    "the local sweden": {"bias": "center", "alignment": "independent", "factuality": "high"},
+
+    # Finland
+    "yle": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "yle uutiset": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "yle news": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "helsingin sanomat": {"bias": "center", "alignment": "independent", "factuality": "very_high"},
+    "hs": {"bias": "center", "alignment": "independent", "factuality": "very_high"},
+    "kauppalehti": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+
+    # Italy
+    "ansa": {"bias": "center", "alignment": "independent", "factuality": "very_high"},
+    "corriere della sera": {"bias": "center-right", "alignment": "independent", "factuality": "very_high"},
+    "corriere": {"bias": "center-right", "alignment": "independent", "factuality": "very_high"},
+    "la repubblica": {"bias": "center-left", "alignment": "independent", "factuality": "very_high"},
+    "repubblica": {"bias": "center-left", "alignment": "independent", "factuality": "very_high"},
+    "il sole 24 ore": {"bias": "center", "alignment": "independent", "factuality": "very_high"},
+    "il sole": {"bias": "center", "alignment": "independent", "factuality": "very_high"},
+    "la stampa": {"bias": "center", "alignment": "independent", "factuality": "high"},
+
+    # Spain
+    "efe": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "agencia efe": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "el país": {"bias": "center-left", "alignment": "independent", "factuality": "very_high"},
+    "el pais": {"bias": "center-left", "alignment": "independent", "factuality": "very_high"},
+    "el mundo": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+    "la vanguardia": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "cinco días": {"bias": "center", "alignment": "independent", "factuality": "high"},
 }
 
 
 def clean_name(name):
     n = re.split(r"\s+[|\-–—·]\s+|\s*\(", str(name or "").lower())[0].strip()
     n = re.sub(r"^(the|báo|gazeta)\s+", "", n).strip()
-    return re.sub(r"\.(hu|sk|cz|kz|uz|md|ge|az|rs|vn|com|org|net|tv|ro|pl|kg|ba|et|za|ng|tr|jp|kr|tw|ph|id|my|th|mm|kh|la|co|ar|br|ua|ir|in|mx|cd|us|uk|cn|ru|de|fr|il|sa|ae|eg|qa|pk|kp|sg|au)$", "", n).strip()
+    return re.sub(r"\.(hu|sk|cz|kz|uz|md|ge|az|rs|vn|com|org|net|tv|ro|pl|kg|ba|et|za|ng|tr|jp|kr|tw|ph|id|my|th|mm|kh|la|co|ar|br|ua|ir|in|mx|cd|us|uk|cn|ru|de|fr|il|sa|ae|eg|qa|pk|kp|sg|au|by|ca|ve|se|fi|it|es)$", "", n).strip()
 
 
 _COMPILED_PATTERNS = [

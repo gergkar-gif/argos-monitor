@@ -1,0 +1,100 @@
+sources:
+  - id: yle_uutiset
+    name: Yle Uutiset
+    homepage: https://yle.fi/uutiset
+    language: fi
+    scope: domestic
+    kind: official
+    governing_body: "Yleisradio Oy (National Public Broadcasting Company)"
+    state_affiliated: false
+    notes: "Finland's statutory national public service broadcaster."
+    feeds:
+      - url: https://feeds.yle.fi/uutiset/v1/recent.rss?publisherIds=YLE_UUTISET
+        category_hint: internal_politics
+      - url: https://feeds.yle.fi/uutiset/v1/majorHeadlines/domestic.rss
+        category_hint: internal_politics
+
+  - id: yle_news_en
+    name: Yle News (English)
+    homepage: https://yle.fi/news
+    language: en
+    scope: domestic
+    kind: official
+    governing_body: "Yleisradio Oy"
+    state_affiliated: false
+    notes: "English-language public service reporting on Finnish national affairs."
+    feeds:
+      - url: https://feeds.yle.fi/uutiset/v1/recent.rss?publisherIds=YLE_NEWS
+        category_hint: internal_politics
+
+  - id: helsingin_sanomat
+    name: Helsingin Sanomat
+    homepage: https://www.hs.fi
+    language: fi
+    scope: domestic
+    kind: media
+    governing_body: "Sanoma Media Finland"
+    state_affiliated: false
+    notes: "Finland's leading subscription broadsheet and newspaper of record."
+    feeds:
+      - url: https://www.hs.fi/rss/tuoreimmat.xml
+        category_hint: internal_politics
+      - url: https://www.hs.fi/rss/politiikka.xml
+        category_hint: internal_politics
+      - url: https://www.hs.fi/rss/talous.xml
+        category_hint: economics
+
+  - id: kauppalehti_fi
+    name: Kauppalehti
+    homepage: https://www.kauppalehti.fi
+    language: fi
+    scope: domestic
+    kind: media
+    governing_body: "Alma Media"
+    state_affiliated: false
+    notes: "Finland's premier daily business, commerce and financial newspaper."
+    feeds:
+      - url: https://feeds.kauppalehti.fi/rss/main
+        category_hint: economics
+
+  - id: google_news_finland_politics
+    name: Google News (Finland Government & Stubb)
+    homepage: https://news.google.com
+    language: fi
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking Stubb, Orpo cabinet, and Eduskunta politics."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=Stubb+OR+Petteri+Orpo+OR+hallitus+OR+eduskunta+when:3d&hl=fi&gl=FI&ceid=FI:fi"
+        category_hint: internal_politics
+
+  - id: google_news_finland_economy
+    name: Google News (Finland Suomen Pankki & Labor)
+    homepage: https://news.google.com
+    language: fi
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking Bank of Finland, public debt cuts, and economy."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=%22Suomen+Pankki%22+OR+valtionvelka+OR+budjetti+Suomi+when:3d&hl=fi&gl=FI&ceid=FI:fi"
+        category_hint: economics
+
+  - id: google_news_finland_defense
+    name: Google News (Finland NATO & Eastern Border)
+    homepage: https://news.google.com
+    language: fi
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking Eastern border security, NATO land command, and defense."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=it%C3%A4raja+OR+Nato+Suomi+OR+Puolustusvoimat+OR+rajavartiolaitos+when:3d&hl=fi&gl=FI&ceid=FI:fi"
+        category_hint: defence_security

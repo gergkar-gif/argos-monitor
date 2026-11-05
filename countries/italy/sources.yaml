@@ -1,0 +1,104 @@
+sources:
+  - id: ansa_it
+    name: ANSA
+    homepage: https://www.ansa.it
+    language: it
+    scope: domestic
+    kind: wire
+    governing_body: "Agenzia Nazionale Stampa Associata (Cooperative news agency)"
+    state_affiliated: false
+    notes: "Italy's statutory national wire agency and primary source of breaking news."
+    feeds:
+      - url: https://www.ansa.it/sito/ansait_rss.xml
+        category_hint: internal_politics
+      - url: https://www.ansa.it/sito/notizie/politica/politica_rss.xml
+        category_hint: internal_politics
+      - url: https://www.ansa.it/sito/notizie/economia/economia_rss.xml
+        category_hint: economics
+
+  - id: corriere_della_sera
+    name: Corriere della Sera
+    homepage: https://www.corriere.it
+    language: it
+    scope: domestic
+    kind: media
+    governing_body: "RCS MediaGroup"
+    state_affiliated: false
+    notes: "Italy's oldest and most influential national broadsheet of record."
+    feeds:
+      - url: https://xml2.corriereobjects.it/rss/politica.xml
+        category_hint: internal_politics
+      - url: https://xml2.corriereobjects.it/rss/economia.xml
+        category_hint: economics
+
+  - id: la_repubblica
+    name: La Repubblica
+    homepage: https://www.repubblica.it
+    language: it
+    scope: domestic
+    kind: media
+    governing_body: "GEDI Gruppo Editoriale"
+    state_affiliated: false
+    notes: "Major national progressive newspaper of record based in Rome."
+    feeds:
+      - url: https://www.repubblica.it/rss/politica/rss2.0.xml
+        category_hint: internal_politics
+      - url: https://www.repubblica.it/rss/economia/rss2.0.xml
+        category_hint: economics
+
+  - id: il_sole_24_ore
+    name: Il Sole 24 Ore
+    homepage: https://www.ilsole24ore.com
+    language: it
+    scope: domestic
+    kind: media
+    governing_body: "Confindustria (General Confederation of Italian Industry)"
+    state_affiliated: false
+    notes: "Premier daily financial, macroeconomic and corporate newspaper in Italy."
+    feeds:
+      - url: https://www.ilsole24ore.com/rss/italia--politica.xml
+        category_hint: internal_politics
+      - url: https://www.ilsole24ore.com/rss/economia.xml
+        category_hint: economics
+
+  - id: google_news_italy_politics
+    name: Google News (Italy Government & Meloni)
+    homepage: https://news.google.com
+    language: it
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking Giorgia Meloni, Palazzo Chigi, and constitutional reform."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=%22Giorgia+Meloni%22+OR+%22Palazzo+Chigi%22+OR+Premierato+OR+Parlamento+Italia+when:3d&hl=it&gl=IT&ceid=IT:it"
+        category_hint: internal_politics
+
+  - id: google_news_italy_economy
+    name: Google News (Italy Economy, BTP Spread & Debt)
+    homepage: https://news.google.com
+    language: it
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking Banca d'Italia, BTP yields, PNRR funding, and budget."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=%22Banca+d%27Italia%22+OR+%22debito+pubblico%22+OR+%22spread+BTP%22+OR+PNRR+when:3d&hl=it&gl=IT&ceid=IT:it"
+        category_hint: economics
+
+  - id: google_news_italy_defense
+    name: Google News (Italy Defense & Mediterranean Security)
+    homepage: https://news.google.com
+    language: it
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking Crosetto, GCAP fighter, Mediterranean naval ops, and migration pact."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=%22Guido+Crosetto%22+OR+%22Piano+Mattei%22+OR+%22protocollo+Albania%22+OR+GCAP+when:3d&hl=it&gl=IT&ceid=IT:it"
+        category_hint: defence_security

@@ -1,0 +1,79 @@
+# Italy country pack.
+id: italy
+name: Italy
+region: Western Europe
+language: it
+abroad_label: Regional European & international outlets
+
+mention:
+  - "italy"
+  - "italian"
+  - "rome"
+  - "milan"
+  - "naples"
+  - "giorgia meloni"
+  - "meloni"
+  - "matteo salvini"
+  - "antonio tajani"
+  - "sergio mattarella"
+  - "palazzo chigi"
+  - "parlamento"
+  - "camera dei deputati"
+  - "senato della repubblica"
+  - "banca d'italia"
+  - "btp"
+  - "italia"
+  - "italiana"
+  - "italiano"
+  - "governo"
+
+mention_regex: ['\b(?:italy|italian|rome|meloni|palazzo chigi|btp)\b', 'italia', 'governo meloni', 'palazzo chigi', 'parlamento']
+mention_section: "Italy"
+
+url_sections:
+  foreign: [esteri, mondo, international, world]
+  skip: [sport, calcio, serie-a, spettacolo, moda, lifestyle, motori, viaggi, oroscopo, meteo]
+
+aggregator_outlets:
+  domestic:
+    - "ansa"
+    - "corriere della sera"
+    - "corriere"
+    - "la repubblica"
+    - "repubblica"
+    - "il sole 24 ore"
+    - "il sole"
+    - "la stampa"
+    - "il messaggero"
+    - "il giornale"
+    - "adnkronos"
+    - "rai news"
+  abroad_local:
+    - "reuters"
+    - "politico europe"
+    - "bloomberg"
+    - "financial times"
+
+excerpt:
+  dateline: '^\s*(?:ROMA|MILANO|ANSA|REUTERS|AFP|ADNKRONOS)\s*[-–—:]\s*'
+  noise: '^(Foto|Fonte|Leggi anche|Photo|Credit|\(|\[)'
+
+classify:
+  internal_politics:
+    - "President of the Council of Ministers Giorgia Meloni, Fratelli d'Italia, coalition partners (Lega, Forza Italia), constitutional direct election of prime minister (Premierato), differentiated autonomy for regions, judicial reforms"
+    - "Giorgia Meloni, Palazzo Chigi, Fratelli d'Italia, Matteo Salvini, Antonio Tajani, Parlamento, Premierato, autonomia differenziata, riforma della giustizia, politica interna"
+  economics:
+    - "Bank of Italy (Banca d'Italia), Governor Fabio Panetta, sovereign public debt, BTP-Bund 10-year yield spread, EU excessive deficit procedure compliance, National Recovery and Resilience Plan (PNRR) milestones, bank windfall taxes"
+    - "Banca d'Italia, Fabio Panetta, debito pubblico, spread BTP-Bund, deficit, PNRR, manovra finanziaria, legge di bilancio, inflazione, PIL"
+  foreign_policy:
+    - "Ministry of Foreign Affairs, Antonio Tajani, Mattei Plan for Africa energy partnerships, Italy-Albania migration processing protocol, G7 presidency coordination, military aid to Ukraine (SAMP/T air defense)"
+    - "Farnesina, Antonio Tajani, Piano Mattei per l'Africa, protocollo Italia-Albania, presidenza G7, diplomazia, Unione Europea, relazioni con Washington"
+  defence_security:
+    - "Ministry of Defence (Guido Crosetto), Italian Armed Forces, Global Combat Air Programme (GCAP sixth-gen fighter with UK and Japan), Mediterranean naval operations (Red Sea operation Aspides), defense procurement"
+    - "Ministero della Difesa, Guido Crosetto, forze armate, GCAP, caccia di sesta generazione, Mar Rosso, operazione Aspides, sicurezza marittima"
+  society:
+    - "Demographic decline and lowest birth rates in Europe (crollo demografico), migrant arrivals in Lampedusa, judicial strike disputes, transport strikes, healthcare funding deficits"
+    - "Denatalità, culle vuote, immigrazione, sbarchi a Lampedusa, centri migranti, sanità pubblica, scioperi, trasporti"
+
+geo: IT
+reddit: [geopolitics, italy, italia]

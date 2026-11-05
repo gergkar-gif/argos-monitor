@@ -1,0 +1,73 @@
+# Finland country pack.
+id: finland
+name: Finland
+region: Western Europe
+language: fi
+abroad_label: Nordic regional & international outlets
+
+mention:
+  - "finland"
+  - "finnish"
+  - "helsinki"
+  - "alexander stubb"
+  - "stubb"
+  - "petteri orpo"
+  - "orpo"
+  - "eduskunta"
+  - "suomen pankki"
+  - "puolustusvoimat"
+  - "itäraja"
+  - "itaraja"
+  - "suomi"
+  - "suomalainen"
+  - "valtioneuvosto"
+
+mention_regex: ['\b(?:finland|finnish|helsinki|stubb|petteri orpo|eduskunta|puolustusvoimat|itäraja)\b', 'suomi', 'valtioneuvosto', 'eduskunta', 'puolustusvoimat']
+mention_section: "Finland"
+
+url_sections:
+  foreign: [ulkomaat, maailma, international, world]
+  skip: [urheilu, viihde, lifestyle, kulttuuri, autot, saa]
+
+aggregator_outlets:
+  domestic:
+    - "yle"
+    - "yle uutiset"
+    - "yle news"
+    - "helsingin sanomat"
+    - "hs"
+    - "kauppalehti"
+    - "iltalehti"
+    - "ilta-sanomat"
+    - "talouselämä"
+    - "hbl"
+    - "hufvudstadsbladet"
+  abroad_local:
+    - "reuters"
+    - "politico europe"
+    - "bbc news europe"
+    - "the barents observer"
+
+excerpt:
+  dateline: '^\s*(?:HELSINKI|YLE|STT|REUTERS|AFP)\s*[-–—:]\s*'
+  noise: '^(Kuva|Lähde|Lue myös|Photo|Credit|\(|\[)'
+
+classify:
+  internal_politics:
+    - "President Alexander Stubb, Prime Minister Petteri Orpo, National Coalition Party, Finns Party (Riikka Purra), government coalition austerity measures, Eduskunta parliamentary debates, trade union strikes"
+    - "Presidentti Alexander Stubb, pääministeri Petteri Orpo, hallitus, eduskunta, perussuomalaiset, Riikka Purra, lakot, sosiaaliturvaleikkaukset, sisäpolitiikka"
+  economics:
+    - "Bank of Finland (Suomen Pankki), Governor Olli Rehn, public debt deficit, EU excessive deficit avoidance, labor market flexibility reforms, export slowdown, construction sector slump"
+    - "Suomen Pankki, Olli Rehn, valtionvelka, budjettileikkaukset, työmarkkinauudistukset, vientiteollisuus, inflaatio, talouskasvu"
+  foreign_policy:
+    - "Ministry for Foreign Affairs (Elina Valtonen), NATO interoperability, complete closure of the eastern border with Russia, Nordic defense cooperation (Nordefco), military aid to Ukraine"
+    - "Ulkoministeriö, Elina Valtonen, Nato, itäraja, rajaturvallisuus, Ukrainan tuki, Venäjä-suhteet, pohjoismainen yhteistyö"
+  defence_security:
+    - "Finnish Defence Forces (Puolustusvoimat), Commander Janne Jaakkola, universal conscription, border guard fences, F-35 procurement, hosting NATO land command, undersea Baltic infrastructure security"
+    - "Puolustusvoimat, Janne Jaakkola, asevelvollisuus, rajavartiolaitos, F-35-hävittäjät, Nato-esikunta, kriittinen infrastruktuuri, Itämeri"
+  society:
+    - "Civil defense shelter preparedness, aging population demographics, healthcare regional reform (hyvinvointialueet) funding crisis, educational excellence reviews"
+    - "Väestönsuojelu, huoltosuhde, hyvinvointialueet, sote-palvelut, koulutus, varautuminen"
+
+geo: FI
+reddit: [geopolitics, finland, suomi]
