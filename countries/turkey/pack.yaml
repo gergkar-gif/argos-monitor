@@ -1,7 +1,7 @@
 # Turkey country pack (decision D15).
 id: turkey
 name: Turkey
-region: Middle East & Mediterranean
+region: Mediterranean
 language: tr
 crisis_names: ["Turkey", "Türkiye", "Turkiye"]
 abroad_label: Independent & diaspora Turkish outlets

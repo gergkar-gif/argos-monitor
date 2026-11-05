@@ -57,8 +57,15 @@ jobs:
           curl -fL -o .argos-data/models/multilingual-e5-small/model.onnx "$base/model.onnx"
           curl -fL -o .argos-data/models/multilingual-e5-small/tokenizer.json "$base/tokenizer.json"
 
+      - name: Cache Hugging Face models
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface/hub
+          key: hf-marian-models-v1
+          restore-keys: hf-marian-models-
+
       - name: Collect, analyse and export
-        run: python run.py ingest extract normalise relevance embed cluster classify policy rank excerpts verify export crisis trends reddit social watch prune report
+        run: python run.py ingest extract normalise relevance embed cluster classify policy rank excerpts verify translate export crisis trends reddit social watch prune report
 
       - name: Save database
         uses: actions/cache/save@v4

@@ -59,6 +59,8 @@ def _story(db, s, now_iso=None, days=None):
     perspectives = {"state_share": state_share, "alignment": align_counts, "bias": bias_counts}
 
     rep = next((r for r in rows if r["id"] == s["representative_article_id"]), rows[0])
+    trans_row = db.execute("SELECT text_en FROM translation WHERE article_id=?", (rep["id"],)).fetchone()
+    en_title = trans_row[0] if trans_row else None
     raw_lead = (rep["lead"] or "").strip() or next(((r["lead"] or "").strip() for r in rows if (r["lead"] or "").strip()), "")
     lead_val = (raw_lead[:220].rsplit(" ", 1)[0] + "…") if len(raw_lead) > 220 else raw_lead
     excerpts = db.execute(
@@ -142,7 +144,7 @@ def _story(db, s, now_iso=None, days=None):
         "category": s["category"],
         "score": s["score"],
         "themes": json.loads(s["themes"] or "[]"),         # why it ranks where it does (themes.yaml)
-        "headline": {"title": rep["title"], "url": rep["url"], "source": rep["source"], "language": rep["language"]},
+        "headline": {"title": rep["title"], "url": rep["url"], "source": rep["source"], "language": rep["language"], "en_title": en_title},
         "lead": lead_val,
         "first_seen": s["first_seen"],
         "last_seen": s["last_seen"],

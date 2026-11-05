@@ -63,14 +63,14 @@ STAGES = {"ingest": ingest.run, "extract": extract.run, "normalise": normalise.r
 if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
     db = dbmod.connect()
-    for name in sys.argv[1:] or ["ingest", "extract", "normalise", "relevance", "embed", "cluster", "classify", "policy", "rank", "excerpts", "verify", "export", "crisis", "trends", "reddit", "social", "watch", "prune", "report"]:
+    for name in sys.argv[1:] or ["ingest", "extract", "normalise", "relevance", "embed", "cluster", "classify", "policy", "rank", "excerpts", "verify", "translate", "export", "crisis", "trends", "reddit", "social", "watch", "prune", "report"]:
         print(f"\n== {name}")
         try:
             STAGES[name](db)
         except Exception as e:
             import traceback
             traceback.print_exc()
-            if name in ("crisis", "trends", "reddit", "social", "watch", "prune", "report"):
+            if name in ("translate", "crisis", "trends", "reddit", "social", "watch", "prune", "report"):
                 print(f"WARNING: auxiliary stage '{name}' failed ({e}), continuing pipeline...")
             else:
                 raise

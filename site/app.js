@@ -68,22 +68,19 @@
   const GLOBAL_VIEWS = new Set(['home', 'alerts', 'disasters', 'violence', 'relations']);
 
   const REGIONS = [
-    'North America', 'Western Europe', 'Central Europe', 'Eastern Europe', 'Balkans',
-    'South Caucasus', 'Middle East & Mediterranean', 'Central Asia', 'South Asia',
+    'North America', 'Western Europe', 'Central & Southeast Europe', 'Eastern Europe',
+    'South Caucasus', 'Middle East', 'Mediterranean', 'Central Asia', 'South Asia',
     'East Asia', 'Southeast Asia', 'Oceania', 'Sub-Saharan Africa', 'South America', 'Central America', 'Caribbean'
   ];
   const COUNTRY_REGION = {
     canada: 'North America', united_states: 'North America',
     belgium: 'Western Europe', denmark: 'Western Europe', finland: 'Western Europe', france: 'Western Europe', germany: 'Western Europe', ireland: 'Western Europe', italy: 'Western Europe',
     netherlands: 'Western Europe', norway: 'Western Europe', portugal: 'Western Europe', spain: 'Western Europe', sweden: 'Western Europe', switzerland: 'Western Europe', united_kingdom: 'Western Europe',
-    austria: 'Central Europe', czechia: 'Central Europe', hungary: 'Central Europe', poland: 'Central Europe', slovakia: 'Central Europe',
+    austria: 'Central & Southeast Europe', bosnia: 'Central & Southeast Europe', czechia: 'Central & Southeast Europe', hungary: 'Central & Southeast Europe', kosovo: 'Central & Southeast Europe', poland: 'Central & Southeast Europe', serbia: 'Central & Southeast Europe', slovakia: 'Central & Southeast Europe',
     baltics: 'Eastern Europe', belarus: 'Eastern Europe', moldova: 'Eastern Europe', romania: 'Eastern Europe', russia: 'Eastern Europe', ukraine: 'Eastern Europe',
-    bosnia: 'Balkans', kosovo: 'Balkans', serbia: 'Balkans',
     armenia: 'South Caucasus', azerbaijan: 'South Caucasus', georgia: 'South Caucasus',
-    algeria: 'Middle East & Mediterranean', egypt: 'Middle East & Mediterranean', greece: 'Middle East & Mediterranean', iran: 'Middle East & Mediterranean', iraq: 'Middle East & Mediterranean', israel: 'Middle East & Mediterranean',
-    jordan: 'Middle East & Mediterranean', lebanon: 'Middle East & Mediterranean', morocco: 'Middle East & Mediterranean',
-    qatar: 'Middle East & Mediterranean', saudi_arabia: 'Middle East & Mediterranean', syria: 'Middle East & Mediterranean', turkey: 'Middle East & Mediterranean',
-    united_arab_emirates: 'Middle East & Mediterranean',
+    iran: 'Middle East', iraq: 'Middle East', jordan: 'Middle East', qatar: 'Middle East', saudi_arabia: 'Middle East', syria: 'Middle East', united_arab_emirates: 'Middle East',
+    algeria: 'Mediterranean', egypt: 'Mediterranean', greece: 'Mediterranean', israel: 'Mediterranean', lebanon: 'Mediterranean', morocco: 'Mediterranean', turkey: 'Mediterranean',
     kazakhstan: 'Central Asia', kyrgyzstan: 'Central Asia', uzbekistan: 'Central Asia',
     bangladesh: 'South Asia', india: 'South Asia', pakistan: 'South Asia', sri_lanka: 'South Asia',
     china: 'East Asia', japan: 'East Asia', north_korea: 'East Asia', south_korea: 'East Asia', taiwan: 'East Asia',
@@ -622,9 +619,13 @@
     const outlets = plural(s.independent_sources, 'independent outlet', 'independent outlets');
     const clip = h('article', { class: 'clip' + (opts.lead ? ' lead' : ''), style: `--i:${opts.i}` });
 
-    const headLink = h('a', { href: safeUrl(s.headline.url), target: '_blank', rel: 'noopener', lang: s.headline.language, text: s.headline.title });
-    const headOrig = h('p', { class: 'orig', hidden: true, title: 'Original headline' });
-    track(headLink, s.headline.title, s.headline.language, headOrig);
+    const hasEn = Boolean(s.headline && s.headline.en_title);
+    const displayTitle = hasEn ? s.headline.en_title : s.headline.title;
+    const headLink = h('a', { href: safeUrl(s.headline.url), target: '_blank', rel: 'noopener', lang: hasEn ? 'en' : s.headline.language, text: displayTitle });
+    const headOrig = h('p', { class: 'orig', hidden: !hasEn, title: 'Original headline', text: hasEn ? s.headline.title : '' });
+    if (!hasEn) {
+      track(headLink, s.headline.title, s.headline.language, headOrig);
+    }
     const shown = opts.lead ? s.excerpts : s.excerpts.slice(0, 1);
 
     clip.append(...[
@@ -777,6 +778,7 @@
   const trText = (t) => (t ? `${t} ${T.byText.get(t) || ''}` : '');
   const storyText = (s) => fold([
     s.country_name || '',
+    s.headline && s.headline.en_title ? s.headline.en_title : '',
     trText(s.headline.title),
     ...(s.sources || []).map((r) => `${trText(r.title)} ${r.source}`),
     ...(s.excerpts || []).map((x) => trText(x.text)),
