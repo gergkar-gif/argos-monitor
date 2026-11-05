@@ -25,3 +25,5 @@ Completed items moved from `docs/roadmap.md` per project handover rules.
     Scoreboard calculating bilateral news cycle momentum multipliers, net article growth (&Delta;N), breakout badges, and lead policy domain concentration in the Joint & Multilateral Affairs monitor.
   - **Basic Social Watch from accessible sources (Telegram, Bluesky, Reddit, Google Trends)** — **Done 2026-11-05.**
     Ingests open Telegram channel web previews (t.me/s/) and open AT Protocol Bluesky feeds without API keys or authentication, with NFC diacritic normalisation (Rule 3) and zero-emoji scrubbing (Rule 7), displaying unverified auxiliary signals in the desk sidebar.
+  - **Searchable Country Combobox with live diacritic-insensitive filtering** — **Done 2026-11-05.**
+    Replaced native `<select id="country">` scrolling bottleneck with accessible, zero-dependency Combobox (`#country-search`) supporting instant diacritic-folded filtering (`fold()`) across country names, pack IDs, region names (e.g. "balkans"), and pack alias keywords (`mentions`), with keyboard navigation (`ArrowDown`, `ArrowUp`, `Enter`, `Escape`), click-outside dismissal, regional grouping, and zero emojis.

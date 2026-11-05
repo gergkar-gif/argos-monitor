@@ -46,9 +46,19 @@
   const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
   const topicName = (id) => (TOPICS.find((t) => t.id === id) || {}).name || id;
   const topicVar = (id) => `--tab: var(--t-${id})`;
+  const fold = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/ł/g, 'l').replace(/ı/g, 'i');
 
   const index = window.ARGOS_INDEX;
-  const country = $('#country'), period = $('#period'), topic = $('#topic'), results = $('#results');
+  function getCountryName(id) {
+    const c = (index && index.countries || []).find((x) => x.id === id);
+    if (c) return c.name;
+    const p = (typeof COMMON_PARTNERS !== 'undefined' ? COMMON_PARTNERS : []).find((x) => x.id === id);
+    if (p) return p.name;
+    return id ? id.charAt(0).toUpperCase() + id.slice(1) : '';
+  }
+
+  const country = $('#country'), countrySearch = $('#country-search'), countryMenu = $('#country-menu'), countryArrow = $('#country-arrow');
+  const period = $('#period'), topic = $('#topic'), results = $('#results');
   let current = null;   // the loaded data file
   let openTopic = 'all';
   let openRegion = 'all';
@@ -175,6 +185,185 @@
     );
     if (value != null && index.countries.some((c) => c.id === value)) country.value = value;
     else if (index.countries.length) country.value = index.countries[0].id;
+    syncCountryInput(country.value);
+  }
+
+  function syncCountryInput(cid) {
+    if (!countrySearch) return;
+    if (activeTab === 'country' && cid && cid !== 'all') {
+      const name = getCountryName(cid);
+      if (name) countrySearch.value = name;
+    } else {
+      countrySearch.value = '';
+    }
+  }
+
+  function setupCountryCombobox() {
+    if (!countrySearch || !countryMenu) return;
+
+    let highlightedIndex = -1;
+    let visibleItems = [];
+
+    function renderMenu(query = '') {
+      const q = fold(query.trim());
+      visibleItems = [];
+      countryMenu.replaceChildren();
+
+      if (!q) {
+        // Group by Region
+        const groups = new Map(REGIONS.map((r) => [r, []]));
+        for (const c of index.countries) {
+          const r = getRegion(c.id);
+          if (!groups.has(r)) groups.set(r, []);
+          groups.get(r).push(c);
+        }
+        for (const [reg, list] of groups.entries()) {
+          if (!list.length) continue;
+          countryMenu.append(h('div', { class: 'combobox-group-label', text: reg }));
+          for (const c of list) {
+            const isSel = c.id === country.value && activeTab === 'country';
+            const item = h('div', {
+              class: 'combobox-item' + (isSel ? ' selected' : ''),
+              role: 'option',
+              'data-id': c.id,
+              'data-name': c.name,
+              onclick: () => selectCountry(c.id, c.name),
+            },
+              h('span', { class: 'c-name', text: c.name }),
+              h('span', { class: 'c-region', text: reg })
+            );
+            countryMenu.append(item);
+            visibleItems.push({ el: item, id: c.id, name: c.name });
+          }
+        }
+      } else {
+        // Filter matching countries by name, id, region, or mention aliases
+        const matches = index.countries.filter((c) => {
+          if (fold(c.name).includes(q) || fold(c.id).includes(q) || fold(getRegion(c.id)).includes(q)) return true;
+          return (c.mentions || []).some((m) => fold(m).includes(q));
+        });
+
+        if (!matches.length) {
+          countryMenu.append(h('div', { class: 'combobox-empty', text: `No countries matching "${query}"` }));
+        } else {
+          for (const c of matches) {
+            const isSel = c.id === country.value && activeTab === 'country';
+            const reg = getRegion(c.id);
+            const item = h('div', {
+              class: 'combobox-item' + (isSel ? ' selected' : ''),
+              role: 'option',
+              'data-id': c.id,
+              'data-name': c.name,
+              onclick: () => selectCountry(c.id, c.name),
+            },
+              h('span', { class: 'c-name', text: c.name }),
+              h('span', { class: 'c-region', text: reg })
+            );
+            countryMenu.append(item);
+            visibleItems.push({ el: item, id: c.id, name: c.name });
+          }
+        }
+      }
+
+      highlightedIndex = visibleItems.findIndex((it) => it.id === country.value);
+      if (highlightedIndex === -1 && visibleItems.length) highlightedIndex = 0;
+      updateHighlight();
+    }
+
+    function updateHighlight() {
+      visibleItems.forEach((it, idx) => {
+        it.el.classList.toggle('highlighted', idx === highlightedIndex);
+        if (idx === highlightedIndex) {
+          it.el.scrollIntoView({ block: 'nearest' });
+        }
+      });
+    }
+
+    function selectCountry(cid, cname) {
+      country.value = cid;
+      countrySearch.value = cname;
+      closeMenu();
+      openCountry(cid);
+    }
+
+    function openMenu() {
+      renderMenu(countrySearch.value === getCountryName(country.value) ? '' : countrySearch.value);
+      countryMenu.hidden = false;
+      countrySearch.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeMenu() {
+      countryMenu.hidden = true;
+      countrySearch.setAttribute('aria-expanded', 'false');
+      highlightedIndex = -1;
+    }
+
+    countrySearch.addEventListener('focus', () => {
+      countrySearch.select();
+      openMenu();
+    });
+
+    countrySearch.addEventListener('input', () => {
+      openMenu();
+      renderMenu(countrySearch.value);
+    });
+
+    countrySearch.addEventListener('keydown', (e) => {
+      if (countryMenu.hidden) {
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp' || e.key === 'Enter') {
+          e.preventDefault();
+          openMenu();
+          return;
+        }
+      }
+
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (visibleItems.length) {
+          highlightedIndex = (highlightedIndex + 1) % visibleItems.length;
+          updateHighlight();
+        }
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (visibleItems.length) {
+          highlightedIndex = (highlightedIndex - 1 + visibleItems.length) % visibleItems.length;
+          updateHighlight();
+        }
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        if (highlightedIndex >= 0 && visibleItems[highlightedIndex]) {
+          selectCountry(visibleItems[highlightedIndex].id, visibleItems[highlightedIndex].name);
+        } else if (visibleItems.length === 1) {
+          selectCountry(visibleItems[0].id, visibleItems[0].name);
+        }
+      } else if (e.key === 'Escape') {
+        e.preventDefault();
+        syncCountryInput(country.value);
+        closeMenu();
+        countrySearch.blur();
+      }
+    });
+
+    if (countryArrow) {
+      countryArrow.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (countryMenu.hidden) {
+          countrySearch.focus();
+          openMenu();
+        } else {
+          closeMenu();
+        }
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.country-field')) {
+        if (!countryMenu.hidden) {
+          closeMenu();
+          syncCountryInput(country.value);
+        }
+      }
+    });
   }
   function regionTabs(countFn, onChoose) {
     const active = REGIONS.filter((r) => countFn(r) > 0);
@@ -245,12 +434,14 @@
     } else if (c === 'home' || !c) {
       activeTab = 'home';
       country.value = 'all';
+      syncCountryInput('all');
       try { $('#q').value = p ? decodeURIComponent(p) : ''; } catch {}
     } else {
       activeTab = 'country';
       const cid = c === 'country' ? (lastCountry || index.countries[0].id) : (index.countries.some((x) => x.id === c) ? c : index.countries[0].id);
       country.value = cid;
       lastCountry = cid;
+      syncCountryInput(cid);
       try { $('#q').value = q ? decodeURIComponent(q) : ''; } catch {}
     }
     fillPeriods();
@@ -403,15 +594,19 @@
   function openCountry(cid) {
     if (cid === 'home') {
       activeTab = 'home';
+      syncCountryInput('all');
     } else if (cid === 'alerts' || cid === 'disasters' || cid === 'violence') {
       activeTab = cid;
+      syncCountryInput('all');
     } else if (cid === 'relations') {
       activeTab = 'relations';
+      syncCountryInput('all');
     } else {
       activeTab = 'country';
       if (cid && index.countries.some((x) => x.id === cid)) {
         country.value = cid;
         lastCountry = cid;
+        syncCountryInput(cid);
       }
     }
     fillPeriods();
@@ -579,7 +774,6 @@
     return sec;
   }
 
-  const fold = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/ł/g, 'l').replace(/ı/g, 'i');
   const trText = (t) => (t ? `${t} ${T.byText.get(t) || ''}` : '');
   const storyText = (s) => fold([
     s.country_name || '',
@@ -926,14 +1120,6 @@
 
   let selectedCountries = ['cambodia', 'vietnam'];
   let relPeriod = '7d';
-
-  function getCountryName(id) {
-    const c = index.countries.find((x) => x.id === id);
-    if (c) return c.name;
-    const p = COMMON_PARTNERS.find((x) => x.id === id);
-    if (p) return p.name;
-    return id ? id.charAt(0).toUpperCase() + id.slice(1) : '';
-  }
 
   function getCountryTerms(id) {
     const c = index.countries.find((x) => x.id === id);
@@ -1436,6 +1622,7 @@
     return;
   }
   fillCountrySelect(lastCountry || index.countries[0].id);
+  setupCountryCombobox();
   fillTopics('all');
   if ($('#alert-count')) { const n = allCrisisAlerts().length; if (n) $('#alert-count').textContent = `[${n}]`; }
   readHash();
