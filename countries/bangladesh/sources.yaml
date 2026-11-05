@@ -1,0 +1,41 @@
+sources:
+- id: daily_star_bd
+  name: The Daily Star (Bangladesh)
+  homepage: https://www.thedailystar.net
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Mediaworld Limited
+  state_affiliated: false
+  notes: Leading independent English-language daily broadsheet of record in Bangladesh.
+  feeds:
+  - url: https://www.thedailystar.net/frontpage/rss.xml
+    category_hint: internal_politics
+  - url: https://www.thedailystar.net/business/rss.xml
+    category_hint: economics
+- id: dhaka_tribune_bd
+  name: Dhaka Tribune
+  homepage: https://www.dhakatribune.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: 2A Media Limited (Gemcon Group)
+  state_affiliated: false
+  notes: Premier national English news daily covering interim government reforms and
+    South Asian geopolitics.
+  feeds:
+  - url: https://www.dhakatribune.com/rss
+    category_hint: internal_politics
+- id: gnews_bangladesh_intl
+  name: Google News (Bangladesh Interim Governance & Economy)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=Bangladesh+(Yunus+OR+%22interim+government%22+OR+elections+OR+economy)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Governance & Reform
+    category_hint: internal_politics

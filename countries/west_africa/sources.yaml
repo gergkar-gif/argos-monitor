@@ -1,0 +1,43 @@
+sources:
+- id: rfi_afrique
+  name: RFI Afrique
+  homepage: https://www.rfi.fr/fr/afrique
+  language: fr
+  scope: abroad_local
+  kind: media
+  governing_body: France Médias Monde (public broadcaster)
+  state_affiliated: false
+  notes: Premier French public broadcaster with comprehensive ground correspondence
+    across West Africa and the Sahel.
+  feeds:
+  - url: https://www.rfi.fr/fr/afrique/rss
+    category_hint: internal_politics
+- id: jeune_afrique
+  name: Jeune Afrique
+  homepage: https://www.jeuneafrique.com
+  language: fr
+  scope: abroad_local
+  kind: media
+  governing_body: Jeune Afrique Media Group
+  state_affiliated: false
+  notes: Authoritative Paris-based Pan-African weekly of record covering ECOWAS, diplomacy,
+    and Sahelian security.
+  feeds:
+  - url: https://www.jeuneafrique.com/feed/
+    category_hint: foreign_policy
+- id: gnews_westafrica_intl
+  name: Google News (ECOWAS & Sahel Regional Affairs)
+  homepage: https://news.google.com
+  language: fr
+  scope: international
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=(CEDEAO+OR+Sahel+OR+AES)+(sommet+OR+sanctions+OR+diplomatie)+when:3d&hl=fr&gl=SN&ceid=SN:fr
+    section: Diplomatie & CEDEAO
+    category_hint: foreign_policy
+  - url: https://news.google.com/rss/search?q=(Sénégal+OR+Mali+OR+Niger+OR+Burkina)+(gouvernement+OR+sécurité)+when:3d&hl=fr&gl=SN&ceid=SN:fr
+    section: Gouvernance & Sécurité
+    category_hint: internal_politics

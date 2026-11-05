@@ -58,27 +58,29 @@
   const REGIONS = [
     'North America', 'Western Europe', 'Central Europe', 'Eastern Europe', 'Balkans',
     'South Caucasus', 'Middle East & Mediterranean', 'Central Asia', 'South Asia',
-    'East Asia', 'Southeast Asia', 'Oceania', 'Sub-Saharan Africa', 'South America'
+    'East Asia', 'Southeast Asia', 'Oceania', 'Sub-Saharan Africa', 'South America', 'Caribbean'
   ];
   const COUNTRY_REGION = {
     canada: 'North America', united_states: 'North America',
     finland: 'Western Europe', france: 'Western Europe', germany: 'Western Europe', italy: 'Western Europe',
-    spain: 'Western Europe', sweden: 'Western Europe', united_kingdom: 'Western Europe',
+    netherlands: 'Western Europe', spain: 'Western Europe', sweden: 'Western Europe', switzerland: 'Western Europe', united_kingdom: 'Western Europe',
     czechia: 'Central Europe', hungary: 'Central Europe', poland: 'Central Europe', slovakia: 'Central Europe',
     belarus: 'Eastern Europe', moldova: 'Eastern Europe', russia: 'Eastern Europe', ukraine: 'Eastern Europe',
     bosnia: 'Balkans', kosovo: 'Balkans', serbia: 'Balkans',
     armenia: 'South Caucasus', azerbaijan: 'South Caucasus', georgia: 'South Caucasus',
     egypt: 'Middle East & Mediterranean', iran: 'Middle East & Mediterranean', israel: 'Middle East & Mediterranean',
+    lebanon: 'Middle East & Mediterranean', morocco: 'Middle East & Mediterranean',
     qatar: 'Middle East & Mediterranean', saudi_arabia: 'Middle East & Mediterranean', turkey: 'Middle East & Mediterranean',
     united_arab_emirates: 'Middle East & Mediterranean',
     kazakhstan: 'Central Asia', kyrgyzstan: 'Central Asia', uzbekistan: 'Central Asia',
-    india: 'South Asia', pakistan: 'South Asia',
+    bangladesh: 'South Asia', india: 'South Asia', pakistan: 'South Asia',
     china: 'East Asia', japan: 'East Asia', north_korea: 'East Asia', south_korea: 'East Asia', taiwan: 'East Asia',
     cambodia: 'Southeast Asia', indonesia: 'Southeast Asia', laos: 'Southeast Asia', malaysia: 'Southeast Asia', myanmar: 'Southeast Asia',
     philippines: 'Southeast Asia', singapore: 'Southeast Asia', thailand: 'Southeast Asia', vietnam: 'Southeast Asia',
-    australia: 'Oceania',
-    ethiopia: 'Sub-Saharan Africa', dr_congo: 'Sub-Saharan Africa', kenya: 'Sub-Saharan Africa', nigeria: 'Sub-Saharan Africa', south_africa: 'Sub-Saharan Africa',
-    argentina: 'South America', brazil: 'South America', colombia: 'South America', mexico: 'South America', venezuela: 'South America',
+    australia: 'Oceania', pacific_islands: 'Oceania',
+    ethiopia: 'Sub-Saharan Africa', dr_congo: 'Sub-Saharan Africa', kenya: 'Sub-Saharan Africa', nigeria: 'Sub-Saharan Africa', south_africa: 'Sub-Saharan Africa', west_africa: 'Sub-Saharan Africa',
+    argentina: 'South America', brazil: 'South America', chile: 'South America', colombia: 'South America', mexico: 'South America', venezuela: 'South America',
+    caribbean: 'Caribbean',
   };
   const getRegion = (cid) => ((index && index.countries.find((x) => x.id === cid) || {}).region) || COUNTRY_REGION[cid] || 'Other';
   const prettyName = (cid) => ((index && index.countries.find((x) => x.id === cid) || {}).name) || cid.replace(/_/g, ' ').replace(/\b\w/g, (m) => m.toUpperCase());

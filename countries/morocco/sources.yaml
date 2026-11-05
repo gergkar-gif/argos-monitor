@@ -1,0 +1,39 @@
+sources:
+- id: map_news_ma
+  name: Maghreb Arabe Presse (MAP)
+  homepage: https://www.mapnews.ma/fr
+  language: fr
+  scope: domestic
+  kind: official
+  governing_body: Kingdom of Morocco
+  state_affiliated: true
+  notes: Statutory official news agency of the Kingdom of Morocco.
+  feeds:
+  - url: https://www.mapnews.ma/fr/rss.xml
+    category_hint: internal_politics
+- id: morocco_world_news
+  name: Morocco World News
+  homepage: https://www.moroccoworldnews.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: MWN Media Group
+  state_affiliated: false
+  notes: Leading independent English-language Moroccan daily covering diplomacy, Sahara
+    dispute, and investment.
+  feeds:
+  - url: https://www.moroccoworldnews.com/feed
+    category_hint: foreign_policy
+- id: gnews_morocco_intl
+  name: Google News (Morocco Diplomacy & Trade)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=Morocco+(diplomacy+OR+Sahara+OR+energy+OR+king)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Diplomacy & Governance
+    category_hint: foreign_policy

@@ -1,0 +1,42 @@
+sources:
+- id: emol_cl
+  name: Emol (El Mercurio Online)
+  homepage: https://www.emol.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Empresa El Mercurio S.A.P.
+  state_affiliated: false
+  notes: Digital arm of Chile paper of record covering executive politics, mining,
+    and institutional reform.
+  feeds:
+  - url: https://www.emol.com/rss/nacional.xml
+    category_hint: internal_politics
+  - url: https://www.emol.com/rss/economia.xml
+    category_hint: economics
+- id: biobiochile_cl
+  name: BioBioChile
+  homepage: https://www.biobiochile.cl
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Bío-Bío Comunicaciones
+  state_affiliated: false
+  notes: Leading independent Chilean radio and news daily covering breaking national
+    and investigative stories.
+  feeds:
+  - url: https://www.biobiochile.cl/feed
+    category_hint: internal_politics
+- id: gnews_chile_intl
+  name: Google News (Chile Politics & Lithium - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=Chile+(Boric+OR+copper+OR+lithium+OR+constitution)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Governance & Resources
+    category_hint: economics

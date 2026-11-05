@@ -1,0 +1,49 @@
+id: netherlands
+name: Netherlands
+region: Western Europe
+language: nl
+abroad_label: International & English-language Dutch outlets
+mention:
+- nederland
+- netherlands
+- dutch
+- amsterdam
+- den haag
+- the hague
+- rotterdam
+- dick schoof
+- schoof
+- geert wilders
+- wilders
+- vvd
+- pvv
+- nsc
+- groenlinks
+- tweede kamer
+- minister-president
+dateline: ^\s*(?:DEN HAAG|AMSTERDAM|ROTTERDAM|ANP|UTRECHT)\s*[-–:]\s*
+subreddits:
+- thenetherlands
+- netherlands
+- Politiek
+skip_sections:
+- sport
+- sportnieuws
+- voetbal
+- lifestyle
+- entertainment
+- showbizz
+geo: NL
+aggregator_outlets:
+  domestic:
+  - NOS
+  - De Telegraaf
+  - NU.nl
+  - De Volkskrant
+  - NRC Handelsblad
+  - Trouw
+  - Financieele Dagblad
+  abroad_local:
+  - DutchNews.nl
+  - NL Times
+  - Euronews

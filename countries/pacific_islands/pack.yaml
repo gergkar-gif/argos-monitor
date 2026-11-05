@@ -1,0 +1,48 @@
+id: pacific_islands
+name: Pacific Islands
+region: Oceania
+language: en
+abroad_label: Australian, New Zealand & international outlets
+mention:
+- pacific islands
+- pacific islands forum
+- fiji
+- papua new guinea
+- solomon islands
+- samoa
+- vanuatu
+- tonga
+- micronesia
+- suva
+- port moresby
+- honiara
+- apia
+- sitiveni rabuka
+- james marape
+- jeremiah manele
+dateline: ^\s*(?:SUVA|PORT MORESBY|HONIARA|APIA|NUKU'ALOFA|PIF)\s*[-–:]\s*
+subreddits:
+- PacificIslands
+- fiji
+- PapuaNewGuinea
+- solomonislands
+skip_sections:
+- sport
+- sports
+- lifestyle
+- entertainment
+- rugby
+geo: FJ
+aggregator_outlets:
+  domestic:
+  - The Fiji Times
+  - Fiji Sun
+  - Post-Courier
+  - The National
+  - Solomon Star
+  - Samoa Observer
+  abroad_local:
+  - RNZ Pacific
+  - ABC Pacific
+  - Islands Business
+  - PACNEWS

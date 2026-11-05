@@ -1,0 +1,45 @@
+id: morocco
+name: Morocco
+region: Middle East & Mediterranean
+language: fr
+abroad_label: International & diaspora outlets
+mention:
+- morocco
+- maroc
+- marocain
+- rabat
+- casablanca
+- marrakech
+- tanger
+- mohammed vi
+- aziz akhannouch
+- akhannouch
+- nasser bourita
+- bourita
+- makhzen
+- sahara occidental
+- western sahara
+dateline: ^\s*(?:RABAT|CASABLANCA|MAP|MAROC)\s*[-–:]\s*
+subreddits:
+- morocco
+- Moroccanfootball
+skip_sections:
+- sport
+- sports
+- football
+- lifestyle
+- people
+geo: MA
+aggregator_outlets:
+  domestic:
+  - MAP
+  - Le360
+  - Hespress
+  - TelQuel
+  - Le Matin
+  - Médias24
+  - L'Économiste
+  abroad_local:
+  - Morocco World News
+  - Yabiladi
+  - Jeune Afrique

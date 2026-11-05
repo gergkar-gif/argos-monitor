@@ -1,0 +1,58 @@
+sources:
+- id: nos_nl
+  name: NOS Nieuws
+  homepage: https://nos.nl
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: Nederlandse Omroep Stichting (public broadcaster)
+  state_affiliated: false
+  notes: Dutch statutory public news organization providing independent public-service
+    reporting.
+  feeds:
+  - url: https://feeds.nos.nl/nosnieuwsalgemeen
+    category_hint: internal_politics
+  - url: https://feeds.nos.nl/nosnieuwspolitiek
+    category_hint: internal_politics
+  - url: https://feeds.nos.nl/nosnieuwseconomie
+    category_hint: economics
+- id: nu_nl
+  name: NU.nl
+  homepage: https://www.nu.nl
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: DPG Media
+  state_affiliated: false
+  notes: Leading Dutch digital news portal covering daily domestic politics and economy.
+  feeds:
+  - url: https://www.nu.nl/rss/Algemeen
+    category_hint: internal_politics
+  - url: https://www.nu.nl/rss/Economie
+    category_hint: economics
+- id: dutchnews_nl
+  name: DutchNews.nl
+  homepage: https://www.dutchnews.nl
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Dutch News BV
+  state_affiliated: false
+  notes: Independent English-language Dutch news daily covering cabinet policy, economy,
+    and EU affairs.
+  feeds:
+  - url: https://www.dutchnews.nl/feed/
+    category_hint: foreign_policy
+- id: gnews_netherlands_intl
+  name: Google News (Netherlands Politics & Trade)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Netherlands+OR+Dutch)+(cabinet+OR+election+OR+parliament+OR+asylum)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Politics & Governance
+    category_hint: internal_politics

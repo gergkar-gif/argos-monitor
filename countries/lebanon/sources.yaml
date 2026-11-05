@@ -1,0 +1,40 @@
+sources:
+- id: lorient_today_lb
+  name: L'Orient Today
+  homepage: https://today.lorientlejour.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Société de Presse et d'Édition
+  state_affiliated: false
+  notes: Independent English-language Lebanese news platform covering security, institutional
+    deadlock, and economics.
+  feeds:
+  - url: https://today.lorientlejour.com/rss/news.xml
+    category_hint: internal_politics
+- id: naharnet_lb
+  name: Naharnet
+  homepage: https://www.naharnet.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Naharnet Media
+  state_affiliated: false
+  notes: Beirut digital news service covering Lebanese politics, regional clashes,
+    and economic updates.
+  feeds:
+  - url: https://www.naharnet.com/rss/lebanon
+    category_hint: internal_politics
+- id: gnews_lebanon_intl
+  name: Google News (Lebanon Ceasefire & Governance)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Lebanon+OR+Beirut)+(Hezbollah+OR+UNIFIL+OR+government+OR+ceasefire)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Security & Politics
+    category_hint: defence_security

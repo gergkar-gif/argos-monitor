@@ -1,0 +1,45 @@
+id: lebanon
+name: Lebanon
+region: Middle East & Mediterranean
+language: en
+abroad_label: International & regional Middle Eastern outlets
+mention:
+- lebanon
+- lebanese
+- beirut
+- tripoli
+- sidon
+- tyre
+- bekaa
+- southern lebanon
+- najib mikati
+- mikati
+- nabih berri
+- berri
+- hezbollah
+- unifil
+- blue line
+- banque du liban
+dateline: ^\s*(?:BEIRUT|BEYROUTH|NNA|ANI|LEBANON)\s*[-–:]\s*
+subreddits:
+- lebanon
+- beirut
+skip_sections:
+- sport
+- sports
+- entertainment
+- celebrity
+- lifestyle
+geo: LB
+aggregator_outlets:
+  domestic:
+  - L'Orient Today
+  - National News Agency
+  - Naharnet
+  - Al-Akhbar
+  - The Daily Star Lebanon
+  - MTV Lebanon
+  abroad_local:
+  - Al Arabiya English
+  - The National
+  - L'Orient-Le Jour

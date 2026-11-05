@@ -1,0 +1,46 @@
+id: switzerland
+name: Switzerland
+region: Western Europe
+language: de
+abroad_label: International & multi-language Swiss diaspora outlets
+mention:
+- schweiz
+- suisse
+- svizzera
+- switzerland
+- swiss
+- bern
+- zürich
+- geneva
+- bundesrat
+- conseil fédéral
+- nationalrat
+- viola amherd
+- karin keller-sutter
+- ignazio cassis
+- albert rösti
+- snb
+- swiss national bank
+dateline: ^\s*(?:BERN|ZÜRICH|GENÈVE|SDA|ATS|KEYSTONE)\s*[-–:]\s*
+subreddits:
+- switzerland
+- askswitzerland
+- buenzli
+skip_sections:
+- sport
+- sport-aktuell
+- lifestyle
+- unterhaltung
+- panorama
+geo: CH
+aggregator_outlets:
+  domestic:
+  - SWI swissinfo.ch
+  - SRF
+  - RTS
+  - Neue Zürcher Zeitung
+  - Le Temps
+  - Tages-Anzeiger
+  abroad_local:
+  - Geneva Solutions
+  - The Local Switzerland

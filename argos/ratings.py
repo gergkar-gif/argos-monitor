@@ -714,13 +714,41 @@ RATINGS = {
     "el mundo": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
     "la vanguardia": {"bias": "center", "alignment": "independent", "factuality": "high"},
     "cinco días": {"bias": "center", "alignment": "independent", "factuality": "high"},
+
+    # --- Tier 3 & Regional Desks ---
+    "caricom today": {"bias": "center", "alignment": "state_controlled", "factuality": "high"},
+    "the gleaner": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "caribbean national weekly": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "caribbean news global": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "rnz pacific": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "the fiji times": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "islands business": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "rfi afrique": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "jeune afrique": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "nos": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "nos nieuws": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "nu.nl": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "dutchnews.nl": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "swi swissinfo.ch": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "swissinfo": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "srf news": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "srf": {"bias": "center", "alignment": "public_broadcaster", "factuality": "very_high"},
+    "emol": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
+    "biobiochile": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "maghreb arabe presse": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mostly_factual"},
+    "map news": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mostly_factual"},
+    "morocco world news": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "l'orient today": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "naharnet": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "the daily star": {"bias": "center", "alignment": "independent", "factuality": "high"},
+    "dhaka tribune": {"bias": "center", "alignment": "independent", "factuality": "high"},
 }
 
 
 def clean_name(name):
     n = re.split(r"\s+[|\-–—·]\s+|\s*\(", str(name or "").lower())[0].strip()
     n = re.sub(r"^(the|báo|gazeta)\s+", "", n).strip()
-    return re.sub(r"\.(hu|sk|cz|kz|uz|md|ge|az|rs|vn|com|org|net|tv|ro|pl|kg|ba|et|za|ng|tr|jp|kr|tw|ph|id|my|th|mm|kh|la|co|ar|br|ua|ir|in|mx|cd|us|uk|cn|ru|de|fr|il|sa|ae|eg|qa|pk|kp|sg|au|by|ca|ve|se|fi|it|es)$", "", n).strip()
+    return re.sub(r"\.(hu|sk|cz|kz|uz|md|ge|az|rs|vn|com|org|net|tv|ro|pl|kg|ba|et|za|ng|tr|jp|kr|tw|ph|id|my|th|mm|kh|la|co|ar|br|ua|ir|in|mx|cd|us|uk|cn|ru|de|fr|il|sa|ae|eg|qa|pk|kp|sg|au|by|ca|ve|se|fi|it|es|jm|fj|sn|nl|ch|cl|ma|lb|bd)$", "", n).strip()
 
 
 _COMPILED_PATTERNS = [

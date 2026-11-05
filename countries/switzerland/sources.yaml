@@ -1,0 +1,40 @@
+sources:
+- id: swissinfo_ch
+  name: SWI swissinfo.ch
+  homepage: https://www.swissinfo.ch
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Swiss Broadcasting Corporation (SRG SSR)
+  state_affiliated: false
+  notes: Statutory international service of the Swiss Broadcasting Corporation providing
+    public-service coverage in 10 languages.
+  feeds:
+  - url: https://www.swissinfo.ch/eng/rss
+    category_hint: internal_politics
+- id: srf_news_de
+  name: SRF News
+  homepage: https://www.srf.ch/news
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: SRG SSR
+  state_affiliated: false
+  notes: Primary Swiss German public-service broadcaster covering federal policy and
+    cantonal politics.
+  feeds:
+  - url: https://www.srf.ch/news/bnf/rss/1646
+    category_hint: internal_politics
+- id: gnews_switzerland_intl
+  name: Google News (Switzerland Banking & Diplomacy)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Switzerland+OR+Swiss)+(neutrality+OR+sanctions+OR+banking+OR+diplomacy)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Diplomacy & Finance
+    category_hint: foreign_policy

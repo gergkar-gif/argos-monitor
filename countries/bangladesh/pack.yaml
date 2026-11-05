@@ -1,0 +1,41 @@
+id: bangladesh
+name: Bangladesh
+region: South Asia
+language: en
+abroad_label: International & regional South Asian outlets
+mention:
+- bangladesh
+- bangladeshi
+- dhaka
+- chittagong
+- chattogram
+- sylhet
+- muhammad yunus
+- yunus
+- interim government
+- bnp
+- awami league
+- tarique rahman
+- sheikh hasina
+- hasina
+dateline: ^\s*(?:DHAKA|CHITTAGONG|BSS|UNB|BANGLADESH)\s*[-–:]\s*
+subreddits:
+- bangladesh
+- dhaka
+skip_sections:
+- cricket
+- sports
+- entertainment
+- lifestyle
+geo: BD
+aggregator_outlets:
+  domestic:
+  - The Daily Star
+  - Dhaka Tribune
+  - Prothom Alo
+  - BSS
+  - bdnews24.com
+  - New Age
+  abroad_local:
+  - BBC Bangla
+  - DW Bengali

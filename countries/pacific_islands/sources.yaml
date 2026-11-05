@@ -1,0 +1,52 @@
+sources:
+- id: rnz_pacific
+  name: RNZ Pacific
+  homepage: https://www.rnz.co.nz/international
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Radio New Zealand (public broadcaster)
+  state_affiliated: false
+  notes: Authoritative public-service broadcaster covering governance, environment,
+    and diplomacy across the Pacific.
+  feeds:
+  - url: https://www.rnz.co.nz/rss/pacific.xml
+    category_hint: internal_politics
+- id: fiji_times
+  name: The Fiji Times
+  homepage: https://www.fijitimes.com.fj
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Motibhai Group
+  state_affiliated: false
+  notes: Suva daily of record founded in 1869 covering Fijian and South Pacific governance.
+  feeds:
+  - url: https://www.fijitimes.com.fj/feed/
+    category_hint: internal_politics
+- id: islands_business
+  name: Islands Business
+  homepage: https://islandsbusiness.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Front Page Limited
+  state_affiliated: false
+  notes: Regional monthly news magazine covering Pacific geopolitics, climate finance,
+    and trade.
+  feeds:
+  - url: https://islandsbusiness.com/feed/
+    category_hint: economics
+- id: gnews_pacific_intl
+  name: Google News (Pacific Islands Forum & Geopolitics)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=(%22Pacific+Islands+Forum%22+OR+%22Papua+New+Guinea%22+OR+Fiji)+(geopolitics+OR+treaty+OR+diplomacy+OR+security)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Geopolitics & Security
+    category_hint: foreign_policy

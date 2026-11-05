@@ -1,0 +1,48 @@
+id: caribbean
+name: Caribbean
+region: Caribbean
+language: en
+abroad_label: International & regional Caribbean outlets
+mention:
+- caribbean
+- caricom
+- jamaica
+- trinidad
+- barbados
+- guyana
+- bahamas
+- kingston
+- port of spain
+- bridgetown
+- georgetown
+- nassau
+- mia mottley
+- irfaan ali
+- andrew holness
+- keith rowley
+dateline: ^\s*(?:KINGSTON|PORT OF SPAIN|BRIDGETOWN|GEORGETOWN|NASSAU|CARICOM)\s*[-–:]\s*
+subreddits:
+- Caribbean
+- Jamaica
+- TrinidadandTobago
+- Barbados
+- Guyana
+skip_sections:
+- sport
+- sports
+- lifestyle
+- entertainment
+- celebrity
+geo: JM
+aggregator_outlets:
+  domestic:
+  - The Gleaner
+  - Trinidad Express
+  - Guyana Chronicle
+  - Stabroek News
+  - Nation News
+  abroad_local:
+  - Caribbean National Weekly
+  - Caribbean Life
+  - CARICOM Today
+  - Caribbean News Global

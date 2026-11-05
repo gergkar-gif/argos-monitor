@@ -1,0 +1,69 @@
+sources:
+- id: caricom_today
+  name: CARICOM Today
+  homepage: https://today.caricom.org
+  language: en
+  scope: domestic
+  kind: official
+  governing_body: Caribbean Community Secretariat
+  state_affiliated: true
+  notes: Official communications organ of the Caribbean Community intergovernmental
+    organization.
+  feeds:
+  - url: https://today.caricom.org/feed/
+    category_hint: foreign_policy
+- id: jamaica_gleaner
+  name: The Gleaner (Jamaica)
+  homepage: https://jamaica-gleaner.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: RJRGLEANER Communications Group
+  state_affiliated: false
+  notes: Kingston broadsheet paper of record founded in 1834 covering Caribbean regional
+    governance.
+  feeds:
+  - url: https://jamaica-gleaner.com/feed/rss.xml
+    category_hint: internal_politics
+- id: caribbean_national_weekly
+  name: Caribbean National Weekly
+  homepage: https://www.caribbeannationalweekly.com
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: CNW Network
+  state_affiliated: false
+  notes: Leading regional and diaspora weekly covering Anglo-Caribbean governance
+    and trade.
+  feeds:
+  - url: https://www.caribbeannationalweekly.com/feed/
+    category_hint: general
+- id: caribbean_news_global
+  name: Caribbean News Global
+  homepage: https://caribbeannewsglobal.com
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: CNG Publishing
+  state_affiliated: false
+  notes: Independent digital outlet focused on Caribbean trade, geopolitics, and energy
+    transitions.
+  feeds:
+  - url: https://caribbeannewsglobal.com/feed/
+    category_hint: economics
+- id: gnews_caribbean_intl
+  name: Google News (Caribbean Governance & Diplomatic Affairs)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=(CARICOM+OR+Caribbean)+(summit+OR+governance+OR+trade+OR+diplomacy)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Governance & Diplomacy
+    category_hint: foreign_policy
+  - url: https://news.google.com/rss/search?q=(Jamaica+OR+Guyana+OR+Barbados)+(oil+OR+energy+OR+debt+OR+economy)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Economy & Trade
+    category_hint: economics

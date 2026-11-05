@@ -1,0 +1,45 @@
+id: chile
+name: Chile
+region: South America
+language: es
+abroad_label: International & regional Latin American outlets
+mention:
+- chile
+- chileno
+- chilena
+- santiago
+- valparaíso
+- concepción
+- gabriel boric
+- boric
+- la moneda
+- congreso nacional
+- carolina tohá
+- mario marcel
+- camila vallejo
+- cobre
+- codelco
+dateline: ^\s*(?:SANTIAGO|VALPARAÍSO|CONCEPCIÓN|EFE|CHILE)\s*[-–:]\s*
+subreddits:
+- chile
+- RepublicadeChile
+skip_sections:
+- deportes
+- futbol
+- espectaculos
+- tendencias
+- vida-social
+geo: CL
+aggregator_outlets:
+  domestic:
+  - El Mercurio
+  - Emol
+  - La Tercera
+  - BioBioChile
+  - El Mostrador
+  - Cooperativa
+  - Diario Financiero
+  abroad_local:
+  - El País Chile
+  - CNN Chile
+  - DF Sud
