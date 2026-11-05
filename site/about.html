@@ -65,7 +65,7 @@
     <h2>How the 10-stage pipeline works</h2>
     <p>A scheduled GitHub Actions runner executes the pipeline every 3 hours and publishes static JSON/JS bundles to Cloudflare Pages:</p>
     <div class="pipeline">
-      <div class="step"><b>01 · Ingest</b><span>Polls 640+ RSS/Atom and Google News feeds across 60 country desks via curl.</span></div>
+      <div class="step"><b>01 · Ingest</b><span>Polls 650+ RSS/Atom and Google News feeds across 60 country desks via curl.</span></div>
       <div class="step"><b>02 · Extract</b><span>Fetches full article text with Trafilatura for domestic and accessible sources.</span></div>
       <div class="step"><b>03 · Normalise</b><span>Applies Unicode NFC normalisation (crucial for Vietnamese diacritics and Khmer script).</span></div>
       <div class="step"><b>04 · Relevance</b><span>Filters out sports/lifestyle sections and requires country mentions on world feeds.</span></div>
@@ -221,7 +221,7 @@
     const telemBar = telem ? el('div', { class: 'monitor-bar', style: 'margin: 0.5rem 0 1.25rem; padding: 0.65rem 1rem;' },
       el('div', { style: 'display: flex; flex-wrap: wrap; gap: 1.25rem; align-items: center;' },
         el('span', { class: 'typed', text: `${allCountries.length} Country Desks` }),
-        el('span', { class: 'typed', text: `${totalFeeds || '240+'} Live Feeds Polled` }),
+        el('span', { class: 'typed', text: `${totalFeeds || '650+'} Live Feeds Polled` }),
         el('span', { class: 'typed', text: `${totalArticles ? totalArticles.toLocaleString() : '35,000+'} Articles Corroborated` }),
         raw.generated_at && el('span', { class: 'meta', text: `Cycle: ${new Date(raw.generated_at).toLocaleDateString()}` })
       )
