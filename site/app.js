@@ -11,6 +11,7 @@
     { id: 'other', name: 'Other' },
   ];
   const PER_TOPIC_IN_OVERVIEW = 4;
+  const TOPIC_PAGE_CHUNK = 48;
   const STALE_HOURS = 12;
   // Where coverage comes from; the middle label is the country's own ("Vietnamese-language outlets abroad").
   function scopes(cid = country.value) {
@@ -532,16 +533,25 @@
 
   function drawer(id, stories, total, limit) {
     const shown = limit ? stories.slice(0, limit) : stories;
+    const countText = shown.length >= total ? `${total} stories` : `Top ${shown.length} of ${total} stories`;
     const sec = h('section', { class: 'drawer', style: topicVar(id), 'aria-labelledby': `d-${id}` },
       h('div', { class: 'drawer-head' },
         h('h2', { id: `d-${id}`, text: topicName(id) }),
-        h('span', { class: 'count', text: `Top ${shown.length} of ${total} stories` })),
+        h('span', { class: 'count', text: countText })),
       h('div', { class: 'grid' }, shown.map((s, i) => story(s, { lead: i === 0, i }))),
     );
     if (limit && stories.length > limit) {
-      sec.append(
-        h('button', { type: 'button', class: 'more', onclick: () => { extra[id] = (extra[id] || 0) + 8; render(false); }, text: `Show ${Math.min(8, stories.length - limit)} more` }),
-        h('button', { type: 'button', class: 'more', onclick: () => choose(id), text: `Open all ${topicName(id)}` }));
+      if (openTopic === 'all') {
+        sec.append(
+          h('button', { type: 'button', class: 'more', onclick: () => { extra[id] = (extra[id] || 0) + 8; render(false); }, text: `Show ${Math.min(8, stories.length - limit)} more` }),
+          h('button', { type: 'button', class: 'more', onclick: () => choose(id), text: `Open all ${topicName(id)} (${total})` })
+        );
+      } else {
+        sec.append(
+          h('button', { type: 'button', class: 'more', onclick: () => { extra[id] = (extra[id] || 0) + TOPIC_PAGE_CHUNK; render(false); }, text: `Show ${Math.min(TOPIC_PAGE_CHUNK, stories.length - limit)} more` }),
+          h('button', { type: 'button', class: 'more', onclick: () => { extra[id + '_all'] = true; render(false); }, text: `Show all ${stories.length} stories` })
+        );
+      }
     }
     return sec;
   }
@@ -1156,7 +1166,10 @@
         .sort((a, b) => (a === 'other') - (b === 'other') || byTopic(b)[0].score - byTopic(a)[0].score);
       order.forEach((id) => body.push(drawer(id, byTopic(id), count(id), PER_TOPIC_IN_OVERVIEW + (extra[id] || 0))));
     } else if (byTopic(openTopic).length) {
-      body.push(drawer(openTopic, byTopic(openTopic), count(openTopic), 0));
+      const topicStories = byTopic(openTopic);
+      const isAll = Boolean(extra[openTopic + '_all']);
+      const currentLimit = isAll || topicStories.length <= TOPIC_PAGE_CHUNK ? 0 : Math.min(topicStories.length, TOPIC_PAGE_CHUNK + (extra[openTopic] || 0));
+      body.push(drawer(openTopic, topicStories, count(openTopic), currentLimit));
     } else {
       body.push(h('p', { class: 'state', text: q ? `No stories match "${q}" here.` : `No ${topicName(openTopic).toLowerCase()} stories in this period.` }));
     }

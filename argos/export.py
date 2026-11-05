@@ -175,7 +175,7 @@ def run(db):
             ids = dashboard_story_ids(db, cid, days)
             if ids:
                 stories = [_story(db, db.execute("SELECT * FROM story WHERE id=?", (i,)).fetchone()) for i in ids]
-                stories.sort(key=lambda st: -st["score"])
+                stories.sort(key=lambda st: -(st["score"] or 0.0))
                 totals = {c: db.execute("SELECT COUNT(*) FROM story WHERE country=? AND window_days=? AND category=?", (cid, days, c)).fetchone()[0]
                           for c in CATEGORIES}          # all stories found in the window, of which the top ones are exported
                 payload = {"country": cid, "period": label, "days": days, "generated_at": now, "categories": CATEGORIES,

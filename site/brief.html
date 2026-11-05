@@ -206,7 +206,9 @@
         <option value="20">Top 20</option>
         <option value="30">Top 30</option>
         <option value="40">Top 40</option>
-        <option value="50">Top 50 (max)</option>
+        <option value="50">Top 50</option>
+        <option value="100">Top 100</option>
+        <option value="1000">All stories</option>
       </select></label>
       <div class="field" style="display:flex; gap:0.4rem;">
         <button type="button" class="research" style="margin:0; height:2.2rem;" onclick="window.print()">Print / PDF</button>
@@ -350,7 +352,7 @@
   async function renderBrief() {
     const c = index.countries.find((x) => x.id === cSel.value) || index.countries[0];
     const periodVal = pSel.value || '7d';
-    const limit = Math.min(50, Math.max(1, parseInt(nSel.value, 10) || 10));
+    const limit = Math.min(1000, Math.max(1, parseInt(nSel.value, 10) || 10));
     try { if (location.protocol !== 'file:') history.replaceState(null, '', `#${c.id}`); } catch {}
 
     doc.replaceChildren(el('p', { class: 'state', text: `Assembling intelligence dispatches for ${c.name} in English…` }));

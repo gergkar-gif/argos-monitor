@@ -15,21 +15,24 @@ import math
 from datetime import datetime, timedelta, timezone
 
 
-def dashboard_story_ids(db, country=None, window_days=None, n=50, per_category=12):
-    """Stories the site shows for a country and window: the top n overall plus the top few in each category.
-    With no country or window given, the union over every one."""
+def dashboard_story_ids(db, country=None, window_days=None, n=None, per_category=None):
+    """Stories the site shows for a country and window.
+    With n and per_category omitted (default), returns all stories for the window ordered by score."""
     where, args = [], []
     if country:
         where.append("country=?"); args.append(country)
     if window_days:
         where.append("window_days=?"); args.append(window_days)
     cond = (" WHERE " + " AND ".join(where)) if where else ""
+    if n is None and per_category is None:
+        return [r[0] for r in db.execute(f"SELECT id FROM story{cond} ORDER BY COALESCE(score, 0.0) DESC", args).fetchall()]
     ids = []
     for c, w in db.execute(f"SELECT DISTINCT country, window_days FROM story{cond}", args).fetchall():
-        ids += [r[0] for r in db.execute("SELECT id FROM story WHERE country=? AND window_days=? ORDER BY score DESC LIMIT ?", (c, w, n))]
+        if n:
+            ids += [r[0] for r in db.execute("SELECT id FROM story WHERE country=? AND window_days=? ORDER BY COALESCE(score, 0.0) DESC LIMIT ?", (c, w, n))]
         for (cat,) in db.execute("SELECT DISTINCT category FROM story WHERE country=? AND window_days=?", (c, w)).fetchall():
             ids += [r[0] for r in db.execute(
-                "SELECT id FROM story WHERE country=? AND window_days=? AND category=? ORDER BY score DESC LIMIT ?", (c, w, cat, per_category))]
+                "SELECT id FROM story WHERE country=? AND window_days=? AND category=? ORDER BY COALESCE(score, 0.0) DESC" + (f" LIMIT {per_category}" if per_category else ""), (c, w, cat))]
     return list(dict.fromkeys(ids))
 
 
