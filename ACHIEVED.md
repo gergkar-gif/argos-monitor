@@ -21,3 +21,5 @@ Completed items moved from `docs/roadmap.md` per project handover rules.
     Removed hardcoded 12-story limitation; exported complete story clusters per country window; added "Show all" / "Open all" drawer navigation and top-100 brief support.
   - **"What changed?" delta comparisons between windows (D24, D25, docs/delta_spec.md)** — **Done 2026-11-05.**
     Deterministic two-window partitioning ($T$ vs $T_{-1}$), story movement states (`[NEW]`, `[SURGE +ΔN]`, `[COOLING]`), international/diaspora scope escalation (`[INTL PICKUP]`, `[DIASPORA PICKUP]`), state media narrative drift (`[STATE SURGE]`), and Macro Agenda Movement Bar (`site/app.js`, `site/style.css`, `site/about.html`) with zero emojis.
+  - **Bilateral delta cross-comparisons in Multilateral Affairs** — **Done 2026-11-05.**
+    Scoreboard calculating bilateral news cycle momentum multipliers, net article growth (&Delta;N), breakout badges, and lead policy domain concentration in the Joint & Multilateral Affairs monitor.

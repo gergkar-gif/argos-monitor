@@ -407,6 +407,53 @@ summary:hover { color: var(--ink); }
 .bilateral-col-head span { font: 600 0.78rem/1.2 var(--sans); color: var(--ink-2); }
 .bilateral-joint { margin-top: 2rem; padding-top: 1.5rem; border-top: 2px solid var(--ink); }
 
+/* ---- Bilateral & Multilateral Delta Cross-Comparison Panel ---- */
+.bilateral-delta-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0.75rem 0 1.25rem;
+  padding: 0.75rem 1rem;
+  background: var(--paper-warm, #fbfaf8);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--indigo);
+}
+.bilateral-delta-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 0.6rem;
+  font: 400 0.84rem/1.3 var(--sans);
+}
+.bilateral-delta-head strong {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.78rem;
+  color: var(--ink);
+}
+.bilateral-delta-body {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  font: 400 0.8rem/1.3 var(--sans);
+}
+.bilateral-delta-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.6rem;
+  align-items: center;
+}
+.bilateral-delta-cat {
+  margin-left: auto;
+  font-size: 0.8rem;
+}
+.bilateral-delta-cat strong {
+  color: var(--ink);
+}
+
 /* ---- Monitor Bar & Inline Country & Time Window Pickers ---- */
 .monitor-bar { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; align-items: center; justify-content: space-between; margin: 0.75rem 0 1rem; padding: 0.65rem 0.9rem; background: var(--paper-warm, #fbfaf8); border: 1px solid var(--rule); }
 .monitor-filters { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.25rem; }

@@ -944,6 +944,67 @@
     }
   }
 
+  function bilateralDeltaPanel(matchedStories, selectedCountries, relPeriod) {
+    if (!matchedStories || !matchedStories.length) return null;
+
+    const deltas = matchedStories.map((s) => s.delta).filter(Boolean);
+    const currTotal = deltas.reduce((acc, d) => acc + (d.curr || 0), 0);
+    const prevTotal = deltas.reduce((acc, d) => acc + (d.prev || 0), 0);
+    const netArticles = currTotal - prevTotal;
+    const ratio = prevTotal > 0 ? (currTotal / prevTotal).toFixed(2) + 'x' : currTotal > 0 ? `${currTotal}x` : '1.0x';
+
+    const nNew = deltas.filter((d) => d.state === 'new').length;
+    const nSurge = deltas.filter((d) => d.state === 'surging').length;
+    const nCooling = deltas.filter((d) => d.state === 'cooling').length;
+    const nIntl = deltas.filter((d) => d.scope_shift === 'international_pickup').length;
+    const nDiaspora = deltas.filter((d) => d.scope_shift === 'diaspora_pickup').length;
+    const nStateSurge = deltas.filter((d) => d.state_surge).length;
+
+    // Category distribution
+    const catCounts = {};
+    for (const s of matchedStories) {
+      const c = s.category || 'other';
+      catCounts[c] = (catCounts[c] || 0) + 1;
+    }
+    const topCatEntry = Object.entries(catCounts).sort((a, b) => b[1] - a[1])[0];
+    const topCatName = topCatEntry ? topicName(topCatEntry[0]) : null;
+    const topCatPct = topCatEntry ? Math.round((topCatEntry[1] / matchedStories.length) * 100) : 0;
+
+    let overallState = 'steady';
+    if (prevTotal === 0 && currTotal >= 2) overallState = 'new';
+    else if (netArticles >= 3 && (currTotal / Math.max(1, prevTotal)) >= 1.75) overallState = 'surging';
+    else if (-netArticles >= 3 && (currTotal / Math.max(1, prevTotal)) <= 0.40) overallState = 'cooling';
+
+    const sign = netArticles > 0 ? '+' : '';
+    const arrow = netArticles > 0 ? '↑' : (netArticles < 0 ? '↓' : '·');
+
+    const pills = [];
+    if (overallState === 'surging') pills.push(h('span', { class: 'stamp stamp-surge', text: `[SURGE ${sign}${netArticles}]` }));
+    else if (overallState === 'new') pills.push(h('span', { class: 'stamp stamp-new', text: '[NEW EMERGENCE]' }));
+    else if (overallState === 'cooling') pills.push(h('span', { class: 'stamp stamp-cooling', text: '[COOLING]' }));
+
+    if (nNew > 0 && overallState !== 'new') pills.push(h('span', { class: 'stamp stamp-new', text: `${nNew} [NEW]` }));
+    if (nSurge > 0 && overallState !== 'surging') pills.push(h('span', { class: 'stamp stamp-surge', text: `${nSurge} [SURGE]` }));
+    if (nIntl > 0) pills.push(h('span', { class: 'stamp stamp-pickup', text: `${nIntl} [INTL PICKUP]` }));
+    if (nDiaspora > 0) pills.push(h('span', { class: 'stamp stamp-pickup', text: `${nDiaspora} [DIASPORA]` }));
+    if (nStateSurge > 0) pills.push(h('span', { class: 'stamp red', text: `${nStateSurge} [STATE SURGE]` }));
+
+    return h('div', { class: 'bilateral-delta-panel', role: 'region', 'aria-label': 'Bilateral delta comparisons' },
+      h('div', { class: 'bilateral-delta-head' },
+        h('strong', { text: selectedCountries.length === 2 ? 'Bilateral News Cycle Momentum' : 'Multilateral News Cycle Momentum' }),
+        h('span', { class: 'meta', text: `(vs prior ${relPeriod === '24h' ? '24h' : '7d'}): ` }),
+        h('span', { class: 'typed', text: `${currTotal} articles across ${matchedStories.length} joint stories (${arrow} ${sign}${netArticles} articles · ${ratio} velocity)` })
+      ),
+      h('div', { class: 'bilateral-delta-body' },
+        pills.length > 0 && h('div', { class: 'bilateral-delta-pills' }, ...pills),
+        topCatName && h('div', { class: 'bilateral-delta-cat' },
+          h('span', { class: 'meta', text: 'Lead Focus: ' }),
+          h('strong', { text: `${topCatName} (${topCatPct}%)` })
+        )
+      )
+    );
+  }
+
   async function renderRelations() {
     T.queue.length = 0;
     if (!selectedCountries.length) selectedCountries = ['cambodia', 'vietnam'];
@@ -1072,12 +1133,14 @@
     matchedStories.sort((a, b) => new Date(b.date || 0).getTime() - new Date(a.date || 0).getTime());
 
     loadingState.remove();
+    const deltaPanel = bilateralDeltaPanel(matchedStories, selectedCountries, relPeriod);
     results.replaceChildren(
       h('p', { class: 'result-line' },
         h('b', { text: `Joint & Multilateral Affairs · ${titleStr}` }),
         ` · ${plural(matchedStories.length, 'story', 'stories')} found · ${relPeriod === '24h' ? 'Last 24 hours' : 'Last 7 days'} · `,
         h('button', { type: 'button', class: 'desk-link', text: '← Back to Overview', onclick: () => openCountry('home') })),
       bar,
+      deltaPanel,
       matchedStories.length
         ? h('div', { class: 'grid' }, matchedStories.map((s, i) => story(s, { lead: i === 0, i })))
         : h('p', { class: 'state', text: `No stories found involving all selected partners (${titleStr}) in the ${relPeriod === '24h' ? 'last 24 hours' : 'last 7 days'}.` }),
