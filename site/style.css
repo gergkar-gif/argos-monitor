@@ -366,6 +366,7 @@ main { max-width: 68rem; margin: 0 auto; padding: 2rem 1.5rem 5rem; outline: non
 .stamp.indigo { color: var(--indigo); }
 .stamp.red { color: var(--red); }
 .stamp.teal { color: var(--teal); }
+.stamp.purple { color: #6b21a8; }
 .stamp.orange { color: #c2410c; }
 .stamp.typed { color: var(--ink-3); font-weight: 600; text-transform: none; letter-spacing: 0; }
 .stamp.country-tag {
@@ -381,6 +382,7 @@ a.stamp:hover { text-decoration: underline; }
 .stamp.stamp-surge { color: var(--red); border: 1px solid var(--red); padding: 0 0.3rem; font-weight: 700; letter-spacing: 0.04em; }
 .stamp.stamp-cooling { color: var(--ink-3); border: 1px solid var(--ink-3); padding: 0 0.3rem; }
 .stamp.stamp-pickup { color: var(--indigo); border: 1px solid var(--indigo); padding: 0 0.3rem; font-weight: 700; }
+.stamp.stamp-election { color: #6b21a8; border: 1px solid #6b21a8; padding: 0 0.3rem; font-weight: 700; letter-spacing: 0.05em; }
 
 .cover { display: flex; flex-wrap: wrap; gap: 0.2rem 0.85rem; font: 400 0.8rem/1.35 var(--sans); color: var(--ink-3); }
 .cover b { color: var(--ink-2); font-weight: 600; }

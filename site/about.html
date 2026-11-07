@@ -75,6 +75,7 @@
       <li><strong>Official vs. reported (<span class="stamp red">Official</span> / <span class="stamp indigo">Reported</span>):</strong> Government and ruling-party outlets are explicitly tagged so official statements are immediately distinguishable from independent reporting.</li>
       <li><strong>Live methodology synchronization:</strong> The About page and system specifications are updated in the same change whenever country desks, analytical layers, or pipeline stages are modified.</li>
       <li><strong>Zero emojis across the broadsheet:</strong> Built for diplomatic and institutional press review. No emojis are permitted anywhere in the UI, alerts, badges, logs, or documentation. External RSS emojis are stripped upon ingestion.</li>
+      <li><strong>Priority election coverage:</strong> National, presidential, parliamentary, and local elections, ballot results, voter turnout, referendums, and official campaign outcomes receive top policy weighting (1.0), deterministic ranking priority boosts, and prominent dispatch placement in diplomatic intelligence briefs.</li>
     </ol>
   </section>
 
@@ -226,6 +227,10 @@
       <div class="step">
         <b>04 · Local Incident Suppression</b>
         <span>Individual traffic accidents, local crime trials, weather reports, and celebrity gossip are assigned low baseline weights (0.05–0.2). An individual murder trial with 15 domestic articles will consistently rank below a bilateral trade corridor agreement with only 4 articles, ensuring high signal-to-noise ratio in daily executive briefs.</span>
+      </div>
+      <div class="step">
+        <b>05 · Standing Priority for Elections &amp; Referendums</b>
+        <span>National, presidential, parliamentary, and municipal elections, ballot results, voter turnout, referendums, and official campaign outcomes receive top policy weighting (1.0), ranking priority boosts, and prominent <span class="stamp stamp-election">ELECTION PRIORITY</span> placement in diplomatic intelligence briefs across all countries.</span>
       </div>
     </div>
   </section>

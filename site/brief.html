@@ -366,8 +366,15 @@
       }
     }
 
+    function isElectionStory(s) {
+      const th = (s.themes || []).join(' ').toLowerCase();
+      if (th.includes('election') || th.includes('campaign') || th.includes('választás') || th.includes('bầu cử')) return 1;
+      const t = (s.headline && s.headline.title ? s.headline.title : '').toLowerCase();
+      return /\b(election|elections|presidential election|parliamentary election|general election|ballot|voting|voter turnout|referendum|választás|bầu cử)\b/i.test(t) ? 1 : 0;
+    }
+
     const stories = [...(rawData.stories || [])]
-      .sort((a, b) => b.independent_sources - a.independent_sources || b.score - a.score)
+      .sort((a, b) => isElectionStory(b) - isElectionStory(a) || b.independent_sources - a.independent_sources || b.score - a.score)
       .slice(0, limit);
 
     const now = new Date();
@@ -433,6 +440,7 @@
           el('div', { class: 'dispatch-num' },
             el('strong', { text: `DISPATCH #${String(idx + 1).padStart(2, '0')}` }),
             el('span', { text: `· ${(s.category || 'general').replace(/_/g, ' ').toUpperCase()}` }),
+            isElectionStory(s) && el('span', { class: 'stamp stamp-election', text: 'ELECTION PRIORITY' }),
             isOfficial && el('span', { class: 'stamp red', text: 'OFFICIAL RECORD' }),
             isAbroadOnly && el('span', { class: 'stamp teal', text: 'NOT IN DOMESTIC PRESS' }),
             el('span', { class: 'typed', text: `${s.independent_sources} independent outlets · ${s.articles} articles` })

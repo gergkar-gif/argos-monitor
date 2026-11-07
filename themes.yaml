@@ -10,6 +10,14 @@
 default_weight: 0.3
 
 themes:
+  - id: elections
+    label: Elections and political campaigns
+    weight: 1.0
+    category: internal_politics        # the topic a story falls back to when its wording alone decides nothing
+    describe:
+      - general election, presidential election, parliamentary election, municipal elections, voting, voter turnout, campaign rallies, ballot counting, election results, coalition negotiations
+    keywords: ["election", "elections", "presidential election", "parliamentary election", "general election", "poll", "polls", "ballot", "ballots", "voting", "voters", "turnout", "vote counting", "campaign trail", "electoral commission", "referendum", "by-election", "választás", "bầu cử"]
+
   - id: diplomacy
     label: Diplomacy
     weight: 1.0

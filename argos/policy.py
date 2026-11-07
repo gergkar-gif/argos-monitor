@@ -18,7 +18,7 @@ from .embed import DIM, Embedder
 
 KEYWORD_SHARE = 0.4   # headline-weighted share of a story's articles that must match a theme's keywords
 SIM_Z = 4.0           # similarity alone needs this many standard deviations above the window's average story
-ALWAYS = {"anticorruption", "security", "diplomacy"}   # themes that stay even on a crime- or accident-flavoured story
+ALWAYS = {"anticorruption", "security", "diplomacy", "elections"}   # themes that stay even on a crime- or accident-flavoured story
 
 
 def _matcher(keywords):

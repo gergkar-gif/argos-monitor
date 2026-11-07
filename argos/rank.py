@@ -48,9 +48,12 @@ def run(db):
         growing = sum(r["t"] >= recent for r in rows) / len(rows) >= 0.4
         coverage = (len(independent) + 0.5 * (len(scopes) - 1) + (1.0 if growing else 0.0)
                     + 0.2 * math.log2(len(rows)))
-        policy = db.execute("SELECT policy FROM story WHERE id=?", (sid,)).fetchone()[0]
-        policy = 0.3 if policy is None else policy
-        score = coverage * (0.4 + 0.8 * policy) + 3 * policy
+        pol_row = db.execute("SELECT policy, themes FROM story WHERE id=?", (sid,)).fetchone()
+        policy = 0.3 if (not pol_row or pol_row[0] is None) else pol_row[0]
+        themes_str = (pol_row[1] or "").lower() if pol_row else ""
+        is_election = any(w in themes_str for w in ("election", "választás", "bầu cử"))
+        # Standing rule 8: elections receive top policy priority and priority coverage boost
+        score = coverage * (0.4 + 0.8 * policy) + 3 * policy + (2.0 if is_election else 0.0)
         db.execute("UPDATE story SET score=? WHERE id=?", (round(score, 2), sid))
     db.commit()
     print("rank: scored", db.execute("SELECT COUNT(*) FROM story").fetchone()[0], "stories")
