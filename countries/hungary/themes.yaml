@@ -1,6 +1,9 @@
 # Hungary's additions to the shared themes (../../themes.yaml): Hungarian keywords and descriptions, plus one theme
 # that matters a great deal in Hungary's case: its relations with the EU and with Russia, Ukraine and China.
 themes:
+  - id: elections
+    describe: ["országgyűlési választás, önkormányzati választás, európai parlamenti választás, szavazás, kampány, jelölt, Nemzeti Választási Iroda, mandátum"]
+    keywords: ["választás", "választások", "országgyűlési választás", "önkormányzati választás", "időközi választás", "szavazás", "szavazatok", "voksolás", "nemzeti választási iroda", "nvi", "mandátum", "kampány", "képviselőjelölt"]
   - id: diplomacy
     describe: ["állami látogatás, kétoldalú tárgyalás, diplomáciai kapcsolatok, nagykövet, külügyminiszter, Szijjártó Péter"]
     keywords: ["állami látogatás", "kétoldalú", "nagykövet", "külügyminiszter", "szijjártó", "csúcstalálkozó", "külügyminisztérium", "diplomáciai"]

@@ -1,6 +1,9 @@
 # Vietnam's additions to the shared themes: Vietnamese keywords and descriptions, and Vietnam-specific English terms.
 # An entry whose id matches a shared theme extends it; a new id adds a theme.
 themes:
+  - id: elections
+    describe: ["bầu cử Quốc hội, Hội đồng nhân dân các cấp, hiệp thương, danh sách người ứng cử, bỏ phiếu, kết quả bầu cử"]
+    keywords: ["bầu cử", "bầu cử quốc hội", "hội đồng nhân dân", "bỏ phiếu", "phiếu bầu", "hiệp thương", "ứng cử viên", "đại biểu quốc hội", "danh sách ứng cử"]
   - id: diplomacy
     describe: ["chuyến thăm cấp nhà nước, hội đàm song phương, quan hệ ngoại giao, đối tác chiến lược, đại sứ, ngoại trưởng"]
     keywords: ["thăm cấp nhà nước", "chuyến thăm", "hội đàm", "đối tác chiến lược", "quan hệ ngoại giao", "quan hệ song phương", "đại sứ", "ngoại trưởng", "bộ trưởng ngoại giao", "asean", "liên hợp quốc"]
