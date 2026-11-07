@@ -27,6 +27,8 @@ class Embedder:
         self.input_names = {i.name for i in self.sess.get_inputs()}
 
     def encode(self, texts):
+        if not texts:
+            return np.zeros((0, DIM), dtype=np.float32)
         enc = self.tok.encode_batch(texts)
         ids = np.array([e.ids for e in enc], dtype=np.int64)
         mask = np.array([e.attention_mask for e in enc], dtype=np.int64)

@@ -56,11 +56,14 @@ def run(db):
 
 
 def _run_country(db, emb, country):
+    if not db.execute("SELECT 1 FROM story WHERE country=? LIMIT 1", (country,)).fetchone():
+        return
     cfg = packs.load(country)["themes"]
     default, themes = cfg["default_weight"], cfg["themes"]
     protos = []
     for t in themes:
-        v = emb.encode(["passage: " + d for d in t["describe"]]).mean(0)
+        desc = t.get("describe") or [t["label"]]
+        v = emb.encode(["passage: " + d for d in desc]).mean(0)
         protos.append(v / np.linalg.norm(v))
     protos = np.array(protos)
 

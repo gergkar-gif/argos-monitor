@@ -88,10 +88,13 @@ def run(db):
     ids = dashboard_story_ids(db)
     if not ids:
         return
-    rows = db.execute(
-        "SELECT a.id, a.title, a.language FROM story s JOIN article a ON a.id=s.representative_article_id "
-        f"WHERE s.id IN ({','.join('?' * len(ids))}) AND a.language != 'en' "
-        "AND a.id NOT IN (SELECT article_id FROM translation)", ids).fetchall()
+    rows = []
+    for i in range(0, len(ids), 500):
+        chunk = ids[i:i + 500]
+        rows.extend(db.execute(
+            "SELECT a.id, a.title, a.language FROM story s JOIN article a ON a.id=s.representative_article_id "
+            f"WHERE s.id IN ({','.join('?' * len(chunk))}) AND a.language != 'en' "
+            "AND a.id NOT IN (SELECT article_id FROM translation)", chunk).fetchall())
 
     todo = [r for r in rows if r["language"] in MODELS]
     print(f"translate: {len(todo)} non-English headlines to translate across {len(set(r['language'] for r in todo))} languages")

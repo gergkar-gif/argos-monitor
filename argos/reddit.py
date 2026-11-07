@@ -75,7 +75,7 @@ def _filter_country(cid, raw_posts, emb, noise_vecs):
         return []
     themes = packs.load(cid)["themes"]["themes"]
     protos = np.array([
-        (v := emb.encode(["passage: " + d for d in t["describe"]]).mean(0)) / np.linalg.norm(v)
+        (v := emb.encode(["passage: " + d for d in (t.get("describe") or [t["label"]])]).mean(0)) / np.linalg.norm(v)
         for t in themes
     ])
     matchers = {
