@@ -6,6 +6,7 @@ import numpy as np
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
 from argos.embed import DIM, Embedder
+from argos import packs
 
 
 class TestEmbedPolicy(unittest.TestCase):
@@ -26,6 +27,22 @@ class TestEmbedPolicy(unittest.TestCase):
         proto /= np.linalg.norm(proto)
         self.assertEqual(proto.shape, (DIM,))
         self.assertFalse(np.isnan(proto).any())
+
+    def test_all_country_packs_have_valid_theme_prototypes(self):
+        """Ensure all 87 country packs define themes with non-empty labels or descriptions."""
+        pack_list = packs.pack_ids()
+        self.assertGreater(len(pack_list), 0, "At least one country pack should exist")
+        for cid in pack_list:
+            cfg = packs.load(cid).get("themes") or {}
+            themes = cfg.get("themes") or []
+            self.assertGreater(len(themes), 0, f"Pack {cid} must have themes defined")
+            for t in themes:
+                tid = t.get("id")
+                self.assertTrue(tid, f"Theme in pack {cid} missing id")
+                self.assertTrue(t.get("label"), f"Theme {tid} in pack {cid} missing label")
+                desc = t.get("describe") or [t.get("label")]
+                self.assertTrue(desc and any(d and str(d).strip() for d in desc),
+                                f"Theme {tid} in pack {cid} must have non-empty describe or label")
 
 
 if __name__ == "__main__":
