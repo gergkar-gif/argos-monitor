@@ -959,9 +959,16 @@
     ['Wildfire & Drought', /\b(wildfire|forest fire|bushfire|drought|heatwave|chay rung|han han|kebakaran hutan|kekeringan|ไฟป่า|ภัยแล้ง|erdotuz|aszaly|pozar lasu|susa|orman yangini|kuraklik|incendio florestal|seca\b)/],
   ];
 
+  // Co-occurrence requirements: religious sensitivity requires BOTH a confessional identity/symbol
+  // AND an active conflict, violence, coercion, or persecution vector.
+  const CONFLICT_IMPACT_PATTERN = /\b(attack|attacks|assault|clash|clashes|ambush|strike|strikes|bomb|bombing|bombed|explosion|shoot|shooting|shot|kill|killed|killing|murder|murdered|dead|death|fatalities|casualties|massacre|behead|beheaded|slaughter|kidnap|kidnapped|kidnapping|abduct|abducted|abduction|hostage|hostages|pogrom|lynch|lynched|arson|burned|burnt|firebomb|desecrat|vandaliz|persecut|persecution|terror|terrorist|terrorism|militant|militants|militia|militias|insurgent|insurgency|jihad|jihadist|extremis|extremist|ied|anti-conversion|blasphemy|forced conversion|expel|expels|expelled|expulsion|displaced|refugee|refugees|fled|fleeing|shelled|shelling|mortar|drone strike|air strike|arrest|arrested|detained|sentenced|banned|demolish|demolished|shut down|closed down|looting|looted|raid|raided|victim|victims|mass grave|mass graves|tam cong|sat hai|giet|bat coc|khung bo|dot pha|pha huy|merenylet|tamadas|gyilkossag|emberrablas|lefejezes|gyujtogatas|rombolas|katonai|hadsereg)\b/i;
+
+  // Strict negative filter: exclude cultural, artistic, theatrical, and sports stories
+  const CULTURAL_SPORTS_EXCLUDE = /\b(festival|dance|choreodrama|theatre|theater|concert|music|album|song|singer|film|movie|championship|tournament|league|match|coach|player|stadium|actor|actress|museum|art exhibition|ballet|opera|pfdk|football|soccer|basketball|baseball)\b/i;
+
   const RELIGIOUS_RULES = [
     ['Judaism', /\b(synagogue|anti-semit|antisemit|jewish|judaism|kosher|rabbi|shul|yemenite jew|zsinagoga|zsido|antiszemita|bai do thai)\b/i],
-    ['Christianity', /\b(christianity|christians|christian community|christian group|church|chapel|monastery|cathedral|priest|pastor|nun|bishop|archbishop|copt|coptic|chaldean|assyrian|maronite|evangelical|vatican|pope|templom|lelkipasztor|lelkesz|puspok|kereszteny|nha tho|linh muc|giao dan)\b/i],
+    ['Christianity', /\b(christians|christianity|christian (?:faithful|minority|minorities|community|communities|group|groups|church|churches|pastor|priest|genocide|persecution|population|village|villages|family|families|civilian|civilians)|church|chapel|monastery|cathedral|priest|pastor|nuns|copt|coptic|chaldean|assyrian|maronite|evangelical|templom|lelkipasztor|lelkesz|puspok|kereszteny|nha tho|linh muc|giao dan)\b/i],
     ['Islam', /\b(mosque|minaret|imam|madrassa|madrasa|quran|koran|muslim|islam|islamic|islamist|rohingya|uyghur|uighur|ahmadiyya|hazara|shia|sunni|fatwa|mecset|muszlim|muzulman|nha tho hoi giao)\b/i],
     ['Other Faiths & Sites', /\b(yazidi|bahai|baha'i|hindutva|anti-conversion|blasphemy|sacred site|holy site|cemetery desecrat|pogrom|sectarian|interfaith|inter-communal|istenkaromlas|atterites|vallasi uldozes|giao phai)\b/i],
   ];
@@ -986,6 +993,7 @@
     if (trackId === 'rel_islam') return trads.includes('Islam');
     if (trackId === 'rel_other') return trads.includes('Other Faiths & Sacred Sites');
     const text = fold([s.headline && s.headline.title, T.byText.get((s.headline && s.headline.title) || '') || '', ...(s.sources || []).slice(0, 4).map((r) => r.title)].join(' '));
+    if (CULTURAL_SPORTS_EXCLUDE.test(text)) return false;
     if (trackId === 'insurgency') return /\b(terror|insurgency|militant|boko haram|iswap|al-shabaab|isis|daesh|jihad|taliban|houthi|ied|ambush)\b/i.test(text);
     if (trackId === 'unrest') return /\b(protest|riot|demonstrat|curfew|strike|clash|looting|crackdown|police)\b/i.test(text);
     return true;
@@ -994,6 +1002,8 @@
   function matchAlertConflictTrack(alert, trackId) {
     if (!trackId || trackId === 'all') return true;
     const hay = fold(`${alert.cname || ''} ${alert.region || ''} ${alert.kind || ''} ${alert.title || ''} ${alert.summary || ''}`);
+    if (CULTURAL_SPORTS_EXCLUDE.test(hay)) return false;
+    if (trackId.startsWith('rel_') && !CONFLICT_IMPACT_PATTERN.test(hay)) return false;
     if (trackId === 'rel_all') {
       return RELIGIOUS_RULES.some(([, re]) => re.test(hay));
     }
@@ -1008,19 +1018,37 @@
 
   function tagEventStory(s) {
     const th = (s.themes || []).join(' ').toLowerCase();
-    if (th.includes('sport') || th.includes('culture')) return s;
-    const text = fold([s.headline.title, T.byText.get(s.headline.title) || '', ...(s.sources || []).slice(0, 4).map((r) => r.title)].join(' '));
-    const dType = s.disaster_type || (DISASTER_RULES.find(([, re]) => re.test(text)) || [])[0] || null;
+    if (th.includes('sport') || th.includes('culture') || th.includes('entertainment') || s.category === 'sport_culture') return s;
+    const leadText = fold([s.headline && s.headline.title, T.byText.get((s.headline && s.headline.title) || '') || ''].join(' '));
+    const dType = s.disaster_type || (DISASTER_RULES.find(([, re]) => re.test(leadText)) || [])[0] || null;
 
-    const relTraditions = [];
-    for (const [trad, re] of RELIGIOUS_RULES) {
-      if (re.test(text)) relTraditions.push(trad);
+    // Strict religious sensitivity: ONLY tag when BOTH a religious group/symbol AND an active conflict/harm event co-occur
+    // within the SAME title or quote, while strictly excluding cultural, arts, festival, and sports articles.
+    let relTraditions = null;
+    const candidates = [
+      [s.headline && s.headline.title, T.byText.get((s.headline && s.headline.title) || '') || ''],
+      ...(s.sources || []).slice(0, 3).map((r) => [r.title, ''])
+    ];
+
+    for (const [title, trans] of candidates) {
+      if (!title) continue;
+      const text = fold(`${title} ${trans}`);
+      if (CULTURAL_SPORTS_EXCLUDE.test(text)) continue;
+      if (!CONFLICT_IMPACT_PATTERN.test(text) && s.category !== 'defence_security') continue;
+      const hits = [];
+      for (const [trad, re] of RELIGIOUS_RULES) {
+        if (re.test(text)) hits.push(trad);
+      }
+      if (hits.length) {
+        relTraditions = hits;
+        break;
+      }
     }
 
     return {
       ...s,
       disaster_type: dType,
-      religious_traditions: s.religious_traditions || (relTraditions.length ? relTraditions : null)
+      religious_traditions: s.religious_traditions || relTraditions
     };
   }
 
@@ -1045,6 +1073,8 @@
     const add = (s, cid, cname, region) => {
       if (!s || seen.has(s.id)) return;
       if (cutoff && storyRecency(s) < cutoff) return;
+      const th = (s.themes || []).join(' ').toLowerCase();
+      if (th.includes('sport') || th.includes('culture') || th.includes('entertainment') || s.category === 'sport_culture') return;
       const tagged = tagEventStory({ ...s, country: s.country || cid, country_name: s.country_name || cname, region: s.region || region || getRegion(s.country || cid) });
       const keep = isDis
         ? Boolean(tagged.disaster_type)
@@ -1053,7 +1083,7 @@
            || (tagged.themes || []).includes('Security and defence')
            || (tagged.themes || []).includes('Civil unrest and armed conflict')
            || (tagged.themes || []).includes('Sectarian and confessional violence')
-           || Boolean(tagged.religious_traditions && tagged.religious_traditions.length && ['defence_security', 'internal_politics', 'foreign_policy', 'society_rights'].includes(tagged.category))
+           || Boolean(tagged.religious_traditions && tagged.religious_traditions.length)
         ));
       if (keep) { seen.add(s.id); out.push(tagged); }
     };
