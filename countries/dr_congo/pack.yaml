@@ -82,3 +82,6 @@ classify:
 
 geo: CD
 reddit: [congo]
+
+# Auxiliary real-time and crisis social channels
+telegram: ['actualitecd']

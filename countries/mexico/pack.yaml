@@ -93,3 +93,6 @@ classify:
 
 geo: MX
 reddit: [mexico]
+
+# Auxiliary real-time and crisis social channels
+telegram: ['animalpolitico']

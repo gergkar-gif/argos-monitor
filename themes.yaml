@@ -114,6 +114,69 @@ themes:
       - defence cooperation, maritime security, military exercises, cybersecurity, national security
     keywords: ["defence", "defense", "military", "maritime", "cybersecurity", "national security"]
 
+  - id: unrest_conflict
+    label: Civil unrest and armed conflict
+    weight: 1.0
+    category: defence_security        # the topic a story falls back to when its wording alone decides nothing
+    describe:
+      - violent protests, armed clashes, terrorist attacks, bombing, mass shooting, riots, civil unrest, coup, martial law, curfew, insurgency, militants, gunfire, casualties
+    keywords: ["protest", "protests", "riot", "riots", "clash", "clashes", "bombing", "explosion", "shooting", "shootout", "terrorist", "terrorism", "coup", "martial law", "curfew", "insurgency", "militants", "hostage", "demonstration", "demonstrators", "gunfire", "casualties", "air strike", "missile strike", "drone strike"]
+
+  - id: sectarian_conflict
+    label: Sectarian and confessional violence
+    weight: 1.0
+    category: defence_security        # the topic a story falls back to when its wording alone decides nothing
+    describe:
+      - sectarian violence, religious persecution, extremist attacks on religious minorities, church attack, synagogue attack, mosque bombing, desecration of sacred sites, anti-semitic violence, anti-conversion violence, blasphemy lynching, cleric abduction, faith-based displacement
+    keywords:
+      - "sectarian"
+      - "sectarian violence"
+      - "religious violence"
+      - "religious persecution"
+      - "synagogue attack"
+      - "synagogue arson"
+      - "anti-semitic"
+      - "antisemitic"
+      - "antisemitism"
+      - "jewish community targeted"
+      - "church attack"
+      - "church arson"
+      - "pastor killed"
+      - "priest murdered"
+      - "priest abducted"
+      - "cleric kidnapped"
+      - "mosque bombing"
+      - "mosque attack"
+      - "blasphemy lynching"
+      - "blasphemy charge"
+      - "forced conversion"
+      - "anti-conversion"
+      - "copt attacked"
+      - "yazidi targeted"
+      - "rohingya targeted"
+      - "uyghur persecution"
+      - "desecration of sacred sites"
+      - "pogrom"
+      - "bạo lực tôn giáo"
+      - "xung đột sắc tộc"
+      - "tấn công nhà thờ"
+      - "tấn công giáo đường"
+      - "bài do thái"
+      - "bắt cóc linh mục"
+      - "felekezeti erőszak"
+      - "vallásüldözés"
+      - "keresztényüldözés"
+      - "zsinagóga elleni"
+      - "antiszemita"
+      - "templomrombolás"
+      - "istenkáromlás"
+      - "áttérítés"
+      - "violences confessionnelles"
+      - "antisémitisme"
+      - "ataque a sinagoga"
+      - "antisemitismus"
+      - "антисемитизм"
+
   - id: anticorruption
     label: Anti-corruption drive
     weight: 0.8
@@ -136,8 +199,8 @@ themes:
     weight: 0.1
     low: true
     describe:
-      - an individual crime, arrest, criminal trial, fraud case, police investigation
-    keywords: ["arrested", "trial", "sentenced", "fraud", "murder", "robbery"]
+      - an individual petty crime, arrest, criminal trial, theft, fraud case, police investigation
+    keywords: ["arrested", "trial", "sentenced", "fraud", "embezzlement", "theft", "burglary"]
 
   - id: accident_weather
     label: Accidents and weather

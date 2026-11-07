@@ -44,6 +44,24 @@ class TestEmbedPolicy(unittest.TestCase):
                 self.assertTrue(desc and any(d and str(d).strip() for d in desc),
                                 f"Theme {tid} in pack {cid} must have non-empty describe or label")
 
+    def test_sectarian_conflict_theme_configuration(self):
+        """Verify sectarian_conflict theme is configured in defence_security category with high weight and keywords."""
+        import yaml
+        from argos import policy
+        with open("themes.yaml", "r", encoding="utf-8") as f:
+            cfg = yaml.safe_load(f)
+        themes = {t["id"]: t for t in cfg.get("themes", [])}
+        self.assertIn("sectarian_conflict", themes)
+        sc = themes["sectarian_conflict"]
+        self.assertEqual(sc.get("category"), "defence_security")
+        self.assertEqual(sc.get("weight"), 1.0)
+        self.assertIn("sectarian_conflict", policy.ALWAYS)
+        kw = sc.get("keywords", [])
+        # Check explicit presence of major confessional markers including Judaism, Christianity, Islam
+        self.assertTrue(any("synagogue" in k or "anti-semit" in k or "jewish" in k for k in kw))
+        self.assertTrue(any("church" in k or "pastor" in k or "priest" in k for k in kw))
+        self.assertTrue(any("mosque" in k or "blasphemy" in k or "rohingya" in k for k in kw))
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -76,3 +76,6 @@ classify:
 
 geo: BY
 reddit: [geopolitics, belarus]
+
+# Auxiliary real-time and crisis social channels
+telegram: ['radiosvaboda']

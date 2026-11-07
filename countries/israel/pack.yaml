@@ -85,3 +85,6 @@ classify:
 
 geo: IL
 reddit: [geopolitics, israel, israelpalestine]
+
+# Auxiliary real-time and crisis social channels
+telegram: ['idfonline']

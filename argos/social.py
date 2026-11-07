@@ -22,6 +22,10 @@ TG_MSG_RE = re.compile(
 )
 
 
+GLOBAL_CRISIS_TG = ["liveuamap", "insiderpaper"]
+GLOBAL_CRISIS_BSKY = ["reuters.com", "apnews.com", "afp.com", "aljazeera.com", "osinttechnical.bsky.social"]
+
+
 def _fetch_telegram(slug):
     url = f"https://t.me/s/{slug}"
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"})
@@ -39,7 +43,7 @@ def _fetch_telegram(slug):
         raw_text = m.group(3)
         stripped = re.sub(r"<[^>]+>", " ", raw_text)
         cleaned = clean(" ".join(html.unescape(stripped).split()))
-        if len(cleaned) < 25:
+        if len(cleaned) < 25 or "trial has expired" in cleaned.lower():
             continue
         posts.append({
             "platform": "telegram",
@@ -87,6 +91,13 @@ def run(db=None):
     SITE_DATA.mkdir(parents=True, exist_ok=True)
     countries = {}
 
+    global_pool = []
+    for ch in GLOBAL_CRISIS_TG:
+        global_pool.extend(_fetch_telegram(ch))
+    for ac in GLOBAL_CRISIS_BSKY:
+        global_pool.extend(_fetch_bluesky(ac))
+    print(f"social: fetched {len(global_pool)} posts from global crisis/wire monitors")
+
     for cid in packs.pack_ids():
         pack = packs.load(cid)
         tg_channels = pack.get("telegram") or []
@@ -96,18 +107,32 @@ def run(db=None):
         if isinstance(bsky_actors, str):
             bsky_actors = [bsky_actors]
 
-        if not tg_channels and not bsky_actors:
-            continue
-
         pool = []
         for ch in tg_channels:
             pool.extend(_fetch_telegram(ch))
         for ac in bsky_actors:
             pool.extend(_fetch_bluesky(ac))
 
+        names = [n.lower() for n in [pack["name"], *pack.get("crisis_names", []), *pack.get("mention", [])]]
+        names = [n for n in names if len(n) >= 3]
+        if names and global_pool:
+            has = lambda text: any(re.search(rf"\b{re.escape(n)}\b", text, re.I) for n in names)
+            for p in global_pool:
+                if has(p.get("text", "")):
+                    pool.append(p)
+
         if pool:
-            pool.sort(key=lambda x: x.get("published") or "", reverse=True)
-            countries[cid] = pool[:10]
+            seen_urls = set()
+            deduped = []
+            for item in pool:
+                u = item.get("url")
+                if u and u in seen_urls:
+                    continue
+                if u:
+                    seen_urls.add(u)
+                deduped.append(item)
+            deduped.sort(key=lambda x: x.get("published") or "", reverse=True)
+            countries[cid] = deduped[:10]
             print(f"social: {cid}: {len(countries[cid])} posts collected (TG & Bluesky)")
 
     payload = {"generated_at": now, "countries": countries}

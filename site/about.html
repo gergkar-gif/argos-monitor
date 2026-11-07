@@ -93,7 +93,7 @@
       <div class="step"><b>08 · Policy &amp; Rank</b><span>Scores stories by independent outlet count, scope diversity, recency, and policy themes (<code>themes.yaml</code>).</span></div>
       <div class="step"><b>09 · Excerpts &amp; Verify</b><span>Selects informative sentences and asserts each quote is an exact substring of the stored article text.</span></div>
       <div class="step"><b>10 · Offline Translation</b><span>Translates non-English representative headlines into English using CPU-friendly MarianMT sequence-to-sequence models with entity glossaries, caching results in SQLite while keeping original text authoritative.</span></div>
-      <div class="step"><b>11 · Signals &amp; Export</b><span>Merges GDACS/USGS/FCDO/US State Dept alerts, auxiliary social signals, filtered Google Trends, and multi-subreddit discussions into static bundles.</span></div>
+      <div class="step"><b>11 · Signals &amp; Export</b><span>Merges GDACS/USGS/NASA EONET/UN Peace &amp; Security/FCDO/US State Dept alerts, auxiliary social signals, filtered Google Trends, and multi-subreddit discussions into static bundles.</span></div>
     </div>
   </section>
 
@@ -172,11 +172,15 @@
     <div class="pipeline">
       <div class="step">
         <b>Track 1 · Verified External Sensor &amp; Advisory Layer</b>
-        <span>Integrates structured feeds from international sensor networks and statutory foreign ministry alerts: <strong>Natural Hazards &amp; Disasters</strong> via Global Disaster Alert and Coordination System (GDACS), US Geological Survey (USGS M4.5+ seismic events), and NASA EONET; <strong>Conflict, Terrorism &amp; Security Advisories</strong> via US Department of State (elevated Levels 2–4), UK Foreign, Commonwealth &amp; Development Office (FCDO), and the International Crisis Group.</span>
+        <span>Integrates structured feeds from international sensor networks and statutory foreign ministry alerts: <strong>Natural Hazards &amp; Disasters</strong> via Global Disaster Alert and Coordination System (GDACS), US Geological Survey (USGS M4.5+ seismic events), and NASA EONET; <strong>Conflict, Terrorism &amp; Security Advisories</strong> via United Nations Peace &amp; Security incident updates, US Department of State (elevated Levels 2–4), UK Foreign, Commonwealth &amp; Development Office (FCDO), and the International Crisis Group.</span>
       </div>
       <div class="step">
         <b>Track 2 · Monitored Defence &amp; Security Press Coverage</b>
         <span>Presents actual story clusters deterministically classified into the <code>defence_security</code> domain by section feeds and multilingual embeddings. Stories report their own headlines and verified quotes without synthetic combat badges, ensuring administrative military handovers and diplomatic cooperation are never misclassified as kinetic violence.</span>
+      </div>
+      <div class="step">
+        <b>Track 3 · Religious &amp; Sectarian Sensitivity Analysis</b>
+        <span>Enveloped strictly within the <code>defence_security</code> domain to prevent sectarian blind spots or denominational advocacy. Monitored security stories and advisories are cross-referenced across four confessional traditions (Judaism &amp; Jewish communities, Christianity &amp; church bodies, Islam &amp; Muslim minority enclaves, and regional historic faiths / sacred sites) across four structural vectors: targeted asymmetric extremism, compound disaster vulnerability, legal/state coercion, and resource-communal armed clashes. Stories are tagged with clear typographical stamps (<span class="stamp stamp-sectarian">REL SENSITIVITY: TRADITION</span>) linked to verifiable verbatim quotations.</span>
       </div>
     </div>
   </section>

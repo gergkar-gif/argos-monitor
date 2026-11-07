@@ -86,3 +86,7 @@ classify:
 
 geo: RU
 reddit: [geopolitics, russianpolitics, liberta]
+
+# Auxiliary real-time and crisis social channels
+telegram: ['astrapress']
+bluesky: ['meduza.io']

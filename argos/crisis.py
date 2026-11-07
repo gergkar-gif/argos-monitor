@@ -17,6 +17,7 @@ EONET = "https://eonet.gsfc.nasa.gov/api/v3/events?status=open&days=14&limit=80"
 US = "https://travel.state.gov/_res/rss/TAsTWs.xml"
 UK = "https://www.gov.uk/foreign-travel-advice/{}.atom"
 CRISISGROUP = "https://www.crisisgroup.org/rss"
+UN_PEACE = "https://news.un.org/feed/subscribe/en/news/topic/peace-and-security/feed/rss.xml"
 RECENT_DAYS = 7
 
 
@@ -81,7 +82,7 @@ def _item(kind, e, level=None):
 def run(db=None):
     now = datetime.now(timezone.utc)
     recent = now - timedelta(days=RECENT_DAYS)
-    gdacs, usgs, eonet, us, cg = _feed(GDACS), _feed(USGS), _eonet(), _feed(US), _feed(CRISISGROUP)
+    gdacs, usgs, eonet, us, cg, un = _feed(GDACS), _feed(USGS), _eonet(), _feed(US), _feed(CRISISGROUP), _feed(UN_PEACE)
     out = {}
     for cid in packs.pack_ids():
         pack = packs.load(cid)
@@ -96,16 +97,23 @@ def run(db=None):
                 src_url = ((ev.get("sources") or [{}])[0]).get("url") or ev.get("link") or ""
                 dt = ((ev.get("geometry") or [{}])[-1]).get("date")
                 items.append({"kind": "NASA EONET", "title": ev["title"], "summary": cat, "url": src_url, "level": None, "date": dt})
+        # UN Peace & Security conflict, civilian protection, and armed incident updates (last 30 days).
+        un_items = [_item("UN Peace & Security", e, "Security") for e in un if has(e.title) or has(e.get("summary"))]
+        items += [i for i in un_items if i["date"] and datetime.fromisoformat(i["date"]) >= now - timedelta(days=30)]
         # Crisis Group updates within the last 30 days.
         cg_items = [_item("Crisis Group", e) for e in cg if has(e.title) or has(e.get("summary"))]
         items += [i for i in cg_items if i["date"] and datetime.fromisoformat(i["date"]) >= now - timedelta(days=30)]
         # Skip routine "Level 1: Exercise Normal Precautions" so the alerts list only shows elevated advisories (Level 2-4).
-        items += [_item("US travel advisory", e) for e in us if has(e.title.split(" - ")[0]) and "Level 1" not in e.title]
-        # Only include UK travel advice if it was updated within the last 30 days.
-        uk = [_item("UK travel advice", e) for e in _feed(UK.format(pack["name"].lower().replace(" ", "-")))[:1]]
+        for e in us:
+            if has(e.title.split(" - ")[0]) and "Level 1" not in e.title:
+                lvl = "Warning" if "Level 4" in e.title else ("Alert" if "Level 3" in e.title else "Caution")
+                items.append(_item("US travel advisory", e, lvl))
+        # Include UK travel advice updates within the last 30 days.
+        uk_slug = pack.get("uk_slug") or pack["name"].lower().replace(" ", "-")
+        uk = [_item("UK travel advice", e) for e in _feed(UK.format(uk_slug))[:3]]
         items += [i for i in uk if i["date"] and datetime.fromisoformat(i["date"]) >= now - timedelta(days=30)]
-        # Disasters older than a week are history; active elevated travel advisories and conflict reports stay up to 30 days.
-        items = [i for i in items if "travel" in i["kind"] or "Crisis Group" in i["kind"] or (i["date"] and datetime.fromisoformat(i["date"]) >= recent)]
+        # Disasters older than a week are history; active elevated travel advisories, UN peace/security, and conflict reports stay up to 30 days.
+        items = [i for i in items if "travel" in i["kind"] or "Crisis Group" in i["kind"] or "UN Peace" in i["kind"] or (i["date"] and datetime.fromisoformat(i["date"]) >= recent)]
         out[cid] = sorted(items, key=lambda i: i["date"] or "", reverse=True)
         print(f"crisis: {cid}: {len(items)} items")
     SITE_DATA.mkdir(parents=True, exist_ok=True)

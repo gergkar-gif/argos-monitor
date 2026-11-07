@@ -61,3 +61,5 @@ geo: VN
 
 # Subreddits for the Reddit panel (first is primary; all are polled in one combined feed).
 reddit: [Vietnam, vozforums, TroChuyenLinhTinh, hanoi, Saigon]
+# Regional diplomatic and crisis social feeds
+bluesky: [thediplomat.bsky.social]

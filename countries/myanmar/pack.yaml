@@ -85,3 +85,6 @@ classify:
 
 geo: MM
 reddit: [myanmar, burma]
+
+# Auxiliary real-time and crisis social channels
+telegram: ['theirrawaddy']

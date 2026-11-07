@@ -644,6 +644,11 @@
       h('div', { class: 'slipline' },
         s.country_name && h('button', { type: 'button', class: 'stamp country-tag', title: `Open ${s.country_name} monitor`, text: s.country_name, onclick: () => openCountry(s.country) }),
         s.disaster_type && h('span', { class: 'stamp teal', text: s.disaster_type }),
+        s.religious_traditions && s.religious_traditions.length > 0 && h('span', {
+          class: 'stamp stamp-sectarian',
+          title: `Religious & Sectarian Sensitivity: ${s.religious_traditions.join(', ')}`,
+          text: `REL SENSITIVITY: ${s.religious_traditions.join(' / ').toUpperCase()}`
+        }),
         h('span', { text: `${s.headline.source}, ${fmtDay.format(new Date(s.last_seen))} · ${outlets}` }),
         s.evidence === 'OFFICIAL' && h('span', { class: 'stamp red', title: 'A government or Party outlet is among the sources.', text: 'Official' }),
         (() => {
@@ -942,7 +947,7 @@
                 i.summary && h('p', { class: 'byline', text: i.summary })),
               h('td', { class: 'typed', text: i.date ? fmtDay.format(new Date(i.date)) : '—' }))))))
         : h('p', { class: 'state', text: filterCountry ? `No active official alerts for ${countryName}.` : 'No matching alerts.' }),
-      h('p', { class: 'fine', text: 'Sources: Global Disaster Alert and Coordination System (GDACS), US Geological Survey (USGS M4.5+ earthquakes), NASA Earth Observatory (EONET), International Crisis Group, UK Foreign, Commonwealth & Development Office (FCDO), and US Department of State elevated travel advisories (Levels 2–4).' }),
+      h('p', { class: 'fine', text: 'Sources: Global Disaster Alert and Coordination System (GDACS), US Geological Survey (USGS M4.5+ earthquakes), NASA Earth Observatory (EONET), United Nations Peace & Security, International Crisis Group, UK Foreign, Commonwealth & Development Office (FCDO), and US Department of State elevated travel advisories (Levels 2–4).' }),
     ].filter(Boolean));
   }
 
@@ -954,12 +959,69 @@
     ['Wildfire & Drought', /\b(wildfire|forest fire|bushfire|drought|heatwave|chay rung|han han|kebakaran hutan|kekeringan|ไฟป่า|ภัยแล้ง|erdotuz|aszaly|pozar lasu|susa|orman yangini|kuraklik|incendio florestal|seca\b)/],
   ];
 
+  const RELIGIOUS_RULES = [
+    ['Judaism', /\b(synagogue|anti-semit|antisemit|jewish|judaism|kosher|rabbi|shul|yemenite jew|zsinagoga|zsido|antiszemita|bai do thai)\b/i],
+    ['Christianity', /\b(christianity|christians|christian community|christian group|church|chapel|monastery|cathedral|priest|pastor|nun|bishop|archbishop|copt|coptic|chaldean|assyrian|maronite|evangelical|vatican|pope|templom|lelkipasztor|lelkesz|puspok|kereszteny|nha tho|linh muc|giao dan)\b/i],
+    ['Islam', /\b(mosque|minaret|imam|madrassa|madrasa|quran|koran|muslim|islam|islamic|islamist|rohingya|uyghur|uighur|ahmadiyya|hazara|shia|sunni|fatwa|mecset|muszlim|muzulman|nha tho hoi giao)\b/i],
+    ['Other Faiths & Sites', /\b(yazidi|bahai|baha'i|hindutva|anti-conversion|blasphemy|sacred site|holy site|cemetery desecrat|pogrom|sectarian|interfaith|inter-communal|istenkaromlas|atterites|vallasi uldozes|giao phai)\b/i],
+  ];
+
+  const CONFLICT_TRACKS = [
+    ['all', 'All Conflict & Security'],
+    ['rel_all', 'Religious Sensitivity (All)'],
+    ['rel_jewish', 'Judaism'],
+    ['rel_christian', 'Christianity'],
+    ['rel_islam', 'Islam'],
+    ['rel_other', 'Other Faiths & Sacred Sites'],
+    ['insurgency', 'Insurgency & Terror'],
+    ['unrest', 'Civil Unrest & Protests'],
+  ];
+
+  function matchConflictTrack(s, trackId) {
+    if (!trackId || trackId === 'all') return true;
+    const trads = s.religious_traditions || [];
+    if (trackId === 'rel_all') return trads.length > 0;
+    if (trackId === 'rel_jewish') return trads.includes('Judaism');
+    if (trackId === 'rel_christian') return trads.includes('Christianity');
+    if (trackId === 'rel_islam') return trads.includes('Islam');
+    if (trackId === 'rel_other') return trads.includes('Other Faiths & Sacred Sites');
+    const text = fold([s.headline && s.headline.title, T.byText.get((s.headline && s.headline.title) || '') || '', ...(s.sources || []).slice(0, 4).map((r) => r.title)].join(' '));
+    if (trackId === 'insurgency') return /\b(terror|insurgency|militant|boko haram|iswap|al-shabaab|isis|daesh|jihad|taliban|houthi|ied|ambush)\b/i.test(text);
+    if (trackId === 'unrest') return /\b(protest|riot|demonstrat|curfew|strike|clash|looting|crackdown|police)\b/i.test(text);
+    return true;
+  }
+
+  function matchAlertConflictTrack(alert, trackId) {
+    if (!trackId || trackId === 'all') return true;
+    const hay = fold(`${alert.cname || ''} ${alert.region || ''} ${alert.kind || ''} ${alert.title || ''} ${alert.summary || ''}`);
+    if (trackId === 'rel_all') {
+      return RELIGIOUS_RULES.some(([, re]) => re.test(hay));
+    }
+    if (trackId === 'rel_jewish') return RELIGIOUS_RULES[0][1].test(hay);
+    if (trackId === 'rel_christian') return RELIGIOUS_RULES[1][1].test(hay);
+    if (trackId === 'rel_islam') return RELIGIOUS_RULES[2][1].test(hay);
+    if (trackId === 'rel_other') return RELIGIOUS_RULES[3][1].test(hay);
+    if (trackId === 'insurgency') return /\b(terror|insurgency|militant|boko haram|iswap|al-shabaab|isis|daesh|jihad|taliban|houthi|ied|ambush)\b/i.test(hay);
+    if (trackId === 'unrest') return /\b(protest|riot|demonstrat|curfew|strike|clash|looting|crackdown|police)\b/i.test(hay);
+    return true;
+  }
+
   function tagEventStory(s) {
     const th = (s.themes || []).join(' ').toLowerCase();
     if (th.includes('sport') || th.includes('culture')) return s;
     const text = fold([s.headline.title, T.byText.get(s.headline.title) || '', ...(s.sources || []).slice(0, 4).map((r) => r.title)].join(' '));
     const dType = s.disaster_type || (DISASTER_RULES.find(([, re]) => re.test(text)) || [])[0] || null;
-    return { ...s, disaster_type: dType };
+
+    const relTraditions = [];
+    for (const [trad, re] of RELIGIOUS_RULES) {
+      if (re.test(text)) relTraditions.push(trad);
+    }
+
+    return {
+      ...s,
+      disaster_type: dType,
+      religious_traditions: s.religious_traditions || (relTraditions.length ? relTraditions : null)
+    };
   }
 
   const storyRecency = (s) => new Date(s.last_seen || (s.headline && s.headline.published) || s.first_seen || 0).getTime();
@@ -983,10 +1045,16 @@
     const add = (s, cid, cname, region) => {
       if (!s || seen.has(s.id)) return;
       if (cutoff && storyRecency(s) < cutoff) return;
-      const tagged = isDis
-        ? tagEventStory({ ...s, country: s.country || cid, country_name: s.country_name || cname, region: s.region || region || getRegion(s.country || cid) })
-        : { ...s, country: s.country || cid, country_name: s.country_name || cname, region: s.region || region || getRegion(s.country || cid) };
-      const keep = isDis ? Boolean(tagged.disaster_type) : (tagged.category === 'defence_security' || (tagged.themes || []).includes('Security and defence'));
+      const tagged = tagEventStory({ ...s, country: s.country || cid, country_name: s.country_name || cname, region: s.region || region || getRegion(s.country || cid) });
+      const keep = isDis
+        ? Boolean(tagged.disaster_type)
+        : (tagged.category !== 'sport_culture' && (
+           tagged.category === 'defence_security'
+           || (tagged.themes || []).includes('Security and defence')
+           || (tagged.themes || []).includes('Civil unrest and armed conflict')
+           || (tagged.themes || []).includes('Sectarian and confessional violence')
+           || Boolean(tagged.religious_traditions && tagged.religious_traditions.length && ['defence_security', 'internal_politics', 'foreign_policy', 'society_rights'].includes(tagged.category))
+        ));
       if (keep) { seen.add(s.id); out.push(tagged); }
     };
 
@@ -1023,8 +1091,20 @@
     });
     allOfficial.sort((a, b) => new Date(b.date || 0).getTime() - new Date(a.date || 0).getTime());
 
-    if (isDis && openSubType !== 'all' && !DISASTER_RULES.some(([label]) => label === openSubType)) openSubType = 'all';
-    const stories = isDis && openSubType !== 'all' ? allStories.filter((s) => s.disaster_type === openSubType) : allStories;
+    if (isDis) {
+      if (openSubType !== 'all' && !DISASTER_RULES.some(([label]) => label === openSubType)) openSubType = 'all';
+    } else {
+      if (openSubType !== 'all' && !CONFLICT_TRACKS.some(([id]) => id === openSubType)) openSubType = 'all';
+    }
+
+    const stories = isDis
+      ? (openSubType !== 'all' ? allStories.filter((s) => s.disaster_type === openSubType) : allStories)
+      : (openSubType !== 'all' ? allStories.filter((s) => matchConflictTrack(s, openSubType)) : allStories);
+
+    const filteredOfficial = isDis
+      ? allOfficial
+      : (openSubType !== 'all' ? allOfficial.filter((i) => matchAlertConflictTrack(i, openSubType)) : allOfficial);
+
     const subTabs = isDis
       ? h('ul', { class: 'tabs', role: 'list', 'aria-label': 'Filter by event type' },
           [['all', 'All types', allStories.length], ...DISASTER_RULES.map(([label]) => [label, label, allStories.filter((s) => s.disaster_type === label).length])].map(([id, label, n]) =>
@@ -1032,7 +1112,12 @@
               'aria-pressed': String(openSubType === id),
               onclick: () => { openSubType = id; renderEventMonitor(mode); } }, label,
               h('span', { class: 'n', text: String(n) })))))
-      : null;
+      : h('ul', { class: 'tabs', role: 'list', 'aria-label': 'Filter by conflict track & religious sensitivity' },
+          CONFLICT_TRACKS.map(([id, label]) => [id, label, allStories.filter((s) => matchConflictTrack(s, id)).length]).map(([id, label, n]) =>
+            h('li', null, h('button', { type: 'button', class: 'tab',
+              'aria-pressed': String(openSubType === id),
+              onclick: () => { openSubType = id; renderEventMonitor(mode); } }, label,
+              h('span', { class: 'n', text: String(n) })))));
 
     const countryName = filterCountry ? prettyName(filterCountry) : null;
     const periodLabel = (MONITOR_PERIODS.find(([v]) => v === monitorPeriod) || [])[1] || 'Past 7 days';
@@ -1061,18 +1146,18 @@
     results.replaceChildren(...[
       h('p', { class: 'result-line' },
         h('b', { text: titleText }),
-        ` · ${periodLabel} · ${plural(allOfficial.length, isDis ? 'official sensor alert' : 'official advisory & conflict report', isDis ? 'official sensor alerts' : 'official advisories & conflict reports')} · ${plural(stories.length, isDis ? 'reported disaster cluster' : 'reported defence & security cluster', isDis ? 'reported disaster clusters' : 'reported defence & security clusters')} · `,
+        ` · ${periodLabel} · ${plural(filteredOfficial.length, isDis ? 'official sensor alert' : 'official advisory & conflict report', isDis ? 'official sensor alerts' : 'official advisories & conflict reports')} · ${plural(stories.length, isDis ? 'reported disaster cluster' : 'reported defence & security cluster', isDis ? 'reported disaster clusters' : 'reported defence & security clusters')} · `,
         h('button', { type: 'button', class: 'desk-link', text: '← Back to Overview', onclick: () => openCountry('home') })),
       bar,
       subTabs,
-      allOfficial.length > 0 && h('section', { class: 'drawer' },
+      filteredOfficial.length > 0 && h('section', { class: 'drawer' },
         h('div', { class: 'drawer-head' },
           h('h2', { text: isDis ? 'Official satellite & seismic sensor alerts' : 'Official conflict, terrorism & unrest advisories' }),
-          h('span', { class: 'count', text: isDis ? 'GDACS · USGS · NASA EONET' : 'US State Dept · UK FCDO · Crisis Group' })),
+          h('span', { class: 'count', text: isDis ? 'GDACS · USGS · NASA EONET' : 'US State Dept · UK FCDO · Crisis Group · UN' })),
         h('div', { class: 'desk-wrap' },
           h('table', { class: 'desk-table' },
             h('thead', null, h('tr', null, ['Country', 'Region', 'Source', 'Event / Advisory & Details', 'Date'].map((x) => h('th', { text: x })))),
-            h('tbody', null, allOfficial.map((i) => h('tr', null,
+            h('tbody', null, filteredOfficial.map((i) => h('tr', null,
               h('td', null, h('button', { type: 'button', class: 'stamp country-tag', text: i.cname, onclick: () => { monitorCountry = i.cid; setHash(hashFor('all')); renderEventMonitor(mode); } })),
               h('td', { class: 'meta', text: i.region }),
               h('td', null, h('span', { class: 'stamp ' + (isHotAlert(i) ? 'red' : 'indigo'), text: i.kind })),

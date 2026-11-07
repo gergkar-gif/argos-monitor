@@ -71,3 +71,6 @@ classify:
 
 geo: QA
 reddit: [geopolitics, qatar]
+
+# Auxiliary real-time and crisis social channels
+bluesky: ['aljazeera.com']

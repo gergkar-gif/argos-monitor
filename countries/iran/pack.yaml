@@ -102,3 +102,6 @@ classify:
 
 geo: IR
 reddit: [iran, newiran]
+
+# Auxiliary real-time and crisis social channels
+telegram: ['iranintl_en']
