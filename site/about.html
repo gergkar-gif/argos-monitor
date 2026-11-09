@@ -49,9 +49,6 @@
   .doc p, .doc li { max-width: 65ch; line-height: 1.65; color: var(--ink-2); }
   .doc strong { color: var(--ink); }
   .doc ul, .doc ol { margin: 0.4rem 0 0; padding-left: 1.3rem; display: grid; gap: 0.5rem; }
-  .subnav-links { display: flex; flex-wrap: wrap; gap: 0.45rem 1rem; padding: 0.75rem 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin-bottom: 0.5rem; }
-  .subnav-links a { font: 600 0.75rem/1.2 var(--sans); letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; color: var(--ink-2); }
-  .subnav-links a:hover { color: var(--red); }
   .pipeline { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem 2rem; margin-top: 1rem; }
   @media (max-width: 38rem) { .pipeline { grid-template-columns: 1fr; } }
   .step { border-left: 4px solid var(--bar); padding: 0.1rem 0 0.1rem 0.9rem; display: grid; gap: 0.2rem; align-content: start; }
@@ -61,8 +58,6 @@
   .step-tag-row { display: flex; align-items: baseline; gap: 0.55rem; }
   .step-tag-row .stamp { flex-shrink: 0; }
   .step-tag-row span { font-size: 0.82rem; line-height: 1.35; color: var(--ink-2); }
-  .bureau-inner { padding: 1.5rem 1.5rem 1.25rem; }
-  .back-link { font-weight: 700; color: var(--red) !important; margin-right: 0.5rem; }
   code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.85em; background: #f3f4f6; padding: 0.1em 0.3em; border-radius: 2px; }
 </style>
 </head>
@@ -71,27 +66,23 @@
   <div class="bureau-inner">
     <div class="masthead">
       <div>
-        <h1><a href="index.html"><img src="assets/eye.png" alt="" class="logo">Argos Monitor</a></h1>
+        <h1><a href="index.html#home"><img src="assets/eye.png" alt="" class="logo">Argos Monitor</a></h1>
         <p>Open-source media &amp; crisis monitor</p>
       </div>
+      <nav class="topnav" aria-label="Primary">
+        <a href="index.html#home" id="nav-home">Overview</a>
+        <a href="index.html#country" id="nav-country">Country Brief</a>
+        <a href="index.html#relations" id="nav-relations">Joint &amp; Multilateral</a>
+        <a href="index.html#alerts" id="nav-alerts">Alerts <span id="alert-count" class="n"></span></a>
+        <a href="index.html#disasters" id="nav-disasters">Disasters</a>
+        <a href="index.html#violence" id="nav-violence">Conflict &amp; Security</a>
+        <a href="about.html" aria-current="page">About</a>
+      </nav>
     </div>
   </div>
 </header>
 
 <main class="doc">
-  <nav class="subnav-links notranslate" translate="no" aria-label="Methodology sections">
-    <a href="index.html" class="back-link">&larr; Back to Monitor</a>
-    <a href="#pipeline">11-Stage Pipeline</a>
-    <a href="#evidence-methodology">Evidence &amp; Quoting</a>
-    <a href="#translation-methodology">Headline Translation</a>
-    <a href="#methodology">Source Analysis</a>
-    <a href="#crisis-methodology">Conflict &amp; Sensors</a>
-    <a href="#delta-methodology">Delta Dynamics</a>
-    <a href="#policy-methodology">Policy &amp; Ranking</a>
-    <a href="#signals-methodology">Auxiliary Signals</a>
-    <a href="#architecture-methodology">Architecture &amp; Privacy</a>
-    <a href="#sources">Source Directory</a>
-  </nav>
 
   <section>
     <h2>What Argos Monitor is</h2>
@@ -510,6 +501,15 @@
   qIn.addEventListener('input', render);
   render();
 })();
+</script>
+<script src="data/crisis.js"></script>
+<script>
+  if (window.ARGOS_CRISIS && window.ARGOS_CRISIS.countries) {
+    let n = 0;
+    Object.values(window.ARGOS_CRISIS.countries).forEach(function(l) { n += l.length; });
+    const el = document.getElementById('alert-count');
+    if (el && n) el.textContent = '[' + n + ']';
+  }
 </script>
 </body>
 </html>
