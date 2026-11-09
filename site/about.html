@@ -276,7 +276,7 @@
       </div>
       <div class="step">
         <b>03 · Zero Telemetry &amp; Absolute Privacy</b>
-        <span>Argos does not set cookies, does not load third-party analytics trackers, does not require user accounts, and makes zero tracking calls. Reader search queries, combobox selections, and drawer toggles remain strictly within the browser's local memory.</span>
+        <span>Argos does not set cookies, does not load third-party analytics trackers, does not require user accounts, and makes zero tracking calls. Reader search queries, combobox selections, and drawer toggles remain strictly within the browser's local memory. Outbound links enforce strict no-referrer isolation (<code>rel="noopener noreferrer"</code> and <code>Referrer-Policy: no-referrer</code>) alongside HTTP Content-Security-Policy and HSTS enforcement so monitored foreign media outlets cannot observe or correlate reader traffic.</span>
       </div>
       <div class="step">
         <b>04 · European Broadsheet Typography</b>
@@ -304,7 +304,7 @@
 
   <section>
     <h2>Author &amp; open source</h2>
-    <p>Argos Monitor is designed and maintained by <strong>Károly Gergely</strong>. Source code and methodology documentation are published under the MIT License at <a href="https://github.com/gergkar-gif/argos-monitor" target="_blank" rel="noopener">github.com/gergkar-gif/argos-monitor</a>.</p>
+    <p>Argos Monitor is designed and maintained by <strong>Károly Gergely</strong>. Source code and methodology documentation are published under the MIT License at <a href="https://github.com/gergkar-gif/argos-monitor" target="_blank" rel="noopener noreferrer">github.com/gergkar-gif/argos-monitor</a>.</p>
   </section>
 </main>
 <script src="data/index.js"></script>
@@ -411,7 +411,7 @@
             el('div', { class: 'desk-wrap' }, el('table', { class: 'desk-table' },
               el('thead', null, el('tr', null, ['Outlet', 'Where', 'Type', 'Alignment', 'Editorial Leaning', 'Factuality', 'State-linked'].map((x) => el('th', { text: x })))),
               el('tbody', null, rows.map((s) => el('tr', null,
-                el('td', null, el('a', { href: safe(s.homepage), target: '_blank', rel: 'noopener', text: s.name })),
+                el('td', null, el('a', { href: safe(s.homepage), target: '_blank', rel: 'noopener noreferrer', text: s.name })),
                 el('td', { text: scope[s.scope] || s.scope }),
                 el('td', { class: 'typed', text: s.kind }),
                 el('td', { class: 'typed', text: formatAlignment(s.alignment) }),

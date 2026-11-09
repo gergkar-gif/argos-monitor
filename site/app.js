@@ -621,7 +621,7 @@
 
     const hasEn = Boolean(s.headline && s.headline.en_title);
     const displayTitle = hasEn ? s.headline.en_title : s.headline.title;
-    const headLink = h('a', { href: safeUrl(s.headline.url), target: '_blank', rel: 'noopener', lang: hasEn ? 'en' : s.headline.language, text: displayTitle });
+    const headLink = h('a', { href: safeUrl(s.headline.url), target: '_blank', rel: 'noopener noreferrer', lang: hasEn ? 'en' : s.headline.language, text: displayTitle });
     const headOrig = h('p', { class: 'orig', hidden: !hasEn, title: 'Original headline', text: hasEn ? s.headline.title : '' });
     if (!hasEn) {
       track(headLink, s.headline.title, s.headline.language, headOrig);
@@ -639,7 +639,7 @@
         const orig = h('p', { class: 'orig', hidden: true, title: 'Original quote' });
         track(main, x.text, qLang, orig);
         return h('blockquote', { class: 'strip' }, main, orig,
-          x.source !== s.headline.source && h('footer', null, h('a', { class: 'stamp indigo', href: safeUrl(x.url), target: '_blank', rel: 'noopener', text: x.source })));
+          x.source !== s.headline.source && h('footer', null, h('a', { class: 'stamp indigo', href: safeUrl(x.url), target: '_blank', rel: 'noopener noreferrer', text: x.source })));
       })),
       h('div', { class: 'slipline' },
         s.country_name && h('button', { type: 'button', class: 'stamp country-tag', title: `Open ${s.country_name} monitor`, text: s.country_name, onclick: () => openCountry(s.country) }),
@@ -697,7 +697,7 @@
         ['75–85% · Broader context', rest.filter((r) => (r.sim ?? 100) < 85)],
       ].filter(([, list]) => list.length > 0);
       const renderItem = (r) => {
-        const a = h('a', { class: 't', href: safeUrl(r.url), target: '_blank', rel: 'noopener', lang: r.language, text: r.title });
+        const a = h('a', { class: 't', href: safeUrl(r.url), target: '_blank', rel: 'noopener noreferrer', lang: r.language, text: r.title });
         const o = h('span', { class: 'orig', hidden: true, title: 'Original headline' });
         lateItems.push([a, r.title, r.language, o]);
         const alignLabel = {
@@ -739,7 +739,7 @@
             h('i', { style: `height:${Math.max(15, Math.round(100 * n / max))}%`, title: `${fmtDay.format(new Date(day))}: ${plural(n, 'article', 'articles')}` }))),
           h('span', { text: `First seen in ${s.first.source}, ${fmtTime.format(new Date(s.first.at))}.` })),
         (s.related || []).length > 0 && h('p', { class: 'byline related' }, 'May be the same event: ', s.related.map((r) =>
-          h('span', null, h('a', { href: safeUrl(r.url), target: '_blank', rel: 'noopener', text: r.title }), ` (${plural(r.articles, 'article', 'articles')}, ${r.source}) `))),
+          h('span', null, h('a', { href: safeUrl(r.url), target: '_blank', rel: 'noopener noreferrer', text: r.title }), ` (${plural(r.articles, 'article', 'articles')}, ${r.source}) `))),
         ...bands.map(([label, list]) => h('div', { class: 'sim-band' },
           h('p', { class: 'band-head' }, h('b', { text: label }), ` (${list.length})`),
           h('ul', { class: 'sources' }, list.map(renderItem)))),
@@ -817,7 +817,7 @@
     return h('section', { class: 'alerts', 'aria-label': 'On Reddit' },
       h('h2', { text: 'On Reddit today' }),
       h('ul', null, r.posts.map((x) => {
-        const a = h('a', { href: safeUrl(x.url), target: '_blank', rel: 'noopener', lang: cLang, text: x.title });
+        const a = h('a', { href: safeUrl(x.url), target: '_blank', rel: 'noopener noreferrer', lang: cLang, text: x.title });
         const origEl = h('span', { class: 'orig', hidden: true });
         track(a, x.title, cLang, origEl);
         return h('li', null,
@@ -835,7 +835,7 @@
     return h('section', { class: 'alerts', 'aria-label': 'Telegram & Bluesky Signals' },
       h('h2', { text: 'Telegram & Bluesky signals' }),
       h('ul', null, sData.map((x) => {
-        const a = h('a', { href: safeUrl(x.url), target: '_blank', rel: 'noopener', lang: cLang, text: x.text });
+        const a = h('a', { href: safeUrl(x.url), target: '_blank', rel: 'noopener noreferrer', lang: cLang, text: x.text });
         const origEl = h('span', { class: 'orig', hidden: true });
         track(a, x.text, cLang, origEl);
         const platTag = x.platform === 'telegram' ? 'TG' : 'BSKY';
@@ -891,7 +891,7 @@
       h('h2', { text: plural(items.length, 'Official alert', 'Official alerts') }),
       h('ul', null, items.map((item) => h('li', null,
         h('span', { class: 'stamp ' + (isHotAlert(item) ? 'red' : 'indigo'), text: item.kind }),
-        h('a', { href: safeUrl(item.url), target: '_blank', rel: 'noopener', text: item.title }),
+        h('a', { href: safeUrl(item.url), target: '_blank', rel: 'noopener noreferrer', text: item.title }),
         item.summary && h('p', { class: 'byline', text: item.summary })))));
   }
 
@@ -943,7 +943,7 @@
               h('td', { class: 'meta', text: i.region }),
               h('td', null, h('span', { class: 'stamp ' + (isHotAlert(i) ? 'red' : 'indigo'), text: i.kind })),
               h('td', null,
-                h('a', { href: safeUrl(i.url), target: '_blank', rel: 'noopener', text: i.title }),
+                h('a', { href: safeUrl(i.url), target: '_blank', rel: 'noopener noreferrer', text: i.title }),
                 i.summary && h('p', { class: 'byline', text: i.summary })),
               h('td', { class: 'typed', text: i.date ? fmtDay.format(new Date(i.date)) : '—' }))))))
         : h('p', { class: 'state', text: filterCountry ? `No active official alerts for ${countryName}.` : 'No matching alerts.' }),
@@ -1192,7 +1192,7 @@
               h('td', { class: 'meta', text: i.region }),
               h('td', null, h('span', { class: 'stamp ' + (isHotAlert(i) ? 'red' : 'indigo'), text: i.kind })),
               h('td', null,
-                h('a', { href: safeUrl(i.url), target: '_blank', rel: 'noopener', text: i.title }),
+                h('a', { href: safeUrl(i.url), target: '_blank', rel: 'noopener noreferrer', text: i.title }),
                 i.summary && h('p', { class: 'byline', text: i.summary })),
               h('td', { class: 'typed', text: i.date ? fmtDay.format(new Date(i.date)) : '—' }))))))),
       stories.length > 0
@@ -1538,7 +1538,7 @@
                 h('td', null, nAlerts ? h('span', { class: 'stamp red', text: String(nAlerts) }) : h('span', { class: 'meta', text: '—' })),
                 h('td', null, d.lead ? (() => {
                   const cl = (index.countries.find((x) => x.id === d.id) || {}).language || 'en';
-                  const a = h('a', { href: safeUrl(d.lead.url), target: '_blank', rel: 'noopener', lang: cl, text: d.lead.title });
+                  const a = h('a', { href: safeUrl(d.lead.url), target: '_blank', rel: 'noopener noreferrer', lang: cl, text: d.lead.title });
                   const o = h('span', { class: 'orig', hidden: true });
                   track(a, d.lead.title, cl, o);
                   return [a, o, h('span', { class: 'meta', text: ` (${d.lead.source} · ${d.lead.outlets} outlets)` })];

@@ -380,104 +380,111 @@
     const now = new Date();
     const periodLabel = (ALL_PERIODS.find(([k]) => k === periodVal) || [])[1] || `Last ${periodVal}`;
 
-    // Translate all top stories to clean English
-    const dispatches = await Promise.all(stories.map(async (s, idx) => {
-      let enTitle = '';
-      const enSource = (s.sources || []).find((r) => r.language === 'en');
-      if (s.headline.language === 'en') {
-        enTitle = s.headline.title;
-      } else if (enSource && enSource.title) {
-        enTitle = enSource.title;
-      } else {
-        enTitle = await toEnglish(s.headline.title, s.headline.language || c.language);
-      }
+    // Translate top stories to clean English in throttled concurrency batches of 5
+    const dispatches = [];
+    const BATCH_SIZE = 5;
+    for (let b = 0; b < stories.length; b += BATCH_SIZE) {
+      const slice = stories.slice(b, b + BATCH_SIZE);
+      const batchResults = await Promise.all(slice.map(async (s, sIdx) => {
+        const idx = b + sIdx;
+        let enTitle = '';
+        const enSource = (s.sources || []).find((r) => r.language === 'en');
+        if (s.headline.language === 'en') {
+          enTitle = s.headline.title;
+        } else if (enSource && enSource.title) {
+          enTitle = enSource.title;
+        } else {
+          enTitle = await toEnglish(s.headline.title, s.headline.language || c.language);
+        }
 
-      let rawSummary = (s.lead || '').trim();
-      if (!rawSummary && s.excerpts && s.excerpts[0]) {
-        rawSummary = (s.excerpts[0].text || '').trim();
-      }
+        let rawSummary = (s.lead || '').trim();
+        if (!rawSummary && s.excerpts && s.excerpts[0]) {
+          rawSummary = (s.excerpts[0].text || '').trim();
+        }
 
-      if (rawSummary) {
-        const paras = rawSummary.split(/\n+/).map((p) => p.trim()).filter(Boolean);
-        if (paras.length > 0) {
-          rawSummary = paras[0];
-          if (rawSummary.length < 120 && paras[1]) {
-            rawSummary += ' ' + paras[1];
+        if (rawSummary) {
+          const paras = rawSummary.split(/\n+/).map((p) => p.trim()).filter(Boolean);
+          if (paras.length > 0) {
+            rawSummary = paras[0];
+            if (rawSummary.length < 120 && paras[1]) {
+              rawSummary += ' ' + paras[1];
+            }
+          }
+          if (rawSummary.length > 400) {
+            const cut = rawSummary.slice(0, 400);
+            const lastSpace = cut.lastIndexOf(' ');
+            rawSummary = (lastSpace > 250 ? cut.slice(0, lastSpace) : cut) + '…';
           }
         }
-        if (rawSummary.length > 400) {
-          const cut = rawSummary.slice(0, 400);
-          const lastSpace = cut.lastIndexOf(' ');
-          rawSummary = (lastSpace > 250 ? cut.slice(0, lastSpace) : cut) + '…';
+
+        let enSummary = '';
+        if (rawSummary) {
+          enSummary = await toEnglish(rawSummary, s.headline.language || c.language);
         }
-      }
 
-      let enSummary = '';
-      if (rawSummary) {
-        enSummary = await toEnglish(rawSummary, s.headline.language || c.language);
-      }
-
-      let enQuote = null;
-      if (s.excerpts && s.excerpts[0]) {
-        const origQuote = s.excerpts[0];
-        const translatedQuoteText = await toEnglish(origQuote.text, c.language);
-        if (!enSummary || !enSummary.toLowerCase().includes(translatedQuoteText.slice(0, 30).toLowerCase())) {
-          enQuote = {
-            text: translatedQuoteText,
-            origText: origQuote.text !== translatedQuoteText ? origQuote.text : null,
-            source: origQuote.source,
-            scope: origQuote.scope
-          };
+        let enQuote = null;
+        if (s.excerpts && s.excerpts[0]) {
+          const origQuote = s.excerpts[0];
+          const translatedQuoteText = await toEnglish(origQuote.text, c.language);
+          if (!enSummary || !enSummary.toLowerCase().includes(translatedQuoteText.slice(0, 30).toLowerCase())) {
+            enQuote = {
+              text: translatedQuoteText,
+              origText: origQuote.text !== translatedQuoteText ? origQuote.text : null,
+              source: origQuote.source,
+              scope: origQuote.scope
+            };
+          }
         }
-      }
 
-      const reportingOutlets = (s.sources || []).slice(0, 5).map((r) => r.source);
-      const isOfficial = s.evidence === 'OFFICIAL';
-      const isAbroadOnly = s.abroad_only;
+        const reportingOutlets = (s.sources || []).slice(0, 5).map((r) => r.source);
+        const isOfficial = s.evidence === 'OFFICIAL';
+        const isAbroadOnly = s.abroad_only;
 
-      return {
-        dom: el('li', { class: 'dispatch-item' },
-          el('div', { class: 'dispatch-num' },
-            el('strong', { text: `DISPATCH #${String(idx + 1).padStart(2, '0')}` }),
-            el('span', { text: `· ${(s.category || 'general').replace(/_/g, ' ').toUpperCase()}` }),
-            isElectionStory(s) && el('span', { class: 'stamp stamp-election', text: 'ELECTION PRIORITY' }),
-            isOfficial && el('span', { class: 'stamp red', text: 'OFFICIAL RECORD' }),
-            isAbroadOnly && el('span', { class: 'stamp teal', text: 'NOT IN DOMESTIC PRESS' }),
-            el('span', { class: 'typed', text: `${s.independent_sources} independent outlets · ${s.articles} articles` })
+        return {
+          dom: el('li', { class: 'dispatch-item' },
+            el('div', { class: 'dispatch-num' },
+              el('strong', { text: `DISPATCH #${String(idx + 1).padStart(2, '0')}` }),
+              el('span', { text: `· ${(s.category || 'general').replace(/_/g, ' ').toUpperCase()}` }),
+              isElectionStory(s) && el('span', { class: 'stamp stamp-election', text: 'ELECTION PRIORITY' }),
+              isOfficial && el('span', { class: 'stamp red', text: 'OFFICIAL RECORD' }),
+              isAbroadOnly && el('span', { class: 'stamp teal', text: 'NOT IN DOMESTIC PRESS' }),
+              el('span', { class: 'typed', text: `${s.independent_sources} independent outlets · ${s.articles} articles` })
+            ),
+            el('h2', { class: 'dispatch-headline' },
+              el('a', { href: safe(s.headline.url), target: '_blank', rel: 'noopener noreferrer', text: enTitle })
+            ),
+            s.headline.language !== 'en' && el('p', { class: 'dispatch-orig', text: `Original headline (${s.headline.source}): "${s.headline.title}"` }),
+            enSummary && el('div', { class: 'dispatch-lead' },
+              el('p', { text: enSummary })
+            ),
+            enQuote && el('blockquote', { class: 'dispatch-quote' },
+              el('p', { text: `“${enQuote.text}”` }),
+              el('cite', { text: `— Quoted verbatim from: ${enQuote.source} [${enQuote.scope.replace('_', ' ')}]` })
+            ),
+            reportingOutlets.length > 0 && el('div', { class: 'dispatch-foot' },
+              el('span', { text: `Sources: ${reportingOutlets.join(', ')}${(s.sources || []).length > 5 ? ` +${(s.sources || []).length - 5} more` : ''}` })
+            )
           ),
-          el('h2', { class: 'dispatch-headline' },
-            el('a', { href: safe(s.headline.url), target: '_blank', rel: 'noopener', text: enTitle })
-          ),
-          s.headline.language !== 'en' && el('p', { class: 'dispatch-orig', text: `Original headline (${s.headline.source}): "${s.headline.title}"` }),
-          enSummary && el('div', { class: 'dispatch-lead' },
-            el('p', { text: enSummary })
-          ),
-          enQuote && el('blockquote', { class: 'dispatch-quote' },
-            el('p', { text: `“${enQuote.text}”` }),
-            el('cite', { text: `— Quoted verbatim from: ${enQuote.source} [${enQuote.scope.replace('_', ' ')}]` })
-          ),
-          reportingOutlets.length > 0 && el('div', { class: 'dispatch-foot' },
-            el('span', { text: `Sources: ${reportingOutlets.join(', ')}${(s.sources || []).length > 5 ? ` +${(s.sources || []).length - 5} more` : ''}` })
-          )
-        ),
-        cable: {
-          num: idx + 1,
-          category: (s.category || 'general').replace(/_/g, ' ').toUpperCase(),
-          isOfficial,
-          isAbroadOnly,
-          sourcesCount: s.independent_sources,
-          articlesCount: s.articles,
-          title: enTitle,
-          origTitle: s.headline.language !== 'en' ? s.headline.title : null,
-          origSource: s.headline.source,
-          url: safe(s.headline.url),
-          lead: enSummary,
-          quote: enQuote ? enQuote.text : null,
-          quoteSource: enQuote ? `${enQuote.source} [${enQuote.scope.replace('_', ' ')}]` : null,
-          outlets: reportingOutlets.join(', ') + ((s.sources || []).length > 5 ? ` +${(s.sources || []).length - 5} more` : '')
-        }
-      };
-    }));
+          cable: {
+            num: idx + 1,
+            category: (s.category || 'general').replace(/_/g, ' ').toUpperCase(),
+            isOfficial,
+            isAbroadOnly,
+            sourcesCount: s.independent_sources,
+            articlesCount: s.articles,
+            title: enTitle,
+            origTitle: s.headline.language !== 'en' ? s.headline.title : null,
+            origSource: s.headline.source,
+            url: safe(s.headline.url),
+            lead: enSummary,
+            quote: enQuote ? enQuote.text : null,
+            quoteSource: enQuote ? `${enQuote.source} [${enQuote.scope.replace('_', ' ')}]` : null,
+            outlets: reportingOutlets.join(', ') + ((s.sources || []).length > 5 ? ` +${(s.sources || []).length - 5} more` : '')
+          }
+        };
+      }));
+      dispatches.push(...batchResults);
+    }
 
     window.currentBriefCable = {
       country: c.name,

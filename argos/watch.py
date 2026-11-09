@@ -1,4 +1,4 @@
-﻿"""Stage: write site/watch.xml, an RSS feed of the exported stories that mention a word from watchlist.yaml.
+"""Stage: write site/watch.xml, an RSS feed of the exported stories that mention a word from watchlist.yaml.
 Only headlines and links, as on the site. Subscribe to <site address>/watch.xml in any feed reader."""
 import json
 from datetime import datetime, timezone
@@ -29,6 +29,6 @@ def run(db=None):
         f"<pubDate>{format_datetime(datetime.fromisoformat(seen))}</pubDate></item>" for seen, c, hit, s in items[:100])
     (SITE_DATA.parent / "watch.xml").write_text(
         '<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Argos Monitor watchlist</title>'
-        f"<link>https://argos-monitor.pages.dev/</link><description>Stories mentioning: {escape(', '.join(words))}</description>{body}</channel></rss>",
+        f"<link>https://argos-monitor.pages.dev/</link><description>Argos Monitor watchlist feed</description>{body}</channel></rss>",
         encoding="utf8")
     print(f"watch: {len(items)} stories match {len(words)} words")
