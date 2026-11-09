@@ -10,9 +10,9 @@
 </p>
 
 <p align="center">
-  <a href="https://argos-monitor.pages.dev"><strong>Live Platform (argos-monitor.pages.dev)</strong></a> ·
-  <a href="https://argos-monitor.pages.dev/about.html">Methodology</a> ·
-  <a href="https://argos-monitor.pages.dev/sources.html">Source Directory</a> ·
+  <a href="https://argosmonitor.uk"><strong>Live Platform (argosmonitor.uk)</strong></a> ·
+  <a href="https://argosmonitor.uk/about.html">Methodology</a> ·
+  <a href="https://argosmonitor.uk/sources.html">Source Directory</a> ·
   <a href="https://github.com/gergkar-gif/argos-monitor/actions/workflows/daily.yml"><img src="https://github.com/gergkar-gif/argos-monitor/actions/workflows/daily.yml/badge.svg" alt="Daily Digest CI"></a>
 </p>
 
