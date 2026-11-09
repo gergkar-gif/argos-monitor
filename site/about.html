@@ -57,6 +57,12 @@
   .step { border-left: 4px solid var(--bar); padding: 0.1rem 0 0.1rem 0.9rem; display: grid; gap: 0.2rem; align-content: start; }
   .step b { font: 700 0.85rem/1.2 var(--sans); color: var(--ink); }
   .step span { font-size: 0.88rem; line-height: 1.45; color: var(--ink-2); }
+  .step-tags { display: grid; gap: 0.35rem; margin-top: 0.45rem; padding-top: 0.45rem; border-top: 1px dotted var(--rule); }
+  .step-tag-row { display: flex; align-items: baseline; gap: 0.55rem; }
+  .step-tag-row .stamp { flex-shrink: 0; }
+  .step-tag-row span { font-size: 0.82rem; line-height: 1.35; color: var(--ink-2); }
+  .bureau-inner { padding: 1.5rem 1.5rem 1.25rem; }
+  .back-link { font-weight: 700; color: var(--red) !important; margin-right: 0.5rem; }
   code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.85em; background: #f3f4f6; padding: 0.1em 0.3em; border-radius: 2px; }
 </style>
 </head>
@@ -65,24 +71,16 @@
   <div class="bureau-inner">
     <div class="masthead">
       <div>
-        <h1><a href="index.html#home"><img src="assets/eye.png" alt="" class="logo">Argos Monitor</a></h1>
+        <h1><a href="index.html"><img src="assets/eye.png" alt="" class="logo">Argos Monitor</a></h1>
         <p>Open-source media &amp; crisis monitor</p>
       </div>
-      <nav class="topnav" aria-label="Primary">
-        <a href="index.html#home">Overview</a>
-        <a href="index.html#country">Country Brief</a>
-        <a href="index.html#relations">Joint &amp; Multilateral</a>
-        <a href="index.html#alerts">Alerts</a>
-        <a href="index.html#disasters">Disasters</a>
-        <a href="index.html#violence">Conflict &amp; Security</a>
-        <a href="about.html" aria-current="page">About</a>
-      </nav>
     </div>
   </div>
 </header>
 
 <main class="doc">
   <nav class="subnav-links notranslate" translate="no" aria-label="Methodology sections">
+    <a href="index.html" class="back-link">&larr; Back to Monitor</a>
     <a href="#pipeline">11-Stage Pipeline</a>
     <a href="#evidence-methodology">Evidence &amp; Quoting</a>
     <a href="#translation-methodology">Headline Translation</a>
@@ -107,7 +105,7 @@
       <li><strong>Zero LLM in the core pipeline:</strong> Clustering, topic classification, ranking, and quote extraction are 100% deterministic (multilingual embeddings + rules). Any post-processing summary layer must strictly verify quotes via substring match against stored article text.</li>
       <li><strong>Independent outlet counting:</strong> State wire reprints and syndicated copies are detected by text similarity (≥ 0.95 cosine similarity) and counted once, so 20 reprints of one wire dispatch never masquerade as 20 independent confirmations.</li>
       <li><strong>Tri-scope perspective balance:</strong> Every story displays its distribution across domestic licensed media, local-language diaspora/exile press, and international reporting, alongside editorial alignment, political leaning, and factuality.</li>
-      <li><strong>Official vs. reported (<span class="stamp red">Official</span> / <span class="stamp indigo">Reported</span>):</strong> Government and ruling-party outlets are explicitly tagged so official statements are immediately distinguishable from independent reporting.</li>
+      <li><strong>Official vs. reported:</strong> Outlets are explicitly tagged with <span class="stamp red">Official</span> or <span class="stamp indigo">Reported</span> so official government statements are immediately distinguishable from independent reporting.</li>
       <li><strong>Live methodology synchronization:</strong> The About page and system specifications are updated in the same change whenever country desks, analytical layers, or pipeline stages are modified.</li>
       <li><strong>Zero emojis across the broadsheet:</strong> Built for diplomatic and institutional press review. No emojis are permitted anywhere in the UI, alerts, badges, logs, or documentation. External RSS emojis are stripped upon ingestion.</li>
       <li><strong>Priority election coverage:</strong> National, presidential, parliamentary, and local elections, ballot results, voter turnout, referendums, and official campaign outcomes receive top policy weighting (1.0), deterministic ranking priority boosts, and prominent dispatch placement in diplomatic intelligence briefs.</li>
@@ -195,8 +193,18 @@
         <span>Assesses sourcing transparent attribution, primary corroboration, and correction practices: <strong>Very High</strong> (stringent primary-source corroboration, e.g. major wires), <strong>High</strong> (credible mainstream reporting with professional editorial oversight), <strong>Mostly Factual</strong> (factual core but prone to partisan framing or sensationalism), and <strong>Mixed</strong> (vulnerable to state censorship, selective omission, or unverified claims).</span>
       </div>
       <div class="step">
-        <b>04 · State-linked (Official Corroboration Flag)</b>
-        <span>A binary indicator (<span class="stamp red">Yes</span> / <span class="stamp typed">No</span>) designating statutory organs and state-funded broadcasters. When any state-linked source covers a story cluster, it is tagged <span class="stamp red">Official</span> to distinguish state messaging from independent reporting. When over 70% of corroborating coverage originates from state media, the story is stamped <span class="stamp red">State-Dominated</span>.</span>
+        <b>04 · State-Linked &amp; Official Corroboration</b>
+        <span>Designates statutory organs and state-funded broadcasters to separate official messaging from independent reporting:</span>
+        <div class="step-tags">
+          <div class="step-tag-row">
+            <span class="stamp red">Official</span>
+            <span>Applied when any state-controlled outlet covers a story cluster</span>
+          </div>
+          <div class="step-tag-row">
+            <span class="stamp red">State-Dominated</span>
+            <span>Flagged when over 70% of corroborating coverage originates from state media</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -215,7 +223,13 @@
       </div>
       <div class="step">
         <b>Track 3 · Religious &amp; Sectarian Sensitivity Analysis</b>
-        <span>Enveloped strictly within the <code>defence_security</code> domain to prevent sectarian blind spots or denominational advocacy. Monitored security stories and advisories are cross-referenced across four confessional traditions (Judaism &amp; Jewish communities, Christianity &amp; church bodies, Islam &amp; Muslim minority enclaves, and regional historic faiths / sacred sites) across four structural vectors: targeted asymmetric extremism, compound disaster vulnerability, legal/state coercion, and resource-communal armed clashes. Stories are tagged with clear typographical stamps (<span class="stamp stamp-sectarian">REL SENSITIVITY: TRADITION</span>) linked to verifiable verbatim quotations.</span>
+        <span>Enveloped strictly within the <code>defence_security</code> domain to prevent sectarian blind spots or denominational advocacy. Monitored security stories and advisories are cross-referenced across four confessional traditions across four structural vectors: targeted asymmetric extremism, compound disaster vulnerability, legal/state coercion, and resource-communal armed clashes.</span>
+        <div class="step-tags">
+          <div class="step-tag-row">
+            <span class="stamp stamp-sectarian">REL SENSITIVITY: TRADITION</span>
+            <span>Tagged stories linked directly to verifiable verbatim quotations</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -226,11 +240,35 @@
     <div class="pipeline">
       <div class="step">
         <b>01 · Story Velocity &amp; Emergence</b>
-        <span>Deterministic movement states classify stories by publication timestamp: fresh emergence (<span class="stamp stamp-new">NEW</span>, zero articles in the prior period), accelerating reporting (<span class="stamp stamp-surge">SURGE +&Delta;N</span>, volume gain &ge; 3 articles and velocity multiplier &ge; 1.75x), and fading cycles (<span class="stamp stamp-cooling">COOLING</span>, volume decline &ge; 3 and velocity &le; 0.40x).</span>
+        <span>Deterministic movement states classify story publication momentum against the prior contiguous period:</span>
+        <div class="step-tags">
+          <div class="step-tag-row">
+            <span class="stamp stamp-new">NEW</span>
+            <span>Fresh emergence; zero articles in the prior period</span>
+          </div>
+          <div class="step-tag-row">
+            <span class="stamp stamp-surge">SURGE +&Delta;N</span>
+            <span>Accelerating coverage (volume gain &ge; 3, velocity multiplier &ge; 1.75&times;)</span>
+          </div>
+          <div class="step-tag-row">
+            <span class="stamp stamp-cooling">COOLING</span>
+            <span>Fading cycle (volume decline &ge; 3, velocity multiplier &le; 0.40&times;)</span>
+          </div>
+        </div>
       </div>
       <div class="step">
         <b>02 · Scope Escalation (&quot;Going Global&quot;)</b>
-        <span>Detects when a strictly domestic controversy is picked up by international wires (<span class="stamp stamp-pickup">INTL PICKUP</span>) or foreign-language diaspora outlets (<span class="stamp stamp-pickup">DIASPORA PICKUP</span>), flagging emerging diplomatic escalation.</span>
+        <span>Detects when a strictly domestic controversy spills over into foreign reporting, flagging diplomatic escalation:</span>
+        <div class="step-tags">
+          <div class="step-tag-row">
+            <span class="stamp stamp-pickup">INTL PICKUP</span>
+            <span>Domestic controversy picked up by international wire services</span>
+          </div>
+          <div class="step-tag-row">
+            <span class="stamp stamp-pickup">DIASPORA PICKUP</span>
+            <span>Reported by foreign-language diaspora or regional exile outlets</span>
+          </div>
+        </div>
       </div>
       <div class="step">
         <b>03 · Macro Agenda Shifts</b>
@@ -238,7 +276,13 @@
       </div>
       <div class="step">
         <b>04 · State Media Narrative Drift</b>
-        <span>Calculates shifts in state-affiliated media share (&Delta;state_share &ge; +30%) to flag official state narrative campaigns (<span class="stamp red">STATE SURGE</span>) or sudden state withdrawal from an active controversy.</span>
+        <span>Calculates shifts in state-affiliated media share to detect official state campaigns or sudden narrative withdrawal:</span>
+        <div class="step-tags">
+          <div class="step-tag-row">
+            <span class="stamp red">STATE SURGE</span>
+            <span>State media share gain (&ge; +30%), indicating an orchestrated narrative push</span>
+          </div>
+        </div>
       </div>
       <div class="step">
         <b>05 · Bilateral &amp; Multilateral Delta Cross-Comparisons</b>
@@ -269,7 +313,13 @@
       </div>
       <div class="step">
         <b>05 · Standing Priority for Elections &amp; Referendums</b>
-        <span>National, presidential, parliamentary, and municipal elections, ballot results, voter turnout, referendums, and official campaign outcomes receive top policy weighting (1.0), ranking priority boosts, and prominent <span class="stamp stamp-election">ELECTION PRIORITY</span> placement in diplomatic intelligence briefs across all countries.</span>
+        <span>National, presidential, parliamentary, and municipal elections, ballot results, voter turnout, referendums, and official campaign outcomes receive top policy weighting (1.0) and ranking priority boosts:</span>
+        <div class="step-tags">
+          <div class="step-tag-row">
+            <span class="stamp stamp-election">ELECTION PRIORITY</span>
+            <span>Standing priority placement at the top of diplomatic intelligence briefs</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
