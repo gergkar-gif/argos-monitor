@@ -2,6 +2,10 @@
 
 Completed items moved from `docs/roadmap.md` per project handover rules.
 
+- **Alpine, Balkan & South Asian Desks Expansion to 10+ Sources (Phase 3 Batch 9)** — **Done 2026-11-10.**
+  - Expanded and verified candidate feeds for Pakistan (10 direct), Romania (10 direct), Greece (10 direct), Austria (10 direct), and Switzerland (10 direct), bringing 48 major global and regional desks into full compliance with the 10-source standard.
+  - Verified feed reachability with parallel probe (`tools/probe.py`) across all newly integrated publications.
+
 - **Latin American Desks Expansion to 10+ Sources (Phase 3 Batch 8)** — **Done 2026-11-10.**
   - Expanded and verified candidate feeds for Argentina (10 direct), Venezuela (11 direct), Colombia (11 direct), Peru (10 direct), and Mexico (10 direct), bringing 43 major global and regional desks into full compliance with the 10-source standard.
   - Verified feed reachability with parallel probe (`tools/probe.py`) across all newly integrated publications.

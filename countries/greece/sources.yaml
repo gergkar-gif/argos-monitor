@@ -37,3 +37,106 @@ sources:
   - url: https://news.google.com/rss/search?q=(Greece+OR+Athens)+(Mitsotakis+OR+economy+OR+Turkey+OR+defense)+when:3d&hl=en-US&gl=US&ceid=US:en
     section: Politics & Diplomacy
     category_hint: foreign_policy
+- id: tovima_gr
+  name: To Vima
+  homepage: https://www.tovima.gr
+  language: el
+  scope: domestic
+  kind: media
+  governing_body: Alter Ego Media
+  state_affiliated: false
+  notes: Historic Athens newspaper of record founded in 1922, influential in political, academic, and economic circles.
+  feeds:
+  - url: https://www.tovima.gr/feed/
+    category_hint: internal_politics
+
+- id: protothema_gr
+  name: Proto Thema
+  homepage: https://www.protothema.gr
+  language: el
+  scope: domestic
+  kind: media
+  governing_body: Proto Thema SA
+  state_affiliated: false
+  notes: High-circulation weekly and online news daily covering Greek parliamentary politics, economy, and maritime security.
+  feeds:
+  - url: https://www.protothema.gr/rss/
+    category_hint: general
+
+- id: naftemporiki_gr
+  name: Naftemporiki
+  homepage: https://www.naftemporiki.gr
+  language: el
+  scope: domestic
+  kind: media
+  governing_body: Melisanidis Group
+  state_affiliated: false
+  notes: Premier Greek financial and business newspaper founded in 1924 covering fiscal policy, shipping, and markets.
+  feeds:
+  - url: https://www.naftemporiki.gr/feed/
+    category_hint: economics
+
+- id: tanea_gr
+  name: Ta Nea
+  homepage: https://www.tanea.gr
+  language: el
+  scope: domestic
+  kind: media
+  governing_body: Alter Ego Media
+  state_affiliated: false
+  notes: Historic highest-circulation daily broadsheet in Greece covering center-left politics, social policy, and culture.
+  feeds:
+  - url: https://www.tanea.gr/feed/
+    category_hint: internal_politics
+
+- id: iefimerida_gr
+  name: iefimerida
+  homepage: https://www.iefimerida.gr
+  language: el
+  scope: domestic
+  kind: media
+  governing_body: New Media Network
+  state_affiliated: false
+  notes: Influential digital news daily covering Greek governance, party politics, and European policy debates.
+  feeds:
+  - url: https://www.iefimerida.gr/rss.xml
+    category_hint: internal_politics
+
+- id: enikos_gr
+  name: Enikos
+  homepage: https://www.enikos.gr
+  language: el
+  scope: domestic
+  kind: media
+  governing_body: Nikos Chatzinikolaou
+  state_affiliated: false
+  notes: Major independent political portal and broadcast outlet with widespread civic audience.
+  feeds:
+  - url: https://www.enikos.gr/feed/
+    category_hint: internal_politics
+
+- id: documentonews_gr
+  name: Documento
+  homepage: https://www.documentonews.gr
+  language: el
+  scope: domestic
+  kind: media
+  governing_body: Kostas Vaxevanis
+  state_affiliated: false
+  notes: Investigative Sunday newspaper and daily news portal specializing in state surveillance, procurement, and judicial scoops.
+  feeds:
+  - url: https://www.documentonews.gr/feed/
+    category_hint: internal_politics
+
+- id: in_gr
+  name: in.gr
+  homepage: https://www.in.gr
+  language: el
+  scope: domestic
+  kind: media
+  governing_body: Alter Ego Media
+  state_affiliated: false
+  notes: One of Greece's oldest and largest digital information portals covering national and Mediterranean current affairs.
+  feeds:
+  - url: https://www.in.gr/feed/
+    category_hint: general

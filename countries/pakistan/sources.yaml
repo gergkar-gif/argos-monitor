@@ -98,3 +98,80 @@ sources:
     feeds:
       - url: "https://news.google.com/rss/search?q=%22Pakistan+Army%22+OR+ISPR+OR+TTP+OR+BLA+Balochistan+when:3d&hl=en-PK&gl=PK&ceid=PK:en"
         category_hint: defence_security
+  - id: nation_pk
+    name: The Nation
+    homepage: https://www.nation.com.pk
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Nawa-i-Waqt Group"
+    state_affiliated: false
+    notes: "Historic English-language daily newspaper published from Lahore, Islamabad and Karachi."
+    feeds:
+      - url: https://www.nation.com.pk/rss/national
+        category_hint: internal_politics
+
+  - id: propakistani
+    name: ProPakistani
+    homepage: https://propakistani.pk
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "ProPakistani Media"
+    state_affiliated: false
+    notes: "Leading digital news platform covering Pakistan's digital economy, telecom, and business regulations."
+    feeds:
+      - url: https://propakistani.pk/feed/
+        category_hint: economics
+
+  - id: dailypakistan
+    name: Daily Pakistan
+    homepage: https://en.dailypakistan.com.pk
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Daily Pakistan Media Group"
+    state_affiliated: false
+    notes: "English-language digital news outlet covering national politics, parliament, and regional affairs."
+    feeds:
+      - url: https://en.dailypakistan.com.pk/feed/
+        category_hint: internal_politics
+
+  - id: dailytimes_pk
+    name: Daily Times
+    homepage: https://dailytimes.com.pk
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Media Times Limited"
+    state_affiliated: false
+    notes: "Prominent national English-language broadsheet advocating liberal and democratic perspectives."
+    feeds:
+      - url: https://dailytimes.com.pk/feed/
+        category_hint: internal_politics
+
+  - id: app_gov_pk
+    name: Associated Press of Pakistan (APP)
+    homepage: https://www.app.com.pk
+    language: en
+    scope: domestic
+    kind: official
+    governing_body: "Ministry of Information & Broadcasting (Government of Pakistan)"
+    state_affiliated: true
+    notes: "Statutory national wire news agency of Pakistan providing official executive and diplomatic coverage."
+    feeds:
+      - url: https://www.app.com.pk/feed/
+        category_hint: foreign_policy
+
+  - id: geo_tv
+    name: Geo News
+    homepage: https://www.geo.tv
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Jang Media Group"
+    state_affiliated: false
+    notes: "Flagship private 24-hour television and digital network with nationwide investigative reporting."
+    feeds:
+      - url: https://www.geo.tv/rss/1/1
+        category_hint: internal_politics

@@ -38,3 +38,106 @@ sources:
   - url: https://news.google.com/rss/search?q=(Switzerland+OR+Swiss)+(neutrality+OR+sanctions+OR+banking+OR+diplomacy)+when:3d&hl=en-US&gl=US&ceid=US:en
     section: Diplomacy & Finance
     category_hint: foreign_policy
+- id: tagesanzeiger_ch
+  name: Tages-Anzeiger
+  homepage: https://www.tagesanzeiger.ch
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Tamedia (TX Group)
+  state_affiliated: false
+  notes: Zurich-based national broadsheet paper of record covering Federal Council politics, finance, and culture.
+  feeds:
+  - url: https://www.tagesanzeiger.ch/rss.html
+    category_hint: internal_politics
+
+- id: letemps_ch
+  name: Le Temps
+  homepage: https://www.letemps.ch
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Fondation Aventinus
+  state_affiliated: false
+  notes: Leading French-language Swiss daily paper of record based in Geneva, focusing on international diplomacy and public policy.
+  feeds:
+  - url: https://www.letemps.ch/feed
+    category_hint: foreign_policy
+
+- id: tdg_ch
+  name: Tribune de Genève
+  homepage: https://www.tdg.ch
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Tamedia (TX Group)
+  state_affiliated: false
+  notes: Major French-language Geneva daily covering UN agencies, cantonal governance, and international Geneva diplomacy.
+  feeds:
+  - url: https://www.tdg.ch/rss.html
+    category_hint: foreign_policy
+
+- id: vingtquatre_heures
+  name: 24 heures
+  homepage: https://www.24heures.ch
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Tamedia (TX Group)
+  state_affiliated: false
+  notes: Principal daily newspaper of the Canton of Vaud (Lausanne) covering regional economy, research, and federal politics.
+  feeds:
+  - url: https://www.24heures.ch/rss.html
+    category_hint: internal_politics
+
+- id: derbund_ch
+  name: Der Bund
+  homepage: https://www.derbund.ch
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Tamedia (TX Group)
+  state_affiliated: false
+  notes: Bern broadsheet daily closely monitoring the Federal Palace, parliamentary committees, and federal administration.
+  feeds:
+  - url: https://www.derbund.ch/rss.html
+    category_hint: internal_politics
+
+- id: bazonline_ch
+  name: Basler Zeitung
+  homepage: https://www.bazonline.ch
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Tamedia (TX Group)
+  state_affiliated: false
+  notes: Northwestern Swiss daily newspaper covering the Basel pharmaceutical cluster, tri-national border trade, and politics.
+  feeds:
+  - url: https://www.bazonline.ch/rss.html
+    category_hint: economics
+
+- id: bernerzeitung_ch
+  name: Berner Zeitung
+  homepage: https://www.bernerzeitung.ch
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Tamedia (TX Group)
+  state_affiliated: false
+  notes: High-circulation daily covering the Canton of Bern, alpine infrastructure, agriculture, and cantonal policy.
+  feeds:
+  - url: https://www.bernerzeitung.ch/rss.html
+    category_hint: general
+
+- id: insideparadeplatz_ch
+  name: Inside Paradeplatz
+  homepage: https://insideparadeplatz.ch
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Lukas Hässig
+  state_affiliated: false
+  notes: Influential Zurich financial investigative blog covering Swiss banking secrecy, wealth management, and FINMA regulatory enforcement.
+  feeds:
+  - url: https://insideparadeplatz.ch/feed/
+    category_hint: economics

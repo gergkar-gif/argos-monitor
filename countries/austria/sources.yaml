@@ -40,3 +40,106 @@ sources:
   - url: https://news.google.com/rss/search?q=(Austria+OR+Vienna)+(coalition+OR+parliament+OR+neutrality+OR+election)+when:3d&hl=en-US&gl=US&ceid=US:en
     section: Governance & Diplomacy
     category_hint: foreign_policy
+- id: diepresse_at
+  name: Die Presse
+  homepage: https://www.diepresse.com
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Styria Media Group
+  state_affiliated: false
+  notes: Historic bourgeois-liberal paper of record founded in 1848 covering parliamentary politics, constitutional law, and trade.
+  feeds:
+  - url: https://www.diepresse.com/rss
+    category_hint: internal_politics
+
+- id: kleinezeitung_at
+  name: Kleine Zeitung
+  homepage: https://www.kleinezeitung.at
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Styria Media Group
+  state_affiliated: false
+  notes: Major regional daily in Styria and Carinthia with influential federal political desk in Vienna.
+  feeds:
+  - url: https://www.kleinezeitung.at/rss/politik
+    category_hint: internal_politics
+
+- id: krone_at
+  name: Kronen Zeitung
+  homepage: https://www.krone.at
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Mediaprint (Dichand & Benko families)
+  state_affiliated: false
+  notes: Austria's highest-circulation tabloid daily newspaper with enormous influence on electoral campaigns and public debates.
+  feeds:
+  - url: https://www.krone.at/nachrichten/rss.html
+    category_hint: general
+
+- id: vienna_at
+  name: VIENNA.AT
+  homepage: https://www.vienna.at
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Russmedia Digital GmbH
+  state_affiliated: false
+  notes: High-reach Vienna municipal and federal news daily covering urban planning, security, and local politics.
+  feeds:
+  - url: https://www.vienna.at/feed/rss
+    category_hint: general
+
+- id: nachrichten_at
+  name: Oberösterreichische Nachrichten
+  homepage: https://www.nachrichten.at
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Wimmer Medien
+  state_affiliated: false
+  notes: Leading Upper Austrian daily paper covering industrial heartland manufacturing, energy transition, and federal politics.
+  feeds:
+  - url: https://www.nachrichten.at/storage/rss/rss/politik.xml
+    category_hint: internal_politics
+
+- id: tt_com
+  name: Tiroler Tageszeitung
+  homepage: https://www.tt.com
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Moser Holding
+  state_affiliated: false
+  notes: Western Austria's primary daily newspaper covering alpine transit, environmental policy, and federal governance.
+  feeds:
+  - url: https://www.tt.com/rss/politik.xml
+    category_hint: internal_politics
+
+- id: falter_at
+  name: Falter
+  homepage: https://www.falter.at
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Falter Verlagsgesellschaft
+  state_affiliated: false
+  notes: Independent investigative weekly magazine renowned for uncovering judicial corruption and political party funding scandals.
+  feeds:
+  - url: https://www.falter.at/rss/
+    category_hint: internal_politics
+
+- id: vol_at
+  name: Vorarlberg Online (VOL.AT)
+  homepage: https://www.vol.at
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Russmedia
+  state_affiliated: false
+  notes: Western Austrian regional digital daily covering Lake Constance cross-border trade, industry, and cantonal ties.
+  feeds:
+  - url: https://www.vol.at/feed/rss
+    category_hint: economics

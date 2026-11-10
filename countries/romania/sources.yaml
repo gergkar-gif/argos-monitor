@@ -51,3 +51,93 @@ sources:
   - url: https://news.google.com/rss/search?q=Romania+(election+OR+parliament+OR+NATO+OR+%22Black+Sea%22)+when:3d&hl=en-US&gl=US&ceid=US:en
     section: Politics & Defense
     category_hint: defence_security
+- id: hotnews_ro
+  name: HotNews.ro
+  homepage: https://www.hotnews.ro
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: Media Sud Europa
+  state_affiliated: false
+  notes: Pioneer independent Romanian digital daily focused on political analysis, judicial corruption, and EU affairs.
+  feeds:
+  - url: https://www.hotnews.ro/rss
+    category_hint: internal_politics
+
+- id: adevarul_ro
+  name: Adevărul
+  homepage: https://adevarul.ro
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: Adevărul Holding
+  state_affiliated: false
+  notes: Historic Bucharest daily newspaper of record founded in 1888 covering institutional governance and foreign policy.
+  feeds:
+  - url: https://adevarul.ro/rss/
+    category_hint: internal_politics
+
+- id: libertatea_ro
+  name: Libertatea
+  homepage: https://www.libertatea.ro
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: Ringier Romania
+  state_affiliated: false
+  notes: High-circulation digital broadsheet renowned for deep social and public expenditure investigations.
+  feeds:
+  - url: https://www.libertatea.ro/feed
+    category_hint: general
+
+- id: spotmedia_ro
+  name: Spotmedia
+  homepage: https://spotmedia.ro
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: Spot Media SRL
+  state_affiliated: false
+  notes: Independent analytical and opinion portal focusing on justice reforms, economy, and geopolitical security.
+  feeds:
+  - url: https://spotmedia.ro/feed
+    category_hint: internal_politics
+
+- id: europafm_ro
+  name: Europa FM Romania
+  homepage: https://www.europafm.ro
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: Czech Media Invest (Lagardère Active Radio)
+  state_affiliated: false
+  notes: National news and broadcast radio network providing investigative journalism and civic debate.
+  feeds:
+  - url: https://www.europafm.ro/feed/
+    category_hint: internal_politics
+
+- id: jurnalul_ro
+  name: Jurnalul Național
+  homepage: https://jurnalul.ro
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: Intact Media Group
+  state_affiliated: false
+  notes: Major Romanian daily newspaper covering national politics, parliamentary debates, and administrative reforms.
+  feeds:
+  - url: https://jurnalul.ro/rss/
+    category_hint: internal_politics
+
+- id: romania24_ro
+  name: Romania24
+  homepage: https://romania24.ro
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: Romania24 Media
+  state_affiliated: false
+  notes: Independent national digital news portal tracking municipal infrastructure, transport, and regional development.
+  feeds:
+  - url: https://romania24.ro/feed/
+    category_hint: general
