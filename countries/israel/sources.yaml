@@ -97,3 +97,75 @@ sources:
   feeds:
   - url: https://news.google.com/rss/search?q=%22Israel+Defense+Forces%22+OR+IDF+OR+%22Iron+Dome%22+OR+Hezbollah+OR+Mossad+when:3d&hl=en-IL&gl=IL&ceid=IL:en
     category_hint: defence_security
+- id: ynet_he
+  name: Ynet (Hebrew)
+  homepage: https://www.ynet.co.il
+  language: he
+  scope: domestic
+  kind: media
+  governing_body: Yedioth Ahronoth Group
+  state_affiliated: false
+  notes: Israel largest circulation Hebrew news portal covering breaking defense and government policy.
+  feeds:
+  - url: https://www.ynet.co.il/Integration/StoryRss2.xml
+    category_hint: internal_politics
+- id: arutz_sheva_inn
+  name: Israel National News (Arutz Sheva)
+  homepage: https://www.inn.co.il
+  language: he
+  scope: domestic
+  kind: media
+  governing_body: Arutz Sheva Publications
+  state_affiliated: false
+  notes: Major Israeli nationalist-religious news network covering Knesset legislation, settlements, and security.
+  feeds:
+  - url: https://www.inn.co.il/Rss.aspx?id=1
+    category_hint: internal_politics
+- id: walla_news
+  name: Walla! News
+  homepage: https://www.walla.co.il
+  language: he
+  scope: domestic
+  kind: media
+  governing_body: The Jerusalem Post Group
+  state_affiliated: false
+  notes: Major Israeli digital news and media portal covering national politics and economy.
+  feeds:
+  - url: https://rss.walla.co.il/feed/1?type=main
+    category_hint: internal_politics
+- id: srugim_news
+  name: Srugim
+  homepage: https://www.srugim.co.il
+  language: he
+  scope: domestic
+  kind: media
+  governing_body: Srugim Media
+  state_affiliated: false
+  notes: Leading Israeli news portal covering religious Zionist public life, coalition politics, and judiciary.
+  feeds:
+  - url: https://www.srugim.co.il/feed
+    category_hint: internal_politics
+- id: debka_file
+  name: DEBKAfile
+  homepage: https://www.debka.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: DEBKA Media
+  state_affiliated: false
+  notes: Israeli independent military, counter-terrorism, and strategic intelligence review.
+  feeds:
+  - url: https://www.debka.com/feed/
+    category_hint: defence_security
+- id: haredim10_news
+  name: Haredim10
+  homepage: https://ch10.co.il
+  language: he
+  scope: domestic
+  kind: media
+  governing_body: Haredim10 Communications
+  state_affiliated: false
+  notes: Leading independent Israeli Ultra-Orthodox news portal reporting on coalition deals, rabbinical leadership, and welfare policy.
+  feeds:
+  - url: https://ch10.co.il/feed/
+    category_hint: internal_politics

@@ -37,3 +37,99 @@ sources:
   - url: https://news.google.com/rss/search?q=(Algeria+OR+Algiers)+(Tebboune+OR+gas+OR+energy+OR+diplomacy)+when:3d&hl=en-US&gl=US&ceid=US:en
     section: Energy & Politics
     category_hint: economics
+- id: algerie360_dz
+  name: Algerie360
+  homepage: https://www.algerie360.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Algerie360 Media Group
+  state_affiliated: false
+  notes: Leading Algerian continuous digital news daily covering domestic policy, energy, and economy.
+  feeds:
+  - url: https://www.algerie360.com/feed/
+    category_hint: internal_politics
+- id: le_matin_dz
+  name: Le Matin d'Algérie
+  homepage: https://lematindalgerie.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Le Matin Publishing
+  state_affiliated: false
+  notes: Historic independent Algerian daily providing critical coverage of executive accountability.
+  feeds:
+  - url: https://lematindalgerie.com/feed/
+    category_hint: internal_politics
+- id: jeune_independant_dz
+  name: Le Jeune Indépendant
+  homepage: https://www.jeune-independant.net
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Le Jeune Indépendant SARL
+  state_affiliated: false
+  notes: Algerian French-language daily broadsheet reporting on national politics, economy, and Maghreb relations.
+  feeds:
+  - url: https://www.jeune-independant.net/feed/
+    category_hint: internal_politics
+- id: algerie_focus_dz
+  name: Algérie Focus
+  homepage: https://www.algerie-focus.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Algérie Focus Media
+  state_affiliated: false
+  notes: Independent news platform focusing on socioeconomic investigations and youth governance.
+  feeds:
+  - url: https://www.algerie-focus.com/feed/
+    category_hint: internal_politics
+- id: algerie_patriotique_dz
+  name: Algérie Patriotique
+  homepage: https://www.algeriepatriotique.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Algérie Patriotique
+  state_affiliated: false
+  notes: Analytical news portal specializing in Algerian geopolitics, defense, and international partnerships.
+  feeds:
+  - url: https://www.algeriepatriotique.com/feed/
+    category_hint: foreign_policy
+- id: dia_algerie_dz
+  name: Dernières Infos d'Algérie (DIA)
+  homepage: https://dia-algerie.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: DIA Communications
+  state_affiliated: false
+  notes: Independent Algerian news and analysis portal covering institutional developments.
+  feeds:
+  - url: https://dia-algerie.com/feed/
+    category_hint: internal_politics
+- id: echorouk_dz
+  name: Echorouk Online
+  homepage: https://www.echoroukonline.com
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: Echorouk Group
+  state_affiliated: false
+  notes: Largest circulation private Arabophone newspaper and news daily in Algeria.
+  feeds:
+  - url: https://www.echoroukonline.com/feed/
+    category_hint: general
+- id: ennahar_dz
+  name: Ennahar Online
+  homepage: https://www.ennaharonline.com
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: Ennahar Group
+  state_affiliated: false
+  notes: Prominent 24-hour Algerian digital daily covering breaking national and security affairs.
+  feeds:
+  - url: https://www.ennaharonline.com/feed/
+    category_hint: internal_politics

@@ -2,6 +2,10 @@
 
 Completed items moved from `docs/roadmap.md` per project handover rules.
 
+- **Nordic, Caucasus, Levant & Maghreb Desks Expansion to 10+ Sources (Phase 3 Batch 14)** — **Done 2026-11-10.**
+  - Expanded and verified candidate feeds for Denmark (11 direct), Georgia (11 direct), Israel (10 direct), Algeria (10 direct), and Morocco (10 direct), bringing 73 major global and regional desks into full compliance with the 10-source standard.
+  - Verified feed reachability with parallel probe across all newly integrated publications.
+
 - **Central Asian, Balkan, West African & Andean Desks Expansion to 10+ Sources (Phase 3 Batch 13)** — **Done 2026-11-10.**
   - Expanded and verified candidate feeds for Uzbekistan (10 direct), West Africa (10 direct), Kyrgyzstan (10 direct), Kosovo (10 direct), and Ecuador (10 direct), bringing 68 major global and regional desks into full compliance with the 10-source standard.
   - Verified feed reachability with parallel probe across all newly integrated publications.

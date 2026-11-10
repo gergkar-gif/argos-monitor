@@ -37,3 +37,99 @@ sources:
   - url: https://news.google.com/rss/search?q=Morocco+(diplomacy+OR+Sahara+OR+energy+OR+king)+when:3d&hl=en-US&gl=US&ceid=US:en
     section: Diplomacy & Governance
     category_hint: foreign_policy
+- id: hespress_fr_ma
+  name: Hespress (Français)
+  homepage: https://fr.hespress.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Hespress Group
+  state_affiliated: false
+  notes: French-language edition of Morocco leading digital news daily covering governance and diplomacy.
+  feeds:
+  - url: https://fr.hespress.com/feed
+    category_hint: internal_politics
+- id: hespress_ar_ma
+  name: Hespress (Arabe)
+  homepage: https://www.hespress.com
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: Hespress Group
+  state_affiliated: false
+  notes: Most read Moroccan Arabic electronic newspaper covering domestic politics and social issues.
+  feeds:
+  - url: https://www.hespress.com/feed
+    category_hint: internal_politics
+- id: telquel_ma
+  name: TelQuel
+  homepage: https://telquel.ma
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: TelQuel Média
+  state_affiliated: false
+  notes: Renowned independent Moroccan weekly news magazine known for investigative journalism and editorial freedom.
+  feeds:
+  - url: https://telquel.ma/feed
+    category_hint: internal_politics
+- id: challenge_ma
+  name: Challenge.ma
+  homepage: https://www.challenge.ma
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Éditions de la Gazette
+  state_affiliated: false
+  notes: Premier Moroccan economic and business news weekly covering industrial investment and state fiscal policy.
+  feeds:
+  - url: https://www.challenge.ma/feed/
+    category_hint: economics
+- id: lnt_ma
+  name: La Nouvelle Tribune
+  homepage: https://lnt.ma
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: LNT Maroc
+  state_affiliated: false
+  notes: Authoritative Casablanca economic and political daily broadsheet.
+  feeds:
+  - url: https://lnt.ma/feed/
+    category_hint: internal_politics
+- id: la_vie_eco_ma
+  name: La Vie Éco
+  homepage: https://lavieeco.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Groupe Caractères
+  state_affiliated: false
+  notes: Historic Moroccan financial, corporate, and economic weekly newspaper of record.
+  feeds:
+  - url: https://lavieeco.com/feed/
+    category_hint: economics
+- id: lebrief_ma
+  name: LeBrief.ma
+  homepage: https://www.lebrief.ma
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: LeBrief Communications
+  state_affiliated: false
+  notes: Moroccan digital daily providing synthetic analysis of executive decisions and national news.
+  feeds:
+  - url: https://www.lebrief.ma/feed/
+    category_hint: general
+- id: bladna24_ma
+  name: Bladna24
+  homepage: https://bladna24.ma
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: Bladna24 Media
+  state_affiliated: false
+  notes: Moroccan digital newspaper reporting on regional developments and national politics.
+  feeds:
+  - url: https://bladna24.ma/feed/
+    category_hint: general

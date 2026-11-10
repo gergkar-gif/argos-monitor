@@ -52,3 +52,99 @@ sources:
   - url: https://news.google.com/rss/search?q=(Denmark+OR+Danish)+(Frederiksen+OR+Folketinget+OR+Greenland+OR+defense)+when:3d&hl=en-US&gl=US&ceid=US:en
     section: Governance & Diplomacy
     category_hint: foreign_policy
+- id: bt_dk
+  name: B.T.
+  homepage: https://www.bt.dk
+  language: da
+  scope: domestic
+  kind: media
+  governing_body: Berlingske Media
+  state_affiliated: false
+  notes: Major Copenhagen tabloid and digital daily covering politics and current affairs.
+  feeds:
+  - url: https://www.bt.dk/bt/seneste/rss
+    category_hint: internal_politics
+- id: ekstrabladet_dk
+  name: Ekstra Bladet
+  homepage: https://ekstrabladet.dk
+  language: da
+  scope: domestic
+  kind: media
+  governing_body: JP/Politikens Hus
+  state_affiliated: false
+  notes: Prominent national Danish digital daily covering investigative and political breaking news.
+  feeds:
+  - url: https://ekstrabladet.dk/rssfeed/nyheder/
+    category_hint: internal_politics
+- id: arbejderen_dk
+  name: Arbejderen
+  homepage: https://arbejderen.dk
+  language: da
+  scope: domestic
+  kind: media
+  governing_body: Arbejderpartiet Kommunisterne
+  state_affiliated: false
+  notes: Independent left-wing daily newspaper focusing on labor markets, welfare, and peace policy.
+  feeds:
+  - url: https://arbejderen.dk/feed/
+    category_hint: internal_politics
+- id: altinget_dk
+  name: Altinget
+  homepage: https://www.altinget.dk
+  language: da
+  scope: domestic
+  kind: media
+  governing_body: Altinget Media
+  state_affiliated: false
+  notes: Authoritative Danish independent political and parliamentary journal.
+  feeds:
+  - url: https://www.altinget.dk/rss
+    category_hint: internal_politics
+- id: borsen_dk
+  name: Børsen
+  homepage: https://borsen.dk
+  language: da
+  scope: domestic
+  kind: media
+  governing_body: Dagbladet Børsen A/S (Bonnier Group)
+  state_affiliated: false
+  notes: Denmark leading business and financial newspaper of record.
+  feeds:
+  - url: https://borsen.dk/rss
+    category_hint: economics
+- id: pov_international_dk
+  name: POV International
+  homepage: https://pov.international
+  language: da
+  scope: domestic
+  kind: media
+  governing_body: POV Media ApS
+  state_affiliated: false
+  notes: Reader-funded Danish digital publication of independent analysis and longform essays.
+  feeds:
+  - url: https://pov.international/feed/
+    category_hint: foreign_policy
+- id: raeson_dk
+  name: RÆSON
+  homepage: https://www.raeson.dk
+  language: da
+  scope: domestic
+  kind: media
+  governing_body: Forlaget RÆSON
+  state_affiliated: false
+  notes: Independent Danish political review on foreign policy, Nordic defense, and governance.
+  feeds:
+  - url: https://www.raeson.dk/feed/
+    category_hint: foreign_policy
+- id: journalisten_dk
+  name: Journalisten (Denmark)
+  homepage: https://journalisten.dk
+  language: da
+  scope: domestic
+  kind: media
+  governing_body: Dansk Journalistforbund
+  state_affiliated: false
+  notes: Danish press and media journal reviewing national journalism, freedom of speech, and policy.
+  feeds:
+  - url: https://journalisten.dk/feed/
+    category_hint: general
