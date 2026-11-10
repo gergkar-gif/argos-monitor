@@ -82,6 +82,50 @@ sources:
     feeds:
       - {url: "https://thethaiger.com/news/national/feed", section: National, category_hint: general}
 
+  - id: thestandard_th
+    name: THE STANDARD
+    homepage: https://thestandard.co
+    language: th
+    scope: domestic
+    kind: media
+    governing_body: The Standard Co., Ltd. (independent national digital news agency)
+    state_affiliated: false
+    feeds:
+      - {url: "https://thestandard.co/feed/", section: Latest, category_hint: general}
+
+  - id: thaienquirer
+    name: Thai Enquirer
+    homepage: https://www.thaienquirer.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Thai Enquirer Media (independent political and economic publication)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.thaienquirer.com/feed/", section: News, category_hint: internal_politics}
+
+  - id: isaanrecord
+    name: The Isaan Record
+    homepage: https://theisaanrecord.co
+    language: th
+    scope: domestic
+    kind: media
+    governing_body: The Isaan Record Foundation (independent regional and investigative journalism)
+    state_affiliated: false
+    feeds:
+      - {url: "https://theisaanrecord.co/feed/", section: Latest, category_hint: general}
+
+  - id: workpointtoday
+    name: Workpoint TODAY
+    homepage: https://workpointtoday.com
+    language: th
+    scope: domestic
+    kind: media
+    governing_body: Workpoint Group (major independent broadcast news network)
+    state_affiliated: false
+    feeds:
+      - {url: "https://workpointtoday.com/feed/", section: Today, category_hint: general}
+
   - id: gnews_en_th
     name: Google News (Thailand - English)
     homepage: https://news.google.com

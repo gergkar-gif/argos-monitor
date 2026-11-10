@@ -55,6 +55,84 @@ sources:
       - url: https://mothership.sg/feed/
         category_hint: society
 
+  - id: theindependent_sg
+    name: The Independent Singapore
+    homepage: https://theindependent.sg
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Independent News & Media Pte Ltd"
+    state_affiliated: false
+    notes: "Independent news publication covering Singapore politics and civil society."
+    feeds:
+      - url: https://theindependent.sg/feed/
+        category_hint: internal_politics
+
+  - id: mustsharenews
+    name: MS News (MustShareNews)
+    homepage: https://mustsharenews.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "The Smart Local Media Group"
+    state_affiliated: false
+    notes: "Independent digital news publication covering Singapore current affairs."
+    feeds:
+      - url: https://mustsharenews.com/feed/
+        category_hint: society
+
+  - id: wakeup_sg
+    name: Wake Up Singapore
+    homepage: https://wakeup.sg
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Wake Up Singapore Collective"
+    state_affiliated: false
+    notes: "Independent alternative civic commentary and grassroots reporting."
+    feeds:
+      - url: https://wakeup.sg/feed/
+        category_hint: society
+
+  - id: ricemedia_sg
+    name: RICE Media
+    homepage: https://www.ricemedia.co
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Rice Media Pte Ltd"
+    state_affiliated: false
+    notes: "Independent narrative journalism and social commentary."
+    feeds:
+      - url: https://www.ricemedia.co/feed/
+        category_hint: society
+
+  - id: sbr_sg
+    name: Singapore Business Review
+    homepage: https://sbr.com.sg
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Charlton Media Group"
+    state_affiliated: false
+    notes: "Independent macroeconomic and corporate business publication."
+    feeds:
+      - url: https://sbr.com.sg/rss.xml
+        category_hint: economics
+
+  - id: vulcanpost_sg
+    name: Vulcan Post
+    homepage: https://vulcanpost.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "GRVTY Media Pte Ltd"
+    state_affiliated: false
+    notes: "Independent digital tech, startup and economy journalism."
+    feeds:
+      - url: https://vulcanpost.com/feed/
+        category_hint: economics
+
   - id: google_news_sg_politics
     name: Google News (Singapore Government & 4G Leadership)
     homepage: https://news.google.com

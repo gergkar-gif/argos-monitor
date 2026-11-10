@@ -80,6 +80,50 @@ sources:
     feeds:
       - {url: "https://www.rfa.org/arc/outboundfeeds/burmese/rss/", section: Burmese, category_hint: general}
 
+  - id: shannews_my
+    name: Shan Herald Agency for News (SHAN)
+    homepage: https://burmese.shannews.org
+    language: my
+    scope: abroad_local
+    kind: media
+    governing_body: Shan Herald Agency for News (independent ethnic news organization)
+    state_affiliated: false
+    feeds:
+      - {url: "https://burmese.shannews.org/feed", section: Burmese, category_hint: general}
+
+  - id: monnews_my
+    name: Independent Mon News Agency (IMNA)
+    homepage: https://monnews.org
+    language: my
+    scope: abroad_local
+    kind: media
+    governing_body: Mon News Agency (independent ethnic news organisation)
+    state_affiliated: false
+    feeds:
+      - {url: "https://monnews.org/feed/", section: Latest, category_hint: general}
+
+  - id: kicnews_my
+    name: Karen Information Center (KIC)
+    homepage: https://kicnews.org
+    language: my
+    scope: abroad_local
+    kind: media
+    governing_body: Karen Information Center (independent ethnic news network)
+    state_affiliated: false
+    feeds:
+      - {url: "https://kicnews.org/feed/", section: News, category_hint: general}
+
+  - id: kachinnews_en
+    name: Kachin News Group (KNG)
+    homepage: https://kachinnews.com
+    language: en
+    scope: abroad_local
+    kind: media
+    governing_body: Kachin News Group (independent ethnic news agency)
+    state_affiliated: false
+    feeds:
+      - {url: "https://kachinnews.com/feed/", section: Latest, category_hint: general}
+
   - id: gnews_en_mm
     name: Google News (Myanmar - English)
     homepage: https://news.google.com

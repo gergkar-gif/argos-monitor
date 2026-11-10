@@ -35,6 +35,94 @@ sources:
     feeds:
       - {url: "https://www.cnbcindonesia.com/news/rss", section: News & Economy, category_hint: economics}
 
+  - id: cnnindonesia
+    name: CNN Indonesia
+    homepage: https://www.cnnindonesia.com
+    language: id
+    scope: domestic
+    kind: media
+    governing_body: Trans Media / Warner Bros. Discovery (national news network)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.cnnindonesia.com/nasional/rss", section: Nasional, category_hint: internal_politics}
+
+  - id: cnnindo_eko
+    name: CNN Indonesia (Ekonomi)
+    homepage: https://www.cnnindonesia.com
+    language: id
+    scope: domestic
+    kind: media
+    governing_body: Trans Media / Warner Bros. Discovery (economic and market news)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.cnnindonesia.com/ekonomi/rss", section: Ekonomi, category_hint: economics}
+
+  - id: katadata_id
+    name: Katadata
+    homepage: https://katadata.co.id
+    language: id
+    scope: domestic
+    kind: media
+    governing_body: PT Katadata Indonesia (economic and financial data journalism)
+    state_affiliated: false
+    feeds:
+      - {url: "https://katadata.co.id/rss", section: Berita, category_hint: economics}
+
+  - id: inews_id
+    name: iNews.id
+    homepage: https://www.inews.id
+    language: id
+    scope: domestic
+    kind: media
+    governing_body: MNC Media Group (national broadcast and digital news network)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.inews.id/feed/news", section: News, category_hint: general}
+
+  - id: mediaindonesia
+    name: Media Indonesia
+    homepage: https://mediaindonesia.com
+    language: id
+    scope: domestic
+    kind: media
+    governing_body: Media Group (major national daily newspaper of record)
+    state_affiliated: false
+    feeds:
+      - {url: "https://mediaindonesia.com/feed", section: Berita, category_hint: general}
+
+  - id: akurat_id
+    name: Akurat.co
+    homepage: https://akurat.co
+    language: id
+    scope: domestic
+    kind: media
+    governing_body: PT Akurat Media Nusantara (independent national digital news portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://akurat.co/rss", section: Terkini, category_hint: general}
+
+  - id: wartaekonomi
+    name: Warta Ekonomi
+    homepage: https://wartaekonomi.co.id
+    language: id
+    scope: domestic
+    kind: media
+    governing_body: PT Warta Ekonomi Digital (macroeconomic, business and banking daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://wartaekonomi.co.id/feed", section: Ekonomi, category_hint: economics}
+
+  - id: investordaily
+    name: Investor Daily
+    homepage: https://investor.id
+    language: id
+    scope: domestic
+    kind: media
+    governing_body: B-Universe (premier financial and capital markets daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://investor.id/rss/investor", section: Pasar Modal, category_hint: economics}
+
   - id: gnews_en_id
     name: Google News (Indonesia - English)
     homepage: https://news.google.com

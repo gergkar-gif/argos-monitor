@@ -2,6 +2,10 @@
 
 Completed items moved from `docs/roadmap.md` per project handover rules.
 
+- **Southeast Asia Regional Desks Expansion to 10+ Sources (Phase 3 Batch 4)** — **Done 2026-11-10.**
+  - Expanded and verified candidate feeds for Thailand (11 direct), Philippines (10 direct), Myanmar (11 direct), Indonesia (11 direct), and Singapore (10 direct), bringing 23 major global and regional desks into full compliance with the 10-source standard.
+  - Verified feed reachability with parallel probe (`tools/probe.py`) across all newly integrated publications.
+
 - **Major Regional Desks Expansion to 10+ Sources (Phase 3 Batch 3)** — **Done 2026-11-10.**
   - Expanded and verified candidate feeds for Poland (10 direct), Turkey (10 direct), South Korea (11 direct), India (10 direct), and Taiwan (11 direct), bringing 18 major global and regional desks into full compliance with the 10-source standard.
   - Verified feed reachability with parallel probe (`tools/probe.py`) across all newly integrated publications.

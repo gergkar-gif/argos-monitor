@@ -68,6 +68,50 @@ sources:
     feeds:
       - {url: "https://www.manilatimes.net/news/feed/", section: News, category_hint: general}
 
+  - id: pcij_ph
+    name: Philippine Center for Investigative Journalism (PCIJ)
+    homepage: https://pcij.org
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: PCIJ Foundation (independent non-profit investigative journalism centre)
+    state_affiliated: false
+    feeds:
+      - {url: "https://pcij.org/feed/", section: Investigations, category_hint: internal_politics}
+
+  - id: interaksyon_ph
+    name: Interaksyon
+    homepage: https://interaksyon.philstar.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: PhilStar Media Group (independent digital news and current affairs portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://interaksyon.philstar.com/feed/", section: Headlines, category_hint: general}
+
+  - id: mindanews_ph
+    name: MindaNews
+    homepage: https://mindanews.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Mindanao News and Information Cooperative Center (independent regional news service)
+    state_affiliated: false
+    feeds:
+      - {url: "https://mindanews.com/feed/", section: News, category_hint: general}
+
+  - id: mindanaotimes_ph
+    name: Mindanao Times
+    homepage: https://mindanaotimes.com.ph
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Mindanao Times Publishing Corp. (oldest independent daily in Mindanao)
+    state_affiliated: false
+    feeds:
+      - {url: "https://mindanaotimes.com.ph/feed/", section: Top News, category_hint: general}
+
   - id: gnews_pna
     name: Philippine News Agency (PNA via Google News)
     homepage: https://www.pna.gov.ph
