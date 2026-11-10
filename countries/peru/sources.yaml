@@ -53,3 +53,93 @@ sources:
   - url: https://news.google.com/rss/search?q=Peru+(Boluarte+OR+mining+OR+copper+OR+protest+OR+Congress)+when:3d&hl=en-US&gl=US&ceid=US:en
     section: Governance & Resources
     category_hint: economics
+- id: rpp_pe
+  name: RPP Noticias
+  homepage: https://rpp.pe
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Grupo RPP (Radio Programas del Perú)
+  state_affiliated: false
+  notes: Major Peruvian radio and digital network covering nationwide breaking news, congressional debates, and executive policy.
+  feeds:
+  - url: https://rpp.pe/feed
+    category_hint: general
+
+- id: caretas_pe
+  name: Caretas
+  homepage: https://caretas.pe
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Empresa Editora Caretas SA
+  state_affiliated: false
+  notes: Historic Peruvian political weekly magazine founded in 1950, renowned for investigative reporting on corruption and power.
+  feeds:
+  - url: https://caretas.pe/feed/
+    category_hint: internal_politics
+
+- id: elbuho_pe
+  name: El Búho
+  homepage: https://elbuho.pe
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: El Búho Comunicaciones
+  state_affiliated: false
+  notes: Leading independent regional media of Southern Peru (Arequipa) covering regional politics, mining disputes, and social issues.
+  feeds:
+  - url: https://elbuho.pe/feed/
+    category_hint: internal_politics
+
+- id: saludconlupa_pe
+  name: Salud con Lupa
+  homepage: https://saludconlupa.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Salud con Lupa Media
+  state_affiliated: false
+  notes: Independent investigative digital newsroom dedicated to public health, pharmaceutical policy, and scientific verification.
+  feeds:
+  - url: https://saludconlupa.com/feed/
+    category_hint: internal_politics
+
+- id: inforegion_pe
+  name: Inforegión
+  homepage: https://inforegion.pe
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Agencia de Prensa Ambiental Inforegión
+  state_affiliated: false
+  notes: Independent news agency covering the Amazon basin, environmental protection, illegal mining, and coca eradication.
+  feeds:
+  - url: https://inforegion.pe/feed/
+    category_hint: defence_security
+
+- id: wayka_pe
+  name: Wayka
+  homepage: https://wayka.pe
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Asociación Civil Wayka
+  state_affiliated: false
+  notes: Independent digital media reporting on human rights, indigenous communities, labor rights, and institutional protests.
+  feeds:
+  - url: https://wayka.pe/feed/
+    category_hint: internal_politics
+
+- id: andina_en_pe
+  name: Agencia Andina (English)
+  homepage: https://andina.pe/ingles
+  language: en
+  scope: domestic
+  kind: official
+  governing_body: Editora Perú (State news agency)
+  state_affiliated: true
+  notes: English-language statutory wire service covering Peruvian diplomatic bilateral ties, macroeconomic indicators, and trade.
+  feeds:
+  - url: https://andina.pe/ingles/rss/noticias.aspx
+    category_hint: foreign_policy

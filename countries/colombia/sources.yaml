@@ -72,3 +72,119 @@ sources:
     feeds:
       - {url: "https://news.google.com/rss/search?q=Colombia+(Bogota+OR+Petro+OR+Ecopetrol+OR+Congress)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Colombia politics & economy, category_hint: internal_politics}
       - {url: "https://news.google.com/rss/search?q=Colombia+(ELN+OR+FARC+OR+Cauca+OR+Catatumbo+OR+Venezuela+OR+security)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Colombia conflict & diplomacy, category_hint: defence_security}
+  - id: semana_co
+    name: Revista Semana
+    homepage: https://www.semana.com
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Publicaciones Semana (Grupo Gilinski)
+    state_affiliated: false
+    notes: Leading Colombian news weekly and digital daily covering executive politics, defense, and national debates.
+    feeds:
+      - url: https://www.semana.com/arc/outboundfeeds/rss/
+        category_hint: internal_politics
+
+  - id: portafolio_co
+    name: Portafolio
+    homepage: https://www.portafolio.co
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Casa Editorial El Tiempo
+    state_affiliated: false
+    notes: Colombia's premier financial and business daily newspaper covering macroeconomics, taxation, and markets.
+    feeds:
+      - url: https://www.portafolio.co/rss/economia.xml
+        category_hint: economics
+
+  - id: razonpublica_co
+    name: Razón Pública
+    homepage: https://razonpublica.com
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Fundación Razón Pública
+    state_affiliated: false
+    notes: Independent academic and public policy journal analyzing Colombian legislative reforms, judicial rulings, and security.
+    feeds:
+      - url: https://razonpublica.com/feed/
+        category_hint: internal_politics
+
+  - id: cuestionpublica_co
+    name: Cuestión Pública
+    homepage: https://cuestionpublica.com
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Cuestión Pública Media
+    state_affiliated: false
+    notes: Independent investigative journalism media uncovering corporate lobbying, corruption, and political financing.
+    feeds:
+      - url: https://cuestionpublica.com/feed/
+        category_hint: internal_politics
+
+  - id: voragine_co
+    name: Vorágine
+    homepage: https://voragine.co
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Vorágine Periodismo Contracorriente
+    state_affiliated: false
+    notes: Independent investigative portal focusing on human rights violations, armed conflict, and environmental crime.
+    feeds:
+      - url: https://voragine.co/feed/
+        category_hint: defence_security
+
+  - id: dejusticia_co
+    name: Dejusticia
+    homepage: https://dejusticia.org
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Centro de Estudios de Derecho, Justicia y Sociedad
+    state_affiliated: false
+    notes: Think tank and research center producing human rights, constitutional jurisprudence, and transitional justice monitoring.
+    feeds:
+      - url: https://dejusticia.org/feed/
+        category_hint: internal_politics
+
+  - id: colombiacheck_co
+    name: ColombiaCheck
+    homepage: https://colombiacheck.com
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Consejo de Redacción
+    state_affiliated: false
+    notes: Independent fact-checking initiative verifying political speech, electoral claims, and public figures.
+    feeds:
+      - url: https://colombiacheck.com/feed
+        category_hint: internal_politics
+
+  - id: cerosetenta_co
+    name: Cerosetenta
+    homepage: https://cerosetenta.uniandes.edu.co
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Universidad de los Andes
+    state_affiliated: false
+    notes: Digital investigative media published by the Center for Journalism Studies at Universidad de los Andes.
+    feeds:
+      - url: https://cerosetenta.uniandes.edu.co/feed/
+        category_hint: internal_politics
+
+  - id: boyaca7dias_co
+    name: Boyacá 7 Días
+    homepage: https://boyaca7dias.com.co
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Editorial Boyacá 7 Días
+    state_affiliated: false
+    notes: Regional daily covering central Andean agriculture, infrastructure, mining, and subnational politics.
+    feeds:
+      - url: https://boyaca7dias.com.co/feed/
+        category_hint: general

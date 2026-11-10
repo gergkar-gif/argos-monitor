@@ -72,3 +72,106 @@ sources:
     feeds:
       - {url: "https://news.google.com/rss/search?q=Argentina+(Buenos+Aires+OR+Milei+OR+Caputo+OR+Congress+OR+inflation)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Argentina politics & economy, category_hint: internal_politics}
       - {url: "https://news.google.com/rss/search?q=Argentina+(IMF+OR+reserves+OR+peso+OR+China+OR+debt)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Argentina economy & IMF, category_hint: economics}
+  - id: clarin_ar
+    name: Clarín
+    homepage: https://www.clarin.com
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Grupo Clarín (paper of record)
+    state_affiliated: false
+    notes: Highest circulation Argentine national daily newspaper founded in 1945.
+    feeds:
+      - url: https://www.clarin.com/rss/lo-ultimo/
+        category_hint: general
+
+  - id: cronista_ar
+    name: El Cronista
+    homepage: https://www.cronista.com
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Grupo América (economic and financial daily)
+    state_affiliated: false
+    notes: Argentina's premier business, financial, and macroeconomic daily founded in 1908.
+    feeds:
+      - url: https://www.cronista.com/files/rss/news.xml
+        category_hint: economics
+
+  - id: perfil_ar
+    name: Perfil
+    homepage: https://www.perfil.com
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Editorial Perfil
+    state_affiliated: false
+    notes: Independent national daily newspaper and political analysis portal founded by Jorge Fontevecchia.
+    feeds:
+      - url: https://www.perfil.com/feed
+        category_hint: internal_politics
+
+  - id: chequeado_ar
+    name: Chequeado
+    homepage: https://chequeado.com
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Fundación La Voz Pública
+    state_affiliated: false
+    notes: Pioneer Argentine independent fact-checking and public policy verification foundation.
+    feeds:
+      - url: https://chequeado.com/feed/
+        category_hint: internal_politics
+
+  - id: cenital_ar
+    name: Cenital
+    homepage: https://cenital.com
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Cenital Media
+    state_affiliated: false
+    notes: Independent analytical digital newsroom focusing on institutional politics, economics and geopolitics.
+    feeds:
+      - url: https://cenital.com/feed/
+        category_hint: internal_politics
+
+  - id: eldiarioar_ar
+    name: elDiarioAR
+    homepage: https://www.eldiarioar.com
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Prensa Digital SL (elDiario.es affiliate)
+    state_affiliated: false
+    notes: Independent progressive digital daily covering Argentine institutional politics, justice, and human rights.
+    feeds:
+      - url: https://www.eldiarioar.com/rss/
+        category_hint: internal_politics
+
+  - id: tiempoar_ar
+    name: Tiempo Argentino
+    homepage: https://www.tiempoar.com.ar
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Cooperativa Por Más Tiempo
+    state_affiliated: false
+    notes: Worker-owned cooperative daily newspaper covering labor, social movements, and national politics.
+    feeds:
+      - url: https://www.tiempoar.com.ar/feed/
+        category_hint: internal_politics
+
+  - id: rionegro_ar
+    name: Diario Río Negro
+    homepage: https://www.rionegro.com.ar
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Editorial Río Negro SA
+    state_affiliated: false
+    notes: Historic Patagonian daily newspaper covering energy (Vaca Muerta), regional economy, and federal politics.
+    feeds:
+      - url: https://www.rionegro.com.ar/feed/
+        category_hint: economics

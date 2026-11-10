@@ -92,3 +92,93 @@ sources:
     feeds:
       - url: "https://news.google.com/rss/search?q=FANB+OR+Esequibo+Venezuela+OR+%22Tren+de+Aragua%22+when:3d&hl=es-419&gl=VE&ceid=VE:es-419"
         category_hint: defence_security
+  - id: elpitazo_ve
+    name: El Pitazo
+    homepage: https://elpitazo.net
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Alianza Rebelde Investiga
+    state_affiliated: false
+    notes: Award-winning independent investigative digital network with correspondents across all 23 Venezuelan states.
+    feeds:
+      - url: https://elpitazo.net/feed/
+        category_hint: internal_politics
+
+  - id: runrunes_ve
+    name: Runrun.es
+    homepage: https://runrun.es
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: C.A. Medios Digitales Runrunes
+    state_affiliated: false
+    notes: Independent investigative portal founded by Nelson Bocaranda covering executive palace politics and corruption.
+    feeds:
+      - url: https://runrun.es/feed/
+        category_hint: internal_politics
+
+  - id: armandoinfo_ve
+    name: Armando.info
+    homepage: https://armando.info
+    language: es
+    scope: abroad_local
+    kind: media
+    governing_body: Armando Info Editorial Board
+    state_affiliated: false
+    notes: Premier Venezuelan investigative journalism foundation exposing procurement fraud, gold mining cartels, and state corruption.
+    feeds:
+      - url: https://armando.info/feed/
+        category_hint: internal_politics
+
+  - id: correodelcaroni_ve
+    name: Correo del Caroní
+    homepage: https://correodelcaroni.com
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Editorial Caroní SA
+    state_affiliated: false
+    notes: Historic independent Guayana daily newspaper covering the Orinoco Mining Arc, heavy industry, and indigenous rights.
+    feeds:
+      - url: https://correodelcaroni.com/feed/
+        category_hint: economics
+
+  - id: lapatilla_ve
+    name: La Patilla
+    homepage: https://www.lapatilla.com
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Alberto Federico Ravell
+    state_affiliated: false
+    notes: High-reach independent digital news outlet covering breaking national politics, human rights, and migration.
+    feeds:
+      - url: https://www.lapatilla.com/feed/
+        category_hint: general
+
+  - id: monitoreamos_ve
+    name: Monitoreamos
+    homepage: https://monitoreamos.com
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Monitoreamos Media
+    state_affiliated: false
+    notes: Independent digital news service focused on institutional politics, legislative affairs, and diplomatic relations.
+    feeds:
+      - url: https://monitoreamos.com/feed
+        category_hint: internal_politics
+
+  - id: cronicauno_ve
+    name: Crónica Uno
+    homepage: https://cronica.uno
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Espacio Público
+    state_affiliated: false
+    notes: Independent human rights and community daily reporting on social conditions, public services, and judicial developments.
+    feeds:
+      - url: https://cronica.uno/feed/
+        category_hint: internal_politics
