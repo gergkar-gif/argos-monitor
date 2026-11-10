@@ -2,6 +2,12 @@
 
 Completed items moved from `docs/roadmap.md` per project handover rules.
 
+- **Searchable Country Combobox Standardisation Across Site** — **Done 2026-11-10.**
+  - Standardised the Country Brief searchable combobox component (`combobox-wrap`, keyboard arrow/enter navigation, typeahead filtering across country names, IDs, regions, and mention aliases) across all site sections: `site/index.html`, `site/brief.html`, and `site/about.html`.
+  - In `site/brief.html`, replaced native `<select id="b-country">` with full searchable combobox component, syncing instant URL hash routing, region groupings, and diplomatic dispatch generation.
+  - In `site/about.html`, upgraded the Source Directory filter form with the searchable country combobox with "All countries" global option and regional groupings.
+  - Preserved no-dependency vanilla JavaScript and CSS broadsheet design across all views.
+
 - **Crisis Watch & Real-Time Violence Stream Upgrade** — **Done 2026-11-10.**
   - Integrated GDELT 2.0 real-time 15-minute CAMEO violence event stream (`_gdelt_events` and `ingest_gdelt_articles` in `argos/crisis.py` covering CAMEO codes 18 Assault/Bombing, 19 Armed Clash/Strike, 20 Mass Violence, 145/175 Violent Riot/Repression) with verbatim HTML `<title>`, lead, and full-text extraction via Trafilatura (Rule 1 compliant) plus optional ACLED API support (`_acled_events`).
   - Ingested verified GDELT 2.0 conflict URLs directly into the SQLite `article` and `source` tables during both `ingest` and `crisis` stages, preserving relevance (`argos/relevance.py`) so GDELT conflict articles embed, extract verified quotes, and cluster with domestic desk stories (`story_article`).

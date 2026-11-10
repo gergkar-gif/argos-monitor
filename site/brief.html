@@ -219,7 +219,15 @@
       </nav>
     </div>
     <form class="slip notranslate" translate="no" aria-label="Top reported stories options" onsubmit="event.preventDefault()">
-      <label class="field notranslate" translate="no"><span>Country</span><select id="b-country" translate="no" class="notranslate"></select></label>
+      <div class="field country-field notranslate" translate="no">
+        <label for="b-country-search"><span>Country</span></label>
+        <div class="combobox-wrap">
+          <input id="b-country-search" type="search" placeholder="Type country or select…" autocomplete="off" spellcheck="false" class="combobox-input notranslate" translate="no" role="combobox" aria-expanded="false" aria-controls="b-country-menu">
+          <button type="button" id="b-country-arrow" class="combobox-arrow" aria-label="Toggle country list" tabindex="-1">▾</button>
+          <div id="b-country-menu" class="combobox-menu notranslate" translate="no" role="listbox" hidden></div>
+        </div>
+        <select id="b-country" name="country" translate="no" class="notranslate" hidden></select>
+      </div>
       <label class="field"><span>Period</span><select id="b-period" translate="no" class="notranslate"></select></label>
       <label class="field"><span>Items</span><select id="b-limit">
         <option value="10" selected>Top 10</option>
@@ -255,6 +263,7 @@
   const index = window.ARGOS_INDEX;
   const doc = document.getElementById('doc');
   const cSel = document.getElementById('b-country'), pSel = document.getElementById('b-period'), nSel = document.getElementById('b-limit');
+  const cSearch = document.getElementById('b-country-search'), cMenu = document.getElementById('b-country-menu'), cArrow = document.getElementById('b-country-arrow');
 
   const el = (tag, attrs, ...kids) => {
     const e = document.createElement(tag);
@@ -356,6 +365,8 @@
     return items.length ? [el('optgroup', { label: r, class: 'notranslate', translate: 'no' }, ...items.map((x) => el('option', { value: x.id, text: x.name, class: 'notranslate', translate: 'no' })))] : [];
   }));
 
+  const fold = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/ł/g, 'l').replace(/ı/g, 'i');
+
   const ALL_PERIODS = [
     ['24h', 'Last 24 hours'],
     ['7d', 'Last 7 days']
@@ -365,9 +376,181 @@
 
   const initCid = location.hash.slice(1);
   if (index.countries.some((x) => x.id === initCid)) cSel.value = initCid;
+  else if (index.countries[0]) cSel.value = index.countries[0].id;
+
+  function syncCountryInput() {
+    const c = index.countries.find((x) => x.id === cSel.value) || index.countries[0];
+    if (cSearch && c) cSearch.value = c.name;
+  }
+  syncCountryInput();
+
+  function setupCountryCombobox() {
+    if (!cSearch || !cMenu) return;
+    let highlightedIndex = -1;
+    let visibleItems = [];
+
+    function renderMenu(query = '') {
+      const q = fold(query.trim());
+      visibleItems = [];
+      cMenu.replaceChildren();
+
+      if (!q) {
+        const groups = new Map(REGIONS.map((r) => [r, []]));
+        for (const c of index.countries) {
+          const r = getRegion(c);
+          if (!groups.has(r)) groups.set(r, []);
+          groups.get(r).push(c);
+        }
+        for (const [reg, list] of groups.entries()) {
+          if (!list.length) continue;
+          cMenu.append(el('div', { class: 'combobox-group-label', text: reg }));
+          for (const c of list) {
+            const isSel = c.id === cSel.value;
+            const item = el('div', {
+              class: 'combobox-item' + (isSel ? ' selected' : ''),
+              role: 'option',
+              'data-id': c.id,
+              'data-name': c.name,
+              onclick: () => selectCountry(c.id, c.name),
+            },
+              el('span', { class: 'c-name', text: c.name }),
+              el('span', { class: 'c-region', text: reg })
+            );
+            cMenu.append(item);
+            visibleItems.push({ el: item, id: c.id, name: c.name });
+          }
+        }
+      } else {
+        const matches = index.countries.filter((c) => {
+          if (fold(c.name).includes(q) || fold(c.id).includes(q) || fold(getRegion(c)).includes(q)) return true;
+          return (c.mentions || []).some((m) => fold(m).includes(q));
+        });
+
+        if (!matches.length) {
+          cMenu.append(el('div', { class: 'combobox-empty', text: `No countries matching "${query}"` }));
+        } else {
+          for (const c of matches) {
+            const isSel = c.id === cSel.value;
+            const reg = getRegion(c);
+            const item = el('div', {
+              class: 'combobox-item' + (isSel ? ' selected' : ''),
+              role: 'option',
+              'data-id': c.id,
+              'data-name': c.name,
+              onclick: () => selectCountry(c.id, c.name),
+            },
+              el('span', { class: 'c-name', text: c.name }),
+              el('span', { class: 'c-region', text: reg })
+            );
+            cMenu.append(item);
+            visibleItems.push({ el: item, id: c.id, name: c.name });
+          }
+        }
+      }
+
+      highlightedIndex = visibleItems.findIndex((it) => it.id === cSel.value);
+      if (highlightedIndex === -1 && visibleItems.length) highlightedIndex = 0;
+      updateHighlight();
+    }
+
+    function updateHighlight() {
+      visibleItems.forEach((it, idx) => {
+        it.el.classList.toggle('highlighted', idx === highlightedIndex);
+        if (idx === highlightedIndex) it.el.scrollIntoView({ block: 'nearest' });
+      });
+    }
+
+    function selectCountry(cid, cname) {
+      cSel.value = cid;
+      cSearch.value = cname;
+      closeMenu();
+      renderBrief();
+    }
+
+    function openMenu() {
+      const cur = index.countries.find((x) => x.id === cSel.value);
+      renderMenu(cSearch.value === (cur ? cur.name : '') ? '' : cSearch.value);
+      cMenu.hidden = false;
+      cSearch.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeMenu() {
+      cMenu.hidden = true;
+      cSearch.setAttribute('aria-expanded', 'false');
+      highlightedIndex = -1;
+    }
+
+    cSearch.addEventListener('focus', () => {
+      cSearch.select();
+      openMenu();
+    });
+
+    cSearch.addEventListener('input', () => {
+      openMenu();
+      renderMenu(cSearch.value);
+    });
+
+    cSearch.addEventListener('keydown', (e) => {
+      if (cMenu.hidden) {
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp' || e.key === 'Enter') {
+          e.preventDefault();
+          openMenu();
+          return;
+        }
+      }
+
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (visibleItems.length) {
+          highlightedIndex = (highlightedIndex + 1) % visibleItems.length;
+          updateHighlight();
+        }
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (visibleItems.length) {
+          highlightedIndex = (highlightedIndex - 1 + visibleItems.length) % visibleItems.length;
+          updateHighlight();
+        }
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        if (highlightedIndex >= 0 && visibleItems[highlightedIndex]) {
+          selectCountry(visibleItems[highlightedIndex].id, visibleItems[highlightedIndex].name);
+        } else if (visibleItems.length === 1) {
+          selectCountry(visibleItems[0].id, visibleItems[0].name);
+        }
+      } else if (e.key === 'Escape') {
+        e.preventDefault();
+        syncCountryInput();
+        closeMenu();
+        cSearch.blur();
+      }
+    });
+
+    if (cArrow) {
+      cArrow.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (cMenu.hidden) {
+          cSearch.focus();
+          openMenu();
+        } else {
+          closeMenu();
+        }
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      if (!cSearch.contains(e.target) && !cMenu.contains(e.target) && (!cArrow || !cArrow.contains(e.target))) {
+        closeMenu();
+        syncCountryInput();
+      }
+    });
+  }
+
+  setupCountryCombobox();
 
   async function renderBrief() {
     const c = index.countries.find((x) => x.id === cSel.value) || index.countries[0];
+    syncCountryInput();
     const periodVal = pSel.value || '7d';
     const limit = Math.min(1000, Math.max(1, parseInt(nSel.value, 10) || 10));
     try { if (location.protocol !== 'file:') history.replaceState(null, '', `#${c.id}`); } catch {}
