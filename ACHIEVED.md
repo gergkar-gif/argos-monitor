@@ -2,6 +2,11 @@
 
 Completed items moved from `docs/roadmap.md` per project handover rules.
 
+- **Wire Syndication & Attribution Deduplication (Phase 2)** — **Done 2026-11-10.**
+  - Wire attribution matching: added `WIRE_CREDIT_RE` and lowered `WIRE_THRESHOLD = 0.35` in `argos/normalise.py` to identify syndicated wire reprints (e.g. VNA, APS, BelTA, Reuters, AP) even when wrapped in commentary or lightly edited by local commercial newsrooms (Rule 5).
+  - Lead-level shingle hashing: extended content shingling to include article leads when full text extraction is partial.
+  - Added comprehensive unit tests in `tests/test_normalise.py`.
+
 - **Media Cloud & EMM Architectural Lift (Phase 1)** — **Done 2026-11-10.**
   - Ingestion efficiency: HTTP 304 conditional GETs (`ETag`, `Last-Modified`) and exponential backoff quarantine state machine in `argos/fetch.py`, `argos/db.py`, and `argos/ingest.py`.
   - Canonical URL normalization: tracking query parameter scrubbing (`clean_url`) in `argos/textutil.py` to prevent duplicate article rows across aggregators and direct feeds.
