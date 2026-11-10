@@ -83,3 +83,87 @@ sources:
     feeds:
       - {url: "https://news.google.com/rss/search?q=Uzbekistan+(Tashkent+OR+Mirziyoyev+OR+economy+OR+gas+OR+nuclear+OR+railway)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Uzbekistan politics & economy, category_hint: economics}
       - {url: "https://news.google.com/rss/search?q=Uzbekistan+(Russia+OR+China+OR+Afghanistan+OR+EU+OR+minerals)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Uzbekistan foreign policy, category_hint: foreign_policy}
+  - id: gazeta_uz_ru
+    name: Gazeta.uz (Russian)
+    homepage: https://www.gazeta.uz/ru
+    language: ru
+    scope: domestic
+    kind: media
+    governing_body: Afisha Media
+    state_affiliated: false
+    notes: Russian-language edition of Gazeta.uz covering national legislation and economics.
+    feeds:
+    - url: https://www.gazeta.uz/ru/rss/
+      category_hint: internal_politics
+  - id: kun_uz_en
+    name: Kun.uz (English)
+    homepage: https://kun.uz/en
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Web Expert LLC
+    state_affiliated: false
+    notes: English-language service of Kun.uz covering Central Asian diplomacy and trade.
+    feeds:
+    - url: https://kun.uz/en/news/rss
+      category_hint: foreign_policy
+  - id: kun_uz_ru
+    name: Kun.uz (Russian)
+    homepage: https://kun.uz/ru
+    language: ru
+    scope: domestic
+    kind: media
+    governing_body: Web Expert LLC
+    state_affiliated: false
+    notes: Russian-language edition of Kun.uz covering domestic politics and governance.
+    feeds:
+    - url: https://kun.uz/ru/news/rss
+      category_hint: internal_politics
+  - id: daryo_uz_en
+    name: Daryo (English)
+    homepage: https://daryo.uz/en
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Simple Networking Solutions LLC
+    state_affiliated: false
+    notes: English-language edition of Daryo covering Tashkent regional affairs.
+    feeds:
+    - url: https://daryo.uz/en/rss/
+      category_hint: general
+  - id: spot_uz
+    name: Spot.uz
+    homepage: https://www.spot.uz
+    language: ru
+    scope: domestic
+    kind: media
+    governing_body: Afisha Media
+    state_affiliated: false
+    notes: Uzbekistan premier business, tech, and economic news portal.
+    feeds:
+    - url: https://www.spot.uz/ru/rss/
+      category_hint: economics
+  - id: kursiv_uz
+    name: Kursiv Uzbekistan
+    homepage: https://uz.kursiv.media
+    language: ru
+    scope: domestic
+    kind: media
+    governing_body: Kursiv Media
+    state_affiliated: false
+    notes: Business and financial daily covering Uzbek industrial investment and state tenders.
+    feeds:
+    - url: https://uz.kursiv.media/ru/feed/
+      category_hint: economics
+  - id: uza_uz_en
+    name: UzA (Uzbekistan National News Agency)
+    homepage: https://uza.uz/en
+    language: en
+    scope: domestic
+    kind: official
+    governing_body: Government of Uzbekistan
+    state_affiliated: true
+    notes: State news agency providing statutory presidential decrees and ministerial communiques.
+    feeds:
+    - url: https://uza.uz/en/rss
+      category_hint: internal_politics

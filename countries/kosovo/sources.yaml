@@ -73,3 +73,111 @@ sources:
     feeds:
       - {url: "https://news.google.com/rss/search?q=Kosovo+(Pristina+OR+Kurti+OR+Mitrovica+OR+%22Serb+List%22)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Kosovo politics & north, category_hint: internal_politics}
       - {url: "https://news.google.com/rss/search?q=Kosovo+(Serbia+OR+KFOR+OR+NATO+OR+EU+OR+Ohrid)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Kosovo dialogue & security, category_hint: defence_security}
+  - id: telegrafi_ks
+    name: Telegrafi
+    homepage: https://telegrafi.com
+    language: sq
+    scope: domestic
+    kind: media
+    governing_body: Telegrafi LLC
+    state_affiliated: false
+    notes: Leading independent digital news portal in Kosovo covering national politics and economy.
+    feeds:
+    - url: https://telegrafi.com/feed/
+      category_hint: internal_politics
+  - id: kosovapress_ks
+    name: KosovaPress
+    homepage: https://kosovapress.com
+    language: sq
+    scope: domestic
+    kind: media
+    governing_body: KosovaPress News Agency
+    state_affiliated: false
+    notes: Major independent news agency in Kosovo providing continuous wire coverage of governance.
+    feeds:
+    - url: https://kosovapress.com/feed/
+      category_hint: internal_politics
+  - id: reporteri_ks
+    name: Gazeta Online Reporteri
+    homepage: https://reporteri.net
+    language: sq
+    scope: domestic
+    kind: media
+    governing_body: Reporteri Media Group
+    state_affiliated: false
+    notes: Pristina-based independent investigative and political news daily.
+    feeds:
+    - url: https://reporteri.net/feed/
+      category_hint: internal_politics
+  - id: bota_sot_ks
+    name: Bota Sot
+    homepage: https://www.botasot.info
+    language: sq
+    scope: domestic
+    kind: media
+    governing_body: Bota Sot Publishing
+    state_affiliated: false
+    notes: Established Kosovo daily newspaper covering parliamentary affairs and national dialogue.
+    feeds:
+    - url: https://www.botasot.info/rss/
+      category_hint: internal_politics
+  - id: sinjali_ks
+    name: Gazeta Sinjali
+    homepage: https://sinjali.com
+    language: sq
+    scope: domestic
+    kind: media
+    governing_body: Sinjali Media
+    state_affiliated: false
+    notes: Independent news daily covering justice, rule of law, and governance in Kosovo.
+    feeds:
+    - url: https://sinjali.com/feed/
+      category_hint: internal_politics
+  - id: ballkani_info_ks
+    name: Ballkani.info
+    homepage: https://ballkani.info
+    language: sq
+    scope: domestic
+    kind: media
+    governing_body: Ballkani Info Group
+    state_affiliated: false
+    notes: Digital news platform focusing on Kosovo politics and regional Western Balkans security.
+    feeds:
+    - url: https://ballkani.info/feed/
+      category_hint: foreign_policy
+  - id: epokaere_ks
+    name: Epoka e Re
+    homepage: https://www.epokaere.com
+    language: sq
+    scope: domestic
+    kind: media
+    governing_body: Epoka e Re Publishing
+    state_affiliated: false
+    notes: Daily broadsheet in Pristina covering constitutional affairs, diplomacy, and party politics.
+    feeds:
+    - url: https://www.epokaere.com/feed/
+      category_hint: internal_politics
+  - id: botapress_ks
+    name: Botapress
+    homepage: https://botapress.info
+    language: sq
+    scope: domestic
+    kind: media
+    governing_body: Botapress Media
+    state_affiliated: false
+    notes: Kosovo news portal reporting on local governance, economy, and public debates.
+    feeds:
+    - url: https://botapress.info/feed/
+      category_hint: general
+  - id: albinfo_ch_ks
+    name: Albinfo
+    homepage: https://www.albinfo.ch
+    language: sq
+    scope: abroad_local
+    kind: media
+    governing_body: Albinfo Association
+    state_affiliated: false
+    notes: Independent Swiss-Kosovar media platform providing diaspora and bilateral Kosovo coverage.
+    feeds:
+    - url: https://www.albinfo.ch/feed/
+      category_hint: foreign_policy

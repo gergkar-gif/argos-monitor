@@ -38,3 +38,99 @@ sources:
   - url: https://news.google.com/rss/search?q=Ecuador+(Noboa+OR+blackout+OR+security+OR+drought+OR+cartel)+when:3d&hl=en-US&gl=US&ceid=US:en
     section: Security & Governance
     category_hint: defence_security
+- id: el_comercio_ec
+  name: El Comercio
+  homepage: https://www.elcomercio.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Grupo El Comercio
+  state_affiliated: false
+  notes: Historic Quito daily broadsheet of record covering presidential policy and national economics.
+  feeds:
+  - url: https://www.elcomercio.com/feed/
+    category_hint: internal_politics
+- id: radio_pichincha_ec
+  name: Radio Pichincha
+  homepage: https://radiopichincha.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Pichincha Comunicaciones EP
+  state_affiliated: false
+  notes: Public and community-oriented broadcaster in Quito covering legislative debates and social movements.
+  feeds:
+  - url: https://radiopichincha.com/feed/
+    category_hint: internal_politics
+- id: confirmado_net_ec
+  name: Confirmado.net
+  homepage: https://confirmado.net
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Confirmado Digital
+  state_affiliated: false
+  notes: Independent digital news portal covering executive accountability and judicial affairs.
+  feeds:
+  - url: https://confirmado.net/feed/
+    category_hint: internal_politics
+- id: diario_extra_ec
+  name: Diario Extra Ecuador
+  homepage: https://www.extra.ec
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Granasa (Gráficos Nacionales S.A.)
+  state_affiliated: false
+  notes: Widely read Ecuadorian daily covering breaking security and public affairs.
+  feeds:
+  - url: https://www.extra.ec/feed
+    category_hint: defence_security
+- id: aldia_ec
+  name: ALDIA
+  homepage: https://www.aldia.com.ec
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: ALDIA Comunicaciones
+  state_affiliated: false
+  notes: Coastal and Los Ríos regional news daily reporting on local agricultural economy and security.
+  feeds:
+  - url: https://www.aldia.com.ec/feed/
+    category_hint: general
+- id: el_mercurio_cuenca_ec
+  name: El Mercurio (Cuenca)
+  homepage: https://elmercurio.com.ec
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: El Mercurio Cuenca
+  state_affiliated: false
+  notes: Major Southern Ecuadorian daily newspaper of record covering regional governance and infrastructure.
+  feeds:
+  - url: https://elmercurio.com.ec/feed/
+    category_hint: internal_politics
+- id: metro_ecuador_ec
+  name: Metro Ecuador
+  homepage: https://www.metroecuador.com.ec
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Metro International / Grupo Metro
+  state_affiliated: false
+  notes: Nationwide Ecuadorian daily newspaper covering urban affairs, policy, and national news.
+  feeds:
+  - url: https://www.metroecuador.com.ec/arc/outboundfeeds/rss/?outputType=xml
+    category_hint: general
+- id: periodismo_investigacion_ec
+  name: Periodismo de Investigacion (PI)
+  homepage: https://periodismodeinvestigacion.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Fundacion Periodismo de Investigacion
+  state_affiliated: false
+  notes: Independent investigative portal founded by Fernando Villavicencio exposing public corruption and state capture.
+  feeds:
+  - url: https://periodismodeinvestigacion.com/feed/
+    category_hint: defence_security
