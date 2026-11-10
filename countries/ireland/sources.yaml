@@ -26,6 +26,126 @@ sources:
   feeds:
   - url: https://www.irishtimes.com/arc/outboundfeeds/rss/category/politics/
     category_hint: internal_politics
+- id: independent_ie
+  name: Irish Independent
+  homepage: https://www.independent.ie
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Mediahuis Ireland
+  state_affiliated: false
+  notes: Highest-selling national daily broadsheet newspaper in Ireland.
+  feeds:
+  - url: https://www.independent.ie/rss
+    category_hint: general
+- id: thejournal_ie
+  name: TheJournal.ie
+  homepage: https://www.thejournal.ie
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Journal Media
+  state_affiliated: false
+  notes: Leading independent digital news service in Ireland.
+  feeds:
+  - url: https://www.thejournal.ie/feed/
+    category_hint: general
+- id: ontheditch_ie
+  name: The Ditch
+  homepage: https://www.ontheditch.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Ditch Media Ltd
+  state_affiliated: false
+  notes: Independent investigative journalism outlet focused on government accountability and ethics.
+  feeds:
+  - url: https://www.ontheditch.com/feed/
+    category_hint: internal_politics
+- id: gript_ie
+  name: Gript
+  homepage: https://gript.ie
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Media Grand Ltd
+  state_affiliated: false
+  notes: Independent digital news and commentary website covering Irish politics and society.
+  feeds:
+  - url: https://gript.ie/feed/
+    category_hint: internal_politics
+- id: agriland_ie
+  name: Agriland
+  homepage: https://www.agriland.ie
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Agriland Media
+  state_affiliated: false
+  notes: Ireland's premier agricultural, rural economy and trade daily.
+  feeds:
+  - url: https://www.agriland.ie/feed/
+    category_hint: economics
+- id: siliconrepublic_ie
+  name: Silicon Republic
+  homepage: https://www.siliconrepublic.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Silicon Republic
+  state_affiliated: false
+  notes: Leading European technology, science and digital economy news service based in Dublin.
+  feeds:
+  - url: https://www.siliconrepublic.com/feed
+    category_hint: economics
+- id: extra_ie
+  name: Extra.ie
+  homepage: https://extra.ie
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: DMG Media Ireland
+  state_affiliated: false
+  notes: High-reach national news, current affairs and politics digital portal.
+  feeds:
+  - url: https://extra.ie/feed
+    category_hint: general
+- id: irishmirror_ie
+  name: Irish Mirror
+  homepage: https://www.irishmirror.ie
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Reach plc
+  state_affiliated: false
+  notes: National daily news and investigative reporting outlet.
+  feeds:
+  - url: https://www.irishmirror.ie/news/?service=rss
+    category_hint: general
+- id: irishpost_ie
+  name: The Irish Post
+  homepage: https://www.irishpost.com
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Irish Post Media
+  state_affiliated: false
+  notes: Long-established publication covering Irish affairs and the global diaspora.
+  feeds:
+  - url: https://www.irishpost.com/feed
+    category_hint: general
+- id: broadsheet_ie
+  name: Broadsheet.ie
+  homepage: https://www.broadsheet.ie
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Broadsheet Media
+  state_affiliated: false
+  notes: Independent daily news, satire and political commentary journal.
+  feeds:
+  - url: https://www.broadsheet.ie/feed/
+    category_hint: internal_politics
 - id: gnews_ireland_intl
   name: Google News (Ireland Politics & Economy - International)
   homepage: https://news.google.com

@@ -38,6 +38,102 @@ sources:
   feeds:
   - url: https://www.portugalresident.com/feed/
     category_hint: general
+- id: observador_pt
+  name: Observador
+  homepage: https://observador.pt
+  language: pt
+  scope: domestic
+  kind: media
+  governing_body: Observador On Time
+  state_affiliated: false
+  notes: Influential independent daily digital news portal and radio in Lisbon.
+  feeds:
+  - url: https://observador.pt/feed/
+    category_hint: internal_politics
+- id: negocios_pt
+  name: Jornal de Negócios
+  homepage: https://www.jornaldenegocios.pt
+  language: pt
+  scope: domestic
+  kind: media
+  governing_body: Medialivre
+  state_affiliated: false
+  notes: Premier Portuguese business, financial and capital markets daily.
+  feeds:
+  - url: https://www.jornaldenegocios.pt/rss
+    category_hint: economics
+- id: eco_pt
+  name: ECO Economia Online
+  homepage: https://eco.sapo.pt
+  language: pt
+  scope: domestic
+  kind: media
+  governing_body: Swipe News SA
+  state_affiliated: false
+  notes: Leading independent digital business and macroeconomic news daily.
+  feeds:
+  - url: https://eco.sapo.pt/feed/
+    category_hint: economics
+- id: noticiasaominuto_pt
+  name: Notícias ao Minuto
+  homepage: https://www.noticiasaominuto.com
+  language: pt
+  scope: domestic
+  kind: media
+  governing_body: Newshold / Notícias ao Minuto
+  state_affiliated: false
+  notes: High-reach national breaking news and general daily portal.
+  feeds:
+  - url: https://www.noticiasaominuto.com/rss/ultima-hora
+    category_hint: general
+- id: visao_pt
+  name: Visão
+  homepage: https://visao.pt
+  language: pt
+  scope: domestic
+  kind: media
+  governing_body: Trust in News
+  state_affiliated: false
+  notes: Major Portuguese investigative news and current affairs weekly magazine.
+  feeds:
+  - url: https://visao.pt/feed/
+    category_hint: internal_politics
+- id: jornaleconomico_pt
+  name: O Jornal Económico
+  homepage: https://jornaleconomico.sapo.pt
+  language: pt
+  scope: domestic
+  kind: media
+  governing_body: Megafin
+  state_affiliated: false
+  notes: Leading financial, macroeconomic and corporate daily newspaper.
+  feeds:
+  - url: https://jornaleconomico.sapo.pt/feed
+    category_hint: economics
+- id: sabado_pt
+  name: Sábado
+  homepage: https://www.sabado.pt
+  language: pt
+  scope: domestic
+  kind: media
+  governing_body: Medialivre
+  state_affiliated: false
+  notes: Major national investigative weekly magazine covering politics and society.
+  feeds:
+  - url: https://www.sabado.pt/rss
+    category_hint: internal_politics
+- id: cnnportugal_pt
+  name: CNN Portugal
+  homepage: https://cnnportugal.iol.pt
+  language: pt
+  scope: domestic
+  kind: media
+  governing_body: Media Capital
+  state_affiliated: false
+  notes: 24-hour national television news channel and digital newsroom.
+  feeds:
+  - url: https://cnnportugal.iol.pt/rss
+    category_hint: general
 - id: gnews_portugal_intl
   name: Google News (Portugal Politics & Economy - International)
   homepage: https://news.google.com

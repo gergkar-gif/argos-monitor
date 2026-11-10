@@ -37,6 +37,102 @@ sources:
   feeds:
   - url: https://www.brusselstimes.com/feed
     category_hint: general
+- id: demorgen_be
+  name: De Morgen
+  homepage: https://www.demorgen.be
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: DPG Media
+  state_affiliated: false
+  notes: Major Flemish daily newspaper of record, progressive stance.
+  feeds:
+  - url: https://www.demorgen.be/nieuws/rss.xml
+    category_hint: internal_politics
+- id: lalibre_be
+  name: La Libre Belgique
+  homepage: https://www.lalibre.be
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Groupe IPM
+  state_affiliated: false
+  notes: Major Belgian French-language daily newspaper of record based in Brussels.
+  feeds:
+  - url: https://www.lalibre.be/rss/section/belgique.xml
+    category_hint: internal_politics
+- id: lecho_be
+  name: L'Echo
+  homepage: https://www.lecho.be
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Mediafin (Rossel & De Persgroep)
+  state_affiliated: false
+  notes: Premier Belgian French-language financial and macroeconomic daily broadsheet.
+  feeds:
+  - url: https://www.lecho.be/rss/actualite.xml
+    category_hint: economics
+- id: hln_be
+  name: Het Laatste Nieuws (HLN)
+  homepage: https://www.hln.be
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: DPG Media
+  state_affiliated: false
+  notes: Highest-circulation Dutch-language daily newspaper in Belgium.
+  feeds:
+  - url: https://www.hln.be/rss.xml
+    category_hint: general
+- id: knack_be
+  name: Knack
+  homepage: https://www.knack.be
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: Roularta Media Group
+  state_affiliated: false
+  notes: Premier independent Flemish investigative weekly news magazine.
+  feeds:
+  - url: https://www.knack.be/feed/
+    category_hint: internal_politics
+- id: levif_be
+  name: Le Vif
+  homepage: https://www.levif.be
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Roularta Media Group
+  state_affiliated: false
+  notes: Leading French-language investigative news weekly in Belgium.
+  feeds:
+  - url: https://www.levif.be/feed/
+    category_hint: internal_politics
+- id: trends_knack_be
+  name: Trends
+  homepage: https://trends.knack.be
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: Roularta Media Group
+  state_affiliated: false
+  notes: Premier Dutch-language business and economic weekly magazine in Belgium.
+  feeds:
+  - url: https://trends.knack.be/feed/
+    category_hint: economics
+- id: trends_levif_be
+  name: Trends-Tendances
+  homepage: https://trends.levif.be
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Roularta Media Group
+  state_affiliated: false
+  notes: Premier French-language business and economic weekly magazine in Belgium.
+  feeds:
+  - url: https://trends.levif.be/feed/
+    category_hint: economics
 - id: gnews_belgium_intl
   name: Google News (Belgium Politics & NATO - International)
   homepage: https://news.google.com

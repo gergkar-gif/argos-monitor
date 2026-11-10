@@ -2,6 +2,10 @@
 
 Completed items moved from `docs/roadmap.md` per project handover rules.
 
+- **Western Europe & Nordic Expansion to 10+ Sources (Phase 3 Batch 7)** — **Done 2026-11-10.**
+  - Expanded and verified candidate feeds for Netherlands (10 direct), Belgium (11 direct), Portugal (11 direct), Ireland (12 direct), and Sweden (11 direct), bringing 38 major global and regional desks into full compliance with the 10-source standard.
+  - Verified feed reachability with parallel probe (`tools/probe.py`) across all newly integrated publications.
+
 - **Commonwealth, Nordic & African Desks Expansion to 10+ Sources (Phase 3 Batch 6)** — **Done 2026-11-10.**
   - Expanded and verified candidate feeds for Australia (10 direct), Canada (10 direct), Nigeria (10 direct), Finland (11 direct), and Norway (10 direct), bringing 33 major global and regional desks into full compliance with the 10-source standard.
   - Verified feed reachability with parallel probe (`tools/probe.py`) across all newly integrated publications.

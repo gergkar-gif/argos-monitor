@@ -43,6 +43,90 @@ sources:
   feeds:
   - url: https://www.dutchnews.nl/feed/
     category_hint: foreign_policy
+- id: telegraaf_nl
+  name: De Telegraaf
+  homepage: https://www.telegraaf.nl
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: Mediahuis Nederland
+  state_affiliated: false
+  notes: Largest circulation daily newspaper in the Netherlands.
+  feeds:
+  - url: https://www.telegraaf.nl/rss
+    category_hint: general
+- id: ad_nl
+  name: Algemeen Dagblad (AD)
+  homepage: https://www.ad.nl
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: DPG Media
+  state_affiliated: false
+  notes: Major national and regional daily newspaper.
+  feeds:
+  - url: https://www.ad.nl/rss.xml
+    category_hint: general
+- id: nrc_nl
+  name: NRC
+  homepage: https://www.nrc.nl
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: Mediahuis
+  state_affiliated: false
+  notes: Leading national broadsheet of record, liberal stance.
+  feeds:
+  - url: https://www.nrc.nl/rss/
+    category_hint: internal_politics
+- id: volkskrant_nl
+  name: De Volkskrant
+  homepage: https://www.volkskrant.nl
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: DPG Media
+  state_affiliated: false
+  notes: Major national morning broadsheet of record, center-left stance.
+  feeds:
+  - url: https://www.volkskrant.nl/nieuws-achtergrond/rss.xml
+    category_hint: internal_politics
+- id: groene_nl
+  name: De Groene Amsterdammer
+  homepage: https://www.groene.nl
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: De Groene Amsterdammer
+  state_affiliated: false
+  notes: Historic independent weekly news and cultural affairs magazine founded in 1877.
+  feeds:
+  - url: https://www.groene.nl/rss
+    category_hint: internal_politics
+- id: tweakers_nl
+  name: Tweakers
+  homepage: https://tweakers.net
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: DPG Media
+  state_affiliated: false
+  notes: Premier Dutch technology, semiconductors and digital economy daily.
+  feeds:
+  - url: https://feeds.feedburner.com/tweakers/nieuws
+    category_hint: economics
+- id: omroepbrabant_nl
+  name: Omroep Brabant
+  homepage: https://www.omroepbrabant.nl
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: Stichting Omroep Brabant
+  state_affiliated: false
+  notes: Major regional public service news broadcaster.
+  feeds:
+  - url: https://www.omroepbrabant.nl/rss
+    category_hint: general
 - id: gnews_netherlands_intl
   name: Google News (Netherlands Politics & Trade)
   homepage: https://news.google.com

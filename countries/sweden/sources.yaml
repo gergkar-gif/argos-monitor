@@ -57,6 +57,97 @@ sources:
       - url: https://www.svd.se/?service=rss
         category_hint: internal_politics
 
+  - id: aftonbladet_se
+    name: Aftonbladet
+    homepage: https://www.aftonbladet.se
+    language: sv
+    scope: domestic
+    kind: media
+    governing_body: "Schibsted Media"
+    state_affiliated: false
+    notes: "Sweden's highest-circulation daily evening tabloid and online news service."
+    feeds:
+      - url: https://rss.aftonbladet.se/rss2/small/pages/sections/senastenytt/
+        category_hint: general
+
+  - id: expressen_se
+    name: Expressen
+    homepage: https://www.expressen.se
+    language: sv
+    scope: domestic
+    kind: media
+    governing_body: "Bonnier News"
+    state_affiliated: false
+    notes: "Major national evening tabloid and investigative newsroom."
+    feeds:
+      - url: https://feeds.expressen.se/nyheter/
+        category_hint: general
+
+  - id: realtid_se
+    name: Realtid
+    homepage: https://realtid.se
+    language: sv
+    scope: domestic
+    kind: media
+    governing_body: "Realtid Media AB"
+    state_affiliated: false
+    notes: "Independent Swedish financial, capital markets and corporate daily."
+    feeds:
+      - url: https://realtid.se/feed/
+        category_hint: economics
+
+  - id: arbetet_se
+    name: Arbetet
+    homepage: https://arbetet.se
+    language: sv
+    scope: domestic
+    kind: media
+    governing_body: "LO Mediehus"
+    state_affiliated: false
+    notes: "Independent labor market, social policy and economic daily."
+    feeds:
+      - url: https://arbetet.se/feed/
+        category_hint: internal_politics
+
+  - id: flamman_se
+    name: Flamman
+    homepage: https://flamman.se
+    language: sv
+    scope: domestic
+    kind: media
+    governing_body: "Tidningsföreningen Flamman"
+    state_affiliated: false
+    notes: "Independent socialist weekly newspaper covering politics and economy."
+    feeds:
+      - url: https://flamman.se/feed/
+        category_hint: internal_politics
+
+  - id: expo_se
+    name: Expo
+    homepage: https://expo.se
+    language: sv
+    scope: domestic
+    kind: media
+    governing_body: "Stiftelsen Expo"
+    state_affiliated: false
+    notes: "Independent investigative magazine founded by Stieg Larsson."
+    feeds:
+      - url: https://expo.se/feed/
+        category_hint: society
+
+  - id: nyheteridag_se
+    name: Nyheter Idag
+    homepage: https://nyheteridag.se
+    language: sv
+    scope: domestic
+    kind: media
+    governing_body: "Publicistgruppen Stockholm AB"
+    state_affiliated: false
+    notes: "Independent digital news portal and political commentary."
+    feeds:
+      - url: https://nyheteridag.se/feed/
+        category_hint: internal_politics
+
   - id: google_news_sweden_politics
     name: Google News (Sweden Government & Riksdag)
     homepage: https://news.google.com
