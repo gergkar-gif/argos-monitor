@@ -145,3 +145,39 @@ sources:
   feeds:
   - url: https://news.google.com/rss/search?q=Pentagon+OR+%22Department+of+Defense%22+OR+%22Indo-Pacific+Command%22+OR+NORAD+when:3d&hl=en-US&gl=US&ceid=US:en
     category_hint: defence_security
+- id: pbs_newshour
+  name: PBS NewsHour
+  homepage: https://www.pbs.org/newshour
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Public Broadcasting Service / WETA
+  state_affiliated: false
+  notes: American public television evening news program of record.
+  feeds:
+  - url: https://www.pbs.org/newshour/feeds/rss/politics
+    category_hint: internal_politics
+- id: washington_post
+  name: The Washington Post
+  homepage: https://www.washingtonpost.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Nash Holdings
+  state_affiliated: false
+  notes: Major American national daily of record with Capitol Hill and executive focus.
+  feeds:
+  - url: https://feeds.washingtonpost.com/rss/politics
+    category_hint: internal_politics
+- id: cnbc_us
+  name: CNBC
+  homepage: https://www.cnbc.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: NBCUniversal / Comcast
+  state_affiliated: false
+  notes: Leading business, financial markets, and macroeconomic policy broadcaster.
+  feeds:
+  - url: https://www.cnbc.com/id/100003114/device/rss/rss.html
+    category_hint: economics

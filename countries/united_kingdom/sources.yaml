@@ -110,3 +110,64 @@ sources:
   feeds:
   - url: https://news.google.com/rss/search?q=%22Ministry+of+Defence%22+OR+%22David+Lammy%22+OR+FCDO+OR+%22Strategic+Defence+Review%22+UK+when:3d&hl=en-GB&gl=GB&ceid=GB:en
     category_hint: defence_security
+- id: independent_uk
+  name: The Independent
+  homepage: https://www.independent.co.uk
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Independent Digital News & Media Ltd
+  state_affiliated: false
+  notes: Major British digital daily with extensive Westminster and policy coverage.
+  feeds:
+  - url: https://www.independent.co.uk/news/uk/politics/rss
+    category_hint: internal_politics
+- id: standard_uk
+  name: Evening Standard
+  homepage: https://www.standard.co.uk
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Lebedev Holdings
+  state_affiliated: false
+  notes: London daily newspaper covering national politics, mayoral policy, and trade.
+  feeds:
+  - url: https://www.standard.co.uk/news/politics/rss
+    category_hint: internal_politics
+- id: new_statesman
+  name: New Statesman
+  homepage: https://www.newstatesman.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Progressive Media International
+  state_affiliated: false
+  notes: British political and cultural magazine of record covering Labour and social
+    policy.
+  feeds:
+  - url: https://www.newstatesman.com/feed
+    category_hint: internal_politics
+- id: channel4_news
+  name: Channel 4 News
+  homepage: https://www.channel4.com/news
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Channel Four Television Corporation (public trust)
+  state_affiliated: false
+  notes: British public service broadcaster known for investigative reporting.
+  feeds:
+  - url: https://www.channel4.com/news/feed
+    category_hint: internal_politics
+- id: inews_uk
+  name: i news
+  homepage: https://inews.co.uk
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Daily Mail and General Trust
+  state_affiliated: false
+  notes: British national concise newspaper covering UK politics and economy.
+  feeds:
+  - url: https://inews.co.uk/feed
+    category_hint: internal_politics

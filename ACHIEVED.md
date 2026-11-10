@@ -2,6 +2,10 @@
 
 Completed items moved from `docs/roadmap.md` per project handover rules.
 
+- **Independent Source Audit & Tier 1 Desk Expansion (Phase 3 Initial Rollout)** — **Done 2026-11-10.**
+  - Created source depth auditing tool `tools/audit_sources.py` tracking direct non-aggregator vs aggregator counts across all 87 country packs.
+  - Expanded and verified candidate feeds for United States (11 direct), China (10 direct), Brazil (11 direct), and United Kingdom (10 direct), joining Vietnam (27), Hungary (16), South Africa (14), and Cambodia (10) in full compliance with the 10-source standard.
+
 - **Wire Syndication & Attribution Deduplication (Phase 2)** — **Done 2026-11-10.**
   - Wire attribution matching: added `WIRE_CREDIT_RE` and lowered `WIRE_THRESHOLD = 0.35` in `argos/normalise.py` to identify syndicated wire reprints (e.g. VNA, APS, BelTA, Reuters, AP) even when wrapped in commentary or lightly edited by local commercial newsrooms (Rule 5).
   - Lead-level shingle hashing: extended content shingling to include article leads when full text extraction is partial.

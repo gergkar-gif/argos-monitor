@@ -1,106 +1,159 @@
-# Brazil source registry (decision D15).
-# Combines state wire (Agência Brasil) with major independent political & financial outlets (G1, Folha de S.Paulo, Poder360, InfoMoney, Nexo, CartaCapital, Brazil Reports) and international feeds.
-
 sources:
-  - id: agenciabrasil
-    name: Agência Brasil (EBC)
-    homepage: https://agenciabrasil.ebc.com.br
-    language: pt
-    scope: domestic
-    kind: official
-    governing_body: Empresa Brasil de Comunicação (federal public news agency)
-    state_affiliated: true
-    feeds:
-      - {url: "https://agenciabrasil.ebc.com.br/rss/ultimasnoticias/feed.xml", section: Últimas Notícias, category_hint: general}
-
-  - id: folha_poder
-    name: Folha de S.Paulo
-    homepage: https://www.folha.uol.com.br
-    language: pt
-    scope: domestic
-    kind: media
-    governing_body: Grupo Folha (private national daily)
-    state_affiliated: false
-    feeds:
-      - {url: "https://feeds.folha.uol.com.br/poder/rss091.xml", section: Poder (Politics), category_hint: internal_politics}
-      - {url: "https://feeds.folha.uol.com.br/mercado/rss091.xml", section: Mercado (Economy), category_hint: economics}
-
-  - id: poder360
-    name: Poder360
-    homepage: https://www.poder360.com.br
-    language: pt
-    scope: domestic
-    kind: media
-    governing_body: Poder360 Jornalismo (independent political & policy outlet in Brasília)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.poder360.com.br/feed/", section: Últimas, category_hint: internal_politics}
-
-  - id: g1_globo
-    name: G1 (Globo)
-    homepage: https://g1.globo.com
-    language: pt
-    scope: domestic
-    kind: media
-    governing_body: Grupo Globo (private media group)
-    state_affiliated: false
-    feeds:
-      - {url: "https://g1.globo.com/rss/g1/", section: Todas as notícias, category_hint: general}
-
-  - id: infomoney_br
-    name: InfoMoney
-    homepage: https://www.infomoney.com.br
-    language: pt
-    scope: domestic
-    kind: media
-    governing_body: XP Inc. (private financial & markets portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.infomoney.com.br/feed/", section: Mercados & Economia, category_hint: economics}
-
-  - id: nexojornal
-    name: Nexo Jornal
-    homepage: https://www.nexojornal.com.br
-    language: pt
-    scope: domestic
-    kind: media
-    governing_body: Nexo Jornal (independent explanatory journalism)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.nexojornal.com.br/rss.xml", section: Recentes, category_hint: general}
-
-  - id: cartacapital
-    name: CartaCapital
-    homepage: https://www.cartacapital.com.br
-    language: pt
-    scope: domestic
-    kind: media
-    governing_body: Editora Basset (private political weekly)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.cartacapital.com.br/feed/", section: Política & Economia, category_hint: internal_politics}
-
-  - id: brazilreports
-    name: Brazil Reports
-    homepage: https://brazilreports.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: pulsing media / Latin America Reports (independent English-language desk)
-    state_affiliated: false
-    feeds:
-      - {url: "https://brazilreports.com/feed/", section: Latest, category_hint: general}
-
-  - id: gnews_en_br
-    name: Google News (Brazil - English)
-    homepage: https://news.google.com
-    language: en
-    scope: international
-    kind: media
-    aggregator: google_news
-    governing_body: n/a (aggregator)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=Brazil+when:1d&hl=en-US&gl=US&ceid=US:en", section: Brazil, category_hint: general}
-      - {url: "https://news.google.com/rss/search?q=Brazil+(Lula+OR+BRICS+OR+Mercosur+OR+China+OR+tariff)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Brazil diplomacy & trade, category_hint: foreign_policy}
-      - {url: "https://news.google.com/rss/search?q=Brazil+(economy+OR+Selic+OR+Haddad+OR+Petrobras+OR+Amazon)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Brazil economy & climate, category_hint: economics}
+- id: agenciabrasil
+  name: Agência Brasil (EBC)
+  homepage: https://agenciabrasil.ebc.com.br
+  language: pt
+  scope: domestic
+  kind: official
+  governing_body: Empresa Brasil de Comunicação (federal public news agency)
+  state_affiliated: true
+  feeds:
+  - url: https://agenciabrasil.ebc.com.br/rss/ultimasnoticias/feed.xml
+    section: Últimas Notícias
+    category_hint: general
+- id: folha_poder
+  name: Folha de S.Paulo
+  homepage: https://www.folha.uol.com.br
+  language: pt
+  scope: domestic
+  kind: media
+  governing_body: Grupo Folha (private national daily)
+  state_affiliated: false
+  feeds:
+  - url: https://feeds.folha.uol.com.br/poder/rss091.xml
+    section: Poder (Politics)
+    category_hint: internal_politics
+  - url: https://feeds.folha.uol.com.br/mercado/rss091.xml
+    section: Mercado (Economy)
+    category_hint: economics
+- id: poder360
+  name: Poder360
+  homepage: https://www.poder360.com.br
+  language: pt
+  scope: domestic
+  kind: media
+  governing_body: Poder360 Jornalismo (independent political & policy outlet in Brasília)
+  state_affiliated: false
+  feeds:
+  - url: https://www.poder360.com.br/feed/
+    section: Últimas
+    category_hint: internal_politics
+- id: g1_globo
+  name: G1 (Globo)
+  homepage: https://g1.globo.com
+  language: pt
+  scope: domestic
+  kind: media
+  governing_body: Grupo Globo (private media group)
+  state_affiliated: false
+  feeds:
+  - url: https://g1.globo.com/rss/g1/
+    section: Todas as notícias
+    category_hint: general
+- id: infomoney_br
+  name: InfoMoney
+  homepage: https://www.infomoney.com.br
+  language: pt
+  scope: domestic
+  kind: media
+  governing_body: XP Inc. (private financial & markets portal)
+  state_affiliated: false
+  feeds:
+  - url: https://www.infomoney.com.br/feed/
+    section: Mercados & Economia
+    category_hint: economics
+- id: nexojornal
+  name: Nexo Jornal
+  homepage: https://www.nexojornal.com.br
+  language: pt
+  scope: domestic
+  kind: media
+  governing_body: Nexo Jornal (independent explanatory journalism)
+  state_affiliated: false
+  feeds:
+  - url: https://www.nexojornal.com.br/rss.xml
+    section: Recentes
+    category_hint: general
+- id: cartacapital
+  name: CartaCapital
+  homepage: https://www.cartacapital.com.br
+  language: pt
+  scope: domestic
+  kind: media
+  governing_body: Editora Basset (private political weekly)
+  state_affiliated: false
+  feeds:
+  - url: https://www.cartacapital.com.br/feed/
+    section: Política & Economia
+    category_hint: internal_politics
+- id: brazilreports
+  name: Brazil Reports
+  homepage: https://brazilreports.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: pulsing media / Latin America Reports (independent English-language
+    desk)
+  state_affiliated: false
+  feeds:
+  - url: https://brazilreports.com/feed/
+    section: Latest
+    category_hint: general
+- id: gnews_en_br
+  name: Google News (Brazil - English)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  aggregator: google_news
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=Brazil+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Brazil
+    category_hint: general
+  - url: https://news.google.com/rss/search?q=Brazil+(Lula+OR+BRICS+OR+Mercosur+OR+China+OR+tariff)+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Brazil diplomacy & trade
+    category_hint: foreign_policy
+  - url: https://news.google.com/rss/search?q=Brazil+(economy+OR+Selic+OR+Haddad+OR+Petrobras+OR+Amazon)+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Brazil economy & climate
+    category_hint: economics
+- id: gazetadopovo
+  name: Gazeta do Povo
+  homepage: https://www.gazetadopovo.com.br
+  language: pt
+  scope: domestic
+  kind: media
+  governing_body: Grupo Paricá
+  state_affiliated: false
+  notes: Prominent Brazilian center-right national daily covering federal politics
+    and economics.
+  feeds:
+  - url: https://www.gazetadopovo.com.br/feed/rss/brasil.xml
+    category_hint: internal_politics
+- id: conjur_br
+  name: Consultor Jurídico (ConJur)
+  homepage: https://www.conjur.com.br
+  language: pt
+  scope: domestic
+  kind: media
+  governing_body: ConJur Editorial
+  state_affiliated: false
+  notes: Leading Brazilian judicial, constitutional, and Supreme Court (STF) policy
+    review.
+  feeds:
+  - url: https://www.conjur.com.br/feed/
+    category_hint: internal_politics
+- id: jornal_usp
+  name: Jornal da USP
+  homepage: https://jornal.usp.br
+  language: pt
+  scope: domestic
+  kind: media
+  governing_body: Universidade de São Paulo
+  state_affiliated: false
+  notes: Public academic press covering national science, environmental policy, and
+    governance.
+  feeds:
+  - url: https://jornal.usp.br/feed/
+    category_hint: society

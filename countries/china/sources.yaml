@@ -131,3 +131,40 @@ sources:
   feeds:
   - url: https://news.google.com/rss/search?q=%22People%27s+Liberation+Army%22+OR+%22Taiwan+Strait%22+OR+%22South+China+Sea%22+PLA+when:3d&hl=en-US&gl=US&ceid=US:en
     category_hint: defence_security
+- id: dw_chinese
+  name: Deutsche Welle (Chinese)
+  homepage: https://www.dw.com/zh
+  language: zh
+  scope: abroad_local
+  kind: media
+  governing_body: Deutsche Welle (Germany)
+  state_affiliated: false
+  notes: German public international broadcaster Mandarin service covering China politics.
+  feeds:
+  - url: https://rss.dw.com/rdf/rss-chi-all
+    category_hint: internal_politics
+- id: rfi_chinese
+  name: Radio France Internationale (Chinese)
+  homepage: https://www.rfi.fr/cn
+  language: zh
+  scope: abroad_local
+  kind: media
+  governing_body: France Médias Monde (France)
+  state_affiliated: false
+  notes: French public international broadcaster Chinese desk tracking mainland affairs.
+  feeds:
+  - url: https://www.rfi.fr/cn/%E4%B8%AD%E5%9B%BD/rss
+    category_hint: internal_politics
+- id: aljazeera_chinese
+  name: Al Jazeera (Chinese)
+  homepage: https://chinese.aljazeera.net
+  language: zh
+  scope: international
+  kind: media
+  governing_body: Al Jazeera Media Network (Qatar)
+  state_affiliated: false
+  notes: Independent Middle Eastern network Chinese language desk covering Sino-global
+    diplomacy.
+  feeds:
+  - url: https://www.aljazeera.net/aljazeerarss/a7c186be-1baa-4bd4-9d80-a84db769f779/73d0e1b4-532f-45ef-b135-bfdff8b8cab9
+    category_hint: foreign_policy
