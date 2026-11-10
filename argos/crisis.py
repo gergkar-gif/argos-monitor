@@ -13,10 +13,13 @@ from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 
 import feedparser
+import trafilatura
 
 from . import fetch, packs
 from .export import SITE_DATA, _write
-from .textutil import clean
+from .ingest import _match_outlet_scope
+from .ratings import lookup_rating
+from .textutil import clean, clean_url, nfc
 
 GDACS = "https://www.gdacs.org/xml/rss.xml"
 USGS = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.atom"
@@ -146,10 +149,13 @@ def _item(kind, e, level=None):
             "date": d.isoformat(timespec="seconds") if d else None}
 
 
-def _extract_html_title(url):
+_CACHED_GDELT = None
+
+
+def _extract_html_meta(url):
     status, body = fetch.get(url)
     if status != 200 or not body:
-        return None
+        return None, "", "", None
     head = body[:32768].decode("utf-8", errors="replace")
     m = (
         re.search(r'<meta[^>]+property=["\']og:title["\'][^>]+content=["\']([^"\']+)["\']', head, re.I)
@@ -157,21 +163,163 @@ def _extract_html_title(url):
         or re.search(r"<title[^>]*>([^<]+)</title>", head, re.I)
     )
     if not m:
-        return None
+        return None, "", "", None
     t = clean(html.unescape(re.sub(r"\s+", " ", m.group(1)).strip()))
+    suffix_site = ""
     # Strip trailing site-name suffixes (" - Al Jazeera", " | The Manila Times") if headline remains >= 25 chars
     for sep in (" | ", " - ", " — ", " – "):
         if sep in t:
-            left = t.rsplit(sep, 1)[0].strip()
-            if len(left) >= 25:
-                t = left
+            left, right = t.rsplit(sep, 1)
+            if len(left.strip()) >= 25:
+                t = left.strip()
+                suffix_site = right.strip()
                 break
-    return t if len(t) >= 20 else None
+    if len(t) < 20:
+        return None, "", "", None
+    dm = (
+        re.search(r'<meta[^>]+(?:property|name)=["\'](?:og:)?description["\'][^>]+content=["\']([^"\']+)["\']', head, re.I)
+        or re.search(r'<meta[^>]+content=["\']([^"\']+)["\'][^>]+(?:property|name)=["\'](?:og:)?description["\']', head, re.I)
+    )
+    lead = clean(html.unescape(re.sub(r"\s+", " ", dm.group(1)).strip())) if dm else ""
+    if len(lead) < 35 or lead.lower() == t.lower():
+        lead = ""
+    sm = (
+        re.search(r'<meta[^>]+property=["\']og:site_name["\'][^>]+content=["\']([^"\']+)["\']', head, re.I)
+        or re.search(r'<meta[^>]+content=["\']([^"\']+)["\'][^>]+property=["\']og:site_name["\']', head, re.I)
+    )
+    site = clean(html.unescape(sm.group(1).strip())) if sm else suffix_site
+    try:
+        extracted = trafilatura.extract(body, include_comments=False, include_tables=False, favor_precision=True)
+    except Exception:
+        extracted = None
+    text = nfc(extracted) if (extracted and len(extracted) > 200) else None
+    return t, lead, site, text
 
 
-def _gdelt_events(now, db=None):
+def _extract_html_title(url):
+    return _extract_html_meta(url)[0]
+
+
+def _desk_matchers():
+    out = {}
+    for cid in packs.pack_ids():
+        pack = packs.load(cid)
+        primary_names = [n.lower() for n in [pack["name"], *pack.get("crisis_names", [])]]
+        regional_names = [n.lower() for n in REGIONAL_COUNTRIES.get(cid, [])]
+        country_names = primary_names + regional_names
+        mention_terms = [m.lower() for m in pack.get("mention", []) if len(m) >= 4]
+        all_names = list(dict.fromkeys([*country_names, *mention_terms[:18]]))
+        out[cid] = {
+            "pack": pack,
+            "primary_re": re.compile(r"\b(?:" + "|".join(re.escape(n) for n in primary_names) + r")\b", re.I) if primary_names else None,
+            "regional_re": re.compile(r"\b(?:" + "|".join(re.escape(n) for n in regional_names) + r")\b", re.I) if regional_names else None,
+            "country_re": re.compile(r"\b(?:" + "|".join(re.escape(n) for n in country_names) + r")\b", re.I),
+            "any_re": re.compile(r"\b(?:" + "|".join(re.escape(n) for n in all_names) + r")\b", re.I),
+        }
+    return out
+
+
+def ingest_gdelt_articles(db, events, now=None):
+    """Insert verified GDELT 2.0 conflict URLs directly into SQLite `source` and `article` tables
+    so they are embedded, excerpted, and clustered with domestic desk stories."""
+    if db is None or not events:
+        return 0
+    now_iso = (now or datetime.now(timezone.utc)).isoformat(timespec="seconds")
+    matchers = _desk_matchers()
+    added, matched_total = 0, 0
+    for ev in events:
+        raw_loc = ev.get("_raw_loc") or ev.get("summary") or ""
+        title = ev.get("title") or ""
+        blob = ev.get("_loc") or f"{raw_loc} {title}".lower()
+        scored = []
+        for cid, m in matchers.items():
+            if not m["any_re"].search(blob):
+                continue
+            if m["primary_re"] and m["primary_re"].search(raw_loc):
+                prio = 3
+            elif m["regional_re"] and m["regional_re"].search(raw_loc):
+                prio = 2
+            elif m["country_re"].search(title):
+                prio = 1
+            else:
+                prio = 0
+            scored.append((prio, cid))
+        if not scored:
+            continue
+        scored.sort(key=lambda x: (-x[0], x[1]))
+        cid = scored[0][1]
+        matched_total += 1
+        pack = matchers[cid]["pack"]
+        u = clean_url(ev["url"])
+        domain = urllib.parse.urlsplit(u).netloc.lower().removeprefix("www.")
+        if not domain:
+            continue
+        matched_src = next(
+            (s for s in pack["sources"]
+             if urllib.parse.urlsplit(s.get("homepage") or "").netloc.lower().removeprefix("www.") == domain),
+            None,
+        )
+        if matched_src and db.execute("SELECT 1 FROM source WHERE id=?", (matched_src["id"],)).fetchone():
+            sid = matched_src["id"]
+            lang = matched_src.get("language") or "en"
+        else:
+            sid = f"gdelt:{domain}"
+            outlet = ev.get("_site") or domain
+            lang = (matched_src.get("language") if matched_src else None) or "en"
+            overrides = {}
+            for sc, names in (pack.get("aggregator_outlets") or {}).items():
+                overrides.update({n.lower(): sc for n in names})
+            geo = (pack.get("geo") or "").lower()
+            if matched_src:
+                default_scope = matched_src["scope"]
+            elif len(geo) == 2 and (domain.endswith(f".{geo}") or f".{geo}." in domain):
+                default_scope = "domestic"
+            else:
+                default_scope = "international"
+            scope = (
+                _match_outlet_scope(outlet, overrides, None)
+                or _match_outlet_scope(domain.split(".")[0], overrides, default_scope)
+            )
+            rating = lookup_rating(outlet, False, "media")
+            if rating["bias"] == "unrated" and outlet != domain:
+                rating = lookup_rating(domain, False, "media")
+            db.execute(
+                "INSERT INTO source (id, name, homepage, language, scope, kind, governing_body, state_affiliated, reprints_vna, notes, bias, alignment, factuality) "
+                "VALUES (?,?,?,?,?,'media','found via GDELT 2.0',0,0,'GDELT 2.0 conflict stream',?,?,?) "
+                "ON CONFLICT(id) DO UPDATE SET "
+                "scope=CASE WHEN (scope='international' AND excluded.scope != 'international') OR (excluded.scope='domestic' AND scope != 'domestic') THEN excluded.scope ELSE scope END, "
+                "bias=COALESCE(excluded.bias, bias), alignment=COALESCE(excluded.alignment, alignment), factuality=COALESCE(excluded.factuality, factuality)",
+                (sid, outlet, "https://" + domain, lang, scope, rating["bias"], rating["alignment"], rating["factuality"]),
+            )
+        text = ev.get("_text")
+        status = "ok" if (text and len(text) > 200) else "pending"
+        cur = db.execute(
+            "INSERT OR IGNORE INTO article (source_id,feed_id,url,title,lead,text,language,published_at,fetched_at,extract_status,relevant,country) "
+            "VALUES (?,NULL,?,?,?,?,?,?,?,?,1,?)",
+            (sid, u, title, ev.get("_lead") or "", text, lang, ev.get("date") or now_iso, now_iso, status, cid),
+        )
+        if cur.rowcount:
+            added += 1
+        else:
+            db.execute(
+                "UPDATE article SET relevant=1, text=COALESCE(text, ?), "
+                "extract_status=CASE WHEN text IS NULL AND ? IS NOT NULL THEN 'ok' ELSE extract_status END "
+                "WHERE url=?",
+                (text, text, u),
+            )
+    db.commit()
+    print(f"crisis: GDELT 2.0 ingested {added} new conflict articles into SQLite ({matched_total} matched to desks)")
+    return added
+
+
+def _gdelt_events(now, db=None, use_cache=False):
     """Fetch recent 15-minute GDELT 2.0 event intervals, filter for high-confidence kinetic violence/unrest,
-    and verify each event's verbatim source headline (Rule 1)."""
+    verify each event's verbatim source headline (Rule 1), and ingest verified URLs into SQLite."""
+    global _CACHED_GDELT
+    if use_cache and _CACHED_GDELT is not None:
+        if db is not None:
+            ingest_gdelt_articles(db, _CACHED_GDELT, now)
+        return _CACHED_GDELT
     candidates = {}
     for mins in range(15, 135, 15):
         t = now - timedelta(minutes=mins)
@@ -188,8 +336,11 @@ def _gdelt_events(now, db=None):
                     root, base = r[28], r[27]
                     if root not in ("18", "19", "20") and base not in ("145", "175"):
                         continue
-                    loc, u = (r[52] or "").strip(), (r[60] or "").strip()
-                    if not loc or not u.startswith(("http://", "https://")) or u in candidates:
+                    loc, raw_u = (r[52] or "").strip(), (r[60] or "").strip()
+                    if not loc or not raw_u.startswith(("http://", "https://")):
+                        continue
+                    u = clean_url(raw_u)
+                    if not u or u in candidates:
                         continue
                     if ARMED_CONFLICT_RE.search(u) and VIOLENCE_IMPACT_RE.search(u) and not EXCLUDE_RE.search(u):
                         dt_iso = datetime.strptime(ts, "%Y%m%d%H%M%S").replace(tzinfo=timezone.utc).isoformat(timespec="seconds")
@@ -197,16 +348,25 @@ def _gdelt_events(now, db=None):
         except (zipfile.BadZipFile, ValueError, KeyError, IndexError):
             continue
 
+    matchers = _desk_matchers()
+    ordered_cands = sorted(
+        candidates.items(),
+        key=lambda kv: (
+            not any(m["any_re"].search(f"{kv[1][1]} {kv[0]}") for m in matchers.values()),
+            kv[1][0] not in ("19", "20"),
+        ),
+    )
+
     verified = []
     seen_titles = set()
-    for u, (root, loc, dt_iso) in list(candidates.items())[:28]:
-        title = None
+    for u, (root, loc, dt_iso) in ordered_cands[:35]:
+        title, lead, site, text = None, "", "", None
         if db is not None:
-            row = db.execute("SELECT title FROM article WHERE url=?", (u,)).fetchone()
-            if row:
-                title = row[0]
+            row = db.execute("SELECT title, lead, text FROM article WHERE url=?", (u,)).fetchone()
+            if row and row[0]:
+                title, lead, text = row[0], row[1] or "", row[2]
         if not title:
-            title = _extract_html_title(u)
+            title, lead, site, text = _extract_html_meta(u)
         if not title or not VIOLENCE_IMPACT_RE.search(title) or EXCLUDE_RE.search(title):
             continue
         norm_t = re.sub(r"\W+", " ", title.lower()).strip()
@@ -222,8 +382,15 @@ def _gdelt_events(now, db=None):
             "level": "Alert" if root in ("19", "20") else "Caution",
             "date": dt_iso,
             "_loc": f"{loc} {title}".lower(),
+            "_raw_loc": loc,
+            "_lead": lead,
+            "_site": site,
+            "_text": text,
         })
     print(f"crisis: GDELT 2.0 verified {len(verified)} real-time violent events (from {len(candidates)} candidates)")
+    if db is not None:
+        ingest_gdelt_articles(db, verified, now)
+    _CACHED_GDELT = verified
     return verified
 
 
@@ -298,7 +465,7 @@ def run(db=None):
     cutoff_90d = now - timedelta(days=90)
     gdacs, usgs, eonet, us = _feed(GDACS), _feed(USGS), _eonet(), _feed(US)
     cg, un, hrw, lwj, msf = _feed(CRISISGROUP), _feed(UN_PEACE), _feed(HRW), _feed(LWJ), _feed(MSF)
-    gdelt = _gdelt_events(now, db)
+    gdelt = _gdelt_events(now, db, use_cache=True)
     acled = _acled_events(now)
 
     out = {}
@@ -338,10 +505,10 @@ def run(db=None):
         # Real-time GDELT 2.0 and optional ACLED events matched to this desk.
         for ev in gdelt:
             if has_any(ev["_loc"]):
-                items.append({k: v for k, v in ev.items() if k != "_loc"})
+                items.append({k: v for k, v in ev.items() if not k.startswith("_")})
         for ev in acled:
             if has_any(ev["_loc"]):
-                items.append({k: v for k, v in ev.items() if k != "_loc"})
+                items.append({k: v for k, v in ev.items() if not k.startswith("_")})
 
         # US travel advisories: keep active Level 3/4 updated in last 90d, or Level 2 updated in last 30d with conflict/terror risk.
         for e in us:

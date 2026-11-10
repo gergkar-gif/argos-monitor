@@ -245,6 +245,8 @@ def run(db):
         a = ingest_feeds(db, country)
         b = ingest_gdelt(db, country)
         print(f"ingest {country}: {a} new from feeds, {b} new from GDELT")
+    from . import crisis
+    crisis._gdelt_events(datetime.now(timezone.utc), db)
 
 
 def reconcile_aggregator_sources(db):

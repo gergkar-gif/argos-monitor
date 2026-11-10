@@ -13,10 +13,12 @@ from . import packs
 MIN_TEXT_MENTIONS = 2
 
 
-def is_relevant(pack, scope, category_hint, section, url, title, lead, text, needs_mention=False):
+def is_relevant(pack, scope, category_hint, section, url, title, lead, text, needs_mention=False, is_gdelt=False):
     sections = packs.url_sections(url)
     if sections & pack["skip_sections"]:
         return False
+    if is_gdelt:
+        return True
     is_foreign = bool(sections & pack["foreign_sections"]) or bool(section and section.lower() in pack["foreign_sections"])
     if scope == "domestic" and not needs_mention and category_hint != "foreign_policy" and not is_foreign:
         return True
@@ -29,14 +31,16 @@ def is_relevant(pack, scope, category_hint, section, url, title, lead, text, nee
 
 def run(db):
     rows = db.execute(
-        "SELECT a.id, a.country, a.source_id, f.source_id AS feed_source, a.url, s.scope, f.category_hint, f.section_label, a.title, a.lead, a.text "
+        "SELECT a.id, a.country, a.source_id, a.feed_id, f.source_id AS feed_source, a.url, s.scope, f.category_hint, f.section_label, a.title, a.lead, a.text "
         "FROM article a JOIN source s ON s.id=a.source_id LEFT JOIN feed f ON f.id=a.feed_id").fetchall()
     needs = {s["id"]: s.get("needs_mention", False) for c in packs.pack_ids() for s in packs.load(c)["sources"]}
     keep = []
     for r in rows:
         pack = packs.load(r["country"])
+        is_gdelt = r["feed_id"] is None or (r["source_id"] or "").startswith("gdelt:")
         keep.append((int(is_relevant(pack, r["scope"], r["category_hint"], r["section_label"], r["url"],
-                                     r["title"], r["lead"], r["text"], needs.get(r["source_id"], False) or needs.get(r["feed_source"], False))), r["id"]))
+                                     r["title"], r["lead"], r["text"], needs.get(r["source_id"], False) or needs.get(r["feed_source"], False),
+                                     is_gdelt=is_gdelt)), r["id"]))
     db.executemany("UPDATE article SET relevant=? WHERE id=?", keep)
     db.commit()
     print(f"relevance: {sum(k for k, _ in keep)} of {len(rows)} articles are about or involve their country")

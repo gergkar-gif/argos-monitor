@@ -107,7 +107,7 @@
     <h2>How the 11-stage pipeline works</h2>
     <p>A scheduled GitHub Actions runner executes the pipeline every 3 hours and publishes static JSON/JS bundles to Cloudflare Pages:</p>
     <div class="pipeline">
-      <div class="step"><b>01 · Ingest</b><span>Polls 760+ RSS/Atom and news feeds via curl with Media Cloud-inspired HTTP 304 conditional GETs (ETag/Last-Modified), tracking query parameter stripping, and exponential backoff error quarantine.</span></div>
+      <div class="step"><b>01 · Ingest</b><span>Polls 760+ RSS/Atom and news feeds via curl with Media Cloud-inspired HTTP 304 conditional GETs (ETag/Last-Modified), tracking query parameter stripping, exponential backoff error quarantine, and direct SQLite article ingestion of verified GDELT 2.0 real-time conflict URLs.</span></div>
       <div class="step"><b>02 · Extract</b><span>Fetches full article text with Trafilatura for domestic and accessible sources.</span></div>
       <div class="step"><b>03 · Normalise</b><span>Applies Unicode NFC normalisation (crucial for Vietnamese diacritics and Khmer script).</span></div>
       <div class="step"><b>04 · Relevance</b><span>Filters out sports/lifestyle sections and requires country mentions on world feeds.</span></div>
@@ -206,7 +206,7 @@
     <div class="pipeline">
       <div class="step">
         <b>Track 1 · Real-Time Violence Streams, Field Monitors &amp; Sensors</b>
-        <span>Ingests live structured event streams and institutional field monitors: <strong>GDELT 2.0 15-Minute CAMEO Conflict Stream</strong> (filtering CAMEO root codes 18 Assault/Bombing, 19 Armed Clash/Strike, 20 Mass Violence, and 145 Violent Riot, then extracting and verifying the source article's verbatim HTML <code>&lt;title&gt;</code>), optional <strong>ACLED API</strong> disaggregated battle/fatality records, field reporting from <strong>United Nations Peace &amp; Security</strong>, <strong>International Crisis Group</strong>, <strong>Human Rights Watch (HRW)</strong>, <strong>Long War Journal (LWJ)</strong>, and <strong>M&eacute;decins Sans Fronti&egrave;res (MSF)</strong>, alongside elevated foreign-ministry advisories (<strong>US State Dept Levels 2–4</strong>, <strong>UK FCDO</strong>) and hazard sensors (<strong>GDACS</strong>, <strong>USGS M4.5+</strong>, <strong>NASA EONET</strong>).</span>
+        <span>Ingests live structured event streams and institutional field monitors: <strong>GDELT 2.0 15-Minute CAMEO Conflict Stream</strong> (filtering CAMEO root codes 18 Assault/Bombing, 19 Armed Clash/Strike, 20 Mass Violence, and 145 Violent Riot, extracting and verifying the source article's verbatim HTML <code>&lt;title&gt;</code> and full text, and ingesting verified conflict URLs directly into the SQLite <code>article</code> table so they also embed, extract quotes, and cluster with domestic desk stories), optional <strong>ACLED API</strong> disaggregated battle/fatality records, field reporting from <strong>United Nations Peace &amp; Security</strong>, <strong>International Crisis Group</strong>, <strong>Human Rights Watch (HRW)</strong>, <strong>Long War Journal (LWJ)</strong>, and <strong>M&eacute;decins Sans Fronti&egrave;res (MSF)</strong>, alongside elevated foreign-ministry advisories (<strong>US State Dept Levels 2–4</strong>, <strong>UK FCDO</strong>) and hazard sensors (<strong>GDACS</strong>, <strong>USGS M4.5+</strong>, <strong>NASA EONET</strong>).</span>
       </div>
       <div class="step">
         <b>Track 2 · Kinetic Conflict &amp; Unrest Press Classification</b>
