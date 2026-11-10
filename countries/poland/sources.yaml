@@ -92,6 +92,39 @@ sources:
     feeds:
       - {url: "https://www.money.pl/rss/rss.xml", section: Gospodarka, category_hint: economics}
 
+  - id: interia_pl
+    name: Interia Fakty
+    homepage: https://fakty.interia.pl
+    language: pl
+    scope: domestic
+    kind: media
+    governing_body: Grupa Polsat Plus / Interia (major national news portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://fakty.interia.pl/feed", section: Fakty, category_hint: general}
+
+  - id: onet_pl
+    name: Onet Wiadomości
+    homepage: https://wiadomosci.onet.pl
+    language: pl
+    scope: domestic
+    kind: media
+    governing_body: Ringier Axel Springer Polska (major national news portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://wiadomosci.onet.pl/.feed", section: Wiadomości, category_hint: general}
+
+  - id: kresy_pl
+    name: Kresy.pl
+    homepage: https://kresy.pl
+    language: pl
+    scope: domestic
+    kind: media
+    governing_body: Fundacja im. Hetmana Stanisława Żółkiewskiego (independent foreign affairs & security portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://kresy.pl/feed/", section: Najnowsze, category_hint: foreign_policy}
+
   - id: gnews_en_pl
     name: Google News (Poland - English)
     homepage: https://news.google.com

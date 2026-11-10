@@ -46,6 +46,72 @@ sources:
     feeds:
       - {url: "https://www.livemint.com/rss/news", section: News & Markets, category_hint: economics}
 
+  - id: india_today
+    name: India Today
+    homepage: https://www.indiatoday.in
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Living Media India Ltd (national news broadcaster and weekly)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.indiatoday.in/rss/1206578", section: India, category_hint: internal_politics}
+
+  - id: economic_times
+    name: The Economic Times
+    homepage: https://economictimes.indiatimes.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: The Times Group / Bennett, Coleman & Co. Ltd. (premier financial daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://economictimes.indiatimes.com/rssfeedstopstories.cms", section: Top Stories, category_hint: economics}
+
+  - id: ndtv_news
+    name: NDTV News
+    homepage: https://www.ndtv.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: New Delhi Television Ltd (national television news network)
+    state_affiliated: false
+    feeds:
+      - {url: "https://feeds.feedburner.com/ndtvnews-india-news", section: India News, category_hint: internal_politics}
+
+  - id: business_standard
+    name: Business Standard
+    homepage: https://www.business-standard.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Business Standard Pvt Ltd (premier financial daily newspaper)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.business-standard.com/rss/home_page_top_stories.rss", section: Top Stories, category_hint: economics}
+
+  - id: hindu_businessline
+    name: The Hindu Business Line
+    homepage: https://www.thehindubusinessline.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Kasturi & Sons Ltd (financial daily of record)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.thehindubusinessline.com/news/national/feeder/default.rss", section: National, category_hint: economics}
+
+  - id: oneindia
+    name: Oneindia
+    homepage: https://www.oneindia.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Greynium Information Technologies (independent national digital news portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.oneindia.com/rss/news-india-fb.xml", section: India News, category_hint: general}
+
   - id: the_wire
     name: The Wire
     homepage: https://thewire.in

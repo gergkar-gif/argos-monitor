@@ -2,6 +2,10 @@
 
 Completed items moved from `docs/roadmap.md` per project handover rules.
 
+- **Major Regional Desks Expansion to 10+ Sources (Phase 3 Batch 3)** — **Done 2026-11-10.**
+  - Expanded and verified candidate feeds for Poland (10 direct), Turkey (10 direct), South Korea (11 direct), India (10 direct), and Taiwan (11 direct), bringing 18 major global and regional desks into full compliance with the 10-source standard.
+  - Verified feed reachability with parallel probe (`tools/probe.py`) across all newly integrated publications.
+
 - **Strategic Regional Desks Expansion to 10+ Sources (Phase 3 Batch 2)** — **Done 2026-11-10.**
   - Expanded and verified candidate feeds for France (10 direct), Germany (10 direct), Japan (10 direct), Russia (10 direct), and Ukraine (10 direct), bringing 13 major global desks into full compliance with the 10-source standard.
   - Verified feed reachability with fast parallel probe (`tools/probe.py`) across all newly integrated publications.

@@ -35,6 +35,94 @@ sources:
     feeds:
       - {url: "https://news.ltn.com.tw/rss/business.xml", section: Business, category_hint: economics}
 
+  - id: udn_tw
+    name: United Daily News (UDN)
+    homepage: https://udn.com
+    language: zh
+    scope: domestic
+    kind: media
+    governing_body: United Daily News Group (major national daily newspaper of record)
+    state_affiliated: false
+    feeds:
+      - {url: "https://udn.com/rssfeed/news/2/6638?ch=news", section: Realtime, category_hint: general}
+
+  - id: ettoday_tw
+    name: ETtoday
+    homepage: https://www.ettoday.net
+    language: zh
+    scope: domestic
+    kind: media
+    governing_body: Eastern Media Group (leading digital news portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://feeds.feedburner.com/ettoday/realtime", section: Realtime, category_hint: general}
+
+  - id: mirrormedia_tw
+    name: Mirror Media
+    homepage: https://www.mirrormedia.mg
+    language: zh
+    scope: domestic
+    kind: media
+    governing_body: Mirror Media Group (independent investigative weekly and digital news)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.mirrormedia.mg/rss/rss.xml", section: Realtime, category_hint: general}
+
+  - id: tw_reporter
+    name: The Reporter (報導者)
+    homepage: https://www.twreporter.org
+    language: zh
+    scope: domestic
+    kind: media
+    governing_body: The Reporter Foundation (independent non-profit investigative journalism foundation)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.twreporter.org/a/rss2.xml", section: In-depth, category_hint: internal_politics}
+
+  - id: newtalk_tw
+    name: Newtalk
+    homepage: https://newtalk.tw
+    language: zh
+    scope: domestic
+    kind: media
+    governing_body: Newtalk Co. (independent digital news media)
+    state_affiliated: false
+    feeds:
+      - {url: "https://newtalk.tw/rss/all", section: All News, category_hint: general}
+
+  - id: technews_tw
+    name: TechNews (科技新報)
+    homepage: https://technews.tw
+    language: zh
+    scope: domestic
+    kind: media
+    governing_body: TechNews Inc. (premier Taiwanese technology and semiconductor news daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://technews.tw/feed/", section: Tech & Chips, category_hint: economics}
+
+  - id: thenewslens
+    name: The News Lens (關鍵評論網)
+    homepage: https://www.thenewslens.com
+    language: zh
+    scope: domestic
+    kind: media
+    governing_body: TNL Mediagene (independent commentary and digital journalism)
+    state_affiliated: false
+    feeds:
+      - {url: "https://feeds.feedburner.com/TheNewsLens", section: Daily, category_hint: general}
+
+  - id: crossing_cw
+    name: CommonWealth Magazine - Crossing (換日線)
+    homepage: https://crossing.cw.com.tw
+    language: zh
+    scope: domestic
+    kind: media
+    governing_body: CommonWealth Magazine Group (major Taiwanese media and international affairs publication)
+    state_affiliated: false
+    feeds:
+      - {url: "https://crossing.cw.com.tw/rss", section: International & Society, category_hint: foreign_policy}
+
   - id: gnews_tw_domestic
     name: Focus Taiwan / CNA / Taiwan News (via Google News)
     homepage: https://focustaiwan.tw

@@ -80,6 +80,39 @@ sources:
     feeds:
       - {url: "https://bianet.org/rss/english", section: English, category_hint: general}
 
+  - id: trt_haber
+    name: TRT Haber
+    homepage: https://www.trthaber.com
+    language: tr
+    scope: domestic
+    kind: media
+    governing_body: Turkish Radio and Television Corporation (national public broadcaster)
+    state_affiliated: true
+    feeds:
+      - {url: "https://www.trthaber.com/manset_articles.rss", section: Manşet, category_hint: general}
+
+  - id: hurriyet
+    name: Hürriyet
+    homepage: https://www.hurriyet.com.tr
+    language: tr
+    scope: domestic
+    kind: media
+    governing_body: Demirören Group (major national daily newspaper)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.hurriyet.com.tr/rss/gundem", section: Gündem, category_hint: general}
+
+  - id: haberturk
+    name: Habertürk
+    homepage: https://www.haberturk.com
+    language: tr
+    scope: domestic
+    kind: media
+    governing_body: Ciner Media Group (national news broadcaster and portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.haberturk.com/rss/manset.xml", section: Manşet, category_hint: general}
+
   - id: gnews_en_tr
     name: Google News (Turkey - English)
     homepage: https://news.google.com
