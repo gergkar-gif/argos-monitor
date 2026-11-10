@@ -1,113 +1,238 @@
-# Ukraine source registry (decision D15).
-# Combines state wire (Ukrinform), major independent dailies (The Kyiv Independent, Ukrainska Pravda, NV, Babel, Interfax-Ukraine), diaspora/exile coverage (RFE/RL Radio Svoboda), and international wires.
-
 sources:
-  - id: nv_ua
-    name: NV (Novoye Vremya)
-    homepage: https://nv.ua
-    language: uk
-    scope: domestic
-    kind: media
-    governing_body: Dragon Capital (independent publishing group)
-    state_affiliated: false
-    feeds:
-      - {url: "https://nv.ua/rss/all.xml", section: Всі новини, category_hint: general}
-
-  - id: ukrinform
-    name: Ukrinform (National News Agency of Ukraine)
-    homepage: https://www.ukrinform.net
-    language: en
-    scope: domestic
-    kind: official
-    aggregator: google_news
-    governing_body: Ministry of Culture and Strategic Communications (state wire)
-    state_affiliated: true
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:ukrinform.net+when:7d&hl=en-US&gl=US&ceid=US:en", section: English Wire, category_hint: general}
-      - {url: "https://news.google.com/rss/search?q=site:ukrinform.ua+when:3d&hl=uk&gl=UA&ceid=UA:uk", section: Новини, category_hint: general}
-
-  - id: kyiv_independent
-    name: The Kyiv Independent
-    homepage: https://kyivindependent.com
-    language: en
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: Kyiv Independent Media LLC (independent journalist-owned outlet)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:kyivindependent.com+when:7d&hl=en-US&gl=US&ceid=US:en", section: News, category_hint: general}
-
-  - id: pravda_ua
-    name: Ukrainska Pravda
-    homepage: https://www.pravda.com.ua
-    language: uk
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: Dragon Capital (independent paper of record)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:pravda.com.ua+when:3d&hl=uk&gl=UA&ceid=UA:uk", section: Головне, category_hint: general}
-
-  - id: babel_ua
-    name: Babel
-    homepage: https://babel.ua
-    language: uk
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: Garmata Media (independent digital news)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:babel.ua+when:7d&hl=uk&gl=UA&ceid=UA:uk", section: Новини, category_hint: general}
-
-  - id: interfax_ua
-    name: Interfax-Ukraine
-    homepage: https://interfax.com.ua
-    language: uk
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: Interfax-Ukraine News Agency (independent commercial wire)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:interfax.com.ua+when:3d&hl=uk&gl=UA&ceid=UA:uk", section: Стрічка, category_hint: general}
-
-  - id: rbc_ua
-    name: RBC-Ukraine
-    homepage: https://www.rbc.ua
-    language: uk
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: UBM (independent commercial portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:rbc.ua+when:3d&hl=uk&gl=UA&ceid=UA:uk", section: Новини, category_hint: general}
-
-  - id: radio_svoboda_ua
-    name: Radio Svoboda (RFE/RL Ukrainian)
-    homepage: https://www.radiosvoboda.org
-    language: uk
-    scope: abroad_local
-    kind: media
-    aggregator: google_news
-    governing_body: Radio Free Europe / Radio Liberty (USAGM)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:radiosvoboda.org+when:3d&hl=uk&gl=UA&ceid=UA:uk", section: Радіо Свобода, category_hint: general}
-
-  - id: gnews_ua_intl
-    name: Google News (Ukraine War & Foreign Policy - International)
-    homepage: https://news.google.com
-    language: en
-    scope: international
-    kind: media
-    aggregator: google_news
-    governing_body: n/a (aggregator)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(Ukraine+OR+Kyiv)+(frontline+OR+Zelenskyy+OR+Pokrovsk+OR+drone)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Frontline & War, category_hint: defence_security}
-      - {url: "https://news.google.com/rss/search?q=Ukraine+(sanctions+OR+EU+accession+OR+NATO+OR+diplomacy)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Diplomacy, category_hint: foreign_policy}
-      - {url: "https://news.google.com/rss/search?q=Ukraine+(energy+grid+OR+blackout+OR+reconstruction+OR+grain)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Economy & Infrastructure, category_hint: economics}
+- id: nv_ua
+  name: NV (Novoye Vremya)
+  homepage: https://nv.ua
+  language: uk
+  scope: domestic
+  kind: media
+  governing_body: Dragon Capital (independent publishing group)
+  state_affiliated: false
+  feeds:
+  - url: https://nv.ua/rss/all.xml
+    section: Всі новини
+    category_hint: general
+- id: ukrinform
+  name: Ukrinform (National News Agency of Ukraine)
+  homepage: https://www.ukrinform.net
+  language: en
+  scope: domestic
+  kind: official
+  aggregator: google_news
+  governing_body: Ministry of Culture and Strategic Communications (state wire)
+  state_affiliated: true
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:ukrinform.net+when:7d&hl=en-US&gl=US&ceid=US:en
+    section: English Wire
+    category_hint: general
+  - url: https://news.google.com/rss/search?q=site:ukrinform.ua+when:3d&hl=uk&gl=UA&ceid=UA:uk
+    section: Новини
+    category_hint: general
+- id: kyiv_independent
+  name: The Kyiv Independent
+  homepage: https://kyivindependent.com
+  language: en
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: Kyiv Independent Media LLC (independent journalist-owned outlet)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:kyivindependent.com+when:7d&hl=en-US&gl=US&ceid=US:en
+    section: News
+    category_hint: general
+- id: pravda_ua
+  name: Ukrainska Pravda
+  homepage: https://www.pravda.com.ua
+  language: uk
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: Dragon Capital (independent paper of record)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:pravda.com.ua+when:3d&hl=uk&gl=UA&ceid=UA:uk
+    section: Головне
+    category_hint: general
+- id: babel_ua
+  name: Babel
+  homepage: https://babel.ua
+  language: uk
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: Garmata Media (independent digital news)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:babel.ua+when:7d&hl=uk&gl=UA&ceid=UA:uk
+    section: Новини
+    category_hint: general
+- id: interfax_ua
+  name: Interfax-Ukraine
+  homepage: https://interfax.com.ua
+  language: uk
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: Interfax-Ukraine News Agency (independent commercial wire)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:interfax.com.ua+when:3d&hl=uk&gl=UA&ceid=UA:uk
+    section: Стрічка
+    category_hint: general
+- id: rbc_ua
+  name: RBC-Ukraine
+  homepage: https://www.rbc.ua
+  language: uk
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: UBM (independent commercial portal)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:rbc.ua+when:3d&hl=uk&gl=UA&ceid=UA:uk
+    section: Новини
+    category_hint: general
+- id: radio_svoboda_ua
+  name: Radio Svoboda (RFE/RL Ukrainian)
+  homepage: https://www.radiosvoboda.org
+  language: uk
+  scope: abroad_local
+  kind: media
+  aggregator: google_news
+  governing_body: Radio Free Europe / Radio Liberty (USAGM)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:radiosvoboda.org+when:3d&hl=uk&gl=UA&ceid=UA:uk
+    section: Радіо Свобода
+    category_hint: general
+- id: gnews_ua_intl
+  name: Google News (Ukraine War & Foreign Policy - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  aggregator: google_news
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Ukraine+OR+Kyiv)+(frontline+OR+Zelenskyy+OR+Pokrovsk+OR+drone)+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Frontline & War
+    category_hint: defence_security
+  - url: https://news.google.com/rss/search?q=Ukraine+(sanctions+OR+EU+accession+OR+NATO+OR+diplomacy)+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Diplomacy
+    category_hint: foreign_policy
+  - url: https://news.google.com/rss/search?q=Ukraine+(energy+grid+OR+blackout+OR+reconstruction+OR+grain)+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Economy & Infrastructure
+    category_hint: economics
+- id: ukrinform_en
+  name: Ukrinform (English)
+  homepage: https://www.ukrinform.net
+  language: en
+  scope: domestic
+  kind: official
+  governing_body: Ministry of Culture and Strategic Communications of Ukraine
+  state_affiliated: true
+  notes: National statutory state news agency of Ukraine (English wire desk).
+  feeds:
+  - url: https://www.ukrinform.net/rss/block-lastnews
+    category_hint: internal_politics
+- id: ukrinform_ua
+  name: Ukrinform (Ukrainian)
+  homepage: https://www.ukrinform.ua
+  language: uk
+  scope: domestic
+  kind: official
+  governing_body: Ministry of Culture and Strategic Communications of Ukraine
+  state_affiliated: true
+  notes: National statutory state news agency of Ukraine (domestic Ukrainian feed).
+  feeds:
+  - url: https://www.ukrinform.ua/rss/block-lastnews
+    category_hint: internal_politics
+- id: interfax_ua_en
+  name: Interfax-Ukraine (English)
+  homepage: https://en.interfax.com.ua
+  language: en
+  scope: domestic
+  kind: wire
+  governing_body: Interfax-Ukraine News Agency
+  state_affiliated: false
+  notes: Leading independent Ukrainian wire service covering presidency, parliament,
+    and frontline military.
+  feeds:
+  - url: https://en.interfax.com.ua/news/last.rss
+    category_hint: internal_politics
+- id: interfax_ua_ua
+  name: Interfax-Ukraine (Ukrainian)
+  homepage: https://interfax.com.ua
+  language: uk
+  scope: domestic
+  kind: wire
+  governing_body: Interfax-Ukraine News Agency
+  state_affiliated: false
+  notes: Domestic Ukrainian feed of Interfax-Ukraine news wire.
+  feeds:
+  - url: https://interfax.com.ua/news/last.rss
+    category_hint: internal_politics
+- id: lb_ua
+  name: LB.ua (Livyy Bereh)
+  homepage: https://lb.ua
+  language: uk
+  scope: domestic
+  kind: media
+  governing_body: Gorshenin Institute
+  state_affiliated: false
+  notes: Major Ukrainian independent political and analytical daily paper.
+  feeds:
+  - url: https://lb.ua/rss/ukr/news.xml
+    category_hint: internal_politics
+- id: espreso_tv
+  name: Espreso TV
+  homepage: https://espreso.tv
+  language: uk
+  scope: domestic
+  kind: media
+  governing_body: Goldberry LLC / Ivan Zhevago
+  state_affiliated: false
+  notes: Ukrainian independent commercial news broadcaster with real-time military
+    and geopolitical reporting.
+  feeds:
+  - url: https://espreso.tv/rss
+    category_hint: defence_security
+- id: fakty_ua
+  name: Fakty
+  homepage: https://fakty.com.ua
+  language: uk
+  scope: domestic
+  kind: media
+  governing_body: Starlight Media Group
+  state_affiliated: false
+  notes: High-reach Ukrainian newsroom covering government decisions, civil infrastructure,
+    and war impacts.
+  feeds:
+  - url: https://fakty.com.ua/feed/
+    category_hint: society
+- id: glavred_ua
+  name: Glavred
+  homepage: https://glavred.net
+  language: uk
+  scope: domestic
+  kind: media
+  governing_body: 1+1 Media Group
+  state_affiliated: false
+  notes: Major Ukrainian political information portal and analytical magazine.
+  feeds:
+  - url: https://glavred.net/rss
+    category_hint: internal_politics
+- id: rubryka_ua
+  name: Rubryka
+  homepage: https://rubryka.com
+  language: uk
+  scope: domestic
+  kind: media
+  governing_body: Solutions Media NGO
+  state_affiliated: false
+  notes: Ukrainian independent media daily covering reconstruction, civil defense,
+    and civil society.
+  feeds:
+  - url: https://rubryka.com/feed/
+    category_hint: society

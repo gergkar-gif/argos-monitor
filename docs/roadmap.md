@@ -13,5 +13,5 @@ Active queue and open work only. Completed work is logged in `ACHIEVED.md`.
    - Next: Create optional post-processing script (`argos/llm_digest.py`) using Gemini or local llama.cpp that takes top 5 story clusters, writes bullet-point summaries, and drops any sentence lacking a verbatim string-match quote in the stored article text.
 
 3. **Independent source expansion across all country desks (Phase 3)**
-   - State: Source depth audit script `tools/audit_sources.py` implemented; Tier 1 priority desks expanded to >= 10 verified independent sources (US: 11, China: 10, Brazil: 11, UK: 10, Vietnam: 27, Hungary: 16, South Africa: 14, Cambodia: 10).
-   - Next: Expand remaining 79 regional country packs to >= 10 direct, independent sources (excluding aggregators) with verified RSS/Atom feeds to pass `tools/audit_sources.py --fail-under`.
+   - State: Source depth audit script `tools/audit_sources.py` implemented; 13 major global and regional desks expanded to >= 10 verified independent sources (Vietnam: 27, Hungary: 16, South Africa: 14, United States: 11, Brazil: 11, Cambodia: 10, China: 10, France: 10, Germany: 10, Japan: 10, Russia: 10, Ukraine: 10, United Kingdom: 10).
+   - Next: Expand remaining 74 regional country packs to >= 10 direct, independent sources (excluding aggregators) with verified RSS/Atom feeds to pass `tools/audit_sources.py --fail-under`.

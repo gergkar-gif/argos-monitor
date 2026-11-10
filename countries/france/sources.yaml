@@ -107,3 +107,65 @@ sources:
   feeds:
   - url: https://news.google.com/rss/search?q=%22Minist%C3%A8re+des+Arm%C3%A9es%22+OR+Lecornu+OR+%22autonomie+strat%C3%A9gique%22+OR+dissuasion+France+when:3d&hl=fr&gl=FR&ceid=FR:fr
     category_hint: defence_security
+- id: liberation
+  name: Libération
+  homepage: https://www.liberation.fr
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Fonds de dotation pour une presse indépendante
+  state_affiliated: false
+  notes: Major French center-left national daily of record.
+  feeds:
+  - url: https://www.liberation.fr/arc/outboundfeeds/rss-all/
+    category_hint: internal_politics
+- id: courrier_intl
+  name: Courrier International
+  homepage: https://www.courrierinternational.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Groupe Le Monde
+  state_affiliated: false
+  notes: Weekly reviewing international diplomacy, foreign press, and geopolitics.
+  feeds:
+  - url: https://www.courrierinternational.com/feed/all/rss.xml
+    category_hint: foreign_policy
+- id: ouest_france
+  name: Ouest-France
+  homepage: https://www.ouest-france.fr
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Association pour le soutien des principes de la démocratie humaniste
+  state_affiliated: false
+  notes: Highest-circulation French daily covering national politics and regional
+    maritime economy.
+  feeds:
+  - url: https://www.ouest-france.fr/rss/une
+    category_hint: internal_politics
+- id: rfi_fr
+  name: Radio France Internationale (RFI)
+  homepage: https://www.rfi.fr/fr
+  language: fr
+  scope: domestic
+  kind: official
+  governing_body: France Médias Monde (state broadcaster)
+  state_affiliated: true
+  notes: French public international broadcaster tracking French foreign policy and
+    diplomacy.
+  feeds:
+  - url: https://www.rfi.fr/fr/general/rss
+    category_hint: foreign_policy
+- id: lexpress_fr
+  name: L'Express
+  homepage: https://www.lexpress.fr
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Groupe L'Express
+  state_affiliated: false
+  notes: Leading French weekly news magazine focusing on politics, defense, and economy.
+  feeds:
+  - url: https://www.lexpress.fr/rss/politique.xml
+    category_hint: internal_politics

@@ -115,3 +115,54 @@ sources:
   feeds:
   - url: https://news.google.com/rss/search?q=%22Russian+Defense+Ministry%22+OR+Belousov+OR+Gerasimov+OR+Rostec+when:3d&hl=en-US&gl=US&ceid=US:en
     category_hint: defence_security
+- id: ria_novosti
+  name: RIA Novosti
+  homepage: https://ria.ru
+  language: ru
+  scope: domestic
+  kind: official
+  governing_body: Rossiya Segodnya (Russian statutory state news agency)
+  state_affiliated: true
+  notes: Primary Russian state domestic wire agency covering Kremlin, Duma, and ministries.
+  feeds:
+  - url: https://ria.ru/export/rss2/archive/index.xml
+    category_hint: internal_politics
+- id: rbc_ru
+  name: RBC (RosBiznesKonsalting)
+  homepage: https://www.rbc.ru
+  language: ru
+  scope: domestic
+  kind: media
+  governing_body: Media-Holding RBC
+  state_affiliated: false
+  notes: Major Russian business daily with heavy coverage of sanctions, central bank,
+    and oligarchic shifts.
+  feeds:
+  - url: https://rssexport.rbc.ru/rbcnews/news/30/full.rss
+    category_hint: economics
+- id: vedomosti_ru
+  name: Vedomosti
+  homepage: https://www.vedomosti.ru
+  language: ru
+  scope: domestic
+  kind: media
+  governing_body: Business News Media
+  state_affiliated: false
+  notes: National business daily covering macroeconomics, federal regulations, and
+    corporate state assets.
+  feeds:
+  - url: https://www.vedomosti.ru/rss/news
+    category_hint: economics
+- id: novaya_gazeta_eu
+  name: Novaya Gazeta Europe
+  homepage: https://novayagazeta.eu
+  language: ru
+  scope: abroad_local
+  kind: media
+  governing_body: Novaya Gazeta Europe (Latvia)
+  state_affiliated: false
+  notes: Independent exiled investigative paper of record founded by Nobel laureate
+    Dmitry Muratov.
+  feeds:
+  - url: https://novayagazeta.eu/feed/rss
+    category_hint: internal_politics

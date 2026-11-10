@@ -106,3 +106,68 @@ sources:
   feeds:
   - url: https://news.google.com/rss/search?q=Bundeswehr+OR+Pistorius+OR+Zeitenwende+OR+R%C3%BCstungsausgaben+when:3d&hl=de&gl=DE&ceid=DE:de
     category_hint: defence_security
+- id: faz_net
+  name: Frankfurter Allgemeine Zeitung (FAZ)
+  homepage: https://www.faz.net
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Fazit-Stiftung
+  state_affiliated: false
+  notes: German national center-right broadsheet of record with extensive foreign
+    policy desk.
+  feeds:
+  - url: https://www.faz.net/rss/aktuell/
+    category_hint: internal_politics
+- id: sueddeutsche
+  name: Süddeutsche Zeitung (SZ)
+  homepage: https://www.sueddeutsche.de
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Südwestdeutsche Medien Holding
+  state_affiliated: false
+  notes: Major German daily broadsheet known for investigative and national governance
+    reporting.
+  feeds:
+  - url: https://rss.sueddeutsche.de/rss/Topthemen
+    category_hint: internal_politics
+- id: die_zeit
+  name: Die Zeit
+  homepage: https://www.zeit.de
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Holtzbrinck Publishing Group
+  state_affiliated: false
+  notes: German national weekly newspaper of record covering politics, institutions,
+    and trade.
+  feeds:
+  - url: https://newsfeed.zeit.de/index
+    category_hint: internal_politics
+- id: die_welt
+  name: Die Welt
+  homepage: https://www.welt.de
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Axel Springer SE
+  state_affiliated: false
+  notes: German conservative daily with heavy coverage of security policy, Bundeswehr,
+    and EU affairs.
+  feeds:
+  - url: https://www.welt.de/feeds/latest.rss
+    category_hint: defence_security
+- id: deutschlandfunk
+  name: Deutschlandfunk
+  homepage: https://www.deutschlandfunk.de
+  language: de
+  scope: domestic
+  kind: official
+  governing_body: Deutschlandradio (public statutory broadcasting trust)
+  state_affiliated: true
+  notes: German national public radio broadcaster focusing on news, debates, and federal
+    legislation.
+  feeds:
+  - url: https://www.deutschlandfunk.de/nachrichten-100.rss
+    category_hint: internal_politics

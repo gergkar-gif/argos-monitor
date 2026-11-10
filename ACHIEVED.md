@@ -2,6 +2,10 @@
 
 Completed items moved from `docs/roadmap.md` per project handover rules.
 
+- **Strategic Regional Desks Expansion to 10+ Sources (Phase 3 Batch 2)** — **Done 2026-11-10.**
+  - Expanded and verified candidate feeds for France (10 direct), Germany (10 direct), Japan (10 direct), Russia (10 direct), and Ukraine (10 direct), bringing 13 major global desks into full compliance with the 10-source standard.
+  - Verified feed reachability with fast parallel probe (`tools/probe.py`) across all newly integrated publications.
+
 - **Independent Source Audit & Tier 1 Desk Expansion (Phase 3 Initial Rollout)** — **Done 2026-11-10.**
   - Created source depth auditing tool `tools/audit_sources.py` tracking direct non-aggregator vs aggregator counts across all 87 country packs.
   - Expanded and verified candidate feeds for United States (11 direct), China (10 direct), Brazil (11 direct), and United Kingdom (10 direct), joining Vietnam (27), Hungary (16), South Africa (14), and Cambodia (10) in full compliance with the 10-source standard.
