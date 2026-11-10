@@ -129,15 +129,15 @@ sources:
   - url: https://sudanspost.com/feed/
     category_hint: foreign_policy
 
-- id: radiookapi_ea
-  name: Radio Okapi
-  homepage: https://www.radiookapi.net
-  language: fr
+- id: softpower_ug
+  name: SoftPower News
+  homepage: https://softpower.ug
+  language: en
   scope: domestic
   kind: media
-  governing_body: MONUSCO / Fondation Hirondelle
+  governing_body: SoftPower Communications
   state_affiliated: false
-  notes: Premier UN and humanitarian peacekeeping radio network broadcasting critical security updates in Central/East Africa.
+  notes: Independent East African digital news publication reporting on regional diplomacy, business integration, and security.
   feeds:
-  - url: https://www.radiookapi.net/rss.xml
-    category_hint: defence_security
+  - url: https://softpower.ug/feed/
+    category_hint: internal_politics
