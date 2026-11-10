@@ -2,6 +2,10 @@
 
 Completed items moved from `docs/roadmap.md` per project handover rules.
 
+- **Chilean, Kenyan, Malaysian, Ethiopian & Pacific Desks Expansion to 10+ Sources (Phase 3 Batch 12)** — **Done 2026-11-10.**
+  - Expanded and verified candidate feeds for Chile (10 direct), Kenya (10 direct), Malaysia (10 direct), Ethiopia (10 direct), and Pacific Islands (10 direct), bringing 63 major global and regional desks into full compliance with the 10-source standard.
+  - Verified feed reachability with parallel probe (`tools/probe.py`) across all newly integrated publications.
+
 - **Balkan, Moldovan, Baltic, Caribbean & East African Desks Expansion to 10+ Sources (Phase 3 Batch 11)** — **Done 2026-11-10.**
   - Expanded and verified candidate feeds for Bosnia (10 direct), Moldova (10 direct), Baltics (10 direct), Caribbean (11 direct), and East Africa (10 direct), bringing 58 major global and regional desks into full compliance with the 10-source standard.
   - Verified feed reachability with parallel probe (`tools/probe.py`) across all newly integrated publications.

@@ -60,3 +60,106 @@ sources:
     feeds:
       - {url: "https://news.google.com/rss/search?q=Kenya+(Nairobi+OR+Ruto+OR+Gachagua+OR+Kindiki+OR+parliament)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Kenya politics & governance, category_hint: internal_politics}
       - {url: "https://news.google.com/rss/search?q=Kenya+(IMF+OR+economy+OR+Haiti+OR+EAC+OR+shilling)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Kenya economy & diplomacy, category_hint: foreign_policy}
+  - id: peopledaily_ke
+    name: People Daily
+    homepage: https://www.peopledaily.digital
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Mediamax Network Limited"
+    state_affiliated: false
+    notes: "High-circulation national daily broadsheet covering parliamentary politics, judiciary, and county governance."
+    feeds:
+      - url: https://www.peopledaily.digital/feed/
+        category_hint: internal_politics
+
+  - id: capitalfm_ke
+    name: Capital FM Kenya
+    homepage: https://www.capitalfm.co.ke
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Capital Group Limited"
+    state_affiliated: false
+    notes: "Pioneering private broadcast and digital news organization providing continuous breaking news on national politics."
+    feeds:
+      - url: https://www.capitalfm.co.ke/news/feed/
+        category_hint: internal_politics
+
+  - id: kenyans_co_ke
+    name: Kenyans.co.ke
+    homepage: https://www.kenyans.co.ke
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Boxraft Limited"
+    state_affiliated: false
+    notes: "High-volume independent digital news daily covering national executive affairs, economy, and infrastructure."
+    feeds:
+      - url: https://www.kenyans.co.ke/feeds/news
+        category_hint: general
+
+  - id: kenyanews_gov
+    name: Kenya News Agency (KNA)
+    homepage: https://www.kenyanews.go.ke
+    language: en
+    scope: domestic
+    kind: official
+    governing_body: "Ministry of Information, Communications & The Digital Economy"
+    state_affiliated: true
+    notes: "Statutory national wire news agency of the Republic of Kenya covering official announcements across all 47 counties."
+    feeds:
+      - url: https://www.kenyanews.go.ke/feed/
+        category_hint: internal_politics
+
+  - id: tuko_ke
+    name: Tuko.co.ke
+    homepage: https://www.tuko.co.ke
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Genesis Media Emergent"
+    state_affiliated: false
+    notes: "High-reach Kenyan digital daily providing comprehensive national news, political interviews, and human interest reporting."
+    feeds:
+      - url: https://www.tuko.co.ke/rss/all.rss
+        category_hint: general
+
+  - id: biznakenya
+    name: Bizna Kenya
+    homepage: https://biznakenya.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Bizna Media Group"
+    state_affiliated: false
+    notes: "Leading financial, SME, taxation, and business intelligence portal in Kenya."
+    feeds:
+      - url: https://biznakenya.com/feed/
+        category_hint: economics
+
+  - id: kahawatungu
+    name: KahawaTungu
+    homepage: https://kahawatungu.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "KahawaTungu Media"
+    state_affiliated: false
+    notes: "Independent investigative digital platform covering corporate governance, public procurement, and political expose."
+    feeds:
+      - url: https://kahawatungu.com/feed/
+        category_hint: internal_politics
+
+  - id: kenyareport
+    name: KenyaReport
+    homepage: https://kenyareport.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "KenyaReport Media"
+    state_affiliated: false
+    notes: "Independent daily news aggregator and reporting portal covering political alliances, elections, and national security."
+    feeds:
+      - url: https://kenyareport.com/feed/
+        category_hint: internal_politics

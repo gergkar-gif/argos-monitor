@@ -40,3 +40,106 @@ sources:
   - url: https://news.google.com/rss/search?q=Chile+(Boric+OR+copper+OR+lithium+OR+constitution)+when:3d&hl=en-US&gl=US&ceid=US:en
     section: Governance & Resources
     category_hint: economics
+- id: cooperativa_cl
+  name: Radio Cooperativa
+  homepage: https://www.cooperativa.cl
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Compañía Chilena de Comunicaciones
+  state_affiliated: false
+  notes: Major independent national radio broadcaster and digital paper of record founded in 1935.
+  feeds:
+  - url: https://www.cooperativa.cl/noticias/site/tax/port/all/rss____1.xml
+    category_hint: internal_politics
+
+- id: ciperchile
+  name: CIPER Chile
+  homepage: https://www.ciperchile.cl
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Fundación CIPER
+  state_affiliated: false
+  notes: Premier independent investigative journalism foundation uncovering corporate lobbying, corruption, and state reform.
+  feeds:
+  - url: https://www.ciperchile.cl/feed/
+    category_hint: internal_politics
+
+- id: theclinic_cl
+  name: The Clinic
+  homepage: https://www.theclinic.cl
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Ediciones The Clinic
+  state_affiliated: false
+  notes: Influential satirical and investigative news weekly providing incisive analysis of executive politics and society.
+  feeds:
+  - url: https://www.theclinic.cl/feed/
+    category_hint: internal_politics
+
+- id: diarioconstitucional_cl
+  name: Diario Constitucional
+  homepage: https://www.diarioconstitucional.cl
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Diario Constitucional Editores
+  state_affiliated: false
+  notes: Leading specialized journal covering constitutional jurisprudence, Supreme Court decisions, and legislative enactments.
+  feeds:
+  - url: https://www.diarioconstitucional.cl/feed/
+    category_hint: internal_politics
+
+- id: radiouchile_cl
+  name: Diario Universidad de Chile
+  homepage: https://radio.uchile.cl
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Universidad de Chile
+  state_affiliated: false
+  notes: Public university news daily and broadcast network covering labor rights, indigenous policy, and academic debates.
+  feeds:
+  - url: https://radio.uchile.cl/feed/
+    category_hint: internal_politics
+
+- id: fastcheck_cl
+  name: Fast Check CL
+  homepage: https://www.fastcheck.cl
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Fast Check Media
+  state_affiliated: false
+  notes: IFCN-certified independent fact-checking and public discourse verification newsroom.
+  feeds:
+  - url: https://www.fastcheck.cl/feed/
+    category_hint: internal_politics
+
+- id: interferencia_cl
+  name: Interferencia
+  homepage: https://interferencia.cl
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Interferencia Periodismo de Investigación
+  state_affiliated: false
+  notes: Independent subscriber-supported investigative daily focusing on corporate power, mining environmental impacts, and security forces.
+  feeds:
+  - url: https://interferencia.cl/rss.xml
+    category_hint: internal_politics
+
+- id: g5noticias_cl
+  name: G5 Noticias
+  homepage: https://g5noticias.cl
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: G5 Comunicaciones (Valparaíso)
+  state_affiliated: false
+  notes: Major regional news daily covering Valparaíso and San Antonio port operations, maritime logistics, and regional governance.
+  feeds:
+  - url: https://g5noticias.cl/feed/
+    category_hint: economics

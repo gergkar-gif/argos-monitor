@@ -72,3 +72,80 @@ sources:
       - {url: "https://news.google.com/rss/search?q=Ethiopia+(%22Red+Sea%22+OR+Somalia+OR+Somaliland+OR+Egypt+OR+Eritrea+OR+GERD)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Horn of Africa & Red Sea, category_hint: foreign_policy}
       - {url: "https://news.google.com/rss/search?q=Ethiopia+(Amhara+OR+Fano+OR+Oromia+OR+Tigray+OR+ENDF)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Internal security, category_hint: defence_security}
       - {url: "https://news.google.com/rss/search?q=Ethiopia+(birr+OR+IMF+OR+%22National+Bank%22+OR+debt+OR+economy)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Economy & IMF reform, category_hint: economics}
+  - id: addisfortune
+    name: Addis Fortune
+    homepage: https://addisfortune.news
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Independent News & Media Plc"
+    state_affiliated: false
+    notes: "Ethiopia's premier English-language business and economic weekly covering finance, debt restructuring, and agriculture."
+    feeds:
+      - url: https://addisfortune.news/feed/
+        category_hint: economics
+
+  - id: ebr_et
+    name: Ethiopian Business Review
+    homepage: https://ethiopianbusinessreview.net
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Infinity Publishing"
+    state_affiliated: false
+    notes: "Independent monthly business and macroeconomic journal analyzing monetary policy, banking, and industrial parks."
+    feeds:
+      - url: https://ethiopianbusinessreview.net/feed/
+        category_hint: economics
+
+  - id: fanabc_am
+    name: Fana Broadcasting Corporate (Amharic)
+    homepage: https://www.fanabc.com
+    language: am
+    scope: domestic
+    kind: official
+    governing_body: "Fana Broadcasting Corporate"
+    state_affiliated: true
+    notes: "Authoritative Amharic-language national broadcast news covering federal ministries, regional states, and defense."
+    feeds:
+      - url: https://www.fanabc.com/feed/
+        category_hint: internal_politics
+
+  - id: ethiopiaobserver
+    name: Ethiopia Observer
+    homepage: https://www.ethiopiaobserver.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Ethiopia Observer Media"
+    state_affiliated: false
+    notes: "Independent digital platform focusing on human rights, historical analysis, and public policy in the Horn of Africa."
+    feeds:
+      - url: https://www.ethiopiaobserver.com/feed/
+        category_hint: internal_politics
+
+  - id: zehabesha
+    name: ZeHabesha
+    homepage: https://zehabesha.com
+    language: am
+    scope: abroad_local
+    kind: media
+    governing_body: "ZeHabesha Media Network (diaspora/exile)"
+    state_affiliated: false
+    notes: "Prominent diaspora news portal providing critical investigative reports and commentary on Ethiopian governance."
+    feeds:
+      - url: https://zehabesha.com/feed/
+        category_hint: internal_politics
+
+  - id: wazema
+    name: Wazema Radio
+    homepage: https://wazemaradio.com
+    language: am
+    scope: abroad_local
+    kind: media
+    governing_body: "Wazema Media"
+    state_affiliated: false
+    notes: "Independent investigative media outlet producing in-depth reports on constitutional conflict, human rights, and diplomacy."
+    feeds:
+      - url: https://wazemaradio.com/feed/
+        category_hint: internal_politics
