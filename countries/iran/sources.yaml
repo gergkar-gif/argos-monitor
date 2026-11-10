@@ -97,3 +97,87 @@ sources:
       - {url: "https://news.google.com/rss/search?q=Iran+(nuclear+OR+IAEA+OR+enrichment+OR+sanctions+OR+IRGC)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Nuclear & Sanctions, category_hint: defence_security}
       - {url: "https://news.google.com/rss/search?q=Iran+(Israel+OR+Hezbollah+OR+missile+OR+Hormuz)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Regional Security, category_hint: defence_security}
       - {url: "https://news.google.com/rss/search?q=Iran+(Pezeshkian+OR+economy+OR+oil+OR+currency)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Domestic & Economy, category_hint: internal_politics}
+  - id: irna_fa
+    name: Islamic Republic News Agency (Farsi)
+    homepage: https://www.irna.ir
+    language: fa
+    scope: domestic
+    kind: official
+    governing_body: Ministry of Culture and Islamic Guidance (statutory state wire)
+    state_affiliated: true
+    notes: Primary Persian-language statutory wire service of the Islamic Republic of Iran.
+    feeds:
+    - url: https://www.irna.ir/rss
+      category_hint: internal_politics
+  - id: irna_en
+    name: Islamic Republic News Agency (English)
+    homepage: https://en.irna.ir
+    language: en
+    scope: domestic
+    kind: official
+    governing_body: Ministry of Culture and Islamic Guidance (statutory state wire)
+    state_affiliated: true
+    notes: Statutory English-language wire service covering Iranian foreign policy, nuclear diplomacy, and treaties.
+    feeds:
+    - url: https://en.irna.ir/rss
+      category_hint: foreign_policy
+  - id: isna_fa
+    name: Iranian Students' News Agency (ISNA)
+    homepage: https://www.isna.ir
+    language: fa
+    scope: domestic
+    kind: media
+    governing_body: Academic Center for Education, Culture and Research (ACECR)
+    state_affiliated: true
+    notes: Major semi-official Iranian news agency covering universities, parliamentary debates, and society.
+    feeds:
+    - url: https://www.isna.ir/rss
+      category_hint: internal_politics
+  - id: mehr_fa
+    name: Mehr News Agency (Farsi)
+    homepage: https://www.mehrnews.com
+    language: fa
+    scope: domestic
+    kind: media
+    governing_body: Islamic Development Organization (semi-official state media)
+    state_affiliated: true
+    notes: Persian-language service of Mehr News Agency covering domestic policy and provincial developments.
+    feeds:
+    - url: https://www.mehrnews.com/rss
+      category_hint: internal_politics
+  - id: iranwire_en
+    name: IranWire (Direct Feed)
+    homepage: https://iranwire.com
+    language: en
+    scope: abroad_local
+    kind: media
+    governing_body: Offscreen Media UK
+    state_affiliated: false
+    notes: Independent investigative journalism portal in exile founded by Maziar Bahari.
+    feeds:
+    - url: https://iranwire.com/en/feed/
+      category_hint: internal_politics
+  - id: iran_international_feed
+    name: Iran International (Direct Feed)
+    homepage: https://www.iranintl.com
+    language: fa
+    scope: abroad_local
+    kind: media
+    governing_body: Volant Media UK Ltd
+    state_affiliated: false
+    notes: 24/7 independent Persian news television network and portal based in London and Washington.
+    feeds:
+    - url: https://www.iranintl.com/feed
+      category_hint: general
+  - id: donya_e_eqtesad_fa
+    name: Donya-e-Eqtesad
+    homepage: https://donya-e-eqtesad.com
+    language: fa
+    scope: domestic
+    kind: media
+    governing_body: Donya-e-Eqtesad Media Group
+    state_affiliated: false
+    notes: Iran most prominent and widely circulated independent economic and financial daily newspaper.
+    feeds:
+    - url: https://donya-e-eqtesad.com/fa/rss
+      category_hint: economics

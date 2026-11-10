@@ -50,3 +50,87 @@ sources:
   - url: https://news.google.com/rss/search?q=(Iraq+OR+Baghdad)+(Sudani+OR+oil+OR+militia+OR+defense)+when:3d&hl=en-US&gl=US&ceid=US:en
     section: Politics & Security
     category_hint: defence_security
+- id: baghdad_today_iq
+  name: Baghdad Today
+  homepage: https://baghdadtoday.news
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: Baghdad Today News Agency
+  state_affiliated: false
+  notes: Independent Iraqi news agency covering Council of Representatives and provincial governance.
+  feeds:
+  - url: https://baghdadtoday.news/rss/
+    category_hint: internal_politics
+- id: kitabat_iq
+  name: Kitabat
+  homepage: https://kitabat.com
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: Kitabat Foundation
+  state_affiliated: false
+  notes: Prominent independent political daily and opinion forum founded in 2002 covering Iraqi state policy.
+  feeds:
+  - url: https://kitabat.com/feed/
+    category_hint: internal_politics
+- id: sky_press_iq
+  name: Sky Press IQ
+  homepage: https://skypressiq.net
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: Sky Press Agency
+  state_affiliated: false
+  notes: Independent news platform covering Iraqi domestic security, economy, and foreign relations.
+  feeds:
+  - url: https://skypressiq.net/rss
+    category_hint: internal_politics
+- id: iraq_oil_report
+  name: Iraq Oil Report
+  homepage: https://www.iraqoilreport.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Iraq Oil Report LLC
+  state_affiliated: false
+  notes: Authoritative independent on-the-ground news organization dedicated to Iraqi energy, politics, and security.
+  feeds:
+  - url: https://www.iraqoilreport.com/feed/
+    category_hint: economics
+- id: buratha_news_iq
+  name: Buratha News Agency
+  homepage: https://burathanews.com
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: Buratha News Agency
+  state_affiliated: false
+  notes: Iraqi political news agency reporting on parliamentary coalitions and institutional reforms.
+  feeds:
+  - url: https://burathanews.com/arabic/rss/
+    category_hint: internal_politics
+- id: al_masalah_iq
+  name: Al-Masalah
+  homepage: https://almasalah.com
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: Al-Masalah Media
+  state_affiliated: false
+  notes: Independent Iraqi digital news portal monitoring executive anti-corruption drives and public contracts.
+  feeds:
+  - url: https://almasalah.com/feed
+    category_hint: internal_politics
+- id: ina_news_en_iq
+  name: Iraqi News Agency (English)
+  homepage: https://ina.iq/eng
+  language: en
+  scope: domestic
+  kind: official
+  governing_body: Republic of Iraq
+  state_affiliated: true
+  notes: Official statutory English wire service of the Iraqi News Agency covering ministerial communiques.
+  feeds:
+  - url: https://ina.iq/eng/rss.xml
+    category_hint: internal_politics

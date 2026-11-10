@@ -2,6 +2,11 @@
 
 Completed items moved from `docs/roadmap.md` per project handover rules.
 
+- **Gulf, Central African & Middle Eastern Desks Expansion to 10+ Sources (Phase 3 Batch 15)** — **Done 2026-11-10.**
+  - Expanded and verified candidate feeds for United Arab Emirates (10 direct), DR Congo (11 direct), Iraq (10 direct), Iran (10 direct), and Egypt (10 direct), bringing 78 major global and regional desks into full compliance with the 10-source standard.
+  - Converted DR Congo `actualite_cd` to direct RSS and integrated verified economic, mineral, and investigative feeds.
+  - Verified feed reachability with parallel probe across all newly integrated publications.
+
 - **Nordic, Caucasus, Levant & Maghreb Desks Expansion to 10+ Sources (Phase 3 Batch 14)** — **Done 2026-11-10.**
   - Expanded and verified candidate feeds for Denmark (11 direct), Georgia (11 direct), Israel (10 direct), Algeria (10 direct), and Morocco (10 direct), bringing 73 major global and regional desks into full compliance with the 10-source standard.
   - Verified feed reachability with parallel probe across all newly integrated publications.

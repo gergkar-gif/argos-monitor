@@ -96,3 +96,75 @@ sources:
     feeds:
       - url: "https://news.google.com/rss/search?q=Egypt+Gaza+ceasefire+OR+%22Rafah+crossing%22+OR+%22Grand+Ethiopian+Renaissance+Dam%22+when:3d&hl=en-EG&gl=EG&ceid=EG:en"
         category_hint: foreign_policy
+  - id: enterprise_news_eg
+    name: EnterpriseAM Egypt
+    homepage: https://enterprise.news
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Enterprise News LLC
+    state_affiliated: false
+    notes: Authoritative Cairo daily executive and financial briefing on privatization, sovereign funds, and macro policy.
+    feeds:
+    - url: https://enterprise.news/feed/
+      category_hint: economics
+  - id: al_borsa_news_eg
+    name: Al Borsa News
+    homepage: https://alborsaanews.com
+    language: ar
+    scope: domestic
+    kind: media
+    governing_body: Al Borsa Media Group
+    state_affiliated: false
+    notes: Leading Egyptian economic and financial daily broadsheet covering EGX stock market, banking, and industry.
+    feeds:
+    - url: https://alborsaanews.com/feed/
+      category_hint: economics
+  - id: egyptian_streets_eg
+    name: Egyptian Streets
+    homepage: https://egyptianstreets.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: ES Media
+    state_affiliated: false
+    notes: Leading independent Egyptian digital platform covering society, urban reform, and cultural governance.
+    feeds:
+    - url: https://egyptianstreets.com/feed/
+      category_hint: general
+  - id: invest_gate_eg
+    name: Invest-Gate Egypt
+    homepage: https://invest-gate.me
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Invest-Gate Media
+    state_affiliated: false
+    notes: Egyptian commercial investment review covering real estate megaprojects and infrastructure financing.
+    feeds:
+    - url: https://invest-gate.me/feed/
+      category_hint: economics
+  - id: egypt_oil_gas_eg
+    name: Egypt Oil & Gas
+    homepage: https://egyptoil-gas.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: EOG Media
+    state_affiliated: false
+    notes: Dedicated energy sector journal covering Zohr gas field, Mediterranean exploration, and renewables.
+    feeds:
+    - url: https://egyptoil-gas.com/feed/
+      category_hint: economics
+  - id: daily_news_egypt_politics_eg
+    name: Daily News Egypt (Politics)
+    homepage: https://www.dailynewsegypt.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Egyptian Media Group
+    state_affiliated: false
+    notes: Specialized governance and legislative policy section of Daily News Egypt.
+    feeds:
+    - url: https://dailynewsegypt.com/category/politics/feed/
+      category_hint: internal_politics

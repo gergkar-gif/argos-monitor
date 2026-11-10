@@ -8,11 +8,10 @@ sources:
     language: fr
     scope: domestic
     kind: media
-    aggregator: google_news
     governing_body: Groupe Next Corp (independent Kinshasa digital daily)
     state_affiliated: false
     feeds:
-      - {url: "https://news.google.com/rss/search?q=site:actualite.cd+when:7d&hl=fr&gl=CD&ceid=CD:fr", section: Toutes les actualités, category_hint: general}
+      - {url: "https://actualite.cd/feed", section: Toutes les actualités, category_hint: general}
 
   - id: radio_okapi
     name: Radio Okapi
@@ -72,3 +71,111 @@ sources:
     state_affiliated: false
     feeds:
       - {url: "https://news.google.com/rss/search?q=(DRC+OR+%22DR+Congo%22)+(M23+OR+Tshisekedi+OR+minerals+OR+cobalt)+when:1d&hl=en-US&gl=US&ceid=US:en", section: International DRC Monitor, category_hint: defence_security}
+  - id: congo_profond_cd
+    name: Congo Profond
+    homepage: https://congoprofond.net
+    language: fr
+    scope: domestic
+    kind: media
+    governing_body: Congo Profond Media
+    state_affiliated: false
+    notes: Kinshasa independent digital daily covering governance, decentralization, and security in DR Congo.
+    feeds:
+    - url: https://congoprofond.net/feed/
+      category_hint: internal_politics
+  - id: linterview_cd
+    name: L'Interview CD
+    homepage: https://linterview.cd
+    language: fr
+    scope: domestic
+    kind: media
+    governing_body: L'Interview Media Group
+    state_affiliated: false
+    notes: Prominent Congolese news platform reporting on national politics, justice, and provincial affairs.
+    feeds:
+    - url: https://linterview.cd/feed/
+      category_hint: internal_politics
+  - id: politique_rdc
+    name: Politique RDC
+    homepage: https://politiquerdc.net
+    language: fr
+    scope: domestic
+    kind: media
+    governing_body: Politique RDC Media
+    state_affiliated: false
+    notes: Specialized political analysis portal focusing on National Assembly debates and executive decrees.
+    feeds:
+    - url: https://politiquerdc.net/feed/
+      category_hint: internal_politics
+  - id: scoop_rdc
+    name: Scoop RDC
+    homepage: https://scooprdc.net
+    language: fr
+    scope: domestic
+    kind: media
+    governing_body: Scoop RDC Media
+    state_affiliated: false
+    notes: Independent investigative Congolese news website covering financial integrity and state contracts.
+    feeds:
+    - url: https://scooprdc.net/feed/
+      category_hint: internal_politics
+  - id: le_potentiel_cd
+    name: Le Potentiel
+    homepage: https://lepotentiel.cd
+    language: fr
+    scope: domestic
+    kind: media
+    governing_body: Groupe de Presse Le Potentiel
+    state_affiliated: false
+    notes: Historical Kinshasa daily broadsheet of record covering executive politics, diplomacy, and mining.
+    feeds:
+    - url: https://lepotentiel.cd/feed/
+      category_hint: internal_politics
+  - id: habari_rdc
+    name: Habari RDC
+    homepage: https://habarirdc.net
+    language: fr
+    scope: domestic
+    kind: media
+    governing_body: Habari RDC Community Media
+    state_affiliated: false
+    notes: Independent youth and civil society analytical blog and news portal supported by RNW Media.
+    feeds:
+    - url: https://habarirdc.net/feed/
+      category_hint: general
+  - id: cap_sud_cd
+    name: Capsud.net
+    homepage: https://capsud.net
+    language: fr
+    scope: domestic
+    kind: media
+    governing_body: Capsud Media
+    state_affiliated: false
+    notes: Congolese daily portal reporting on national institutions, public health, and mining regions.
+    feeds:
+    - url: https://capsud.net/feed/
+      category_hint: general
+  - id: desk_eco_cd
+    name: DeskEco
+    homepage: https://deskeco.com
+    language: fr
+    scope: domestic
+    kind: media
+    governing_body: Groupe Next Corp
+    state_affiliated: false
+    notes: Premier Congolese economic and financial newsroom covering cobalt, copper, and macro policy.
+    feeds:
+    - url: https://deskeco.com/rss.xml
+      category_hint: economics
+  - id: matin_infos_cd
+    name: Matin Infos
+    homepage: https://matininfos.net
+    language: fr
+    scope: domestic
+    kind: media
+    governing_body: Matin Infos RDC
+    state_affiliated: false
+    notes: Independent continuous digital news daily covering national executive affairs and society.
+    feeds:
+    - url: https://matininfos.net/feed/
+      category_hint: general
