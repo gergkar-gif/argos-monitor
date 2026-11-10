@@ -70,6 +70,61 @@ sources:
     feeds:
       - {url: "https://autonomija.info/feed/", section: Vesti, category_hint: general}
 
+  - id: b92
+    name: B92
+    homepage: https://www.b92.net
+    language: sr
+    scope: domestic
+    kind: media
+    governing_body: Kopernikus Corporation (major commercial news portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.b92.net/feed/", section: Vesti, category_hint: general}
+
+  - id: blic
+    name: Blic
+    homepage: https://www.blic.rs
+    language: sr
+    scope: domestic
+    kind: media
+    governing_body: Ringier Serbia (major national daily newspaper)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.blic.rs/rss/danasnje-vesti", section: Vesti dana, category_hint: general}
+
+  - id: insajder
+    name: Insajder
+    homepage: https://insajder.net
+    language: sr
+    scope: domestic
+    kind: media
+    governing_body: Insajder Produkcija (independent investigative newsroom)
+    state_affiliated: false
+    feeds:
+      - {url: "https://insajder.net/feed", section: Vesti, category_hint: internal_politics}
+
+  - id: krik
+    name: KRIK
+    homepage: https://www.krik.rs
+    language: sr
+    scope: domestic
+    kind: media
+    governing_body: Crime and Corruption Reporting Network (independent investigative portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.krik.rs/feed/", section: Vesti, category_hint: internal_politics}
+
+  - id: cins
+    name: CINS
+    homepage: https://www.cins.rs
+    language: sr
+    scope: domestic
+    kind: media
+    governing_body: Center for Investigative Journalism of Serbia (independent investigative non-profit)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.cins.rs/feed/", section: Istraživanja, category_hint: internal_politics}
+
   - id: gnews_en_rs
     name: Google News (Serbia - English)
     homepage: https://news.google.com

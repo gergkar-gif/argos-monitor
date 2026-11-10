@@ -72,6 +72,84 @@ sources:
       - url: https://feeds.elpais.com/mrss-s/pages/ep/site/cincodias.com/portada
         category_hint: economics
 
+  - id: abc_es
+    name: ABC
+    homepage: https://www.abc.es
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: "Vocento"
+    state_affiliated: false
+    notes: "Spain's historic conservative daily newspaper of record."
+    feeds:
+      - url: https://www.abc.es/rss/2.0/espana/
+        category_hint: internal_politics
+
+  - id: eldiario_es
+    name: elDiario.es
+    homepage: https://www.eldiario.es
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: "Diario de Prensa Digital S.L."
+    state_affiliated: false
+    notes: "Independent progressive digital newsroom and investigative portal."
+    feeds:
+      - url: https://www.eldiario.es/rss/
+        category_hint: internal_politics
+
+  - id: minutos20_es
+    name: 20 minutos
+    homepage: https://www.20minutos.es
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: "Grupo 20 Minutos / Henneo"
+    state_affiliated: false
+    notes: "Major national general daily news publication."
+    feeds:
+      - url: https://www.20minutos.es/rss/
+        category_hint: general
+
+  - id: expansion_es
+    name: Expansión
+    homepage: https://www.expansion.com
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: "Unidad Editorial"
+    state_affiliated: false
+    notes: "Spain's premier business, financial and capital markets daily."
+    feeds:
+      - url: https://e00-expansion.uecdn.es/rss/portada.xml
+        category_hint: economics
+
+  - id: elconfidencial_es
+    name: El Confidencial
+    homepage: https://www.elconfidencial.com
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: "Titania Compañía Editorial"
+    state_affiliated: false
+    notes: "Influential independent daily news and political intelligence portal."
+    feeds:
+      - url: https://rss.elconfidencial.com/espana/
+        category_hint: internal_politics
+
+  - id: infolibre_es
+    name: infoLibre
+    homepage: https://www.infolibre.es
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: "Ediciones Prensa Libre S.L."
+    state_affiliated: false
+    notes: "Independent investigative and civic journalism publication."
+    feeds:
+      - url: https://www.infolibre.es/rss/
+        category_hint: internal_politics
+
   - id: google_news_spain_politics
     name: Google News (Spain Government & Congreso)
     homepage: https://news.google.com

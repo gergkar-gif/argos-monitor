@@ -61,6 +61,84 @@ sources:
       - url: https://www.ilsole24ore.com/rss/economia.xml
         category_hint: economics
 
+  - id: rainews_it
+    name: RaiNews.it
+    homepage: https://www.rainews.it
+    language: it
+    scope: domestic
+    kind: media
+    governing_body: "RAI - Radiotelevisione Italiana (national public broadcaster)"
+    state_affiliated: true
+    notes: "All-news portal of Italy's statutory public broadcasting corporation."
+    feeds:
+      - url: https://www.rainews.it/rss/tutti
+        category_hint: general
+
+  - id: open_it
+    name: Open
+    homepage: https://www.open.online
+    language: it
+    scope: domestic
+    kind: media
+    governing_body: "G.O.L. Impresa Sociale S.r.l."
+    state_affiliated: false
+    notes: "Independent digital investigative newsroom and fact-checking daily."
+    feeds:
+      - url: https://www.open.online/feed/
+        category_hint: internal_politics
+
+  - id: formiche_it
+    name: Formiche.net
+    homepage: https://formiche.net
+    language: it
+    scope: domestic
+    kind: media
+    governing_body: "Formiche S.r.l."
+    state_affiliated: false
+    notes: "Leading Italian geopolitical, defense and foreign policy journal."
+    feeds:
+      - url: https://formiche.net/feed/
+        category_hint: foreign_policy
+
+  - id: agi_it
+    name: AGI (Agenzia Giornalistica Italia)
+    homepage: https://www.agi.it
+    language: it
+    scope: domestic
+    kind: wire
+    governing_body: "AGI S.p.A."
+    state_affiliated: false
+    notes: "Major national press and wire service in Rome."
+    feeds:
+      - url: https://www.agi.it/cronaca/rss
+        category_hint: general
+
+  - id: ilmanifesto_it
+    name: il manifesto
+    homepage: https://ilmanifesto.it
+    language: it
+    scope: domestic
+    kind: media
+    governing_body: "Cooperativa Editrice Il Manifesto"
+    state_affiliated: false
+    notes: "Independent cooperative national daily newspaper."
+    feeds:
+      - url: https://ilmanifesto.it/feed
+        category_hint: internal_politics
+
+  - id: lindipendente_it
+    name: L'Indipendente
+    homepage: https://lindipendente.online
+    language: it
+    scope: domestic
+    kind: media
+    governing_body: "Edizioni L'Indipendente S.r.l."
+    state_affiliated: false
+    notes: "Independent subscription-based ad-free investigative journal."
+    feeds:
+      - url: https://lindipendente.online/feed/
+        category_hint: general
+
   - id: google_news_italy_politics
     name: Google News (Italy Government & Meloni)
     homepage: https://news.google.com

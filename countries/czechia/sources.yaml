@@ -57,6 +57,72 @@ sources:
     feeds:
       - {url: "https://praguemorning.cz/feed/", section: News, category_hint: general}
 
+  - id: idnes_cz
+    name: iDNES.cz
+    homepage: https://www.idnes.cz
+    language: cs
+    scope: domestic
+    kind: media
+    governing_body: MAFRA a.s. / Kaprain (major national daily newspaper portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://servis.idnes.cz/rss.aspx?c=zpravodaj", section: Zpravodajství, category_hint: general}
+
+  - id: e15_cz
+    name: E15
+    homepage: https://www.e15.cz
+    language: cs
+    scope: domestic
+    kind: media
+    governing_body: Czech News Center (premier financial and business daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.e15.cz/rss", section: Zprávy, category_hint: economics}
+
+  - id: forum24_cz
+    name: FORUM 24
+    homepage: https://www.forum24.cz
+    language: cs
+    scope: domestic
+    kind: media
+    governing_body: FORUM 24 a.s. (independent political news and commentary daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.forum24.cz/feed", section: Zprávy, category_hint: internal_politics}
+
+  - id: ct24_cz
+    name: ČT24
+    homepage: https://ct24.ceskatelevize.cz
+    language: cs
+    scope: domestic
+    kind: media
+    governing_body: Česká televize (national public television newsroom)
+    state_affiliated: true
+    feeds:
+      - {url: "https://ct24.ceskatelevize.cz/rss/hlavni-zpravy", section: Hlavní zprávy, category_hint: general}
+
+  - id: blesk_cz
+    name: Blesk Zprávy
+    homepage: https://www.blesk.cz
+    language: cs
+    scope: domestic
+    kind: media
+    governing_body: Czech News Center (national daily news portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.blesk.cz/rss", section: Zprávy, category_hint: general}
+
+  - id: info_cz
+    name: Info.cz
+    homepage: https://www.info.cz
+    language: cs
+    scope: domestic
+    kind: media
+    governing_body: CMI News (independent political and analytical news portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.info.cz/rss", section: Zprávy, category_hint: internal_politics}
+
   - id: gnews_cz_official
     name: ČTK / ČT24 (Czech News Agency & Public Television via Google News)
     homepage: https://www.ceskenoviny.cz

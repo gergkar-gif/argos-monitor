@@ -46,6 +46,72 @@ sources:
     feeds:
       - {url: "https://spectator.sme.sk/rss", section: Slovakia, category_hint: general}
 
+  - id: teraz_sk
+    name: Teraz.sk (TASR)
+    homepage: https://www.teraz.sk
+    language: sk
+    scope: domestic
+    kind: official
+    governing_body: News Agency of the Slovak Republic (TASR statutory public wire)
+    state_affiliated: true
+    feeds:
+      - {url: "https://www.teraz.sk/rss/slovensko.rss", section: Slovensko, category_hint: internal_politics}
+
+  - id: postoj_sk
+    name: Denník Postoj
+    homepage: https://www.postoj.sk
+    language: sk
+    scope: domestic
+    kind: media
+    governing_body: Postoj Media, s.r.o. (independent conservative daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.postoj.sk/rss", section: Správy, category_hint: internal_politics}
+
+  - id: standard_sk
+    name: Denník Štandard
+    homepage: https://standard.sk
+    language: sk
+    scope: domestic
+    kind: media
+    governing_body: Štandard Online, s.r.o. (independent national daily newspaper)
+    state_affiliated: false
+    feeds:
+      - {url: "https://standard.sk/feed", section: Správy, category_hint: general}
+
+  - id: hlavnespravy_sk
+    name: Hlavné správy
+    homepage: https://www.hlavnespravy.sk
+    language: sk
+    scope: domestic
+    kind: media
+    governing_body: HEURÉKA EVOLUTION s.r.o. (alternative digital news portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.hlavnespravy.sk/feed", section: Domáce, category_hint: internal_politics}
+
+  - id: bystricoviny_sk
+    name: Bystricoviny
+    homepage: https://www.bystricoviny.sk
+    language: sk
+    scope: domestic
+    kind: media
+    governing_body: Regional News Network (Central Slovakia regional daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.bystricoviny.sk/feed/", section: Správy, category_hint: general}
+
+  - id: refresher_sk
+    name: Refresher Správy
+    homepage: https://refresher.sk
+    language: sk
+    scope: domestic
+    kind: media
+    governing_body: Refresher Media (independent digital news daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://refresher.sk/rss", section: Správy, category_hint: general}
+
   - id: gnews_sk_official
     name: TASR / STVR (State Wire & Public Broadcaster via Google News)
     homepage: https://www.teraz.sk
