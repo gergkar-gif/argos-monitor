@@ -2,6 +2,11 @@
 
 Completed items moved from `docs/roadmap.md` per project handover rules.
 
+- **Independent source expansion across all country desks (Phase 3)** — **Done 2026-11-10.**
+  - Completed expansion of the final 4 deficit packs: Bangladesh (10 direct), Sri Lanka (11 direct), Laos (10 direct), and North Korea (11 direct).
+  - All 87 country packs in the global registry now meet or exceed the standard of >= 10 independent direct non-aggregator sources (0 deficit packs remaining, 100% compliant across all 87 desks).
+  - Validated with `tools/audit_sources.py --min 10 --fail-under` and full test suite execution.
+
 - **Levantine & Gulf Desks Expansion to 10+ Sources (Phase 3 Batch 16)** — **Done 2026-11-10.**
   - Expanded and verified candidate feeds for Jordan (11 direct), Qatar (11 direct), Saudi Arabia (10 direct), Lebanon (12 direct), and Syria (12 direct), bringing 83 major global and regional desks into full compliance with the 10-source standard.
   - Verified feed reachability with parallel probe across all newly integrated publications.

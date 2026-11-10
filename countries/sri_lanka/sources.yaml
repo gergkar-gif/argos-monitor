@@ -7,24 +7,130 @@ sources:
   kind: media
   governing_body: Wijeya Newspapers
   state_affiliated: false
-  notes: Leading independent Colombo English broadsheet paper of record covering executive
-    governance and economy.
+  notes: Leading independent Colombo English broadsheet paper of record covering executive governance and economy.
   feeds:
   - url: https://www.dailymirror.lk/RSS_Feeds/breaking-news
     category_hint: internal_politics
 - id: ada_derana_lk
-  name: Ada Derana
+  name: Ada Derana (English)
   homepage: http://www.adaderana.lk
   language: en
   scope: domestic
   kind: media
   governing_body: Derana Macro Entertainment
   state_affiliated: false
-  notes: Premier 24-hour Sri Lankan news broadcaster covering parliamentary reforms
-    and national affairs.
+  notes: Premier 24-hour Sri Lankan news broadcaster covering parliamentary reforms and national affairs.
   feeds:
   - url: http://www.adaderana.lk/rss.php
     category_hint: internal_politics
+- id: ada_derana_sin
+  name: Ada Derana (Sinhala)
+  homepage: http://sinhala.adaderana.lk
+  language: si
+  scope: domestic
+  kind: media
+  governing_body: Derana Macro Entertainment
+  state_affiliated: false
+  notes: Flagship Sinhala broadcast news service delivering breaking national politics and parliamentary debates.
+  feeds:
+  - url: http://sinhala.adaderana.lk/rss.php
+    category_hint: internal_politics
+- id: the_island_lk
+  name: The Island
+  homepage: https://island.lk
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Upali Newspapers
+  state_affiliated: false
+  notes: Respected Colombo daily newspaper covering presidential governance, foreign relations, and defense.
+  feeds:
+  - url: https://island.lk/feed/
+    category_hint: internal_politics
+- id: asian_mirror_lk
+  name: Asian Mirror
+  homepage: https://asianmirror.lk
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Asian Mirror Media
+  state_affiliated: false
+  notes: Progressive digital news platform covering democratic reforms, civil liberties, and anti-corruption.
+  feeds:
+  - url: https://asianmirror.lk/feed/
+    category_hint: internal_politics
+- id: sri_lanka_brief
+  name: Sri Lanka Brief
+  homepage: https://srilankabrief.org
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Sri Lanka Brief Foundation
+  state_affiliated: false
+  notes: Independent news and advocacy monitor examining human rights, transitional justice, and constitutional reforms.
+  feeds:
+  - url: https://srilankabrief.org/feed/
+    category_hint: society
+- id: lanka_business_online
+  name: Lanka Business Online (LBO)
+  homepage: https://www.lankabusinessonline.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: LBO Media
+  state_affiliated: false
+  notes: Premier financial and macroeconomic intelligence portal covering Colombo Stock Exchange, IMF reforms, and debt restructuring.
+  feeds:
+  - url: https://www.lankabusinessonline.com/feed/
+    category_hint: economics
+- id: newswire_lk
+  name: Newswire Sri Lanka
+  homepage: https://www.newswire.lk
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Newswire Media
+  state_affiliated: false
+  notes: Fast-growing independent digital news portal delivering real-time coverage of executive decrees and legislative votes.
+  feeds:
+  - url: https://www.newswire.lk/feed/
+    category_hint: internal_politics
+- id: onlanka_news
+  name: OnLanka News
+  homepage: https://www.onlanka.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: OnLanka Media
+  state_affiliated: false
+  notes: Established Sri Lankan daily news portal covering provincial administration, defense, and economic recovery.
+  feeds:
+  - url: https://www.onlanka.com/feed
+    category_hint: internal_politics
+- id: central_bank_sri_lanka
+  name: Central Bank of Sri Lanka (CBSL)
+  homepage: https://www.cbsl.gov.lk
+  language: en
+  scope: domestic
+  kind: official
+  governing_body: Central Bank of Sri Lanka
+  state_affiliated: true
+  notes: Statutory monetary authority issuing official monetary policy statements, inflation data, and debt management updates.
+  feeds:
+  - url: https://www.cbsl.gov.lk/rss.xml
+    category_hint: economics
+- id: un_sri_lanka
+  name: United Nations Sri Lanka
+  homepage: https://srilanka.un.org
+  language: en
+  scope: domestic
+  kind: official
+  governing_body: United Nations Country Team Sri Lanka
+  state_affiliated: false
+  notes: Official UN agency reports on post-crisis recovery, food security, and multilateral aid coordination in Colombo.
+  feeds:
+  - url: https://srilanka.un.org/en/rss.xml
+    category_hint: society
 - id: gnews_srilanka_intl
   name: Google News (Sri Lanka Economy & Governance - International)
   homepage: https://news.google.com

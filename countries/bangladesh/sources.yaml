@@ -21,11 +21,106 @@ sources:
   kind: media
   governing_body: 2A Media Limited (Gemcon Group)
   state_affiliated: false
-  notes: Premier national English news daily covering interim government reforms and
-    South Asian geopolitics.
+  notes: Premier national English news daily covering interim government reforms and South Asian geopolitics.
   feeds:
   - url: https://www.dhakatribune.com/rss
     category_hint: internal_politics
+- id: prothom_alo_en
+  name: Prothom Alo (English)
+  homepage: https://en.prothomalo.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Mediastar Limited (Transcom Group)
+  state_affiliated: false
+  notes: English portal of Bangladesh's largest circulation broadsheet newspaper of record.
+  feeds:
+  - url: https://en.prothomalo.com/feed
+    category_hint: internal_politics
+- id: prothom_alo_bn
+  name: Prothom Alo (Bangla)
+  homepage: https://www.prothomalo.com
+  language: bn
+  scope: domestic
+  kind: media
+  governing_body: Mediastar Limited (Transcom Group)
+  state_affiliated: false
+  notes: Flagship Bengali-language daily paper of record covering nationwide governance, judicial probes, and economy.
+  feeds:
+  - url: https://www.prothomalo.com/feed
+    category_hint: internal_politics
+- id: business_standard_bd
+  name: The Business Standard
+  homepage: https://www.tbsnews.net
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: The Business Standard Limited
+  state_affiliated: false
+  notes: Premier financial and economic daily newspaper covering banking, exports, remittance, and macroeconomic reform in Dhaka.
+  feeds:
+  - url: https://www.tbsnews.net/rss.xml
+    category_hint: economics
+- id: bangla_tribune
+  name: Bangla Tribune
+  homepage: https://www.banglatribune.com
+  language: bn
+  scope: domestic
+  kind: media
+  governing_body: 2A Media Limited (Gemcon Group)
+  state_affiliated: false
+  notes: Leading Bengali digital news daily covering national politics, human rights, and district-level developments.
+  feeds:
+  - url: https://www.banglatribune.com/feed/
+    category_hint: internal_politics
+- id: desh_rupantor
+  name: Desh Rupantor
+  homepage: https://www.deshrupantor.com
+  language: bn
+  scope: domestic
+  kind: media
+  governing_body: Rupayan Group
+  state_affiliated: false
+  notes: Prominent national daily broadsheet covering parliamentary politics, law and order, and public administration.
+  feeds:
+  - url: https://www.deshrupantor.com/feed/
+    category_hint: internal_politics
+- id: daily_bangladesh
+  name: Daily Bangladesh
+  homepage: https://www.daily-bangladesh.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Daily Bangladesh Media
+  state_affiliated: false
+  notes: Digital daily news portal covering interim cabinet affairs, trade, and youth initiatives.
+  feeds:
+  - url: https://www.daily-bangladesh.com/feed
+    category_hint: internal_politics
+- id: bd24live
+  name: BD24Live
+  homepage: https://www.bd24live.com
+  language: bn
+  scope: domestic
+  kind: media
+  governing_body: BD24Live Media
+  state_affiliated: false
+  notes: Popular independent electronic newspaper covering breaking political news and regional administration.
+  feeds:
+  - url: https://www.bd24live.com/feed/
+    category_hint: internal_politics
+- id: un_bangladesh
+  name: United Nations Bangladesh
+  homepage: https://bangladesh.un.org
+  language: en
+  scope: domestic
+  kind: official
+  governing_body: United Nations Country Team Bangladesh
+  state_affiliated: false
+  notes: Official UN agency reports on humanitarian assistance, refugee coordination, and macroeconomic resilience.
+  feeds:
+  - url: https://bangladesh.un.org/en/rss.xml
+    category_hint: society
 - id: gnews_bangladesh_intl
   name: Google News (Bangladesh Interim Governance & Economy)
   homepage: https://news.google.com

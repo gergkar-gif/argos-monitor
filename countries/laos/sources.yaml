@@ -1,5 +1,5 @@
 # Laos source registry (decision D15).
-# Combines independent Vientiane digital reporting (The Laotian Times), Lao-language diaspora coverage (Radio Free Asia Lao), and regional/international monitoring via Google News.
+# Combines independent Vientiane digital reporting (The Laotian Times), Lao-language diaspora coverage (Radio Free Asia Lao, VOA Lao), and regional/international monitoring.
 
 sources:
   - id: laotiantimes_en
@@ -8,11 +8,14 @@ sources:
     language: en
     scope: domestic
     kind: media
-    governing_body: Songmue Media (independent digital publisher in Vientiane)
+    governing_body: "Songmue Media (independent digital publisher in Vientiane)"
     state_affiliated: false
+    notes: "Leading English-language digital news publication based in Vientiane."
     feeds:
-      - {url: "https://laotiantimes.com/feed/", section: Top Stories, category_hint: general}
-      - {url: "https://laotiantimes.com/category/business/feed/", section: Business, category_hint: economics}
+      - url: "https://laotiantimes.com/feed/"
+        category_hint: internal_politics
+      - url: "https://laotiantimes.com/category/business/feed/"
+        category_hint: economics
 
   - id: rfa_lo
     name: Radio Free Asia (Lao)
@@ -20,10 +23,116 @@ sources:
     language: lo
     scope: abroad_local
     kind: media
-    governing_body: US Agency for Global Media (USAGM / independent grantee)
+    governing_body: "US Agency for Global Media (USAGM / independent grantee)"
     state_affiliated: false
+    notes: "Independent Lao-language investigative news service covering land rights, dam construction, and governance."
     feeds:
-      - {url: "https://www.rfa.org/arc/outboundfeeds/lao/rss/", section: News, category_hint: general}
+      - url: "https://www.rfa.org/arc/outboundfeeds/lao/rss/"
+        category_hint: society
+
+  - id: voa_lao
+    name: Voice of America (Lao)
+    homepage: https://lao.voanews.com
+    language: lo
+    scope: abroad_local
+    kind: media
+    governing_body: "US Agency for Global Media (USAGM)"
+    state_affiliated: false
+    notes: "Lao-language news and current affairs broadcasting on regional diplomacy, economy, and bilateral US-Lao relations."
+    feeds:
+      - url: "https://lao.voanews.com/api/zrjtrl-vomx-tpeo_gq"
+        category_hint: foreign_policy
+
+  - id: inside_laos
+    name: Inside Laos
+    homepage: https://insidelaos.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Inside Laos Media"
+    state_affiliated: false
+    notes: "Independent English-language digital news and lifestyle portal covering Lao investment, tourism, and culture."
+    feeds:
+      - url: "https://insidelaos.com/feed/"
+        category_hint: economics
+
+  - id: opendevelopment_laos
+    name: Open Development Laos
+    homepage: https://laos.opendevelopmentmekong.net
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Open Development Mekong Network"
+    state_affiliated: false
+    notes: "Open data and investigative journalism platform tracking concession agreements, environmental impact, and energy projects in Laos."
+    feeds:
+      - url: "https://laos.opendevelopmentmekong.net/feed/"
+        category_hint: economics
+
+  - id: focus_global_south_laos
+    name: Focus on the Global South (Mekong Programme)
+    homepage: https://focusweb.org
+    language: en
+    scope: abroad_local
+    kind: media
+    governing_body: "Focus on the Global South"
+    state_affiliated: false
+    notes: "Regional research and advocacy institute analyzing infrastructure debt, agrarian transition, and Mekong river ecosystems in Laos."
+    feeds:
+      - url: "https://focusweb.org/feed/"
+        category_hint: society
+
+  - id: mekong_institute
+    name: Mekong Institute
+    homepage: https://www.mekonginstitute.org
+    language: en
+    scope: domestic
+    kind: official
+    governing_body: "Mekong Institute Intergovernmental Council"
+    state_affiliated: false
+    notes: "Intergovernmental organization owned by the 6 Greater Mekong Subregion governments supporting cross-border trade, energy, and logistics."
+    feeds:
+      - url: "https://www.mekonginstitute.org/feed/"
+        category_hint: economics
+
+  - id: apwld_laos
+    name: APWLD (Mekong & Regional Rights)
+    homepage: https://apwld.org
+    language: en
+    scope: abroad_local
+    kind: media
+    governing_body: "Asia Pacific Forum on Women, Law and Development"
+    state_affiliated: false
+    notes: "Regional rights organization monitoring human development, labor standards, and community rights across the Mekong subregion."
+    feeds:
+      - url: "https://apwld.org/feed/"
+        category_hint: society
+
+  - id: asean_laos
+    name: ASEAN Secretariat (Lao PDR Desk)
+    homepage: https://asean.org
+    language: en
+    scope: abroad_local
+    kind: official
+    governing_body: "Association of Southeast Asian Nations"
+    state_affiliated: false
+    notes: "Official ASEAN announcements, ministerial summits, and regional economic community updates regarding Lao PDR."
+    feeds:
+      - url: "https://asean.org/feed/"
+        category_hint: foreign_policy
+
+  - id: un_laos
+    name: United Nations Lao PDR
+    homepage: https://laopdr.un.org
+    language: en
+    scope: domestic
+    kind: official
+    governing_body: "United Nations Country Team Lao PDR"
+    state_affiliated: false
+    notes: "Official UN resident coordinator updates on unexploded ordnance (UXO) clearance, SDG implementation, and macroeconomic resilience."
+    feeds:
+      - url: "https://laopdr.un.org/en/rss.xml"
+        category_hint: society
 
   - id: gnews_la_domestic
     name: National Press & Wires (Vientiane Times / KPL via Google News)

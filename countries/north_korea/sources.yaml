@@ -25,6 +25,19 @@ sources:
       - url: https://www.dailynk.com/english/feed/
         category_hint: internal_politics
 
+  - id: daily_nk_ko
+    name: Daily NK (Korean)
+    homepage: https://www.dailynk.com
+    language: ko
+    scope: abroad_local
+    kind: media
+    governing_body: "Daily NK / Unification Media Group"
+    state_affiliated: false
+    notes: "Korean-language investigative reporting based on informant networks inside DPRK provinces."
+    feeds:
+      - url: https://www.dailynk.com/feed/
+        category_hint: internal_politics
+
   - id: rfa_korean_dprk
     name: Radio Free Asia (Korean - DPRK focus)
     homepage: https://www.rfa.org/korean
@@ -37,6 +50,97 @@ sources:
     feeds:
       - url: https://www.rfa.org/korean/rss2.xml
         category_hint: internal_politics
+
+  - id: voa_korea_dprk
+    name: Voice of America (Korean - DPRK Service)
+    homepage: https://www.voakorea.com
+    language: ko
+    scope: abroad_local
+    kind: media
+    governing_body: "US Agency for Global Media (USAGM)"
+    state_affiliated: false
+    notes: "Korean-language coverage of DPRK military actions, sanctions enforcement, and diplomacy."
+    feeds:
+      - url: https://www.voakorea.com/api/zptbqrl-vomx-tpe_oooq
+        category_hint: foreign_policy
+
+  - id: choson_sinbo
+    name: Choson Sinbo
+    homepage: https://chosonsinbo.com
+    language: ko
+    scope: abroad_local
+    kind: media
+    governing_body: "General Association of Korean Residents in Japan (Chongryon)"
+    state_affiliated: true
+    notes: "Newspaper of Chongryon serving as an official external voice reflecting Pyongyang policy stances and diplomatic views."
+    feeds:
+      - url: https://chosonsinbo.com/feed/
+        category_hint: internal_politics
+
+  - id: tongil_news
+    name: Tongil News
+    homepage: http://www.tongilnews.com
+    language: ko
+    scope: abroad_local
+    kind: media
+    governing_body: "Tongil News Agency"
+    state_affiliated: false
+    notes: "South Korean specialist news platform dedicated to inter-Korean reconciliation, DPRK policy, and border relations."
+    feeds:
+      - url: http://www.tongilnews.com/rss/allArticle.xml
+        category_hint: foreign_policy
+
+  - id: beyond_parallel
+    name: Beyond Parallel (CSIS)
+    homepage: https://beyondparallel.csis.org
+    language: en
+    scope: abroad_local
+    kind: media
+    governing_body: "Center for Strategic and International Studies (CSIS)"
+    state_affiliated: false
+    notes: "Authoritative satellite imagery analysis and research on North Korean missile facilities, military parades, and trade."
+    feeds:
+      - url: https://beyondparallel.csis.org/feed/
+        category_hint: defence_security
+
+  - id: korea_times_nk
+    name: The Korea Times (North Korea Bureau)
+    homepage: https://www.koreatimes.co.kr
+    language: en
+    scope: abroad_local
+    kind: media
+    governing_body: "Dongwha Enterprise / The Korea Times"
+    state_affiliated: false
+    notes: "Specialized North Korea news coverage analyzing military provocations, Kim Jong Un's speeches, and inter-Korean border dynamics."
+    feeds:
+      - url: https://www.koreatimes.co.kr/www/rss/northkorea.xml
+        category_hint: internal_politics
+
+  - id: arms_control_dprk
+    name: Arms Control Association (DPRK Proliferation)
+    homepage: https://www.armscontrol.org
+    language: en
+    scope: abroad_local
+    kind: media
+    governing_body: "Arms Control Association"
+    state_affiliated: false
+    notes: "Specialist monitoring of DPRK uranium enrichment, ICBM development, and multilateral disarmament diplomacy."
+    feeds:
+      - url: https://www.armscontrol.org/rss.xml
+        category_hint: defence_security
+
+  - id: un_dprk
+    name: United Nations DPR Korea
+    homepage: https://dprkorea.un.org
+    language: en
+    scope: domestic
+    kind: official
+    governing_body: "United Nations Country Team DPR Korea"
+    state_affiliated: false
+    notes: "Official updates from the UN resident coordinator in Pyongyang on humanitarian partnerships, food security, and WHO public health."
+    feeds:
+      - url: https://dprkorea.un.org/en/rss.xml
+        category_hint: society
 
   - id: google_news_dprk_nuclear
     name: Google News (North Korea ICBM & Nuclear Tests)
