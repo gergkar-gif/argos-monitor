@@ -4,6 +4,7 @@ One file per country and time window. Only headlines, short verified excerpts an
 no full article text ever leaves the local database.
 """
 import json
+import math
 import re
 from datetime import datetime, timedelta, timezone
 
@@ -130,8 +131,10 @@ def _story(db, s, now_iso=None, days=None):
         state_surge = bool(len(core_t_curr) >= 4 and len(core_t_prev) >= 4 and (sh_curr - sh_prev >= 0.30))
         state_recede = bool(len(core_t_curr) >= 4 and len(core_t_prev) >= 4 and (sh_curr - sh_prev <= -0.30))
 
+        velocity_z = round(float(delta_n) / math.sqrt(max(1.0, float(n_prev))), 2)
         delta = {
             "curr": n_curr, "prev": n_prev, "net": delta_n, "ratio": v, "state": st,
+            "velocity_z": velocity_z,
             "scope_shift": scope_shift, "state_share_curr": sh_curr, "state_share_prev": sh_prev,
             "state_surge": state_surge, "state_recede": state_recede
         }

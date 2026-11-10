@@ -1,9 +1,17 @@
 import html
 import re
 import unicodedata
+import urllib.parse
 from datetime import datetime, timedelta, timezone
 
 VN = timezone(timedelta(hours=7))
+
+# Common tracking / marketing query parameters stripped during URL canonicalization (Media Cloud lift)
+TRACKING_PARAMS = {
+    "utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content",
+    "fbclid", "gclid", "msclkid", "mc_eid", "_ga", "_gl", "ref", "ref_src",
+    "vn_source", "vn_campaign", "vn_medium", "session_id", "at_custom1", "at_custom2"
+}
 
 # Rule 7: Zero emojis across the entire project (broadsheet aesthetic & data hygiene)
 EMOJI_RE = re.compile(
@@ -45,6 +53,29 @@ def clean(s):
     s = unicodedata.normalize("NFKC", s)
     s = EMOJI_RE.sub("", s)
     return re.sub(r"\s+", " ", unicodedata.normalize("NFC", re.sub(r"<[^>]+>", " ", s))).strip()
+
+
+def clean_url(raw_url):
+    """Normalize a URL: strip tracking/marketing query parameters, strip fragments,
+    normalize lower-case scheme/hostname, and clean redundant path separators (Media Cloud lift)."""
+    if not raw_url:
+        return ""
+    try:
+        p = urllib.parse.urlsplit(raw_url.strip())
+        if not p.scheme or not p.netloc:
+            return raw_url.strip()
+        scheme = p.scheme.lower()
+        netloc = p.netloc.lower()
+        if p.query:
+            qs = urllib.parse.parse_qsl(p.query, keep_blank_values=True)
+            filtered = [(k, v) for k, v in qs if k.lower() not in TRACKING_PARAMS]
+            query = urllib.parse.urlencode(filtered)
+        else:
+            query = ""
+        path = re.sub(r"/+", "/", p.path)
+        return urllib.parse.urlunsplit((scheme, netloc, path, query, ""))
+    except Exception:
+        return raw_url.strip()
 
 
 def parse_date(entry):

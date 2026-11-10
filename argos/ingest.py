@@ -16,7 +16,7 @@ import feedparser
 from . import packs
 from .fetch import get
 from .ratings import lookup_rating
-from .textutil import clean, parse_date
+from .textutil import clean, clean_url, parse_date
 
 WINDOW_DAYS = 7      # the longest window the site shows
 MAX_PER_FEED = 100   # feeds like VietnamNet return ~1000 items; keep the newest
@@ -68,7 +68,7 @@ def ingest_aggregator(db, pack, src, feed, parsed, known):
         title = clean(e.get("title"))
         if outlet and title.endswith(outlet) and OUTLET_SUFFIX.search(title):
             title = clean(OUTLET_SUFFIX.sub("", title))
-        url = e.get("link")
+        url = clean_url(e.get("link"))
         if not (outlet and title and url) or title_key(title) in known:
             continue
         slug = re.sub(r"[^\w]+", "-", outlet.lower(), flags=re.UNICODE).strip("-")
@@ -136,26 +136,53 @@ def ingest_feeds(db, country):
     # Direct feeds first and aggregators last, so a headline we already hold directly is not added a second time.
     feeds = sorted(feeds, key=lambda f: bool(by_id[f["source_id"]].get("aggregator")))
     for feed in feeds:
-        code, body = get(feed["url"])
+        now_str = now()
+        if feed["retry_after"] and feed["retry_after"] > now_str:
+            print(f"  backoff {country[:4]} {feed['source_id']:15} (retry after {feed['retry_after']})")
+            continue
+
+        etag = feed["etag"] if "etag" in feed.keys() else None
+        last_mod = feed["last_modified"] if "last_modified" in feed.keys() else None
+        code, body, headers = get(feed["url"], etag=etag, last_modified=last_mod, return_headers=True)
+
+        if code == 304:
+            # HTTP 304 Not Modified (Media Cloud conditional fetch)
+            db.execute("UPDATE feed SET last_ok_at=?, last_error=NULL, consecutive_errors=0, retry_after=NULL WHERE id=?", (now_str, feed["id"]))
+            db.commit()
+            print(f"  304  {country[:4]} {feed['source_id']:15} {feed['section_label'] or '':22} (not modified)")
+            continue
+
         parsed = feedparser.parse(body) if code == 200 else None
         if not parsed or not parsed.entries:
-            db.execute("UPDATE feed SET last_error=? WHERE id=?", (f"HTTP {code}, no items", feed["id"]))
-            print(f"  FAIL {feed['url']} (HTTP {code})")
+            err_count = ((feed["consecutive_errors"] or 0) if "consecutive_errors" in feed.keys() else 0) + 1
+            # Exponential backoff starting at 3 consecutive failures: 6h, 12h, 24h, max 48h (Media Cloud lift)
+            retry_after = (datetime.now(timezone.utc) + timedelta(hours=min(48, 6 * (2 ** max(0, err_count - 3))))).isoformat(timespec="seconds") if err_count >= 3 else None
+            db.execute("UPDATE feed SET last_error=?, consecutive_errors=?, retry_after=? WHERE id=?",
+                       (f"HTTP {code}, no items", err_count, retry_after, feed["id"]))
+            db.commit()
+            print(f"  FAIL {feed['url']} (HTTP {code}, errors={err_count})")
             continue
+
+        new_etag = headers.get("etag")
+        new_lm = headers.get("last-modified")
+
         if by_id[feed["source_id"]].get("aggregator"):
             n = ingest_aggregator(db, pack, by_id[feed["source_id"]], feed, parsed, known)
-            db.execute("UPDATE feed SET last_ok_at=?, last_error=NULL WHERE id=?", (now(), feed["id"]))
+            db.execute("UPDATE feed SET last_ok_at=?, last_error=NULL, consecutive_errors=0, retry_after=NULL, "
+                       "etag=COALESCE(?, etag), last_modified=COALESCE(?, last_modified) WHERE id=?",
+                       (now_str, new_etag, new_lm, feed["id"]))
             added += n
             print(f"  ok   {country[:4]} {feed['source_id']:15} {feed['section_label'] or '':22} +{n}")
             db.commit()
             continue
+
         n = 0
         cutoff = (datetime.now(timezone.utc) - timedelta(days=WINDOW_DAYS)).isoformat(timespec="seconds")
         entries = sorted(parsed.entries, key=lambda e: parse_date(e) or "", reverse=True)[:MAX_PER_FEED]
         for e in entries:
             if (parse_date(e) or cutoff) < cutoff:
                 continue
-            url, title = e.get("link"), clean(e.get("title"))
+            url, title = clean_url(e.get("link")), clean(e.get("title"))
             lead = clean(e.get("summary") or e.get("description"))
             if not url or not title:
                 continue
@@ -164,11 +191,13 @@ def ingest_feeds(db, country):
             cur = db.execute(
                 "INSERT OR IGNORE INTO article (source_id,feed_id,url,title,lead,language,published_at,fetched_at,extract_status,country) "
                 "VALUES (?,?,?,?,?,?,?,?,'pending',?)",
-                (feed["source_id"], feed["id"], url, title, lead, feed["language"], parse_date(e), now(), country))
+                (feed["source_id"], feed["id"], url, title, lead, feed["language"], parse_date(e), now_str, country))
             n += cur.rowcount
             if cur.rowcount:
                 known.add(title_key(title))
-        db.execute("UPDATE feed SET last_ok_at=?, last_error=NULL WHERE id=?", (now(), feed["id"]))
+        db.execute("UPDATE feed SET last_ok_at=?, last_error=NULL, consecutive_errors=0, retry_after=NULL, "
+                   "etag=COALESCE(?, etag), last_modified=COALESCE(?, last_modified) WHERE id=?",
+                   (now_str, new_etag, new_lm, feed["id"]))
         added += n
         print(f"  ok   {country[:4]} {feed['source_id']:15} {feed['section_label'] or '':22} +{n}")
         db.commit()

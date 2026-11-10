@@ -5,7 +5,7 @@ import pathlib
 import unicodedata
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
-from argos.textutil import clean, nfc, strip_emoji
+from argos.textutil import clean, clean_url, nfc, strip_emoji
 
 # Rule 7: Zero emojis
 s1 = "Breaking: \U0001f525 Alert in H\u00e0 N\u1ed9i \U0001f1fb\U0001f1f3 - Flood warning \u26a0\ufe0f in Budapest (\u00e1rv\u00edz)"
@@ -27,5 +27,13 @@ assert clean(decomposed) == unicodedata.normalize("NFC", "H\u00e0 N\u1ed9i"), "D
 # Multiple spaces and html entities
 s2 = "Tu\u1ed5i Tr\u1ebb &amp;amp; Thanh Ni\u00ean   reported  &lt;b&gt;live&lt;/b&gt;"
 assert clean(s2) == "Tu\u1ed5i Tr\u1ebb & Thanh Ni\u00ean reported live"
+
+# URL canonicalization (Media Cloud lift)
+dirty_url = "HTTPS://VnExpress.NET//thoi-su/tin-moi.html?utm_source=facebook&utm_campaign=breaking&fbclid=XYZ123#comments"
+expected_url = "https://vnexpress.net/thoi-su/tin-moi.html"
+assert clean_url(dirty_url) == expected_url, f"URL must be canonicalized and tracking query params stripped: got {clean_url(dirty_url)}"
+
+content_url = "https://news.example.com/article?id=9876&utm_medium=rss"
+assert clean_url(content_url) == "https://news.example.com/article?id=9876", "Non-tracking query params must be retained"
 
 print("ok textutil tests passed")

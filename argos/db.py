@@ -8,7 +8,8 @@ CREATE TABLE IF NOT EXISTS source (
   bias TEXT, alignment TEXT, factuality TEXT);
 CREATE TABLE IF NOT EXISTS feed (
   id INTEGER PRIMARY KEY, source_id TEXT REFERENCES source(id), url TEXT UNIQUE,
-  section_label TEXT, category_hint TEXT, active INTEGER, last_ok_at TEXT, last_error TEXT);
+  section_label TEXT, category_hint TEXT, active INTEGER, last_ok_at TEXT, last_error TEXT,
+  etag TEXT, last_modified TEXT, consecutive_errors INTEGER DEFAULT 0, retry_after TEXT);
 CREATE TABLE IF NOT EXISTS article (
   id INTEGER PRIMARY KEY, source_id TEXT REFERENCES source(id), feed_id INTEGER,
   url TEXT UNIQUE, title TEXT, lead TEXT, text TEXT, language TEXT,
@@ -46,7 +47,9 @@ def connect():
     # Databases created before a column existed get it added.
     for table, col, kind in (("story", "policy", "REAL"), ("story", "themes", "TEXT"), ("story", "country", "TEXT"),
                              ("article", "country", "TEXT"), ("story_article", "similarity", "REAL DEFAULT 1.0"),
-                             ("source", "bias", "TEXT"), ("source", "alignment", "TEXT"), ("source", "factuality", "TEXT")):
+                             ("source", "bias", "TEXT"), ("source", "alignment", "TEXT"), ("source", "factuality", "TEXT"),
+                             ("feed", "etag", "TEXT"), ("feed", "last_modified", "TEXT"),
+                             ("feed", "consecutive_errors", "INTEGER DEFAULT 0"), ("feed", "retry_after", "TEXT")):
         if col not in _columns(db, table):
             db.execute(f"ALTER TABLE {table} ADD COLUMN {col} {kind}")
     art = _columns(db, "article")

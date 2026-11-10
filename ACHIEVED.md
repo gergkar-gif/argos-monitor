@@ -2,6 +2,13 @@
 
 Completed items moved from `docs/roadmap.md` per project handover rules.
 
+- **Media Cloud & EMM Architectural Lift (Phase 1)** — **Done 2026-11-10.**
+  - Ingestion efficiency: HTTP 304 conditional GETs (`ETag`, `Last-Modified`) and exponential backoff quarantine state machine in `argos/fetch.py`, `argos/db.py`, and `argos/ingest.py`.
+  - Canonical URL normalization: tracking query parameter scrubbing (`clean_url`) in `argos/textutil.py` to prevent duplicate article rows across aggregators and direct feeds.
+  - EMM statistical surge detection: Poisson velocity Z-score modeling in `argos/export.py` and `tests/test_delta.py`.
+  - EMM quotation extraction: attribution verb and quotation prioritization in `argos/excerpts.py` for verbatim dashboard pull-quotes.
+  - Methodology synchronization: updated pipeline stage documentation in `site/about.html` per Rule 6 and Rule 7.
+
 - **Phase 1: Vietnam MVP (no LLM, 7-day window)** — **Done 2026-09-30.**
   - Verified sources in `sources.yaml`.
   - Ingestion, full-text extraction via trafilatura, NFC normalisation, syndication detection.

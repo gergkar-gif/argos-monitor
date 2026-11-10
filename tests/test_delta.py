@@ -1,5 +1,6 @@
 """Tests for delta comparison logic and movement classification."""
 import unittest
+import math
 import sys
 import pathlib
 from datetime import datetime, timezone, timedelta
@@ -31,11 +32,13 @@ class TestDeltaClassification(unittest.TestCase):
         n_prev, n_curr = 4, 10
         delta_n = n_curr - n_prev
         v = round(n_curr / max(1, n_prev), 2)
+        velocity_z = round(float(delta_n) / math.sqrt(max(1.0, float(n_prev))), 2)
         if n_prev == 0 and n_curr >= 2:
             st = "new"
         elif delta_n >= 3 and v >= 1.75:
             st = "surging"
         self.assertEqual(st, "surging")
+        self.assertGreaterEqual(velocity_z, 2.0)
 
         # state 'cooling': -delta_n >= 3 and v <= 0.40
         n_prev, n_curr = 12, 3

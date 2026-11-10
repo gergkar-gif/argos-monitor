@@ -107,15 +107,15 @@
     <h2>How the 11-stage pipeline works</h2>
     <p>A scheduled GitHub Actions runner executes the pipeline every 3 hours and publishes static JSON/JS bundles to Cloudflare Pages:</p>
     <div class="pipeline">
-      <div class="step"><b>01 · Ingest</b><span>Polls 760+ RSS/Atom and Google News feeds across 87 country desks via curl.</span></div>
+      <div class="step"><b>01 · Ingest</b><span>Polls 760+ RSS/Atom and news feeds via curl with Media Cloud-inspired HTTP 304 conditional GETs (ETag/Last-Modified), tracking query parameter stripping, and exponential backoff error quarantine.</span></div>
       <div class="step"><b>02 · Extract</b><span>Fetches full article text with Trafilatura for domestic and accessible sources.</span></div>
       <div class="step"><b>03 · Normalise</b><span>Applies Unicode NFC normalisation (crucial for Vietnamese diacritics and Khmer script).</span></div>
       <div class="step"><b>04 · Relevance</b><span>Filters out sports/lifestyle sections and requires country mentions on world feeds.</span></div>
       <div class="step"><b>05 · Embed</b><span>Encodes headlines and leads locally using ONNX Runtime (<code>intfloat/multilingual-e5-small</code>).</span></div>
       <div class="step"><b>06 · Cluster</b><span>Groups articles into stories via agglomerative cosine clustering + second-pass centroid merge, and flags syndicated reprints.</span></div>
       <div class="step"><b>07 · Classify</b><span>Assigns each story to one of 6 policy topics by cosine similarity against bilingual topic anchors.</span></div>
-      <div class="step"><b>08 · Policy &amp; Rank</b><span>Scores stories by independent outlet count, scope diversity, recency, and policy themes (<code>themes.yaml</code>).</span></div>
-      <div class="step"><b>09 · Excerpts &amp; Verify</b><span>Selects informative sentences and asserts each quote is an exact substring of the stored article text.</span></div>
+      <div class="step"><b>08 · Policy &amp; Rank</b><span>Scores stories by independent outlet count, scope diversity, recency, EMM-inspired Poisson velocity Z-score surge detection, and policy themes (<code>themes.yaml</code>).</span></div>
+      <div class="step"><b>09 · Excerpts &amp; Verify</b><span>Selects informative sentences prioritized by quotation markers and reporting attribution verbs (EMM Quotefinder pattern), asserting each quote is an exact substring of the stored article text.</span></div>
       <div class="step"><b>10 · Offline Translation</b><span>Translates non-English representative headlines into English using CPU-friendly MarianMT sequence-to-sequence models with entity glossaries, caching results in SQLite while keeping original text authoritative.</span></div>
       <div class="step"><b>11 · Signals &amp; Export</b><span>Merges GDACS/USGS/NASA EONET/UN Peace &amp; Security/FCDO/US State Dept alerts, auxiliary social signals, filtered Google Trends, and multi-subreddit discussions into static bundles.</span></div>
     </div>

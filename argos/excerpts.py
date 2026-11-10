@@ -15,6 +15,11 @@ from .rank import dashboard_story_ids
 MAX_EXCERPTS = 3
 MIN_LEN, MAX_LEN = 60, 320
 SENTENCE_END = re.compile(r"(?<=[.!?…])\s+")
+# Direct quotation / statement markers (EMM quotefinder lift) to prioritize executive quotes
+QUOTE_CUES = re.compile(
+    r'["“”«»]|(?:\b(?:said|stated|announced|confirmed|told|khẳng định|nhấn mạnh|tuyên bố|cho biết|chỉ đạo|yêu cầu|közölte|mondta)\b)',
+    re.I
+)
 
 
 def _glued_place(part):
@@ -73,8 +78,10 @@ def run(db):
             if not spans:
                 continue
             vecs = emb.encode(["passage: " + a["text"][s:e] for s, e in spans])
-            k = int(np.argmax(vecs @ centre))
-            score = float(vecs[k] @ centre)
+            raw_sims = vecs @ centre
+            scores = [float(s) + (0.02 if QUOTE_CUES.search(a["text"][sp[0]:sp[1]]) else 0.0) for sp, s in zip(spans, raw_sims)]
+            k = int(np.argmax(scores))
+            score = float(scores[k])
             if a["source_id"] not in best_per_source or score > best_per_source[a["source_id"]][0]:
                 best_per_source[a["source_id"]] = (score, a["id"], spans[k], a["scope"])
         # one sentence per source, best first, preferring a mix of scopes
