@@ -6,7 +6,7 @@ import pathlib
 from datetime import datetime, timezone, timedelta
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
-from argos import export
+from argos import crisis, export
 
 
 class TestDeltaClassification(unittest.TestCase):
@@ -56,6 +56,35 @@ class TestDeltaClassification(unittest.TestCase):
         else:
             shift = None
         self.assertEqual(shift, "international_pickup")
+
+    def test_crisis_and_violence_classification(self):
+        # US travel advisory date format without HH:MM:SS must parse cleanly
+        dt = crisis._when({"published": "Fri, 23 Oct 2026"})
+        self.assertIsNotNone(dt)
+        self.assertEqual(dt.year, 2026)
+        self.assertEqual(dt.month, 10)
+        self.assertEqual(dt.day, 23)
+
+        # GDACS Green spam capping & deduplication
+        raw_items = [
+            {"kind": "GDACS", "title": "Green forest fire notification in Australia", "level": "Green", "date": f"2026-11-0{i}T00:00:00+00:00"}
+            for i in range(1, 6)
+        ]
+        deduped = crisis._dedup_and_cap(raw_items)
+        self.assertEqual(len(deduped), 1)
+
+        # Kinetic violence vs routine defence diplomacy & sports exclusion
+        s_strike = {"headline": {"title": "Drone strike and artillery shelling reported in Kharkiv"}, "themes": ["Security and defence"], "sources": []}
+        s_terror = {"headline": {"title": "Gunmen kidnap 12 villagers in Boko Haram ambush"}, "themes": ["Security and defence"], "sources": []}
+        s_unrest = {"headline": {"title": "Police fire tear gas as riot and curfew grip capital"}, "themes": ["Internal politics"], "sources": []}
+        s_diplomacy = {"headline": {"title": "Defence ministers sign bilateral military procurement memorandum"}, "themes": ["Security and defence"], "sources": []}
+        s_sports = {"headline": {"title": "Striker leads attack in championship tournament clash"}, "themes": ["Sport"], "sources": []}
+
+        self.assertEqual(export._classify_violence(s_strike), "Armed Clash & Strike")
+        self.assertEqual(export._classify_violence(s_terror), "Insurgency & Terror")
+        self.assertEqual(export._classify_violence(s_unrest), "Civil Unrest & Crackdown")
+        self.assertIsNone(export._classify_violence(s_diplomacy))
+        self.assertIsNone(export._classify_violence(s_sports))
 
 
 if __name__ == "__main__":

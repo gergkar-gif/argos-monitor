@@ -117,7 +117,7 @@
       <div class="step"><b>08 · Policy &amp; Rank</b><span>Scores stories by independent outlet count, scope diversity, recency, EMM-inspired Poisson velocity Z-score surge detection, and policy themes (<code>themes.yaml</code>).</span></div>
       <div class="step"><b>09 · Excerpts &amp; Verify</b><span>Selects informative sentences prioritized by quotation markers and reporting attribution verbs (EMM Quotefinder pattern), asserting each quote is an exact substring of the stored article text.</span></div>
       <div class="step"><b>10 · Offline Translation</b><span>Translates non-English representative headlines into English using CPU-friendly MarianMT sequence-to-sequence models with entity glossaries, caching results in SQLite while keeping original text authoritative.</span></div>
-      <div class="step"><b>11 · Signals &amp; Export</b><span>Merges GDACS/USGS/NASA EONET/UN Peace &amp; Security/FCDO/US State Dept alerts, auxiliary social signals, filtered Google Trends, and multi-subreddit discussions into static bundles.</span></div>
+      <div class="step"><b>11 · Signals &amp; Export</b><span>Merges GDELT 2.0 real-time CAMEO conflict streams, optional ACLED events, GDACS/USGS/NASA EONET hazard sensors, UN Peace &amp; Security/Crisis Group/HRW/LWJ/MSF field monitors, FCDO/US State Dept advisories, and auxiliary social signals into static bundles.</span></div>
     </div>
   </section>
 
@@ -202,19 +202,19 @@
 
   <section id="crisis-methodology">
     <h2>Crisis, Conflict &amp; Security Methodology</h2>
-    <p>To adhere strictly to Rule 1 (<em>No source, no statement</em>), Argos rejects speculative heuristic keyword tagging of general news headlines for violent events. Instead, the Disasters and Conflict &amp; Security monitors rely on an authoritative dual-track model:</p>
+    <p>To adhere strictly to Rule 1 (<em>No source, no statement</em>), Argos never fabricates synthetic summaries of violent events. Instead, the Disasters and Conflict &amp; Security monitors operate a three-track verification model:</p>
     <div class="pipeline">
       <div class="step">
-        <b>Track 1 · Verified External Sensor &amp; Advisory Layer</b>
-        <span>Integrates structured feeds from international sensor networks and statutory foreign ministry alerts: <strong>Natural Hazards &amp; Disasters</strong> via Global Disaster Alert and Coordination System (GDACS), US Geological Survey (USGS M4.5+ seismic events), and NASA EONET; <strong>Conflict, Terrorism &amp; Security Advisories</strong> via United Nations Peace &amp; Security incident updates, US Department of State (elevated Levels 2–4), UK Foreign, Commonwealth &amp; Development Office (FCDO), and the International Crisis Group.</span>
+        <b>Track 1 · Real-Time Violence Streams, Field Monitors &amp; Sensors</b>
+        <span>Ingests live structured event streams and institutional field monitors: <strong>GDELT 2.0 15-Minute CAMEO Conflict Stream</strong> (filtering CAMEO root codes 18 Assault/Bombing, 19 Armed Clash/Strike, 20 Mass Violence, and 145 Violent Riot, then extracting and verifying the source article's verbatim HTML <code>&lt;title&gt;</code>), optional <strong>ACLED API</strong> disaggregated battle/fatality records, field reporting from <strong>United Nations Peace &amp; Security</strong>, <strong>International Crisis Group</strong>, <strong>Human Rights Watch (HRW)</strong>, <strong>Long War Journal (LWJ)</strong>, and <strong>M&eacute;decins Sans Fronti&egrave;res (MSF)</strong>, alongside elevated foreign-ministry advisories (<strong>US State Dept Levels 2–4</strong>, <strong>UK FCDO</strong>) and hazard sensors (<strong>GDACS</strong>, <strong>USGS M4.5+</strong>, <strong>NASA EONET</strong>).</span>
       </div>
       <div class="step">
-        <b>Track 2 · Monitored Defence &amp; Security Press Coverage</b>
-        <span>Presents actual story clusters deterministically classified into the <code>defence_security</code> domain by section feeds and multilingual embeddings. Stories report their own headlines and verified quotes without synthetic combat badges, ensuring administrative military handovers and diplomatic cooperation are never misclassified as kinetic violence.</span>
+        <b>Track 2 · Kinetic Conflict &amp; Unrest Press Classification</b>
+        <span>Separates active kinetic violence from routine defence diplomacy, military budgets, and ceremonial visits. Story clusters in the Conflict &amp; Security monitor must exhibit explicit conflict impact vectors and are classified into three operational tracks: <strong>Armed Clash &amp; Strike</strong>, <strong>Insurgency &amp; Terror</strong>, and <strong>Civil Unrest &amp; Crackdown</strong>, displaying only verbatim headlines and verified quotes.</span>
       </div>
       <div class="step">
         <b>Track 3 · Religious &amp; Sectarian Sensitivity Analysis</b>
-        <span>Enveloped strictly within the <code>defence_security</code> domain to prevent sectarian blind spots or denominational advocacy. Monitored security stories and advisories are cross-referenced across four confessional traditions across four structural vectors: targeted asymmetric extremism, compound disaster vulnerability, legal/state coercion, and resource-communal armed clashes.</span>
+        <span>Enveloped strictly within active conflict and coercion contexts to prevent sectarian blind spots or denominational advocacy. Monitored security stories and alerts are tagged only when a confessional identity or sacred site co-occurs with an active violence, persecution, or coercion vector across four traditions (Judaism, Christianity, Islam, Other Faiths &amp; Sacred Sites).</span>
         <div class="step-tags">
           <div class="step-tag-row">
             <span class="stamp stamp-sectarian">REL SENSITIVITY: TRADITION</span>

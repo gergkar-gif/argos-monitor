@@ -2,6 +2,12 @@
 
 Completed items moved from `docs/roadmap.md` per project handover rules.
 
+- **Crisis Watch & Real-Time Violence Stream Upgrade** — **Done 2026-11-10.**
+  - Integrated GDELT 2.0 real-time 15-minute CAMEO violence event stream (`_gdelt_events` in `argos/crisis.py` covering CAMEO codes 18 Assault/Bombing, 19 Armed Clash/Strike, 20 Mass Violence, 145/175 Violent Riot/Repression) with verbatim HTML `<title>` extraction and verification (Rule 1 compliant) plus optional ACLED API support (`_acled_events`).
+  - Expanded open field conflict and humanitarian monitors across all 87 desks (`Human Rights Watch`: 43 alerts, `Long War Journal`: 57 alerts, `MSF Crisis Update`: 10 alerts, `Crisis Group`: 10 alerts) with full regional constituent country and sub-national conflict-zone matching (`REGIONAL_COUNTRIES` + `mention`).
+  - Fixed US State Department travel advisory date parsing (`%a, %d %b %Y`), eliminating all 53 undated (`null` date) advisories and capping repetitive green GDACS notifications.
+  - Added kinetic conflict track classification (`Armed Clash & Strike`, `Insurgency & Terror`, `Civil Unrest & Crackdown`) in `argos/export.py` and `site/app.js`, filtering routine non-violent defence diplomacy out of Crisis Watch and updating `site/about.html` (Rule 6).
+
 - **Full article extraction and quote verification for newly active story feeds** — **Done 2026-11-10.**
   - Prioritized extraction of full article bodies for all pending articles attached to active story clusters (`story_article`), enabling `ARGOS_EXTRACT_STORY_ONLY` and `ARGOS_EXTRACT_LIMIT` controls.
   - Successfully extracted 311 active story article bodies across newly expanded desks (Jordan, Sri Lanka, Laos, Ukraine, Baltics).
