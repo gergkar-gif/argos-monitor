@@ -38,6 +38,90 @@ sources:
   feeds:
   - url: https://www.thelocal.no/feed
     category_hint: general
+- id: dagbladet_no
+  name: Dagbladet
+  homepage: https://www.dagbladet.no
+  language: 'no'
+  scope: domestic
+  kind: media
+  governing_body: Aller Media
+  state_affiliated: false
+  notes: Major national daily newspaper and digital investigative newsroom.
+  feeds:
+  - url: https://www.dagbladet.no/rss/
+    category_hint: general
+- id: klassekampen_no
+  name: Klassekampen
+  homepage: https://klassekampen.no
+  language: 'no'
+  scope: domestic
+  kind: media
+  governing_body: Klassekampen AS
+  state_affiliated: false
+  notes: Independent left-wing national daily newspaper covering labor, defense and politics.
+  feeds:
+  - url: https://klassekampen.no/rss/
+    category_hint: internal_politics
+- id: tv2_no
+  name: TV 2 Nyheter
+  homepage: https://www.tv2.no
+  language: 'no'
+  scope: domestic
+  kind: media
+  governing_body: TV 2 Gruppen (Egmont)
+  state_affiliated: false
+  notes: Norway's premier commercial television news broadcaster.
+  feeds:
+  - url: https://www.tv2.no/rss/nyheter
+    category_hint: general
+- id: morgenbladet_no
+  name: Morgenbladet
+  homepage: https://morgenbladet.no
+  language: 'no'
+  scope: domestic
+  kind: media
+  governing_body: NHST Media Group
+  state_affiliated: false
+  notes: Historic independent weekly broadsheet covering politics, culture, and society.
+  feeds:
+  - url: https://morgenbladet.no/rss/
+    category_hint: society
+- id: dagsavisen_no
+  name: Dagsavisen
+  homepage: https://www.dagsavisen.no
+  language: 'no'
+  scope: domestic
+  kind: media
+  governing_body: Stiftelsen Dagsavisen
+  state_affiliated: false
+  notes: Independent national daily broadsheet covering executive policy and parliamentary affairs.
+  feeds:
+  - url: https://www.dagsavisen.no/rss/
+    category_hint: internal_politics
+- id: document_no
+  name: Document.no
+  homepage: https://www.document.no
+  language: 'no'
+  scope: domestic
+  kind: media
+  governing_body: Document Forlag AS
+  state_affiliated: false
+  notes: Independent political news and analysis portal.
+  feeds:
+  - url: https://www.document.no/feed/
+    category_hint: internal_politics
+- id: adressa_no
+  name: Adresseavisen
+  homepage: https://www.adressa.no
+  language: 'no'
+  scope: domestic
+  kind: media
+  governing_body: Polaris Media
+  state_affiliated: false
+  notes: Historic regional daily broadsheet of Central Norway founded in 1767.
+  feeds:
+  - url: https://www.adressa.no/rss/
+    category_hint: general
 - id: gnews_norway_intl
   name: Google News (Norway Energy & Security - International)
   homepage: https://news.google.com

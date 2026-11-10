@@ -59,6 +59,84 @@ sources:
       - url: https://www.thestar.com/search/?f=rss&t=article&c=news/canada*&l=50&s=start_time&sd=desc
         category_hint: internal_politics
 
+  - id: ledevoir_ca
+    name: Le Devoir
+    homepage: https://www.ledevoir.com
+    language: fr
+    scope: domestic
+    kind: media
+    governing_body: "Le Devoir Inc."
+    state_affiliated: false
+    notes: "Independent French-language broadsheet of record in Quebec."
+    feeds:
+      - url: https://www.ledevoir.com/rss/manchettes.xml
+        category_hint: internal_politics
+
+  - id: radiocanada_ca
+    name: Radio-Canada Info
+    homepage: https://ici.radio-canada.ca
+    language: fr
+    scope: domestic
+    kind: media
+    governing_body: "Canadian Broadcasting Corporation (CBC/Radio-Canada)"
+    state_affiliated: false
+    notes: "National French-language public broadcaster newsroom."
+    feeds:
+      - url: https://ici.radio-canada.ca/rss/4159
+        category_hint: general
+
+  - id: globalnews_ca
+    name: Global News
+    homepage: https://globalnews.ca
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Corus Entertainment"
+    state_affiliated: false
+    notes: "National commercial television and digital news network."
+    feeds:
+      - url: https://globalnews.ca/feed/
+        category_hint: general
+
+  - id: thetyee_ca
+    name: The Tyee
+    homepage: https://thetyee.ca
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "The Tyee Independent Media Society"
+    state_affiliated: false
+    notes: "Independent non-profit investigative journalism outlet."
+    feeds:
+      - url: https://thetyee.ca/rss2.xml
+        category_hint: internal_politics
+
+  - id: nationalobserver_ca
+    name: Canada's National Observer
+    homepage: https://www.nationalobserver.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Observer Media Group"
+    state_affiliated: false
+    notes: "Independent investigative journalism covering energy, climate and federal politics."
+    feeds:
+      - url: https://www.nationalobserver.com/front/rss
+        category_hint: economics
+
+  - id: policyoptions_ca
+    name: Policy Options
+    homepage: https://policyoptions.irpp.org
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Institute for Research on Public Policy (IRPP)"
+    state_affiliated: false
+    notes: "Non-partisan public policy and legislative affairs digital journal."
+    feeds:
+      - url: https://policyoptions.irpp.org/feed/
+        category_hint: internal_politics
+
   - id: google_news_canada_politics
     name: Google News (Canada Parliament & Federal Politics)
     homepage: https://news.google.com

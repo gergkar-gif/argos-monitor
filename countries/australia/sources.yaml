@@ -54,7 +54,85 @@ sources:
     state_affiliated: false
     notes: "Australian multicultural public service news network."
     feeds:
-      - url: https://www.sbs.com.au/news/feed
+      - url: https://www.sbs.com.au/news/topic/australia/feed
+        category_hint: internal_politics
+
+  - id: guardian_au
+    name: Guardian Australia
+    homepage: https://www.theguardian.com/au
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Guardian Media Group"
+    state_affiliated: false
+    notes: "Independent progressive national digital news service."
+    feeds:
+      - url: https://www.theguardian.com/australia-news/rss
+        category_hint: internal_politics
+
+  - id: crikey_au
+    name: Crikey
+    homepage: https://www.crikey.com.au
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Private Media"
+    state_affiliated: false
+    notes: "Independent investigative journalism and Canberra politics newsletter."
+    feeds:
+      - url: https://www.crikey.com.au/feed/
+        category_hint: internal_politics
+
+  - id: theconversation_au
+    name: The Conversation (Australia)
+    homepage: https://theconversation.com/au
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "The Conversation Trust"
+    state_affiliated: false
+    notes: "Independent academic and evidence-based analysis and current affairs."
+    feeds:
+      - url: https://theconversation.com/au/articles.atom
+        category_hint: general
+
+  - id: thewest_au
+    name: The West Australian
+    homepage: https://thewest.com.au
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Seven West Media"
+    state_affiliated: false
+    notes: "Leading daily newspaper broadsheet in Western Australia."
+    feeds:
+      - url: https://thewest.com.au/rss
+        category_hint: general
+
+  - id: reneweconomy_au
+    name: Renew Economy
+    homepage: https://reneweconomy.com.au
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Renew Economy Media"
+    state_affiliated: false
+    notes: "Independent clean energy, electricity grid and climate policy daily."
+    feeds:
+      - url: https://reneweconomy.com.au/feed/
+        category_hint: economics
+
+  - id: themandarin_au
+    name: The Mandarin
+    homepage: https://www.themandarin.com.au
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Private Media"
+    state_affiliated: false
+    notes: "Public sector, administrative and governance policy daily."
+    feeds:
+      - url: https://www.themandarin.com.au/feed/
         category_hint: internal_politics
 
   - id: google_news_au_politics
