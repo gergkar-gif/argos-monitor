@@ -2,6 +2,12 @@
 
 Completed items moved from `docs/roadmap.md` per project handover rules.
 
+- **Full article extraction and quote verification for newly active story feeds** — **Done 2026-11-10.**
+  - Prioritized extraction of full article bodies for all pending articles attached to active story clusters (`story_article`), enabling `ARGOS_EXTRACT_STORY_ONLY` and `ARGOS_EXTRACT_LIMIT` controls.
+  - Successfully extracted 311 active story article bodies across newly expanded desks (Jordan, Sri Lanka, Laos, Ukraine, Baltics).
+  - Executed end-to-end extraction, normalisation, quote excerpting, and audit verification: generated 415 verbatim quote excerpts across 792 scored stories, with 415/415 excerpts verified via 100% exact character-for-character matching against stored article text (`verify: 415/415`).
+  - Exported updated broadsheet data to `site/data/` (including 117 quote-verified stories for Jordan and 99 quote-verified stories for Sri Lanka).
+
 - **Independent source expansion across all country desks (Phase 3)** — **Done 2026-11-10.**
   - Completed expansion of the final 4 deficit packs: Bangladesh (10 direct), Sri Lanka (11 direct), Laos (10 direct), and North Korea (11 direct).
   - All 87 country packs in the global registry now meet or exceed the standard of >= 10 independent direct non-aggregator sources (0 deficit packs remaining, 100% compliant across all 87 desks).

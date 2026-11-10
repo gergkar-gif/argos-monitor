@@ -1,5 +1,6 @@
 """Stage 2: fetch each pending article page and extract the main text with trafilatura.
 Polite: honours robots.txt and waits between requests to the same host."""
+import os
 import threading
 import time
 import urllib.robotparser
@@ -52,16 +53,32 @@ def _one(row):
     return row["id"], None, "empty"
 
 
-def run(db, limit=None, workers=8):
-    sql = "SELECT id,url FROM article WHERE extract_status='pending' ORDER BY id"
-    rows = db.execute(sql + (f" LIMIT {int(limit)}" if limit else "")).fetchall()
+def run(db, limit=None, workers=8, country=None):
+    if limit is None and os.environ.get("ARGOS_EXTRACT_LIMIT"):
+        limit = int(os.environ["ARGOS_EXTRACT_LIMIT"])
+    country = country or os.environ.get("ARGOS_EXTRACT_COUNTRY")
+    story_only = bool(os.environ.get("ARGOS_EXTRACT_STORY_ONLY"))
+
+    where = ["extract_status='pending'"]
+    params = []
+    if country:
+        where.append("country=?")
+        params.append(country)
+    if story_only:
+        where.append("id IN (SELECT article_id FROM story_article)")
+
+    where_clause = " AND ".join(where)
+    sql = f"SELECT id,url FROM article WHERE {where_clause} ORDER BY (id IN (SELECT article_id FROM story_article)) DESC, id DESC"
+    if limit:
+        sql += f" LIMIT {int(limit)}"
+    rows = db.execute(sql, params).fetchall()
     print(f"extract: {len(rows)} pending articles")
     done = 0
     with ThreadPoolExecutor(workers) as ex:
         for aid, text, status in ex.map(_one, rows):
             db.execute("UPDATE article SET text=?, extract_status=? WHERE id=?", (text, status, aid))
             done += 1
-            if done % 50 == 0:
+            if done % 10 == 0 or done == len(rows):
                 db.commit()
                 print(f"  {done}/{len(rows)}")
     db.commit()
