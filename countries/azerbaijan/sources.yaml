@@ -82,3 +82,67 @@ sources:
       - {url: "https://news.google.com/rss/search?q=Azerbaijan+when:1d&hl=en-US&gl=US&ceid=US:en", section: Azerbaijan, category_hint: general}
       - {url: "https://news.google.com/rss/search?q=Azerbaijan+(Armenia+OR+peace+OR+Aliyev+OR+Zangezur+OR+Karabakh)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Peace talks & diplomacy, category_hint: foreign_policy}
       - {url: "https://news.google.com/rss/search?q=Azerbaijan+(SOCAR+OR+gas+OR+energy+OR+corridor+OR+oil)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Energy & Middle Corridor, category_hint: economics}
+  - id: vesti_az
+    name: Vesti.az
+    homepage: https://vesti.az
+    language: ru
+    scope: domestic
+    kind: media
+    governing_body: "APA Group"
+    state_affiliated: true
+    notes: "Major Baku Russian-language digital information agency covering Caspian politics, energy, and defense."
+    feeds:
+      - url: https://vesti.az/rss
+        category_hint: internal_politics
+
+  - id: day_az
+    name: Day.az
+    homepage: https://news.day.az
+    language: ru
+    scope: domestic
+    kind: media
+    governing_body: "Day Media Holding"
+    state_affiliated: true
+    notes: "High-reach Azerbaijani news portal covering national politics, macroeconomic indicators, and South Caucasus diplomacy."
+    feeds:
+      - url: https://news.day.az/rss/all.rss
+        category_hint: general
+
+  - id: haqqin_ru
+    name: Haqqin.az
+    homepage: https://haqqin.az
+    language: ru
+    scope: domestic
+    kind: media
+    governing_body: "Eynulla Fatullayev Media"
+    state_affiliated: true
+    notes: "Prominent analytical and political daily with deep insight into Baku executive decision-making and regional geopolitics."
+    feeds:
+      - url: https://haqqin.az/rss
+        category_hint: foreign_policy
+
+  - id: minval_ru
+    name: Minval.az
+    homepage: https://minval.az
+    language: ru
+    scope: domestic
+    kind: media
+    governing_body: "Minval Information Agency"
+    state_affiliated: true
+    notes: "Azerbaijani analytical news agency tracking defense developments, Middle Corridor transit, and bilateral relations."
+    feeds:
+      - url: https://minval.az/rss
+        category_hint: defence_security
+
+  - id: mikroskop_az
+    name: Mikroskop Media
+    homepage: https://mikroskopmedia.com
+    language: az
+    scope: abroad_local
+    kind: media
+    governing_body: "Mikroskop Media Foundation (Berlin)"
+    state_affiliated: false
+    notes: "Independent exiled Azerbaijani data and investigative journalism platform focusing on public spending and human rights."
+    feeds:
+      - url: https://mikroskopmedia.com/feed/
+        category_hint: internal_politics

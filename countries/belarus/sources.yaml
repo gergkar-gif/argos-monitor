@@ -93,3 +93,67 @@ sources:
     feeds:
       - url: "https://news.google.com/rss/search?q=Belarus+nuclear+OR+%22Poland+border%22+Belarus+OR+%22Union+State%22+military+when:3d&hl=en-US&gl=US&ceid=US:en"
         category_hint: defence_security
+  - id: belta_ru
+    name: BelTA (Russian)
+    homepage: https://www.belta.by
+    language: ru
+    scope: domestic
+    kind: official
+    governing_body: "Presidential Administration of Belarus"
+    state_affiliated: true
+    notes: "Russian-language statutory wire service of the Republic of Belarus."
+    feeds:
+      - url: https://www.belta.by/rss/all/
+        category_hint: internal_politics
+
+  - id: charter97_ru
+    name: Charter'97
+    homepage: https://charter97.org
+    language: ru
+    scope: abroad_local
+    kind: media
+    governing_body: "Free Belarus Foundation (Warsaw)"
+    state_affiliated: false
+    notes: "Historic independent human rights and pro-democracy news portal founded in 1997."
+    feeds:
+      - url: https://charter97.org/ru/rss/all/
+        category_hint: internal_politics
+
+  - id: reform_news
+    name: REFORM.news
+    homepage: https://reform.news
+    language: ru
+    scope: abroad_local
+    kind: media
+    governing_body: "Media Innovation Group"
+    state_affiliated: false
+    notes: "Independent analytical digital newsroom focusing on Belarusian governance, economy, and military movements."
+    feeds:
+      - url: https://reform.news/feed
+        category_hint: internal_politics
+
+  - id: dev_by
+    name: dev.by
+    homepage: https://devby.io
+    language: ru
+    scope: abroad_local
+    kind: media
+    governing_body: "DevMedia Group"
+    state_affiliated: false
+    notes: "Premier news journal covering Belarusian technology sector, digital relocation, and IT economy."
+    feeds:
+      - url: https://devby.io/rss
+        category_hint: economics
+
+  - id: citydog_io
+    name: CityDog.io
+    homepage: https://citydog.io
+    language: ru
+    scope: abroad_local
+    kind: media
+    governing_body: "CityDog Media"
+    state_affiliated: false
+    notes: "Independent cultural, urban policy, and social daily reporting on civil society and urban life."
+    feeds:
+      - url: https://citydog.io/rss
+        category_hint: general

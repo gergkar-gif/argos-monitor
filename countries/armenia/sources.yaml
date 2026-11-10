@@ -84,3 +84,93 @@ sources:
     feeds:
       - {url: "https://news.google.com/rss/search?q=Armenia+(Yerevan+OR+Pashinyan+OR+Mirzoyan+OR+Syunik)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Armenia politics & diplomacy, category_hint: foreign_policy}
       - {url: "https://news.google.com/rss/search?q=Armenia+(Azerbaijan+OR+Turkey+OR+CSTO+OR+Russia+OR+%22peace+treaty%22)+when:1d&hl=en-US&gl=US&ceid=US:en", section: South Caucasus security, category_hint: defence_security}
+  - id: news_am_en
+    name: NEWS.am (English)
+    homepage: https://news.am/eng
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "NEWS.am Information-Analytical Agency"
+    state_affiliated: false
+    notes: "High-volume independent Armenian news agency providing continuous national and regional coverage."
+    feeds:
+      - url: https://news.am/eng/rss/
+        category_hint: general
+
+  - id: news_am_hy
+    name: NEWS.am (Armenian)
+    homepage: https://news.am/arm
+    language: hy
+    scope: domestic
+    kind: media
+    governing_body: "NEWS.am Information-Analytical Agency"
+    state_affiliated: false
+    notes: "Armenian-language primary edition of NEWS.am covering parliamentary politics, security, and economy."
+    feeds:
+      - url: https://news.am/arm/rss/
+        category_hint: internal_politics
+
+  - id: panarmenian_en
+    name: PanARMENIAN.Net
+    homepage: https://www.panarmenian.net
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "PanARMENIAN Media LLC"
+    state_affiliated: false
+    notes: "Independent Armenian news network focusing on diplomacy, South Caucasus peace talks, and diaspora affairs."
+    feeds:
+      - url: https://www.panarmenian.net/eng/rss/
+        category_hint: foreign_policy
+
+  - id: evnreport
+    name: EVN Report
+    homepage: https://evnreport.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "EVN Report NGO"
+    state_affiliated: false
+    notes: "Independent analytical journal based in Yerevan providing investigative features on defense reform, democracy, and economy."
+    feeds:
+      - url: https://evnreport.com/feed/
+        category_hint: internal_politics
+
+  - id: aravot_en
+    name: Aravot (English)
+    homepage: https://en.aravot.am
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Aravot Daily"
+    state_affiliated: false
+    notes: "Historic independent daily newspaper founded in 1994, renowned for institutional pluralism and political balance."
+    feeds:
+      - url: https://en.aravot.am/feed/
+        category_hint: internal_politics
+
+  - id: aravot_hy
+    name: Aravot (Armenian)
+    homepage: https://www.aravot.am
+    language: hy
+    scope: domestic
+    kind: media
+    governing_body: "Aravot Daily"
+    state_affiliated: false
+    notes: "Armenian daily edition of Aravot covering judicial trials, parliamentary sessions, and civic protests."
+    feeds:
+      - url: https://www.aravot.am/feed/
+        category_hint: internal_politics
+
+  - id: armradio_hy
+    name: Public Radio of Armenia
+    homepage: https://hy.armradio.am
+    language: hy
+    scope: domestic
+    kind: official
+    governing_body: "Public TV and Radio Company of Armenia"
+    state_affiliated: true
+    notes: "Statutory public broadcaster of Armenia broadcasting authoritative news and executive announcements."
+    feeds:
+      - url: https://hy.armradio.am/feed/
+        category_hint: internal_politics

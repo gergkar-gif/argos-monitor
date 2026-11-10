@@ -85,3 +85,67 @@ sources:
     feeds:
       - {url: "https://news.google.com/rss/search?q=(%D0%9A%D0%B0%D0%B7%D0%B0%D1%85%D1%81%D1%82%D0%B0%D0%BD+OR+%D0%A2%D0%BE%D0%BA%D0%B0%D0%B5%D0%B2+OR+%D0%90%D1%81%D1%82%D0%B0%D0%BD%D0%B0)+when:1d&hl=ru&gl=KZ&ceid=KZ:ru", section: Политика и экономика, category_hint: general}
       - {url: "https://news.google.com/rss/search?q=(site:vlast.kz+OR+site:orda.kz+OR+site:rus.azattyq.org)+when:7d&hl=ru&gl=KZ&ceid=KZ:ru", section: Vlast / Orda / Azattyq, category_hint: general}
+  - id: inform_kz_en
+    name: Kazinform (English)
+    homepage: https://en.inform.kz
+    language: en
+    scope: domestic
+    kind: official
+    governing_body: "Qazcontent / Ministry of Culture & Information of the Republic of Kazakhstan"
+    state_affiliated: true
+    notes: "Statutory national wire news agency of Kazakhstan."
+    feeds:
+      - url: https://www.inform.kz/rss/eng.xml
+        category_hint: foreign_policy
+
+  - id: inform_kz_ru
+    name: Kazinform (Russian)
+    homepage: https://inform.kz
+    language: ru
+    scope: domestic
+    kind: official
+    governing_body: "Qazcontent / Ministry of Culture & Information of the Republic of Kazakhstan"
+    state_affiliated: true
+    notes: "Russian-language edition of Kazakhstan's statutory national wire agency."
+    feeds:
+      - url: https://www.inform.kz/rss/rus.xml
+        category_hint: internal_politics
+
+  - id: vlast_kz
+    name: Vlast.kz
+    homepage: https://vlast.kz
+    language: ru
+    scope: domestic
+    kind: media
+    governing_body: "Vlast Media"
+    state_affiliated: false
+    notes: "Independent analytical digital journal covering civil society, legislative reforms, and public spending."
+    feeds:
+      - url: https://vlast.kz/feed/
+        category_hint: internal_politics
+
+  - id: inbusiness_kz
+    name: Inbusiness.kz
+    homepage: https://inbusiness.kz
+    language: ru
+    scope: domestic
+    kind: media
+    governing_body: "Media Holding Atameken Business"
+    state_affiliated: false
+    notes: "Leading financial, commodity (oil, uranium, metals), and macroeconomic news portal in Kazakhstan."
+    feeds:
+      - url: https://inbusiness.kz/ru/rss
+        category_hint: economics
+
+  - id: lada_kz
+    name: Lada.kz
+    homepage: https://www.lada.kz
+    language: ru
+    scope: domestic
+    kind: media
+    governing_body: "Lada Media (Aktau)"
+    state_affiliated: false
+    notes: "Major Western Kazakhstan daily covering Caspian Sea maritime logistics, energy extraction, and regional labor affairs."
+    feeds:
+      - url: https://www.lada.kz/rss.xml
+        category_hint: economics

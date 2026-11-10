@@ -63,3 +63,93 @@ sources:
   - url: https://news.google.com/rss/search?q=(%22Central+America%22+OR+Guatemala+OR+%22El+Salvador%22+OR+Panama)+(Bukele+OR+migration+OR+Canal+OR+governance)+when:3d&hl=en-US&gl=US&ceid=US:en
     section: Governance & Migration
     category_hint: foreign_policy
+- id: prensalibre_gt
+  name: Prensa Libre
+  homepage: https://www.prensalibre.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Prensa Libre S.A.
+  state_affiliated: false
+  notes: Guatemala's premier daily newspaper of record founded in 1951 covering national governance, congress, and macroeconomic policy.
+  feeds:
+  - url: https://www.prensalibre.com/feed/
+    category_hint: internal_politics
+
+- id: plazapublica_gt
+  name: Plaza Pública
+  homepage: https://www.plazapublica.com.gt
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Universidad Rafael Landívar
+  state_affiliated: false
+  notes: Independent investigative university media focusing on institutional impunity, human rights, and indigenous communities in Guatemala.
+  feeds:
+  - url: https://www.plazapublica.com.gt/feed
+    category_hint: internal_politics
+
+- id: lahora_gt
+  name: La Hora (Guatemala)
+  homepage: https://lahora.gt
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Editorial La Hora
+  state_affiliated: false
+  notes: Centenarian Guatemalan afternoon newspaper covering rule of law, anti-corruption proceedings, and judicial appointments.
+  feeds:
+  - url: https://lahora.gt/feed/
+    category_hint: internal_politics
+
+- id: eldiariodehoy_sv
+  name: El Diario de Hoy / elsalvador.com
+  homepage: https://www.elsalvador.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Editorial Altamirano Madriz
+  state_affiliated: false
+  notes: Historic Salvadoran daily newspaper of record founded in 1936 covering executive policies, security state decrees, and economy.
+  feeds:
+  - url: https://www.elsalvador.com/feed/
+    category_hint: internal_politics
+
+- id: criterio_hn
+  name: Criterio.hn
+  homepage: https://criterio.hn
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Criterio Periodismo Digital
+  state_affiliated: false
+  notes: Independent Honduran investigative journalism platform uncovering extractivism, political graft, and constitutional reforms.
+  feeds:
+  - url: https://criterio.hn/feed/
+    category_hint: internal_politics
+
+- id: semanario_ucr
+  name: Semanario Universidad
+  homepage: https://semanariouniversidad.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Universidad de Costa Rica
+  state_affiliated: false
+  notes: Independent analytical weekly of the University of Costa Rica providing critical research on fiscal policy, environment, and social security.
+  feeds:
+  - url: https://semanariouniversidad.com/feed/
+    category_hint: internal_politics
+
+- id: divergentes_ni
+  name: Divergentes
+  homepage: https://www.divergentes.com
+  language: es
+  scope: abroad_local
+  kind: media
+  governing_body: Divergentes Media
+  state_affiliated: false
+  notes: Award-winning independent investigative journalism collective covering Central America and Nicaraguan authoritarianism from exile.
+  feeds:
+  - url: https://www.divergentes.com/feed/
+    category_hint: internal_politics
