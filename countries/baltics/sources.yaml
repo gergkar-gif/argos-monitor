@@ -62,3 +62,80 @@ sources:
   - url: https://news.google.com/rss/search?q=(Baltics+OR+Estonia+OR+Latvia+OR+Lithuania)+(NATO+OR+Russia+OR+border+OR+defense)+when:3d&hl=en-US&gl=US&ceid=US:en
     section: Security & Defense
     category_hint: defence_security
+- id: lsm_lv
+  name: LSM.lv (Latvian)
+  homepage: https://www.lsm.lv
+  language: lv
+  scope: domestic
+  kind: media
+  governing_body: Public Broadcasting of Latvia (LSM)
+  state_affiliated: false
+  notes: Primary Latvian public-service news portal covering Saeima legislation, regional development, and defense.
+  feeds:
+  - url: https://www.lsm.lv/rss/
+    category_hint: internal_politics
+
+- id: lsm_rus
+  name: LSM.lv (Russian)
+  homepage: https://rus.lsm.lv
+  language: ru
+  scope: domestic
+  kind: media
+  governing_body: Public Broadcasting of Latvia (LSM)
+  state_affiliated: false
+  notes: Russian-language public service offering verified news for Latvia's linguistic minorities.
+  feeds:
+  - url: https://rus.lsm.lv/rss/
+    category_hint: internal_politics
+
+- id: lrt_en_direct
+  name: LRT English Direct
+  homepage: https://www.lrt.lt/en
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Lithuanian National Radio and Television (LRT)
+  state_affiliated: false
+  notes: Direct official RSS feed of Lithuanian public broadcaster covering NATO eastern flank and Baltic defense.
+  feeds:
+  - url: https://www.lrt.lt/en/news-in-english?rss
+    category_hint: defence_security
+
+- id: postimees_en
+  name: Postimees News (English)
+  homepage: https://news.postimees.ee
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Postimees Grupp
+  state_affiliated: false
+  notes: English edition of Estonia's oldest and highest-circulation daily paper of record founded in 1857.
+  feeds:
+  - url: https://news.postimees.ee/rss
+    category_hint: internal_politics
+
+- id: tvnet_lv
+  name: TVNET
+  homepage: https://www.tvnet.lv
+  language: lv
+  scope: domestic
+  kind: media
+  governing_body: TVNET Grupa (Postimees Grupp)
+  state_affiliated: false
+  notes: Major Latvian digital daily newspaper covering national politics, EU funding, and consumer rights.
+  feeds:
+  - url: https://www.tvnet.lv/rss
+    category_hint: general
+
+- id: diena_lv
+  name: Diena
+  homepage: https://www.diena.lv
+  language: lv
+  scope: domestic
+  kind: media
+  governing_body: Dienas Mediji
+  state_affiliated: false
+  notes: Historic Latvian daily broadsheet paper of record founded during the Singing Revolution in 1990.
+  feeds:
+  - url: https://www.diena.lv/rss/
+    category_hint: internal_politics

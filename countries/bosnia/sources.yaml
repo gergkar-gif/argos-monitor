@@ -84,3 +84,93 @@ sources:
     feeds:
       - {url: "https://news.google.com/rss/search?q=Bosnia+(Sarajevo+OR+Dodik+OR+%22Republika+Srpska%22+OR+OHR+OR+Schmidt)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Bosnia politics & Dayton, category_hint: internal_politics}
       - {url: "https://news.google.com/rss/search?q=Bosnia+(EU+OR+NATO+OR+EUFOR+OR+Balkans)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Bosnia EU & security, category_hint: foreign_policy}
+  - id: dnevni_avaz_ba
+    name: Dnevni avaz
+    homepage: https://avaz.ba
+    language: bs
+    scope: domestic
+    kind: media
+    governing_body: "Avaz-roto press"
+    state_affiliated: false
+    notes: "Highest circulation daily newspaper in Bosnia and Herzegovina covering state governance, economy, and justice."
+    feeds:
+      - url: https://avaz.ba/rss
+        category_hint: internal_politics
+
+  - id: radiosarajevo_ba
+    name: Radio Sarajevo
+    homepage: https://radiosarajevo.ba
+    language: bs
+    scope: domestic
+    kind: media
+    governing_body: "Radio Sarajevo Media"
+    state_affiliated: false
+    notes: "Independent Sarajevo radio and digital news portal focusing on civil society, human rights, and political analysis."
+    feeds:
+      - url: https://radiosarajevo.ba/rss
+        category_hint: general
+
+  - id: fena_ba
+    name: Federal News Agency (FENA)
+    homepage: https://fena.ba
+    language: bs
+    scope: domestic
+    kind: official
+    governing_body: "Government of the Federation of Bosnia and Herzegovina"
+    state_affiliated: true
+    notes: "Public statutory wire agency providing official announcements, legislative coverage, and executive proceedings."
+    feeds:
+      - url: https://fena.ba/rss
+        category_hint: internal_politics
+
+  - id: vijesti_ba
+    name: Vijesti.ba
+    homepage: https://vijesti.ba
+    language: bs
+    scope: domestic
+    kind: media
+    governing_body: "Vijesti Media"
+    state_affiliated: false
+    notes: "Independent political daily tracking state presidency decisions, constitutional court rulings, and EU candidate reforms."
+    feeds:
+      - url: https://vijesti.ba/rss
+        category_hint: internal_politics
+
+  - id: n1info_ba
+    name: N1 Bosnia
+    homepage: https://n1info.ba
+    language: bs
+    scope: domestic
+    kind: media
+    governing_body: "United Media Group (CNN exclusive affiliate)"
+    state_affiliated: false
+    notes: "Major 24-hour cable and digital news broadcaster providing investigative reports and political interviews."
+    feeds:
+      - url: https://n1info.ba/feed/
+        category_hint: internal_politics
+
+  - id: srpskainfo_ba
+    name: Srpskainfo
+    homepage: https://srpskainfo.com
+    language: sr
+    scope: domestic
+    kind: media
+    governing_body: "EuroBlic Press (Banja Luka)"
+    state_affiliated: false
+    notes: "Major Banja Luka regional news portal covering Republika Srpska institutions, federal relations, and regional economy."
+    feeds:
+      - url: https://srpskainfo.com/feed/
+        category_hint: internal_politics
+
+  - id: capital_ba
+    name: Capital.ba
+    homepage: https://www.capital.ba
+    language: bs
+    scope: domestic
+    kind: media
+    governing_body: "Udruženje građana Zašto ne / Capital Media"
+    state_affiliated: false
+    notes: "Pioneering financial and investigative business portal uncovering public procurement fraud and fiscal policy in BiH."
+    feeds:
+      - url: https://www.capital.ba/feed/
+        category_hint: economics

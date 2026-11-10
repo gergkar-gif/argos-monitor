@@ -51,3 +51,93 @@ sources:
   - url: https://news.google.com/rss/search?q=(%22East+African+Community%22+OR+Tanzania+OR+Uganda+OR+Sudan)+(summit+OR+treaty+OR+conflict+OR+trade)+when:3d&hl=en-US&gl=US&ceid=US:en
     section: Regional Affairs
     category_hint: foreign_policy
+- id: nilepost_ug
+  name: Nile Post
+  homepage: https://nilepost.co.ug
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Next Media Services (Uganda)
+  state_affiliated: false
+  notes: Leading Ugandan 24-hour digital newsroom covering national politics, parliament, and regional security.
+  feeds:
+  - url: https://nilepost.co.ug/feed
+    category_hint: internal_politics
+
+- id: radiotamazuj_ss
+  name: Radio Tamazuj
+  homepage: https://www.radiotamazuj.org
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Free Press Unlimited
+  state_affiliated: false
+  notes: Trusted independent news service covering South Sudan and Sudan conflict mediation, peace accords, and human rights.
+  feeds:
+  - url: https://www.radiotamazuj.org/en/feed
+    category_hint: defence_security
+
+- id: eyeradio_ss
+  name: Eye Radio
+  homepage: https://eyeradio.org
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Eye Media (Juba)
+  state_affiliated: false
+  notes: Major independent broadcast network in Juba covering South Sudanese governance, community security, and aid.
+  feeds:
+  - url: https://eyeradio.org/feed/
+    category_hint: general
+
+- id: dailynews_tz
+  name: Daily News (Tanzania)
+  homepage: https://dailynews.co.tz
+  language: en
+  scope: domestic
+  kind: official
+  governing_body: Tanzania Standard Newspapers (TSN)
+  state_affiliated: true
+  notes: Statutory government paper of record covering executive decisions, parliamentary legislation, and infrastructure.
+  feeds:
+  - url: https://dailynews.co.tz/feed/
+    category_hint: internal_politics
+
+- id: theindependent_ug
+  name: The Independent (Uganda)
+  homepage: https://www.independent.co.ug
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Andrew Mwenda Media
+  state_affiliated: false
+  notes: Influential Ugandan news weekly and digital daily focusing on political economy, business regulations, and governance.
+  feeds:
+  - url: https://www.independent.co.ug/feed/
+    category_hint: internal_politics
+
+- id: sudanspost
+  name: Sudans Post
+  homepage: https://sudanspost.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Sudans Post Media
+  state_affiliated: false
+  notes: Independent news service tracking political developments and diplomacy across Sudan and South Sudan.
+  feeds:
+  - url: https://sudanspost.com/feed/
+    category_hint: foreign_policy
+
+- id: radiookapi_ea
+  name: Radio Okapi
+  homepage: https://www.radiookapi.net
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: MONUSCO / Fondation Hirondelle
+  state_affiliated: false
+  notes: Premier UN and humanitarian peacekeeping radio network broadcasting critical security updates in Central/East Africa.
+  feeds:
+  - url: https://www.radiookapi.net/rss.xml
+    category_hint: defence_security

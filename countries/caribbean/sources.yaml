@@ -67,3 +67,93 @@ sources:
   - url: https://news.google.com/rss/search?q=(Jamaica+OR+Guyana+OR+Barbados)+(oil+OR+energy+OR+debt+OR+economy)+when:3d&hl=en-US&gl=US&ceid=US:en
     section: Economy & Trade
     category_hint: economics
+- id: jamaica_observer
+  name: Jamaica Observer
+  homepage: https://www.jamaicaobserver.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: ATL Group
+  state_affiliated: false
+  notes: Leading national broadsheet newspaper in Jamaica covering parliamentary debates, crime policy, and tourism economy.
+  feeds:
+  - url: https://www.jamaicaobserver.com/feed/
+    category_hint: internal_politics
+
+- id: barbados_today
+  name: Barbados Today
+  homepage: https://barbadostoday.bb
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Barbados Today Media
+  state_affiliated: false
+  notes: Premier multimedia digital daily in Barbados covering republic institutions, financial services, and climate diplomacy.
+  feeds:
+  - url: https://barbadostoday.bb/feed/
+    category_hint: internal_politics
+
+- id: dominica_news
+  name: Dominica News Online
+  homepage: https://dominicanewsonline.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: DNO Media
+  state_affiliated: false
+  notes: Principal digital daily of the Commonwealth of Dominica tracking Eastern Caribbean currency union and government policy.
+  feeds:
+  - url: https://dominicanewsonline.com/news/feed/
+    category_hint: general
+
+- id: demerara_waves
+  name: Demerara Waves
+  homepage: https://demerarawaves.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Denis Chabrol Media (Guyana)
+  state_affiliated: false
+  notes: Premier independent Guyanese news portal covering offshore oil exploration, border security, and national elections.
+  feeds:
+  - url: https://demerarawaves.com/feed/
+    category_hint: economics
+
+- id: cayman_news_service
+  name: Cayman News Service
+  homepage: https://caymannewsservice.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: CNS Media
+  state_affiliated: false
+  notes: Independent daily news platform covering Cayman Islands offshore finance, legislative assembly, and judicial rulings.
+  feeds:
+  - url: https://caymannewsservice.com/feed/
+    category_hint: economics
+
+- id: bernews_bm
+  name: Bernews
+  homepage: https://bernews.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Bernews Media (Bermuda)
+  state_affiliated: false
+  notes: Comprehensive digital daily covering Bermuda reinsurance, maritime transport, and parliamentary affairs.
+  feeds:
+  - url: https://bernews.com/feed/
+    category_hint: economics
+
+- id: bahamas_weekly
+  name: The Bahamas Weekly
+  homepage: http://www.thebahamasweekly.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: The Bahamas Weekly Media
+  state_affiliated: false
+  notes: Prominent digital news and community portal covering Bahamian governance, maritime commerce, and tourism.
+  feeds:
+  - url: http://www.thebahamasweekly.com/publish/rss.xml
+    category_hint: general

@@ -71,3 +71,93 @@ sources:
     feeds:
       - {url: "https://news.google.com/rss/search?q=Moldova+(Chisinau+OR+%22Maia+Sandu%22+OR+Recean+OR+Transnistria+OR+Gagauzia)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Moldova politics & security, category_hint: internal_politics}
       - {url: "https://news.google.com/rss/search?q=Moldova+(EU+OR+Russia+OR+Romania+OR+Ukraine+OR+energy)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Moldova EU & geopolitics, category_hint: foreign_policy}
+  - id: zdg_md_ru
+    name: Ziarul de Gardă (Russian)
+    homepage: https://www.zdg.md/ru
+    language: ru
+    scope: domestic
+    kind: media
+    governing_body: "Ziarul de Gardă"
+    state_affiliated: false
+    notes: "Russian-language edition of Moldova's leading investigative anti-corruption newsroom."
+    feeds:
+      - url: https://www.zdg.md/ru/feed/
+        category_hint: internal_politics
+
+  - id: newsmaker_ru
+    name: NewsMaker (Russian)
+    homepage: https://newsmaker.md/ru
+    language: ru
+    scope: domestic
+    kind: media
+    governing_body: "NewsMaker Media"
+    state_affiliated: false
+    notes: "High-reach independent Russian-language news portal covering Moldovan politics, Gagauzia, and Transnistria."
+    feeds:
+      - url: https://newsmaker.md/ru/feed/
+        category_hint: internal_politics
+
+  - id: tv8_md
+    name: TV8 Moldova
+    homepage: https://tv8.md
+    language: ro
+    scope: domestic
+    kind: media
+    governing_body: "AO Media Alternativa"
+    state_affiliated: false
+    notes: "Independent television and digital newsroom specializing in hard-hitting political investigations and talk shows."
+    feeds:
+      - url: https://tv8.md/ro/rss
+        category_hint: internal_politics
+
+  - id: realitatea_md
+    name: Realitatea.md
+    homepage: https://realitatea.md
+    language: ro
+    scope: domestic
+    kind: media
+    governing_body: "Realitatea Media Group"
+    state_affiliated: false
+    notes: "Prominent digital daily tracking Parliament sessions, government ordinances, and European integration."
+    feeds:
+      - url: https://realitatea.md/feed/
+        category_hint: internal_politics
+
+  - id: esp_md
+    name: SP Bălți
+    homepage: https://esp.md
+    language: ro
+    scope: domestic
+    kind: media
+    governing_body: "SP Media Group"
+    state_affiliated: false
+    notes: "Independent regional news daily published in Bălți covering Northern Moldova local governance and public services."
+    feeds:
+      - url: https://esp.md/ro/rss.xml
+        category_hint: general
+
+  - id: unimedia_md
+    name: UNIMEDIA
+    homepage: https://unimedia.info
+    language: ro
+    scope: domestic
+    kind: media
+    governing_body: "Interact Media"
+    state_affiliated: false
+    notes: "One of the longest-running Moldovan digital news portals covering institutional politics, justice, and civic issues."
+    feeds:
+      - url: https://unimedia.info/rss/news.xml
+        category_hint: internal_politics
+
+  - id: bani_md
+    name: Bani.md
+    homepage: https://bani.md
+    language: ro
+    scope: domestic
+    kind: media
+    governing_body: "Bani Media"
+    state_affiliated: false
+    notes: "Dedicated Moldovan financial, banking, energy, and macroeconomic intelligence portal."
+    feeds:
+      - url: https://bani.md/feed/
+        category_hint: economics
