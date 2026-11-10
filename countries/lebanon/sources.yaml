@@ -7,8 +7,7 @@ sources:
   kind: media
   governing_body: Société de Presse et d'Édition
   state_affiliated: false
-  notes: Independent English-language Lebanese news platform covering security, institutional
-    deadlock, and economics.
+  notes: Independent English-language Lebanese news platform covering security, institutional deadlock, and economics.
   feeds:
   - url: https://today.lorientlejour.com/rss/news.xml
     category_hint: internal_politics
@@ -20,11 +19,130 @@ sources:
   kind: media
   governing_body: Naharnet Media
   state_affiliated: false
-  notes: Beirut digital news service covering Lebanese politics, regional clashes,
-    and economic updates.
+  notes: Beirut digital news service covering Lebanese politics, regional clashes, and economic updates.
   feeds:
   - url: https://www.naharnet.com/rss/lebanon
     category_hint: internal_politics
+- id: nna_en
+  name: National News Agency (English)
+  homepage: http://nna-leb.gov.lb/en
+  language: en
+  scope: domestic
+  kind: official
+  governing_body: Ministry of Information (Lebanese Republic)
+  state_affiliated: true
+  notes: Official statutory wire agency of the Lebanese Republic providing government, judicial, and security communiques.
+  feeds:
+  - url: http://nna-leb.gov.lb/en/rss
+    category_hint: internal_politics
+- id: nna_ar
+  name: National News Agency (Arabic)
+  homepage: http://nna-leb.gov.lb/ar
+  language: ar
+  scope: domestic
+  kind: official
+  governing_body: Ministry of Information (Lebanese Republic)
+  state_affiliated: true
+  notes: Official Arabic-language wire dispatches from the Lebanese Ministry of Information.
+  feeds:
+  - url: http://nna-leb.gov.lb/ar/rss
+    category_hint: internal_politics
+- id: beirut_today_lb
+  name: Beirut Today
+  homepage: https://beirut-today.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Beirut Today Journalism Platform
+  state_affiliated: false
+  notes: Independent, community-supported digital journalism platform covering human rights, politics, and culture in Lebanon.
+  feeds:
+  - url: https://beirut-today.com/feed/
+    category_hint: society
+- id: janoubia_lb
+  name: Janoubia
+  homepage: https://janoubia.com
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: Janoubia Media Agency
+  state_affiliated: false
+  notes: Independent Lebanese investigative news platform specializing in southern Lebanon politics and civil rights.
+  feeds:
+  - url: https://janoubia.com/feed/
+    category_hint: internal_politics
+- id: executive_magazine_lb
+  name: Executive Magazine
+  homepage: https://executive-magazine.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: NewsMedia SAL
+  state_affiliated: false
+  notes: Longstanding Lebanese monthly economic and policy magazine covering banking restructuring, energy, and fiscal governance.
+  feeds:
+  - url: https://executive-magazine.com/feed
+    category_hint: economics
+- id: lebanonfiles_lb
+  name: Lebanon Files
+  homepage: https://www.lebanonfiles.com
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: Lebanon Files Media
+  state_affiliated: false
+  notes: Beirut digital news agency covering continuous political, parliamentary, and security developments across Lebanon.
+  feeds:
+  - url: https://www.lebanonfiles.com/rss/
+    category_hint: internal_politics
+- id: the_public_source_lb
+  name: The Public Source
+  homepage: https://thepublicsource.org
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: The Public Source Collective
+  state_affiliated: false
+  notes: Beirut-based independent investigative media organization reporting from the Left on socio-economic crises and structural justice.
+  feeds:
+  - url: https://thepublicsource.org/feed
+    category_hint: society
+- id: legal_agenda_lb
+  name: The Legal Agenda
+  homepage: https://legal-agenda.com
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: Legal Agenda Foundation
+  state_affiliated: false
+  notes: Prominent Lebanese legal research and advocacy journalism organization examining judicial independence, corruption, and draft legislation.
+  feeds:
+  - url: https://legal-agenda.com/feed/
+    category_hint: internal_politics
+- id: now_lebanon
+  name: NOW Lebanon
+  homepage: https://nowlebanon.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: NOW Media
+  state_affiliated: false
+  notes: Independent digital publication covering Lebanese politics, regional proxy dynamics, and economic recovery.
+  feeds:
+  - url: https://nowlebanon.com/feed/
+    category_hint: internal_politics
+- id: un_lebanon
+  name: United Nations Lebanon
+  homepage: https://lebanon.un.org
+  language: en
+  scope: domestic
+  kind: official
+  governing_body: United Nations Country Team Lebanon
+  state_affiliated: false
+  notes: Official UN agency updates on peacekeeping, border security, humanitarian relief, and institutional reconstruction.
+  feeds:
+  - url: https://lebanon.un.org/en/rss.xml
+    category_hint: society
 - id: gnews_lebanon_intl
   name: Google News (Lebanon Ceasefire & Governance)
   homepage: https://news.google.com

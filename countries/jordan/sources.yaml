@@ -7,8 +7,7 @@ sources:
   kind: media
   governing_body: Jordan Press Foundation
   state_affiliated: false
-  notes: Amman daily broadsheet paper of record covering royal decrees, foreign policy,
-    and economic reforms.
+  notes: Amman daily broadsheet paper of record covering royal decrees, foreign policy, and economic reforms.
   feeds:
   - url: https://jordantimes.com/rss.xml
     category_hint: internal_politics
@@ -24,6 +23,114 @@ sources:
   feeds:
   - url: https://en.royanews.tv/rss/local
     category_hint: internal_politics
+- id: roya_news_ar
+  name: Roya News (Arabic)
+  homepage: https://royanews.tv
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: Sayegh Group
+  state_affiliated: false
+  notes: Flagship Arabic-language digital and broadcast news reporting across Amman and Jordanian governorates.
+  feeds:
+  - url: https://royanews.tv/rss
+    category_hint: internal_politics
+- id: seven_iber_jo
+  name: 7iber
+  homepage: https://www.7iber.com
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: 7iber Media
+  state_affiliated: false
+  notes: Independent Jordanian in-depth investigative journalism magazine analyzing public policy, civil rights, and social justice.
+  feeds:
+  - url: https://www.7iber.com/feed/
+    category_hint: society
+- id: alwakeel_news
+  name: Al-Wakeel News
+  homepage: https://www.alwakeelnews.com
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: Wakeel Group
+  state_affiliated: false
+  notes: Prominent electronic daily news platform providing local reporting across Jordanian governorates.
+  feeds:
+  - url: https://www.alwakeelnews.com/rss/
+    category_hint: internal_politics
+- id: sawaleif_jo
+  name: Sawaleif
+  homepage: https://sawaleif.com
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: Sawaleif Publishing
+  state_affiliated: false
+  notes: Independent Jordanian electronic political commentary and investigative daily newspaper.
+  feeds:
+  - url: https://sawaleif.com/feed/
+    category_hint: internal_politics
+- id: menafn_jordan
+  name: MENAFN (Jordan)
+  homepage: https://menafn.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Middle East North Africa Financial Network
+  state_affiliated: false
+  notes: Financial and economic intelligence wire covering Amman Stock Exchange, banking, and bilateral investment.
+  feeds:
+  - url: https://menafn.com/rss/menafn_Jordan.xml
+    category_hint: economics
+- id: zad_jordan
+  name: Zad Jordan News
+  homepage: https://www.zadjordan.com
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: Zad Jordan Media Agency
+  state_affiliated: false
+  notes: Established Jordanian electronic daily news portal covering cabinet affairs, parliament, and regional relations.
+  feeds:
+  - url: https://www.zadjordan.com/rss/
+    category_hint: internal_politics
+- id: saraha_news
+  name: Saraha News
+  homepage: https://www.sarahanews.net
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: Saraha Media
+  state_affiliated: false
+  notes: Jordanian news platform providing breaking political updates and parliamentary coverage.
+  feeds:
+  - url: https://www.sarahanews.net/feed/
+    category_hint: internal_politics
+- id: albalad_news_jo
+  name: Al Balad News
+  homepage: https://albaladnews.net
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: Al Balad News Agency
+  state_affiliated: false
+  notes: Jordanian electronic portal covering royal court announcements, national security, and civic news.
+  feeds:
+  - url: https://albaladnews.net/feed/
+    category_hint: internal_politics
+- id: un_jordan
+  name: United Nations Jordan
+  homepage: https://jordan.un.org
+  language: en
+  scope: domestic
+  kind: official
+  governing_body: United Nations Country Team Jordan
+  state_affiliated: false
+  notes: Official UN agency reports on humanitarian assistance, refugee coordination, and macroeconomic resilience in Jordan.
+  feeds:
+  - url: https://jordan.un.org/en/rss.xml
+    category_hint: society
 - id: gnews_jordan_intl
   name: Google News (Jordan Diplomacy & Regional Stability - International)
   homepage: https://news.google.com
