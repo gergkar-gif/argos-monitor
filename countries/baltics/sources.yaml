@@ -10,6 +10,8 @@ sources:
   notes: English-language service of Estonian statutory public broadcaster covering
     Baltic defense, digital governance, and regional security.
   feeds:
+  - url: https://news.err.ee/rss
+    category_hint: internal_politics
   - url: https://news.google.com/rss/search?q=site:news.err.ee+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: lsm_eng_lv
@@ -138,4 +140,84 @@ sources:
   notes: Historic Latvian daily broadsheet paper of record founded during the Singing Revolution in 1990.
   feeds:
   - url: https://www.diena.lv/rss/
+    category_hint: internal_politics
+
+- id: err_ee
+  name: ERR Uudised
+  homepage: https://www.err.ee
+  language: et
+  scope: domestic
+  kind: media
+  governing_body: Eesti Rahvusringhääling (Estonian Public Broadcasting)
+  state_affiliated: false
+  notes: Flagship Estonian-language news portal of statutory public broadcaster covering government, economy, and Baltic security.
+  feeds:
+  - url: https://www.err.ee/rss
+    category_hint: internal_politics
+
+- id: postimees_ee
+  name: Postimees
+  homepage: https://www.postimees.ee
+  language: et
+  scope: domestic
+  kind: media
+  governing_body: Postimees Grupp
+  state_affiliated: false
+  notes: Primary Estonian-language broadsheet paper of record and digital news daily.
+  feeds:
+  - url: https://postimees.ee/rss
+    category_hint: internal_politics
+
+- id: gnews_baltics_et
+  name: Google News (Estonia - Estonian)
+  homepage: https://news.google.com
+  language: et
+  scope: domestic
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss?hl=et&gl=EE&ceid=EE:et
+    category_hint: internal_politics
+  - url: https://news.google.com/rss/search?q=(Eesti+OR+Riigikogu+OR+valitsus)+when:3d&hl=et&gl=EE&ceid=EE:et
+    category_hint: internal_politics
+
+- id: lrt_lt_direct
+  name: LRT Naujienos
+  homepage: https://www.lrt.lt
+  language: lt
+  scope: domestic
+  kind: media
+  governing_body: Lietuvos nacionalinis radijas ir televizija (LRT)
+  state_affiliated: false
+  notes: Flagship Lithuanian-language public service portal covering Seimas affairs, national defense, and regional politics.
+  feeds:
+  - url: https://www.lrt.lt/naujienos/lietuva?rss
+    category_hint: internal_politics
+
+- id: gnews_baltics_lt
+  name: Google News (Lithuania - Lithuanian)
+  homepage: https://news.google.com
+  language: lt
+  scope: domestic
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss?hl=lt&gl=LT&ceid=LT:lt
+    category_hint: internal_politics
+
+- id: gnews_baltics_lv
+  name: Google News (Latvia - Latvian)
+  homepage: https://news.google.com
+  language: lv
+  scope: domestic
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss?hl=lv&gl=LV&ceid=LV:lv
     category_hint: internal_politics

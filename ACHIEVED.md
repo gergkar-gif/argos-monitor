@@ -2,6 +2,12 @@
 
 Completed items moved from `docs/roadmap.md` per project handover rules.
 
+- **Pipeline Throughput Optimization & Baltic States Native Feed Expansion** — **Done 2026-11-12.**
+  - Resolved root cause of stale story clusters on GitHub Actions: unconstrained `extract` stage previously attempted full-text HTML extraction on 8,000+ pending articles across 1,360+ feeds before clustering, causing GitHub Actions workflows to exceed runner time limits (150 minutes) and stall before `cluster` or `export` could run.
+  - Reordered pipeline stages in `run.py` and `.github/workflows/daily.yml` to cluster and rank stories first via lightweight ONNX title/lead embeddings (~2 minutes), followed by targeted article text extraction only for active story candidates (`ARGOS_EXTRACT_STORY_ONLY=1`, `ARGOS_EXTRACT_LIMIT=400`), reducing full pipeline execution time to ~10–12 minutes.
+  - Expanded the Baltic States desk (`countries/baltics/sources.yaml` and `pack.yaml`) with native Estonian, Latvian, and Lithuanian feeds: added Estonian Public Broadcasting (`ERR Uudised` in Estonian via `err.ee/rss`), Postimees (`postimees.ee/rss`), Google News Estonia (`hl=et`), Lithuanian Public Broadcaster (`LRT Naujienos` in Lithuanian via `lrt.lt`), and Google News Latvia/Lithuania native aggregators. Updated `mention` patterns to recognize Estonian, Latvian, and Lithuanian native country names and leaders (`eesti`, `latvija`, `lietuva`, `riigikogu`, `saeima`, `seimas`). Total feeds increased to 1,373 across 1,195 catalogued sources.
+  - Hardened `site/app.js` and `site/index.html`: synchronized period state so 7-day fallback files never display under a "last 24 hours" header, added explicit "No stories found in this time period" empty states instead of blank views, and bumped script version to `app.js?v=3.7` for instant cache busting.
+
 - **Global Native-Language Aggregator Standardization Across All 87 Desks** — **Done 2026-11-12.**
   - Conducted global audit of all 87 country packs for aggregator presence and primary language coverage. Identified 36 non-English desks with English-only aggregator queries that failed to capture daily domestic news cycles when direct feeds were quiet or bot-restricted.
   - Implemented automated migration tool (`tools/upgrade_aggregators.py`) and equipped all 36 deficit packs with high-yield native-language Google News aggregator streams (Arabic across MENA, French in Morocco/Belgium, Spanish across Latin America, Portuguese in Brazil/Portugal, German, Russian, Turkish, Vietnamese, Chinese, Hebrew, etc.).

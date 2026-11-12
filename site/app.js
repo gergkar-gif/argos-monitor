@@ -1643,10 +1643,11 @@
     const totalStories = (q || movementFilter !== 'all') ? stories.length : Object.values(d.totals).reduce((a, b) => a + b, 0);
     const updated = new Date(d.generated_at);
     const ageH = (Date.now() - updated) / 3.6e6;
-    if (d && d.period && period.value !== d.period && period.querySelector(`option[value="${d.period}"]`)) {
-      period.value = d.period;
+    const detectedPeriod = (d && d.period) || (d && d.days === 1 ? '24h' : '7d');
+    if (period.querySelector(`option[value="${detectedPeriod}"]`)) {
+      period.value = detectedPeriod;
     }
-    const periodLabel = (period.options[period.selectedIndex] ? period.options[period.selectedIndex].text : (d.period === '24h' ? 'Last 24 hours' : 'Last 7 days')).toLowerCase();
+    const periodLabel = (period.options[period.selectedIndex] ? period.options[period.selectedIndex].text : (detectedPeriod === '24h' ? 'Last 24 hours' : 'Last 7 days')).toLowerCase();
 
     const tabs = h('ul', { class: 'tabs', role: 'list' },
       [['all', 'All topics'], ...TOPICS.map((t) => [t.id, t.name])].map(([id, label]) =>
@@ -1658,7 +1659,11 @@
     if (openTopic === 'all') {
       const order = TOPICS.map((t) => t.id).filter((id) => byTopic(id).length)
         .sort((a, b) => (a === 'other') - (b === 'other') || byTopic(b)[0].score - byTopic(a)[0].score);
-      order.forEach((id) => body.push(drawer(id, byTopic(id), count(id), PER_TOPIC_IN_OVERVIEW + (extra[id] || 0))));
+      if (order.length) {
+        order.forEach((id) => body.push(drawer(id, byTopic(id), count(id), PER_TOPIC_IN_OVERVIEW + (extra[id] || 0))));
+      } else {
+        body.push(h('p', { class: 'state quiet', text: q ? `No stories match "${q}" here.` : `No stories found for ${country.options[country.selectedIndex] ? country.options[country.selectedIndex].text : 'this desk'} in this time period.` }));
+      }
     } else if (byTopic(openTopic).length) {
       const topicStories = byTopic(openTopic);
       const isAll = Boolean(extra[openTopic + '_all']);
@@ -1754,9 +1759,12 @@
       render();
     } catch {
       try {
+        const requestedLabel = period.options[period.selectedIndex] ? period.options[period.selectedIndex].text : '24-hour';
         current = await load(`${c.id}-7d.json`);
-        period.value = '7d';
-        fallbackNotice = `No separate ${period.options[period.selectedIndex] ? period.options[period.selectedIndex].text : '24-hour'} snapshot was found for ${c.name}. Showing the last 7 days instead.`;
+        if (period.querySelector('option[value="7d"]')) {
+          period.value = '7d';
+        }
+        fallbackNotice = `No separate ${requestedLabel} snapshot was found for ${c.name}. Showing the last 7 days instead.`;
         render();
       } catch {
         results.replaceChildren(h('p', { class: 'state error',

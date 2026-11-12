@@ -38,7 +38,7 @@ A scheduled GitHub Actions workflow runs daily at 21:17 UTC, updating the SQLite
 
 ```mermaid
 flowchart LR
-    A["01 · Ingest<br/>1,360+ RSS & Google News feeds"] --> B["02 · Extract<br/>Trafilatura full-text"]
+    A["01 · Ingest<br/>1,370+ RSS & Google News feeds"] --> B["02 · Extract<br/>Trafilatura full-text"]
     B --> C["03 · Normalise<br/>Unicode NFC"]
     C --> D["04 · Relevance<br/>Section & mention gate"]
     D --> E["05 · Embed<br/>ONNX multilingual-e5-small"]

@@ -1,5 +1,5 @@
 """Run the pipeline. `python run.py` runs every stage; `python run.py extract` runs one
-(ingest | extract | normalise | relevance | embed | cluster | classify | policy | rank | excerpts | verify | export | crisis | trends | reddit | watch | prune | report | top | sample)."""
+(ingest | normalise | relevance | embed | cluster | classify | policy | rank | extract | excerpts | verify | translate | export | crisis | trends | reddit | watch | prune | report | top | sample)."""
 import sys
 
 from argos import classify, cluster, db as dbmod, embed, crisis, excerpts, export, extract, ingest, normalise, policy, prune, rank, relevance, translate, trends, reddit, social, watch
@@ -63,7 +63,7 @@ STAGES = {"ingest": ingest.run, "extract": extract.run, "normalise": normalise.r
 if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
     db = dbmod.connect()
-    for name in sys.argv[1:] or ["ingest", "extract", "normalise", "relevance", "embed", "cluster", "classify", "policy", "rank", "excerpts", "verify", "translate", "export", "crisis", "trends", "reddit", "social", "watch", "prune", "report"]:
+    for name in sys.argv[1:] or ["ingest", "normalise", "relevance", "embed", "cluster", "classify", "policy", "rank", "extract", "excerpts", "verify", "translate", "export", "crisis", "trends", "reddit", "social", "watch", "prune", "report"]:
         print(f"\n== {name}")
         try:
             STAGES[name](db)
