@@ -14,7 +14,7 @@ DISALLOWED_TOP_LEVEL_KEYS = {"skip_sections", "dateline", "subreddits"}
 VALID_TOP_LEVEL_KEYS = {
     "id", "name", "region", "language", "abroad_label", "mention", "mention_regex",
     "mention_section", "url_sections", "excerpt", "reddit", "geo", "aggregator_outlets",
-    "bluesky", "telegram", "crisis_names", "classify",
+    "bluesky", "telegram", "crisis_names", "classify", "last_reviewed",
 }
 
 

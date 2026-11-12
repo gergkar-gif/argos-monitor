@@ -157,7 +157,7 @@ sources:
   state_affiliated: false
   aggregator: google_news
   feeds:
-  - url: https://news.google.com/rss/search?q=(Syria+OR+Damascus)+(Assad+OR+airstrike+OR+ceasefire+OR+diplomacy)+when:3d&hl=en-US&gl=US&ceid=US:en
+  - url: https://news.google.com/rss/search?q=(Syria+OR+Damascus)+(Assad+OR+Sharaa+OR+government+OR+airstrike+OR+ceasefire+OR+diplomacy)+when:3d&hl=en-US&gl=US&ceid=US:en
     section: Security & Diplomacy
     category_hint: defence_security
 - id: gnews_syria_ar

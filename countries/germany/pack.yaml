@@ -13,12 +13,15 @@ mention:
   - "bundesrat"
   - "scholz"
   - "olaf scholz"
+  - "merz"
+  - "friedrich merz"
   - "habeck"
   - "robert habeck"
   - "lindner"
   - "christian lindner"
   - "baerbock"
   - "annalena baerbock"
+  - "bundeskanzler"
   - "bundesbank"
   - "bundeswehr"
   - "chancellery"
@@ -80,3 +83,4 @@ classify:
 
 geo: DE
 reddit: [geopolitics, de, germanpolitics]
+last_reviewed: 2026-11-12

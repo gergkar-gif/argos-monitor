@@ -13,20 +13,33 @@ mention:
 - latakia
 - bashar al-assad
 - assad
+- ahmed al-sharaa
+- al-sharaa
+- sharaa
+- abu mohammad al-julani
+- julani
+- transitional government
+- أحمد الشرع
+- الشرع
+- الجولاني
+- دمشق
+- سوريا
 - sna
 - sdf
 - htsh
 - sohr
 - syrian observatory
-dateline: ^\s*(?:DAMASCUS|ALEPPO|SANA|SYRIA)\s*[-–:]\s*
-subreddits:
+url_sections:
+  skip:
+  - sport
+  - sports
+  - football
+  - lifestyle
+excerpt:
+  dateline: ^\s*(?:DAMASCUS|ALEPPO|SANA|SYRIA)\s*[-–:]\s*
+reddit:
 - syriancivilwar
 - syria
-skip_sections:
-- sport
-- sports
-- football
-- lifestyle
 geo: SY
 aggregator_outlets:
   domestic:
@@ -37,3 +50,4 @@ aggregator_outlets:
   - The Syria Report
   - Syrian Observatory
   - North Press Agency
+last_reviewed: 2026-11-12

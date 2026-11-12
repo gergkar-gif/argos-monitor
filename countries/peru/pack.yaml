@@ -13,22 +13,26 @@ mention:
 - cusco
 - dina boluarte
 - boluarte
+- gustavo adrianzén
+- adrianzén
 - congreso de la república
 - torre tagle
 - minería
 - southern copper
 - fujimorismo
 - bcrp
-dateline: ^\s*(?:LIMA|AREQUIPA|ANDINA|CUSCO|PERU)\s*[-–:]\s*
-subreddits:
+url_sections:
+  skip:
+  - deportes
+  - futbol
+  - espectaculos
+  - farandula
+  - tendencias
+excerpt:
+  dateline: ^\s*(?:LIMA|AREQUIPA|ANDINA|CUSCO|PERU)\s*[-–:]\s*
+reddit:
 - PERU
 - Lima
-skip_sections:
-- deportes
-- futbol
-- espectaculos
-- farandula
-- tendencias
 geo: PE
 aggregator_outlets:
   domestic:
@@ -42,3 +46,4 @@ aggregator_outlets:
   - InSight Crime
   - El País América
   - Infobae Perú
+last_reviewed: 2026-11-12

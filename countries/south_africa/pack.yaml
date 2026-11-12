@@ -69,3 +69,4 @@ geo: ZA
 
 # Subreddits for the Reddit panel (first is primary; all are polled in one combined feed).
 reddit: [southafrica, DownSouth, PersonalFinanceZA, johannesburg, capetown, durban]
+last_reviewed: 2026-11-12

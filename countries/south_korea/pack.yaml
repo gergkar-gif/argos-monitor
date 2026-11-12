@@ -16,6 +16,7 @@ mention:
   - "daejeon"
   - "yoon suk yeol"
   - "yoon"
+  - "han duck-soo"
   - "han dong-hoon"
   - "lee jae-myung"
   - "ppp"
@@ -41,6 +42,7 @@ mention:
   - "인천"
   - "대구"
   - "윤석열"
+  - "한덕수"
   - "한동훈"
   - "이재명"
   - "국민의힘"
@@ -116,3 +118,4 @@ classify:
 
 geo: KR
 reddit: [korea, seoul, southkorea]
+last_reviewed: 2026-11-12

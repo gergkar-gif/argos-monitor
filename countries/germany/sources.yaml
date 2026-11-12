@@ -78,7 +78,7 @@ sources:
   aggregator: google_news
   notes: Aggregator feed tracking Federal Chancellery, Bundestag, and party politics.
   feeds:
-  - url: https://news.google.com/rss/search?q=Scholz+OR+Bundestag+OR+Koalition+OR+Bundesregierung+when:3d&hl=de&gl=DE&ceid=DE:de
+  - url: https://news.google.com/rss/search?q=Bundeskanzler+OR+Bundestag+OR+Bundesregierung+OR+Koalition+OR+Scholz+OR+Merz+when:3d&hl=de&gl=DE&ceid=DE:de
     category_hint: internal_politics
 - id: google_news_germany_economy
   name: Google News (Germany Industry & Economy)
