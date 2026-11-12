@@ -2,6 +2,11 @@
 
 Completed items moved from `docs/roadmap.md` per project handover rules.
 
+- **Workflow Schedule Frequency Optimization & Quota Protection** — **Done 2026-11-12.**
+  - Reverted automated pipeline schedule in `.github/workflows/daily.yml` from every 3 hours to once daily at 21:17 UTC (04:17 Indochina Time / 22:17 CET).
+  - Preserves GitHub Actions monthly runner quota (2,000 minutes) across all 87 desks (~1,000 feeds) while ensuring daily morning briefs are updated and ready before 07:00 local time.
+  - Updated documentation, architecture diagrams, and pipeline telemetry in `README.md`, `docs/decisions.md` (D28), and `site/about.html` per Rule 6 and Rule 7 with zero emojis.
+
 - **Searchable Country Combobox Standardisation Across Site** — **Done 2026-11-10.**
   - Standardised the Country Brief searchable combobox component (`combobox-wrap`, keyboard arrow/enter navigation, typeahead filtering across country names, IDs, regions, and mention aliases) across all site sections: `site/index.html`, `site/brief.html`, and `site/about.html`.
   - In `site/brief.html`, replaced native `<select id="b-country">` with full searchable combobox component, syncing instant URL hash routing, region groupings, and diplomatic dispatch generation.

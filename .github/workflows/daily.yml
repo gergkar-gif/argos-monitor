@@ -1,13 +1,11 @@
 name: Daily digest
 
-# Collects the news for every country pack and publishes the site to Cloudflare Pages, every 3 hours.
-# Most outlets publish one feed of their latest 30-60 items, which a busy outlet fills in a few hours, so a single
-# daily run would miss most of the day's news. A normal run takes about 10 minutes. GitHub starts scheduled jobs
-# late when it is busy (one run started more than three hours late), so the run at 21:17 UTC (04:17 in Vietnam,
-# 23:17 in Hungary) leaves a margin for the page to be fresh by 07:00. The odd minute avoids the top of the hour.
+# Collects the news for every country pack and publishes the site to Cloudflare Pages, once daily at 21:17 UTC.
+# Runs at 21:17 UTC (04:17 in Vietnam / 22:17 in Hungary), leaving a generous margin for the morning review
+# to be fresh and ready by 07:00 local time without exhausting monthly GitHub Actions runner minutes.
 on:
   schedule:
-    - cron: "17 */3 * * *"
+    - cron: "17 21 * * *"
   workflow_dispatch:
   push:
     branches: [main]

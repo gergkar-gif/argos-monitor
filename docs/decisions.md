@@ -169,6 +169,12 @@ Following section 10 of the product brief, analysts require direct visibility in
 - **Zero-LLM & Evidence Integrity:**
   - All delta metrics are computed deterministically in SQLite during export and embedded in the static `.json` export bundles. Every movement badge links to the verified underlying article cluster. Detailed schema in `docs/delta_spec.md`.
 
+## 2026-11-12: schedule frequency optimization
+
+**D28. Revert automated workflow schedule from every 3 hours to once daily at 21:17 UTC.**
+With 87 country desks expanded to 10+ sources each (~1,000 feeds, full text extraction, ONNX embeddings, and clustering), running every 3 hours caused runner minute exhaustion on GitHub Actions and excessive workflow duration. Switching to a single daily execution at 21:17 UTC (04:17 Indochina Time / 22:17 CET) preserves the 2,000 monthly runner quota, guarantees a fresh brief ready before 07:00 local time, and avoids runner timeouts.
+
+
 
 
 

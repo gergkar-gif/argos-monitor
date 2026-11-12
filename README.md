@@ -34,7 +34,7 @@ Unlike LLM-based news summarizers—which risk hallucinated claims, flattened di
 
 ## Architecture & 11-Stage Pipeline
 
-A scheduled GitHub Actions workflow runs every 3 hours, updating the SQLite store and publishing static JSON/JS data bundles to Cloudflare Pages:
+A scheduled GitHub Actions workflow runs daily at 21:17 UTC, updating the SQLite store and publishing static JSON/JS data bundles to Cloudflare Pages:
 
 ```mermaid
 flowchart LR
