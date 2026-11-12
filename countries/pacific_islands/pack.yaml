@@ -20,18 +20,20 @@ mention:
 - sitiveni rabuka
 - james marape
 - jeremiah manele
-dateline: ^\s*(?:SUVA|PORT MORESBY|HONIARA|APIA|NUKU'ALOFA|PIF)\s*[-–:]\s*
-subreddits:
+url_sections:
+  skip:
+  - sport
+  - sports
+  - lifestyle
+  - entertainment
+  - rugby
+excerpt:
+  dateline: ^\s*(?:SUVA|PORT MORESBY|HONIARA|APIA|NUKU'ALOFA|PIF)\s*[-–:]\s*
+reddit:
 - PacificIslands
 - fiji
 - PapuaNewGuinea
 - solomonislands
-skip_sections:
-- sport
-- sports
-- lifestyle
-- entertainment
-- rugby
 geo: FJ
 aggregator_outlets:
   domestic:

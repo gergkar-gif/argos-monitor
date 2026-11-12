@@ -18,16 +18,18 @@ mention:
 - ps
 - chega
 - banco de portugal
-dateline: ^\s*(?:LISBOA|LISBON|PORTO|LUSA|PORTUGAL)\s*[-–:]\s*
-subreddits:
+url_sections:
+  skip:
+  - desporto
+  - futebol
+  - fama
+  - vida
+  - gente
+excerpt:
+  dateline: ^\s*(?:LISBOA|LISBON|PORTO|LUSA|PORTUGAL)\s*[-–:]\s*
+reddit:
 - portugal
 - portugueses
-skip_sections:
-- desporto
-- futebol
-- fama
-- vida
-- gente
 geo: PT
 aggregator_outlets:
   domestic:

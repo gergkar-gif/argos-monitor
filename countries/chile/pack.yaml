@@ -19,16 +19,18 @@ mention:
 - camila vallejo
 - cobre
 - codelco
-dateline: ^\s*(?:SANTIAGO|VALPARAÍSO|CONCEPCIÓN|EFE|CHILE)\s*[-–:]\s*
-subreddits:
+url_sections:
+  skip:
+  - deportes
+  - futbol
+  - espectaculos
+  - tendencias
+  - vida-social
+excerpt:
+  dateline: ^\s*(?:SANTIAGO|VALPARAÍSO|CONCEPCIÓN|EFE|CHILE)\s*[-–:]\s*
+reddit:
 - chile
 - RepublicadeChile
-skip_sections:
-- deportes
-- futbol
-- espectaculos
-- tendencias
-- vida-social
 geo: CL
 aggregator_outlets:
   domestic:

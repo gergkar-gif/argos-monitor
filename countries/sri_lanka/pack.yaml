@@ -17,15 +17,17 @@ mention:
 - central bank of sri lanka
 - cbsl
 - imf sri lanka
-dateline: ^\s*(?:COLOMBO|KANDY|SRI LANKA)\s*[-–:]\s*
-subreddits:
+url_sections:
+  skip:
+  - cricket
+  - sports
+  - entertainment
+  - lifestyle
+excerpt:
+  dateline: ^\s*(?:COLOMBO|KANDY|SRI LANKA)\s*[-–:]\s*
+reddit:
 - srilanka
 - srilankasports
-skip_sections:
-- cricket
-- sports
-- entertainment
-- lifestyle
 geo: LK
 aggregator_outlets:
   domestic:

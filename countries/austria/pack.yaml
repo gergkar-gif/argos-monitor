@@ -21,17 +21,19 @@ mention:
 - spö
 - oenb
 - bundeskanzler
-dateline: ^\s*(?:WIEN|VIENNA|APA|SALZBURG|AUSTRIA)\s*[-–:]\s*
-subreddits:
+url_sections:
+  skip:
+  - sport
+  - fussball
+  - lifestyle
+  - leute
+  - stars
+  - boulevard
+excerpt:
+  dateline: ^\s*(?:WIEN|VIENNA|APA|SALZBURG|AUSTRIA)\s*[-–:]\s*
+reddit:
 - Austria
 - wien
-skip_sections:
-- sport
-- fussball
-- lifestyle
-- leute
-- stars
-- boulevard
 geo: AT
 aggregator_outlets:
   domestic:

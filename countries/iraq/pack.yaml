@@ -17,16 +17,18 @@ mention:
 - council of representatives
 - pmu
 - hashd
-dateline: ^\s*(?:BAGHDAD|ERBIL|BASRA|INA|IRAQ)\s*[-–:]\s*
-subreddits:
+url_sections:
+  skip:
+  - sport
+  - sports
+  - football
+  - lifestyle
+  - celebrity
+excerpt:
+  dateline: ^\s*(?:BAGHDAD|ERBIL|BASRA|INA|IRAQ)\s*[-–:]\s*
+reddit:
 - iraq
 - kurdistan
-skip_sections:
-- sport
-- sports
-- football
-- lifestyle
-- celebrity
 geo: IQ
 aggregator_outlets:
   domestic:

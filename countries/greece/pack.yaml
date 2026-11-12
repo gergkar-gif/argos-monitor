@@ -18,16 +18,18 @@ mention:
 - vouli
 - aegean
 - evros
-dateline: ^\s*(?:ATHENS|THESSALONIKI|ANA-MPA|AMNA|GREECE)\s*[-–:]\s*
-subreddits:
+url_sections:
+  skip:
+  - sport
+  - sports
+  - football
+  - lifestyle
+  - lifestyle-showbiz
+excerpt:
+  dateline: ^\s*(?:ATHENS|THESSALONIKI|ANA-MPA|AMNA|GREECE)\s*[-–:]\s*
+reddit:
 - greece
 - greececirclejerk
-skip_sections:
-- sport
-- sports
-- football
-- lifestyle
-- lifestyle-showbiz
 geo: GR
 aggregator_outlets:
   domestic:

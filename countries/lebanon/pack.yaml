@@ -7,9 +7,11 @@ mention:
 - lebanon
 - lebanese
 - beirut
-- tripoli
+- tripoli, lebanon
+- tripoli lebanon
 - sidon
-- tyre
+- sour
+- tyre district
 - bekaa
 - southern lebanon
 - najib mikati
@@ -20,16 +22,18 @@ mention:
 - unifil
 - blue line
 - banque du liban
-dateline: ^\s*(?:BEIRUT|BEYROUTH|NNA|ANI|LEBANON)\s*[-–:]\s*
-subreddits:
+url_sections:
+  skip:
+  - sport
+  - sports
+  - entertainment
+  - celebrity
+  - lifestyle
+excerpt:
+  dateline: ^\s*(?:BEIRUT|BEYROUTH|NNA|ANI|LEBANON)\s*[-–:]\s*
+reddit:
 - lebanon
 - beirut
-skip_sections:
-- sport
-- sports
-- entertainment
-- celebrity
-- lifestyle
 geo: LB
 aggregator_outlets:
   domestic:

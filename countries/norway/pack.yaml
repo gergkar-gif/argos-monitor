@@ -18,17 +18,19 @@ mention:
 - equinor
 - høyre
 - erna solberg
-dateline: ^\s*(?:OSLO|BERGEN|TRONDHEIM|NTB|NORWAY)\s*[-–:]\s*
-subreddits:
+url_sections:
+  skip:
+  - sport
+  - sports
+  - fotball
+  - lifestyle
+  - rampelys
+  - kjendis
+excerpt:
+  dateline: ^\s*(?:OSLO|BERGEN|TRONDHEIM|NTB|NORWAY)\s*[-–:]\s*
+reddit:
 - norge
 - norway
-skip_sections:
-- sport
-- sports
-- fotball
-- lifestyle
-- rampelys
-- kjendis
 geo: 'NO'
 aggregator_outlets:
   domestic:

@@ -4,12 +4,23 @@
     themes.yaml   the country's additions to the shared themes.yaml
 """
 import re
+import unicodedata
 from functools import lru_cache
 from urllib.parse import urlparse
 
 import yaml
 
 from .config import COUNTRIES_DIR, ROOT
+
+
+def _term_regex(term):
+    """Anchor term with word boundaries for spaced scripts, avoiding substring false positives."""
+    escaped = re.escape(term)
+    if any(any(unicodedata.name(ch, "").startswith(p) for p in ("CJK", "HIRAGANA", "KATAKANA", "THAI", "KHMER", "LAO", "HANGUL")) for ch in term):
+        return escaped
+    prefix = r"\b" if re.match(r"^\w", term, re.UNICODE) else ""
+    suffix = r"\b" if re.match(r".*\w$", term, re.UNICODE) else ""
+    return f"{prefix}{escaped}{suffix}"
 
 
 def _read(path):
@@ -27,14 +38,19 @@ def load(country):
     pack["sources"] = _read(d / "sources.yaml")["sources"]
     for src in pack["sources"]:
         src["id"] = str(src["id"])      # an id like 444 is read by YAML as a number
-    parts = [re.escape(w) for w in pack["mention"]] + list(pack.get("mention_regex") or [])
+    parts = [_term_regex(w) for w in pack.get("mention", [])] + list(pack.get("mention_regex") or [])
     pack["mention_re"] = re.compile("|".join(parts), re.I)
     sections = pack.get("url_sections") or {}
+    skip = sections.get("skip") or pack.get("skip_sections") or []
     pack["foreign_sections"] = {s.lower() for s in sections.get("foreign", [])}
-    pack["skip_sections"] = {s.lower() for s in sections.get("skip", [])}
+    pack["skip_sections"] = {s.lower() for s in skip}
     ex = pack.get("excerpt") or {}
-    pack["dateline_re"] = re.compile(ex["dateline"], re.I) if ex.get("dateline") else None
-    pack["noise_re"] = re.compile(ex["noise"], re.I) if ex.get("noise") else None
+    dateline = ex.get("dateline") or pack.get("dateline")
+    pack["dateline_re"] = re.compile(dateline, re.I) if dateline else None
+    noise = ex.get("noise") or pack.get("noise")
+    pack["noise_re"] = re.compile(noise, re.I) if noise else None
+    if "reddit" not in pack and "subreddits" in pack:
+        pack["reddit"] = pack["subreddits"]
     pack["themes"] = merged_themes(d)
     return pack
 

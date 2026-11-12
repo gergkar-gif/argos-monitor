@@ -21,17 +21,19 @@ mention:
 - albert rösti
 - snb
 - swiss national bank
-dateline: ^\s*(?:BERN|ZÜRICH|GENÈVE|SDA|ATS|KEYSTONE)\s*[-–:]\s*
-subreddits:
+url_sections:
+  skip:
+  - sport
+  - sport-aktuell
+  - lifestyle
+  - unterhaltung
+  - panorama
+excerpt:
+  dateline: ^\s*(?:BERN|ZÜRICH|GENÈVE|SDA|ATS|KEYSTONE)\s*[-–:]\s*
+reddit:
 - switzerland
 - askswitzerland
 - buenzli
-skip_sections:
-- sport
-- sport-aktuell
-- lifestyle
-- unterhaltung
-- panorama
 geo: CH
 aggregator_outlets:
   domestic:

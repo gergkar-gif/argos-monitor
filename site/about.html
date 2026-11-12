@@ -105,16 +105,16 @@
 
   <section id="pipeline">
     <h2>How the 11-stage pipeline works</h2>
-    <p>A scheduled GitHub Actions runner executes the pipeline daily at 21:17 UTC and publishes static JSON/JS bundles to Cloudflare Pages:</p>
+    <p>A scheduled GitHub Actions runner executes the pipeline daily at 21:17 UTC and publishes static JSON/JS bundles to Cloudflare Pages. <em>Scope and sampling:</em> Argos provides a curated daily press overview of approximately 10–15 national outlets per country desk, captured once every 24 hours. It is designed for structured diplomatic signal monitoring rather than exhaustive continuous archival, so articles published and pushed off rapid-cycle RSS feeds between runs are not captured.</p>
     <div class="pipeline">
       <div class="step"><b>01 · Ingest</b><span>Polls 1,370+ RSS/Atom and news feeds via curl with Media Cloud-inspired HTTP 304 conditional GETs (ETag/Last-Modified), tracking query parameter stripping, exponential backoff error quarantine, and direct SQLite article ingestion of verified GDELT 2.0 real-time conflict URLs.</span></div>
       <div class="step"><b>02 · Extract</b><span>Fetches full article text with Trafilatura for domestic and accessible sources.</span></div>
       <div class="step"><b>03 · Normalise</b><span>Applies Unicode NFC normalisation (crucial for Vietnamese diacritics and Khmer script).</span></div>
       <div class="step"><b>04 · Relevance</b><span>Filters out sports/lifestyle sections and requires country mentions on world feeds.</span></div>
       <div class="step"><b>05 · Embed</b><span>Encodes headlines and leads locally using ONNX Runtime (<code>intfloat/multilingual-e5-small</code>).</span></div>
-      <div class="step"><b>06 · Cluster</b><span>Groups articles into stories via agglomerative cosine clustering + second-pass centroid merge, and flags syndicated reprints.</span></div>
+      <div class="step"><b>06 · Cluster</b><span>Groups articles into stories via agglomerative cosine clustering + second-pass centroid merge, flags syndicated reprints, and selects authoritative representative headlines over fringe opinion pieces.</span></div>
       <div class="step"><b>07 · Classify</b><span>Assigns each story to one of 6 policy topics by cosine similarity against bilingual topic anchors.</span></div>
-      <div class="step"><b>08 · Policy &amp; Rank</b><span>Scores stories by independent outlet count, scope diversity, recency, EMM-inspired Poisson velocity Z-score surge detection, and policy themes (<code>themes.yaml</code>).</span></div>
+      <div class="step"><b>08 · Policy &amp; Rank</b><span>Scores stories by independent outlet consensus, scope diversity, recency, Poisson surge detection, and rebalanced policy theme multipliers (<code>themes.yaml</code>).</span></div>
       <div class="step"><b>09 · Excerpts &amp; Verify</b><span>Selects informative sentences prioritized by quotation markers and reporting attribution verbs (EMM Quotefinder pattern), asserting each quote is an exact substring of the stored article text.</span></div>
       <div class="step"><b>10 · Offline Translation</b><span>Translates non-English representative headlines into English using CPU-friendly MarianMT sequence-to-sequence models with entity glossaries, caching results in SQLite while keeping original text authoritative.</span></div>
       <div class="step"><b>11 · Signals &amp; Export</b><span>Merges GDELT 2.0 real-time CAMEO conflict streams, optional ACLED events, GDACS/USGS/NASA EONET hazard sensors, UN Peace &amp; Security/Crisis Group/HRW/LWJ/MSF field monitors, FCDO/US State Dept advisories, and auxiliary social signals into static bundles.</span></div>
@@ -295,8 +295,8 @@
         <span>Categorisation uses a hierarchical dual-stage classifier: structured URL paths and RSS section feeds (e.g. <code>/thoi-su/</code>, <code>/the-gioi/</code>, <code>/wirtschaft/</code>) provide authoritative native categorization, cross-referenced with multilingual dense embeddings (<code>intfloat/multilingual-e5-small</code>) evaluated against bilingual policy description anchors.</span>
       </div>
       <div class="step">
-        <b>03 · Policy Weighting Formulation</b>
-        <span>Story ranking combines coverage volume with policy domain importance defined in <code>themes.yaml</code>: <code>Score = Volume &times; (0.4 + 0.8 &times; Weight) + 3 &times; Weight</code>. Diplomacy, trade, and strategic security carry top weight (0.9–1.0), elevating pivotal institutional developments over viral tabloid trivia.</span>
+        <b>03 · Policy Weighting &amp; Multi-Outlet Consensus</b>
+        <span>Story ranking combines verified editorial coverage with policy domain importance: <code>Score = Coverage &times; (0.6 + 0.5 &times; Policy) + 1.2 &times; Policy + Election_Bonus</code>. To prevent single-outlet fluff from leapfrogging genuine national news due to coincidental keyword matches, confirmed coverage is amplified when corroborated across 3+ independent outlets (+1.0) and 5+ outlets (+2.0 + 0.5 &times; (N &minus; 5)), while policy importance acts primarily as a multiplier on confirmed coverage rather than an unchecked flat additive bonus.</span>
       </div>
       <div class="step">
         <b>04 · Local Incident Suppression</b>

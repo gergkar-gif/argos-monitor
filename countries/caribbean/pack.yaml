@@ -20,19 +20,21 @@ mention:
 - irfaan ali
 - andrew holness
 - keith rowley
-dateline: ^\s*(?:KINGSTON|PORT OF SPAIN|BRIDGETOWN|GEORGETOWN|NASSAU|CARICOM)\s*[-–:]\s*
-subreddits:
+url_sections:
+  skip:
+  - sport
+  - sports
+  - lifestyle
+  - entertainment
+  - celebrity
+excerpt:
+  dateline: ^\s*(?:KINGSTON|PORT OF SPAIN|BRIDGETOWN|GEORGETOWN|NASSAU|CARICOM)\s*[-–:]\s*
+reddit:
 - Caribbean
 - Jamaica
 - TrinidadandTobago
 - Barbados
 - Guyana
-skip_sections:
-- sport
-- sports
-- lifestyle
-- entertainment
-- celebrity
 geo: JM
 aggregator_outlets:
   domestic:

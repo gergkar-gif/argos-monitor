@@ -27,18 +27,20 @@ mention:
 - assimi goïta
 - ibrahim traoré
 - abdourahamane tchiani
-dateline: ^\s*(?:DAKAR|ACCRA|ABIDJAN|BAMAKO|OUAGADOUGOU|NIAMEY|ECOWAS|CEDEAO)\s*[-–:]\s*
-subreddits:
+url_sections:
+  skip:
+  - sport
+  - sports
+  - football
+  - lifestyle
+  - culture
+excerpt:
+  dateline: ^\s*(?:DAKAR|ACCRA|ABIDJAN|BAMAKO|OUAGADOUGOU|NIAMEY|ECOWAS|CEDEAO)\s*[-–:]\s*
+reddit:
 - westafrica
 - senegal
 - ghana
 - cotedivoire
-skip_sections:
-- sport
-- sports
-- football
-- lifestyle
-- culture
 geo: SN
 aggregator_outlets:
   domestic:

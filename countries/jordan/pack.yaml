@@ -16,16 +16,18 @@ mention:
 - safadi
 - hashemite
 - petra
-dateline: ^\s*(?:AMMAN|AQABA|PETRA|JORDAN)\s*[-–:]\s*
-subreddits:
+url_sections:
+  skip:
+  - sport
+  - sports
+  - football
+  - lifestyle
+  - celebrity
+excerpt:
+  dateline: ^\s*(?:AMMAN|AQABA|PETRA|JORDAN)\s*[-–:]\s*
+reddit:
 - jordan
 - amman
-skip_sections:
-- sport
-- sports
-- football
-- lifestyle
-- celebrity
 geo: JO
 aggregator_outlets:
   domestic:

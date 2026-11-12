@@ -21,18 +21,20 @@ mention:
 - groenlinks
 - tweede kamer
 - minister-president
-dateline: ^\s*(?:DEN HAAG|AMSTERDAM|ROTTERDAM|ANP|UTRECHT)\s*[-–:]\s*
-subreddits:
+url_sections:
+  skip:
+  - sport
+  - sportnieuws
+  - voetbal
+  - lifestyle
+  - entertainment
+  - showbizz
+excerpt:
+  dateline: ^\s*(?:DEN HAAG|AMSTERDAM|ROTTERDAM|ANP|UTRECHT)\s*[-–:]\s*
+reddit:
 - thenetherlands
 - netherlands
 - Politiek
-skip_sections:
-- sport
-- sportnieuws
-- voetbal
-- lifestyle
-- entertainment
-- showbizz
 geo: NL
 aggregator_outlets:
   domestic:

@@ -27,15 +27,16 @@ mention:
   - "lok sabha"
   - "rajya sabha"
   - "bjp"
-  - "congress"
+  - "congress party"
+  - "indian national congress"
   - "rbi"
   - "reserve bank of india"
   - "supreme court of india"
-  - "lac"
+  - "line of actual control"
   - "ladakh"
   - "kashmir"
 
-mention_regex: ['\b(?:india|indian|delhi|mumbai|modi|jaishankar|bjp|congress|ladakh)\b']
+mention_regex: ['\b(?:india|indian|delhi|mumbai|modi|jaishankar|bjp|congress party|ladakh)\b']
 mention_section: null
 
 url_sections:

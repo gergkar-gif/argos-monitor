@@ -10,6 +10,33 @@ import yaml
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
 
+DISALLOWED_TOP_LEVEL_KEYS = {"skip_sections", "dateline", "subreddits"}
+VALID_TOP_LEVEL_KEYS = {
+    "id", "name", "region", "language", "abroad_label", "mention", "mention_regex",
+    "mention_section", "url_sections", "excerpt", "reddit", "geo", "aggregator_outlets",
+    "bluesky", "telegram", "crisis_names", "classify",
+}
+
+
+def audit_packs_schema():
+    countries_dir = ROOT / "countries"
+    errors = []
+    for d in sorted(countries_dir.iterdir()):
+        pf = d / "pack.yaml"
+        if not pf.exists():
+            continue
+        with open(pf, "r", encoding="utf-8") as f:
+            data = yaml.safe_load(f) or {}
+        keys = set(data.keys())
+        disallowed = keys & DISALLOWED_TOP_LEVEL_KEYS
+        if disallowed:
+            errors.append(f"{d.name}: disallowed top-level keys {sorted(disallowed)}")
+        unknown = keys - VALID_TOP_LEVEL_KEYS
+        if unknown:
+            errors.append(f"{d.name}: unrecognized top-level keys {sorted(unknown)}")
+    return errors
+
+
 def audit_sources(min_required=10):
     countries_dir = ROOT / "countries"
     packs = sorted([d for d in countries_dir.iterdir() if (d / "sources.yaml").exists()])
@@ -48,9 +75,17 @@ def audit_sources(min_required=10):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Audit independent source depth across country packs.")
     parser.add_argument("--min", type=int, default=10, help="Minimum direct sources required (default: 10)")
-    parser.add_argument("--fail-under", action="store_true", help="Exit with code 1 if any country is under minimum")
+    parser.add_argument("--fail-under", action="store_true", help="Exit with code 1 if any country is under minimum or schema fails")
     args = parser.parse_args()
 
     results = audit_sources(min_required=args.min)
-    if args.fail_under and any(not r["compliant"] for r in results):
+    schema_errors = audit_packs_schema()
+    if schema_errors:
+        print(f"\n[FAIL] Pack Schema Errors ({len(schema_errors)}):")
+        for err in schema_errors:
+            print(f"  - {err}")
+    else:
+        print("\n[PASS] All 87 pack.yaml files adhere strictly to standard schema.")
+
+    if args.fail_under and (any(not r["compliant"] for r in results) or schema_errors):
         sys.exit(1)

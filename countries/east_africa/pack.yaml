@@ -23,19 +23,21 @@ mention:
 - paul kagame
 - al-burhan
 - hemeti
-dateline: ^\s*(?:DAR ES SALAAM|KAMPALA|KIGALI|KHARTOUM|MOGADISHU|EAC)\s*[-–:]\s*
-subreddits:
+url_sections:
+  skip:
+  - sport
+  - sports
+  - football
+  - lifestyle
+  - showbiz
+excerpt:
+  dateline: ^\s*(?:DAR ES SALAAM|KAMPALA|KIGALI|KHARTOUM|MOGADISHU|EAC)\s*[-–:]\s*
+reddit:
 - EastAfrica
 - tanzania
 - uganda
 - rwanda
 - Sudan
-skip_sections:
-- sport
-- sports
-- football
-- lifestyle
-- showbiz
 geo: TZ
 aggregator_outlets:
   domestic:

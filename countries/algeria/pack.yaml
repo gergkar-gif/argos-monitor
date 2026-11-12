@@ -16,16 +16,18 @@ mention:
 - nadir larbaoui
 - ahmed attaf
 - sonatrach
-dateline: ^\s*(?:ALGER|ALGIERS|APS|ALGÉRIE)\s*[-–:]\s*
-subreddits:
+url_sections:
+  skip:
+  - sport
+  - sports
+  - football
+  - lifestyle
+  - people
+excerpt:
+  dateline: ^\s*(?:ALGER|ALGIERS|APS|ALGÉRIE)\s*[-–:]\s*
+reddit:
 - algeria
 - algerie
-skip_sections:
-- sport
-- sports
-- football
-- lifestyle
-- people
 geo: DZ
 aggregator_outlets:
   domestic:

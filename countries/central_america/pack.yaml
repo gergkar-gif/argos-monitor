@@ -26,21 +26,23 @@ mention:
 - xiomara castro
 - rodrigo chaves
 - josé raúl mulino
-dateline: ^\s*(?:CIUDAD DE GUATEMALA|SAN SALVADOR|TEGUCIGALPA|MANAGUA|SAN JOSÉ|CIUDAD
-  DE PANAMÁ|PANAMÁ|SICA)\s*[-–:]\s*
-subreddits:
+url_sections:
+  skip:
+  - deportes
+  - futbol
+  - espectaculos
+  - fama
+  - vida
+excerpt:
+  dateline: ^\s*(?:CIUDAD DE GUATEMALA|SAN SALVADOR|TEGUCIGALPA|MANAGUA|SAN JOSÉ|CIUDAD
+    DE PANAMÁ|PANAMÁ|SICA)\s*[-–:]\s*
+reddit:
 - CentralAmerica
 - guatemala
 - elsalvador
 - Honduras
 - Ticos
 - Panama
-skip_sections:
-- deportes
-- futbol
-- espectaculos
-- fama
-- vida
 geo: PA
 aggregator_outlets:
   domestic:

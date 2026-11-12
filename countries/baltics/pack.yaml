@@ -31,17 +31,19 @@ mention:
 - riigikogu
 - saeima
 - seimas
-dateline: ^\s*(?:TALLINN|RIGA|VILNIUS|BNS|BALTICS)\s*[-–:]\s*
-subreddits:
+url_sections:
+  skip:
+  - sport
+  - sports
+  - entertainment
+  - lifestyle
+excerpt:
+  dateline: ^\s*(?:TALLINN|RIGA|VILNIUS|BNS|BALTICS)\s*[-–:]\s*
+reddit:
 - BalticStates
 - eesti
 - latvia
 - lithuania
-skip_sections:
-- sport
-- sports
-- entertainment
-- lifestyle
 geo: EE
 aggregator_outlets:
   domestic:

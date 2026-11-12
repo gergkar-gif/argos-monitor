@@ -18,16 +18,18 @@ mention:
 - pnl
 - aur
 - usr
-dateline: ^\s*(?:BUCUREȘTI|BUCHAREST|AGERPRES|ROMANIA)\s*[-–:]\s*
-subreddits:
+url_sections:
+  skip:
+  - sport
+  - fotbal
+  - monden
+  - life
+  - vedete
+excerpt:
+  dateline: ^\s*(?:BUCUREȘTI|BUCHAREST|AGERPRES|ROMANIA)\s*[-–:]\s*
+reddit:
 - romania
 - RomaniaPorn
-skip_sections:
-- sport
-- fotbal
-- monden
-- life
-- vedete
 geo: RO
 aggregator_outlets:
   domestic:

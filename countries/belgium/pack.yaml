@@ -19,18 +19,20 @@ mention:
 - european commission
 - vlaanderen
 - wallonie
-dateline: ^\s*(?:BRUXELLES|BRUSSEL|BELGA|BELGIUM)\s*[-–:]\s*
-subreddits:
+url_sections:
+  skip:
+  - sport
+  - football
+  - lifestyle
+  - people
+  - buzz
+excerpt:
+  dateline: ^\s*(?:BRUXELLES|BRUSSEL|BELGA|BELGIUM)\s*[-–:]\s*
+reddit:
 - belgium
 - brussels
 - wallonia
 - vlaanderen
-skip_sections:
-- sport
-- football
-- lifestyle
-- people
-- buzz
 geo: BE
 aggregator_outlets:
   domestic:

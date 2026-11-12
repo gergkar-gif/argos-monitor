@@ -55,7 +55,7 @@ CIVIC_EXTRA = {
 
 
 def _subs(pack):
-    r = pack.get("reddit") or []
+    r = pack.get("reddit") or pack.get("subreddits") or []
     return [r] if isinstance(r, str) else list(r)
 
 

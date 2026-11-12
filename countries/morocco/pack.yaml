@@ -19,16 +19,18 @@ mention:
 - makhzen
 - sahara occidental
 - western sahara
-dateline: ^\s*(?:RABAT|CASABLANCA|MAP|MAROC)\s*[-–:]\s*
-subreddits:
+url_sections:
+  skip:
+  - sport
+  - sports
+  - football
+  - lifestyle
+  - people
+excerpt:
+  dateline: ^\s*(?:RABAT|CASABLANCA|MAP|MAROC)\s*[-–:]\s*
+reddit:
 - morocco
 - Moroccanfootball
-skip_sections:
-- sport
-- sports
-- football
-- lifestyle
-- people
 geo: MA
 aggregator_outlets:
   domestic:

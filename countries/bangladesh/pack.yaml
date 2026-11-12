@@ -18,15 +18,17 @@ mention:
 - tarique rahman
 - sheikh hasina
 - hasina
-dateline: ^\s*(?:DHAKA|CHITTAGONG|BSS|UNB|BANGLADESH)\s*[-–:]\s*
-subreddits:
+url_sections:
+  skip:
+  - cricket
+  - sports
+  - entertainment
+  - lifestyle
+excerpt:
+  dateline: ^\s*(?:DHAKA|CHITTAGONG|BSS|UNB|BANGLADESH)\s*[-–:]\s*
+reddit:
 - bangladesh
 - dhaka
-skip_sections:
-- cricket
-- sports
-- entertainment
-- lifestyle
 geo: BD
 aggregator_outlets:
   domestic:

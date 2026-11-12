@@ -18,16 +18,18 @@ mention:
 - conflicto armado interno
 - correa
 - revolución ciudadana
-dateline: ^\s*(?:QUITO|GUAYAQUIL|CUENCA|ECUADOR)\s*[-–:]\s*
-subreddits:
+url_sections:
+  skip:
+  - deportes
+  - futbol
+  - entretenimiento
+  - farandula
+  - gente
+excerpt:
+  dateline: ^\s*(?:QUITO|GUAYAQUIL|CUENCA|ECUADOR)\s*[-–:]\s*
+reddit:
 - ecuador
 - guayaquil
-skip_sections:
-- deportes
-- futbol
-- entretenimiento
-- farandula
-- gente
 geo: EC
 aggregator_outlets:
   domestic:

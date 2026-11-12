@@ -17,17 +17,19 @@ mention:
 - fianna fáil
 - fine gael
 - sinn féin
-dateline: ^\s*(?:DUBLIN|CORK|BELFAST|IRELAND)\s*[-–:]\s*
-subreddits:
+url_sections:
+  skip:
+  - sport
+  - sports
+  - rugby
+  - gaa
+  - lifestyle
+  - showbiz
+excerpt:
+  dateline: ^\s*(?:DUBLIN|CORK|BELFAST|IRELAND)\s*[-–:]\s*
+reddit:
 - ireland
 - irishpolitics
-skip_sections:
-- sport
-- sports
-- rugby
-- gaa
-- lifestyle
-- showbiz
 geo: IE
 aggregator_outlets:
   domestic:
