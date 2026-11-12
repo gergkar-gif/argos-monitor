@@ -37,6 +37,46 @@ sources:
   - url: https://news.google.com/rss/search?q=(Algeria+OR+Algiers)+(Tebboune+OR+gas+OR+energy+OR+diplomacy)+when:3d&hl=en-US&gl=US&ceid=US:en
     section: Energy & Politics
     category_hint: economics
+- id: gnews_algeria_fr
+  name: Google News (Algeria National News - French)
+  homepage: https://news.google.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=Alg%C3%A9rie+OR+Tebboune+OR+gouvernement+OR+Sonatrach+when:3d&hl=fr&gl=DZ&ceid=DZ:fr
+    section: National News
+    category_hint: internal_politics
+- id: gnews_algeria_aps
+  name: Google News (Algérie Presse Service Wire)
+  homepage: https://news.google.com
+  language: fr
+  scope: domestic
+  kind: official
+  governing_body: Democratic and Popular Republic of Algeria
+  state_affiliated: true
+  aggregator: google_news
+  notes: Aggregator feed capturing official APS dispatches following the deprecation of direct public RSS on aps.dz.
+  feeds:
+  - url: https://news.google.com/rss/search?q=source:%22Alg%C3%A9rie+Presse+Service%22+when:3d&hl=fr&gl=DZ&ceid=DZ:fr
+    section: Official Wire
+    category_hint: internal_politics
+- id: gnews_algeria_ar
+  name: Google News (Algeria National News - Arabic)
+  homepage: https://news.google.com
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=%D8%A7%D9%84%D8%AC%D8%B2%D8%A7%D8%A6%D8%B1+when:3d&hl=ar&gl=DZ&ceid=DZ:ar
+    section: National News (Arabic)
+    category_hint: internal_politics
 - id: algerie360_dz
   name: Algerie360
   homepage: https://www.algerie360.com

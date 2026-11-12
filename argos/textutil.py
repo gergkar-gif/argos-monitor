@@ -80,12 +80,21 @@ def clean_url(raw_url):
 
 def parse_date(entry):
     """ISO UTC string or None. Handles feedparser's parsed time, plus the 'M/D/YYYY h:mm:ss AM' format
-    that Tuoi Tre and Bao Chinh phu use (Vietnam time)."""
+    that Tuoi Tre and Bao Chinh phu use (Vietnam time), and ISO 8601 strings."""
     if entry.get("published_parsed"):
         return datetime(*entry.published_parsed[:6], tzinfo=timezone.utc).isoformat(timespec="seconds")
     raw = (entry.get("published") or entry.get("updated") or "").strip()
+    if not raw:
+        return None
     try:
         d = datetime.strptime(raw, "%m/%d/%Y %I:%M:%S %p").replace(tzinfo=VN)
         return d.astimezone(timezone.utc).isoformat(timespec="seconds")
     except ValueError:
+        pass
+    try:
+        d = datetime.fromisoformat(raw.replace("Z", "+00:00"))
+        if d.tzinfo is None:
+            d = d.replace(tzinfo=timezone.utc)
+        return d.astimezone(timezone.utc).isoformat(timespec="seconds")
+    except (ValueError, TypeError):
         return None

@@ -2,6 +2,11 @@
 
 Completed items moved from `docs/roadmap.md` per project handover rules.
 
+- **Algeria Feed Ingestion & Date Parser Resilience** — **Done 2026-11-12.**
+  - Identified why Algeria previously had 0 stories in 24 hours: state agency `aps.dz` deprecated public open RSS feeds (`https://www.aps.dz/algerie/feed`), direct feeds were constrained, and the single aggregator feed was restricted to an English-only energy subset.
+  - Added French, Arabic, and official APS Google News aggregators (`gnews_algeria_fr`, `gnews_algeria_ar`, `gnews_algeria_aps`) in `countries/algeria/sources.yaml`, guaranteeing continuous daily coverage of Algerian domestic governance, economics, and foreign policy without relying on defunct direct endpoints.
+  - Enhanced `parse_date` in `argos/textutil.py` with ISO 8601 fallback parsing, preventing feed entries with standard ISO timestamps from falling back to NULL publication dates.
+
 - **Window Slicing & Period Fallback Integrity Fix** — **Done 2026-11-12.**
   - Fixed client-side period label deception in `site/app.js`: when a requested period snapshot (such as `24h`) was missing, the client previously loaded the `7d` dataset while leaving the period header and dropdown claiming "last 24 hours", causing 2-day-old news to appear under a 24-hour banner.
   - Hardened `site/app.js` and `site/brief.html`: now dynamically limits period selection to available country periods (`c.periods`), synchronizes the dropdown/header to the actual data period (`d.period`), and displays a clear disclaimer banner whenever fallback to 7-day coverage occurs.
