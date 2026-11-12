@@ -1,220 +1,170 @@
+# Kyrgyzstan source registry (decision D15).
+# Combines independent investigative & news portals (Kloop, 24.kg, Kaktus.media via Google News), national news agency Kabar via Google News, regional & exile press (RFE/RL Azattyk, The Times of Central Asia), and international wires.
+
 sources:
-- id: kloop_kg
-  name: Kloop Media
-  homepage: https://kloop.kg
-  language: ky
-  scope: domestic
-  kind: media
-  governing_body: Kloop Media Public Foundation (award-winning independent investigative
-    outlet)
-  state_affiliated: false
-  feeds:
-  - url: https://kloop.kg/feed/
-    section: Жаңылыктар
-    category_hint: general
-- id: news24_kg
-  name: 24.kg
-  homepage: https://24.kg
-  language: ru
-  scope: domestic
-  kind: media
-  governing_body: 24.kg News Agency (independent national daily portal in Bishkek)
-  state_affiliated: false
-  feeds:
-  - url: https://24.kg/rss/
-    section: Новости
-    category_hint: general
-- id: gnews_kg_domestic
-  name: Kaktus.media / AKIpress (Independent Digital Media via Google News)
-  homepage: https://kaktus.media
-  language: ru
-  scope: domestic
-  kind: media
-  aggregator: google_news
-  governing_body: Kaktus Media & AKIpress News Agency
-  state_affiliated: false
-  feeds:
-  - url: https://news.google.com/rss/search?q=(site:kaktus.media+OR+site:akipress.org)+when:1d&hl=ru&gl=RU&ceid=RU:ru
-    section: Главные новости
-    category_hint: general
-- id: gnews_kg_official
-  name: Kabar / President.kg (Official State Press via Google News)
-  homepage: https://kabar.kg
-  language: ky
-  scope: domestic
-  kind: official
-  aggregator: google_news
-  governing_body: Kyrgyz National News Agency Kabar & Administration of the President
-  state_affiliated: true
-  feeds:
-  - url: https://news.google.com/rss/search?q=(site:kabar.kg+OR+site:president.kg)+when:7d&hl=ru&gl=RU&ceid=RU:ru
-    section: Расмий
-    category_hint: general
-- id: gnews_kg_abroad
-  name: Azattyk / Times of Central Asia (Regional & Exile Press via Google News)
-  homepage: https://www.azattyk.org
-  language: ky
-  scope: abroad_local
-  kind: media
-  aggregator: google_news
-  governing_body: Radio Free Europe / Radio Liberty (Azattyk) & The Times of Central
-    Asia
-  state_affiliated: false
-  feeds:
-  - url: https://news.google.com/rss/search?q=(site:azattyk.org+OR+site:timesca.com)+when:7d&hl=en-US&gl=US&ceid=US:en
-    section: Regional
-    category_hint: general
-- id: gnews_en_kg
-  name: Google News (Kyrgyzstan - International)
-  homepage: https://news.google.com
-  language: en
-  scope: international
-  kind: media
-  aggregator: google_news
-  governing_body: n/a (aggregator)
-  state_affiliated: false
-  feeds:
-  - url: https://news.google.com/rss/search?q=Kyrgyzstan+(Bishkek+OR+Japarov+OR+Tashiev+OR+parliament)+when:1d&hl=en-US&gl=US&ceid=US:en
-    section: Kyrgyzstan politics & governance
-    category_hint: internal_politics
-  - url: https://news.google.com/rss/search?q=Kyrgyzstan+(railway+OR+Kumtor+OR+Tajikistan+OR+China+OR+hydropower)+when:1d&hl=en-US&gl=US&ceid=US:en
-    section: Kyrgyzstan economy & borders
-    category_hint: foreign_policy
-- id: economist_kg
-  name: Economist.kg
-  homepage: https://economist.kg
-  language: ru
-  scope: domestic
-  kind: media
-  governing_body: Economist Media
-  state_affiliated: false
-  notes: Dedicated financial and macroeconomic news agency covering investment and
-    state budgets in Kyrgyzstan.
-  feeds:
-  - url: https://economist.kg/feed/
-    category_hint: economics
-- id: kabar_kg
-  name: Kabar National News Agency
-  homepage: https://kabar.kg
-  language: ru
-  scope: domestic
-  kind: official
-  governing_body: Kyrgyz National News Agency Kabar
-  state_affiliated: true
-  notes: Official statutory state news agency covering presidency, parliament, and
-    ministerial decrees.
-  feeds:
-  - url: https://kabar.kg/rss/
-    category_hint: internal_politics
-- id: akipress_kg
-  name: AKIpress News Agency
-  homepage: https://akipress.com
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: AKIpress News Agency
-  state_affiliated: false
-  notes: First independent news agency in Kyrgyzstan providing daily reporting on
-    politics and regional affairs.
-  feeds:
-  - url: https://akipress.com/rss/
-    category_hint: internal_politics
-- id: vesti_kg
-  name: Vesti.kg
-  homepage: https://vesti.kg
-  language: ru
-  scope: domestic
-  kind: media
-  governing_body: Vesti.kg Editorial Board
-  state_affiliated: false
-  notes: Independent political and analytical news daily in Bishkek.
-  feeds:
-  - url: https://vesti.kg/rss.xml
-    category_hint: internal_politics
-- id: tazabek_kg
-  name: Tazabek
-  homepage: https://www.tazabek.kg
-  language: ru
-  scope: domestic
-  kind: media
-  governing_body: AKIpress Information Group
-  state_affiliated: false
-  notes: Specialized Kyrgyz business news service covering mining, trade, and banking.
-  feeds:
-  - url: https://www.tazabek.kg/rss/
-    category_hint: economics
-- id: knews_kg
-  name: K-News
-  homepage: https://knews.kg
-  language: ru
-  scope: domestic
-  kind: media
-  governing_body: K-News Agency
-  state_affiliated: false
-  notes: Independent news agency covering domestic politics, governance, and public
-    events in Kyrgyzstan.
-  feeds:
-  - url: https://knews.kg/feed/
-    category_hint: general
-- id: bulak_kg
-  name: Bulak.kg
-  homepage: https://bulak.kg
-  language: ru
-  scope: domestic
-  kind: media
-  governing_body: Bulak Media Group
-  state_affiliated: false
-  notes: Kyrgyz online news agency reporting on social, political, and economic developments.
-  feeds:
-  - url: https://bulak.kg/feed/
-    category_hint: general
-- id: elgezit_kg
-  name: Elgezit.kg
-  homepage: https://elgezit.kg
-  language: ru
-  scope: domestic
-  kind: media
-  governing_body: Elgezit Analytical Editorial
-  state_affiliated: false
-  notes: Analytical and socio-political portal covering governance and state policies
-    in Kyrgyzstan.
-  feeds:
-  - url: https://elgezit.kg/feed/
-    category_hint: internal_politics
-- id: bbc_news_asia
-  name: BBC News (Asia)
-  homepage: https://www.bbc.com/news/world/asia
-  language: en
-  scope: international
-  kind: media
-  governing_body: BBC (British Broadcasting Corporation)
-  state_affiliated: false
-  notes: Covers Asia; only items explicitly referencing the country are ingested.
-  feeds:
-  - url: https://feeds.bbci.co.uk/news/world/asia/rss.xml
-    category_hint: general
-- id: dw_english
-  name: Deutsche Welle (English)
-  homepage: https://www.dw.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Deutsche Welle (German public statutory international broadcaster)
-  state_affiliated: true
-  notes: Global broadcast feed; filtered strictly by country mention words.
-  feeds:
-  - url: https://rss.dw.com/rdf/rss-en-all
-    category_hint: general
-- id: aljazeera_english
-  name: Al Jazeera English
-  homepage: https://www.aljazeera.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Al Jazeera Media Network
-  state_affiliated: true
-  notes: Global Middle Eastern & developing world coverage; filtered by country mention
-    words.
-  feeds:
-  - url: https://www.aljazeera.com/xml/rss/all.xml
-    category_hint: general
+  - id: kloop_kg
+    name: Kloop Media
+    homepage: https://kloop.kg
+    language: ky
+    scope: domestic
+    kind: media
+    governing_body: Kloop Media Public Foundation (award-winning independent investigative outlet)
+    state_affiliated: false
+    feeds:
+      - {url: "https://kloop.kg/feed/", section: Жаңылыктар, category_hint: general}
+
+  - id: news24_kg
+    name: 24.kg
+    homepage: https://24.kg
+    language: ru
+    scope: domestic
+    kind: media
+    governing_body: 24.kg News Agency (independent national daily portal in Bishkek)
+    state_affiliated: false
+    feeds:
+      - {url: "https://24.kg/rss/", section: Новости, category_hint: general}
+
+  - id: gnews_kg_domestic
+    name: Kaktus.media / AKIpress (Independent Digital Media via Google News)
+    homepage: https://kaktus.media
+    language: ru
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: Kaktus Media & AKIpress News Agency
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:kaktus.media+OR+site:akipress.org)+when:1d&hl=ru&gl=RU&ceid=RU:ru", section: Главные новости, category_hint: general}
+
+  - id: gnews_kg_official
+    name: Kabar / President.kg (Official State Press via Google News)
+    homepage: https://kabar.kg
+    language: ky
+    scope: domestic
+    kind: official
+    aggregator: google_news
+    governing_body: Kyrgyz National News Agency Kabar & Administration of the President
+    state_affiliated: true
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:kabar.kg+OR+site:president.kg)+when:7d&hl=ru&gl=RU&ceid=RU:ru", section: Расмий, category_hint: general}
+
+  - id: gnews_kg_abroad
+    name: Azattyk / Times of Central Asia (Regional & Exile Press via Google News)
+    homepage: https://www.azattyk.org
+    language: ky
+    scope: abroad_local
+    kind: media
+    aggregator: google_news
+    governing_body: Radio Free Europe / Radio Liberty (Azattyk) & The Times of Central Asia
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:azattyk.org+OR+site:timesca.com)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Regional, category_hint: general}
+
+  - id: gnews_en_kg
+    name: Google News (Kyrgyzstan - International)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Kyrgyzstan+(Bishkek+OR+Japarov+OR+Tashiev+OR+parliament)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Kyrgyzstan politics & governance, category_hint: internal_politics}
+      - {url: "https://news.google.com/rss/search?q=Kyrgyzstan+(railway+OR+Kumtor+OR+Tajikistan+OR+China+OR+hydropower)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Kyrgyzstan economy & borders, category_hint: foreign_policy}
+  - id: economist_kg
+    name: Economist.kg
+    homepage: https://economist.kg
+    language: ru
+    scope: domestic
+    kind: media
+    governing_body: Economist Media
+    state_affiliated: false
+    notes: Dedicated financial and macroeconomic news agency covering investment and state budgets in Kyrgyzstan.
+    feeds:
+    - url: https://economist.kg/feed/
+      category_hint: economics
+  - id: kabar_kg
+    name: Kabar National News Agency
+    homepage: https://kabar.kg
+    language: ru
+    scope: domestic
+    kind: official
+    governing_body: Kyrgyz National News Agency Kabar
+    state_affiliated: true
+    notes: Official statutory state news agency covering presidency, parliament, and ministerial decrees.
+    feeds:
+    - url: https://kabar.kg/rss/
+      category_hint: internal_politics
+  - id: akipress_kg
+    name: AKIpress News Agency
+    homepage: https://akipress.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: AKIpress News Agency
+    state_affiliated: false
+    notes: First independent news agency in Kyrgyzstan providing daily reporting on politics and regional affairs.
+    feeds:
+    - url: https://akipress.com/rss/
+      category_hint: internal_politics
+  - id: vesti_kg
+    name: Vesti.kg
+    homepage: https://vesti.kg
+    language: ru
+    scope: domestic
+    kind: media
+    governing_body: Vesti.kg Editorial Board
+    state_affiliated: false
+    notes: Independent political and analytical news daily in Bishkek.
+    feeds:
+    - url: https://vesti.kg/rss.xml
+      category_hint: internal_politics
+  - id: tazabek_kg
+    name: Tazabek
+    homepage: https://www.tazabek.kg
+    language: ru
+    scope: domestic
+    kind: media
+    governing_body: AKIpress Information Group
+    state_affiliated: false
+    notes: Specialized Kyrgyz business news service covering mining, trade, and banking.
+    feeds:
+    - url: https://www.tazabek.kg/rss/
+      category_hint: economics
+  - id: knews_kg
+    name: K-News
+    homepage: https://knews.kg
+    language: ru
+    scope: domestic
+    kind: media
+    governing_body: K-News Agency
+    state_affiliated: false
+    notes: Independent news agency covering domestic politics, governance, and public events in Kyrgyzstan.
+    feeds:
+    - url: https://knews.kg/feed/
+      category_hint: general
+  - id: bulak_kg
+    name: Bulak.kg
+    homepage: https://bulak.kg
+    language: ru
+    scope: domestic
+    kind: media
+    governing_body: Bulak Media Group
+    state_affiliated: false
+    notes: Kyrgyz online news agency reporting on social, political, and economic developments.
+    feeds:
+    - url: https://bulak.kg/feed/
+      category_hint: general
+  - id: elgezit_kg
+    name: Elgezit.kg
+    homepage: https://elgezit.kg
+    language: ru
+    scope: domestic
+    kind: media
+    governing_body: Elgezit Analytical Editorial
+    state_affiliated: false
+    notes: Analytical and socio-political portal covering governance and state policies in Kyrgyzstan.
+    feeds:
+    - url: https://elgezit.kg/feed/
+      category_hint: internal_politics

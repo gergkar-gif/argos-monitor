@@ -1,230 +1,186 @@
+# Mexico source registry (decision D15).
+# Combines papers of record (El Universal, La Jornada), financial daily (El Financiero), investigative digital journalism (Animal Político, Aristegui Noticias), and topical intelligence feeds.
+
 sources:
-- id: el_universal_mx
-  name: El Universal
-  homepage: https://www.eluniversal.com.mx
-  language: es
-  scope: domestic
-  kind: media
-  governing_body: El Universal Compañía Periodística Nacional (paper of record)
-  state_affiliated: false
-  feeds:
-  - url: https://www.eluniversal.com.mx/arc/outboundfeeds/rss/?outputType=xml
-    section: Portada
-    category_hint: general
-- id: la_jornada_mx
-  name: La Jornada
-  homepage: https://www.jornada.com.mx
-  language: es
-  scope: domestic
-  kind: media
-  governing_body: Demos Desarrollo de Medios (left-leaning paper of record)
-  state_affiliated: false
-  feeds:
-  - url: https://www.jornada.com.mx/rss/edicion.xml
-    section: Edición Digital
-    category_hint: internal_politics
-- id: el_financiero_mx
-  name: El Financiero
-  homepage: https://www.elfinanciero.com.mx
-  language: es
-  scope: domestic
-  kind: media
-  governing_body: Grupo Multimedia Lauman (financial and macroeconomic paper of record)
-  state_affiliated: false
-  feeds:
-  - url: https://www.elfinanciero.com.mx/arc/outboundfeeds/rss/?outputType=xml
-    section: Economía y Mercados
-    category_hint: economics
-- id: animal_politico_mx
-  name: Animal Político
-  homepage: https://animalpolitico.com
-  language: es
-  scope: domestic
-  kind: media
-  aggregator: google_news
-  governing_body: Editorial Animal S. de R.L. de C.V. (independent investigative portal)
-  state_affiliated: false
-  feeds:
-  - url: https://news.google.com/rss/search?q=site:animalpolitico.com+when:7d&hl=es-419&gl=MX&ceid=MX:es-419
-    section: Investigaciones
-    category_hint: internal_politics
-- id: aristegui_mx
-  name: Aristegui Noticias
-  homepage: https://aristeguinoticias.com
-  language: es
-  scope: domestic
-  kind: media
-  aggregator: google_news
-  governing_body: Aristegui Noticias (independent investigative daily)
-  state_affiliated: false
-  feeds:
-  - url: https://news.google.com/rss/search?q=site:aristeguinoticias.com+when:7d&hl=es-419&gl=MX&ceid=MX:es-419
-    section: Noticias
-    category_hint: general
-- id: gnews_mx_politics
-  name: Google News (Presidency, Judicial Reform & Congress)
-  homepage: https://news.google.com
-  language: es
-  scope: domestic
-  kind: media
-  aggregator: google_news
-  governing_body: n/a (aggregator)
-  state_affiliated: false
-  feeds:
-  - url: https://news.google.com/rss/search?q=(Sheinbaum+OR+Reforma+Judicial+OR+Congreso)+when:1d&hl=es-419&gl=MX&ceid=MX:es-419
-    section: Política Nacional
-    category_hint: internal_politics
-- id: gnews_mx_security
-  name: Google News (Security, Sedena & Cartels)
-  homepage: https://news.google.com
-  language: es
-  scope: domestic
-  kind: media
-  aggregator: google_news
-  governing_body: n/a (aggregator)
-  state_affiliated: false
-  feeds:
-  - url: https://news.google.com/rss/search?q=Mexico+(seguridad+OR+narcotrafico+OR+violencia+OR+GN+OR+Sedena)+when:1d&hl=es-419&gl=MX&ceid=MX:es-419
-    section: Seguridad
-    category_hint: defence_security
-- id: gnews_mx_tmec
-  name: Google News (T-MEC / USMCA, Tariffs & Border Diplomacy)
-  homepage: https://news.google.com
-  language: es
-  scope: international
-  kind: media
-  aggregator: google_news
-  governing_body: n/a (aggregator)
-  state_affiliated: false
-  feeds:
-  - url: https://news.google.com/rss/search?q=Mexico+(T-MEC+OR+frontera+OR+aranceles+OR+migracion)+when:1d&hl=es-419&gl=MX&ceid=MX:es-419
-    section: T-MEC y Diplomacia
-    category_hint: foreign_policy
-- id: lopezdoriga_mx
-  name: López-Dóriga Digital
-  homepage: https://lopezdoriga.com
-  language: es
-  scope: domestic
-  kind: media
-  governing_body: Joaquín López-Dóriga
-  state_affiliated: false
-  notes: Major independent national news portal and broadcast commentary on Mexican
-    governance and security.
-  feeds:
-  - url: https://lopezdoriga.com/feed/
-    category_hint: internal_politics
-- id: zonadocs_mx
-  name: ZonaDocs
-  homepage: https://zonadocs.mx
-  language: es
-  scope: domestic
-  kind: media
-  governing_body: Colectivo ZonaDocs (Guadalajara, Jalisco)
-  state_affiliated: false
-  notes: Independent investigative journalism collective specializing in human rights,
-    enforced disappearances, and justice in Western Mexico.
-  feeds:
-  - url: https://zonadocs.mx/feed/
-    category_hint: defence_security
-- id: contralinea_mx
-  name: Contralínea
-  homepage: https://contralinea.com.mx
-  language: es
-  scope: domestic
-  kind: media
-  governing_body: Contralínea Periodismo de Investigación
-  state_affiliated: false
-  notes: Independent investigative magazine specializing in national security, public
-    finance, Pemex, and corporate audits.
-  feeds:
-  - url: https://contralinea.com.mx/feed/
-    category_hint: internal_politics
-- id: polemon_mx
-  name: Polemón
-  homepage: https://polemon.mx
-  language: es
-  scope: domestic
-  kind: media
-  governing_body: Editorial Polemón
-  state_affiliated: false
-  notes: Independent political and cultural daily providing critical analysis of Mexican
-    party politics and media power.
-  feeds:
-  - url: https://polemon.mx/feed/
-    category_hint: internal_politics
-- id: lineadirecta_mx
-  name: Línea Directa
-  homepage: https://lineadirectaportal.com
-  language: es
-  scope: domestic
-  kind: media
-  governing_body: Grupo RSN (Sinaloa)
-  state_affiliated: false
-  notes: Major regional news network covering Northwest Mexico, Sinaloa agribusiness,
-    public safety, and state governance.
-  feeds:
-  - url: https://lineadirectaportal.com/feed/
-    category_hint: general
-- id: elcoahuilense_mx
-  name: El Coahuilense
-  homepage: https://elcoahuilense.com
-  language: es
-  scope: domestic
-  kind: media
-  governing_body: El Coahuilense Noticias
-  state_affiliated: false
-  notes: Northern Mexico independent daily covering Coahuila border economy, manufacturing,
-    migration, and local governance.
-  feeds:
-  - url: https://elcoahuilense.com/feed/
-    category_hint: economics
-- id: noro_mx
-  name: Noro
-  homepage: https://noro.mx
-  language: es
-  scope: domestic
-  kind: media
-  governing_body: Noro Media
-  state_affiliated: false
-  notes: Independent digital publication covering culture, cross-border development,
-    and economic innovation in Northwest Mexico.
-  feeds:
-  - url: https://noro.mx/feed/
-    category_hint: general
-- id: bbc_news_latam
-  name: BBC News (Latin America)
-  homepage: https://www.bbc.com/news/world/latin_america
-  language: en
-  scope: international
-  kind: media
-  governing_body: BBC (British Broadcasting Corporation)
-  state_affiliated: false
-  notes: Covers Latin America; only items referencing the country are ingested.
-  feeds:
-  - url: https://feeds.bbci.co.uk/news/world/latin_america/rss.xml
-    category_hint: general
-- id: france24_english
-  name: France 24 (English)
-  homepage: https://www.france24.com/en
-  language: en
-  scope: international
-  kind: media
-  governing_body: France Médias Monde
-  state_affiliated: true
-  notes: International coverage; filtered strictly by country mention words.
-  feeds:
-  - url: https://www.france24.com/en/rss
-    category_hint: general
-- id: aljazeera_english
-  name: Al Jazeera English
-  homepage: https://www.aljazeera.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Al Jazeera Media Network
-  state_affiliated: true
-  notes: Global Middle Eastern & developing world coverage; filtered by country mention
-    words.
-  feeds:
-  - url: https://www.aljazeera.com/xml/rss/all.xml
-    category_hint: general
+  - id: el_universal_mx
+    name: El Universal
+    homepage: https://www.eluniversal.com.mx
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: El Universal Compañía Periodística Nacional (paper of record)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.eluniversal.com.mx/arc/outboundfeeds/rss/?outputType=xml", section: Portada, category_hint: general}
+
+  - id: la_jornada_mx
+    name: La Jornada
+    homepage: https://www.jornada.com.mx
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Demos Desarrollo de Medios (left-leaning paper of record)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.jornada.com.mx/rss/edicion.xml", section: Edición Digital, category_hint: internal_politics}
+
+  - id: el_financiero_mx
+    name: El Financiero
+    homepage: https://www.elfinanciero.com.mx
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Grupo Multimedia Lauman (financial and macroeconomic paper of record)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.elfinanciero.com.mx/arc/outboundfeeds/rss/?outputType=xml", section: Economía y Mercados, category_hint: economics}
+
+  - id: animal_politico_mx
+    name: Animal Político
+    homepage: https://animalpolitico.com
+    language: es
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: Editorial Animal S. de R.L. de C.V. (independent investigative portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:animalpolitico.com+when:7d&hl=es-419&gl=MX&ceid=MX:es-419", section: Investigaciones, category_hint: internal_politics}
+
+  - id: aristegui_mx
+    name: Aristegui Noticias
+    homepage: https://aristeguinoticias.com
+    language: es
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: Aristegui Noticias (independent investigative daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:aristeguinoticias.com+when:7d&hl=es-419&gl=MX&ceid=MX:es-419", section: Noticias, category_hint: general}
+
+  - id: gnews_mx_politics
+    name: Google News (Presidency, Judicial Reform & Congress)
+    homepage: https://news.google.com
+    language: es
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(Sheinbaum+OR+Reforma+Judicial+OR+Congreso)+when:1d&hl=es-419&gl=MX&ceid=MX:es-419", section: Política Nacional, category_hint: internal_politics}
+
+  - id: gnews_mx_security
+    name: Google News (Security, Sedena & Cartels)
+    homepage: https://news.google.com
+    language: es
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Mexico+(seguridad+OR+narcotrafico+OR+violencia+OR+GN+OR+Sedena)+when:1d&hl=es-419&gl=MX&ceid=MX:es-419", section: Seguridad, category_hint: defence_security}
+
+  - id: gnews_mx_tmec
+    name: Google News (T-MEC / USMCA, Tariffs & Border Diplomacy)
+    homepage: https://news.google.com
+    language: es
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Mexico+(T-MEC+OR+frontera+OR+aranceles+OR+migracion)+when:1d&hl=es-419&gl=MX&ceid=MX:es-419", section: T-MEC y Diplomacia, category_hint: foreign_policy}
+  - id: lopezdoriga_mx
+    name: López-Dóriga Digital
+    homepage: https://lopezdoriga.com
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Joaquín López-Dóriga
+    state_affiliated: false
+    notes: Major independent national news portal and broadcast commentary on Mexican governance and security.
+    feeds:
+      - url: https://lopezdoriga.com/feed/
+        category_hint: internal_politics
+
+  - id: zonadocs_mx
+    name: ZonaDocs
+    homepage: https://zonadocs.mx
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Colectivo ZonaDocs (Guadalajara, Jalisco)
+    state_affiliated: false
+    notes: Independent investigative journalism collective specializing in human rights, enforced disappearances, and justice in Western Mexico.
+    feeds:
+      - url: https://zonadocs.mx/feed/
+        category_hint: defence_security
+
+  - id: contralinea_mx
+    name: Contralínea
+    homepage: https://contralinea.com.mx
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Contralínea Periodismo de Investigación
+    state_affiliated: false
+    notes: Independent investigative magazine specializing in national security, public finance, Pemex, and corporate audits.
+    feeds:
+      - url: https://contralinea.com.mx/feed/
+        category_hint: internal_politics
+
+  - id: polemon_mx
+    name: Polemón
+    homepage: https://polemon.mx
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Editorial Polemón
+    state_affiliated: false
+    notes: Independent political and cultural daily providing critical analysis of Mexican party politics and media power.
+    feeds:
+      - url: https://polemon.mx/feed/
+        category_hint: internal_politics
+
+  - id: lineadirecta_mx
+    name: Línea Directa
+    homepage: https://lineadirectaportal.com
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Grupo RSN (Sinaloa)
+    state_affiliated: false
+    notes: Major regional news network covering Northwest Mexico, Sinaloa agribusiness, public safety, and state governance.
+    feeds:
+      - url: https://lineadirectaportal.com/feed/
+        category_hint: general
+
+  - id: elcoahuilense_mx
+    name: El Coahuilense
+    homepage: https://elcoahuilense.com
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: El Coahuilense Noticias
+    state_affiliated: false
+    notes: Northern Mexico independent daily covering Coahuila border economy, manufacturing, migration, and local governance.
+    feeds:
+      - url: https://elcoahuilense.com/feed/
+        category_hint: economics
+
+  - id: noro_mx
+    name: Noro
+    homepage: https://noro.mx
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Noro Media
+    state_affiliated: false
+    notes: Independent digital publication covering culture, cross-border development, and economic innovation in Northwest Mexico.
+    feeds:
+      - url: https://noro.mx/feed/
+        category_hint: general

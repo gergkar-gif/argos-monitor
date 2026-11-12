@@ -7,8 +7,7 @@ sources:
   kind: media
   governing_body: Swiss Broadcasting Corporation (SRG SSR)
   state_affiliated: false
-  notes: Statutory international service of the Swiss Broadcasting Corporation providing
-    public-service coverage in 10 languages.
+  notes: Statutory international service of the Swiss Broadcasting Corporation providing public-service coverage in 10 languages.
   feeds:
   - url: https://www.swissinfo.ch/eng/rss
     category_hint: internal_politics
@@ -20,8 +19,7 @@ sources:
   kind: media
   governing_body: SRG SSR
   state_affiliated: false
-  notes: Primary Swiss German public-service broadcaster covering federal policy and
-    cantonal politics.
+  notes: Primary Swiss German public-service broadcaster covering federal policy and cantonal politics.
   feeds:
   - url: https://www.srf.ch/news/bnf/rss/1646
     category_hint: internal_politics
@@ -46,8 +44,7 @@ sources:
   kind: media
   governing_body: Tamedia (TX Group)
   state_affiliated: false
-  notes: Zurich-based national broadsheet paper of record covering Federal Council
-    politics, finance, and culture.
+  notes: Zurich-based national broadsheet paper of record covering Federal Council politics, finance, and culture.
   feeds:
   - url: https://www.tagesanzeiger.ch/rss.html
     category_hint: internal_politics
@@ -59,8 +56,8 @@ sources:
   kind: media
   governing_body: Fondation Aventinus
   state_affiliated: false
-  notes: Leading French-language Swiss daily paper of record based in Geneva, focusing
-    on international diplomacy and public policy.
+  notes: Leading French-language Swiss daily paper of record based in Geneva, focusing on international diplomacy and public
+    policy.
   feeds:
   - url: https://www.letemps.ch/feed
     category_hint: foreign_policy
@@ -72,8 +69,7 @@ sources:
   kind: media
   governing_body: Tamedia (TX Group)
   state_affiliated: false
-  notes: Major French-language Geneva daily covering UN agencies, cantonal governance,
-    and international Geneva diplomacy.
+  notes: Major French-language Geneva daily covering UN agencies, cantonal governance, and international Geneva diplomacy.
   feeds:
   - url: https://www.tdg.ch/rss.html
     category_hint: foreign_policy
@@ -85,8 +81,7 @@ sources:
   kind: media
   governing_body: Tamedia (TX Group)
   state_affiliated: false
-  notes: Principal daily newspaper of the Canton of Vaud (Lausanne) covering regional
-    economy, research, and federal politics.
+  notes: Principal daily newspaper of the Canton of Vaud (Lausanne) covering regional economy, research, and federal politics.
   feeds:
   - url: https://www.24heures.ch/rss.html
     category_hint: internal_politics
@@ -98,8 +93,7 @@ sources:
   kind: media
   governing_body: Tamedia (TX Group)
   state_affiliated: false
-  notes: Bern broadsheet daily closely monitoring the Federal Palace, parliamentary
-    committees, and federal administration.
+  notes: Bern broadsheet daily closely monitoring the Federal Palace, parliamentary committees, and federal administration.
   feeds:
   - url: https://www.derbund.ch/rss.html
     category_hint: internal_politics
@@ -111,8 +105,7 @@ sources:
   kind: media
   governing_body: Tamedia (TX Group)
   state_affiliated: false
-  notes: Northwestern Swiss daily newspaper covering the Basel pharmaceutical cluster,
-    tri-national border trade, and politics.
+  notes: Northwestern Swiss daily newspaper covering the Basel pharmaceutical cluster, tri-national border trade, and politics.
   feeds:
   - url: https://www.bazonline.ch/rss.html
     category_hint: economics
@@ -124,8 +117,7 @@ sources:
   kind: media
   governing_body: Tamedia (TX Group)
   state_affiliated: false
-  notes: High-circulation daily covering the Canton of Bern, alpine infrastructure,
-    agriculture, and cantonal policy.
+  notes: High-circulation daily covering the Canton of Bern, alpine infrastructure, agriculture, and cantonal policy.
   feeds:
   - url: https://www.bernerzeitung.ch/rss.html
     category_hint: general
@@ -137,8 +129,8 @@ sources:
   kind: media
   governing_body: Lukas Hässig
   state_affiliated: false
-  notes: Influential Zurich financial investigative blog covering Swiss banking secrecy,
-    wealth management, and FINMA regulatory enforcement.
+  notes: Influential Zurich financial investigative blog covering Swiss banking secrecy, wealth management, and FINMA regulatory
+    enforcement.
   feeds:
   - url: https://insideparadeplatz.ch/feed/
     category_hint: economics
@@ -155,39 +147,3 @@ sources:
   - url: https://news.google.com/rss/search?q=Schweiz+OR+Bundesrat+OR+Bern+when:2d&hl=de-CH&gl=CH&ceid=CH:de
     section: National News (German)
     category_hint: internal_politics
-- id: bbc_news_europe
-  name: BBC News (Europe)
-  homepage: https://www.bbc.com/news/world/europe
-  language: en
-  scope: international
-  kind: media
-  governing_body: BBC (British Broadcasting Corporation)
-  state_affiliated: false
-  notes: Covers Europe; only items explicitly referencing the country are ingested.
-  feeds:
-  - url: https://feeds.bbci.co.uk/news/world/europe/rss.xml
-    category_hint: general
-- id: dw_english
-  name: Deutsche Welle (English)
-  homepage: https://www.dw.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Deutsche Welle (German public statutory international broadcaster)
-  state_affiliated: true
-  notes: Global broadcast feed; filtered strictly by country mention words.
-  feeds:
-  - url: https://rss.dw.com/rdf/rss-en-all
-    category_hint: general
-- id: france24_english
-  name: France 24 (English)
-  homepage: https://www.france24.com/en
-  language: en
-  scope: international
-  kind: media
-  governing_body: France Médias Monde
-  state_affiliated: true
-  notes: International coverage; filtered strictly by country mention words.
-  feeds:
-  - url: https://www.france24.com/en/rss
-    category_hint: general

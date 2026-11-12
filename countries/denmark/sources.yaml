@@ -21,8 +21,7 @@ sources:
   kind: media
   governing_body: JP/Politikens Hus
   state_affiliated: false
-  notes: Copenhagen morning broadsheet paper of record covering executive policy,
-    Nordic defense, and welfare economics.
+  notes: Copenhagen morning broadsheet paper of record covering executive policy, Nordic defense, and welfare economics.
   feeds:
   - url: https://politiken.dk/rss/indland.rss
     category_hint: internal_politics
@@ -34,8 +33,7 @@ sources:
   kind: media
   governing_body: The Local Europe AB
   state_affiliated: false
-  notes: Independent English-language Danish news daily covering cabinet decrees,
-    immigration rules, and economy.
+  notes: Independent English-language Danish news daily covering cabinet decrees, immigration rules, and economy.
   feeds:
   - url: https://www.thelocal.dk/feed
     category_hint: general
@@ -60,8 +58,7 @@ sources:
   kind: media
   governing_body: Berlingske Media
   state_affiliated: false
-  notes: Major Copenhagen tabloid and digital daily covering politics and current
-    affairs.
+  notes: Major Copenhagen tabloid and digital daily covering politics and current affairs.
   feeds:
   - url: https://www.bt.dk/bt/seneste/rss
     category_hint: internal_politics
@@ -73,8 +70,7 @@ sources:
   kind: media
   governing_body: JP/Politikens Hus
   state_affiliated: false
-  notes: Prominent national Danish digital daily covering investigative and political
-    breaking news.
+  notes: Prominent national Danish digital daily covering investigative and political breaking news.
   feeds:
   - url: https://ekstrabladet.dk/rssfeed/nyheder/
     category_hint: internal_politics
@@ -86,8 +82,7 @@ sources:
   kind: media
   governing_body: Arbejderpartiet Kommunisterne
   state_affiliated: false
-  notes: Independent left-wing daily newspaper focusing on labor markets, welfare,
-    and peace policy.
+  notes: Independent left-wing daily newspaper focusing on labor markets, welfare, and peace policy.
   feeds:
   - url: https://arbejderen.dk/feed/
     category_hint: internal_politics
@@ -123,8 +118,7 @@ sources:
   kind: media
   governing_body: POV Media ApS
   state_affiliated: false
-  notes: Reader-funded Danish digital publication of independent analysis and longform
-    essays.
+  notes: Reader-funded Danish digital publication of independent analysis and longform essays.
   feeds:
   - url: https://pov.international/feed/
     category_hint: foreign_policy
@@ -136,8 +130,7 @@ sources:
   kind: media
   governing_body: Forlaget RÆSON
   state_affiliated: false
-  notes: Independent Danish political review on foreign policy, Nordic defense, and
-    governance.
+  notes: Independent Danish political review on foreign policy, Nordic defense, and governance.
   feeds:
   - url: https://www.raeson.dk/feed/
     category_hint: foreign_policy
@@ -149,8 +142,7 @@ sources:
   kind: media
   governing_body: Dansk Journalistforbund
   state_affiliated: false
-  notes: Danish press and media journal reviewing national journalism, freedom of
-    speech, and policy.
+  notes: Danish press and media journal reviewing national journalism, freedom of speech, and policy.
   feeds:
   - url: https://journalisten.dk/feed/
     category_hint: general
@@ -167,39 +159,3 @@ sources:
   - url: https://news.google.com/rss/search?q=Danmark+OR+regeringen+OR+Folketinget+when:2d&hl=da&gl=DK&ceid=DK:da
     section: National News (Danish)
     category_hint: internal_politics
-- id: bbc_news_europe
-  name: BBC News (Europe)
-  homepage: https://www.bbc.com/news/world/europe
-  language: en
-  scope: international
-  kind: media
-  governing_body: BBC (British Broadcasting Corporation)
-  state_affiliated: false
-  notes: Covers Europe; only items explicitly referencing the country are ingested.
-  feeds:
-  - url: https://feeds.bbci.co.uk/news/world/europe/rss.xml
-    category_hint: general
-- id: dw_english
-  name: Deutsche Welle (English)
-  homepage: https://www.dw.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Deutsche Welle (German public statutory international broadcaster)
-  state_affiliated: true
-  notes: Global broadcast feed; filtered strictly by country mention words.
-  feeds:
-  - url: https://rss.dw.com/rdf/rss-en-all
-    category_hint: general
-- id: france24_english
-  name: France 24 (English)
-  homepage: https://www.france24.com/en
-  language: en
-  scope: international
-  kind: media
-  governing_body: France Médias Monde
-  state_affiliated: true
-  notes: International coverage; filtered strictly by country mention words.
-  feeds:
-  - url: https://www.france24.com/en/rss
-    category_hint: general

@@ -97,9 +97,8 @@ sources:
   governing_body: Ministry of Home Affairs (to confirm)
   state_affiliated: true
   reprints_vna: false
-  notes: Python's own TLS check rejects the certificate chain (curl accepts it). Fetch
-    with curl or a client that uses the Windows certificate store. The Xã hội feed
-    was stale on 2026-09-30 (newest item Sep 2025); Thời sự works.
+  notes: Python's own TLS check rejects the certificate chain (curl accepts it). Fetch with curl or a client that uses the
+    Windows certificate store. The Xã hội feed was stale on 2026-09-30 (newest item Sep 2025); Thời sự works.
   feeds:
   - url: https://dantri.com.vn/rss/thoi-su.rss
     section: Thời sự
@@ -126,8 +125,7 @@ sources:
   governing_body: Ministry of Science and Technology (to confirm)
   state_affiliated: true
   reprints_vna: false
-  notes: Feeds return about 1000 items; keep only the newest in the window. The /rss/
-    URLs redirect to /<section>.rss.
+  notes: Feeds return about 1000 items; keep only the newest in the window. The /rss/ URLs redirect to /<section>.rss.
   feeds:
   - url: https://vietnamnet.vn/thoi-su.rss
     section: Thời sự
@@ -150,8 +148,7 @@ sources:
   governing_body: Communist Party of Vietnam Central Committee
   state_affiliated: true
   reprints_vna: true
-  notes: Full section list at https://nhandan.vn/rss.html. The defence feed (quocphong-1237)
-    returned an empty body.
+  notes: Full section list at https://nhandan.vn/rss.html. The defence feed (quocphong-1237) returned an empty body.
   feeds:
   - url: https://nhandan.vn/rss/chinhtri-1171.rss
     section: Chính trị
@@ -171,9 +168,8 @@ sources:
   governing_body: Ministry of National Defence
   state_affiliated: true
   reprints_vna: true
-  notes: Needs cookies kept across requests. Only one working feed found (all latest
-    news, 50 items, so hint is general, not defence). Section feed URLs not found
-    yet; open https://www.qdnd.vn/rss in a browser later.
+  notes: Needs cookies kept across requests. Only one working feed found (all latest news, 50 items, so hint is general, not
+    defence). Section feed URLs not found yet; open https://www.qdnd.vn/rss in a browser later.
   feeds:
   - url: https://www.qdnd.vn/rss/cate/tin-tuc-moi-nhat.rss
     section: Tin mới nhất
@@ -187,8 +183,7 @@ sources:
   governing_body: Vietnam News Agency (VNA)
   state_affiliated: true
   reprints_vna: false
-  notes: This IS the VNA wire. Its copy is what other outlets reprint. Full section
-    list at https://www.vietnamplus.vn/rss.html.
+  notes: This IS the VNA wire. Its copy is what other outlets reprint. Full section list at https://www.vietnamplus.vn/rss.html.
   feeds:
   - url: https://www.vietnamplus.vn/rss/chinhtri-291.rss
     section: Chính trị
@@ -224,8 +219,7 @@ sources:
   governing_body: Voice of Vietnam (state broadcaster)
   state_affiliated: true
   reprints_vna: true
-  notes: The main /rss/ page is stale (last updated May 2025). The section feeds below
-    are current.
+  notes: The main /rss/ page is stale (last updated May 2025). The section feeds below are current.
   feeds:
   - url: https://vov.vn/rss/chinh-tri.rss
     section: Chính trị
@@ -245,8 +239,8 @@ sources:
   governing_body: Government Office
   state_affiliated: true
   reprints_vna: true
-  notes: Feeds are at /<section>.rss (not /rss/). On 2026-09-30 the quoc-te feed looked
-    older than the rest (newest around Sep 9); recheck when step 3 runs.
+  notes: Feeds are at /<section>.rss (not /rss/). On 2026-09-30 the quoc-te feed looked older than the rest (newest around
+    Sep 9); recheck when step 3 runs.
   feeds:
   - url: https://baochinhphu.vn/chinh-tri.rss
     section: Chính trị
@@ -316,8 +310,7 @@ sources:
   governing_body: Communist Party of Vietnam Central Committee
   state_affiliated: true
   reprints_vna: false
-  notes: RSS answers 200 but is empty; the site sets a cookie and reloads (anti-bot).
-    dangcongsan.vn had no RSS either.
+  notes: RSS answers 200 but is empty; the site sets a cookie and reloads (anti-bot). dangcongsan.vn had no RSS either.
   feeds: []
 - id: bbc_vi
   name: BBC News Tiếng Việt
@@ -357,8 +350,7 @@ sources:
   governing_body: Independent
   state_affiliated: false
   reprints_vna: false
-  notes: The old domain luatkhoa.org redirects here. Low volume (about 10 items in
-    the feed).
+  notes: The old domain luatkhoa.org redirects here. Low volume (about 10 items in the feed).
   feeds:
   - url: https://luatkhoa.news/feed/
     section: All
@@ -372,8 +364,8 @@ sources:
   governing_body: Radio Free Asia (US-funded)
   state_affiliated: false
   reprints_vna: false
-  notes: The site still publishes (items dated 2026-09-29) but its RSS URL returns
-    an empty feed. Would need scraping of the homepage.
+  notes: The site still publishes (items dated 2026-09-29) but its RSS URL returns an empty feed. Would need scraping of the
+    homepage.
   feeds: []
 - id: voa_vi
   name: VOA Tiếng Việt
@@ -384,8 +376,7 @@ sources:
   governing_body: Voice of America (US-funded)
   state_affiliated: false
   reprints_vna: false
-  notes: DEAD. The feeds still respond, but the newest item is from March 2025. Do
-    not use.
+  notes: DEAD. The feeds still respond, but the newest item is from March 2025. Do not use.
   feeds: []
 - id: nguoiviet
   name: Người Việt (California)
@@ -396,8 +387,7 @@ sources:
   governing_body: Independent (diaspora press)
   state_affiliated: false
   reprints_vna: false
-  notes: Could not connect on 2026-09-30 (TLS handshake fails from this PC). Retry
-    later.
+  notes: Could not connect on 2026-09-30 (TLS handshake fails from this PC). Retry later.
   feeds: []
 - id: diplomat
   name: The Diplomat
@@ -450,8 +440,7 @@ sources:
   governing_body: Nikkei Inc.
   state_affiliated: false
   reprints_vna: false
-  notes: Paywalled. The feed gives headlines only (RSS 1.0 format, 50 items). Full
-    text will not extract.
+  notes: Paywalled. The feed gives headlines only (RSS 1.0 format, 50 items). Full text will not extract.
   feeds:
   - url: https://asia.nikkei.com/rss/feed/nar
     section: All
@@ -491,40 +480,3 @@ sources:
   - url: https://news.google.com/rss/search?q=%22Vi%E1%BB%87t+Nam%22+OR+%22Ch%C3%ADnh+ph%E1%BB%A7%22+OR+%22Th%E1%BB%A7+t%C6%B0%E1%BB%9Bng%22+when:2d&hl=vi&gl=VN&ceid=VN:vi
     section: National News (Vietnamese)
     category_hint: internal_politics
-- id: bbc_news_asia
-  name: BBC News (Asia)
-  homepage: https://www.bbc.com/news/world/asia
-  language: en
-  scope: international
-  kind: media
-  governing_body: BBC (British Broadcasting Corporation)
-  state_affiliated: false
-  notes: Covers Asia; only items explicitly referencing the country are ingested.
-  feeds:
-  - url: https://feeds.bbci.co.uk/news/world/asia/rss.xml
-    category_hint: general
-- id: dw_english
-  name: Deutsche Welle (English)
-  homepage: https://www.dw.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Deutsche Welle (German public statutory international broadcaster)
-  state_affiliated: true
-  notes: Global broadcast feed; filtered strictly by country mention words.
-  feeds:
-  - url: https://rss.dw.com/rdf/rss-en-all
-    category_hint: general
-- id: aljazeera_english
-  name: Al Jazeera English
-  homepage: https://www.aljazeera.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Al Jazeera Media Network
-  state_affiliated: true
-  notes: Global Middle Eastern & developing world coverage; filtered by country mention
-    words.
-  feeds:
-  - url: https://www.aljazeera.com/xml/rss/all.xml
-    category_hint: general

@@ -21,8 +21,7 @@ sources:
   kind: media
   governing_body: US Agency for Global Media (USAGM / independent grantee)
   state_affiliated: false
-  notes: Independent Lao-language investigative news service covering land rights,
-    dam construction, and governance.
+  notes: Independent Lao-language investigative news service covering land rights, dam construction, and governance.
   feeds:
   - url: https://www.rfa.org/arc/outboundfeeds/lao/rss/
     category_hint: society
@@ -34,8 +33,7 @@ sources:
   kind: media
   governing_body: US Agency for Global Media (USAGM)
   state_affiliated: false
-  notes: Lao-language news and current affairs broadcasting on regional diplomacy,
-    economy, and bilateral US-Lao relations.
+  notes: Lao-language news and current affairs broadcasting on regional diplomacy, economy, and bilateral US-Lao relations.
   feeds:
   - url: https://lao.voanews.com/api/zrjtrl-vomx-tpeo_gq
     category_hint: foreign_policy
@@ -47,8 +45,7 @@ sources:
   kind: media
   governing_body: Inside Laos Media
   state_affiliated: false
-  notes: Independent English-language digital news and lifestyle portal covering Lao
-    investment, tourism, and culture.
+  notes: Independent English-language digital news and lifestyle portal covering Lao investment, tourism, and culture.
   feeds:
   - url: https://insidelaos.com/feed/
     category_hint: economics
@@ -60,8 +57,8 @@ sources:
   kind: media
   governing_body: Open Development Mekong Network
   state_affiliated: false
-  notes: Open data and investigative journalism platform tracking concession agreements,
-    environmental impact, and energy projects in Laos.
+  notes: Open data and investigative journalism platform tracking concession agreements, environmental impact, and energy
+    projects in Laos.
   feeds:
   - url: https://laos.opendevelopmentmekong.net/feed/
     category_hint: economics
@@ -73,8 +70,8 @@ sources:
   kind: media
   governing_body: Focus on the Global South
   state_affiliated: false
-  notes: Regional research and advocacy institute analyzing infrastructure debt, agrarian
-    transition, and Mekong river ecosystems in Laos.
+  notes: Regional research and advocacy institute analyzing infrastructure debt, agrarian transition, and Mekong river ecosystems
+    in Laos.
   feeds:
   - url: https://focusweb.org/feed/
     category_hint: society
@@ -86,8 +83,8 @@ sources:
   kind: official
   governing_body: Mekong Institute Intergovernmental Council
   state_affiliated: false
-  notes: Intergovernmental organization owned by the 6 Greater Mekong Subregion governments
-    supporting cross-border trade, energy, and logistics.
+  notes: Intergovernmental organization owned by the 6 Greater Mekong Subregion governments supporting cross-border trade,
+    energy, and logistics.
   feeds:
   - url: https://www.mekonginstitute.org/feed/
     category_hint: economics
@@ -99,8 +96,8 @@ sources:
   kind: media
   governing_body: Asia Pacific Forum on Women, Law and Development
   state_affiliated: false
-  notes: Regional rights organization monitoring human development, labor standards,
-    and community rights across the Mekong subregion.
+  notes: Regional rights organization monitoring human development, labor standards, and community rights across the Mekong
+    subregion.
   feeds:
   - url: https://apwld.org/feed/
     category_hint: society
@@ -112,8 +109,7 @@ sources:
   kind: official
   governing_body: Association of Southeast Asian Nations
   state_affiliated: false
-  notes: Official ASEAN announcements, ministerial summits, and regional economic
-    community updates regarding Lao PDR.
+  notes: Official ASEAN announcements, ministerial summits, and regional economic community updates regarding Lao PDR.
   feeds:
   - url: https://asean.org/feed/
     category_hint: foreign_policy
@@ -125,8 +121,8 @@ sources:
   kind: official
   governing_body: United Nations Country Team Lao PDR
   state_affiliated: false
-  notes: Official UN resident coordinator updates on unexploded ordnance (UXO) clearance,
-    SDG implementation, and macroeconomic resilience.
+  notes: Official UN resident coordinator updates on unexploded ordnance (UXO) clearance, SDG implementation, and macroeconomic
+    resilience.
   feeds:
   - url: https://laopdr.un.org/en/rss.xml
     category_hint: society
@@ -208,40 +204,3 @@ sources:
   - url: https://news.google.com/rss/search?q=%E0%BA%A5%E0%BA%B2%E0%BA%A7+when:2d&hl=en-US&gl=US&ceid=US:en
     section: National News (Lao)
     category_hint: internal_politics
-- id: bbc_news_asia
-  name: BBC News (Asia)
-  homepage: https://www.bbc.com/news/world/asia
-  language: en
-  scope: international
-  kind: media
-  governing_body: BBC (British Broadcasting Corporation)
-  state_affiliated: false
-  notes: Covers Asia; only items explicitly referencing the country are ingested.
-  feeds:
-  - url: https://feeds.bbci.co.uk/news/world/asia/rss.xml
-    category_hint: general
-- id: dw_english
-  name: Deutsche Welle (English)
-  homepage: https://www.dw.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Deutsche Welle (German public statutory international broadcaster)
-  state_affiliated: true
-  notes: Global broadcast feed; filtered strictly by country mention words.
-  feeds:
-  - url: https://rss.dw.com/rdf/rss-en-all
-    category_hint: general
-- id: aljazeera_english
-  name: Al Jazeera English
-  homepage: https://www.aljazeera.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Al Jazeera Media Network
-  state_affiliated: true
-  notes: Global Middle Eastern & developing world coverage; filtered by country mention
-    words.
-  feeds:
-  - url: https://www.aljazeera.com/xml/rss/all.xml
-    category_hint: general

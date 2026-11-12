@@ -1,208 +1,154 @@
+# Poland source registry (decision D15).
+# Combines state wire (PAP), major independent/commercial broadcasters (RMF24, TVN24, Polsat News), investigative media (OKO.press), English briefers (Notes from Poland), and financial press (Bankier.pl, Money.pl).
+
 sources:
-- id: pap_en
-  name: Polish Press Agency (PAP)
-  homepage: https://www.pap.pl
-  language: pl
-  scope: domestic
-  kind: official
-  aggregator: google_news
-  governing_body: Polska Agencja Prasowa (state news agency)
-  state_affiliated: true
-  feeds:
-  - url: https://news.google.com/rss/search?q=site:pap.pl+when:7d&hl=pl&gl=PL&ceid=PL:pl
-    section: PAP Kraj
-    category_hint: general
-- id: notesfrompoland
-  name: Notes from Poland
-  homepage: https://notesfrompoland.com
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: Notes from Poland Foundation (independent non-profit)
-  state_affiliated: false
-  feeds:
-  - url: https://notesfrompoland.com/feed/
-    section: Latest
-    category_hint: general
-- id: rmf24
-  name: RMF24
-  homepage: https://www.rmf24.pl
-  language: pl
-  scope: domestic
-  kind: media
-  governing_body: Grupa RMF / Bauer Media (private broadcaster)
-  state_affiliated: false
-  feeds:
-  - url: https://www.rmf24.pl/feed
-    section: Najnowsze
-    category_hint: general
-- id: tvn24
-  name: TVN24
-  homepage: https://tvn24.pl
-  language: pl
-  scope: domestic
-  kind: media
-  governing_body: TVN Warner Bros. Discovery (private broadcaster)
-  state_affiliated: false
-  feeds:
-  - url: https://tvn24.pl/najnowsze.xml
-    section: Najnowsze
-    category_hint: general
-- id: polsatnews
-  name: Polsat News
-  homepage: https://www.polsatnews.pl
-  language: pl
-  scope: domestic
-  kind: media
-  governing_body: Grupa Polsat Plus (private broadcaster)
-  state_affiliated: false
-  feeds:
-  - url: https://www.polsatnews.pl/rss/wszystkie.xml
-    section: Wszystkie
-    category_hint: general
-- id: oko_press
-  name: OKO.press
-  homepage: https://oko.press
-  language: pl
-  scope: domestic
-  kind: media
-  governing_body: Fundacja Ośrodek Kontroli Obywatelskiej (independent investigative
-    non-profit)
-  state_affiliated: false
-  feeds:
-  - url: https://oko.press/feed
-    section: Najnowsze
-    category_hint: internal_politics
-- id: bankier_pl
-  name: Bankier.pl
-  homepage: https://www.bankier.pl
-  language: pl
-  scope: domestic
-  kind: media
-  governing_body: Bonnier Business Polska (private financial portal)
-  state_affiliated: false
-  feeds:
-  - url: https://www.bankier.pl/rss/wiadomosci.xml
-    section: Wiadomości
-    category_hint: economics
-- id: money_pl
-  name: Money.pl
-  homepage: https://www.money.pl
-  language: pl
-  scope: domestic
-  kind: media
-  governing_body: Wirtualna Polska Holding (private financial portal)
-  state_affiliated: false
-  feeds:
-  - url: https://www.money.pl/rss/rss.xml
-    section: Gospodarka
-    category_hint: economics
-- id: interia_pl
-  name: Interia Fakty
-  homepage: https://fakty.interia.pl
-  language: pl
-  scope: domestic
-  kind: media
-  governing_body: Grupa Polsat Plus / Interia (major national news portal)
-  state_affiliated: false
-  feeds:
-  - url: https://fakty.interia.pl/feed
-    section: Fakty
-    category_hint: general
-- id: onet_pl
-  name: Onet Wiadomości
-  homepage: https://wiadomosci.onet.pl
-  language: pl
-  scope: domestic
-  kind: media
-  governing_body: Ringier Axel Springer Polska (major national news portal)
-  state_affiliated: false
-  feeds:
-  - url: https://wiadomosci.onet.pl/.feed
-    section: Wiadomości
-    category_hint: general
-- id: kresy_pl
-  name: Kresy.pl
-  homepage: https://kresy.pl
-  language: pl
-  scope: domestic
-  kind: media
-  governing_body: Fundacja im. Hetmana Stanisława Żółkiewskiego (independent foreign
-    affairs & security portal)
-  state_affiliated: false
-  feeds:
-  - url: https://kresy.pl/feed/
-    section: Najnowsze
-    category_hint: foreign_policy
-- id: gnews_en_pl
-  name: Google News (Poland - English)
-  homepage: https://news.google.com
-  language: en
-  scope: international
-  kind: media
-  aggregator: google_news
-  governing_body: n/a (aggregator)
-  state_affiliated: false
-  feeds:
-  - url: https://news.google.com/rss/search?q=Poland+when:1d&hl=en-US&gl=US&ceid=US:en
-    section: Poland
-    category_hint: general
-  - url: https://news.google.com/rss/search?q=Poland+(Tusk+OR+NATO+OR+defence+OR+Ukraine+OR+EU)+when:1d&hl=en-US&gl=US&ceid=US:en
-    section: Poland security & EU
-    category_hint: foreign_policy
-  - url: https://news.google.com/rss/search?q=Poland+(economy+OR+investment+OR+energy+OR+zloty)+when:1d&hl=en-US&gl=US&ceid=US:en
-    section: Poland economy
-    category_hint: economics
-- id: gnews_pl
-  name: Google News (Polish)
-  homepage: https://news.google.com
-  language: pl
-  scope: domestic
-  kind: media
-  aggregator: google_news
-  needs_mention: true
-  governing_body: n/a (aggregator)
-  state_affiliated: false
-  feeds:
-  - url: https://news.google.com/rss/search?q=(rz%C4%85d+OR+Sejm+OR+Tusk+OR+PiS)+when:1d&hl=pl&gl=PL&ceid=PL:pl
-    section: Polityka
-    category_hint: internal_politics
-  - url: https://news.google.com/rss/search?q=(Wojsko+Polskie+OR+MON+OR+granica+OR+NATO)+when:1d&hl=pl&gl=PL&ceid=PL:pl
-    section: Obronność
-    category_hint: defence_security
-- id: bbc_news_europe
-  name: BBC News (Europe)
-  homepage: https://www.bbc.com/news/world/europe
-  language: en
-  scope: international
-  kind: media
-  governing_body: BBC (British Broadcasting Corporation)
-  state_affiliated: false
-  notes: Covers Europe; only items explicitly referencing the country are ingested.
-  feeds:
-  - url: https://feeds.bbci.co.uk/news/world/europe/rss.xml
-    category_hint: general
-- id: dw_english
-  name: Deutsche Welle (English)
-  homepage: https://www.dw.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Deutsche Welle (German public statutory international broadcaster)
-  state_affiliated: true
-  notes: Global broadcast feed; filtered strictly by country mention words.
-  feeds:
-  - url: https://rss.dw.com/rdf/rss-en-all
-    category_hint: general
-- id: france24_english
-  name: France 24 (English)
-  homepage: https://www.france24.com/en
-  language: en
-  scope: international
-  kind: media
-  governing_body: France Médias Monde
-  state_affiliated: true
-  notes: International coverage; filtered strictly by country mention words.
-  feeds:
-  - url: https://www.france24.com/en/rss
-    category_hint: general
+  - id: pap_en
+    name: Polish Press Agency (PAP)
+    homepage: https://www.pap.pl
+    language: pl
+    scope: domestic
+    kind: official
+    aggregator: google_news
+    governing_body: Polska Agencja Prasowa (state news agency)
+    state_affiliated: true
+    feeds:
+      # Direct English RSS stale since mid-2025; routed via Google News search
+      - {url: "https://news.google.com/rss/search?q=site:pap.pl+when:7d&hl=pl&gl=PL&ceid=PL:pl", section: PAP Kraj, category_hint: general}
+
+  - id: notesfrompoland
+    name: Notes from Poland
+    homepage: https://notesfrompoland.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Notes from Poland Foundation (independent non-profit)
+    state_affiliated: false
+    feeds:
+      - {url: "https://notesfrompoland.com/feed/", section: Latest, category_hint: general}
+
+  - id: rmf24
+    name: RMF24
+    homepage: https://www.rmf24.pl
+    language: pl
+    scope: domestic
+    kind: media
+    governing_body: Grupa RMF / Bauer Media (private broadcaster)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.rmf24.pl/feed", section: Najnowsze, category_hint: general}
+
+  - id: tvn24
+    name: TVN24
+    homepage: https://tvn24.pl
+    language: pl
+    scope: domestic
+    kind: media
+    governing_body: TVN Warner Bros. Discovery (private broadcaster)
+    state_affiliated: false
+    feeds:
+      - {url: "https://tvn24.pl/najnowsze.xml", section: Najnowsze, category_hint: general}
+
+  - id: polsatnews
+    name: Polsat News
+    homepage: https://www.polsatnews.pl
+    language: pl
+    scope: domestic
+    kind: media
+    governing_body: Grupa Polsat Plus (private broadcaster)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.polsatnews.pl/rss/wszystkie.xml", section: Wszystkie, category_hint: general}
+
+  - id: oko_press
+    name: OKO.press
+    homepage: https://oko.press
+    language: pl
+    scope: domestic
+    kind: media
+    governing_body: Fundacja Ośrodek Kontroli Obywatelskiej (independent investigative non-profit)
+    state_affiliated: false
+    feeds:
+      - {url: "https://oko.press/feed", section: Najnowsze, category_hint: internal_politics}
+
+  - id: bankier_pl
+    name: Bankier.pl
+    homepage: https://www.bankier.pl
+    language: pl
+    scope: domestic
+    kind: media
+    governing_body: Bonnier Business Polska (private financial portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.bankier.pl/rss/wiadomosci.xml", section: Wiadomości, category_hint: economics}
+
+  - id: money_pl
+    name: Money.pl
+    homepage: https://www.money.pl
+    language: pl
+    scope: domestic
+    kind: media
+    governing_body: Wirtualna Polska Holding (private financial portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.money.pl/rss/rss.xml", section: Gospodarka, category_hint: economics}
+
+  - id: interia_pl
+    name: Interia Fakty
+    homepage: https://fakty.interia.pl
+    language: pl
+    scope: domestic
+    kind: media
+    governing_body: Grupa Polsat Plus / Interia (major national news portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://fakty.interia.pl/feed", section: Fakty, category_hint: general}
+
+  - id: onet_pl
+    name: Onet Wiadomości
+    homepage: https://wiadomosci.onet.pl
+    language: pl
+    scope: domestic
+    kind: media
+    governing_body: Ringier Axel Springer Polska (major national news portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://wiadomosci.onet.pl/.feed", section: Wiadomości, category_hint: general}
+
+  - id: kresy_pl
+    name: Kresy.pl
+    homepage: https://kresy.pl
+    language: pl
+    scope: domestic
+    kind: media
+    governing_body: Fundacja im. Hetmana Stanisława Żółkiewskiego (independent foreign affairs & security portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://kresy.pl/feed/", section: Najnowsze, category_hint: foreign_policy}
+
+  - id: gnews_en_pl
+    name: Google News (Poland - English)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Poland+when:1d&hl=en-US&gl=US&ceid=US:en", section: Poland, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=Poland+(Tusk+OR+NATO+OR+defence+OR+Ukraine+OR+EU)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Poland security & EU, category_hint: foreign_policy}
+      - {url: "https://news.google.com/rss/search?q=Poland+(economy+OR+investment+OR+energy+OR+zloty)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Poland economy, category_hint: economics}
+
+  - id: gnews_pl
+    name: Google News (Polish)
+    homepage: https://news.google.com
+    language: pl
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    needs_mention: true
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(rz%C4%85d+OR+Sejm+OR+Tusk+OR+PiS)+when:1d&hl=pl&gl=PL&ceid=PL:pl", section: Polityka, category_hint: internal_politics}
+      - {url: "https://news.google.com/rss/search?q=(Wojsko+Polskie+OR+MON+OR+granica+OR+NATO)+when:1d&hl=pl&gl=PL&ceid=PL:pl", section: Obronność, category_hint: defence_security}

@@ -171,27 +171,3 @@ sources:
   feeds:
   - url: https://www.deutschlandfunk.de/nachrichten-100.rss
     category_hint: internal_politics
-- id: bbc_news_europe
-  name: BBC News (Europe)
-  homepage: https://www.bbc.com/news/world/europe
-  language: en
-  scope: international
-  kind: media
-  governing_body: BBC (British Broadcasting Corporation)
-  state_affiliated: false
-  notes: Covers Europe; only items explicitly referencing the country are ingested.
-  feeds:
-  - url: https://feeds.bbci.co.uk/news/world/europe/rss.xml
-    category_hint: general
-- id: france24_english
-  name: France 24 (English)
-  homepage: https://www.france24.com/en
-  language: en
-  scope: international
-  kind: media
-  governing_body: France Médias Monde
-  state_affiliated: true
-  notes: International coverage; filtered strictly by country mention words.
-  feeds:
-  - url: https://www.france24.com/en/rss
-    category_hint: general

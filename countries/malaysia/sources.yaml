@@ -5,8 +5,7 @@ sources:
   language: en
   scope: domestic
   kind: media
-  governing_body: FMT Media Sdn Bhd (independent bilingual daily portal in Petaling
-    Jaya)
+  governing_body: FMT Media Sdn Bhd (independent bilingual daily portal in Petaling Jaya)
   state_affiliated: false
   feeds:
   - url: https://www.freemalaysiatoday.com/feed/
@@ -87,8 +86,7 @@ sources:
   kind: media
   governing_body: The Malaysian Insight Sdn Bhd
   state_affiliated: false
-  notes: Independent bilingual digital news site covering federal politics, civil
-    society, and electoral dynamics.
+  notes: Independent bilingual digital news site covering federal politics, civil society, and electoral dynamics.
   feeds:
   - url: https://www.themalaysianinsight.com/feed
     category_hint: internal_politics
@@ -100,8 +98,7 @@ sources:
   kind: media
   governing_body: Mkini Dotcom Sdn Bhd
   state_affiliated: false
-  notes: Pioneer independent investigative portal founded in 1999 covering political
-    corruption, human rights, and parliament.
+  notes: Pioneer independent investigative portal founded in 1999 covering political corruption, human rights, and parliament.
   feeds:
   - url: https://www.malaysiakini.com/rss/en/news.rss
     category_hint: internal_politics
@@ -113,8 +110,7 @@ sources:
   kind: media
   governing_body: Reach Publishing Sdn Bhd
   state_affiliated: false
-  notes: Leading Malaysian business and economic publication covering Bank Negara
-    decisions, Bursa Malaysia, and fiscal policy.
+  notes: Leading Malaysian business and economic publication covering Bank Negara decisions, Bursa Malaysia, and fiscal policy.
   feeds:
   - url: https://www.businesstoday.com.my/feed/
     category_hint: economics
@@ -126,8 +122,7 @@ sources:
   kind: media
   governing_body: Big Boom Media Sdn Bhd
   state_affiliated: false
-  notes: Independent news portal focusing on institutional reforms, governance, and
-    investigative current affairs.
+  notes: Independent news portal focusing on institutional reforms, governance, and investigative current affairs.
   feeds:
   - url: https://scoop.my/feed/
     category_hint: internal_politics
@@ -139,8 +134,7 @@ sources:
   kind: media
   governing_body: Twentytwo13 Media
   state_affiliated: false
-  notes: Independent news and commentary website covering Malaysian public policy,
-    urban governance, and sports.
+  notes: Independent news and commentary website covering Malaysian public policy, urban governance, and sports.
   feeds:
   - url: https://twentytwo13.my/feed/
     category_hint: general
@@ -152,8 +146,8 @@ sources:
   kind: media
   governing_body: Focus Information Technologies Sdn Bhd
   state_affiliated: false
-  notes: Independent business and corporate news daily tracking corporate mergers,
-    government-linked companies (GLCs), and trade.
+  notes: Independent business and corporate news daily tracking corporate mergers, government-linked companies (GLCs), and
+    trade.
   feeds:
   - url: https://focusmalaysia.my/feed/
     category_hint: economics
@@ -165,8 +159,7 @@ sources:
   kind: media
   governing_body: DayakDaily Media (Sarawak)
   state_affiliated: false
-  notes: Premier East Malaysian digital daily covering Sarawak autonomy, Borneo infrastructure,
-    energy, and native rights.
+  notes: Premier East Malaysian digital daily covering Sarawak autonomy, Borneo infrastructure, energy, and native rights.
   feeds:
   - url: https://dayakdaily.com/feed/
     category_hint: internal_politics
@@ -178,8 +171,7 @@ sources:
   kind: media
   governing_body: MD Media Network
   state_affiliated: false
-  notes: Malay-language political daily focusing on parliamentary affairs, religious
-    and ethnic relations, and coalition politics.
+  notes: Malay-language political daily focusing on parliamentary affairs, religious and ethnic relations, and coalition politics.
   feeds:
   - url: https://malaysiadateline.com/feed/
     category_hint: internal_politics
@@ -196,40 +188,3 @@ sources:
   - url: https://news.google.com/rss/search?q=Malaysia+OR+%22Kuala+Lumpur%22+OR+kerajaan+when:2d&hl=ms&gl=MY&ceid=MY:ms
     section: National News (Malay)
     category_hint: internal_politics
-- id: bbc_news_asia
-  name: BBC News (Asia)
-  homepage: https://www.bbc.com/news/world/asia
-  language: en
-  scope: international
-  kind: media
-  governing_body: BBC (British Broadcasting Corporation)
-  state_affiliated: false
-  notes: Covers Asia; only items explicitly referencing the country are ingested.
-  feeds:
-  - url: https://feeds.bbci.co.uk/news/world/asia/rss.xml
-    category_hint: general
-- id: dw_english
-  name: Deutsche Welle (English)
-  homepage: https://www.dw.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Deutsche Welle (German public statutory international broadcaster)
-  state_affiliated: true
-  notes: Global broadcast feed; filtered strictly by country mention words.
-  feeds:
-  - url: https://rss.dw.com/rdf/rss-en-all
-    category_hint: general
-- id: aljazeera_english
-  name: Al Jazeera English
-  homepage: https://www.aljazeera.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Al Jazeera Media Network
-  state_affiliated: true
-  notes: Global Middle Eastern & developing world coverage; filtered by country mention
-    words.
-  feeds:
-  - url: https://www.aljazeera.com/xml/rss/all.xml
-    category_hint: general

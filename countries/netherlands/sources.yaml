@@ -7,8 +7,7 @@ sources:
   kind: media
   governing_body: Nederlandse Omroep Stichting (public broadcaster)
   state_affiliated: false
-  notes: Dutch statutory public news organization providing independent public-service
-    reporting.
+  notes: Dutch statutory public news organization providing independent public-service reporting.
   feeds:
   - url: https://feeds.nos.nl/nosnieuwsalgemeen
     category_hint: internal_politics
@@ -38,8 +37,7 @@ sources:
   kind: media
   governing_body: Dutch News BV
   state_affiliated: false
-  notes: Independent English-language Dutch news daily covering cabinet policy, economy,
-    and EU affairs.
+  notes: Independent English-language Dutch news daily covering cabinet policy, economy, and EU affairs.
   feeds:
   - url: https://www.dutchnews.nl/feed/
     category_hint: foreign_policy
@@ -99,8 +97,7 @@ sources:
   kind: media
   governing_body: De Groene Amsterdammer
   state_affiliated: false
-  notes: Historic independent weekly news and cultural affairs magazine founded in
-    1877.
+  notes: Historic independent weekly news and cultural affairs magazine founded in 1877.
   feeds:
   - url: https://www.groene.nl/rss
     category_hint: internal_politics
@@ -154,39 +151,3 @@ sources:
   - url: https://news.google.com/rss/search?q=Nederland+OR+kabinet+OR+Den+Haag+when:2d&hl=nl&gl=NL&ceid=NL:nl
     section: National News (Dutch)
     category_hint: internal_politics
-- id: bbc_news_europe
-  name: BBC News (Europe)
-  homepage: https://www.bbc.com/news/world/europe
-  language: en
-  scope: international
-  kind: media
-  governing_body: BBC (British Broadcasting Corporation)
-  state_affiliated: false
-  notes: Covers Europe; only items explicitly referencing the country are ingested.
-  feeds:
-  - url: https://feeds.bbci.co.uk/news/world/europe/rss.xml
-    category_hint: general
-- id: dw_english
-  name: Deutsche Welle (English)
-  homepage: https://www.dw.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Deutsche Welle (German public statutory international broadcaster)
-  state_affiliated: true
-  notes: Global broadcast feed; filtered strictly by country mention words.
-  feeds:
-  - url: https://rss.dw.com/rdf/rss-en-all
-    category_hint: general
-- id: france24_english
-  name: France 24 (English)
-  homepage: https://www.france24.com/en
-  language: en
-  scope: international
-  kind: media
-  governing_body: France Médias Monde
-  state_affiliated: true
-  notes: International coverage; filtered strictly by country mention words.
-  feeds:
-  - url: https://www.france24.com/en/rss
-    category_hint: general

@@ -7,8 +7,7 @@ sources:
   kind: media
   governing_body: Wijeya Newspapers
   state_affiliated: false
-  notes: Leading independent Colombo English broadsheet paper of record covering executive
-    governance and economy.
+  notes: Leading independent Colombo English broadsheet paper of record covering executive governance and economy.
   feeds:
   - url: https://www.dailymirror.lk/RSS_Feeds/breaking-news
     category_hint: internal_politics
@@ -20,8 +19,7 @@ sources:
   kind: media
   governing_body: Derana Macro Entertainment
   state_affiliated: false
-  notes: Premier 24-hour Sri Lankan news broadcaster covering parliamentary reforms
-    and national affairs.
+  notes: Premier 24-hour Sri Lankan news broadcaster covering parliamentary reforms and national affairs.
   feeds:
   - url: http://www.adaderana.lk/rss.php
     category_hint: internal_politics
@@ -33,8 +31,7 @@ sources:
   kind: media
   governing_body: Derana Macro Entertainment
   state_affiliated: false
-  notes: Flagship Sinhala broadcast news service delivering breaking national politics
-    and parliamentary debates.
+  notes: Flagship Sinhala broadcast news service delivering breaking national politics and parliamentary debates.
   feeds:
   - url: http://sinhala.adaderana.lk/rss.php
     category_hint: internal_politics
@@ -46,8 +43,7 @@ sources:
   kind: media
   governing_body: Upali Newspapers
   state_affiliated: false
-  notes: Respected Colombo daily newspaper covering presidential governance, foreign
-    relations, and defense.
+  notes: Respected Colombo daily newspaper covering presidential governance, foreign relations, and defense.
   feeds:
   - url: https://island.lk/feed/
     category_hint: internal_politics
@@ -59,8 +55,7 @@ sources:
   kind: media
   governing_body: Asian Mirror Media
   state_affiliated: false
-  notes: Progressive digital news platform covering democratic reforms, civil liberties,
-    and anti-corruption.
+  notes: Progressive digital news platform covering democratic reforms, civil liberties, and anti-corruption.
   feeds:
   - url: https://asianmirror.lk/feed/
     category_hint: internal_politics
@@ -72,8 +67,7 @@ sources:
   kind: media
   governing_body: Sri Lanka Brief Foundation
   state_affiliated: false
-  notes: Independent news and advocacy monitor examining human rights, transitional
-    justice, and constitutional reforms.
+  notes: Independent news and advocacy monitor examining human rights, transitional justice, and constitutional reforms.
   feeds:
   - url: https://srilankabrief.org/feed/
     category_hint: society
@@ -85,8 +79,7 @@ sources:
   kind: media
   governing_body: LBO Media
   state_affiliated: false
-  notes: Premier financial and macroeconomic intelligence portal covering Colombo
-    Stock Exchange, IMF reforms, and debt restructuring.
+  notes: Premier financial and macroeconomic intelligence portal covering Colombo Stock Exchange, IMF reforms, and debt restructuring.
   feeds:
   - url: https://www.lankabusinessonline.com/feed/
     category_hint: economics
@@ -98,8 +91,7 @@ sources:
   kind: media
   governing_body: Newswire Media
   state_affiliated: false
-  notes: Fast-growing independent digital news portal delivering real-time coverage
-    of executive decrees and legislative votes.
+  notes: Fast-growing independent digital news portal delivering real-time coverage of executive decrees and legislative votes.
   feeds:
   - url: https://www.newswire.lk/feed/
     category_hint: internal_politics
@@ -111,8 +103,7 @@ sources:
   kind: media
   governing_body: OnLanka Media
   state_affiliated: false
-  notes: Established Sri Lankan daily news portal covering provincial administration,
-    defense, and economic recovery.
+  notes: Established Sri Lankan daily news portal covering provincial administration, defense, and economic recovery.
   feeds:
   - url: https://www.onlanka.com/feed
     category_hint: internal_politics
@@ -124,8 +115,7 @@ sources:
   kind: official
   governing_body: Central Bank of Sri Lanka
   state_affiliated: true
-  notes: Statutory monetary authority issuing official monetary policy statements,
-    inflation data, and debt management updates.
+  notes: Statutory monetary authority issuing official monetary policy statements, inflation data, and debt management updates.
   feeds:
   - url: https://www.cbsl.gov.lk/rss.xml
     category_hint: economics
@@ -137,8 +127,7 @@ sources:
   kind: official
   governing_body: United Nations Country Team Sri Lanka
   state_affiliated: false
-  notes: Official UN agency reports on post-crisis recovery, food security, and multilateral
-    aid coordination in Colombo.
+  notes: Official UN agency reports on post-crisis recovery, food security, and multilateral aid coordination in Colombo.
   feeds:
   - url: https://srilanka.un.org/en/rss.xml
     category_hint: society
@@ -155,40 +144,3 @@ sources:
   - url: https://news.google.com/rss/search?q=(%22Sri+Lanka%22+OR+Colombo)+(Dissanayake+OR+IMF+OR+debt+OR+economy)+when:3d&hl=en-US&gl=US&ceid=US:en
     section: Economy & Governance
     category_hint: economics
-- id: bbc_news_asia
-  name: BBC News (Asia)
-  homepage: https://www.bbc.com/news/world/asia
-  language: en
-  scope: international
-  kind: media
-  governing_body: BBC (British Broadcasting Corporation)
-  state_affiliated: false
-  notes: Covers Asia; only items explicitly referencing the country are ingested.
-  feeds:
-  - url: https://feeds.bbci.co.uk/news/world/asia/rss.xml
-    category_hint: general
-- id: dw_english
-  name: Deutsche Welle (English)
-  homepage: https://www.dw.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Deutsche Welle (German public statutory international broadcaster)
-  state_affiliated: true
-  notes: Global broadcast feed; filtered strictly by country mention words.
-  feeds:
-  - url: https://rss.dw.com/rdf/rss-en-all
-    category_hint: general
-- id: aljazeera_english
-  name: Al Jazeera English
-  homepage: https://www.aljazeera.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Al Jazeera Media Network
-  state_affiliated: true
-  notes: Global Middle Eastern & developing world coverage; filtered by country mention
-    words.
-  feeds:
-  - url: https://www.aljazeera.com/xml/rss/all.xml
-    category_hint: general

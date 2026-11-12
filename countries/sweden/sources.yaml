@@ -1,214 +1,191 @@
 sources:
-- id: svt_nyheter
-  name: SVT Nyheter
-  homepage: https://www.svt.se/nyheter
-  language: sv
-  scope: domestic
-  kind: official
-  governing_body: Sveriges Television (National Public Broadcaster)
-  state_affiliated: false
-  notes: Swedish national public television news service of record.
-  feeds:
-  - url: https://www.svt.se/nyheter/rss.xml
-    category_hint: internal_politics
-  - url: https://www.svt.se/nyheter/inrikes/rss.xml
-    category_hint: internal_politics
-  - url: https://www.svt.se/nyheter/ekonomi/rss.xml
-    category_hint: economics
-- id: sr_nyheter
-  name: Sveriges Radio (Ekot)
-  homepage: https://sverigesradio.se/ekot
-  language: sv
-  scope: domestic
-  kind: media
-  governing_body: Sveriges Radio (National Public Radio)
-  state_affiliated: false
-  notes: Flagship public radio news broadcasting service in Sweden.
-  feeds:
-  - url: https://api.sr.se/api/rss/program/83
-    category_hint: internal_politics
-- id: dagens_nyheter
-  name: Dagens Nyheter
-  homepage: https://www.dn.se
-  language: sv
-  scope: domestic
-  kind: media
-  governing_body: Bonnier News
-  state_affiliated: false
-  notes: Sweden's leading morning newspaper of record, independent liberal stance.
-  feeds:
-  - url: https://www.dn.se/rss/nyheter/sverige/
-    category_hint: internal_politics
-  - url: https://www.dn.se/rss/ekonomi/
-    category_hint: economics
-- id: svenska_dagbladet
-  name: Svenska Dagbladet
-  homepage: https://www.svd.se
-  language: sv
-  scope: domestic
-  kind: media
-  governing_body: Schibsted Media
-  state_affiliated: false
-  notes: Leading Swedish national morning broadsheet, independent conservative stance.
-  feeds:
-  - url: https://www.svd.se/?service=rss
-    category_hint: internal_politics
-- id: aftonbladet_se
-  name: Aftonbladet
-  homepage: https://www.aftonbladet.se
-  language: sv
-  scope: domestic
-  kind: media
-  governing_body: Schibsted Media
-  state_affiliated: false
-  notes: Sweden's highest-circulation daily evening tabloid and online news service.
-  feeds:
-  - url: https://rss.aftonbladet.se/rss2/small/pages/sections/senastenytt/
-    category_hint: general
-- id: expressen_se
-  name: Expressen
-  homepage: https://www.expressen.se
-  language: sv
-  scope: domestic
-  kind: media
-  governing_body: Bonnier News
-  state_affiliated: false
-  notes: Major national evening tabloid and investigative newsroom.
-  feeds:
-  - url: https://feeds.expressen.se/nyheter/
-    category_hint: general
-- id: realtid_se
-  name: Realtid
-  homepage: https://realtid.se
-  language: sv
-  scope: domestic
-  kind: media
-  governing_body: Realtid Media AB
-  state_affiliated: false
-  notes: Independent Swedish financial, capital markets and corporate daily.
-  feeds:
-  - url: https://realtid.se/feed/
-    category_hint: economics
-- id: arbetet_se
-  name: Arbetet
-  homepage: https://arbetet.se
-  language: sv
-  scope: domestic
-  kind: media
-  governing_body: LO Mediehus
-  state_affiliated: false
-  notes: Independent labor market, social policy and economic daily.
-  feeds:
-  - url: https://arbetet.se/feed/
-    category_hint: internal_politics
-- id: flamman_se
-  name: Flamman
-  homepage: https://flamman.se
-  language: sv
-  scope: domestic
-  kind: media
-  governing_body: Tidningsföreningen Flamman
-  state_affiliated: false
-  notes: Independent socialist weekly newspaper covering politics and economy.
-  feeds:
-  - url: https://flamman.se/feed/
-    category_hint: internal_politics
-- id: expo_se
-  name: Expo
-  homepage: https://expo.se
-  language: sv
-  scope: domestic
-  kind: media
-  governing_body: Stiftelsen Expo
-  state_affiliated: false
-  notes: Independent investigative magazine founded by Stieg Larsson.
-  feeds:
-  - url: https://expo.se/feed/
-    category_hint: society
-- id: nyheteridag_se
-  name: Nyheter Idag
-  homepage: https://nyheteridag.se
-  language: sv
-  scope: domestic
-  kind: media
-  governing_body: Publicistgruppen Stockholm AB
-  state_affiliated: false
-  notes: Independent digital news portal and political commentary.
-  feeds:
-  - url: https://nyheteridag.se/feed/
-    category_hint: internal_politics
-- id: google_news_sweden_politics
-  name: Google News (Sweden Government & Riksdag)
-  homepage: https://news.google.com
-  language: sv
-  scope: domestic
-  kind: media
-  governing_body: Google LLC
-  state_affiliated: false
-  aggregator: google_news
-  notes: Aggregator tracking Kristersson, Tidö agreement, and Riksdag legislation.
-  feeds:
-  - url: https://news.google.com/rss/search?q=Kristersson+OR+Tid%C3%B6avtalet+OR+Riksdagen+OR+Sverigedemokraterna+when:3d&hl=sv&gl=SE&ceid=SE:sv
-    category_hint: internal_politics
-- id: google_news_sweden_economy
-  name: Google News (Sweden Riksbank & Green Industry)
-  homepage: https://news.google.com
-  language: sv
-  scope: domestic
-  kind: media
-  governing_body: Google LLC
-  state_affiliated: false
-  aggregator: google_news
-  notes: Aggregator tracking Riksbank rate cuts, inflation, housing, and Northvolt.
-  feeds:
-  - url: https://news.google.com/rss/search?q=Riksbanken+OR+styrr%C3%A4nta+OR+Northvolt+OR+bostadsmarknaden+Sverige+when:3d&hl=sv&gl=SE&ceid=SE:sv
-    category_hint: economics
-- id: google_news_sweden_defense
-  name: Google News (Sweden NATO & Defense Posture)
-  homepage: https://news.google.com
-  language: sv
-  scope: domestic
-  kind: media
-  governing_body: Google LLC
-  state_affiliated: false
-  aggregator: google_news
-  notes: Aggregator tracking Swedish Armed Forces, NATO Baltic integration, and Gotland.
-  feeds:
-  - url: https://news.google.com/rss/search?q=F%C3%B6rsvarsmakten+OR+Nato+Sverige+OR+Gotland+OR+Saab+Gripen+when:3d&hl=sv&gl=SE&ceid=SE:sv
-    category_hint: defence_security
-- id: bbc_news_europe
-  name: BBC News (Europe)
-  homepage: https://www.bbc.com/news/world/europe
-  language: en
-  scope: international
-  kind: media
-  governing_body: BBC (British Broadcasting Corporation)
-  state_affiliated: false
-  notes: Covers Europe; only items explicitly referencing the country are ingested.
-  feeds:
-  - url: https://feeds.bbci.co.uk/news/world/europe/rss.xml
-    category_hint: general
-- id: dw_english
-  name: Deutsche Welle (English)
-  homepage: https://www.dw.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Deutsche Welle (German public statutory international broadcaster)
-  state_affiliated: true
-  notes: Global broadcast feed; filtered strictly by country mention words.
-  feeds:
-  - url: https://rss.dw.com/rdf/rss-en-all
-    category_hint: general
-- id: france24_english
-  name: France 24 (English)
-  homepage: https://www.france24.com/en
-  language: en
-  scope: international
-  kind: media
-  governing_body: France Médias Monde
-  state_affiliated: true
-  notes: International coverage; filtered strictly by country mention words.
-  feeds:
-  - url: https://www.france24.com/en/rss
-    category_hint: general
+  - id: svt_nyheter
+    name: SVT Nyheter
+    homepage: https://www.svt.se/nyheter
+    language: sv
+    scope: domestic
+    kind: official
+    governing_body: "Sveriges Television (National Public Broadcaster)"
+    state_affiliated: false
+    notes: "Swedish national public television news service of record."
+    feeds:
+      - url: https://www.svt.se/nyheter/rss.xml
+        category_hint: internal_politics
+      - url: https://www.svt.se/nyheter/inrikes/rss.xml
+        category_hint: internal_politics
+      - url: https://www.svt.se/nyheter/ekonomi/rss.xml
+        category_hint: economics
+
+  - id: sr_nyheter
+    name: Sveriges Radio (Ekot)
+    homepage: https://sverigesradio.se/ekot
+    language: sv
+    scope: domestic
+    kind: media
+    governing_body: "Sveriges Radio (National Public Radio)"
+    state_affiliated: false
+    notes: "Flagship public radio news broadcasting service in Sweden."
+    feeds:
+      - url: https://api.sr.se/api/rss/program/83
+        category_hint: internal_politics
+
+  - id: dagens_nyheter
+    name: Dagens Nyheter
+    homepage: https://www.dn.se
+    language: sv
+    scope: domestic
+    kind: media
+    governing_body: "Bonnier News"
+    state_affiliated: false
+    notes: "Sweden's leading morning newspaper of record, independent liberal stance."
+    feeds:
+      - url: https://www.dn.se/rss/nyheter/sverige/
+        category_hint: internal_politics
+      - url: https://www.dn.se/rss/ekonomi/
+        category_hint: economics
+
+  - id: svenska_dagbladet
+    name: Svenska Dagbladet
+    homepage: https://www.svd.se
+    language: sv
+    scope: domestic
+    kind: media
+    governing_body: "Schibsted Media"
+    state_affiliated: false
+    notes: "Leading Swedish national morning broadsheet, independent conservative stance."
+    feeds:
+      - url: https://www.svd.se/?service=rss
+        category_hint: internal_politics
+
+  - id: aftonbladet_se
+    name: Aftonbladet
+    homepage: https://www.aftonbladet.se
+    language: sv
+    scope: domestic
+    kind: media
+    governing_body: "Schibsted Media"
+    state_affiliated: false
+    notes: "Sweden's highest-circulation daily evening tabloid and online news service."
+    feeds:
+      - url: https://rss.aftonbladet.se/rss2/small/pages/sections/senastenytt/
+        category_hint: general
+
+  - id: expressen_se
+    name: Expressen
+    homepage: https://www.expressen.se
+    language: sv
+    scope: domestic
+    kind: media
+    governing_body: "Bonnier News"
+    state_affiliated: false
+    notes: "Major national evening tabloid and investigative newsroom."
+    feeds:
+      - url: https://feeds.expressen.se/nyheter/
+        category_hint: general
+
+  - id: realtid_se
+    name: Realtid
+    homepage: https://realtid.se
+    language: sv
+    scope: domestic
+    kind: media
+    governing_body: "Realtid Media AB"
+    state_affiliated: false
+    notes: "Independent Swedish financial, capital markets and corporate daily."
+    feeds:
+      - url: https://realtid.se/feed/
+        category_hint: economics
+
+  - id: arbetet_se
+    name: Arbetet
+    homepage: https://arbetet.se
+    language: sv
+    scope: domestic
+    kind: media
+    governing_body: "LO Mediehus"
+    state_affiliated: false
+    notes: "Independent labor market, social policy and economic daily."
+    feeds:
+      - url: https://arbetet.se/feed/
+        category_hint: internal_politics
+
+  - id: flamman_se
+    name: Flamman
+    homepage: https://flamman.se
+    language: sv
+    scope: domestic
+    kind: media
+    governing_body: "Tidningsföreningen Flamman"
+    state_affiliated: false
+    notes: "Independent socialist weekly newspaper covering politics and economy."
+    feeds:
+      - url: https://flamman.se/feed/
+        category_hint: internal_politics
+
+  - id: expo_se
+    name: Expo
+    homepage: https://expo.se
+    language: sv
+    scope: domestic
+    kind: media
+    governing_body: "Stiftelsen Expo"
+    state_affiliated: false
+    notes: "Independent investigative magazine founded by Stieg Larsson."
+    feeds:
+      - url: https://expo.se/feed/
+        category_hint: society
+
+  - id: nyheteridag_se
+    name: Nyheter Idag
+    homepage: https://nyheteridag.se
+    language: sv
+    scope: domestic
+    kind: media
+    governing_body: "Publicistgruppen Stockholm AB"
+    state_affiliated: false
+    notes: "Independent digital news portal and political commentary."
+    feeds:
+      - url: https://nyheteridag.se/feed/
+        category_hint: internal_politics
+
+  - id: google_news_sweden_politics
+    name: Google News (Sweden Government & Riksdag)
+    homepage: https://news.google.com
+    language: sv
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking Kristersson, Tidö agreement, and Riksdag legislation."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=Kristersson+OR+Tid%C3%B6avtalet+OR+Riksdagen+OR+Sverigedemokraterna+when:3d&hl=sv&gl=SE&ceid=SE:sv"
+        category_hint: internal_politics
+
+  - id: google_news_sweden_economy
+    name: Google News (Sweden Riksbank & Green Industry)
+    homepage: https://news.google.com
+    language: sv
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking Riksbank rate cuts, inflation, housing, and Northvolt."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=Riksbanken+OR+styrr%C3%A4nta+OR+Northvolt+OR+bostadsmarknaden+Sverige+when:3d&hl=sv&gl=SE&ceid=SE:sv"
+        category_hint: economics
+
+  - id: google_news_sweden_defense
+    name: Google News (Sweden NATO & Defense Posture)
+    homepage: https://news.google.com
+    language: sv
+    scope: domestic
+    kind: media
+    governing_body: "Google LLC"
+    state_affiliated: false
+    aggregator: google_news
+    notes: "Aggregator tracking Swedish Armed Forces, NATO Baltic integration, and Gotland."
+    feeds:
+      - url: "https://news.google.com/rss/search?q=F%C3%B6rsvarsmakten+OR+Nato+Sverige+OR+Gotland+OR+Saab+Gripen+when:3d&hl=sv&gl=SE&ceid=SE:sv"
+        category_hint: defence_security

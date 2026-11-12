@@ -7,8 +7,8 @@ sources:
   kind: media
   governing_body: Grupo El Universo
   state_affiliated: false
-  notes: Guayaquil daily broadsheet of record founded in 1921 covering national security,
-    port operations, and presidential policy.
+  notes: Guayaquil daily broadsheet of record founded in 1921 covering national security, port operations, and presidential
+    policy.
   feeds:
   - url: https://www.eluniverso.com/arc/outboundfeeds/rss/category/noticias/politica/
     category_hint: internal_politics
@@ -20,8 +20,8 @@ sources:
   kind: media
   governing_body: Primicias S.A.
   state_affiliated: false
-  notes: Independent Quito digital investigative newsroom specializing in organized
-    crime, energy crisis, and institutional reform.
+  notes: Independent Quito digital investigative newsroom specializing in organized crime, energy crisis, and institutional
+    reform.
   feeds:
   - url: https://www.primicias.ec/feed/
     category_hint: defence_security
@@ -46,8 +46,7 @@ sources:
   kind: media
   governing_body: Grupo El Comercio
   state_affiliated: false
-  notes: Historic Quito daily broadsheet of record covering presidential policy and
-    national economics.
+  notes: Historic Quito daily broadsheet of record covering presidential policy and national economics.
   feeds:
   - url: https://www.elcomercio.com/feed/
     category_hint: internal_politics
@@ -59,8 +58,7 @@ sources:
   kind: media
   governing_body: Pichincha Comunicaciones EP
   state_affiliated: false
-  notes: Public and community-oriented broadcaster in Quito covering legislative debates
-    and social movements.
+  notes: Public and community-oriented broadcaster in Quito covering legislative debates and social movements.
   feeds:
   - url: https://radiopichincha.com/feed/
     category_hint: internal_politics
@@ -72,8 +70,7 @@ sources:
   kind: media
   governing_body: Confirmado Digital
   state_affiliated: false
-  notes: Independent digital news portal covering executive accountability and judicial
-    affairs.
+  notes: Independent digital news portal covering executive accountability and judicial affairs.
   feeds:
   - url: https://confirmado.net/feed/
     category_hint: internal_politics
@@ -97,8 +94,7 @@ sources:
   kind: media
   governing_body: ALDIA Comunicaciones
   state_affiliated: false
-  notes: Coastal and Los Ríos regional news daily reporting on local agricultural
-    economy and security.
+  notes: Coastal and Los Ríos regional news daily reporting on local agricultural economy and security.
   feeds:
   - url: https://www.aldia.com.ec/feed/
     category_hint: general
@@ -110,8 +106,7 @@ sources:
   kind: media
   governing_body: El Mercurio Cuenca
   state_affiliated: false
-  notes: Major Southern Ecuadorian daily newspaper of record covering regional governance
-    and infrastructure.
+  notes: Major Southern Ecuadorian daily newspaper of record covering regional governance and infrastructure.
   feeds:
   - url: https://elmercurio.com.ec/feed/
     category_hint: internal_politics
@@ -123,8 +118,7 @@ sources:
   kind: media
   governing_body: Metro International / Grupo Metro
   state_affiliated: false
-  notes: Nationwide Ecuadorian daily newspaper covering urban affairs, policy, and
-    national news.
+  notes: Nationwide Ecuadorian daily newspaper covering urban affairs, policy, and national news.
   feeds:
   - url: https://www.metroecuador.com.ec/arc/outboundfeeds/rss/?outputType=xml
     category_hint: general
@@ -136,8 +130,7 @@ sources:
   kind: media
   governing_body: Fundacion Periodismo de Investigacion
   state_affiliated: false
-  notes: Independent investigative portal founded by Fernando Villavicencio exposing
-    public corruption and state capture.
+  notes: Independent investigative portal founded by Fernando Villavicencio exposing public corruption and state capture.
   feeds:
   - url: https://periodismodeinvestigacion.com/feed/
     category_hint: defence_security
@@ -154,40 +147,3 @@ sources:
   - url: https://news.google.com/rss/search?q=Ecuador+OR+Quito+OR+Gobierno+when:2d&hl=es-419&gl=EC&ceid=EC:es-419
     section: National News (Spanish)
     category_hint: internal_politics
-- id: bbc_news_latam
-  name: BBC News (Latin America)
-  homepage: https://www.bbc.com/news/world/latin_america
-  language: en
-  scope: international
-  kind: media
-  governing_body: BBC (British Broadcasting Corporation)
-  state_affiliated: false
-  notes: Covers Latin America; only items referencing the country are ingested.
-  feeds:
-  - url: https://feeds.bbci.co.uk/news/world/latin_america/rss.xml
-    category_hint: general
-- id: france24_english
-  name: France 24 (English)
-  homepage: https://www.france24.com/en
-  language: en
-  scope: international
-  kind: media
-  governing_body: France Médias Monde
-  state_affiliated: true
-  notes: International coverage; filtered strictly by country mention words.
-  feeds:
-  - url: https://www.france24.com/en/rss
-    category_hint: general
-- id: aljazeera_english
-  name: Al Jazeera English
-  homepage: https://www.aljazeera.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Al Jazeera Media Network
-  state_affiliated: true
-  notes: Global Middle Eastern & developing world coverage; filtered by country mention
-    words.
-  feeds:
-  - url: https://www.aljazeera.com/xml/rss/all.xml
-    category_hint: general

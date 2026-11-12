@@ -7,8 +7,7 @@ sources:
   kind: media
   governing_body: Österreichischer Rundfunk (public broadcaster)
   state_affiliated: false
-  notes: Austrian public-service broadcaster providing comprehensive federal and international
-    news.
+  notes: Austrian public-service broadcaster providing comprehensive federal and international news.
   feeds:
   - url: https://rss.orf.at/news.xml
     category_hint: internal_politics
@@ -20,8 +19,7 @@ sources:
   kind: media
   governing_body: Standard Verlagsgesellschaft
   state_affiliated: false
-  notes: Vienna broadsheet paper of record covering parliamentary politics, coalition
-    negotiations, and EU policy.
+  notes: Vienna broadsheet paper of record covering parliamentary politics, coalition negotiations, and EU policy.
   feeds:
   - url: https://www.derstandard.at/rss/inland
     category_hint: internal_politics
@@ -48,8 +46,8 @@ sources:
   kind: media
   governing_body: Styria Media Group
   state_affiliated: false
-  notes: Historic bourgeois-liberal paper of record founded in 1848 covering parliamentary
-    politics, constitutional law, and trade.
+  notes: Historic bourgeois-liberal paper of record founded in 1848 covering parliamentary politics, constitutional law, and
+    trade.
   feeds:
   - url: https://www.diepresse.com/rss
     category_hint: internal_politics
@@ -61,8 +59,7 @@ sources:
   kind: media
   governing_body: Styria Media Group
   state_affiliated: false
-  notes: Major regional daily in Styria and Carinthia with influential federal political
-    desk in Vienna.
+  notes: Major regional daily in Styria and Carinthia with influential federal political desk in Vienna.
   feeds:
   - url: https://www.kleinezeitung.at/rss/politik
     category_hint: internal_politics
@@ -74,8 +71,7 @@ sources:
   kind: media
   governing_body: Mediaprint (Dichand & Benko families)
   state_affiliated: false
-  notes: Austria's highest-circulation tabloid daily newspaper with enormous influence
-    on electoral campaigns and public debates.
+  notes: Austria's highest-circulation tabloid daily newspaper with enormous influence on electoral campaigns and public debates.
   feeds:
   - url: https://www.krone.at/nachrichten/rss.html
     category_hint: general
@@ -87,8 +83,7 @@ sources:
   kind: media
   governing_body: Russmedia Digital GmbH
   state_affiliated: false
-  notes: High-reach Vienna municipal and federal news daily covering urban planning,
-    security, and local politics.
+  notes: High-reach Vienna municipal and federal news daily covering urban planning, security, and local politics.
   feeds:
   - url: https://www.vienna.at/feed/rss
     category_hint: general
@@ -100,8 +95,7 @@ sources:
   kind: media
   governing_body: Wimmer Medien
   state_affiliated: false
-  notes: Leading Upper Austrian daily paper covering industrial heartland manufacturing,
-    energy transition, and federal politics.
+  notes: Leading Upper Austrian daily paper covering industrial heartland manufacturing, energy transition, and federal politics.
   feeds:
   - url: https://www.nachrichten.at/storage/rss/rss/politik.xml
     category_hint: internal_politics
@@ -113,8 +107,7 @@ sources:
   kind: media
   governing_body: Moser Holding
   state_affiliated: false
-  notes: Western Austria's primary daily newspaper covering alpine transit, environmental
-    policy, and federal governance.
+  notes: Western Austria's primary daily newspaper covering alpine transit, environmental policy, and federal governance.
   feeds:
   - url: https://www.tt.com/rss/politik.xml
     category_hint: internal_politics
@@ -126,8 +119,8 @@ sources:
   kind: media
   governing_body: Falter Verlagsgesellschaft
   state_affiliated: false
-  notes: Independent investigative weekly magazine renowned for uncovering judicial
-    corruption and political party funding scandals.
+  notes: Independent investigative weekly magazine renowned for uncovering judicial corruption and political party funding
+    scandals.
   feeds:
   - url: https://www.falter.at/rss/
     category_hint: internal_politics
@@ -139,8 +132,7 @@ sources:
   kind: media
   governing_body: Russmedia
   state_affiliated: false
-  notes: Western Austrian regional digital daily covering Lake Constance cross-border
-    trade, industry, and cantonal ties.
+  notes: Western Austrian regional digital daily covering Lake Constance cross-border trade, industry, and cantonal ties.
   feeds:
   - url: https://www.vol.at/feed/rss
     category_hint: economics
@@ -157,39 +149,3 @@ sources:
   - url: https://news.google.com/rss/search?q=%C3%96sterreich+OR+Wien+OR+Bundesregierung+when:2d&hl=de&gl=AT&ceid=AT:de
     section: National News (German)
     category_hint: internal_politics
-- id: bbc_news_europe
-  name: BBC News (Europe)
-  homepage: https://www.bbc.com/news/world/europe
-  language: en
-  scope: international
-  kind: media
-  governing_body: BBC (British Broadcasting Corporation)
-  state_affiliated: false
-  notes: Covers Europe; only items explicitly referencing the country are ingested.
-  feeds:
-  - url: https://feeds.bbci.co.uk/news/world/europe/rss.xml
-    category_hint: general
-- id: dw_english
-  name: Deutsche Welle (English)
-  homepage: https://www.dw.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Deutsche Welle (German public statutory international broadcaster)
-  state_affiliated: true
-  notes: Global broadcast feed; filtered strictly by country mention words.
-  feeds:
-  - url: https://rss.dw.com/rdf/rss-en-all
-    category_hint: general
-- id: france24_english
-  name: France 24 (English)
-  homepage: https://www.france24.com/en
-  language: en
-  scope: international
-  kind: media
-  governing_body: France Médias Monde
-  state_affiliated: true
-  notes: International coverage; filtered strictly by country mention words.
-  feeds:
-  - url: https://www.france24.com/en/rss
-    category_hint: general

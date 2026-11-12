@@ -49,8 +49,7 @@ sources:
   kind: media
   governing_body: Multimedia Group Limited
   state_affiliated: false
-  notes: Premier independent Ghanaian digital daily covering national governance and
-    economic policy.
+  notes: Premier independent Ghanaian digital daily covering national governance and economic policy.
   feeds:
   - url: https://myjoyonline.com/feed/
     category_hint: internal_politics
@@ -62,8 +61,7 @@ sources:
   kind: media
   governing_body: LeFaso Media
   state_affiliated: false
-  notes: Leading independent Burkina Faso news portal covering transitional governance
-    and Sahelian affairs.
+  notes: Leading independent Burkina Faso news portal covering transitional governance and Sahelian affairs.
   feeds:
   - url: https://lefaso.net/spip.php?page=backend
     category_hint: internal_politics
@@ -75,8 +73,7 @@ sources:
   kind: media
   governing_body: Wakat Sera SARL
   state_affiliated: false
-  notes: Ouagadougou-based news and analysis daily on West African politics and regional
-    security.
+  notes: Ouagadougou-based news and analysis daily on West African politics and regional security.
   feeds:
   - url: https://wakatsera.com/feed/
     category_hint: internal_politics
@@ -88,8 +85,7 @@ sources:
   kind: media
   governing_body: PressAfrik Group
   state_affiliated: false
-  notes: Dakar-based digital daily covering Senegalese institutional reforms and domestic
-    politics.
+  notes: Dakar-based digital daily covering Senegalese institutional reforms and domestic politics.
   feeds:
   - url: https://www.pressafrik.com/xml/syndication.rss
     category_hint: internal_politics
@@ -101,8 +97,7 @@ sources:
   kind: media
   governing_body: Dakaractu Media Group
   state_affiliated: false
-  notes: Prominent Senegalese continuous news platform covering national elections
-    and state policy.
+  notes: Prominent Senegalese continuous news platform covering national elections and state policy.
   feeds:
   - url: https://www.dakaractu.com/xml/syndication.rss
     category_hint: internal_politics
@@ -114,8 +109,7 @@ sources:
   kind: media
   governing_body: SeneNews Digital
   state_affiliated: false
-  notes: Widely read Senegalese online news portal reporting on judicial, social,
-    and economic developments.
+  notes: Widely read Senegalese online news portal reporting on judicial, social, and economic developments.
   feeds:
   - url: https://www.senenews.com/feed
     category_hint: general
@@ -139,45 +133,7 @@ sources:
   kind: media
   governing_body: The Patriotic Vanguard
   state_affiliated: false
-  notes: Independent Sierra Leonean online news magazine covering governance, mining,
-    and regional cooperation.
+  notes: Independent Sierra Leonean online news magazine covering governance, mining, and regional cooperation.
   feeds:
   - url: https://www.thepatrioticvanguard.com/spip.php?page=backend
-    category_hint: general
-- id: bbc_news_africa
-  name: BBC News (Africa)
-  homepage: https://www.bbc.com/news/world/africa
-  language: en
-  scope: international
-  kind: media
-  governing_body: BBC (British Broadcasting Corporation)
-  state_affiliated: false
-  notes: Covers Africa; only items referencing the country are ingested.
-  feeds:
-  - url: https://feeds.bbci.co.uk/news/world/africa/rss.xml
-    category_hint: general
-- id: france24_english
-  name: France 24 (English)
-  homepage: https://www.france24.com/en
-  language: en
-  scope: international
-  kind: media
-  governing_body: France Médias Monde
-  state_affiliated: true
-  notes: International coverage; filtered strictly by country mention words.
-  feeds:
-  - url: https://www.france24.com/en/rss
-    category_hint: general
-- id: aljazeera_english
-  name: Al Jazeera English
-  homepage: https://www.aljazeera.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Al Jazeera Media Network
-  state_affiliated: true
-  notes: Global Middle Eastern & developing world coverage; filtered by country mention
-    words.
-  feeds:
-  - url: https://www.aljazeera.com/xml/rss/all.xml
     category_hint: general

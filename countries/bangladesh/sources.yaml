@@ -21,8 +21,7 @@ sources:
   kind: media
   governing_body: 2A Media Limited (Gemcon Group)
   state_affiliated: false
-  notes: Premier national English news daily covering interim government reforms and
-    South Asian geopolitics.
+  notes: Premier national English news daily covering interim government reforms and South Asian geopolitics.
   feeds:
   - url: https://www.dhakatribune.com/rss
     category_hint: internal_politics
@@ -34,8 +33,7 @@ sources:
   kind: media
   governing_body: Mediastar Limited (Transcom Group)
   state_affiliated: false
-  notes: English portal of Bangladesh's largest circulation broadsheet newspaper of
-    record.
+  notes: English portal of Bangladesh's largest circulation broadsheet newspaper of record.
   feeds:
   - url: https://en.prothomalo.com/feed
     category_hint: internal_politics
@@ -47,8 +45,7 @@ sources:
   kind: media
   governing_body: Mediastar Limited (Transcom Group)
   state_affiliated: false
-  notes: Flagship Bengali-language daily paper of record covering nationwide governance,
-    judicial probes, and economy.
+  notes: Flagship Bengali-language daily paper of record covering nationwide governance, judicial probes, and economy.
   feeds:
   - url: https://www.prothomalo.com/feed
     category_hint: internal_politics
@@ -60,8 +57,7 @@ sources:
   kind: media
   governing_body: The Business Standard Limited
   state_affiliated: false
-  notes: Premier financial and economic daily newspaper covering banking, exports,
-    remittance, and macroeconomic reform in Dhaka.
+  notes: Premier financial and economic daily newspaper covering banking, exports, remittance, and macroeconomic reform in Dhaka.
   feeds:
   - url: https://www.tbsnews.net/rss.xml
     category_hint: economics
@@ -73,8 +69,7 @@ sources:
   kind: media
   governing_body: 2A Media Limited (Gemcon Group)
   state_affiliated: false
-  notes: Leading Bengali digital news daily covering national politics, human rights,
-    and district-level developments.
+  notes: Leading Bengali digital news daily covering national politics, human rights, and district-level developments.
   feeds:
   - url: https://www.banglatribune.com/feed/
     category_hint: internal_politics
@@ -86,8 +81,7 @@ sources:
   kind: media
   governing_body: Rupayan Group
   state_affiliated: false
-  notes: Prominent national daily broadsheet covering parliamentary politics, law
-    and order, and public administration.
+  notes: Prominent national daily broadsheet covering parliamentary politics, law and order, and public administration.
   feeds:
   - url: https://www.deshrupantor.com/feed/
     category_hint: internal_politics
@@ -99,8 +93,7 @@ sources:
   kind: media
   governing_body: Daily Bangladesh Media
   state_affiliated: false
-  notes: Digital daily news portal covering interim cabinet affairs, trade, and youth
-    initiatives.
+  notes: Digital daily news portal covering interim cabinet affairs, trade, and youth initiatives.
   feeds:
   - url: https://www.daily-bangladesh.com/feed
     category_hint: internal_politics
@@ -112,8 +105,7 @@ sources:
   kind: media
   governing_body: BD24Live Media
   state_affiliated: false
-  notes: Popular independent electronic newspaper covering breaking political news
-    and regional administration.
+  notes: Popular independent electronic newspaper covering breaking political news and regional administration.
   feeds:
   - url: https://www.bd24live.com/feed/
     category_hint: internal_politics
@@ -125,8 +117,7 @@ sources:
   kind: official
   governing_body: United Nations Country Team Bangladesh
   state_affiliated: false
-  notes: Official UN agency reports on humanitarian assistance, refugee coordination,
-    and macroeconomic resilience.
+  notes: Official UN agency reports on humanitarian assistance, refugee coordination, and macroeconomic resilience.
   feeds:
   - url: https://bangladesh.un.org/en/rss.xml
     category_hint: society
@@ -143,40 +134,3 @@ sources:
   - url: https://news.google.com/rss/search?q=Bangladesh+(Yunus+OR+%22interim+government%22+OR+elections+OR+economy)+when:3d&hl=en-US&gl=US&ceid=US:en
     section: Governance & Reform
     category_hint: internal_politics
-- id: bbc_news_asia
-  name: BBC News (Asia)
-  homepage: https://www.bbc.com/news/world/asia
-  language: en
-  scope: international
-  kind: media
-  governing_body: BBC (British Broadcasting Corporation)
-  state_affiliated: false
-  notes: Covers Asia; only items explicitly referencing the country are ingested.
-  feeds:
-  - url: https://feeds.bbci.co.uk/news/world/asia/rss.xml
-    category_hint: general
-- id: dw_english
-  name: Deutsche Welle (English)
-  homepage: https://www.dw.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Deutsche Welle (German public statutory international broadcaster)
-  state_affiliated: true
-  notes: Global broadcast feed; filtered strictly by country mention words.
-  feeds:
-  - url: https://rss.dw.com/rdf/rss-en-all
-    category_hint: general
-- id: aljazeera_english
-  name: Al Jazeera English
-  homepage: https://www.aljazeera.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Al Jazeera Media Network
-  state_affiliated: true
-  notes: Global Middle Eastern & developing world coverage; filtered by country mention
-    words.
-  feeds:
-  - url: https://www.aljazeera.com/xml/rss/all.xml
-    category_hint: general

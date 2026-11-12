@@ -1,220 +1,177 @@
+# Argentina source registry (decision D15).
+# Combines premier Argentine independent dailies & portals (Infobae, La Nación, Clarín & Ámbito via Google News), official communications, regional Latin American press, and international wires.
+
 sources:
-- id: infobae_ar
-  name: Infobae (Argentina)
-  homepage: https://www.infobae.com
-  language: es
-  scope: domestic
-  kind: media
-  governing_body: Infobae Media Group (Buenos Aires digital daily)
-  state_affiliated: false
-  feeds:
-  - url: https://www.infobae.com/arc/outboundfeeds/rss/?outputType=xml
-    section: Política y Economía
-    category_hint: general
-- id: lanacion_ar
-  name: La Nación
-  homepage: https://www.lanacion.com.ar
-  language: es
-  scope: domestic
-  kind: media
-  governing_body: SA La Nación (national paper of record in Buenos Aires)
-  state_affiliated: false
-  feeds:
-  - url: https://www.lanacion.com.ar/arc/outboundfeeds/rss/
-    section: Últimas Noticias
-    category_hint: general
-- id: gnews_ar_domestic
-  name: Clarín / Ámbito Financiero / El Cronista (National Media via Google News)
-  homepage: https://www.clarin.com
-  language: es
-  scope: domestic
-  kind: media
-  aggregator: google_news
-  governing_body: Grupo Clarín / Grupo Indalo / Editorial Sarmiento
-  state_affiliated: false
-  feeds:
-  - url: https://news.google.com/rss/search?q=(site:clarin.com+OR+site:ambito.com+OR+site:cronista.com)+when:1d&hl=es-419&gl=AR&ceid=AR:es-419
-    section: Economía y Política
-    category_hint: general
-- id: gnews_ar_official
-  name: Casa Rosada / Télam Archives (Official State Communications via Google News)
-  homepage: https://www.casarosada.gob.ar
-  language: es
-  scope: domestic
-  kind: official
-  aggregator: google_news
-  governing_body: Presidencia de la Nación Argentina / Vocería Presidencial
-  state_affiliated: true
-  feeds:
-  - url: https://news.google.com/rss/search?q=(site:casarosada.gob.ar+OR+site:argentina.gob.ar)+when:7d&hl=es-419&gl=AR&ceid=AR:es-419
-    section: Oficial
-    category_hint: general
-- id: gnews_ar_abroad
-  name: El País América / CNN en Español (Regional Media via Google News)
-  homepage: https://elpais.com/america-argentina
-  language: es
-  scope: abroad_local
-  kind: media
-  aggregator: google_news
-  governing_body: Ediciones El País & Warner Bros. Discovery
-  state_affiliated: false
-  feeds:
-  - url: https://news.google.com/rss/search?q=(site:elpais.com/america-argentina+OR+(site:cnnespanol.cnn.com+Argentina))+when:7d&hl=es-419&gl=AR&ceid=AR:es-419
-    section: Región
-    category_hint: general
-- id: gnews_en_ar
-  name: Google News (Argentina - International)
-  homepage: https://news.google.com
-  language: en
-  scope: international
-  kind: media
-  aggregator: google_news
-  governing_body: n/a (aggregator)
-  state_affiliated: false
-  feeds:
-  - url: https://news.google.com/rss/search?q=Argentina+(Buenos+Aires+OR+Milei+OR+Caputo+OR+Congress+OR+inflation)+when:1d&hl=en-US&gl=US&ceid=US:en
-    section: Argentina politics & economy
-    category_hint: internal_politics
-  - url: https://news.google.com/rss/search?q=Argentina+(IMF+OR+reserves+OR+peso+OR+China+OR+debt)+when:1d&hl=en-US&gl=US&ceid=US:en
-    section: Argentina economy & IMF
-    category_hint: economics
-- id: clarin_ar
-  name: Clarín
-  homepage: https://www.clarin.com
-  language: es
-  scope: domestic
-  kind: media
-  governing_body: Grupo Clarín (paper of record)
-  state_affiliated: false
-  notes: Highest circulation Argentine national daily newspaper founded in 1945.
-  feeds:
-  - url: https://www.clarin.com/rss/lo-ultimo/
-    category_hint: general
-- id: cronista_ar
-  name: El Cronista
-  homepage: https://www.cronista.com
-  language: es
-  scope: domestic
-  kind: media
-  governing_body: Grupo América (economic and financial daily)
-  state_affiliated: false
-  notes: Argentina's premier business, financial, and macroeconomic daily founded
-    in 1908.
-  feeds:
-  - url: https://www.cronista.com/files/rss/news.xml
-    category_hint: economics
-- id: perfil_ar
-  name: Perfil
-  homepage: https://www.perfil.com
-  language: es
-  scope: domestic
-  kind: media
-  governing_body: Editorial Perfil
-  state_affiliated: false
-  notes: Independent national daily newspaper and political analysis portal founded
-    by Jorge Fontevecchia.
-  feeds:
-  - url: https://www.perfil.com/feed
-    category_hint: internal_politics
-- id: chequeado_ar
-  name: Chequeado
-  homepage: https://chequeado.com
-  language: es
-  scope: domestic
-  kind: media
-  governing_body: Fundación La Voz Pública
-  state_affiliated: false
-  notes: Pioneer Argentine independent fact-checking and public policy verification
-    foundation.
-  feeds:
-  - url: https://chequeado.com/feed/
-    category_hint: internal_politics
-- id: cenital_ar
-  name: Cenital
-  homepage: https://cenital.com
-  language: es
-  scope: domestic
-  kind: media
-  governing_body: Cenital Media
-  state_affiliated: false
-  notes: Independent analytical digital newsroom focusing on institutional politics,
-    economics and geopolitics.
-  feeds:
-  - url: https://cenital.com/feed/
-    category_hint: internal_politics
-- id: eldiarioar_ar
-  name: elDiarioAR
-  homepage: https://www.eldiarioar.com
-  language: es
-  scope: domestic
-  kind: media
-  governing_body: Prensa Digital SL (elDiario.es affiliate)
-  state_affiliated: false
-  notes: Independent progressive digital daily covering Argentine institutional politics,
-    justice, and human rights.
-  feeds:
-  - url: https://www.eldiarioar.com/rss/
-    category_hint: internal_politics
-- id: tiempoar_ar
-  name: Tiempo Argentino
-  homepage: https://www.tiempoar.com.ar
-  language: es
-  scope: domestic
-  kind: media
-  governing_body: Cooperativa Por Más Tiempo
-  state_affiliated: false
-  notes: Worker-owned cooperative daily newspaper covering labor, social movements,
-    and national politics.
-  feeds:
-  - url: https://www.tiempoar.com.ar/feed/
-    category_hint: internal_politics
-- id: rionegro_ar
-  name: Diario Río Negro
-  homepage: https://www.rionegro.com.ar
-  language: es
-  scope: domestic
-  kind: media
-  governing_body: Editorial Río Negro SA
-  state_affiliated: false
-  notes: Historic Patagonian daily newspaper covering energy (Vaca Muerta), regional
-    economy, and federal politics.
-  feeds:
-  - url: https://www.rionegro.com.ar/feed/
-    category_hint: economics
-- id: bbc_news_latam
-  name: BBC News (Latin America)
-  homepage: https://www.bbc.com/news/world/latin_america
-  language: en
-  scope: international
-  kind: media
-  governing_body: BBC (British Broadcasting Corporation)
-  state_affiliated: false
-  notes: Covers Latin America; only items referencing the country are ingested.
-  feeds:
-  - url: https://feeds.bbci.co.uk/news/world/latin_america/rss.xml
-    category_hint: general
-- id: france24_english
-  name: France 24 (English)
-  homepage: https://www.france24.com/en
-  language: en
-  scope: international
-  kind: media
-  governing_body: France Médias Monde
-  state_affiliated: true
-  notes: International coverage; filtered strictly by country mention words.
-  feeds:
-  - url: https://www.france24.com/en/rss
-    category_hint: general
-- id: aljazeera_english
-  name: Al Jazeera English
-  homepage: https://www.aljazeera.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Al Jazeera Media Network
-  state_affiliated: true
-  notes: Global Middle Eastern & developing world coverage; filtered by country mention
-    words.
-  feeds:
-  - url: https://www.aljazeera.com/xml/rss/all.xml
-    category_hint: general
+  - id: infobae_ar
+    name: Infobae (Argentina)
+    homepage: https://www.infobae.com
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Infobae Media Group (Buenos Aires digital daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.infobae.com/arc/outboundfeeds/rss/?outputType=xml", section: Política y Economía, category_hint: general}
+
+  - id: lanacion_ar
+    name: La Nación
+    homepage: https://www.lanacion.com.ar
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: SA La Nación (national paper of record in Buenos Aires)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.lanacion.com.ar/arc/outboundfeeds/rss/", section: Últimas Noticias, category_hint: general}
+
+  - id: gnews_ar_domestic
+    name: Clarín / Ámbito Financiero / El Cronista (National Media via Google News)
+    homepage: https://www.clarin.com
+    language: es
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: Grupo Clarín / Grupo Indalo / Editorial Sarmiento
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:clarin.com+OR+site:ambito.com+OR+site:cronista.com)+when:1d&hl=es-419&gl=AR&ceid=AR:es-419", section: Economía y Política, category_hint: general}
+
+  - id: gnews_ar_official
+    name: Casa Rosada / Télam Archives (Official State Communications via Google News)
+    homepage: https://www.casarosada.gob.ar
+    language: es
+    scope: domestic
+    kind: official
+    aggregator: google_news
+    governing_body: Presidencia de la Nación Argentina / Vocería Presidencial
+    state_affiliated: true
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:casarosada.gob.ar+OR+site:argentina.gob.ar)+when:7d&hl=es-419&gl=AR&ceid=AR:es-419", section: Oficial, category_hint: general}
+
+  - id: gnews_ar_abroad
+    name: El País América / CNN en Español (Regional Media via Google News)
+    homepage: https://elpais.com/america-argentina
+    language: es
+    scope: abroad_local
+    kind: media
+    aggregator: google_news
+    governing_body: Ediciones El País & Warner Bros. Discovery
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:elpais.com/america-argentina+OR+(site:cnnespanol.cnn.com+Argentina))+when:7d&hl=es-419&gl=AR&ceid=AR:es-419", section: Región, category_hint: general}
+
+  - id: gnews_en_ar
+    name: Google News (Argentina - International)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Argentina+(Buenos+Aires+OR+Milei+OR+Caputo+OR+Congress+OR+inflation)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Argentina politics & economy, category_hint: internal_politics}
+      - {url: "https://news.google.com/rss/search?q=Argentina+(IMF+OR+reserves+OR+peso+OR+China+OR+debt)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Argentina economy & IMF, category_hint: economics}
+  - id: clarin_ar
+    name: Clarín
+    homepage: https://www.clarin.com
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Grupo Clarín (paper of record)
+    state_affiliated: false
+    notes: Highest circulation Argentine national daily newspaper founded in 1945.
+    feeds:
+      - url: https://www.clarin.com/rss/lo-ultimo/
+        category_hint: general
+
+  - id: cronista_ar
+    name: El Cronista
+    homepage: https://www.cronista.com
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Grupo América (economic and financial daily)
+    state_affiliated: false
+    notes: Argentina's premier business, financial, and macroeconomic daily founded in 1908.
+    feeds:
+      - url: https://www.cronista.com/files/rss/news.xml
+        category_hint: economics
+
+  - id: perfil_ar
+    name: Perfil
+    homepage: https://www.perfil.com
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Editorial Perfil
+    state_affiliated: false
+    notes: Independent national daily newspaper and political analysis portal founded by Jorge Fontevecchia.
+    feeds:
+      - url: https://www.perfil.com/feed
+        category_hint: internal_politics
+
+  - id: chequeado_ar
+    name: Chequeado
+    homepage: https://chequeado.com
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Fundación La Voz Pública
+    state_affiliated: false
+    notes: Pioneer Argentine independent fact-checking and public policy verification foundation.
+    feeds:
+      - url: https://chequeado.com/feed/
+        category_hint: internal_politics
+
+  - id: cenital_ar
+    name: Cenital
+    homepage: https://cenital.com
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Cenital Media
+    state_affiliated: false
+    notes: Independent analytical digital newsroom focusing on institutional politics, economics and geopolitics.
+    feeds:
+      - url: https://cenital.com/feed/
+        category_hint: internal_politics
+
+  - id: eldiarioar_ar
+    name: elDiarioAR
+    homepage: https://www.eldiarioar.com
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Prensa Digital SL (elDiario.es affiliate)
+    state_affiliated: false
+    notes: Independent progressive digital daily covering Argentine institutional politics, justice, and human rights.
+    feeds:
+      - url: https://www.eldiarioar.com/rss/
+        category_hint: internal_politics
+
+  - id: tiempoar_ar
+    name: Tiempo Argentino
+    homepage: https://www.tiempoar.com.ar
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Cooperativa Por Más Tiempo
+    state_affiliated: false
+    notes: Worker-owned cooperative daily newspaper covering labor, social movements, and national politics.
+    feeds:
+      - url: https://www.tiempoar.com.ar/feed/
+        category_hint: internal_politics
+
+  - id: rionegro_ar
+    name: Diario Río Negro
+    homepage: https://www.rionegro.com.ar
+    language: es
+    scope: domestic
+    kind: media
+    governing_body: Editorial Río Negro SA
+    state_affiliated: false
+    notes: Historic Patagonian daily newspaper covering energy (Vaca Muerta), regional economy, and federal politics.
+    feeds:
+      - url: https://www.rionegro.com.ar/feed/
+        category_hint: economics

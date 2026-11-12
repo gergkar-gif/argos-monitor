@@ -58,11 +58,11 @@ sources:
   kind: media
   governing_body: News Corp Australia
   state_affiliated: false
-  notes: Oldest and largest daily newspaper in Papua New Guinea covering Port Moresby
-    politics, mining, and tribal reconciliation.
+  notes: Oldest and largest daily newspaper in Papua New Guinea covering Port Moresby politics, mining, and tribal reconciliation.
   feeds:
   - url: https://postcourier.com.pg/feed/
     category_hint: internal_politics
+
 - id: fbcnews_fj
   name: FBC News (Fiji)
   homepage: https://www.fbcnews.com.fj
@@ -71,11 +71,11 @@ sources:
   kind: official
   governing_body: Fiji Broadcasting Corporation
   state_affiliated: true
-  notes: Statutory public broadcaster providing comprehensive national and regional
-    coverage of Fiji and the Pacific Islands Forum.
+  notes: Statutory public broadcaster providing comprehensive national and regional coverage of Fiji and the Pacific Islands Forum.
   feeds:
   - url: https://www.fbcnews.com.fj/feed/
     category_hint: internal_politics
+
 - id: cookislandsnews
   name: Cook Islands News
   homepage: https://www.cookislandsnews.com
@@ -84,11 +84,11 @@ sources:
   kind: media
   governing_body: Cook Islands News Limited
   state_affiliated: false
-  notes: National daily newspaper of the Cook Islands covering seabed mineral exploration,
-    tourism, and free association with NZ.
+  notes: National daily newspaper of the Cook Islands covering seabed mineral exploration, tourism, and free association with NZ.
   feeds:
   - url: https://www.cookislandsnews.com/feed/
     category_hint: economics
+
 - id: islandtimes_pw
   name: Island Times (Palau)
   homepage: https://islandtimes.org
@@ -97,11 +97,11 @@ sources:
   kind: media
   governing_body: Island Times Newspaper
   state_affiliated: false
-  notes: Independent newspaper of Palau covering Compact of Free Association (COFA)
-    diplomacy, marine sanctuaries, and regional affairs.
+  notes: Independent newspaper of Palau covering Compact of Free Association (COFA) diplomacy, marine sanctuaries, and regional affairs.
   feeds:
   - url: https://islandtimes.org/feed/
     category_hint: foreign_policy
+
 - id: matangitonga
   name: Matangi Tonga
   homepage: https://matangitonga.to
@@ -110,11 +110,11 @@ sources:
   kind: media
   governing_body: Vava'u Press
   state_affiliated: false
-  notes: Independent daily news service of the Kingdom of Tonga covering parliamentary
-    reform, royal governance, and climate impacts.
+  notes: Independent daily news service of the Kingdom of Tonga covering parliamentary reform, royal governance, and climate impacts.
   feeds:
   - url: https://matangitonga.to/rss.xml
     category_hint: internal_politics
+
 - id: marshallislandsjournal
   name: The Marshall Islands Journal
   homepage: https://marshallislandsjournal.com
@@ -123,11 +123,11 @@ sources:
   kind: media
   governing_body: Micronitor News and Printing Company
   state_affiliated: false
-  notes: Paper of record for the Republic of the Marshall Islands covering nuclear
-    legacy compensation, maritime registries, and rising sea levels.
+  notes: Paper of record for the Republic of the Marshall Islands covering nuclear legacy compensation, maritime registries, and rising sea levels.
   feeds:
   - url: https://marshallislandsjournal.com/feed/
     category_hint: foreign_policy
+
 - id: devpolicy_blog
   name: Devpolicy Blog (Pacific Affairs)
   homepage: https://devpolicy.org
@@ -136,45 +136,7 @@ sources:
   kind: media
   governing_body: Development Policy Centre (Australian National University)
   state_affiliated: false
-  notes: Leading academic and policy research platform dedicated to Pacific development,
-    aid flows, and regional security treaties.
+  notes: Leading academic and policy research platform dedicated to Pacific development, aid flows, and regional security treaties.
   feeds:
   - url: https://devpolicy.org/feed/
     category_hint: foreign_policy
-- id: bbc_news_asia
-  name: BBC News (Asia)
-  homepage: https://www.bbc.com/news/world/asia
-  language: en
-  scope: international
-  kind: media
-  governing_body: BBC (British Broadcasting Corporation)
-  state_affiliated: false
-  notes: Covers Asia; only items explicitly referencing the country are ingested.
-  feeds:
-  - url: https://feeds.bbci.co.uk/news/world/asia/rss.xml
-    category_hint: general
-- id: dw_english
-  name: Deutsche Welle (English)
-  homepage: https://www.dw.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Deutsche Welle (German public statutory international broadcaster)
-  state_affiliated: true
-  notes: Global broadcast feed; filtered strictly by country mention words.
-  feeds:
-  - url: https://rss.dw.com/rdf/rss-en-all
-    category_hint: general
-- id: aljazeera_english
-  name: Al Jazeera English
-  homepage: https://www.aljazeera.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Al Jazeera Media Network
-  state_affiliated: true
-  notes: Global Middle Eastern & developing world coverage; filtered by country mention
-    words.
-  feeds:
-  - url: https://www.aljazeera.com/xml/rss/all.xml
-    category_hint: general

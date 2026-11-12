@@ -92,8 +92,7 @@ sources:
   language: en
   scope: domestic
   kind: media
-  governing_body: pulsing media / Latin America Reports (independent English-language
-    desk)
+  governing_body: pulsing media / Latin America Reports (independent English-language desk)
   state_affiliated: false
   feeds:
   - url: https://brazilreports.com/feed/
@@ -126,8 +125,7 @@ sources:
   kind: media
   governing_body: Grupo Paricá
   state_affiliated: false
-  notes: Prominent Brazilian center-right national daily covering federal politics
-    and economics.
+  notes: Prominent Brazilian center-right national daily covering federal politics and economics.
   feeds:
   - url: https://www.gazetadopovo.com.br/feed/rss/brasil.xml
     category_hint: internal_politics
@@ -139,8 +137,7 @@ sources:
   kind: media
   governing_body: ConJur Editorial
   state_affiliated: false
-  notes: Leading Brazilian judicial, constitutional, and Supreme Court (STF) policy
-    review.
+  notes: Leading Brazilian judicial, constitutional, and Supreme Court (STF) policy review.
   feeds:
   - url: https://www.conjur.com.br/feed/
     category_hint: internal_politics
@@ -152,8 +149,7 @@ sources:
   kind: media
   governing_body: Universidade de São Paulo
   state_affiliated: false
-  notes: Public academic press covering national science, environmental policy, and
-    governance.
+  notes: Public academic press covering national science, environmental policy, and governance.
   feeds:
   - url: https://jornal.usp.br/feed/
     category_hint: society
@@ -170,40 +166,3 @@ sources:
   - url: https://news.google.com/rss/search?q=Brasil+OR+Bras%C3%ADlia+OR+governo+when:2d&hl=pt-BR&gl=BR&ceid=BR:pt-419
     section: National News (Portuguese)
     category_hint: internal_politics
-- id: bbc_news_latam
-  name: BBC News (Latin America)
-  homepage: https://www.bbc.com/news/world/latin_america
-  language: en
-  scope: international
-  kind: media
-  governing_body: BBC (British Broadcasting Corporation)
-  state_affiliated: false
-  notes: Covers Latin America; only items referencing the country are ingested.
-  feeds:
-  - url: https://feeds.bbci.co.uk/news/world/latin_america/rss.xml
-    category_hint: general
-- id: france24_english
-  name: France 24 (English)
-  homepage: https://www.france24.com/en
-  language: en
-  scope: international
-  kind: media
-  governing_body: France Médias Monde
-  state_affiliated: true
-  notes: International coverage; filtered strictly by country mention words.
-  feeds:
-  - url: https://www.france24.com/en/rss
-    category_hint: general
-- id: aljazeera_english
-  name: Al Jazeera English
-  homepage: https://www.aljazeera.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Al Jazeera Media Network
-  state_affiliated: true
-  notes: Global Middle Eastern & developing world coverage; filtered by country mention
-    words.
-  feeds:
-  - url: https://www.aljazeera.com/xml/rss/all.xml
-    category_hint: general

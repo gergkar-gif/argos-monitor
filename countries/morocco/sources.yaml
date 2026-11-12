@@ -19,8 +19,7 @@ sources:
   kind: media
   governing_body: MWN Media Group
   state_affiliated: false
-  notes: Leading independent English-language Moroccan daily covering diplomacy, Sahara
-    dispute, and investment.
+  notes: Leading independent English-language Moroccan daily covering diplomacy, Sahara dispute, and investment.
   feeds:
   - url: https://www.moroccoworldnews.com/feed
     category_hint: foreign_policy
@@ -45,8 +44,7 @@ sources:
   kind: media
   governing_body: Hespress Group
   state_affiliated: false
-  notes: French-language edition of Morocco leading digital news daily covering governance
-    and diplomacy.
+  notes: French-language edition of Morocco leading digital news daily covering governance and diplomacy.
   feeds:
   - url: https://fr.hespress.com/feed
     category_hint: internal_politics
@@ -58,8 +56,7 @@ sources:
   kind: media
   governing_body: Hespress Group
   state_affiliated: false
-  notes: Most read Moroccan Arabic electronic newspaper covering domestic politics
-    and social issues.
+  notes: Most read Moroccan Arabic electronic newspaper covering domestic politics and social issues.
   feeds:
   - url: https://www.hespress.com/feed
     category_hint: internal_politics
@@ -71,8 +68,7 @@ sources:
   kind: media
   governing_body: TelQuel Média
   state_affiliated: false
-  notes: Renowned independent Moroccan weekly news magazine known for investigative
-    journalism and editorial freedom.
+  notes: Renowned independent Moroccan weekly news magazine known for investigative journalism and editorial freedom.
   feeds:
   - url: https://telquel.ma/feed
     category_hint: internal_politics
@@ -84,8 +80,7 @@ sources:
   kind: media
   governing_body: Éditions de la Gazette
   state_affiliated: false
-  notes: Premier Moroccan economic and business news weekly covering industrial investment
-    and state fiscal policy.
+  notes: Premier Moroccan economic and business news weekly covering industrial investment and state fiscal policy.
   feeds:
   - url: https://www.challenge.ma/feed/
     category_hint: economics
@@ -109,8 +104,7 @@ sources:
   kind: media
   governing_body: Groupe Caractères
   state_affiliated: false
-  notes: Historic Moroccan financial, corporate, and economic weekly newspaper of
-    record.
+  notes: Historic Moroccan financial, corporate, and economic weekly newspaper of record.
   feeds:
   - url: https://lavieeco.com/feed/
     category_hint: economics
@@ -122,8 +116,7 @@ sources:
   kind: media
   governing_body: LeBrief Communications
   state_affiliated: false
-  notes: Moroccan digital daily providing synthetic analysis of executive decisions
-    and national news.
+  notes: Moroccan digital daily providing synthetic analysis of executive decisions and national news.
   feeds:
   - url: https://www.lebrief.ma/feed/
     category_hint: general
@@ -135,8 +128,7 @@ sources:
   kind: media
   governing_body: Bladna24 Media
   state_affiliated: false
-  notes: Moroccan digital newspaper reporting on regional developments and national
-    politics.
+  notes: Moroccan digital newspaper reporting on regional developments and national politics.
   feeds:
   - url: https://bladna24.ma/feed/
     category_hint: general
@@ -153,40 +145,3 @@ sources:
   - url: https://news.google.com/rss/search?q=Maroc+OR+gouvernement+OR+Rabat+when:2d&hl=fr&gl=MA&ceid=MA:fr
     section: National News (French)
     category_hint: internal_politics
-- id: bbc_news_me
-  name: BBC News (Middle East)
-  homepage: https://www.bbc.com/news/world/middle_east
-  language: en
-  scope: international
-  kind: media
-  governing_body: BBC (British Broadcasting Corporation)
-  state_affiliated: false
-  notes: Covers the Middle East; only items referencing the country are ingested.
-  feeds:
-  - url: https://feeds.bbci.co.uk/news/world/middle_east/rss.xml
-    category_hint: general
-- id: aljazeera_english
-  name: Al Jazeera English
-  homepage: https://www.aljazeera.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Al Jazeera Media Network
-  state_affiliated: true
-  notes: Global Middle Eastern & developing world coverage; filtered by country mention
-    words.
-  feeds:
-  - url: https://www.aljazeera.com/xml/rss/all.xml
-    category_hint: general
-- id: france24_english
-  name: France 24 (English)
-  homepage: https://www.france24.com/en
-  language: en
-  scope: international
-  kind: media
-  governing_body: France Médias Monde
-  state_affiliated: true
-  notes: International coverage; filtered strictly by country mention words.
-  feeds:
-  - url: https://www.france24.com/en/rss
-    category_hint: general

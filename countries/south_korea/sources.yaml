@@ -1,264 +1,208 @@
+# South Korea source registry (decision D15).
+# Combines national news agency Yonhap (English & Korean), established national dailies (The Korea Times, Dong-A Ilbo), regional Korean diaspora broadcasters, and Google News aggregators.
+
 sources:
-- id: yna_en
-  name: Yonhap News Agency (English)
-  homepage: https://en.yna.co.kr
-  language: en
-  scope: domestic
-  kind: wire
-  governing_body: Yonhap News Agency (South Korea's public statutory national wire
-    service)
-  state_affiliated: false
-  feeds:
-  - url: https://en.yna.co.kr/RSS/news.xml
-    section: Top News
-    category_hint: general
-- id: yna_ko
-  name: Yonhap News (Korean)
-  homepage: https://www.yna.co.kr
-  language: ko
-  scope: domestic
-  kind: wire
-  governing_body: Yonhap News Agency (South Korea's public statutory national wire
-    service)
-  state_affiliated: false
-  feeds:
-  - url: https://www.yna.co.kr/rss/news.xml
-    section: Headlines
-    category_hint: general
-- id: koreatimes_en
-  name: The Korea Times
-  homepage: https://www.koreatimes.co.kr
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: Hankook Ilbo Media Group (independent national English daily)
-  state_affiliated: false
-  feeds:
-  - url: https://www.koreatimes.co.kr/www/rss/rss.xml
-    section: All News
-    category_hint: general
-- id: donga_ko
-  name: Dong-A Ilbo
-  homepage: https://www.donga.com
-  language: ko
-  scope: domestic
-  kind: media
-  governing_body: Dong-A Media Group (major national daily newspaper of record)
-  state_affiliated: false
-  feeds:
-  - url: https://rss.donga.com/total.xml
-    section: Domestic
-    category_hint: general
-- id: chosun_ilbo
-  name: The Chosun Ilbo
-  homepage: https://www.chosun.com
-  language: ko
-  scope: domestic
-  kind: media
-  governing_body: Chosun Media (conservative national daily newspaper of record)
-  state_affiliated: false
-  feeds:
-  - url: https://www.chosun.com/arc/outboundfeeds/rss/category/politics/?outputType=xml
-    section: Politics
-    category_hint: internal_politics
-- id: hani_co_kr
-  name: The Hankyoreh
-  homepage: https://www.hani.co.kr
-  language: ko
-  scope: domestic
-  kind: media
-  governing_body: Hankyoreh Media Group (progressive national daily newspaper)
-  state_affiliated: false
-  feeds:
-  - url: https://www.hani.co.kr/rss/
-    section: Total
-    category_hint: general
-- id: maeil_business
-  name: Maeil Business Newspaper (MK)
-  homepage: https://www.mk.co.kr
-  language: ko
-  scope: domestic
-  kind: media
-  governing_body: Maekyung Media Group (premier national financial and economic daily)
-  state_affiliated: false
-  feeds:
-  - url: https://www.mk.co.kr/rss/30000001/
-    section: Headlines
-    category_hint: economics
-- id: kbs_world
-  name: KBS World News
-  homepage: https://world.kbs.co.kr
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: Korean Broadcasting System (national public broadcaster)
-  state_affiliated: true
-  feeds:
-  - url: https://world.kbs.co.kr/rss/rss_news.htm?lang=e
-    section: News
-    category_hint: general
-- id: etnews_ko
-  name: Electronic Times (ETNews)
-  homepage: https://www.etnews.com
-  language: ko
-  scope: domestic
-  kind: media
-  governing_body: Electronic Times Co. (national technology and semiconductor daily)
-  state_affiliated: false
-  feeds:
-  - url: https://rss.etnews.com/Section902.xml
-    section: Top News
-    category_hint: economics
-- id: nocut_news
-  name: No Cut News
-  homepage: https://www.nocutnews.co.kr
-  language: ko
-  scope: domestic
-  kind: media
-  governing_body: CBS (Christian Broadcasting System - independent broadcast news
-    network)
-  state_affiliated: false
-  feeds:
-  - url: https://rss.nocutnews.co.kr/nocutnews.xml
-    section: Total
-    category_hint: general
-- id: ohmynews
-  name: OhmyNews
-  homepage: http://www.ohmynews.com
-  language: ko
-  scope: domestic
-  kind: media
-  governing_body: OhmyNews Co. (independent investigative digital news organisation)
-  state_affiliated: false
-  feeds:
-  - url: http://rss.ohmynews.com/rss/ohmynews.xml
-    section: Top Stories
-    category_hint: general
-- id: gnews_ko_top
-  name: Google News (South Korea Top Stories - Korean)
-  homepage: https://news.google.com
-  language: ko
-  scope: domestic
-  kind: media
-  aggregator: google_news
-  governing_body: n/a (aggregator)
-  state_affiliated: false
-  feeds:
-  - url: https://news.google.com/rss?hl=ko&gl=KR&ceid=KR:ko
-    section: Top Stories
-    category_hint: general
-- id: gnews_ko_politics
-  name: Google News (South Korea Politics - Korean)
-  homepage: https://news.google.com
-  language: ko
-  scope: domestic
-  kind: media
-  aggregator: google_news
-  governing_body: n/a (aggregator)
-  state_affiliated: false
-  feeds:
-  - url: https://news.google.com/rss/headlines/section/topic/POLITICS?hl=ko&gl=KR&ceid=KR:ko
-    section: Politics
-    category_hint: internal_politics
-- id: gnews_ko_business
-  name: Google News (South Korea Economy & Business - Korean)
-  homepage: https://news.google.com
-  language: ko
-  scope: domestic
-  kind: media
-  aggregator: google_news
-  governing_body: n/a (aggregator)
-  state_affiliated: false
-  feeds:
-  - url: https://news.google.com/rss/headlines/section/topic/BUSINESS?hl=ko&gl=KR&ceid=KR:ko
-    section: Business
-    category_hint: economics
-- id: gnews_ko_abroad
-  name: BBC News Korean & RFA Korean (via Google News)
-  homepage: https://www.bbc.com/korean
-  language: ko
-  scope: abroad_local
-  kind: media
-  aggregator: google_news
-  governing_body: BBC World Service / Radio Free Asia Korean Service
-  state_affiliated: false
-  feeds:
-  - url: https://news.google.com/rss/search?q=(site:bbc.com/korean+OR+site:rfa.org/korean)+when:7d&hl=ko&gl=KR&ceid=KR:ko
-    section: Diaspora Korean
-    category_hint: general
-- id: gnews_en_kr
-  name: Google News (South Korea - International English)
-  homepage: https://news.google.com
-  language: en
-  scope: international
-  kind: media
-  aggregator: google_news
-  governing_body: n/a (aggregator)
-  state_affiliated: false
-  feeds:
-  - url: https://news.google.com/rss/search?q=%22South+Korea%22+when:1d&hl=en-US&gl=US&ceid=US:en
-    section: South Korea
-    category_hint: general
-- id: gnews_en_kr_econ
-  name: Google News (South Korea Economy, Won & Tech - English)
-  homepage: https://news.google.com
-  language: en
-  scope: international
-  kind: media
-  aggregator: google_news
-  governing_body: n/a (aggregator)
-  state_affiliated: false
-  feeds:
-  - url: https://news.google.com/rss/search?q=%22South+Korea%22+(economy+OR+won+OR+Samsung+OR+semiconductor+OR+BOK)+when:1d&hl=en-US&gl=US&ceid=US:en
-    section: Economy
-    category_hint: economics
-- id: gnews_en_kr_sec
-  name: Google News (South Korea Defense & North Korea - English)
-  homepage: https://news.google.com
-  language: en
-  scope: international
-  kind: media
-  aggregator: google_news
-  governing_body: n/a (aggregator)
-  state_affiliated: false
-  feeds:
-  - url: https://news.google.com/rss/search?q=%22South+Korea%22+(missile+OR+defense+OR+military+OR+%22North+Korea%22)+when:1d&hl=en-US&gl=US&ceid=US:en
-    section: Security
-    category_hint: defence_security
-- id: bbc_news_asia
-  name: BBC News (Asia)
-  homepage: https://www.bbc.com/news/world/asia
-  language: en
-  scope: international
-  kind: media
-  governing_body: BBC (British Broadcasting Corporation)
-  state_affiliated: false
-  notes: Covers Asia; only items explicitly referencing the country are ingested.
-  feeds:
-  - url: https://feeds.bbci.co.uk/news/world/asia/rss.xml
-    category_hint: general
-- id: dw_english
-  name: Deutsche Welle (English)
-  homepage: https://www.dw.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Deutsche Welle (German public statutory international broadcaster)
-  state_affiliated: true
-  notes: Global broadcast feed; filtered strictly by country mention words.
-  feeds:
-  - url: https://rss.dw.com/rdf/rss-en-all
-    category_hint: general
-- id: aljazeera_english
-  name: Al Jazeera English
-  homepage: https://www.aljazeera.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Al Jazeera Media Network
-  state_affiliated: true
-  notes: Global Middle Eastern & developing world coverage; filtered by country mention
-    words.
-  feeds:
-  - url: https://www.aljazeera.com/xml/rss/all.xml
-    category_hint: general
+  - id: yna_en
+    name: Yonhap News Agency (English)
+    homepage: https://en.yna.co.kr
+    language: en
+    scope: domestic
+    kind: wire
+    governing_body: Yonhap News Agency (South Korea's public statutory national wire service)
+    state_affiliated: false
+    feeds:
+      - {url: "https://en.yna.co.kr/RSS/news.xml", section: Top News, category_hint: general}
+
+  - id: yna_ko
+    name: Yonhap News (Korean)
+    homepage: https://www.yna.co.kr
+    language: ko
+    scope: domestic
+    kind: wire
+    governing_body: Yonhap News Agency (South Korea's public statutory national wire service)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.yna.co.kr/rss/news.xml", section: Headlines, category_hint: general}
+
+  - id: koreatimes_en
+    name: The Korea Times
+    homepage: https://www.koreatimes.co.kr
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Hankook Ilbo Media Group (independent national English daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.koreatimes.co.kr/www/rss/rss.xml", section: All News, category_hint: general}
+
+  - id: donga_ko
+    name: Dong-A Ilbo
+    homepage: https://www.donga.com
+    language: ko
+    scope: domestic
+    kind: media
+    governing_body: Dong-A Media Group (major national daily newspaper of record)
+    state_affiliated: false
+    feeds:
+      - {url: "https://rss.donga.com/total.xml", section: Domestic, category_hint: general}
+
+  - id: chosun_ilbo
+    name: The Chosun Ilbo
+    homepage: https://www.chosun.com
+    language: ko
+    scope: domestic
+    kind: media
+    governing_body: Chosun Media (conservative national daily newspaper of record)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.chosun.com/arc/outboundfeeds/rss/category/politics/?outputType=xml", section: Politics, category_hint: internal_politics}
+
+  - id: hani_co_kr
+    name: The Hankyoreh
+    homepage: https://www.hani.co.kr
+    language: ko
+    scope: domestic
+    kind: media
+    governing_body: Hankyoreh Media Group (progressive national daily newspaper)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.hani.co.kr/rss/", section: Total, category_hint: general}
+
+  - id: maeil_business
+    name: Maeil Business Newspaper (MK)
+    homepage: https://www.mk.co.kr
+    language: ko
+    scope: domestic
+    kind: media
+    governing_body: Maekyung Media Group (premier national financial and economic daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.mk.co.kr/rss/30000001/", section: Headlines, category_hint: economics}
+
+  - id: kbs_world
+    name: KBS World News
+    homepage: https://world.kbs.co.kr
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Korean Broadcasting System (national public broadcaster)
+    state_affiliated: true
+    feeds:
+      - {url: "https://world.kbs.co.kr/rss/rss_news.htm?lang=e", section: News, category_hint: general}
+
+  - id: etnews_ko
+    name: Electronic Times (ETNews)
+    homepage: https://www.etnews.com
+    language: ko
+    scope: domestic
+    kind: media
+    governing_body: Electronic Times Co. (national technology and semiconductor daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://rss.etnews.com/Section902.xml", section: Top News, category_hint: economics}
+
+  - id: nocut_news
+    name: No Cut News
+    homepage: https://www.nocutnews.co.kr
+    language: ko
+    scope: domestic
+    kind: media
+    governing_body: CBS (Christian Broadcasting System - independent broadcast news network)
+    state_affiliated: false
+    feeds:
+      - {url: "https://rss.nocutnews.co.kr/nocutnews.xml", section: Total, category_hint: general}
+
+  - id: ohmynews
+    name: OhmyNews
+    homepage: http://www.ohmynews.com
+    language: ko
+    scope: domestic
+    kind: media
+    governing_body: OhmyNews Co. (independent investigative digital news organisation)
+    state_affiliated: false
+    feeds:
+      - {url: "http://rss.ohmynews.com/rss/ohmynews.xml", section: Top Stories, category_hint: general}
+
+  - id: gnews_ko_top
+    name: Google News (South Korea Top Stories - Korean)
+    homepage: https://news.google.com
+    language: ko
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss?hl=ko&gl=KR&ceid=KR:ko", section: Top Stories, category_hint: general}
+
+  - id: gnews_ko_politics
+    name: Google News (South Korea Politics - Korean)
+    homepage: https://news.google.com
+    language: ko
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/headlines/section/topic/POLITICS?hl=ko&gl=KR&ceid=KR:ko", section: Politics, category_hint: internal_politics}
+
+  - id: gnews_ko_business
+    name: Google News (South Korea Economy & Business - Korean)
+    homepage: https://news.google.com
+    language: ko
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/headlines/section/topic/BUSINESS?hl=ko&gl=KR&ceid=KR:ko", section: Business, category_hint: economics}
+
+  - id: gnews_ko_abroad
+    name: BBC News Korean & RFA Korean (via Google News)
+    homepage: https://www.bbc.com/korean
+    language: ko
+    scope: abroad_local
+    kind: media
+    aggregator: google_news
+    governing_body: BBC World Service / Radio Free Asia Korean Service
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:bbc.com/korean+OR+site:rfa.org/korean)+when:7d&hl=ko&gl=KR&ceid=KR:ko", section: Diaspora Korean, category_hint: general}
+
+  - id: gnews_en_kr
+    name: Google News (South Korea - International English)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=%22South+Korea%22+when:1d&hl=en-US&gl=US&ceid=US:en", section: South Korea, category_hint: general}
+
+  - id: gnews_en_kr_econ
+    name: Google News (South Korea Economy, Won & Tech - English)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=%22South+Korea%22+(economy+OR+won+OR+Samsung+OR+semiconductor+OR+BOK)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Economy, category_hint: economics}
+
+  - id: gnews_en_kr_sec
+    name: Google News (South Korea Defense & North Korea - English)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=%22South+Korea%22+(missile+OR+defense+OR+military+OR+%22North+Korea%22)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Security, category_hint: defence_security}

@@ -1,207 +1,165 @@
+# Kenya source registry (decision D15).
+# Combines independent Kenyan dailies & broadcasters (The Standard, Kenya Broadcasting Corporation KBC, Daily Nation / The Star / Citizen TV via Google News), regional East African press (The EastAfrican), and international wires.
+
 sources:
-- id: standard_ke
-  name: The Standard
-  homepage: https://www.standardmedia.co.ke
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: The Standard Group PLC (national daily newspaper of record in Nairobi)
-  state_affiliated: false
-  feeds:
-  - url: https://www.standardmedia.co.ke/rss/headlines.php
-    section: Headlines
-    category_hint: general
-- id: kbc_ke
-  name: Kenya Broadcasting Corporation (KBC)
-  homepage: https://www.kbc.co.ke
-  language: en
-  scope: domestic
-  kind: official
-  governing_body: Government of Kenya (public state broadcaster)
-  state_affiliated: true
-  feeds:
-  - url: https://www.kbc.co.ke/feed/
-    section: Top News
-    category_hint: general
-- id: gnews_ke_domestic
-  name: Daily Nation / The Star / Citizen TV (National Media via Google News)
-  homepage: https://nation.africa/kenya
-  language: en
-  scope: domestic
-  kind: media
-  aggregator: google_news
-  governing_body: Nation Media Group / Radio Africa Group / Royal Media Services
-  state_affiliated: false
-  feeds:
-  - url: https://news.google.com/rss/search?q=(site:nation.africa/kenya+OR+site:the-star.co.ke+OR+site:citizen.digital)+when:1d&hl=en-KE&gl=KE&ceid=KE:en
-    section: Top Stories
-    category_hint: general
-- id: gnews_ke_abroad
-  name: The EastAfrican (Regional Press via Google News)
-  homepage: https://www.theeastafrican.co.ke
-  language: en
-  scope: abroad_local
-  kind: media
-  aggregator: google_news
-  governing_body: Nation Media Group (Regional East African weekly)
-  state_affiliated: false
-  feeds:
-  - url: https://news.google.com/rss/search?q=site:theeastafrican.co.ke+Kenya+when:7d&hl=en-KE&gl=KE&ceid=KE:en
-    section: East Africa
-    category_hint: general
-- id: gnews_en_ke
-  name: Google News (Kenya - International)
-  homepage: https://news.google.com
-  language: en
-  scope: international
-  kind: media
-  aggregator: google_news
-  governing_body: n/a (aggregator)
-  state_affiliated: false
-  feeds:
-  - url: https://news.google.com/rss/search?q=Kenya+(Nairobi+OR+Ruto+OR+Gachagua+OR+Kindiki+OR+parliament)+when:1d&hl=en-US&gl=US&ceid=US:en
-    section: Kenya politics & governance
-    category_hint: internal_politics
-  - url: https://news.google.com/rss/search?q=Kenya+(IMF+OR+economy+OR+Haiti+OR+EAC+OR+shilling)+when:1d&hl=en-US&gl=US&ceid=US:en
-    section: Kenya economy & diplomacy
-    category_hint: foreign_policy
-- id: peopledaily_ke
-  name: People Daily
-  homepage: https://www.peopledaily.digital
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: Mediamax Network Limited
-  state_affiliated: false
-  notes: High-circulation national daily broadsheet covering parliamentary politics,
-    judiciary, and county governance.
-  feeds:
-  - url: https://www.peopledaily.digital/feed/
-    category_hint: internal_politics
-- id: capitalfm_ke
-  name: Capital FM Kenya
-  homepage: https://www.capitalfm.co.ke
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: Capital Group Limited
-  state_affiliated: false
-  notes: Pioneering private broadcast and digital news organization providing continuous
-    breaking news on national politics.
-  feeds:
-  - url: https://www.capitalfm.co.ke/news/feed/
-    category_hint: internal_politics
-- id: kenyans_co_ke
-  name: Kenyans.co.ke
-  homepage: https://www.kenyans.co.ke
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: Boxraft Limited
-  state_affiliated: false
-  notes: High-volume independent digital news daily covering national executive affairs,
-    economy, and infrastructure.
-  feeds:
-  - url: https://www.kenyans.co.ke/feeds/news
-    category_hint: general
-- id: kenyanews_gov
-  name: Kenya News Agency (KNA)
-  homepage: https://www.kenyanews.go.ke
-  language: en
-  scope: domestic
-  kind: official
-  governing_body: Ministry of Information, Communications & The Digital Economy
-  state_affiliated: true
-  notes: Statutory national wire news agency of the Republic of Kenya covering official
-    announcements across all 47 counties.
-  feeds:
-  - url: https://www.kenyanews.go.ke/feed/
-    category_hint: internal_politics
-- id: tuko_ke
-  name: Tuko.co.ke
-  homepage: https://www.tuko.co.ke
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: Genesis Media Emergent
-  state_affiliated: false
-  notes: High-reach Kenyan digital daily providing comprehensive national news, political
-    interviews, and human interest reporting.
-  feeds:
-  - url: https://www.tuko.co.ke/rss/all.rss
-    category_hint: general
-- id: biznakenya
-  name: Bizna Kenya
-  homepage: https://biznakenya.com
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: Bizna Media Group
-  state_affiliated: false
-  notes: Leading financial, SME, taxation, and business intelligence portal in Kenya.
-  feeds:
-  - url: https://biznakenya.com/feed/
-    category_hint: economics
-- id: kahawatungu
-  name: KahawaTungu
-  homepage: https://kahawatungu.com
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: KahawaTungu Media
-  state_affiliated: false
-  notes: Independent investigative digital platform covering corporate governance,
-    public procurement, and political expose.
-  feeds:
-  - url: https://kahawatungu.com/feed/
-    category_hint: internal_politics
-- id: kenyareport
-  name: KenyaReport
-  homepage: https://kenyareport.com
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: KenyaReport Media
-  state_affiliated: false
-  notes: Independent daily news aggregator and reporting portal covering political
-    alliances, elections, and national security.
-  feeds:
-  - url: https://kenyareport.com/feed/
-    category_hint: internal_politics
-- id: bbc_news_africa
-  name: BBC News (Africa)
-  homepage: https://www.bbc.com/news/world/africa
-  language: en
-  scope: international
-  kind: media
-  governing_body: BBC (British Broadcasting Corporation)
-  state_affiliated: false
-  notes: Covers Africa; only items referencing the country are ingested.
-  feeds:
-  - url: https://feeds.bbci.co.uk/news/world/africa/rss.xml
-    category_hint: general
-- id: france24_english
-  name: France 24 (English)
-  homepage: https://www.france24.com/en
-  language: en
-  scope: international
-  kind: media
-  governing_body: France Médias Monde
-  state_affiliated: true
-  notes: International coverage; filtered strictly by country mention words.
-  feeds:
-  - url: https://www.france24.com/en/rss
-    category_hint: general
-- id: aljazeera_english
-  name: Al Jazeera English
-  homepage: https://www.aljazeera.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Al Jazeera Media Network
-  state_affiliated: true
-  notes: Global Middle Eastern & developing world coverage; filtered by country mention
-    words.
-  feeds:
-  - url: https://www.aljazeera.com/xml/rss/all.xml
-    category_hint: general
+  - id: standard_ke
+    name: The Standard
+    homepage: https://www.standardmedia.co.ke
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: The Standard Group PLC (national daily newspaper of record in Nairobi)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.standardmedia.co.ke/rss/headlines.php", section: Headlines, category_hint: general}
+
+  - id: kbc_ke
+    name: Kenya Broadcasting Corporation (KBC)
+    homepage: https://www.kbc.co.ke
+    language: en
+    scope: domestic
+    kind: official
+    governing_body: Government of Kenya (public state broadcaster)
+    state_affiliated: true
+    feeds:
+      - {url: "https://www.kbc.co.ke/feed/", section: Top News, category_hint: general}
+
+  - id: gnews_ke_domestic
+    name: Daily Nation / The Star / Citizen TV (National Media via Google News)
+    homepage: https://nation.africa/kenya
+    language: en
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: Nation Media Group / Radio Africa Group / Royal Media Services
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:nation.africa/kenya+OR+site:the-star.co.ke+OR+site:citizen.digital)+when:1d&hl=en-KE&gl=KE&ceid=KE:en", section: Top Stories, category_hint: general}
+
+  - id: gnews_ke_abroad
+    name: The EastAfrican (Regional Press via Google News)
+    homepage: https://www.theeastafrican.co.ke
+    language: en
+    scope: abroad_local
+    kind: media
+    aggregator: google_news
+    governing_body: Nation Media Group (Regional East African weekly)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:theeastafrican.co.ke+Kenya+when:7d&hl=en-KE&gl=KE&ceid=KE:en", section: East Africa, category_hint: general}
+
+  - id: gnews_en_ke
+    name: Google News (Kenya - International)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Kenya+(Nairobi+OR+Ruto+OR+Gachagua+OR+Kindiki+OR+parliament)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Kenya politics & governance, category_hint: internal_politics}
+      - {url: "https://news.google.com/rss/search?q=Kenya+(IMF+OR+economy+OR+Haiti+OR+EAC+OR+shilling)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Kenya economy & diplomacy, category_hint: foreign_policy}
+  - id: peopledaily_ke
+    name: People Daily
+    homepage: https://www.peopledaily.digital
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Mediamax Network Limited"
+    state_affiliated: false
+    notes: "High-circulation national daily broadsheet covering parliamentary politics, judiciary, and county governance."
+    feeds:
+      - url: https://www.peopledaily.digital/feed/
+        category_hint: internal_politics
+
+  - id: capitalfm_ke
+    name: Capital FM Kenya
+    homepage: https://www.capitalfm.co.ke
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Capital Group Limited"
+    state_affiliated: false
+    notes: "Pioneering private broadcast and digital news organization providing continuous breaking news on national politics."
+    feeds:
+      - url: https://www.capitalfm.co.ke/news/feed/
+        category_hint: internal_politics
+
+  - id: kenyans_co_ke
+    name: Kenyans.co.ke
+    homepage: https://www.kenyans.co.ke
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Boxraft Limited"
+    state_affiliated: false
+    notes: "High-volume independent digital news daily covering national executive affairs, economy, and infrastructure."
+    feeds:
+      - url: https://www.kenyans.co.ke/feeds/news
+        category_hint: general
+
+  - id: kenyanews_gov
+    name: Kenya News Agency (KNA)
+    homepage: https://www.kenyanews.go.ke
+    language: en
+    scope: domestic
+    kind: official
+    governing_body: "Ministry of Information, Communications & The Digital Economy"
+    state_affiliated: true
+    notes: "Statutory national wire news agency of the Republic of Kenya covering official announcements across all 47 counties."
+    feeds:
+      - url: https://www.kenyanews.go.ke/feed/
+        category_hint: internal_politics
+
+  - id: tuko_ke
+    name: Tuko.co.ke
+    homepage: https://www.tuko.co.ke
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Genesis Media Emergent"
+    state_affiliated: false
+    notes: "High-reach Kenyan digital daily providing comprehensive national news, political interviews, and human interest reporting."
+    feeds:
+      - url: https://www.tuko.co.ke/rss/all.rss
+        category_hint: general
+
+  - id: biznakenya
+    name: Bizna Kenya
+    homepage: https://biznakenya.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Bizna Media Group"
+    state_affiliated: false
+    notes: "Leading financial, SME, taxation, and business intelligence portal in Kenya."
+    feeds:
+      - url: https://biznakenya.com/feed/
+        category_hint: economics
+
+  - id: kahawatungu
+    name: KahawaTungu
+    homepage: https://kahawatungu.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "KahawaTungu Media"
+    state_affiliated: false
+    notes: "Independent investigative digital platform covering corporate governance, public procurement, and political expose."
+    feeds:
+      - url: https://kahawatungu.com/feed/
+        category_hint: internal_politics
+
+  - id: kenyareport
+    name: KenyaReport
+    homepage: https://kenyareport.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "KenyaReport Media"
+    state_affiliated: false
+    notes: "Independent daily news aggregator and reporting portal covering political alliances, elections, and national security."
+    feeds:
+      - url: https://kenyareport.com/feed/
+        category_hint: internal_politics

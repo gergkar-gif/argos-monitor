@@ -21,8 +21,7 @@ sources:
   kind: official
   governing_body: People's Daily / CCP Central Committee
   state_affiliated: true
-  notes: Nationalistic English-language daily reflecting official foreign and security
-    perspectives.
+  notes: Nationalistic English-language daily reflecting official foreign and security perspectives.
   feeds:
   - url: https://www.globaltimes.cn/rss/outbound.xml
     category_hint: foreign_policy
@@ -34,8 +33,7 @@ sources:
   kind: media
   governing_body: Alibaba Group
   state_affiliated: false
-  notes: Hong Kong English daily of record covering mainland politics, economy, and
-    diplomacy.
+  notes: Hong Kong English daily of record covering mainland politics, economy, and diplomacy.
   feeds:
   - url: https://www.scmp.com/rss/4/feed
     category_hint: internal_politics
@@ -85,8 +83,7 @@ sources:
   kind: media
   governing_body: SPH Media (Singapore)
   state_affiliated: false
-  notes: Leading Southeast Asian Chinese-language paper of record with extensive China
-    reporting.
+  notes: Leading Southeast Asian Chinese-language paper of record with extensive China reporting.
   feeds:
   - url: https://www.zaobao.com.sg/rss/realtime/china
     category_hint: internal_politics
@@ -112,8 +109,7 @@ sources:
   governing_body: Google LLC
   state_affiliated: false
   aggregator: google_news
-  notes: Aggregator feed tracking Chinese stimulus, PBOC policy, real estate, and
-    tech sanctions.
+  notes: Aggregator feed tracking Chinese stimulus, PBOC policy, real estate, and tech sanctions.
   feeds:
   - url: https://news.google.com/rss/search?q=%22People%27s+Bank+of+China%22+OR+%22Chinese+economy%22+OR+PBOC+OR+%22real+estate%22+China+when:3d&hl=en-US&gl=US&ceid=US:en
     category_hint: economics
@@ -126,8 +122,7 @@ sources:
   governing_body: Google LLC
   state_affiliated: false
   aggregator: google_news
-  notes: Aggregator feed tracking PLA exercises, Taiwan Strait security, and South
-    China Sea maneuvers.
+  notes: Aggregator feed tracking PLA exercises, Taiwan Strait security, and South China Sea maneuvers.
   feeds:
   - url: https://news.google.com/rss/search?q=%22People%27s+Liberation+Army%22+OR+%22Taiwan+Strait%22+OR+%22South+China+Sea%22+PLA+when:3d&hl=en-US&gl=US&ceid=US:en
     category_hint: defence_security
@@ -163,8 +158,7 @@ sources:
   kind: media
   governing_body: Al Jazeera Media Network (Qatar)
   state_affiliated: false
-  notes: Independent Middle Eastern network Chinese language desk covering Sino-global
-    diplomacy.
+  notes: Independent Middle Eastern network Chinese language desk covering Sino-global diplomacy.
   feeds:
   - url: https://www.aljazeera.net/aljazeerarss/a7c186be-1baa-4bd4-9d80-a84db769f779/73d0e1b4-532f-45ef-b135-bfdff8b8cab9
     category_hint: foreign_policy
@@ -181,40 +175,3 @@ sources:
   - url: https://news.google.com/rss/search?q=%E4%B8%AD%E5%9B%BD+OR+%E5%8C%97%E4%BA%AC+OR+%E5%9B%BD%E5%8A%A1%E9%99%A2+when:2d&hl=zh-CN&gl=CN&ceid=CN:zh-Hans
     section: National News (Chinese)
     category_hint: internal_politics
-- id: bbc_news_asia
-  name: BBC News (Asia)
-  homepage: https://www.bbc.com/news/world/asia
-  language: en
-  scope: international
-  kind: media
-  governing_body: BBC (British Broadcasting Corporation)
-  state_affiliated: false
-  notes: Covers Asia; only items explicitly referencing the country are ingested.
-  feeds:
-  - url: https://feeds.bbci.co.uk/news/world/asia/rss.xml
-    category_hint: general
-- id: dw_english
-  name: Deutsche Welle (English)
-  homepage: https://www.dw.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Deutsche Welle (German public statutory international broadcaster)
-  state_affiliated: true
-  notes: Global broadcast feed; filtered strictly by country mention words.
-  feeds:
-  - url: https://rss.dw.com/rdf/rss-en-all
-    category_hint: general
-- id: aljazeera_english
-  name: Al Jazeera English
-  homepage: https://www.aljazeera.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Al Jazeera Media Network
-  state_affiliated: true
-  notes: Global Middle Eastern & developing world coverage; filtered by country mention
-    words.
-  feeds:
-  - url: https://www.aljazeera.com/xml/rss/all.xml
-    category_hint: general

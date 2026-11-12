@@ -1,190 +1,138 @@
+# Nigeria source registry (decision D15).
+# Combines independent Nigerian dailies & broadcasters (Premium Times, The Punch, Vanguard, Channels TV), diaspora investigative press (Sahara Reporters), state wire NAN / Voice of Nigeria via Google News, and international wires.
+
 sources:
-- id: premiumtimes_ng
-  name: Premium Times
-  homepage: https://www.premiumtimesng.com
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: Premium Times Services Ltd (Abuja independent investigative newspaper)
-  state_affiliated: false
-  feeds:
-  - url: https://www.premiumtimesng.com/feed
-    section: Latest
-    category_hint: general
-- id: punch_ng
-  name: The Punch
-  homepage: https://punchng.com
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: Punch Nigeria Limited (Lagos national daily newspaper)
-  state_affiliated: false
-  feeds:
-  - url: https://punchng.com/feed/
-    section: News
-    category_hint: general
-- id: vanguard_ng
-  name: Vanguard
-  homepage: https://www.vanguardngr.com
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: Vanguard Media Limited (Lagos national daily)
-  state_affiliated: false
-  feeds:
-  - url: https://www.vanguardngr.com/feed/
-    section: News
-    category_hint: general
-- id: channelstv_ng
-  name: Channels Television
-  homepage: https://www.channelstv.com
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: Channels Incorporated Limited (independent Nigerian 24-hour news
-    broadcaster)
-  state_affiliated: false
-  feeds:
-  - url: https://www.channelstv.com/feed/
-    section: Top Stories
-    category_hint: general
-- id: saharareporters
-  name: Sahara Reporters
-  homepage: https://saharareporters.com
-  language: en
-  scope: abroad_local
-  kind: media
-  governing_body: Sahara Reporters Media Group (New York-based Nigerian diaspora investigative
-    outlet)
-  state_affiliated: false
-  feeds:
-  - url: https://saharareporters.com/rss.xml
-    section: Latest
-    category_hint: general
-- id: dailytrust_ng
-  name: Daily Trust
-  homepage: https://dailytrust.com
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: Media Trust Limited (leading northern and national daily newspaper)
-  state_affiliated: false
-  feeds:
-  - url: https://dailytrust.com/feed/
-    section: News
-    category_hint: general
-- id: businessday_ng
-  name: BusinessDay Nigeria
-  homepage: https://businessday.ng
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: BusinessDay Media Ltd (premier macroeconomic, financial and market
-    daily)
-  state_affiliated: false
-  feeds:
-  - url: https://businessday.ng/feed/
-    section: News
-    category_hint: economics
-- id: leadership_ng
-  name: Leadership
-  homepage: https://leadership.ng
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: Leadership Group Ltd (major Abuja national daily newspaper)
-  state_affiliated: false
-  feeds:
-  - url: https://leadership.ng/feed/
-    section: Latest
-    category_hint: general
-- id: tribune_ng
-  name: Nigerian Tribune
-  homepage: https://tribuneonlineng.com
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: African Newspapers of Nigeria Plc (historic daily newspaper of record)
-  state_affiliated: false
-  feeds:
-  - url: https://tribuneonlineng.com/feed/
-    section: Headlines
-    category_hint: general
-- id: dailypost_ng
-  name: Daily Post Nigeria
-  homepage: https://dailypost.ng
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: Daily Post Media Ltd (leading digital daily news portal)
-  state_affiliated: false
-  feeds:
-  - url: https://dailypost.ng/feed/
-    section: News
-    category_hint: general
-- id: gnews_ng_official
-  name: NAN / Voice of Nigeria (Official State Press via Google News)
-  homepage: https://nannews.ng
-  language: en
-  scope: domestic
-  kind: official
-  aggregator: google_news
-  governing_body: News Agency of Nigeria (NAN) / Voice of Nigeria (Federal Government)
-  state_affiliated: true
-  feeds:
-  - url: https://news.google.com/rss/search?q=(site:nannews.ng+OR+site:von.gov.ng+OR+site:statehouse.gov.ng)+when:7d&hl=en-NG&gl=NG&ceid=NG:en
-    section: NAN & State House
-    category_hint: general
-- id: gnews_en_ng
-  name: Google News (Nigeria - International)
-  homepage: https://news.google.com
-  language: en
-  scope: international
-  kind: media
-  aggregator: google_news
-  governing_body: n/a (aggregator)
-  state_affiliated: false
-  feeds:
-  - url: https://news.google.com/rss/search?q=Nigeria+(Abuja+OR+Tinubu+OR+CBN+OR+naira+OR+NNPC+OR+Dangote)+when:1d&hl=en-US&gl=US&ceid=US:en
-    section: Nigeria politics & economy
-    category_hint: economics
-  - url: https://news.google.com/rss/search?q=Nigeria+(ECOWAS+OR+Borno+OR+ISWAP+OR+%22Boko+Haram%22+OR+bandits+OR+security)+when:1d&hl=en-US&gl=US&ceid=US:en
-    section: Nigeria security & ECOWAS
-    category_hint: defence_security
-- id: bbc_news_africa
-  name: BBC News (Africa)
-  homepage: https://www.bbc.com/news/world/africa
-  language: en
-  scope: international
-  kind: media
-  governing_body: BBC (British Broadcasting Corporation)
-  state_affiliated: false
-  notes: Covers Africa; only items referencing the country are ingested.
-  feeds:
-  - url: https://feeds.bbci.co.uk/news/world/africa/rss.xml
-    category_hint: general
-- id: france24_english
-  name: France 24 (English)
-  homepage: https://www.france24.com/en
-  language: en
-  scope: international
-  kind: media
-  governing_body: France Médias Monde
-  state_affiliated: true
-  notes: International coverage; filtered strictly by country mention words.
-  feeds:
-  - url: https://www.france24.com/en/rss
-    category_hint: general
-- id: aljazeera_english
-  name: Al Jazeera English
-  homepage: https://www.aljazeera.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Al Jazeera Media Network
-  state_affiliated: true
-  notes: Global Middle Eastern & developing world coverage; filtered by country mention
-    words.
-  feeds:
-  - url: https://www.aljazeera.com/xml/rss/all.xml
-    category_hint: general
+  - id: premiumtimes_ng
+    name: Premium Times
+    homepage: https://www.premiumtimesng.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Premium Times Services Ltd (Abuja independent investigative newspaper)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.premiumtimesng.com/feed", section: Latest, category_hint: general}
+
+  - id: punch_ng
+    name: The Punch
+    homepage: https://punchng.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Punch Nigeria Limited (Lagos national daily newspaper)
+    state_affiliated: false
+    feeds:
+      - {url: "https://punchng.com/feed/", section: News, category_hint: general}
+
+  - id: vanguard_ng
+    name: Vanguard
+    homepage: https://www.vanguardngr.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Vanguard Media Limited (Lagos national daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.vanguardngr.com/feed/", section: News, category_hint: general}
+
+  - id: channelstv_ng
+    name: Channels Television
+    homepage: https://www.channelstv.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Channels Incorporated Limited (independent Nigerian 24-hour news broadcaster)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.channelstv.com/feed/", section: Top Stories, category_hint: general}
+
+  - id: saharareporters
+    name: Sahara Reporters
+    homepage: https://saharareporters.com
+    language: en
+    scope: abroad_local
+    kind: media
+    governing_body: Sahara Reporters Media Group (New York-based Nigerian diaspora investigative outlet)
+    state_affiliated: false
+    feeds:
+      - {url: "https://saharareporters.com/rss.xml", section: Latest, category_hint: general}
+
+  - id: dailytrust_ng
+    name: Daily Trust
+    homepage: https://dailytrust.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Media Trust Limited (leading northern and national daily newspaper)
+    state_affiliated: false
+    feeds:
+      - {url: "https://dailytrust.com/feed/", section: News, category_hint: general}
+
+  - id: businessday_ng
+    name: BusinessDay Nigeria
+    homepage: https://businessday.ng
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: BusinessDay Media Ltd (premier macroeconomic, financial and market daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://businessday.ng/feed/", section: News, category_hint: economics}
+
+  - id: leadership_ng
+    name: Leadership
+    homepage: https://leadership.ng
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Leadership Group Ltd (major Abuja national daily newspaper)
+    state_affiliated: false
+    feeds:
+      - {url: "https://leadership.ng/feed/", section: Latest, category_hint: general}
+
+  - id: tribune_ng
+    name: Nigerian Tribune
+    homepage: https://tribuneonlineng.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: African Newspapers of Nigeria Plc (historic daily newspaper of record)
+    state_affiliated: false
+    feeds:
+      - {url: "https://tribuneonlineng.com/feed/", section: Headlines, category_hint: general}
+
+  - id: dailypost_ng
+    name: Daily Post Nigeria
+    homepage: https://dailypost.ng
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Daily Post Media Ltd (leading digital daily news portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://dailypost.ng/feed/", section: News, category_hint: general}
+
+  - id: gnews_ng_official
+    name: NAN / Voice of Nigeria (Official State Press via Google News)
+    homepage: https://nannews.ng
+    language: en
+    scope: domestic
+    kind: official
+    aggregator: google_news
+    governing_body: News Agency of Nigeria (NAN) / Voice of Nigeria (Federal Government)
+    state_affiliated: true
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:nannews.ng+OR+site:von.gov.ng+OR+site:statehouse.gov.ng)+when:7d&hl=en-NG&gl=NG&ceid=NG:en", section: NAN & State House, category_hint: general}
+
+  - id: gnews_en_ng
+    name: Google News (Nigeria - International)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Nigeria+(Abuja+OR+Tinubu+OR+CBN+OR+naira+OR+NNPC+OR+Dangote)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Nigeria politics & economy, category_hint: economics}
+      - {url: "https://news.google.com/rss/search?q=Nigeria+(ECOWAS+OR+Borno+OR+ISWAP+OR+%22Boko+Haram%22+OR+bandits+OR+security)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Nigeria security & ECOWAS, category_hint: defence_security}

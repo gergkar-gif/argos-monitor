@@ -1,193 +1,139 @@
+# Philippines source registry (decision D15).
+# Combines major independent/commercial dailies (Rappler, Inquirer, Philstar, GMA News, BusinessWorld, Manila Times) and state agency (PNA via Google News) + international wires.
+
 sources:
-- id: rappler
-  name: Rappler
-  homepage: https://www.rappler.com
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: Rappler Inc. (independent investigative digital outlet)
-  state_affiliated: false
-  feeds:
-  - url: https://www.rappler.com/feed/
-    section: Latest
-    category_hint: general
-- id: inquirer
-  name: Philippine Daily Inquirer
-  homepage: https://newsinfo.inquirer.net
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: Inquirer Group of Companies (private national daily)
-  state_affiliated: false
-  feeds:
-  - url: https://newsinfo.inquirer.net/feed
-    section: News
-    category_hint: general
-- id: philstar
-  name: Philstar (The Philippine Star)
-  homepage: https://www.philstar.com
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: PhilStar Media Group / MediaQuest Holdings (private)
-  state_affiliated: false
-  feeds:
-  - url: https://www.philstar.com/rss/headlines
-    section: Headlines
-    category_hint: general
-- id: gmanetwork
-  name: GMA News Online
-  homepage: https://www.gmanetwork.com/news
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: GMA Network Inc. (private national broadcaster)
-  state_affiliated: false
-  feeds:
-  - url: https://data.gmanetwork.com/gno/rss/news/feed.xml
-    section: News
-    category_hint: general
-- id: bworld_ph
-  name: BusinessWorld
-  homepage: https://www.bworldonline.com
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: BusinessWorld Publishing Corporation (private business daily)
-  state_affiliated: false
-  feeds:
-  - url: https://www.bworldonline.com/feed/
-    section: Business & Economy
-    category_hint: economics
-- id: manilatimes
-  name: The Manila Times
-  homepage: https://www.manilatimes.net
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: The Manila Times Publishing Corp. (private daily)
-  state_affiliated: false
-  feeds:
-  - url: https://www.manilatimes.net/news/feed/
-    section: News
-    category_hint: general
-- id: pcij_ph
-  name: Philippine Center for Investigative Journalism (PCIJ)
-  homepage: https://pcij.org
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: PCIJ Foundation (independent non-profit investigative journalism
-    centre)
-  state_affiliated: false
-  feeds:
-  - url: https://pcij.org/feed/
-    section: Investigations
-    category_hint: internal_politics
-- id: interaksyon_ph
-  name: Interaksyon
-  homepage: https://interaksyon.philstar.com
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: PhilStar Media Group (independent digital news and current affairs
-    portal)
-  state_affiliated: false
-  feeds:
-  - url: https://interaksyon.philstar.com/feed/
-    section: Headlines
-    category_hint: general
-- id: mindanews_ph
-  name: MindaNews
-  homepage: https://mindanews.com
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: Mindanao News and Information Cooperative Center (independent regional
-    news service)
-  state_affiliated: false
-  feeds:
-  - url: https://mindanews.com/feed/
-    section: News
-    category_hint: general
-- id: mindanaotimes_ph
-  name: Mindanao Times
-  homepage: https://mindanaotimes.com.ph
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: Mindanao Times Publishing Corp. (oldest independent daily in Mindanao)
-  state_affiliated: false
-  feeds:
-  - url: https://mindanaotimes.com.ph/feed/
-    section: Top News
-    category_hint: general
-- id: gnews_pna
-  name: Philippine News Agency (PNA via Google News)
-  homepage: https://www.pna.gov.ph
-  language: en
-  scope: domestic
-  kind: official
-  aggregator: google_news
-  governing_body: Presidential Communications Office (official government wire)
-  state_affiliated: true
-  feeds:
-  - url: https://news.google.com/rss/search?q=site:pna.gov.ph+when:2d&hl=en-PH&gl=PH&ceid=PH:en
-    section: Official Wire
-    category_hint: general
-- id: gnews_en_ph
-  name: Google News (Philippines - International)
-  homepage: https://news.google.com
-  language: en
-  scope: international
-  kind: media
-  aggregator: google_news
-  governing_body: n/a (aggregator)
-  state_affiliated: false
-  feeds:
-  - url: https://news.google.com/rss/search?q=Philippines+when:1d&hl=en-US&gl=US&ceid=US:en
-    section: Philippines
-    category_hint: general
-  - url: https://news.google.com/rss/search?q=Philippines+(%22West+Philippine+Sea%22+OR+%22South+China+Sea%22+OR+China+OR+US+OR+military)+when:1d&hl=en-US&gl=US&ceid=US:en
-    section: West Philippine Sea & Security
-    category_hint: defence_security
-  - url: https://news.google.com/rss/search?q=Philippines+(Marcos+OR+Duterte+OR+Senate+OR+economy+OR+BSP)+when:1d&hl=en-US&gl=US&ceid=US:en
-    section: Politics & Economy
-    category_hint: internal_politics
-- id: bbc_news_asia
-  name: BBC News (Asia)
-  homepage: https://www.bbc.com/news/world/asia
-  language: en
-  scope: international
-  kind: media
-  governing_body: BBC (British Broadcasting Corporation)
-  state_affiliated: false
-  notes: Covers Asia; only items explicitly referencing the country are ingested.
-  feeds:
-  - url: https://feeds.bbci.co.uk/news/world/asia/rss.xml
-    category_hint: general
-- id: dw_english
-  name: Deutsche Welle (English)
-  homepage: https://www.dw.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Deutsche Welle (German public statutory international broadcaster)
-  state_affiliated: true
-  notes: Global broadcast feed; filtered strictly by country mention words.
-  feeds:
-  - url: https://rss.dw.com/rdf/rss-en-all
-    category_hint: general
-- id: aljazeera_english
-  name: Al Jazeera English
-  homepage: https://www.aljazeera.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Al Jazeera Media Network
-  state_affiliated: true
-  notes: Global Middle Eastern & developing world coverage; filtered by country mention
-    words.
-  feeds:
-  - url: https://www.aljazeera.com/xml/rss/all.xml
-    category_hint: general
+  - id: rappler
+    name: Rappler
+    homepage: https://www.rappler.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Rappler Inc. (independent investigative digital outlet)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.rappler.com/feed/", section: Latest, category_hint: general}
+
+  - id: inquirer
+    name: Philippine Daily Inquirer
+    homepage: https://newsinfo.inquirer.net
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Inquirer Group of Companies (private national daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://newsinfo.inquirer.net/feed", section: News, category_hint: general}
+
+  - id: philstar
+    name: Philstar (The Philippine Star)
+    homepage: https://www.philstar.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: PhilStar Media Group / MediaQuest Holdings (private)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.philstar.com/rss/headlines", section: Headlines, category_hint: general}
+
+  - id: gmanetwork
+    name: GMA News Online
+    homepage: https://www.gmanetwork.com/news
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: GMA Network Inc. (private national broadcaster)
+    state_affiliated: false
+    feeds:
+      - {url: "https://data.gmanetwork.com/gno/rss/news/feed.xml", section: News, category_hint: general}
+
+  - id: bworld_ph
+    name: BusinessWorld
+    homepage: https://www.bworldonline.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: BusinessWorld Publishing Corporation (private business daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.bworldonline.com/feed/", section: Business & Economy, category_hint: economics}
+
+  - id: manilatimes
+    name: The Manila Times
+    homepage: https://www.manilatimes.net
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: The Manila Times Publishing Corp. (private daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.manilatimes.net/news/feed/", section: News, category_hint: general}
+
+  - id: pcij_ph
+    name: Philippine Center for Investigative Journalism (PCIJ)
+    homepage: https://pcij.org
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: PCIJ Foundation (independent non-profit investigative journalism centre)
+    state_affiliated: false
+    feeds:
+      - {url: "https://pcij.org/feed/", section: Investigations, category_hint: internal_politics}
+
+  - id: interaksyon_ph
+    name: Interaksyon
+    homepage: https://interaksyon.philstar.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: PhilStar Media Group (independent digital news and current affairs portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://interaksyon.philstar.com/feed/", section: Headlines, category_hint: general}
+
+  - id: mindanews_ph
+    name: MindaNews
+    homepage: https://mindanews.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Mindanao News and Information Cooperative Center (independent regional news service)
+    state_affiliated: false
+    feeds:
+      - {url: "https://mindanews.com/feed/", section: News, category_hint: general}
+
+  - id: mindanaotimes_ph
+    name: Mindanao Times
+    homepage: https://mindanaotimes.com.ph
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Mindanao Times Publishing Corp. (oldest independent daily in Mindanao)
+    state_affiliated: false
+    feeds:
+      - {url: "https://mindanaotimes.com.ph/feed/", section: Top News, category_hint: general}
+
+  - id: gnews_pna
+    name: Philippine News Agency (PNA via Google News)
+    homepage: https://www.pna.gov.ph
+    language: en
+    scope: domestic
+    kind: official
+    aggregator: google_news
+    governing_body: Presidential Communications Office (official government wire)
+    state_affiliated: true
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:pna.gov.ph+when:2d&hl=en-PH&gl=PH&ceid=PH:en", section: Official Wire, category_hint: general}
+
+  - id: gnews_en_ph
+    name: Google News (Philippines - International)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Philippines+when:1d&hl=en-US&gl=US&ceid=US:en", section: Philippines, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=Philippines+(%22West+Philippine+Sea%22+OR+%22South+China+Sea%22+OR+China+OR+US+OR+military)+when:1d&hl=en-US&gl=US&ceid=US:en", section: West Philippine Sea & Security, category_hint: defence_security}
+      - {url: "https://news.google.com/rss/search?q=Philippines+(Marcos+OR+Duterte+OR+Senate+OR+economy+OR+BSP)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Politics & Economy, category_hint: internal_politics}

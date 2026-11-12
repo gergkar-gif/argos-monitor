@@ -69,8 +69,7 @@ sources:
   kind: media
   governing_body: Radio Free Europe / Radio Liberty
   state_affiliated: false
-  notes: US-funded independent Russian-language service covering human rights and
-    politics.
+  notes: US-funded independent Russian-language service covering human rights and politics.
   feeds:
   - url: https://www.svoboda.org/api/z$rqiteu_i
     category_hint: internal_politics
@@ -96,8 +95,7 @@ sources:
   governing_body: Google LLC
   state_affiliated: false
   aggregator: google_news
-  notes: Aggregator feed tracking Bank of Russia interest rates, ruble, oil revenue,
-    and sanctions.
+  notes: Aggregator feed tracking Bank of Russia interest rates, ruble, oil revenue, and sanctions.
   feeds:
   - url: https://news.google.com/rss/search?q=%22Bank+of+Russia%22+OR+Nabiullina+OR+%22Russian+economy%22+OR+ruble+OR+sanctions+Russia+when:3d&hl=en-US&gl=US&ceid=US:en
     category_hint: economics
@@ -110,8 +108,7 @@ sources:
   governing_body: Google LLC
   state_affiliated: false
   aggregator: google_news
-  notes: Aggregator feed tracking Ministry of Defense, missile strikes, and battlefield
-    maneuvers.
+  notes: Aggregator feed tracking Ministry of Defense, missile strikes, and battlefield maneuvers.
   feeds:
   - url: https://news.google.com/rss/search?q=%22Russian+Defense+Ministry%22+OR+Belousov+OR+Gerasimov+OR+Rostec+when:3d&hl=en-US&gl=US&ceid=US:en
     category_hint: defence_security
@@ -135,8 +132,7 @@ sources:
   kind: media
   governing_body: Media-Holding RBC
   state_affiliated: false
-  notes: Major Russian business daily with heavy coverage of sanctions, central bank,
-    and oligarchic shifts.
+  notes: Major Russian business daily with heavy coverage of sanctions, central bank, and oligarchic shifts.
   feeds:
   - url: https://rssexport.rbc.ru/rbcnews/news/30/full.rss
     category_hint: economics
@@ -148,8 +144,7 @@ sources:
   kind: media
   governing_body: Business News Media
   state_affiliated: false
-  notes: National business daily covering macroeconomics, federal regulations, and
-    corporate state assets.
+  notes: National business daily covering macroeconomics, federal regulations, and corporate state assets.
   feeds:
   - url: https://www.vedomosti.ru/rss/news
     category_hint: economics
@@ -161,8 +156,7 @@ sources:
   kind: media
   governing_body: Novaya Gazeta Europe (Latvia)
   state_affiliated: false
-  notes: Independent exiled investigative paper of record founded by Nobel laureate
-    Dmitry Muratov.
+  notes: Independent exiled investigative paper of record founded by Nobel laureate Dmitry Muratov.
   feeds:
   - url: https://novayagazeta.eu/feed/rss
     category_hint: internal_politics
@@ -179,39 +173,3 @@ sources:
   - url: https://news.google.com/rss/search?q=%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F+OR+%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0+OR+%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D1%82%D0%B2%D0%BE+when:2d&hl=ru&gl=RU&ceid=RU:ru
     section: National News (Russian)
     category_hint: internal_politics
-- id: bbc_news_europe
-  name: BBC News (Europe)
-  homepage: https://www.bbc.com/news/world/europe
-  language: en
-  scope: international
-  kind: media
-  governing_body: BBC (British Broadcasting Corporation)
-  state_affiliated: false
-  notes: Covers Europe; only items explicitly referencing the country are ingested.
-  feeds:
-  - url: https://feeds.bbci.co.uk/news/world/europe/rss.xml
-    category_hint: general
-- id: dw_english
-  name: Deutsche Welle (English)
-  homepage: https://www.dw.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Deutsche Welle (German public statutory international broadcaster)
-  state_affiliated: true
-  notes: Global broadcast feed; filtered strictly by country mention words.
-  feeds:
-  - url: https://rss.dw.com/rdf/rss-en-all
-    category_hint: general
-- id: france24_english
-  name: France 24 (English)
-  homepage: https://www.france24.com/en
-  language: en
-  scope: international
-  kind: media
-  governing_body: France Médias Monde
-  state_affiliated: true
-  notes: International coverage; filtered strictly by country mention words.
-  feeds:
-  - url: https://www.france24.com/en/rss
-    category_hint: general

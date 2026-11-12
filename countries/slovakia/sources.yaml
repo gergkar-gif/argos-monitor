@@ -1,202 +1,151 @@
+# Slovakia source registry (decision D15).
+# Combines independent Slovak dailies (Denník N, Aktuality.sk, Pravda, The Slovak Spectator), state wire TASR / public broadcaster STVR via Google News, Czech regional press, and international wires.
+
 sources:
-- id: dennikn_sk
-  name: Denník N
-  homepage: https://dennikn.sk
-  language: sk
-  scope: domestic
-  kind: media
-  governing_body: N Press, s.r.o. (independent Bratislava daily)
-  state_affiliated: false
-  feeds:
-  - url: https://dennikn.sk/feed/
-    section: Správy
-    category_hint: general
-- id: aktuality_sk
-  name: Aktuality.sk
-  homepage: https://www.aktuality.sk
-  language: sk
-  scope: domestic
-  kind: media
-  governing_body: Ringier Slovakia Media (independent news and investigative portal)
-  state_affiliated: false
-  feeds:
-  - url: https://www.aktuality.sk/rss/
-    section: Správy
-    category_hint: general
-- id: pravda_sk
-  name: Pravda
-  homepage: https://spravy.pravda.sk
-  language: sk
-  scope: domestic
-  kind: media
-  governing_body: OUR MEDIA SR a.s. (national daily newspaper)
-  state_affiliated: false
-  feeds:
-  - url: https://spravy.pravda.sk/domace/rss/xml/
-    section: Domáce
-    category_hint: general
-- id: spectator_sme
-  name: The Slovak Spectator (SME)
-  homepage: https://spectator.sme.sk
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: Petit Press, a.s. (independent English-language paper of record
-    in Bratislava)
-  state_affiliated: false
-  feeds:
-  - url: https://spectator.sme.sk/rss
-    section: Slovakia
-    category_hint: general
-- id: teraz_sk
-  name: Teraz.sk (TASR)
-  homepage: https://www.teraz.sk
-  language: sk
-  scope: domestic
-  kind: official
-  governing_body: News Agency of the Slovak Republic (TASR statutory public wire)
-  state_affiliated: true
-  feeds:
-  - url: https://www.teraz.sk/rss/slovensko.rss
-    section: Slovensko
-    category_hint: internal_politics
-- id: postoj_sk
-  name: Denník Postoj
-  homepage: https://www.postoj.sk
-  language: sk
-  scope: domestic
-  kind: media
-  governing_body: Postoj Media, s.r.o. (independent conservative daily)
-  state_affiliated: false
-  feeds:
-  - url: https://www.postoj.sk/rss
-    section: Správy
-    category_hint: internal_politics
-- id: standard_sk
-  name: Denník Štandard
-  homepage: https://standard.sk
-  language: sk
-  scope: domestic
-  kind: media
-  governing_body: Štandard Online, s.r.o. (independent national daily newspaper)
-  state_affiliated: false
-  feeds:
-  - url: https://standard.sk/feed
-    section: Správy
-    category_hint: general
-- id: hlavnespravy_sk
-  name: Hlavné správy
-  homepage: https://www.hlavnespravy.sk
-  language: sk
-  scope: domestic
-  kind: media
-  governing_body: HEURÉKA EVOLUTION s.r.o. (alternative digital news portal)
-  state_affiliated: false
-  feeds:
-  - url: https://www.hlavnespravy.sk/feed
-    section: Domáce
-    category_hint: internal_politics
-- id: bystricoviny_sk
-  name: Bystricoviny
-  homepage: https://www.bystricoviny.sk
-  language: sk
-  scope: domestic
-  kind: media
-  governing_body: Regional News Network (Central Slovakia regional daily)
-  state_affiliated: false
-  feeds:
-  - url: https://www.bystricoviny.sk/feed/
-    section: Správy
-    category_hint: general
-- id: refresher_sk
-  name: Refresher Správy
-  homepage: https://refresher.sk
-  language: sk
-  scope: domestic
-  kind: media
-  governing_body: Refresher Media (independent digital news daily)
-  state_affiliated: false
-  feeds:
-  - url: https://refresher.sk/rss
-    section: Správy
-    category_hint: general
-- id: gnews_sk_official
-  name: TASR / STVR (State Wire & Public Broadcaster via Google News)
-  homepage: https://www.teraz.sk
-  language: sk
-  scope: domestic
-  kind: official
-  aggregator: google_news
-  needs_mention: true
-  governing_body: News Agency of the Slovak Republic (TASR) / Slovak Television and
-    Radio (STVR)
-  state_affiliated: true
-  feeds:
-  - url: https://news.google.com/rss/search?q=(site:teraz.sk+OR+site:spravy.stvr.sk)+when:7d&hl=sk&gl=SK&ceid=SK:sk
-    section: TASR & STVR
-    category_hint: general
-- id: gnews_sk_abroad
-  name: Czech & Central European Regional Press (on Slovakia)
-  homepage: https://www.irozhlas.cz
-  language: sk
-  scope: abroad_local
-  kind: media
-  aggregator: google_news
-  governing_body: Czech Radio iROZHLAS & Seznam Zprávy
-  state_affiliated: false
-  feeds:
-  - url: https://news.google.com/rss/search?q=(site:irozhlas.cz+OR+site:seznamzpravy.cz)+(Slovensko+OR+Fico+OR+Bratislava)+when:7d&hl=cs&gl=CZ&ceid=CZ:cs
-    section: Czech coverage of Slovakia
-    category_hint: general
-- id: gnews_en_sk
-  name: Google News (Slovakia - International)
-  homepage: https://news.google.com
-  language: en
-  scope: international
-  kind: media
-  aggregator: google_news
-  governing_body: n/a (aggregator)
-  state_affiliated: false
-  feeds:
-  - url: https://news.google.com/rss/search?q=Slovakia+(Bratislava+OR+Fico+OR+Pellegrini+OR+parliament)+when:7d&hl=en-US&gl=US&ceid=US:en
-    section: Slovakia politics
-    category_hint: internal_politics
-  - url: https://news.google.com/rss/search?q=Slovakia+(EU+OR+NATO+OR+Ukraine+OR+economy+OR+energy)+when:7d&hl=en-US&gl=US&ceid=US:en
-    section: Slovakia EU & foreign policy
-    category_hint: foreign_policy
-- id: bbc_news_europe
-  name: BBC News (Europe)
-  homepage: https://www.bbc.com/news/world/europe
-  language: en
-  scope: international
-  kind: media
-  governing_body: BBC (British Broadcasting Corporation)
-  state_affiliated: false
-  notes: Covers Europe; only items explicitly referencing the country are ingested.
-  feeds:
-  - url: https://feeds.bbci.co.uk/news/world/europe/rss.xml
-    category_hint: general
-- id: dw_english
-  name: Deutsche Welle (English)
-  homepage: https://www.dw.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Deutsche Welle (German public statutory international broadcaster)
-  state_affiliated: true
-  notes: Global broadcast feed; filtered strictly by country mention words.
-  feeds:
-  - url: https://rss.dw.com/rdf/rss-en-all
-    category_hint: general
-- id: france24_english
-  name: France 24 (English)
-  homepage: https://www.france24.com/en
-  language: en
-  scope: international
-  kind: media
-  governing_body: France Médias Monde
-  state_affiliated: true
-  notes: International coverage; filtered strictly by country mention words.
-  feeds:
-  - url: https://www.france24.com/en/rss
-    category_hint: general
+  - id: dennikn_sk
+    name: Denník N
+    homepage: https://dennikn.sk
+    language: sk
+    scope: domestic
+    kind: media
+    governing_body: N Press, s.r.o. (independent Bratislava daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://dennikn.sk/feed/", section: Správy, category_hint: general}
+
+  - id: aktuality_sk
+    name: Aktuality.sk
+    homepage: https://www.aktuality.sk
+    language: sk
+    scope: domestic
+    kind: media
+    governing_body: Ringier Slovakia Media (independent news and investigative portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.aktuality.sk/rss/", section: Správy, category_hint: general}
+
+  - id: pravda_sk
+    name: Pravda
+    homepage: https://spravy.pravda.sk
+    language: sk
+    scope: domestic
+    kind: media
+    governing_body: OUR MEDIA SR a.s. (national daily newspaper)
+    state_affiliated: false
+    feeds:
+      - {url: "https://spravy.pravda.sk/domace/rss/xml/", section: Domáce, category_hint: general}
+
+  - id: spectator_sme
+    name: The Slovak Spectator (SME)
+    homepage: https://spectator.sme.sk
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Petit Press, a.s. (independent English-language paper of record in Bratislava)
+    state_affiliated: false
+    feeds:
+      - {url: "https://spectator.sme.sk/rss", section: Slovakia, category_hint: general}
+
+  - id: teraz_sk
+    name: Teraz.sk (TASR)
+    homepage: https://www.teraz.sk
+    language: sk
+    scope: domestic
+    kind: official
+    governing_body: News Agency of the Slovak Republic (TASR statutory public wire)
+    state_affiliated: true
+    feeds:
+      - {url: "https://www.teraz.sk/rss/slovensko.rss", section: Slovensko, category_hint: internal_politics}
+
+  - id: postoj_sk
+    name: Denník Postoj
+    homepage: https://www.postoj.sk
+    language: sk
+    scope: domestic
+    kind: media
+    governing_body: Postoj Media, s.r.o. (independent conservative daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.postoj.sk/rss", section: Správy, category_hint: internal_politics}
+
+  - id: standard_sk
+    name: Denník Štandard
+    homepage: https://standard.sk
+    language: sk
+    scope: domestic
+    kind: media
+    governing_body: Štandard Online, s.r.o. (independent national daily newspaper)
+    state_affiliated: false
+    feeds:
+      - {url: "https://standard.sk/feed", section: Správy, category_hint: general}
+
+  - id: hlavnespravy_sk
+    name: Hlavné správy
+    homepage: https://www.hlavnespravy.sk
+    language: sk
+    scope: domestic
+    kind: media
+    governing_body: HEURÉKA EVOLUTION s.r.o. (alternative digital news portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.hlavnespravy.sk/feed", section: Domáce, category_hint: internal_politics}
+
+  - id: bystricoviny_sk
+    name: Bystricoviny
+    homepage: https://www.bystricoviny.sk
+    language: sk
+    scope: domestic
+    kind: media
+    governing_body: Regional News Network (Central Slovakia regional daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.bystricoviny.sk/feed/", section: Správy, category_hint: general}
+
+  - id: refresher_sk
+    name: Refresher Správy
+    homepage: https://refresher.sk
+    language: sk
+    scope: domestic
+    kind: media
+    governing_body: Refresher Media (independent digital news daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://refresher.sk/rss", section: Správy, category_hint: general}
+
+  - id: gnews_sk_official
+    name: TASR / STVR (State Wire & Public Broadcaster via Google News)
+    homepage: https://www.teraz.sk
+    language: sk
+    scope: domestic
+    kind: official
+    aggregator: google_news
+    needs_mention: true
+    governing_body: News Agency of the Slovak Republic (TASR) / Slovak Television and Radio (STVR)
+    state_affiliated: true
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:teraz.sk+OR+site:spravy.stvr.sk)+when:7d&hl=sk&gl=SK&ceid=SK:sk", section: TASR & STVR, category_hint: general}
+
+  - id: gnews_sk_abroad
+    name: Czech & Central European Regional Press (on Slovakia)
+    homepage: https://www.irozhlas.cz
+    language: sk
+    scope: abroad_local
+    kind: media
+    aggregator: google_news
+    governing_body: Czech Radio iROZHLAS & Seznam Zprávy
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:irozhlas.cz+OR+site:seznamzpravy.cz)+(Slovensko+OR+Fico+OR+Bratislava)+when:7d&hl=cs&gl=CZ&ceid=CZ:cs", section: Czech coverage of Slovakia, category_hint: general}
+
+  - id: gnews_en_sk
+    name: Google News (Slovakia - International)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Slovakia+(Bratislava+OR+Fico+OR+Pellegrini+OR+parliament)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Slovakia politics, category_hint: internal_politics}
+      - {url: "https://news.google.com/rss/search?q=Slovakia+(EU+OR+NATO+OR+Ukraine+OR+economy+OR+energy)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Slovakia EU & foreign policy, category_hint: foreign_policy}

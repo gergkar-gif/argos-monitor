@@ -1,201 +1,151 @@
+# Kazakhstan source registry (decision D15).
+# Combines state-backed English daily (The Astana Times — official) with major Russian & English financial/news outlets (Kursiv Media in English & Russian, Tengrinews) and regional Central Asian / international feeds (The Times of Central Asia, Google News).
+
 sources:
-- id: astanatimes
-  name: The Astana Times
-  homepage: https://astanatimes.com
-  language: en
-  scope: domestic
-  kind: official
-  governing_body: Astana Times (state-supported English-language daily in Astana)
-  state_affiliated: true
-  feeds:
-  - url: https://astanatimes.com/feed/
-    section: Latest
-    category_hint: general
-- id: kursiv_en
-  name: Kursiv Media (English)
-  homepage: https://kz.kursiv.media/en
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: Alatay Aqparat LLP (private business & financial daily)
-  state_affiliated: false
-  feeds:
-  - url: https://kz.kursiv.media/en/feed/
-    section: Business & Policy
-    category_hint: economics
-- id: kursiv_ru
-  name: Kursiv Media (Russian)
-  homepage: https://kz.kursiv.media
-  language: ru
-  scope: domestic
-  kind: media
-  governing_body: Alatay Aqparat LLP (private business & financial daily)
-  state_affiliated: false
-  feeds:
-  - url: https://kz.kursiv.media/feed/
-    section: Новости и Экономика
-    category_hint: economics
-- id: tengrinews
-  name: Tengrinews.kz
-  homepage: https://tengrinews.kz
-  language: ru
-  scope: domestic
-  kind: media
-  governing_body: Effective Media Liaison (major private Kazakhstani news portal)
-  state_affiliated: false
-  feeds:
-  - url: https://tengrinews.kz/news.rss
-    section: Новости
-    category_hint: general
-- id: timesca
-  name: The Times of Central Asia
-  homepage: https://timesca.com
-  language: en
-  scope: abroad_local
-  kind: media
-  governing_body: The Times of Central Asia (independent regional English newspaper)
-  state_affiliated: false
-  needs_mention: true
-  feeds:
-  - url: https://timesca.com/feed/
-    section: Central Asia
-    category_hint: general
-- id: gnews_en_kz
-  name: Google News (Kazakhstan - English)
-  homepage: https://news.google.com
-  language: en
-  scope: international
-  kind: media
-  aggregator: google_news
-  governing_body: n/a (aggregator)
-  state_affiliated: false
-  feeds:
-  - url: https://news.google.com/rss/search?q=Kazakhstan+when:1d&hl=en-US&gl=US&ceid=US:en
-    section: Kazakhstan
-    category_hint: general
-  - url: https://news.google.com/rss/search?q=Kazakhstan+(Tokayev+OR+Russia+OR+China+OR+EU+OR+%22Middle+Corridor%22)+when:1d&hl=en-US&gl=US&ceid=US:en
-    section: Multi-vector diplomacy
-    category_hint: foreign_policy
-  - url: https://news.google.com/rss/search?q=Kazakhstan+(oil+OR+uranium+OR+Kazatomprom+OR+Tengiz+OR+economy+OR+tenge)+when:1d&hl=en-US&gl=US&ceid=US:en
-    section: Energy
-    Uranium & Economy: null
-    category_hint: economics
-- id: gnews_ru_kz
-  name: Google News (Kazakhstan - Russian / Independent)
-  homepage: https://news.google.com
-  language: ru
-  scope: domestic
-  kind: media
-  aggregator: google_news
-  needs_mention: true
-  governing_body: n/a (aggregator)
-  state_affiliated: false
-  feeds:
-  - url: https://news.google.com/rss/search?q=(%D0%9A%D0%B0%D0%B7%D0%B0%D1%85%D1%81%D1%82%D0%B0%D0%BD+OR+%D0%A2%D0%BE%D0%BA%D0%B0%D0%B5%D0%B2+OR+%D0%90%D1%81%D1%82%D0%B0%D0%BD%D0%B0)+when:1d&hl=ru&gl=KZ&ceid=KZ:ru
-    section: Политика и экономика
-    category_hint: general
-  - url: https://news.google.com/rss/search?q=(site:vlast.kz+OR+site:orda.kz+OR+site:rus.azattyq.org)+when:7d&hl=ru&gl=KZ&ceid=KZ:ru
-    section: Vlast / Orda / Azattyq
-    category_hint: general
-- id: inform_kz_en
-  name: Kazinform (English)
-  homepage: https://en.inform.kz
-  language: en
-  scope: domestic
-  kind: official
-  governing_body: Qazcontent / Ministry of Culture & Information of the Republic of
-    Kazakhstan
-  state_affiliated: true
-  notes: Statutory national wire news agency of Kazakhstan.
-  feeds:
-  - url: https://www.inform.kz/rss/eng.xml
-    category_hint: foreign_policy
-- id: inform_kz_ru
-  name: Kazinform (Russian)
-  homepage: https://inform.kz
-  language: ru
-  scope: domestic
-  kind: official
-  governing_body: Qazcontent / Ministry of Culture & Information of the Republic of
-    Kazakhstan
-  state_affiliated: true
-  notes: Russian-language edition of Kazakhstan's statutory national wire agency.
-  feeds:
-  - url: https://www.inform.kz/rss/rus.xml
-    category_hint: internal_politics
-- id: vlast_kz
-  name: Vlast.kz
-  homepage: https://vlast.kz
-  language: ru
-  scope: domestic
-  kind: media
-  governing_body: Vlast Media
-  state_affiliated: false
-  notes: Independent analytical digital journal covering civil society, legislative
-    reforms, and public spending.
-  feeds:
-  - url: https://vlast.kz/feed/
-    category_hint: internal_politics
-- id: inbusiness_kz
-  name: Inbusiness.kz
-  homepage: https://inbusiness.kz
-  language: ru
-  scope: domestic
-  kind: media
-  governing_body: Media Holding Atameken Business
-  state_affiliated: false
-  notes: Leading financial, commodity (oil, uranium, metals), and macroeconomic news
-    portal in Kazakhstan.
-  feeds:
-  - url: https://inbusiness.kz/ru/rss
-    category_hint: economics
-- id: lada_kz
-  name: Lada.kz
-  homepage: https://www.lada.kz
-  language: ru
-  scope: domestic
-  kind: media
-  governing_body: Lada Media (Aktau)
-  state_affiliated: false
-  notes: Major Western Kazakhstan daily covering Caspian Sea maritime logistics, energy
-    extraction, and regional labor affairs.
-  feeds:
-  - url: https://www.lada.kz/rss.xml
-    category_hint: economics
-- id: bbc_news_asia
-  name: BBC News (Asia)
-  homepage: https://www.bbc.com/news/world/asia
-  language: en
-  scope: international
-  kind: media
-  governing_body: BBC (British Broadcasting Corporation)
-  state_affiliated: false
-  notes: Covers Asia; only items explicitly referencing the country are ingested.
-  feeds:
-  - url: https://feeds.bbci.co.uk/news/world/asia/rss.xml
-    category_hint: general
-- id: dw_english
-  name: Deutsche Welle (English)
-  homepage: https://www.dw.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Deutsche Welle (German public statutory international broadcaster)
-  state_affiliated: true
-  notes: Global broadcast feed; filtered strictly by country mention words.
-  feeds:
-  - url: https://rss.dw.com/rdf/rss-en-all
-    category_hint: general
-- id: aljazeera_english
-  name: Al Jazeera English
-  homepage: https://www.aljazeera.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Al Jazeera Media Network
-  state_affiliated: true
-  notes: Global Middle Eastern & developing world coverage; filtered by country mention
-    words.
-  feeds:
-  - url: https://www.aljazeera.com/xml/rss/all.xml
-    category_hint: general
+  - id: astanatimes
+    name: The Astana Times
+    homepage: https://astanatimes.com
+    language: en
+    scope: domestic
+    kind: official
+    governing_body: Astana Times (state-supported English-language daily in Astana)
+    state_affiliated: true
+    feeds:
+      - {url: "https://astanatimes.com/feed/", section: Latest, category_hint: general}
+
+  - id: kursiv_en
+    name: Kursiv Media (English)
+    homepage: https://kz.kursiv.media/en
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Alatay Aqparat LLP (private business & financial daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://kz.kursiv.media/en/feed/", section: Business & Policy, category_hint: economics}
+
+  - id: kursiv_ru
+    name: Kursiv Media (Russian)
+    homepage: https://kz.kursiv.media
+    language: ru
+    scope: domestic
+    kind: media
+    governing_body: Alatay Aqparat LLP (private business & financial daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://kz.kursiv.media/feed/", section: Новости и Экономика, category_hint: economics}
+
+  - id: tengrinews
+    name: Tengrinews.kz
+    homepage: https://tengrinews.kz
+    language: ru
+    scope: domestic
+    kind: media
+    governing_body: Effective Media Liaison (major private Kazakhstani news portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://tengrinews.kz/news.rss", section: Новости, category_hint: general}
+
+  - id: timesca
+    name: The Times of Central Asia
+    homepage: https://timesca.com
+    language: en
+    scope: abroad_local
+    kind: media
+    governing_body: The Times of Central Asia (independent regional English newspaper)
+    state_affiliated: false
+    needs_mention: true
+    feeds:
+      - {url: "https://timesca.com/feed/", section: Central Asia, category_hint: general}
+
+  - id: gnews_en_kz
+    name: Google News (Kazakhstan - English)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Kazakhstan+when:1d&hl=en-US&gl=US&ceid=US:en", section: Kazakhstan, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=Kazakhstan+(Tokayev+OR+Russia+OR+China+OR+EU+OR+%22Middle+Corridor%22)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Multi-vector diplomacy, category_hint: foreign_policy}
+      - {url: "https://news.google.com/rss/search?q=Kazakhstan+(oil+OR+uranium+OR+Kazatomprom+OR+Tengiz+OR+economy+OR+tenge)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Energy, Uranium & Economy, category_hint: economics}
+
+  - id: gnews_ru_kz
+    name: Google News (Kazakhstan - Russian / Independent)
+    homepage: https://news.google.com
+    language: ru
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    needs_mention: true
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(%D0%9A%D0%B0%D0%B7%D0%B0%D1%85%D1%81%D1%82%D0%B0%D0%BD+OR+%D0%A2%D0%BE%D0%BA%D0%B0%D0%B5%D0%B2+OR+%D0%90%D1%81%D1%82%D0%B0%D0%BD%D0%B0)+when:1d&hl=ru&gl=KZ&ceid=KZ:ru", section: Политика и экономика, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=(site:vlast.kz+OR+site:orda.kz+OR+site:rus.azattyq.org)+when:7d&hl=ru&gl=KZ&ceid=KZ:ru", section: Vlast / Orda / Azattyq, category_hint: general}
+  - id: inform_kz_en
+    name: Kazinform (English)
+    homepage: https://en.inform.kz
+    language: en
+    scope: domestic
+    kind: official
+    governing_body: "Qazcontent / Ministry of Culture & Information of the Republic of Kazakhstan"
+    state_affiliated: true
+    notes: "Statutory national wire news agency of Kazakhstan."
+    feeds:
+      - url: https://www.inform.kz/rss/eng.xml
+        category_hint: foreign_policy
+
+  - id: inform_kz_ru
+    name: Kazinform (Russian)
+    homepage: https://inform.kz
+    language: ru
+    scope: domestic
+    kind: official
+    governing_body: "Qazcontent / Ministry of Culture & Information of the Republic of Kazakhstan"
+    state_affiliated: true
+    notes: "Russian-language edition of Kazakhstan's statutory national wire agency."
+    feeds:
+      - url: https://www.inform.kz/rss/rus.xml
+        category_hint: internal_politics
+
+  - id: vlast_kz
+    name: Vlast.kz
+    homepage: https://vlast.kz
+    language: ru
+    scope: domestic
+    kind: media
+    governing_body: "Vlast Media"
+    state_affiliated: false
+    notes: "Independent analytical digital journal covering civil society, legislative reforms, and public spending."
+    feeds:
+      - url: https://vlast.kz/feed/
+        category_hint: internal_politics
+
+  - id: inbusiness_kz
+    name: Inbusiness.kz
+    homepage: https://inbusiness.kz
+    language: ru
+    scope: domestic
+    kind: media
+    governing_body: "Media Holding Atameken Business"
+    state_affiliated: false
+    notes: "Leading financial, commodity (oil, uranium, metals), and macroeconomic news portal in Kazakhstan."
+    feeds:
+      - url: https://inbusiness.kz/ru/rss
+        category_hint: economics
+
+  - id: lada_kz
+    name: Lada.kz
+    homepage: https://www.lada.kz
+    language: ru
+    scope: domestic
+    kind: media
+    governing_body: "Lada Media (Aktau)"
+    state_affiliated: false
+    notes: "Major Western Kazakhstan daily covering Caspian Sea maritime logistics, energy extraction, and regional labor affairs."
+    feeds:
+      - url: https://www.lada.kz/rss.xml
+        category_hint: economics

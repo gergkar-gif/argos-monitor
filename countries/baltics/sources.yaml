@@ -72,11 +72,11 @@ sources:
   kind: media
   governing_body: Public Broadcasting of Latvia (LSM)
   state_affiliated: false
-  notes: Primary Latvian public-service news portal covering Saeima legislation, regional
-    development, and defense.
+  notes: Primary Latvian public-service news portal covering Saeima legislation, regional development, and defense.
   feeds:
   - url: https://www.lsm.lv/rss/
     category_hint: internal_politics
+
 - id: lsm_rus
   name: LSM.lv (Russian)
   homepage: https://rus.lsm.lv
@@ -85,11 +85,11 @@ sources:
   kind: media
   governing_body: Public Broadcasting of Latvia (LSM)
   state_affiliated: false
-  notes: Russian-language public service offering verified news for Latvia's linguistic
-    minorities.
+  notes: Russian-language public service offering verified news for Latvia's linguistic minorities.
   feeds:
   - url: https://rus.lsm.lv/rss/
     category_hint: internal_politics
+
 - id: lrt_en_direct
   name: LRT English Direct
   homepage: https://www.lrt.lt/en
@@ -98,11 +98,11 @@ sources:
   kind: media
   governing_body: Lithuanian National Radio and Television (LRT)
   state_affiliated: false
-  notes: Direct official RSS feed of Lithuanian public broadcaster covering NATO eastern
-    flank and Baltic defense.
+  notes: Direct official RSS feed of Lithuanian public broadcaster covering NATO eastern flank and Baltic defense.
   feeds:
   - url: https://www.lrt.lt/en/news-in-english?rss
     category_hint: defence_security
+
 - id: postimees_en
   name: Postimees News (English)
   homepage: https://news.postimees.ee
@@ -111,11 +111,11 @@ sources:
   kind: media
   governing_body: Postimees Grupp
   state_affiliated: false
-  notes: English edition of Estonia's oldest and highest-circulation daily paper of
-    record founded in 1857.
+  notes: English edition of Estonia's oldest and highest-circulation daily paper of record founded in 1857.
   feeds:
   - url: https://news.postimees.ee/rss
     category_hint: internal_politics
+
 - id: tvnet_lv
   name: TVNET
   homepage: https://www.tvnet.lv
@@ -124,11 +124,11 @@ sources:
   kind: media
   governing_body: TVNET Grupa (Postimees Grupp)
   state_affiliated: false
-  notes: Major Latvian digital daily newspaper covering national politics, EU funding,
-    and consumer rights.
+  notes: Major Latvian digital daily newspaper covering national politics, EU funding, and consumer rights.
   feeds:
   - url: https://www.tvnet.lv/rss
     category_hint: general
+
 - id: diena_lv
   name: Diena
   homepage: https://www.diena.lv
@@ -137,11 +137,11 @@ sources:
   kind: media
   governing_body: Dienas Mediji
   state_affiliated: false
-  notes: Historic Latvian daily broadsheet paper of record founded during the Singing
-    Revolution in 1990.
+  notes: Historic Latvian daily broadsheet paper of record founded during the Singing Revolution in 1990.
   feeds:
   - url: https://www.diena.lv/rss/
     category_hint: internal_politics
+
 - id: err_ee
   name: ERR Uudised
   homepage: https://www.err.ee
@@ -150,11 +150,11 @@ sources:
   kind: media
   governing_body: Eesti Rahvusringhääling (Estonian Public Broadcasting)
   state_affiliated: false
-  notes: Flagship Estonian-language news portal of statutory public broadcaster covering
-    government, economy, and Baltic security.
+  notes: Flagship Estonian-language news portal of statutory public broadcaster covering government, economy, and Baltic security.
   feeds:
   - url: https://www.err.ee/rss
     category_hint: internal_politics
+
 - id: postimees_ee
   name: Postimees
   homepage: https://www.postimees.ee
@@ -167,6 +167,7 @@ sources:
   feeds:
   - url: https://postimees.ee/rss
     category_hint: internal_politics
+
 - id: gnews_baltics_et
   name: Google News (Estonia - Estonian)
   homepage: https://news.google.com
@@ -181,6 +182,7 @@ sources:
     category_hint: internal_politics
   - url: https://news.google.com/rss/search?q=(Eesti+OR+Riigikogu+OR+valitsus)+when:3d&hl=et&gl=EE&ceid=EE:et
     category_hint: internal_politics
+
 - id: lrt_lt_direct
   name: LRT Naujienos
   homepage: https://www.lrt.lt
@@ -189,11 +191,11 @@ sources:
   kind: media
   governing_body: Lietuvos nacionalinis radijas ir televizija (LRT)
   state_affiliated: false
-  notes: Flagship Lithuanian-language public service portal covering Seimas affairs,
-    national defense, and regional politics.
+  notes: Flagship Lithuanian-language public service portal covering Seimas affairs, national defense, and regional politics.
   feeds:
   - url: https://www.lrt.lt/naujienos/lietuva?rss
     category_hint: internal_politics
+
 - id: gnews_baltics_lt
   name: Google News (Lithuania - Lithuanian)
   homepage: https://news.google.com
@@ -206,6 +208,7 @@ sources:
   feeds:
   - url: https://news.google.com/rss?hl=lt&gl=LT&ceid=LT:lt
     category_hint: internal_politics
+
 - id: gnews_baltics_lv
   name: Google News (Latvia - Latvian)
   homepage: https://news.google.com
@@ -218,39 +221,3 @@ sources:
   feeds:
   - url: https://news.google.com/rss?hl=lv&gl=LV&ceid=LV:lv
     category_hint: internal_politics
-- id: bbc_news_europe
-  name: BBC News (Europe)
-  homepage: https://www.bbc.com/news/world/europe
-  language: en
-  scope: international
-  kind: media
-  governing_body: BBC (British Broadcasting Corporation)
-  state_affiliated: false
-  notes: Covers Europe; only items explicitly referencing the country are ingested.
-  feeds:
-  - url: https://feeds.bbci.co.uk/news/world/europe/rss.xml
-    category_hint: general
-- id: dw_english
-  name: Deutsche Welle (English)
-  homepage: https://www.dw.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Deutsche Welle (German public statutory international broadcaster)
-  state_affiliated: true
-  notes: Global broadcast feed; filtered strictly by country mention words.
-  feeds:
-  - url: https://rss.dw.com/rdf/rss-en-all
-    category_hint: general
-- id: france24_english
-  name: France 24 (English)
-  homepage: https://www.france24.com/en
-  language: en
-  scope: international
-  kind: media
-  governing_body: France Médias Monde
-  state_affiliated: true
-  notes: International coverage; filtered strictly by country mention words.
-  feeds:
-  - url: https://www.france24.com/en/rss
-    category_hint: general

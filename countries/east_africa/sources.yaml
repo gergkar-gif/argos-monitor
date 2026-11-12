@@ -59,11 +59,11 @@ sources:
   kind: media
   governing_body: Next Media Services (Uganda)
   state_affiliated: false
-  notes: Leading Ugandan 24-hour digital newsroom covering national politics, parliament,
-    and regional security.
+  notes: Leading Ugandan 24-hour digital newsroom covering national politics, parliament, and regional security.
   feeds:
   - url: https://nilepost.co.ug/feed
     category_hint: internal_politics
+
 - id: radiotamazuj_ss
   name: Radio Tamazuj
   homepage: https://www.radiotamazuj.org
@@ -72,11 +72,11 @@ sources:
   kind: media
   governing_body: Free Press Unlimited
   state_affiliated: false
-  notes: Trusted independent news service covering South Sudan and Sudan conflict
-    mediation, peace accords, and human rights.
+  notes: Trusted independent news service covering South Sudan and Sudan conflict mediation, peace accords, and human rights.
   feeds:
   - url: https://www.radiotamazuj.org/en/feed
     category_hint: defence_security
+
 - id: eyeradio_ss
   name: Eye Radio
   homepage: https://eyeradio.org
@@ -85,11 +85,11 @@ sources:
   kind: media
   governing_body: Eye Media (Juba)
   state_affiliated: false
-  notes: Major independent broadcast network in Juba covering South Sudanese governance,
-    community security, and aid.
+  notes: Major independent broadcast network in Juba covering South Sudanese governance, community security, and aid.
   feeds:
   - url: https://eyeradio.org/feed/
     category_hint: general
+
 - id: dailynews_tz
   name: Daily News (Tanzania)
   homepage: https://dailynews.co.tz
@@ -98,11 +98,11 @@ sources:
   kind: official
   governing_body: Tanzania Standard Newspapers (TSN)
   state_affiliated: true
-  notes: Statutory government paper of record covering executive decisions, parliamentary
-    legislation, and infrastructure.
+  notes: Statutory government paper of record covering executive decisions, parliamentary legislation, and infrastructure.
   feeds:
   - url: https://dailynews.co.tz/feed/
     category_hint: internal_politics
+
 - id: theindependent_ug
   name: The Independent (Uganda)
   homepage: https://www.independent.co.ug
@@ -111,11 +111,11 @@ sources:
   kind: media
   governing_body: Andrew Mwenda Media
   state_affiliated: false
-  notes: Influential Ugandan news weekly and digital daily focusing on political economy,
-    business regulations, and governance.
+  notes: Influential Ugandan news weekly and digital daily focusing on political economy, business regulations, and governance.
   feeds:
   - url: https://www.independent.co.ug/feed/
     category_hint: internal_politics
+
 - id: sudanspost
   name: Sudans Post
   homepage: https://sudanspost.com
@@ -124,11 +124,11 @@ sources:
   kind: media
   governing_body: Sudans Post Media
   state_affiliated: false
-  notes: Independent news service tracking political developments and diplomacy across
-    Sudan and South Sudan.
+  notes: Independent news service tracking political developments and diplomacy across Sudan and South Sudan.
   feeds:
   - url: https://sudanspost.com/feed/
     category_hint: foreign_policy
+
 - id: softpower_ug
   name: SoftPower News
   homepage: https://softpower.ug
@@ -137,45 +137,7 @@ sources:
   kind: media
   governing_body: SoftPower Communications
   state_affiliated: false
-  notes: Independent East African digital news publication reporting on regional diplomacy,
-    business integration, and security.
+  notes: Independent East African digital news publication reporting on regional diplomacy, business integration, and security.
   feeds:
   - url: https://softpower.ug/feed/
     category_hint: internal_politics
-- id: bbc_news_africa
-  name: BBC News (Africa)
-  homepage: https://www.bbc.com/news/world/africa
-  language: en
-  scope: international
-  kind: media
-  governing_body: BBC (British Broadcasting Corporation)
-  state_affiliated: false
-  notes: Covers Africa; only items referencing the country are ingested.
-  feeds:
-  - url: https://feeds.bbci.co.uk/news/world/africa/rss.xml
-    category_hint: general
-- id: france24_english
-  name: France 24 (English)
-  homepage: https://www.france24.com/en
-  language: en
-  scope: international
-  kind: media
-  governing_body: France Médias Monde
-  state_affiliated: true
-  notes: International coverage; filtered strictly by country mention words.
-  feeds:
-  - url: https://www.france24.com/en/rss
-    category_hint: general
-- id: aljazeera_english
-  name: Al Jazeera English
-  homepage: https://www.aljazeera.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: Al Jazeera Media Network
-  state_affiliated: true
-  notes: Global Middle Eastern & developing world coverage; filtered by country mention
-    words.
-  feeds:
-  - url: https://www.aljazeera.com/xml/rss/all.xml
-    category_hint: general
