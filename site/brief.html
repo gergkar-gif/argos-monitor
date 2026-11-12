@@ -581,7 +581,11 @@
       .slice(0, limit);
 
     const now = new Date();
-    const periodLabel = (ALL_PERIODS.find(([k]) => k === periodVal) || [])[1] || `Last ${periodVal}`;
+    if (rawData && rawData.period && rawData.period !== periodVal && pSel.querySelector(`option[value="${rawData.period}"]`)) {
+      pSel.value = rawData.period;
+    }
+    const effectivePeriod = (rawData && rawData.period) ? rawData.period : periodVal;
+    const periodLabel = (ALL_PERIODS.find(([k]) => k === effectivePeriod) || [])[1] || `Last ${effectivePeriod}`;
 
     // Translate top stories to clean English in throttled concurrency batches of 5
     const dispatches = [];

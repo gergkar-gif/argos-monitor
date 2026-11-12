@@ -380,7 +380,11 @@
   ];
 
   function fillPeriods() {
-    fillSelect(period, ALL_PERIODS, period.value || '7d');
+    const c = index.countries.find((x) => x.id === country.value);
+    const available = (c && c.periods && c.periods.length)
+      ? c.periods.map((p) => [p.id, p.label])
+      : ALL_PERIODS;
+    fillSelect(period, available, period.value || (available[0] ? available[0][0] : '7d'));
     period.disabled = topic.disabled = activeTab !== 'country';
   }
   function fillTopics(value) {
@@ -388,6 +392,7 @@
   }
 
   let lastCountry = index && index.countries[0] ? index.countries[0].id : '';
+  let fallbackNotice = null;
   let activeTab = 'home';
   const hashFor = (t) => {
     const qPart = $('#q').value.trim() ? `/${encodeURIComponent($('#q').value.trim())}` : '';
@@ -1638,7 +1643,10 @@
     const totalStories = (q || movementFilter !== 'all') ? stories.length : Object.values(d.totals).reduce((a, b) => a + b, 0);
     const updated = new Date(d.generated_at);
     const ageH = (Date.now() - updated) / 3.6e6;
-    const periodLabel = period.options[period.selectedIndex].text.toLowerCase();
+    if (d && d.period && period.value !== d.period && period.querySelector(`option[value="${d.period}"]`)) {
+      period.value = d.period;
+    }
+    const periodLabel = (period.options[period.selectedIndex] ? period.options[period.selectedIndex].text : (d.period === '24h' ? 'Last 24 hours' : 'Last 7 days')).toLowerCase();
 
     const tabs = h('ul', { class: 'tabs', role: 'list' },
       [['all', 'All topics'], ...TOPICS.map((t) => [t.id, t.name])].map(([id, label]) =>
@@ -1663,6 +1671,7 @@
     const side = [alerts(), trends(), reddit(), social()].filter(Boolean);
 
     results.replaceChildren(...[
+      fallbackNotice && h('p', { class: 'notice quiet', text: fallbackNotice }),
       h('p', { class: 'result-line' }, h('b', { text: country.options[country.selectedIndex].text }),
         ` · ${periodLabel} · ${plural(totalStories, 'story', 'stories')} found · updated ${fmtTime.format(updated)}${ageH > STALE_HOURS ? ` (${Math.round(ageH / 24)}d old)` : ''} · `,
         h('button', { type: 'button', class: 'desk-link', text: '← All countries overview', onclick: () => openCountry('home') })),
@@ -1741,10 +1750,13 @@
     results.replaceChildren(h('p', { class: 'state', text: 'Loading…' }));
     try {
       current = await load(targetFile);
+      fallbackNotice = null;
       render();
     } catch {
       try {
         current = await load(`${c.id}-7d.json`);
+        period.value = '7d';
+        fallbackNotice = `No separate ${period.options[period.selectedIndex] ? period.options[period.selectedIndex].text : '24-hour'} snapshot was found for ${c.name}. Showing the last 7 days instead.`;
         render();
       } catch {
         results.replaceChildren(h('p', { class: 'state error',

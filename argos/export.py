@@ -291,18 +291,17 @@ def run(db):
         periods = []
         for days, label in WINDOWS.items():
             ids = dashboard_story_ids(db, cid, days)
+            stories = [_story(db, db.execute("SELECT * FROM story WHERE id=?", (i,)).fetchone(), now, days) for i in ids] if ids else []
+            stories.sort(key=lambda st: -(st["score"] or 0.0))
+            totals = {c: db.execute("SELECT COUNT(*) FROM story WHERE country=? AND window_days=? AND category=?", (cid, days, c)).fetchone()[0] if ids else 0
+                      for c in CATEGORIES}          # all stories found in the window, of which the top ones are exported
+            agenda_delta = _agenda_delta(db, cid, days, now) if ids else None
+            payload = {"country": cid, "period": label, "days": days, "generated_at": now, "categories": CATEGORIES,
+                       "totals": totals, "agenda_delta": agenda_delta, "stories": stories}
+            _write(f"{cid}-{label}", payload, "ARGOS_DATA")
+            periods.append({"id": label, "label": PERIOD_LABELS.get(label, label), "file": f"{cid}-{label}.json"})
             if ids:
-                stories = [_story(db, db.execute("SELECT * FROM story WHERE id=?", (i,)).fetchone(), now, days) for i in ids]
-                stories.sort(key=lambda st: -(st["score"] or 0.0))
-                totals = {c: db.execute("SELECT COUNT(*) FROM story WHERE country=? AND window_days=? AND category=?", (cid, days, c)).fetchone()[0]
-                          for c in CATEGORIES}          # all stories found in the window, of which the top ones are exported
-                agenda_delta = _agenda_delta(db, cid, days, now)
-                payload = {"country": cid, "period": label, "days": days, "generated_at": now, "categories": CATEGORIES,
-                           "totals": totals, "agenda_delta": agenda_delta, "stories": stories}
-                _write(f"{cid}-{label}", payload, "ARGOS_DATA")
                 print(f"export: {cid}-{label}.json with {len(stories)} stories")
-            if ids or (SITE_DATA / f"{cid}-{label}.json").exists():
-                periods.append({"id": label, "label": PERIOD_LABELS.get(label, label), "file": f"{cid}-{label}.json"})
         if periods:
             distinctive_mentions = [pack["name"].lower()] + [m.lower() for m in pack.get("mention", [])[:12]]
             countries.append({"id": cid, "name": pack["name"], "region": pack.get("region", "Other"),

@@ -2,6 +2,11 @@
 
 Completed items moved from `docs/roadmap.md` per project handover rules.
 
+- **Window Slicing & Period Fallback Integrity Fix** — **Done 2026-11-12.**
+  - Fixed client-side period label deception in `site/app.js`: when a requested period snapshot (such as `24h`) was missing, the client previously loaded the `7d` dataset while leaving the period header and dropdown claiming "last 24 hours", causing 2-day-old news to appear under a 24-hour banner.
+  - Hardened `site/app.js` and `site/brief.html`: now dynamically limits period selection to available country periods (`c.periods`), synchronizes the dropdown/header to the actual data period (`d.period`), and displays a clear disclaimer banner whenever fallback to 7-day coverage occurs.
+  - Updated `argos/export.py` to always export clean, well-formed 24-hour JSON bundles (`{cid}-24h.json`) for all packs even when zero stories occurred in the 24-hour window, truthfully displaying "0 stories found" rather than triggering missing-file fallbacks.
+
 - **Workflow Schedule Frequency Optimization & Quota Protection** — **Done 2026-11-12.**
   - Reverted automated pipeline schedule in `.github/workflows/daily.yml` from every 3 hours to once daily at 21:17 UTC (04:17 Indochina Time / 22:17 CET).
   - Preserves GitHub Actions monthly runner quota (2,000 minutes) across all 87 desks (~1,000 feeds) while ensuring daily morning briefs are updated and ready before 07:00 local time.
