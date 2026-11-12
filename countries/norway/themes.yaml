@@ -1,0 +1,37 @@
+themes:
+- id: elections
+  keywords:
+  - stortingsvalg
+  - stemmer
+  - valgkamp
+  - regjeringssonderinger
+- id: party_gov
+  keywords:
+  - stortinget
+  - jonas gahr støre
+  - statsminister
+  - regjeringen
+  - arbeiderpartiet
+  - senterpartiet
+- id: econ_policy
+  keywords:
+  - oljefondet
+  - norges bank
+  - rentebeslutning
+  - equinor
+  - strømpriser
+  - inflasjon
+  - handlingsregelen
+- id: security
+  keywords:
+  - forsvaret
+  - langtidsplan
+  - nato-nordflanke
+  - etterretningstjenesten
+  - grensevakt
+- id: diplomacy
+  keywords:
+  - utenriksdepartementet
+  - barentssamarbeidet
+  - nordisk råd
+  - ukrainahjelp

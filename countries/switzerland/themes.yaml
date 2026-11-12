@@ -1,0 +1,39 @@
+themes:
+- id: elections
+  keywords:
+  - volksabstimmung
+  - ständerat
+  - nationalrat
+  - initiative
+  - referendum
+  - votations
+- id: party_gov
+  keywords:
+  - bundesrat
+  - bundespräsident
+  - departement
+  - berner bundeshaus
+  - conseil fédéral
+- id: econ_policy
+  keywords:
+  - snb
+  - schweizerische nationalbank
+  - leitzins
+  - franken
+  - ubs
+  - bankenregulierung
+  - finma
+- id: diplomacy
+  keywords:
+  - bilaterale iii
+  - abkommen mit eu
+  - neutralität
+  - gute dienste
+  - eda
+  - uno-sicherheitsrat
+- id: security
+  keywords:
+  - schweizer armee
+  - neutralitätsinitiative
+  - f-35 beschaffung
+  - rüstung

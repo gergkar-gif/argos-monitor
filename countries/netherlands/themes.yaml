@@ -1,0 +1,42 @@
+themes:
+- id: elections
+  keywords:
+  - tweede kamerverkiezingen
+  - kiesraad
+  - stemming
+  - coalitievorming
+  - verkiezingen
+- id: party_gov
+  keywords:
+  - tweede kamer
+  - kabinet-schoof
+  - dick schoof
+  - minister-president
+  - geert wilders
+  - pvv
+  - vvd
+  - nsc
+  - bbb
+- id: econ_policy
+  keywords:
+  - asml
+  - haven van rotterdam
+  - stikstofcrisis
+  - dnb
+  - regeringsakkoord
+  - koopkracht
+  - begrotingsbeleid
+- id: security
+  keywords:
+  - defensie
+  - krijgsmacht
+  - f-35
+  - navo-norm
+  - cyberveiligheid
+  - aivd
+- id: diplomacy
+  keywords:
+  - eu-beleid
+  - asielcrisis
+  - internationaal gerechtshof
+  - ministerie van buitenlandse zaken

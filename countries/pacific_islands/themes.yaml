@@ -1,0 +1,36 @@
+themes:
+- id: diplomacy
+  keywords:
+  - pacific islands forum
+  - pif
+  - bilateral security pact
+  - geopolitical contest
+  - state visit
+  - suva declaration
+- id: econ_policy
+  keywords:
+  - climate adaptation
+  - loss and damage
+  - fisheries access
+  - seabed mining
+  - exclusive economic zone
+- id: security
+  keywords:
+  - maritime surveillance
+  - illegal fishing
+  - police cooperation
+  - regional security
+- id: party_gov
+  keywords:
+  - prime minister
+  - parliament
+  - no-confidence motion
+  - papua new guinea
+  - fiji
+  - solomon islands
+- id: elections
+  keywords:
+  - general election
+  - electoral commission
+  - ballot
+  - polling

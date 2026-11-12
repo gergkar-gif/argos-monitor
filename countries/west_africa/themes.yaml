@@ -1,0 +1,37 @@
+themes:
+- id: diplomacy
+  keywords:
+  - alliance des états du sahel
+  - aes
+  - cedeao
+  - ecowas
+  - sommet régional
+  - transition sahélo-saharienne
+- id: party_gov
+  keywords:
+  - bassirou diomaye faye
+  - ousmane sonko
+  - ibrahim traoré
+  - assimi goïta
+  - abdourahamane tchiani
+  - gouvernement
+- id: security
+  keywords:
+  - lutte antiterroriste
+  - jnim
+  - sécurité frontalière
+  - départ des forces occidentales
+  - bataillon
+- id: econ_policy
+  keywords:
+  - franc cfa
+  - souveraineté monétaire
+  - port de dakar
+  - gisements de pétrole
+  - uemoa
+- id: elections
+  keywords:
+  - élections législatives
+  - scrutin
+  - transition démocratique
+  - processus électoral

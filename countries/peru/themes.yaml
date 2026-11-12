@@ -1,0 +1,37 @@
+themes:
+- id: elections
+  keywords:
+  - elecciones generales
+  - onpe
+  - jne
+  - segunda vuelta
+  - votos
+  - adelanto de elecciones
+- id: party_gov
+  keywords:
+  - dina boluarte
+  - gustavo adrianzén
+  - congreso de la república
+  - moción de vacancia
+  - palacio de gobierno
+- id: econ_policy
+  keywords:
+  - minería de cobre
+  - tía maría
+  - las bambas
+  - puerto de chancay
+  - bcrp
+  - inflación
+- id: security
+  keywords:
+  - estado de emergencia
+  - seguridad ciudadana
+  - extorsión
+  - policía nacional
+  - fuerzas armadas
+- id: diplomacy
+  keywords:
+  - cumbre apec
+  - torre tagle
+  - cancillería
+  - alianza del pacífico

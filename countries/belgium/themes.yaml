@@ -1,0 +1,39 @@
+themes:
+- id: elections
+  keywords:
+  - élections fédérales
+  - verkiezingen
+  - scrutin
+  - arizona coalition
+  - formateur
+- id: party_gov
+  keywords:
+  - gouvernement fédéral
+  - chambre des représentants
+  - de wever
+  - premier ministre
+  - vlaamse regering
+  - wallonie
+  - bruxelles
+- id: econ_policy
+  keywords:
+  - déficit budgétaire
+  - dette publique
+  - ue procédure
+  - begroting
+  - inflatie
+  - pension reform
+- id: diplomacy
+  keywords:
+  - otan
+  - union européenne
+  - siège otan
+  - diplomatie belge
+  - eu presidency
+- id: security
+  keywords:
+  - défense belge
+  - armée
+  - sécurité portuaire
+  - anvers drogue
+  - lutte contre le terrorisme

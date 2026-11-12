@@ -1,0 +1,38 @@
+themes:
+- id: elections
+  keywords:
+  - folketingsvalg
+  - stemmer
+  - valg
+  - partileder
+  - regeringsdannelse
+- id: party_gov
+  keywords:
+  - folketinget
+  - mette frederiksen
+  - regeringen
+  - statsministeriet
+  - svm-regeringen
+- id: econ_policy
+  keywords:
+  - novo nordisk
+  - nationalbanken
+  - inflation
+  - finanslov
+  - rente
+  - danske bank
+- id: security
+  keywords:
+  - forsvarsforlig
+  - forsvaret
+  - nato-mål
+  - værnepligt
+  - arktisk kommando
+  - grønland
+- id: diplomacy
+  keywords:
+  - rigsfællesskabet
+  - grønland
+  - færøerne
+  - udenrigsministeriet
+  - larskøkke

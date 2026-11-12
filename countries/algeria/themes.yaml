@@ -1,0 +1,52 @@
+themes:
+- id: elections
+  keywords:
+  - élection
+  - présidentielle
+  - vote
+  - scrutin
+  - انتخابات
+  - اقتراع
+  - تصويت
+- id: diplomacy
+  keywords:
+  - visite d'état
+  - partenariat
+  - ambassadeur
+  - attaf
+  - tebboune
+  - sahara occidental
+  - زيارة دولة
+  - دبلوماسية
+  - سفير
+  - عطاف
+- id: econ_policy
+  keywords:
+  - hydrocarbures
+  - sonatrach
+  - gaz naturel
+  - pétrole
+  - budget
+  - dinar
+  - محروقات
+  - سوناطراك
+  - غاز
+  - نفط
+  - دينار
+- id: party_gov
+  keywords:
+  - conseil des ministres
+  - apn
+  - assemblée populaire nationale
+  - gouvernement
+  - مجلس الوزراء
+  - المجلس الشعبي الوطني
+  - حكومة
+- id: security
+  keywords:
+  - anp
+  - armée nationale populaire
+  - frontières
+  - terrorisme
+  - الجيش الوطني الشعبي
+  - مكافحة الإرهاب

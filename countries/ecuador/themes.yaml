@@ -1,0 +1,37 @@
+themes:
+- id: elections
+  keywords:
+  - elecciones generales
+  - cne
+  - votos
+  - segunda vuelta
+  - papeleta
+- id: party_gov
+  keywords:
+  - daniel noboa
+  - noboa
+  - asamblea nacional
+  - carondelet
+  - decreto ejecutivo
+- id: security
+  keywords:
+  - conflicto armado interno
+  - estado de excepción
+  - fuerzas armadas
+  - cárceles
+  - bandas terroristas
+  - bloque de seguridad
+- id: econ_policy
+  keywords:
+  - crisis energética
+  - apagones
+  - cortes de luz
+  - fmi
+  - dolarización
+  - banco central
+- id: diplomacy
+  keywords:
+  - relaciones diplomáticas
+  - cancillería
+  - cooperación en seguridad
+  - comunidad andina

@@ -1,0 +1,39 @@
+themes:
+- id: elections
+  keywords:
+  - elecciones
+  - comicios
+  - tribunal electoral
+  - segunda vuelta
+  - votos
+- id: party_gov
+  keywords:
+  - bukele
+  - arévalo
+  - asamblea legislativa
+  - congreso nacional
+  - régimen de excepción
+  - gabinete
+- id: econ_policy
+  keywords:
+  - remesas
+  - canal de panamá
+  - inflación
+  - banco central
+  - tlc
+  - inversión extranjera
+- id: security
+  keywords:
+  - maras
+  - pandillas
+  - seguridad fronteriza
+  - crimen organizado
+  - narcotráfico
+  - policía nacional
+- id: diplomacy
+  keywords:
+  - sica
+  - migración irregular
+  - relaciones con eeuu
+  - cumbre regional
+  - cancillería

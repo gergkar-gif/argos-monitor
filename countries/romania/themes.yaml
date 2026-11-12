@@ -1,0 +1,36 @@
+themes:
+- id: elections
+  keywords:
+  - alegeri prezidențiale
+  - alegeri parlamentare
+  - vot
+  - turul doi
+  - secții de votare
+  - biroul electoral central
+- id: party_gov
+  keywords:
+  - marcel ciolacu
+  - klaus iohannis
+  - guvernul româniei
+  - parlament
+  - coaliția psd-pnl
+- id: security
+  keywords:
+  - flancul estic
+  - marea neagră
+  - baza mihail kogălniceanu
+  - drone căzute
+  - armata română
+- id: econ_policy
+  keywords:
+  - deficit bugetar
+  - banca națională a româniei
+  - inflație
+  - fonduri europene
+  - pnrr
+- id: diplomacy
+  keywords:
+  - schengen
+  - moldova sprijin
+  - ministerul afacerilor externe
+  - parteneriat strategic

@@ -1,0 +1,35 @@
+themes:
+- id: elections
+  keywords:
+  - presidential election
+  - parliamentary poll
+  - election commission
+  - npp landslide
+  - මැතිවරණය
+  - தேர்தல்
+- id: party_gov
+  keywords:
+  - anura kumara dissanayake
+  - npp
+  - jvp
+  - prime minister harini amarasuriya
+  - parliament
+- id: econ_policy
+  keywords:
+  - imf bailout
+  - debt restructuring
+  - central bank of sri lanka
+  - forex reserves
+  - inflation
+- id: diplomacy
+  keywords:
+  - colombo port
+  - india-sri lanka cooperation
+  - chinese research vessel
+  - bilateral ties
+- id: security
+  keywords:
+  - maritime security
+  - drug trafficking
+  - sri lanka navy
+  - police reform

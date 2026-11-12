@@ -1,0 +1,38 @@
+themes:
+- id: elections
+  keywords:
+  - general election
+  - electoral commission
+  - ballot
+  - parliamentary majority
+  - caricom election
+- id: diplomacy
+  keywords:
+  - caricom
+  - heads of government
+  - cuba-caribbean ties
+  - haiti transitional council
+  - un general assembly
+- id: econ_policy
+  keywords:
+  - climate finance
+  - loss and damage
+  - debt relief
+  - imf program
+  - tourism revenue
+  - petrocaribe
+- id: security
+  keywords:
+  - regional security system
+  - rss
+  - arms trafficking
+  - haiti security mission
+  - coast guard
+- id: party_gov
+  keywords:
+  - prime minister
+  - cabinet
+  - house of assembly
+  - kingston
+  - port of spain
+  - nassau

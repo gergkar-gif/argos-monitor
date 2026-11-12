@@ -1,0 +1,34 @@
+themes:
+- id: elections
+  keywords:
+  - eleições legislativas
+  - votação
+  - comícios
+  - cne
+  - maioria parlamentar
+- id: party_gov
+  keywords:
+  - luís montenegro
+  - aliança democrática
+  - assembleia da república
+  - são bento
+  - governo constitucional
+- id: econ_policy
+  keywords:
+  - orçamento do estado
+  - crise na habitação
+  - banco de portugal
+  - prr
+  - crescimento gdp
+- id: security
+  keywords:
+  - forças armadas
+  - polícia judiciária
+  - segurança interna
+  - vigilância marítima
+- id: diplomacy
+  keywords:
+  - cplp
+  - união europeia
+  - palop
+  - ministério dos negócios estrangeiros

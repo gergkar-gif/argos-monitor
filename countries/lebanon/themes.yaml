@@ -1,0 +1,41 @@
+themes:
+- id: elections
+  keywords:
+  - presidential election
+  - parliamentary quorum
+  - nabih berri
+  - انتخاب رئيس الجمهورية
+  - مجلس النواب
+- id: security
+  keywords:
+  - hezbollah
+  - unifil
+  - blue line
+  - ceasefire
+  - airstrike
+  - southern lebanon
+  - حزب الله
+  - اليونيفيل
+- id: party_gov
+  keywords:
+  - najib mikati
+  - caretaker government
+  - grand serail
+  - cabinet session
+  - مجلس الوزراء
+  - السراي الحكومي
+- id: econ_policy
+  keywords:
+  - banque du liban
+  - banking sector
+  - imf reform
+  - lira exchange rate
+  - مصرف لبنان
+  - إصلاح مصرفي
+- id: diplomacy
+  keywords:
+  - resolution 1701
+  - french initiative
+  - quintet committee
+  - diplomatic mediation
+  - قرار 1701

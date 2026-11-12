@@ -1,0 +1,40 @@
+themes:
+- id: elections
+  keywords:
+  - elección presidencial
+  - plebiscito
+  - servel
+  - votos
+  - congreso nacional
+  - municipales
+- id: party_gov
+  keywords:
+  - boric
+  - gabriel boric
+  - la moneda
+  - senado
+  - cámara de diputadas y diputados
+  - gabinete
+- id: econ_policy
+  keywords:
+  - litio
+  - cobre
+  - codelco
+  - reforma previsional
+  - banco central
+  - ipc
+  - pacto fiscal
+- id: security
+  keywords:
+  - estado de excepción
+  - macrozona sur
+  - crimen organizado
+  - tren de aragua
+  - carabineros
+- id: diplomacy
+  keywords:
+  - cancillería
+  - van klaveren
+  - acuerdo unión europea
+  - alianza del pacífico
+  - antártica

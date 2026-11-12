@@ -1,0 +1,39 @@
+themes:
+- id: elections
+  keywords:
+  - general election
+  - iebc
+  - electoral commission
+  - ballot
+  - uchaguzi
+- id: party_gov
+  keywords:
+  - ruto
+  - museveni
+  - suluhu
+  - kagame
+  - national assembly
+  - serikali
+- id: econ_policy
+  keywords:
+  - eac integration
+  - shilling
+  - central bank
+  - inflation
+  - kenya revenue authority
+  - drought relief
+- id: security
+  keywords:
+  - al-shabaab
+  - amison
+  - atmis
+  - drc peacekeeping
+  - sudan peace talks
+  - somalia security
+- id: diplomacy
+  keywords:
+  - east african community
+  - intergovernmental authority
+  - igad
+  - state visit
+  - african union

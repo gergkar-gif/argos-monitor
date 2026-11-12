@@ -1,0 +1,42 @@
+themes:
+- id: elections
+  keywords:
+  - election roadmap
+  - interim poll
+  - voter list
+  - electoral reform
+  - নির্বাচন
+  - ভোট
+- id: party_gov
+  keywords:
+  - interim government
+  - chief adviser
+  - muhammad yunus
+  - advisory council
+  - awami league
+  - bnp
+  - অন্তর্বর্তী সরকার
+  - ইউনূস
+- id: econ_policy
+  keywords:
+  - rmg
+  - garments
+  - forex reserves
+  - bangladesh bank
+  - imf loan
+  - inflation
+  - রেমিট্যান্স
+  - মুদ্রাস্ফীতি
+- id: security
+  keywords:
+  - law and order
+  - bgb
+  - rapid action battalion
+  - police reform
+  - সীমান্ত নিরাপত্তা
+- id: diplomacy
+  keywords:
+  - rohingya repatriation
+  - teesta river
+  - india-bangladesh ties
+  - diplomatic mission

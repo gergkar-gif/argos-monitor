@@ -1,0 +1,45 @@
+themes:
+- id: elections
+  keywords:
+  - riigikogu
+  - saeima
+  - seimas
+  - election
+  - parliamentary poll
+  - valimised
+  - vēlēšanas
+  - rinkimai
+- id: security
+  keywords:
+  - nato eastern flank
+  - suwalki gap
+  - baltic air policing
+  - defence spending
+  - border security
+  - kaitsevägi
+  - aizsardzības spēki
+  - kariuomenė
+- id: diplomacy
+  keywords:
+  - baltic assembly
+  - nordic-baltic eight
+  - nb8
+  - ukraine aid
+  - eu sanctions
+- id: econ_policy
+  keywords:
+  - rail baltica
+  - energy synchronization
+  - inflation
+  - lng klaipeda
+  - desynchronization
+- id: party_gov
+  keywords:
+  - prime minister
+  - coalition
+  - tallinn
+  - riga
+  - vilnius
+  - valitsus
+  - valdība
+  - vyriausybė

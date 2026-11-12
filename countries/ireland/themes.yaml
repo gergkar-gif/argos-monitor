@@ -1,0 +1,38 @@
+themes:
+- id: elections
+  keywords:
+  - general election
+  - dail eireann
+  - taoiseach
+  - polling
+  - constituency
+  - tanaiste
+- id: party_gov
+  keywords:
+  - simon harris
+  - fianna fail
+  - fine gael
+  - sinn fein
+  - oireachtas
+  - government buildings
+- id: econ_policy
+  keywords:
+  - corporate tax
+  - housing crisis
+  - budget surplus
+  - central bank of ireland
+  - cost of living
+- id: diplomacy
+  keywords:
+  - good friday agreement
+  - northern ireland
+  - brexit
+  - eu single market
+  - gaza recognition
+- id: security
+  keywords:
+  - defence forces
+  - neutrality debate
+  - triple lock
+  - cybersecurity
+  - garda

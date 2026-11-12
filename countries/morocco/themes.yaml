@@ -1,0 +1,42 @@
+themes:
+- id: diplomacy
+  keywords:
+  - sahara marocain
+  - plan d'autonomie
+  - diplomatie marocaine
+  - bourita
+  - visite royale
+  - الصحراء المغربية
+  - مبادرة الحكم الذاتي
+- id: party_gov
+  keywords:
+  - mohammed vi
+  - akhannouch
+  - gouvernement
+  - parlement
+  - chambre des représentants
+  - مجلس النواب
+  - حكومة
+- id: econ_policy
+  keywords:
+  - ocp
+  - phosphate
+  - stress hydrique
+  - dessalement
+  - bank al-maghrib
+  - investissements
+  - المكتب الشريف للفوسفاط
+- id: security
+  keywords:
+  - forces armées royales
+  - sécurité frontalière
+  - coopération sécuritaire
+  - défense
+  - القوات المسلحة الملكية
+- id: elections
+  keywords:
+  - élections législatives
+  - scrutin
+  - partis politiques
+  - urne
+  - انتخابات

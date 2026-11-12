@@ -1,0 +1,42 @@
+themes:
+- id: elections
+  keywords:
+  - nationalratswahl
+  - bundesrat
+  - wahl
+  - stimmen
+  - kickl
+  - nehammer
+  - koalition
+- id: party_gov
+  keywords:
+  - nationalrat
+  - bundeskanzler
+  - övp
+  - fpö
+  - spö
+  - neos
+  - grüne
+  - ministerrat
+- id: econ_policy
+  keywords:
+  - inflation
+  - budgetdefizit
+  - oenb
+  - zinsen
+  - schulden
+  - steuern
+  - wifo
+- id: diplomacy
+  keywords:
+  - neutralität
+  - eu-ratspräsidentschaft
+  - osze
+  - wien-diplomatie
+  - botschafter
+- id: security
+  keywords:
+  - bundesheer
+  - staatsvertrag
+  - neutralität
+  - sicherheitsstrategie

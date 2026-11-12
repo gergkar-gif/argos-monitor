@@ -1,0 +1,38 @@
+themes:
+- id: elections
+  keywords:
+  - parliamentary election
+  - independent election commission
+  - ballot
+  - مجلس النواب
+  - انتخابات برلمانية
+- id: party_gov
+  keywords:
+  - king abdullah
+  - crown prince hussein
+  - prime minister
+  - royal hashemite court
+  - ديوان ملكي
+  - حكومة
+- id: diplomacy
+  keywords:
+  - jerusalem holy sites
+  - hashemite custodianship
+  - unrwa
+  - palestinian cause
+  - state visit
+  - الوصاية الهاشمية
+- id: security
+  keywords:
+  - jordanian armed forces
+  - border security
+  - captagon smuggling
+  - syria border
+  - القوات المسلحة
+- id: econ_policy
+  keywords:
+  - water scarcity
+  - imf facility
+  - economic modernization
+  - inflation
+  - البنك المركزي
