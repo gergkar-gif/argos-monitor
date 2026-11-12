@@ -12,8 +12,8 @@ from .embed import DIM
 
 WINDOWS = (7, 1)     # days
 MAX_GAP_DAYS = 3
-MERGE_SIMILARITY = 0.95    # shortcut: untuned guess, read the "closest pairs" lines in the run log and adjust
-RELATED_SIMILARITY = 0.925 # below the merge level: shown on the site as related coverage
+MERGE_SIMILARITY = 0.92    # calibrated merge threshold: merges multi-outlet and cross-lingual variants of the same event
+RELATED_SIMILARITY = 0.90  # below the merge level: shown on the site as related coverage
 SIMILARITY = 0.92          # core cluster (>93% calibrated); 85-93% and 75-85% bands attach around the core centre
 RAW_85 = 0.895             # e5-small raw cosine corresponding to 85% calibrated similarity
 RAW_75 = 0.860             # e5-small raw cosine corresponding to 75% calibrated similarity
@@ -167,10 +167,14 @@ def _cluster_window(db, country, days, similarity):
         centres[l], los[l], his[l], sizes[l] = c, float(t[m].min()), float(t[m].max()), len(m)
         reps[l] = _pick_representative(rows, X, m, c)
 
-    # Absorb small (1-2 article) clusters whose centre sits in the 85-93% band of a larger story within MAX_GAP_DAYS.
+    # Absorb small (1-2 article) clusters or cross-lingual pickups (3-4 articles with international/abroad scope)
+    # whose centre sits in the 85-93% band (RAW_85 = 0.895) of a larger story within MAX_GAP_DAYS (decision D20).
     absorbed = {}
     for b in core_labels:
-        if sizes[b] > 2:
+        b_indices = np.where(labels == b)[0]
+        b_scopes = {rows[m]["scope"] for m in b_indices}
+        is_cross_scope = (sizes[b] <= 4 and ("international" in b_scopes or "abroad_local" in b_scopes))
+        if sizes[b] > 2 and not is_cross_scope:
             continue
         best_a, best_s = None, RAW_85
         for a in core_labels:
