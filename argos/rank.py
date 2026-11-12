@@ -1,15 +1,16 @@
 """Stage 5b: score stories. Syndicated copies count once (rule 5).
 
 coverage = independent sources
+         + consensus bonus (+1.0 for 3+ independent sources, +2.0 + 0.5*(n-5) for 5+)
          + 0.5 per extra coverage type beyond the first (domestic / abroad_local / international)
          + 1 if the story is growing (at least 40% of its articles are from the last 24 hours)
          + 0.2 * log2(articles)   -- a small tie-breaker for volume
 
-score = coverage * (0.4 + 0.8 * policy) + 3 * policy
+score = coverage * (0.6 + 0.5 * policy) + 1.2 * policy + (2.5 if election)
 
 `policy` (0 to 1) is how much the story matters to a foreign-office reader: diplomacy, trade, investment and
 policy weigh most, individual crimes, accidents and weather least (see policy.py and themes.yaml, decision D14).
-A well-covered story with no policy angle therefore falls behind a smaller policy story.
+A high-consensus multi-outlet national story reliably outranks a single-outlet item with an accidental keyword hit.
 """
 import math
 from datetime import datetime, timedelta, timezone
@@ -46,14 +47,16 @@ def run(db):
         independent = {r["source_id"] for r in rows if r["syndicated_of"] is None}
         scopes = {r["scope"] for r in rows}
         growing = sum(r["t"] >= recent for r in rows) / len(rows) >= 0.4
-        coverage = (len(independent) + 0.5 * (len(scopes) - 1) + (1.0 if growing else 0.0)
+        n_indep = len(independent)
+        consensus = (2.0 + 0.5 * (n_indep - 5)) if n_indep >= 5 else (1.0 if n_indep >= 3 else 0.0)
+        coverage = (n_indep + consensus + 0.5 * (len(scopes) - 1) + (1.0 if growing else 0.0)
                     + 0.2 * math.log2(len(rows)))
         pol_row = db.execute("SELECT policy, themes FROM story WHERE id=?", (sid,)).fetchone()
         policy = 0.3 if (not pol_row or pol_row[0] is None) else pol_row[0]
         themes_str = (pol_row[1] or "").lower() if pol_row else ""
-        is_election = any(w in themes_str for w in ("election", "választás", "bầu cử"))
+        is_election = any(w in themes_str for w in ("election", "választás", "bầu cử", "élection", "elección", "wahl", "wybory", "выборы", "seçim", "انتخابات"))
         # Standing rule 8: elections receive top policy priority and priority coverage boost
-        score = coverage * (0.4 + 0.8 * policy) + 3 * policy + (2.0 if is_election else 0.0)
+        score = coverage * (0.6 + 0.5 * policy) + 1.2 * policy + (2.5 if is_election else 0.0)
         db.execute("UPDATE story SET score=? WHERE id=?", (round(score, 2), sid))
     db.commit()
     print("rank: scored", db.execute("SELECT COUNT(*) FROM story").fetchone()[0], "stories")

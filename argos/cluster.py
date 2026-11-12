@@ -2,6 +2,7 @@
 Average-linkage agglomerative clustering on cosine distance, where articles published more than
 MAX_GAP_DAYS apart can never be joined (an event has a time footprint)."""
 from datetime import datetime, timedelta, timezone
+import re
 
 import numpy as np
 from sklearn.cluster import AgglomerativeClustering
@@ -71,12 +72,71 @@ def _title(db, rows, idx):
     return db.execute("SELECT title FROM article WHERE id=?", (rows[idx]["id"],)).fetchone()[0][:90]
 
 
+OPINION_RE = re.compile(
+    r"^(?:opinion|editorial|column|letters?|viewpoint|analysis\s*[:|])\s*|(?:\s*[-–|]\s*(?:opinion|editorial|columns?)$)",
+    re.I,
+)
+
+
+def _pick_representative(rows, X, indices, centroid):
+    """Select the most authoritative, representative article for a cluster rather than picking
+    pure centroid proximity, preventing fringe blogs or opinion op-eds from leading the story."""
+    if len(indices) == 1:
+        return int(indices[0])
+
+    has_domestic = any((rows[idx]["scope"] or "") == "domestic" for idx in indices)
+    best_idx = indices[0]
+    best_score = -999.0
+
+    for idx in indices:
+        r = rows[idx]
+        sim = float(X[idx] @ centroid)
+        bonus = 0.0
+
+        # Penalize syndicated copies (prefer original publisher)
+        if r["syndicated_of"] is not None:
+            bonus -= 0.12
+
+        # Penalize explicit opinion / column pieces
+        title = r["title"] or ""
+        if OPINION_RE.search(title):
+            bonus -= 0.15
+
+        # Prefer domestic or local-abroad reporting over remote scrapers when domestic coverage exists
+        scope = r["scope"] or ""
+        if has_domestic and scope == "domestic":
+            bonus += 0.06
+        elif has_domestic and scope == "abroad_local":
+            bonus += 0.03
+
+        # Prefer core journalistic or official outlets over generic aggregators/portals
+        kind = r["kind"] or ""
+        if kind in ("official", "paper", "media", "broadcast"):
+            bonus += 0.05
+        elif kind in ("aggregator", "portal"):
+            bonus -= 0.05
+
+        score = sim + bonus
+        if score > best_score:
+            best_score = score
+            best_idx = idx
+
+    return int(best_idx)
+
+
 def _cluster_window(db, country, days, similarity):
     now = datetime.now(timezone.utc)
     cutoff = (now - timedelta(days=days)).isoformat(timespec="seconds")
-    rows = db.execute("SELECT a.id, a.published_at, a.fetched_at, e.vec FROM article a JOIN embedding e ON e.article_id=a.id "
-                      "WHERE a.relevant=1 AND a.country=? AND COALESCE(a.published_at, a.fetched_at) >= ? ORDER BY a.id",
-                      (country, cutoff)).fetchall()
+    rows = db.execute(
+        "SELECT a.id, a.title, a.source_id, a.published_at, a.fetched_at, a.syndicated_of, "
+        "s.scope, s.kind, e.vec "
+        "FROM article a "
+        "JOIN embedding e ON e.article_id=a.id "
+        "LEFT JOIN source s ON s.id=a.source_id "
+        "WHERE a.relevant=1 AND a.country=? AND COALESCE(a.published_at, a.fetched_at) >= ? "
+        "ORDER BY a.id",
+        (country, cutoff),
+    ).fetchall()
     n = len(rows)
     if n == 0:
         print(f"cluster {country} {days}d: no articles")
@@ -105,7 +165,7 @@ def _cluster_window(db, country, days, similarity):
         m = np.where(labels == l)[0]
         c = X[m].mean(0); c /= np.linalg.norm(c)
         centres[l], los[l], his[l], sizes[l] = c, float(t[m].min()), float(t[m].max()), len(m)
-        reps[l] = int(m[int(np.argmax(X[m] @ c))])
+        reps[l] = _pick_representative(rows, X, m, c)
 
     # Absorb small (1-2 article) clusters whose centre sits in the 85-93% band of a larger story within MAX_GAP_DAYS.
     absorbed = {}
