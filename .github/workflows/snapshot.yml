@@ -1,0 +1,48 @@
+name: Multi-run feed snapshot
+
+# Lightweight multi-run feed ingestion every 4 hours (decision D15 / Audit Fix #4).
+# Ingests, normalises and filters active RSS feeds to capture breaking items before
+# they get pushed out of high-velocity outlet feed queues, caching the SQLite database
+# for the daily digest run.
+on:
+  schedule:
+    - cron: "0 1,5,9,13,17 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: daily-digest
+  cancel-in-progress: false
+
+env:
+  ARGOS_DATA_DIR: ${{ github.workspace }}/.argos-data
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Restore database
+        uses: actions/cache/restore@v4
+        with:
+          path: .argos-data/argos.db
+          key: argos-db-${{ github.run_id }}
+          restore-keys: argos-db-
+
+      - name: Lightweight feed snapshot
+        run: python run.py ingest normalise relevance
+
+      - name: Save database
+        uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: .argos-data/argos.db
+          key: argos-db-${{ github.run_id }}

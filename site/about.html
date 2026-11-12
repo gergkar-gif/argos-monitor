@@ -105,7 +105,7 @@
 
   <section id="pipeline">
     <h2>How the 11-stage pipeline works</h2>
-    <p>A scheduled GitHub Actions runner executes the pipeline daily at 21:17 UTC and publishes static JSON/JS bundles to Cloudflare Pages. <em>Scope and sampling:</em> Argos provides a curated daily press overview of approximately 10–15 national outlets per country desk, captured once every 24 hours. It is designed for structured diplomatic signal monitoring rather than exhaustive continuous archival, so articles published and pushed off rapid-cycle RSS feeds between runs are not captured.</p>
+    <p>A scheduled GitHub Actions runner executes the full pipeline daily at 21:17 UTC and publishes static JSON/JS bundles to Cloudflare Pages, complemented by lightweight feed snapshot runs every 4 hours (01:00, 05:00, 09:00, 13:00, 17:00 UTC) to capture breaking articles before they rotate out of rapid outlet RSS queues. <em>Scope and sampling:</em> Argos provides a curated diplomatic press overview of approximately 10–15 national outlets per country desk, structured for executive signal monitoring rather than exhaustive archival.</p>
     <div class="pipeline">
       <div class="step"><b>01 · Ingest</b><span>Polls 1,370+ RSS/Atom and news feeds via curl with Media Cloud-inspired HTTP 304 conditional GETs (ETag/Last-Modified), tracking query parameter stripping, exponential backoff error quarantine, and direct SQLite article ingestion of verified GDELT 2.0 real-time conflict URLs.</span></div>
       <div class="step"><b>02 · Extract</b><span>Fetches full article text with Trafilatura for domestic and accessible sources.</span></div>
