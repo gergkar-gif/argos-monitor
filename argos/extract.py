@@ -56,8 +56,10 @@ def _one(row):
 def run(db, limit=None, workers=8, country=None):
     if limit is None and os.environ.get("ARGOS_EXTRACT_LIMIT"):
         limit = int(os.environ["ARGOS_EXTRACT_LIMIT"])
+    elif limit is None:
+        limit = 250
     country = country or os.environ.get("ARGOS_EXTRACT_COUNTRY")
-    story_only = bool(os.environ.get("ARGOS_EXTRACT_STORY_ONLY"))
+    story_only = os.environ.get("ARGOS_EXTRACT_STORY_ONLY", "1") != "0"
 
     where = ["extract_status='pending'"]
     params = []

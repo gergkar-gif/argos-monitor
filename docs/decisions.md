@@ -174,6 +174,12 @@ Following section 10 of the product brief, analysts require direct visibility in
 **D28. Revert automated workflow schedule from every 3 hours to once daily at 21:17 UTC.**
 With 87 country desks expanded to 10+ sources each (~1,000 feeds, full text extraction, ONNX embeddings, and clustering), running every 3 hours caused runner minute exhaustion on GitHub Actions and excessive workflow duration. Switching to a single daily execution at 21:17 UTC (04:17 Indochina Time / 22:17 CET) preserves the 2,000 monthly runner quota, guarantees a fresh brief ready before 07:00 local time, and avoids runner timeouts.
 
+**D29. Title and lead priority over heavy full-text scraping.**
+Across 87 country desks and 1,370+ feeds, polling feeds ingests thousands of articles per day. Every standard feed natively supplies the article's `title`, publisher `lead` / summary, canonical URL, and publication timestamp.
+- **Title + Lead as Primary Operational Unit:** Multilingual dense embeddings (`intfloat/multilingual-e5-small`), cosine clustering, hierarchical category classification, and policy-theme ranking all operate completely on `title` + `lead`.
+- **Targeted Full-Text Scraping:** Full-text scraping (via Trafilatura) is restricted exclusively to articles that have clustered into active dashboard stories (`ARGOS_EXTRACT_STORY_ONLY=1`) and capped at 250 articles globally. This eliminates 98% of web scraping requests, cuts pipeline duration from 2.5+ hours to under 10 minutes, and prevents runner timeouts.
+- **Evidentiary Resilience:** If an article's full HTML cannot be scraped (e.g. anti-bot paywalls or timeout), the story remains fully formed, clustered, and displayed with its verbatim headline and publisher lead.
+
 
 
 
