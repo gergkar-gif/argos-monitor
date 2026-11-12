@@ -171,3 +171,19 @@ sources:
   feeds:
   - url: https://inews.co.uk/feed
     category_hint: internal_politics
+- id: gnews_united_kingdom_intl
+  name: Google News (United Kingdom - International Press)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator stream tracking international English-language reporting on United
+    Kingdom.
+  feeds:
+  - url: https://news.google.com/rss/search?q=%28%22United%20Kingdom%22%29%20%28diplomacy%20OR%20government%20OR%20election%20OR%20economy%20OR%20foreign%29%20when%3A3d&hl=en-US&gl=US&ceid=US:en
+    section: International Coverage
+    category_hint: foreign_policy
+    active: true

@@ -1,180 +1,184 @@
 sources:
-  - id: cbc_news_ca
-    name: CBC News
-    homepage: https://www.cbc.ca/news
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Canadian Broadcasting Corporation (Public Broadcaster)"
-    state_affiliated: false
-    notes: "Canada's national public broadcaster of record."
-    feeds:
-      - url: https://www.cbc.ca/webfeed/rss/rss-topstories
-        category_hint: internal_politics
-      - url: https://www.cbc.ca/webfeed/rss/rss-politics
-        category_hint: internal_politics
-      - url: https://www.cbc.ca/webfeed/rss/rss-business
-        category_hint: economics
-
-  - id: the_globe_and_mail
-    name: The Globe and Mail
-    homepage: https://www.theglobeandmail.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Woodbridge Company"
-    state_affiliated: false
-    notes: "Canada's national newspaper of record, based in Toronto."
-    feeds:
-      - url: https://www.theglobeandmail.com/arc/outboundfeeds/rss/category/politics/
-        category_hint: internal_politics
-      - url: https://www.theglobeandmail.com/arc/outboundfeeds/rss/category/business/
-        category_hint: economics
-
-  - id: national_post_ca
-    name: National Post
-    homepage: https://nationalpost.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Postmedia Network"
-    state_affiliated: false
-    notes: "Major national conservative broadsheet of record."
-    feeds:
-      - url: https://nationalpost.com/feed
-        category_hint: internal_politics
-      - url: https://nationalpost.com/category/news/politics/feed
-        category_hint: internal_politics
-
-  - id: toronto_star_ca
-    name: Toronto Star
-    homepage: https://www.thestar.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Torstar / Nordstar Capital"
-    state_affiliated: false
-    notes: "High-circulation center-left national daily."
-    feeds:
-      - url: https://www.thestar.com/search/?f=rss&t=article&c=news/canada*&l=50&s=start_time&sd=desc
-        category_hint: internal_politics
-
-  - id: ledevoir_ca
-    name: Le Devoir
-    homepage: https://www.ledevoir.com
-    language: fr
-    scope: domestic
-    kind: media
-    governing_body: "Le Devoir Inc."
-    state_affiliated: false
-    notes: "Independent French-language broadsheet of record in Quebec."
-    feeds:
-      - url: https://www.ledevoir.com/rss/manchettes.xml
-        category_hint: internal_politics
-
-  - id: radiocanada_ca
-    name: Radio-Canada Info
-    homepage: https://ici.radio-canada.ca
-    language: fr
-    scope: domestic
-    kind: media
-    governing_body: "Canadian Broadcasting Corporation (CBC/Radio-Canada)"
-    state_affiliated: false
-    notes: "National French-language public broadcaster newsroom."
-    feeds:
-      - url: https://ici.radio-canada.ca/rss/4159
-        category_hint: general
-
-  - id: globalnews_ca
-    name: Global News
-    homepage: https://globalnews.ca
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Corus Entertainment"
-    state_affiliated: false
-    notes: "National commercial television and digital news network."
-    feeds:
-      - url: https://globalnews.ca/feed/
-        category_hint: general
-
-  - id: thetyee_ca
-    name: The Tyee
-    homepage: https://thetyee.ca
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "The Tyee Independent Media Society"
-    state_affiliated: false
-    notes: "Independent non-profit investigative journalism outlet."
-    feeds:
-      - url: https://thetyee.ca/rss2.xml
-        category_hint: internal_politics
-
-  - id: nationalobserver_ca
-    name: Canada's National Observer
-    homepage: https://www.nationalobserver.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Observer Media Group"
-    state_affiliated: false
-    notes: "Independent investigative journalism covering energy, climate and federal politics."
-    feeds:
-      - url: https://www.nationalobserver.com/front/rss
-        category_hint: economics
-
-  - id: policyoptions_ca
-    name: Policy Options
-    homepage: https://policyoptions.irpp.org
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Institute for Research on Public Policy (IRPP)"
-    state_affiliated: false
-    notes: "Non-partisan public policy and legislative affairs digital journal."
-    feeds:
-      - url: https://policyoptions.irpp.org/feed/
-        category_hint: internal_politics
-
-  - id: google_news_canada_politics
-    name: Google News (Canada Parliament & Federal Politics)
-    homepage: https://news.google.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Google LLC"
-    state_affiliated: false
-    aggregator: google_news
-    notes: "Aggregator tracking Justin Trudeau, Pierre Poilievre, and Parliament Hill."
-    feeds:
-      - url: "https://news.google.com/rss/search?q=%22Justin+Trudeau%22+OR+%22Pierre+Poilievre%22+OR+%22House+of+Commons%22+Canada+when:3d&hl=en-CA&gl=CA&ceid=CA:en"
-        category_hint: internal_politics
-
-  - id: google_news_canada_economy
-    name: Google News (Canada Economy, Bank of Canada & Trade)
-    homepage: https://news.google.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Google LLC"
-    state_affiliated: false
-    aggregator: google_news
-    notes: "Aggregator tracking Bank of Canada rate cuts, housing crisis, and US trade."
-    feeds:
-      - url: "https://news.google.com/rss/search?q=%22Bank+of+Canada%22+OR+%22Canadian+economy%22+OR+%22housing+crisis%22+Canada+when:3d&hl=en-CA&gl=CA&ceid=CA:en"
-        category_hint: economics
-
-  - id: google_news_canada_defense
-    name: Google News (Canada Defense & Arctic Security)
-    homepage: https://news.google.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Google LLC"
-    state_affiliated: false
-    aggregator: google_news
-    notes: "Aggregator tracking NORAD, Arctic patrols, NATO spending, and military procurement."
-    feeds:
-      - url: "https://news.google.com/rss/search?q=%22National+Defence%22+Canada+OR+NORAD+OR+%22Arctic+sovereignty%22+Canada+when:3d&hl=en-CA&gl=CA&ceid=CA:en"
-        category_hint: defence_security
+- id: cbc_news_ca
+  name: CBC News
+  homepage: https://www.cbc.ca/news
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Canadian Broadcasting Corporation (Public Broadcaster)
+  state_affiliated: false
+  notes: Canada's national public broadcaster of record.
+  feeds:
+  - url: https://www.cbc.ca/webfeed/rss/rss-topstories
+    category_hint: internal_politics
+  - url: https://www.cbc.ca/webfeed/rss/rss-politics
+    category_hint: internal_politics
+  - url: https://www.cbc.ca/webfeed/rss/rss-business
+    category_hint: economics
+- id: the_globe_and_mail
+  name: The Globe and Mail
+  homepage: https://www.theglobeandmail.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Woodbridge Company
+  state_affiliated: false
+  notes: Canada's national newspaper of record, based in Toronto.
+  feeds:
+  - url: https://www.theglobeandmail.com/arc/outboundfeeds/rss/category/politics/
+    category_hint: internal_politics
+  - url: https://www.theglobeandmail.com/arc/outboundfeeds/rss/category/business/
+    category_hint: economics
+- id: national_post_ca
+  name: National Post
+  homepage: https://nationalpost.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Postmedia Network
+  state_affiliated: false
+  notes: Major national conservative broadsheet of record.
+  feeds:
+  - url: https://nationalpost.com/feed
+    category_hint: internal_politics
+  - url: https://nationalpost.com/category/news/politics/feed
+    category_hint: internal_politics
+- id: toronto_star_ca
+  name: Toronto Star
+  homepage: https://www.thestar.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Torstar / Nordstar Capital
+  state_affiliated: false
+  notes: High-circulation center-left national daily.
+  feeds:
+  - url: https://www.thestar.com/search/?f=rss&t=article&c=news/canada*&l=50&s=start_time&sd=desc
+    category_hint: internal_politics
+- id: ledevoir_ca
+  name: Le Devoir
+  homepage: https://www.ledevoir.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Le Devoir Inc.
+  state_affiliated: false
+  notes: Independent French-language broadsheet of record in Quebec.
+  feeds:
+  - url: https://www.ledevoir.com/rss/manchettes.xml
+    category_hint: internal_politics
+- id: radiocanada_ca
+  name: Radio-Canada Info
+  homepage: https://ici.radio-canada.ca
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Canadian Broadcasting Corporation (CBC/Radio-Canada)
+  state_affiliated: false
+  notes: National French-language public broadcaster newsroom.
+  feeds:
+  - url: https://ici.radio-canada.ca/rss/4159
+    category_hint: general
+- id: globalnews_ca
+  name: Global News
+  homepage: https://globalnews.ca
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Corus Entertainment
+  state_affiliated: false
+  notes: National commercial television and digital news network.
+  feeds:
+  - url: https://globalnews.ca/feed/
+    category_hint: general
+- id: thetyee_ca
+  name: The Tyee
+  homepage: https://thetyee.ca
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: The Tyee Independent Media Society
+  state_affiliated: false
+  notes: Independent non-profit investigative journalism outlet.
+  feeds:
+  - url: https://thetyee.ca/rss2.xml
+    category_hint: internal_politics
+- id: nationalobserver_ca
+  name: Canada's National Observer
+  homepage: https://www.nationalobserver.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Observer Media Group
+  state_affiliated: false
+  notes: Independent investigative journalism covering energy, climate and federal
+    politics.
+  feeds:
+  - url: https://www.nationalobserver.com/front/rss
+    category_hint: economics
+- id: policyoptions_ca
+  name: Policy Options
+  homepage: https://policyoptions.irpp.org
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Institute for Research on Public Policy (IRPP)
+  state_affiliated: false
+  notes: Non-partisan public policy and legislative affairs digital journal.
+  feeds:
+  - url: https://policyoptions.irpp.org/feed/
+    category_hint: internal_politics
+- id: google_news_canada_politics
+  name: Google News (Canada Parliament & Federal Politics)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator tracking Justin Trudeau, Pierre Poilievre, and Parliament Hill.
+  feeds:
+  - url: https://news.google.com/rss/search?q=%22Justin+Trudeau%22+OR+%22Pierre+Poilievre%22+OR+%22House+of+Commons%22+Canada+when:3d&hl=en-CA&gl=CA&ceid=CA:en
+    category_hint: internal_politics
+- id: google_news_canada_economy
+  name: Google News (Canada Economy, Bank of Canada & Trade)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator tracking Bank of Canada rate cuts, housing crisis, and US trade.
+  feeds:
+  - url: https://news.google.com/rss/search?q=%22Bank+of+Canada%22+OR+%22Canadian+economy%22+OR+%22housing+crisis%22+Canada+when:3d&hl=en-CA&gl=CA&ceid=CA:en
+    category_hint: economics
+- id: google_news_canada_defense
+  name: Google News (Canada Defense & Arctic Security)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator tracking NORAD, Arctic patrols, NATO spending, and military procurement.
+  feeds:
+  - url: https://news.google.com/rss/search?q=%22National+Defence%22+Canada+OR+NORAD+OR+%22Arctic+sovereignty%22+Canada+when:3d&hl=en-CA&gl=CA&ceid=CA:en
+    category_hint: defence_security
+- id: gnews_canada_intl
+  name: Google News (Canada - International Press)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator stream tracking international English-language reporting on Canada.
+  feeds:
+  - url: https://news.google.com/rss/search?q=%28Canada%29%20%28diplomacy%20OR%20government%20OR%20election%20OR%20economy%20OR%20foreign%29%20when%3A3d&hl=en-US&gl=US&ceid=US:en
+    section: International Coverage
+    category_hint: foreign_policy
+    active: true

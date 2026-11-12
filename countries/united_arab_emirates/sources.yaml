@@ -62,7 +62,8 @@ sources:
   governing_body: Google LLC
   state_affiliated: false
   aggregator: google_news
-  notes: Aggregator feed tracking Sheikh Mohamed bin Zayed, cabinet decrees, and Abu Dhabi/Dubai governance.
+  notes: Aggregator feed tracking Sheikh Mohamed bin Zayed, cabinet decrees, and Abu
+    Dhabi/Dubai governance.
   feeds:
   - url: https://news.google.com/rss/search?q=%22Mohamed+bin+Zayed%22+OR+MBZ+OR+%22UAE+cabinet%22+OR+%22Abu+Dhabi%22+government+when:3d&hl=en-AE&gl=AE&ceid=AE:en
     category_hint: internal_politics
@@ -75,7 +76,8 @@ sources:
   governing_body: Google LLC
   state_affiliated: false
   aggregator: google_news
-  notes: Aggregator feed tracking ADNOC, Mubadala, ADIA, G42 AI investments, and Dubai trade.
+  notes: Aggregator feed tracking ADNOC, Mubadala, ADIA, G42 AI investments, and Dubai
+    trade.
   feeds:
   - url: https://news.google.com/rss/search?q=ADNOC+OR+Mubadala+OR+ADIA+OR+%22G42%22+OR+%22Dubai+economy%22+when:3d&hl=en-AE&gl=AE&ceid=AE:en
     category_hint: economics
@@ -88,7 +90,8 @@ sources:
   governing_body: Google LLC
   state_affiliated: false
   aggregator: google_news
-  notes: Aggregator feed tracking UAE diplomacy, BRICS participation, and regional security.
+  notes: Aggregator feed tracking UAE diplomacy, BRICS participation, and regional
+    security.
   feeds:
   - url: https://news.google.com/rss/search?q=%22UAE+foreign+ministry%22+OR+%22Abdullah+bin+Zayed%22+OR+%22EDGE+group%22+OR+BRICS+UAE+when:3d&hl=en-AE&gl=AE&ceid=AE:en
     category_hint: defence_security
@@ -100,7 +103,8 @@ sources:
   kind: media
   governing_body: ITP Media Group
   state_affiliated: false
-  notes: Leading Middle East business weekly and digital daily in Dubai covering Gulf commerce and finance.
+  notes: Leading Middle East business weekly and digital daily in Dubai covering Gulf
+    commerce and finance.
   feeds:
   - url: https://www.arabianbusiness.com/feed
     category_hint: economics
@@ -112,7 +116,8 @@ sources:
   kind: media
   governing_body: ITP Media Group
   state_affiliated: false
-  notes: Dubai-based authoritative review of Gulf infrastructure, real estate megaprojects, and public tenders.
+  notes: Dubai-based authoritative review of Gulf infrastructure, real estate megaprojects,
+    and public tenders.
   feeds:
   - url: https://www.constructionweekonline.com/feed
     category_hint: economics
@@ -124,7 +129,8 @@ sources:
   kind: media
   governing_body: ITP Media Group
   state_affiliated: false
-  notes: Energy industry intelligence monitor covering upstream exploration, refining, and OPEC policy in the UAE.
+  notes: Energy industry intelligence monitor covering upstream exploration, refining,
+    and OPEC policy in the UAE.
   feeds:
   - url: https://www.oilandgasmiddleeast.com/feed
     category_hint: economics
@@ -136,7 +142,8 @@ sources:
   kind: media
   governing_body: ITP Media Group
   state_affiliated: false
-  notes: UAE commercial and tourism industry monitor covering hospitality, retail supply chains, and regulation.
+  notes: UAE commercial and tourism industry monitor covering hospitality, retail
+    supply chains, and regulation.
   feeds:
   - url: https://www.caterermiddleeast.com/feed
     category_hint: economics
@@ -148,7 +155,8 @@ sources:
   kind: media
   governing_body: ITP Media Group
   state_affiliated: false
-  notes: Gulf urban design, commercial architecture, and civic municipal infrastructure review in Dubai.
+  notes: Gulf urban design, commercial architecture, and civic municipal infrastructure
+    review in Dubai.
   feeds:
   - url: https://www.commercialinteriordesign.com/feed
     category_hint: economics
@@ -160,7 +168,8 @@ sources:
   kind: media
   governing_body: International Media Investments (IMI)
   state_affiliated: true
-  notes: Direct Arc XP outbound RSS stream covering full-breadth Abu Dhabi governance and diplomacy.
+  notes: Direct Arc XP outbound RSS stream covering full-breadth Abu Dhabi governance
+    and diplomacy.
   feeds:
   - url: https://www.thenationalnews.com/arc/outboundfeeds/rss/?outputType=xml
     category_hint: internal_politics
@@ -177,3 +186,19 @@ sources:
   - url: https://news.google.com/rss/search?q=%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A7%D8%AA+OR+%D8%A3%D8%A8%D9%88%D8%B8%D8%A8%D9%8A+OR+%D8%AF%D8%A8%D9%8A+when:2d&hl=ar&gl=AE&ceid=AE:ar
     section: National News (Arabic)
     category_hint: internal_politics
+- id: gnews_united_arab_emirates_intl
+  name: Google News (United Arab Emirates - International Press)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator stream tracking international English-language reporting on United
+    Arab Emirates.
+  feeds:
+  - url: https://news.google.com/rss/search?q=%28%22United%20Arab%20Emirates%22%29%20%28diplomacy%20OR%20government%20OR%20election%20OR%20economy%20OR%20foreign%29%20when%3A3d&hl=en-US&gl=US&ceid=US:en
+    section: International Coverage
+    category_hint: foreign_policy
+    active: true

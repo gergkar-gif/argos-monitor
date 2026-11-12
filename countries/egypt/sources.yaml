@@ -73,7 +73,8 @@ sources:
   governing_body: Google LLC
   state_affiliated: false
   aggregator: google_news
-  notes: Aggregator tracking Egyptian pound, IMF reviews, Ras El-Hekma, and Suez Canal revenues.
+  notes: Aggregator tracking Egyptian pound, IMF reviews, Ras El-Hekma, and Suez Canal
+    revenues.
   feeds:
   - url: https://news.google.com/rss/search?q=%22Central+Bank+of+Egypt%22+OR+%22Suez+Canal%22+OR+IMF+Egypt+OR+%22Egyptian+pound%22+when:3d&hl=en-EG&gl=EG&ceid=EG:en
     category_hint: economics
@@ -86,7 +87,8 @@ sources:
   governing_body: Google LLC
   state_affiliated: false
   aggregator: google_news
-  notes: Aggregator tracking Gaza ceasefire talks, Rafah border security, and GERD dam dispute.
+  notes: Aggregator tracking Gaza ceasefire talks, Rafah border security, and GERD
+    dam dispute.
   feeds:
   - url: https://news.google.com/rss/search?q=Egypt+Gaza+ceasefire+OR+%22Rafah+crossing%22+OR+%22Grand+Ethiopian+Renaissance+Dam%22+when:3d&hl=en-EG&gl=EG&ceid=EG:en
     category_hint: foreign_policy
@@ -98,7 +100,8 @@ sources:
   kind: media
   governing_body: Enterprise News LLC
   state_affiliated: false
-  notes: Authoritative Cairo daily executive and financial briefing on privatization, sovereign funds, and macro policy.
+  notes: Authoritative Cairo daily executive and financial briefing on privatization,
+    sovereign funds, and macro policy.
   feeds:
   - url: https://enterprise.news/feed/
     category_hint: economics
@@ -110,7 +113,8 @@ sources:
   kind: media
   governing_body: Al Borsa Media Group
   state_affiliated: false
-  notes: Leading Egyptian economic and financial daily broadsheet covering EGX stock market, banking, and industry.
+  notes: Leading Egyptian economic and financial daily broadsheet covering EGX stock
+    market, banking, and industry.
   feeds:
   - url: https://alborsaanews.com/feed/
     category_hint: economics
@@ -122,7 +126,8 @@ sources:
   kind: media
   governing_body: ES Media
   state_affiliated: false
-  notes: Leading independent Egyptian digital platform covering society, urban reform, and cultural governance.
+  notes: Leading independent Egyptian digital platform covering society, urban reform,
+    and cultural governance.
   feeds:
   - url: https://egyptianstreets.com/feed/
     category_hint: general
@@ -134,7 +139,8 @@ sources:
   kind: media
   governing_body: Invest-Gate Media
   state_affiliated: false
-  notes: Egyptian commercial investment review covering real estate megaprojects and infrastructure financing.
+  notes: Egyptian commercial investment review covering real estate megaprojects and
+    infrastructure financing.
   feeds:
   - url: https://invest-gate.me/feed/
     category_hint: economics
@@ -146,7 +152,8 @@ sources:
   kind: media
   governing_body: EOG Media
   state_affiliated: false
-  notes: Dedicated energy sector journal covering Zohr gas field, Mediterranean exploration, and renewables.
+  notes: Dedicated energy sector journal covering Zohr gas field, Mediterranean exploration,
+    and renewables.
   feeds:
   - url: https://egyptoil-gas.com/feed/
     category_hint: economics
@@ -175,3 +182,18 @@ sources:
   - url: https://news.google.com/rss/search?q=%D9%85%D8%B5%D8%B1+OR+%D8%A7%D9%84%D8%B3%D9%8A%D8%B3%D9%8A+OR+%D8%A7%D9%84%D8%AD%D9%83%D9%88%D9%85%D8%A9+%D8%A7%D9%84%D9%85%D8%B5%D8%B1%D9%8A%D8%A9+when:2d&hl=ar&gl=EG&ceid=EG:ar
     section: National News (Arabic)
     category_hint: internal_politics
+- id: gnews_egypt_intl
+  name: Google News (Egypt - International Press)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator stream tracking international English-language reporting on Egypt.
+  feeds:
+  - url: https://news.google.com/rss/search?q=%28Egypt%29%20%28diplomacy%20OR%20government%20OR%20election%20OR%20economy%20OR%20foreign%29%20when%3A3d&hl=en-US&gl=US&ceid=US:en
+    section: International Coverage
+    category_hint: foreign_policy
+    active: true
