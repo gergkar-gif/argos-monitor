@@ -59,7 +59,8 @@ sources:
   governing_body: Democratic and Popular Republic of Algeria
   state_affiliated: true
   aggregator: google_news
-  notes: Aggregator feed capturing official APS dispatches following the deprecation of direct public RSS on aps.dz.
+  notes: Aggregator feed capturing official APS dispatches following the deprecation
+    of direct public RSS on aps.dz.
   feeds:
   - url: https://news.google.com/rss/search?q=source:%22Alg%C3%A9rie+Presse+Service%22+when:3d&hl=fr&gl=DZ&ceid=DZ:fr
     section: Official Wire
@@ -85,7 +86,8 @@ sources:
   kind: media
   governing_body: Algerie360 Media Group
   state_affiliated: false
-  notes: Leading Algerian continuous digital news daily covering domestic policy, energy, and economy.
+  notes: Leading Algerian continuous digital news daily covering domestic policy,
+    energy, and economy.
   feeds:
   - url: https://www.algerie360.com/feed/
     category_hint: internal_politics
@@ -97,7 +99,8 @@ sources:
   kind: media
   governing_body: Le Matin Publishing
   state_affiliated: false
-  notes: Historic independent Algerian daily providing critical coverage of executive accountability.
+  notes: Historic independent Algerian daily providing critical coverage of executive
+    accountability.
   feeds:
   - url: https://lematindalgerie.com/feed/
     category_hint: internal_politics
@@ -109,7 +112,8 @@ sources:
   kind: media
   governing_body: Le Jeune Indépendant SARL
   state_affiliated: false
-  notes: Algerian French-language daily broadsheet reporting on national politics, economy, and Maghreb relations.
+  notes: Algerian French-language daily broadsheet reporting on national politics,
+    economy, and Maghreb relations.
   feeds:
   - url: https://www.jeune-independant.net/feed/
     category_hint: internal_politics
@@ -121,7 +125,8 @@ sources:
   kind: media
   governing_body: Algérie Focus Media
   state_affiliated: false
-  notes: Independent news platform focusing on socioeconomic investigations and youth governance.
+  notes: Independent news platform focusing on socioeconomic investigations and youth
+    governance.
   feeds:
   - url: https://www.algerie-focus.com/feed/
     category_hint: internal_politics
@@ -133,7 +138,8 @@ sources:
   kind: media
   governing_body: Algérie Patriotique
   state_affiliated: false
-  notes: Analytical news portal specializing in Algerian geopolitics, defense, and international partnerships.
+  notes: Analytical news portal specializing in Algerian geopolitics, defense, and
+    international partnerships.
   feeds:
   - url: https://www.algeriepatriotique.com/feed/
     category_hint: foreign_policy
@@ -169,7 +175,45 @@ sources:
   kind: media
   governing_body: Ennahar Group
   state_affiliated: false
-  notes: Prominent 24-hour Algerian digital daily covering breaking national and security affairs.
+  notes: Prominent 24-hour Algerian digital daily covering breaking national and security
+    affairs.
   feeds:
   - url: https://www.ennaharonline.com/feed/
     category_hint: internal_politics
+- id: bbc_news_me
+  name: BBC News (Middle East)
+  homepage: https://www.bbc.com/news/world/middle_east
+  language: en
+  scope: international
+  kind: media
+  governing_body: BBC (British Broadcasting Corporation)
+  state_affiliated: false
+  notes: Covers the Middle East; only items referencing the country are ingested.
+  feeds:
+  - url: https://feeds.bbci.co.uk/news/world/middle_east/rss.xml
+    category_hint: general
+- id: aljazeera_english
+  name: Al Jazeera English
+  homepage: https://www.aljazeera.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Al Jazeera Media Network
+  state_affiliated: true
+  notes: Global Middle Eastern & developing world coverage; filtered by country mention
+    words.
+  feeds:
+  - url: https://www.aljazeera.com/xml/rss/all.xml
+    category_hint: general
+- id: france24_english
+  name: France 24 (English)
+  homepage: https://www.france24.com/en
+  language: en
+  scope: international
+  kind: media
+  governing_body: France Médias Monde
+  state_affiliated: true
+  notes: International coverage; filtered strictly by country mention words.
+  feeds:
+  - url: https://www.france24.com/en/rss
+    category_hint: general

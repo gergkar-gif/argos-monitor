@@ -1,193 +1,258 @@
-# South Africa source registry (decision D15).
-# scope: domestic | abroad_local | international
-# kind: media | official | wire
-# feed.category_hint: internal_politics | economics | foreign_policy | defence_security | society | general
-
 sources:
-  - id: daily_maverick
-    name: Daily Maverick
-    homepage: https://www.dailymaverick.co.za
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: Daily Maverick (independent digital daily, membership model)
-    state_affiliated: false
-    reprints_vna: false
-    feeds:
-      - {url: "https://www.dailymaverick.co.za/dmrss/", section: Latest, category_hint: general}
-
-  - id: mail_guardian
-    name: Mail & Guardian
-    homepage: https://mg.co.za
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: M&G Media Ltd (independent investigative journalism)
-    state_affiliated: false
-    reprints_vna: false
-    feeds:
-      - {url: "https://mg.co.za/rss/", section: Latest, category_hint: general}
-
-  - id: sabc_news
-    name: SABC News
-    homepage: https://www.sabcnews.com
-    language: en
-    scope: domestic
-    kind: official
-    governing_body: South African Broadcasting Corporation (public broadcaster)
-    state_affiliated: true
-    reprints_vna: false
-    feeds:
-      - {url: "https://www.sabcnews.com/sabcnews/politics/feed/", section: Politics, category_hint: internal_politics}
-      - {url: "https://www.sabcnews.com/sabcnews/business/feed/", section: Business, category_hint: economics}
-      - {url: "https://www.sabcnews.com/sabcnews/south-africa/feed/", section: South Africa, category_hint: general}
-      - {url: "https://www.sabcnews.com/sabcnews/feed/", section: Latest, category_hint: general}
-
-  - id: sanews
-    name: SAnews
-    homepage: https://www.sanews.gov.za
-    language: en
-    scope: domestic
-    kind: official
-    governing_body: Government Communication and Information System (GCIS)
-    state_affiliated: true
-    reprints_vna: false
-    feeds:
-      - {url: "https://www.sanews.gov.za/rss.xml", section: News, category_hint: general}
-
-  - id: enca
-    name: eNCA
-    homepage: https://www.enca.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: eMedia Holdings
-    state_affiliated: false
-    reprints_vna: false
-    feeds:
-      - {url: "https://www.enca.com/rss.xml", section: News, category_hint: general}
-
-  - id: iol
-    name: IOL
-    homepage: https://www.iol.co.za
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: Sekunjalo Independent Media
-    state_affiliated: false
-    reprints_vna: false
-    feeds:
-      - {url: "https://iol.co.za/rss/", section: Latest, category_hint: general}
-
-  - id: groundup
-    name: GroundUp
-    homepage: https://groundup.org.za
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: GroundUp News (non-profit community & human rights journalism)
-    state_affiliated: false
-    reprints_vna: false
-    feeds:
-      - {url: "https://groundup.org.za/sitenews/rss/", section: News, category_hint: society}
-
-  - id: moneyweb
-    name: Moneyweb
-    homepage: https://www.moneyweb.co.za
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: African Media Entertainment (AME)
-    state_affiliated: false
-    reprints_vna: false
-    feeds:
-      - {url: "https://www.moneyweb.co.za/category/economy/feed/", section: Economy, category_hint: economics}
-      - {url: "https://www.moneyweb.co.za/category/news/feed/", section: Business, category_hint: economics}
-
-  - id: the_south_african
-    name: The South African
-    homepage: https://www.thesouthafrican.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: Blue Sky Publications
-    state_affiliated: false
-    reprints_vna: false
-    feeds:
-      - {url: "https://www.thesouthafrican.com/feed/", section: News, category_hint: general}
-
-  - id: defenceweb
-    name: defenceWeb
-    homepage: https://www.defenceweb.co.za
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: defenceWeb (aerospace, defence & security)
-    state_affiliated: false
-    reprints_vna: false
-    feeds:
-      - {url: "https://defenceweb.co.za/feed/", section: Defence, category_hint: defence_security}
-
-  - id: saiia
-    name: SAIIA
-    homepage: https://saiia.org.za
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: South African Institute of International Affairs (independent think tank)
-    state_affiliated: false
-    reprints_vna: false
-    feeds:
-      - {url: "https://saiia.org.za/feed/", section: International Affairs, category_hint: foreign_policy}
-
-  - id: daily_friend
-    name: Daily Friend
-    homepage: https://dailyfriend.co.za
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: Institute of Race Relations (policy think tank)
-    state_affiliated: false
-    reprints_vna: false
-    feeds:
-      - {url: "https://dailyfriend.co.za/feed/", section: Analysis, category_hint: internal_politics}
-
-  - id: maroela_media
-    name: Maroela Media
-    homepage: https://maroelamedia.co.za
-    language: af
-    scope: domestic
-    kind: media
-    governing_body: Solidariteit Beweging (independent Afrikaans media)
-    state_affiliated: false
-    reprints_vna: false
-    feeds:
-      - {url: "https://maroelamedia.co.za/feed/", section: Nuus, category_hint: general}
-
-  - id: allafrica_sa
-    name: AllAfrica (South Africa)
-    homepage: https://allafrica.com/southafrica/
-    language: en
-    scope: abroad_local
-    kind: media
-    governing_body: AllAfrica Global Media (Pan-African news distributor)
-    state_affiliated: false
-    reprints_vna: false
-    feeds:
-      - {url: "https://allafrica.com/tools/headlines/rdf/southafrica/headlines.rdf", section: South Africa, category_hint: general}
-
-  - id: gnews_za
-    name: Google News (South Africa)
-    homepage: https://news.google.com
-    language: en
-    scope: international
-    kind: media
-    aggregator: google_news
-    governing_body: n/a (aggregator)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=%22South+Africa%22+when:1d&hl=en-ZA&gl=ZA&ceid=ZA:en", section: South Africa, category_hint: general}
-      - {url: "https://news.google.com/rss/search?q=%22South+Africa%22+(Ramaphosa+OR+ANC+OR+DA+OR+EFF+OR+MK+OR+%22Government+of+National+Unity%22+OR+GNU+OR+Parliament)+when:1d&hl=en-ZA&gl=ZA&ceid=ZA:en", section: South Africa politics, category_hint: internal_politics}
-      - {url: "https://news.google.com/rss/search?q=%22South+Africa%22+(economy+OR+SARB+OR+inflation+OR+repo+rate+OR+rand+OR+trade+OR+mining+OR+Eskom+OR+Transnet)+when:1d&hl=en-ZA&gl=ZA&ceid=ZA:en", section: South Africa economy, category_hint: economics}
-      - {url: "https://news.google.com/rss/search?q=%22South+Africa%22+(diplomacy+OR+BRICS+OR+ICJ+OR+DIRCO+OR+%22African+Union%22+OR+SADC)+when:1d&hl=en-ZA&gl=ZA&ceid=ZA:en", section: South Africa diplomacy, category_hint: foreign_policy}
-      - {url: "https://news.google.com/rss/search?q=%22South+Africa%22+(SAPS+OR+SANDF+OR+crime+OR+corruption+OR+SIU)+when:1d&hl=en-ZA&gl=ZA&ceid=ZA:en", section: South Africa security, category_hint: defence_security}
+- id: daily_maverick
+  name: Daily Maverick
+  homepage: https://www.dailymaverick.co.za
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Daily Maverick (independent digital daily, membership model)
+  state_affiliated: false
+  reprints_vna: false
+  feeds:
+  - url: https://www.dailymaverick.co.za/dmrss/
+    section: Latest
+    category_hint: general
+- id: mail_guardian
+  name: Mail & Guardian
+  homepage: https://mg.co.za
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: M&G Media Ltd (independent investigative journalism)
+  state_affiliated: false
+  reprints_vna: false
+  feeds:
+  - url: https://mg.co.za/rss/
+    section: Latest
+    category_hint: general
+- id: sabc_news
+  name: SABC News
+  homepage: https://www.sabcnews.com
+  language: en
+  scope: domestic
+  kind: official
+  governing_body: South African Broadcasting Corporation (public broadcaster)
+  state_affiliated: true
+  reprints_vna: false
+  feeds:
+  - url: https://www.sabcnews.com/sabcnews/politics/feed/
+    section: Politics
+    category_hint: internal_politics
+  - url: https://www.sabcnews.com/sabcnews/business/feed/
+    section: Business
+    category_hint: economics
+  - url: https://www.sabcnews.com/sabcnews/south-africa/feed/
+    section: South Africa
+    category_hint: general
+  - url: https://www.sabcnews.com/sabcnews/feed/
+    section: Latest
+    category_hint: general
+- id: sanews
+  name: SAnews
+  homepage: https://www.sanews.gov.za
+  language: en
+  scope: domestic
+  kind: official
+  governing_body: Government Communication and Information System (GCIS)
+  state_affiliated: true
+  reprints_vna: false
+  feeds:
+  - url: https://www.sanews.gov.za/rss.xml
+    section: News
+    category_hint: general
+- id: enca
+  name: eNCA
+  homepage: https://www.enca.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: eMedia Holdings
+  state_affiliated: false
+  reprints_vna: false
+  feeds:
+  - url: https://www.enca.com/rss.xml
+    section: News
+    category_hint: general
+- id: iol
+  name: IOL
+  homepage: https://www.iol.co.za
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Sekunjalo Independent Media
+  state_affiliated: false
+  reprints_vna: false
+  feeds:
+  - url: https://iol.co.za/rss/
+    section: Latest
+    category_hint: general
+- id: groundup
+  name: GroundUp
+  homepage: https://groundup.org.za
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: GroundUp News (non-profit community & human rights journalism)
+  state_affiliated: false
+  reprints_vna: false
+  feeds:
+  - url: https://groundup.org.za/sitenews/rss/
+    section: News
+    category_hint: society
+- id: moneyweb
+  name: Moneyweb
+  homepage: https://www.moneyweb.co.za
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: African Media Entertainment (AME)
+  state_affiliated: false
+  reprints_vna: false
+  feeds:
+  - url: https://www.moneyweb.co.za/category/economy/feed/
+    section: Economy
+    category_hint: economics
+  - url: https://www.moneyweb.co.za/category/news/feed/
+    section: Business
+    category_hint: economics
+- id: the_south_african
+  name: The South African
+  homepage: https://www.thesouthafrican.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Blue Sky Publications
+  state_affiliated: false
+  reprints_vna: false
+  feeds:
+  - url: https://www.thesouthafrican.com/feed/
+    section: News
+    category_hint: general
+- id: defenceweb
+  name: defenceWeb
+  homepage: https://www.defenceweb.co.za
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: defenceWeb (aerospace, defence & security)
+  state_affiliated: false
+  reprints_vna: false
+  feeds:
+  - url: https://defenceweb.co.za/feed/
+    section: Defence
+    category_hint: defence_security
+- id: saiia
+  name: SAIIA
+  homepage: https://saiia.org.za
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: South African Institute of International Affairs (independent think
+    tank)
+  state_affiliated: false
+  reprints_vna: false
+  feeds:
+  - url: https://saiia.org.za/feed/
+    section: International Affairs
+    category_hint: foreign_policy
+- id: daily_friend
+  name: Daily Friend
+  homepage: https://dailyfriend.co.za
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Institute of Race Relations (policy think tank)
+  state_affiliated: false
+  reprints_vna: false
+  feeds:
+  - url: https://dailyfriend.co.za/feed/
+    section: Analysis
+    category_hint: internal_politics
+- id: maroela_media
+  name: Maroela Media
+  homepage: https://maroelamedia.co.za
+  language: af
+  scope: domestic
+  kind: media
+  governing_body: Solidariteit Beweging (independent Afrikaans media)
+  state_affiliated: false
+  reprints_vna: false
+  feeds:
+  - url: https://maroelamedia.co.za/feed/
+    section: Nuus
+    category_hint: general
+- id: allafrica_sa
+  name: AllAfrica (South Africa)
+  homepage: https://allafrica.com/southafrica/
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: AllAfrica Global Media (Pan-African news distributor)
+  state_affiliated: false
+  reprints_vna: false
+  feeds:
+  - url: https://allafrica.com/tools/headlines/rdf/southafrica/headlines.rdf
+    section: South Africa
+    category_hint: general
+- id: gnews_za
+  name: Google News (South Africa)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  aggregator: google_news
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=%22South+Africa%22+when:1d&hl=en-ZA&gl=ZA&ceid=ZA:en
+    section: South Africa
+    category_hint: general
+  - url: https://news.google.com/rss/search?q=%22South+Africa%22+(Ramaphosa+OR+ANC+OR+DA+OR+EFF+OR+MK+OR+%22Government+of+National+Unity%22+OR+GNU+OR+Parliament)+when:1d&hl=en-ZA&gl=ZA&ceid=ZA:en
+    section: South Africa politics
+    category_hint: internal_politics
+  - url: https://news.google.com/rss/search?q=%22South+Africa%22+(economy+OR+SARB+OR+inflation+OR+repo+rate+OR+rand+OR+trade+OR+mining+OR+Eskom+OR+Transnet)+when:1d&hl=en-ZA&gl=ZA&ceid=ZA:en
+    section: South Africa economy
+    category_hint: economics
+  - url: https://news.google.com/rss/search?q=%22South+Africa%22+(diplomacy+OR+BRICS+OR+ICJ+OR+DIRCO+OR+%22African+Union%22+OR+SADC)+when:1d&hl=en-ZA&gl=ZA&ceid=ZA:en
+    section: South Africa diplomacy
+    category_hint: foreign_policy
+  - url: https://news.google.com/rss/search?q=%22South+Africa%22+(SAPS+OR+SANDF+OR+crime+OR+corruption+OR+SIU)+when:1d&hl=en-ZA&gl=ZA&ceid=ZA:en
+    section: South Africa security
+    category_hint: defence_security
+- id: bbc_news_africa
+  name: BBC News (Africa)
+  homepage: https://www.bbc.com/news/world/africa
+  language: en
+  scope: international
+  kind: media
+  governing_body: BBC (British Broadcasting Corporation)
+  state_affiliated: false
+  notes: Covers Africa; only items referencing the country are ingested.
+  feeds:
+  - url: https://feeds.bbci.co.uk/news/world/africa/rss.xml
+    category_hint: general
+- id: france24_english
+  name: France 24 (English)
+  homepage: https://www.france24.com/en
+  language: en
+  scope: international
+  kind: media
+  governing_body: France Médias Monde
+  state_affiliated: true
+  notes: International coverage; filtered strictly by country mention words.
+  feeds:
+  - url: https://www.france24.com/en/rss
+    category_hint: general
+- id: aljazeera_english
+  name: Al Jazeera English
+  homepage: https://www.aljazeera.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Al Jazeera Media Network
+  state_affiliated: true
+  notes: Global Middle Eastern & developing world coverage; filtered by country mention
+    words.
+  feeds:
+  - url: https://www.aljazeera.com/xml/rss/all.xml
+    category_hint: general

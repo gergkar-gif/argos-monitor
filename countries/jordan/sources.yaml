@@ -7,7 +7,8 @@ sources:
   kind: media
   governing_body: Jordan Press Foundation
   state_affiliated: false
-  notes: Amman daily broadsheet paper of record covering royal decrees, foreign policy, and economic reforms.
+  notes: Amman daily broadsheet paper of record covering royal decrees, foreign policy,
+    and economic reforms.
   feeds:
   - url: https://jordantimes.com/rss.xml
     category_hint: internal_politics
@@ -31,7 +32,8 @@ sources:
   kind: media
   governing_body: Sayegh Group
   state_affiliated: false
-  notes: Flagship Arabic-language digital and broadcast news reporting across Amman and Jordanian governorates.
+  notes: Flagship Arabic-language digital and broadcast news reporting across Amman
+    and Jordanian governorates.
   feeds:
   - url: https://royanews.tv/rss
     category_hint: internal_politics
@@ -43,7 +45,8 @@ sources:
   kind: media
   governing_body: 7iber Media
   state_affiliated: false
-  notes: Independent Jordanian in-depth investigative journalism magazine analyzing public policy, civil rights, and social justice.
+  notes: Independent Jordanian in-depth investigative journalism magazine analyzing
+    public policy, civil rights, and social justice.
   feeds:
   - url: https://www.7iber.com/feed/
     category_hint: society
@@ -55,7 +58,8 @@ sources:
   kind: media
   governing_body: Wakeel Group
   state_affiliated: false
-  notes: Prominent electronic daily news platform providing local reporting across Jordanian governorates.
+  notes: Prominent electronic daily news platform providing local reporting across
+    Jordanian governorates.
   feeds:
   - url: https://www.alwakeelnews.com/rss/
     category_hint: internal_politics
@@ -67,7 +71,8 @@ sources:
   kind: media
   governing_body: Sawaleif Publishing
   state_affiliated: false
-  notes: Independent Jordanian electronic political commentary and investigative daily newspaper.
+  notes: Independent Jordanian electronic political commentary and investigative daily
+    newspaper.
   feeds:
   - url: https://sawaleif.com/feed/
     category_hint: internal_politics
@@ -79,7 +84,8 @@ sources:
   kind: media
   governing_body: Middle East North Africa Financial Network
   state_affiliated: false
-  notes: Financial and economic intelligence wire covering Amman Stock Exchange, banking, and bilateral investment.
+  notes: Financial and economic intelligence wire covering Amman Stock Exchange, banking,
+    and bilateral investment.
   feeds:
   - url: https://menafn.com/rss/menafn_Jordan.xml
     category_hint: economics
@@ -91,7 +97,8 @@ sources:
   kind: media
   governing_body: Zad Jordan Media Agency
   state_affiliated: false
-  notes: Established Jordanian electronic daily news portal covering cabinet affairs, parliament, and regional relations.
+  notes: Established Jordanian electronic daily news portal covering cabinet affairs,
+    parliament, and regional relations.
   feeds:
   - url: https://www.zadjordan.com/rss/
     category_hint: internal_politics
@@ -103,7 +110,8 @@ sources:
   kind: media
   governing_body: Saraha Media
   state_affiliated: false
-  notes: Jordanian news platform providing breaking political updates and parliamentary coverage.
+  notes: Jordanian news platform providing breaking political updates and parliamentary
+    coverage.
   feeds:
   - url: https://www.sarahanews.net/feed/
     category_hint: internal_politics
@@ -115,7 +123,8 @@ sources:
   kind: media
   governing_body: Al Balad News Agency
   state_affiliated: false
-  notes: Jordanian electronic portal covering royal court announcements, national security, and civic news.
+  notes: Jordanian electronic portal covering royal court announcements, national
+    security, and civic news.
   feeds:
   - url: https://albaladnews.net/feed/
     category_hint: internal_politics
@@ -127,7 +136,8 @@ sources:
   kind: official
   governing_body: United Nations Country Team Jordan
   state_affiliated: false
-  notes: Official UN agency reports on humanitarian assistance, refugee coordination, and macroeconomic resilience in Jordan.
+  notes: Official UN agency reports on humanitarian assistance, refugee coordination,
+    and macroeconomic resilience in Jordan.
   feeds:
   - url: https://jordan.un.org/en/rss.xml
     category_hint: society
@@ -144,3 +154,40 @@ sources:
   - url: https://news.google.com/rss/search?q=(Jordan+OR+Amman)+(King+Abdullah+OR+diplomacy+OR+refugees+OR+aid)+when:3d&hl=en-US&gl=US&ceid=US:en
     section: Diplomacy & Governance
     category_hint: foreign_policy
+- id: bbc_news_me
+  name: BBC News (Middle East)
+  homepage: https://www.bbc.com/news/world/middle_east
+  language: en
+  scope: international
+  kind: media
+  governing_body: BBC (British Broadcasting Corporation)
+  state_affiliated: false
+  notes: Covers the Middle East; only items referencing the country are ingested.
+  feeds:
+  - url: https://feeds.bbci.co.uk/news/world/middle_east/rss.xml
+    category_hint: general
+- id: aljazeera_english
+  name: Al Jazeera English
+  homepage: https://www.aljazeera.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Al Jazeera Media Network
+  state_affiliated: true
+  notes: Global Middle Eastern & developing world coverage; filtered by country mention
+    words.
+  feeds:
+  - url: https://www.aljazeera.com/xml/rss/all.xml
+    category_hint: general
+- id: france24_english
+  name: France 24 (English)
+  homepage: https://www.france24.com/en
+  language: en
+  scope: international
+  kind: media
+  governing_body: France Médias Monde
+  state_affiliated: true
+  notes: International coverage; filtered strictly by country mention words.
+  feeds:
+  - url: https://www.france24.com/en/rss
+    category_hint: general

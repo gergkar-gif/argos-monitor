@@ -1,183 +1,238 @@
-# Iran source registry (decision D15).
-# Contrasts state/semi-official media (IRNA, Mehr, Tehran Times) against prominent Persian diaspora/exile journalism abroad (BBC Persian, Iran International, Radio Farda, IranWire), and international coverage.
-
 sources:
-  - id: mehr_en
-    name: Mehr News Agency
-    homepage: https://en.mehrnews.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: Islamic Development Organization (semi-official state media)
-    state_affiliated: true
-    feeds:
-      - {url: "https://en.mehrnews.com/rss", section: Latest, category_hint: general}
-
-  - id: tehran_times
-    name: Tehran Times
-    homepage: https://www.tehrantimes.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: Mehr Media Group (state-affiliated English daily paper of record)
-    state_affiliated: true
-    feeds:
-      - {url: "https://www.tehrantimes.com/rss", section: Latest, category_hint: general}
-
-  - id: irna
-    name: Islamic Republic News Agency (IRNA)
-    homepage: https://www.irna.ir
-    language: fa
-    scope: domestic
-    kind: official
-    aggregator: google_news
-    governing_body: Ministry of Culture and Islamic Guidance (statutory state wire)
-    state_affiliated: true
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:irna.ir+when:3d&hl=fa&gl=IR&ceid=IR:fa", section: اخبار, category_hint: general}
-
-  - id: bbc_persian
-    name: BBC Persian
-    homepage: https://www.bbc.com/persian
-    language: fa
-    scope: abroad_local
-    kind: media
-    governing_body: BBC World Service (public broadcaster abroad)
-    state_affiliated: false
-    feeds:
-      - {url: "https://feeds.bbci.co.uk/persian/rss.xml", section: خبرها, category_hint: general}
-
-  - id: iran_international
-    name: Iran International
-    homepage: https://www.iranintl.com
-    language: fa
-    scope: abroad_local
-    kind: media
-    aggregator: google_news
-    governing_body: Volant Media UK Ltd (independent Persian diaspora broadcaster)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:iranintl.com+when:3d&hl=fa&gl=IR&ceid=IR:fa", section: خبرها, category_hint: general}
-      - {url: "https://news.google.com/rss/search?q=site:iranintl.com/en+when:7d&hl=en-US&gl=US&ceid=US:en", section: English Edition, category_hint: general}
-
-  - id: radio_farda
-    name: Radio Farda (RFE/RL Persian)
-    homepage: https://www.radiofarda.com
-    language: fa
-    scope: abroad_local
-    kind: media
-    aggregator: google_news
-    governing_body: Radio Free Europe / Radio Liberty (USAGM)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:radiofarda.com+when:3d&hl=fa&gl=IR&ceid=IR:fa", section: رادیو فردا, category_hint: general}
-
-  - id: iranwire
-    name: IranWire
-    homepage: https://iranwire.com
-    language: en
-    scope: abroad_local
-    kind: media
-    aggregator: google_news
-    governing_body: Offscreen Media UK (independent investigative portal in exile)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:iranwire.com+when:7d&hl=en-US&gl=US&ceid=US:en", section: Investigations, category_hint: general}
-
-  - id: gnews_ir_intl
-    name: Google News (Iran Geopolitics & Nuclear - International)
-    homepage: https://news.google.com
-    language: en
-    scope: international
-    kind: media
-    aggregator: google_news
-    governing_body: n/a (aggregator)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=Iran+(nuclear+OR+IAEA+OR+enrichment+OR+sanctions+OR+IRGC)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Nuclear & Sanctions, category_hint: defence_security}
-      - {url: "https://news.google.com/rss/search?q=Iran+(Israel+OR+Hezbollah+OR+missile+OR+Hormuz)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Regional Security, category_hint: defence_security}
-      - {url: "https://news.google.com/rss/search?q=Iran+(Pezeshkian+OR+economy+OR+oil+OR+currency)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Domestic & Economy, category_hint: internal_politics}
-  - id: irna_fa
-    name: Islamic Republic News Agency (Farsi)
-    homepage: https://www.irna.ir
-    language: fa
-    scope: domestic
-    kind: official
-    governing_body: Ministry of Culture and Islamic Guidance (statutory state wire)
-    state_affiliated: true
-    notes: Primary Persian-language statutory wire service of the Islamic Republic of Iran.
-    feeds:
-    - url: https://www.irna.ir/rss
-      category_hint: internal_politics
-  - id: irna_en
-    name: Islamic Republic News Agency (English)
-    homepage: https://en.irna.ir
-    language: en
-    scope: domestic
-    kind: official
-    governing_body: Ministry of Culture and Islamic Guidance (statutory state wire)
-    state_affiliated: true
-    notes: Statutory English-language wire service covering Iranian foreign policy, nuclear diplomacy, and treaties.
-    feeds:
-    - url: https://en.irna.ir/rss
-      category_hint: foreign_policy
-  - id: isna_fa
-    name: Iranian Students' News Agency (ISNA)
-    homepage: https://www.isna.ir
-    language: fa
-    scope: domestic
-    kind: media
-    governing_body: Academic Center for Education, Culture and Research (ACECR)
-    state_affiliated: true
-    notes: Major semi-official Iranian news agency covering universities, parliamentary debates, and society.
-    feeds:
-    - url: https://www.isna.ir/rss
-      category_hint: internal_politics
-  - id: mehr_fa
-    name: Mehr News Agency (Farsi)
-    homepage: https://www.mehrnews.com
-    language: fa
-    scope: domestic
-    kind: media
-    governing_body: Islamic Development Organization (semi-official state media)
-    state_affiliated: true
-    notes: Persian-language service of Mehr News Agency covering domestic policy and provincial developments.
-    feeds:
-    - url: https://www.mehrnews.com/rss
-      category_hint: internal_politics
-  - id: iranwire_en
-    name: IranWire (Direct Feed)
-    homepage: https://iranwire.com
-    language: en
-    scope: abroad_local
-    kind: media
-    governing_body: Offscreen Media UK
-    state_affiliated: false
-    notes: Independent investigative journalism portal in exile founded by Maziar Bahari.
-    feeds:
-    - url: https://iranwire.com/en/feed/
-      category_hint: internal_politics
-  - id: iran_international_feed
-    name: Iran International (Direct Feed)
-    homepage: https://www.iranintl.com
-    language: fa
-    scope: abroad_local
-    kind: media
-    governing_body: Volant Media UK Ltd
-    state_affiliated: false
-    notes: 24/7 independent Persian news television network and portal based in London and Washington.
-    feeds:
-    - url: https://www.iranintl.com/feed
-      category_hint: general
-  - id: donya_e_eqtesad_fa
-    name: Donya-e-Eqtesad
-    homepage: https://donya-e-eqtesad.com
-    language: fa
-    scope: domestic
-    kind: media
-    governing_body: Donya-e-Eqtesad Media Group
-    state_affiliated: false
-    notes: Iran most prominent and widely circulated independent economic and financial daily newspaper.
-    feeds:
-    - url: https://donya-e-eqtesad.com/fa/rss
-      category_hint: economics
+- id: mehr_en
+  name: Mehr News Agency
+  homepage: https://en.mehrnews.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Islamic Development Organization (semi-official state media)
+  state_affiliated: true
+  feeds:
+  - url: https://en.mehrnews.com/rss
+    section: Latest
+    category_hint: general
+- id: tehran_times
+  name: Tehran Times
+  homepage: https://www.tehrantimes.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Mehr Media Group (state-affiliated English daily paper of record)
+  state_affiliated: true
+  feeds:
+  - url: https://www.tehrantimes.com/rss
+    section: Latest
+    category_hint: general
+- id: irna
+  name: Islamic Republic News Agency (IRNA)
+  homepage: https://www.irna.ir
+  language: fa
+  scope: domestic
+  kind: official
+  aggregator: google_news
+  governing_body: Ministry of Culture and Islamic Guidance (statutory state wire)
+  state_affiliated: true
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:irna.ir+when:3d&hl=fa&gl=IR&ceid=IR:fa
+    section: اخبار
+    category_hint: general
+- id: bbc_persian
+  name: BBC Persian
+  homepage: https://www.bbc.com/persian
+  language: fa
+  scope: abroad_local
+  kind: media
+  governing_body: BBC World Service (public broadcaster abroad)
+  state_affiliated: false
+  feeds:
+  - url: https://feeds.bbci.co.uk/persian/rss.xml
+    section: خبرها
+    category_hint: general
+- id: iran_international
+  name: Iran International
+  homepage: https://www.iranintl.com
+  language: fa
+  scope: abroad_local
+  kind: media
+  aggregator: google_news
+  governing_body: Volant Media UK Ltd (independent Persian diaspora broadcaster)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:iranintl.com+when:3d&hl=fa&gl=IR&ceid=IR:fa
+    section: خبرها
+    category_hint: general
+  - url: https://news.google.com/rss/search?q=site:iranintl.com/en+when:7d&hl=en-US&gl=US&ceid=US:en
+    section: English Edition
+    category_hint: general
+- id: radio_farda
+  name: Radio Farda (RFE/RL Persian)
+  homepage: https://www.radiofarda.com
+  language: fa
+  scope: abroad_local
+  kind: media
+  aggregator: google_news
+  governing_body: Radio Free Europe / Radio Liberty (USAGM)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:radiofarda.com+when:3d&hl=fa&gl=IR&ceid=IR:fa
+    section: رادیو فردا
+    category_hint: general
+- id: iranwire
+  name: IranWire
+  homepage: https://iranwire.com
+  language: en
+  scope: abroad_local
+  kind: media
+  aggregator: google_news
+  governing_body: Offscreen Media UK (independent investigative portal in exile)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:iranwire.com+when:7d&hl=en-US&gl=US&ceid=US:en
+    section: Investigations
+    category_hint: general
+- id: gnews_ir_intl
+  name: Google News (Iran Geopolitics & Nuclear - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  aggregator: google_news
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=Iran+(nuclear+OR+IAEA+OR+enrichment+OR+sanctions+OR+IRGC)+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Nuclear & Sanctions
+    category_hint: defence_security
+  - url: https://news.google.com/rss/search?q=Iran+(Israel+OR+Hezbollah+OR+missile+OR+Hormuz)+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Regional Security
+    category_hint: defence_security
+  - url: https://news.google.com/rss/search?q=Iran+(Pezeshkian+OR+economy+OR+oil+OR+currency)+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Domestic & Economy
+    category_hint: internal_politics
+- id: irna_fa
+  name: Islamic Republic News Agency (Farsi)
+  homepage: https://www.irna.ir
+  language: fa
+  scope: domestic
+  kind: official
+  governing_body: Ministry of Culture and Islamic Guidance (statutory state wire)
+  state_affiliated: true
+  notes: Primary Persian-language statutory wire service of the Islamic Republic of
+    Iran.
+  feeds:
+  - url: https://www.irna.ir/rss
+    category_hint: internal_politics
+- id: irna_en
+  name: Islamic Republic News Agency (English)
+  homepage: https://en.irna.ir
+  language: en
+  scope: domestic
+  kind: official
+  governing_body: Ministry of Culture and Islamic Guidance (statutory state wire)
+  state_affiliated: true
+  notes: Statutory English-language wire service covering Iranian foreign policy,
+    nuclear diplomacy, and treaties.
+  feeds:
+  - url: https://en.irna.ir/rss
+    category_hint: foreign_policy
+- id: isna_fa
+  name: Iranian Students' News Agency (ISNA)
+  homepage: https://www.isna.ir
+  language: fa
+  scope: domestic
+  kind: media
+  governing_body: Academic Center for Education, Culture and Research (ACECR)
+  state_affiliated: true
+  notes: Major semi-official Iranian news agency covering universities, parliamentary
+    debates, and society.
+  feeds:
+  - url: https://www.isna.ir/rss
+    category_hint: internal_politics
+- id: mehr_fa
+  name: Mehr News Agency (Farsi)
+  homepage: https://www.mehrnews.com
+  language: fa
+  scope: domestic
+  kind: media
+  governing_body: Islamic Development Organization (semi-official state media)
+  state_affiliated: true
+  notes: Persian-language service of Mehr News Agency covering domestic policy and
+    provincial developments.
+  feeds:
+  - url: https://www.mehrnews.com/rss
+    category_hint: internal_politics
+- id: iranwire_en
+  name: IranWire (Direct Feed)
+  homepage: https://iranwire.com
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Offscreen Media UK
+  state_affiliated: false
+  notes: Independent investigative journalism portal in exile founded by Maziar Bahari.
+  feeds:
+  - url: https://iranwire.com/en/feed/
+    category_hint: internal_politics
+- id: iran_international_feed
+  name: Iran International (Direct Feed)
+  homepage: https://www.iranintl.com
+  language: fa
+  scope: abroad_local
+  kind: media
+  governing_body: Volant Media UK Ltd
+  state_affiliated: false
+  notes: 24/7 independent Persian news television network and portal based in London
+    and Washington.
+  feeds:
+  - url: https://www.iranintl.com/feed
+    category_hint: general
+- id: donya_e_eqtesad_fa
+  name: Donya-e-Eqtesad
+  homepage: https://donya-e-eqtesad.com
+  language: fa
+  scope: domestic
+  kind: media
+  governing_body: Donya-e-Eqtesad Media Group
+  state_affiliated: false
+  notes: Iran most prominent and widely circulated independent economic and financial
+    daily newspaper.
+  feeds:
+  - url: https://donya-e-eqtesad.com/fa/rss
+    category_hint: economics
+- id: bbc_news_me
+  name: BBC News (Middle East)
+  homepage: https://www.bbc.com/news/world/middle_east
+  language: en
+  scope: international
+  kind: media
+  governing_body: BBC (British Broadcasting Corporation)
+  state_affiliated: false
+  notes: Covers the Middle East; only items referencing the country are ingested.
+  feeds:
+  - url: https://feeds.bbci.co.uk/news/world/middle_east/rss.xml
+    category_hint: general
+- id: aljazeera_english
+  name: Al Jazeera English
+  homepage: https://www.aljazeera.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Al Jazeera Media Network
+  state_affiliated: true
+  notes: Global Middle Eastern & developing world coverage; filtered by country mention
+    words.
+  feeds:
+  - url: https://www.aljazeera.com/xml/rss/all.xml
+    category_hint: general
+- id: france24_english
+  name: France 24 (English)
+  homepage: https://www.france24.com/en
+  language: en
+  scope: international
+  kind: media
+  governing_body: France Médias Monde
+  state_affiliated: true
+  notes: International coverage; filtered strictly by country mention words.
+  feeds:
+  - url: https://www.france24.com/en/rss
+    category_hint: general

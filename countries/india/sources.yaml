@@ -1,173 +1,225 @@
-# India source registry (decision D15).
-# Combines national papers of record (The Hindu, The Indian Express, Times of India), financial press (Mint), investigative digital journalism (The Wire, Scroll.in), and topical intelligence monitors.
-
 sources:
-  - id: the_hindu
-    name: The Hindu
-    homepage: https://www.thehindu.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: Kasturi & Sons Ltd (Chennai paper of record)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.thehindu.com/news/national/feeder/default.rss", section: National, category_hint: internal_politics}
-
-  - id: indian_express
-    name: The Indian Express
-    homepage: https://indianexpress.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: Indian Express Group (national paper of record)
-    state_affiliated: false
-    feeds:
-      - {url: "https://indianexpress.com/section/india/feed/", section: India, category_hint: internal_politics}
-
-  - id: times_of_india
-    name: The Times of India
-    homepage: https://timesofindia.indiatimes.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: Bennett, Coleman & Co. Ltd. (The Times Group)
-    state_affiliated: false
-    feeds:
-      - {url: "https://timesofindia.indiatimes.com/rssfeedstopstories.cms", section: Top Stories, category_hint: general}
-
-  - id: livemint
-    name: Mint
-    homepage: https://www.livemint.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: HT Media Ltd (financial and macroeconomic daily)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.livemint.com/rss/news", section: News & Markets, category_hint: economics}
-
-  - id: india_today
-    name: India Today
-    homepage: https://www.indiatoday.in
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: Living Media India Ltd (national news broadcaster and weekly)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.indiatoday.in/rss/1206578", section: India, category_hint: internal_politics}
-
-  - id: economic_times
-    name: The Economic Times
-    homepage: https://economictimes.indiatimes.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: The Times Group / Bennett, Coleman & Co. Ltd. (premier financial daily)
-    state_affiliated: false
-    feeds:
-      - {url: "https://economictimes.indiatimes.com/rssfeedstopstories.cms", section: Top Stories, category_hint: economics}
-
-  - id: ndtv_news
-    name: NDTV News
-    homepage: https://www.ndtv.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: New Delhi Television Ltd (national television news network)
-    state_affiliated: false
-    feeds:
-      - {url: "https://feeds.feedburner.com/ndtvnews-india-news", section: India News, category_hint: internal_politics}
-
-  - id: business_standard
-    name: Business Standard
-    homepage: https://www.business-standard.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: Business Standard Pvt Ltd (premier financial daily newspaper)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.business-standard.com/rss/home_page_top_stories.rss", section: Top Stories, category_hint: economics}
-
-  - id: hindu_businessline
-    name: The Hindu Business Line
-    homepage: https://www.thehindubusinessline.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: Kasturi & Sons Ltd (financial daily of record)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.thehindubusinessline.com/news/national/feeder/default.rss", section: National, category_hint: economics}
-
-  - id: oneindia
-    name: Oneindia
-    homepage: https://www.oneindia.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: Greynium Information Technologies (independent national digital news portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.oneindia.com/rss/news-india-fb.xml", section: India News, category_hint: general}
-
-  - id: the_wire
-    name: The Wire
-    homepage: https://thewire.in
-    language: en
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: Foundation for Independent Journalism (civic investigative portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:thewire.in+when:7d&hl=en-IN&gl=IN&ceid=IN:en", section: Investigations, category_hint: internal_politics}
-
-  - id: scroll_in
-    name: Scroll.in
-    homepage: https://scroll.in
-    language: en
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: Scroll Media Inc. (independent digital daily)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:scroll.in+when:7d&hl=en-IN&gl=IN&ceid=IN:en", section: Politics & Society, category_hint: general}
-
-  - id: gnews_in_national
-    name: Google News (Indian National Politics & Parliament)
-    homepage: https://news.google.com
-    language: en
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: n/a (aggregator)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(Modi+OR+BJP+OR+Congress+OR+Lok+Sabha)+when:1d&hl=en-IN&gl=IN&ceid=IN:en", section: National Politics, category_hint: internal_politics}
-
-  - id: gnews_in_foreign
-    name: Google News (Indian Diplomacy & Quad)
-    homepage: https://news.google.com
-    language: en
-    scope: international
-    kind: media
-    aggregator: google_news
-    governing_body: n/a (aggregator)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=India+(Jaishankar+OR+Quad+OR+BRICS+OR+LAC+OR+diplomacy)+when:1d&hl=en-IN&gl=IN&ceid=IN:en", section: Foreign Policy, category_hint: foreign_policy}
-
-  - id: gnews_in_security
-    name: Google News (Indian Defence & Strategic Forces)
-    homepage: https://news.google.com
-    language: en
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: n/a (aggregator)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=India+(Army+OR+Navy+OR+Air+Force+OR+DRDO+OR+missile+OR+border)+when:1d&hl=en-IN&gl=IN&ceid=IN:en", section: Defence & Security, category_hint: defence_security}
+- id: the_hindu
+  name: The Hindu
+  homepage: https://www.thehindu.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Kasturi & Sons Ltd (Chennai paper of record)
+  state_affiliated: false
+  feeds:
+  - url: https://www.thehindu.com/news/national/feeder/default.rss
+    section: National
+    category_hint: internal_politics
+- id: indian_express
+  name: The Indian Express
+  homepage: https://indianexpress.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Indian Express Group (national paper of record)
+  state_affiliated: false
+  feeds:
+  - url: https://indianexpress.com/section/india/feed/
+    section: India
+    category_hint: internal_politics
+- id: times_of_india
+  name: The Times of India
+  homepage: https://timesofindia.indiatimes.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Bennett, Coleman & Co. Ltd. (The Times Group)
+  state_affiliated: false
+  feeds:
+  - url: https://timesofindia.indiatimes.com/rssfeedstopstories.cms
+    section: Top Stories
+    category_hint: general
+- id: livemint
+  name: Mint
+  homepage: https://www.livemint.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: HT Media Ltd (financial and macroeconomic daily)
+  state_affiliated: false
+  feeds:
+  - url: https://www.livemint.com/rss/news
+    section: News & Markets
+    category_hint: economics
+- id: india_today
+  name: India Today
+  homepage: https://www.indiatoday.in
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Living Media India Ltd (national news broadcaster and weekly)
+  state_affiliated: false
+  feeds:
+  - url: https://www.indiatoday.in/rss/1206578
+    section: India
+    category_hint: internal_politics
+- id: economic_times
+  name: The Economic Times
+  homepage: https://economictimes.indiatimes.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: The Times Group / Bennett, Coleman & Co. Ltd. (premier financial
+    daily)
+  state_affiliated: false
+  feeds:
+  - url: https://economictimes.indiatimes.com/rssfeedstopstories.cms
+    section: Top Stories
+    category_hint: economics
+- id: ndtv_news
+  name: NDTV News
+  homepage: https://www.ndtv.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: New Delhi Television Ltd (national television news network)
+  state_affiliated: false
+  feeds:
+  - url: https://feeds.feedburner.com/ndtvnews-india-news
+    section: India News
+    category_hint: internal_politics
+- id: business_standard
+  name: Business Standard
+  homepage: https://www.business-standard.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Business Standard Pvt Ltd (premier financial daily newspaper)
+  state_affiliated: false
+  feeds:
+  - url: https://www.business-standard.com/rss/home_page_top_stories.rss
+    section: Top Stories
+    category_hint: economics
+- id: hindu_businessline
+  name: The Hindu Business Line
+  homepage: https://www.thehindubusinessline.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Kasturi & Sons Ltd (financial daily of record)
+  state_affiliated: false
+  feeds:
+  - url: https://www.thehindubusinessline.com/news/national/feeder/default.rss
+    section: National
+    category_hint: economics
+- id: oneindia
+  name: Oneindia
+  homepage: https://www.oneindia.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Greynium Information Technologies (independent national digital
+    news portal)
+  state_affiliated: false
+  feeds:
+  - url: https://www.oneindia.com/rss/news-india-fb.xml
+    section: India News
+    category_hint: general
+- id: the_wire
+  name: The Wire
+  homepage: https://thewire.in
+  language: en
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: Foundation for Independent Journalism (civic investigative portal)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:thewire.in+when:7d&hl=en-IN&gl=IN&ceid=IN:en
+    section: Investigations
+    category_hint: internal_politics
+- id: scroll_in
+  name: Scroll.in
+  homepage: https://scroll.in
+  language: en
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: Scroll Media Inc. (independent digital daily)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:scroll.in+when:7d&hl=en-IN&gl=IN&ceid=IN:en
+    section: Politics & Society
+    category_hint: general
+- id: gnews_in_national
+  name: Google News (Indian National Politics & Parliament)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Modi+OR+BJP+OR+Congress+OR+Lok+Sabha)+when:1d&hl=en-IN&gl=IN&ceid=IN:en
+    section: National Politics
+    category_hint: internal_politics
+- id: gnews_in_foreign
+  name: Google News (Indian Diplomacy & Quad)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  aggregator: google_news
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=India+(Jaishankar+OR+Quad+OR+BRICS+OR+LAC+OR+diplomacy)+when:1d&hl=en-IN&gl=IN&ceid=IN:en
+    section: Foreign Policy
+    category_hint: foreign_policy
+- id: gnews_in_security
+  name: Google News (Indian Defence & Strategic Forces)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=India+(Army+OR+Navy+OR+Air+Force+OR+DRDO+OR+missile+OR+border)+when:1d&hl=en-IN&gl=IN&ceid=IN:en
+    section: Defence & Security
+    category_hint: defence_security
+- id: bbc_news_asia
+  name: BBC News (Asia)
+  homepage: https://www.bbc.com/news/world/asia
+  language: en
+  scope: international
+  kind: media
+  governing_body: BBC (British Broadcasting Corporation)
+  state_affiliated: false
+  notes: Covers Asia; only items explicitly referencing the country are ingested.
+  feeds:
+  - url: https://feeds.bbci.co.uk/news/world/asia/rss.xml
+    category_hint: general
+- id: dw_english
+  name: Deutsche Welle (English)
+  homepage: https://www.dw.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Deutsche Welle (German public statutory international broadcaster)
+  state_affiliated: true
+  notes: Global broadcast feed; filtered strictly by country mention words.
+  feeds:
+  - url: https://rss.dw.com/rdf/rss-en-all
+    category_hint: general
+- id: aljazeera_english
+  name: Al Jazeera English
+  homepage: https://www.aljazeera.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Al Jazeera Media Network
+  state_affiliated: true
+  notes: Global Middle Eastern & developing world coverage; filtered by country mention
+    words.
+  feeds:
+  - url: https://www.aljazeera.com/xml/rss/all.xml
+    category_hint: general

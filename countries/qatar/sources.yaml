@@ -43,7 +43,8 @@ sources:
   kind: media
   governing_body: Al Jazeera Media Network
   state_affiliated: true
-  notes: Think tank providing strategic analysis and research briefs on Gulf security and Middle East geopolitics.
+  notes: Think tank providing strategic analysis and research briefs on Gulf security
+    and Middle East geopolitics.
   feeds:
   - url: https://studies.aljazeera.net/en/rss.xml
     category_hint: foreign_policy
@@ -81,7 +82,8 @@ sources:
   kind: media
   governing_body: Doha News Agency
   state_affiliated: false
-  notes: Pioneering independent online English-language news agency covering local affairs, diplomacy, and culture in Qatar.
+  notes: Pioneering independent online English-language news agency covering local
+    affairs, diplomacy, and culture in Qatar.
   feeds:
   - url: https://dohanews.co/feed/
     category_hint: internal_politics
@@ -93,7 +95,8 @@ sources:
   kind: media
   governing_body: Middle East North Africa Financial Network
   state_affiliated: false
-  notes: Financial wire providing continuous updates on Qatar National Vision 2030, LNG exports, and Qatar Stock Exchange.
+  notes: Financial wire providing continuous updates on Qatar National Vision 2030,
+    LNG exports, and Qatar Stock Exchange.
   feeds:
   - url: https://menafn.com/rss/menafn_Qatar.xml
     category_hint: economics
@@ -105,7 +108,8 @@ sources:
   kind: media
   governing_body: Georgetown University in Qatar
   state_affiliated: false
-  notes: Center for International and Regional Studies publishing research papers and policy briefs on Gulf security and diplomacy.
+  notes: Center for International and Regional Studies publishing research papers
+    and policy briefs on Gulf security and diplomacy.
   feeds:
   - url: https://cirs.qatar.georgetown.edu/feed/
     category_hint: foreign_policy
@@ -117,8 +121,8 @@ sources:
   kind: media
   governing_body: Gulf International Forum
   state_affiliated: false
-  notes: Independent policy institute providing analysis on political, security, and economic developments in Qatar and the
-    GCC.
+  notes: Independent policy institute providing analysis on political, security, and
+    economic developments in Qatar and the GCC.
   feeds:
   - url: https://gulfif.org/feed/
     category_hint: foreign_policy
@@ -130,8 +134,8 @@ sources:
   kind: media
   governing_body: Arab Center for Research and Policy Studies (Doha Institute)
   state_affiliated: false
-  notes: Research institute affiliated with the Doha-based ACRPS focusing on Middle East governance and Qatari diplomatic
-    initiatives.
+  notes: Research institute affiliated with the Doha-based ACRPS focusing on Middle
+    East governance and Qatari diplomatic initiatives.
   feeds:
   - url: https://arabcenterdc.org/feed/
     category_hint: foreign_policy
@@ -174,3 +178,27 @@ sources:
   - url: https://news.google.com/rss/search?q=%D9%82%D8%B7%D8%B1+OR+%D8%A7%D9%84%D8%AF%D9%88%D8%AD%D8%A9+OR+%D8%A3%D9%85%D9%8A%D8%B1+%D9%82%D8%B7%D8%B1+when:2d&hl=ar&gl=QA&ceid=QA:ar
     section: National News (Arabic)
     category_hint: internal_politics
+- id: bbc_news_me
+  name: BBC News (Middle East)
+  homepage: https://www.bbc.com/news/world/middle_east
+  language: en
+  scope: international
+  kind: media
+  governing_body: BBC (British Broadcasting Corporation)
+  state_affiliated: false
+  notes: Covers the Middle East; only items referencing the country are ingested.
+  feeds:
+  - url: https://feeds.bbci.co.uk/news/world/middle_east/rss.xml
+    category_hint: general
+- id: france24_english
+  name: France 24 (English)
+  homepage: https://www.france24.com/en
+  language: en
+  scope: international
+  kind: media
+  governing_body: France Médias Monde
+  state_affiliated: true
+  notes: International coverage; filtered strictly by country mention words.
+  feeds:
+  - url: https://www.france24.com/en/rss
+    category_hint: general

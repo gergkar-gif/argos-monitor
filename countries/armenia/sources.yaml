@@ -5,7 +5,8 @@ sources:
   language: hy
   scope: domestic
   kind: media
-  governing_body: Investigative Journalists NGO (Yerevan independent investigative outlet)
+  governing_body: Investigative Journalists NGO (Yerevan independent investigative
+    outlet)
   state_affiliated: false
   feeds:
   - url: https://hetq.am/hy/rss
@@ -17,7 +18,8 @@ sources:
   language: en
   scope: domestic
   kind: media
-  governing_body: Investigative Journalists NGO (Yerevan independent investigative outlet)
+  governing_body: Investigative Journalists NGO (Yerevan independent investigative
+    outlet)
   state_affiliated: false
   feeds:
   - url: https://hetq.am/en/rss
@@ -98,7 +100,8 @@ sources:
   kind: media
   governing_body: NEWS.am Information-Analytical Agency
   state_affiliated: false
-  notes: High-volume independent Armenian news agency providing continuous national and regional coverage.
+  notes: High-volume independent Armenian news agency providing continuous national
+    and regional coverage.
   feeds:
   - url: https://news.am/eng/rss/
     category_hint: general
@@ -110,7 +113,8 @@ sources:
   kind: media
   governing_body: NEWS.am Information-Analytical Agency
   state_affiliated: false
-  notes: Armenian-language primary edition of NEWS.am covering parliamentary politics, security, and economy.
+  notes: Armenian-language primary edition of NEWS.am covering parliamentary politics,
+    security, and economy.
   feeds:
   - url: https://news.am/arm/rss/
     category_hint: internal_politics
@@ -122,7 +126,8 @@ sources:
   kind: media
   governing_body: PanARMENIAN Media LLC
   state_affiliated: false
-  notes: Independent Armenian news network focusing on diplomacy, South Caucasus peace talks, and diaspora affairs.
+  notes: Independent Armenian news network focusing on diplomacy, South Caucasus peace
+    talks, and diaspora affairs.
   feeds:
   - url: https://www.panarmenian.net/eng/rss/
     category_hint: foreign_policy
@@ -134,8 +139,8 @@ sources:
   kind: media
   governing_body: EVN Report NGO
   state_affiliated: false
-  notes: Independent analytical journal based in Yerevan providing investigative features on defense reform, democracy, and
-    economy.
+  notes: Independent analytical journal based in Yerevan providing investigative features
+    on defense reform, democracy, and economy.
   feeds:
   - url: https://evnreport.com/feed/
     category_hint: internal_politics
@@ -147,7 +152,8 @@ sources:
   kind: media
   governing_body: Aravot Daily
   state_affiliated: false
-  notes: Historic independent daily newspaper founded in 1994, renowned for institutional pluralism and political balance.
+  notes: Historic independent daily newspaper founded in 1994, renowned for institutional
+    pluralism and political balance.
   feeds:
   - url: https://en.aravot.am/feed/
     category_hint: internal_politics
@@ -159,7 +165,8 @@ sources:
   kind: media
   governing_body: Aravot Daily
   state_affiliated: false
-  notes: Armenian daily edition of Aravot covering judicial trials, parliamentary sessions, and civic protests.
+  notes: Armenian daily edition of Aravot covering judicial trials, parliamentary
+    sessions, and civic protests.
   feeds:
   - url: https://www.aravot.am/feed/
     category_hint: internal_politics
@@ -171,7 +178,8 @@ sources:
   kind: official
   governing_body: Public TV and Radio Company of Armenia
   state_affiliated: true
-  notes: Statutory public broadcaster of Armenia broadcasting authoritative news and executive announcements.
+  notes: Statutory public broadcaster of Armenia broadcasting authoritative news and
+    executive announcements.
   feeds:
   - url: https://hy.armradio.am/feed/
     category_hint: internal_politics
@@ -188,3 +196,40 @@ sources:
   - url: https://news.google.com/rss/search?q=%D5%80%D5%A1%D5%85%D5%A1%D5%BD%D5%8F%D5%A1%D5%B6+OR+%D4%B5%D6%80%D6%87%D5%A1%D5%B6+when:2d&hl=en-US&gl=US&ceid=US:en
     section: National News (Armenian)
     category_hint: internal_politics
+- id: bbc_news_asia
+  name: BBC News (Asia)
+  homepage: https://www.bbc.com/news/world/asia
+  language: en
+  scope: international
+  kind: media
+  governing_body: BBC (British Broadcasting Corporation)
+  state_affiliated: false
+  notes: Covers Asia; only items explicitly referencing the country are ingested.
+  feeds:
+  - url: https://feeds.bbci.co.uk/news/world/asia/rss.xml
+    category_hint: general
+- id: dw_english
+  name: Deutsche Welle (English)
+  homepage: https://www.dw.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Deutsche Welle (German public statutory international broadcaster)
+  state_affiliated: true
+  notes: Global broadcast feed; filtered strictly by country mention words.
+  feeds:
+  - url: https://rss.dw.com/rdf/rss-en-all
+    category_hint: general
+- id: aljazeera_english
+  name: Al Jazeera English
+  homepage: https://www.aljazeera.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Al Jazeera Media Network
+  state_affiliated: true
+  notes: Global Middle Eastern & developing world coverage; filtered by country mention
+    words.
+  feeds:
+  - url: https://www.aljazeera.com/xml/rss/all.xml
+    category_hint: general

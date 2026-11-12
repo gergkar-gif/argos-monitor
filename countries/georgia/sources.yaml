@@ -86,7 +86,8 @@ sources:
   kind: media
   governing_body: Gazeti Batumelebi LLC
   state_affiliated: false
-  notes: Major independent digital daily covering parliamentary politics, human rights, and rule of law in Georgia.
+  notes: Major independent digital daily covering parliamentary politics, human rights,
+    and rule of law in Georgia.
   feeds:
   - url: https://netgazeti.ge/feed/
     category_hint: internal_politics
@@ -98,7 +99,8 @@ sources:
   kind: media
   governing_body: Gazeti Batumelebi LLC
   state_affiliated: false
-  notes: Award-winning regional investigative newspaper covering Adjara, Black Sea port infrastructure, and local governance.
+  notes: Award-winning regional investigative newspaper covering Adjara, Black Sea
+    port infrastructure, and local governance.
   feeds:
   - url: https://batumelebi.netgazeti.ge/feed/
     category_hint: internal_politics
@@ -122,7 +124,8 @@ sources:
   kind: media
   governing_body: SOVA Media
   state_affiliated: false
-  notes: Russian-language independent digital daily reporting on Georgian politics, civil society, and regional integration.
+  notes: Russian-language independent digital daily reporting on Georgian politics,
+    civil society, and regional integration.
   feeds:
   - url: https://sova.news/feed/
     category_hint: internal_politics
@@ -134,7 +137,8 @@ sources:
   kind: media
   governing_body: On.ge Media
   state_affiliated: false
-  notes: Major independent Georgian digital news portal reporting on current events and technology.
+  notes: Major independent Georgian digital news portal reporting on current events
+    and technology.
   feeds:
   - url: https://on.ge/rss
     category_hint: general
@@ -146,7 +150,8 @@ sources:
   kind: media
   governing_body: Open Caucasus Media
   state_affiliated: false
-  notes: Russian-language regional service of OC Media covering Caucasus cross-border politics and civil liberties.
+  notes: Russian-language regional service of OC Media covering Caucasus cross-border
+    politics and civil liberties.
   feeds:
   - url: https://oc-media.org/ru/feed/
     category_hint: foreign_policy
@@ -158,7 +163,8 @@ sources:
   kind: media
   governing_body: JAMnews Regional Media Network
   state_affiliated: false
-  notes: Russian-language service of JAMnews covering South Caucasus diplomacy and conflict zones.
+  notes: Russian-language service of JAMnews covering South Caucasus diplomacy and
+    conflict zones.
   feeds:
   - url: https://jam-news.net/ru/feed/
     category_hint: foreign_policy
@@ -175,3 +181,40 @@ sources:
   - url: https://news.google.com/rss/search?q=%E1%83%A1%E1%83%90%E1%83%A5%E1%83%90%E1%83%A0%E1%83%97%E1%83%95%E1%83%94%E1%83%9A%E1%83%9D+when:2d&hl=en-US&gl=US&ceid=US:en
     section: National News (Georgian)
     category_hint: internal_politics
+- id: bbc_news_asia
+  name: BBC News (Asia)
+  homepage: https://www.bbc.com/news/world/asia
+  language: en
+  scope: international
+  kind: media
+  governing_body: BBC (British Broadcasting Corporation)
+  state_affiliated: false
+  notes: Covers Asia; only items explicitly referencing the country are ingested.
+  feeds:
+  - url: https://feeds.bbci.co.uk/news/world/asia/rss.xml
+    category_hint: general
+- id: dw_english
+  name: Deutsche Welle (English)
+  homepage: https://www.dw.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Deutsche Welle (German public statutory international broadcaster)
+  state_affiliated: true
+  notes: Global broadcast feed; filtered strictly by country mention words.
+  feeds:
+  - url: https://rss.dw.com/rdf/rss-en-all
+    category_hint: general
+- id: aljazeera_english
+  name: Al Jazeera English
+  homepage: https://www.aljazeera.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Al Jazeera Media Network
+  state_affiliated: true
+  notes: Global Middle Eastern & developing world coverage; filtered by country mention
+    words.
+  feeds:
+  - url: https://www.aljazeera.com/xml/rss/all.xml
+    category_hint: general

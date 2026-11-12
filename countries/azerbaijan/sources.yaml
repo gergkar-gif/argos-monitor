@@ -41,7 +41,8 @@ sources:
   language: en
   scope: abroad_local
   kind: media
-  governing_body: Association for the Democracy in Azerbaijan (independent exiled media in Berlin)
+  governing_body: Association for the Democracy in Azerbaijan (independent exiled
+    media in Berlin)
   state_affiliated: false
   feeds:
   - url: https://www.meydan.tv/en/feed/
@@ -53,7 +54,8 @@ sources:
   language: az
   scope: abroad_local
   kind: media
-  governing_body: Association for the Democracy in Azerbaijan (independent exiled media in Berlin)
+  governing_body: Association for the Democracy in Azerbaijan (independent exiled
+    media in Berlin)
   state_affiliated: false
   feeds:
   - url: https://www.meydan.tv/az/feed/
@@ -99,7 +101,8 @@ sources:
   kind: media
   governing_body: APA Group
   state_affiliated: true
-  notes: Major Baku Russian-language digital information agency covering Caspian politics, energy, and defense.
+  notes: Major Baku Russian-language digital information agency covering Caspian politics,
+    energy, and defense.
   feeds:
   - url: https://vesti.az/rss
     category_hint: internal_politics
@@ -111,7 +114,8 @@ sources:
   kind: media
   governing_body: Day Media Holding
   state_affiliated: true
-  notes: High-reach Azerbaijani news portal covering national politics, macroeconomic indicators, and South Caucasus diplomacy.
+  notes: High-reach Azerbaijani news portal covering national politics, macroeconomic
+    indicators, and South Caucasus diplomacy.
   feeds:
   - url: https://news.day.az/rss/all.rss
     category_hint: general
@@ -123,7 +127,8 @@ sources:
   kind: media
   governing_body: Eynulla Fatullayev Media
   state_affiliated: true
-  notes: Prominent analytical and political daily with deep insight into Baku executive decision-making and regional geopolitics.
+  notes: Prominent analytical and political daily with deep insight into Baku executive
+    decision-making and regional geopolitics.
   feeds:
   - url: https://haqqin.az/rss
     category_hint: foreign_policy
@@ -135,7 +140,8 @@ sources:
   kind: media
   governing_body: Minval Information Agency
   state_affiliated: true
-  notes: Azerbaijani analytical news agency tracking defense developments, Middle Corridor transit, and bilateral relations.
+  notes: Azerbaijani analytical news agency tracking defense developments, Middle
+    Corridor transit, and bilateral relations.
   feeds:
   - url: https://minval.az/rss
     category_hint: defence_security
@@ -147,7 +153,8 @@ sources:
   kind: media
   governing_body: Mikroskop Media Foundation (Berlin)
   state_affiliated: false
-  notes: Independent exiled Azerbaijani data and investigative journalism platform focusing on public spending and human rights.
+  notes: Independent exiled Azerbaijani data and investigative journalism platform
+    focusing on public spending and human rights.
   feeds:
   - url: https://mikroskopmedia.com/feed/
     category_hint: internal_politics
@@ -164,3 +171,40 @@ sources:
   - url: https://news.google.com/rss/search?q=Az%C9%99rbaycan+OR+Bak%C4%B1+when:2d&hl=en-US&gl=US&ceid=US:en
     section: National News (Azerbaijani)
     category_hint: internal_politics
+- id: bbc_news_asia
+  name: BBC News (Asia)
+  homepage: https://www.bbc.com/news/world/asia
+  language: en
+  scope: international
+  kind: media
+  governing_body: BBC (British Broadcasting Corporation)
+  state_affiliated: false
+  notes: Covers Asia; only items explicitly referencing the country are ingested.
+  feeds:
+  - url: https://feeds.bbci.co.uk/news/world/asia/rss.xml
+    category_hint: general
+- id: dw_english
+  name: Deutsche Welle (English)
+  homepage: https://www.dw.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Deutsche Welle (German public statutory international broadcaster)
+  state_affiliated: true
+  notes: Global broadcast feed; filtered strictly by country mention words.
+  feeds:
+  - url: https://rss.dw.com/rdf/rss-en-all
+    category_hint: general
+- id: aljazeera_english
+  name: Al Jazeera English
+  homepage: https://www.aljazeera.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Al Jazeera Media Network
+  state_affiliated: true
+  notes: Global Middle Eastern & developing world coverage; filtered by country mention
+    words.
+  feeds:
+  - url: https://www.aljazeera.com/xml/rss/all.xml
+    category_hint: general

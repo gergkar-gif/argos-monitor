@@ -1,184 +1,218 @@
 sources:
-  - id: efecto_cocuyo
-    name: Efecto Cocuyo
-    homepage: https://efectococuyo.com
-    language: es
-    scope: abroad_local
-    kind: media
-    governing_body: "Efecto Cocuyo Media"
-    state_affiliated: false
-    notes: "Leading independent Venezuelan digital daily covering politics, human rights and elections."
-    feeds:
-      - url: https://efectococuyo.com/feed/
-        category_hint: internal_politics
-
-  - id: el_nacional_ve
-    name: El Nacional
-    homepage: https://www.elnacional.com
-    language: es
-    scope: abroad_local
-    kind: media
-    governing_body: "C.A. Editorial El Nacional"
-    state_affiliated: false
-    notes: "Historic paper of record forced into digital exile due to state asset seizures."
-    feeds:
-      - url: https://www.elnacional.com/feed/
-        category_hint: internal_politics
-
-  - id: tal_cual_ve
-    name: Tal Cual
-    homepage: https://talcualdigital.com
-    language: es
-    scope: abroad_local
-    kind: media
-    governing_body: "Editorial La Mosca Analfabeta"
-    state_affiliated: false
-    notes: "Independent investigative and political daily founded by Teodoro Petkoff."
-    feeds:
-      - url: https://talcualdigital.com/feed/
-        category_hint: internal_politics
-
-  - id: ultimas_noticias_ve
-    name: Últimas Noticias
-    homepage: https://ultimasnoticias.com.ve
-    language: es
-    scope: domestic
-    kind: media
-    governing_body: "Grupo Últimas Noticias (state-aligned)"
-    state_affiliated: true
-    notes: "High-circulation Caracas daily aligned with the official government line."
-    feeds:
-      - url: https://ultimasnoticias.com.ve/feed/
-        category_hint: internal_politics
-
-  - id: google_news_venezuela_politics
-    name: Google News (Venezuela Presidency & Opposition)
-    homepage: https://news.google.com
-    language: es
-    scope: domestic
-    kind: media
-    governing_body: "Google LLC"
-    state_affiliated: false
-    aggregator: google_news
-    notes: "Aggregator tracking Nicolás Maduro, Edmundo González, and political crisis."
-    feeds:
-      - url: "https://news.google.com/rss/search?q=Maduro+OR+%22Edmundo+Gonz%C3%A1lez%22+OR+%22Mar%C3%ADa+Corina+Machado%22+Venezuela+when:3d&hl=es-419&gl=VE&ceid=VE:es-419"
-        category_hint: internal_politics
-
-  - id: google_news_venezuela_economy
-    name: Google News (Venezuela Oil, PDVSA & Sanctions)
-    homepage: https://news.google.com
-    language: es
-    scope: domestic
-    kind: media
-    governing_body: "Google LLC"
-    state_affiliated: false
-    aggregator: google_news
-    notes: "Aggregator tracking PDVSA crude exports, Chevron licenses, and economic inflation."
-    feeds:
-      - url: "https://news.google.com/rss/search?q=PDVSA+OR+petr%C3%B3leo+Venezuela+OR+sanciones+OFAC+when:3d&hl=es-419&gl=VE&ceid=VE:es-419"
-        category_hint: economics
-
-  - id: google_news_venezuela_security
-    name: Google News (Venezuela Defense, FANB & Esequibo)
-    homepage: https://news.google.com
-    language: es
-    scope: domestic
-    kind: media
-    governing_body: "Google LLC"
-    state_affiliated: false
-    aggregator: google_news
-    notes: "Aggregator tracking military deployments, Esequibo border tension, and Tren de Aragua."
-    feeds:
-      - url: "https://news.google.com/rss/search?q=FANB+OR+Esequibo+Venezuela+OR+%22Tren+de+Aragua%22+when:3d&hl=es-419&gl=VE&ceid=VE:es-419"
-        category_hint: defence_security
-  - id: elpitazo_ve
-    name: El Pitazo
-    homepage: https://elpitazo.net
-    language: es
-    scope: domestic
-    kind: media
-    governing_body: Alianza Rebelde Investiga
-    state_affiliated: false
-    notes: Award-winning independent investigative digital network with correspondents across all 23 Venezuelan states.
-    feeds:
-      - url: https://elpitazo.net/feed/
-        category_hint: internal_politics
-
-  - id: runrunes_ve
-    name: Runrun.es
-    homepage: https://runrun.es
-    language: es
-    scope: domestic
-    kind: media
-    governing_body: C.A. Medios Digitales Runrunes
-    state_affiliated: false
-    notes: Independent investigative portal founded by Nelson Bocaranda covering executive palace politics and corruption.
-    feeds:
-      - url: https://runrun.es/feed/
-        category_hint: internal_politics
-
-  - id: armandoinfo_ve
-    name: Armando.info
-    homepage: https://armando.info
-    language: es
-    scope: abroad_local
-    kind: media
-    governing_body: Armando Info Editorial Board
-    state_affiliated: false
-    notes: Premier Venezuelan investigative journalism foundation exposing procurement fraud, gold mining cartels, and state corruption.
-    feeds:
-      - url: https://armando.info/feed/
-        category_hint: internal_politics
-
-  - id: correodelcaroni_ve
-    name: Correo del Caroní
-    homepage: https://correodelcaroni.com
-    language: es
-    scope: domestic
-    kind: media
-    governing_body: Editorial Caroní SA
-    state_affiliated: false
-    notes: Historic independent Guayana daily newspaper covering the Orinoco Mining Arc, heavy industry, and indigenous rights.
-    feeds:
-      - url: https://correodelcaroni.com/feed/
-        category_hint: economics
-
-  - id: lapatilla_ve
-    name: La Patilla
-    homepage: https://www.lapatilla.com
-    language: es
-    scope: domestic
-    kind: media
-    governing_body: Alberto Federico Ravell
-    state_affiliated: false
-    notes: High-reach independent digital news outlet covering breaking national politics, human rights, and migration.
-    feeds:
-      - url: https://www.lapatilla.com/feed/
-        category_hint: general
-
-  - id: monitoreamos_ve
-    name: Monitoreamos
-    homepage: https://monitoreamos.com
-    language: es
-    scope: domestic
-    kind: media
-    governing_body: Monitoreamos Media
-    state_affiliated: false
-    notes: Independent digital news service focused on institutional politics, legislative affairs, and diplomatic relations.
-    feeds:
-      - url: https://monitoreamos.com/feed
-        category_hint: internal_politics
-
-  - id: cronicauno_ve
-    name: Crónica Uno
-    homepage: https://cronica.uno
-    language: es
-    scope: domestic
-    kind: media
-    governing_body: Espacio Público
-    state_affiliated: false
-    notes: Independent human rights and community daily reporting on social conditions, public services, and judicial developments.
-    feeds:
-      - url: https://cronica.uno/feed/
-        category_hint: internal_politics
+- id: efecto_cocuyo
+  name: Efecto Cocuyo
+  homepage: https://efectococuyo.com
+  language: es
+  scope: abroad_local
+  kind: media
+  governing_body: Efecto Cocuyo Media
+  state_affiliated: false
+  notes: Leading independent Venezuelan digital daily covering politics, human rights
+    and elections.
+  feeds:
+  - url: https://efectococuyo.com/feed/
+    category_hint: internal_politics
+- id: el_nacional_ve
+  name: El Nacional
+  homepage: https://www.elnacional.com
+  language: es
+  scope: abroad_local
+  kind: media
+  governing_body: C.A. Editorial El Nacional
+  state_affiliated: false
+  notes: Historic paper of record forced into digital exile due to state asset seizures.
+  feeds:
+  - url: https://www.elnacional.com/feed/
+    category_hint: internal_politics
+- id: tal_cual_ve
+  name: Tal Cual
+  homepage: https://talcualdigital.com
+  language: es
+  scope: abroad_local
+  kind: media
+  governing_body: Editorial La Mosca Analfabeta
+  state_affiliated: false
+  notes: Independent investigative and political daily founded by Teodoro Petkoff.
+  feeds:
+  - url: https://talcualdigital.com/feed/
+    category_hint: internal_politics
+- id: ultimas_noticias_ve
+  name: Últimas Noticias
+  homepage: https://ultimasnoticias.com.ve
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Grupo Últimas Noticias (state-aligned)
+  state_affiliated: true
+  notes: High-circulation Caracas daily aligned with the official government line.
+  feeds:
+  - url: https://ultimasnoticias.com.ve/feed/
+    category_hint: internal_politics
+- id: google_news_venezuela_politics
+  name: Google News (Venezuela Presidency & Opposition)
+  homepage: https://news.google.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator tracking Nicolás Maduro, Edmundo González, and political crisis.
+  feeds:
+  - url: https://news.google.com/rss/search?q=Maduro+OR+%22Edmundo+Gonz%C3%A1lez%22+OR+%22Mar%C3%ADa+Corina+Machado%22+Venezuela+when:3d&hl=es-419&gl=VE&ceid=VE:es-419
+    category_hint: internal_politics
+- id: google_news_venezuela_economy
+  name: Google News (Venezuela Oil, PDVSA & Sanctions)
+  homepage: https://news.google.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator tracking PDVSA crude exports, Chevron licenses, and economic inflation.
+  feeds:
+  - url: https://news.google.com/rss/search?q=PDVSA+OR+petr%C3%B3leo+Venezuela+OR+sanciones+OFAC+when:3d&hl=es-419&gl=VE&ceid=VE:es-419
+    category_hint: economics
+- id: google_news_venezuela_security
+  name: Google News (Venezuela Defense, FANB & Esequibo)
+  homepage: https://news.google.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator tracking military deployments, Esequibo border tension, and Tren
+    de Aragua.
+  feeds:
+  - url: https://news.google.com/rss/search?q=FANB+OR+Esequibo+Venezuela+OR+%22Tren+de+Aragua%22+when:3d&hl=es-419&gl=VE&ceid=VE:es-419
+    category_hint: defence_security
+- id: elpitazo_ve
+  name: El Pitazo
+  homepage: https://elpitazo.net
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Alianza Rebelde Investiga
+  state_affiliated: false
+  notes: Award-winning independent investigative digital network with correspondents
+    across all 23 Venezuelan states.
+  feeds:
+  - url: https://elpitazo.net/feed/
+    category_hint: internal_politics
+- id: runrunes_ve
+  name: Runrun.es
+  homepage: https://runrun.es
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: C.A. Medios Digitales Runrunes
+  state_affiliated: false
+  notes: Independent investigative portal founded by Nelson Bocaranda covering executive
+    palace politics and corruption.
+  feeds:
+  - url: https://runrun.es/feed/
+    category_hint: internal_politics
+- id: armandoinfo_ve
+  name: Armando.info
+  homepage: https://armando.info
+  language: es
+  scope: abroad_local
+  kind: media
+  governing_body: Armando Info Editorial Board
+  state_affiliated: false
+  notes: Premier Venezuelan investigative journalism foundation exposing procurement
+    fraud, gold mining cartels, and state corruption.
+  feeds:
+  - url: https://armando.info/feed/
+    category_hint: internal_politics
+- id: correodelcaroni_ve
+  name: Correo del Caroní
+  homepage: https://correodelcaroni.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Editorial Caroní SA
+  state_affiliated: false
+  notes: Historic independent Guayana daily newspaper covering the Orinoco Mining
+    Arc, heavy industry, and indigenous rights.
+  feeds:
+  - url: https://correodelcaroni.com/feed/
+    category_hint: economics
+- id: lapatilla_ve
+  name: La Patilla
+  homepage: https://www.lapatilla.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Alberto Federico Ravell
+  state_affiliated: false
+  notes: High-reach independent digital news outlet covering breaking national politics,
+    human rights, and migration.
+  feeds:
+  - url: https://www.lapatilla.com/feed/
+    category_hint: general
+- id: monitoreamos_ve
+  name: Monitoreamos
+  homepage: https://monitoreamos.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Monitoreamos Media
+  state_affiliated: false
+  notes: Independent digital news service focused on institutional politics, legislative
+    affairs, and diplomatic relations.
+  feeds:
+  - url: https://monitoreamos.com/feed
+    category_hint: internal_politics
+- id: cronicauno_ve
+  name: Crónica Uno
+  homepage: https://cronica.uno
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Espacio Público
+  state_affiliated: false
+  notes: Independent human rights and community daily reporting on social conditions,
+    public services, and judicial developments.
+  feeds:
+  - url: https://cronica.uno/feed/
+    category_hint: internal_politics
+- id: bbc_news_latam
+  name: BBC News (Latin America)
+  homepage: https://www.bbc.com/news/world/latin_america
+  language: en
+  scope: international
+  kind: media
+  governing_body: BBC (British Broadcasting Corporation)
+  state_affiliated: false
+  notes: Covers Latin America; only items referencing the country are ingested.
+  feeds:
+  - url: https://feeds.bbci.co.uk/news/world/latin_america/rss.xml
+    category_hint: general
+- id: france24_english
+  name: France 24 (English)
+  homepage: https://www.france24.com/en
+  language: en
+  scope: international
+  kind: media
+  governing_body: France Médias Monde
+  state_affiliated: true
+  notes: International coverage; filtered strictly by country mention words.
+  feeds:
+  - url: https://www.france24.com/en/rss
+    category_hint: general
+- id: aljazeera_english
+  name: Al Jazeera English
+  homepage: https://www.aljazeera.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Al Jazeera Media Network
+  state_affiliated: true
+  notes: Global Middle Eastern & developing world coverage; filtered by country mention
+    words.
+  feeds:
+  - url: https://www.aljazeera.com/xml/rss/all.xml
+    category_hint: general

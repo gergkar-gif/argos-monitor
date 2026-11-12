@@ -7,7 +7,8 @@ sources:
   kind: media
   governing_body: Société de Presse et d'Édition
   state_affiliated: false
-  notes: Independent English-language Lebanese news platform covering security, institutional deadlock, and economics.
+  notes: Independent English-language Lebanese news platform covering security, institutional
+    deadlock, and economics.
   feeds:
   - url: https://today.lorientlejour.com/rss/news.xml
     category_hint: internal_politics
@@ -19,7 +20,8 @@ sources:
   kind: media
   governing_body: Naharnet Media
   state_affiliated: false
-  notes: Beirut digital news service covering Lebanese politics, regional clashes, and economic updates.
+  notes: Beirut digital news service covering Lebanese politics, regional clashes,
+    and economic updates.
   feeds:
   - url: https://www.naharnet.com/rss/lebanon
     category_hint: internal_politics
@@ -31,7 +33,8 @@ sources:
   kind: official
   governing_body: Ministry of Information (Lebanese Republic)
   state_affiliated: true
-  notes: Official statutory wire agency of the Lebanese Republic providing government, judicial, and security communiques.
+  notes: Official statutory wire agency of the Lebanese Republic providing government,
+    judicial, and security communiques.
   feeds:
   - url: http://nna-leb.gov.lb/en/rss
     category_hint: internal_politics
@@ -55,7 +58,8 @@ sources:
   kind: media
   governing_body: Beirut Today Journalism Platform
   state_affiliated: false
-  notes: Independent, community-supported digital journalism platform covering human rights, politics, and culture in Lebanon.
+  notes: Independent, community-supported digital journalism platform covering human
+    rights, politics, and culture in Lebanon.
   feeds:
   - url: https://beirut-today.com/feed/
     category_hint: society
@@ -67,7 +71,8 @@ sources:
   kind: media
   governing_body: Janoubia Media Agency
   state_affiliated: false
-  notes: Independent Lebanese investigative news platform specializing in southern Lebanon politics and civil rights.
+  notes: Independent Lebanese investigative news platform specializing in southern
+    Lebanon politics and civil rights.
   feeds:
   - url: https://janoubia.com/feed/
     category_hint: internal_politics
@@ -79,7 +84,8 @@ sources:
   kind: media
   governing_body: NewsMedia SAL
   state_affiliated: false
-  notes: Longstanding Lebanese monthly economic and policy magazine covering banking restructuring, energy, and fiscal governance.
+  notes: Longstanding Lebanese monthly economic and policy magazine covering banking
+    restructuring, energy, and fiscal governance.
   feeds:
   - url: https://executive-magazine.com/feed
     category_hint: economics
@@ -91,7 +97,8 @@ sources:
   kind: media
   governing_body: Lebanon Files Media
   state_affiliated: false
-  notes: Beirut digital news agency covering continuous political, parliamentary, and security developments across Lebanon.
+  notes: Beirut digital news agency covering continuous political, parliamentary,
+    and security developments across Lebanon.
   feeds:
   - url: https://www.lebanonfiles.com/rss/
     category_hint: internal_politics
@@ -103,7 +110,8 @@ sources:
   kind: media
   governing_body: The Public Source Collective
   state_affiliated: false
-  notes: Beirut-based independent investigative media organization reporting from the Left on socio-economic crises and structural justice.
+  notes: Beirut-based independent investigative media organization reporting from
+    the Left on socio-economic crises and structural justice.
   feeds:
   - url: https://thepublicsource.org/feed
     category_hint: society
@@ -115,7 +123,8 @@ sources:
   kind: media
   governing_body: Legal Agenda Foundation
   state_affiliated: false
-  notes: Prominent Lebanese legal research and advocacy journalism organization examining judicial independence, corruption, and draft legislation.
+  notes: Prominent Lebanese legal research and advocacy journalism organization examining
+    judicial independence, corruption, and draft legislation.
   feeds:
   - url: https://legal-agenda.com/feed/
     category_hint: internal_politics
@@ -127,7 +136,8 @@ sources:
   kind: media
   governing_body: NOW Media
   state_affiliated: false
-  notes: Independent digital publication covering Lebanese politics, regional proxy dynamics, and economic recovery.
+  notes: Independent digital publication covering Lebanese politics, regional proxy
+    dynamics, and economic recovery.
   feeds:
   - url: https://nowlebanon.com/feed/
     category_hint: internal_politics
@@ -139,7 +149,8 @@ sources:
   kind: official
   governing_body: United Nations Country Team Lebanon
   state_affiliated: false
-  notes: Official UN agency updates on peacekeeping, border security, humanitarian relief, and institutional reconstruction.
+  notes: Official UN agency updates on peacekeeping, border security, humanitarian
+    relief, and institutional reconstruction.
   feeds:
   - url: https://lebanon.un.org/en/rss.xml
     category_hint: society
@@ -156,3 +167,40 @@ sources:
   - url: https://news.google.com/rss/search?q=(Lebanon+OR+Beirut)+(Hezbollah+OR+UNIFIL+OR+government+OR+ceasefire)+when:3d&hl=en-US&gl=US&ceid=US:en
     section: Security & Politics
     category_hint: defence_security
+- id: bbc_news_me
+  name: BBC News (Middle East)
+  homepage: https://www.bbc.com/news/world/middle_east
+  language: en
+  scope: international
+  kind: media
+  governing_body: BBC (British Broadcasting Corporation)
+  state_affiliated: false
+  notes: Covers the Middle East; only items referencing the country are ingested.
+  feeds:
+  - url: https://feeds.bbci.co.uk/news/world/middle_east/rss.xml
+    category_hint: general
+- id: aljazeera_english
+  name: Al Jazeera English
+  homepage: https://www.aljazeera.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Al Jazeera Media Network
+  state_affiliated: true
+  notes: Global Middle Eastern & developing world coverage; filtered by country mention
+    words.
+  feeds:
+  - url: https://www.aljazeera.com/xml/rss/all.xml
+    category_hint: general
+- id: france24_english
+  name: France 24 (English)
+  homepage: https://www.france24.com/en
+  language: en
+  scope: international
+  kind: media
+  governing_body: France Médias Monde
+  state_affiliated: true
+  notes: International coverage; filtered strictly by country mention words.
+  feeds:
+  - url: https://www.france24.com/en/rss
+    category_hint: general

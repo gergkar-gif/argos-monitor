@@ -33,7 +33,8 @@ sources:
   kind: media
   governing_body: City Compass Media
   state_affiliated: false
-  notes: Independent English-language Romanian news platform covering governance, business, and Black Sea security.
+  notes: Independent English-language Romanian news platform covering governance,
+    business, and Black Sea security.
   feeds:
   - url: https://www.romania-insider.com/rss
     category_hint: general
@@ -58,7 +59,8 @@ sources:
   kind: media
   governing_body: Media Sud Europa
   state_affiliated: false
-  notes: Pioneer independent Romanian digital daily focused on political analysis, judicial corruption, and EU affairs.
+  notes: Pioneer independent Romanian digital daily focused on political analysis,
+    judicial corruption, and EU affairs.
   feeds:
   - url: https://www.hotnews.ro/rss
     category_hint: internal_politics
@@ -70,7 +72,8 @@ sources:
   kind: media
   governing_body: Adevărul Holding
   state_affiliated: false
-  notes: Historic Bucharest daily newspaper of record founded in 1888 covering institutional governance and foreign policy.
+  notes: Historic Bucharest daily newspaper of record founded in 1888 covering institutional
+    governance and foreign policy.
   feeds:
   - url: https://adevarul.ro/rss/
     category_hint: internal_politics
@@ -82,7 +85,8 @@ sources:
   kind: media
   governing_body: Ringier Romania
   state_affiliated: false
-  notes: High-circulation digital broadsheet renowned for deep social and public expenditure investigations.
+  notes: High-circulation digital broadsheet renowned for deep social and public expenditure
+    investigations.
   feeds:
   - url: https://www.libertatea.ro/feed
     category_hint: general
@@ -94,7 +98,8 @@ sources:
   kind: media
   governing_body: Spot Media SRL
   state_affiliated: false
-  notes: Independent analytical and opinion portal focusing on justice reforms, economy, and geopolitical security.
+  notes: Independent analytical and opinion portal focusing on justice reforms, economy,
+    and geopolitical security.
   feeds:
   - url: https://spotmedia.ro/feed
     category_hint: internal_politics
@@ -106,7 +111,8 @@ sources:
   kind: media
   governing_body: Czech Media Invest (Lagardère Active Radio)
   state_affiliated: false
-  notes: National news and broadcast radio network providing investigative journalism and civic debate.
+  notes: National news and broadcast radio network providing investigative journalism
+    and civic debate.
   feeds:
   - url: https://www.europafm.ro/feed/
     category_hint: internal_politics
@@ -118,7 +124,8 @@ sources:
   kind: media
   governing_body: Intact Media Group
   state_affiliated: false
-  notes: Major Romanian daily newspaper covering national politics, parliamentary debates, and administrative reforms.
+  notes: Major Romanian daily newspaper covering national politics, parliamentary
+    debates, and administrative reforms.
   feeds:
   - url: https://jurnalul.ro/rss/
     category_hint: internal_politics
@@ -130,7 +137,8 @@ sources:
   kind: media
   governing_body: Romania24 Media
   state_affiliated: false
-  notes: Independent national digital news portal tracking municipal infrastructure, transport, and regional development.
+  notes: Independent national digital news portal tracking municipal infrastructure,
+    transport, and regional development.
   feeds:
   - url: https://romania24.ro/feed/
     category_hint: general
@@ -147,3 +155,39 @@ sources:
   - url: https://news.google.com/rss/search?q=Rom%C3%A2nia+OR+Bucure%C8%99ti+OR+Guvern+when:2d&hl=ro&gl=RO&ceid=RO:ro
     section: National News (Romanian)
     category_hint: internal_politics
+- id: bbc_news_europe
+  name: BBC News (Europe)
+  homepage: https://www.bbc.com/news/world/europe
+  language: en
+  scope: international
+  kind: media
+  governing_body: BBC (British Broadcasting Corporation)
+  state_affiliated: false
+  notes: Covers Europe; only items explicitly referencing the country are ingested.
+  feeds:
+  - url: https://feeds.bbci.co.uk/news/world/europe/rss.xml
+    category_hint: general
+- id: dw_english
+  name: Deutsche Welle (English)
+  homepage: https://www.dw.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Deutsche Welle (German public statutory international broadcaster)
+  state_affiliated: true
+  notes: Global broadcast feed; filtered strictly by country mention words.
+  feeds:
+  - url: https://rss.dw.com/rdf/rss-en-all
+    category_hint: general
+- id: france24_english
+  name: France 24 (English)
+  homepage: https://www.france24.com/en
+  language: en
+  scope: international
+  kind: media
+  governing_body: France Médias Monde
+  state_affiliated: true
+  notes: International coverage; filtered strictly by country mention words.
+  feeds:
+  - url: https://www.france24.com/en/rss
+    category_hint: general

@@ -75,11 +75,11 @@ sources:
   kind: media
   governing_body: ATL Group
   state_affiliated: false
-  notes: Leading national broadsheet newspaper in Jamaica covering parliamentary debates, crime policy, and tourism economy.
+  notes: Leading national broadsheet newspaper in Jamaica covering parliamentary debates,
+    crime policy, and tourism economy.
   feeds:
   - url: https://www.jamaicaobserver.com/feed/
     category_hint: internal_politics
-
 - id: barbados_today
   name: Barbados Today
   homepage: https://barbadostoday.bb
@@ -88,11 +88,11 @@ sources:
   kind: media
   governing_body: Barbados Today Media
   state_affiliated: false
-  notes: Premier multimedia digital daily in Barbados covering republic institutions, financial services, and climate diplomacy.
+  notes: Premier multimedia digital daily in Barbados covering republic institutions,
+    financial services, and climate diplomacy.
   feeds:
   - url: https://barbadostoday.bb/feed/
     category_hint: internal_politics
-
 - id: dominica_news
   name: Dominica News Online
   homepage: https://dominicanewsonline.com
@@ -101,11 +101,11 @@ sources:
   kind: media
   governing_body: DNO Media
   state_affiliated: false
-  notes: Principal digital daily of the Commonwealth of Dominica tracking Eastern Caribbean currency union and government policy.
+  notes: Principal digital daily of the Commonwealth of Dominica tracking Eastern
+    Caribbean currency union and government policy.
   feeds:
   - url: https://dominicanewsonline.com/news/feed/
     category_hint: general
-
 - id: demerara_waves
   name: Demerara Waves
   homepage: https://demerarawaves.com
@@ -114,11 +114,11 @@ sources:
   kind: media
   governing_body: Denis Chabrol Media (Guyana)
   state_affiliated: false
-  notes: Premier independent Guyanese news portal covering offshore oil exploration, border security, and national elections.
+  notes: Premier independent Guyanese news portal covering offshore oil exploration,
+    border security, and national elections.
   feeds:
   - url: https://demerarawaves.com/feed/
     category_hint: economics
-
 - id: cayman_news_service
   name: Cayman News Service
   homepage: https://caymannewsservice.com
@@ -127,11 +127,11 @@ sources:
   kind: media
   governing_body: CNS Media
   state_affiliated: false
-  notes: Independent daily news platform covering Cayman Islands offshore finance, legislative assembly, and judicial rulings.
+  notes: Independent daily news platform covering Cayman Islands offshore finance,
+    legislative assembly, and judicial rulings.
   feeds:
   - url: https://caymannewsservice.com/feed/
     category_hint: economics
-
 - id: bernews_bm
   name: Bernews
   homepage: https://bernews.com
@@ -140,11 +140,11 @@ sources:
   kind: media
   governing_body: Bernews Media (Bermuda)
   state_affiliated: false
-  notes: Comprehensive digital daily covering Bermuda reinsurance, maritime transport, and parliamentary affairs.
+  notes: Comprehensive digital daily covering Bermuda reinsurance, maritime transport,
+    and parliamentary affairs.
   feeds:
   - url: https://bernews.com/feed/
     category_hint: economics
-
 - id: bahamas_weekly
   name: The Bahamas Weekly
   homepage: http://www.thebahamasweekly.com
@@ -153,7 +153,45 @@ sources:
   kind: media
   governing_body: The Bahamas Weekly Media
   state_affiliated: false
-  notes: Prominent digital news and community portal covering Bahamian governance, maritime commerce, and tourism.
+  notes: Prominent digital news and community portal covering Bahamian governance,
+    maritime commerce, and tourism.
   feeds:
   - url: http://www.thebahamasweekly.com/publish/rss.xml
+    category_hint: general
+- id: bbc_news_latam
+  name: BBC News (Latin America)
+  homepage: https://www.bbc.com/news/world/latin_america
+  language: en
+  scope: international
+  kind: media
+  governing_body: BBC (British Broadcasting Corporation)
+  state_affiliated: false
+  notes: Covers Latin America; only items referencing the country are ingested.
+  feeds:
+  - url: https://feeds.bbci.co.uk/news/world/latin_america/rss.xml
+    category_hint: general
+- id: france24_english
+  name: France 24 (English)
+  homepage: https://www.france24.com/en
+  language: en
+  scope: international
+  kind: media
+  governing_body: France Médias Monde
+  state_affiliated: true
+  notes: International coverage; filtered strictly by country mention words.
+  feeds:
+  - url: https://www.france24.com/en/rss
+    category_hint: general
+- id: aljazeera_english
+  name: Al Jazeera English
+  homepage: https://www.aljazeera.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Al Jazeera Media Network
+  state_affiliated: true
+  notes: Global Middle Eastern & developing world coverage; filtered by country mention
+    words.
+  feeds:
+  - url: https://www.aljazeera.com/xml/rss/all.xml
     category_hint: general

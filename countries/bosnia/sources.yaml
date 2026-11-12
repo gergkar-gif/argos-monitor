@@ -1,176 +1,224 @@
-# Bosnia and Herzegovina source registry (decision D15).
-# Combines investigative & national Bosnian outlets (Center for Investigative Reporting CIN, Oslobođenje, Klix.ba, Istraga.ba), state wire FENA / public broadcaster via Google News, regional Balkan outlets (Al Jazeera Balkans, RFE/RL Slobodna Evropa), and international wires.
-
 sources:
-  - id: cin_ba
-    name: Center for Investigative Reporting (CIN)
-    homepage: https://www.cin.ba
-    language: bs
-    scope: domestic
-    kind: media
-    governing_body: Centar za istraživačko novinarstvo (Sarajevo independent investigative center)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.cin.ba/feed/", section: Istraživanja, category_hint: general}
-
-  - id: oslobodjenje_ba
-    name: Oslobođenje
-    homepage: https://www.oslobodjenje.ba
-    language: bs
-    scope: domestic
-    kind: media
-    governing_body: Oslobođenje d.o.o. (Sarajevo daily paper of record)
-    state_affiliated: false
-    feeds:
-      # Direct RSS 404 after Next.js migration; covered reliably via Google News aggregator below
-      - {url: "https://www.oslobodjenje.ba/feed", section: Vijesti, category_hint: general, active: false}
-
-  - id: istraga_ba
-    name: Istraga.ba
-    homepage: https://istraga.ba
-    language: bs
-    scope: domestic
-    kind: media
-    governing_body: Istraga.ba (Sarajevo independent investigative and political portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://istraga.ba/feed/", section: Politika, category_hint: internal_politics}
-
-  - id: gnews_ba_domestic
-    name: Klix.ba / Dnevni Avaz / Nezavisne / Oslobođenje (National Press via Google News)
-    homepage: https://www.klix.ba
-    language: bs
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: InterSoft d.o.o. / Avaz-roto press / NIGD Dnevne nezavisne novine / Oslobođenje
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:klix.ba+OR+site:avaz.ba+OR+site:nezavisne.com+OR+site:oslobodjenje.ba)+when:1d&hl=bs&gl=BA&ceid=BA:bs", section: Vijesti, category_hint: general}
-
-  - id: gnews_ba_official
-    name: FENA / RTRS / BHRT (State Wire & Public Broadcasters via Google News)
-    homepage: https://fena.ba
-    language: bs
-    scope: domestic
-    kind: official
-    aggregator: google_news
-    governing_body: Federal News Agency (FENA) & Radio Television of Republika Srpska (RTRS) / BHRT
-    state_affiliated: true
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:fena.ba+OR+site:rtrs.tv+OR+site:bhrt.ba)+when:7d&hl=bs&gl=BA&ceid=BA:bs", section: Zvanično, category_hint: general}
-
-  - id: gnews_ba_abroad
-    name: Al Jazeera Balkans / Slobodna Evropa (Regional Press)
-    homepage: https://balkans.aljazeera.net
-    language: bs
-    scope: abroad_local
-    kind: media
-    aggregator: google_news
-    governing_body: Al Jazeera Media Network / Radio Free Europe
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:balkans.aljazeera.net+OR+site:slobodnaevropa.org)+(Bosna+OR+Dodik+OR+Sarajevo)+when:7d&hl=sr&gl=RS&ceid=RS:sr", section: Regija, category_hint: general}
-
-  - id: gnews_en_ba
-    name: Google News (Bosnia - International)
-    homepage: https://news.google.com
-    language: en
-    scope: international
-    kind: media
-    aggregator: google_news
-    governing_body: n/a (aggregator)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=Bosnia+(Sarajevo+OR+Dodik+OR+%22Republika+Srpska%22+OR+OHR+OR+Schmidt)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Bosnia politics & Dayton, category_hint: internal_politics}
-      - {url: "https://news.google.com/rss/search?q=Bosnia+(EU+OR+NATO+OR+EUFOR+OR+Balkans)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Bosnia EU & security, category_hint: foreign_policy}
-  - id: dnevni_avaz_ba
-    name: Dnevni avaz
-    homepage: https://avaz.ba
-    language: bs
-    scope: domestic
-    kind: media
-    governing_body: "Avaz-roto press"
-    state_affiliated: false
-    notes: "Highest circulation daily newspaper in Bosnia and Herzegovina covering state governance, economy, and justice."
-    feeds:
-      - url: https://avaz.ba/rss
-        category_hint: internal_politics
-
-  - id: radiosarajevo_ba
-    name: Radio Sarajevo
-    homepage: https://radiosarajevo.ba
-    language: bs
-    scope: domestic
-    kind: media
-    governing_body: "Radio Sarajevo Media"
-    state_affiliated: false
-    notes: "Independent Sarajevo radio and digital news portal focusing on civil society, human rights, and political analysis."
-    feeds:
-      - url: https://radiosarajevo.ba/rss
-        category_hint: general
-
-  - id: fena_ba
-    name: Federal News Agency (FENA)
-    homepage: https://fena.ba
-    language: bs
-    scope: domestic
-    kind: official
-    governing_body: "Government of the Federation of Bosnia and Herzegovina"
-    state_affiliated: true
-    notes: "Public statutory wire agency providing official announcements, legislative coverage, and executive proceedings."
-    feeds:
-      - url: https://fena.ba/rss
-        category_hint: internal_politics
-
-  - id: vijesti_ba
-    name: Vijesti.ba
-    homepage: https://vijesti.ba
-    language: bs
-    scope: domestic
-    kind: media
-    governing_body: "Vijesti Media"
-    state_affiliated: false
-    notes: "Independent political daily tracking state presidency decisions, constitutional court rulings, and EU candidate reforms."
-    feeds:
-      - url: https://vijesti.ba/rss
-        category_hint: internal_politics
-
-  - id: n1info_ba
-    name: N1 Bosnia
-    homepage: https://n1info.ba
-    language: bs
-    scope: domestic
-    kind: media
-    governing_body: "United Media Group (CNN exclusive affiliate)"
-    state_affiliated: false
-    notes: "Major 24-hour cable and digital news broadcaster providing investigative reports and political interviews."
-    feeds:
-      - url: https://n1info.ba/feed/
-        category_hint: internal_politics
-
-  - id: srpskainfo_ba
-    name: Srpskainfo
-    homepage: https://srpskainfo.com
-    language: sr
-    scope: domestic
-    kind: media
-    governing_body: "EuroBlic Press (Banja Luka)"
-    state_affiliated: false
-    notes: "Major Banja Luka regional news portal covering Republika Srpska institutions, federal relations, and regional economy."
-    feeds:
-      - url: https://srpskainfo.com/feed/
-        category_hint: internal_politics
-
-  - id: capital_ba
-    name: Capital.ba
-    homepage: https://www.capital.ba
-    language: bs
-    scope: domestic
-    kind: media
-    governing_body: "Udruženje građana Zašto ne / Capital Media"
-    state_affiliated: false
-    notes: "Pioneering financial and investigative business portal uncovering public procurement fraud and fiscal policy in BiH."
-    feeds:
-      - url: https://www.capital.ba/feed/
-        category_hint: economics
+- id: cin_ba
+  name: Center for Investigative Reporting (CIN)
+  homepage: https://www.cin.ba
+  language: bs
+  scope: domestic
+  kind: media
+  governing_body: Centar za istraživačko novinarstvo (Sarajevo independent investigative
+    center)
+  state_affiliated: false
+  feeds:
+  - url: https://www.cin.ba/feed/
+    section: Istraživanja
+    category_hint: general
+- id: oslobodjenje_ba
+  name: Oslobođenje
+  homepage: https://www.oslobodjenje.ba
+  language: bs
+  scope: domestic
+  kind: media
+  governing_body: Oslobođenje d.o.o. (Sarajevo daily paper of record)
+  state_affiliated: false
+  feeds:
+  - url: https://www.oslobodjenje.ba/feed
+    section: Vijesti
+    category_hint: general
+    active: false
+- id: istraga_ba
+  name: Istraga.ba
+  homepage: https://istraga.ba
+  language: bs
+  scope: domestic
+  kind: media
+  governing_body: Istraga.ba (Sarajevo independent investigative and political portal)
+  state_affiliated: false
+  feeds:
+  - url: https://istraga.ba/feed/
+    section: Politika
+    category_hint: internal_politics
+- id: gnews_ba_domestic
+  name: Klix.ba / Dnevni Avaz / Nezavisne / Oslobođenje (National Press via Google
+    News)
+  homepage: https://www.klix.ba
+  language: bs
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: InterSoft d.o.o. / Avaz-roto press / NIGD Dnevne nezavisne novine
+    / Oslobođenje
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:klix.ba+OR+site:avaz.ba+OR+site:nezavisne.com+OR+site:oslobodjenje.ba)+when:1d&hl=bs&gl=BA&ceid=BA:bs
+    section: Vijesti
+    category_hint: general
+- id: gnews_ba_official
+  name: FENA / RTRS / BHRT (State Wire & Public Broadcasters via Google News)
+  homepage: https://fena.ba
+  language: bs
+  scope: domestic
+  kind: official
+  aggregator: google_news
+  governing_body: Federal News Agency (FENA) & Radio Television of Republika Srpska
+    (RTRS) / BHRT
+  state_affiliated: true
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:fena.ba+OR+site:rtrs.tv+OR+site:bhrt.ba)+when:7d&hl=bs&gl=BA&ceid=BA:bs
+    section: Zvanično
+    category_hint: general
+- id: gnews_ba_abroad
+  name: Al Jazeera Balkans / Slobodna Evropa (Regional Press)
+  homepage: https://balkans.aljazeera.net
+  language: bs
+  scope: abroad_local
+  kind: media
+  aggregator: google_news
+  governing_body: Al Jazeera Media Network / Radio Free Europe
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:balkans.aljazeera.net+OR+site:slobodnaevropa.org)+(Bosna+OR+Dodik+OR+Sarajevo)+when:7d&hl=sr&gl=RS&ceid=RS:sr
+    section: Regija
+    category_hint: general
+- id: gnews_en_ba
+  name: Google News (Bosnia - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  aggregator: google_news
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=Bosnia+(Sarajevo+OR+Dodik+OR+%22Republika+Srpska%22+OR+OHR+OR+Schmidt)+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Bosnia politics & Dayton
+    category_hint: internal_politics
+  - url: https://news.google.com/rss/search?q=Bosnia+(EU+OR+NATO+OR+EUFOR+OR+Balkans)+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Bosnia EU & security
+    category_hint: foreign_policy
+- id: dnevni_avaz_ba
+  name: Dnevni avaz
+  homepage: https://avaz.ba
+  language: bs
+  scope: domestic
+  kind: media
+  governing_body: Avaz-roto press
+  state_affiliated: false
+  notes: Highest circulation daily newspaper in Bosnia and Herzegovina covering state
+    governance, economy, and justice.
+  feeds:
+  - url: https://avaz.ba/rss
+    category_hint: internal_politics
+- id: radiosarajevo_ba
+  name: Radio Sarajevo
+  homepage: https://radiosarajevo.ba
+  language: bs
+  scope: domestic
+  kind: media
+  governing_body: Radio Sarajevo Media
+  state_affiliated: false
+  notes: Independent Sarajevo radio and digital news portal focusing on civil society,
+    human rights, and political analysis.
+  feeds:
+  - url: https://radiosarajevo.ba/rss
+    category_hint: general
+- id: fena_ba
+  name: Federal News Agency (FENA)
+  homepage: https://fena.ba
+  language: bs
+  scope: domestic
+  kind: official
+  governing_body: Government of the Federation of Bosnia and Herzegovina
+  state_affiliated: true
+  notes: Public statutory wire agency providing official announcements, legislative
+    coverage, and executive proceedings.
+  feeds:
+  - url: https://fena.ba/rss
+    category_hint: internal_politics
+- id: vijesti_ba
+  name: Vijesti.ba
+  homepage: https://vijesti.ba
+  language: bs
+  scope: domestic
+  kind: media
+  governing_body: Vijesti Media
+  state_affiliated: false
+  notes: Independent political daily tracking state presidency decisions, constitutional
+    court rulings, and EU candidate reforms.
+  feeds:
+  - url: https://vijesti.ba/rss
+    category_hint: internal_politics
+- id: n1info_ba
+  name: N1 Bosnia
+  homepage: https://n1info.ba
+  language: bs
+  scope: domestic
+  kind: media
+  governing_body: United Media Group (CNN exclusive affiliate)
+  state_affiliated: false
+  notes: Major 24-hour cable and digital news broadcaster providing investigative
+    reports and political interviews.
+  feeds:
+  - url: https://n1info.ba/feed/
+    category_hint: internal_politics
+- id: srpskainfo_ba
+  name: Srpskainfo
+  homepage: https://srpskainfo.com
+  language: sr
+  scope: domestic
+  kind: media
+  governing_body: EuroBlic Press (Banja Luka)
+  state_affiliated: false
+  notes: Major Banja Luka regional news portal covering Republika Srpska institutions,
+    federal relations, and regional economy.
+  feeds:
+  - url: https://srpskainfo.com/feed/
+    category_hint: internal_politics
+- id: capital_ba
+  name: Capital.ba
+  homepage: https://www.capital.ba
+  language: bs
+  scope: domestic
+  kind: media
+  governing_body: Udruženje građana Zašto ne / Capital Media
+  state_affiliated: false
+  notes: Pioneering financial and investigative business portal uncovering public
+    procurement fraud and fiscal policy in BiH.
+  feeds:
+  - url: https://www.capital.ba/feed/
+    category_hint: economics
+- id: bbc_news_europe
+  name: BBC News (Europe)
+  homepage: https://www.bbc.com/news/world/europe
+  language: en
+  scope: international
+  kind: media
+  governing_body: BBC (British Broadcasting Corporation)
+  state_affiliated: false
+  notes: Covers Europe; only items explicitly referencing the country are ingested.
+  feeds:
+  - url: https://feeds.bbci.co.uk/news/world/europe/rss.xml
+    category_hint: general
+- id: dw_english
+  name: Deutsche Welle (English)
+  homepage: https://www.dw.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Deutsche Welle (German public statutory international broadcaster)
+  state_affiliated: true
+  notes: Global broadcast feed; filtered strictly by country mention words.
+  feeds:
+  - url: https://rss.dw.com/rdf/rss-en-all
+    category_hint: general
+- id: france24_english
+  name: France 24 (English)
+  homepage: https://www.france24.com/en
+  language: en
+  scope: international
+  kind: media
+  governing_body: France Médias Monde
+  state_affiliated: true
+  notes: International coverage; filtered strictly by country mention words.
+  feeds:
+  - url: https://www.france24.com/en/rss
+    category_hint: general

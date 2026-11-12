@@ -7,7 +7,8 @@ sources:
   kind: media
   governing_body: Empresa El Mercurio S.A.P.
   state_affiliated: false
-  notes: Digital arm of Chile paper of record covering executive politics, mining, and institutional reform.
+  notes: Digital arm of Chile paper of record covering executive politics, mining,
+    and institutional reform.
   feeds:
   - url: https://www.emol.com/rss/nacional.xml
     category_hint: internal_politics
@@ -21,7 +22,8 @@ sources:
   kind: media
   governing_body: Bío-Bío Comunicaciones
   state_affiliated: false
-  notes: Leading independent Chilean radio and news daily covering breaking national and investigative stories.
+  notes: Leading independent Chilean radio and news daily covering breaking national
+    and investigative stories.
   feeds:
   - url: https://www.biobiochile.cl/feed
     category_hint: internal_politics
@@ -46,7 +48,8 @@ sources:
   kind: media
   governing_body: Compañía Chilena de Comunicaciones
   state_affiliated: false
-  notes: Major independent national radio broadcaster and digital paper of record founded in 1935.
+  notes: Major independent national radio broadcaster and digital paper of record
+    founded in 1935.
   feeds:
   - url: https://www.cooperativa.cl/noticias/site/tax/port/all/rss____1.xml
     category_hint: internal_politics
@@ -58,7 +61,8 @@ sources:
   kind: media
   governing_body: Fundación CIPER
   state_affiliated: false
-  notes: Premier independent investigative journalism foundation uncovering corporate lobbying, corruption, and state reform.
+  notes: Premier independent investigative journalism foundation uncovering corporate
+    lobbying, corruption, and state reform.
   feeds:
   - url: https://www.ciperchile.cl/feed/
     category_hint: internal_politics
@@ -70,7 +74,8 @@ sources:
   kind: media
   governing_body: Ediciones The Clinic
   state_affiliated: false
-  notes: Influential satirical and investigative news weekly providing incisive analysis of executive politics and society.
+  notes: Influential satirical and investigative news weekly providing incisive analysis
+    of executive politics and society.
   feeds:
   - url: https://www.theclinic.cl/feed/
     category_hint: internal_politics
@@ -82,7 +87,8 @@ sources:
   kind: media
   governing_body: Diario Constitucional Editores
   state_affiliated: false
-  notes: Leading specialized journal covering constitutional jurisprudence, Supreme Court decisions, and legislative enactments.
+  notes: Leading specialized journal covering constitutional jurisprudence, Supreme
+    Court decisions, and legislative enactments.
   feeds:
   - url: https://www.diarioconstitucional.cl/feed/
     category_hint: internal_politics
@@ -94,7 +100,8 @@ sources:
   kind: media
   governing_body: Universidad de Chile
   state_affiliated: false
-  notes: Public university news daily and broadcast network covering labor rights, indigenous policy, and academic debates.
+  notes: Public university news daily and broadcast network covering labor rights,
+    indigenous policy, and academic debates.
   feeds:
   - url: https://radio.uchile.cl/feed/
     category_hint: internal_politics
@@ -106,7 +113,8 @@ sources:
   kind: media
   governing_body: Fast Check Media
   state_affiliated: false
-  notes: IFCN-certified independent fact-checking and public discourse verification newsroom.
+  notes: IFCN-certified independent fact-checking and public discourse verification
+    newsroom.
   feeds:
   - url: https://www.fastcheck.cl/feed/
     category_hint: internal_politics
@@ -118,8 +126,8 @@ sources:
   kind: media
   governing_body: Interferencia Periodismo de Investigación
   state_affiliated: false
-  notes: Independent subscriber-supported investigative daily focusing on corporate power, mining environmental impacts, and
-    security forces.
+  notes: Independent subscriber-supported investigative daily focusing on corporate
+    power, mining environmental impacts, and security forces.
   feeds:
   - url: https://interferencia.cl/rss.xml
     category_hint: internal_politics
@@ -131,7 +139,8 @@ sources:
   kind: media
   governing_body: G5 Comunicaciones (Valparaíso)
   state_affiliated: false
-  notes: Major regional news daily covering Valparaíso and San Antonio port operations, maritime logistics, and regional governance.
+  notes: Major regional news daily covering Valparaíso and San Antonio port operations,
+    maritime logistics, and regional governance.
   feeds:
   - url: https://g5noticias.cl/feed/
     category_hint: economics
@@ -148,3 +157,40 @@ sources:
   - url: https://news.google.com/rss/search?q=Chile+OR+Santiago+OR+Gobierno+when:2d&hl=es-419&gl=CL&ceid=CL:es-419
     section: National News (Spanish)
     category_hint: internal_politics
+- id: bbc_news_latam
+  name: BBC News (Latin America)
+  homepage: https://www.bbc.com/news/world/latin_america
+  language: en
+  scope: international
+  kind: media
+  governing_body: BBC (British Broadcasting Corporation)
+  state_affiliated: false
+  notes: Covers Latin America; only items referencing the country are ingested.
+  feeds:
+  - url: https://feeds.bbci.co.uk/news/world/latin_america/rss.xml
+    category_hint: general
+- id: france24_english
+  name: France 24 (English)
+  homepage: https://www.france24.com/en
+  language: en
+  scope: international
+  kind: media
+  governing_body: France Médias Monde
+  state_affiliated: true
+  notes: International coverage; filtered strictly by country mention words.
+  feeds:
+  - url: https://www.france24.com/en/rss
+    category_hint: general
+- id: aljazeera_english
+  name: Al Jazeera English
+  homepage: https://www.aljazeera.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Al Jazeera Media Network
+  state_affiliated: true
+  notes: Global Middle Eastern & developing world coverage; filtered by country mention
+    words.
+  feeds:
+  - url: https://www.aljazeera.com/xml/rss/all.xml
+    category_hint: general

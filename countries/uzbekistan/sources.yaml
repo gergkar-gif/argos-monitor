@@ -1,169 +1,215 @@
-# Uzbekistan source registry (decision D15).
-# Combines Uzbek independent/private portals (Gazeta.uz, Kun.uz, Daryo), state news agency UzA via Google News, Central Asian regional & exile press (Times of Central Asia, RFE/RL Ozodlik), and international wires.
-
 sources:
-  - id: gazeta_uz
-    name: Gazeta.uz (Uzbek)
-    homepage: https://www.gazeta.uz/oz
-    language: uz
-    scope: domestic
-    kind: media
-    governing_body: Afisha Media (independent Tashkent online publication)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.gazeta.uz/oz/rss/", section: Yangiliklar, category_hint: general}
-
-  - id: kun_uz
-    name: Kun.uz
-    homepage: https://kun.uz
-    language: uz
-    scope: domestic
-    kind: media
-    governing_body: Web Expert LLC (major Uzbek digital news portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://kun.uz/news/rss", section: O‘zbekiston, category_hint: general}
-
-  - id: daryo_uz
-    name: Daryo
-    homepage: https://daryo.uz
-    language: uz
-    scope: domestic
-    kind: media
-    governing_body: Simple Networking Solutions LLC (Tashkent online daily)
-    state_affiliated: false
-    feeds:
-      - {url: "https://daryo.uz/rss", section: Asosiy, category_hint: general}
-
-  - id: gnews_uz_official
-    name: UzA / Gov.uz (Official State Press via Google News)
-    homepage: https://uza.uz
-    language: uz
-    scope: domestic
-    kind: official
-    aggregator: google_news
-    governing_body: Uzbekistan National News Agency (UzA) & Government Portal
-    state_affiliated: true
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:uza.uz+OR+site:president.uz)+when:7d&hl=en-US&gl=US&ceid=US:en", section: UzA & Presidency, category_hint: general}
-
-  - id: gnews_uz_timesca
-    name: The Times of Central Asia (via Google News)
-    homepage: https://timesca.com
-    language: en
-    scope: abroad_local
-    kind: media
-    aggregator: google_news
-    governing_body: The Times of Central Asia (regional independent English daily)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:timesca.com+(Uzbekistan+OR+Tashkent)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Central Asia, category_hint: general}
-
-  - id: gnews_uz_ozodlik
-    name: Ozodlik Radiosi (RFE/RL Uzbek Service via Google News)
-    homepage: https://www.ozodlik.org
-    language: uz
-    scope: abroad_local
-    kind: media
-    aggregator: google_news
-    governing_body: Radio Free Europe / Radio Liberty Uzbek Service (Prague)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:ozodlik.org+when:7d&hl=en-US&gl=US&ceid=US:en", section: Ozodlik, category_hint: general}
-
-  - id: gnews_en_uz
-    name: Google News (Uzbekistan - International)
-    homepage: https://news.google.com
-    language: en
-    scope: international
-    kind: media
-    aggregator: google_news
-    governing_body: n/a (aggregator)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=Uzbekistan+(Tashkent+OR+Mirziyoyev+OR+economy+OR+gas+OR+nuclear+OR+railway)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Uzbekistan politics & economy, category_hint: economics}
-      - {url: "https://news.google.com/rss/search?q=Uzbekistan+(Russia+OR+China+OR+Afghanistan+OR+EU+OR+minerals)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Uzbekistan foreign policy, category_hint: foreign_policy}
-  - id: gazeta_uz_ru
-    name: Gazeta.uz (Russian)
-    homepage: https://www.gazeta.uz/ru
-    language: ru
-    scope: domestic
-    kind: media
-    governing_body: Afisha Media
-    state_affiliated: false
-    notes: Russian-language edition of Gazeta.uz covering national legislation and economics.
-    feeds:
-    - url: https://www.gazeta.uz/ru/rss/
-      category_hint: internal_politics
-  - id: kun_uz_en
-    name: Kun.uz (English)
-    homepage: https://kun.uz/en
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: Web Expert LLC
-    state_affiliated: false
-    notes: English-language service of Kun.uz covering Central Asian diplomacy and trade.
-    feeds:
-    - url: https://kun.uz/en/news/rss
-      category_hint: foreign_policy
-  - id: kun_uz_ru
-    name: Kun.uz (Russian)
-    homepage: https://kun.uz/ru
-    language: ru
-    scope: domestic
-    kind: media
-    governing_body: Web Expert LLC
-    state_affiliated: false
-    notes: Russian-language edition of Kun.uz covering domestic politics and governance.
-    feeds:
-    - url: https://kun.uz/ru/news/rss
-      category_hint: internal_politics
-  - id: daryo_uz_en
-    name: Daryo (English)
-    homepage: https://daryo.uz/en
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: Simple Networking Solutions LLC
-    state_affiliated: false
-    notes: English-language edition of Daryo covering Tashkent regional affairs.
-    feeds:
-    - url: https://daryo.uz/en/rss/
-      category_hint: general
-  - id: spot_uz
-    name: Spot.uz
-    homepage: https://www.spot.uz
-    language: ru
-    scope: domestic
-    kind: media
-    governing_body: Afisha Media
-    state_affiliated: false
-    notes: Uzbekistan premier business, tech, and economic news portal.
-    feeds:
-    - url: https://www.spot.uz/ru/rss/
-      category_hint: economics
-  - id: kursiv_uz
-    name: Kursiv Uzbekistan
-    homepage: https://uz.kursiv.media
-    language: ru
-    scope: domestic
-    kind: media
-    governing_body: Kursiv Media
-    state_affiliated: false
-    notes: Business and financial daily covering Uzbek industrial investment and state tenders.
-    feeds:
-    - url: https://uz.kursiv.media/ru/feed/
-      category_hint: economics
-  - id: uza_uz_en
-    name: UzA (Uzbekistan National News Agency)
-    homepage: https://uza.uz/en
-    language: en
-    scope: domestic
-    kind: official
-    governing_body: Government of Uzbekistan
-    state_affiliated: true
-    notes: State news agency providing statutory presidential decrees and ministerial communiques.
-    feeds:
-    - url: https://uza.uz/en/rss
-      category_hint: internal_politics
+- id: gazeta_uz
+  name: Gazeta.uz (Uzbek)
+  homepage: https://www.gazeta.uz/oz
+  language: uz
+  scope: domestic
+  kind: media
+  governing_body: Afisha Media (independent Tashkent online publication)
+  state_affiliated: false
+  feeds:
+  - url: https://www.gazeta.uz/oz/rss/
+    section: Yangiliklar
+    category_hint: general
+- id: kun_uz
+  name: Kun.uz
+  homepage: https://kun.uz
+  language: uz
+  scope: domestic
+  kind: media
+  governing_body: Web Expert LLC (major Uzbek digital news portal)
+  state_affiliated: false
+  feeds:
+  - url: https://kun.uz/news/rss
+    section: O‘zbekiston
+    category_hint: general
+- id: daryo_uz
+  name: Daryo
+  homepage: https://daryo.uz
+  language: uz
+  scope: domestic
+  kind: media
+  governing_body: Simple Networking Solutions LLC (Tashkent online daily)
+  state_affiliated: false
+  feeds:
+  - url: https://daryo.uz/rss
+    section: Asosiy
+    category_hint: general
+- id: gnews_uz_official
+  name: UzA / Gov.uz (Official State Press via Google News)
+  homepage: https://uza.uz
+  language: uz
+  scope: domestic
+  kind: official
+  aggregator: google_news
+  governing_body: Uzbekistan National News Agency (UzA) & Government Portal
+  state_affiliated: true
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:uza.uz+OR+site:president.uz)+when:7d&hl=en-US&gl=US&ceid=US:en
+    section: UzA & Presidency
+    category_hint: general
+- id: gnews_uz_timesca
+  name: The Times of Central Asia (via Google News)
+  homepage: https://timesca.com
+  language: en
+  scope: abroad_local
+  kind: media
+  aggregator: google_news
+  governing_body: The Times of Central Asia (regional independent English daily)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:timesca.com+(Uzbekistan+OR+Tashkent)+when:7d&hl=en-US&gl=US&ceid=US:en
+    section: Central Asia
+    category_hint: general
+- id: gnews_uz_ozodlik
+  name: Ozodlik Radiosi (RFE/RL Uzbek Service via Google News)
+  homepage: https://www.ozodlik.org
+  language: uz
+  scope: abroad_local
+  kind: media
+  aggregator: google_news
+  governing_body: Radio Free Europe / Radio Liberty Uzbek Service (Prague)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:ozodlik.org+when:7d&hl=en-US&gl=US&ceid=US:en
+    section: Ozodlik
+    category_hint: general
+- id: gnews_en_uz
+  name: Google News (Uzbekistan - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  aggregator: google_news
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=Uzbekistan+(Tashkent+OR+Mirziyoyev+OR+economy+OR+gas+OR+nuclear+OR+railway)+when:7d&hl=en-US&gl=US&ceid=US:en
+    section: Uzbekistan politics & economy
+    category_hint: economics
+  - url: https://news.google.com/rss/search?q=Uzbekistan+(Russia+OR+China+OR+Afghanistan+OR+EU+OR+minerals)+when:7d&hl=en-US&gl=US&ceid=US:en
+    section: Uzbekistan foreign policy
+    category_hint: foreign_policy
+- id: gazeta_uz_ru
+  name: Gazeta.uz (Russian)
+  homepage: https://www.gazeta.uz/ru
+  language: ru
+  scope: domestic
+  kind: media
+  governing_body: Afisha Media
+  state_affiliated: false
+  notes: Russian-language edition of Gazeta.uz covering national legislation and economics.
+  feeds:
+  - url: https://www.gazeta.uz/ru/rss/
+    category_hint: internal_politics
+- id: kun_uz_en
+  name: Kun.uz (English)
+  homepage: https://kun.uz/en
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Web Expert LLC
+  state_affiliated: false
+  notes: English-language service of Kun.uz covering Central Asian diplomacy and trade.
+  feeds:
+  - url: https://kun.uz/en/news/rss
+    category_hint: foreign_policy
+- id: kun_uz_ru
+  name: Kun.uz (Russian)
+  homepage: https://kun.uz/ru
+  language: ru
+  scope: domestic
+  kind: media
+  governing_body: Web Expert LLC
+  state_affiliated: false
+  notes: Russian-language edition of Kun.uz covering domestic politics and governance.
+  feeds:
+  - url: https://kun.uz/ru/news/rss
+    category_hint: internal_politics
+- id: daryo_uz_en
+  name: Daryo (English)
+  homepage: https://daryo.uz/en
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Simple Networking Solutions LLC
+  state_affiliated: false
+  notes: English-language edition of Daryo covering Tashkent regional affairs.
+  feeds:
+  - url: https://daryo.uz/en/rss/
+    category_hint: general
+- id: spot_uz
+  name: Spot.uz
+  homepage: https://www.spot.uz
+  language: ru
+  scope: domestic
+  kind: media
+  governing_body: Afisha Media
+  state_affiliated: false
+  notes: Uzbekistan premier business, tech, and economic news portal.
+  feeds:
+  - url: https://www.spot.uz/ru/rss/
+    category_hint: economics
+- id: kursiv_uz
+  name: Kursiv Uzbekistan
+  homepage: https://uz.kursiv.media
+  language: ru
+  scope: domestic
+  kind: media
+  governing_body: Kursiv Media
+  state_affiliated: false
+  notes: Business and financial daily covering Uzbek industrial investment and state
+    tenders.
+  feeds:
+  - url: https://uz.kursiv.media/ru/feed/
+    category_hint: economics
+- id: uza_uz_en
+  name: UzA (Uzbekistan National News Agency)
+  homepage: https://uza.uz/en
+  language: en
+  scope: domestic
+  kind: official
+  governing_body: Government of Uzbekistan
+  state_affiliated: true
+  notes: State news agency providing statutory presidential decrees and ministerial
+    communiques.
+  feeds:
+  - url: https://uza.uz/en/rss
+    category_hint: internal_politics
+- id: bbc_news_asia
+  name: BBC News (Asia)
+  homepage: https://www.bbc.com/news/world/asia
+  language: en
+  scope: international
+  kind: media
+  governing_body: BBC (British Broadcasting Corporation)
+  state_affiliated: false
+  notes: Covers Asia; only items explicitly referencing the country are ingested.
+  feeds:
+  - url: https://feeds.bbci.co.uk/news/world/asia/rss.xml
+    category_hint: general
+- id: dw_english
+  name: Deutsche Welle (English)
+  homepage: https://www.dw.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Deutsche Welle (German public statutory international broadcaster)
+  state_affiliated: true
+  notes: Global broadcast feed; filtered strictly by country mention words.
+  feeds:
+  - url: https://rss.dw.com/rdf/rss-en-all
+    category_hint: general
+- id: aljazeera_english
+  name: Al Jazeera English
+  homepage: https://www.aljazeera.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Al Jazeera Media Network
+  state_affiliated: true
+  notes: Global Middle Eastern & developing world coverage; filtered by country mention
+    words.
+  feeds:
+  - url: https://www.aljazeera.com/xml/rss/all.xml
+    category_hint: general

@@ -1,208 +1,266 @@
-# Taiwan source registry (decision D15).
-# Combines premier English daily Taipei Times, leading national daily Liberty Times (Chinese), national wires (CNA / Focus Taiwan via Google News), and diaspora Chinese reporting.
-
 sources:
-  - id: taipeitimes_en
-    name: Taipei Times
-    homepage: https://www.taipeitimes.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: Liberty Times Group (independent English daily newspaper of record in Taipei)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.taipeitimes.com/xml/index.rss", section: Top Stories, category_hint: general}
-
-  - id: ltn_politics
-    name: Liberty Times (Politics - Traditional Chinese)
-    homepage: https://news.ltn.com.tw
-    language: zh
-    scope: domestic
-    kind: media
-    governing_body: The Liberty Times Group (major national daily newspaper)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.ltn.com.tw/rss/politics.xml", section: Politics, category_hint: internal_politics}
-
-  - id: ltn_business
-    name: Liberty Times (Business & Tech - Traditional Chinese)
-    homepage: https://news.ltn.com.tw
-    language: zh
-    scope: domestic
-    kind: media
-    governing_body: The Liberty Times Group (major national daily newspaper)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.ltn.com.tw/rss/business.xml", section: Business, category_hint: economics}
-
-  - id: udn_tw
-    name: United Daily News (UDN)
-    homepage: https://udn.com
-    language: zh
-    scope: domestic
-    kind: media
-    governing_body: United Daily News Group (major national daily newspaper of record)
-    state_affiliated: false
-    feeds:
-      - {url: "https://udn.com/rssfeed/news/2/6638?ch=news", section: Realtime, category_hint: general}
-
-  - id: ettoday_tw
-    name: ETtoday
-    homepage: https://www.ettoday.net
-    language: zh
-    scope: domestic
-    kind: media
-    governing_body: Eastern Media Group (leading digital news portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://feeds.feedburner.com/ettoday/realtime", section: Realtime, category_hint: general}
-
-  - id: mirrormedia_tw
-    name: Mirror Media
-    homepage: https://www.mirrormedia.mg
-    language: zh
-    scope: domestic
-    kind: media
-    governing_body: Mirror Media Group (independent investigative weekly and digital news)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.mirrormedia.mg/rss/rss.xml", section: Realtime, category_hint: general}
-
-  - id: tw_reporter
-    name: The Reporter (報導者)
-    homepage: https://www.twreporter.org
-    language: zh
-    scope: domestic
-    kind: media
-    governing_body: The Reporter Foundation (independent non-profit investigative journalism foundation)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.twreporter.org/a/rss2.xml", section: In-depth, category_hint: internal_politics}
-
-  - id: newtalk_tw
-    name: Newtalk
-    homepage: https://newtalk.tw
-    language: zh
-    scope: domestic
-    kind: media
-    governing_body: Newtalk Co. (independent digital news media)
-    state_affiliated: false
-    feeds:
-      - {url: "https://newtalk.tw/rss/all", section: All News, category_hint: general}
-
-  - id: technews_tw
-    name: TechNews (科技新報)
-    homepage: https://technews.tw
-    language: zh
-    scope: domestic
-    kind: media
-    governing_body: TechNews Inc. (premier Taiwanese technology and semiconductor news daily)
-    state_affiliated: false
-    feeds:
-      - {url: "https://technews.tw/feed/", section: Tech & Chips, category_hint: economics}
-
-  - id: thenewslens
-    name: The News Lens (關鍵評論網)
-    homepage: https://www.thenewslens.com
-    language: zh
-    scope: domestic
-    kind: media
-    governing_body: TNL Mediagene (independent commentary and digital journalism)
-    state_affiliated: false
-    feeds:
-      - {url: "https://feeds.feedburner.com/TheNewsLens", section: Daily, category_hint: general}
-
-  - id: crossing_cw
-    name: CommonWealth Magazine - Crossing (換日線)
-    homepage: https://crossing.cw.com.tw
-    language: zh
-    scope: domestic
-    kind: media
-    governing_body: CommonWealth Magazine Group (major Taiwanese media and international affairs publication)
-    state_affiliated: false
-    feeds:
-      - {url: "https://crossing.cw.com.tw/rss", section: International & Society, category_hint: foreign_policy}
-
-  - id: gnews_tw_domestic
-    name: Focus Taiwan / CNA / Taiwan News (via Google News)
-    homepage: https://focustaiwan.tw
-    language: en
-    scope: domestic
-    kind: wire
-    aggregator: google_news
-    governing_body: Central News Agency (CNA, national news agency of Taiwan)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:focustaiwan.tw+OR+site:taipeitimes.com+OR+site:taiwannews.com.tw)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Domestic Wires, category_hint: general}
-
-  - id: gnews_zh_tw_top
-    name: Google News (Taiwan Top Stories - Traditional Chinese)
-    homepage: https://news.google.com
-    language: zh
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: n/a (aggregator)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss?hl=zh-TW&gl=TW&ceid=TW:zh-Hant", section: Top Stories, category_hint: general}
-
-  - id: gnews_zh_tw_business
-    name: Google News (Taiwan Business & Tech - Traditional Chinese)
-    homepage: https://news.google.com
-    language: zh
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: n/a (aggregator)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/headlines/section/topic/BUSINESS?hl=zh-TW&gl=TW&ceid=TW:zh-Hant", section: Business, category_hint: economics}
-
-  - id: gnews_zh_tw_abroad
-    name: BBC News Chinese & RFA Chinese (via Google News)
-    homepage: https://www.bbc.com/zhongwen
-    language: zh
-    scope: abroad_local
-    kind: media
-    aggregator: google_news
-    governing_body: BBC World Service / Radio Free Asia Mandarin Service
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:bbc.com/zhongwen+OR+site:rfa.org/mandarin)+(Taiwan+OR+%E5%8F%B0%E7%81%A3)+when:7d&hl=zh-TW&gl=TW&ceid=TW:zh-Hant", section: Diaspora Chinese, category_hint: general}
-
-  - id: gnews_en_tw
-    name: Google News (Taiwan - International English)
-    homepage: https://news.google.com
-    language: en
-    scope: international
-    kind: media
-    aggregator: google_news
-    governing_body: n/a (aggregator)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=Taiwan+when:1d&hl=en-US&gl=US&ceid=US:en", section: Taiwan, category_hint: general}
-
-  - id: gnews_en_tw_econ
-    name: Google News (Taiwan TSMC, Chips & Economy - English)
-    homepage: https://news.google.com
-    language: en
-    scope: international
-    kind: media
-    aggregator: google_news
-    governing_body: n/a (aggregator)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=Taiwan+(economy+OR+TSMC+OR+semiconductor+OR+chips+OR+NTD)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Economy, category_hint: economics}
-
-  - id: gnews_en_tw_sec
-    name: Google News (Taiwan Strait Defense & Military - English)
-    homepage: https://news.google.com
-    language: en
-    scope: international
-    kind: media
-    aggregator: google_news
-    governing_body: n/a (aggregator)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=Taiwan+(China+OR+military+OR+PLA+OR+Strait+OR+blockade+OR+defense)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Security, category_hint: defence_security}
+- id: taipeitimes_en
+  name: Taipei Times
+  homepage: https://www.taipeitimes.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Liberty Times Group (independent English daily newspaper of record
+    in Taipei)
+  state_affiliated: false
+  feeds:
+  - url: https://www.taipeitimes.com/xml/index.rss
+    section: Top Stories
+    category_hint: general
+- id: ltn_politics
+  name: Liberty Times (Politics - Traditional Chinese)
+  homepage: https://news.ltn.com.tw
+  language: zh
+  scope: domestic
+  kind: media
+  governing_body: The Liberty Times Group (major national daily newspaper)
+  state_affiliated: false
+  feeds:
+  - url: https://news.ltn.com.tw/rss/politics.xml
+    section: Politics
+    category_hint: internal_politics
+- id: ltn_business
+  name: Liberty Times (Business & Tech - Traditional Chinese)
+  homepage: https://news.ltn.com.tw
+  language: zh
+  scope: domestic
+  kind: media
+  governing_body: The Liberty Times Group (major national daily newspaper)
+  state_affiliated: false
+  feeds:
+  - url: https://news.ltn.com.tw/rss/business.xml
+    section: Business
+    category_hint: economics
+- id: udn_tw
+  name: United Daily News (UDN)
+  homepage: https://udn.com
+  language: zh
+  scope: domestic
+  kind: media
+  governing_body: United Daily News Group (major national daily newspaper of record)
+  state_affiliated: false
+  feeds:
+  - url: https://udn.com/rssfeed/news/2/6638?ch=news
+    section: Realtime
+    category_hint: general
+- id: ettoday_tw
+  name: ETtoday
+  homepage: https://www.ettoday.net
+  language: zh
+  scope: domestic
+  kind: media
+  governing_body: Eastern Media Group (leading digital news portal)
+  state_affiliated: false
+  feeds:
+  - url: https://feeds.feedburner.com/ettoday/realtime
+    section: Realtime
+    category_hint: general
+- id: mirrormedia_tw
+  name: Mirror Media
+  homepage: https://www.mirrormedia.mg
+  language: zh
+  scope: domestic
+  kind: media
+  governing_body: Mirror Media Group (independent investigative weekly and digital
+    news)
+  state_affiliated: false
+  feeds:
+  - url: https://www.mirrormedia.mg/rss/rss.xml
+    section: Realtime
+    category_hint: general
+- id: tw_reporter
+  name: The Reporter (報導者)
+  homepage: https://www.twreporter.org
+  language: zh
+  scope: domestic
+  kind: media
+  governing_body: The Reporter Foundation (independent non-profit investigative journalism
+    foundation)
+  state_affiliated: false
+  feeds:
+  - url: https://www.twreporter.org/a/rss2.xml
+    section: In-depth
+    category_hint: internal_politics
+- id: newtalk_tw
+  name: Newtalk
+  homepage: https://newtalk.tw
+  language: zh
+  scope: domestic
+  kind: media
+  governing_body: Newtalk Co. (independent digital news media)
+  state_affiliated: false
+  feeds:
+  - url: https://newtalk.tw/rss/all
+    section: All News
+    category_hint: general
+- id: technews_tw
+  name: TechNews (科技新報)
+  homepage: https://technews.tw
+  language: zh
+  scope: domestic
+  kind: media
+  governing_body: TechNews Inc. (premier Taiwanese technology and semiconductor news
+    daily)
+  state_affiliated: false
+  feeds:
+  - url: https://technews.tw/feed/
+    section: Tech & Chips
+    category_hint: economics
+- id: thenewslens
+  name: The News Lens (關鍵評論網)
+  homepage: https://www.thenewslens.com
+  language: zh
+  scope: domestic
+  kind: media
+  governing_body: TNL Mediagene (independent commentary and digital journalism)
+  state_affiliated: false
+  feeds:
+  - url: https://feeds.feedburner.com/TheNewsLens
+    section: Daily
+    category_hint: general
+- id: crossing_cw
+  name: CommonWealth Magazine - Crossing (換日線)
+  homepage: https://crossing.cw.com.tw
+  language: zh
+  scope: domestic
+  kind: media
+  governing_body: CommonWealth Magazine Group (major Taiwanese media and international
+    affairs publication)
+  state_affiliated: false
+  feeds:
+  - url: https://crossing.cw.com.tw/rss
+    section: International & Society
+    category_hint: foreign_policy
+- id: gnews_tw_domestic
+  name: Focus Taiwan / CNA / Taiwan News (via Google News)
+  homepage: https://focustaiwan.tw
+  language: en
+  scope: domestic
+  kind: wire
+  aggregator: google_news
+  governing_body: Central News Agency (CNA, national news agency of Taiwan)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:focustaiwan.tw+OR+site:taipeitimes.com+OR+site:taiwannews.com.tw)+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Domestic Wires
+    category_hint: general
+- id: gnews_zh_tw_top
+  name: Google News (Taiwan Top Stories - Traditional Chinese)
+  homepage: https://news.google.com
+  language: zh
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss?hl=zh-TW&gl=TW&ceid=TW:zh-Hant
+    section: Top Stories
+    category_hint: general
+- id: gnews_zh_tw_business
+  name: Google News (Taiwan Business & Tech - Traditional Chinese)
+  homepage: https://news.google.com
+  language: zh
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/headlines/section/topic/BUSINESS?hl=zh-TW&gl=TW&ceid=TW:zh-Hant
+    section: Business
+    category_hint: economics
+- id: gnews_zh_tw_abroad
+  name: BBC News Chinese & RFA Chinese (via Google News)
+  homepage: https://www.bbc.com/zhongwen
+  language: zh
+  scope: abroad_local
+  kind: media
+  aggregator: google_news
+  governing_body: BBC World Service / Radio Free Asia Mandarin Service
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:bbc.com/zhongwen+OR+site:rfa.org/mandarin)+(Taiwan+OR+%E5%8F%B0%E7%81%A3)+when:7d&hl=zh-TW&gl=TW&ceid=TW:zh-Hant
+    section: Diaspora Chinese
+    category_hint: general
+- id: gnews_en_tw
+  name: Google News (Taiwan - International English)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  aggregator: google_news
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=Taiwan+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Taiwan
+    category_hint: general
+- id: gnews_en_tw_econ
+  name: Google News (Taiwan TSMC, Chips & Economy - English)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  aggregator: google_news
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=Taiwan+(economy+OR+TSMC+OR+semiconductor+OR+chips+OR+NTD)+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Economy
+    category_hint: economics
+- id: gnews_en_tw_sec
+  name: Google News (Taiwan Strait Defense & Military - English)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  aggregator: google_news
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=Taiwan+(China+OR+military+OR+PLA+OR+Strait+OR+blockade+OR+defense)+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Security
+    category_hint: defence_security
+- id: bbc_news_asia
+  name: BBC News (Asia)
+  homepage: https://www.bbc.com/news/world/asia
+  language: en
+  scope: international
+  kind: media
+  governing_body: BBC (British Broadcasting Corporation)
+  state_affiliated: false
+  notes: Covers Asia; only items explicitly referencing the country are ingested.
+  feeds:
+  - url: https://feeds.bbci.co.uk/news/world/asia/rss.xml
+    category_hint: general
+- id: dw_english
+  name: Deutsche Welle (English)
+  homepage: https://www.dw.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Deutsche Welle (German public statutory international broadcaster)
+  state_affiliated: true
+  notes: Global broadcast feed; filtered strictly by country mention words.
+  feeds:
+  - url: https://rss.dw.com/rdf/rss-en-all
+    category_hint: general
+- id: aljazeera_english
+  name: Al Jazeera English
+  homepage: https://www.aljazeera.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Al Jazeera Media Network
+  state_affiliated: true
+  notes: Global Middle Eastern & developing world coverage; filtered by country mention
+    words.
+  feeds:
+  - url: https://www.aljazeera.com/xml/rss/all.xml
+    category_hint: general

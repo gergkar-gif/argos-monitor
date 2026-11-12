@@ -7,7 +7,8 @@ sources:
   kind: media
   governing_body: Sonaecom
   state_affiliated: false
-  notes: Lisbon national daily paper of record covering executive policy, European governance, and economic reforms.
+  notes: Lisbon national daily paper of record covering executive policy, European
+    governance, and economic reforms.
   feeds:
   - url: https://feeds.feedburner.com/PublicoRSS
     category_hint: internal_politics
@@ -19,7 +20,8 @@ sources:
   kind: media
   governing_body: Rádio e Televisão de Portugal (public broadcaster)
   state_affiliated: false
-  notes: Statutory public broadcaster of Portugal providing objective public-service journalism.
+  notes: Statutory public broadcaster of Portugal providing objective public-service
+    journalism.
   feeds:
   - url: https://www.rtp.pt/noticias/rss
     category_hint: internal_politics
@@ -31,7 +33,8 @@ sources:
   kind: media
   governing_body: Open Media Group
   state_affiliated: false
-  notes: Leading independent English-language Portuguese news service covering politics, taxation, and immigration.
+  notes: Leading independent English-language Portuguese news service covering politics,
+    taxation, and immigration.
   feeds:
   - url: https://www.portugalresident.com/feed/
     category_hint: general
@@ -157,3 +160,39 @@ sources:
   - url: https://news.google.com/rss/search?q=Portugal+OR+Lisboa+OR+governo+when:2d&hl=pt-PT&gl=PT&ceid=PT:pt-150
     section: National News (Portuguese)
     category_hint: internal_politics
+- id: bbc_news_europe
+  name: BBC News (Europe)
+  homepage: https://www.bbc.com/news/world/europe
+  language: en
+  scope: international
+  kind: media
+  governing_body: BBC (British Broadcasting Corporation)
+  state_affiliated: false
+  notes: Covers Europe; only items explicitly referencing the country are ingested.
+  feeds:
+  - url: https://feeds.bbci.co.uk/news/world/europe/rss.xml
+    category_hint: general
+- id: dw_english
+  name: Deutsche Welle (English)
+  homepage: https://www.dw.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Deutsche Welle (German public statutory international broadcaster)
+  state_affiliated: true
+  notes: Global broadcast feed; filtered strictly by country mention words.
+  feeds:
+  - url: https://rss.dw.com/rdf/rss-en-all
+    category_hint: general
+- id: france24_english
+  name: France 24 (English)
+  homepage: https://www.france24.com/en
+  language: en
+  scope: international
+  kind: media
+  governing_body: France Médias Monde
+  state_affiliated: true
+  notes: International coverage; filtered strictly by country mention words.
+  feeds:
+  - url: https://www.france24.com/en/rss
+    category_hint: general

@@ -59,7 +59,8 @@ sources:
   kind: media
   governing_body: Okaz Organization for Press and Publication
   state_affiliated: true
-  notes: Leading Saudi daily broadsheet newspaper published in Jeddah covering national decrees, regional policy, and society.
+  notes: Leading Saudi daily broadsheet newspaper published in Jeddah covering national
+    decrees, regional policy, and society.
   feeds:
   - url: https://www.okaz.com.sa/rssFeed/190
     category_hint: internal_politics
@@ -71,7 +72,8 @@ sources:
   kind: media
   governing_body: Al Bilad Press and Publishing House
   state_affiliated: true
-  notes: Oldest daily newspaper in Saudi Arabia, founded in 1932, covering royal court announcements and national affairs.
+  notes: Oldest daily newspaper in Saudi Arabia, founded in 1932, covering royal court
+    announcements and national affairs.
   feeds:
   - url: https://albiladdaily.com/feed/
     category_hint: internal_politics
@@ -83,7 +85,8 @@ sources:
   kind: media
   governing_body: Al Weeam Electronic Publishing
   state_affiliated: false
-  notes: First Saudi electronic newspaper, founded in 2006, covering local security, ministries, and civil society.
+  notes: First Saudi electronic newspaper, founded in 2006, covering local security,
+    ministries, and civil society.
   feeds:
   - url: https://www.alweeam.com.sa/feed/
     category_hint: internal_politics
@@ -95,7 +98,8 @@ sources:
   kind: media
   governing_body: Ajel Media Agency
   state_affiliated: false
-  notes: Widely read Saudi digital news platform delivering real-time coverage of government decisions and economic reforms.
+  notes: Widely read Saudi digital news platform delivering real-time coverage of
+    government decisions and economic reforms.
   feeds:
   - url: https://ajel.sa/feed/
     category_hint: internal_politics
@@ -107,7 +111,8 @@ sources:
   kind: media
   governing_body: Aseer Publishing and Distribution Company
   state_affiliated: true
-  notes: Major national daily newspaper based in Abha with regional bureaus across Saudi Arabia.
+  notes: Major national daily newspaper based in Abha with regional bureaus across
+    Saudi Arabia.
   feeds:
   - url: https://www.alwatan.com.sa/feed/
     category_hint: internal_politics
@@ -119,7 +124,8 @@ sources:
   kind: media
   governing_body: Al Mowaten Electronic Newspaper
   state_affiliated: false
-  notes: Saudi digital daily reporting on public sector initiatives, Vision 2030 developments, and citizen affairs.
+  notes: Saudi digital daily reporting on public sector initiatives, Vision 2030 developments,
+    and citizen affairs.
   feeds:
   - url: https://www.almowaten.net/feed/
     category_hint: internal_politics
@@ -145,7 +151,8 @@ sources:
   governing_body: Google LLC
   state_affiliated: false
   aggregator: google_news
-  notes: Aggregator tracking Aramco, OPEC+ production decisions, PIF investments, and NEOM.
+  notes: Aggregator tracking Aramco, OPEC+ production decisions, PIF investments,
+    and NEOM.
   feeds:
   - url: https://news.google.com/rss/search?q=%22Saudi+Aramco%22+OR+OPEC+OR+%22Public+Investment+Fund%22+OR+%22Vision+2030%22+OR+NEOM+when:3d&hl=en-SA&gl=SA&ceid=SA:en
     category_hint: economics
@@ -175,3 +182,40 @@ sources:
   - url: https://news.google.com/rss/search?q=%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9+OR+%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6+OR+%D9%88%D9%84%D9%8A+%D8%A7%D9%84%D8%B9%D9%87%D8%AF+when:2d&hl=ar&gl=SA&ceid=SA:ar
     section: National News (Arabic)
     category_hint: internal_politics
+- id: bbc_news_me
+  name: BBC News (Middle East)
+  homepage: https://www.bbc.com/news/world/middle_east
+  language: en
+  scope: international
+  kind: media
+  governing_body: BBC (British Broadcasting Corporation)
+  state_affiliated: false
+  notes: Covers the Middle East; only items referencing the country are ingested.
+  feeds:
+  - url: https://feeds.bbci.co.uk/news/world/middle_east/rss.xml
+    category_hint: general
+- id: aljazeera_english
+  name: Al Jazeera English
+  homepage: https://www.aljazeera.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Al Jazeera Media Network
+  state_affiliated: true
+  notes: Global Middle Eastern & developing world coverage; filtered by country mention
+    words.
+  feeds:
+  - url: https://www.aljazeera.com/xml/rss/all.xml
+    category_hint: general
+- id: france24_english
+  name: France 24 (English)
+  homepage: https://www.france24.com/en
+  language: en
+  scope: international
+  kind: media
+  governing_body: France Médias Monde
+  state_affiliated: true
+  notes: International coverage; filtered strictly by country mention words.
+  feeds:
+  - url: https://www.france24.com/en/rss
+    category_hint: general

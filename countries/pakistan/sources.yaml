@@ -7,7 +7,8 @@ sources:
   kind: media
   governing_body: Pakistan Herald Publications
   state_affiliated: false
-  notes: Pakistan's premier English-language newspaper of record, founded by Muhammad Ali Jinnah.
+  notes: Pakistan's premier English-language newspaper of record, founded by Muhammad
+    Ali Jinnah.
   feeds:
   - url: https://www.dawn.com/feeds/home/
     category_hint: internal_politics
@@ -75,7 +76,8 @@ sources:
   governing_body: Google LLC
   state_affiliated: false
   aggregator: google_news
-  notes: Aggregator tracking IMF loan reviews, State Bank rates, privatization, and inflation.
+  notes: Aggregator tracking IMF loan reviews, State Bank rates, privatization, and
+    inflation.
   feeds:
   - url: https://news.google.com/rss/search?q=%22State+Bank+of+Pakistan%22+OR+IMF+Pakistan+OR+%22Pakistani+rupee%22+OR+CPEC+when:3d&hl=en-PK&gl=PK&ceid=PK:en
     category_hint: economics
@@ -100,7 +102,8 @@ sources:
   kind: media
   governing_body: Nawa-i-Waqt Group
   state_affiliated: false
-  notes: Historic English-language daily newspaper published from Lahore, Islamabad and Karachi.
+  notes: Historic English-language daily newspaper published from Lahore, Islamabad
+    and Karachi.
   feeds:
   - url: https://www.nation.com.pk/rss/national
     category_hint: internal_politics
@@ -112,7 +115,8 @@ sources:
   kind: media
   governing_body: ProPakistani Media
   state_affiliated: false
-  notes: Leading digital news platform covering Pakistan's digital economy, telecom, and business regulations.
+  notes: Leading digital news platform covering Pakistan's digital economy, telecom,
+    and business regulations.
   feeds:
   - url: https://propakistani.pk/feed/
     category_hint: economics
@@ -124,7 +128,8 @@ sources:
   kind: media
   governing_body: Daily Pakistan Media Group
   state_affiliated: false
-  notes: English-language digital news outlet covering national politics, parliament, and regional affairs.
+  notes: English-language digital news outlet covering national politics, parliament,
+    and regional affairs.
   feeds:
   - url: https://en.dailypakistan.com.pk/feed/
     category_hint: internal_politics
@@ -136,7 +141,8 @@ sources:
   kind: media
   governing_body: Media Times Limited
   state_affiliated: false
-  notes: Prominent national English-language broadsheet advocating liberal and democratic perspectives.
+  notes: Prominent national English-language broadsheet advocating liberal and democratic
+    perspectives.
   feeds:
   - url: https://dailytimes.com.pk/feed/
     category_hint: internal_politics
@@ -148,7 +154,8 @@ sources:
   kind: official
   governing_body: Ministry of Information & Broadcasting (Government of Pakistan)
   state_affiliated: true
-  notes: Statutory national wire news agency of Pakistan providing official executive and diplomatic coverage.
+  notes: Statutory national wire news agency of Pakistan providing official executive
+    and diplomatic coverage.
   feeds:
   - url: https://www.app.com.pk/feed/
     category_hint: foreign_policy
@@ -160,7 +167,8 @@ sources:
   kind: media
   governing_body: Jang Media Group
   state_affiliated: false
-  notes: Flagship private 24-hour television and digital network with nationwide investigative reporting.
+  notes: Flagship private 24-hour television and digital network with nationwide investigative
+    reporting.
   feeds:
   - url: https://www.geo.tv/rss/1/1
     category_hint: internal_politics
@@ -177,3 +185,40 @@ sources:
   - url: https://news.google.com/rss/search?q=%D9%BE%D8%A7%DA%A9%D8%B3%D8%AA%D8%A7%D9%86+OR+%D8%AD%DA%A9%D9%88%D9%85%D8%AA+when:2d&hl=ur&gl=PK&ceid=PK:ur
     section: National News (Urdu)
     category_hint: internal_politics
+- id: bbc_news_asia
+  name: BBC News (Asia)
+  homepage: https://www.bbc.com/news/world/asia
+  language: en
+  scope: international
+  kind: media
+  governing_body: BBC (British Broadcasting Corporation)
+  state_affiliated: false
+  notes: Covers Asia; only items explicitly referencing the country are ingested.
+  feeds:
+  - url: https://feeds.bbci.co.uk/news/world/asia/rss.xml
+    category_hint: general
+- id: dw_english
+  name: Deutsche Welle (English)
+  homepage: https://www.dw.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Deutsche Welle (German public statutory international broadcaster)
+  state_affiliated: true
+  notes: Global broadcast feed; filtered strictly by country mention words.
+  feeds:
+  - url: https://rss.dw.com/rdf/rss-en-all
+    category_hint: general
+- id: aljazeera_english
+  name: Al Jazeera English
+  homepage: https://www.aljazeera.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Al Jazeera Media Network
+  state_affiliated: true
+  notes: Global Middle Eastern & developing world coverage; filtered by country mention
+    words.
+  feeds:
+  - url: https://www.aljazeera.com/xml/rss/all.xml
+    category_hint: general

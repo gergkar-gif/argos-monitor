@@ -1,190 +1,236 @@
-# Colombia source registry (decision D15).
-# Combines independent Colombian investigative & national press (La Silla Vacía, Colombia Reports, El Tiempo / El Espectador / Semana via Google News), official Presidencia / RTVC via Google News, regional Spanish press, and international wires.
-
 sources:
-  - id: lasillavacia_co
-    name: La Silla Vacía
-    homepage: https://www.lasillavacia.com
-    language: es
-    scope: domestic
-    kind: media
-    governing_body: Blogósfera Producciones SAS (independent Bogotá political & investigative outlet)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.lasillavacia.com/feed/", section: Poder & Investigaciones, category_hint: general}
-
-  - id: colombiareports_co
-    name: Colombia Reports
-    homepage: https://colombiareports.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: Colombia Reports (independent Medellín English-language news outlet)
-    state_affiliated: false
-    feeds:
-      - {url: "https://colombiareports.com/feed/", section: Colombia News, category_hint: general}
-
-  - id: gnews_co_domestic
-    name: El Tiempo / El Espectador / Semana (National Dailies via Google News)
-    homepage: https://www.eltiempo.com
-    language: es
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: Casa Editorial El Tiempo / Comunican S.A. / Publicaciones Semana
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:eltiempo.com+OR+site:elespectador.com+OR+site:semana.com)+when:1d&hl=es-419&gl=CO&ceid=CO:es-419", section: Política y Justicia, category_hint: general}
-
-  - id: gnews_co_official
-    name: Presidencia / RTVC Noticias (Official State Press via Google News)
-    homepage: https://www.presidencia.gov.co
-    language: es
-    scope: domestic
-    kind: official
-    aggregator: google_news
-    governing_body: Presidencia de la República de Colombia / Sistema de Medios Públicos (RTVC)
-    state_affiliated: true
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:presidencia.gov.co+OR+site:rtvcnoticias.com)+when:7d&hl=es-419&gl=CO&ceid=CO:es-419", section: Oficial & RTVC, category_hint: general}
-
-  - id: gnews_co_abroad
-    name: InSight Crime / El País América (Regional & Investigative)
-    homepage: https://insightcrime.org
-    language: es
-    scope: abroad_local
-    kind: media
-    aggregator: google_news
-    governing_body: InSight Crime Foundation & Ediciones El País América
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=((site:es.insightcrime.org+OR+site:insightcrime.org+OR+site:elpais.com/america-colombia)+Colombia)+when:7d&hl=es-419&gl=CO&ceid=CO:es-419", section: Seguridad y Región, category_hint: defence_security}
-
-  - id: gnews_en_co
-    name: Google News (Colombia - International)
-    homepage: https://news.google.com
-    language: en
-    scope: international
-    kind: media
-    aggregator: google_news
-    governing_body: n/a (aggregator)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=Colombia+(Bogota+OR+Petro+OR+Ecopetrol+OR+Congress)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Colombia politics & economy, category_hint: internal_politics}
-      - {url: "https://news.google.com/rss/search?q=Colombia+(ELN+OR+FARC+OR+Cauca+OR+Catatumbo+OR+Venezuela+OR+security)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Colombia conflict & diplomacy, category_hint: defence_security}
-  - id: semana_co
-    name: Revista Semana
-    homepage: https://www.semana.com
-    language: es
-    scope: domestic
-    kind: media
-    governing_body: Publicaciones Semana (Grupo Gilinski)
-    state_affiliated: false
-    notes: Leading Colombian news weekly and digital daily covering executive politics, defense, and national debates.
-    feeds:
-      - url: https://www.semana.com/arc/outboundfeeds/rss/
-        category_hint: internal_politics
-
-  - id: portafolio_co
-    name: Portafolio
-    homepage: https://www.portafolio.co
-    language: es
-    scope: domestic
-    kind: media
-    governing_body: Casa Editorial El Tiempo
-    state_affiliated: false
-    notes: Colombia's premier financial and business daily newspaper covering macroeconomics, taxation, and markets.
-    feeds:
-      - url: https://www.portafolio.co/rss/economia.xml
-        category_hint: economics
-
-  - id: razonpublica_co
-    name: Razón Pública
-    homepage: https://razonpublica.com
-    language: es
-    scope: domestic
-    kind: media
-    governing_body: Fundación Razón Pública
-    state_affiliated: false
-    notes: Independent academic and public policy journal analyzing Colombian legislative reforms, judicial rulings, and security.
-    feeds:
-      - url: https://razonpublica.com/feed/
-        category_hint: internal_politics
-
-  - id: cuestionpublica_co
-    name: Cuestión Pública
-    homepage: https://cuestionpublica.com
-    language: es
-    scope: domestic
-    kind: media
-    governing_body: Cuestión Pública Media
-    state_affiliated: false
-    notes: Independent investigative journalism media uncovering corporate lobbying, corruption, and political financing.
-    feeds:
-      - url: https://cuestionpublica.com/feed/
-        category_hint: internal_politics
-
-  - id: voragine_co
-    name: Vorágine
-    homepage: https://voragine.co
-    language: es
-    scope: domestic
-    kind: media
-    governing_body: Vorágine Periodismo Contracorriente
-    state_affiliated: false
-    notes: Independent investigative portal focusing on human rights violations, armed conflict, and environmental crime.
-    feeds:
-      - url: https://voragine.co/feed/
-        category_hint: defence_security
-
-  - id: dejusticia_co
-    name: Dejusticia
-    homepage: https://dejusticia.org
-    language: es
-    scope: domestic
-    kind: media
-    governing_body: Centro de Estudios de Derecho, Justicia y Sociedad
-    state_affiliated: false
-    notes: Think tank and research center producing human rights, constitutional jurisprudence, and transitional justice monitoring.
-    feeds:
-      - url: https://dejusticia.org/feed/
-        category_hint: internal_politics
-
-  - id: colombiacheck_co
-    name: ColombiaCheck
-    homepage: https://colombiacheck.com
-    language: es
-    scope: domestic
-    kind: media
-    governing_body: Consejo de Redacción
-    state_affiliated: false
-    notes: Independent fact-checking initiative verifying political speech, electoral claims, and public figures.
-    feeds:
-      - url: https://colombiacheck.com/feed
-        category_hint: internal_politics
-
-  - id: cerosetenta_co
-    name: Cerosetenta
-    homepage: https://cerosetenta.uniandes.edu.co
-    language: es
-    scope: domestic
-    kind: media
-    governing_body: Universidad de los Andes
-    state_affiliated: false
-    notes: Digital investigative media published by the Center for Journalism Studies at Universidad de los Andes.
-    feeds:
-      - url: https://cerosetenta.uniandes.edu.co/feed/
-        category_hint: internal_politics
-
-  - id: boyaca7dias_co
-    name: Boyacá 7 Días
-    homepage: https://boyaca7dias.com.co
-    language: es
-    scope: domestic
-    kind: media
-    governing_body: Editorial Boyacá 7 Días
-    state_affiliated: false
-    notes: Regional daily covering central Andean agriculture, infrastructure, mining, and subnational politics.
-    feeds:
-      - url: https://boyaca7dias.com.co/feed/
-        category_hint: general
+- id: lasillavacia_co
+  name: La Silla Vacía
+  homepage: https://www.lasillavacia.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Blogósfera Producciones SAS (independent Bogotá political & investigative
+    outlet)
+  state_affiliated: false
+  feeds:
+  - url: https://www.lasillavacia.com/feed/
+    section: Poder & Investigaciones
+    category_hint: general
+- id: colombiareports_co
+  name: Colombia Reports
+  homepage: https://colombiareports.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Colombia Reports (independent Medellín English-language news outlet)
+  state_affiliated: false
+  feeds:
+  - url: https://colombiareports.com/feed/
+    section: Colombia News
+    category_hint: general
+- id: gnews_co_domestic
+  name: El Tiempo / El Espectador / Semana (National Dailies via Google News)
+  homepage: https://www.eltiempo.com
+  language: es
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: Casa Editorial El Tiempo / Comunican S.A. / Publicaciones Semana
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:eltiempo.com+OR+site:elespectador.com+OR+site:semana.com)+when:1d&hl=es-419&gl=CO&ceid=CO:es-419
+    section: Política y Justicia
+    category_hint: general
+- id: gnews_co_official
+  name: Presidencia / RTVC Noticias (Official State Press via Google News)
+  homepage: https://www.presidencia.gov.co
+  language: es
+  scope: domestic
+  kind: official
+  aggregator: google_news
+  governing_body: Presidencia de la República de Colombia / Sistema de Medios Públicos
+    (RTVC)
+  state_affiliated: true
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:presidencia.gov.co+OR+site:rtvcnoticias.com)+when:7d&hl=es-419&gl=CO&ceid=CO:es-419
+    section: Oficial & RTVC
+    category_hint: general
+- id: gnews_co_abroad
+  name: InSight Crime / El País América (Regional & Investigative)
+  homepage: https://insightcrime.org
+  language: es
+  scope: abroad_local
+  kind: media
+  aggregator: google_news
+  governing_body: InSight Crime Foundation & Ediciones El País América
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=((site:es.insightcrime.org+OR+site:insightcrime.org+OR+site:elpais.com/america-colombia)+Colombia)+when:7d&hl=es-419&gl=CO&ceid=CO:es-419
+    section: Seguridad y Región
+    category_hint: defence_security
+- id: gnews_en_co
+  name: Google News (Colombia - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  aggregator: google_news
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=Colombia+(Bogota+OR+Petro+OR+Ecopetrol+OR+Congress)+when:7d&hl=en-US&gl=US&ceid=US:en
+    section: Colombia politics & economy
+    category_hint: internal_politics
+  - url: https://news.google.com/rss/search?q=Colombia+(ELN+OR+FARC+OR+Cauca+OR+Catatumbo+OR+Venezuela+OR+security)+when:7d&hl=en-US&gl=US&ceid=US:en
+    section: Colombia conflict & diplomacy
+    category_hint: defence_security
+- id: semana_co
+  name: Revista Semana
+  homepage: https://www.semana.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Publicaciones Semana (Grupo Gilinski)
+  state_affiliated: false
+  notes: Leading Colombian news weekly and digital daily covering executive politics,
+    defense, and national debates.
+  feeds:
+  - url: https://www.semana.com/arc/outboundfeeds/rss/
+    category_hint: internal_politics
+- id: portafolio_co
+  name: Portafolio
+  homepage: https://www.portafolio.co
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Casa Editorial El Tiempo
+  state_affiliated: false
+  notes: Colombia's premier financial and business daily newspaper covering macroeconomics,
+    taxation, and markets.
+  feeds:
+  - url: https://www.portafolio.co/rss/economia.xml
+    category_hint: economics
+- id: razonpublica_co
+  name: Razón Pública
+  homepage: https://razonpublica.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Fundación Razón Pública
+  state_affiliated: false
+  notes: Independent academic and public policy journal analyzing Colombian legislative
+    reforms, judicial rulings, and security.
+  feeds:
+  - url: https://razonpublica.com/feed/
+    category_hint: internal_politics
+- id: cuestionpublica_co
+  name: Cuestión Pública
+  homepage: https://cuestionpublica.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Cuestión Pública Media
+  state_affiliated: false
+  notes: Independent investigative journalism media uncovering corporate lobbying,
+    corruption, and political financing.
+  feeds:
+  - url: https://cuestionpublica.com/feed/
+    category_hint: internal_politics
+- id: voragine_co
+  name: Vorágine
+  homepage: https://voragine.co
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Vorágine Periodismo Contracorriente
+  state_affiliated: false
+  notes: Independent investigative portal focusing on human rights violations, armed
+    conflict, and environmental crime.
+  feeds:
+  - url: https://voragine.co/feed/
+    category_hint: defence_security
+- id: dejusticia_co
+  name: Dejusticia
+  homepage: https://dejusticia.org
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Centro de Estudios de Derecho, Justicia y Sociedad
+  state_affiliated: false
+  notes: Think tank and research center producing human rights, constitutional jurisprudence,
+    and transitional justice monitoring.
+  feeds:
+  - url: https://dejusticia.org/feed/
+    category_hint: internal_politics
+- id: colombiacheck_co
+  name: ColombiaCheck
+  homepage: https://colombiacheck.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Consejo de Redacción
+  state_affiliated: false
+  notes: Independent fact-checking initiative verifying political speech, electoral
+    claims, and public figures.
+  feeds:
+  - url: https://colombiacheck.com/feed
+    category_hint: internal_politics
+- id: cerosetenta_co
+  name: Cerosetenta
+  homepage: https://cerosetenta.uniandes.edu.co
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Universidad de los Andes
+  state_affiliated: false
+  notes: Digital investigative media published by the Center for Journalism Studies
+    at Universidad de los Andes.
+  feeds:
+  - url: https://cerosetenta.uniandes.edu.co/feed/
+    category_hint: internal_politics
+- id: boyaca7dias_co
+  name: Boyacá 7 Días
+  homepage: https://boyaca7dias.com.co
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Editorial Boyacá 7 Días
+  state_affiliated: false
+  notes: Regional daily covering central Andean agriculture, infrastructure, mining,
+    and subnational politics.
+  feeds:
+  - url: https://boyaca7dias.com.co/feed/
+    category_hint: general
+- id: bbc_news_latam
+  name: BBC News (Latin America)
+  homepage: https://www.bbc.com/news/world/latin_america
+  language: en
+  scope: international
+  kind: media
+  governing_body: BBC (British Broadcasting Corporation)
+  state_affiliated: false
+  notes: Covers Latin America; only items referencing the country are ingested.
+  feeds:
+  - url: https://feeds.bbci.co.uk/news/world/latin_america/rss.xml
+    category_hint: general
+- id: france24_english
+  name: France 24 (English)
+  homepage: https://www.france24.com/en
+  language: en
+  scope: international
+  kind: media
+  governing_body: France Médias Monde
+  state_affiliated: true
+  notes: International coverage; filtered strictly by country mention words.
+  feeds:
+  - url: https://www.france24.com/en/rss
+    category_hint: general
+- id: aljazeera_english
+  name: Al Jazeera English
+  homepage: https://www.aljazeera.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Al Jazeera Media Network
+  state_affiliated: true
+  notes: Global Middle Eastern & developing world coverage; filtered by country mention
+    words.
+  feeds:
+  - url: https://www.aljazeera.com/xml/rss/all.xml
+    category_hint: general

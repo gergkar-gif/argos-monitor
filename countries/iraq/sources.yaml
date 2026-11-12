@@ -19,7 +19,8 @@ sources:
   kind: media
   governing_body: Shafaq Media
   state_affiliated: false
-  notes: Independent Iraqi digital news agency covering federal politics, Kurdistan disputes, and security developments.
+  notes: Independent Iraqi digital news agency covering federal politics, Kurdistan
+    disputes, and security developments.
   feeds:
   - url: https://shafaq.com/en/rss/iraq-news
     category_hint: internal_politics
@@ -31,7 +32,8 @@ sources:
   kind: media
   governing_body: Rudaw Media Network
   state_affiliated: false
-  notes: Major Iraqi Kurdish media network broadcasting from Erbil covering KRG affairs, federal treaties, and energy.
+  notes: Major Iraqi Kurdish media network broadcasting from Erbil covering KRG affairs,
+    federal treaties, and energy.
   feeds:
   - url: https://www.rudaw.net/english/rss
     category_hint: internal_politics
@@ -56,7 +58,8 @@ sources:
   kind: media
   governing_body: Baghdad Today News Agency
   state_affiliated: false
-  notes: Independent Iraqi news agency covering Council of Representatives and provincial governance.
+  notes: Independent Iraqi news agency covering Council of Representatives and provincial
+    governance.
   feeds:
   - url: https://baghdadtoday.news/rss/
     category_hint: internal_politics
@@ -68,7 +71,8 @@ sources:
   kind: media
   governing_body: Kitabat Foundation
   state_affiliated: false
-  notes: Prominent independent political daily and opinion forum founded in 2002 covering Iraqi state policy.
+  notes: Prominent independent political daily and opinion forum founded in 2002 covering
+    Iraqi state policy.
   feeds:
   - url: https://kitabat.com/feed/
     category_hint: internal_politics
@@ -80,7 +84,8 @@ sources:
   kind: media
   governing_body: Sky Press Agency
   state_affiliated: false
-  notes: Independent news platform covering Iraqi domestic security, economy, and foreign relations.
+  notes: Independent news platform covering Iraqi domestic security, economy, and
+    foreign relations.
   feeds:
   - url: https://skypressiq.net/rss
     category_hint: internal_politics
@@ -92,7 +97,8 @@ sources:
   kind: media
   governing_body: Iraq Oil Report LLC
   state_affiliated: false
-  notes: Authoritative independent on-the-ground news organization dedicated to Iraqi energy, politics, and security.
+  notes: Authoritative independent on-the-ground news organization dedicated to Iraqi
+    energy, politics, and security.
   feeds:
   - url: https://www.iraqoilreport.com/feed/
     category_hint: economics
@@ -104,7 +110,8 @@ sources:
   kind: media
   governing_body: Buratha News Agency
   state_affiliated: false
-  notes: Iraqi political news agency reporting on parliamentary coalitions and institutional reforms.
+  notes: Iraqi political news agency reporting on parliamentary coalitions and institutional
+    reforms.
   feeds:
   - url: https://burathanews.com/arabic/rss/
     category_hint: internal_politics
@@ -116,7 +123,8 @@ sources:
   kind: media
   governing_body: Al-Masalah Media
   state_affiliated: false
-  notes: Independent Iraqi digital news portal monitoring executive anti-corruption drives and public contracts.
+  notes: Independent Iraqi digital news portal monitoring executive anti-corruption
+    drives and public contracts.
   feeds:
   - url: https://almasalah.com/feed
     category_hint: internal_politics
@@ -128,7 +136,8 @@ sources:
   kind: official
   governing_body: Republic of Iraq
   state_affiliated: true
-  notes: Official statutory English wire service of the Iraqi News Agency covering ministerial communiques.
+  notes: Official statutory English wire service of the Iraqi News Agency covering
+    ministerial communiques.
   feeds:
   - url: https://ina.iq/eng/rss.xml
     category_hint: internal_politics
@@ -145,3 +154,40 @@ sources:
   - url: https://news.google.com/rss/search?q=%D8%A7%D9%84%D8%B9%D8%B1%D8%A7%D9%82+OR+%D8%A8%D8%BA%D8%AF%D8%A7%D8%AF+OR+%D8%A7%D9%84%D8%AD%D9%83%D9%88%D9%85%D8%A9+%D8%A7%D9%84%D8%B9%D8%B1%D8%A7%D9%82%D9%8A%D8%A9+when:2d&hl=ar&gl=IQ&ceid=IQ:ar
     section: National News (Arabic)
     category_hint: internal_politics
+- id: bbc_news_me
+  name: BBC News (Middle East)
+  homepage: https://www.bbc.com/news/world/middle_east
+  language: en
+  scope: international
+  kind: media
+  governing_body: BBC (British Broadcasting Corporation)
+  state_affiliated: false
+  notes: Covers the Middle East; only items referencing the country are ingested.
+  feeds:
+  - url: https://feeds.bbci.co.uk/news/world/middle_east/rss.xml
+    category_hint: general
+- id: aljazeera_english
+  name: Al Jazeera English
+  homepage: https://www.aljazeera.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Al Jazeera Media Network
+  state_affiliated: true
+  notes: Global Middle Eastern & developing world coverage; filtered by country mention
+    words.
+  feeds:
+  - url: https://www.aljazeera.com/xml/rss/all.xml
+    category_hint: general
+- id: france24_english
+  name: France 24 (English)
+  homepage: https://www.france24.com/en
+  language: en
+  scope: international
+  kind: media
+  governing_body: France Médias Monde
+  state_affiliated: true
+  notes: International coverage; filtered strictly by country mention words.
+  feeds:
+  - url: https://www.france24.com/en/rss
+    category_hint: general

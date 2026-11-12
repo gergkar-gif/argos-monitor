@@ -1,162 +1,212 @@
-# Czechia source registry (decision D15, D21).
-# Combines independent Czech dailies (Deník N, Seznam Zprávy, Novinky.cz, Prague Morning), public radio iROZHLAS, state wire ČTK / public broadcaster ČT24 via Google News, Slovak regional press, and international wires.
-
 sources:
-  - id: irozhlas_cz
-    name: iROZHLAS
-    homepage: https://www.irozhlas.cz
-    language: cs
-    scope: domestic
-    kind: media
-    governing_body: Český rozhlas (Czech Public Radio newsroom)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.irozhlas.cz/rss/irozhlas/zpravy-domov", section: Domov, category_hint: internal_politics}
-
-  - id: seznamzpravy_cz
-    name: Seznam Zprávy
-    homepage: https://www.seznamzpravy.cz
-    language: cs
-    scope: domestic
-    kind: media
-    governing_body: Seznam.cz (independent investigative and national newsroom)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.seznamzpravy.cz/rss", section: Zprávy, category_hint: general}
-
-  - id: novinky_cz
-    name: Novinky.cz
-    homepage: https://www.novinky.cz
-    language: cs
-    scope: domestic
-    kind: media
-    governing_body: Borgis a.s. / Seznam.cz (major national news portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.novinky.cz/rss/sekce/domaci", section: Domácí, category_hint: internal_politics}
-
-  - id: dennikn_cz
-    name: Deník N (Czechia)
-    homepage: https://denikn.cz
-    language: cs
-    scope: domestic
-    kind: media
-    governing_body: N Media, a.s. (independent subscription-based daily in Prague)
-    state_affiliated: false
-    feeds:
-      - {url: "https://denikn.cz/feed/", section: Zprávy, category_hint: general}
-
-  - id: praguemorning_cz
-    name: Prague Morning
-    homepage: https://praguemorning.cz
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: Independent English-language news daily in Prague
-    state_affiliated: false
-    feeds:
-      - {url: "https://praguemorning.cz/feed/", section: News, category_hint: general}
-
-  - id: idnes_cz
-    name: iDNES.cz
-    homepage: https://www.idnes.cz
-    language: cs
-    scope: domestic
-    kind: media
-    governing_body: MAFRA a.s. / Kaprain (major national daily newspaper portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://servis.idnes.cz/rss.aspx?c=zpravodaj", section: Zpravodajství, category_hint: general}
-
-  - id: e15_cz
-    name: E15
-    homepage: https://www.e15.cz
-    language: cs
-    scope: domestic
-    kind: media
-    governing_body: Czech News Center (premier financial and business daily)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.e15.cz/rss", section: Zprávy, category_hint: economics}
-
-  - id: forum24_cz
-    name: FORUM 24
-    homepage: https://www.forum24.cz
-    language: cs
-    scope: domestic
-    kind: media
-    governing_body: FORUM 24 a.s. (independent political news and commentary daily)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.forum24.cz/feed", section: Zprávy, category_hint: internal_politics}
-
-  - id: ct24_cz
-    name: ČT24
-    homepage: https://ct24.ceskatelevize.cz
-    language: cs
-    scope: domestic
-    kind: media
-    governing_body: Česká televize (national public television newsroom)
-    state_affiliated: true
-    feeds:
-      - {url: "https://ct24.ceskatelevize.cz/rss/hlavni-zpravy", section: Hlavní zprávy, category_hint: general}
-
-  - id: blesk_cz
-    name: Blesk Zprávy
-    homepage: https://www.blesk.cz
-    language: cs
-    scope: domestic
-    kind: media
-    governing_body: Czech News Center (national daily news portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.blesk.cz/rss", section: Zprávy, category_hint: general}
-
-  - id: info_cz
-    name: Info.cz
-    homepage: https://www.info.cz
-    language: cs
-    scope: domestic
-    kind: media
-    governing_body: CMI News (independent political and analytical news portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.info.cz/rss", section: Zprávy, category_hint: internal_politics}
-
-  - id: gnews_cz_official
-    name: ČTK / ČT24 (Czech News Agency & Public Television via Google News)
-    homepage: https://www.ceskenoviny.cz
-    language: cs
-    scope: domestic
-    kind: official
-    aggregator: google_news
-    needs_mention: true
-    governing_body: Czech News Agency (ČTK) / Czech Television (ČT24)
-    state_affiliated: true
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:ct24.ceskatelevize.cz+OR+site:ceskenoviny.cz)+when:7d&hl=cs&gl=CZ&ceid=CZ:cs", section: ČTK & ČT24, category_hint: general}
-
-  - id: gnews_cz_abroad
-    name: Slovak & Central European Regional Press (on Czechia)
-    homepage: https://www.teraz.sk
-    language: cs
-    scope: abroad_local
-    kind: media
-    aggregator: google_news
-    governing_body: Slovak News Agency TASR & Aktuality.sk
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:teraz.sk+OR+site:aktuality.sk)+(Cesko+OR+Fiala+OR+Praha)+when:7d&hl=sk&gl=SK&ceid=SK:sk", section: Slovak coverage of Czechia, category_hint: general}
-
-  - id: gnews_en_cz
-    name: Google News (Czechia - International)
-    homepage: https://news.google.com
-    language: en
-    scope: international
-    kind: media
-    aggregator: google_news
-    governing_body: n/a (aggregator)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=Czechia+(Prague+OR+Fiala+OR+Pavel+OR+Babis)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Czechia politics, category_hint: internal_politics}
-      - {url: "https://news.google.com/rss/search?q=Czechia+(EU+OR+NATO+OR+Ukraine+OR+ammunition)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Czechia EU & diplomacy, category_hint: foreign_policy}
+- id: irozhlas_cz
+  name: iROZHLAS
+  homepage: https://www.irozhlas.cz
+  language: cs
+  scope: domestic
+  kind: media
+  governing_body: Český rozhlas (Czech Public Radio newsroom)
+  state_affiliated: false
+  feeds:
+  - url: https://www.irozhlas.cz/rss/irozhlas/zpravy-domov
+    section: Domov
+    category_hint: internal_politics
+- id: seznamzpravy_cz
+  name: Seznam Zprávy
+  homepage: https://www.seznamzpravy.cz
+  language: cs
+  scope: domestic
+  kind: media
+  governing_body: Seznam.cz (independent investigative and national newsroom)
+  state_affiliated: false
+  feeds:
+  - url: https://www.seznamzpravy.cz/rss
+    section: Zprávy
+    category_hint: general
+- id: novinky_cz
+  name: Novinky.cz
+  homepage: https://www.novinky.cz
+  language: cs
+  scope: domestic
+  kind: media
+  governing_body: Borgis a.s. / Seznam.cz (major national news portal)
+  state_affiliated: false
+  feeds:
+  - url: https://www.novinky.cz/rss/sekce/domaci
+    section: Domácí
+    category_hint: internal_politics
+- id: dennikn_cz
+  name: Deník N (Czechia)
+  homepage: https://denikn.cz
+  language: cs
+  scope: domestic
+  kind: media
+  governing_body: N Media, a.s. (independent subscription-based daily in Prague)
+  state_affiliated: false
+  feeds:
+  - url: https://denikn.cz/feed/
+    section: Zprávy
+    category_hint: general
+- id: praguemorning_cz
+  name: Prague Morning
+  homepage: https://praguemorning.cz
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Independent English-language news daily in Prague
+  state_affiliated: false
+  feeds:
+  - url: https://praguemorning.cz/feed/
+    section: News
+    category_hint: general
+- id: idnes_cz
+  name: iDNES.cz
+  homepage: https://www.idnes.cz
+  language: cs
+  scope: domestic
+  kind: media
+  governing_body: MAFRA a.s. / Kaprain (major national daily newspaper portal)
+  state_affiliated: false
+  feeds:
+  - url: https://servis.idnes.cz/rss.aspx?c=zpravodaj
+    section: Zpravodajství
+    category_hint: general
+- id: e15_cz
+  name: E15
+  homepage: https://www.e15.cz
+  language: cs
+  scope: domestic
+  kind: media
+  governing_body: Czech News Center (premier financial and business daily)
+  state_affiliated: false
+  feeds:
+  - url: https://www.e15.cz/rss
+    section: Zprávy
+    category_hint: economics
+- id: forum24_cz
+  name: FORUM 24
+  homepage: https://www.forum24.cz
+  language: cs
+  scope: domestic
+  kind: media
+  governing_body: FORUM 24 a.s. (independent political news and commentary daily)
+  state_affiliated: false
+  feeds:
+  - url: https://www.forum24.cz/feed
+    section: Zprávy
+    category_hint: internal_politics
+- id: ct24_cz
+  name: ČT24
+  homepage: https://ct24.ceskatelevize.cz
+  language: cs
+  scope: domestic
+  kind: media
+  governing_body: Česká televize (national public television newsroom)
+  state_affiliated: true
+  feeds:
+  - url: https://ct24.ceskatelevize.cz/rss/hlavni-zpravy
+    section: Hlavní zprávy
+    category_hint: general
+- id: blesk_cz
+  name: Blesk Zprávy
+  homepage: https://www.blesk.cz
+  language: cs
+  scope: domestic
+  kind: media
+  governing_body: Czech News Center (national daily news portal)
+  state_affiliated: false
+  feeds:
+  - url: https://www.blesk.cz/rss
+    section: Zprávy
+    category_hint: general
+- id: info_cz
+  name: Info.cz
+  homepage: https://www.info.cz
+  language: cs
+  scope: domestic
+  kind: media
+  governing_body: CMI News (independent political and analytical news portal)
+  state_affiliated: false
+  feeds:
+  - url: https://www.info.cz/rss
+    section: Zprávy
+    category_hint: internal_politics
+- id: gnews_cz_official
+  name: ČTK / ČT24 (Czech News Agency & Public Television via Google News)
+  homepage: https://www.ceskenoviny.cz
+  language: cs
+  scope: domestic
+  kind: official
+  aggregator: google_news
+  needs_mention: true
+  governing_body: Czech News Agency (ČTK) / Czech Television (ČT24)
+  state_affiliated: true
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:ct24.ceskatelevize.cz+OR+site:ceskenoviny.cz)+when:7d&hl=cs&gl=CZ&ceid=CZ:cs
+    section: ČTK & ČT24
+    category_hint: general
+- id: gnews_cz_abroad
+  name: Slovak & Central European Regional Press (on Czechia)
+  homepage: https://www.teraz.sk
+  language: cs
+  scope: abroad_local
+  kind: media
+  aggregator: google_news
+  governing_body: Slovak News Agency TASR & Aktuality.sk
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:teraz.sk+OR+site:aktuality.sk)+(Cesko+OR+Fiala+OR+Praha)+when:7d&hl=sk&gl=SK&ceid=SK:sk
+    section: Slovak coverage of Czechia
+    category_hint: general
+- id: gnews_en_cz
+  name: Google News (Czechia - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  aggregator: google_news
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=Czechia+(Prague+OR+Fiala+OR+Pavel+OR+Babis)+when:7d&hl=en-US&gl=US&ceid=US:en
+    section: Czechia politics
+    category_hint: internal_politics
+  - url: https://news.google.com/rss/search?q=Czechia+(EU+OR+NATO+OR+Ukraine+OR+ammunition)+when:7d&hl=en-US&gl=US&ceid=US:en
+    section: Czechia EU & diplomacy
+    category_hint: foreign_policy
+- id: bbc_news_europe
+  name: BBC News (Europe)
+  homepage: https://www.bbc.com/news/world/europe
+  language: en
+  scope: international
+  kind: media
+  governing_body: BBC (British Broadcasting Corporation)
+  state_affiliated: false
+  notes: Covers Europe; only items explicitly referencing the country are ingested.
+  feeds:
+  - url: https://feeds.bbci.co.uk/news/world/europe/rss.xml
+    category_hint: general
+- id: dw_english
+  name: Deutsche Welle (English)
+  homepage: https://www.dw.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Deutsche Welle (German public statutory international broadcaster)
+  state_affiliated: true
+  notes: Global broadcast feed; filtered strictly by country mention words.
+  feeds:
+  - url: https://rss.dw.com/rdf/rss-en-all
+    category_hint: general
+- id: france24_english
+  name: France 24 (English)
+  homepage: https://www.france24.com/en
+  language: en
+  scope: international
+  kind: media
+  governing_body: France Médias Monde
+  state_affiliated: true
+  notes: International coverage; filtered strictly by country mention words.
+  feeds:
+  - url: https://www.france24.com/en/rss
+    category_hint: general

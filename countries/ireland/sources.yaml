@@ -58,7 +58,8 @@ sources:
   kind: media
   governing_body: Ditch Media Ltd
   state_affiliated: false
-  notes: Independent investigative journalism outlet focused on government accountability and ethics.
+  notes: Independent investigative journalism outlet focused on government accountability
+    and ethics.
   feeds:
   - url: https://www.ontheditch.com/feed/
     category_hint: internal_politics
@@ -70,7 +71,8 @@ sources:
   kind: media
   governing_body: Media Grand Ltd
   state_affiliated: false
-  notes: Independent digital news and commentary website covering Irish politics and society.
+  notes: Independent digital news and commentary website covering Irish politics and
+    society.
   feeds:
   - url: https://gript.ie/feed/
     category_hint: internal_politics
@@ -94,7 +96,8 @@ sources:
   kind: media
   governing_body: Silicon Republic
   state_affiliated: false
-  notes: Leading European technology, science and digital economy news service based in Dublin.
+  notes: Leading European technology, science and digital economy news service based
+    in Dublin.
   feeds:
   - url: https://www.siliconrepublic.com/feed
     category_hint: economics
@@ -159,3 +162,39 @@ sources:
   - url: https://news.google.com/rss/search?q=(Ireland+OR+Irish)+(Taoiseach+OR+parliament+OR+election+OR+budget)+when:3d&hl=en-US&gl=US&ceid=US:en
     section: Governance & Economy
     category_hint: internal_politics
+- id: bbc_news_europe
+  name: BBC News (Europe)
+  homepage: https://www.bbc.com/news/world/europe
+  language: en
+  scope: international
+  kind: media
+  governing_body: BBC (British Broadcasting Corporation)
+  state_affiliated: false
+  notes: Covers Europe; only items explicitly referencing the country are ingested.
+  feeds:
+  - url: https://feeds.bbci.co.uk/news/world/europe/rss.xml
+    category_hint: general
+- id: dw_english
+  name: Deutsche Welle (English)
+  homepage: https://www.dw.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Deutsche Welle (German public statutory international broadcaster)
+  state_affiliated: true
+  notes: Global broadcast feed; filtered strictly by country mention words.
+  feeds:
+  - url: https://rss.dw.com/rdf/rss-en-all
+    category_hint: general
+- id: france24_english
+  name: France 24 (English)
+  homepage: https://www.france24.com/en
+  language: en
+  scope: international
+  kind: media
+  governing_body: France Médias Monde
+  state_affiliated: true
+  notes: International coverage; filtered strictly by country mention words.
+  feeds:
+  - url: https://www.france24.com/en/rss
+    category_hint: general

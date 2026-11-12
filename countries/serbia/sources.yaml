@@ -1,154 +1,213 @@
-# Serbia source registry (decision D15).
-# Combines public/state-aligned broadcaster (RTS) with independent investigative outlets (N1, Danas, Nova.rs, Južne vesti, Autonomija) and regional/international feeds.
-
 sources:
-  - id: rts_sr
-    name: RTS (Radio Television of Serbia)
-    homepage: https://www.rts.rs
-    language: sr
-    scope: domestic
-    kind: official
-    governing_body: Public Media Service of Serbia (state broadcaster)
-    state_affiliated: true
-    feeds:
-      - {url: "https://www.rts.rs/page/stories/sr/rss.html", section: Najnovije, category_hint: general}
-      - {url: "https://www.rts.rs/page/stories/sr/rss/9/politika.html", section: Politika, category_hint: internal_politics}
-      - {url: "https://www.rts.rs/page/stories/sr/rss/13/ekonomija.html", section: Ekonomija, category_hint: economics}
-
-  - id: n1_rs
-    name: N1 Srbija
-    homepage: https://n1info.rs
-    language: sr
-    scope: domestic
-    kind: media
-    governing_body: United Media (independent cable news channel & portal, CNN affiliate)
-    state_affiliated: false
-    feeds:
-      - {url: "https://n1info.rs/feed/", section: Najnovije, category_hint: general}
-
-  - id: danas
-    name: Danas
-    homepage: https://www.danas.rs
-    language: sr
-    scope: domestic
-    kind: media
-    governing_body: Dan Graf d.o.o. / United Media (independent daily newspaper)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.danas.rs/feed/", section: Najnovije, category_hint: general}
-
-  - id: nova_rs
-    name: Nova.rs
-    homepage: https://nova.rs
-    language: sr
-    scope: domestic
-    kind: media
-    governing_body: United Media (independent news portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://nova.rs/feed/", section: Najnovije, category_hint: general}
-
-  - id: juznevesti
-    name: Južne vesti
-    homepage: https://www.juznevesti.com
-    language: sr
-    scope: domestic
-    kind: media
-    governing_body: Independent regional investigative portal (southern Serbia)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.juznevesti.com/feed/", section: Vesti, category_hint: general}
-
-  - id: autonomija
-    name: Autonomija (Vojvodina)
-    homepage: https://autonomija.info
-    language: sr
-    scope: domestic
-    kind: media
-    governing_body: Independent Journalists' Association of Vojvodina (NDNV)
-    state_affiliated: false
-    feeds:
-      - {url: "https://autonomija.info/feed/", section: Vesti, category_hint: general}
-
-  - id: b92
-    name: B92
-    homepage: https://www.b92.net
-    language: sr
-    scope: domestic
-    kind: media
-    governing_body: Kopernikus Corporation (major commercial news portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.b92.net/feed/", section: Vesti, category_hint: general}
-
-  - id: blic
-    name: Blic
-    homepage: https://www.blic.rs
-    language: sr
-    scope: domestic
-    kind: media
-    governing_body: Ringier Serbia (major national daily newspaper)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.blic.rs/rss/danasnje-vesti", section: Vesti dana, category_hint: general}
-
-  - id: insajder
-    name: Insajder
-    homepage: https://insajder.net
-    language: sr
-    scope: domestic
-    kind: media
-    governing_body: Insajder Produkcija (independent investigative newsroom)
-    state_affiliated: false
-    feeds:
-      - {url: "https://insajder.net/feed", section: Vesti, category_hint: internal_politics}
-
-  - id: krik
-    name: KRIK
-    homepage: https://www.krik.rs
-    language: sr
-    scope: domestic
-    kind: media
-    governing_body: Crime and Corruption Reporting Network (independent investigative portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.krik.rs/feed/", section: Vesti, category_hint: internal_politics}
-
-  - id: cins
-    name: CINS
-    homepage: https://www.cins.rs
-    language: sr
-    scope: domestic
-    kind: media
-    governing_body: Center for Investigative Journalism of Serbia (independent investigative non-profit)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.cins.rs/feed/", section: Istraživanja, category_hint: internal_politics}
-
-  - id: gnews_en_rs
-    name: Google News (Serbia - English)
-    homepage: https://news.google.com
-    language: en
-    scope: international
-    kind: media
-    aggregator: google_news
-    governing_body: n/a (aggregator)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=Serbia+when:1d&hl=en-US&gl=US&ceid=US:en", section: Serbia, category_hint: general}
-      - {url: "https://news.google.com/rss/search?q=Serbia+(Vucic+OR+Kosovo+OR+EU+OR+Russia+OR+China)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Serbia geopolitics, category_hint: foreign_policy}
-      - {url: "https://news.google.com/rss/search?q=Serbia+(lithium+OR+economy+OR+investment+OR+protests+OR+NIS)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Serbia economy & politics, category_hint: economics}
-
-  - id: gnews_sr
-    name: Google News (Serbian)
-    homepage: https://news.google.com
-    language: sr
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    needs_mention: true
-    governing_body: n/a (aggregator)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(Vlada+Srbije+OR+Vu%C4%8Di%C4%87+OR+Skup%C5%A1tina)+when:1d&hl=sr&gl=RS&ceid=RS:sr", section: Politika, category_hint: internal_politics}
-      - {url: "https://news.google.com/rss/search?q=(Srbija+ekonomija+OR+NBS+OR+litijum+OR+NIS)+when:1d&hl=sr&gl=RS&ceid=RS:sr", section: Ekonomija, category_hint: economics}
+- id: rts_sr
+  name: RTS (Radio Television of Serbia)
+  homepage: https://www.rts.rs
+  language: sr
+  scope: domestic
+  kind: official
+  governing_body: Public Media Service of Serbia (state broadcaster)
+  state_affiliated: true
+  feeds:
+  - url: https://www.rts.rs/page/stories/sr/rss.html
+    section: Najnovije
+    category_hint: general
+  - url: https://www.rts.rs/page/stories/sr/rss/9/politika.html
+    section: Politika
+    category_hint: internal_politics
+  - url: https://www.rts.rs/page/stories/sr/rss/13/ekonomija.html
+    section: Ekonomija
+    category_hint: economics
+- id: n1_rs
+  name: N1 Srbija
+  homepage: https://n1info.rs
+  language: sr
+  scope: domestic
+  kind: media
+  governing_body: United Media (independent cable news channel & portal, CNN affiliate)
+  state_affiliated: false
+  feeds:
+  - url: https://n1info.rs/feed/
+    section: Najnovije
+    category_hint: general
+- id: danas
+  name: Danas
+  homepage: https://www.danas.rs
+  language: sr
+  scope: domestic
+  kind: media
+  governing_body: Dan Graf d.o.o. / United Media (independent daily newspaper)
+  state_affiliated: false
+  feeds:
+  - url: https://www.danas.rs/feed/
+    section: Najnovije
+    category_hint: general
+- id: nova_rs
+  name: Nova.rs
+  homepage: https://nova.rs
+  language: sr
+  scope: domestic
+  kind: media
+  governing_body: United Media (independent news portal)
+  state_affiliated: false
+  feeds:
+  - url: https://nova.rs/feed/
+    section: Najnovije
+    category_hint: general
+- id: juznevesti
+  name: Južne vesti
+  homepage: https://www.juznevesti.com
+  language: sr
+  scope: domestic
+  kind: media
+  governing_body: Independent regional investigative portal (southern Serbia)
+  state_affiliated: false
+  feeds:
+  - url: https://www.juznevesti.com/feed/
+    section: Vesti
+    category_hint: general
+- id: autonomija
+  name: Autonomija (Vojvodina)
+  homepage: https://autonomija.info
+  language: sr
+  scope: domestic
+  kind: media
+  governing_body: Independent Journalists' Association of Vojvodina (NDNV)
+  state_affiliated: false
+  feeds:
+  - url: https://autonomija.info/feed/
+    section: Vesti
+    category_hint: general
+- id: b92
+  name: B92
+  homepage: https://www.b92.net
+  language: sr
+  scope: domestic
+  kind: media
+  governing_body: Kopernikus Corporation (major commercial news portal)
+  state_affiliated: false
+  feeds:
+  - url: https://www.b92.net/feed/
+    section: Vesti
+    category_hint: general
+- id: blic
+  name: Blic
+  homepage: https://www.blic.rs
+  language: sr
+  scope: domestic
+  kind: media
+  governing_body: Ringier Serbia (major national daily newspaper)
+  state_affiliated: false
+  feeds:
+  - url: https://www.blic.rs/rss/danasnje-vesti
+    section: Vesti dana
+    category_hint: general
+- id: insajder
+  name: Insajder
+  homepage: https://insajder.net
+  language: sr
+  scope: domestic
+  kind: media
+  governing_body: Insajder Produkcija (independent investigative newsroom)
+  state_affiliated: false
+  feeds:
+  - url: https://insajder.net/feed
+    section: Vesti
+    category_hint: internal_politics
+- id: krik
+  name: KRIK
+  homepage: https://www.krik.rs
+  language: sr
+  scope: domestic
+  kind: media
+  governing_body: Crime and Corruption Reporting Network (independent investigative
+    portal)
+  state_affiliated: false
+  feeds:
+  - url: https://www.krik.rs/feed/
+    section: Vesti
+    category_hint: internal_politics
+- id: cins
+  name: CINS
+  homepage: https://www.cins.rs
+  language: sr
+  scope: domestic
+  kind: media
+  governing_body: Center for Investigative Journalism of Serbia (independent investigative
+    non-profit)
+  state_affiliated: false
+  feeds:
+  - url: https://www.cins.rs/feed/
+    section: Istraživanja
+    category_hint: internal_politics
+- id: gnews_en_rs
+  name: Google News (Serbia - English)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  aggregator: google_news
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=Serbia+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Serbia
+    category_hint: general
+  - url: https://news.google.com/rss/search?q=Serbia+(Vucic+OR+Kosovo+OR+EU+OR+Russia+OR+China)+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Serbia geopolitics
+    category_hint: foreign_policy
+  - url: https://news.google.com/rss/search?q=Serbia+(lithium+OR+economy+OR+investment+OR+protests+OR+NIS)+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Serbia economy & politics
+    category_hint: economics
+- id: gnews_sr
+  name: Google News (Serbian)
+  homepage: https://news.google.com
+  language: sr
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  needs_mention: true
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Vlada+Srbije+OR+Vu%C4%8Di%C4%87+OR+Skup%C5%A1tina)+when:1d&hl=sr&gl=RS&ceid=RS:sr
+    section: Politika
+    category_hint: internal_politics
+  - url: https://news.google.com/rss/search?q=(Srbija+ekonomija+OR+NBS+OR+litijum+OR+NIS)+when:1d&hl=sr&gl=RS&ceid=RS:sr
+    section: Ekonomija
+    category_hint: economics
+- id: bbc_news_europe
+  name: BBC News (Europe)
+  homepage: https://www.bbc.com/news/world/europe
+  language: en
+  scope: international
+  kind: media
+  governing_body: BBC (British Broadcasting Corporation)
+  state_affiliated: false
+  notes: Covers Europe; only items explicitly referencing the country are ingested.
+  feeds:
+  - url: https://feeds.bbci.co.uk/news/world/europe/rss.xml
+    category_hint: general
+- id: dw_english
+  name: Deutsche Welle (English)
+  homepage: https://www.dw.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Deutsche Welle (German public statutory international broadcaster)
+  state_affiliated: true
+  notes: Global broadcast feed; filtered strictly by country mention words.
+  feeds:
+  - url: https://rss.dw.com/rdf/rss-en-all
+    category_hint: general
+- id: france24_english
+  name: France 24 (English)
+  homepage: https://www.france24.com/en
+  language: en
+  scope: international
+  kind: media
+  governing_body: France Médias Monde
+  state_affiliated: true
+  notes: International coverage; filtered strictly by country mention words.
+  feeds:
+  - url: https://www.france24.com/en/rss
+    category_hint: general

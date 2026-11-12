@@ -19,7 +19,8 @@ sources:
   kind: official
   governing_body: Ministry of Information (Syrian Arab Republic)
   state_affiliated: true
-  notes: Official Arabic-language wire agency of the Syrian government publishing ministerial decrees and military communiques.
+  notes: Official Arabic-language wire agency of the Syrian government publishing
+    ministerial decrees and military communiques.
   feeds:
   - url: https://sana.sy/?feed=rss2
     category_hint: internal_politics
@@ -31,7 +32,8 @@ sources:
   kind: media
   governing_body: Enab Baladi Foundation
   state_affiliated: false
-  notes: Independent exiled Syrian investigative news organization covering humanitarian conditions, civil society, and economy.
+  notes: Independent exiled Syrian investigative news organization covering humanitarian
+    conditions, civil society, and economy.
   feeds:
   - url: https://english.enabbaladi.net/feed/
     category_hint: society
@@ -43,8 +45,8 @@ sources:
   kind: media
   governing_body: Syria Direct Journalism Foundation
   state_affiliated: false
-  notes: Independent journalism organization producing evidence-based reporting on political transition, displacement, and
-    human rights in Syria.
+  notes: Independent journalism organization producing evidence-based reporting on
+    political transition, displacement, and human rights in Syria.
   feeds:
   - url: https://syriadirect.org/feed/
     category_hint: society
@@ -56,7 +58,8 @@ sources:
   kind: media
   governing_body: Syria Direct Journalism Foundation
   state_affiliated: false
-  notes: Arabic-language in-depth field reporting across Damascus, Idlib, Daraa, and northeastern Syria.
+  notes: Arabic-language in-depth field reporting across Damascus, Idlib, Daraa, and
+    northeastern Syria.
   feeds:
   - url: https://syriadirect.org/ar/feed/
     category_hint: internal_politics
@@ -68,8 +71,8 @@ sources:
   kind: media
   governing_body: North Press Agency
   state_affiliated: false
-  notes: Independent Syrian news agency based in northeastern Syria covering local administration, security, and civilian
-    life.
+  notes: Independent Syrian news agency based in northeastern Syria covering local
+    administration, security, and civilian life.
   feeds:
   - url: https://npasyria.com/en/feed/
     category_hint: internal_politics
@@ -93,7 +96,8 @@ sources:
   kind: media
   governing_body: Halab Today Foundation
   state_affiliated: false
-  notes: Independent Syrian broadcast and digital platform covering local events in northern and central Syria.
+  notes: Independent Syrian broadcast and digital platform covering local events in
+    northern and central Syria.
   feeds:
   - url: https://halabtodaytv.net/feed
     category_hint: internal_politics
@@ -105,7 +109,8 @@ sources:
   kind: official
   governing_body: National Coalition of Syrian Revolution and Opposition Forces
   state_affiliated: false
-  notes: Official statements, diplomatic engagements, and press releases of the recognized Syrian opposition coalition.
+  notes: Official statements, diplomatic engagements, and press releases of the recognized
+    Syrian opposition coalition.
   feeds:
   - url: https://en.etilaf.org/feed/
     category_hint: foreign_policy
@@ -117,8 +122,8 @@ sources:
   kind: media
   governing_body: SNHR Organization
   state_affiliated: false
-  notes: Primary independent documentation body monitoring casualties, arbitrary detention, and international accountability
-    in Syria.
+  notes: Primary independent documentation body monitoring casualties, arbitrary detention,
+    and international accountability in Syria.
   feeds:
   - url: https://snhr.org/feed/
     category_hint: society
@@ -130,7 +135,8 @@ sources:
   kind: media
   governing_body: Syria News Media Group
   state_affiliated: false
-  notes: Long-established independent Syrian electronic news portal reporting from Damascus and nationwide governorates.
+  notes: Long-established independent Syrian electronic news portal reporting from
+    Damascus and nationwide governorates.
   feeds:
   - url: https://syria.news/rss.php
     category_hint: internal_politics
@@ -142,8 +148,8 @@ sources:
   kind: media
   governing_body: SyriaUntold Association
   state_affiliated: false
-  notes: Independent cultural and investigative journalism platform documenting Syrian civic movements, memory, and political
-    struggles.
+  notes: Independent cultural and investigative journalism platform documenting Syrian
+    civic movements, memory, and political struggles.
   feeds:
   - url: https://syriauntold.com/ar/feed/
     category_hint: society
@@ -173,3 +179,40 @@ sources:
   - url: https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7+OR+%D8%AF%D9%85%D8%B4%D9%82+when:2d&hl=ar&gl=SY&ceid=SY:ar
     section: National News (Arabic)
     category_hint: internal_politics
+- id: bbc_news_me
+  name: BBC News (Middle East)
+  homepage: https://www.bbc.com/news/world/middle_east
+  language: en
+  scope: international
+  kind: media
+  governing_body: BBC (British Broadcasting Corporation)
+  state_affiliated: false
+  notes: Covers the Middle East; only items referencing the country are ingested.
+  feeds:
+  - url: https://feeds.bbci.co.uk/news/world/middle_east/rss.xml
+    category_hint: general
+- id: aljazeera_english
+  name: Al Jazeera English
+  homepage: https://www.aljazeera.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Al Jazeera Media Network
+  state_affiliated: true
+  notes: Global Middle Eastern & developing world coverage; filtered by country mention
+    words.
+  feeds:
+  - url: https://www.aljazeera.com/xml/rss/all.xml
+    category_hint: general
+- id: france24_english
+  name: France 24 (English)
+  homepage: https://www.france24.com/en
+  language: en
+  scope: international
+  kind: media
+  governing_body: France Médias Monde
+  state_affiliated: true
+  notes: International coverage; filtered strictly by country mention words.
+  feeds:
+  - url: https://www.france24.com/en/rss
+    category_hint: general
