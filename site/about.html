@@ -107,7 +107,7 @@
     <h2>How the 11-stage pipeline works</h2>
     <p>A scheduled GitHub Actions runner executes the pipeline daily at 21:17 UTC and publishes static JSON/JS bundles to Cloudflare Pages:</p>
     <div class="pipeline">
-      <div class="step"><b>01 · Ingest</b><span>Polls 760+ RSS/Atom and news feeds via curl with Media Cloud-inspired HTTP 304 conditional GETs (ETag/Last-Modified), tracking query parameter stripping, exponential backoff error quarantine, and direct SQLite article ingestion of verified GDELT 2.0 real-time conflict URLs.</span></div>
+      <div class="step"><b>01 · Ingest</b><span>Polls 1,360+ RSS/Atom and news feeds via curl with Media Cloud-inspired HTTP 304 conditional GETs (ETag/Last-Modified), tracking query parameter stripping, exponential backoff error quarantine, and direct SQLite article ingestion of verified GDELT 2.0 real-time conflict URLs.</span></div>
       <div class="step"><b>02 · Extract</b><span>Fetches full article text with Trafilatura for domestic and accessible sources.</span></div>
       <div class="step"><b>03 · Normalise</b><span>Applies Unicode NFC normalisation (crucial for Vietnamese diacritics and Khmer script).</span></div>
       <div class="step"><b>04 · Relevance</b><span>Filters out sports/lifestyle sections and requires country mentions on world feeds.</span></div>

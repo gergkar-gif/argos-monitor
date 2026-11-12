@@ -33,8 +33,7 @@ sources:
   kind: media
   governing_body: City Compass Media
   state_affiliated: false
-  notes: Independent English-language Romanian news platform covering governance,
-    business, and Black Sea security.
+  notes: Independent English-language Romanian news platform covering governance, business, and Black Sea security.
   feeds:
   - url: https://www.romania-insider.com/rss
     category_hint: general
@@ -63,7 +62,6 @@ sources:
   feeds:
   - url: https://www.hotnews.ro/rss
     category_hint: internal_politics
-
 - id: adevarul_ro
   name: Adevărul
   homepage: https://adevarul.ro
@@ -76,7 +74,6 @@ sources:
   feeds:
   - url: https://adevarul.ro/rss/
     category_hint: internal_politics
-
 - id: libertatea_ro
   name: Libertatea
   homepage: https://www.libertatea.ro
@@ -89,7 +86,6 @@ sources:
   feeds:
   - url: https://www.libertatea.ro/feed
     category_hint: general
-
 - id: spotmedia_ro
   name: Spotmedia
   homepage: https://spotmedia.ro
@@ -102,7 +98,6 @@ sources:
   feeds:
   - url: https://spotmedia.ro/feed
     category_hint: internal_politics
-
 - id: europafm_ro
   name: Europa FM Romania
   homepage: https://www.europafm.ro
@@ -115,7 +110,6 @@ sources:
   feeds:
   - url: https://www.europafm.ro/feed/
     category_hint: internal_politics
-
 - id: jurnalul_ro
   name: Jurnalul Național
   homepage: https://jurnalul.ro
@@ -128,7 +122,6 @@ sources:
   feeds:
   - url: https://jurnalul.ro/rss/
     category_hint: internal_politics
-
 - id: romania24_ro
   name: Romania24
   homepage: https://romania24.ro
@@ -141,3 +134,16 @@ sources:
   feeds:
   - url: https://romania24.ro/feed/
     category_hint: general
+- id: gnews_romania_ro
+  name: Google News (Romania National News - Romanian)
+  homepage: https://news.google.com
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=Rom%C3%A2nia+OR+Bucure%C8%99ti+OR+Guvern+when:2d&hl=ro&gl=RO&ceid=RO:ro
+    section: National News (Romanian)
+    category_hint: internal_politics

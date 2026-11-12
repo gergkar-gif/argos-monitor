@@ -1,176 +1,177 @@
 sources:
-  - id: spa_en
-    name: Saudi Press Agency (English)
-    homepage: https://www.spa.gov.sa/en
-    language: en
-    scope: domestic
-    kind: official
-    governing_body: "Ministry of Media (Kingdom of Saudi Arabia)"
-    state_affiliated: true
-    notes: "Official statutory wire agency of the Kingdom of Saudi Arabia."
-    feeds:
-      - url: https://www.spa.gov.sa/en/rss/General.xml
-        category_hint: internal_politics
-      - url: https://www.spa.gov.sa/en/rss/Economic.xml
-        category_hint: economics
-
-  - id: arab_news
-    name: Arab News
-    homepage: https://www.arabnews.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Saudi Research and Media Group (SRMG)"
-    state_affiliated: true
-    notes: "Leading English-language Saudi daily paper of record."
-    feeds:
-      - url: https://www.arabnews.com/rss.xml
-        category_hint: internal_politics
-      - url: https://www.arabnews.com/cat/4/rss.xml
-        category_hint: economics
-
-  - id: asharq_alawsat_en
-    name: Asharq Al-Awsat (English)
-    homepage: https://english.aawsat.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Saudi Research and Media Group (SRMG)"
-    state_affiliated: true
-    notes: "Pan-Arab international broadsheet owned by Saudi media group."
-    feeds:
-      - url: https://english.aawsat.com/feed/all
-        category_hint: internal_politics
-
-  - id: al_arabiya_en
-    name: Al Arabiya (English)
-    homepage: https://english.alarabiya.net
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "MBC Group / Saudi State Shareholding"
-    state_affiliated: true
-    notes: "Saudi-owned regional broadcast network."
-    feeds:
-      - url: https://english.alarabiya.net/.mrss/en.xml
-        category_hint: internal_politics
-
-  - id: okaz_sa
-    name: Okaz
-    homepage: https://www.okaz.com.sa
-    language: ar
-    scope: domestic
-    kind: media
-    governing_body: "Okaz Organization for Press and Publication"
-    state_affiliated: true
-    notes: "Leading Saudi daily broadsheet newspaper published in Jeddah covering national decrees, regional policy, and society."
-    feeds:
-      - url: https://www.okaz.com.sa/rssFeed/190
-        category_hint: internal_politics
-
-  - id: al_bilad_daily
-    name: Al Bilad Daily
-    homepage: https://albiladdaily.com
-    language: ar
-    scope: domestic
-    kind: media
-    governing_body: "Al Bilad Press and Publishing House"
-    state_affiliated: true
-    notes: "Oldest daily newspaper in Saudi Arabia, founded in 1932, covering royal court announcements and national affairs."
-    feeds:
-      - url: https://albiladdaily.com/feed/
-        category_hint: internal_politics
-
-  - id: al_weeam_sa
-    name: Al Weeam
-    homepage: https://www.alweeam.com.sa
-    language: ar
-    scope: domestic
-    kind: media
-    governing_body: "Al Weeam Electronic Publishing"
-    state_affiliated: false
-    notes: "First Saudi electronic newspaper, founded in 2006, covering local security, ministries, and civil society."
-    feeds:
-      - url: https://www.alweeam.com.sa/feed/
-        category_hint: internal_politics
-
-  - id: ajel_sa
-    name: Ajel
-    homepage: https://ajel.sa
-    language: ar
-    scope: domestic
-    kind: media
-    governing_body: "Ajel Media Agency"
-    state_affiliated: false
-    notes: "Widely read Saudi digital news platform delivering real-time coverage of government decisions and economic reforms."
-    feeds:
-      - url: https://ajel.sa/feed/
-        category_hint: internal_politics
-
-  - id: al_watan_sa
-    name: Al Watan (Saudi Arabia)
-    homepage: https://www.alwatan.com.sa
-    language: ar
-    scope: domestic
-    kind: media
-    governing_body: "Aseer Publishing and Distribution Company"
-    state_affiliated: true
-    notes: "Major national daily newspaper based in Abha with regional bureaus across Saudi Arabia."
-    feeds:
-      - url: https://www.alwatan.com.sa/feed/
-        category_hint: internal_politics
-
-  - id: al_mowaten_sa
-    name: Al Mowaten
-    homepage: https://www.almowaten.net
-    language: ar
-    scope: domestic
-    kind: media
-    governing_body: "Al Mowaten Electronic Newspaper"
-    state_affiliated: false
-    notes: "Saudi digital daily reporting on public sector initiatives, Vision 2030 developments, and citizen affairs."
-    feeds:
-      - url: https://www.almowaten.net/feed/
-        category_hint: internal_politics
-
-  - id: google_news_saudi_politics
-    name: Google News (Saudi Leadership & Governance)
-    homepage: https://news.google.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Google LLC"
-    state_affiliated: false
-    aggregator: google_news
-    notes: "Aggregator tracking King Salman, Crown Prince MBS, and Royal Court decrees."
-    feeds:
-      - url: "https://news.google.com/rss/search?q=%22Mohammed+bin+Salman%22+OR+MBS+OR+%22Saudi+cabinet%22+OR+%22Royal+Court%22+Riyadh+when:3d&hl=en-SA&gl=SA&ceid=SA:en"
-        category_hint: internal_politics
-
-  - id: google_news_saudi_economy
-    name: Google News (Saudi Aramco, OPEC & Vision 2030)
-    homepage: https://news.google.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Google LLC"
-    state_affiliated: false
-    aggregator: google_news
-    notes: "Aggregator tracking Aramco, OPEC+ production decisions, PIF investments, and NEOM."
-    feeds:
-      - url: "https://news.google.com/rss/search?q=%22Saudi+Aramco%22+OR+OPEC+OR+%22Public+Investment+Fund%22+OR+%22Vision+2030%22+OR+NEOM+when:3d&hl=en-SA&gl=SA&ceid=SA:en"
-        category_hint: economics
-
-  - id: google_news_saudi_security
-    name: Google News (Saudi Defense & Regional Diplomacy)
-    homepage: https://news.google.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Google LLC"
-    state_affiliated: false
-    aggregator: google_news
-    notes: "Aggregator tracking Saudi diplomacy with US, Iran, Yemen, and defense procurements."
-    feeds:
-      - url: "https://news.google.com/rss/search?q=%22Saudi+foreign+ministry%22+OR+%22Faisal+bin+Farhan%22+OR+%22Saudi+defense%22+OR+%22Red+Sea%22+Saudi+when:3d&hl=en-SA&gl=SA&ceid=SA:en"
-        category_hint: defence_security
+- id: spa_en
+  name: Saudi Press Agency (English)
+  homepage: https://www.spa.gov.sa/en
+  language: en
+  scope: domestic
+  kind: official
+  governing_body: Ministry of Media (Kingdom of Saudi Arabia)
+  state_affiliated: true
+  notes: Official statutory wire agency of the Kingdom of Saudi Arabia.
+  feeds:
+  - url: https://www.spa.gov.sa/en/rss/General.xml
+    category_hint: internal_politics
+  - url: https://www.spa.gov.sa/en/rss/Economic.xml
+    category_hint: economics
+- id: arab_news
+  name: Arab News
+  homepage: https://www.arabnews.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Saudi Research and Media Group (SRMG)
+  state_affiliated: true
+  notes: Leading English-language Saudi daily paper of record.
+  feeds:
+  - url: https://www.arabnews.com/rss.xml
+    category_hint: internal_politics
+  - url: https://www.arabnews.com/cat/4/rss.xml
+    category_hint: economics
+- id: asharq_alawsat_en
+  name: Asharq Al-Awsat (English)
+  homepage: https://english.aawsat.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Saudi Research and Media Group (SRMG)
+  state_affiliated: true
+  notes: Pan-Arab international broadsheet owned by Saudi media group.
+  feeds:
+  - url: https://english.aawsat.com/feed/all
+    category_hint: internal_politics
+- id: al_arabiya_en
+  name: Al Arabiya (English)
+  homepage: https://english.alarabiya.net
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: MBC Group / Saudi State Shareholding
+  state_affiliated: true
+  notes: Saudi-owned regional broadcast network.
+  feeds:
+  - url: https://english.alarabiya.net/.mrss/en.xml
+    category_hint: internal_politics
+- id: okaz_sa
+  name: Okaz
+  homepage: https://www.okaz.com.sa
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: Okaz Organization for Press and Publication
+  state_affiliated: true
+  notes: Leading Saudi daily broadsheet newspaper published in Jeddah covering national decrees, regional policy, and society.
+  feeds:
+  - url: https://www.okaz.com.sa/rssFeed/190
+    category_hint: internal_politics
+- id: al_bilad_daily
+  name: Al Bilad Daily
+  homepage: https://albiladdaily.com
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: Al Bilad Press and Publishing House
+  state_affiliated: true
+  notes: Oldest daily newspaper in Saudi Arabia, founded in 1932, covering royal court announcements and national affairs.
+  feeds:
+  - url: https://albiladdaily.com/feed/
+    category_hint: internal_politics
+- id: al_weeam_sa
+  name: Al Weeam
+  homepage: https://www.alweeam.com.sa
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: Al Weeam Electronic Publishing
+  state_affiliated: false
+  notes: First Saudi electronic newspaper, founded in 2006, covering local security, ministries, and civil society.
+  feeds:
+  - url: https://www.alweeam.com.sa/feed/
+    category_hint: internal_politics
+- id: ajel_sa
+  name: Ajel
+  homepage: https://ajel.sa
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: Ajel Media Agency
+  state_affiliated: false
+  notes: Widely read Saudi digital news platform delivering real-time coverage of government decisions and economic reforms.
+  feeds:
+  - url: https://ajel.sa/feed/
+    category_hint: internal_politics
+- id: al_watan_sa
+  name: Al Watan (Saudi Arabia)
+  homepage: https://www.alwatan.com.sa
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: Aseer Publishing and Distribution Company
+  state_affiliated: true
+  notes: Major national daily newspaper based in Abha with regional bureaus across Saudi Arabia.
+  feeds:
+  - url: https://www.alwatan.com.sa/feed/
+    category_hint: internal_politics
+- id: al_mowaten_sa
+  name: Al Mowaten
+  homepage: https://www.almowaten.net
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: Al Mowaten Electronic Newspaper
+  state_affiliated: false
+  notes: Saudi digital daily reporting on public sector initiatives, Vision 2030 developments, and citizen affairs.
+  feeds:
+  - url: https://www.almowaten.net/feed/
+    category_hint: internal_politics
+- id: google_news_saudi_politics
+  name: Google News (Saudi Leadership & Governance)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator tracking King Salman, Crown Prince MBS, and Royal Court decrees.
+  feeds:
+  - url: https://news.google.com/rss/search?q=%22Mohammed+bin+Salman%22+OR+MBS+OR+%22Saudi+cabinet%22+OR+%22Royal+Court%22+Riyadh+when:3d&hl=en-SA&gl=SA&ceid=SA:en
+    category_hint: internal_politics
+- id: google_news_saudi_economy
+  name: Google News (Saudi Aramco, OPEC & Vision 2030)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator tracking Aramco, OPEC+ production decisions, PIF investments, and NEOM.
+  feeds:
+  - url: https://news.google.com/rss/search?q=%22Saudi+Aramco%22+OR+OPEC+OR+%22Public+Investment+Fund%22+OR+%22Vision+2030%22+OR+NEOM+when:3d&hl=en-SA&gl=SA&ceid=SA:en
+    category_hint: economics
+- id: google_news_saudi_security
+  name: Google News (Saudi Defense & Regional Diplomacy)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator tracking Saudi diplomacy with US, Iran, Yemen, and defense procurements.
+  feeds:
+  - url: https://news.google.com/rss/search?q=%22Saudi+foreign+ministry%22+OR+%22Faisal+bin+Farhan%22+OR+%22Saudi+defense%22+OR+%22Red+Sea%22+Saudi+when:3d&hl=en-SA&gl=SA&ceid=SA:en
+    category_hint: defence_security
+- id: gnews_saudi_arabia_ar
+  name: Google News (Saudi Arabia National News - Arabic)
+  homepage: https://news.google.com
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9+OR+%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6+OR+%D9%88%D9%84%D9%8A+%D8%A7%D9%84%D8%B9%D9%87%D8%AF+when:2d&hl=ar&gl=SA&ceid=SA:ar
+    section: National News (Arabic)
+    category_hint: internal_politics

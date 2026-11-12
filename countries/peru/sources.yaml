@@ -7,8 +7,7 @@ sources:
   kind: official
   governing_body: Editora Perú (State news agency)
   state_affiliated: true
-  notes: Statutory national wire agency of Peru covering official executive decrees,
-    ministerial actions, and regional developments.
+  notes: Statutory national wire agency of Peru covering official executive decrees, ministerial actions, and regional developments.
   feeds:
   - url: https://andina.pe/agencia/rss/politica.aspx
     category_hint: internal_politics
@@ -22,8 +21,7 @@ sources:
   kind: media
   governing_body: Empresa Editora El Comercio
   state_affiliated: false
-  notes: Lima paper of record founded in 1839 covering institutional politics, justice
-    investigations, and macroeconomic policy.
+  notes: Lima paper of record founded in 1839 covering institutional politics, justice investigations, and macroeconomic policy.
   feeds:
   - url: https://elcomercio.pe/arc/outboundfeeds/rss/category/politica/
     category_hint: internal_politics
@@ -35,8 +33,7 @@ sources:
   kind: media
   governing_body: Grupo El Comercio
   state_affiliated: false
-  notes: Premier Peruvian financial and economic daily covering mining investments,
-    central bank decisions, and trade.
+  notes: Premier Peruvian financial and economic daily covering mining investments, central bank decisions, and trade.
   feeds:
   - url: https://gestion.pe/arc/outboundfeeds/rss/category/economia/
     category_hint: economics
@@ -61,11 +58,11 @@ sources:
   kind: media
   governing_body: Grupo RPP (Radio Programas del Perú)
   state_affiliated: false
-  notes: Major Peruvian radio and digital network covering nationwide breaking news, congressional debates, and executive policy.
+  notes: Major Peruvian radio and digital network covering nationwide breaking news, congressional debates, and executive
+    policy.
   feeds:
   - url: https://rpp.pe/feed
     category_hint: general
-
 - id: caretas_pe
   name: Caretas
   homepage: https://caretas.pe
@@ -74,11 +71,11 @@ sources:
   kind: media
   governing_body: Empresa Editora Caretas SA
   state_affiliated: false
-  notes: Historic Peruvian political weekly magazine founded in 1950, renowned for investigative reporting on corruption and power.
+  notes: Historic Peruvian political weekly magazine founded in 1950, renowned for investigative reporting on corruption and
+    power.
   feeds:
   - url: https://caretas.pe/feed/
     category_hint: internal_politics
-
 - id: elbuho_pe
   name: El Búho
   homepage: https://elbuho.pe
@@ -87,11 +84,11 @@ sources:
   kind: media
   governing_body: El Búho Comunicaciones
   state_affiliated: false
-  notes: Leading independent regional media of Southern Peru (Arequipa) covering regional politics, mining disputes, and social issues.
+  notes: Leading independent regional media of Southern Peru (Arequipa) covering regional politics, mining disputes, and social
+    issues.
   feeds:
   - url: https://elbuho.pe/feed/
     category_hint: internal_politics
-
 - id: saludconlupa_pe
   name: Salud con Lupa
   homepage: https://saludconlupa.com
@@ -104,7 +101,6 @@ sources:
   feeds:
   - url: https://saludconlupa.com/feed/
     category_hint: internal_politics
-
 - id: inforegion_pe
   name: Inforegión
   homepage: https://inforegion.pe
@@ -117,7 +113,6 @@ sources:
   feeds:
   - url: https://inforegion.pe/feed/
     category_hint: defence_security
-
 - id: wayka_pe
   name: Wayka
   homepage: https://wayka.pe
@@ -130,7 +125,6 @@ sources:
   feeds:
   - url: https://wayka.pe/feed/
     category_hint: internal_politics
-
 - id: andina_en_pe
   name: Agencia Andina (English)
   homepage: https://andina.pe/ingles
@@ -139,7 +133,21 @@ sources:
   kind: official
   governing_body: Editora Perú (State news agency)
   state_affiliated: true
-  notes: English-language statutory wire service covering Peruvian diplomatic bilateral ties, macroeconomic indicators, and trade.
+  notes: English-language statutory wire service covering Peruvian diplomatic bilateral ties, macroeconomic indicators, and
+    trade.
   feeds:
   - url: https://andina.pe/ingles/rss/noticias.aspx
     category_hint: foreign_policy
+- id: gnews_peru_es
+  name: Google News (Peru National News - Spanish)
+  homepage: https://news.google.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=Per%C3%BA+OR+Lima+OR+Gobierno+when:2d&hl=es-419&gl=PE&ceid=PE:es-419
+    section: National News (Spanish)
+    category_hint: internal_politics

@@ -43,7 +43,8 @@ sources:
   kind: media
   governing_body: Syria Direct Journalism Foundation
   state_affiliated: false
-  notes: Independent journalism organization producing evidence-based reporting on political transition, displacement, and human rights in Syria.
+  notes: Independent journalism organization producing evidence-based reporting on political transition, displacement, and
+    human rights in Syria.
   feeds:
   - url: https://syriadirect.org/feed/
     category_hint: society
@@ -67,7 +68,8 @@ sources:
   kind: media
   governing_body: North Press Agency
   state_affiliated: false
-  notes: Independent Syrian news agency based in northeastern Syria covering local administration, security, and civilian life.
+  notes: Independent Syrian news agency based in northeastern Syria covering local administration, security, and civilian
+    life.
   feeds:
   - url: https://npasyria.com/en/feed/
     category_hint: internal_politics
@@ -115,7 +117,8 @@ sources:
   kind: media
   governing_body: SNHR Organization
   state_affiliated: false
-  notes: Primary independent documentation body monitoring casualties, arbitrary detention, and international accountability in Syria.
+  notes: Primary independent documentation body monitoring casualties, arbitrary detention, and international accountability
+    in Syria.
   feeds:
   - url: https://snhr.org/feed/
     category_hint: society
@@ -139,7 +142,8 @@ sources:
   kind: media
   governing_body: SyriaUntold Association
   state_affiliated: false
-  notes: Independent cultural and investigative journalism platform documenting Syrian civic movements, memory, and political struggles.
+  notes: Independent cultural and investigative journalism platform documenting Syrian civic movements, memory, and political
+    struggles.
   feeds:
   - url: https://syriauntold.com/ar/feed/
     category_hint: society
@@ -156,3 +160,16 @@ sources:
   - url: https://news.google.com/rss/search?q=(Syria+OR+Damascus)+(Assad+OR+airstrike+OR+ceasefire+OR+diplomacy)+when:3d&hl=en-US&gl=US&ceid=US:en
     section: Security & Diplomacy
     category_hint: defence_security
+- id: gnews_syria_ar
+  name: Google News (Syria National News - Arabic)
+  homepage: https://news.google.com
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7+OR+%D8%AF%D9%85%D8%B4%D9%82+when:2d&hl=ar&gl=SY&ceid=SY:ar
+    section: National News (Arabic)
+    category_hint: internal_politics

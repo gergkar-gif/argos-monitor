@@ -1,177 +1,179 @@
 sources:
-  - id: dawn
-    name: Dawn
-    homepage: https://www.dawn.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Pakistan Herald Publications"
-    state_affiliated: false
-    notes: "Pakistan's premier English-language newspaper of record, founded by Muhammad Ali Jinnah."
-    feeds:
-      - url: https://www.dawn.com/feeds/home/
-        category_hint: internal_politics
-      - url: https://www.dawn.com/feeds/business/
-        category_hint: economics
-
-  - id: express_tribune
-    name: The Express Tribune
-    homepage: https://tribune.com.pk
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Lakson Group / International New York Times affiliate"
-    state_affiliated: false
-    notes: "Leading English-language broadsheet covering politics, economy and security."
-    feeds:
-      - url: https://tribune.com.pk/feed/pakistan
-        category_hint: internal_politics
-      - url: https://tribune.com.pk/feed/business
-        category_hint: economics
-
-  - id: the_news_pk
-    name: The News International
-    homepage: https://www.thenews.com.pk
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Jang Media Group"
-    state_affiliated: false
-    notes: "One of the largest English-language daily circulations in Pakistan."
-    feeds:
-      - url: https://www.thenews.com.pk/rss/1/1
-        category_hint: internal_politics
-      - url: https://www.thenews.com.pk/rss/1/2
-        category_hint: economics
-
-  - id: radio_pakistan
-    name: Radio Pakistan
-    homepage: https://radio.gov.pk
-    language: en
-    scope: domestic
-    kind: official
-    governing_body: "Pakistan Broadcasting Corporation (PBC)"
-    state_affiliated: true
-    notes: "Official public radio broadcaster of Pakistan."
-    feeds:
-      - url: https://radio.gov.pk/rss/national
-        category_hint: internal_politics
-
-  - id: google_news_pakistan_politics
-    name: Google News (Pakistan Government & Politics)
-    homepage: https://news.google.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Google LLC"
-    state_affiliated: false
-    aggregator: google_news
-    notes: "Aggregator tracking Shehbaz Sharif, Asim Munir, Parliament, and PTI."
-    feeds:
-      - url: "https://news.google.com/rss/search?q=%22Shehbaz+Sharif%22+OR+%22Asim+Munir%22+OR+%22Imran+Khan%22+OR+PTI+Pakistan+when:3d&hl=en-PK&gl=PK&ceid=PK:en"
-        category_hint: internal_politics
-
-  - id: google_news_pakistan_economy
-    name: Google News (Pakistan Economy, IMF & State Bank)
-    homepage: https://news.google.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Google LLC"
-    state_affiliated: false
-    aggregator: google_news
-    notes: "Aggregator tracking IMF loan reviews, State Bank rates, privatization, and inflation."
-    feeds:
-      - url: "https://news.google.com/rss/search?q=%22State+Bank+of+Pakistan%22+OR+IMF+Pakistan+OR+%22Pakistani+rupee%22+OR+CPEC+when:3d&hl=en-PK&gl=PK&ceid=PK:en"
-        category_hint: economics
-
-  - id: google_news_pakistan_security
-    name: Google News (Pakistan Security & Counter-Terrorism)
-    homepage: https://news.google.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Google LLC"
-    state_affiliated: false
-    aggregator: google_news
-    notes: "Aggregator tracking military operations, TTP attacks, and Balochistan insurgency."
-    feeds:
-      - url: "https://news.google.com/rss/search?q=%22Pakistan+Army%22+OR+ISPR+OR+TTP+OR+BLA+Balochistan+when:3d&hl=en-PK&gl=PK&ceid=PK:en"
-        category_hint: defence_security
-  - id: nation_pk
-    name: The Nation
-    homepage: https://www.nation.com.pk
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Nawa-i-Waqt Group"
-    state_affiliated: false
-    notes: "Historic English-language daily newspaper published from Lahore, Islamabad and Karachi."
-    feeds:
-      - url: https://www.nation.com.pk/rss/national
-        category_hint: internal_politics
-
-  - id: propakistani
-    name: ProPakistani
-    homepage: https://propakistani.pk
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "ProPakistani Media"
-    state_affiliated: false
-    notes: "Leading digital news platform covering Pakistan's digital economy, telecom, and business regulations."
-    feeds:
-      - url: https://propakistani.pk/feed/
-        category_hint: economics
-
-  - id: dailypakistan
-    name: Daily Pakistan
-    homepage: https://en.dailypakistan.com.pk
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Daily Pakistan Media Group"
-    state_affiliated: false
-    notes: "English-language digital news outlet covering national politics, parliament, and regional affairs."
-    feeds:
-      - url: https://en.dailypakistan.com.pk/feed/
-        category_hint: internal_politics
-
-  - id: dailytimes_pk
-    name: Daily Times
-    homepage: https://dailytimes.com.pk
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Media Times Limited"
-    state_affiliated: false
-    notes: "Prominent national English-language broadsheet advocating liberal and democratic perspectives."
-    feeds:
-      - url: https://dailytimes.com.pk/feed/
-        category_hint: internal_politics
-
-  - id: app_gov_pk
-    name: Associated Press of Pakistan (APP)
-    homepage: https://www.app.com.pk
-    language: en
-    scope: domestic
-    kind: official
-    governing_body: "Ministry of Information & Broadcasting (Government of Pakistan)"
-    state_affiliated: true
-    notes: "Statutory national wire news agency of Pakistan providing official executive and diplomatic coverage."
-    feeds:
-      - url: https://www.app.com.pk/feed/
-        category_hint: foreign_policy
-
-  - id: geo_tv
-    name: Geo News
-    homepage: https://www.geo.tv
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Jang Media Group"
-    state_affiliated: false
-    notes: "Flagship private 24-hour television and digital network with nationwide investigative reporting."
-    feeds:
-      - url: https://www.geo.tv/rss/1/1
-        category_hint: internal_politics
+- id: dawn
+  name: Dawn
+  homepage: https://www.dawn.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Pakistan Herald Publications
+  state_affiliated: false
+  notes: Pakistan's premier English-language newspaper of record, founded by Muhammad Ali Jinnah.
+  feeds:
+  - url: https://www.dawn.com/feeds/home/
+    category_hint: internal_politics
+  - url: https://www.dawn.com/feeds/business/
+    category_hint: economics
+- id: express_tribune
+  name: The Express Tribune
+  homepage: https://tribune.com.pk
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Lakson Group / International New York Times affiliate
+  state_affiliated: false
+  notes: Leading English-language broadsheet covering politics, economy and security.
+  feeds:
+  - url: https://tribune.com.pk/feed/pakistan
+    category_hint: internal_politics
+  - url: https://tribune.com.pk/feed/business
+    category_hint: economics
+- id: the_news_pk
+  name: The News International
+  homepage: https://www.thenews.com.pk
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Jang Media Group
+  state_affiliated: false
+  notes: One of the largest English-language daily circulations in Pakistan.
+  feeds:
+  - url: https://www.thenews.com.pk/rss/1/1
+    category_hint: internal_politics
+  - url: https://www.thenews.com.pk/rss/1/2
+    category_hint: economics
+- id: radio_pakistan
+  name: Radio Pakistan
+  homepage: https://radio.gov.pk
+  language: en
+  scope: domestic
+  kind: official
+  governing_body: Pakistan Broadcasting Corporation (PBC)
+  state_affiliated: true
+  notes: Official public radio broadcaster of Pakistan.
+  feeds:
+  - url: https://radio.gov.pk/rss/national
+    category_hint: internal_politics
+- id: google_news_pakistan_politics
+  name: Google News (Pakistan Government & Politics)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator tracking Shehbaz Sharif, Asim Munir, Parliament, and PTI.
+  feeds:
+  - url: https://news.google.com/rss/search?q=%22Shehbaz+Sharif%22+OR+%22Asim+Munir%22+OR+%22Imran+Khan%22+OR+PTI+Pakistan+when:3d&hl=en-PK&gl=PK&ceid=PK:en
+    category_hint: internal_politics
+- id: google_news_pakistan_economy
+  name: Google News (Pakistan Economy, IMF & State Bank)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator tracking IMF loan reviews, State Bank rates, privatization, and inflation.
+  feeds:
+  - url: https://news.google.com/rss/search?q=%22State+Bank+of+Pakistan%22+OR+IMF+Pakistan+OR+%22Pakistani+rupee%22+OR+CPEC+when:3d&hl=en-PK&gl=PK&ceid=PK:en
+    category_hint: economics
+- id: google_news_pakistan_security
+  name: Google News (Pakistan Security & Counter-Terrorism)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator tracking military operations, TTP attacks, and Balochistan insurgency.
+  feeds:
+  - url: https://news.google.com/rss/search?q=%22Pakistan+Army%22+OR+ISPR+OR+TTP+OR+BLA+Balochistan+when:3d&hl=en-PK&gl=PK&ceid=PK:en
+    category_hint: defence_security
+- id: nation_pk
+  name: The Nation
+  homepage: https://www.nation.com.pk
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Nawa-i-Waqt Group
+  state_affiliated: false
+  notes: Historic English-language daily newspaper published from Lahore, Islamabad and Karachi.
+  feeds:
+  - url: https://www.nation.com.pk/rss/national
+    category_hint: internal_politics
+- id: propakistani
+  name: ProPakistani
+  homepage: https://propakistani.pk
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: ProPakistani Media
+  state_affiliated: false
+  notes: Leading digital news platform covering Pakistan's digital economy, telecom, and business regulations.
+  feeds:
+  - url: https://propakistani.pk/feed/
+    category_hint: economics
+- id: dailypakistan
+  name: Daily Pakistan
+  homepage: https://en.dailypakistan.com.pk
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Daily Pakistan Media Group
+  state_affiliated: false
+  notes: English-language digital news outlet covering national politics, parliament, and regional affairs.
+  feeds:
+  - url: https://en.dailypakistan.com.pk/feed/
+    category_hint: internal_politics
+- id: dailytimes_pk
+  name: Daily Times
+  homepage: https://dailytimes.com.pk
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Media Times Limited
+  state_affiliated: false
+  notes: Prominent national English-language broadsheet advocating liberal and democratic perspectives.
+  feeds:
+  - url: https://dailytimes.com.pk/feed/
+    category_hint: internal_politics
+- id: app_gov_pk
+  name: Associated Press of Pakistan (APP)
+  homepage: https://www.app.com.pk
+  language: en
+  scope: domestic
+  kind: official
+  governing_body: Ministry of Information & Broadcasting (Government of Pakistan)
+  state_affiliated: true
+  notes: Statutory national wire news agency of Pakistan providing official executive and diplomatic coverage.
+  feeds:
+  - url: https://www.app.com.pk/feed/
+    category_hint: foreign_policy
+- id: geo_tv
+  name: Geo News
+  homepage: https://www.geo.tv
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Jang Media Group
+  state_affiliated: false
+  notes: Flagship private 24-hour television and digital network with nationwide investigative reporting.
+  feeds:
+  - url: https://www.geo.tv/rss/1/1
+    category_hint: internal_politics
+- id: gnews_pakistan_ur
+  name: Google News (Pakistan National News - Urdu)
+  homepage: https://news.google.com
+  language: ur
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=%D9%BE%D8%A7%DA%A9%D8%B3%D8%AA%D8%A7%D9%86+OR+%D8%AD%DA%A9%D9%88%D9%85%D8%AA+when:2d&hl=ur&gl=PK&ceid=PK:ur
+    section: National News (Urdu)
+    category_hint: internal_politics

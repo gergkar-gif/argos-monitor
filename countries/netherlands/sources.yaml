@@ -7,8 +7,7 @@ sources:
   kind: media
   governing_body: Nederlandse Omroep Stichting (public broadcaster)
   state_affiliated: false
-  notes: Dutch statutory public news organization providing independent public-service
-    reporting.
+  notes: Dutch statutory public news organization providing independent public-service reporting.
   feeds:
   - url: https://feeds.nos.nl/nosnieuwsalgemeen
     category_hint: internal_politics
@@ -38,8 +37,7 @@ sources:
   kind: media
   governing_body: Dutch News BV
   state_affiliated: false
-  notes: Independent English-language Dutch news daily covering cabinet policy, economy,
-    and EU affairs.
+  notes: Independent English-language Dutch news daily covering cabinet policy, economy, and EU affairs.
   feeds:
   - url: https://www.dutchnews.nl/feed/
     category_hint: foreign_policy
@@ -139,4 +137,17 @@ sources:
   feeds:
   - url: https://news.google.com/rss/search?q=(Netherlands+OR+Dutch)+(cabinet+OR+election+OR+parliament+OR+asylum)+when:3d&hl=en-US&gl=US&ceid=US:en
     section: Politics & Governance
+    category_hint: internal_politics
+- id: gnews_netherlands_nl
+  name: Google News (Netherlands National News - Dutch)
+  homepage: https://news.google.com
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=Nederland+OR+kabinet+OR+Den+Haag+when:2d&hl=nl&gl=NL&ceid=NL:nl
+    section: National News (Dutch)
     category_hint: internal_politics

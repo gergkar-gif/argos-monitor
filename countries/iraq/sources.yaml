@@ -19,8 +19,7 @@ sources:
   kind: media
   governing_body: Shafaq Media
   state_affiliated: false
-  notes: Independent Iraqi digital news agency covering federal politics, Kurdistan
-    disputes, and security developments.
+  notes: Independent Iraqi digital news agency covering federal politics, Kurdistan disputes, and security developments.
   feeds:
   - url: https://shafaq.com/en/rss/iraq-news
     category_hint: internal_politics
@@ -32,8 +31,7 @@ sources:
   kind: media
   governing_body: Rudaw Media Network
   state_affiliated: false
-  notes: Major Iraqi Kurdish media network broadcasting from Erbil covering KRG affairs,
-    federal treaties, and energy.
+  notes: Major Iraqi Kurdish media network broadcasting from Erbil covering KRG affairs, federal treaties, and energy.
   feeds:
   - url: https://www.rudaw.net/english/rss
     category_hint: internal_politics
@@ -133,4 +131,17 @@ sources:
   notes: Official statutory English wire service of the Iraqi News Agency covering ministerial communiques.
   feeds:
   - url: https://ina.iq/eng/rss.xml
+    category_hint: internal_politics
+- id: gnews_iraq_ar
+  name: Google News (Iraq National News - Arabic)
+  homepage: https://news.google.com
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=%D8%A7%D9%84%D8%B9%D8%B1%D8%A7%D9%82+OR+%D8%A8%D8%BA%D8%AF%D8%A7%D8%AF+OR+%D8%A7%D9%84%D8%AD%D9%83%D9%88%D9%85%D8%A9+%D8%A7%D9%84%D8%B9%D8%B1%D8%A7%D9%82%D9%8A%D8%A9+when:2d&hl=ar&gl=IQ&ceid=IQ:ar
+    section: National News (Arabic)
     category_hint: internal_politics

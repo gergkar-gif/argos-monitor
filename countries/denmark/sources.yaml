@@ -21,8 +21,7 @@ sources:
   kind: media
   governing_body: JP/Politikens Hus
   state_affiliated: false
-  notes: Copenhagen morning broadsheet paper of record covering executive policy,
-    Nordic defense, and welfare economics.
+  notes: Copenhagen morning broadsheet paper of record covering executive policy, Nordic defense, and welfare economics.
   feeds:
   - url: https://politiken.dk/rss/indland.rss
     category_hint: internal_politics
@@ -34,8 +33,7 @@ sources:
   kind: media
   governing_body: The Local Europe AB
   state_affiliated: false
-  notes: Independent English-language Danish news daily covering cabinet decrees,
-    immigration rules, and economy.
+  notes: Independent English-language Danish news daily covering cabinet decrees, immigration rules, and economy.
   feeds:
   - url: https://www.thelocal.dk/feed
     category_hint: general
@@ -148,3 +146,16 @@ sources:
   feeds:
   - url: https://journalisten.dk/feed/
     category_hint: general
+- id: gnews_denmark_da
+  name: Google News (Denmark National News - Danish)
+  homepage: https://news.google.com
+  language: da
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=Danmark+OR+regeringen+OR+Folketinget+when:2d&hl=da&gl=DK&ceid=DK:da
+    section: National News (Danish)
+    category_hint: internal_politics

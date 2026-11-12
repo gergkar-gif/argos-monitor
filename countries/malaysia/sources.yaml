@@ -1,177 +1,190 @@
-# Malaysia source registry (decision D15).
-# Combines independent Malaysian digital dailies (Free Malaysia Today, Malay Mail), national and financial press via Google News (The Star, New Straits Times, The Edge, Malaysiakini), national news agency Bernama via Google News, regional Singapore coverage, and international wires.
-
 sources:
-  - id: fmt_my
-    name: Free Malaysia Today (FMT)
-    homepage: https://www.freemalaysiatoday.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: FMT Media Sdn Bhd (independent bilingual daily portal in Petaling Jaya)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.freemalaysiatoday.com/feed/", section: Top News, category_hint: general}
-
-  - id: malaymail_my
-    name: Malay Mail
-    homepage: https://www.malaymail.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: Malay Mail Sdn Bhd (established national daily newspaper of record)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.malaymail.com/feed/rss/malaysia", section: Malaysia, category_hint: general}
-
-  - id: gnews_my_domestic
-    name: The Star / New Straits Times / The Edge (National Press via Google News)
-    homepage: https://www.thestar.com.my
-    language: en
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: Star Media Group / Media Prima / The Edge Communications
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:thestar.com.my+OR+site:nst.com.my+OR+site:theedgemalaysia.com)+when:1d&hl=en-MY&gl=MY&ceid=MY:en", section: Top Stories, category_hint: general}
-
-  - id: gnews_my_official
-    name: Bernama (Malaysian National News Agency via Google News)
-    homepage: https://www.bernama.com
-    language: en
-    scope: domestic
-    kind: official
-    aggregator: google_news
-    governing_body: Pertubuhan Berita Nasional Malaysia (BERNAMA, statutory news agency)
-    state_affiliated: true
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:bernama.com+when:7d&hl=en-MY&gl=MY&ceid=MY:en", section: Bernama General, category_hint: general}
-
-  - id: gnews_my_abroad
-    name: The Straits Times / CNA (Regional ASEAN Coverage of Malaysia via Google News)
-    homepage: https://www.straitstimes.com
-    language: en
-    scope: abroad_local
-    kind: media
-    aggregator: google_news
-    governing_body: SPH Media & Mediacorp (Singapore regional reporting on Malaysia)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:straitstimes.com+OR+site:channelnewsasia.com)+(Malaysia+OR+Anwar)+when:7d&hl=en-SG&gl=SG&ceid=SG:en", section: Regional, category_hint: general}
-
-  - id: gnews_en_my
-    name: Google News (Malaysia - International)
-    homepage: https://news.google.com
-    language: en
-    scope: international
-    kind: media
-    aggregator: google_news
-    governing_body: n/a (aggregator)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=Malaysia+(Kuala+Lumpur+OR+Anwar+OR+parliament+OR+MACC)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Malaysia politics & governance, category_hint: internal_politics}
-      - {url: "https://news.google.com/rss/search?q=Malaysia+(ASEAN+OR+%22South+China+Sea%22+OR+semiconductor+OR+ringgit+OR+Petronas)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Malaysia economy & diplomacy, category_hint: foreign_policy}
-  - id: themalaysianinsight
-    name: The Malaysian Insight
-    homepage: https://www.themalaysianinsight.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "The Malaysian Insight Sdn Bhd"
-    state_affiliated: false
-    notes: "Independent bilingual digital news site covering federal politics, civil society, and electoral dynamics."
-    feeds:
-      - url: https://www.themalaysianinsight.com/feed
-        category_hint: internal_politics
-
-  - id: malaysiakini_direct
-    name: Malaysiakini
-    homepage: https://www.malaysiakini.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Mkini Dotcom Sdn Bhd"
-    state_affiliated: false
-    notes: "Pioneer independent investigative portal founded in 1999 covering political corruption, human rights, and parliament."
-    feeds:
-      - url: https://www.malaysiakini.com/rss/en/news.rss
-        category_hint: internal_politics
-
-  - id: businesstoday_my
-    name: Business Today Malaysia
-    homepage: https://www.businesstoday.com.my
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Reach Publishing Sdn Bhd"
-    state_affiliated: false
-    notes: "Leading Malaysian business and economic publication covering Bank Negara decisions, Bursa Malaysia, and fiscal policy."
-    feeds:
-      - url: https://www.businesstoday.com.my/feed/
-        category_hint: economics
-
-  - id: scoop_my
-    name: Scoop
-    homepage: https://scoop.my
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Big Boom Media Sdn Bhd"
-    state_affiliated: false
-    notes: "Independent news portal focusing on institutional reforms, governance, and investigative current affairs."
-    feeds:
-      - url: https://scoop.my/feed/
-        category_hint: internal_politics
-
-  - id: twentytwo13
-    name: Twentytwo13
-    homepage: https://twentytwo13.my
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Twentytwo13 Media"
-    state_affiliated: false
-    notes: "Independent news and commentary website covering Malaysian public policy, urban governance, and sports."
-    feeds:
-      - url: https://twentytwo13.my/feed/
-        category_hint: general
-
-  - id: focusmalaysia
-    name: Focus Malaysia
-    homepage: https://focusmalaysia.my
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Focus Information Technologies Sdn Bhd"
-    state_affiliated: false
-    notes: "Independent business and corporate news daily tracking corporate mergers, government-linked companies (GLCs), and trade."
-    feeds:
-      - url: https://focusmalaysia.my/feed/
-        category_hint: economics
-
-  - id: dayakdaily
-    name: DayakDaily
-    homepage: https://dayakdaily.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "DayakDaily Media (Sarawak)"
-    state_affiliated: false
-    notes: "Premier East Malaysian digital daily covering Sarawak autonomy, Borneo infrastructure, energy, and native rights."
-    feeds:
-      - url: https://dayakdaily.com/feed/
-        category_hint: internal_politics
-
-  - id: malaysiadateline
-    name: Malaysia Dateline
-    homepage: https://malaysiadateline.com
-    language: ms
-    scope: domestic
-    kind: media
-    governing_body: "MD Media Network"
-    state_affiliated: false
-    notes: "Malay-language political daily focusing on parliamentary affairs, religious and ethnic relations, and coalition politics."
-    feeds:
-      - url: https://malaysiadateline.com/feed/
-        category_hint: internal_politics
+- id: fmt_my
+  name: Free Malaysia Today (FMT)
+  homepage: https://www.freemalaysiatoday.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: FMT Media Sdn Bhd (independent bilingual daily portal in Petaling Jaya)
+  state_affiliated: false
+  feeds:
+  - url: https://www.freemalaysiatoday.com/feed/
+    section: Top News
+    category_hint: general
+- id: malaymail_my
+  name: Malay Mail
+  homepage: https://www.malaymail.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Malay Mail Sdn Bhd (established national daily newspaper of record)
+  state_affiliated: false
+  feeds:
+  - url: https://www.malaymail.com/feed/rss/malaysia
+    section: Malaysia
+    category_hint: general
+- id: gnews_my_domestic
+  name: The Star / New Straits Times / The Edge (National Press via Google News)
+  homepage: https://www.thestar.com.my
+  language: en
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: Star Media Group / Media Prima / The Edge Communications
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:thestar.com.my+OR+site:nst.com.my+OR+site:theedgemalaysia.com)+when:1d&hl=en-MY&gl=MY&ceid=MY:en
+    section: Top Stories
+    category_hint: general
+- id: gnews_my_official
+  name: Bernama (Malaysian National News Agency via Google News)
+  homepage: https://www.bernama.com
+  language: en
+  scope: domestic
+  kind: official
+  aggregator: google_news
+  governing_body: Pertubuhan Berita Nasional Malaysia (BERNAMA, statutory news agency)
+  state_affiliated: true
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:bernama.com+when:7d&hl=en-MY&gl=MY&ceid=MY:en
+    section: Bernama General
+    category_hint: general
+- id: gnews_my_abroad
+  name: The Straits Times / CNA (Regional ASEAN Coverage of Malaysia via Google News)
+  homepage: https://www.straitstimes.com
+  language: en
+  scope: abroad_local
+  kind: media
+  aggregator: google_news
+  governing_body: SPH Media & Mediacorp (Singapore regional reporting on Malaysia)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:straitstimes.com+OR+site:channelnewsasia.com)+(Malaysia+OR+Anwar)+when:7d&hl=en-SG&gl=SG&ceid=SG:en
+    section: Regional
+    category_hint: general
+- id: gnews_en_my
+  name: Google News (Malaysia - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  aggregator: google_news
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=Malaysia+(Kuala+Lumpur+OR+Anwar+OR+parliament+OR+MACC)+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Malaysia politics & governance
+    category_hint: internal_politics
+  - url: https://news.google.com/rss/search?q=Malaysia+(ASEAN+OR+%22South+China+Sea%22+OR+semiconductor+OR+ringgit+OR+Petronas)+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Malaysia economy & diplomacy
+    category_hint: foreign_policy
+- id: themalaysianinsight
+  name: The Malaysian Insight
+  homepage: https://www.themalaysianinsight.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: The Malaysian Insight Sdn Bhd
+  state_affiliated: false
+  notes: Independent bilingual digital news site covering federal politics, civil society, and electoral dynamics.
+  feeds:
+  - url: https://www.themalaysianinsight.com/feed
+    category_hint: internal_politics
+- id: malaysiakini_direct
+  name: Malaysiakini
+  homepage: https://www.malaysiakini.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Mkini Dotcom Sdn Bhd
+  state_affiliated: false
+  notes: Pioneer independent investigative portal founded in 1999 covering political corruption, human rights, and parliament.
+  feeds:
+  - url: https://www.malaysiakini.com/rss/en/news.rss
+    category_hint: internal_politics
+- id: businesstoday_my
+  name: Business Today Malaysia
+  homepage: https://www.businesstoday.com.my
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Reach Publishing Sdn Bhd
+  state_affiliated: false
+  notes: Leading Malaysian business and economic publication covering Bank Negara decisions, Bursa Malaysia, and fiscal policy.
+  feeds:
+  - url: https://www.businesstoday.com.my/feed/
+    category_hint: economics
+- id: scoop_my
+  name: Scoop
+  homepage: https://scoop.my
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Big Boom Media Sdn Bhd
+  state_affiliated: false
+  notes: Independent news portal focusing on institutional reforms, governance, and investigative current affairs.
+  feeds:
+  - url: https://scoop.my/feed/
+    category_hint: internal_politics
+- id: twentytwo13
+  name: Twentytwo13
+  homepage: https://twentytwo13.my
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Twentytwo13 Media
+  state_affiliated: false
+  notes: Independent news and commentary website covering Malaysian public policy, urban governance, and sports.
+  feeds:
+  - url: https://twentytwo13.my/feed/
+    category_hint: general
+- id: focusmalaysia
+  name: Focus Malaysia
+  homepage: https://focusmalaysia.my
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Focus Information Technologies Sdn Bhd
+  state_affiliated: false
+  notes: Independent business and corporate news daily tracking corporate mergers, government-linked companies (GLCs), and
+    trade.
+  feeds:
+  - url: https://focusmalaysia.my/feed/
+    category_hint: economics
+- id: dayakdaily
+  name: DayakDaily
+  homepage: https://dayakdaily.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: DayakDaily Media (Sarawak)
+  state_affiliated: false
+  notes: Premier East Malaysian digital daily covering Sarawak autonomy, Borneo infrastructure, energy, and native rights.
+  feeds:
+  - url: https://dayakdaily.com/feed/
+    category_hint: internal_politics
+- id: malaysiadateline
+  name: Malaysia Dateline
+  homepage: https://malaysiadateline.com
+  language: ms
+  scope: domestic
+  kind: media
+  governing_body: MD Media Network
+  state_affiliated: false
+  notes: Malay-language political daily focusing on parliamentary affairs, religious and ethnic relations, and coalition politics.
+  feeds:
+  - url: https://malaysiadateline.com/feed/
+    category_hint: internal_politics
+- id: gnews_malaysia_ms
+  name: Google News (Malaysia National News - Malay)
+  homepage: https://news.google.com
+  language: ms
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=Malaysia+OR+%22Kuala+Lumpur%22+OR+kerajaan+when:2d&hl=ms&gl=MY&ceid=MY:ms
+    section: National News (Malay)
+    category_hint: internal_politics

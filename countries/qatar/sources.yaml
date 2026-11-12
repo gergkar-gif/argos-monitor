@@ -1,173 +1,176 @@
 sources:
-  - id: qna_en
-    name: Qatar News Agency (English)
-    homepage: https://www.qna.org.qa/en
-    language: en
-    scope: domestic
-    kind: official
-    governing_body: "Government of the State of Qatar"
-    state_affiliated: true
-    notes: "Official statutory wire agency of the State of Qatar."
-    feeds:
-      - url: https://www.qna.org.qa/en/Rss-Feed
-        category_hint: internal_politics
-
-  - id: al_jazeera_en
-    name: Al Jazeera English
-    homepage: https://www.aljazeera.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Al Jazeera Media Network (Qatari state-funded)"
-    state_affiliated: true
-    notes: "International flagship news network based in Doha."
-    feeds:
-      - url: https://www.aljazeera.com/xml/rss/all.xml
-        category_hint: foreign_policy
-
-  - id: al_jazeera_ar
-    name: Al Jazeera (Arabic)
-    homepage: https://www.aljazeera.net
-    language: ar
-    scope: domestic
-    kind: media
-    governing_body: "Al Jazeera Media Network (Qatari state-funded)"
-    state_affiliated: true
-    notes: "Arabic-language flagship broadcast news portal headquartered in Doha."
-    feeds:
-      - url: https://www.aljazeera.net/aljazeerarss/a7c6e7b5-7683-4223-b84c-f350d107bc20/73d0e1b4-532f-45ef-b135-bfdff8b8cab9
-        category_hint: internal_politics
-
-  - id: aljazeera_studies
-    name: Al Jazeera Center for Studies
-    homepage: https://studies.aljazeera.net
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Al Jazeera Media Network"
-    state_affiliated: true
-    notes: "Think tank providing strategic analysis and research briefs on Gulf security and Middle East geopolitics."
-    feeds:
-      - url: https://studies.aljazeera.net/en/rss.xml
-        category_hint: foreign_policy
-
-  - id: the_peninsula
-    name: The Peninsula
-    homepage: https://thepeninsulaqatar.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Dar Al Sharq Group"
-    state_affiliated: false
-    notes: "Leading English-language daily newspaper in Qatar."
-    feeds:
-      - url: https://thepeninsulaqatar.com/rss
-        category_hint: internal_politics
-
-  - id: gulf_times
-    name: Gulf Times
-    homepage: https://www.gulf-times.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Gulf Publishing and Printing Company"
-    state_affiliated: false
-    notes: "First English-language daily newspaper published in Qatar."
-    feeds:
-      - url: https://www.gulf-times.com/rss/qatar
-        category_hint: internal_politics
-      - url: https://www.gulf-times.com/rss/business
-        category_hint: economics
-
-  - id: doha_news
-    name: Doha News
-    homepage: https://dohanews.co
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Doha News Agency"
-    state_affiliated: false
-    notes: "Pioneering independent online English-language news agency covering local affairs, diplomacy, and culture in Qatar."
-    feeds:
-      - url: https://dohanews.co/feed/
-        category_hint: internal_politics
-
-  - id: menafn_qatar
-    name: MENAFN (Qatar)
-    homepage: https://menafn.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Middle East North Africa Financial Network"
-    state_affiliated: false
-    notes: "Financial wire providing continuous updates on Qatar National Vision 2030, LNG exports, and Qatar Stock Exchange."
-    feeds:
-      - url: https://menafn.com/rss/menafn_Qatar.xml
-        category_hint: economics
-
-  - id: cirs_qatar
-    name: CIRS - Georgetown University in Qatar
-    homepage: https://cirs.qatar.georgetown.edu
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Georgetown University in Qatar"
-    state_affiliated: false
-    notes: "Center for International and Regional Studies publishing research papers and policy briefs on Gulf security and diplomacy."
-    feeds:
-      - url: https://cirs.qatar.georgetown.edu/feed/
-        category_hint: foreign_policy
-
-  - id: gulf_intl_forum
-    name: Gulf International Forum
-    homepage: https://gulfif.org
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Gulf International Forum"
-    state_affiliated: false
-    notes: "Independent policy institute providing analysis on political, security, and economic developments in Qatar and the GCC."
-    feeds:
-      - url: https://gulfif.org/feed/
-        category_hint: foreign_policy
-
-  - id: arab_center_qatar
-    name: Arab Center (ACRPS Affiliate)
-    homepage: https://arabcenterdc.org
-    language: en
-    scope: abroad_local
-    kind: media
-    governing_body: "Arab Center for Research and Policy Studies (Doha Institute)"
-    state_affiliated: false
-    notes: "Research institute affiliated with the Doha-based ACRPS focusing on Middle East governance and Qatari diplomatic initiatives."
-    feeds:
-      - url: https://arabcenterdc.org/feed/
-        category_hint: foreign_policy
-
-  - id: google_news_qatar_politics
-    name: Google News (Qatar Leadership & Mediation)
-    homepage: https://news.google.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Google LLC"
-    state_affiliated: false
-    aggregator: google_news
-    notes: "Aggregator tracking Emir Sheikh Tamim, Gaza mediation, and Doha diplomacy."
-    feeds:
-      - url: "https://news.google.com/rss/search?q=%22Tamim+bin+Hamad%22+OR+%22Qatari+mediation%22+OR+%22Doha+talks%22+when:3d&hl=en-QA&gl=QA&ceid=QA:en"
-        category_hint: foreign_policy
-
-  - id: google_news_qatar_energy
-    name: Google News (QatarEnergy & North Field LNG)
-    homepage: https://news.google.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Google LLC"
-    state_affiliated: false
-    aggregator: google_news
-    notes: "Aggregator tracking QatarEnergy, LNG contracts, North Field, and QIA investments."
-    feeds:
-      - url: "https://news.google.com/rss/search?q=QatarEnergy+OR+%22North+Field%22+OR+%22Qatar+Investment+Authority%22+OR+LNG+Qatar+when:3d&hl=en-QA&gl=QA&ceid=QA:en"
-        category_hint: economics
+- id: qna_en
+  name: Qatar News Agency (English)
+  homepage: https://www.qna.org.qa/en
+  language: en
+  scope: domestic
+  kind: official
+  governing_body: Government of the State of Qatar
+  state_affiliated: true
+  notes: Official statutory wire agency of the State of Qatar.
+  feeds:
+  - url: https://www.qna.org.qa/en/Rss-Feed
+    category_hint: internal_politics
+- id: al_jazeera_en
+  name: Al Jazeera English
+  homepage: https://www.aljazeera.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Al Jazeera Media Network (Qatari state-funded)
+  state_affiliated: true
+  notes: International flagship news network based in Doha.
+  feeds:
+  - url: https://www.aljazeera.com/xml/rss/all.xml
+    category_hint: foreign_policy
+- id: al_jazeera_ar
+  name: Al Jazeera (Arabic)
+  homepage: https://www.aljazeera.net
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: Al Jazeera Media Network (Qatari state-funded)
+  state_affiliated: true
+  notes: Arabic-language flagship broadcast news portal headquartered in Doha.
+  feeds:
+  - url: https://www.aljazeera.net/aljazeerarss/a7c6e7b5-7683-4223-b84c-f350d107bc20/73d0e1b4-532f-45ef-b135-bfdff8b8cab9
+    category_hint: internal_politics
+- id: aljazeera_studies
+  name: Al Jazeera Center for Studies
+  homepage: https://studies.aljazeera.net
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Al Jazeera Media Network
+  state_affiliated: true
+  notes: Think tank providing strategic analysis and research briefs on Gulf security and Middle East geopolitics.
+  feeds:
+  - url: https://studies.aljazeera.net/en/rss.xml
+    category_hint: foreign_policy
+- id: the_peninsula
+  name: The Peninsula
+  homepage: https://thepeninsulaqatar.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Dar Al Sharq Group
+  state_affiliated: false
+  notes: Leading English-language daily newspaper in Qatar.
+  feeds:
+  - url: https://thepeninsulaqatar.com/rss
+    category_hint: internal_politics
+- id: gulf_times
+  name: Gulf Times
+  homepage: https://www.gulf-times.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Gulf Publishing and Printing Company
+  state_affiliated: false
+  notes: First English-language daily newspaper published in Qatar.
+  feeds:
+  - url: https://www.gulf-times.com/rss/qatar
+    category_hint: internal_politics
+  - url: https://www.gulf-times.com/rss/business
+    category_hint: economics
+- id: doha_news
+  name: Doha News
+  homepage: https://dohanews.co
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Doha News Agency
+  state_affiliated: false
+  notes: Pioneering independent online English-language news agency covering local affairs, diplomacy, and culture in Qatar.
+  feeds:
+  - url: https://dohanews.co/feed/
+    category_hint: internal_politics
+- id: menafn_qatar
+  name: MENAFN (Qatar)
+  homepage: https://menafn.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Middle East North Africa Financial Network
+  state_affiliated: false
+  notes: Financial wire providing continuous updates on Qatar National Vision 2030, LNG exports, and Qatar Stock Exchange.
+  feeds:
+  - url: https://menafn.com/rss/menafn_Qatar.xml
+    category_hint: economics
+- id: cirs_qatar
+  name: CIRS - Georgetown University in Qatar
+  homepage: https://cirs.qatar.georgetown.edu
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Georgetown University in Qatar
+  state_affiliated: false
+  notes: Center for International and Regional Studies publishing research papers and policy briefs on Gulf security and diplomacy.
+  feeds:
+  - url: https://cirs.qatar.georgetown.edu/feed/
+    category_hint: foreign_policy
+- id: gulf_intl_forum
+  name: Gulf International Forum
+  homepage: https://gulfif.org
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Gulf International Forum
+  state_affiliated: false
+  notes: Independent policy institute providing analysis on political, security, and economic developments in Qatar and the
+    GCC.
+  feeds:
+  - url: https://gulfif.org/feed/
+    category_hint: foreign_policy
+- id: arab_center_qatar
+  name: Arab Center (ACRPS Affiliate)
+  homepage: https://arabcenterdc.org
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Arab Center for Research and Policy Studies (Doha Institute)
+  state_affiliated: false
+  notes: Research institute affiliated with the Doha-based ACRPS focusing on Middle East governance and Qatari diplomatic
+    initiatives.
+  feeds:
+  - url: https://arabcenterdc.org/feed/
+    category_hint: foreign_policy
+- id: google_news_qatar_politics
+  name: Google News (Qatar Leadership & Mediation)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator tracking Emir Sheikh Tamim, Gaza mediation, and Doha diplomacy.
+  feeds:
+  - url: https://news.google.com/rss/search?q=%22Tamim+bin+Hamad%22+OR+%22Qatari+mediation%22+OR+%22Doha+talks%22+when:3d&hl=en-QA&gl=QA&ceid=QA:en
+    category_hint: foreign_policy
+- id: google_news_qatar_energy
+  name: Google News (QatarEnergy & North Field LNG)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator tracking QatarEnergy, LNG contracts, North Field, and QIA investments.
+  feeds:
+  - url: https://news.google.com/rss/search?q=QatarEnergy+OR+%22North+Field%22+OR+%22Qatar+Investment+Authority%22+OR+LNG+Qatar+when:3d&hl=en-QA&gl=QA&ceid=QA:en
+    category_hint: economics
+- id: gnews_qatar_ar
+  name: Google News (Qatar National News - Arabic)
+  homepage: https://news.google.com
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=%D9%82%D8%B7%D8%B1+OR+%D8%A7%D9%84%D8%AF%D9%88%D8%AD%D8%A9+OR+%D8%A3%D9%85%D9%8A%D8%B1+%D9%82%D8%B7%D8%B1+when:2d&hl=ar&gl=QA&ceid=QA:ar
+    section: National News (Arabic)
+    category_hint: internal_politics

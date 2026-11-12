@@ -7,8 +7,7 @@ sources:
   kind: media
   governing_body: Swiss Broadcasting Corporation (SRG SSR)
   state_affiliated: false
-  notes: Statutory international service of the Swiss Broadcasting Corporation providing
-    public-service coverage in 10 languages.
+  notes: Statutory international service of the Swiss Broadcasting Corporation providing public-service coverage in 10 languages.
   feeds:
   - url: https://www.swissinfo.ch/eng/rss
     category_hint: internal_politics
@@ -20,8 +19,7 @@ sources:
   kind: media
   governing_body: SRG SSR
   state_affiliated: false
-  notes: Primary Swiss German public-service broadcaster covering federal policy and
-    cantonal politics.
+  notes: Primary Swiss German public-service broadcaster covering federal policy and cantonal politics.
   feeds:
   - url: https://www.srf.ch/news/bnf/rss/1646
     category_hint: internal_politics
@@ -50,7 +48,6 @@ sources:
   feeds:
   - url: https://www.tagesanzeiger.ch/rss.html
     category_hint: internal_politics
-
 - id: letemps_ch
   name: Le Temps
   homepage: https://www.letemps.ch
@@ -59,11 +56,11 @@ sources:
   kind: media
   governing_body: Fondation Aventinus
   state_affiliated: false
-  notes: Leading French-language Swiss daily paper of record based in Geneva, focusing on international diplomacy and public policy.
+  notes: Leading French-language Swiss daily paper of record based in Geneva, focusing on international diplomacy and public
+    policy.
   feeds:
   - url: https://www.letemps.ch/feed
     category_hint: foreign_policy
-
 - id: tdg_ch
   name: Tribune de Genève
   homepage: https://www.tdg.ch
@@ -76,7 +73,6 @@ sources:
   feeds:
   - url: https://www.tdg.ch/rss.html
     category_hint: foreign_policy
-
 - id: vingtquatre_heures
   name: 24 heures
   homepage: https://www.24heures.ch
@@ -89,7 +85,6 @@ sources:
   feeds:
   - url: https://www.24heures.ch/rss.html
     category_hint: internal_politics
-
 - id: derbund_ch
   name: Der Bund
   homepage: https://www.derbund.ch
@@ -102,7 +97,6 @@ sources:
   feeds:
   - url: https://www.derbund.ch/rss.html
     category_hint: internal_politics
-
 - id: bazonline_ch
   name: Basler Zeitung
   homepage: https://www.bazonline.ch
@@ -115,7 +109,6 @@ sources:
   feeds:
   - url: https://www.bazonline.ch/rss.html
     category_hint: economics
-
 - id: bernerzeitung_ch
   name: Berner Zeitung
   homepage: https://www.bernerzeitung.ch
@@ -128,7 +121,6 @@ sources:
   feeds:
   - url: https://www.bernerzeitung.ch/rss.html
     category_hint: general
-
 - id: insideparadeplatz_ch
   name: Inside Paradeplatz
   homepage: https://insideparadeplatz.ch
@@ -137,7 +129,21 @@ sources:
   kind: media
   governing_body: Lukas Hässig
   state_affiliated: false
-  notes: Influential Zurich financial investigative blog covering Swiss banking secrecy, wealth management, and FINMA regulatory enforcement.
+  notes: Influential Zurich financial investigative blog covering Swiss banking secrecy, wealth management, and FINMA regulatory
+    enforcement.
   feeds:
   - url: https://insideparadeplatz.ch/feed/
     category_hint: economics
+- id: gnews_switzerland_de
+  name: Google News (Switzerland National News - German)
+  homepage: https://news.google.com
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=Schweiz+OR+Bundesrat+OR+Bern+when:2d&hl=de-CH&gl=CH&ceid=CH:de
+    section: National News (German)
+    category_hint: internal_politics

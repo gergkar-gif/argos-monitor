@@ -7,8 +7,7 @@ sources:
   kind: media
   governing_body: M. Schocken & Co.
   state_affiliated: false
-  notes: Israel's oldest independent daily paper of record, center-left editorial
-    stance.
+  notes: Israel's oldest independent daily paper of record, center-left editorial stance.
   feeds:
   - url: https://www.haaretz.com/cmlink/1.4605912
     category_hint: internal_politics
@@ -22,8 +21,7 @@ sources:
   kind: media
   governing_body: Times of Israel Group
   state_affiliated: false
-  notes: Fast-breaking, independent digital daily of record covering politics, security
-    and regional diplomacy.
+  notes: Fast-breaking, independent digital daily of record covering politics, security and regional diplomacy.
   feeds:
   - url: https://www.timesofisrael.com/feed/
     category_hint: internal_politics
@@ -35,8 +33,7 @@ sources:
   kind: media
   governing_body: Jerusalem Post Group
   state_affiliated: false
-  notes: Major English-language broadsheet covering defense, regional politics, and
-    diplomacy.
+  notes: Major English-language broadsheet covering defense, regional politics, and diplomacy.
   feeds:
   - url: https://www.jpost.com/rss/rssfeedsfrontpage.aspx
     category_hint: internal_politics
@@ -78,8 +75,7 @@ sources:
   governing_body: Google LLC
   state_affiliated: false
   aggregator: google_news
-  notes: Aggregator feed tracking Bank of Israel, credit rating, deficit, and high-tech
-    sector.
+  notes: Aggregator feed tracking Bank of Israel, credit rating, deficit, and high-tech sector.
   feeds:
   - url: https://news.google.com/rss/search?q=%22Bank+of+Israel%22+OR+%22credit+rating%22+OR+%22wartime+budget%22+Israel+when:3d&hl=en-IL&gl=IL&ceid=IL:en
     category_hint: economics
@@ -92,8 +88,7 @@ sources:
   governing_body: Google LLC
   state_affiliated: false
   aggregator: google_news
-  notes: Aggregator feed tracking IDF operations, air defense interceptions, and border
-    security.
+  notes: Aggregator feed tracking IDF operations, air defense interceptions, and border security.
   feeds:
   - url: https://news.google.com/rss/search?q=%22Israel+Defense+Forces%22+OR+IDF+OR+%22Iron+Dome%22+OR+Hezbollah+OR+Mossad+when:3d&hl=en-IL&gl=IL&ceid=IL:en
     category_hint: defence_security
@@ -165,7 +160,21 @@ sources:
   kind: media
   governing_body: Haredim10 Communications
   state_affiliated: false
-  notes: Leading independent Israeli Ultra-Orthodox news portal reporting on coalition deals, rabbinical leadership, and welfare policy.
+  notes: Leading independent Israeli Ultra-Orthodox news portal reporting on coalition deals, rabbinical leadership, and welfare
+    policy.
   feeds:
   - url: https://ch10.co.il/feed/
+    category_hint: internal_politics
+- id: gnews_israel_he
+  name: Google News (Israel National News - Hebrew)
+  homepage: https://news.google.com
+  language: he
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=%D7%99%D7%A9%D7%A8%D7%90%D7%9C+OR+%D7%94%D7%9E%D7%9E%D7%A9%D7%9C%D7%94+OR+%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D+when:2d&hl=he&gl=IL&ceid=IL:he
+    section: National News (Hebrew)
     category_hint: internal_politics

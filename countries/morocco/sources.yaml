@@ -19,8 +19,7 @@ sources:
   kind: media
   governing_body: MWN Media Group
   state_affiliated: false
-  notes: Leading independent English-language Moroccan daily covering diplomacy, Sahara
-    dispute, and investment.
+  notes: Leading independent English-language Moroccan daily covering diplomacy, Sahara dispute, and investment.
   feeds:
   - url: https://www.moroccoworldnews.com/feed
     category_hint: foreign_policy
@@ -133,3 +132,16 @@ sources:
   feeds:
   - url: https://bladna24.ma/feed/
     category_hint: general
+- id: gnews_morocco_fr
+  name: Google News (Morocco National News - French)
+  homepage: https://news.google.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=Maroc+OR+gouvernement+OR+Rabat+when:2d&hl=fr&gl=MA&ceid=MA:fr
+    section: National News (French)
+    category_hint: internal_politics

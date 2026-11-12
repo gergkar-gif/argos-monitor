@@ -7,8 +7,8 @@ sources:
   kind: media
   governing_body: Kathimerini Publishing
   state_affiliated: false
-  notes: Leading independent English-language Greek daily broadsheet of record covering
-    cabinet governance, Aegean diplomacy, and economy.
+  notes: Leading independent English-language Greek daily broadsheet of record covering cabinet governance, Aegean diplomacy,
+    and economy.
   feeds:
   - url: https://www.ekathimerini.com/feed/
     category_hint: internal_politics
@@ -49,7 +49,6 @@ sources:
   feeds:
   - url: https://www.tovima.gr/feed/
     category_hint: internal_politics
-
 - id: protothema_gr
   name: Proto Thema
   homepage: https://www.protothema.gr
@@ -62,7 +61,6 @@ sources:
   feeds:
   - url: https://www.protothema.gr/rss/
     category_hint: general
-
 - id: naftemporiki_gr
   name: Naftemporiki
   homepage: https://www.naftemporiki.gr
@@ -75,7 +73,6 @@ sources:
   feeds:
   - url: https://www.naftemporiki.gr/feed/
     category_hint: economics
-
 - id: tanea_gr
   name: Ta Nea
   homepage: https://www.tanea.gr
@@ -88,7 +85,6 @@ sources:
   feeds:
   - url: https://www.tanea.gr/feed/
     category_hint: internal_politics
-
 - id: iefimerida_gr
   name: iefimerida
   homepage: https://www.iefimerida.gr
@@ -101,7 +97,6 @@ sources:
   feeds:
   - url: https://www.iefimerida.gr/rss.xml
     category_hint: internal_politics
-
 - id: enikos_gr
   name: Enikos
   homepage: https://www.enikos.gr
@@ -114,7 +109,6 @@ sources:
   feeds:
   - url: https://www.enikos.gr/feed/
     category_hint: internal_politics
-
 - id: documentonews_gr
   name: Documento
   homepage: https://www.documentonews.gr
@@ -123,11 +117,11 @@ sources:
   kind: media
   governing_body: Kostas Vaxevanis
   state_affiliated: false
-  notes: Investigative Sunday newspaper and daily news portal specializing in state surveillance, procurement, and judicial scoops.
+  notes: Investigative Sunday newspaper and daily news portal specializing in state surveillance, procurement, and judicial
+    scoops.
   feeds:
   - url: https://www.documentonews.gr/feed/
     category_hint: internal_politics
-
 - id: in_gr
   name: in.gr
   homepage: https://www.in.gr
@@ -140,3 +134,16 @@ sources:
   feeds:
   - url: https://www.in.gr/feed/
     category_hint: general
+- id: gnews_greece_el
+  name: Google News (Greece National News - Greek)
+  homepage: https://news.google.com
+  language: el
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=%CE%95%CE%BB%CE%BB%CE%AC%CE%B4%CE%B1+OR+%CE%BA%CF%85%CE%B2%CE%AD%CF%81%CE%BD%CE%B7%CF%83%CE%B7+OR+%CE%91%CE%B8%CE%AE%CE%BD%CE%B1+when:2d&hl=el&gl=GR&ceid=GR:el
+    section: National News (Greek)
+    category_hint: internal_politics

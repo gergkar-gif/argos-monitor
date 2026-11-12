@@ -7,8 +7,7 @@ sources:
   kind: media
   governing_body: Trípode S.A. de C.V. (independent investigative digital newsroom)
   state_affiliated: false
-  notes: Pioneering Central American digital investigative newsroom covering authoritarianism,
-    corruption, and migration.
+  notes: Pioneering Central American digital investigative newsroom covering authoritarianism, corruption, and migration.
   feeds:
   - url: https://news.google.com/rss/search?q=site:elfaro.net+when:7d&hl=es-419&gl=US&ceid=US:es-419
     category_hint: internal_politics
@@ -20,8 +19,7 @@ sources:
   kind: media
   governing_body: Corporación La Prensa
   state_affiliated: false
-  notes: Panama daily paper of record covering executive politics, canal operations,
-    and maritime trade.
+  notes: Panama daily paper of record covering executive politics, canal operations, and maritime trade.
   feeds:
   - url: https://news.google.com/rss/search?q=site:prensa.com+when:7d&hl=es-419&gl=US&ceid=US:es-419
     category_hint: internal_politics
@@ -33,8 +31,7 @@ sources:
   kind: media
   governing_body: Grupo Nación
   state_affiliated: false
-  notes: San José paper of record covering Costa Rican constitutional democracy, social
-    security, and economy.
+  notes: San José paper of record covering Costa Rican constitutional democracy, social security, and economy.
   feeds:
   - url: https://www.nacion.com/rss/
     category_hint: internal_politics
@@ -71,11 +68,11 @@ sources:
   kind: media
   governing_body: Prensa Libre S.A.
   state_affiliated: false
-  notes: Guatemala's premier daily newspaper of record founded in 1951 covering national governance, congress, and macroeconomic policy.
+  notes: Guatemala's premier daily newspaper of record founded in 1951 covering national governance, congress, and macroeconomic
+    policy.
   feeds:
   - url: https://www.prensalibre.com/feed/
     category_hint: internal_politics
-
 - id: plazapublica_gt
   name: Plaza Pública
   homepage: https://www.plazapublica.com.gt
@@ -84,11 +81,11 @@ sources:
   kind: media
   governing_body: Universidad Rafael Landívar
   state_affiliated: false
-  notes: Independent investigative university media focusing on institutional impunity, human rights, and indigenous communities in Guatemala.
+  notes: Independent investigative university media focusing on institutional impunity, human rights, and indigenous communities
+    in Guatemala.
   feeds:
   - url: https://www.plazapublica.com.gt/feed
     category_hint: internal_politics
-
 - id: lahora_gt
   name: La Hora (Guatemala)
   homepage: https://lahora.gt
@@ -101,7 +98,6 @@ sources:
   feeds:
   - url: https://lahora.gt/feed/
     category_hint: internal_politics
-
 - id: eldiariodehoy_sv
   name: El Diario de Hoy / elsalvador.com
   homepage: https://www.elsalvador.com
@@ -110,11 +106,11 @@ sources:
   kind: media
   governing_body: Editorial Altamirano Madriz
   state_affiliated: false
-  notes: Historic Salvadoran daily newspaper of record founded in 1936 covering executive policies, security state decrees, and economy.
+  notes: Historic Salvadoran daily newspaper of record founded in 1936 covering executive policies, security state decrees,
+    and economy.
   feeds:
   - url: https://www.elsalvador.com/feed/
     category_hint: internal_politics
-
 - id: criterio_hn
   name: Criterio.hn
   homepage: https://criterio.hn
@@ -123,11 +119,11 @@ sources:
   kind: media
   governing_body: Criterio Periodismo Digital
   state_affiliated: false
-  notes: Independent Honduran investigative journalism platform uncovering extractivism, political graft, and constitutional reforms.
+  notes: Independent Honduran investigative journalism platform uncovering extractivism, political graft, and constitutional
+    reforms.
   feeds:
   - url: https://criterio.hn/feed/
     category_hint: internal_politics
-
 - id: semanario_ucr
   name: Semanario Universidad
   homepage: https://semanariouniversidad.com
@@ -136,11 +132,11 @@ sources:
   kind: media
   governing_body: Universidad de Costa Rica
   state_affiliated: false
-  notes: Independent analytical weekly of the University of Costa Rica providing critical research on fiscal policy, environment, and social security.
+  notes: Independent analytical weekly of the University of Costa Rica providing critical research on fiscal policy, environment,
+    and social security.
   feeds:
   - url: https://semanariouniversidad.com/feed/
     category_hint: internal_politics
-
 - id: divergentes_ni
   name: Divergentes
   homepage: https://www.divergentes.com
@@ -149,7 +145,21 @@ sources:
   kind: media
   governing_body: Divergentes Media
   state_affiliated: false
-  notes: Award-winning independent investigative journalism collective covering Central America and Nicaraguan authoritarianism from exile.
+  notes: Award-winning independent investigative journalism collective covering Central America and Nicaraguan authoritarianism
+    from exile.
   feeds:
   - url: https://www.divergentes.com/feed/
+    category_hint: internal_politics
+- id: gnews_central_america_es
+  name: Google News (Central America National News - Spanish)
+  homepage: https://news.google.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=Centroam%C3%A9rica+OR+SICA+OR+Guatemala+OR+Honduras+OR+%22El+Salvador%22+when:2d&hl=es-419&gl=GT&ceid=GT:es-419
+    section: National News (Spanish)
     category_hint: internal_politics

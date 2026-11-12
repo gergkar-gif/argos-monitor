@@ -1,185 +1,187 @@
 sources:
-  - id: nk_news
-    name: NK News
-    homepage: https://www.nknews.org
-    language: en
-    scope: abroad_local
-    kind: media
-    governing_body: "Korea Risk Group"
-    state_affiliated: false
-    notes: "Premier independent specialist news service monitoring North Korea."
-    feeds:
-      - url: https://www.nknews.org/feed/
-        category_hint: internal_politics
-
-  - id: daily_nk
-    name: Daily NK (English)
-    homepage: https://www.dailynk.com/english
-    language: en
-    scope: abroad_local
-    kind: media
-    governing_body: "Daily NK / Unification Media Group"
-    state_affiliated: false
-    notes: "Specialist human rights and internal source network inside North Korea."
-    feeds:
-      - url: https://www.dailynk.com/english/feed/
-        category_hint: internal_politics
-
-  - id: daily_nk_ko
-    name: Daily NK (Korean)
-    homepage: https://www.dailynk.com
-    language: ko
-    scope: abroad_local
-    kind: media
-    governing_body: "Daily NK / Unification Media Group"
-    state_affiliated: false
-    notes: "Korean-language investigative reporting based on informant networks inside DPRK provinces."
-    feeds:
-      - url: https://www.dailynk.com/feed/
-        category_hint: internal_politics
-
-  - id: rfa_korean_dprk
-    name: Radio Free Asia (Korean - DPRK focus)
-    homepage: https://www.rfa.org/korean
-    language: ko
-    scope: abroad_local
-    kind: media
-    governing_body: "US Agency for Global Media (USAGM)"
-    state_affiliated: false
-    notes: "US-funded independent Korean service with extensive investigative DPRK coverage."
-    feeds:
-      - url: https://www.rfa.org/korean/rss2.xml
-        category_hint: internal_politics
-
-  - id: voa_korea_dprk
-    name: Voice of America (Korean - DPRK Service)
-    homepage: https://www.voakorea.com
-    language: ko
-    scope: abroad_local
-    kind: media
-    governing_body: "US Agency for Global Media (USAGM)"
-    state_affiliated: false
-    notes: "Korean-language coverage of DPRK military actions, sanctions enforcement, and diplomacy."
-    feeds:
-      - url: https://www.voakorea.com/api/zptbqrl-vomx-tpe_oooq
-        category_hint: foreign_policy
-
-  - id: choson_sinbo
-    name: Choson Sinbo
-    homepage: https://chosonsinbo.com
-    language: ko
-    scope: abroad_local
-    kind: media
-    governing_body: "General Association of Korean Residents in Japan (Chongryon)"
-    state_affiliated: true
-    notes: "Newspaper of Chongryon serving as an official external voice reflecting Pyongyang policy stances and diplomatic views."
-    feeds:
-      - url: https://chosonsinbo.com/feed/
-        category_hint: internal_politics
-
-  - id: tongil_news
-    name: Tongil News
-    homepage: http://www.tongilnews.com
-    language: ko
-    scope: abroad_local
-    kind: media
-    governing_body: "Tongil News Agency"
-    state_affiliated: false
-    notes: "South Korean specialist news platform dedicated to inter-Korean reconciliation, DPRK policy, and border relations."
-    feeds:
-      - url: http://www.tongilnews.com/rss/allArticle.xml
-        category_hint: foreign_policy
-
-  - id: beyond_parallel
-    name: Beyond Parallel (CSIS)
-    homepage: https://beyondparallel.csis.org
-    language: en
-    scope: abroad_local
-    kind: media
-    governing_body: "Center for Strategic and International Studies (CSIS)"
-    state_affiliated: false
-    notes: "Authoritative satellite imagery analysis and research on North Korean missile facilities, military parades, and trade."
-    feeds:
-      - url: https://beyondparallel.csis.org/feed/
-        category_hint: defence_security
-
-  - id: korea_times_nk
-    name: The Korea Times (North Korea Bureau)
-    homepage: https://www.koreatimes.co.kr
-    language: en
-    scope: abroad_local
-    kind: media
-    governing_body: "Dongwha Enterprise / The Korea Times"
-    state_affiliated: false
-    notes: "Specialized North Korea news coverage analyzing military provocations, Kim Jong Un's speeches, and inter-Korean border dynamics."
-    feeds:
-      - url: https://www.koreatimes.co.kr/www/rss/northkorea.xml
-        category_hint: internal_politics
-
-  - id: arms_control_dprk
-    name: Arms Control Association (DPRK Proliferation)
-    homepage: https://www.armscontrol.org
-    language: en
-    scope: abroad_local
-    kind: media
-    governing_body: "Arms Control Association"
-    state_affiliated: false
-    notes: "Specialist monitoring of DPRK uranium enrichment, ICBM development, and multilateral disarmament diplomacy."
-    feeds:
-      - url: https://www.armscontrol.org/rss.xml
-        category_hint: defence_security
-
-  - id: un_dprk
-    name: United Nations DPR Korea
-    homepage: https://dprkorea.un.org
-    language: en
-    scope: domestic
-    kind: official
-    governing_body: "United Nations Country Team DPR Korea"
-    state_affiliated: false
-    notes: "Official updates from the UN resident coordinator in Pyongyang on humanitarian partnerships, food security, and WHO public health."
-    feeds:
-      - url: https://dprkorea.un.org/en/rss.xml
-        category_hint: society
-
-  - id: google_news_dprk_nuclear
-    name: Google News (North Korea ICBM & Nuclear Tests)
-    homepage: https://news.google.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Google LLC"
-    state_affiliated: false
-    aggregator: google_news
-    notes: "Aggregator tracking DPRK missile launches, Hwasong ICBMs, and nuclear posturing."
-    feeds:
-      - url: "https://news.google.com/rss/search?q=%22North+Korea%22+OR+DPRK+OR+%22Kim+Jong+Un%22+missile+OR+nuclear+when:3d&hl=en-US&gl=US&ceid=US:en"
-        category_hint: defence_security
-
-  - id: google_news_dprk_russia
-    name: Google News (North Korea Russia Military Pact & Troops)
-    homepage: https://news.google.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Google LLC"
-    state_affiliated: false
-    aggregator: google_news
-    notes: "Aggregator tracking North Korean troop deployment to Russia and bilateral treaty."
-    feeds:
-      - url: "https://news.google.com/rss/search?q=%22North+Korea%22+troops+Russia+OR+Pyongyang+Moscow+treaty+when:3d&hl=en-US&gl=US&ceid=US:en"
-        category_hint: foreign_policy
-
-  - id: google_news_dprk_internal
-    name: Google News (North Korea Regime & Economy)
-    homepage: https://news.google.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Google LLC"
-    state_affiliated: false
-    aggregator: google_news
-    notes: "Aggregator tracking internal Workers' Party directives, Kim Yo Jong, and sanctions evasion."
-    feeds:
-      - url: "https://news.google.com/rss/search?q=%22Kim+Jong+Un%22+OR+%22Kim+Yo+Jong%22+OR+%22Workers%27+Party%22+Pyongyang+when:3d&hl=en-US&gl=US&ceid=US:en"
-        category_hint: internal_politics
+- id: nk_news
+  name: NK News
+  homepage: https://www.nknews.org
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Korea Risk Group
+  state_affiliated: false
+  notes: Premier independent specialist news service monitoring North Korea.
+  feeds:
+  - url: https://www.nknews.org/feed/
+    category_hint: internal_politics
+- id: daily_nk
+  name: Daily NK (English)
+  homepage: https://www.dailynk.com/english
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Daily NK / Unification Media Group
+  state_affiliated: false
+  notes: Specialist human rights and internal source network inside North Korea.
+  feeds:
+  - url: https://www.dailynk.com/english/feed/
+    category_hint: internal_politics
+- id: daily_nk_ko
+  name: Daily NK (Korean)
+  homepage: https://www.dailynk.com
+  language: ko
+  scope: abroad_local
+  kind: media
+  governing_body: Daily NK / Unification Media Group
+  state_affiliated: false
+  notes: Korean-language investigative reporting based on informant networks inside DPRK provinces.
+  feeds:
+  - url: https://www.dailynk.com/feed/
+    category_hint: internal_politics
+- id: rfa_korean_dprk
+  name: Radio Free Asia (Korean - DPRK focus)
+  homepage: https://www.rfa.org/korean
+  language: ko
+  scope: abroad_local
+  kind: media
+  governing_body: US Agency for Global Media (USAGM)
+  state_affiliated: false
+  notes: US-funded independent Korean service with extensive investigative DPRK coverage.
+  feeds:
+  - url: https://www.rfa.org/korean/rss2.xml
+    category_hint: internal_politics
+- id: voa_korea_dprk
+  name: Voice of America (Korean - DPRK Service)
+  homepage: https://www.voakorea.com
+  language: ko
+  scope: abroad_local
+  kind: media
+  governing_body: US Agency for Global Media (USAGM)
+  state_affiliated: false
+  notes: Korean-language coverage of DPRK military actions, sanctions enforcement, and diplomacy.
+  feeds:
+  - url: https://www.voakorea.com/api/zptbqrl-vomx-tpe_oooq
+    category_hint: foreign_policy
+- id: choson_sinbo
+  name: Choson Sinbo
+  homepage: https://chosonsinbo.com
+  language: ko
+  scope: abroad_local
+  kind: media
+  governing_body: General Association of Korean Residents in Japan (Chongryon)
+  state_affiliated: true
+  notes: Newspaper of Chongryon serving as an official external voice reflecting Pyongyang policy stances and diplomatic views.
+  feeds:
+  - url: https://chosonsinbo.com/feed/
+    category_hint: internal_politics
+- id: tongil_news
+  name: Tongil News
+  homepage: http://www.tongilnews.com
+  language: ko
+  scope: abroad_local
+  kind: media
+  governing_body: Tongil News Agency
+  state_affiliated: false
+  notes: South Korean specialist news platform dedicated to inter-Korean reconciliation, DPRK policy, and border relations.
+  feeds:
+  - url: http://www.tongilnews.com/rss/allArticle.xml
+    category_hint: foreign_policy
+- id: beyond_parallel
+  name: Beyond Parallel (CSIS)
+  homepage: https://beyondparallel.csis.org
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Center for Strategic and International Studies (CSIS)
+  state_affiliated: false
+  notes: Authoritative satellite imagery analysis and research on North Korean missile facilities, military parades, and trade.
+  feeds:
+  - url: https://beyondparallel.csis.org/feed/
+    category_hint: defence_security
+- id: korea_times_nk
+  name: The Korea Times (North Korea Bureau)
+  homepage: https://www.koreatimes.co.kr
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Dongwha Enterprise / The Korea Times
+  state_affiliated: false
+  notes: Specialized North Korea news coverage analyzing military provocations, Kim Jong Un's speeches, and inter-Korean border
+    dynamics.
+  feeds:
+  - url: https://www.koreatimes.co.kr/www/rss/northkorea.xml
+    category_hint: internal_politics
+- id: arms_control_dprk
+  name: Arms Control Association (DPRK Proliferation)
+  homepage: https://www.armscontrol.org
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Arms Control Association
+  state_affiliated: false
+  notes: Specialist monitoring of DPRK uranium enrichment, ICBM development, and multilateral disarmament diplomacy.
+  feeds:
+  - url: https://www.armscontrol.org/rss.xml
+    category_hint: defence_security
+- id: un_dprk
+  name: United Nations DPR Korea
+  homepage: https://dprkorea.un.org
+  language: en
+  scope: domestic
+  kind: official
+  governing_body: United Nations Country Team DPR Korea
+  state_affiliated: false
+  notes: Official updates from the UN resident coordinator in Pyongyang on humanitarian partnerships, food security, and WHO
+    public health.
+  feeds:
+  - url: https://dprkorea.un.org/en/rss.xml
+    category_hint: society
+- id: google_news_dprk_nuclear
+  name: Google News (North Korea ICBM & Nuclear Tests)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator tracking DPRK missile launches, Hwasong ICBMs, and nuclear posturing.
+  feeds:
+  - url: https://news.google.com/rss/search?q=%22North+Korea%22+OR+DPRK+OR+%22Kim+Jong+Un%22+missile+OR+nuclear+when:3d&hl=en-US&gl=US&ceid=US:en
+    category_hint: defence_security
+- id: google_news_dprk_russia
+  name: Google News (North Korea Russia Military Pact & Troops)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator tracking North Korean troop deployment to Russia and bilateral treaty.
+  feeds:
+  - url: https://news.google.com/rss/search?q=%22North+Korea%22+troops+Russia+OR+Pyongyang+Moscow+treaty+when:3d&hl=en-US&gl=US&ceid=US:en
+    category_hint: foreign_policy
+- id: google_news_dprk_internal
+  name: Google News (North Korea Regime & Economy)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator tracking internal Workers' Party directives, Kim Yo Jong, and sanctions evasion.
+  feeds:
+  - url: https://news.google.com/rss/search?q=%22Kim+Jong+Un%22+OR+%22Kim+Yo+Jong%22+OR+%22Workers%27+Party%22+Pyongyang+when:3d&hl=en-US&gl=US&ceid=US:en
+    category_hint: internal_politics
+- id: gnews_north_korea_ko
+  name: Google News (North Korea National News - Korean)
+  homepage: https://news.google.com
+  language: ko
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=%EB%B6%81%ED%95%9C+OR+%ED%8F%89%EC%96%91+OR+%EA%B9%80%EC%A0%95%EC%9D%80+when:2d&hl=ko&gl=KR&ceid=KR:ko
+    section: National News (Korean)
+    category_hint: internal_politics

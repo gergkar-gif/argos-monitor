@@ -19,8 +19,7 @@ sources:
   kind: media
   governing_body: Rossel & Cie
   state_affiliated: false
-  notes: Brussels broadsheet paper of record covering federal governance, coalition
-    talks, and EU affairs.
+  notes: Brussels broadsheet paper of record covering federal governance, coalition talks, and EU affairs.
   feeds:
   - url: https://www.lesoir.be/rss/8186/actualite/belgique
     category_hint: internal_politics
@@ -32,8 +31,7 @@ sources:
   kind: media
   governing_body: The Brussels Times BV
   state_affiliated: false
-  notes: Independent English-language Belgian daily covering national politics, EU
-    institutions, and expat community affairs.
+  notes: Independent English-language Belgian daily covering national politics, EU institutions, and expat community affairs.
   feeds:
   - url: https://www.brusselstimes.com/feed
     category_hint: general
@@ -146,3 +144,16 @@ sources:
   - url: https://news.google.com/rss/search?q=(Belgium+OR+Brussels)+(coalition+OR+parliament+OR+NATO+OR+EU)+when:3d&hl=en-US&gl=US&ceid=US:en
     section: Governance & Diplomacy
     category_hint: foreign_policy
+- id: gnews_belgium_fr
+  name: Google News (Belgium National News - French)
+  homepage: https://news.google.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=Belgique+OR+Bruxelles+OR+gouvernement+when:2d&hl=fr&gl=BE&ceid=BE:fr
+    section: National News (French)
+    category_hint: internal_politics

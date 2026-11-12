@@ -92,8 +92,7 @@ sources:
   language: en
   scope: domestic
   kind: media
-  governing_body: pulsing media / Latin America Reports (independent English-language
-    desk)
+  governing_body: pulsing media / Latin America Reports (independent English-language desk)
   state_affiliated: false
   feeds:
   - url: https://brazilreports.com/feed/
@@ -126,8 +125,7 @@ sources:
   kind: media
   governing_body: Grupo Paricá
   state_affiliated: false
-  notes: Prominent Brazilian center-right national daily covering federal politics
-    and economics.
+  notes: Prominent Brazilian center-right national daily covering federal politics and economics.
   feeds:
   - url: https://www.gazetadopovo.com.br/feed/rss/brasil.xml
     category_hint: internal_politics
@@ -139,8 +137,7 @@ sources:
   kind: media
   governing_body: ConJur Editorial
   state_affiliated: false
-  notes: Leading Brazilian judicial, constitutional, and Supreme Court (STF) policy
-    review.
+  notes: Leading Brazilian judicial, constitutional, and Supreme Court (STF) policy review.
   feeds:
   - url: https://www.conjur.com.br/feed/
     category_hint: internal_politics
@@ -152,8 +149,20 @@ sources:
   kind: media
   governing_body: Universidade de São Paulo
   state_affiliated: false
-  notes: Public academic press covering national science, environmental policy, and
-    governance.
+  notes: Public academic press covering national science, environmental policy, and governance.
   feeds:
   - url: https://jornal.usp.br/feed/
     category_hint: society
+- id: gnews_brazil_pt
+  name: Google News (Brazil National News - Portuguese)
+  homepage: https://news.google.com
+  language: pt
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=Brasil+OR+Bras%C3%ADlia+OR+governo+when:2d&hl=pt-BR&gl=BR&ceid=BR:pt-419
+    section: National News (Portuguese)
+    category_hint: internal_politics

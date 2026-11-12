@@ -7,8 +7,7 @@ sources:
   kind: media
   governing_body: Empresa El Mercurio S.A.P.
   state_affiliated: false
-  notes: Digital arm of Chile paper of record covering executive politics, mining,
-    and institutional reform.
+  notes: Digital arm of Chile paper of record covering executive politics, mining, and institutional reform.
   feeds:
   - url: https://www.emol.com/rss/nacional.xml
     category_hint: internal_politics
@@ -22,8 +21,7 @@ sources:
   kind: media
   governing_body: Bío-Bío Comunicaciones
   state_affiliated: false
-  notes: Leading independent Chilean radio and news daily covering breaking national
-    and investigative stories.
+  notes: Leading independent Chilean radio and news daily covering breaking national and investigative stories.
   feeds:
   - url: https://www.biobiochile.cl/feed
     category_hint: internal_politics
@@ -52,7 +50,6 @@ sources:
   feeds:
   - url: https://www.cooperativa.cl/noticias/site/tax/port/all/rss____1.xml
     category_hint: internal_politics
-
 - id: ciperchile
   name: CIPER Chile
   homepage: https://www.ciperchile.cl
@@ -65,7 +62,6 @@ sources:
   feeds:
   - url: https://www.ciperchile.cl/feed/
     category_hint: internal_politics
-
 - id: theclinic_cl
   name: The Clinic
   homepage: https://www.theclinic.cl
@@ -78,7 +74,6 @@ sources:
   feeds:
   - url: https://www.theclinic.cl/feed/
     category_hint: internal_politics
-
 - id: diarioconstitucional_cl
   name: Diario Constitucional
   homepage: https://www.diarioconstitucional.cl
@@ -91,7 +86,6 @@ sources:
   feeds:
   - url: https://www.diarioconstitucional.cl/feed/
     category_hint: internal_politics
-
 - id: radiouchile_cl
   name: Diario Universidad de Chile
   homepage: https://radio.uchile.cl
@@ -104,7 +98,6 @@ sources:
   feeds:
   - url: https://radio.uchile.cl/feed/
     category_hint: internal_politics
-
 - id: fastcheck_cl
   name: Fast Check CL
   homepage: https://www.fastcheck.cl
@@ -117,7 +110,6 @@ sources:
   feeds:
   - url: https://www.fastcheck.cl/feed/
     category_hint: internal_politics
-
 - id: interferencia_cl
   name: Interferencia
   homepage: https://interferencia.cl
@@ -126,11 +118,11 @@ sources:
   kind: media
   governing_body: Interferencia Periodismo de Investigación
   state_affiliated: false
-  notes: Independent subscriber-supported investigative daily focusing on corporate power, mining environmental impacts, and security forces.
+  notes: Independent subscriber-supported investigative daily focusing on corporate power, mining environmental impacts, and
+    security forces.
   feeds:
   - url: https://interferencia.cl/rss.xml
     category_hint: internal_politics
-
 - id: g5noticias_cl
   name: G5 Noticias
   homepage: https://g5noticias.cl
@@ -143,3 +135,16 @@ sources:
   feeds:
   - url: https://g5noticias.cl/feed/
     category_hint: economics
+- id: gnews_chile_es
+  name: Google News (Chile National News - Spanish)
+  homepage: https://news.google.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=Chile+OR+Santiago+OR+Gobierno+when:2d&hl=es-419&gl=CL&ceid=CL:es-419
+    section: National News (Spanish)
+    category_hint: internal_politics

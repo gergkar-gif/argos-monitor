@@ -2,6 +2,12 @@
 
 Completed items moved from `docs/roadmap.md` per project handover rules.
 
+- **Global Native-Language Aggregator Standardization Across All 87 Desks** — **Done 2026-11-12.**
+  - Conducted global audit of all 87 country packs for aggregator presence and primary language coverage. Identified 36 non-English desks with English-only aggregator queries that failed to capture daily domestic news cycles when direct feeds were quiet or bot-restricted.
+  - Implemented automated migration tool (`tools/upgrade_aggregators.py`) and equipped all 36 deficit packs with high-yield native-language Google News aggregator streams (Arabic across MENA, French in Morocco/Belgium, Spanish across Latin America, Portuguese in Brazil/Portugal, German, Russian, Turkish, Vietnamese, Chinese, Hebrew, etc.).
+  - Brought total active monitored feeds across all 87 country desks to 1,365 feeds across 1,189 catalogued sources (0 deficit packs remaining; 100% native-language aggregator coverage globally).
+  - Synchronized documentation, pipeline diagrams, and telemetric source counts in `README.md` and `site/about.html` per Rule 6 and Rule 7 with zero emojis.
+
 - **Algeria Feed Ingestion & Date Parser Resilience** — **Done 2026-11-12.**
   - Identified why Algeria previously had 0 stories in 24 hours: state agency `aps.dz` deprecated public open RSS feeds (`https://www.aps.dz/algerie/feed`), direct feeds were constrained, and the single aggregator feed was restricted to an English-only energy subset.
   - Added French, Arabic, and official APS Google News aggregators (`gnews_algeria_fr`, `gnews_algeria_ar`, `gnews_algeria_aps`) in `countries/algeria/sources.yaml`, guaranteeing continuous daily coverage of Algerian domestic governance, economics, and foreign policy without relying on defunct direct endpoints.

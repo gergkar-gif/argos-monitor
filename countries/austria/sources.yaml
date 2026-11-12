@@ -7,8 +7,7 @@ sources:
   kind: media
   governing_body: Österreichischer Rundfunk (public broadcaster)
   state_affiliated: false
-  notes: Austrian public-service broadcaster providing comprehensive federal and international
-    news.
+  notes: Austrian public-service broadcaster providing comprehensive federal and international news.
   feeds:
   - url: https://rss.orf.at/news.xml
     category_hint: internal_politics
@@ -20,8 +19,7 @@ sources:
   kind: media
   governing_body: Standard Verlagsgesellschaft
   state_affiliated: false
-  notes: Vienna broadsheet paper of record covering parliamentary politics, coalition
-    negotiations, and EU policy.
+  notes: Vienna broadsheet paper of record covering parliamentary politics, coalition negotiations, and EU policy.
   feeds:
   - url: https://www.derstandard.at/rss/inland
     category_hint: internal_politics
@@ -48,11 +46,11 @@ sources:
   kind: media
   governing_body: Styria Media Group
   state_affiliated: false
-  notes: Historic bourgeois-liberal paper of record founded in 1848 covering parliamentary politics, constitutional law, and trade.
+  notes: Historic bourgeois-liberal paper of record founded in 1848 covering parliamentary politics, constitutional law, and
+    trade.
   feeds:
   - url: https://www.diepresse.com/rss
     category_hint: internal_politics
-
 - id: kleinezeitung_at
   name: Kleine Zeitung
   homepage: https://www.kleinezeitung.at
@@ -65,7 +63,6 @@ sources:
   feeds:
   - url: https://www.kleinezeitung.at/rss/politik
     category_hint: internal_politics
-
 - id: krone_at
   name: Kronen Zeitung
   homepage: https://www.krone.at
@@ -78,7 +75,6 @@ sources:
   feeds:
   - url: https://www.krone.at/nachrichten/rss.html
     category_hint: general
-
 - id: vienna_at
   name: VIENNA.AT
   homepage: https://www.vienna.at
@@ -91,7 +87,6 @@ sources:
   feeds:
   - url: https://www.vienna.at/feed/rss
     category_hint: general
-
 - id: nachrichten_at
   name: Oberösterreichische Nachrichten
   homepage: https://www.nachrichten.at
@@ -104,7 +99,6 @@ sources:
   feeds:
   - url: https://www.nachrichten.at/storage/rss/rss/politik.xml
     category_hint: internal_politics
-
 - id: tt_com
   name: Tiroler Tageszeitung
   homepage: https://www.tt.com
@@ -117,7 +111,6 @@ sources:
   feeds:
   - url: https://www.tt.com/rss/politik.xml
     category_hint: internal_politics
-
 - id: falter_at
   name: Falter
   homepage: https://www.falter.at
@@ -126,11 +119,11 @@ sources:
   kind: media
   governing_body: Falter Verlagsgesellschaft
   state_affiliated: false
-  notes: Independent investigative weekly magazine renowned for uncovering judicial corruption and political party funding scandals.
+  notes: Independent investigative weekly magazine renowned for uncovering judicial corruption and political party funding
+    scandals.
   feeds:
   - url: https://www.falter.at/rss/
     category_hint: internal_politics
-
 - id: vol_at
   name: Vorarlberg Online (VOL.AT)
   homepage: https://www.vol.at
@@ -143,3 +136,16 @@ sources:
   feeds:
   - url: https://www.vol.at/feed/rss
     category_hint: economics
+- id: gnews_austria_de
+  name: Google News (Austria National News - German)
+  homepage: https://news.google.com
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=%C3%96sterreich+OR+Wien+OR+Bundesregierung+when:2d&hl=de&gl=AT&ceid=AT:de
+    section: National News (German)
+    category_hint: internal_politics

@@ -1,159 +1,162 @@
 sources:
-  - id: belta_en
-    name: BelTA (English)
-    homepage: https://eng.belta.by
-    language: en
-    scope: domestic
-    kind: official
-    governing_body: "Presidential Administration of Belarus"
-    state_affiliated: true
-    notes: "Official statutory wire agency of the Republic of Belarus."
-    feeds:
-      - url: https://eng.belta.by/rss/all/
-        category_hint: internal_politics
-      - url: https://eng.belta.by/rss/president/
-        category_hint: internal_politics
-
-  - id: zerkalo_io
-    name: Zerkalo.io
-    homepage: https://zerkalo.io
-    language: ru
-    scope: abroad_local
-    kind: media
-    governing_body: "Zerkalo Media (exiled in Poland/Lithuania)"
-    state_affiliated: false
-    notes: "Premier exiled independent Belarusian newsroom, successor to TUT.BY."
-    feeds:
-      - url: https://zerkalo.io/rss/all.rss
-        category_hint: internal_politics
-
-  - id: nasha_niva
-    name: Nasha Niva
-    homepage: https://nashaniva.com
-    language: be
-    scope: abroad_local
-    kind: media
-    governing_body: "Nasha Niva Foundation (exile)"
-    state_affiliated: false
-    notes: "Oldest independent Belarusian cultural and political daily."
-    feeds:
-      - url: https://nashaniva.com/rss.php
-        category_hint: internal_politics
-
-  - id: euroradio_fm
-    name: Euroradio
-    homepage: https://euroradio.fm
-    language: be
-    scope: abroad_local
-    kind: media
-    governing_body: "European Radio for Belarus (Warsaw)"
-    state_affiliated: false
-    notes: "Independent broadcasting service covering Belarusian politics and society."
-    feeds:
-      - url: https://euroradio.fm/rss.xml
-        category_hint: internal_politics
-
-  - id: svaboda_by
-    name: Radio Svaboda (Belarusian)
-    homepage: https://www.svaboda.org
-    language: be
-    scope: abroad_local
-    kind: media
-    governing_body: "Radio Free Europe / Radio Liberty"
-    state_affiliated: false
-    notes: "US-funded independent Belarusian service covering politics and human rights."
-    feeds:
-      - url: https://www.svaboda.org/api/z$rq_teu_i
-        category_hint: internal_politics
-
-  - id: google_news_belarus_politics
-    name: Google News (Belarus Regime & Opposition)
-    homepage: https://news.google.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Google LLC"
-    state_affiliated: false
-    aggregator: google_news
-    notes: "Aggregator tracking Lukashenko, Tsikhanouskaya, and Minsk political developments."
-    feeds:
-      - url: "https://news.google.com/rss/search?q=Lukashenko+OR+Tsikhanouskaya+OR+Minsk+regime+when:3d&hl=en-US&gl=US&ceid=US:en"
-        category_hint: internal_politics
-
-  - id: google_news_belarus_security
-    name: Google News (Belarus Nuclear Weapons & Border Tensions)
-    homepage: https://news.google.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: "Google LLC"
-    state_affiliated: false
-    aggregator: google_news
-    notes: "Aggregator tracking tactical nuclear deployment, Poland border, and Russian military alliance."
-    feeds:
-      - url: "https://news.google.com/rss/search?q=Belarus+nuclear+OR+%22Poland+border%22+Belarus+OR+%22Union+State%22+military+when:3d&hl=en-US&gl=US&ceid=US:en"
-        category_hint: defence_security
-  - id: belta_ru
-    name: BelTA (Russian)
-    homepage: https://www.belta.by
-    language: ru
-    scope: domestic
-    kind: official
-    governing_body: "Presidential Administration of Belarus"
-    state_affiliated: true
-    notes: "Russian-language statutory wire service of the Republic of Belarus."
-    feeds:
-      - url: https://www.belta.by/rss/all/
-        category_hint: internal_politics
-
-  - id: charter97_ru
-    name: Charter'97
-    homepage: https://charter97.org
-    language: ru
-    scope: abroad_local
-    kind: media
-    governing_body: "Free Belarus Foundation (Warsaw)"
-    state_affiliated: false
-    notes: "Historic independent human rights and pro-democracy news portal founded in 1997."
-    feeds:
-      - url: https://charter97.org/ru/rss/all/
-        category_hint: internal_politics
-
-  - id: reform_news
-    name: REFORM.news
-    homepage: https://reform.news
-    language: ru
-    scope: abroad_local
-    kind: media
-    governing_body: "Media Innovation Group"
-    state_affiliated: false
-    notes: "Independent analytical digital newsroom focusing on Belarusian governance, economy, and military movements."
-    feeds:
-      - url: https://reform.news/feed
-        category_hint: internal_politics
-
-  - id: dev_by
-    name: dev.by
-    homepage: https://devby.io
-    language: ru
-    scope: abroad_local
-    kind: media
-    governing_body: "DevMedia Group"
-    state_affiliated: false
-    notes: "Premier news journal covering Belarusian technology sector, digital relocation, and IT economy."
-    feeds:
-      - url: https://devby.io/rss
-        category_hint: economics
-
-  - id: citydog_io
-    name: CityDog.io
-    homepage: https://citydog.io
-    language: ru
-    scope: abroad_local
-    kind: media
-    governing_body: "CityDog Media"
-    state_affiliated: false
-    notes: "Independent cultural, urban policy, and social daily reporting on civil society and urban life."
-    feeds:
-      - url: https://citydog.io/rss
-        category_hint: general
+- id: belta_en
+  name: BelTA (English)
+  homepage: https://eng.belta.by
+  language: en
+  scope: domestic
+  kind: official
+  governing_body: Presidential Administration of Belarus
+  state_affiliated: true
+  notes: Official statutory wire agency of the Republic of Belarus.
+  feeds:
+  - url: https://eng.belta.by/rss/all/
+    category_hint: internal_politics
+  - url: https://eng.belta.by/rss/president/
+    category_hint: internal_politics
+- id: zerkalo_io
+  name: Zerkalo.io
+  homepage: https://zerkalo.io
+  language: ru
+  scope: abroad_local
+  kind: media
+  governing_body: Zerkalo Media (exiled in Poland/Lithuania)
+  state_affiliated: false
+  notes: Premier exiled independent Belarusian newsroom, successor to TUT.BY.
+  feeds:
+  - url: https://zerkalo.io/rss/all.rss
+    category_hint: internal_politics
+- id: nasha_niva
+  name: Nasha Niva
+  homepage: https://nashaniva.com
+  language: be
+  scope: abroad_local
+  kind: media
+  governing_body: Nasha Niva Foundation (exile)
+  state_affiliated: false
+  notes: Oldest independent Belarusian cultural and political daily.
+  feeds:
+  - url: https://nashaniva.com/rss.php
+    category_hint: internal_politics
+- id: euroradio_fm
+  name: Euroradio
+  homepage: https://euroradio.fm
+  language: be
+  scope: abroad_local
+  kind: media
+  governing_body: European Radio for Belarus (Warsaw)
+  state_affiliated: false
+  notes: Independent broadcasting service covering Belarusian politics and society.
+  feeds:
+  - url: https://euroradio.fm/rss.xml
+    category_hint: internal_politics
+- id: svaboda_by
+  name: Radio Svaboda (Belarusian)
+  homepage: https://www.svaboda.org
+  language: be
+  scope: abroad_local
+  kind: media
+  governing_body: Radio Free Europe / Radio Liberty
+  state_affiliated: false
+  notes: US-funded independent Belarusian service covering politics and human rights.
+  feeds:
+  - url: https://www.svaboda.org/api/z$rq_teu_i
+    category_hint: internal_politics
+- id: google_news_belarus_politics
+  name: Google News (Belarus Regime & Opposition)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator tracking Lukashenko, Tsikhanouskaya, and Minsk political developments.
+  feeds:
+  - url: https://news.google.com/rss/search?q=Lukashenko+OR+Tsikhanouskaya+OR+Minsk+regime+when:3d&hl=en-US&gl=US&ceid=US:en
+    category_hint: internal_politics
+- id: google_news_belarus_security
+  name: Google News (Belarus Nuclear Weapons & Border Tensions)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator tracking tactical nuclear deployment, Poland border, and Russian military alliance.
+  feeds:
+  - url: https://news.google.com/rss/search?q=Belarus+nuclear+OR+%22Poland+border%22+Belarus+OR+%22Union+State%22+military+when:3d&hl=en-US&gl=US&ceid=US:en
+    category_hint: defence_security
+- id: belta_ru
+  name: BelTA (Russian)
+  homepage: https://www.belta.by
+  language: ru
+  scope: domestic
+  kind: official
+  governing_body: Presidential Administration of Belarus
+  state_affiliated: true
+  notes: Russian-language statutory wire service of the Republic of Belarus.
+  feeds:
+  - url: https://www.belta.by/rss/all/
+    category_hint: internal_politics
+- id: charter97_ru
+  name: Charter'97
+  homepage: https://charter97.org
+  language: ru
+  scope: abroad_local
+  kind: media
+  governing_body: Free Belarus Foundation (Warsaw)
+  state_affiliated: false
+  notes: Historic independent human rights and pro-democracy news portal founded in 1997.
+  feeds:
+  - url: https://charter97.org/ru/rss/all/
+    category_hint: internal_politics
+- id: reform_news
+  name: REFORM.news
+  homepage: https://reform.news
+  language: ru
+  scope: abroad_local
+  kind: media
+  governing_body: Media Innovation Group
+  state_affiliated: false
+  notes: Independent analytical digital newsroom focusing on Belarusian governance, economy, and military movements.
+  feeds:
+  - url: https://reform.news/feed
+    category_hint: internal_politics
+- id: dev_by
+  name: dev.by
+  homepage: https://devby.io
+  language: ru
+  scope: abroad_local
+  kind: media
+  governing_body: DevMedia Group
+  state_affiliated: false
+  notes: Premier news journal covering Belarusian technology sector, digital relocation, and IT economy.
+  feeds:
+  - url: https://devby.io/rss
+    category_hint: economics
+- id: citydog_io
+  name: CityDog.io
+  homepage: https://citydog.io
+  language: ru
+  scope: abroad_local
+  kind: media
+  governing_body: CityDog Media
+  state_affiliated: false
+  notes: Independent cultural, urban policy, and social daily reporting on civil society and urban life.
+  feeds:
+  - url: https://citydog.io/rss
+    category_hint: general
+- id: gnews_belarus_be
+  name: Google News (Belarus National News - Belarusian/Russian)
+  homepage: https://news.google.com
+  language: be
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=%D0%91%D0%B5%D0%BB%D0%B0%D1%80%D1%83%D1%81%D1%8C+OR+%D0%9C%D0%B8%D0%BD%D1%81%D0%BA+when:2d&hl=ru&gl=BY&ceid=BY:ru
+    section: National News (Belarusian/Russian)
+    category_hint: internal_politics

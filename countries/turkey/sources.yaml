@@ -1,140 +1,167 @@
-# Turkey source registry (decision D15).
-# Combines state wire & pro-government press (Anadolu Agency, Daily Sabah) with major independent & opposition outlets (Cumhuriyet, Sözcü, BirGün, Bianet) and international feeds.
-
 sources:
-  - id: aa_en
-    name: Anadolu Agency (English)
-    homepage: https://www.aa.com.tr/en
-    language: en
-    scope: domestic
-    kind: official
-    governing_body: Anadolu Ajansı (state-run news agency of Türkiye)
-    state_affiliated: true
-    needs_mention: true
-    feeds:
-      - {url: "https://www.aa.com.tr/en/rss/default?cat=live", section: Live, category_hint: general}
-
-  - id: aa_tr
-    name: Anadolu Ajansı (Turkish)
-    homepage: https://www.aa.com.tr/tr
-    language: tr
-    scope: domestic
-    kind: official
-    governing_body: Anadolu Ajansı (state-run news agency of Türkiye)
-    state_affiliated: true
-    feeds:
-      - {url: "https://www.aa.com.tr/tr/rss/default?cat=guncel", section: Güncel, category_hint: general}
-
-  - id: dailysabah
-    name: Daily Sabah
-    homepage: https://www.dailysabah.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: Turkuvaz Media Group (pro-government alignment)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.dailysabah.com/rssFeed/11/10", section: Politics & Diplomacy, category_hint: internal_politics}
-
-  - id: cumhuriyet
-    name: Cumhuriyet
-    homepage: https://www.cumhuriyet.com.tr
-    language: tr
-    scope: domestic
-    kind: media
-    governing_body: Cumhuriyet Vakfı (independent secular opposition daily)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.cumhuriyet.com.tr/rss", section: Son Dakika, category_hint: general}
-
-  - id: sozcu
-    name: Sözcü
-    homepage: https://www.sozcu.com.tr
-    language: tr
-    scope: domestic
-    kind: media
-    governing_body: Estetik Yayın A.Ş. (independent opposition daily)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.sozcu.com.tr/feeds-rss-category-gundem", section: Gündem, category_hint: general}
-
-  - id: birgun
-    name: BirGün
-    homepage: https://www.birgun.net
-    language: tr
-    scope: domestic
-    kind: media
-    governing_body: Birgün Yayıncılık (independent left-wing daily)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.birgun.net/rss/home", section: Güncel, category_hint: general}
-
-  - id: bianet_en
-    name: Bianet English
-    homepage: https://bianet.org/english
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: IPS Communication Foundation (independent human rights & civic agency)
-    state_affiliated: false
-    feeds:
-      - {url: "https://bianet.org/rss/english", section: English, category_hint: general}
-
-  - id: trt_haber
-    name: TRT Haber
-    homepage: https://www.trthaber.com
-    language: tr
-    scope: domestic
-    kind: media
-    governing_body: Turkish Radio and Television Corporation (national public broadcaster)
-    state_affiliated: true
-    feeds:
-      - {url: "https://www.trthaber.com/manset_articles.rss", section: Manşet, category_hint: general}
-
-  - id: hurriyet
-    name: Hürriyet
-    homepage: https://www.hurriyet.com.tr
-    language: tr
-    scope: domestic
-    kind: media
-    governing_body: Demirören Group (major national daily newspaper)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.hurriyet.com.tr/rss/gundem", section: Gündem, category_hint: general}
-
-  - id: haberturk
-    name: Habertürk
-    homepage: https://www.haberturk.com
-    language: tr
-    scope: domestic
-    kind: media
-    governing_body: Ciner Media Group (national news broadcaster and portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.haberturk.com/rss/manset.xml", section: Manşet, category_hint: general}
-
-  - id: gnews_en_tr
-    name: Google News (Turkey - English)
-    homepage: https://news.google.com
-    language: en
-    scope: international
-    kind: media
-    aggregator: google_news
-    governing_body: n/a (aggregator)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(Turkey+OR+Turkiye)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Turkey, category_hint: general}
-      - {url: "https://news.google.com/rss/search?q=(Turkey+OR+Turkiye)+(Erdogan+OR+NATO+OR+Syria+OR+Russia+OR+Fidan)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Turkey diplomacy & security, category_hint: foreign_policy}
-      - {url: "https://news.google.com/rss/search?q=(Turkey+OR+Turkiye)+(lira+OR+inflation+OR+%22central+bank%22+OR+Simsek+OR+economy)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Turkey economy, category_hint: economics}
-
-  - id: gnews_tr_abroad
-    name: Google News (Turkish Diaspora & Exile Press)
-    homepage: https://news.google.com
-    language: en
-    scope: abroad_local
-    kind: media
-    aggregator: google_news
-    governing_body: Diaspora & international Turkish-focused outlets via Google News
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:turkishminute.com+OR+site:duvarenglish.com+OR+site:medyascope.tv)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Independent & diaspora, category_hint: general}
+- id: aa_en
+  name: Anadolu Agency (English)
+  homepage: https://www.aa.com.tr/en
+  language: en
+  scope: domestic
+  kind: official
+  governing_body: Anadolu Ajansı (state-run news agency of Türkiye)
+  state_affiliated: true
+  needs_mention: true
+  feeds:
+  - url: https://www.aa.com.tr/en/rss/default?cat=live
+    section: Live
+    category_hint: general
+- id: aa_tr
+  name: Anadolu Ajansı (Turkish)
+  homepage: https://www.aa.com.tr/tr
+  language: tr
+  scope: domestic
+  kind: official
+  governing_body: Anadolu Ajansı (state-run news agency of Türkiye)
+  state_affiliated: true
+  feeds:
+  - url: https://www.aa.com.tr/tr/rss/default?cat=guncel
+    section: Güncel
+    category_hint: general
+- id: dailysabah
+  name: Daily Sabah
+  homepage: https://www.dailysabah.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Turkuvaz Media Group (pro-government alignment)
+  state_affiliated: false
+  feeds:
+  - url: https://www.dailysabah.com/rssFeed/11/10
+    section: Politics & Diplomacy
+    category_hint: internal_politics
+- id: cumhuriyet
+  name: Cumhuriyet
+  homepage: https://www.cumhuriyet.com.tr
+  language: tr
+  scope: domestic
+  kind: media
+  governing_body: Cumhuriyet Vakfı (independent secular opposition daily)
+  state_affiliated: false
+  feeds:
+  - url: https://www.cumhuriyet.com.tr/rss
+    section: Son Dakika
+    category_hint: general
+- id: sozcu
+  name: Sözcü
+  homepage: https://www.sozcu.com.tr
+  language: tr
+  scope: domestic
+  kind: media
+  governing_body: Estetik Yayın A.Ş. (independent opposition daily)
+  state_affiliated: false
+  feeds:
+  - url: https://www.sozcu.com.tr/feeds-rss-category-gundem
+    section: Gündem
+    category_hint: general
+- id: birgun
+  name: BirGün
+  homepage: https://www.birgun.net
+  language: tr
+  scope: domestic
+  kind: media
+  governing_body: Birgün Yayıncılık (independent left-wing daily)
+  state_affiliated: false
+  feeds:
+  - url: https://www.birgun.net/rss/home
+    section: Güncel
+    category_hint: general
+- id: bianet_en
+  name: Bianet English
+  homepage: https://bianet.org/english
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: IPS Communication Foundation (independent human rights & civic agency)
+  state_affiliated: false
+  feeds:
+  - url: https://bianet.org/rss/english
+    section: English
+    category_hint: general
+- id: trt_haber
+  name: TRT Haber
+  homepage: https://www.trthaber.com
+  language: tr
+  scope: domestic
+  kind: media
+  governing_body: Turkish Radio and Television Corporation (national public broadcaster)
+  state_affiliated: true
+  feeds:
+  - url: https://www.trthaber.com/manset_articles.rss
+    section: Manşet
+    category_hint: general
+- id: hurriyet
+  name: Hürriyet
+  homepage: https://www.hurriyet.com.tr
+  language: tr
+  scope: domestic
+  kind: media
+  governing_body: Demirören Group (major national daily newspaper)
+  state_affiliated: false
+  feeds:
+  - url: https://www.hurriyet.com.tr/rss/gundem
+    section: Gündem
+    category_hint: general
+- id: haberturk
+  name: Habertürk
+  homepage: https://www.haberturk.com
+  language: tr
+  scope: domestic
+  kind: media
+  governing_body: Ciner Media Group (national news broadcaster and portal)
+  state_affiliated: false
+  feeds:
+  - url: https://www.haberturk.com/rss/manset.xml
+    section: Manşet
+    category_hint: general
+- id: gnews_en_tr
+  name: Google News (Turkey - English)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  aggregator: google_news
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Turkey+OR+Turkiye)+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Turkey
+    category_hint: general
+  - url: https://news.google.com/rss/search?q=(Turkey+OR+Turkiye)+(Erdogan+OR+NATO+OR+Syria+OR+Russia+OR+Fidan)+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Turkey diplomacy & security
+    category_hint: foreign_policy
+  - url: https://news.google.com/rss/search?q=(Turkey+OR+Turkiye)+(lira+OR+inflation+OR+%22central+bank%22+OR+Simsek+OR+economy)+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Turkey economy
+    category_hint: economics
+- id: gnews_tr_abroad
+  name: Google News (Turkish Diaspora & Exile Press)
+  homepage: https://news.google.com
+  language: en
+  scope: abroad_local
+  kind: media
+  aggregator: google_news
+  governing_body: Diaspora & international Turkish-focused outlets via Google News
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:turkishminute.com+OR+site:duvarenglish.com+OR+site:medyascope.tv)+when:7d&hl=en-US&gl=US&ceid=US:en
+    section: Independent & diaspora
+    category_hint: general
+- id: gnews_turkey_tr
+  name: Google News (Turkey National News - Turkish)
+  homepage: https://news.google.com
+  language: tr
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=T%C3%BCrkiye+OR+Ankara+OR+h%C3%BCk%C3%BCmet+when:2d&hl=tr&gl=TR&ceid=TR:tr
+    section: National News (Turkish)
+    category_hint: internal_politics
