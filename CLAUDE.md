@@ -30,3 +30,4 @@ The project has not been built yet. Read these before doing any work:
 - Python, standard library first. Add a dependency only when it clearly earns its place, and list it in `requirements.txt`.
 - The output is a static website in `site/` (plain HTML/CSS/vanilla JS, no server, no JS framework) fed by JSON files the pipeline writes. See D12.
 - Simple over clever. This is a prototype for one user.
+- Mobile: any CSS grid holding nowrap or long content needs `grid-template-columns: minmax(0, 1fr)`, otherwise it stretches the page past the phone width. Check new UI at 375 px.
