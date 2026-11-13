@@ -26,7 +26,7 @@
 
 <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png">
 <link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=3.6">
 <style>
   /* ---- Foreign Ministry / Diplomatic Brief Document Styling ---- */
   .brief-wrap { max-width: 58rem; margin: 0 auto; padding: 1.5rem 1rem 4rem; }
@@ -175,6 +175,20 @@
     justify-content: flex-end;
     margin-bottom: 1rem;
     gap: 0.75rem;
+  }
+
+  @media (max-width: 45.99rem) {
+    .brief-wrap { padding: 1rem 0.75rem 3rem; }
+    .diplomatic-doc { padding: 1.25rem 1rem; overflow-wrap: anywhere; }
+    .doc-agency { flex-wrap: wrap; gap: 0.25rem 1rem; }
+    .doc-title { font-size: 1.3rem; }
+    .doc-meta-grid { grid-template-columns: minmax(0, 1fr); }
+    .doc-meta-item strong { min-width: 8.5rem; }
+    .dispatch-item { padding-left: 0.9rem; }
+    .dispatch-headline { font-size: 1.08rem; }
+    .doc-closing { flex-wrap: wrap; gap: 0.5rem 1rem; }
+    .print-action-bar { flex-wrap: wrap; justify-content: stretch; }
+    .print-action-bar .more { flex: 1 1 auto; }
   }
 
   /* ---- Print Specifics (A4 Foreign Ministry Standard) ---- */

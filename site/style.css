@@ -42,7 +42,8 @@ h1, h2, h3, p { margin: 0; }
   box-shadow: 0 3px 0 0 var(--bg), 0 4px 0 0 var(--ink);   /* classic newspaper double rule */
   margin-bottom: 1rem;
 }
-.bureau-inner { max-width: 68rem; margin: 0 auto; padding: 1.5rem 1.5rem 0; display: grid; gap: 0; }
+/* minmax(0,1fr): stops the non-wrapping nav from stretching the page wider than a phone screen */
+.bureau-inner { max-width: 68rem; margin: 0 auto; padding: 1.5rem 1.5rem 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; }
 .masthead {
   display: flex; flex-direction: column; align-items: center; text-align: center;
   gap: 0.65rem; padding-bottom: 0; border-bottom: 0;
@@ -207,11 +208,31 @@ select:disabled { opacity: 0.35; cursor: not-allowed; }
 }
 
 @media (max-width: 45.99rem) {
-  .bureau-inner { padding: 1rem 1rem 0; }
-  .masthead h1 { font-size: 2.1rem; }
-  .topnav { justify-content: flex-start; gap: 1.25rem; }
-  .slip { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
-  .slip .field:nth-child(n+3) { grid-column: 1 / -1; }
+  .bureau { margin-bottom: 0.5rem; }
+  .bureau-inner { padding: 0.85rem 1rem 0; }
+  .masthead { gap: 0.35rem; }
+  .masthead h1 { font-size: 1.45rem; letter-spacing: 0.1em; }
+  .masthead h1 .logo { width: 1.2rem; height: 1.2rem; }
+  .masthead p { font-size: 0.72rem; }
+  /* nav scrolls sideways; the right-edge fade hints there is more */
+  .topnav {
+    justify-content: flex-start; gap: 1.35rem; padding: 0;
+    scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(to right, #000 85%, transparent);
+            mask-image: linear-gradient(to right, #000 85%, transparent);
+  }
+  .topnav::-webkit-scrollbar { display: none; }
+  .topnav a { padding: 0.8rem 0; }
+  .topnav a:last-child { padding-right: 2.5rem; }
+  /* country and search full width, period + topic side by side */
+  .slip { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0.25rem 1rem; padding: 0.5rem 0 0.75rem; }
+  .slip .field:nth-child(1), .slip .field:nth-child(n+4) { grid-column: 1 / -1; }
+  /* 44px touch targets; 16px text stops iOS zooming in on focus */
+  select, input[type=search], .combobox-input { height: 2.6rem; font-size: 1rem; }
+  .monitor-filter select, .bilateral-controls select, .bilateral-controls input, .add-country-sel { font-size: 1rem; min-height: 2.6rem; }
+  .combobox-arrow { padding: 0.7rem; }
+  .combobox-menu { width: 100%; max-width: none; max-height: 60vh; }
+  .combobox-item { padding: 0.75rem; font-size: 0.95rem; }
 }
 @media (min-width: 46rem) {
   .slip { grid-template-columns: minmax(13.5rem, 1.4fr) minmax(7rem, 0.8fr) minmax(8rem, 1fr) minmax(10rem, 1.6fr); align-items: center; gap: 1.5rem; }
@@ -317,17 +338,20 @@ main { max-width: 68rem; margin: 0 auto; padding: 2rem 1.5rem 5rem; outline: non
 }
 .lead { border-left-width: 6px; padding-left: 1.5rem; }
 
-.clip:hover,
-.clip:focus-within {
-  transform: translateX(5px);
-  border-left-color: var(--indigo);
-  background: rgba(30, 58, 138, 0.02);
-  border-radius: 0 4px 4px 0;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.025);
-}
-.clip:hover .headline a,
-.clip:focus-within .headline a {
-  color: var(--indigo);
+/* hover-only: on touch screens a tap would otherwise leave the card shifted sideways */
+@media (hover: hover) {
+  .clip:hover,
+  .clip:focus-within {
+    transform: translateX(5px);
+    border-left-color: var(--indigo);
+    background: rgba(30, 58, 138, 0.02);
+    border-radius: 0 4px 4px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.025);
+  }
+  .clip:hover .headline a,
+  .clip:focus-within .headline a {
+    color: var(--indigo);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -419,7 +443,7 @@ summary:hover { color: var(--ink); }
   .country-layout { grid-template-columns: minmax(0, 1fr) 19.5rem; gap: 3.25rem; }
   .country-layout .grid { grid-template-columns: minmax(0, 1fr); gap: 2.25rem; }
 }
-.country-side { display: grid; gap: 2rem; }
+.country-side { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; }
 @media (min-width: 56rem) {
   .country-side { border-left: 1px solid var(--rule); padding-left: 1.75rem; }
 }
@@ -431,7 +455,8 @@ summary:hover { color: var(--ink); }
 .alerts.side-alert { border-left-color: var(--red); }
 .alerts h2 { font: 700 0.76rem/1.2 var(--sans); letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink); margin: 0 0 0.6rem; }
 .alerts ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.55rem; font-size: 0.86rem; line-height: 1.38; }
-.alerts li { display: flex; flex-wrap: wrap; gap: 0.2rem 0.5rem; align-items: baseline; }
+.alerts li { display: flex; flex-wrap: wrap; gap: 0.2rem 0.5rem; align-items: baseline; min-width: 0; overflow-wrap: anywhere; }
+.alerts li .stamp { white-space: normal; }
 .alerts .term { font-weight: 600; color: var(--ink); }
 .alerts a { text-decoration: none; color: var(--ink); }
 .alerts a:hover { color: var(--indigo); text-decoration: underline; }
@@ -694,3 +719,34 @@ summary:hover { color: var(--ink); }
 }
 .totop:hover { background: var(--red); }
 .totop[hidden] { display: none; }
+
+/* ---- Phone layout: tighter spacing, bigger tap targets ---- */
+@media (max-width: 45.99rem) {
+  .result-line { margin-bottom: 1.25rem; padding-bottom: 0.75rem; }
+  .crisis-strip { margin-bottom: 1.75rem; padding-left: 0.85rem; }
+  .tabs { gap: 1.25rem; padding: 0; margin-bottom: 1.75rem; scrollbar-width: none; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab { padding: 0.8rem 0; }
+  .drawer { margin-bottom: 2.75rem; }
+  .drawer-head { margin-bottom: 1.25rem; }
+  .grid { gap: 2rem; }
+  .clip { padding: 0.2rem 0 0.2rem 0.9rem; border-left-width: 4px; }
+  .lead { padding-left: 1rem; border-left-width: 5px; }
+  .headline { font-size: 1.1rem; }
+  .lead .headline { font-size: 1.3rem; }
+  .strip { font-size: 0.92rem; }
+  summary { padding: 0.45rem 0; }
+  .more { padding: 0.65rem 1rem; }
+  .drawer .more + .more { margin: 0.75rem 0 0; }
+  .chip .x { padding: 0.65rem 0.7rem; }
+  .country-layout { gap: 2rem; }
+  .monitor-bar, .agenda-bar, .bilateral-bar { padding: 0.65rem 0.75rem; }
+  .monitor-filter, .bilateral-controls .field { flex: 1 1 100%; }
+  .monitor-filter select { flex: 1; }
+  .agenda-title { white-space: normal; }
+  .agenda-filters { margin-left: 0; }
+  .agenda-btn, .agenda-filter-btn, .pair-pill { padding: 0.45rem 0.6rem; }
+  .bilateral-delta-cat { margin-left: 0; }
+  .legend-inner { padding: 1.5rem 1rem 2.5rem; }
+  .totop { right: 0.85rem; bottom: calc(0.85rem + env(safe-area-inset-bottom)); height: 2.75rem; width: 2.75rem; }
+}

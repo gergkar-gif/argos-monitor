@@ -42,9 +42,10 @@
 
 <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png">
 <link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="style.css?v=3.5">
+<link rel="stylesheet" href="style.css?v=3.6">
 <style>
-  .doc { max-width: 68rem; margin: 0 auto; padding: 2rem 1.5rem 4rem; display: grid; gap: 2.25rem; }
+  .doc { max-width: 68rem; margin: 0 auto; padding: 2rem 1.5rem 4rem; display: grid; grid-template-columns: minmax(0, 1fr); gap: 2.25rem; overflow-wrap: anywhere; }
+  @media (max-width: 45.99rem) { .doc { padding: 1.25rem 1rem 3rem; gap: 1.75rem; } }
   .doc h2 { font: 700 0.9rem/1.2 var(--sans); letter-spacing: 0.06em; text-transform: uppercase; padding-bottom: 0.4rem; border-bottom: 1px solid var(--ink); margin-bottom: 0.75rem; }
   .doc p, .doc li { max-width: 65ch; line-height: 1.65; color: var(--ink-2); }
   .doc strong { color: var(--ink); }
