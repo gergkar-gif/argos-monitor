@@ -362,15 +362,36 @@
       }
     });
   }
+  // Desktop: horizontal tab strip. Mobile (<=45.99rem): native rolldown select so no menu ever scrolls sideways.
+  function tabBar(items, activeId, onSelect, labelText, ariaLabel) {
+    return h('div', { class: 'tab-bar' },
+      h('ul', { class: 'tabs', role: 'list', 'aria-label': ariaLabel || labelText },
+        items.map(([id, label, n, style]) =>
+          h('li', null, h('button', {
+            type: 'button',
+            class: 'tab',
+            style: style || '',
+            'aria-pressed': String(activeId === id),
+            onclick: () => onSelect(id),
+          }, label, n != null && h('span', { class: 'n', text: String(n) }))))),
+      h('label', { class: 'tab-rolldown' },
+        h('span', { text: labelText }),
+        h('select', {
+          'aria-label': ariaLabel || labelText,
+          onchange: (e) => onSelect(e.target.value),
+        }, items.map(([id, label, n]) =>
+          h('option', {
+            value: id,
+            selected: activeId === id,
+            text: n != null ? `${label} (${n})` : label,
+          })))));
+  }
+
   function regionTabs(countFn, onChoose) {
     const active = REGIONS.filter((r) => countFn(r) > 0);
     if (active.length < 2) return null;
-    return h('ul', { class: 'tabs', role: 'list', 'aria-label': 'Filter by region' },
-      [['all', 'All regions'], ...active.map((r) => [r, r])].map(([id, label]) =>
-        h('li', null, h('button', { type: 'button', class: 'tab',
-          'aria-pressed': String(openRegion === id),
-          onclick: () => { openRegion = id; onChoose(); } }, label,
-          h('span', { class: 'n', text: String(countFn(id)) })))));
+    const items = [['all', 'All regions', countFn('all')], ...active.map((r) => [r, r, countFn(r)])];
+    return tabBar(items, openRegion, (id) => { openRegion = id; onChoose(); }, 'Region', 'Filter by region');
   }
   const ALL_PERIODS = [
     ['24h', 'Last 24 hours'],
@@ -943,12 +964,12 @@
           h('table', { class: 'desk-table' },
             h('thead', null, h('tr', null, ['Country', 'Region', 'Source', 'Alert / Advisory & Details', 'Date'].map((x) => h('th', { text: x })))),
             h('tbody', null, all.map((i) => h('tr', null,
-              h('td', null, index.countries.some((x) => x.id === i.cid)
+              h('td', { class: 'cell-head' }, index.countries.some((x) => x.id === i.cid)
                 ? h('button', { type: 'button', class: 'stamp country-tag', text: i.cname, onclick: () => { monitorCountry = i.cid; setHash(hashFor('all')); renderAlerts(); } })
                 : h('span', { class: 'stamp', text: i.cname })),
               h('td', { class: 'meta', text: i.region }),
               h('td', null, h('span', { class: 'stamp ' + (isHotAlert(i) ? 'red' : 'indigo'), text: i.kind })),
-              h('td', null,
+              h('td', { class: 'cell-body' },
                 h('a', { href: safeUrl(i.url), target: '_blank', rel: 'noopener noreferrer', text: i.title }),
                 i.summary && h('p', { class: 'byline', text: i.summary })),
               h('td', { class: 'typed', text: i.date ? fmtDay.format(new Date(i.date)) : '—' }))))))
@@ -1161,18 +1182,18 @@
       : (openSubType !== 'all' ? allOfficial.filter((i) => matchAlertConflictTrack(i, openSubType)) : allOfficial);
 
     const subTabs = isDis
-      ? h('ul', { class: 'tabs', role: 'list', 'aria-label': 'Filter by event type' },
-          [['all', 'All types', allStories.length], ...DISASTER_RULES.map(([label]) => [label, label, allStories.filter((s) => s.disaster_type === label).length])].map(([id, label, n]) =>
-            h('li', null, h('button', { type: 'button', class: 'tab',
-              'aria-pressed': String(openSubType === id),
-              onclick: () => { openSubType = id; renderEventMonitor(mode); } }, label,
-              h('span', { class: 'n', text: String(n) })))))
-      : h('ul', { class: 'tabs', role: 'list', 'aria-label': 'Filter by conflict track & religious sensitivity' },
-          CONFLICT_TRACKS.map(([id, label]) => [id, label, allStories.filter((s) => matchConflictTrack(s, id)).length]).map(([id, label, n]) =>
-            h('li', null, h('button', { type: 'button', class: 'tab',
-              'aria-pressed': String(openSubType === id),
-              onclick: () => { openSubType = id; renderEventMonitor(mode); } }, label,
-              h('span', { class: 'n', text: String(n) })))));
+      ? tabBar(
+          [['all', 'All types', allStories.length], ...DISASTER_RULES.map(([label]) => [label, label, allStories.filter((s) => s.disaster_type === label).length])],
+          openSubType,
+          (id) => { openSubType = id; renderEventMonitor(mode); },
+          'Event',
+          'Filter by event type')
+      : tabBar(
+          CONFLICT_TRACKS.map(([id, label]) => [id, label, allStories.filter((s) => matchConflictTrack(s, id)).length]),
+          openSubType,
+          (id) => { openSubType = id; renderEventMonitor(mode); },
+          'Track',
+          'Filter by conflict track & religious sensitivity');
 
     const countryName = filterCountry ? prettyName(filterCountry) : null;
     const periodLabel = (MONITOR_PERIODS.find(([v]) => v === monitorPeriod) || [])[1] || 'Past 7 days';
@@ -1213,10 +1234,10 @@
           h('table', { class: 'desk-table' },
             h('thead', null, h('tr', null, ['Country', 'Region', 'Source', 'Event / Advisory & Details', 'Date'].map((x) => h('th', { text: x })))),
             h('tbody', null, filteredOfficial.map((i) => h('tr', null,
-              h('td', null, h('button', { type: 'button', class: 'stamp country-tag', text: i.cname, onclick: () => { monitorCountry = i.cid; setHash(hashFor('all')); renderEventMonitor(mode); } })),
+              h('td', { class: 'cell-head' }, h('button', { type: 'button', class: 'stamp country-tag', text: i.cname, onclick: () => { monitorCountry = i.cid; setHash(hashFor('all')); renderEventMonitor(mode); } })),
               h('td', { class: 'meta', text: i.region }),
               h('td', null, h('span', { class: 'stamp ' + (isHotAlert(i) ? 'red' : 'indigo'), text: i.kind })),
-              h('td', null,
+              h('td', { class: 'cell-body' },
                 h('a', { href: safeUrl(i.url), target: '_blank', rel: 'noopener noreferrer', text: i.title }),
                 i.summary && h('p', { class: 'byline', text: i.summary })),
               h('td', { class: 'typed', text: i.date ? fmtDay.format(new Date(i.date)) : '—' }))))))),
@@ -1556,12 +1577,12 @@
             h('tbody', null, desks.map((d) => {
               const nAlerts = (c && c.countries && c.countries[d.id] || []).length;
               return h('tr', null,
-                h('td', null, h('button', { type: 'button', class: 'desk-link', text: `${d.name} →`, onclick: () => openCountry(d.id) })),
+                h('td', { class: 'cell-head' }, h('button', { type: 'button', class: 'desk-link', text: `${d.name} →`, onclick: () => openCountry(d.id) })),
                 h('td', { class: 'meta', text: d.region }),
-                h('td', { class: 'typed', text: String(d.stories_24h) }),
-                h('td', { class: 'typed', text: String(d.stories_7d) }),
-                h('td', null, nAlerts ? h('span', { class: 'stamp red', text: String(nAlerts) }) : h('span', { class: 'meta', text: '—' })),
-                h('td', null, d.lead ? (() => {
+                h('td', { class: 'typed', 'data-label': '24h', text: String(d.stories_24h) }),
+                h('td', { class: 'typed', 'data-label': '7d', text: String(d.stories_7d) }),
+                h('td', { 'data-label': 'Alerts' }, nAlerts ? h('span', { class: 'stamp red', text: String(nAlerts) }) : h('span', { class: 'meta', text: '—' })),
+                h('td', { class: 'cell-body' }, d.lead ? (() => {
                   const cl = (index.countries.find((x) => x.id === d.id) || {}).language || 'en';
                   const a = h('a', { href: safeUrl(d.lead.url), target: '_blank', rel: 'noopener noreferrer', lang: cl, text: d.lead.title });
                   const o = h('span', { class: 'orig', hidden: true });
@@ -1631,16 +1652,6 @@
     results.classList.toggle('still', !animate);
     T.queue.length = 0;
     const q = ($('#q').value || '').trim().toLowerCase();
-    let stories = q ? d.stories.filter((s) => matchStory(s, q)) : d.stories;
-    if (movementFilter === 'surge_new') {
-      stories = stories.filter((s) => s.delta && (s.delta.state === 'surging' || s.delta.state === 'new'));
-    } else if (movementFilter === 'pickup') {
-      stories = stories.filter((s) => s.delta && s.delta.scope_shift);
-    }
-    const count = (id) => (q || movementFilter !== 'all' ? stories.filter((s) => s.category === id).length : d.totals[id]);
-    const noOutside = d.stories.every((s) => !s.by_scope.abroad_local && !s.by_scope.international);
-    const byTopic = (id) => stories.filter((s) => s.category === id);
-    const totalStories = (q || movementFilter !== 'all') ? stories.length : Object.values(d.totals).reduce((a, b) => a + b, 0);
     const updated = new Date(d.generated_at);
     const ageH = (Date.now() - updated) / 3.6e6;
     const detectedPeriod = (d && d.period) || (d && d.days === 1 ? '24h' : '7d');
@@ -1648,21 +1659,38 @@
       period.value = detectedPeriod;
     }
     const periodLabel = (period.options[period.selectedIndex] ? period.options[period.selectedIndex].text : (detectedPeriod === '24h' ? 'Last 24 hours' : 'Last 7 days')).toLowerCase();
+    const cutoff = periodCutoff(detectedPeriod);
+    const windowStories = cutoff ? d.stories.filter((s) => storyRecency(s) >= cutoff) : d.stories;
+    let stories = q ? windowStories.filter((s) => matchStory(s, q)) : windowStories;
+    if (movementFilter === 'surge_new') {
+      stories = stories.filter((s) => s.delta && (s.delta.state === 'surging' || s.delta.state === 'new'));
+    } else if (movementFilter === 'pickup') {
+      stories = stories.filter((s) => s.delta && s.delta.scope_shift);
+    }
+    const isFiltered = Boolean(q || movementFilter !== 'all' || windowStories.length !== d.stories.length);
+    const count = (id) => (isFiltered ? stories.filter((s) => s.category === id).length : d.totals[id]);
+    const noOutside = windowStories.every((s) => !s.by_scope.abroad_local && !s.by_scope.international);
+    const byTopic = (id) => stories.filter((s) => s.category === id);
+    const totalStories = isFiltered ? stories.length : Object.values(d.totals).reduce((a, b) => a + b, 0);
 
-    const tabs = h('ul', { class: 'tabs', role: 'list' },
-      [['all', 'All topics'], ...TOPICS.map((t) => [t.id, t.name])].map(([id, label]) =>
-        h('li', null, h('button', { type: 'button', class: 'tab', style: id === 'all' ? '' : topicVar(id),
-          'aria-pressed': String(openTopic === id), onclick: () => choose(id) }, label,
-          h('span', { class: 'n', text: String(id === 'all' ? totalStories : count(id)) })))));
+    const tabs = tabBar(
+      [['all', 'All topics', totalStories], ...TOPICS.map((t) => [t.id, t.name, count(t.id), topicVar(t.id)])],
+      openTopic,
+      (id) => choose(id),
+      'Topic',
+      'Filter by topic');
 
     const body = [];
+    const staleEmptyMsg = (!q && movementFilter === 'all' && windowStories.length === 0 && d.stories.length > 0)
+      ? `No stories in the ${periodLabel} — this snapshot was last updated ${fmtTime.format(updated)}${ageH > STALE_HOURS ? ` (${Math.round(ageH / 24)}d old)` : ''}. Run "python run.py" to collect fresh news.`
+      : null;
     if (openTopic === 'all') {
       const order = TOPICS.map((t) => t.id).filter((id) => byTopic(id).length)
         .sort((a, b) => (a === 'other') - (b === 'other') || byTopic(b)[0].score - byTopic(a)[0].score);
       if (order.length) {
         order.forEach((id) => body.push(drawer(id, byTopic(id), count(id), PER_TOPIC_IN_OVERVIEW + (extra[id] || 0))));
       } else {
-        body.push(h('p', { class: 'state quiet', text: q ? `No stories match "${q}" here.` : `No stories found for ${country.options[country.selectedIndex] ? country.options[country.selectedIndex].text : 'this desk'} in this time period.` }));
+        body.push(h('p', { class: 'state quiet', text: staleEmptyMsg || (q ? `No stories match "${q}" here.` : `No stories found for ${country.options[country.selectedIndex] ? country.options[country.selectedIndex].text : 'this desk'} in this time period.`) }));
       }
     } else if (byTopic(openTopic).length) {
       const topicStories = byTopic(openTopic);
@@ -1670,7 +1698,7 @@
       const currentLimit = isAll || topicStories.length <= TOPIC_PAGE_CHUNK ? 0 : Math.min(topicStories.length, TOPIC_PAGE_CHUNK + (extra[openTopic] || 0));
       body.push(drawer(openTopic, topicStories, count(openTopic), currentLimit));
     } else {
-      body.push(h('p', { class: 'state', text: q ? `No stories match "${q}" here.` : `No ${topicName(openTopic).toLowerCase()} stories in this period.` }));
+      body.push(h('p', { class: 'state', text: staleEmptyMsg || (q ? `No stories match "${q}" here.` : `No ${topicName(openTopic).toLowerCase()} stories in this period.`) }));
     }
 
     const side = [alerts(), trends(), reddit(), social()].filter(Boolean);

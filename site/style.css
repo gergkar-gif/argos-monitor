@@ -277,15 +277,20 @@ main { max-width: 68rem; margin: 0 auto; padding: 2rem 1.5rem 5rem; outline: non
 .crisis-strip a { text-decoration: none; font-weight: 600; color: var(--ink); }
 .crisis-strip a:hover { color: var(--red); text-decoration: underline; }
 
-/* ---- Topic Sub-navigation ---- */
-.tabs {
+/* ---- Topic / Region / Track Sub-navigation ---- */
+.tab-bar {
   position: sticky; top: 0; z-index: 5;
-  display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 1.75rem;
-  margin: 0 0 2.5rem; padding: 0.75rem 0;
-  list-style: none; background: rgba(255, 255, 255, 0.96);
+  margin: 0 0 2.5rem;
+  background: rgba(255, 255, 255, 0.96);
   border-top: 1px solid var(--rule); border-bottom: 2px solid var(--ink);
+}
+.tabs {
+  display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 1.75rem;
+  margin: 0; padding: 0.75rem 0;
+  list-style: none;
   scrollbar-width: thin;
 }
+.tab-rolldown { display: none; }
 .tabs li { flex: none; }
 .tab {
   padding: 0;
@@ -731,13 +736,15 @@ summary:hover { color: var(--ink); }
 .totop:hover { background: var(--red); }
 .totop[hidden] { display: none; }
 
-/* ---- Phone layout: tighter spacing, bigger tap targets ---- */
+/* ---- Phone layout: no horizontal menus/tables, bigger tap targets ---- */
 @media (max-width: 45.99rem) {
   .result-line { margin-bottom: 1.25rem; padding-bottom: 0.75rem; }
   .crisis-strip { margin-bottom: 1.75rem; padding-left: 0.85rem; }
-  .tabs { gap: 1.25rem; padding: 0; margin-bottom: 1.75rem; scrollbar-width: none; }
-  .tabs::-webkit-scrollbar { display: none; }
-  .tab { padding: 0.8rem 0; }
+  .tab-bar { margin-bottom: 1.5rem; }
+  .tabs { display: none; }
+  .tab-rolldown { display: flex; align-items: center; gap: 0.65rem; padding: 0.15rem 0; }
+  .tab-rolldown span { font: 700 0.72rem/1 var(--sans); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); flex-shrink: 0; }
+  .tab-rolldown select { border-bottom: 0; font-weight: 700; padding-left: 0; }
   .drawer { margin-bottom: 2.75rem; }
   .drawer-head { margin-bottom: 1.25rem; }
   .grid { gap: 2rem; }
@@ -746,18 +753,30 @@ summary:hover { color: var(--ink); }
   .headline { font-size: 1.1rem; }
   .lead .headline { font-size: 1.3rem; }
   .strip { font-size: 0.92rem; }
-  summary { padding: 0.45rem 0; }
+  summary { padding: 0.55rem 0; min-height: 2.5rem; }
   .more { padding: 0.65rem 1rem; }
   .drawer .more + .more { margin: 0.75rem 0 0; }
   .chip .x { padding: 0.65rem 0.7rem; }
   .country-layout { gap: 2rem; }
-  .monitor-bar, .agenda-bar, .bilateral-bar { padding: 0.65rem 0.75rem; }
-  .monitor-filter, .bilateral-controls .field { flex: 1 1 100%; }
-  .monitor-filter select { flex: 1; }
+  .monitor-bar, .agenda-bar, .bilateral-bar { padding: 0.75rem; }
+  .monitor-filters { width: 100%; flex-direction: column; align-items: stretch; gap: 0.5rem; }
+  .monitor-filter { width: 100%; }
+  .monitor-filter select { flex: 1; min-width: 0; }
+  .bilateral-controls .field { flex: 1 1 100%; align-items: stretch; }
+  .bilateral-controls select, .add-country-sel { width: 100%; }
   .agenda-title { white-space: normal; }
-  .agenda-filters { margin-left: 0; }
-  .agenda-btn, .agenda-filter-btn, .pair-pill { padding: 0.45rem 0.6rem; }
+  .agenda-filters { margin-left: 0; width: 100%; flex-wrap: wrap; }
+  .agenda-btn, .agenda-filter-btn, .pair-pill { padding: 0.5rem 0.65rem; min-height: 2.5rem; display: inline-flex; align-items: center; }
   .bilateral-delta-cat { margin-left: 0; }
+  /* Stack all data tables into vertical cards on phones so nothing scrolls sideways */
+  .desk-wrap { overflow-x: visible; }
+  .desk-table thead { display: none; }
+  .desk-table, .desk-table tbody, .desk-table tr { display: block; }
+  .desk-table tr { padding: 0.75rem 0; border-bottom: 1px solid var(--rule); }
+  .desk-table td { display: inline-block; padding: 0; margin: 0 0.75rem 0.25rem 0; border: 0; font-size: 0.84rem; vertical-align: baseline; }
+  .desk-table td.cell-head { display: block; margin-bottom: 0.25rem; font-size: 0.95rem; }
+  .desk-table td.cell-body { display: block; margin: 0.25rem 0 0; font-size: 0.92rem; line-height: 1.4; }
+  .desk-table td[data-label]::before { content: attr(data-label) ": "; color: var(--ink-3); font-weight: 400; }
   .legend-inner { padding: 1.5rem 1rem 2.5rem; }
   .totop { right: 0.85rem; bottom: calc(0.85rem + env(safe-area-inset-bottom)); height: 2.75rem; width: 2.75rem; }
 }

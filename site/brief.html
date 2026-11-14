@@ -26,7 +26,7 @@
 
 <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png">
 <link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="style.css?v=3.7">
+<link rel="stylesheet" href="style.css?v=3.8">
 <style>
   /* ---- Foreign Ministry / Diplomatic Brief Document Styling ---- */
   .brief-wrap { max-width: 58rem; margin: 0 auto; padding: 1.5rem 1rem 4rem; }
@@ -591,16 +591,33 @@
       return /\b(election|elections|presidential election|parliamentary election|general election|ballot|voting|voter turnout|referendum|választás|bầu cử)\b/i.test(t) ? 1 : 0;
     }
 
-    const stories = [...(rawData.stories || [])]
-      .sort((a, b) => isElectionStory(b) - isElectionStory(a) || b.independent_sources - a.independent_sources || b.score - a.score)
-      .slice(0, limit);
-
     const now = new Date();
     if (rawData && rawData.period && rawData.period !== periodVal && pSel.querySelector(`option[value="${rawData.period}"]`)) {
       pSel.value = rawData.period;
     }
     const effectivePeriod = (rawData && rawData.period) ? rawData.period : periodVal;
     const periodLabel = (ALL_PERIODS.find(([k]) => k === effectivePeriod) || [])[1] || `Last ${effectivePeriod}`;
+    const cutoffMs = effectivePeriod === '24h'
+      ? now.getTime() - 24 * 3600 * 1000
+      : (effectivePeriod === '7d' ? now.getTime() - 7 * 86400 * 1000 : 0);
+    const windowStories = cutoffMs
+      ? (rawData.stories || []).filter((s) => new Date(s.last_seen || s.first_seen || 0).getTime() >= cutoffMs)
+      : (rawData.stories || []);
+
+    if (!windowStories.length) {
+      const genText = rawData && rawData.generated_at ? new Date(rawData.generated_at).toLocaleString() : 'an earlier run';
+      doc.replaceChildren(el('p', {
+        class: 'state quiet',
+        text: (rawData.stories || []).length
+          ? `No stories in the ${periodLabel.toLowerCase()} for ${c.name} — this snapshot was generated on ${genText}. Run "python run.py" to collect fresh news.`
+          : `No stories found for ${c.name} in the ${periodLabel.toLowerCase()}.`
+      }));
+      return;
+    }
+
+    const stories = [...windowStories]
+      .sort((a, b) => isElectionStory(b) - isElectionStory(a) || b.independent_sources - a.independent_sources || b.score - a.score)
+      .slice(0, limit);
 
     // Translate top stories to clean English in throttled concurrency batches of 5
     const dispatches = [];
