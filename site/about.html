@@ -138,8 +138,8 @@
       <aside class="colophon" aria-label="Project summary">
         <dl class="facts">
           <div><dt>Coverage</dt><dd>87 country desks</dd></div>
-          <div><dt>Sources</dt><dd>1,390+ RSS &amp; conflict feeds</dd></div>
-          <div><dt>Languages</dt><dd>20+ (offline MarianMT)</dd></div>
+          <div><dt>Sources</dt><dd>1,216 outlets (1,394 feeds)</dd></div>
+          <div><dt>Languages</dt><dd>10 offline MarianMT + browser</dd></div>
         </dl>
         <p class="author-note">Built by <strong>Károly Gergely</strong> in Python, SQLite, ONNX Runtime, and vanilla JS, automated on GitHub Actions and served on Cloudflare Pages. <a href="https://github.com/gergkar-gif/argos-monitor" target="_blank" rel="noopener noreferrer">Source on GitHub (MIT)</a>.</p>
       </aside>
@@ -161,8 +161,8 @@
     <h2>How the 11-stage pipeline works</h2>
     <p>A scheduled GitHub Actions job runs the full pipeline daily at 21:17 UTC and deploys static JSON bundles to Cloudflare Pages, with 4-hourly feed snapshots (01:00–17:00 UTC) so breaking articles are captured before fast RSS queues rotate. Each desk tracks 10–15 representative outlets rather than attempting exhaustive archival.</p>
     <div class="pipeline">
-      <div class="step"><b>01 · Ingest</b><span>Polls 1,390+ RSS/Atom feeds via HTTP 304 conditional GETs and ingests verified GDELT 2.0 conflict URLs into SQLite.</span></div>
-      <div class="step"><b>02 · Extract</b><span>Pulls full article text with Trafilatura where accessible.</span></div>
+      <div class="step"><b>01 · Ingest</b><span>Polls 1,394 RSS/Atom feeds via HTTP 304 conditional GETs and ingests verified GDELT 2.0 conflict URLs into SQLite.</span></div>
+      <div class="step"><b>02 · Extract</b><span>Pulls full article text with Trafilatura for top multi-outlet stories in round-robin order across all 87 desks, followed by a second shingle deduplication pass.</span></div>
       <div class="step"><b>03 · Normalise</b><span>Applies Unicode NFC normalisation (essential for Vietnamese diacritics and Khmer) and strips RSS emojis.</span></div>
       <div class="step"><b>04 · Relevance</b><span>Drops sports/lifestyle noise and checks country mentions on global feeds.</span></div>
       <div class="step"><b>05 · Embed</b><span>Encodes headlines and leads locally on CPU via ONNX Runtime (<code>intfloat/multilingual-e5-small</code>).</span></div>
@@ -209,7 +209,7 @@
         <div class="pipeline">
           <div class="step">
             <b>01 · Local MarianMT models</b>
-            <span>Headlines across 20+ languages are translated on CPU using <code>Helsinki-NLP/opus-mt-*</code> models inside the runner—no paid translation APIs.</span>
+            <span>Headlines across 10 core languages (<code>vi</code>, <code>hu</code>, <code>uk</code>, <code>ru</code>, <code>es</code>, <code>de</code>, <code>fr</code>, <code>it</code>, <code>id</code>, <code>ar</code>) are translated on CPU using <code>Helsinki-NLP/opus-mt-*</code> models inside the runner, while remaining scripts use on-device browser translation—no paid translation APIs.</span>
           </div>
           <div class="step">
             <b>02 · Entity glossaries</b>
@@ -293,7 +293,7 @@
         <div class="pipeline">
           <div class="step">
             <b>01 · Story velocity</b>
-            <span>Compares the active window (24h or 7d) against the prior equal period:</span>
+            <span>Compares each current story centroid against prior-window article embeddings (&ge; 0.895 cosine similarity) across the preceding equal period (24h or 7d):</span>
             <div class="step-tags">
               <div class="step-tag-row"><span class="stamp stamp-new">NEW</span><span>Zero articles in the prior period</span></div>
               <div class="step-tag-row"><span class="stamp stamp-surge">SURGE +&Delta;N</span><span>Gain &ge; 3 articles and velocity &ge; 1.75&times;</span></div>
@@ -353,7 +353,7 @@
   <section>
     <h2>Monitored outlets &amp; source directory</h2>
     <details class="fold" id="sources">
-      <summary>Browse all 87 country desks and filter 1,390+ sources</summary>
+      <summary>Browse all 87 country desks and filter 1,216 catalogued sources (1,394 feeds)</summary>
       <div class="fold-body">
         <p>Every publication monitored across 87 country desks, classified by reporting scope, alignment, political leaning, factuality, and state affiliation.</p>
         <form class="slip notranslate" translate="no" aria-label="Filter sources" onsubmit="event.preventDefault()" style="margin-top: 1rem;">
