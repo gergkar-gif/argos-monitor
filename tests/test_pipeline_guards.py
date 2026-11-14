@@ -2,7 +2,7 @@ import sqlite3
 import unittest
 from unittest.mock import patch
 
-from argos import excerpts, extract, reddit
+from argos import excerpts, extract, packs, ratings, reddit
 from argos.db import SCHEMA
 
 
@@ -63,6 +63,15 @@ class TestPipelineGuards(unittest.TestCase):
         self.assertEqual(len(picked), 2)
         self.assertEqual(picked[0]["id"], 1)
         self.assertEqual({r["id"] for r in picked}, {1, 14})
+
+    def test_all_catalogued_sources_have_ratings(self):
+        unrated = []
+        for cid in packs.pack_ids():
+            for s in packs.load(cid)["sources"]:
+                r = ratings.lookup_rating(s.get("name", ""), bool(s.get("state_affiliated")), s.get("kind", "media"))
+                if r["factuality"] == "unrated" or r["bias"] == "unrated":
+                    unrated.append((cid, s.get("id"), s.get("name")))
+        self.assertEqual(unrated, [], f"Unrated catalogued sources found: {unrated[:10]}")
 
 
 if __name__ == "__main__":

@@ -14,7 +14,9 @@ import numpy as np
 from . import packs
 from .config import ROOT
 from .embed import DIM
+from .ingest import reconcile_ratings
 from .rank import dashboard_story_ids
+from .ratings import lookup_rating
 
 SITE_DATA = ROOT / "site" / "data"
 WINDOWS = {1: "24h", 7: "7d"}
@@ -400,6 +402,7 @@ def _home(now, countries):
 
 def run(db):
     SITE_DATA.mkdir(parents=True, exist_ok=True)
+    reconcile_ratings(db)
     now_dt = datetime.now(timezone.utc)
     now = now_dt.isoformat(timespec="seconds")
     countries = []
@@ -430,16 +433,18 @@ def run(db):
                               "mentions": list(dict.fromkeys(distinctive_mentions)), "periods": periods})
     keep = ("id", "name", "homepage", "language", "scope", "kind", "governing_body", "state_affiliated", "notes")
     db_sources = {r["id"]: dict(r) for r in db.execute("SELECT id, bias, alignment, factuality FROM source").fetchall()}
-    sources_by_country = {
-        c: [
-            {**{k: s.get(k) for k in keep},
-             "bias": (db_sources.get(s["id"]) or {}).get("bias") or "unrated",
-             "alignment": (db_sources.get(s["id"]) or {}).get("alignment") or "unrated",
-             "factuality": (db_sources.get(s["id"]) or {}).get("factuality") or "unrated"}
-            for s in packs.load(c)["sources"]
-        ]
-        for c in packs.pack_ids()
-    }
+    sources_by_country = {}
+    for c in packs.pack_ids():
+        sources_by_country[c] = []
+        for s in packs.load(c)["sources"]:
+            row = db_sources.get(s["id"]) or {}
+            fb = lookup_rating(s.get("name", ""), bool(s.get("state_affiliated")), s.get("kind", "media"))
+            sources_by_country[c].append({
+                **{k: s.get(k) for k in keep},
+                "bias": row.get("bias") if row.get("bias") and row.get("bias") != "unrated" else fb["bias"],
+                "alignment": row.get("alignment") if row.get("alignment") and row.get("alignment") != "unrated" else fb["alignment"],
+                "factuality": row.get("factuality") if row.get("factuality") and row.get("factuality") != "unrated" else fb["factuality"],
+            })
     telemetry = {}
     for c in packs.pack_ids():
         p = packs.load(c)
