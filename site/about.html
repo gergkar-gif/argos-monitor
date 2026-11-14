@@ -46,20 +46,24 @@
 <style>
   .doc { max-width: 68rem; margin: 0 auto; padding: 2rem 1.5rem 4rem; display: grid; grid-template-columns: minmax(0, 1fr); gap: 2.25rem; overflow-wrap: anywhere; }
   @media (max-width: 45.99rem) { .doc { padding: 1.25rem 1rem 3rem; gap: 1.75rem; } }
-  .stats-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; margin-top: 1.1rem; }
-  @media (max-width: 38rem) { .stats-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  .stat-box { border-left: 3px solid var(--ink); padding: 0.25rem 0 0.25rem 0.75rem; }
-  .stat-box strong { display: block; font: 700 1.15rem/1.2 var(--sans); color: var(--ink); }
-  .stat-box span { font-size: 0.8rem; color: var(--ink-3); }
-  .author-note { margin-top: 1rem; padding-top: 0.85rem; border-top: 1px dotted var(--rule); font-size: 0.92rem; color: var(--ink-2); }
-  .doc details.fold { border: 1px solid var(--rule); background: #fff; }
-  .doc details.fold + details.fold { margin-top: 0.65rem; }
-  .doc details.fold > summary { padding: 0.75rem 1rem; font: 700 0.86rem/1.3 var(--sans); color: var(--ink); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; }
+  .lead-grid { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 2.25rem; align-items: start; }
+  @media (max-width: 52rem) { .lead-grid { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; } }
+  .lead-prose { font: 400 1.05rem/1.65 var(--serif); color: var(--ink); max-width: 60ch; }
+  .colophon { border-left: 1px solid var(--rule); padding-left: 1.5rem; display: grid; gap: 1rem; }
+  @media (max-width: 52rem) { .colophon { border-left: 0; border-top: 1px solid var(--rule); padding-left: 0; padding-top: 1.25rem; } }
+  .facts { margin: 0; display: grid; gap: 0.45rem; }
+  .facts div { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding-bottom: 0.45rem; border-bottom: 1px dotted var(--rule); font-size: 0.88rem; }
+  .facts dt { color: var(--ink-3); }
+  .facts dd { margin: 0; font-weight: 700; color: var(--ink); text-align: right; }
+  .author-note { font-size: 0.88rem; line-height: 1.55; color: var(--ink-2); }
+  .doc details.fold { border-top: 1px solid var(--rule); }
+  .doc details.fold:last-of-type { border-bottom: 1px solid var(--rule); }
+  .doc details.fold > summary { padding: 0.75rem 0.15rem; font: 700 0.88rem/1.3 var(--sans); color: var(--ink); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; }
+  .doc details.fold > summary:hover { color: var(--red); }
   .doc details.fold > summary::-webkit-details-marker { display: none; }
   .doc details.fold > summary::after { content: "+"; font-weight: 700; color: var(--ink-3); flex-shrink: 0; }
-  .doc details.fold[open] > summary { border-bottom: 1px solid var(--rule); background: var(--paper-warm, #fbfaf8); }
   .doc details.fold[open] > summary::after { content: "−"; }
-  .doc details.fold .fold-body { padding: 1rem 1rem 1.15rem; }
+  .doc details.fold .fold-body { padding: 0.25rem 0 1.25rem; }
   .desk-index { margin: 0; display: grid; gap: 0.9rem; }
   .desk-index dt { font: 700 0.72rem/1.2 var(--sans); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 0.35rem; }
   .desk-index dd { margin: 0; display: flex; flex-wrap: wrap; gap: 0.35rem; }
@@ -72,15 +76,15 @@
     .desk-pick { padding: 0.6rem 0.75rem; }
     .doc .slip { grid-template-columns: minmax(0, 1fr); }
     .doc .slip .field { grid-column: 1 / -1 !important; }
-    .about-toc { display: block; border: 1px solid var(--rule); padding: 0.65rem 0.9rem; background: var(--paper-warm, #fbfaf8); }
+    .about-toc { display: block; border: 1px solid var(--rule); padding: 0.65rem 0.9rem; background: #fbfaf8; }
     .about-toc summary { font: 700 0.76rem/1.2 var(--sans); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); }
     .about-toc ul { margin: 0.5rem 0 0; padding: 0; list-style: none; display: grid; gap: 0.35rem; }
     .about-toc a { display: block; padding: 0.35rem 0; font: 600 0.88rem/1.3 var(--sans); text-decoration: none; color: var(--indigo); }
   }
-  .doc h2 { font: 700 0.9rem/1.2 var(--sans); letter-spacing: 0.06em; text-transform: uppercase; padding-bottom: 0.4rem; border-bottom: 1px solid var(--ink); margin-bottom: 0.75rem; }
+  .doc h2 { font: 700 0.9rem/1.2 var(--sans); letter-spacing: 0.06em; text-transform: uppercase; padding-bottom: 0.4rem; border-bottom: 1px solid var(--ink); margin-bottom: 0.85rem; }
   .doc p, .doc li { max-width: 65ch; line-height: 1.65; color: var(--ink-2); }
   .doc strong { color: var(--ink); }
-  .doc ul, .doc ol { margin: 0.4rem 0 0; padding-left: 1.3rem; display: grid; gap: 0.5rem; }
+  .doc ul, .doc ol { margin: 0.4rem 0 0; padding-left: 1.3rem; display: grid; gap: 0.55rem; }
   .pipeline { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.15rem 2rem; margin-top: 0.9rem; }
   @media (max-width: 38rem) { .pipeline { grid-template-columns: 1fr; } }
   .step { border-left: 4px solid var(--bar); padding: 0.1rem 0 0.1rem 0.9rem; display: grid; gap: 0.2rem; align-content: start; }
@@ -128,25 +132,29 @@
   </details>
 
   <section>
-    <h2>What Argos Monitor is</h2>
-    <p>Argos Monitor is a free, open-source news and crisis monitor built for desk analysts, researchers, and journalists. For each country, it compares coverage across domestic press, local-language diaspora outlets, and international media—showing only original headlines and verbatim quotes verified character-for-character against the source article, with no LLM-written summaries.</p>
-    <div class="stats-strip" aria-label="System scale">
-      <div class="stat-box"><strong>87</strong><span>Country desks</span></div>
-      <div class="stat-box"><strong>1,390+</strong><span>RSS, Atom &amp; conflict feeds</span></div>
-      <div class="stat-box"><strong>20+</strong><span>Languages (offline MarianMT)</span></div>
-      <div class="stat-box"><strong>$0 / mo</strong><span>CPU pipeline on GitHub Actions</span></div>
+    <h2>About Argos Monitor</h2>
+    <div class="lead-grid">
+      <p class="lead-prose">Argos Monitor tracks news and crisis reporting across 87 countries, comparing domestic press, local-language diaspora outlets, and international coverage side by side. Every headline and quote links directly to the original article; nothing is paraphrased or written by an LLM.</p>
+      <aside class="colophon" aria-label="Project summary">
+        <dl class="facts">
+          <div><dt>Coverage</dt><dd>87 country desks</dd></div>
+          <div><dt>Sources</dt><dd>1,390+ RSS &amp; conflict feeds</dd></div>
+          <div><dt>Languages</dt><dd>20+ (offline MarianMT)</dd></div>
+          <div><dt>Hosting cost</dt><dd>$0 / mo (static edge)</dd></div>
+        </dl>
+        <p class="author-note">Built by <strong>Károly Gergely</strong> in Python, SQLite, ONNX Runtime, and vanilla JS, automated on GitHub Actions and served on Cloudflare Pages. <a href="https://github.com/gergkar-gif/argos-monitor" target="_blank" rel="noopener noreferrer">Source on GitHub (MIT)</a>.</p>
+      </aside>
     </div>
-    <p class="author-note">Built and maintained by <strong>Károly Gergely</strong> as an end-to-end data engineering and NLP project (Python, SQLite, ONNX Runtime, GitHub Actions, static Cloudflare Pages). MIT-licensed source code: <a href="https://github.com/gergkar-gif/argos-monitor" target="_blank" rel="noopener noreferrer">github.com/gergkar-gif/argos-monitor</a>.</p>
   </section>
 
   <section id="principles">
     <h2>Core principles</h2>
     <ol>
-      <li><strong>No source, no statement:</strong> Every headline and quote links directly to the stored article it came from. Nothing is paraphrased or invented.</li>
-      <li><strong>No LLM in the core pipeline:</strong> Clustering, topic classification, ranking, and quote extraction are deterministic (multilingual embeddings and rules).</li>
-      <li><strong>Independent outlet counting:</strong> State wire reprints and syndicated copies (&ge; 0.95 cosine similarity) are collapsed so 20 reprints of one dispatch count as 1 source.</li>
-      <li><strong>Perspective &amp; official tagging:</strong> Stories break down coverage across domestic, diaspora, and international outlets, with <span class="stamp red">Official</span> and <span class="stamp indigo">Reported</span> tags separating state wires from independent reporting.</li>
-      <li><strong>Priority for elections &amp; crises:</strong> National elections, referendums, active armed conflict, and major disasters receive dedicated tracking and top brief placement.</li>
+      <li><strong>No statement without a source:</strong> Every headline and quote links back to the stored article it came from. Nothing is summarised or invented.</li>
+      <li><strong>No LLM in the pipeline:</strong> Clustering, topic sorting, ranking, and quote extraction run on multilingual embeddings and explicit rules.</li>
+      <li><strong>Reprints don&rsquo;t count twice:</strong> State wire copies and syndicated articles (&ge; 0.95 similarity) are collapsed into one, so 20 identical reprints count as a single outlet.</li>
+      <li><strong>Domestic, diaspora, and international side by side:</strong> Each story shows where coverage comes from, with <span class="stamp red">Official</span> and <span class="stamp indigo">Reported</span> tags separating state wires from independent reporting.</li>
+      <li><strong>Elections and crises first:</strong> National elections, referendums, active conflict, and major disasters get dedicated tracking and top placement in briefs.</li>
     </ol>
   </section>
 
@@ -324,11 +332,11 @@
         <div class="pipeline">
           <div class="step">
             <b>01 · Public Telegram &amp; Bluesky feeds</b>
-            <span>Polls public <code>t.me/s/</code> web previews and open AT Protocol feeds without API keys or credentials.</span>
+            <span>Polls public <code>t.me/s/</code> web previews and open AT Protocol feeds (original posts from the last 7 days, replies and reposts excluded, cross-post duplicates merged) without API keys.</span>
           </div>
           <div class="step">
             <b>02 · Reddit &amp; search surges</b>
-            <span>Tracks regional diaspora subreddits and Google Trends surges for early context.</span>
+            <span>Fetches regional subreddits in small desk batches (filtering out tourist/personal fluff with theme embeddings) and Google Trends surges (filtering out sports scores, horoscopes, and spam, linked to their news context).</span>
           </div>
           <div class="step">
             <b>03 · Unverified quarantine</b>
