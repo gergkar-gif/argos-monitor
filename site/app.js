@@ -123,8 +123,6 @@
   const MONITOR_PERIODS = [
     ['24h', 'Past 24 hours'],
     ['7d', 'Past 7 days'],
-    ['14d', 'Past 14 days'],
-    ['30d', 'Past 30 days'],
   ];
 
   const periodCutoff = (per) => {
@@ -398,8 +396,6 @@
   const ALL_PERIODS = [
     ['24h', 'Last 24 hours'],
     ['7d', 'Last 7 days'],
-    ['14d', 'Last 14 days'],
-    ['30d', 'Last 30 days'],
   ];
 
   function fillPeriods() {
@@ -451,7 +447,7 @@
       activeTab = c;
       monitorCountry = (p && index.countries.some((x) => x.id === p)) ? p : 'all';
       if (t && ['24h', '7d', '14d', '30d'].includes(t)) {
-        monitorPeriod = t;
+        monitorPeriod = (t === '14d' || t === '30d') ? '7d' : t;
         try { $('#q').value = q ? decodeURIComponent(q) : ''; } catch {}
       } else {
         try { $('#q').value = t ? decodeURIComponent(t) : ''; } catch {}
@@ -1257,7 +1253,7 @@
 
   // ---------- Bilateral & Joint Affairs Monitor ----------
   const COMMON_PARTNERS = [
-    { id: 'laos', name: 'Laos', terms: ['laos', 'lao', 'vientiane', 'lào', 'ລາວ'] },
+    { id: 'laos', name: 'Laos', terms: ['laos', 'vientiane', 'luang prabang', 'ລາວ'] },
     { id: 'china', name: 'China', terms: ['china', 'chinese', 'beijing', 'trung quốc', 'kínai', 'chine', 'pekin', 'xi jinping'] },
     { id: 'us', name: 'United States', terms: ['united states', 'usa', 'u.s.', 'washington', 'mỹ', 'hoa kỳ', 'amerika', 'américain', 'biden', 'trump'] },
     { id: 'russia', name: 'Russia', terms: ['russia', 'russian', 'moscow', 'nga', 'orosz', 'kremlin', 'putin', 'россия'] },
@@ -1290,12 +1286,12 @@
     const c = index.countries.find((x) => x.id === id);
     if (c) {
       const list = [fold(c.name), fold(c.id), ...(c.mentions || []).map(fold)];
-      return [...new Set(list.filter((x) => x && x.length > 2))];
+      return [...new Set(list.filter((x) => x && x.length > 2 && !(id === 'laos' && x === 'lao')))];
     }
     const p = COMMON_PARTNERS.find((x) => x.id === id);
     if (p) {
       const list = [fold(p.name), fold(p.id), ...p.terms.map(fold)];
-      return [...new Set(list.filter((x) => x && x.length > 2))];
+      return [...new Set(list.filter((x) => x && x.length > 2 && !(id === 'laos' && x === 'lao')))];
     }
     if (id) {
       return [fold(id)];
@@ -1303,14 +1299,20 @@
     return [];
   }
 
+  function buildTermRegex(terms) {
+    const clean = terms.filter(Boolean).map((t) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+    if (!clean.length) return null;
+    return new RegExp(`(?:^|[^a-z0-9])(?:${clean.join('|')})(?=$|[^a-z0-9])`, 'i');
+  }
+
   async function loadCountryStories(cid, per) {
     const c = index.countries.find((x) => x.id === cid);
     if (!c) return [];
-    const p = c.periods.find((x) => x.id === per) || c.periods.find((x) => x.id === '30d') || c.periods.find((x) => x.id === '7d') || c.periods[0];
+    const p = c.periods.find((x) => x.id === per) || c.periods.find((x) => x.id === '7d') || c.periods[0];
     if (!p) return [];
     try {
       const d = await load(p.file);
-      return (d && d.stories) || [];
+      return ((d && d.stories) || []).map((s) => ({ ...s, country: s.country || cid, country_name: s.country_name || c.name }));
     } catch {
       return [];
     }
@@ -1477,24 +1479,26 @@
     const globalPool = hm ? [...(hm.most_reported || []), ...(hm.growing || [])] : [];
     const pool = [...rawDatasets.flat(), ...globalPool];
 
-    // Deduplicate stories by url / title
+    // Deduplicate stories by headline URL or story ID
     const seen = new Set();
     const candidateStories = [];
     for (const s of pool) {
-      const key = s.url || (s.title + (s.country || ''));
+      const hUrl = s.headline && s.headline.url;
+      const hTitle = s.headline && s.headline.title;
+      const key = hUrl || (hTitle ? `${hTitle}|${s.country || ''}` : String(s.id));
       if (!seen.has(key)) {
         seen.add(key);
         candidateStories.push(s);
       }
     }
 
-    // Matching: story must involve EVERY selected country
-    const termsMap = new Map(selectedCountries.map((cid) => [cid, getCountryTerms(cid)]));
+    // Matching: story must involve EVERY selected country via word-boundary regex
+    const regexMap = new Map(selectedCountries.map((cid) => [cid, buildTermRegex(getCountryTerms(cid))]));
     const storyInvolvesCountry = (s, cid) => {
       if (s.country === cid) return true;
-      const terms = termsMap.get(cid) || [];
-      const txt = storyText(s);
-      return terms.some((t) => t && txt.includes(t));
+      const re = regexMap.get(cid);
+      if (!re) return false;
+      return re.test(storyText(s));
     };
 
     const matchedStories = candidateStories.filter((s) =>
@@ -1502,7 +1506,7 @@
     );
 
     // Sort by recency
-    matchedStories.sort((a, b) => new Date(b.date || 0).getTime() - new Date(a.date || 0).getTime());
+    matchedStories.sort((a, b) => storyRecency(b) - storyRecency(a));
 
     loadingState.remove();
     const deltaPanel = bilateralDeltaPanel(matchedStories, selectedCountries, relPeriod);
