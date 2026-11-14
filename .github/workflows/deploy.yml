@@ -34,24 +34,23 @@ jobs:
           key: site-data-${{ github.run_id }}
           restore-keys: site-data-
 
-      # If site data cache was missing, restore DB and quickly run export (takes ~20s)
-      - name: Restore database (fallback)
-        if: steps.data-cache.outputs.cache-hit != 'true'
+      # Restore database and quickly run export (takes ~20s) so site/data reflects latest export.py
+      - name: Restore database
         uses: actions/cache/restore@v4
         with:
           path: .argos-data/argos.db
           key: argos-db-${{ github.run_id }}
           restore-keys: argos-db-
 
-      - name: Generate site data from database (fallback)
-        if: steps.data-cache.outputs.cache-hit != 'true'
+      - name: Refresh exported site data from database
         run: |
           pip install -r requirements.txt
           mkdir -p site/data
           if [ -f .argos-data/argos.db ]; then
-            python run.py export crisis trends social watch report || true
-          else
-            echo "Database cache not yet available; skipping export"
+            python run.py export watch || true
+          fi
+          if [ ! -f site/data/crisis.json ]; then
+            python run.py crisis trends social || true
           fi
 
       # Fast publish directly to Cloudflare Pages
