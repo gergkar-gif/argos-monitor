@@ -11,6 +11,7 @@ import feedparser
 
 from . import fetch, packs
 from .export import SITE_DATA, _write
+from .textutil import clean
 
 URL = "https://trends.google.com/trending/rss?geo={}"
 # Foreign football/F1/US sports fixtures, betting tips, and pirated stream spam that flood Google Trends RSS.
@@ -53,8 +54,8 @@ def run(db=None):
         outlets = ({str(o).lower() for lst in pack.get("aggregator_outlets", {}).values() for o in lst}
                    | {str(s["name"]).lower() for s in pack["sources"]}
                    | {urlparse(s.get("homepage") or "").netloc.removeprefix("www.").split(".")[0].lower() for s in pack["sources"]})
-        items = [{"term": e.title, "traffic": e.get("ht_approx_traffic"), "news": e.get("ht_news_item_title"),
-                  "url": e.get("ht_news_item_url"), "source": e.get("ht_news_item_source")}
+        items = [{"term": clean(e.title), "traffic": e.get("ht_approx_traffic"), "news": clean(e.get("ht_news_item_title")) or None,
+                  "url": e.get("ht_news_item_url"), "source": clean(e.get("ht_news_item_source")) or None}
                  for e in feedparser.parse(body).entries]
         kept = [x for x in items if _keep(pack, outlets, x)]
         kept.sort(key=lambda x: _traffic(x.get("traffic")), reverse=True)

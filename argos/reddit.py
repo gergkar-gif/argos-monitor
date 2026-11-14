@@ -15,6 +15,7 @@ import numpy as np
 from . import fetch, packs, policy
 from .embed import Embedder
 from .export import SITE_DATA, _write
+from .textutil import clean
 
 URL = "https://www.reddit.com/r/{}/top/.rss?t=day&limit=100"
 WEEK_URL = "https://www.reddit.com/r/{}/top/.rss?t=week&limit=100"
@@ -62,12 +63,12 @@ def _subs(pack):
 def _clean_body(e):
     raw = e.get("summary") or (e.get("content") or [{}])[0].get("value") or ""
     txt = FOOT_RE.sub("", TAG_RE.sub(" ", html.unescape(raw)))
-    return " ".join(txt.split())
+    return clean(txt)
 
 
 def _post(e):
     m = SUB_RE.search(e.get("link") or "")
-    return {"title": (e.get("title") or "").strip(), "body": _clean_body(e), "url": e.get("link") or "", "sub": m.group(1) if m else ""}
+    return {"title": clean(e.get("title")), "body": _clean_body(e), "url": e.get("link") or "", "sub": m.group(1) if m else ""}
 
 
 def _filter_country(cid, raw_posts, emb, noise_vecs):

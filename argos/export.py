@@ -248,6 +248,24 @@ def _top_global_and_regional(items, key, g_limit, r_limit=6):
     return out
 
 
+_ELECTION_TERMS = ("election", "választás", "bầu cử", "élection", "elección", "wahl", "wybory", "выборы", "seçim", "انتخابات")
+
+
+def _is_election(s):
+    themes_str = " ".join(s.get("themes") or []).lower()
+    return any(w in themes_str for w in _ELECTION_TERMS)
+
+
+def _pick_desk_lead(stories):
+    """Prefer substantive policy/news leads over 'other' (e.g. tabloid/entertainment) when available."""
+    if not stories:
+        return None
+    for s in stories:
+        if s.get("category") != "other":
+            return s
+    return stories[0]
+
+
 def _home(now, countries):
     """Build a compact cross-country overview (site/data/home.json) so the front page stays fast at 100+ countries."""
     pool, desks = [], []
@@ -258,49 +276,72 @@ def _home(now, countries):
         f24 = SITE_DATA / f"{cid}-24h.json"
         d7 = json.loads(f7.read_text(encoding="utf8")) if f7.exists() else {"stories": [], "totals": {}}
         d24 = json.loads(f24.read_text(encoding="utf8")) if f24.exists() else {"stories": [], "totals": {}}
+        surging = 0
+        elections_n = 0
+        intl_pickups = 0
         for s in d7["stories"]:
             d_type = _classify_disaster(s)
             v_type = _classify_violence(s)
+            delta = s.get("delta") or {}
+            if delta.get("state") in ("surging", "new"):
+                surging += 1
+            if _is_election(s):
+                elections_n += 1
+            if delta.get("scope_shift"):
+                intl_pickups += 1
             pool.append({**s, "country": cid, "country_name": c["name"], "region": reg,
                          "disaster_type": d_type, "violence_type": v_type,
                          "excerpts": s.get("excerpts", [])[:1], "sources": s.get("sources", [])[:12]})
-        top = d7["stories"][0] if d7["stories"] else None
+        top = _pick_desk_lead(d7["stories"])
         desks.append({
             "id": cid, "name": c["name"], "region": reg,
             "stories_24h": sum(d24.get("totals", {}).values()) or len(d24["stories"]),
             "stories_7d": sum(d7.get("totals", {}).values()) or len(d7["stories"]),
+            "surging": surging,
+            "elections": elections_n,
+            "intl_pickups": intl_pickups,
             "lead": {"title": top["headline"]["title"], "url": top["headline"]["url"], "source": top["headline"]["source"],
-                     "outlets": top["independent_sources"]} if top else None,
+                     "outlets": top["independent_sources"], "category": top.get("category"),
+                     "is_election": _is_election(top)} if top else None,
         })
-    most = _top_global_and_regional(pool, lambda s: (s["independent_sources"], s.get("score") or 0.0), 8)
-    growing = _top_global_and_regional((s for s in pool if (s.get("last_24h") or 0) >= 2), lambda s: (s.get("last_24h") or 0, s.get("score") or 0.0), 6)
+    most = _top_global_and_regional(
+        pool, lambda s: (s.get("category") != "other", s["independent_sources"], s.get("score") or 0.0), 8)
+    growing = _top_global_and_regional(
+        (s for s in pool if (s.get("last_24h") or 0) >= 2),
+        lambda s: (s.get("category") != "other", s.get("last_24h") or 0, s.get("score") or 0.0), 6)
+    elections = _top_global_and_regional(
+        (s for s in pool if _is_election(s)),
+        lambda s: (s["independent_sources"], s.get("score") or 0.0), 6, r_limit=4)
     disasters = _top_global_and_regional((s for s in pool if s.get("disaster_type")), lambda s: (s["independent_sources"], s.get("score") or 0.0), 12, r_limit=8)
     violent = _top_global_and_regional(
         (s for s in pool if s.get("violence_type")),
         lambda s: (s["independent_sources"], s.get("score") or 0.0), 12, r_limit=8)
     return {"generated_at": now, "desks": desks, "most_reported": most, "abroad_only": [],
-            "growing": growing, "disasters": disasters, "violent_events": violent}
+            "growing": growing, "elections": elections, "disasters": disasters, "violent_events": violent}
 
 
 def run(db):
     SITE_DATA.mkdir(parents=True, exist_ok=True)
-    now = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    now_dt = datetime.now(timezone.utc)
+    now = now_dt.isoformat(timespec="seconds")
     countries = []
     for cid in packs.pack_ids():
         pack = packs.load(cid)
         periods = []
         for days, label in WINDOWS.items():
+            window_cutoff = (now_dt - timedelta(days=days)).isoformat(timespec="seconds")
             ids = dashboard_story_ids(db, cid, days)
             stories = [_story(db, db.execute("SELECT * FROM story WHERE id=?", (i,)).fetchone(), now, days) for i in ids] if ids else []
+            stories = [st for st in stories if (st.get("last_seen") or st.get("first_seen") or "") >= window_cutoff]
             stories.sort(key=lambda st: -(st["score"] or 0.0))
-            totals = {c: db.execute("SELECT COUNT(*) FROM story WHERE country=? AND window_days=? AND category=?", (cid, days, c)).fetchone()[0] if ids else 0
+            totals = {c: db.execute("SELECT COUNT(*) FROM story WHERE country=? AND window_days=? AND category=? AND COALESCE(last_seen, first_seen, '') >= ?", (cid, days, c, window_cutoff)).fetchone()[0] if stories else 0
                       for c in CATEGORIES}          # all stories found in the window, of which the top ones are exported
-            agenda_delta = _agenda_delta(db, cid, days, now) if ids else None
+            agenda_delta = _agenda_delta(db, cid, days, now) if stories else None
             payload = {"country": cid, "period": label, "days": days, "generated_at": now, "categories": CATEGORIES,
                        "totals": totals, "agenda_delta": agenda_delta, "stories": stories}
             _write(f"{cid}-{label}", payload, "ARGOS_DATA")
             periods.append({"id": label, "label": PERIOD_LABELS.get(label, label), "file": f"{cid}-{label}.json"})
-            if ids:
+            if stories:
                 print(f"export: {cid}-{label}.json with {len(stories)} stories")
         if periods:
             distinctive_mentions = [pack["name"].lower()] + [m.lower() for m in pack.get("mention", [])[:12]]
@@ -336,3 +377,6 @@ def run(db):
     _write("sources", {"generated_at": now, "telemetry": telemetry, "sources": sources_by_country}, "ARGOS_SOURCES")
     _write("index", {"generated_at": now, "countries": countries}, "ARGOS_INDEX")
     _write("home", _home(now, countries), "ARGOS_HOME")
+    for pat in ("*-14d.json", "*-14d.js", "*-30d.json", "*-30d.js"):
+        for old in SITE_DATA.glob(pat):
+            old.unlink(missing_ok=True)

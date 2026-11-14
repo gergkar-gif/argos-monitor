@@ -110,6 +110,7 @@ input[type=search] { background: transparent; padding-right: 0.4rem; cursor: tex
 select:hover, input[type=search]:hover, select:focus, input[type=search]:focus { outline: none; border-bottom-color: var(--ink); }
 select:disabled { opacity: 0.35; cursor: not-allowed; }
 .research { display: none; }
+.slip-home .period-field, .slip-home .topic-field { display: none; }
 
 /* ---- Searchable Country Combobox ---- */
 .country-field { position: relative; }
@@ -269,11 +270,14 @@ main { max-width: 68rem; margin: 0 auto; padding: 2rem 1.5rem 5rem; outline: non
 
 /* ---- Compact Crisis Strip ---- */
 .crisis-strip {
-  display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 0.85rem;
-  margin: 0 0 2.75rem; padding: 0.45rem 0 0.45rem 1.15rem;
+  display: flex; flex-direction: column; gap: 0.45rem;
+  margin: 0 0 2.5rem; padding: 0.55rem 0 0.55rem 1.15rem;
   border-left: 4px solid var(--red);
   font-size: 0.9rem; color: var(--ink-2);
 }
+.crisis-strip-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem 0.9rem; }
+.crisis-strip-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.3rem; }
+.crisis-strip-list li { line-height: 1.4; }
 .crisis-strip a { text-decoration: none; font-weight: 600; color: var(--ink); }
 .crisis-strip a:hover { color: var(--red); text-decoration: underline; }
 
@@ -500,6 +504,11 @@ summary:hover { color: var(--ink); }
 .desk-table a:hover { text-decoration: underline; }
 .desk-link { padding: 0; border: 0; background: none; font: 700 0.78rem/1.2 var(--sans); letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink); cursor: pointer; }
 .desk-link:hover { color: var(--red); text-decoration: underline; }
+.desk-controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.65rem 1rem; margin: 0 0 0.9rem; }
+.desk-sorts { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; }
+.desk-filter-input { font: 500 0.84rem/1.2 var(--sans); padding: 0.35rem 0.5rem; border: 0; border-bottom: 1px solid var(--rule); background: transparent; color: var(--ink); min-width: 11rem; max-width: 100%; }
+.desk-filter-input:focus { outline: none; border-bottom-color: var(--ink); }
+.desk-badges { display: inline-flex; flex-wrap: wrap; gap: 0.3rem; align-items: center; }
 
 /* ---- Joint & Multilateral Affairs ---- */
 .bilateral-bar { background: var(--paper-warm, #fbfaf8); border: 1px solid var(--rule); padding: 1rem 1.25rem; margin: 1rem 0 1.5rem; }

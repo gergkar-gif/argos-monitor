@@ -62,6 +62,8 @@
   let current = null;   // the loaded data file
   let openTopic = 'all';
   let openRegion = 'all';
+  let deskSort = 'attention';
+  let deskFilter = '';
   let openSubType = 'all';
   let movementFilter = 'all';
   let extra = {};   // extra stories revealed per topic in the overview ("Show more")
@@ -1536,35 +1538,86 @@
     if (!hm) { openCountry(index.countries[0].id); return; }
     T.queue.length = 0;
     const q = ($('#q').value || '').trim().toLowerCase();
-    const allDesks = [...(hm.desks || [])].map((d) => ({ ...d, region: d.region || getRegion(d.id) })).sort((a, b) => b.stories_7d - a.stories_7d);
+    const c = getCrisis();
+    const allDesks = [...(hm.desks || [])].map((d) => ({
+      ...d,
+      region: d.region || getRegion(d.id),
+      nAlerts: (c && c.countries && c.countries[d.id] || []).length,
+    }));
     if (openRegion !== 'all' && !allDesks.some((d) => d.region === openRegion)) openRegion = 'all';
     const inReg = (x) => openRegion === 'all' || (x.region || getRegion(x.country || x.id)) === openRegion;
     const filter = (arr, limit) => (arr || [])
       .filter((s) => inReg(s) && (!q || matchStory(s, q)))
       .slice(0, limit);
-    const c = getCrisis();
     const allAlerts = allCrisisAlerts().filter(inReg);
-    const pool = [...(hm.most_reported || []), ...(hm.growing || [])]
+    const pool = [...(hm.elections || []), ...(hm.growing || []), ...(hm.most_reported || [])]
       .filter((s, i, a) => inReg(s) && a.findIndex((x) => x.id === s.id) === i);
-    const desks = allDesks.filter(inReg);
+
+    const deskQuery = (deskFilter || q).trim().toLowerCase();
+    const desks = allDesks.filter((d) => {
+      if (!inReg(d)) return false;
+      if (!deskQuery) return true;
+      return d.name.toLowerCase().includes(deskQuery)
+        || d.region.toLowerCase().includes(deskQuery)
+        || (d.lead && d.lead.title && d.lead.title.toLowerCase().includes(deskQuery));
+    }).sort((a, b) => {
+      if (deskSort === '24h') return (b.stories_24h - a.stories_24h) || (b.stories_7d - a.stories_7d);
+      if (deskSort === '7d') return (b.stories_7d - a.stories_7d) || (b.stories_24h - a.stories_24h);
+      if (deskSort === 'az') return a.name.localeCompare(b.name);
+      return (b.nAlerts - a.nAlerts)
+        || ((b.elections || 0) - (a.elections || 0))
+        || ((b.surging || 0) - (a.surging || 0))
+        || (b.stories_24h - a.stories_24h)
+        || (b.stories_7d - a.stories_7d);
+    });
+
     const tabs = regionTabs((r) => r === 'all' ? allDesks.length : allDesks.filter((d) => d.region === r).length, renderHome);
+    const topAlerts = allAlerts.slice(0, 3);
+    const dirSortLabels = [['attention', 'Attention'], ['24h', '24h'], ['7d', '7d'], ['az', 'A–Z']];
 
     results.replaceChildren(...[
       h('p', { class: 'result-line' },
         h('b', { text: openRegion === 'all' ? 'Overview across all monitored countries' : `Regional Desk · ${openRegion}` }),
-        ` · ${plural(desks.length, 'country', 'countries')} · updated ${fmtTime.format(new Date(hm.generated_at))}`),
+        ` · ${plural(allDesks.filter(inReg).length, 'country', 'countries')} · updated ${fmtTime.format(new Date(hm.generated_at))}`),
       watchbar(q, pool),
       tabs,
       allAlerts.length > 0 && h('div', { class: 'crisis-strip', role: 'region', 'aria-label': 'Active crisis alerts' },
-        h('span', { class: 'stamp red', text: `${plural(allAlerts.length, 'active alert', 'active alerts')}` }),
-        h('span', { text: `${allAlerts[0].cname} — ${allAlerts[0].summary || allAlerts[0].title}` }),
-        h('button', { type: 'button', class: 'desk-link', text: `All ${allAlerts.length} alerts →`, onclick: () => openCountry('alerts') })),
-      homeSection('Most reported (last 7 days)', 'Ranked by independent outlet count', filter(hm.most_reported, openRegion === 'all' ? 8 : 6)),
+        h('div', { class: 'crisis-strip-head' },
+          h('span', { class: 'stamp red', text: `${plural(allAlerts.length, 'active alert', 'active alerts')}` }),
+          h('button', { type: 'button', class: 'desk-link', text: `All ${allAlerts.length} alerts →`, onclick: () => openCountry('alerts') })),
+        h('ul', { class: 'crisis-strip-list' }, topAlerts.map((al) => h('li', null,
+          h('button', { type: 'button', class: 'desk-link', text: al.cname, onclick: () => openCountry(al.cid) }),
+          ` — ${al.summary || al.title}`)))),
+      homeSection('Elections & ballot coverage', 'Priority diplomatic & electoral tracking', filter(hm.elections, 4)),
       homeSection('Fastest growing (last 24 hours)', 'Most new coverage in the last 24 hours', filter(hm.growing, 6)),
+      homeSection('Most reported (last 7 days)', 'Ranked by independent outlet count', filter(hm.most_reported, openRegion === 'all' ? 6 : 4)),
       h('section', { class: 'drawer' },
         h('div', { class: 'drawer-head' },
           h('h2', { text: 'Monitored countries directory' }),
           h('span', { class: 'count', text: `${desks.length} active packs` })),
+        h('div', { class: 'desk-controls' },
+          h('div', { class: 'desk-sorts', role: 'group', 'aria-label': 'Sort countries' },
+            h('span', { class: 'meta', text: 'Sort:' }),
+            dirSortLabels.map(([id, label]) => h('button', {
+              type: 'button',
+              class: 'agenda-filter-btn' + (deskSort === id ? ' active' : ''),
+              text: label,
+              onclick: () => { deskSort = id; renderHome(); }
+            }))),
+          h('input', {
+            type: 'search',
+            class: 'desk-filter-input',
+            placeholder: 'Filter directory…',
+            'aria-label': 'Filter monitored countries directory',
+            value: deskFilter,
+            oninput: (e) => {
+              deskFilter = e.target.value;
+              const pos = e.target.selectionStart;
+              renderHome();
+              const next = $('.desk-filter-input');
+              if (next) { next.focus(); if (pos != null) next.setSelectionRange(pos, pos); }
+            }
+          })),
         h('div', { class: 'desk-wrap' },
           h('table', { class: 'desk-table' },
             h('thead', null, h('tr', null,
@@ -1572,16 +1625,19 @@
               h('th', { text: 'Region' }),
               h('th', { text: '24h' }),
               h('th', { text: '7d' }),
-              h('th', { text: 'Alerts' }),
+              h('th', { text: 'Signals' }),
               h('th', { text: 'Lead story (7d)' }))),
             h('tbody', null, desks.map((d) => {
-              const nAlerts = (c && c.countries && c.countries[d.id] || []).length;
+              const sigs = [];
+              if (d.nAlerts) sigs.push(h('span', { class: 'stamp red', text: `${d.nAlerts} alert${d.nAlerts > 1 ? 's' : ''}` }));
+              if (d.elections) sigs.push(h('span', { class: 'stamp indigo', text: '[ELECTION]' }));
+              if (d.surging) sigs.push(h('span', { class: 'stamp indigo', text: `↑ ${d.surging}` }));
               return h('tr', null,
                 h('td', { class: 'cell-head' }, h('button', { type: 'button', class: 'desk-link', text: `${d.name} →`, onclick: () => openCountry(d.id) })),
                 h('td', { class: 'meta', text: d.region }),
                 h('td', { class: 'typed', 'data-label': '24h', text: String(d.stories_24h) }),
                 h('td', { class: 'typed', 'data-label': '7d', text: String(d.stories_7d) }),
-                h('td', { 'data-label': 'Alerts' }, nAlerts ? h('span', { class: 'stamp red', text: String(nAlerts) }) : h('span', { class: 'meta', text: '—' })),
+                h('td', { 'data-label': 'Signals' }, sigs.length ? h('span', { class: 'desk-badges' }, sigs) : h('span', { class: 'meta', text: '—' })),
                 h('td', { class: 'cell-body' }, d.lead ? (() => {
                   const cl = (index.countries.find((x) => x.id === d.id) || {}).language || 'en';
                   const a = h('a', { href: safeUrl(d.lead.url), target: '_blank', rel: 'noopener noreferrer', lang: cl, text: d.lead.title });
@@ -1733,7 +1789,10 @@
 
   async function research() {
     const slip = $('#slip');
-    if (slip) slip.hidden = activeTab !== 'country';
+    if (slip) {
+      slip.hidden = activeTab !== 'country' && activeTab !== 'home';
+      slip.classList.toggle('slip-home', activeTab === 'home');
+    }
     fillPeriods();
     if (activeTab === 'country' && country.value) lastCountry = country.value;
     if ($('#nav-home')) $('#nav-home').setAttribute('aria-current', activeTab === 'home' ? 'page' : 'false');

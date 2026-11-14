@@ -66,7 +66,9 @@ if __name__ == "__main__":
     for name in sys.argv[1:] or ["ingest", "normalise", "relevance", "embed", "cluster", "classify", "policy", "rank", "extract", "excerpts", "verify", "translate", "export", "crisis", "trends", "reddit", "social", "watch", "prune", "report"]:
         print(f"\n== {name}")
         try:
-            STAGES[name](db)
+            res = STAGES[name](db)
+            if name == "verify" and res is False:
+                raise RuntimeError("verify: excerpt verification failed")
         except Exception as e:
             import traceback
             traceback.print_exc()

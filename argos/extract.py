@@ -23,7 +23,12 @@ def _robots_for(origin):
         if origin not in _robots:
             rp = urllib.robotparser.RobotFileParser()
             code, body = get(origin + "/robots.txt", timeout=15)
-            rp.parse(body.decode("utf8", "ignore").splitlines() if code == 200 else [])  # none = allowed
+            if code == 200:
+                rp.parse(body.decode("utf8", "ignore").splitlines())
+            elif code in (404, 410):
+                rp.parse([])  # no robots.txt = allowed (RFC 9309)
+            else:
+                rp.parse(["User-agent: *", "Disallow: /"])  # transient error: fail closed
             _robots[origin] = rp
         return _robots[origin]
 
