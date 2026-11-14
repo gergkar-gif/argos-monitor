@@ -139,6 +139,49 @@ class TestDeltaClassification(unittest.TestCase):
         self.assertIn(sa_row["scope"], ("abroad_local", "international"))
         mem.close()
 
+    def test_prev_window_matches_and_agenda_delta(self):
+        import numpy as np
+        mem = sqlite3.connect(":memory:")
+        mem.row_factory = sqlite3.Row
+        mem.executescript(dbmod.SCHEMA)
+        mem.execute("INSERT INTO source (id, name, scope, kind, alignment, bias, factuality) VALUES ('dom1', 'Dom', 'domestic', 'media', 'state_controlled', 'state_aligned', 'high')")
+        mem.execute("INSERT INTO source (id, name, scope, kind, alignment, bias, factuality) VALUES ('intl1', 'Intl', 'international', 'wire', 'independent', 'center', 'very_high')")
+
+        vec = np.zeros(384, dtype=np.float32)
+        vec[0] = 1.0
+        blob = vec.tobytes()
+
+        # Prior window article (36h ago, domestic) and current window articles (6h and 2h ago, domestic + international)
+        mem.execute("INSERT INTO article (id, source_id, url, title, published_at, relevant, country) VALUES (1, 'dom1', 'https://d/1', 'Prior report', '2026-11-12T18:00:00+00:00', 1, 'vietnam')")
+        mem.execute("INSERT INTO article (id, source_id, url, title, published_at, relevant, country) VALUES (2, 'dom1', 'https://d/2', 'Curr dom', '2026-11-14T00:00:00+00:00', 1, 'vietnam')")
+        mem.execute("INSERT INTO article (id, source_id, url, title, published_at, relevant, country) VALUES (3, 'intl1', 'https://i/3', 'Curr intl', '2026-11-14T04:00:00+00:00', 1, 'vietnam')")
+        for aid in (1, 2, 3):
+            mem.execute("INSERT INTO embedding (article_id, vec) VALUES (?, ?)", (aid, blob))
+
+        mem.execute(
+            "INSERT INTO story (id, country, window_days, category, score, first_seen, last_seen, representative_article_id) "
+            "VALUES (10, 'vietnam', 1, 'foreign_policy', 8.5, '2026-11-14T00:00:00+00:00', '2026-11-14T04:00:00+00:00', 2)"
+        )
+        mem.execute("INSERT INTO story_article (story_id, article_id, similarity) VALUES (10, 2, 1.0), (10, 3, 0.96)")
+
+        now_iso = "2026-11-14T06:00:00+00:00"
+        prev_by_sid, prev_cats = export._prev_window_matches(mem, "vietnam", 1, "2026-11-12T06:00:00+00:00", "2026-11-13T06:00:00+00:00")
+        self.assertEqual(len(prev_by_sid[10]), 1)
+        self.assertEqual(prev_cats["foreign_policy"], 1)
+
+        s_row = mem.execute("SELECT * FROM story WHERE id=10").fetchone()
+        st = export._story(mem, s_row, now_iso, 1, prev_by_sid.get(10))
+        self.assertEqual(st["delta"]["curr"], 2)
+        self.assertEqual(st["delta"]["prev"], 1)
+        self.assertEqual(st["delta"]["state"], "steady")
+        self.assertEqual(st["delta"]["scope_shift"], "international_pickup")
+
+        agenda = export._agenda_delta(mem, "vietnam", 1, now_iso, prev_cats)
+        self.assertEqual(agenda["foreign_policy"]["curr"], 2)
+        self.assertEqual(agenda["foreign_policy"]["prev"], 1)
+        self.assertEqual(agenda["foreign_policy"]["net"], 1)
+        mem.close()
+
 
 if __name__ == "__main__":
     unittest.main()

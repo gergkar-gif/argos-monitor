@@ -6,10 +6,14 @@ no full article text ever leaves the local database.
 import json
 import math
 import re
+from collections import Counter, defaultdict
 from datetime import datetime, timedelta, timezone
+
+import numpy as np
 
 from . import packs
 from .config import ROOT
+from .embed import DIM
 from .rank import dashboard_story_ids
 
 SITE_DATA = ROOT / "site" / "data"
@@ -57,7 +61,69 @@ def _classify_violence(s):
     return None
 
 
-def _story(db, s, now_iso=None, days=None):
+def _prev_window_matches(db, cid, days, prev_start, curr_start):
+    """Match relevant articles from the prior window [prev_start, curr_start) to current stories
+    via cosine similarity (>= 0.895) against each story's core centroid, and tally prior category counts."""
+    prev_rows = db.execute(
+        "SELECT a.id, COALESCE(a.published_at, a.fetched_at) AS t, src.scope, src.kind, src.alignment, "
+        "f.category_hint, (SELECT s2.category FROM story_article sa2 JOIN story s2 ON s2.id=sa2.story_id "
+        "WHERE sa2.article_id=a.id ORDER BY s2.window_days ASC LIMIT 1) AS story_cat, e.vec "
+        "FROM article a JOIN source src ON src.id=a.source_id LEFT JOIN feed f ON f.id=a.feed_id "
+        "LEFT JOIN embedding e ON e.article_id=a.id "
+        "WHERE a.relevant=1 AND a.country=? AND COALESCE(a.published_at, a.fetched_at) >= ? "
+        "AND COALESCE(a.published_at, a.fetched_at) < ?",
+        (cid, prev_start, curr_start),
+    ).fetchall()
+    if not prev_rows:
+        return {}, Counter()
+
+    s_rows = db.execute(
+        "SELECT s.id, s.category, sa.similarity, e.vec "
+        "FROM story s JOIN story_article sa ON sa.story_id=s.id JOIN embedding e ON e.article_id=sa.article_id "
+        "WHERE s.country=? AND s.window_days=?",
+        (cid, days),
+    ).fetchall()
+    by_s = defaultdict(list)
+    s_cat = {}
+    for r in s_rows:
+        if r["vec"] and len(r["vec"]) == DIM * 4:
+            by_s[r["id"]].append(r)
+            s_cat[r["id"]] = r["category"]
+
+    sids = list(by_s.keys())
+    prev_by_sid = defaultdict(list)
+    prev_cats = Counter()
+
+    vec_prev_indices = [i for i, r in enumerate(prev_rows) if r["vec"] and len(r["vec"]) == DIM * 4]
+    matched_cat = {}
+    if sids and vec_prev_indices:
+        centres = []
+        for sid in sids:
+            core = [r for r in by_s[sid] if (r["similarity"] or 1.0) >= 0.93] or by_s[sid]
+            v = np.frombuffer(b"".join(r["vec"] for r in core), dtype=np.float32).reshape(len(core), DIM).mean(0)
+            v /= (np.linalg.norm(v) + 1e-9)
+            centres.append(v)
+        C = np.array(centres, dtype=np.float32)
+        P = np.frombuffer(b"".join(prev_rows[i]["vec"] for i in vec_prev_indices), dtype=np.float32).reshape(len(vec_prev_indices), DIM)
+        S = P @ C.T
+        best_j = np.argmax(S, axis=1)
+        best_s = S[np.arange(len(vec_prev_indices)), best_j]
+        for local_idx, (j, sim) in enumerate(zip(best_j, best_s)):
+            orig_idx = vec_prev_indices[local_idx]
+            sid = sids[int(j)]
+            if sim >= 0.895:
+                prev_by_sid[sid].append((prev_rows[orig_idx], float(sim)))
+            if sim >= 0.860:
+                matched_cat[orig_idx] = s_cat.get(sid)
+
+    for idx, r in enumerate(prev_rows):
+        cat = r["story_cat"] or matched_cat.get(idx) or (r["category_hint"] if r["category_hint"] in CATEGORIES else "other")
+        prev_cats[cat if cat in CATEGORIES else "other"] += 1
+
+    return prev_by_sid, prev_cats
+
+
+def _story(db, s, now_iso=None, days=None, prev_matches=None):
     rows = db.execute(
         "SELECT a.id, a.title, a.lead, a.url, a.language, a.published_at, a.fetched_at, a.syndicated_of, COALESCE(sa.similarity, 1.0) AS similarity, "
         "src.id AS source_id, src.name AS source, src.scope, src.kind, src.bias, src.alignment, src.factuality "
@@ -125,6 +191,14 @@ def _story(db, s, now_iso=None, days=None):
                 t_prev.append(r)
                 if is_core:
                     core_t_prev.append(r)
+        if prev_matches:
+            seen_prev_ids = {r["id"] for r in t_prev}
+            for pr, sim in prev_matches:
+                if pr["id"] not in seen_prev_ids:
+                    seen_prev_ids.add(pr["id"])
+                    t_prev.append(pr)
+                    if sim >= 0.910:
+                        core_t_prev.append(pr)
         n_curr, n_prev = len(t_curr), len(t_prev)
         delta_n = n_curr - n_prev
         v = round(n_curr / max(1, n_prev), 2)
@@ -192,7 +266,7 @@ def _story(db, s, now_iso=None, days=None):
     }
 
 
-def _agenda_delta(db, cid, days, now_iso):
+def _agenda_delta(db, cid, days, now_iso, prev_cats=None):
     now_dt = datetime.fromisoformat(now_iso)
     curr_start = (now_dt - timedelta(days=days)).isoformat(timespec="seconds")
     prev_start = (now_dt - timedelta(days=2 * days)).isoformat(timespec="seconds")
@@ -207,7 +281,11 @@ def _agenda_delta(db, cid, days, now_iso):
         GROUP BY s.category
     """
     rows = db.execute(q, (curr_start, prev_start, curr_start, cid, days)).fetchall()
-    by_cat = {r["category"]: (r["curr_cnt"] or 0, r["prev_cnt"] or 0) for r in rows}
+    by_cat = {r["category"]: (r["curr_cnt"] or 0, (prev_cats.get(r["category"], 0) if prev_cats is not None else (r["prev_cnt"] or 0))) for r in rows}
+    if prev_cats:
+        for cat, p_cnt in prev_cats.items():
+            if cat not in by_cat:
+                by_cat[cat] = (0, p_cnt)
     total_curr = sum(c for c, p in by_cat.values())
     total_prev = sum(p for c, p in by_cat.values())
     agenda = {}
@@ -330,13 +408,15 @@ def run(db):
         periods = []
         for days, label in WINDOWS.items():
             window_cutoff = (now_dt - timedelta(days=days)).isoformat(timespec="seconds")
+            prev_cutoff = (now_dt - timedelta(days=2 * days)).isoformat(timespec="seconds")
             ids = dashboard_story_ids(db, cid, days)
-            stories = [_story(db, db.execute("SELECT * FROM story WHERE id=?", (i,)).fetchone(), now, days) for i in ids] if ids else []
+            prev_by_sid, prev_cats = _prev_window_matches(db, cid, days, prev_cutoff, window_cutoff) if ids else ({}, Counter())
+            stories = [_story(db, db.execute("SELECT * FROM story WHERE id=?", (i,)).fetchone(), now, days, prev_by_sid.get(i)) for i in ids] if ids else []
             stories = [st for st in stories if (st.get("last_seen") or st.get("first_seen") or "") >= window_cutoff]
             stories.sort(key=lambda st: -(st["score"] or 0.0))
             totals = {c: db.execute("SELECT COUNT(*) FROM story WHERE country=? AND window_days=? AND category=? AND COALESCE(last_seen, first_seen, '') >= ?", (cid, days, c, window_cutoff)).fetchone()[0] if stories else 0
                       for c in CATEGORIES}          # all stories found in the window, of which the top ones are exported
-            agenda_delta = _agenda_delta(db, cid, days, now) if stories else None
+            agenda_delta = _agenda_delta(db, cid, days, now, prev_cats) if stories else None
             payload = {"country": cid, "period": label, "days": days, "generated_at": now, "categories": CATEGORIES,
                        "totals": totals, "agenda_delta": agenda_delta, "stories": stories}
             _write(f"{cid}-{label}", payload, "ARGOS_DATA")
