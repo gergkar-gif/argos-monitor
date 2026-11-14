@@ -65,7 +65,7 @@ jobs:
           restore-keys: hf-marian-models-
 
       - name: Collect, analyse and export
-        run: python run.py ingest normalise relevance embed cluster classify policy rank extract excerpts verify translate export crisis trends reddit social watch prune report
+        run: python run.py ingest normalise relevance embed cluster classify policy rank extract normalise excerpts verify translate export crisis trends reddit social watch prune report
 
       - name: Save database
         uses: actions/cache/save@v4

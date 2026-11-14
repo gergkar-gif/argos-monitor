@@ -28,6 +28,9 @@ CREATE TABLE IF NOT EXISTS excerpt (
   text TEXT, char_start INTEGER, char_end INTEGER);
 CREATE INDEX IF NOT EXISTS article_source ON article(source_id);
 CREATE INDEX IF NOT EXISTS article_status ON article(extract_status);
+CREATE INDEX IF NOT EXISTS article_country ON article(country);
+CREATE INDEX IF NOT EXISTS story_country ON story(country, window_days);
+CREATE INDEX IF NOT EXISTS story_article_article ON story_article(article_id);
 """
 
 
