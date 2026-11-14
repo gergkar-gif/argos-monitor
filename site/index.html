@@ -69,7 +69,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="assets/icon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/icon-180.png">
 <link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="style.css?v=3.6">
+<link rel="stylesheet" href="style.css?v=3.7">
 </head>
 <body>
 <header class="bureau">
@@ -79,7 +79,8 @@
         <h1><a href="#home" id="home-link"><img src="assets/eye.png" alt="" class="logo">Argos Monitor</a></h1>
         <p>Open-source media &amp; crisis monitor</p>
       </div>
-      <nav class="topnav" aria-label="Primary">
+      <button type="button" class="navtoggle" aria-expanded="false" aria-controls="topnav"><span class="bars" aria-hidden="true"></span>Menu</button>
+      <nav class="topnav" id="topnav" aria-label="Primary">
         <a href="#home" id="nav-home">Overview</a>
         <a href="#country" id="nav-country">Country Brief</a>
         <a href="#relations" id="nav-relations">Joint &amp; Multilateral</a>
@@ -135,5 +136,6 @@
 <script src="data/reddit.js"></script>
 <script src="data/social.js"></script>
 <script src="app.js?v=3.7"></script>
+<script src="nav.js"></script>
 </body>
 </html>

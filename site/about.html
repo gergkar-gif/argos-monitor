@@ -42,10 +42,27 @@
 
 <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png">
 <link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="style.css?v=3.6">
+<link rel="stylesheet" href="style.css?v=3.7">
 <style>
   .doc { max-width: 68rem; margin: 0 auto; padding: 2rem 1.5rem 4rem; display: grid; grid-template-columns: minmax(0, 1fr); gap: 2.25rem; overflow-wrap: anywhere; }
   @media (max-width: 45.99rem) { .doc { padding: 1.25rem 1rem 3rem; gap: 1.75rem; } }
+  .desk-index { margin: 0; display: grid; gap: 0.9rem; }
+  .desk-index dt { font: 700 0.72rem/1.2 var(--sans); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 0.35rem; }
+  .desk-index dd { margin: 0; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .desk-pick { padding: 0.35rem 0.6rem; font: 600 0.82rem/1.2 var(--sans); color: var(--ink); background: #fff; border: 1px solid var(--rule); cursor: pointer; }
+  .desk-pick:hover { border-color: var(--ink); }
+  .desk-pick .n { margin-left: 0.35rem; font-weight: 400; color: var(--ink-3); }
+  @media (min-width: 46rem) { .desk-index > div { display: grid; grid-template-columns: 13rem 1fr; align-items: baseline; } }
+  /* phones: each outlet becomes a short stacked entry instead of a 7-column table */
+  @media (max-width: 45.99rem) {
+    .desk-pick { padding: 0.6rem 0.75rem; }
+    .doc .desk-table thead { display: none; }
+    .doc .desk-table, .doc .desk-table tbody, .doc .desk-table tr { display: block; }
+    .doc .desk-table tr { padding: 0.65rem 0; border-bottom: 1px solid var(--rule); }
+    .doc .desk-table td { display: inline-block; padding: 0; margin-right: 0.85rem; border: 0; font-size: 0.8rem; color: var(--ink-2); }
+    .doc .desk-table td:first-child { display: block; margin-bottom: 0.2rem; font-size: 0.95rem; }
+    .doc .desk-table td[data-label]::before { content: attr(data-label) ": "; color: var(--ink-3); font-weight: 400; }
+  }
   .doc h2 { font: 700 0.9rem/1.2 var(--sans); letter-spacing: 0.06em; text-transform: uppercase; padding-bottom: 0.4rem; border-bottom: 1px solid var(--ink); margin-bottom: 0.75rem; }
   .doc p, .doc li { max-width: 65ch; line-height: 1.65; color: var(--ink-2); }
   .doc strong { color: var(--ink); }
@@ -70,7 +87,8 @@
         <h1><a href="index.html#home"><img src="assets/eye.png" alt="" class="logo">Argos Monitor</a></h1>
         <p>Open-source media &amp; crisis monitor</p>
       </div>
-      <nav class="topnav" aria-label="Primary">
+      <button type="button" class="navtoggle" aria-expanded="false" aria-controls="topnav"><span class="bars" aria-hidden="true"></span>Menu</button>
+      <nav class="topnav" id="topnav" aria-label="Primary">
         <a href="index.html#home" id="nav-home">Overview</a>
         <a href="index.html#country" id="nav-country">Country Brief</a>
         <a href="index.html#relations" id="nav-relations">Joint &amp; Multilateral</a>
@@ -671,6 +689,22 @@
       mixed: 'Mixed',
     }[f] || (f && f !== 'unrated' ? f : '—'));
 
+    // No country and no search: a short region-grouped picker instead of 87 full tables.
+    if (cid === 'all' && !q) {
+      const pick = (c) => { cSel.value = c.id; render(); document.getElementById('sources').scrollIntoView(); };
+      root.replaceChildren(
+        telemBar,
+        el('p', { class: 'fine', style: 'margin: 0 0 0.75rem;', text: 'Pick a country to see its outlets, or search all outlets by name above.' }),
+        el('dl', { class: 'desk-index' }, [...REGIONS, 'Other'].flatMap((r) => {
+          const list = allCountries.filter((c) => c.region === r)
+            .map((c) => [c, (data[c.id] || []).filter((s) => sc === 'all' || s.scope === sc).length])
+            .filter(([, n]) => n);
+          return list.length ? [el('div', null, el('dt', { text: r }),
+            el('dd', null, list.map(([c, n]) => el('button', { type: 'button', class: 'desk-pick', onclick: () => pick(c) }, c.name, el('span', { class: 'n', text: String(n) })))))] : [];
+        })));
+      return;
+    }
+
     root.replaceChildren(
       telemBar,
       ...countries.flatMap((c) => {
@@ -688,11 +722,11 @@
               el('tbody', null, rows.map((s) => el('tr', null,
                 el('td', null, el('a', { href: safe(s.homepage), target: '_blank', rel: 'noopener noreferrer', text: s.name })),
                 el('td', { text: scope[s.scope] || s.scope }),
-                el('td', { class: 'typed', text: s.kind }),
-                el('td', { class: 'typed', text: formatAlignment(s.alignment) }),
-                el('td', { class: 'typed', text: formatBias(s.bias) }),
-                el('td', { class: 'typed', text: formatFactuality(s.factuality) }),
-                el('td', null, s.state_affiliated ? el('span', { class: 'stamp red', text: 'Yes' }) : el('span', { class: 'typed', text: 'No' }))))))))];
+                el('td', { class: 'typed', 'data-label': 'Type', text: s.kind }),
+                el('td', { class: 'typed', 'data-label': 'Alignment', text: formatAlignment(s.alignment) }),
+                el('td', { class: 'typed', 'data-label': 'Leaning', text: formatBias(s.bias) }),
+                el('td', { class: 'typed', 'data-label': 'Factuality', text: formatFactuality(s.factuality) }),
+                el('td', { 'data-label': 'State-linked' }, s.state_affiliated ? el('span', { class: 'stamp red', text: 'Yes' }) : el('span', { class: 'typed', text: 'No' }))))))))];
       }));
   }
   cSel.addEventListener('change', render);
@@ -710,5 +744,6 @@
     if (el && n) el.textContent = '[' + n + ']';
   }
 </script>
+<script src="nav.js"></script>
 </body>
 </html>
