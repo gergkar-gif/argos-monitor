@@ -46,6 +46,20 @@
 <style>
   .doc { max-width: 68rem; margin: 0 auto; padding: 2rem 1.5rem 4rem; display: grid; grid-template-columns: minmax(0, 1fr); gap: 2.25rem; overflow-wrap: anywhere; }
   @media (max-width: 45.99rem) { .doc { padding: 1.25rem 1rem 3rem; gap: 1.75rem; } }
+  .stats-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; margin-top: 1.1rem; }
+  @media (max-width: 38rem) { .stats-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .stat-box { border-left: 3px solid var(--ink); padding: 0.25rem 0 0.25rem 0.75rem; }
+  .stat-box strong { display: block; font: 700 1.15rem/1.2 var(--sans); color: var(--ink); }
+  .stat-box span { font-size: 0.8rem; color: var(--ink-3); }
+  .author-note { margin-top: 1rem; padding-top: 0.85rem; border-top: 1px dotted var(--rule); font-size: 0.92rem; color: var(--ink-2); }
+  .doc details.fold { border: 1px solid var(--rule); background: #fff; }
+  .doc details.fold + details.fold { margin-top: 0.65rem; }
+  .doc details.fold > summary { padding: 0.75rem 1rem; font: 700 0.86rem/1.3 var(--sans); color: var(--ink); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; }
+  .doc details.fold > summary::-webkit-details-marker { display: none; }
+  .doc details.fold > summary::after { content: "+"; font-weight: 700; color: var(--ink-3); flex-shrink: 0; }
+  .doc details.fold[open] > summary { border-bottom: 1px solid var(--rule); background: var(--paper-warm, #fbfaf8); }
+  .doc details.fold[open] > summary::after { content: "−"; }
+  .doc details.fold .fold-body { padding: 1rem 1rem 1.15rem; }
   .desk-index { margin: 0; display: grid; gap: 0.9rem; }
   .desk-index dt { font: 700 0.72rem/1.2 var(--sans); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 0.35rem; }
   .desk-index dd { margin: 0; display: flex; flex-wrap: wrap; gap: 0.35rem; }
@@ -53,7 +67,6 @@
   .desk-pick:hover { border-color: var(--ink); }
   .desk-pick .n { margin-left: 0.35rem; font-weight: 400; color: var(--ink-3); }
   @media (min-width: 46rem) { .desk-index > div { display: grid; grid-template-columns: 13rem 1fr; align-items: baseline; } }
-  /* phones: each outlet becomes a short stacked entry instead of a 7-column table */
   .about-toc { display: none; }
   @media (max-width: 45.99rem) {
     .desk-pick { padding: 0.6rem 0.75rem; }
@@ -68,7 +81,7 @@
   .doc p, .doc li { max-width: 65ch; line-height: 1.65; color: var(--ink-2); }
   .doc strong { color: var(--ink); }
   .doc ul, .doc ol { margin: 0.4rem 0 0; padding-left: 1.3rem; display: grid; gap: 0.5rem; }
-  .pipeline { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem 2rem; margin-top: 1rem; }
+  .pipeline { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.15rem 2rem; margin-top: 0.9rem; }
   @media (max-width: 38rem) { .pipeline { grid-template-columns: 1fr; } }
   .step { border-left: 4px solid var(--bar); padding: 0.1rem 0 0.1rem 0.9rem; display: grid; gap: 0.2rem; align-content: start; }
   .step b { font: 700 0.85rem/1.2 var(--sans); color: var(--ink); }
@@ -107,325 +120,266 @@
   <details class="about-toc">
     <summary>Jump to section</summary>
     <ul>
+      <li><a href="#principles">Core principles</a></li>
       <li><a href="#pipeline">11-stage pipeline</a></li>
-      <li><a href="#evidence-methodology">Verbatim evidence &amp; quote verification</a></li>
-      <li><a href="#methodology">Source analysis &amp; bias methodology</a></li>
-      <li><a href="#crisis-methodology">Crisis, conflict &amp; security methodology</a></li>
-      <li><a href="#sources">Monitored outlets &amp; source directory (87 desks)</a></li>
+      <li><a href="#methodology-details">Methodology &amp; scoring</a></li>
+      <li><a href="#sources">Monitored outlets (87 desks)</a></li>
     </ul>
   </details>
 
   <section>
     <h2>What Argos Monitor is</h2>
-    <p>Argos Monitor is an automated open-source news and crisis monitor covering country media ecosystems across domestic press, local-language diaspora outlets abroad, and international reporting. Instead of asking a language model to summarize the news—which risks hallucinated claims, flattened nuance, or unattributed spin—Argos shows <strong>only original headlines and verbatim pull-quotes</strong> verified character-for-character against the source article.</p>
+    <p>Argos Monitor is a free, open-source news and crisis monitor built for desk analysts, researchers, and journalists. For each country, it compares coverage across domestic press, local-language diaspora outlets, and international media—showing only original headlines and verbatim quotes verified character-for-character against the source article, with no LLM-written summaries.</p>
+    <div class="stats-strip" aria-label="System scale">
+      <div class="stat-box"><strong>87</strong><span>Country desks</span></div>
+      <div class="stat-box"><strong>1,390+</strong><span>RSS, Atom &amp; conflict feeds</span></div>
+      <div class="stat-box"><strong>20+</strong><span>Languages (offline MarianMT)</span></div>
+      <div class="stat-box"><strong>$0 / mo</strong><span>CPU pipeline on GitHub Actions</span></div>
+    </div>
+    <p class="author-note">Built and maintained by <strong>Károly Gergely</strong> as an end-to-end data engineering and NLP project (Python, SQLite, ONNX Runtime, GitHub Actions, static Cloudflare Pages). MIT-licensed source code: <a href="https://github.com/gergkar-gif/argos-monitor" target="_blank" rel="noopener noreferrer">github.com/gergkar-gif/argos-monitor</a>.</p>
   </section>
 
-  <section>
-    <h2>Seven non-negotiable rules</h2>
+  <section id="principles">
+    <h2>Core principles</h2>
     <ol>
-      <li><strong>No source, no statement:</strong> Every headline and quote on the page links directly to the article it came from. Nothing is paraphrased or synthesized.</li>
-      <li><strong>Zero LLM in the core pipeline:</strong> Clustering, topic classification, ranking, and quote extraction are 100% deterministic (multilingual embeddings + rules). Any post-processing summary layer must strictly verify quotes via substring match against stored article text.</li>
-      <li><strong>Independent outlet counting:</strong> State wire reprints and syndicated copies are detected by text similarity (≥ 0.95 cosine similarity) and counted once, so 20 reprints of one wire dispatch never masquerade as 20 independent confirmations.</li>
-      <li><strong>Tri-scope perspective balance:</strong> Every story displays its distribution across domestic licensed media, local-language diaspora/exile press, and international reporting, alongside editorial alignment, political leaning, and factuality.</li>
-      <li><strong>Official vs. reported:</strong> Outlets are explicitly tagged with <span class="stamp red">Official</span> or <span class="stamp indigo">Reported</span> so official government statements are immediately distinguishable from independent reporting.</li>
-      <li><strong>Live methodology synchronization:</strong> The About page and system specifications are updated in the same change whenever country desks, analytical layers, or pipeline stages are modified.</li>
-      <li><strong>Zero emojis across the broadsheet:</strong> Built for diplomatic and institutional press review. No emojis are permitted anywhere in the UI, alerts, badges, logs, or documentation. External RSS emojis are stripped upon ingestion.</li>
-      <li><strong>Priority election coverage:</strong> National, presidential, parliamentary, and local elections, ballot results, voter turnout, referendums, and official campaign outcomes receive top policy weighting (1.0), deterministic ranking priority boosts, and prominent dispatch placement in diplomatic intelligence briefs.</li>
+      <li><strong>No source, no statement:</strong> Every headline and quote links directly to the stored article it came from. Nothing is paraphrased or invented.</li>
+      <li><strong>No LLM in the core pipeline:</strong> Clustering, topic classification, ranking, and quote extraction are deterministic (multilingual embeddings and rules).</li>
+      <li><strong>Independent outlet counting:</strong> State wire reprints and syndicated copies (&ge; 0.95 cosine similarity) are collapsed so 20 reprints of one dispatch count as 1 source.</li>
+      <li><strong>Perspective &amp; official tagging:</strong> Stories break down coverage across domestic, diaspora, and international outlets, with <span class="stamp red">Official</span> and <span class="stamp indigo">Reported</span> tags separating state wires from independent reporting.</li>
+      <li><strong>Priority for elections &amp; crises:</strong> National elections, referendums, active armed conflict, and major disasters receive dedicated tracking and top brief placement.</li>
     </ol>
   </section>
 
   <section id="pipeline">
     <h2>How the 11-stage pipeline works</h2>
-    <p>A scheduled GitHub Actions runner executes the full pipeline daily at 21:17 UTC and publishes static JSON/JS bundles to Cloudflare Pages, complemented by lightweight feed snapshot runs every 4 hours (01:00, 05:00, 09:00, 13:00, 17:00 UTC) to capture breaking articles before they rotate out of rapid outlet RSS queues. <em>Scope and sampling:</em> Argos provides a curated diplomatic press overview of approximately 10–15 national outlets per country desk, structured for executive signal monitoring rather than exhaustive archival.</p>
+    <p>A scheduled GitHub Actions job runs the full pipeline daily at 21:17 UTC and deploys static JSON bundles to Cloudflare Pages, with 4-hourly feed snapshots (01:00–17:00 UTC) so breaking articles are captured before fast RSS queues rotate. Each desk tracks 10–15 representative outlets rather than attempting exhaustive archival.</p>
     <div class="pipeline">
-      <div class="step"><b>01 · Ingest</b><span>Polls 1,390+ RSS/Atom and news feeds via curl with Media Cloud-inspired HTTP 304 conditional GETs (ETag/Last-Modified), tracking query parameter stripping, exponential backoff error quarantine, and direct SQLite article ingestion of verified GDELT 2.0 real-time conflict URLs.</span></div>
-      <div class="step"><b>02 · Extract</b><span>Fetches full article text with Trafilatura for domestic and accessible sources.</span></div>
-      <div class="step"><b>03 · Normalise</b><span>Applies Unicode NFC normalisation (crucial for Vietnamese diacritics and Khmer script).</span></div>
-      <div class="step"><b>04 · Relevance</b><span>Filters out sports/lifestyle sections and requires country mentions on world feeds.</span></div>
-      <div class="step"><b>05 · Embed</b><span>Encodes headlines and leads locally using ONNX Runtime (<code>intfloat/multilingual-e5-small</code>).</span></div>
-      <div class="step"><b>06 · Cluster</b><span>Groups articles into stories via agglomerative cosine clustering + second-pass centroid merge, flags syndicated reprints, and selects authoritative representative headlines over fringe opinion pieces.</span></div>
-      <div class="step"><b>07 · Classify</b><span>Assigns each story to one of 6 policy topics by cosine similarity against bilingual topic anchors.</span></div>
-      <div class="step"><b>08 · Policy &amp; Rank</b><span>Scores stories by independent outlet consensus, scope diversity, recency, Poisson surge detection, and rebalanced policy theme multipliers (<code>themes.yaml</code>).</span></div>
-      <div class="step"><b>09 · Excerpts &amp; Verify</b><span>Selects informative sentences prioritized by quotation markers and reporting attribution verbs (EMM Quotefinder pattern), asserting each quote is an exact substring of the stored article text.</span></div>
-      <div class="step"><b>10 · Offline Translation</b><span>Translates non-English representative headlines into English using CPU-friendly MarianMT sequence-to-sequence models with entity glossaries, caching results in SQLite while keeping original text authoritative.</span></div>
-      <div class="step"><b>11 · Signals &amp; Export</b><span>Merges GDELT 2.0 real-time CAMEO conflict streams, optional ACLED events, GDACS/USGS/NASA EONET hazard sensors, UN Peace &amp; Security/Crisis Group/HRW/LWJ/MSF field monitors, FCDO/US State Dept advisories, and auxiliary social signals into static bundles.</span></div>
+      <div class="step"><b>01 · Ingest</b><span>Polls 1,390+ RSS/Atom feeds via HTTP 304 conditional GETs and ingests verified GDELT 2.0 conflict URLs into SQLite.</span></div>
+      <div class="step"><b>02 · Extract</b><span>Pulls full article text with Trafilatura where accessible.</span></div>
+      <div class="step"><b>03 · Normalise</b><span>Applies Unicode NFC normalisation (essential for Vietnamese diacritics and Khmer) and strips RSS emojis.</span></div>
+      <div class="step"><b>04 · Relevance</b><span>Drops sports/lifestyle noise and checks country mentions on global feeds.</span></div>
+      <div class="step"><b>05 · Embed</b><span>Encodes headlines and leads locally on CPU via ONNX Runtime (<code>intfloat/multilingual-e5-small</code>).</span></div>
+      <div class="step"><b>06 · Cluster</b><span>Groups articles into stories via agglomerative cosine clustering, merges centroids, and flags wire reprints.</span></div>
+      <div class="step"><b>07 · Classify</b><span>Assigns each story to one of 6 policy domains using URL/section rules and bilingual embedding anchors.</span></div>
+      <div class="step"><b>08 · Policy &amp; Rank</b><span>Scores stories by independent outlet count, scope diversity, recency, surge detection, and policy weights (<code>themes.yaml</code>).</span></div>
+      <div class="step"><b>09 · Excerpts &amp; Verify</b><span>Picks 2–3 informative sentences per story and asserts each is an exact substring of the stored article text.</span></div>
+      <div class="step"><b>10 · Offline Translation</b><span>Translates non-English headlines on CPU with MarianMT + entity glossaries, caching results in SQLite.</span></div>
+      <div class="step"><b>11 · Signals &amp; Export</b><span>Merges GDELT, ACLED, GDACS/USGS/NASA EONET, UN/ICG/HRW/LWJ/MSF monitors, travel advisories, and social context into static bundles.</span></div>
     </div>
   </section>
 
-  <section id="evidence-methodology">
-    <h2>Verbatim Evidence &amp; Quote Verification Methodology</h2>
-    <p>To adhere strictly to Rule 1 (<em>No source, no statement</em>), Argos strictly rejects generative LLM synthesis. Synthetic language models frequently invent diplomatic claims, confuse names, or smooth over critical contradictions between rival governments. Every fact displayed on Argos traces to an exact quote:</p>
-    <div class="pipeline">
-      <div class="step">
-        <b>01 · Substring Assertion Engine</b>
-        <span>Pull-quotes are extracted directly from full text obtained via Trafilatura. Every candidate sentence is checked with a strict assertion: <code>assert quote in stored_article_text</code>. If extraction, diacritic processing, or formatting altered a single character or punctuation mark, the quote is discarded.</span>
-      </div>
-      <div class="step">
-        <b>02 · Extractive Multi-Source Summarisation</b>
-        <span>Story summaries are purely extractive. They consist of the representative headline plus 2–3 verbatim excerpts selected from different reporting outlets (e.g. domestic, diaspora, international). Each quote displays its publisher, publication time, and links directly to the source URL.</span>
-      </div>
-      <div class="step">
-        <b>03 · Syndication &amp; Wire De-duplication</b>
-        <span>State wire agencies (such as VNA in Vietnam, MTI in Hungary, ČTK in Czechia, or Yonhap in South Korea) frequently distribute identical press copy across dozens of domestic commercial news sites. Argos computes pairwise cosine similarity across lead sentences; copies with similarity &ge; 0.95 are collapsed as syndicated reprints.</span>
-      </div>
-      <div class="step">
-        <b>04 · Independent Outlets vs. Gross Article Volume</b>
-        <span>Story prominence is measured by the count of distinct, independent publishers covering the event, rather than gross article count. Twenty reprints of a single state wire dispatch count as 1 independent outlet, preventing coordinated media blitzes from artificially exaggerating diversity scores.</span>
-      </div>
-    </div>
-  </section>
+  <section id="methodology-details">
+    <h2>Methodology &amp; technical details</h2>
+    <p>Expand any section below for exact thresholds, source classifications, and architecture details.</p>
 
-  <section id="translation-methodology">
-    <h2>Offline Machine Translation Methodology</h2>
-    <p>Argos covers 87 country desks published in over 20 languages (including Vietnamese, Lao, Hungarian, Ukrainian, Arabic, and Russian). To enable fast scanning without relying on external cloud APIs or violating data sovereignty, Argos uses dedicated offline translation models:</p>
-    <div class="pipeline">
-      <div class="step">
-        <b>01 · MarianMT Sequence-to-Sequence Models</b>
-        <span>Representative headlines are translated using lightweight Marian neural machine translation models (<code>Helsinki-NLP/opus-mt-*</code>) running locally on CPU. These models require zero external API keys, zero token fees, and operate entirely air-gapped within the ingestion runner.</span>
-      </div>
-      <div class="step">
-        <b>02 · Geopolitical Entity Alignment Glossaries</b>
-        <span>To prevent historical translation artifacts in low-resource language pairs—such as older models translating Sino-Vietnamese political names into Chinese pinyin (e.g. rendering General Secretary <em>Tô Lâm</em> as <em>Song Lin</em>) or literal translations of state institutions—Argos enforces curated post-processing glossaries.</span>
-      </div>
-      <div class="step">
-        <b>03 · Persistent SQLite Translation Cache</b>
-        <span>Translated headlines are stored in the <code>translation</code> database table keyed by <code>article_id</code>. Once translated, a headline is resolved in <em>O(1)</em> time, keeping incremental pipeline refreshes light on CPU memory and completing within seconds.</span>
-      </div>
-      <div class="step">
-        <b>04 · Original Language Authoritative</b>
-        <span>In accordance with Rule 4, translation is purely an aid for machine reading and speed. The original foreign-language headline remains authoritative and can be inspected at any time via the <code>[Show original]</code> toggle. Extracted quotes are never translated server-side, preventing translation drift from contaminating primary evidence.</span>
-      </div>
-    </div>
-  </section>
-
-  <section id="methodology">
-    <h2>Source Analysis Methodology</h2>
-    <p>Argos evaluates every monitored publication across four structural dimensions to deliver objective media-intelligence analysis across democratic, hybrid, and authoritarian media systems:</p>
-    <div class="pipeline">
-      <div class="step">
-        <b>01 · Alignment (Power &amp; Ownership Structure)</b>
-        <span>Measures structural relationship to political authority: <strong>State-controlled</strong> (statutory news agencies and ministry organs), <strong>Pro-government</strong> (private commercial media editorially allied with the ruling coalition), <strong>Public broadcaster</strong> (chartered public-service media with statutory editorial safeguards), <strong>Independent</strong> (commercial, cooperative, or investigative press free of government ownership), and <strong>Opposition</strong> (dissident, diaspora, or exile press).</span>
-      </div>
-      <div class="step">
-        <b>02 · Editorial Leaning (Political Spectrum)</b>
-        <span>Calibrated using international registries (Media Bias/Fact Check, AllSides, Reuters Institute): <strong>Left</strong>, <strong>Center-Left</strong>, <strong>Center</strong>, <strong>Center-Right</strong>, and <strong>Right</strong>. In state-directed media ecosystems (e.g. Vietnam, China), outlets are classified as <strong>State-aligned</strong> to reflect official diplomatic messaging rather than domestic electoral competition.</span>
-      </div>
-      <div class="step">
-        <b>03 · Factuality (Verification &amp; Correction Standards)</b>
-        <span>Assesses sourcing transparent attribution, primary corroboration, and correction practices: <strong>Very High</strong> (stringent primary-source corroboration, e.g. major wires), <strong>High</strong> (credible mainstream reporting with professional editorial oversight), <strong>Mostly Factual</strong> (factual core but prone to partisan framing or sensationalism), and <strong>Mixed</strong> (vulnerable to state censorship, selective omission, or unverified claims).</span>
-      </div>
-      <div class="step">
-        <b>04 · State-Linked &amp; Official Corroboration</b>
-        <span>Designates statutory organs and state-funded broadcasters to separate official messaging from independent reporting:</span>
-        <div class="step-tags">
-          <div class="step-tag-row">
-            <span class="stamp red">Official</span>
-            <span>Applied when any state-controlled outlet covers a story cluster</span>
+    <details class="fold" id="evidence-methodology">
+      <summary>Verbatim quotes &amp; wire de-duplication</summary>
+      <div class="fold-body">
+        <div class="pipeline">
+          <div class="step">
+            <b>01 · Substring check</b>
+            <span>Candidate pull-quotes from Trafilatura are checked with <code>assert quote in stored_article_text</code>. If extraction or punctuation normalisation alters a single character, the quote is dropped.</span>
           </div>
-          <div class="step-tag-row">
-            <span class="stamp red">State-Dominated</span>
-            <span>Flagged when over 70% of corroborating coverage originates from state media</span>
+          <div class="step">
+            <b>02 · Extractive summaries</b>
+            <span>Story cards show the representative headline plus 2–3 verbatim excerpts from different outlets, each with publisher, timestamp, and direct source link.</span>
+          </div>
+          <div class="step">
+            <b>03 · Wire de-duplication</b>
+            <span>Lead sentences with cosine similarity &ge; 0.95 (e.g., VNA, MTI, ČTK, or Yonhap reprints) are collapsed as syndicated copies.</span>
+          </div>
+          <div class="step">
+            <b>04 · Independent outlet counts</b>
+            <span>Prominence is scored by distinct independent publishers, not gross article volume, so coordinated wire reprints do not inflate diversity.</span>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </details>
 
-  <section id="crisis-methodology">
-    <h2>Crisis, Conflict &amp; Security Methodology</h2>
-    <p>To adhere strictly to Rule 1 (<em>No source, no statement</em>), Argos never fabricates synthetic summaries of violent events. Instead, the Disasters and Conflict &amp; Security monitors operate a three-track verification model:</p>
-    <div class="pipeline">
-      <div class="step">
-        <b>Track 1 · Real-Time Violence Streams, Field Monitors &amp; Sensors</b>
-        <span>Ingests live structured event streams and institutional field monitors: <strong>GDELT 2.0 15-Minute CAMEO Conflict Stream</strong> (filtering CAMEO root codes 18 Assault/Bombing, 19 Armed Clash/Strike, 20 Mass Violence, and 145 Violent Riot, extracting and verifying the source article's verbatim HTML <code>&lt;title&gt;</code> and full text, and ingesting verified conflict URLs directly into the SQLite <code>article</code> table so they also embed, extract quotes, and cluster with domestic desk stories), optional <strong>ACLED API</strong> disaggregated battle/fatality records, field reporting from <strong>United Nations Peace &amp; Security</strong>, <strong>International Crisis Group</strong>, <strong>Human Rights Watch (HRW)</strong>, <strong>Long War Journal (LWJ)</strong>, and <strong>M&eacute;decins Sans Fronti&egrave;res (MSF)</strong>, alongside elevated foreign-ministry advisories (<strong>US State Dept Levels 2–4</strong>, <strong>UK FCDO</strong>) and hazard sensors (<strong>GDACS</strong>, <strong>USGS M4.5+</strong>, <strong>NASA EONET</strong>).</span>
-      </div>
-      <div class="step">
-        <b>Track 2 · Kinetic Conflict &amp; Unrest Press Classification</b>
-        <span>Separates active kinetic violence from routine defence diplomacy, military budgets, and ceremonial visits. Story clusters in the Conflict &amp; Security monitor must exhibit explicit conflict impact vectors and are classified into three operational tracks: <strong>Armed Clash &amp; Strike</strong>, <strong>Insurgency &amp; Terror</strong>, and <strong>Civil Unrest &amp; Crackdown</strong>, displaying only verbatim headlines and verified quotes.</span>
-      </div>
-      <div class="step">
-        <b>Track 3 · Religious &amp; Sectarian Sensitivity Analysis</b>
-        <span>Enveloped strictly within active conflict and coercion contexts to prevent sectarian blind spots or denominational advocacy. Monitored security stories and alerts are tagged only when a confessional identity or sacred site co-occurs with an active violence, persecution, or coercion vector across four traditions (Judaism, Christianity, Islam, Other Faiths &amp; Sacred Sites).</span>
-        <div class="step-tags">
-          <div class="step-tag-row">
-            <span class="stamp stamp-sectarian">REL SENSITIVITY: TRADITION</span>
-            <span>Tagged stories linked directly to verifiable verbatim quotations</span>
+    <details class="fold" id="translation-methodology">
+      <summary>Offline machine translation (MarianMT + glossaries)</summary>
+      <div class="fold-body">
+        <div class="pipeline">
+          <div class="step">
+            <b>01 · Local MarianMT models</b>
+            <span>Headlines across 20+ languages are translated on CPU using <code>Helsinki-NLP/opus-mt-*</code> models inside the runner—no paid translation APIs.</span>
+          </div>
+          <div class="step">
+            <b>02 · Entity glossaries</b>
+            <span>Post-processing glossaries fix common low-resource artifacts, such as Sino-Vietnamese names being rendered into Chinese pinyin (e.g. <em>Tô Lâm</em>).</span>
+          </div>
+          <div class="step">
+            <b>03 · SQLite translation cache</b>
+            <span>Translations are cached by <code>article_id</code> in SQLite for instant <em>O(1)</em> lookup on incremental runs.</span>
+          </div>
+          <div class="step">
+            <b>04 · Original text stays primary</b>
+            <span>Original headlines remain accessible via <code>[Show original]</code>, and extracted quotes are never machine-translated server-side.</span>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </details>
 
-  <section id="delta-methodology">
-    <h2>Delta Analysis Methodology (&quot;What Changed?&quot;)</h2>
-    <p>To evaluate news cycle momentum rather than static cumulative volume, Argos compares the active monitoring window (e.g. last 24h or last 7d) against the immediately preceding contiguous period of equal length without LLMs or synthetic claims:</p>
-    <div class="pipeline">
-      <div class="step">
-        <b>01 · Story Velocity &amp; Emergence</b>
-        <span>Deterministic movement states classify story publication momentum against the prior contiguous period:</span>
-        <div class="step-tags">
-          <div class="step-tag-row">
-            <span class="stamp stamp-new">NEW</span>
-            <span>Fresh emergence; zero articles in the prior period</span>
+    <details class="fold" id="methodology">
+      <summary>Source alignment, political leaning &amp; factuality</summary>
+      <div class="fold-body">
+        <div class="pipeline">
+          <div class="step">
+            <b>01 · Alignment (ownership &amp; control)</b>
+            <span><strong>State-controlled</strong> (statutory agencies/ministry organs), <strong>Pro-government</strong> (private media allied with the ruling coalition), <strong>Public broadcaster</strong> (chartered public-service media), <strong>Independent</strong> (free of state ownership), and <strong>Opposition</strong> (dissident, diaspora, or exile press).</span>
           </div>
-          <div class="step-tag-row">
-            <span class="stamp stamp-surge">SURGE +&Delta;N</span>
-            <span>Accelerating coverage (volume gain &ge; 3, velocity multiplier &ge; 1.75&times;)</span>
+          <div class="step">
+            <b>02 · Editorial leaning</b>
+            <span>Calibrated against Media Bias/Fact Check, AllSides, and Reuters Institute (<strong>Left</strong> to <strong>Right</strong>). In state-directed systems (e.g. Vietnam, China), outlets are tagged <strong>State-aligned</strong>.</span>
           </div>
-          <div class="step-tag-row">
-            <span class="stamp stamp-cooling">COOLING</span>
-            <span>Fading cycle (volume decline &ge; 3, velocity multiplier &le; 0.40&times;)</span>
+          <div class="step">
+            <b>03 · Factuality</b>
+            <span><strong>Very High</strong> (major wires with primary-source standards), <strong>High</strong> (credible mainstream reporting), <strong>Mostly Factual</strong> (factual core with partisan framing), and <strong>Mixed</strong> (subject to censorship or selective omission).</span>
+          </div>
+          <div class="step">
+            <b>04 · Official corroboration tags</b>
+            <span>Separates state messaging from independent reporting:</span>
+            <div class="step-tags">
+              <div class="step-tag-row">
+                <span class="stamp red">Official</span>
+                <span>Any state-controlled outlet covers the cluster</span>
+              </div>
+              <div class="step-tag-row">
+                <span class="stamp red">State-Dominated</span>
+                <span>Over 70% of corroborating coverage comes from state media</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="step">
-        <b>02 · Scope Escalation (&quot;Going Global&quot;)</b>
-        <span>Detects when a strictly domestic controversy spills over into foreign reporting, flagging diplomatic escalation:</span>
-        <div class="step-tags">
-          <div class="step-tag-row">
-            <span class="stamp stamp-pickup">INTL PICKUP</span>
-            <span>Domestic controversy picked up by international wire services</span>
+    </details>
+
+    <details class="fold" id="crisis-methodology">
+      <summary>Crisis, conflict &amp; security tracks</summary>
+      <div class="fold-body">
+        <div class="pipeline">
+          <div class="step">
+            <b>Track 1 · Live streams, field monitors &amp; sensors</b>
+            <span>Ingests <strong>GDELT 2.0</strong> CAMEO conflict codes (18, 19, 20, 145) directly into SQLite, optional <strong>ACLED</strong> battle/fatality records, field reports from <strong>UN Peace &amp; Security</strong>, <strong>Crisis Group</strong>, <strong>HRW</strong>, <strong>LWJ</strong>, and <strong>MSF</strong>, <strong>US State Dept / UK FCDO</strong> advisories, and <strong>GDACS / USGS M4.5+ / NASA EONET</strong> hazard feeds.</span>
           </div>
-          <div class="step-tag-row">
-            <span class="stamp stamp-pickup">DIASPORA PICKUP</span>
-            <span>Reported by foreign-language diaspora or regional exile outlets</span>
+          <div class="step">
+            <b>Track 2 · Kinetic conflict classification</b>
+            <span>Separates active violence from routine defence diplomacy into three tracks: <strong>Armed Clash &amp; Strike</strong>, <strong>Insurgency &amp; Terror</strong>, and <strong>Civil Unrest &amp; Crackdown</strong>.</span>
           </div>
-        </div>
-      </div>
-      <div class="step">
-        <b>03 · Macro Agenda Shifts</b>
-        <span>Calculates percentage-point attention shifts (&Delta;S) across the 6 core policy categories (e.g. <code>Economics &uarr; +23.8%</code>, <code>Politics &darr; -19.4%</code>) displayed in the country Agenda Movement Bar with quick one-click filtering.</span>
-      </div>
-      <div class="step">
-        <b>04 · State Media Narrative Drift</b>
-        <span>Calculates shifts in state-affiliated media share to detect official state campaigns or sudden narrative withdrawal:</span>
-        <div class="step-tags">
-          <div class="step-tag-row">
-            <span class="stamp red">STATE SURGE</span>
-            <span>State media share gain (&ge; +30%), indicating an orchestrated narrative push</span>
+          <div class="step">
+            <b>Track 3 · Religious &amp; sectarian sensitivity</b>
+            <span>Tags stories only when a confessional identity or sacred site co-occurs with active violence or coercion (Judaism, Christianity, Islam, Other Faiths &amp; Sacred Sites).</span>
+            <div class="step-tags">
+              <div class="step-tag-row">
+                <span class="stamp stamp-sectarian">REL SENSITIVITY: TRADITION</span>
+                <span>Linked directly to verifiable verbatim quotes</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="step">
-        <b>05 · Bilateral &amp; Multilateral Delta Cross-Comparisons</b>
-        <span>In the Joint &amp; Multilateral Affairs monitor, cross-references coverage across partner countries to calculate bilateral momentum multipliers, net article growth (&Delta;N), new breakout stories, and primary diplomatic policy domains.</span>
-      </div>
-    </div>
-  </section>
+    </details>
 
-  <section id="policy-methodology">
-    <h2>Policy Relevance &amp; Foreign-Office Ranking Model</h2>
-    <p>Standard news aggregators optimize for social clicks and sensationalism, elevating celebrity controversies, local crimes, and traffic accidents. Argos Monitor is engineered specifically for foreign-ministry desk officers, diplomatic missions, and macroeconomic policy analysts:</p>
-    <div class="pipeline">
-      <div class="step">
-        <b>01 · Six Core Policy Categories</b>
-        <span>Every ingested story is mapped into one of six core policy domains: <strong>Politics &amp; Governance</strong> (internal state personnel, constitutional affairs, party directives), <strong>Diplomacy &amp; Foreign Policy</strong> (bilateral summits, treaties, multilateral forums), <strong>Economy &amp; Trade</strong> (macroeconomic data, trade corridors, sovereign debt, foreign direct investment), <strong>Defence &amp; Security</strong> (armed forces procurement, joint military drills, border security, deterrence), <strong>Society &amp; Rights</strong> (judiciary, civil rights, labor, religious affairs), or <strong>Environment &amp; Energy</strong> (critical minerals, grid infrastructure, climate disasters).</span>
-      </div>
-      <div class="step">
-        <b>02 · Hybrid Semantic Classification</b>
-        <span>Categorisation uses a hierarchical dual-stage classifier: structured URL paths and RSS section feeds (e.g. <code>/thoi-su/</code>, <code>/the-gioi/</code>, <code>/wirtschaft/</code>) provide authoritative native categorization, cross-referenced with multilingual dense embeddings (<code>intfloat/multilingual-e5-small</code>) evaluated against bilingual policy description anchors.</span>
-      </div>
-      <div class="step">
-        <b>03 · Policy Weighting &amp; Multi-Outlet Consensus</b>
-        <span>Story ranking combines verified editorial coverage with policy domain importance: <code>Score = Coverage &times; (0.6 + 0.5 &times; Policy) + 1.2 &times; Policy + Election_Bonus</code>. To prevent single-outlet fluff from leapfrogging genuine national news due to coincidental keyword matches, confirmed coverage is amplified when corroborated across 3+ independent outlets (+1.0) and 5+ outlets (+2.0 + 0.5 &times; (N &minus; 5)), while policy importance acts primarily as a multiplier on confirmed coverage rather than an unchecked flat additive bonus.</span>
-      </div>
-      <div class="step">
-        <b>04 · Local Incident Suppression</b>
-        <span>Individual traffic accidents, local crime trials, weather reports, and celebrity gossip are assigned low baseline weights (0.05–0.2). An individual murder trial with 15 domestic articles will consistently rank below a bilateral trade corridor agreement with only 4 articles, ensuring high signal-to-noise ratio in daily executive briefs.</span>
-      </div>
-      <div class="step">
-        <b>05 · Standing Priority for Elections &amp; Referendums</b>
-        <span>National, presidential, parliamentary, and municipal elections, ballot results, voter turnout, referendums, and official campaign outcomes receive top policy weighting (1.0) and ranking priority boosts:</span>
-        <div class="step-tags">
-          <div class="step-tag-row">
-            <span class="stamp stamp-election">ELECTION PRIORITY</span>
-            <span>Standing priority placement at the top of diplomatic intelligence briefs</span>
+    <details class="fold" id="delta-methodology">
+      <summary>Delta analysis (&ldquo;What Changed?&rdquo;) &amp; policy ranking</summary>
+      <div class="fold-body">
+        <div class="pipeline">
+          <div class="step">
+            <b>01 · Story velocity</b>
+            <span>Compares the active window (24h or 7d) against the prior equal period:</span>
+            <div class="step-tags">
+              <div class="step-tag-row"><span class="stamp stamp-new">NEW</span><span>Zero articles in the prior period</span></div>
+              <div class="step-tag-row"><span class="stamp stamp-surge">SURGE +&Delta;N</span><span>Gain &ge; 3 articles and velocity &ge; 1.75&times;</span></div>
+              <div class="step-tag-row"><span class="stamp stamp-cooling">COOLING</span><span>Drop &ge; 3 articles and velocity &le; 0.40&times;</span></div>
+            </div>
+          </div>
+          <div class="step">
+            <b>02 · Scope escalation &amp; state drift</b>
+            <span>Flags domestic stories picked up abroad or dominated by state media:</span>
+            <div class="step-tags">
+              <div class="step-tag-row"><span class="stamp stamp-pickup">INTL PICKUP</span><span>Picked up by international wire services</span></div>
+              <div class="step-tag-row"><span class="stamp stamp-pickup">DIASPORA PICKUP</span><span>Reported by diaspora or exile outlets</span></div>
+              <div class="step-tag-row"><span class="stamp red">STATE SURGE</span><span>State media share gain &ge; +30%</span></div>
+            </div>
+          </div>
+          <div class="step">
+            <b>03 · Six policy domains &amp; macro shifts</b>
+            <span>Classifies stories into <strong>Politics &amp; Governance</strong>, <strong>Diplomacy &amp; Foreign Policy</strong>, <strong>Economy &amp; Trade</strong>, <strong>Defence &amp; Security</strong>, <strong>Society &amp; Rights</strong>, and <strong>Environment &amp; Energy</strong>, tracking period-over-period attention shifts (&Delta;S) and bilateral/multilateral cross-coverage.</span>
+          </div>
+          <div class="step">
+            <b>04 · Ranking formula &amp; noise suppression</b>
+            <span><code>Score = Coverage &times; (0.6 + 0.5 &times; Policy) + 1.2 &times; Policy + Election_Bonus</code>. Corroboration across 3+ and 5+ independent outlets amplifies rank; local crime, traffic, and celebrity items get low weights (0.05–0.2); elections get top weight (1.0) and <span class="stamp stamp-election">ELECTION PRIORITY</span> placement.</span>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </details>
 
-  <section id="signals-methodology">
-    <h2>Auxiliary Signals &amp; Real-Time Context</h2>
-    <p>High-interest crisis desks require real-time visibility into fast-breaking events before formal newspaper editorial cycles publish articles. Argos integrates auxiliary real-time feeds while maintaining a strict evidentiary cordon:</p>
-    <div class="pipeline">
-      <div class="step">
-        <b>01 · Public Telegram Channel Web Previews</b>
-        <span>Ingests publicly accessible channel previews (<code>t.me/s/channel</code>) without API credentials, phone numbers, or bot tokens. Monitors official regional emergency channels and trusted conflict observers across Eastern Europe, the Middle East, and the Caucasus.</span>
-      </div>
-      <div class="step">
-        <b>02 · Open Bluesky Feeds (AT Protocol)</b>
-        <span>Polls public AT Protocol endpoints for verified regional correspondents, security analysts, and diplomatic observers without authentication. Incoming texts undergo full Unicode NFC normalization and emoji stripping.</span>
-      </div>
-      <div class="step">
-        <b>03 · Multi-Subreddit &amp; Search Surges</b>
-        <span>Monitors public Reddit discussion clusters across regional diaspora communities and tracks Google Trends regional search momentum surges to identify emerging public interest shifts.</span>
-      </div>
-      <div class="step">
-        <b>04 · Strict Segregation &amp; Unverified Status</b>
-        <span>Auxiliary signals provide valuable context but do not meet the corroboration threshold of verified journalism. They are displayed in a dedicated sidebar drawer, stamped as unverified context, and are never mixed into verified story clusters or used to calculate official coverage metrics.</span>
-      </div>
-    </div>
-  </section>
-
-  <section id="architecture-methodology">
-    <h2>Infrastructure, Privacy &amp; Zero-Cost Architecture</h2>
-    <p>Argos Monitor is designed to be completely free, privacy-preserving, transparent, and durable over decades of operation without commercial API dependencies or hosting costs:</p>
-    <div class="pipeline">
-      <div class="step">
-        <b>01 · Local-First &amp; Cloud Automation</b>
-        <span>The pipeline runs entirely on standard CPU hardware without requiring GPUs or cloud server infrastructure. An automated GitHub Actions workflow executes daily at 21:17 UTC (04:17 Indochina Time / 22:17 CET), updates the SQLite database cache, and deploys fresh briefings in advance of the morning review.</span>
-      </div>
-      <div class="step">
-        <b>02 · Static Edge Delivery</b>
-        <span>The entire site is static (plain HTML, modern CSS, vanilla JavaScript, zero frameworks). The pipeline outputs pre-calculated JSON bundles deployed to Cloudflare Pages global edge network, delivering instant sub-100ms response times worldwide.</span>
-      </div>
-      <div class="step">
-        <b>03 · Zero Telemetry &amp; Absolute Privacy</b>
-        <span>Argos does not set cookies, does not load third-party analytics trackers, does not require user accounts, and makes zero tracking calls. Reader search queries, combobox selections, and drawer toggles remain strictly within the browser's local memory. Outbound links enforce strict no-referrer isolation (<code>rel="noopener noreferrer"</code> and <code>Referrer-Policy: no-referrer</code>) alongside HTTP Content-Security-Policy and HSTS enforcement so monitored foreign media outlets cannot observe or correlate reader traffic.</span>
-      </div>
-      <div class="step">
-        <b>04 · European Broadsheet Typography</b>
-        <span>Designed with a pure white canvas, serif masthead, classic double rule, and vertical-bar story blocks inspired by historic European broadsheets (Le Monde, Neue Zürcher Zeitung, Financial Times). In accordance with Rule 7, zero emojis are allowed across the interface.</span>
-      </div>
-    </div>
-  </section>
-
-  <section id="sources">
-    <h2>Monitored Outlets &amp; Source Directory</h2>
-    <p>Every publication Argos monitors across all 87 country desks, classified by reporting scope (domestic, diaspora abroad, international), editorial alignment, political leaning, factuality, and state affiliation.</p>
-    <form class="slip notranslate" translate="no" aria-label="Filter sources" onsubmit="event.preventDefault()" style="margin-top: 1rem;">
-      <div class="field country-field notranslate" translate="no">
-        <label for="s-country-search"><span>Country</span></label>
-        <div class="combobox-wrap">
-          <input id="s-country-search" type="search" placeholder="Type country or select…" autocomplete="off" spellcheck="false" class="combobox-input notranslate" translate="no" role="combobox" aria-expanded="false" aria-controls="s-country-menu">
-          <button type="button" id="s-country-arrow" class="combobox-arrow" aria-label="Toggle country list" tabindex="-1">▾</button>
-          <div id="s-country-menu" class="combobox-menu notranslate" translate="no" role="listbox" hidden></div>
+    <details class="fold" id="signals-methodology">
+      <summary>Auxiliary real-time signals &amp; zero-tracking privacy</summary>
+      <div class="fold-body">
+        <div class="pipeline">
+          <div class="step">
+            <b>01 · Public Telegram &amp; Bluesky feeds</b>
+            <span>Polls public <code>t.me/s/</code> web previews and open AT Protocol feeds without API keys or credentials.</span>
+          </div>
+          <div class="step">
+            <b>02 · Reddit &amp; search surges</b>
+            <span>Tracks regional diaspora subreddits and Google Trends surges for early context.</span>
+          </div>
+          <div class="step">
+            <b>03 · Unverified quarantine</b>
+            <span>Auxiliary signals sit in a separate drawer marked unverified and never mix into verified story clusters or outlet counts.</span>
+          </div>
+          <div class="step">
+            <b>04 · Static delivery &amp; no tracking</b>
+            <span>Plain HTML, CSS, and vanilla JS on Cloudflare Pages. No cookies, accounts, or analytics; outbound links enforce <code>rel="noopener noreferrer"</code> and <code>Referrer-Policy: no-referrer</code>.</span>
+          </div>
         </div>
-        <select id="s-country" name="country" translate="no" class="notranslate" hidden></select>
       </div>
-      <label class="field"><span>Scope</span><select id="s-scope">
-        <option value="all">All scopes</option>
-        <option value="domestic">In the country</option>
-        <option value="abroad_local">Local-language, abroad</option>
-        <option value="international">International</option>
-      </select></label>
-      <label class="field" style="grid-column: span 2"><span>Search</span><input id="s-q" type="search" placeholder="Outlet name or governing body" autocomplete="off"></label>
-    </form>
-    <p class="fine" style="margin-top: 0.5rem;">Auxiliary Signals: In addition to authoritative press feeds, high-interest crisis desks ingest open, unauthenticated public Telegram channel previews (<code>t.me/s/</code>) and open Bluesky feeds (AT Protocol) as unverified real-time context.</p>
-    <div id="src" style="margin-top: 1rem;"><p class="state">Loading sources…</p></div>
+    </details>
   </section>
 
   <section>
-    <h2>Author &amp; open source</h2>
-    <p>Argos Monitor is designed and maintained by <strong>Károly Gergely</strong>. Source code and methodology documentation are published under the MIT License at <a href="https://github.com/gergkar-gif/argos-monitor" target="_blank" rel="noopener noreferrer">github.com/gergkar-gif/argos-monitor</a>.</p>
+    <h2>Monitored outlets &amp; source directory</h2>
+    <details class="fold" id="sources">
+      <summary>Browse all 87 country desks and filter 1,390+ sources</summary>
+      <div class="fold-body">
+        <p>Every publication monitored across 87 country desks, classified by reporting scope, alignment, political leaning, factuality, and state affiliation.</p>
+        <form class="slip notranslate" translate="no" aria-label="Filter sources" onsubmit="event.preventDefault()" style="margin-top: 1rem;">
+          <div class="field country-field notranslate" translate="no">
+            <label for="s-country-search"><span>Country</span></label>
+            <div class="combobox-wrap">
+              <input id="s-country-search" type="search" placeholder="Type country or select…" autocomplete="off" spellcheck="false" class="combobox-input notranslate" translate="no" role="combobox" aria-expanded="false" aria-controls="s-country-menu">
+              <button type="button" id="s-country-arrow" class="combobox-arrow" aria-label="Toggle country list" tabindex="-1">▾</button>
+              <div id="s-country-menu" class="combobox-menu notranslate" translate="no" role="listbox" hidden></div>
+            </div>
+            <select id="s-country" name="country" translate="no" class="notranslate" hidden></select>
+          </div>
+          <label class="field"><span>Scope</span><select id="s-scope">
+            <option value="all">All scopes</option>
+            <option value="domestic">In the country</option>
+            <option value="abroad_local">Local-language, abroad</option>
+            <option value="international">International</option>
+          </select></label>
+          <label class="field" style="grid-column: span 2"><span>Search</span><input id="s-q" type="search" placeholder="Outlet name or governing body" autocomplete="off"></label>
+        </form>
+        <p class="fine" style="margin-top: 0.5rem;">Auxiliary Signals: High-interest crisis desks also ingest open public Telegram channel previews (<code>t.me/s/</code>) and open Bluesky feeds as unverified context.</p>
+        <div id="src" style="margin-top: 1rem;"><p class="state">Loading sources…</p></div>
+      </div>
+    </details>
   </section>
 </main>
 <script src="data/index.js"></script>
 <script src="data/sources.js"></script>
 <script>
 (() => {
+  const openHashFold = () => {
+    const id = location.hash.slice(1);
+    const target = id && document.getElementById(id);
+    if (target && target.tagName === 'DETAILS') target.open = true;
+  };
+  openHashFold();
+  window.addEventListener('hashchange', openHashFold);
   const root = document.getElementById('src'), idx = window.ARGOS_INDEX, raw = window.ARGOS_SOURCES, data = raw && (raw.sources || raw);
   const cSel = document.getElementById('s-country'), scSel = document.getElementById('s-scope'), qIn = document.getElementById('s-q');
   const cSearch = document.getElementById('s-country-search'), cMenu = document.getElementById('s-country-menu'), cArrow = document.getElementById('s-country-arrow');
