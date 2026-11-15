@@ -8,7 +8,7 @@ import html
 import json
 import re
 import urllib.request
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 from . import fetch, packs
 from .export import SITE_DATA, _write
@@ -22,11 +22,39 @@ TG_MSG_RE = re.compile(
 )
 
 
+MAX_AGE_HOURS = 168  # 7 days: never surface stale posts from months ago as real-time signals
 GLOBAL_CRISIS_TG = ["liveuamap", "insiderpaper"]
-GLOBAL_CRISIS_BSKY = ["reuters.com", "apnews.com", "afp.com", "aljazeera.com", "osinttechnical.bsky.social"]
+GLOBAL_CRISIS_BSKY = [
+    "reuters.com", "apnews.com", "afp.com", "aljazeera.com", "bloomberg.com",
+    "theguardian.com", "france24.com", "euronews.com", "bellingcat.com", "thediplomat.com",
+]
 
 
-def _fetch_telegram(slug):
+def _clip(text, limit=260):
+    if len(text) <= limit:
+        return text
+    cut = text[:limit].rsplit(" ", 1)[0].rstrip(" ,;:-")
+    return (cut or text[:limit]) + "…"
+
+
+def _is_recent(published, now_dt):
+    if not published:
+        return False
+    try:
+        dt = datetime.fromisoformat(published.replace("Z", "+00:00"))
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return (now_dt - dt) <= timedelta(hours=MAX_AGE_HOURS)
+    except ValueError:
+        return False
+
+
+def _norm_key(text):
+    return re.sub(r"[^a-z0-9\u00c0-\u024f\u0400-\u04ff\u1e00-\u1eff]+", "", text.lower())[:64]
+
+
+def _fetch_telegram(slug, now_dt=None):
+    now_dt = now_dt or datetime.now(timezone.utc)
     url = f"https://t.me/s/{slug}"
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"})
     try:
@@ -40,6 +68,8 @@ def _fetch_telegram(slug):
     for m in TG_MSG_RE.finditer(content):
         post_id = m.group(1)
         published = m.group(2)
+        if not _is_recent(published, now_dt):
+            continue
         raw_text = m.group(3)
         stripped = re.sub(r"<[^>]+>", " ", raw_text)
         cleaned = clean(" ".join(html.unescape(stripped).split()))
@@ -50,13 +80,14 @@ def _fetch_telegram(slug):
             "author": f"@{slug}",
             "url": f"https://t.me/{post_id}",
             "published": published,
-            "text": cleaned[:280]
+            "text": _clip(cleaned),
         })
     return posts
 
 
-def _fetch_bluesky(handle):
-    url = f"https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor={handle}&limit=12"
+def _fetch_bluesky(handle, now_dt=None):
+    now_dt = now_dt or datetime.now(timezone.utc)
+    url = f"https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor={handle}&filter=posts_no_replies&limit=15"
     req = urllib.request.Request(url, headers={"User-Agent": "ArgosMonitor/1.0"})
     try:
         with urllib.request.urlopen(req, timeout=8) as resp:
@@ -67,8 +98,15 @@ def _fetch_bluesky(handle):
 
     posts = []
     for item in data.get("feed", []):
+        if item.get("reason"):
+            continue  # skip reposts
         p = item.get("post") or {}
         rec = p.get("record") or {}
+        if rec.get("reply"):
+            continue
+        published = rec.get("createdAt") or ""
+        if not _is_recent(published, now_dt):
+            continue
         raw_text = rec.get("text") or ""
         cleaned = clean(" ".join(raw_text.split()))
         if len(cleaned) < 25:
@@ -80,23 +118,46 @@ def _fetch_bluesky(handle):
             "platform": "bluesky",
             "author": f"@{author_handle}",
             "url": f"https://bsky.app/profile/{author_handle}/post/{rkey}" if rkey else "",
-            "published": rec.get("createdAt") or "",
-            "text": cleaned[:280]
+            "published": published,
+            "text": _clip(cleaned),
         })
     return posts
 
 
+def _dedupe_and_cap(pool, limit=8, per_author=5):
+    pool = sorted(pool, key=lambda x: x.get("published") or "", reverse=True)
+    seen_urls, seen_keys, by_author, out = set(), set(), {}, []
+    for item in pool:
+        u = item.get("url")
+        k = _norm_key(item.get("text", ""))
+        auth = item.get("author", "")
+        if (u and u in seen_urls) or (k and k in seen_keys):
+            continue
+        if by_author.get(auth, 0) >= per_author:
+            continue
+        if u:
+            seen_urls.add(u)
+        if k:
+            seen_keys.add(k)
+        by_author[auth] = by_author.get(auth, 0) + 1
+        out.append(item)
+        if len(out) >= limit:
+            break
+    return out
+
+
 def run(db=None):
-    now = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    now_dt = datetime.now(timezone.utc)
+    now = now_dt.isoformat(timespec="seconds")
     SITE_DATA.mkdir(parents=True, exist_ok=True)
     countries = {}
 
     global_pool = []
     for ch in GLOBAL_CRISIS_TG:
-        global_pool.extend(_fetch_telegram(ch))
+        global_pool.extend(_fetch_telegram(ch, now_dt))
     for ac in GLOBAL_CRISIS_BSKY:
-        global_pool.extend(_fetch_bluesky(ac))
-    print(f"social: fetched {len(global_pool)} posts from global crisis/wire monitors")
+        global_pool.extend(_fetch_bluesky(ac, now_dt))
+    print(f"social: fetched {len(global_pool)} recent posts from global crisis/wire monitors")
 
     for cid in packs.pack_ids():
         pack = packs.load(cid)
@@ -109,9 +170,9 @@ def run(db=None):
 
         pool = []
         for ch in tg_channels:
-            pool.extend(_fetch_telegram(ch))
+            pool.extend(_fetch_telegram(ch, now_dt))
         for ac in bsky_actors:
-            pool.extend(_fetch_bluesky(ac))
+            pool.extend(_fetch_bluesky(ac, now_dt))
 
         names = [n.lower() for n in [pack["name"], *pack.get("crisis_names", []), *pack.get("mention", [])]]
         names = [n for n in names if len(n) >= 3]
@@ -121,19 +182,10 @@ def run(db=None):
                 if has(p.get("text", "")):
                     pool.append(p)
 
-        if pool:
-            seen_urls = set()
-            deduped = []
-            for item in pool:
-                u = item.get("url")
-                if u and u in seen_urls:
-                    continue
-                if u:
-                    seen_urls.add(u)
-                deduped.append(item)
-            deduped.sort(key=lambda x: x.get("published") or "", reverse=True)
-            countries[cid] = deduped[:10]
-            print(f"social: {cid}: {len(countries[cid])} posts collected (TG & Bluesky)")
+        deduped = _dedupe_and_cap(pool)
+        if deduped:
+            countries[cid] = deduped
+            print(f"social: {cid}: {len(deduped)} posts collected (TG & Bluesky)")
 
     payload = {"generated_at": now, "countries": countries}
     _write("social", payload, "ARGOS_SOCIAL")

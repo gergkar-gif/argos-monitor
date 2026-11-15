@@ -826,13 +826,23 @@
         const termEl = h('span', { class: 'term', lang: cLang, text: x.term });
         const origEl = h('span', { class: 'orig', hidden: true });
         track(termEl, x.term, cLang, origEl);
+        let newsRow = null;
+        if (x.news) {
+          const newsEl = x.url
+            ? h('a', { href: safeUrl(x.url), target: '_blank', rel: 'noopener noreferrer', lang: cLang, text: x.news })
+            : h('span', { lang: cLang, text: x.news });
+          const newsOrig = h('span', { class: 'orig', hidden: true });
+          track(newsEl, x.news, cLang, newsOrig);
+          newsRow = h('div', { class: 'trend-news' }, newsEl, newsOrig, x.source && h('span', { class: 'meta', text: ` · ${x.source}` }));
+        }
         return h('li', null,
           termEl, origEl,
           x.traffic && h('span', { class: 'meta', text: x.traffic }),
           n > 0 && h('button', { type: 'button', class: 'desk-link', text: `${plural(n, 'story', 'stories')} →`,
-            onclick: () => { $('#q').value = x.term; setHash(hashFor(openTopic)); render(false); results.scrollIntoView({ block: 'start' }); } }));
+            onclick: () => { $('#q').value = x.term; setHash(hashFor(openTopic)); render(false); results.scrollIntoView({ block: 'start' }); } }),
+          newsRow);
       })),
-      h('p', { class: 'byline', text: 'Google Trends right now.' }));
+      h('p', { class: 'byline', text: 'Google Trends right now (sports & spam filtered).' }));
   }
 
   function reddit() {
@@ -840,14 +850,16 @@
     if (!r || !r.posts.length) return null;
     const cLang = (index.countries.find((c) => c.id === country.value) || {}).language || 'en';
     return h('section', { class: 'alerts', 'aria-label': 'On Reddit' },
-      h('h2', { text: 'On Reddit today' }),
+      h('h2', { text: 'On Reddit' }),
       h('ul', null, r.posts.map((x) => {
         const a = h('a', { href: safeUrl(x.url), target: '_blank', rel: 'noopener noreferrer', lang: cLang, text: x.title });
         const origEl = h('span', { class: 'orig', hidden: true });
         track(a, x.title, cLang, origEl);
+        const dt = x.published && !Number.isNaN(Date.parse(x.published)) ? fmtTime.format(new Date(x.published)) : '';
         return h('li', null,
           x.sub && h('span', { class: 'stamp indigo', text: `r/${x.sub}` }),
           x.tag && h('span', { class: 'stamp', text: x.tag }),
+          dt && h('span', { class: 'meta', text: dt }),
           a, origEl);
       })),
       h('p', { class: 'byline', text: `Desk-relevant posts across ${r.subreddit}. Unverified.` }));
@@ -864,14 +876,15 @@
         const origEl = h('span', { class: 'orig', hidden: true });
         track(a, x.text, cLang, origEl);
         const platTag = x.platform === 'telegram' ? 'TG' : 'BSKY';
+        const dt = x.published && !Number.isNaN(Date.parse(x.published)) ? fmtTime.format(new Date(x.published)) : '';
         return h('li', null,
           h('span', { class: 'meta' },
             h('span', { class: 'stamp ' + (x.platform === 'telegram' ? 'indigo' : 'teal'), text: `[${platTag}: ${x.author}]` }),
-            x.published && h('span', { text: fmtTime.format(new Date(x.published)) })
+            dt && h('span', { text: dt })
           ),
           a, origEl);
       })),
-      h('p', { class: 'byline', text: 'Real-time open channels & verified accounts. Unverified desk signals.' }));
+      h('p', { class: 'byline', text: 'Original posts from the last 7 days. Unverified desk signals.' }));
   }
 
   const watched = () => { try { return JSON.parse(localStorage.getItem('argos.watch') || '[]'); } catch { return []; } };

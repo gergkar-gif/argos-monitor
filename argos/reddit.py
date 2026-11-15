@@ -35,8 +35,9 @@ FLUFF_RE = re.compile(
     r"(\[removed|removed by reddit|\b(?:what is this called|question for|oh the irony|this should be illegal|"
     r"clubbing|dating|tinder|bumble|itinerary|first time visiting|what would you recommend|what can i skip|"
     r"recommendations|advice needed|planning to move|need help looking for|can i make an|getting back into|"
-    r"english teaching|noise complain|where can i buy|looking for friends|rate my|shitpost|ama|ask me anything|"
-    r"e-?visa|return ticket|postcards|dna test)\b|^i want\b)",
+    r"english teaching|teach english|noise complain|where can i buy|looking for friends|rate my|shitpost|ama|ask me anything|"
+    r"e-?visa|visa run|return ticket|postcards|dna test|tipping|sim card|layover|digital nomad|"
+    r"where to stay|best restaurant|best coffee|unpopular opinion|shower thought|am i the asshole|aita)\b|^i want\b)",
     re.I,
 )
 # Extra civic/political/economic terms often used in Reddit discussions (supplementing themes.yaml keywords).
@@ -66,9 +67,22 @@ def _clean_body(e):
     return clean(txt)
 
 
+def _iso_time(e):
+    t = e.get("published_parsed") or e.get("updated_parsed")
+    if not t:
+        return ""
+    return datetime(*t[:6], tzinfo=timezone.utc).isoformat(timespec="seconds")
+
+
 def _post(e):
     m = SUB_RE.search(e.get("link") or "")
-    return {"title": clean(e.get("title")), "body": _clean_body(e), "url": e.get("link") or "", "sub": m.group(1) if m else ""}
+    return {
+        "title": clean(e.get("title")),
+        "body": _clean_body(e),
+        "url": e.get("link") or "",
+        "sub": m.group(1) if m else "",
+        "published": _iso_time(e),
+    }
 
 
 def _filter_country(cid, raw_posts, emb, noise_vecs):
@@ -98,8 +112,8 @@ def _filter_country(cid, raw_posts, emb, noise_vecs):
 
     kept = []
     for p, vec in zip(candidates, vecs):
-        title_low = p["title"].lower()
-        kw_hits = [t for t in themes if matchers[t["id"]](title_low)]
+        blob_low = f"{p['title']} {p['body'][:240]}".lower()
+        kw_hits = [t for t in themes if matchers[t["id"]](blob_low)]
         sims = protos @ vec
         noise_sim = float(np.max(noise_vecs @ vec))
         best_idx = int(np.argmax(sims))
@@ -107,26 +121,52 @@ def _filter_country(cid, raw_posts, emb, noise_vecs):
         best_theme = themes[best_idx]
 
         # Without a keyword match, drop open-ended questions (tourist/personal Q&A) and require a substantive
-        # statement (>= 6 words) with strong theme similarity (>= 0.815) that beats the noise prototypes.
+        # statement (>= 6 words) with strong theme similarity (>= 0.785) that clearly beats the noise prototypes.
         if kw_hits:
             chosen = max(kw_hits, key=lambda t: t.get("weight", 0.5))
         else:
-            if p["title"].strip().endswith("?") or len(p["title"].split()) < 6 or best_sim < 0.815 or best_sim <= noise_sim + 0.015:
+            if p["title"].strip().endswith("?") or len(p["title"].split()) < 6 or best_sim < 0.785 or best_sim <= noise_sim + 0.02:
                 continue
             chosen = best_theme
 
         kept.append((
             bool(kw_hits),
             chosen.get("weight", 0.5),
+            best_sim,
             {
                 "title": p["title"],
                 "url": p["url"],
                 "sub": p["sub"],
+                "published": p.get("published") or "",
                 "tag": chosen.get("label") or chosen["id"].replace("_", " ").title(),
             },
         ))
-    kept.sort(key=lambda x: (x[0], x[1]), reverse=True)
-    return [x[2] for x in kept[:POSTS]]
+    kept.sort(key=lambda x: (x[0], x[1], x[2]), reverse=True)
+    return [x[3] for x in kept[:POSTS]]
+
+
+def _chunk_countries(cids, by_country, max_countries=6, max_subs=18):
+    """Group countries into small multireddit batches so high-volume subs don't crowd out smaller desks."""
+    batch, sub_count = [], 0
+    for cid in cids:
+        subs = by_country[cid]
+        if not subs:
+            continue
+        if batch and (len(batch) >= max_countries or sub_count + len(subs) > max_subs):
+            yield batch
+            batch, sub_count = [], 0
+        batch.append(cid)
+        sub_count += len(subs)
+    if batch:
+        yield batch
+
+
+def _fetch_batch(url_tmpl, subs):
+    status, body = fetch.get(url_tmpl.format("+".join(subs)))
+    if status == 429:
+        time.sleep(30)
+        status, body = fetch.get(url_tmpl.format("+".join(subs)))
+    return feedparser.parse(body).entries if status == 200 else []
 
 
 def run(db=None):
@@ -140,59 +180,46 @@ def run(db=None):
 
     by_country = {cid: _subs(packs.load(cid)) for cid in packs.pack_ids()}
     owner = {s.lower(): cid for cid, subs in by_country.items() for s in subs}
-    out = {}
-    all_subs = "+".join(s for subs in by_country.values() for s in subs)
-    status, body = fetch.get(URL.format(all_subs)) if all_subs else (0, b"")
-    if status == 429:
-        time.sleep(60)
-        status, body = fetch.get(URL.format(all_subs))
     buckets = {cid: [] for cid in by_country}
-    if status == 200:
-        for e in feedparser.parse(body).entries:
+    seen_urls = {cid: set() for cid in by_country}
+    out = {}
+
+    def ingest_entries(entries, allowed):
+        for e in entries:
             p = _post(e)
             cid = owner.get(p["sub"].lower())
-            if cid:
+            if cid in allowed and p["url"] not in seen_urls[cid]:
+                seen_urls[cid].add(p["url"])
                 buckets[cid].append(p)
-        for cid, subs in by_country.items():
-            kept = _filter_country(cid, buckets[cid], emb, noise_vecs)
-            if len(kept) >= 3:
-                out[cid] = {"subreddit": ", ".join(f"r/{s}" for s in subs), "posts": kept}
-                print(f"reddit: {cid}: {len(kept)}/{len(buckets[cid])} desk-relevant posts across {out[cid]['subreddit']}")
-    # Second batch: combine remaining countries into one multireddit request so smaller subs aren't crowded out by giant ones.
-    rem = [cid for cid, subs in by_country.items() if cid not in out and subs]
-    if rem:
-        rem_subs = "+".join(s for cid in rem for s in by_country[cid])
-        status, body = fetch.get(URL.format(rem_subs))
-        if status == 429:
-            time.sleep(60)
-            status, body = fetch.get(URL.format(rem_subs))
-        if status == 200:
-            for e in feedparser.parse(body).entries:
-                p = _post(e)
-                cid = owner.get(p["sub"].lower())
-                if cid in rem and p["url"] not in {x["url"] for x in buckets[cid]}:
-                    buckets[cid].append(p)
-            for cid in list(rem):
-                kept = _filter_country(cid, buckets[cid], emb, noise_vecs)
-                if len(kept) >= 2:
-                    out[cid] = {"subreddit": ", ".join(f"r/{s}" for s in by_country[cid]), "posts": kept}
-                    print(f"reddit: {cid}: {len(kept)}/{len(buckets[cid])} desk-relevant posts across {out[cid]['subreddit']}")
-                    rem.remove(cid)
-    # Final fallback for very low-volume country subreddits (week window, combined).
-    if rem:
-        rem_subs = "+".join(s for cid in rem for s in by_country[cid])
-        status, body = fetch.get(WEEK_URL.format(rem_subs))
-        if status == 200:
-            for e in feedparser.parse(body).entries:
-                p = _post(e)
-                cid = owner.get(p["sub"].lower())
-                if cid in rem and p["url"] not in {x["url"] for x in buckets[cid]}:
-                    buckets[cid].append(p)
-        for cid in rem:
-            kept = _filter_country(cid, buckets[cid], emb, noise_vecs)
-            if kept:
-                out[cid] = {"subreddit": ", ".join(f"r/{s}" for s in by_country[cid]), "posts": kept}
-                print(f"reddit: {cid}: {len(kept)}/{len(buckets[cid])} desk-relevant posts across {out[cid]['subreddit']}")
+
+    # Pass 1: top posts of the day, fetched in small country chunks so no desk is starved.
+    active = [cid for cid, subs in by_country.items() if subs]
+    for i, batch in enumerate(_chunk_countries(active, by_country)):
+        if i:
+            time.sleep(2.2)
+        subs = [s for cid in batch for s in by_country[cid]]
+        ingest_entries(_fetch_batch(URL, subs), set(batch))
+
+    rem = []
+    for cid in active:
+        kept = _filter_country(cid, buckets[cid], emb, noise_vecs)
+        if len(kept) >= 2:
+            out[cid] = {"subreddit": ", ".join(f"r/{s}" for s in by_country[cid]), "posts": kept}
+            print(f"reddit: {cid}: {len(kept)}/{len(buckets[cid])} desk-relevant posts across {out[cid]['subreddit']}")
+        else:
+            rem.append(cid)
+
+    # Pass 2: top posts of the week (chunked) for low-volume desks that had < 2 relevant posts today.
+    for i, batch in enumerate(_chunk_countries(rem, by_country)):
+        time.sleep(2.2)
+        subs = [s for cid in batch for s in by_country[cid]]
+        ingest_entries(_fetch_batch(WEEK_URL, subs), set(batch))
+    for cid in rem:
+        kept = _filter_country(cid, buckets[cid], emb, noise_vecs)
+        if kept:
+            out[cid] = {"subreddit": ", ".join(f"r/{s}" for s in by_country[cid]), "posts": kept}
+            print(f"reddit: {cid}: {len(kept)}/{len(buckets[cid])} desk-relevant posts (week) across {out[cid]['subreddit']}")
+
     SITE_DATA.mkdir(parents=True, exist_ok=True)
     _write("reddit", {"generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"), "countries": out}, "ARGOS_REDDIT")
 
