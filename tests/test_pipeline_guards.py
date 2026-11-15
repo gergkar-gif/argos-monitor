@@ -73,6 +73,36 @@ class TestPipelineGuards(unittest.TestCase):
                     unrated.append((cid, s.get("id"), s.get("name")))
         self.assertEqual(unrated, [], f"Unrated catalogued sources found: {unrated[:10]}")
 
+    def test_all_desks_meet_independent_source_floors(self):
+        from urllib.parse import urlparse
+        cluster_floors = {
+            "baltics": 15,
+            "caribbean": 25,
+            "central_america": 30,
+            "east_africa": 30,
+            "pacific_islands": 30,
+            "west_africa": 30,
+        }
+        deficits = []
+        for cid in packs.pack_ids():
+            srcs = [s for s in packs.load(cid)["sources"] if not s.get("aggregator")]
+            non_state = [
+                s for s in srcs
+                if not s.get("state_affiliated") and s.get("kind") != "official"
+                and not s.get("reprints_vna") and not s.get("reprints_wire")
+            ]
+            doms = set()
+            for s in non_state:
+                d = urlparse(s.get("homepage") or "").netloc.lower().replace("www.", "")
+                parts = d.split(".")
+                if len(parts) > 2 and parts[0] in ("eng", "en", "rus", "ru", "fr", "es", "ar", "vi", "km", "news", "uz", "kz", "hy", "japannews", "english", "khmer"):
+                    d = ".".join(parts[1:])
+                doms.add(d or s["id"])
+            floor = cluster_floors.get(cid, 10)
+            if len(doms) < floor:
+                deficits.append((cid, len(doms), floor))
+        self.assertEqual(deficits, [], f"Desks below independent publisher floor: {deficits}")
+
 
 if __name__ == "__main__":
     unittest.main()

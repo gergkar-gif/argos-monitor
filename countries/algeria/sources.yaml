@@ -173,3 +173,16 @@ sources:
   feeds:
   - url: https://www.ennaharonline.com/feed/
     category_hint: internal_politics
+
+- id: elwatan_dz
+  name: "El Watan (Algeria)"
+  homepage: https://elwatan-dz.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: "SPA El Watan"
+  state_affiliated: false
+  notes: "Algeria's historic French-language daily newspaper covering national politics, economy, and Maghreb diplomacy."
+  feeds:
+  - url: https://elwatan-dz.com/feed
+    category_hint: internal_politics

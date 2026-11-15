@@ -144,3 +144,16 @@ sources:
   - url: https://news.google.com/rss/search?q=(Jordan+OR+Amman)+(King+Abdullah+OR+diplomacy+OR+refugees+OR+aid)+when:3d&hl=en-US&gl=US&ceid=US:en
     section: Diplomacy & Governance
     category_hint: foreign_policy
+
+- id: ammannet_jo
+  name: "AmmanNet (Jordan)"
+  homepage: https://ammannet.net
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: "AmmanNet Independent Media & Radio Al-Balad"
+  state_affiliated: false
+  notes: "Pioneering independent Jordanian community radio and investigative news portal covering parliament and civil liberties."
+  feeds:
+  - url: https://ammannet.net/rss.xml
+    category_hint: internal_politics

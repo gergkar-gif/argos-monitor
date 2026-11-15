@@ -209,3 +209,29 @@ sources:
     section: International Coverage
     category_hint: foreign_policy
     active: true
+
+- id: 38north_kp
+  name: "38 North"
+  homepage: https://www.38north.org
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: "Stimson Center"
+  state_affiliated: false
+  notes: "Premier open-source intelligence and policy analysis journal dedicated to North Korean WMD, economy, and leadership."
+  feeds:
+  - url: https://www.38north.org/feed/
+    category_hint: defence_security
+
+- id: rimjin_gang_kp
+  name: "Rimjin-gang (ASIAPRESS North Korea)"
+  homepage: https://www.asiapress.org
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: "ASIAPRESS International (Osaka/Seoul)"
+  state_affiliated: false
+  notes: "Independent investigative publication staffed by undercover North Korean citizen reporters documenting domestic conditions."
+  feeds:
+  - url: https://www.asiapress.org/rimjingang/english/feed/
+    category_hint: internal_politics

@@ -193,3 +193,42 @@ sources:
     section: International Coverage
     category_hint: foreign_policy
     active: true
+
+- id: lusail_qa
+  name: "Lusail News (Qatar)"
+  homepage: https://lusailnews.net
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: "Lusail Press and Publishing"
+  state_affiliated: false
+  notes: "Leading Qatari economic and financial daily newspaper covering LNG expansion, banking, and national legislation."
+  feeds:
+  - url: https://lusailnews.net/rss
+    category_hint: economics
+
+- id: al_sharq_qa
+  name: "Al-Sharq (Qatar)"
+  homepage: https://al-sharq.com
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: "Dar Al-Sharq Group"
+  state_affiliated: false
+  notes: "Major Doha Arabic daily broadsheet covering Qatari governance, Shura Council sessions, and Gulf diplomacy."
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:al-sharq.com+when:7d&hl=ar&gl=QA&ceid=QA:ar
+    category_hint: internal_politics
+
+- id: al_raya_qa
+  name: "Al-Raya (Qatar)"
+  homepage: https://www.raya.com
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: "Gulf Publishing and Printing Company"
+  state_affiliated: false
+  notes: "Prominent Doha daily newspaper covering Qatari ministerial policy, economy, and foreign relations."
+  feeds:
+  - url: https://www.raya.com/feed/
+    category_hint: internal_politics

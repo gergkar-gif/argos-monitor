@@ -184,3 +184,29 @@ sources:
     section: International Coverage
     category_hint: foreign_policy
     active: true
+
+- id: mediapart_fr
+  name: "Mediapart"
+  homepage: https://www.mediapart.fr
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: "Société Éditrice de Mediapart (independent)"
+  state_affiliated: false
+  notes: "France's leading independent, reader-funded investigative journal uncovering political finance and state accountability."
+  feeds:
+  - url: https://www.mediapart.fr/articles/feed
+    category_hint: internal_politics
+
+- id: latribune_fr
+  name: "La Tribune"
+  homepage: https://www.latribune.fr
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: "La Tribune Nouvelle"
+  state_affiliated: false
+  notes: "Major French financial and economic daily covering industrial policy, defense procurement, and European markets."
+  feeds:
+  - url: https://www.latribune.fr/feed.xml
+    category_hint: economics

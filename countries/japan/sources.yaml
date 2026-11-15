@@ -242,3 +242,15 @@ sources:
   feeds:
   - url: https://news.yahoo.co.jp/rss/topics/top-picks.xml
     category_hint: internal_politics
+- id: yomiuri_jp
+  name: The Yomiuri Shimbun (Japan News)
+  homepage: https://japannews.yomiuri.co.jp
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: The Yomiuri Shimbun Holdings
+  state_affiliated: false
+  notes: English edition of Japan's largest-circulation national daily newspaper covering Diet politics, security, and economy.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:japannews.yomiuri.co.jp+when:7d&hl=en-US&gl=US&ceid=US:en
+    category_hint: internal_politics

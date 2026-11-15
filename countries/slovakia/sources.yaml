@@ -149,3 +149,16 @@ sources:
     feeds:
       - {url: "https://news.google.com/rss/search?q=Slovakia+(Bratislava+OR+Fico+OR+Pellegrini+OR+parliament)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Slovakia politics, category_hint: internal_politics}
       - {url: "https://news.google.com/rss/search?q=Slovakia+(EU+OR+NATO+OR+Ukraine+OR+economy+OR+energy)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Slovakia EU & foreign policy, category_hint: foreign_policy}
+
+  - id: sme_sk
+    name: "SME.sk"
+    homepage: https://www.sme.sk
+    language: sk
+    scope: domestic
+    kind: media
+    governing_body: "Petit Press, a.s."
+    state_affiliated: false
+    notes: "Slovakia's leading independent daily broadsheet newspaper of record covering national politics, economy, and justice."
+    feeds:
+    - url: https://rss.sme.sk/rss/rss.asp?sek=smeonline
+      category_hint: internal_politics

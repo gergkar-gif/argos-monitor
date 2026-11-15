@@ -480,3 +480,16 @@ sources:
   - url: https://news.google.com/rss/search?q=%22Vi%E1%BB%87t+Nam%22+OR+%22Ch%C3%ADnh+ph%E1%BB%A7%22+OR+%22Th%E1%BB%A7+t%C6%B0%E1%BB%9Bng%22+when:2d&hl=vi&gl=VN&ceid=VN:vi
     section: National News (Vietnamese)
     category_hint: internal_politics
+
+- id: project88_vn
+  name: "The 88 Project (Vietnam)"
+  homepage: https://the88project.org
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: "The 88 Project NGO"
+  state_affiliated: false
+  notes: "Independent research and advocacy organization monitoring human rights, civil society, and legal policy in Vietnam."
+  feeds:
+  - url: https://the88project.org/feed/
+    category_hint: society

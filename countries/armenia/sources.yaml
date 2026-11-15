@@ -188,3 +188,52 @@ sources:
   - url: https://news.google.com/rss/search?q=%D5%80%D5%A1%D5%85%D5%A1%D5%BD%D5%8F%D5%A1%D5%B6+OR+%D4%B5%D6%80%D6%87%D5%A1%D5%B6+when:2d&hl=en-US&gl=US&ceid=US:en
     section: National News (Armenian)
     category_hint: internal_politics
+- id: civilnet_am
+  name: CivilNet (Armenia)
+  homepage: https://www.civilnet.am
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Civilitas Foundation
+  state_affiliated: false
+  notes: Independent Yerevan digital television and investigative newsroom covering South Caucasus diplomacy and democracy.
+  feeds:
+  - url: https://www.civilnet.am/en/feed/
+    category_hint: foreign_policy
+- id: azatutyun_am
+  name: Azatutyun (RFE/RL Armenia)
+  homepage: https://www.azatutyun.am
+  language: hy
+  scope: abroad_local
+  kind: media
+  governing_body: Radio Free Europe / Radio Liberty
+  state_affiliated: false
+  notes: Armenian service of RFE/RL providing comprehensive reporting on National Assembly politics, security, and peace talks.
+  feeds:
+  - url: https://www.azatutyun.am/api/z-pqpiev-qpp
+    category_hint: internal_politics
+- id: 168_am
+  name: 168 Zham (Armenia)
+  homepage: https://168.am
+  language: hy
+  scope: domestic
+  kind: media
+  governing_body: 168 Zham Media
+  state_affiliated: false
+  notes: Prominent independent Yerevan newspaper covering domestic political parties, macroeconomic policy, and defense.
+  feeds:
+  - url: https://168.am/feed
+    category_hint: internal_politics
+
+- id: armenpress_indep_am
+  name: "FIP.am (Fact Investigation Platform)"
+  homepage: https://fip.am
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: "Union of Informed Citizens NGO"
+  state_affiliated: false
+  notes: "Independent Yerevan investigative and fact-checking journalism platform examining government claims and security."
+  feeds:
+  - url: https://fip.am/en/feed/
+    category_hint: internal_politics

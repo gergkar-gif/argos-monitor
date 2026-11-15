@@ -161,3 +161,29 @@ sources:
     feeds:
       - url: https://bani.md/feed/
         category_hint: economics
+
+  - id: agora_md
+    name: AGORA.md
+    homepage: https://agora.md
+    language: ro
+    scope: domestic
+    kind: media
+    governing_body: "Interact Media (Chișinău)"
+    state_affiliated: false
+    notes: "Major independent Moldovan analytical and investigative news portal covering EU accession, justice reform, and economy."
+    feeds:
+      - url: https://agora.md/rss
+        category_hint: internal_politics
+
+  - id: jurnal_md
+    name: Jurnal.md
+    homepage: https://www.jurnal.md
+    language: ro
+    scope: domestic
+    kind: media
+    governing_body: "Jurnal Trust Media"
+    state_affiliated: false
+    notes: "Prominent independent Chișinău news network covering national politics, anti-corruption, and security."
+    feeds:
+      - url: https://www.jurnal.md/ro/rss
+        category_hint: internal_politics

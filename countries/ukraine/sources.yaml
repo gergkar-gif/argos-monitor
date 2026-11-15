@@ -236,3 +236,41 @@ sources:
   feeds:
   - url: https://rubryka.com/feed/
     category_hint: society
+- id: pravda_ua
+  name: Ukrainska Pravda
+  homepage: https://www.pravda.com.ua
+  language: uk
+  scope: domestic
+  kind: media
+  governing_body: UP Media Plus (Dragon Capital)
+  state_affiliated: false
+  notes: Ukraine's premier independent political and investigative online newspaper founded by Georgiy Gongadze in 2000.
+  feeds:
+  - url: https://www.pravda.com.ua/rss/
+    category_hint: internal_politics
+
+- id: liga_ua
+  name: "LIGA.net (Ukraine)"
+  homepage: https://www.liga.net
+  language: uk
+  scope: domestic
+  kind: media
+  governing_body: "Ligamedia Group"
+  state_affiliated: false
+  notes: "Leading independent Ukrainian political, defense, and business intelligence portal based in Kyiv."
+  feeds:
+  - url: https://news.liga.net/ua/all/rss.xml
+    category_hint: internal_politics
+
+- id: zn_ua
+  name: "Dzerkalo Tyzhnia (ZN.UA)"
+  homepage: https://zn.ua
+  language: uk
+  scope: domestic
+  kind: media
+  governing_body: "Dzerkalo Tyzhnia Media"
+  state_affiliated: false
+  notes: "Ukraine's most influential analytical weekly covering state governance, defense procurement, and diplomacy."
+  feeds:
+  - url: https://zn.ua/ukr/rss/full.rss
+    category_hint: internal_politics

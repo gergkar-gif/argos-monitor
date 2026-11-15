@@ -145,3 +145,28 @@ sources:
   - url: https://news.google.com/rss/search?q=%D8%A7%D9%84%D8%B9%D8%B1%D8%A7%D9%82+OR+%D8%A8%D8%BA%D8%AF%D8%A7%D8%AF+OR+%D8%A7%D9%84%D8%AD%D9%83%D9%88%D9%85%D8%A9+%D8%A7%D9%84%D8%B9%D8%B1%D8%A7%D9%82%D9%8A%D8%A9+when:2d&hl=ar&gl=IQ&ceid=IQ:ar
     section: National News (Arabic)
     category_hint: internal_politics
+- id: alsumaria_iq
+  name: Al Sumaria News (Iraq)
+  homepage: https://www.alsumaria.tv
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: Al Sumaria TV Network
+  state_affiliated: false
+  notes: Independent Iraqi satellite television network and news portal covering parliamentary politics, security, and governance.
+  feeds:
+  - url: https://www.alsumaria.tv/Rss/News-ar.xml
+    category_hint: internal_politics
+
+- id: kirkuknow_iq
+  name: "KirkukNow (Iraq)"
+  homepage: https://kirkuknow.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: "KirkukNow Independent Media"
+  state_affiliated: false
+  notes: "Independent multilingual Iraqi news portal covering disputed territories, minority rights, and provincial governance."
+  feeds:
+  - url: https://kirkuknow.com/en/feed
+    category_hint: internal_politics

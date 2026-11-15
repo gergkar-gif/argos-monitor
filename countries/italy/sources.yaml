@@ -184,3 +184,16 @@ sources:
     section: International Coverage
     category_hint: foreign_policy
     active: true
+
+- id: ilpost_it
+  name: "Il Post"
+  homepage: https://www.ilpost.it
+  language: it
+  scope: domestic
+  kind: media
+  governing_body: "Il Post S.r.l."
+  state_affiliated: false
+  notes: "Acclaimed independent Italian digital daily newspaper known for explanatory reporting on government policy and international affairs."
+  feeds:
+  - url: https://www.ilpost.it/feed/
+    category_hint: internal_politics

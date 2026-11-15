@@ -141,3 +141,289 @@ sources:
   feeds:
   - url: https://softpower.ug/feed/
     category_hint: internal_politics
+
+- id: observer_ug
+  name: The Observer (Uganda)
+  homepage: https://observer.ug
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: The Observer Media Ltd
+  state_affiliated: false
+  notes: Independent Kampala weekly and digital newspaper covering Ugandan parliamentary politics, energy policy, and regional security.
+  feeds:
+  - url: https://observer.ug/feed/
+    category_hint: internal_politics
+
+- id: mwananchi_tz
+  name: Mwananchi (Tanzania)
+  homepage: https://www.mwananchi.co.tz
+  language: sw
+  scope: domestic
+  kind: media
+  governing_body: Mwananchi Communications Ltd (Nation Media Group)
+  state_affiliated: false
+  notes: Tanzania's largest-circulation independent Swahili daily covering national politics, parliament, and economic development.
+  feeds:
+  - url: https://www.mwananchi.co.tz/tanzania/habari/rss.xml
+    category_hint: internal_politics
+
+- id: ippmedia_tz
+  name: The Guardian / IPP Media (Tanzania)
+  homepage: https://www.ippmedia.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: IPP Media Ltd
+  state_affiliated: false
+  notes: Major independent Tanzanian multimedia group publishing The Guardian and Nipashe across national governance and business.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:ippmedia.com+when:7d&hl=en-US&gl=US&ceid=US:en
+    category_hint: internal_politics
+
+- id: the_chanzo_tz
+  name: The Chanzo (Tanzania)
+  homepage: https://thechanzo.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: The Chanzo Initiative
+  state_affiliated: false
+  notes: Independent Tanzanian investigative and analytical news platform covering constitutional reform, civil rights, and political economy.
+  feeds:
+  - url: https://thechanzo.com/feed/
+    category_hint: internal_politics
+
+- id: dar24_tz
+  name: Dar24 (Tanzania)
+  homepage: https://dar24.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: DataVision International (Tanzania)
+  state_affiliated: false
+  notes: Independent Dar es Salaam digital news portal covering Tanzanian business, trade corridors, and national politics.
+  feeds:
+  - url: https://dar24.com/feed/
+    category_hint: economics
+
+- id: newtimes_rw
+  name: The New Times (Rwanda)
+  homepage: https://www.newtimes.co.rw
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: The New Times Publications SARL
+  state_affiliated: false
+  notes: Rwanda's largest English-language daily newspaper covering Kigali governance, East African Community trade, and Great Lakes diplomacy.
+  feeds:
+  - url: https://www.newtimes.co.rw/rssFeed/14
+    category_hint: internal_politics
+
+- id: ktpress_rw
+  name: KT Press (Rwanda)
+  homepage: https://www.ktpress.rw
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Kigali Today Ltd
+  state_affiliated: false
+  notes: Leading English-language Rwandan digital daily covering domestic policy, investment, and regional affairs.
+  feeds:
+  - url: https://www.ktpress.rw/feed/
+    category_hint: internal_politics
+
+- id: igihe_rw
+  name: IGIHE (Rwanda)
+  homepage: https://en.igihe.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: IGIHE Ltd
+  state_affiliated: false
+  notes: Prominent multilingual Rwandan news portal covering national governance, regional security, and economic policy.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:en.igihe.com+when:7d&hl=en-US&gl=US&ceid=US:en
+    category_hint: internal_politics
+
+- id: chronicles_rw
+  name: The Chronicles (Rwanda)
+  homepage: https://www.chronicles.rw
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Chronicles Media Rwanda
+  state_affiliated: false
+  notes: Independent Kigali newspaper covering Rwandan politics, macroeconomics, and Great Lakes diplomacy.
+  feeds:
+  - url: https://www.chronicles.rw/feed/
+    category_hint: internal_politics
+
+- id: taarifa_rw
+  name: Taarifa Rwanda
+  homepage: https://taarifa.rw
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Taarifa Media
+  state_affiliated: false
+  notes: Kigali-based digital news daily covering East African diplomacy, infrastructure, and security.
+  feeds:
+  - url: https://taarifa.rw/feed/
+    category_hint: foreign_policy
+
+- id: dabanga_sd
+  name: Radio Dabanga (Sudan)
+  homepage: https://www.dabangasudan.org
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Radio Dabanga Foundation (Free Press Unlimited)
+  state_affiliated: false
+  notes: Independent Sudanese exile broadcaster and news service reporting on Darfur, civil war fronts, and humanitarian access.
+  feeds:
+  - url: https://www.dabangasudan.org/en/feed
+    category_hint: defence_security
+
+- id: ayin_network_sd
+  name: Ayin Network (Sudan)
+  homepage: https://3ayin.com/en
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Ayin Media Network
+  state_affiliated: false
+  notes: Award-winning independent Sudanese investigative journalism network documenting conflict, displacement, and governance.
+  feeds:
+  - url: https://3ayin.com/en/feed/
+    category_hint: defence_security
+
+- id: sudan_war_monitor_sd
+  name: Sudan War Monitor
+  homepage: https://sudanwarmonitor.com
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Sudan War Monitor Research Collaborative
+  state_affiliated: false
+  notes: Independent open-source intelligence and reporting collective tracking military control and peace negotiations in Sudan.
+  feeds:
+  - url: https://sudanwarmonitor.com/feed
+    category_hint: defence_security
+
+- id: altaghyeer_sd
+  name: Al-Taghyeer (Sudan)
+  homepage: https://www.altaghyeer.info/en
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Al-Taghyeer Electronic Newspaper
+  state_affiliated: false
+  notes: Independent Sudanese daily newspaper covering democratic transition movements, human rights, and conflict diplomacy.
+  feeds:
+  - url: https://www.altaghyeer.info/en/feed/
+    category_hint: internal_politics
+
+- id: juba_echo_ss
+  name: Juba Echo (South Sudan)
+  homepage: https://jubaecho.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Juba Echo Media
+  state_affiliated: false
+  notes: Independent South Sudanese online newspaper covering peace agreement implementation, oil revenue, and security.
+  feeds:
+  - url: https://jubaecho.com/feed/
+    category_hint: internal_politics
+
+- id: no1citizen_ss
+  name: No. 1 Citizen Daily (South Sudan)
+  homepage: https://onecitizendaily.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: No. 1 Citizen Newspaper Juba
+  state_affiliated: false
+  notes: Leading independent print and digital daily newspaper in Juba covering parliamentary governance and national security.
+  feeds:
+  - url: https://onecitizendaily.com/index.php/feed/
+    category_hint: internal_politics
+
+- id: garowe_online_so
+  name: Garowe Online (Somalia)
+  homepage: https://www.garoweonline.com/en
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Garowe Online Media
+  state_affiliated: false
+  notes: Leading independent Somali bilingual news portal covering federal politics, Puntland governance, and Horn of Africa security.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:garoweonline.com/en+when:7d&hl=en-US&gl=US&ceid=US:en
+    category_hint: internal_politics
+
+- id: hiiraan_online_so
+  name: Hiiraan Online (Somalia)
+  homepage: https://www.hiiraan.com
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Hiiraan Online Network
+  state_affiliated: false
+  notes: Somalia's oldest independent news portal covering Mogadishu federal institutions, counter-insurgency, and Horn diplomacy.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:hiiraan.com+when:7d&hl=en-US&gl=US&ceid=US:en
+    category_hint: internal_politics
+
+- id: goobjoog_so
+  name: Goobjoog News (Somalia)
+  homepage: https://en.goobjoog.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Goobjoog Media Group (Mogadishu)
+  state_affiliated: false
+  notes: Major independent Mogadishu broadcast and digital news network covering parliamentary debates, elections, and security.
+  feeds:
+  - url: https://en.goobjoog.com/feed/
+    category_hint: internal_politics
+
+- id: horseed_media_so
+  name: Horseed Media (Somalia)
+  homepage: https://horseedmedia.net
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Horseed Media Ltd
+  state_affiliated: false
+  notes: Independent Somali radio and digital news outlet covering maritime security, federal governance, and East African trade.
+  feeds:
+  - url: https://horseedmedia.net/feed/
+    category_hint: internal_politics
+
+- id: shabelle_media_so
+  name: Shabelle Media Network (Somalia)
+  homepage: https://radioshabelle.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Shabelle Media Network (Mogadishu)
+  state_affiliated: false
+  notes: Award-winning independent Mogadishu broadcaster reporting on Somali security operations, governance, and civil society.
+  feeds:
+  - url: https://radioshabelle.com/feed/
+    category_hint: defence_security
+
+- id: theeastafrican_ea
+  name: The EastAfrican
+  homepage: https://www.theeastafrican.co.ke
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Nation Media Group
+  state_affiliated: false
+  notes: Authoritative pan-East African weekly newspaper of record covering EAC integration, regional diplomacy, and cross-border trade.
+  feeds:
+  - url: https://www.theeastafrican.co.ke/tea/rss.xml
+    category_hint: foreign_policy

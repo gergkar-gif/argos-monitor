@@ -197,3 +197,41 @@ sources:
     section: International Coverage
     category_hint: foreign_policy
     active: true
+- id: almasryalyoum_eg
+  name: Al-Masry Al-Youm
+  homepage: https://www.almasryalyoum.com
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: Al-Masry Al-Youm Institution
+  state_affiliated: false
+  notes: Egypt's largest privately owned daily newspaper covering parliamentary legislation, macroeconomic reforms, and regional diplomacy.
+  feeds:
+  - url: https://www.almasryalyoum.com/rss/rssfeeds
+    category_hint: internal_politics
+
+- id: shorouk_eg
+  name: "Al-Shorouk (Egypt)"
+  homepage: https://www.shorouknews.com
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: "Dar Al-Shorouk"
+  state_affiliated: false
+  notes: "Prominent independent Cairo daily newspaper covering Egyptian politics, economy, and Arab diplomatic affairs."
+  feeds:
+  - url: https://www.shorouknews.com/rss
+    category_hint: internal_politics
+
+- id: za2ed18_eg
+  name: "Zawia3 (Egypt Investigative)"
+  homepage: https://zawia3.com
+  language: ar
+  scope: abroad_local
+  kind: media
+  governing_body: "Zawia3 Media Platform"
+  state_affiliated: false
+  notes: "Independent Egyptian investigative journalism platform covering governance, economy, and civil rights."
+  feeds:
+  - url: https://zawia3.com/feed/
+    category_hint: internal_politics

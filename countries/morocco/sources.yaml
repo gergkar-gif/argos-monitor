@@ -145,3 +145,28 @@ sources:
   - url: https://news.google.com/rss/search?q=Maroc+OR+gouvernement+OR+Rabat+when:2d&hl=fr&gl=MA&ceid=MA:fr
     section: National News (French)
     category_hint: internal_politics
+- id: medias24_ma
+  name: Médias24 (Morocco)
+  homepage: https://medias24.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Médias24 Group (Casablanca)
+  state_affiliated: false
+  notes: Leading independent Moroccan economic and political digital daily covering public finance, business regulation, and governance.
+  feeds:
+  - url: https://medias24.com/feed/
+    category_hint: economics
+
+- id: ledesk_ma
+  name: "Le Desk (Morocco)"
+  homepage: https://ledesk.ma
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: "Pulse Media (Casablanca)"
+  state_affiliated: false
+  notes: "Independent Moroccan investigative digital newspaper covering state contracts, diplomacy, and political economy."
+  feeds:
+  - url: https://ledesk.ma/feed/
+    category_hint: internal_politics

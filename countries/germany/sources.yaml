@@ -186,3 +186,29 @@ sources:
     section: International Coverage
     category_hint: foreign_policy
     active: true
+
+- id: taz_de
+  name: "taz (die tageszeitung)"
+  homepage: https://taz.de
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: "taz, die tageszeitung Verlagsgenossenschaft eG"
+  state_affiliated: false
+  notes: "Cooperative-owned independent Berlin daily newspaper covering Bundestag politics, climate policy, and civil rights."
+  feeds:
+  - url: https://taz.de/!p4608;rss/
+    category_hint: internal_politics
+
+- id: tagesspiegel_de
+  name: "Der Tagesspiegel"
+  homepage: https://www.tagesspiegel.de
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: "Verlag Der Tagesspiegel GmbH"
+  state_affiliated: false
+  notes: "Leading Berlin broadsheet daily of record for federal government policy, ministries, and European diplomacy."
+  feeds:
+  - url: https://www.tagesspiegel.de/contentexport/feed/politik
+    category_hint: internal_politics

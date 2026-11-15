@@ -156,3 +156,16 @@ sources:
   - url: https://news.google.com/rss/search?q=(Lebanon+OR+Beirut)+(Hezbollah+OR+UNIFIL+OR+government+OR+ceasefire)+when:3d&hl=en-US&gl=US&ceid=US:en
     section: Security & Politics
     category_hint: defence_security
+
+- id: megaphonenews_lb
+  name: "Megaphone News (Lebanon)"
+  homepage: https://megaphone.news
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: "Megaphone Independent Media Collective"
+  state_affiliated: false
+  notes: "Independent Beirut investigative and analytical media platform covering Lebanese banking crisis, judiciary, and sovereignty."
+  feeds:
+  - url: https://megaphone.news/feed
+    category_hint: internal_politics

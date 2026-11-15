@@ -194,3 +194,29 @@ sources:
     section: International Coverage
     category_hint: foreign_policy
     active: true
+
+- id: thebell_ru
+  name: "The Bell (Russia)"
+  homepage: https://thebell.io
+  language: ru
+  scope: abroad_local
+  kind: media
+  governing_body: "The Bell Media (Elizaveta Osetinskaya)"
+  state_affiliated: false
+  notes: "Authoritative independent Russian economic and political intelligence publication operating in exile."
+  feeds:
+  - url: https://thebell.io/feed
+    category_hint: economics
+
+- id: mediazona_ru
+  name: "Mediazona"
+  homepage: https://zona.media
+  language: ru
+  scope: abroad_local
+  kind: media
+  governing_body: "Mediazona Independent Investigative Outlet"
+  state_affiliated: false
+  notes: "Independent Russian investigative newsroom documenting courts, political prosecutions, and military casualties."
+  feeds:
+  - url: https://zona.media/rss
+    category_hint: internal_politics

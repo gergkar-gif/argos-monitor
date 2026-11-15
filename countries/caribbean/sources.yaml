@@ -157,3 +157,263 @@ sources:
   feeds:
   - url: http://www.thebahamasweekly.com/publish/rss.xml
     category_hint: general
+
+- id: nationwide_jm
+  name: Nationwide 90FM (Jamaica)
+  homepage: https://nationwideradiojm.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Nationwide News Network
+  state_affiliated: false
+  notes: Leading independent Jamaican broadcast and digital newsroom covering parliamentary politics, fiscal policy, and justice.
+  feeds:
+  - url: https://nationwideradiojm.com/feed/
+    category_hint: internal_politics
+
+- id: rjr_news_jm
+  name: Radio Jamaica News (RJR)
+  homepage: https://radiojamaicanewsonline.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Multimedia Jamaica Ltd (RJRGLEANER)
+  state_affiliated: false
+  notes: Major Jamaican broadcast news service reporting on cabinet decisions, national security, and CARICOM affairs.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:radiojamaicanewsonline.com+when:7d&hl=en-US&gl=US&ceid=US:en
+    category_hint: internal_politics
+
+- id: our_today_jm
+  name: Our Today (Jamaica)
+  homepage: https://our.today
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Our Today Media
+  state_affiliated: false
+  notes: Independent Kingston digital daily covering Jamaican business, central bank policy, and governance.
+  feeds:
+  - url: https://our.today/feed/
+    category_hint: economics
+
+- id: trinidad_express_tt
+  name: Trinidad Express
+  homepage: https://trinidadexpress.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: One Caribbean Media Limited
+  state_affiliated: false
+  notes: Premier daily newspaper in Trinidad and Tobago covering parliamentary debates, energy sector policy, and regional security.
+  feeds:
+  - url: https://trinidadexpress.com/search/?f=rss&t=article&c=news&l=50&s=start_time&sd=desc
+    category_hint: internal_politics
+
+- id: trinidad_guardian_tt
+  name: Trinidad and Tobago Guardian
+  homepage: https://www.guardian.co.tt
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Guardian Media Limited
+  state_affiliated: false
+  notes: Trinidad and Tobago's oldest daily broadsheet of record founded in 1917 covering governance, LNG trade, and judiciary.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:guardian.co.tt+when:7d&hl=en-US&gl=US&ceid=US:en
+    category_hint: internal_politics
+
+- id: newsday_tt
+  name: Trinidad and Tobago Newsday
+  homepage: https://newsday.co.tt
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Daily News Limited
+  state_affiliated: false
+  notes: Major independent daily newspaper in Port of Spain covering national politics, petrochemical economics, and public safety.
+  feeds:
+  - url: https://newsday.co.tt/feed/
+    category_hint: internal_politics
+
+- id: cnc3_tt
+  name: CNC3 News (Trinidad & Tobago)
+  homepage: https://www.cnc3.co.tt
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Guardian Media Television
+  state_affiliated: false
+  notes: Leading Trinidadian television and digital news network covering cabinet policy, maritime security, and commerce.
+  feeds:
+  - url: https://www.cnc3.co.tt/feed/
+    category_hint: internal_politics
+
+- id: azp_news_tt
+  name: AZP News (Trinidad & Tobago)
+  homepage: https://azpnews.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: AZP News Media
+  state_affiliated: false
+  notes: Independent digital news portal in Trinidad and Tobago covering public administration, courts, and regional diplomacy.
+  feeds:
+  - url: https://azpnews.com/feed/
+    category_hint: internal_politics
+
+- id: nationnews_bb
+  name: Nation News (Barbados)
+  homepage: https://www.nationnews.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Nation Publishing Co. Limited (One Caribbean Media)
+  state_affiliated: false
+  notes: Barbados's largest-circulation daily newspaper covering Bridgetown parliamentary politics, climate finance, and trade.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:nationnews.com+when:7d&hl=en-US&gl=US&ceid=US:en
+    category_hint: internal_politics
+
+- id: barbados_advocate_bb
+  name: The Barbados Advocate
+  homepage: https://www.barbadosadvocate.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Advocate Publishers (2000) Inc.
+  state_affiliated: false
+  notes: Historic Barbadian daily newspaper founded in 1895 covering constitutional governance, courts, and business.
+  feeds:
+  - url: https://www.barbadosadvocate.com/feed/
+    category_hint: internal_politics
+
+- id: bajan_reporter_bb
+  name: The Bajan Reporter
+  homepage: https://www.bajanreporter.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Bajan Reporter Media
+  state_affiliated: false
+  notes: Independent Barbadian online news portal covering civic affairs, tourism economics, and Eastern Caribbean diplomacy.
+  feeds:
+  - url: https://www.bajanreporter.com/feed/
+    category_hint: general
+
+- id: starcom_network_bb
+  name: Starcom Network News (Barbados)
+  homepage: https://starcomnetwork.net
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Starcom Network Inc.
+  state_affiliated: false
+  notes: Leading Barbadian broadcast news network covering national legislation, public finance, and regional integration.
+  feeds:
+  - url: https://starcomnetwork.net/feed/
+    category_hint: internal_politics
+
+- id: stabroek_news_gy
+  name: Stabroek News (Guyana)
+  homepage: https://www.stabroeknews.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Guyana Publications Inc.
+  state_affiliated: false
+  notes: Authoritative independent daily newspaper of record in Georgetown covering oil revenues, governance, and Essequibo diplomacy.
+  feeds:
+  - url: https://www.stabroeknews.com/feed/
+    category_hint: internal_politics
+
+- id: kaieteur_news_gy
+  name: Kaieteur News (Guyana)
+  homepage: https://www.kaieteurnewsonline.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: National Media & Publishing Company Ltd
+  state_affiliated: false
+  notes: High-circulation independent Guyanese daily focused on petroleum contract oversight, parliamentary accountability, and trade.
+  feeds:
+  - url: https://www.kaieteurnewsonline.com/feed/
+    category_hint: economics
+
+- id: inews_guyana_gy
+  name: iNews Guyana
+  homepage: https://www.inewsguyana.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Impressions Inc. (Guyana)
+  state_affiliated: false
+  notes: Prominent Georgetown digital daily covering national infrastructure, energy development, and CARICOM diplomacy.
+  feeds:
+  - url: https://www.inewsguyana.com/feed/
+    category_hint: internal_politics
+
+- id: newsroom_gy
+  name: News Room Guyana
+  homepage: https://newsroom.gy
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: News Room Inc. (Guyana)
+  state_affiliated: false
+  notes: Independent multimedia newsroom in Guyana covering executive policy, oil and gas investment, and border security.
+  feeds:
+  - url: https://newsroom.gy/feed/
+    category_hint: internal_politics
+
+- id: tribune242_bs
+  name: The Tribune (Bahamas)
+  homepage: http://www.tribune242.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Etienne Dupuch Jr Publications Ltd
+  state_affiliated: false
+  notes: Leading independent Nassau daily newspaper founded in 1903 covering Bahamian parliament, banking, and maritime security.
+  feeds:
+  - url: http://www.tribune242.com/rss/headlines/
+    category_hint: internal_politics
+
+- id: nassau_guardian_bs
+  name: The Nassau Guardian
+  homepage: https://www.thenassauguardian.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: The Nassau Guardian (1844) Ltd
+  state_affiliated: false
+  notes: Oldest daily newspaper of record in the Bahamas covering fiscal policy, constitutional governance, and regional affairs.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:thenassauguardian.com+when:7d&hl=en-US&gl=US&ceid=US:en
+    category_hint: internal_politics
+
+- id: ewnews_bs
+  name: Eyewitness News Bahamas
+  homepage: https://ewnews.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Eyewitness News Media Bahamas
+  state_affiliated: false
+  notes: Independent Bahamian broadcast and digital news portal covering cabinet policy, tourism economy, and storm resilience.
+  feeds:
+  - url: https://ewnews.com/feed
+    category_hint: internal_politics
+
+- id: bahamas_press_bs
+  name: Bahamas Press
+  homepage: https://bahamaspress.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Bahamas Press Media
+  state_affiliated: false
+  notes: Widely read independent Bahamian digital news publication covering domestic politics and public accountability.
+  feeds:
+  - url: https://bahamaspress.com/feed/
+    category_hint: internal_politics

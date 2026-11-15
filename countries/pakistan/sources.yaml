@@ -200,3 +200,29 @@ sources:
     section: International Coverage
     category_hint: foreign_policy
     active: true
+
+- id: fridaytimes_pk
+  name: "The Friday Times"
+  homepage: https://thefridaytimes.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: "TFT Media (Najam Sethi)"
+  state_affiliated: false
+  notes: "Pakistan's premier independent political and analytical weekly covering civil-military relations and constitutional law."
+  feeds:
+  - url: https://thefridaytimes.com/feed
+    category_hint: internal_politics
+
+- id: brecorder_pk
+  name: "Business Recorder (Pakistan)"
+  homepage: https://www.brecorder.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: "Business Recorder Group"
+  state_affiliated: false
+  notes: "Pakistan's leading financial and macroeconomic daily covering IMF programs, State Bank policy, and energy."
+  feeds:
+  - url: https://www.brecorder.com/feeds/latest-news
+    category_hint: economics

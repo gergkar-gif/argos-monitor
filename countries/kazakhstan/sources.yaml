@@ -149,3 +149,55 @@ sources:
     feeds:
       - url: https://www.lada.kz/rss.xml
         category_hint: economics
+
+  - id: orda_kz
+    name: Orda.kz
+    homepage: https://orda.kz
+    language: ru
+    scope: domestic
+    kind: media
+    governing_body: "OrdaMedia.kz"
+    state_affiliated: false
+    notes: "Leading independent investigative news portal in Kazakhstan covering elite politics, anti-corruption, and regional security."
+    feeds:
+      - url: https://orda.kz/feed/
+        category_hint: internal_politics
+
+  - id: azattyq_kz
+    name: Radio Azattyq (Kazakhstan)
+    homepage: https://rus.azattyq.org
+    language: ru
+    scope: abroad_local
+    kind: media
+    governing_body: "Radio Free Europe / Radio Liberty"
+    state_affiliated: false
+    notes: "Kazakhstan service of RFE/RL covering civil liberties, labor disputes, parliamentary politics, and energy governance."
+    feeds:
+      - url: https://rus.azattyq.org/api/z-pqpiev-qpp
+        category_hint: internal_politics
+
+  - id: respublika_kz
+    name: "Respublika.kz.media"
+    homepage: https://respublika.kz.media
+    language: ru
+    scope: abroad_local
+    kind: media
+    governing_body: "Respublika Investigative Media"
+    state_affiliated: false
+    notes: "Historic independent Kazakhstani investigative journalism outlet covering elite politics, energy assets, and human rights."
+    feeds:
+    - url: https://respublika.kz.media/feed/
+      category_hint: internal_politics
+
+  - id: zona_kz
+    name: "Zonakz.net"
+    homepage: https://zonakz.net
+    language: ru
+    scope: domestic
+    kind: media
+    governing_body: "ZonaKZ Internet Newspaper"
+    state_affiliated: false
+    notes: "Long-running independent Almaty online newspaper covering parliamentary debates, economic policy, and society."
+    feeds:
+    - url: https://zonakz.net/feed/
+      category_hint: internal_politics

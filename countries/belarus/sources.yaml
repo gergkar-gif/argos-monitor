@@ -180,3 +180,28 @@ sources:
     section: International Coverage
     category_hint: foreign_policy
     active: true
+- id: belsat_by
+  name: Belsat (Belarus)
+  homepage: https://belsat.eu
+  language: be
+  scope: abroad_local
+  kind: media
+  governing_body: Belsat TV (Warsaw)
+  state_affiliated: false
+  notes: Independent Belarusian-language satellite and digital broadcaster covering domestic repression, economy, and regional security.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:belsat.eu+when:7d&hl=ru&gl=BY&ceid=BY:ru
+    category_hint: internal_politics
+
+- id: pozirk_by
+  name: "Pozirk (Belarus Independent News Agency)"
+  homepage: https://pozirk.online
+  language: ru
+  scope: abroad_local
+  kind: media
+  governing_body: "Pozirk Media (successor to BelaPAN)"
+  state_affiliated: false
+  notes: "Independent Belarusian news agency operating in exile, founded by journalists of the shuttered BelaPAN wire."
+  feeds:
+  - url: https://pozirk.online/feed/
+    category_hint: internal_politics

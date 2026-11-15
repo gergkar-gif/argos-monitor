@@ -163,3 +163,250 @@ sources:
   - url: https://news.google.com/rss/search?q=Centroam%C3%A9rica+OR+SICA+OR+Guatemala+OR+Honduras+OR+%22El+Salvador%22+when:2d&hl=es-419&gl=GT&ceid=GT:es-419
     section: National News (Spanish)
     category_hint: internal_politics
+
+- id: soy502_gt
+  name: Soy502 (Guatemala)
+  homepage: https://www.soy502.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: ComuniK S.A.
+  state_affiliated: false
+  notes: Leading independent Guatemalan digital daily covering congressional legislation, judicial politics, and national economy.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:soy502.com+when:7d&hl=es-419&gl=GT&ceid=GT:es-419
+    category_hint: internal_politics
+
+- id: emisoras_unidas_gt
+  name: Emisoras Unidas (Guatemala)
+  homepage: https://emisorasunidas.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Grupo Emisoras Unidas
+  state_affiliated: false
+  notes: Premier Guatemalan broadcast and digital news network covering executive policy, courts, and regional migration.
+  feeds:
+  - url: https://emisorasunidas.com/feed/
+    category_hint: internal_politics
+
+- id: prensa_grafica_sv
+  name: La Prensa Gráfica (El Salvador)
+  homepage: https://www.laprensagrafica.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Grupo Dutriz
+  state_affiliated: false
+  notes: Major Salvadoran daily newspaper of record founded in 1915 covering legislative decrees, security policy, and macroeconomics.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:laprensagrafica.com+when:7d&hl=es-419&gl=SV&ceid=SV:es-419
+    category_hint: internal_politics
+
+- id: gato_encerrado_sv
+  name: Revista GatoEncerrado (El Salvador)
+  homepage: https://gatoencerrado.news
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Fundación Periodistas Sin Fronteras
+  state_affiliated: false
+  notes: Independent Salvadoran investigative journalism magazine focusing on human rights, public finance transparency, and democracy.
+  feeds:
+  - url: https://gatoencerrado.news/feed/
+    category_hint: internal_politics
+
+- id: elmundo_sv
+  name: Diario El Mundo (El Salvador)
+  homepage: https://diario.elmundo.sv
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Editorial El Mundo S.A.
+  state_affiliated: false
+  notes: Independent San Salvador daily newspaper covering parliamentary politics, fiscal policy, and judicial affairs.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:diario.elmundo.sv+when:7d&hl=es-419&gl=SV&ceid=SV:es-419
+    category_hint: internal_politics
+
+- id: el_heraldo_hn
+  name: El Heraldo (Honduras)
+  homepage: https://www.elheraldo.hn
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Grupo OPSA
+  state_affiliated: false
+  notes: Leading Tegucigalpa daily broadsheet covering Honduran executive governance, investigative anti-corruption, and economy.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:elheraldo.hn+when:7d&hl=es-419&gl=HN&ceid=HN:es-419
+    category_hint: internal_politics
+
+- id: la_prensa_hn
+  name: La Prensa (Honduras)
+  homepage: https://www.laprensa.hn
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Organización Publicitaria S.A.
+  state_affiliated: false
+  notes: Honduras's largest-circulation daily newspaper covering national politics, trade, energy, and security.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:laprensa.hn+when:7d&hl=es-419&gl=HN&ceid=HN:es-419
+    category_hint: internal_politics
+
+- id: proceso_digital_hn
+  name: Proceso Digital (Honduras)
+  homepage: https://procesodigital.hn
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Proceso Digital Media
+  state_affiliated: false
+  notes: Pioneering independent Honduran digital news daily covering congressional debates, diplomacy, and public security.
+  feeds:
+  - url: https://procesodigital.hn/feed/
+    category_hint: internal_politics
+
+- id: latribuna_hn
+  name: La Tribuna (Honduras)
+  homepage: https://www.latribuna.hn
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Periódicos y Revistas S.A.
+  state_affiliated: false
+  notes: Major Tegucigalpa daily newspaper founded in 1976 covering constitutional politics, legislation, and economic policy.
+  feeds:
+  - url: https://www.latribuna.hn/feed/
+    category_hint: internal_politics
+
+- id: la_prensa_ni
+  name: La Prensa (Nicaragua)
+  homepage: https://www.laprensani.com
+  language: es
+  scope: abroad_local
+  kind: media
+  governing_body: Editorial La Prensa S.A. (independent newsroom in exile)
+  state_affiliated: false
+  notes: Nicaragua's historic newspaper of record founded in 1926, reporting independently from exile on governance and human rights.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:laprensani.com+when:7d&hl=es-419&gl=US&ceid=US:es-419
+    category_hint: internal_politics
+
+- id: articulo66_ni
+  name: Artículo 66 (Nicaragua)
+  homepage: https://www.articulo66.com
+  language: es
+  scope: abroad_local
+  kind: media
+  governing_body: Artículo 66 Media (independent newsroom in exile)
+  state_affiliated: false
+  notes: Independent Nicaraguan investigative and breaking news platform reporting from exile on state policy and civil liberties.
+  feeds:
+  - url: https://www.articulo66.com/feed/
+    category_hint: internal_politics
+
+- id: 100noticias_ni
+  name: 100% Noticias (Nicaragua)
+  homepage: https://100noticias.com.ni
+  language: es
+  scope: abroad_local
+  kind: media
+  governing_body: Primicias S.A. (independent newsroom in exile)
+  state_affiliated: false
+  notes: Prominent independent Nicaraguan television and digital news outlet operating from exile.
+  feeds:
+  - url: https://100noticias.com.ni/feed/
+    category_hint: internal_politics
+
+- id: crhoy_cr
+  name: CRHoy (Costa Rica)
+  homepage: https://www.crhoy.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: CRHoy.com S.A.
+  state_affiliated: false
+  notes: Costa Rica's most-read independent digital newspaper covering Legislative Assembly politics, judiciary, and fiscal policy.
+  feeds:
+  - url: https://www.crhoy.com/feed/
+    category_hint: internal_politics
+
+- id: delfino_cr
+  name: Delfino.cr (Costa Rica)
+  homepage: https://delfino.cr
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Delfino Media
+  state_affiliated: false
+  notes: Independent Costa Rican analytical and parliamentary monitoring journal covering executive decrees and legislative affairs.
+  feeds:
+  - url: https://delfino.cr/feed
+    category_hint: internal_politics
+
+- id: elmundo_cr
+  name: El Mundo CR (Costa Rica)
+  homepage: https://www.elmundo.cr
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Grupo El Mundo CR
+  state_affiliated: false
+  notes: Independent San José digital daily covering national politics, elections, and regulatory policy.
+  feeds:
+  - url: https://www.elmundo.cr/feed/
+    category_hint: internal_politics
+
+- id: la_estrella_pa
+  name: La Estrella de Panamá
+  homepage: https://www.laestrella.com.pa
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Grupo Editorial El Siglo y La Estrella (GESE)
+  state_affiliated: false
+  notes: Panama's oldest daily newspaper of record founded in 1853 covering national politics, Panama Canal trade, and diplomacy.
+  feeds:
+  - url: https://www.laestrella.com.pa/rss/nacional.xml
+    category_hint: internal_politics
+
+- id: tvn_noticias_pa
+  name: TVN Noticias (Panamá)
+  homepage: https://www.tvn-2.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Televisora Nacional S.A.
+  state_affiliated: false
+  notes: Leading independent Panamanian television and digital newsroom covering executive governance, legislature, and economy.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:tvn-2.com+when:7d&hl=es-419&gl=PA&ceid=PA:es-419
+    category_hint: internal_politics
+
+- id: telemetro_pa
+  name: Telemetro Reporta (Panamá)
+  homepage: https://www.telemetro.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Corporación Medcom
+  state_affiliated: false
+  notes: Major Panamanian broadcast and digital news service covering national politics, maritime logistics, and public policy.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:telemetro.com/nacionales+when:7d&hl=es-419&gl=PA&ceid=PA:es-419
+    category_hint: internal_politics
+
+- id: panama_america_pa
+  name: Panamá América
+  homepage: https://www.panamaamerica.com.pa
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Grupo Epasa
+  state_affiliated: false
+  notes: Historic Panamanian daily newspaper founded in 1925 covering politics, banking, and judicial developments.
+  feeds:
+  - url: https://www.panamaamerica.com.pa/rss.xml
+    category_hint: internal_politics

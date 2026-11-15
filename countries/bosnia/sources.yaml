@@ -174,3 +174,16 @@ sources:
     feeds:
       - url: https://www.capital.ba/feed/
         category_hint: economics
+
+  - id: detektor_ba
+    name: "Detektor.ba (BIRN Bosnia)"
+    homepage: https://detektor.ba
+    language: bs
+    scope: domestic
+    kind: media
+    governing_body: "Balkan Investigative Reporting Network (BIRN BiH)"
+    state_affiliated: false
+    notes: "Premier independent investigative journalism portal in Sarajevo covering judiciary, corruption, and security."
+    feeds:
+    - url: https://detektor.ba/feed/
+      category_hint: internal_politics

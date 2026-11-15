@@ -163,3 +163,29 @@ sources:
     feeds:
       - url: https://kenyareport.com/feed/
         category_hint: internal_politics
+
+  - id: nation_ke
+    name: "Daily Nation (Nation Africa)"
+    homepage: https://nation.africa
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Nation Media Group"
+    state_affiliated: false
+    notes: "Kenya's largest independent daily newspaper of record covering Nairobi parliament, judiciary, and East African trade."
+    feeds:
+    - url: https://nation.africa/kenya/rss.xml
+      category_hint: internal_politics
+
+  - id: the_star_ke
+    name: "The Star (Kenya)"
+    homepage: https://www.the-star.co.ke
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Radio Africa Group"
+    state_affiliated: false
+    notes: "Major Nairobi political daily newspaper covering executive governance, county devolution, and public finance."
+    feeds:
+    - url: https://news.google.com/rss/search?q=site:the-star.co.ke+when:7d&hl=en-KE&gl=KE&ceid=KE:en
+      category_hint: internal_politics

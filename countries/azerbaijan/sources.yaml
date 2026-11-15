@@ -164,3 +164,106 @@ sources:
   - url: https://news.google.com/rss/search?q=Az%C9%99rbaycan+OR+Bak%C4%B1+when:2d&hl=en-US&gl=US&ceid=US:en
     section: National News (Azerbaijani)
     category_hint: internal_politics
+- id: turan_az
+  name: Turan Information Agency
+  homepage: https://turan.az
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Turan News Agency (Baku)
+  state_affiliated: false
+  notes: Azerbaijan's oldest independent news agency founded in 1990 covering politics, energy, and human rights.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:turan.az+when:7d&hl=en-US&gl=US&ceid=US:en
+    category_hint: internal_politics
+
+- id: abzas_az
+  name: "Abzas Media"
+  homepage: https://abzas.org
+  language: az
+  scope: abroad_local
+  kind: media
+  governing_body: "Abzas Media Investigative Collective"
+  state_affiliated: false
+  notes: "Independent Azerbaijani anti-corruption and investigative journalism platform operating in exile."
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:abzas.org+when:7d&hl=en-US&gl=US&ceid=US:en
+    category_hint: internal_politics
+
+- id: toplum_tv_az
+  name: "Toplum TV"
+  homepage: https://toplum.tv
+  language: az
+  scope: abroad_local
+  kind: media
+  governing_body: "Toplum TV Independent Media"
+  state_affiliated: false
+  notes: "Independent Azerbaijani democratic journalism and civil-rights broadcast portal."
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:toplum.tv+when:7d&hl=en-US&gl=US&ceid=US:en
+    category_hint: internal_politics
+
+- id: azadliq_az
+  name: "Azadlıq Radiosu (RFE/RL Azerbaijan)"
+  homepage: https://www.azadliq.org
+  language: az
+  scope: abroad_local
+  kind: media
+  governing_body: "Radio Free Europe / Radio Liberty"
+  state_affiliated: false
+  notes: "Azerbaijani service of RFE/RL covering civil liberties, energy politics, and South Caucasus diplomacy."
+  feeds:
+  - url: https://www.azadliq.org/api/z-pqpiev-qpp
+    category_hint: internal_politics
+
+- id: arqument_az
+  name: "Arqument.az"
+  homepage: https://arqument.az
+  language: az
+  scope: domestic
+  kind: media
+  governing_body: "Arqument Independent Media"
+  state_affiliated: false
+  notes: "Independent Baku digital newspaper covering opposition politics, judicial trials, and social issues."
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:arqument.az+when:7d&hl=en-US&gl=US&ceid=US:en
+    category_hint: internal_politics
+
+- id: bakuresearch_az
+  name: "Baku Research Institute"
+  homepage: https://bakuresearchinstitute.org
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: "Baku Research Institute"
+  state_affiliated: false
+  notes: "Independent analytical think tank publishing research on Azerbaijani economy, society, and foreign policy."
+  feeds:
+  - url: https://bakuresearchinstitute.org/en/feed/
+    category_hint: internal_politics
+
+- id: caucasuswatch_az
+  name: "Caucasus Watch (Azerbaijan)"
+  homepage: https://caucasuswatch.de
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: "Caucasus Watch Media"
+  state_affiliated: false
+  notes: "Independent European analytical portal tracking South Caucasus security, Karabakh reconstruction, and diplomacy."
+  feeds:
+  - url: https://caucasuswatch.de/feed.rss
+    category_hint: foreign_policy
+
+- id: JAMnews_az
+  name: "JAMnews (Azerbaijan Desk)"
+  homepage: https://jam-news.net
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: "JAMnews Regional Media Network"
+  state_affiliated: false
+  notes: "Independent cross-border South Caucasus newsroom covering Baku politics, society, and regional peace talks."
+  feeds:
+  - url: https://jam-news.net/feed/
+    category_hint: foreign_policy

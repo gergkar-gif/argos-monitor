@@ -221,3 +221,120 @@ sources:
   feeds:
   - url: https://news.google.com/rss?hl=lv&gl=LV&ceid=LV:lv
     category_hint: internal_politics
+
+- id: delfi_ee
+  name: Delfi Estonia
+  homepage: https://www.delfi.ee
+  language: et
+  scope: domestic
+  kind: media
+  governing_body: Ekspress Grupp
+  state_affiliated: false
+  notes: Estonia's largest independent digital news portal covering Riigikogu politics, national security, and society.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:delfi.ee+when:7d&hl=et&gl=EE&ceid=EE:et
+    category_hint: internal_politics
+
+- id: aripaev_ee
+  name: Äripäev
+  homepage: https://www.aripaev.ee
+  language: et
+  scope: domestic
+  kind: media
+  governing_body: Bonnier Business Press
+  state_affiliated: false
+  notes: Estonia's premier financial and investigative business daily covering macroeconomic policy, energy, and trade.
+  feeds:
+  - url: https://www.aripaev.ee/rss
+    category_hint: economics
+
+- id: ohtuleht_ee
+  name: Õhtuleht
+  homepage: https://www.ohtuleht.ee
+  language: et
+  scope: domestic
+  kind: media
+  governing_body: AS Õhtuleht Kirjastus (Ekspress Grupp / Alexela)
+  state_affiliated: false
+  notes: High-circulation Estonian daily newspaper covering domestic politics, social policy, and civic affairs.
+  feeds:
+  - url: https://www.ohtuleht.ee/rss
+    category_hint: general
+
+- id: delfi_lv
+  name: Delfi Latvia
+  homepage: https://www.delfi.lv
+  language: lv
+  scope: domestic
+  kind: media
+  governing_body: Ekspress Grupp
+  state_affiliated: false
+  notes: Leading independent Latvian news portal covering Saeima legislation, Baltic defense, and economic policy.
+  feeds:
+  - url: https://www.delfi.lv/rss?channel=delfi
+    category_hint: internal_politics
+
+- id: la_lv
+  name: Latvijas Avīze
+  homepage: https://www.la.lv
+  language: lv
+  scope: domestic
+  kind: media
+  governing_body: AS Latvijas Mediji
+  state_affiliated: false
+  notes: Independent Latvian national daily newspaper covering parliamentary politics, regional governance, and security.
+  feeds:
+  - url: https://www.la.lv/feed
+    category_hint: internal_politics
+
+- id: delfi_lt
+  name: Delfi Lithuania
+  homepage: https://www.delfi.lt
+  language: lt
+  scope: domestic
+  kind: media
+  governing_body: Ekspress Grupp
+  state_affiliated: false
+  notes: Lithuania's largest independent digital news portal covering Seimas politics, foreign policy, and defense.
+  feeds:
+  - url: https://www.delfi.lt/rss/feeds/lithuania.xml
+    category_hint: internal_politics
+
+- id: 15min_lt
+  name: 15min (Lithuania)
+  homepage: https://www.15min.lt
+  language: lt
+  scope: domestic
+  kind: media
+  governing_body: Postimees Grupp (Eesti Meedia)
+  state_affiliated: false
+  notes: Major independent Lithuanian daily news and investigative portal covering national politics and economy.
+  feeds:
+  - url: https://www.15min.lt/rss
+    category_hint: internal_politics
+
+- id: vz_lt
+  name: Verslo žinios
+  homepage: https://www.vz.lt
+  language: lt
+  scope: domestic
+  kind: media
+  governing_body: Bonnier Business Press
+  state_affiliated: false
+  notes: Lithuania's paper of record for business, macroeconomic policy, energy security, and regulatory affairs.
+  feeds:
+  - url: https://www.vz.lt/rss
+    category_hint: economics
+
+- id: lrytas_lt
+  name: Lrytas.lt
+  homepage: https://www.lrytas.lt
+  language: lt
+  scope: domestic
+  kind: media
+  governing_body: UAB Lrytas
+  state_affiliated: false
+  notes: Prominent independent Lithuanian daily news portal covering national governance, justice, and regional security.
+  feeds:
+  - url: https://www.lrytas.lt/rss
+    category_hint: internal_politics

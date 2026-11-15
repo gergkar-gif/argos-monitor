@@ -144,3 +144,16 @@ sources:
   - url: https://news.google.com/rss/search?q=(%22Sri+Lanka%22+OR+Colombo)+(Dissanayake+OR+IMF+OR+debt+OR+economy)+when:3d&hl=en-US&gl=US&ceid=US:en
     section: Economy & Governance
     category_hint: economics
+
+- id: economynext_lk
+  name: "EconomyNext (Sri Lanka)"
+  homepage: https://economynext.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: "Echelon Media (Pvt) Ltd"
+  state_affiliated: false
+  notes: "Sri Lanka's premier independent economic, central bank, sovereign debt, and public policy news portal."
+  feeds:
+  - url: https://economynext.com/feed/
+    category_hint: economics

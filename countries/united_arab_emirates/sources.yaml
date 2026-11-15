@@ -202,3 +202,41 @@ sources:
     section: International Coverage
     category_hint: foreign_policy
     active: true
+- id: agbi_ae
+  name: AGBI (Arabian Gulf Business Insight)
+  homepage: https://www.agbi.com
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: AGBI Media Limited (London/Dubai)
+  state_affiliated: false
+  notes: Independent economic and financial intelligence journal covering UAE sovereign wealth funds, trade policy, and Gulf regulation.
+  feeds:
+  - url: https://www.agbi.com/feed/
+    category_hint: economics
+
+- id: zawya_ae
+  name: "Zawya (UAE & Gulf Markets)"
+  homepage: https://www.zawya.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: "LSEG / Refinitiv Middle East"
+  state_affiliated: false
+  notes: "Leading Dubai-based financial, capital markets, and corporate policy intelligence portal across the UAE."
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:zawya.com+%22UAE%22+when:7d&hl=en-US&gl=US&ceid=US:en
+    category_hint: economics
+
+- id: meed_ae
+  name: "MEED (Middle East Economic Digest)"
+  homepage: https://www.meed.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: "GlobalData MEED (Dubai)"
+  state_affiliated: false
+  notes: "Authoritative Dubai-based business and infrastructure intelligence journal covering UAE sovereign projects and energy."
+  feeds:
+  - url: https://www.meed.com/feed
+    category_hint: economics

@@ -178,3 +178,42 @@ sources:
     section: International Coverage
     category_hint: foreign_policy
     active: true
+
+- id: joompormedia_sg
+  name: "Jom (Singapore)"
+  homepage: https://www.jom.media
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: "Jom Media Pte Ltd"
+  state_affiliated: false
+  notes: "Independent Singaporean weekly digital magazine covering politics, urban policy, arts, and civil society."
+  feeds:
+  - url: https://www.jom.media/rss/
+    category_hint: internal_politics
+
+- id: theonlinecitizen_sg
+  name: "The Online Citizen"
+  homepage: https://www.theonlinecitizen.com
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: "The Online Citizen Media"
+  state_affiliated: false
+  notes: "Long-running independent Singaporean socio-political news portal covering parliamentary debates and civil liberties."
+  feeds:
+  - url: https://www.theonlinecitizen.com/feed/
+    category_hint: internal_politics
+
+- id: fulcrum_sg
+  name: "Fulcrum (ISEAS - Yusof Ishak Institute)"
+  homepage: https://fulcrum.sg
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: "ISEAS - Yusof Ishak Institute"
+  state_affiliated: false
+  notes: "Singapore-based regional policy and political economy journal covering Singaporean diplomacy and ASEAN affairs."
+  feeds:
+  - url: https://fulcrum.sg/feed/
+    category_hint: foreign_policy

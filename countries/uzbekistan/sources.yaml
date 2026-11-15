@@ -167,3 +167,64 @@ sources:
     feeds:
     - url: https://uza.uz/en/rss
       category_hint: internal_politics
+  - id: podrobno_uz
+    name: Podrobno.uz
+    homepage: https://podrobno.uz
+    language: ru
+    scope: domestic
+    kind: media
+    governing_body: Podrobno Media Tashkent
+    state_affiliated: false
+    notes: Leading independent Tashkent news agency covering Uzbek politics, energy infrastructure, and Central Asian trade.
+    feeds:
+    - url: https://podrobno.uz/rss/
+      category_hint: internal_politics
+  - id: uzdaily_uz
+    name: UzDaily
+    homepage: https://www.uzdaily.uz
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Daily Media Group Tashkent
+    state_affiliated: false
+    notes: Independent Uzbek economic and political news portal covering macroeconomic indicators, investment, and diplomacy.
+    feeds:
+    - url: https://www.uzdaily.uz/en/rss/
+      category_hint: economics
+  - id: hook_report_uz
+    name: Hook.report
+    homepage: https://hook.report
+    language: ru
+    scope: domestic
+    kind: media
+    governing_body: Hook Media Tashkent
+    state_affiliated: false
+    notes: Independent analytical and investigative journal in Tashkent covering urban governance, civil rights, and reforms.
+    feeds:
+    - url: https://hook.report/feed/
+      category_hint: internal_politics
+  - id: qalampir_uz
+    name: Qalampir.uz
+    homepage: https://qalampir.uz
+    language: uz
+    scope: domestic
+    kind: media
+    governing_body: Qalampir Media
+    state_affiliated: false
+    notes: High-reach independent Uzbek-language news portal covering parliamentary debates, judiciary, and domestic policy.
+    feeds:
+    - url: https://news.google.com/rss/search?q=site:qalampir.uz+when:7d&hl=ru&gl=UZ&ceid=UZ:ru
+      category_hint: internal_politics
+
+  - id: ozodlik_uz
+    name: "Ozodlik Radiosi (RFE/RL Uzbekistan)"
+    homepage: https://www.ozodlik.org
+    language: uz
+    scope: abroad_local
+    kind: media
+    governing_body: "Radio Free Europe / Radio Liberty"
+    state_affiliated: false
+    notes: "Uzbek-language service of RFE/RL providing independent investigative reporting on Tashkent governance and human rights."
+    feeds:
+    - url: https://www.ozodlik.org/api/z-pqpiev-qpp
+      category_hint: internal_politics

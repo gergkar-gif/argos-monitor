@@ -140,3 +140,354 @@ sources:
   feeds:
   - url: https://devpolicy.org/feed/
     category_hint: foreign_policy
+
+- id: fiji_sun_fj
+  name: Fiji Sun
+  homepage: https://fijisun.com.fj
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Sun (Fiji) News Pte Ltd
+  state_affiliated: false
+  notes: Major Suva daily newspaper covering Fijian parliamentary politics, trade, sugar industry, and regional security.
+  feeds:
+  - url: https://fijisun.com.fj/feed/
+    category_hint: internal_politics
+
+- id: fijivillage_fj
+  name: Fijivillage
+  homepage: https://www.fijivillage.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Communications Fiji Limited
+  state_affiliated: false
+  notes: Leading independent Fijian commercial radio and digital news portal covering cabinet decisions, budget policy, and civic affairs.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:fijivillage.com+when:7d&hl=en-US&gl=US&ceid=US:en
+    category_hint: internal_politics
+
+- id: fiji_live_fj
+  name: FijiLive
+  homepage: https://fijilive.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Webmedia South Pacific
+  state_affiliated: false
+  notes: Independent Suva online news portal covering Fijian politics, judiciary, economy, and South Pacific diplomacy.
+  feeds:
+  - url: https://fijilive.com/feed/
+    category_hint: internal_politics
+
+- id: mai_tv_fj
+  name: Mai TV (Fiji)
+  homepage: https://maitv.com.fj
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Mai TV Ltd (Fiji)
+  state_affiliated: false
+  notes: Independent Fijian free-to-air television broadcaster and digital news service covering national governance.
+  feeds:
+  - url: https://maitv.com.fj/feed/
+    category_hint: general
+
+- id: thenational_png
+  name: The National (Papua New Guinea)
+  homepage: https://www.thenational.com.pg
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Pacific Star Limited
+  state_affiliated: false
+  notes: Papua New Guinea's top-selling daily newspaper covering Port Moresby parliament, LNG projects, and provincial governance.
+  feeds:
+  - url: https://www.thenational.com.pg/feed/
+    category_hint: internal_politics
+
+- id: emtv_png
+  name: EMTV Online (Papua New Guinea)
+  homepage: https://emtv.com.pg
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Media Niugini Limited
+  state_affiliated: false
+  notes: Papua New Guinea's oldest national television network covering parliamentary politics, resource economics, and security.
+  feeds:
+  - url: https://emtv.com.pg/feed/
+    category_hint: internal_politics
+
+- id: png_attitude
+  name: PNG Attitude
+  homepage: https://www.pngattitude.com
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Keith Jackson & Associates
+  state_affiliated: false
+  notes: Independent commentary and political analysis journal dedicated to Papua New Guinea governance and Australia-PNG relations.
+  feeds:
+  - url: https://www.pngattitude.com/atom.xml
+    category_hint: foreign_policy
+
+- id: inside_png
+  name: Inside PNG
+  homepage: https://insidepng.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Inside PNG Media
+  state_affiliated: false
+  notes: Independent Port Moresby digital news platform covering PNG business, extractive industries, and public policy.
+  feeds:
+  - url: https://insidepng.com/feed/
+    category_hint: economics
+
+- id: solomon_star_sb
+  name: Solomon Star
+  homepage: https://www.solomonstarnews.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Solomon Star Company Ltd
+  state_affiliated: false
+  notes: Honiara's leading independent daily newspaper covering Solomon Islands parliamentary politics, forestry, and security treaties.
+  feeds:
+  - url: https://www.solomonstarnews.com/feed/
+    category_hint: internal_politics
+
+- id: island_sun_sb
+  name: The Island Sun (Solomon Islands)
+  homepage: https://theislandsun.com.sb
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Sun Publishing Ltd (Honiara)
+  state_affiliated: false
+  notes: Major independent daily newspaper in Honiara covering national governance, infrastructure diplomacy, and provincial affairs.
+  feeds:
+  - url: https://theislandsun.com.sb/feed/
+    category_hint: internal_politics
+
+- id: sibconline_sb
+  name: SIBC Online (Solomon Islands)
+  homepage: https://www.sibconline.com.sb
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Solomon Islands Broadcasting Corporation (public broadcaster)
+  state_affiliated: false
+  notes: Public-service broadcaster of the Solomon Islands providing national news, disaster alerts, and parliamentary coverage.
+  feeds:
+  - url: https://www.sibconline.com.sb/feed/
+    category_hint: internal_politics
+
+- id: solomon_times_sb
+  name: Solomon Times Online
+  homepage: https://www.solomontimes.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Solomon Times Media
+  state_affiliated: false
+  notes: Independent digital daily in the Solomon Islands covering economic development, maritime security, and foreign relations.
+  feeds:
+  - url: https://www.solomontimes.com/rss.xml
+    category_hint: internal_politics
+
+- id: in_depth_solomons_sb
+  name: In-Depth Solomons
+  homepage: https://indepthsolomons.com.sb
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Investigative Media Solomon Islands
+  state_affiliated: false
+  notes: Independent investigative journalism outlet in Honiara uncovering logging, mining, and political accountability.
+  feeds:
+  - url: https://indepthsolomons.com.sb/feed/
+    category_hint: internal_politics
+
+- id: samoa_observer_ws
+  name: Samoa Observer
+  homepage: https://www.samoaobserver.ws
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Samoa Observer Company Ltd
+  state_affiliated: false
+  notes: Independent Apia daily newspaper of record covering Samoan constitutional governance, judiciary, and regional diplomacy.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:samoaobserver.ws+when:7d&hl=en-US&gl=US&ceid=US:en
+    category_hint: internal_politics
+
+- id: talamua_ws
+  name: Talamua Online News (Samoa)
+  homepage: https://talamua.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Talamua Media & Publications
+  state_affiliated: false
+  notes: Leading independent Samoan digital news agency covering parliamentary sessions, cabinet policy, and Pacific regionalism.
+  feeds:
+  - url: https://talamua.com/feed/
+    category_hint: internal_politics
+
+- id: samoa_global_news_ws
+  name: Samoa Global News
+  homepage: https://samoaglobalnews.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Samoa Global News Ltd
+  state_affiliated: false
+  notes: Independent Apia digital news portal covering Samoan politics, economic policy, and public administration.
+  feeds:
+  - url: https://samoaglobalnews.com/feed/
+    category_hint: internal_politics
+
+- id: newsline_samoa_ws
+  name: Newsline Samoa
+  homepage: https://www.newslinesamoa.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Newsline Samoa Publishers
+  state_affiliated: false
+  notes: Independent Samoan newspaper covering domestic politics, courts, and community development.
+  feeds:
+  - url: https://www.newslinesamoa.com/feed/
+    category_hint: internal_politics
+
+- id: radiopolynesia_ws
+  name: Radio Polynesia Samoa
+  homepage: https://radiopolynesiasamoa.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Radio Polynesia Ltd (Apia)
+  state_affiliated: false
+  notes: Independent commercial broadcaster and newsroom in Samoa covering national governance and social affairs.
+  feeds:
+  - url: https://radiopolynesiasamoa.com/feed/
+    category_hint: general
+
+- id: vanuatu_daily_post_vu
+  name: Vanuatu Daily Post
+  homepage: https://www.dailypost.vu
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Trading Post Ltd (Port Vila)
+  state_affiliated: false
+  notes: Vanuatu's only independent daily newspaper of record covering Port Vila parliamentary politics, climate justice, and diplomacy.
+  feeds:
+  - url: https://www.dailypost.vu/search/?f=rss&t=article&c=news&l=50&s=start_time&sd=desc
+    category_hint: internal_politics
+
+- id: vbtc_vu
+  name: VBTC News (Vanuatu)
+  homepage: https://www.vbtc.vu
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Vanuatu Broadcasting and Television Corporation (public broadcaster)
+  state_affiliated: false
+  notes: National public-service broadcaster of Vanuatu reporting on parliamentary coalitions, disaster response, and outer islands.
+  feeds:
+  - url: https://www.vbtc.vu/feed/
+    category_hint: internal_politics
+
+- id: yumi_toktok_vu
+  name: Yumi Toktok Stret (Vanuatu)
+  homepage: https://yumitoktokstret.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: YTS Media Vanuatu
+  state_affiliated: false
+  notes: Independent Vanuatu civic and political news portal covering governance, infrastructure, and public accountability.
+  feeds:
+  - url: https://yumitoktokstret.com/feed/
+    category_hint: internal_politics
+
+- id: vanuatu_independent_vu
+  name: The Vanuatu Independent
+  homepage: https://vanuatuindependent.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Vanuatu Independent Media
+  state_affiliated: false
+  notes: Independent news and analysis publication in Port Vila covering Melanesian Spearhead Group diplomacy and economy.
+  feeds:
+  - url: https://vanuatuindependent.com/feed/
+    category_hint: economics
+
+- id: sista_vu
+  name: Sista Vanuatu
+  homepage: https://sista.com.vu
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Sista Media Association (Port Vila)
+  state_affiliated: false
+  notes: Independent Vanuatu civil-society and public-interest media organization covering human rights, climate, and governance.
+  feeds:
+  - url: https://sista.com.vu/feed/
+    category_hint: society
+
+- id: kaniva_tonga_to
+  name: Kaniva Tonga News
+  homepage: https://kanivatonga.co.nz
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Kaniva Pacific Limited
+  state_affiliated: false
+  notes: Bilingual independent Tongan news service covering Nuku'alofa parliamentary politics, royal governance, and diaspora affairs.
+  feeds:
+  - url: https://kanivatonga.co.nz/feed/
+    category_hint: internal_politics
+
+- id: talanoa_o_tonga_to
+  name: Talanoa 'o Tonga
+  homepage: https://talanoaotonga.to
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Talanoa Media Tonga
+  state_affiliated: false
+  notes: Independent Nuku'alofa news publication covering Tongan cabinet policy, parliament, and Pacific regional diplomacy.
+  feeds:
+  - url: https://talanoaotonga.to/feed/
+    category_hint: internal_politics
+
+- id: tonga_independent_to
+  name: Tonga Independent
+  homepage: https://tongaindependent.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Tonga Independent Media
+  state_affiliated: false
+  notes: Independent digital newspaper covering Tongan political economy, legislative reforms, and foreign relations.
+  feeds:
+  - url: https://tongaindependent.com/feed/
+    category_hint: internal_politics
+
+- id: nepituno_to
+  name: Nepituno Tonga News
+  homepage: https://nepituno.to
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Nepituno Media (Nuku'alofa)
+  state_affiliated: false
+  notes: Independent Tongan online news portal reporting on legislative assembly debates, public services, and regional trade.
+  feeds:
+  - url: https://nepituno.to/feed/
+    category_hint: internal_politics

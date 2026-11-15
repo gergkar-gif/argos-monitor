@@ -173,3 +173,41 @@ sources:
   - url: https://news.google.com/rss/search?q=%D8%B3%D9%88%D8%B1%D9%8A%D8%A7+OR+%D8%AF%D9%85%D8%B4%D9%82+when:2d&hl=ar&gl=SY&ceid=SY:ar
     section: National News (Arabic)
     category_hint: internal_politics
+- id: levant24_sy
+  name: Levant24 (Syria)
+  homepage: https://levant24.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Levant24 Media
+  state_affiliated: false
+  notes: English-language Syrian news and analysis platform covering Damascus transitional governance, regional security, and reconstruction.
+  feeds:
+  - url: https://levant24.com/feed/
+    category_hint: internal_politics
+
+- id: syria_tv_sy
+  name: "Syria TV (تلفزيون سوريا)"
+  homepage: https://www.syria.tv
+  language: ar
+  scope: abroad_local
+  kind: media
+  governing_body: "Fadaat Media"
+  state_affiliated: false
+  notes: "Major Syrian television and digital news network covering political transition, local governance, and reconstruction."
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:syria.tv+when:7d&hl=ar&gl=SY&ceid=SY:ar
+    category_hint: internal_politics
+
+- id: rozana_sy
+  name: "Radio Rozana (Syria)"
+  homepage: https://www.rozana.fm
+  language: ar
+  scope: abroad_local
+  kind: media
+  governing_body: "Radio Rozana Foundation"
+  state_affiliated: false
+  notes: "Independent Syrian radio and digital journalism network reporting on civil society, economy, and governance."
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:rozana.fm+when:7d&hl=ar&gl=SY&ceid=SY:ar
+    category_hint: internal_politics

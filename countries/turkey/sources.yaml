@@ -165,3 +165,41 @@ sources:
   - url: https://news.google.com/rss/search?q=T%C3%BCrkiye+OR+Ankara+OR+h%C3%BCk%C3%BCmet+when:2d&hl=tr&gl=TR&ceid=TR:tr
     section: National News (Turkish)
     category_hint: internal_politics
+- id: medyascope_tr
+  name: Medyascope (Turkey)
+  homepage: https://medyascope.tv
+  language: tr
+  scope: domestic
+  kind: media
+  governing_body: Medyascope Media (Ruşen Çakır)
+  state_affiliated: false
+  notes: Leading independent Turkish civil-journalism broadcast and digital newsroom covering parliamentary politics and foreign policy.
+  feeds:
+  - url: https://medyascope.tv/feed/
+    category_hint: internal_politics
+
+- id: t24_tr
+  name: "T24 (Turkey)"
+  homepage: https://t24.com.tr
+  language: tr
+  scope: domestic
+  kind: media
+  governing_body: "T24 Bağımsız İnternet Gazetesi"
+  state_affiliated: false
+  notes: "Turkey's premier independent online newspaper covering Ankara politics, judicial rulings, and macroeconomic policy."
+  feeds:
+  - url: https://t24.com.tr/rss
+    category_hint: internal_politics
+
+- id: diken_tr
+  name: "Diken (Turkey)"
+  homepage: https://www.diken.com.tr
+  language: tr
+  scope: domestic
+  kind: media
+  governing_body: "Diken Media (Harun Simavi)"
+  state_affiliated: false
+  notes: "Prominent independent Turkish digital daily covering opposition politics, civil liberties, and economy."
+  feeds:
+  - url: https://www.diken.com.tr/feed/
+    category_hint: internal_politics

@@ -198,3 +198,94 @@ sources:
     section: International Coverage
     category_hint: foreign_policy
     active: true
+
+- id: argaam_sa
+  name: "Argaam (Saudi Financial News)"
+  homepage: https://www.argaam.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: "Argaam Investment Company"
+  state_affiliated: false
+  notes: "Saudi Arabia's premier financial, Tadawul stock market, petrochemical, and macroeconomic intelligence portal."
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:argaam.com/en+when:7d&hl=en-US&gl=US&ceid=US:en
+    category_hint: economics
+
+- id: saudigazette_sa
+  name: "Saudi Gazette"
+  homepage: https://saudigazette.com.sa
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: "Okaz Press & Publication (Commercial English Daily)"
+  state_affiliated: false
+  notes: "Major Jeddah-based English daily covering Saudi business regulation, labor policy, and domestic governance."
+  feeds:
+  - url: https://saudigazette.com.sa/rssFeed/74
+    category_hint: internal_politics
+
+- id: sabq_sa
+  name: "Sabq Online Newspaper"
+  homepage: https://sabq.org
+  language: ar
+  scope: domestic
+  kind: media
+  governing_body: "Sabq Media"
+  state_affiliated: false
+  notes: "Saudi Arabia's largest native digital newspaper covering ministerial decisions, courts, and domestic economy."
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:sabq.org+when:7d&hl=ar&gl=SA&ceid=SA:ar
+    category_hint: internal_politics
+
+- id: alqst_sa
+  name: "ALQST for Human Rights (Saudi Arabia)"
+  homepage: https://www.alqst.org
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: "ALQST Organization"
+  state_affiliated: false
+  notes: "Independent London-based Saudi human rights watchdog documenting judicial rulings, detainees, and legal reforms."
+  feeds:
+  - url: https://www.alqst.org/en/rss
+    category_hint: society
+
+- id: sanad_sa
+  name: "SANAD Rights Organization"
+  homepage: https://sanad.uk
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: "SANAD Human Rights UK"
+  state_affiliated: false
+  notes: "Independent diaspora advocacy and monitoring platform tracking civil liberties and governance in Saudi Arabia."
+  feeds:
+  - url: https://sanad.uk/en/feed/
+    category_hint: society
+
+- id: agbi_sa
+  name: "AGBI (Saudi Economy & Vision 2030)"
+  homepage: https://www.agbi.com
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: "AGBI Media Limited"
+  state_affiliated: false
+  notes: "Independent Gulf business intelligence platform analyzing Saudi PIF megaprojects, oil policy, and fiscal reforms."
+  feeds:
+  - url: https://www.agbi.com/countries/saudi-arabia/feed/
+    category_hint: economics
+
+- id: mei_sa
+  name: "Middle East Institute (Saudi & Gulf Affairs)"
+  homepage: https://www.mei.edu
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: "Middle East Institute"
+  state_affiliated: false
+  notes: "Independent policy research institution analyzing Saudi foreign policy, defense posture, and energy transition."
+  feeds:
+  - url: https://www.mei.edu/rss.xml
+    category_hint: foreign_policy

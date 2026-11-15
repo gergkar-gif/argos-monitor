@@ -168,3 +168,81 @@ sources:
   - url: https://news.google.com/rss/search?q=%E1%9E%80%E1%9E%98%E1%9F%92%E1%9E%96%E1%9E%BB%E1%9E%87%E1%9E%B6+when:2d&hl=en-US&gl=US&ceid=US:en
     section: National News (Khmer)
     category_hint: internal_politics
+
+- id: kiripost_kh
+  name: "Kiripost (Cambodia)"
+  homepage: https://kiripost.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: "Kiripost Media Co., Ltd."
+  state_affiliated: false
+  notes: "Independent Phnom Penh digital newsroom covering Cambodian business, technology, economy, and governance."
+  feeds:
+  - url: https://kiripost.com/feed
+    category_hint: economics
+
+- id: cambodianess_kh
+  name: "Cambodianess"
+  homepage: https://cambodianess.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: "Thmey Thmey Media Group"
+  state_affiliated: false
+  notes: "English-language Phnom Penh digital daily covering domestic policy, ASEAN trade, and economic development."
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:cambodianess.com+when:7d&hl=en-US&gl=US&ceid=US:en
+    category_hint: internal_politics
+
+- id: thmeythmey_kh
+  name: "Thmey Thmey"
+  homepage: https://thmeythmey.com
+  language: km
+  scope: domestic
+  kind: media
+  governing_body: "Thmey Thmey Media"
+  state_affiliated: false
+  notes: "Prominent Khmer-language digital news portal in Phnom Penh covering national governance and economy."
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:thmeythmey.com+when:7d&hl=en-US&gl=US&ceid=US:en
+    category_hint: internal_politics
+
+- id: licadho_kh
+  name: "LICADHO (Cambodian League for Human Rights)"
+  homepage: https://www.licadho-cambodia.org
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: "LICADHO NGO"
+  state_affiliated: false
+  notes: "Leading independent Cambodian human rights organization documenting land disputes, labor rights, and judicial trials."
+  feeds:
+  - url: https://www.licadho-cambodia.org/rss.php
+    category_hint: society
+
+- id: cambodia_daily_kh
+  name: "The Cambodia Daily"
+  homepage: https://english.cambodiadaily.com
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: "Cambodia Daily Media (in exile)"
+  state_affiliated: false
+  notes: "Historic independent Cambodian newspaper operating from exile covering political opposition, governance, and rights."
+  feeds:
+  - url: https://english.cambodiadaily.com/feed/
+    category_hint: internal_politics
+
+- id: kamnotra_kh
+  name: "Kamnotra (Cambodia Data Journalism)"
+  homepage: https://kamnotra.io
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: "Kamnotra Investigative Collective"
+  state_affiliated: false
+  notes: "Independent Cambodian data journalism and public-record monitoring platform."
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:kamnotra.io+when:30d&hl=en-US&gl=US&ceid=US:en
+    category_hint: internal_politics

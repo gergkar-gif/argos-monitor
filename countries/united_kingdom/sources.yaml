@@ -187,3 +187,16 @@ sources:
     section: International Coverage
     category_hint: foreign_policy
     active: true
+
+- id: ft_uk
+  name: "Financial Times (UK)"
+  homepage: https://www.ft.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: "The Financial Times Ltd (Nikkei Inc.)"
+  state_affiliated: false
+  notes: "Authoritative London-based global financial and political broadsheet covering Whitehall, Bank of England, and trade."
+  feeds:
+  - url: https://www.ft.com/united-kingdom?format=rss
+    category_hint: economics

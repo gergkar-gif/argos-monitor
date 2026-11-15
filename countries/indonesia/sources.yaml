@@ -123,6 +123,18 @@ sources:
     feeds:
       - {url: "https://investor.id/rss/investor", section: Pasar Modal, category_hint: economics}
 
+  - id: tempo_id
+    name: Tempo.co (Indonesia)
+    homepage: https://www.tempo.co
+    language: id
+    scope: domestic
+    kind: media
+    governing_body: PT Tempo Inti Media Tbk
+    state_affiliated: false
+    notes: Indonesia's premier independent investigative news magazine and daily portal covering politics, anti-corruption, and law.
+    feeds:
+      - {url: "https://rss.tempo.co/nasional", section: Nasional, category_hint: internal_politics}
+
   - id: gnews_en_id
     name: Google News (Indonesia - English)
     homepage: https://news.google.com
@@ -152,3 +164,16 @@ sources:
       - {url: "https://news.google.com/rss/search?q=(Prabowo+OR+DPR+OR+Kabinet+OR+KPK)+when:1d&hl=id&gl=ID&ceid=ID:id", section: Politik Nasional, category_hint: internal_politics}
       - {url: "https://news.google.com/rss/search?q=(Bank+Indonesia+OR+rupiah+OR+hilirisasi+OR+Danantara+OR+APBN)+when:1d&hl=id&gl=ID&ceid=ID:id", section: Ekonomi & Hilirisasi, category_hint: economics}
       - {url: "https://news.google.com/rss/search?q=(site:tempo.co+OR+site:kompas.com+OR+site:thejakartapost.com)+Indonesia+when:1d&hl=id&gl=ID&ceid=ID:id", section: Tempo / Kompas / Jakarta Post, category_hint: general}
+
+  - id: thejakartapost_id
+    name: "The Jakarta Post"
+    homepage: https://www.thejakartapost.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "PT Bina Media Tenggara"
+    state_affiliated: false
+    notes: "Indonesia's premier English-language daily newspaper of record covering national politics, ASEAN diplomacy, and economy."
+    feeds:
+    - url: https://news.google.com/rss/search?q=site:thejakartapost.com+when:7d&hl=en-US&gl=US&ceid=US:en
+      category_hint: internal_politics

@@ -168,3 +168,16 @@ sources:
     feeds:
     - url: https://elgezit.kg/feed/
       category_hint: internal_politics
+
+  - id: kaktus_kg
+    name: "Kaktus.media (Kyrgyzstan)"
+    homepage: https://kaktus.media
+    language: ru
+    scope: domestic
+    kind: media
+    governing_body: "Kaktus Media Foundation (Dina Maslova)"
+    state_affiliated: false
+    notes: "Kyrgyzstan's most-read independent digital news daily covering Bishkek governance, judiciary, and economy."
+    feeds:
+    - url: https://news.google.com/rss/search?q=site:kaktus.media+when:7d&hl=ru&gl=KG&ceid=KG:ru
+      category_hint: internal_politics

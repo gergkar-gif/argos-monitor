@@ -204,3 +204,42 @@ sources:
   - url: https://news.google.com/rss/search?q=%E0%BA%A5%E0%BA%B2%E0%BA%A7+when:2d&hl=en-US&gl=US&ceid=US:en
     section: National News (Lao)
     category_hint: internal_politics
+
+- id: benarnews_la
+  name: "BenarNews (Mekong & Laos)"
+  homepage: https://www.benarnews.org
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: "BenarNews"
+  state_affiliated: false
+  notes: "Independent Asian regional news service covering Mekong hydropower, Belt and Road infrastructure, and Lao security."
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:benarnews.org+Laos+when:30d&hl=en-US&gl=US&ceid=US:en
+    category_hint: foreign_policy
+
+- id: stimulated_mekong_la
+  name: "Stimson Center (Mekong Dam Monitor)"
+  homepage: https://www.stimson.org
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: "Stimson Center Southeast Asia Program"
+  state_affiliated: false
+  notes: "Independent policy research institute tracking Mekong basin hydrology, Lao dam operations, and regional diplomacy."
+  feeds:
+  - url: https://www.stimson.org/feed/
+    category_hint: economics
+
+- id: iseas_fulcrum_la
+  name: "Fulcrum (ISEAS Southeast Asia Analysis)"
+  homepage: https://fulcrum.sg
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: "ISEAS - Yusof Ishak Institute"
+  state_affiliated: false
+  notes: "Authoritative Southeast Asian policy analysis journal covering Lao political economy, debt, and ASEAN affairs."
+  feeds:
+  - url: https://fulcrum.sg/feed/
+    category_hint: foreign_policy

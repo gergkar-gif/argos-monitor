@@ -206,3 +206,16 @@ sources:
     state_affiliated: false
     feeds:
       - {url: "https://news.google.com/rss/search?q=%22South+Korea%22+(missile+OR+defense+OR+military+OR+%22North+Korea%22)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Security, category_hint: defence_security}
+
+  - id: kyunghyang_kr
+    name: "Kyunghyang Shinmun"
+    homepage: https://english.khan.co.kr
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "Kyunghyang Shinmun Co. (employee-owned)"
+    state_affiliated: false
+    notes: "Major independent employee-owned Seoul daily broadsheet covering National Assembly politics, labor, and inter-Korean relations."
+    feeds:
+    - url: https://www.khan.co.kr/rss/rssdata/total_news.xml
+      category_hint: internal_politics

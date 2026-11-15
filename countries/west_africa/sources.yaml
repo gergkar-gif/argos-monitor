@@ -137,3 +137,315 @@ sources:
   feeds:
   - url: https://www.thepatrioticvanguard.com/spip.php?page=backend
     category_hint: general
+
+- id: seneweb_sn
+  name: Seneweb (Senegal)
+  homepage: https://www.seneweb.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Seneweb Media Group
+  state_affiliated: false
+  notes: Senegal's most-visited independent digital news portal covering National Assembly politics, judicial reforms, and ECOWAS.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:seneweb.com+when:7d&hl=fr&gl=SN&ceid=SN:fr
+    category_hint: internal_politics
+
+- id: sud_quotidien_sn
+  name: Sud Quotidien (Senegal)
+  homepage: https://www.sudquotidien.sn
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Groupe Sud Communication
+  state_affiliated: false
+  notes: Pioneering independent Dakar daily newspaper founded in 1993 covering Senegalese democracy, constitutional law, and economy.
+  feeds:
+  - url: https://www.sudquotidien.sn/feed/
+    category_hint: internal_politics
+
+- id: citinewsroom_gh
+  name: Citi Newsroom (Ghana)
+  homepage: https://citinewsroom.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Omni Media Limited (Accra)
+  state_affiliated: false
+  notes: Authoritative independent Ghanaian broadcast and digital newsroom covering parliamentary politics, debt restructuring, and governance.
+  feeds:
+  - url: https://citinewsroom.com/feed/
+    category_hint: internal_politics
+
+- id: ghanaweb_gh
+  name: GhanaWeb
+  homepage: https://www.ghanaweb.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: GhanaWeb B.V.
+  state_affiliated: false
+  notes: High-volume independent Ghanaian news portal covering national elections, fiscal policy, and West African regional security.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:ghanaweb.com+when:7d&hl=en-GH&gl=GH&ceid=GH:en
+    category_hint: internal_politics
+
+- id: graphic_gh
+  name: Graphic Online (Ghana)
+  homepage: https://www.graphic.com.gh
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Graphic Communications Group Ltd
+  state_affiliated: false
+  notes: Digital edition of the Daily Graphic, Ghana's paper of record covering executive policy, courts, and macroeconomic indicators.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:graphic.com.gh+when:7d&hl=en-GH&gl=GH&ceid=GH:en
+    category_hint: internal_politics
+
+- id: the_fourth_estate_gh
+  name: The Fourth Estate (Ghana)
+  homepage: https://thefourthestategh.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Media Foundation for West Africa (MFWA)
+  state_affiliated: false
+  notes: Non-profit public-interest investigative journalism project in Accra uncovering corruption, procurement, and environmental governance.
+  feeds:
+  - url: https://thefourthestategh.com/feed/
+    category_hint: internal_politics
+
+- id: abidjan_net_ci
+  name: Abidjan.net (Côte d'Ivoire)
+  homepage: https://news.abidjan.net
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Weblogy Group
+  state_affiliated: false
+  notes: Leading Ivorian digital news portal covering Abidjan politics, WAEMU monetary policy, cocoa trade, and regional diplomacy.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:news.abidjan.net+when:7d&hl=fr&gl=CI&ceid=CI:fr
+    category_hint: internal_politics
+
+- id: linfodrome_ci
+  name: L'Infodrome (Côte d'Ivoire)
+  homepage: https://www.linfodrome.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: L'Infodrome Media Abidjan
+  state_affiliated: false
+  notes: Independent Ivorian daily news portal covering political parties, electoral commission announcements, and security.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:linfodrome.com+when:7d&hl=fr&gl=CI&ceid=CI:fr
+    category_hint: internal_politics
+
+- id: koaci_ci
+  name: KOACI (Côte d'Ivoire)
+  homepage: https://www.koaci.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: KOACI Media
+  state_affiliated: false
+  notes: Prominent independent Abidjan-based West African news agency covering Ivorian politics and Sahelian security.
+  feeds:
+  - url: https://www.koaci.com/rss.xml
+    category_hint: internal_politics
+
+- id: connectionivoirienne_ci
+  name: Connection Ivoirienne
+  homepage: https://www.connectionivoirienne.net
+  language: fr
+  scope: abroad_local
+  kind: media
+  governing_body: Connection Ivoirienne Media
+  state_affiliated: false
+  notes: Independent Ivorian analytical and investigative news portal covering governance, justice, and human rights.
+  feeds:
+  - url: https://www.connectionivoirienne.net/feed
+    category_hint: internal_politics
+
+- id: 7info_ci
+  name: 7info (Côte d'Ivoire)
+  homepage: https://www.7info.ci
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: 7info Media Abidjan
+  state_affiliated: false
+  notes: Independent Ivorian multimedia newsroom covering economic policy, infrastructure, and national politics.
+  feeds:
+  - url: https://www.7info.ci/feed/
+    category_hint: internal_politics
+
+- id: malijet_ml
+  name: MaliJet (Mali)
+  homepage: https://malijet.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: MaliJet Media Bamako
+  state_affiliated: false
+  notes: Leading independent Malian news portal covering Bamako transitional governance, Alliance of Sahel States (AES), and security.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:malijet.com+when:7d&hl=fr&gl=SN&ceid=SN:fr
+    category_hint: internal_politics
+
+- id: maliweb_ml
+  name: Maliweb (Mali)
+  homepage: https://www.maliweb.net
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Maliweb Media Bamako
+  state_affiliated: false
+  notes: Pioneering Malian digital newspaper aggregating independent Bamako print press, political analysis, and security reporting.
+  feeds:
+  - url: https://www.maliweb.net/feed
+    category_hint: internal_politics
+
+- id: studio_tamani_ml
+  name: Studio Tamani (Mali)
+  homepage: https://www.studiotamani.org
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Fondation Hirondelle / URTEL
+  state_affiliated: false
+  notes: Independent public-interest radio and digital newsroom in Bamako providing verified reporting across Mali's regions.
+  feeds:
+  - url: https://www.studiotamani.org/feed
+    category_hint: internal_politics
+
+- id: journaldumali_ml
+  name: Journal du Mali
+  homepage: https://www.journaldumali.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Médias du Mali
+  state_affiliated: false
+  notes: Independent Bamako weekly and digital daily covering Malian politics, mining policy, and Sahelian diplomacy.
+  feeds:
+  - url: https://www.journaldumali.com/feed/
+    category_hint: internal_politics
+
+- id: abamako_ml
+  name: aBamako (Mali)
+  homepage: https://news.abamako.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Weblogy Mali
+  state_affiliated: false
+  notes: Independent Malian news portal covering domestic decrees, economic affairs, and regional security.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:news.abamako.com+when:7d&hl=fr&gl=SN&ceid=SN:fr
+    category_hint: internal_politics
+
+- id: burkina24_bf
+  name: Burkina 24
+  homepage: https://burkina24.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Burkina 24 Media
+  state_affiliated: false
+  notes: Leading independent Burkinabè digital daily covering Ouagadougou governance, counter-insurgency, and economy.
+  feeds:
+  - url: https://burkina24.com/feed/
+    category_hint: internal_politics
+
+- id: libreinfo_bf
+  name: Libre Info (Burkina Faso)
+  homepage: https://www.libreinfo.net
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Libre Info Media Ouagadougou
+  state_affiliated: false
+  notes: Independent Burkinabè investigative and current-affairs newspaper covering security, justice, and social policy.
+  feeds:
+  - url: https://www.libreinfo.net/feed/
+    category_hint: internal_politics
+
+- id: minute_bf
+  name: Minute.bf (Burkina Faso)
+  homepage: https://minute.bf
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Minute.bf Media
+  state_affiliated: false
+  notes: Continuous independent digital news portal in Ouagadougou covering national politics and Sahelian security operations.
+  feeds:
+  - url: https://minute.bf/feed/
+    category_hint: internal_politics
+
+- id: actuniger_ne
+  name: ActuNiger (Niger)
+  homepage: https://www.actuniger.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: ActuNiger Media Niamey
+  state_affiliated: false
+  notes: Premier independent Nigerien digital daily covering Niamey governance, uranium/oil sector policy, and Sahel security.
+  feeds:
+  - url: https://www.actuniger.com/feed/?format=rss
+    category_hint: internal_politics
+
+- id: nigerdiaspora_ne
+  name: Niger Diaspora
+  homepage: https://www.nigerdiaspora.net
+  language: fr
+  scope: abroad_local
+  kind: media
+  governing_body: Niger Diaspora Network
+  state_affiliated: false
+  notes: Independent Nigerien diaspora and domestic news portal covering political transitions, human rights, and regional diplomacy.
+  feeds:
+  - url: https://www.nigerdiaspora.net/index.php?format=feed&type=rss
+    category_hint: internal_politics
+
+- id: airinfo_agadez_ne
+  name: Aïr Info (Niger)
+  homepage: https://airinfoagadez.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Journal Aïr Info Agadez
+  state_affiliated: false
+  notes: Independent northern Niger newspaper founded in 2002 covering Sahelian border security, mining, and regional governance.
+  feeds:
+  - url: https://airinfoagadez.com/feed/
+    category_hint: defence_security
+
+- id: tamtaminfo_ne
+  name: TamTam Info (Niger)
+  homepage: https://www.tamtaminfo.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Groupe TamTam Info Niamey
+  state_affiliated: false
+  notes: Independent Nigerien news portal covering national politics, economy, and civic affairs.
+  feeds:
+  - url: https://www.tamtaminfo.com/feed/
+    category_hint: internal_politics
+
+- id: studio_kalangou_ne
+  name: Studio Kalangou (Niger)
+  homepage: https://www.studiokalangou.org
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Fondation Hirondelle Niger
+  state_affiliated: false
+  notes: Independent public-interest radio and digital news service in Niamey covering governance, humanitarian issues, and peacebuilding.
+  feeds:
+  - url: https://www.studiokalangou.org/feed
+    category_hint: internal_politics

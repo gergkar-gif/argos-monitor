@@ -191,3 +191,28 @@ sources:
     section: International Coverage
     category_hint: foreign_policy
     active: true
+- id: mtv_uutiset_fi
+  name: MTV Uutiset (Finland)
+  homepage: https://www.mtvuutiset.fi
+  language: fi
+  scope: domestic
+  kind: media
+  governing_body: MTV Oy (Schibsted Media)
+  state_affiliated: false
+  notes: Finland's leading commercial television and digital news network covering Eduskunta politics, defense, and economy.
+  feeds:
+  - url: https://api.mtvuutiset.fi/graphql/caas/v1/rss/uutiset
+    category_hint: internal_politics
+
+- id: aamulehti_fi
+  name: "Aamulehti"
+  homepage: https://www.aamulehti.fi
+  language: fi
+  scope: domestic
+  kind: media
+  governing_body: "Sanoma Media Finland"
+  state_affiliated: false
+  notes: "Finland's second-largest daily morning broadsheet newspaper covering national politics and economic policy."
+  feeds:
+  - url: https://www.aamulehti.fi/rss.xml
+    category_hint: internal_politics

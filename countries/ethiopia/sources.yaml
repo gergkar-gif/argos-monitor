@@ -149,3 +149,29 @@ sources:
     feeds:
       - url: https://wazemaradio.com/feed/
         category_hint: internal_politics
+
+  - id: borkena_et
+    name: Borkena (Ethiopia)
+    homepage: https://borkena.com
+    language: en
+    scope: abroad_local
+    kind: media
+    governing_body: "Borkena Media"
+    state_affiliated: false
+    notes: "Independent Ethiopian news and analysis portal covering regional conflict, federal politics, and Horn of Africa diplomacy."
+    feeds:
+      - url: https://borkena.com/feed/
+        category_hint: internal_politics
+
+  - id: addisstandard_et
+    name: "Addis Standard"
+    homepage: https://addisstandard.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: "JAKENN Publishing Plc"
+    state_affiliated: false
+    notes: "Ethiopia's leading independent English-language socio-political news publication covering federal governance and conflict."
+    feeds:
+    - url: https://addisstandard.com/feed/
+      category_hint: internal_politics

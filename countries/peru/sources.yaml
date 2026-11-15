@@ -151,3 +151,28 @@ sources:
   - url: https://news.google.com/rss/search?q=Per%C3%BA+OR+Lima+OR+Gobierno+when:2d&hl=es-419&gl=PE&ceid=PE:es-419
     section: National News (Spanish)
     category_hint: internal_politics
+- id: idl_reporteros_pe
+  name: IDL-Reporteros (Peru)
+  homepage: https://www.idl-reporteros.pe
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Instituto de Defensa Legal (Lima)
+  state_affiliated: false
+  notes: Premier non-profit Peruvian investigative journalism center uncovering judicial corruption, political finance, and human rights.
+  feeds:
+  - url: https://www.idl-reporteros.pe/feed/
+    category_hint: internal_politics
+
+- id: ojo_publico_pe
+  name: "OjoPúblico (Peru)"
+  homepage: https://ojo-publico.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: "Asociación OjoPúblico"
+  state_affiliated: false
+  notes: "Award-winning independent Peruvian investigative journalism outlet covering corruption, extractive industries, and democracy."
+  feeds:
+  - url: https://ojo-publico.com/rss.xml
+    category_hint: internal_politics

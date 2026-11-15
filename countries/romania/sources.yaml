@@ -147,3 +147,16 @@ sources:
   - url: https://news.google.com/rss/search?q=Rom%C3%A2nia+OR+Bucure%C8%99ti+OR+Guvern+when:2d&hl=ro&gl=RO&ceid=RO:ro
     section: National News (Romanian)
     category_hint: internal_politics
+
+- id: g4media_ro
+  name: "G4Media.ro"
+  homepage: https://www.g4media.ro
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: "G4Media Group"
+  state_affiliated: false
+  notes: "Leading non-profit independent Romanian investigative news portal covering government coalitions, justice, and EU affairs."
+  feeds:
+  - url: https://www.g4media.ro/feed
+    category_hint: internal_politics

@@ -181,3 +181,79 @@ sources:
     feeds:
     - url: https://donya-e-eqtesad.com/fa/rss
       category_hint: economics
+  - id: radiofarda_fa
+    name: Radio Farda
+    homepage: https://www.radiofarda.com
+    language: fa
+    scope: abroad_local
+    kind: media
+    governing_body: Radio Free Europe / Radio Liberty
+    state_affiliated: false
+    notes: Persian-language service of RFE/RL providing independent reporting on Iranian domestic politics, human rights, and economy.
+    feeds:
+    - url: https://www.radiofarda.com/api/zpoqie-kqp
+      category_hint: internal_politics
+  - id: entekhab_fa
+    name: Entekhab News (Iran)
+    homepage: https://www.entekhab.ir
+    language: fa
+    scope: domestic
+    kind: media
+    governing_body: Entekhab Media Group
+    state_affiliated: false
+    notes: Prominent reformist/moderate Iranian analytical news portal covering diplomatic negotiations, parliament, and macroeconomics.
+    feeds:
+    - url: https://www.entekhab.ir/fa/rss/allnews
+      category_hint: internal_politics
+
+  - id: radiozamaneh_fa
+    name: "Radio Zamaneh"
+    homepage: https://www.radiozamaneh.com
+    language: fa
+    scope: abroad_local
+    kind: media
+    governing_body: "Stichting Radio Zamaneh (Amsterdam)"
+    state_affiliated: false
+    notes: "Independent Amsterdam-based Persian media platform covering Iranian civil society, labor protests, and human rights."
+    feeds:
+    - url: https://www.radiozamaneh.com/feed/
+      category_hint: society
+
+  - id: iranfocus_en
+    name: "Iran Focus"
+    homepage: https://iranfocus.com
+    language: en
+    scope: abroad_local
+    kind: media
+    governing_body: "Iran Focus Media"
+    state_affiliated: false
+    notes: "Independent English-language news portal covering Iranian domestic unrest, sanctions, and regional security."
+    feeds:
+    - url: https://iranfocus.com/feed/
+      category_hint: internal_politics
+
+  - id: iranprimer_en
+    name: "The Iran Primer"
+    homepage: https://iranprimer.usip.org
+    language: en
+    scope: abroad_local
+    kind: media
+    governing_body: "United States Institute of Peace"
+    state_affiliated: false
+    notes: "Authoritative policy analysis portal tracking Iranian nuclear diplomacy, military doctrine, and factional politics."
+    feeds:
+    - url: https://iranprimer.usip.org/rss.xml
+      category_hint: foreign_policy
+
+  - id: asriran_fa
+    name: "Asr Iran"
+    homepage: https://www.asriran.com
+    language: fa
+    scope: domestic
+    kind: media
+    governing_body: "Asr Iran Media"
+    state_affiliated: false
+    notes: "Major independent moderate/pragmatist analytical news portal in Tehran covering domestic politics and foreign affairs."
+    feeds:
+    - url: https://www.asriran.com/fa/rss/allnews
+      category_hint: internal_politics

@@ -175,3 +175,29 @@ sources:
   - url: https://news.google.com/rss/search?q=%E4%B8%AD%E5%9B%BD+OR+%E5%8C%97%E4%BA%AC+OR+%E5%9B%BD%E5%8A%A1%E9%99%A2+when:2d&hl=zh-CN&gl=CN&ceid=CN:zh-Hans
     section: National News (Chinese)
     category_hint: internal_politics
+
+- id: chinadigitaltimes_cn
+  name: "China Digital Times"
+  homepage: https://chinadigitaltimes.net
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: "China Digital Times Inc. (Berkeley)"
+  state_affiliated: false
+  notes: "Independent bilingual media organization monitoring Chinese censorship, civil society, and domestic policy debates."
+  feeds:
+  - url: https://chinadigitaltimes.net/feed/
+    category_hint: internal_politics
+
+- id: initium_cn
+  name: "Initium Media (端傳媒)"
+  homepage: https://theinitium.com
+  language: zh
+  scope: abroad_local
+  kind: media
+  governing_body: "Initium Media (Singapore)"
+  state_affiliated: false
+  notes: "Award-winning independent Chinese-language investigative digital outlet covering mainland China, Hong Kong, and Taiwan."
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:theinitium.com+when:7d&hl=zh-TW&gl=TW&ceid=TW:zh-Hant
+    category_hint: internal_politics
