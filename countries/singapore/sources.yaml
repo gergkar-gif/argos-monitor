@@ -215,5 +215,5 @@ sources:
   state_affiliated: false
   notes: "Singapore-based regional policy and political economy journal covering Singaporean diplomacy and ASEAN affairs."
   feeds:
-  - url: https://fulcrum.sg/feed/
+  - url: https://fulcrum.sg/tag/singapore/feed/
     category_hint: foreign_policy

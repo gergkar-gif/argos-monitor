@@ -3,6 +3,7 @@ import json
 import re
 import sys
 import time
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
 
 if sys.stdout and hasattr(sys.stdout, "reconfigure"):
@@ -135,15 +136,24 @@ def ingest_feeds(db, country):
     known = _known_titles(db, country)
     # Direct feeds first and aggregators last, so a headline we already hold directly is not added a second time.
     feeds = sorted(feeds, key=lambda f: bool(by_id[f["source_id"]].get("aggregator")))
+    now_init = now()
+    active_feeds = [f for f in feeds if not (f["retry_after"] and f["retry_after"] > now_init)]
+
+    def _fetch_one(f):
+        etag = f["etag"] if "etag" in f.keys() else None
+        last_mod = f["last_modified"] if "last_modified" in f.keys() else None
+        return f["id"], get(f["url"], etag=etag, last_modified=last_mod, return_headers=True)
+
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        prefetched = dict(pool.map(_fetch_one, active_feeds))
+
     for feed in feeds:
         now_str = now()
-        if feed["retry_after"] and feed["retry_after"] > now_str:
+        if feed["id"] not in prefetched:
             print(f"  backoff {country[:4]} {feed['source_id']:15} (retry after {feed['retry_after']})")
             continue
 
-        etag = feed["etag"] if "etag" in feed.keys() else None
-        last_mod = feed["last_modified"] if "last_modified" in feed.keys() else None
-        code, body, headers = get(feed["url"], etag=etag, last_modified=last_mod, return_headers=True)
+        code, body, headers = prefetched[feed["id"]]
 
         if code == 304:
             # HTTP 304 Not Modified (Media Cloud conditional fetch)

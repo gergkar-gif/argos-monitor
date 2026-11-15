@@ -241,5 +241,5 @@ sources:
   state_affiliated: false
   notes: "Authoritative Southeast Asian policy analysis journal covering Lao political economy, debt, and ASEAN affairs."
   feeds:
-  - url: https://fulcrum.sg/feed/
+  - url: https://fulcrum.sg/tag/laos/feed/
     category_hint: foreign_policy

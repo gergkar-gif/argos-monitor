@@ -2,11 +2,19 @@ import sqlite3
 import unittest
 from unittest.mock import patch
 
-from argos import excerpts, extract, packs, ratings, reddit
+from argos import excerpts, extract, ingest, packs, ratings, reddit
 from argos.db import SCHEMA
 
 
 class TestPipelineGuards(unittest.TestCase):
+    def test_load_registry_has_no_duplicate_ids_or_feeds(self):
+        db = sqlite3.connect(":memory:")
+        db.row_factory = sqlite3.Row
+        db.executescript(SCHEMA)
+        ingest.load_registry(db)
+        feed_count = db.execute("SELECT COUNT(*) FROM feed WHERE active=1").fetchone()[0]
+        self.assertGreater(feed_count, 1000)
+
     def test_verify_detects_excerpt_mismatch(self):
         db = sqlite3.connect(":memory:")
         db.row_factory = sqlite3.Row

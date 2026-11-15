@@ -265,5 +265,5 @@ sources:
   state_affiliated: false
   notes: "Independent cross-border South Caucasus newsroom covering Baku politics, society, and regional peace talks."
   feeds:
-  - url: https://jam-news.net/feed/
+  - url: https://jam-news.net/category/azerbaijan/feed/
     category_hint: foreign_policy
