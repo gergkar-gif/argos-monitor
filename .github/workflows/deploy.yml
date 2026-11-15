@@ -3,7 +3,7 @@ name: Fast Site Deploy
 on:
   push:
     branches: [main]
-    paths: ["site/**", ".github/workflows/deploy.yml"]
+    paths: ["site/**", "argos/export.py", "themes.yaml", "countries/**/themes.yaml", ".github/workflows/deploy.yml"]
   workflow_dispatch:
 
 concurrency:

@@ -8,10 +8,11 @@ import math
 import re
 from collections import Counter, defaultdict
 from datetime import datetime, timedelta, timezone
+from functools import lru_cache
 
 import numpy as np
 
-from . import packs
+from . import packs, policy
 from .config import ROOT
 from .embed import DIM
 from .ingest import reconcile_ratings
@@ -123,6 +124,31 @@ def _prev_window_matches(db, cid, days, prev_start, curr_start):
         prev_cats[cat if cat in CATEGORIES else "other"] += 1
 
     return prev_by_sid, prev_cats
+
+
+@lru_cache(maxsize=None)
+def _strict_label_keywords(country):
+    if not country or country not in packs.pack_ids():
+        return {}
+    themes = packs.load(country)["themes"]["themes"]
+    return {t["label"]: t["keywords"] for t in themes if t["id"] in policy.STRICT_KEYWORD_THEMES}
+
+
+def _filter_strict_themes(country, raw_themes, core_rows):
+    by_label = _strict_label_keywords(country)
+    if not by_label or not raw_themes:
+        return raw_themes
+    texts = None
+    out = []
+    for label in raw_themes:
+        kws = by_label.get(label)
+        if kws is not None:
+            if texts is None:
+                texts = [((r["title"] or "").lower(), (r["lead"] or "").lower()) for r in core_rows]
+            if policy._keyword_share(texts, kws) < policy.KEYWORD_SHARE:
+                continue
+        out.append(label)
+    return out
 
 
 def _story(db, s, now_iso=None, days=None, prev_matches=None):
@@ -246,7 +272,7 @@ def _story(db, s, now_iso=None, days=None, prev_matches=None):
         "last_24h": sum(r["published_at"] >= cutoff_24h for r in dated),   # articles in the last day: new, growing or quiet
         "category": s["category"],
         "score": s["score"],
-        "themes": json.loads(s["themes"] or "[]"),         # why it ranks where it does (themes.yaml)
+        "themes": _filter_strict_themes(s["country"], json.loads(s["themes"] or "[]"), core_rows),         # why it ranks where it does (themes.yaml)
         "headline": {"title": rep["title"], "url": rep["url"], "source": rep["source"], "language": rep["language"], "en_title": en_title},
         "lead": lead_val,
         "first_seen": s["first_seen"],
