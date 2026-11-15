@@ -26,9 +26,9 @@ MAX_ARTICLES_LISTED = 12
 
 DISASTER_RULES = [
     ("Storm & Cyclone", r"\b(typhoon|cyclone|hurricane|tropical storm|tornado|gale|bão|siêu bão|áp thấp nhiệt đới|lốc xoáy|taufan|badai|bagyo|พายุ|မုန်တိုင်း|vihar|orkán|burza|tufão|ciclone|fırtına|kasırga)\b"),
-    ("Flood & Landslide", r"\b(flood|floods|flooding|flash flood|landslide|mudslide|inundation|lũ|lũ lụt|ngập lụt|ngập sâu|sạt lở|triều cường|banjir|longsor|baha|guho|น้ำท่วม|ดินถล่ม|ရေကြီး|árvíz|powódź|poplava|sel\b|heyelan|enchente|deslizamento)"),
-    ("Earthquake & Volcano", r"\b(earthquake|tremor|seismic|tsunami|volcano|volcanic|eruption|động đất|núi lửa|sóng thần|gempa|gunung berapi|lindol|bulkan|แผ่นดินไหว|ငလျင်|földrengés|trzęsienie ziemi|zemljotres|deprem|yanardağ|terremoto|zəlzələ)"),
-    ("Wildfire & Drought", r"\b(wildfire|forest fire|bushfire|drought|heatwave|cháy rừng|hạn hán|kebakaran hutan|kekeringan|ไฟป่า|ภัยแล้ง|erdőtűz|aszály|pożar lasu|suša|orman yangını|kuraklık|incêndio florestal|seca\b)"),
+    ("Flood & Landslide", r"\b(flood|floods|flooding|flash flood|landslide|mudslide|inundation|lũ|lũ lụt|ngập lụt|ngập sâu|sạt lở|triều cường|banjir|longsor|pagbaha|baha sa|guho|น้ำท่วม|ดินถล่ม|ရေကြီး|árvíz|powódź|poplava|sel|heyelan|enchente|deslizamento)\b"),
+    ("Earthquake & Volcano", r"\b(earthquake|tremor|seismic|tsunami|volcano|volcanic|eruption|động đất|núi lửa|sóng thần|gempa|gunung berapi|lindol|bulkan|แผ่นดินไหว|ငလျင်|földrengés|trzęsienie ziemi|zemljotres|deprem|yanardağ|terremoto|zəlzələ)\b"),
+    ("Wildfire & Drought", r"\b(wildfire|forest fire|bushfire|drought|heatwave|cháy rừng|hạn hán|kebakaran hutan|kekeringan|ไฟป่า|ภัยแล้ง|erdőtűz|aszály|pożar lasu|suša|orman yangını|kuraklık|incêndio florestal|seca)\b"),
 ]
 
 VIOLENCE_RULES = [

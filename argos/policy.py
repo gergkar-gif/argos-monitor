@@ -8,8 +8,8 @@ high themes; with only low themes (crime, weather, sport) it gets the lowest of 
 Tags are saved on the story so the page can show why it ranked where it did. No LLM is used.
 """
 import json
-
 import re
+import unicodedata
 
 import numpy as np
 
@@ -19,15 +19,27 @@ from .embed import DIM, Embedder
 KEYWORD_SHARE = 0.4   # headline-weighted share of a story's articles that must match a theme's keywords
 SIM_Z = 4.0           # similarity alone needs this many standard deviations above the window's average story
 ALWAYS = {"anticorruption", "security", "diplomacy", "elections", "unrest_conflict", "sectarian_conflict"}   # themes that stay even on a crime- or accident-flavoured story
+STRICT_KEYWORD_THEMES = {"elections", "unrest_conflict", "sectarian_conflict"}   # alert-banner themes require keyword evidence, never embedding z-score alone
+
+
+def _is_unspaced_script(term):
+    return any(any(unicodedata.name(ch, "").startswith(p) for p in ("CJK", "HIRAGANA", "KATAKANA", "THAI", "KHMER", "LAO")) for ch in term)
 
 
 def _matcher(keywords):
-    """Short plain-letter keywords ("nato", "gdp", "fdi") match whole words only, otherwise they hit the inside of
-    ordinary words ("Bocsánatot" contains "nato"). Longer keywords and stems ("ukrajn") match anywhere."""
-    short = [k for k in keywords if k.isascii() and k.replace(" ", "").replace("-", "").isalnum() and len(k) <= 5]
-    rest = [k for k in keywords if k not in short]
-    pattern_short = re.compile(r"(?<!\w)(?:" + "|".join(re.escape(k) for k in short) + r")(?!\w)") if short else None
-    return lambda text: (pattern_short is not None and bool(pattern_short.search(text))) or any(k in text for k in rest)
+    """Short keywords (<=7 chars) match whole words only; longer spaced-script terms anchor at word start (?<!\\w)
+    so 'elección' never hits 'selección' and 'scrutin' never hits 'scrutiny', while still matching inflected suffixes."""
+    unspaced = [k for k in keywords if _is_unspaced_script(k)]
+    spaced = [k for k in keywords if k not in unspaced]
+    whole = [k for k in spaced if len(k) <= 7]
+    prefix = [k for k in spaced if len(k) > 7]
+    parts = []
+    if whole:
+        parts.append(r"(?<!\w)(?:" + "|".join(re.escape(k) for k in whole) + r")(?!\w)")
+    if prefix:
+        parts.append(r"(?<!\w)(?:" + "|".join(re.escape(k) for k in prefix) + r")")
+    pat = re.compile("|".join(parts)) if parts else None
+    return lambda text: (pat is not None and bool(pat.search(text))) or any(k in text for k in unspaced)
 
 
 def _keyword_share(texts, keywords):
@@ -77,14 +89,16 @@ def _run_country(db, emb, country):
                 data.append((sid, None, None))
                 continue
             centre = np.frombuffer(b"".join(r["vec"] for r in rows), dtype=np.float32).reshape(len(rows), DIM).mean(0)
-            centre /= np.linalg.norm(centre)
             data.append((sid, [(r["title"].lower(), (r["lead"] or "").lower()) for r in rows], centre))
         sims = np.array([protos @ c if c is not None else np.zeros(len(themes)) for _, _, c in data])   # stories x themes
         z = (sims - sims.mean(0)) / (sims.std(0) + 1e-9)
 
         for i, (sid, texts, _) in enumerate(data):
             kw = {t["id"]: _keyword_share(texts, t["keywords"]) for t in themes}
-            tags = [t for j, t in enumerate(themes) if kw[t["id"]] >= KEYWORD_SHARE or z[i, j] >= SIM_Z]
+            tags = [
+                t for j, t in enumerate(themes)
+                if kw[t["id"]] >= KEYWORD_SHARE or (t["id"] not in STRICT_KEYWORD_THEMES and z[i, j] >= SIM_Z)
+            ]
             # A story that reads as an individual crime or accident only counts for themes that a crime story can
             # genuinely signal (the anti-corruption drive, security, diplomacy). A fraud warning is not an investment story.
             lowish = any(t.get("low") and kw[t["id"]] >= KEYWORD_SHARE for t in tags)

@@ -12,8 +12,8 @@ from .embed import DIM
 
 WINDOWS = (7, 1)     # days
 MAX_GAP_DAYS = 3
-MERGE_SIMILARITY = 0.92    # calibrated merge threshold: merges multi-outlet and cross-lingual variants of the same event
-RELATED_SIMILARITY = 0.90  # below the merge level: shown on the site as related coverage
+MERGE_SIMILARITY = 0.95    # calibrated centroid merge threshold: prevents multi-article cone-norm snowballing
+RELATED_SIMILARITY = 0.925 # below the merge level: shown on the site as related coverage
 SIMILARITY = 0.92          # core cluster (>93% calibrated); 85-93% and 75-85% bands attach around the core centre
 RAW_85 = 0.895             # e5-small raw cosine corresponding to 85% calibrated similarity
 RAW_75 = 0.860             # e5-small raw cosine corresponding to 75% calibrated similarity
@@ -31,8 +31,8 @@ def _time(row):
 
 def _merge(X, t, labels):
     """Second pass: join stories whose centres are very close (average linkage splits big events whose headlines vary).
-    Returns the new labels, the merges done and the remaining close pairs, as (similarity, label, label) with the first
-    article index of each side. Greedy, with the centre recomputed after every merge."""
+    Uses complete linkage on initial cluster centroids so re-normalising merged sums never inflates cone similarity
+    or chains distinct events into a mega-cluster."""
     ks = sorted(set(labels))
     lab = np.searchsorted(ks, labels)
     k = len(ks)
@@ -56,10 +56,9 @@ def _merge(X, t, labels):
         merges.append((float(S[i, j]), int(first[i]), int(first[j]), int((lab == i).sum()), int((lab == j).sum())))
         sums[i] += sums[j]; lo[i] = min(lo[i], lo[j]); hi[i] = max(hi[i], hi[j]); first[i] = min(first[i], first[j])
         lab[lab == j] = i
-        unit[i] = sums[i] / np.linalg.norm(sums[i])
+        row = np.minimum(S[i, :], S[j, :])
         S[j, :] = S[:, j] = -1.0
         far_i = np.maximum(hi, hi[i]) - np.minimum(lo, lo[i]) > MAX_GAP_DAYS * 86400
-        row = unit @ unit[i]
         row[far_i] = -1.0
         row[~np.isin(np.arange(k), lab)] = -1.0
         row[i] = -1.0
@@ -163,13 +162,14 @@ def _cluster_window(db, country, days, similarity):
     centres, los, his, sizes, reps = {}, {}, {}, {}, {}
     for l in core_labels:
         m = np.where(labels == l)[0]
-        c = X[m].mean(0); c /= np.linalg.norm(c)
+        c = X[m].mean(0)
         centres[l], los[l], his[l], sizes[l] = c, float(t[m].min()), float(t[m].max()), len(m)
-        reps[l] = _pick_representative(rows, X, m, c)
+        reps[l] = _pick_representative(rows, X, m, c / np.linalg.norm(c))
 
     # Absorb small (1-2 article) clusters or cross-lingual pickups (3-4 articles with international/abroad scope)
-    # whose centre sits in the 85-93% band (RAW_85 = 0.895) of a larger story within MAX_GAP_DAYS (decision D20).
+    # whose average cosine sits in the 85-93% band (RAW_85 = 0.895) of a larger story within MAX_GAP_DAYS (decision D20).
     absorbed = {}
+    abs_counts = {}
     for b in core_labels:
         b_indices = np.where(labels == b)[0]
         b_scopes = {rows[m]["scope"] for m in b_indices}
@@ -180,13 +180,16 @@ def _cluster_window(db, country, days, similarity):
         for a in core_labels:
             if a == b or a in absorbed or (sizes[a], -a) <= (sizes[b], -b):
                 continue
+            if abs_counts.get(a, 0) + sizes[b] > 6:
+                continue
             if max(his[a], his[b]) - min(los[a], los[b]) > MAX_GAP_DAYS * 86400:
                 continue
-            s = float(centres[a] @ centres[b])
+            s = max(float(centres[a] @ centres[b]), float(X[reps[a]] @ X[reps[b]]))
             if s >= best_s:
                 best_a, best_s = a, s
         if best_a is not None:
             absorbed[b] = best_a
+            abs_counts[best_a] = abs_counts.get(best_a, 0) + sizes[b]
 
     active_labels = [l for l in core_labels if l not in absorbed]
     # Close/Broader bands only borrow single-article stories, each placed in its closest story only,

@@ -4,7 +4,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from argos import export
+from argos import export, policy
 
 
 def _story(sid, category="internal_politics", score=5.0, outlets=3, last_24h=2, themes=None, delta=None):
@@ -65,6 +65,19 @@ class HomeExportTests(unittest.TestCase):
             self.assertEqual(desk["intl_pickups"], 1)
             self.assertEqual([s["id"] for s in home["elections"]], ["vote"])
             self.assertEqual(home["most_reported"][0]["id"], "vote")
+
+    def test_election_matcher_and_disaster_boundaries(self):
+        m = policy._matcher(["scrutin", "elección", "választás"])
+        self.assertFalse(m("govt mandates scrutiny of bids"))
+        self.assertFalse(m("jugar contra la selección de costa rica"))
+        self.assertFalse(m("a csapat kiválasztása"))
+        self.assertTrue(m("second tour du scrutin présidentiel"))
+        self.assertTrue(m("elección presidencial"))
+        self.assertTrue(m("országgyűlési választásokon"))
+
+        s_bahas = _story("id1")
+        s_bahas["headline"]["title"] = "Prabowo Kumpulkan Ketum Parpol, Bahas Pengganti Gibran"
+        self.assertIsNone(export._classify_disaster(s_bahas))
 
 
 if __name__ == "__main__":

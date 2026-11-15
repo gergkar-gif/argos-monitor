@@ -2,12 +2,7 @@ themes:
 - id: elections
   keywords:
   - nationalratswahl
-  - bundesrat
   - wahl
-  - stimmen
-  - kickl
-  - nehammer
-  - koalition
 - id: party_gov
   keywords:
   - nationalrat

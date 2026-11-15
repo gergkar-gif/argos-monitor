@@ -3,7 +3,7 @@
 themes:
   - id: elections
     describe: ["országgyűlési választás, önkormányzati választás, európai parlamenti választás, szavazás, kampány, jelölt, Nemzeti Választási Iroda, mandátum"]
-    keywords: ["választás", "választások", "országgyűlési választás", "önkormányzati választás", "időközi választás", "szavazás", "szavazatok", "voksolás", "nemzeti választási iroda", "nvi", "mandátum", "kampány", "képviselőjelölt"]
+    keywords: ["választás", "választások", "országgyűlési választás", "önkormányzati választás", "időközi választás", "szavazás", "szavazatok", "voksolás", "nemzeti választási iroda", "nvi", "választási kampány", "képviselőjelölt"]
   - id: diplomacy
     describe: ["állami látogatás, kétoldalú tárgyalás, diplomáciai kapcsolatok, nagykövet, külügyminiszter, Szijjártó Péter"]
     keywords: ["állami látogatás", "kétoldalú", "nagykövet", "külügyminiszter", "szijjártó", "csúcstalálkozó", "külügyminisztérium", "diplomáciai"]

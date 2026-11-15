@@ -2,9 +2,6 @@ themes:
 - id: elections
   keywords:
   - volksabstimmung
-  - ständerat
-  - nationalrat
-  - initiative
   - referendum
   - votations
 - id: party_gov

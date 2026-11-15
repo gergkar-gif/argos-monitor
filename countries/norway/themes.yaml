@@ -2,9 +2,7 @@ themes:
 - id: elections
   keywords:
   - stortingsvalg
-  - stemmer
   - valgkamp
-  - regjeringssonderinger
 - id: party_gov
   keywords:
   - stortinget

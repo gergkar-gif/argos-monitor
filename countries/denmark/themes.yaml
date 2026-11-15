@@ -2,10 +2,7 @@ themes:
 - id: elections
   keywords:
   - folketingsvalg
-  - stemmer
   - valg
-  - partileder
-  - regeringsdannelse
 - id: party_gov
   keywords:
   - folketinget

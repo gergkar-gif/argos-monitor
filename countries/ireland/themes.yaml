@@ -2,11 +2,8 @@ themes:
 - id: elections
   keywords:
   - general election
-  - dail eireann
-  - taoiseach
   - polling
   - constituency
-  - tanaiste
 - id: party_gov
   keywords:
   - simon harris

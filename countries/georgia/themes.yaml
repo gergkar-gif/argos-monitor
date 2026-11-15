@@ -1,7 +1,7 @@
 # Georgia's additions to the shared themes (../../themes.yaml).
 themes:
   - id: party_gov
-    label: Georgian Dream, Elections & Constitutional crisis
+    label: Georgian Dream & Constitutional crisis
     weight: 1.0
     category: internal_politics
     describe:

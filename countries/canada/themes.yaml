@@ -2,8 +2,8 @@
 # High-weight themes for foreign-affairs analysts and diplomatic observers.
 
 themes:
-  - id: federal_parliament_election_posture
-    label: "Parliamentary Fragility & Federal Election Posture"
+  - id: federal_parliament_posture
+    label: "Parliamentary Fragility & Minority Government"
     weight: 1.0
     keywords:
       - "justin trudeau"
