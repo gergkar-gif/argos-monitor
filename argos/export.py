@@ -390,9 +390,38 @@ def _pick_desk_lead(stories):
     return pool[0]
 
 
+def _cluster_country_elections(stories):
+    """Collapse a country's election stories into one lead cluster so one country's election
+    cannot fill multiple slots across the home briefing sections."""
+    elec = [s for s in stories if _is_election(s)]
+    if not elec:
+        return stories
+    non_elec = [s for s in stories if not _is_election(s)]
+    elec.sort(key=lambda s: (s["independent_sources"], s.get("score") or 0.0, s.get("last_24h") or 0), reverse=True)
+    lead = dict(elec[0])
+    if len(elec) > 1:
+        lead["election_cluster"] = {
+            "count": len(elec),
+            "stories": [
+                {
+                    "id": sub["id"],
+                    "title": sub["headline"]["title"],
+                    **({"en_title": sub["headline"]["en_title"]} if sub["headline"].get("en_title") else {}),
+                    "url": sub["headline"]["url"],
+                    "source": sub["headline"]["source"],
+                    "language": sub["headline"].get("language", "en"),
+                    "independent_sources": sub["independent_sources"],
+                    "articles": sub.get("articles", 1),
+                }
+                for sub in elec[1:6]
+            ],
+        }
+    return non_elec + [lead]
+
+
 def _home(now, countries):
     """Build a compact cross-country overview (site/data/home.json) so the front page stays fast at 100+ countries."""
-    pool, desks = [], []
+    pool, briefing_pool, desks = [], [], []
     for c in countries:
         cid = c["id"]
         reg = c.get("region", "Other")
@@ -403,6 +432,7 @@ def _home(now, countries):
         surging = 0
         elections_n = 0
         intl_pickups = 0
+        country_stories = []
         for s in d7["stories"]:
             if _is_low_sport_story(s):
                 continue
@@ -415,9 +445,13 @@ def _home(now, countries):
                 elections_n += 1
             if delta.get("scope_shift"):
                 intl_pickups += 1
-            pool.append({**s, "country": cid, "country_name": c["name"], "region": reg,
-                         "disaster_type": d_type, "violence_type": v_type,
-                         "excerpts": s.get("excerpts", [])[:1], "sources": s.get("sources", [])[:12]})
+            country_stories.append({
+                **s, "country": cid, "country_name": c["name"], "region": reg,
+                "disaster_type": d_type, "violence_type": v_type,
+                "excerpts": s.get("excerpts", [])[:1], "sources": s.get("sources", [])[:12],
+            })
+        pool.extend(country_stories)
+        briefing_pool.extend(_cluster_country_elections(country_stories))
         top = _pick_desk_lead(d7["stories"])
         desks.append({
             "id": cid, "name": c["name"], "region": reg,
@@ -431,12 +465,12 @@ def _home(now, countries):
                      "is_election": _is_election(top)} if top else None,
         })
     most = _top_global_and_regional(
-        pool, lambda s: (s.get("category") != "other", s["independent_sources"], s.get("score") or 0.0), 8)
+        briefing_pool, lambda s: (s.get("category") != "other", s["independent_sources"], s.get("score") or 0.0), 8)
     growing = _top_global_and_regional(
-        (s for s in pool if (s.get("last_24h") or 0) >= 2),
+        (s for s in briefing_pool if (s.get("last_24h") or 0) >= 2),
         lambda s: (s.get("category") != "other", s.get("last_24h") or 0, s.get("score") or 0.0), 6)
     elections = _top_global_and_regional(
-        (s for s in pool if _is_election(s)),
+        (s for s in briefing_pool if _is_election(s)),
         lambda s: (s["independent_sources"], s.get("score") or 0.0), 6, r_limit=4)
     disasters = _top_global_and_regional((s for s in pool if s.get("disaster_type")), lambda s: (s["independent_sources"], s.get("score") or 0.0), 12, r_limit=8)
     violent = _top_global_and_regional(

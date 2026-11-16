@@ -541,6 +541,7 @@
       })),
       h('div', { class: 'slipline' },
         s.country_name && h('button', { type: 'button', class: 'stamp country-tag', title: `Open ${s.country_name} monitor`, text: s.country_name, onclick: () => openCountry(s.country) }),
+        s.election_cluster && s.election_cluster.count > 1 && h('span', { class: 'stamp purple', text: `${s.election_cluster.count} election stories` }),
         s.disaster_type && h('span', { class: 'stamp teal', text: s.disaster_type }),
         s.violence_type && h('span', { class: 'stamp red', text: s.violence_type }),
         s.religious_traditions && s.religious_traditions.length > 0 && h('span', {
@@ -591,7 +592,8 @@
     ].filter(Boolean));
 
     const rest = s.sources || [];
-    if (rest.length) {
+    const elecCluster = s.election_cluster && s.election_cluster.stories && s.election_cluster.stories.length ? s.election_cluster : null;
+    if (rest.length || elecCluster) {
       const lateItems = [];
       const max = s.per_day && s.per_day.length ? Math.max(...s.per_day.map((d) => d[1])) : 1;
       const bands = [
@@ -628,8 +630,11 @@
             r.copy && h('span', { text: 'reprint, counted once' })));
       };
       const storyKey = s.id != null ? String(s.id) : null;
+      const sumText = elecCluster
+        ? `All ${s.articles} articles · +${elecCluster.count - 1} more election ${elecCluster.count - 1 === 1 ? 'story' : 'stories'}`
+        : `All ${s.articles} articles`;
       const details = h('details', { open: Boolean(storyKey && openStoryIds.has(storyKey)) },
-        h('summary', { text: `All ${s.articles} articles` }),
+        h('summary', { text: sumText }),
         s._secondaryMeta && s._secondaryMeta.length > 0 && h('p', { class: 'byline', text: `Signals: ${s._secondaryMeta.join(' · ')}` }),
         present.length > 1 && h('div', { class: 'cover', 'aria-label': 'Where the coverage comes from' },
           present.map(([id, label]) => h('span', null, h('b', { text: String(s.by_scope[id]) }), ` ${s.by_scope[id] === 1 ? 'article' : 'articles'} from ${label}`))),
@@ -645,6 +650,24 @@
           h('span', { text: `First seen in ${s.first.source}, ${fmtTime.format(new Date(s.first.at))}.` })),
         (s.related || []).length > 0 && h('p', { class: 'byline related' }, 'May be the same event: ', s.related.map((r) =>
           h('span', null, h('a', { href: safeUrl(r.url), target: '_blank', rel: 'noopener noreferrer', text: r.title }), ` (${plural(r.articles, 'article', 'articles')}, ${r.source}) `))),
+        elecCluster && h('div', { class: 'sim-band' },
+          h('p', { class: 'band-head' },
+            h('b', { text: `${s.country_name || 'Country'} election cluster` }),
+            ` (${elecCluster.count} stories · top ${elecCluster.stories.length} additional)`),
+          h('ul', { class: 'sources' }, elecCluster.stories.map((sub) => {
+            const subHasEn = Boolean(sub.en_title);
+            const subTitle = subHasEn ? sub.en_title : sub.title;
+            const subLang = subHasEn ? 'en' : (sub.language || 'en');
+            const a = h('a', { class: 't', href: safeUrl(sub.url), target: '_blank', rel: 'noopener noreferrer', lang: subLang, text: subTitle });
+            const o = h('span', { class: 'orig', hidden: !subHasEn, title: 'Original headline', text: subHasEn ? sub.title : '' });
+            if (!subHasEn) lateItems.push([a, sub.title, sub.language || 'en', o]);
+            return h('li', null, a, o,
+              h('span', { class: 'meta' },
+                h('span', { class: 'stamp indigo', text: sub.source }),
+                h('span', { text: plural(sub.independent_sources || 1, 'outlet', 'outlets') })));
+          })),
+          elecCluster.count - 1 > elecCluster.stories.length && s.country && h('p', { class: 'byline' },
+            h('button', { type: 'button', class: 'desk-link', text: `Open all ${elecCluster.count} election stories in ${s.country_name || s.country} →`, onclick: () => openCountry(s.country) }))),
         ...bands.map(([label, list]) => h('div', { class: 'sim-band' },
           h('p', { class: 'band-head' }, h('b', { text: label }), ` (${list.length})`),
           h('ul', { class: 'sources' }, list.map(renderItem)))),
@@ -698,6 +721,7 @@
     s.headline && s.headline.en_title ? s.headline.en_title : '',
     trText(s.headline.title),
     ...(s.sources || []).map((r) => `${trText(r.title)} ${r.source}`),
+    ...(s.election_cluster && s.election_cluster.stories || []).map((r) => `${r.en_title || ''} ${trText(r.title)} ${r.source}`),
     ...(s.excerpts || []).map((x) => trText(x.text)),
   ].join(' '));
   const matchStory = (s, q) => storyText(s).includes(fold(q));

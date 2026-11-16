@@ -139,6 +139,51 @@ class HomeExportTests(unittest.TestCase):
             self.assertEqual([s["id"] for s in home["growing"]], ["real1"])
             self.assertEqual(home["desks"][0]["lead"]["title"], "Headline real1")
 
+    def test_home_clusters_elections_per_country_without_flooding_sections(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            data_dir = Path(tmp)
+            spain_elec = [
+                _story(f"es_e{i}", category="internal_politics", score=20.0 - i, outlets=8 - i, last_24h=5,
+                       themes=["Elections and political campaigns"])
+                for i in range(7)
+            ]
+            spain_elec[2]["headline"]["title"] = "Bombing and riot at campaign rally"
+            spain_non_elec = _story("es_econ", category="economy", score=12.0, outlets=6, last_24h=4, themes=["Economy"])
+            malaysia_elec = _story("my_e0", category="internal_politics", score=11.0, outlets=4, last_24h=3,
+                                   themes=["Elections and political campaigns"])
+            (data_dir / "spain-7d.json").write_text(
+                json.dumps({"totals": {"internal_politics": 7, "economy": 1}, "stories": spain_elec + [spain_non_elec]}),
+                encoding="utf8",
+            )
+            (data_dir / "spain-24h.json").write_text(json.dumps({"totals": {}, "stories": []}), encoding="utf8")
+            (data_dir / "malaysia-7d.json").write_text(
+                json.dumps({"totals": {"internal_politics": 1}, "stories": [malaysia_elec]}),
+                encoding="utf8",
+            )
+            (data_dir / "malaysia-24h.json").write_text(json.dumps({"totals": {}, "stories": []}), encoding="utf8")
+
+            with patch.object(export, "SITE_DATA", data_dir):
+                home = export._home("2026-11-16T00:00:00+00:00", [
+                    {"id": "spain", "name": "Spain", "region": "Western Europe"},
+                    {"id": "malaysia", "name": "Malaysia", "region": "Southeast Asia"},
+                ])
+
+            # One clustered election card per country; extra Spanish election stories stay inside election_cluster
+            self.assertEqual([s["id"] for s in home["elections"]], ["es_e0", "my_e0"])
+            cluster = home["elections"][0]["election_cluster"]
+            self.assertEqual(cluster["count"], 7)
+            self.assertEqual([sub["id"] for sub in cluster["stories"]], ["es_e1", "es_e2", "es_e3", "es_e4", "es_e5"])
+            self.assertNotIn("election_cluster", home["elections"][1])
+
+            # Overflow Spanish election stories must not flood growing or most_reported, while non-election stories stay
+            self.assertEqual([s["id"] for s in home["growing"]], ["es_e0", "es_econ", "my_e0"])
+            self.assertEqual([s["id"] for s in home["most_reported"]], ["es_e0", "es_econ", "my_e0"])
+
+            # Directory count and violence monitor still see all underlying stories
+            spain_desk = next(d for d in home["desks"] if d["id"] == "spain")
+            self.assertEqual(spain_desk["elections"], 7)
+            self.assertEqual([s["id"] for s in home["violent_events"]], ["es_e2"])
+
 
 if __name__ == "__main__":
     unittest.main()
