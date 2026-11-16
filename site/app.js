@@ -1970,13 +1970,14 @@
     if ($('#nav-alerts')) $('#nav-alerts').setAttribute('aria-current', activeTab === 'alerts' ? 'page' : 'false');
     if ($('#nav-disasters')) $('#nav-disasters').setAttribute('aria-current', activeTab === 'disasters' ? 'page' : 'false');
     if ($('#nav-violence')) $('#nav-violence').setAttribute('aria-current', activeTab === 'violence' ? 'page' : 'false');
-    if ($('#brief')) {
+    const briefLink = $('#nav-brief') || $('#brief');
+    if (briefLink) {
       if (activeTab === 'home' || activeTab === 'relations') {
-        $('#brief').href = 'brief.html';
+        briefLink.href = 'brief.html';
       } else if (activeTab === 'alerts' || activeTab === 'disasters' || activeTab === 'violence') {
-        $('#brief').href = monitorCountry !== 'all' ? `brief.html#${monitorCountry}` : 'brief.html';
+        briefLink.href = monitorCountry !== 'all' ? `brief.html#${monitorCountry}` : 'brief.html';
       } else {
-        $('#brief').href = `brief.html#${country.value}`;
+        briefLink.href = `brief.html#${country.value}`;
       }
     }
     if (activeTab === 'home') {

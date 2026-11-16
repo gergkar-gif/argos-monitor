@@ -42,7 +42,7 @@
 
 <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png">
 <link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="style.css?v=3.8">
+<link rel="stylesheet" href="style.css?v=4.1">
 <style>
   .doc { max-width: 68rem; margin: 0 auto; padding: 2rem 1.5rem 4rem; display: grid; grid-template-columns: minmax(0, 1fr); gap: 2.25rem; overflow-wrap: anywhere; }
   @media (max-width: 45.99rem) { .doc { padding: 1.25rem 1rem 3rem; gap: 1.75rem; } }
@@ -52,22 +52,22 @@
   .colophon { border-left: 1px solid var(--rule); padding-left: 1.5rem; display: grid; gap: 1rem; }
   @media (max-width: 52rem) { .colophon { border-left: 0; border-top: 1px solid var(--rule); padding-left: 0; padding-top: 1.25rem; } }
   .facts { margin: 0; display: grid; gap: 0.45rem; }
-  .facts div { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding-bottom: 0.45rem; border-bottom: 1px dotted var(--rule); font-size: 0.88rem; }
+  .facts div { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding-bottom: 0.45rem; border-bottom: 1px dotted var(--rule); font-size: var(--fs-sm); }
   .facts dt { color: var(--ink-3); }
   .facts dd { margin: 0; font-weight: 700; color: var(--ink); text-align: right; }
-  .author-note { font-size: 0.88rem; line-height: 1.55; color: var(--ink-2); }
+  .author-note { font-size: var(--fs-sm); line-height: 1.55; color: var(--ink-2); }
   .doc details.fold { border-top: 1px solid var(--rule); }
   .doc details.fold:last-of-type { border-bottom: 1px solid var(--rule); }
-  .doc details.fold > summary { padding: 0.75rem 0.15rem; font: 700 0.88rem/1.3 var(--sans); color: var(--ink); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; }
-  .doc details.fold > summary:hover { color: var(--red); }
+  .doc details.fold > summary { padding: 0.75rem 0.15rem; font: 700 var(--fs-sm)/1.4 var(--sans); color: var(--ink); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; text-transform: none; letter-spacing: 0; }
+  .doc details.fold > summary:hover { color: var(--indigo); }
   .doc details.fold > summary::-webkit-details-marker { display: none; }
   .doc details.fold > summary::after { content: "+"; font-weight: 700; color: var(--ink-3); flex-shrink: 0; }
   .doc details.fold[open] > summary::after { content: "−"; }
   .doc details.fold .fold-body { padding: 0.25rem 0 1.25rem; }
   .desk-index { margin: 0; display: grid; gap: 0.9rem; }
-  .desk-index dt { font: 700 0.72rem/1.2 var(--sans); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 0.35rem; }
+  .desk-index dt { font: 700 var(--fs-xs)/1.35 var(--sans); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 0.35rem; }
   .desk-index dd { margin: 0; display: flex; flex-wrap: wrap; gap: 0.35rem; }
-  .desk-pick { padding: 0.35rem 0.6rem; font: 600 0.82rem/1.2 var(--sans); color: var(--ink); background: #fff; border: 1px solid var(--rule); cursor: pointer; }
+  .desk-pick { padding: 0.35rem 0.6rem; font: 600 var(--fs-sm)/1.35 var(--sans); color: var(--ink); background: var(--bg); border: 1px solid var(--rule); cursor: pointer; }
   .desk-pick:hover { border-color: var(--ink); }
   .desk-pick .n { margin-left: 0.35rem; font-weight: 400; color: var(--ink-3); }
   @media (min-width: 46rem) { .desk-index > div { display: grid; grid-template-columns: 13rem 1fr; align-items: baseline; } }
@@ -76,25 +76,25 @@
     .desk-pick { padding: 0.6rem 0.75rem; }
     .doc .slip { grid-template-columns: minmax(0, 1fr); }
     .doc .slip .field { grid-column: 1 / -1 !important; }
-    .about-toc { display: block; border: 1px solid var(--rule); padding: 0.65rem 0.9rem; background: #fbfaf8; }
-    .about-toc summary { font: 700 0.76rem/1.2 var(--sans); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); }
+    .about-toc { display: block; border: 1px solid var(--rule); padding: 0.65rem 0.9rem; background: var(--surface-warm); }
+    .about-toc summary { font: 700 var(--fs-xs)/1.35 var(--sans); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); }
     .about-toc ul { margin: 0.5rem 0 0; padding: 0; list-style: none; display: grid; gap: 0.35rem; }
-    .about-toc a { display: block; padding: 0.35rem 0; font: 600 0.88rem/1.3 var(--sans); text-decoration: none; color: var(--indigo); }
+    .about-toc a { display: block; padding: 0.35rem 0; font: 600 var(--fs-sm)/1.35 var(--sans); text-decoration: none; color: var(--indigo); }
   }
-  .doc h2 { font: 700 0.9rem/1.2 var(--sans); letter-spacing: 0.06em; text-transform: uppercase; padding-bottom: 0.4rem; border-bottom: 1px solid var(--ink); margin-bottom: 0.85rem; }
+  .doc h2 { font-family: var(--sans); font-weight: 700; font-size: var(--fs-xl); line-height: 1.3; letter-spacing: -0.01em; color: var(--ink); padding-bottom: 0.45rem; border-bottom: 1px solid var(--ink); margin-bottom: 0.85rem; }
   .doc p, .doc li { max-width: 65ch; line-height: 1.65; color: var(--ink-2); }
   .doc strong { color: var(--ink); }
   .doc ul, .doc ol { margin: 0.4rem 0 0; padding-left: 1.3rem; display: grid; gap: 0.55rem; }
   .pipeline { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.15rem 2rem; margin-top: 0.9rem; }
   @media (max-width: 38rem) { .pipeline { grid-template-columns: 1fr; } }
-  .step { border-left: 4px solid var(--bar); padding: 0.1rem 0 0.1rem 0.9rem; display: grid; gap: 0.2rem; align-content: start; }
-  .step b { font: 700 0.85rem/1.2 var(--sans); color: var(--ink); }
-  .step span { font-size: 0.88rem; line-height: 1.45; color: var(--ink-2); }
+  .step { border-left: 4px solid var(--bar); padding: 0.1rem 0 0.1rem 0.9rem; display: grid; gap: 0.25rem; align-content: start; }
+  .step b { font: 700 var(--fs-sm)/1.35 var(--sans); color: var(--ink); }
+  .step span { font-size: var(--fs-sm); line-height: 1.5; color: var(--ink-2); }
   .step-tags { display: grid; gap: 0.35rem; margin-top: 0.45rem; padding-top: 0.45rem; border-top: 1px dotted var(--rule); }
   .step-tag-row { display: flex; align-items: baseline; gap: 0.55rem; }
   .step-tag-row .stamp { flex-shrink: 0; }
-  .step-tag-row span { font-size: 0.82rem; line-height: 1.35; color: var(--ink-2); }
-  code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.85em; background: #f3f4f6; padding: 0.1em 0.3em; border-radius: 2px; }
+  .step-tag-row span { font-size: var(--fs-sm); line-height: 1.4; color: var(--ink-2); }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.85em; background: var(--surface-warm); padding: 0.1em 0.3em; border: 1px solid var(--rule-soft); border-radius: 2px; }
 </style>
 </head>
 <body>
@@ -113,6 +113,7 @@
         <a href="index.html#alerts" id="nav-alerts">Alerts <span id="alert-count" class="n"></span></a>
         <a href="index.html#disasters" id="nav-disasters">Disasters</a>
         <a href="index.html#violence" id="nav-violence">Conflict &amp; Security</a>
+        <a href="brief.html">Top Reported</a>
         <a href="about.html" aria-current="page">About</a>
       </nav>
     </div>
@@ -142,6 +143,7 @@
           <div><dt>Languages</dt><dd>10 offline MarianMT + browser</dd></div>
         </dl>
         <p class="author-note">Built by <strong>Károly Gergely</strong> in Python, SQLite, ONNX Runtime, and vanilla JS, automated on GitHub Actions and served on Cloudflare Pages. <a href="https://github.com/gergkar-gif/argos-monitor" target="_blank" rel="noopener noreferrer">Source on GitHub (MIT)</a>.</p>
+        <p class="fine" style="margin-top:0"><a href="#sources">Browse all 87 country desks &amp; 1,449 outlets &rarr;</a></p>
       </aside>
     </div>
   </section>
@@ -278,7 +280,7 @@
             <span>Tags stories only when a confessional identity or sacred site co-occurs with active violence or coercion (Judaism, Christianity, Islam, Other Faiths &amp; Sacred Sites).</span>
             <div class="step-tags">
               <div class="step-tag-row">
-                <span class="stamp stamp-sectarian">Religious sensitivity: tradition</span>
+                <span class="stamp stamp-sectarian">Religious sensitivity</span>
                 <span>Linked directly to verifiable verbatim quotes</span>
               </div>
             </div>
@@ -713,14 +715,6 @@
 })();
 </script>
 <script src="data/crisis.js"></script>
-<script>
-  if (window.ARGOS_CRISIS && window.ARGOS_CRISIS.countries) {
-    let n = 0;
-    Object.values(window.ARGOS_CRISIS.countries).forEach(function(l) { n += l.length; });
-    const el = document.getElementById('alert-count');
-    if (el && n) el.textContent = '[' + n + ']';
-  }
-</script>
 <script src="nav.js"></script>
 </body>
 </html>

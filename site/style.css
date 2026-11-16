@@ -73,7 +73,7 @@ h1, h2, h3, p { margin: 0; }
 .topnav {
   width: 100%;
   display: flex; justify-content: center; flex-wrap: nowrap; overflow-x: auto;
-  gap: 2.25rem; align-items: center;
+  gap: clamp(1rem, 2.2vw, 1.85rem); align-items: center;
   margin-top: 0.35rem; padding: 0.65rem 0;
   border-top: 1px solid var(--rule);
   border-bottom: 1px solid var(--ink);
@@ -172,8 +172,8 @@ select:disabled { opacity: 0.35; cursor: not-allowed; }
   max-height: 22rem;
   overflow-y: auto;
   background: var(--bg);
-  border: 1px solid var(--rule);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border: 1px solid var(--ink);
+  box-shadow: 0 4px 10px rgba(17, 24, 39, 0.08);
   z-index: 120;
   border-radius: 0 0 2px 2px;
   display: flex;
@@ -266,6 +266,7 @@ select:disabled { opacity: 0.35; cursor: not-allowed; }
 @media (min-width: 46rem) {
   .slip { grid-template-columns: minmax(13.5rem, 1.4fr) minmax(7rem, 0.8fr) minmax(8rem, 1fr) minmax(10rem, 1.6fr); align-items: center; gap: 1.5rem; }
   .slip.slip-home { grid-template-columns: minmax(14rem, 1fr) minmax(16rem, 1.4fr); }
+  .slip.slip-brief { grid-template-columns: minmax(14rem, 1.4fr) minmax(8.5rem, 1fr) minmax(7.5rem, 0.8fr); }
 }
 
 /* ---- Main Canvas ---- */
@@ -393,19 +394,15 @@ main { max-width: 68rem; margin: 0 auto; padding: 1.35rem 1.5rem 5rem; outline: 
   padding: 0.35rem 0.65rem 0.35rem 1.25rem;
   display: flex; flex-direction: column; gap: 0.55rem;
   min-width: 0; overflow-wrap: anywhere;
-  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-left-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  transition: border-left-color 0.18s ease, background 0.18s ease;
 }
 .lead { border-left-width: 6px; padding-left: 1.5rem; }
 
-/* hover-only: on touch screens a tap would otherwise leave the card shifted sideways */
 @media (hover: hover) {
   .clip:hover,
   .clip:focus-within {
-    transform: translateX(5px);
     border-left-color: var(--indigo);
-    background: rgba(30, 58, 138, 0.02);
-    border-radius: 0 4px 4px 0;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.025);
+    background: rgba(30, 58, 138, 0.025);
   }
   .clip:hover .headline a,
   .clip:focus-within .headline a {
@@ -415,8 +412,6 @@ main { max-width: 68rem; margin: 0 auto; padding: 1.35rem 1.5rem 5rem; outline: 
 
 @media (prefers-reduced-motion: reduce) {
   .clip { transition: none; }
-  .clip:hover,
-  .clip:focus-within { transform: none; }
 }
 
 .headline {
