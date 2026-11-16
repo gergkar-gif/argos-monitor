@@ -3,7 +3,7 @@ name: Fast Site Deploy
 on:
   push:
     branches: [main]
-    paths: ["site/**", "argos/export.py", "themes.yaml", "countries/**/themes.yaml", ".github/workflows/deploy.yml"]
+    paths: ["site/**", "argos/export.py", "argos/crisis.py", "themes.yaml", "countries/**/themes.yaml", ".github/workflows/deploy.yml", ".github/workflows/alerts.yml"]
   workflow_dispatch:
 
 concurrency:
@@ -49,9 +49,17 @@ jobs:
           if [ -f .argos-data/argos.db ] || [ ! -f site/data/index.json ]; then
             python run.py export watch || true
           fi
-          if [ ! -f site/data/crisis.json ]; then
-            python run.py crisis trends social || true
+          python run.py crisis || true
+          if [ ! -f site/data/trends.json ]; then
+            python run.py trends social || true
           fi
+
+      - name: Save updated site data cache
+        uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: site/data
+          key: site-data-${{ github.run_id }}
 
       # Fast publish directly to Cloudflare Pages
       - name: Publish to Cloudflare Pages
