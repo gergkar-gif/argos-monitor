@@ -83,15 +83,14 @@
 
   const country = $('#country'), countrySearch = $('#country-search'), countryMenu = $('#country-menu'), countryArrow = $('#country-arrow');
   const period = $('#period'), topic = $('#topic'), results = $('#results'), qInput = $('#q'), qClear = $('#q-clear');
-  const HOME_DESKS_LIMIT = 15;
   let current = null;   // the loaded data file
+  let homeView = 'briefing';   // 'briefing' | 'directory'
   let openTopic = 'all';
   let openRegion = 'all';
   let deskSort = 'attention';
   let deskFilter = '';
   let openSubType = 'all';
   let movementFilter = 'all';
-  let showAllDesks = false;
   let extra = {};   // extra stories revealed per topic in the overview ("Show more")
   const openStoryIds = new Set();
   const GLOBAL_VIEWS = new Set(['home', 'alerts', 'disasters', 'violence', 'relations']);
@@ -281,7 +280,7 @@
   let activeTab = 'home';
   const hashFor = (t) => {
     const qPart = $('#q').value.trim() ? `/${encodeURIComponent($('#q').value.trim())}` : '';
-    if (activeTab === 'home') return `#home${qPart ? '//' + qPart.slice(1) : ''}`;
+    if (activeTab === 'home') return homeView === 'directory' ? `#home/directory${qPart}` : `#home${qPart ? '//' + qPart.slice(1) : ''}`;
     if (activeTab === 'relations') return `#relations/${selectedCountries.join(',')}/${relPeriod}`;
     if (activeTab === 'alerts' || activeTab === 'disasters' || activeTab === 'violence') {
       const c = monitorCountry !== 'all' ? monitorCountry : 'all';
@@ -323,7 +322,13 @@
       activeTab = 'home';
       country.value = 'all';
       syncCountryInput('all');
-      try { $('#q').value = p ? decodeURIComponent(p) : ''; } catch {}
+      if (p === 'directory') {
+        homeView = 'directory';
+        try { $('#q').value = t ? decodeURIComponent(t) : ''; } catch {}
+      } else {
+        homeView = 'briefing';
+        try { $('#q').value = t ? decodeURIComponent(t) : (p ? decodeURIComponent(p) : ''); } catch {}
+      }
     } else {
       activeTab = 'country';
       const cid = c === 'country' ? (lastCountry || index.countries[0].id) : (index.countries.some((x) => x.id === c) ? c : index.countries[0].id);
@@ -482,6 +487,7 @@
   function openCountry(cid) {
     if (cid === 'home') {
       activeTab = 'home';
+      homeView = 'briefing';
       syncCountryInput('all');
     } else if (cid === 'alerts' || cid === 'disasters' || cid === 'violence') {
       activeTab = cid;
@@ -1598,8 +1604,11 @@
     const has24hAlerts = allAlerts.some((i) => i.date && new Date(i.date).getTime() >= cut24);
     const leadAlert = allAlerts[0];
     const dirSortLabels = [['attention', 'Attention'], ['24h', '24h'], ['7d', '7d'], ['az', 'A–Z']];
-    const isDefaultDir = openRegion === 'all' && !q;
-    const shownDesks = (isDefaultDir && !showAllDesks) ? desks.slice(0, HOME_DESKS_LIMIT) : desks;
+    const switchHomeView = (view) => {
+      homeView = view;
+      setHash(hashFor('all'));
+      renderHome();
+    };
     const homeRefreshBtn = h('button', {
       type: 'button',
       class: 'desk-link',
@@ -1617,95 +1626,132 @@
     const electionsList = takeUnique(hm.elections, 4);
     const growingList = takeUnique(hm.growing, 6);
     const mostReportedList = takeUnique(hm.most_reported, openRegion === 'all' ? 6 : 4);
-    const noSearchMatches = Boolean(q) && desks.length === 0 && !electionsList.length && !growingList.length && !mostReportedList.length;
+    const noBriefingMatches = Boolean(q) && desks.length === 0 && !electionsList.length && !growingList.length && !mostReportedList.length;
+    const noDirMatches = Boolean(q) && desks.length === 0;
 
-    results.replaceChildren(...[
-      pinnedBar(),
-      watchbar(q, pool),
-      allAlerts.length > 0 && h('section', { class: 'crisis-strip crisis-inline', 'aria-labelledby': 'home-alerts-heading' },
-        h('div', { class: 'crisis-lead' },
-          h('h2', { id: 'home-alerts-heading', class: 'crisis-heading', text: `${has24hAlerts ? 'Last 24h alerts' : 'Latest alerts (none in last 24h)'} · ${allAlerts.length}` }),
-          leadAlert && h('span', { class: 'crisis-top-inline' },
-            h('button', { type: 'button', class: 'desk-link', text: leadAlert.cname, onclick: () => openCountry(leadAlert.cid) }),
-            ` — `,
-            h('a', { href: safeUrl(leadAlert.url), target: '_blank', rel: 'noopener noreferrer', text: leadAlert.title }))),
-        h('div', { class: 'crisis-actions' },
-          homeRefreshBtn,
-          h('button', { type: 'button', class: 'desk-link', text: `All ${allAlerts.length} →`, onclick: () => openCountry('alerts') }))),
-      noSearchMatches && h('div', { class: 'empty-state' },
-        h('span', { text: `No countries or stories match "${$('#q').value.trim()}".` }),
-        h('button', { type: 'button', class: 'more', text: 'Clear search', onclick: clearSearch })),
-      desks.length > 0 && h('section', { class: 'drawer' },
-        h('div', { class: 'home-head' },
-          h('h2', { text: openRegion === 'all'
-            ? (shownDesks.length < desks.length ? `Monitored countries · top ${shownDesks.length} of ${desks.length}` : `Monitored countries · ${desks.length}`)
-            : `${openRegion} · ${plural(desks.length, 'country', 'countries')}` }),
-          h('span', { class: 'meta' },
-            `Updated ${fmtUpdated(hm.generated_at)}`,
-            q && [' · ', h('button', { type: 'button', class: 'desk-link', text: 'Clear search', onclick: clearSearch })])),
-        h('div', { class: 'desk-controls' },
-          h('div', { class: 'desk-filters' },
-            regionOpts.length > 2 && h('label', { class: 'desk-region' },
-              h('span', { text: 'Region' }),
-              h('select', {
-                'aria-label': 'Filter by region',
-                onchange: (e) => { openRegion = e.target.value; renderHome(); }
-              }, regionOpts.map(([id, label, n]) => h('option', {
-                value: id,
-                selected: openRegion === id,
-                text: `${label} (${n})`
-              })))),
-            h('div', { class: 'desk-sorts', role: 'group', 'aria-label': 'Sort countries' },
-              h('span', { class: 'meta', text: 'Sort:' }),
-              dirSortLabels.map(([id, label]) => h('button', {
-                type: 'button',
-                class: 'agenda-filter-btn' + (deskSort === id ? ' active' : ''),
-                text: label,
-                onclick: () => { deskSort = id; renderHome(); }
-              })))),
-          h('details', { class: 'dir-legend' },
-            h('summary', { text: 'How to read' }),
-            h('p', { text: 'Ranked by active alerts, elections, and surging coverage. Select any country for its full brief. 24h / 7d count grouped stories, not raw reprints.' }))),
-        h('div', { class: 'desk-wrap' },
-          h('table', { class: 'desk-table' },
-            h('thead', null, h('tr', null,
-              h('th', { text: 'Country' }),
-              h('th', { text: 'Region' }),
-              h('th', { text: '24h' }),
-              h('th', { text: '7d' }),
-              h('th', { text: 'Signals' }),
-              h('th', { text: 'Lead story (7d)' }))),
-            h('tbody', null, shownDesks.map((d) => {
-              const sigs = [];
-              if (d.nAlerts) sigs.push(h('span', { class: 'stamp red', text: `${d.nAlerts} alert${d.nAlerts > 1 ? 's' : ''}` }));
-              if (d.elections) sigs.push(h('span', { class: 'stamp purple', text: 'Election' }));
-              if (d.surging) sigs.push(h('span', { class: 'stamp indigo', text: `↑ ${d.surging} surging` }));
-              return h('tr', null,
-                h('td', { class: 'cell-head' }, h('button', { type: 'button', class: 'desk-link', text: `${d.name} →`, onclick: () => openCountry(d.id) })),
-                h('td', { class: 'meta', text: d.region }),
-                h('td', { class: 'typed', 'data-label': '24h', text: String(d.stories_24h) }),
-                h('td', { class: 'typed', 'data-label': '7d', text: String(d.stories_7d) }),
-                h('td', { 'data-label': 'Signals' }, sigs.length ? h('span', { class: 'desk-badges' }, sigs) : h('span', { class: 'meta', text: '—' })),
-                h('td', { class: 'cell-body' }, d.lead ? (() => {
-                  const cl = (index.countries.find((x) => x.id === d.id) || {}).language || 'en';
-                  const a = h('a', { href: safeUrl(d.lead.url), target: '_blank', rel: 'noopener noreferrer', lang: cl, text: d.lead.title });
-                  const o = h('span', { class: 'orig', hidden: true });
-                  track(a, d.lead.title, cl, o);
-                  return [a, o, h('span', { class: 'meta', text: ` (${d.lead.source} · ${d.lead.outlets} outlets)` })];
-                })() : '—'));
-            })))),
-        isDefaultDir && desks.length > HOME_DESKS_LIMIT && h('button', {
+    const deckHeader = h('div', { class: 'home-deck' },
+      h('div', { class: 'home-deck-tabs', role: 'tablist', 'aria-label': 'Home view' },
+        h('button', {
           type: 'button',
-          class: 'more dir-toggle',
-          text: showAllDesks ? `Show top ${HOME_DESKS_LIMIT}` : `Show all ${desks.length} countries`,
-          onclick: () => { showAllDesks = !showAllDesks; renderHome(); }
-        })),
-      homeSection('Elections & ballot coverage', 'Priority diplomatic & electoral tracking', electionsList),
-      homeSection('Fastest growing (last 24 hours)', 'Most new coverage in the last 24 hours', growingList),
-      homeSection('Most reported (last 7 days)', 'Ranked by independent outlet count', mostReportedList),
-      h('div', { id: 'trans', class: 'trans' }),
-    ].filter(Boolean));
-    announceStatus(noSearchMatches ? 'No matching countries or stories.' : `${desks.length} countries shown.`);
+          class: 'home-deck-tab',
+          role: 'tab',
+          'aria-selected': String(homeView === 'briefing'),
+          onclick: () => switchHomeView('briefing'),
+        }, "Today's Briefing"),
+        h('button', {
+          type: 'button',
+          class: 'home-deck-tab',
+          role: 'tab',
+          'aria-selected': String(homeView === 'directory'),
+          onclick: () => switchHomeView('directory'),
+        }, 'World Directory', h('span', { class: 'n', text: String(allDesks.length) }))),
+      h('span', { class: 'home-deck-meta' },
+        `Updated ${fmtUpdated(hm.generated_at)}`,
+        q && [' · ', h('button', { type: 'button', class: 'desk-link', text: 'Clear search', onclick: clearSearch })]));
+
+    const crisisBlock = allAlerts.length > 0 && h('section', { class: 'crisis-strip crisis-inline', 'aria-labelledby': 'home-alerts-heading' },
+      h('div', { class: 'crisis-lead' },
+        h('h2', { id: 'home-alerts-heading', class: 'crisis-heading', text: `${has24hAlerts ? 'Last 24h alerts' : 'Latest alerts (none in last 24h)'} · ${allAlerts.length}` }),
+        leadAlert && h('span', { class: 'crisis-top-inline' },
+          h('button', { type: 'button', class: 'desk-link', text: leadAlert.cname, onclick: () => openCountry(leadAlert.cid) }),
+          ` — `,
+          h('a', { href: safeUrl(leadAlert.url), target: '_blank', rel: 'noopener noreferrer', text: leadAlert.title }))),
+      h('div', { class: 'crisis-actions' },
+        homeRefreshBtn,
+        h('button', { type: 'button', class: 'desk-link', text: `All ${allAlerts.length} →`, onclick: () => openCountry('alerts') })));
+
+    const directorySection = desks.length > 0 && h('section', { class: 'drawer' },
+      h('div', { class: 'desk-controls' },
+        h('div', { class: 'desk-filters' },
+          regionOpts.length > 2 && h('label', { class: 'desk-region' },
+            h('span', { text: 'Region' }),
+            h('select', {
+              'aria-label': 'Filter by region',
+              onchange: (e) => { openRegion = e.target.value; renderHome(); }
+            }, regionOpts.map(([id, label, n]) => h('option', {
+              value: id,
+              selected: openRegion === id,
+              text: `${label} (${n})`
+            })))),
+          h('div', { class: 'desk-sorts', role: 'group', 'aria-label': 'Sort countries' },
+            h('span', { class: 'meta', text: 'Sort:' }),
+            dirSortLabels.map(([id, label]) => h('button', {
+              type: 'button',
+              class: 'agenda-filter-btn' + (deskSort === id ? ' active' : ''),
+              text: label,
+              onclick: () => { deskSort = id; renderHome(); }
+            })))),
+        h('details', { class: 'dir-legend' },
+          h('summary', { text: 'How to read' }),
+          h('p', { text: 'Ranked by active alerts, elections, and surging coverage. Select any country for its full brief. 24h / 7d count grouped stories, not raw reprints.' }))),
+      h('div', { class: 'desk-wrap' },
+        h('table', { class: 'desk-table' },
+          h('thead', null, h('tr', null,
+            h('th', { text: 'Country' }),
+            h('th', { text: 'Region' }),
+            h('th', { text: '24h' }),
+            h('th', { text: '7d' }),
+            h('th', { text: 'Signals' }),
+            h('th', { text: 'Lead story (7d)' }))),
+          h('tbody', null, desks.map((d) => {
+            const sigs = [];
+            if (d.nAlerts) sigs.push(h('span', { class: 'stamp red', text: `${d.nAlerts} alert${d.nAlerts > 1 ? 's' : ''}` }));
+            if (d.elections) sigs.push(h('span', { class: 'stamp purple', text: 'Election' }));
+            if (d.surging) sigs.push(h('span', { class: 'stamp indigo', text: `↑ ${d.surging} surging` }));
+            return h('tr', null,
+              h('td', { class: 'cell-head' }, h('button', { type: 'button', class: 'desk-link', text: `${d.name} →`, onclick: () => openCountry(d.id) })),
+              h('td', { class: 'meta', text: d.region }),
+              h('td', { class: 'typed', 'data-label': '24h', text: String(d.stories_24h) }),
+              h('td', { class: 'typed', 'data-label': '7d', text: String(d.stories_7d) }),
+              h('td', { 'data-label': 'Signals' }, sigs.length ? h('span', { class: 'desk-badges' }, sigs) : h('span', { class: 'meta', text: '—' })),
+              h('td', { class: 'cell-body' }, d.lead ? (() => {
+                const cl = (index.countries.find((x) => x.id === d.id) || {}).language || 'en';
+                const a = h('a', { href: safeUrl(d.lead.url), target: '_blank', rel: 'noopener noreferrer', lang: cl, text: d.lead.title });
+                const o = h('span', { class: 'orig', hidden: true });
+                track(a, d.lead.title, cl, o);
+                return [a, o, h('span', { class: 'meta', text: ` (${d.lead.source} · ${d.lead.outlets} outlets)` })];
+              })() : '—'));
+          })))));
+
+    if (homeView === 'directory') {
+      results.replaceChildren(...[
+        deckHeader,
+        pinnedBar(),
+        noDirMatches && h('div', { class: 'empty-state' },
+          h('span', { text: `No countries match "${$('#q').value.trim()}".` }),
+          h('button', { type: 'button', class: 'more', text: 'Clear search', onclick: clearSearch })),
+        directorySection,
+        h('div', { id: 'trans', class: 'trans' }),
+      ].filter(Boolean));
+      announceStatus(noDirMatches ? 'No matching countries.' : `${desks.length} countries shown in World Directory.`);
+    } else {
+      const matchingDesksStrip = q && desks.length > 0 && h('div', { class: 'desk-matches' },
+        h('span', { text: `Matching desks (${desks.length})` }),
+        ...desks.slice(0, 8).map((d) => h('button', { type: 'button', class: 'desk-link', text: `${d.name} →`, onclick: () => openCountry(d.id) })),
+        desks.length > 8 && h('button', { type: 'button', class: 'desk-link', text: `View all ${desks.length} in Directory →`, onclick: () => switchHomeView('directory') }));
+      const emptyStoryMsg = !q && !electionsList.length && !growingList.length && !mostReportedList.length && h('div', { class: 'empty-state' },
+        h('span', { text: 'No briefing stories loaded yet.' }),
+        h('button', { type: 'button', class: 'more', text: `Open World Directory (${allDesks.length})`, onclick: () => switchHomeView('directory') }));
+
+      results.replaceChildren(...[
+        deckHeader,
+        pinnedBar(),
+        watchbar(q, pool),
+        crisisBlock,
+        matchingDesksStrip,
+        noBriefingMatches && h('div', { class: 'empty-state' },
+          h('span', { text: `No countries or stories match "${$('#q').value.trim()}".` }),
+          h('button', { type: 'button', class: 'more', text: 'Clear search', onclick: clearSearch })),
+        emptyStoryMsg,
+        homeSection('Elections & ballot coverage', 'Priority diplomatic & electoral tracking', electionsList),
+        homeSection('Fastest growing (last 24 hours)', 'Most new coverage in the last 24 hours', growingList),
+        homeSection('Most reported (last 7 days)', 'Ranked by independent outlet count', mostReportedList),
+        h('p', { class: 'fine' },
+          h('button', { type: 'button', class: 'desk-link', text: `Browse all ${allDesks.length} country desks in World Directory →`, onclick: () => { switchHomeView('directory'); scrollTo({ top: 0, behavior: 'smooth' }); } })),
+        h('div', { id: 'trans', class: 'trans' }),
+      ].filter(Boolean));
+      announceStatus(noBriefingMatches ? 'No matching countries or stories.' : "Today's Briefing loaded.");
+    }
     paintTranslationBar();
     translatePending();
   }
