@@ -45,18 +45,23 @@ def _wait_turn(host):
 
 
 def _one(row):
-    url = row["url"]
-    u = urlparse(url)
-    if not _robots_for(f"{u.scheme}://{u.netloc}").can_fetch(USER_AGENT, url):
-        return row["id"], None, "robots"
-    _wait_turn(u.netloc)
-    code, body = get(url)
-    if code != 200:
-        return row["id"], None, f"http{code}"
-    text = trafilatura.extract(body, include_comments=False, include_tables=False, favor_precision=True)
-    if text and len(text) > 200:
-        return row["id"], nfc(text), "ok"
-    return row["id"], None, "empty"
+    try:
+        url = row["url"]
+        u = urlparse(url)
+        if not u.scheme or not u.netloc:
+            return row["id"], None, "error"
+        if not _robots_for(f"{u.scheme}://{u.netloc}").can_fetch(USER_AGENT, url):
+            return row["id"], None, "robots"
+        _wait_turn(u.netloc)
+        code, body = get(url)
+        if code != 200:
+            return row["id"], None, f"http{code}"
+        text = trafilatura.extract(body, include_comments=False, include_tables=False, favor_precision=True)
+        if text and len(text) > 200:
+            return row["id"], nfc(text), "ok"
+        return row["id"], None, "empty"
+    except Exception:
+        return row["id"], None, "error"
 
 
 def _select_pending(db, limit=None, country=None, story_only=True):

@@ -71,7 +71,10 @@ def _iso_time(e):
     t = e.get("published_parsed") or e.get("updated_parsed")
     if not t:
         return ""
-    return datetime(*t[:6], tzinfo=timezone.utc).isoformat(timespec="seconds")
+    try:
+        return datetime(*t[:6], tzinfo=timezone.utc).isoformat(timespec="seconds")
+    except (ValueError, TypeError):
+        return ""
 
 
 def _post(e):

@@ -9,6 +9,7 @@ import os
 import re
 import urllib.parse
 import zipfile
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 
@@ -43,6 +44,7 @@ REGIONAL_COUNTRIES = {
     "baltics": ["estonia", "latvia", "lithuania"],
     "pacific_islands": ["fiji", "papua new guinea", "solomon islands", "vanuatu", "samoa", "tonga"],
     "israel": ["gaza", "west bank", "hebron", "rafah", "jenin", "nablus", "palestinian", "palestine"],
+    "iraq": ["iraqi", "baghdad", "basra", "erbil", "mosul", "kirkuk", "kataib hezbollah"],
     "lebanon": ["hezbollah", "beirut", "litani", "tyre", "sidon", "bekaa"],
     "saudi_arabia": ["yemen", "houthi", "houthis", "sanaa", "hodeidah", "hudaydah", "taiz", "aden", "marib"],
 }
@@ -76,7 +78,20 @@ VIOLENCE_IMPACT_RE = re.compile(
 EXCLUDE_RE = re.compile(
     r"\b(festival|dance|theatre|theater|concert|music|album|song|singer|film|movie|championship|tournament|league|match|coach|"
     r"player|stadium|actor|actress|ranking|rankings|washroom|stock|market|shares|box-office|cricket|football|soccer|basketball|"
-    r"baseball|golf|tennis|car-crash|road-accident|house-collapse|wife|husband|boyfriend|girlfriend|divorce|faces-court|judge-rejects|bail)\b",
+    r"baseball|golf|tennis|car-crash|road-accident|house-collapse|wife|husband|boyfriend|girlfriend|divorce|faces-court|judge-rejects|bail|"
+    r"lion|lioness|lions|tiger|tigress|tigers|leopard|bear|shark|crocodile|elephant|dog|dogs|snake|monkey|zoo|safari|poacher|"
+    r"bus-crash|train-crash|drowned|drowning|gala|performs|performed|marks a year|returned hostage|former hostage)\b",
+    re.I,
+)
+UK_SECURITY_RE = re.compile(
+    r"\b(terror|attack|conflict|missile|drone|airstrike|strike|clash|unrest|protest|demonstration|riot|curfew|martial|emergency|"
+    r"evacuat|border|airspace|shelter|kidnap|hostage|violence|military|security|warning|advise against|earthquake|tsunami|volcano|"
+    r"cyclone|typhoon|hurricane|flood|wildfire|landslide|explosion|gunmen|state of emergency)\b",
+    re.I,
+)
+UK_ROUTINE_EXCLUDE_RE = re.compile(
+    r"^(Removal of information|New information about entry requirements|Updated information about visa|Updated information about entry|"
+    r"Updated information on passport|New information on entry)\b|\b(FIFA|World Cup|festival|Durga Puja|Carnival|Eurovision)\b",
     re.I,
 )
 CAMEO_LABELS = {
@@ -131,6 +146,12 @@ def _when(e):
 def _summary(kind, e):
     raw = clean(html.unescape(re.sub(r"<[^>]+>", " ", e.get("summary") or "")))
     raw = re.sub(r"\s+([.,;:])", r"\1", re.sub(r"\s+", " ", raw)).strip()
+    raw = re.sub(r"^Click to expand Image\s*", "", raw, flags=re.I).strip()
+    if kind == "USGS":
+        loc = re.search(r"Location\s+([0-9.°\sNSWE+-]+?)(?=\s+Depth|\s*$)", raw, re.I)
+        dep = re.search(r"Depth\s+([\d.]+\s*km)", raw, re.I)
+        parts = [f"Epicenter {loc.group(1).strip()}" if loc else None, f"Depth {dep.group(1).strip()}" if dep else None]
+        return " · ".join(p for p in parts if p)
     if kind == "US travel advisory":
         for s in re.split(r"(?<=\.)\s+", raw):
             if "due to" in s.lower() or "precaution" in s.lower():
@@ -313,19 +334,33 @@ def ingest_gdelt_articles(db, events, now=None):
 
 
 def _gdelt_events(now, db=None, use_cache=False):
-    """Fetch recent 15-minute GDELT 2.0 event intervals, filter for high-confidence kinetic violence/unrest,
-    verify each event's verbatim source headline (Rule 1), and ingest verified URLs into SQLite."""
+    """Fetch recent 15-minute GDELT 2.0 event intervals across a 24h rolling window, filter for
+    high-confidence kinetic violence/unrest, verify each event's verbatim source headline (Rule 1),
+    and ingest verified URLs into SQLite."""
     global _CACHED_GDELT
     if use_cache and _CACHED_GDELT is not None:
         if db is not None:
             ingest_gdelt_articles(db, _CACHED_GDELT, now)
         return _CACHED_GDELT
     candidates = {}
-    for mins in range(15, 135, 15):
+    # Poll every 15m for the last 3 hours, plus every 60m across the rest of the 24h window
+    offsets = list(range(15, 195, 15)) + list(range(240, 1441, 60))
+    ts_list = []
+    for mins in offsets:
         t = now - timedelta(minutes=mins)
         ts = t.strftime("%Y%m%d%H") + f"{(t.minute // 15) * 15:02d}00"
+        if ts not in ts_list:
+            ts_list.append(ts)
+
+    def _fetch_z(ts):
         status, zbytes = fetch.get(GDELT_BASE.format(ts))
-        if status != 200 or not zbytes:
+        return ts, (zbytes if status == 200 else None)
+
+    with ThreadPoolExecutor(max_workers=12) as pool:
+        z_results = list(pool.map(_fetch_z, ts_list))
+
+    for ts, zbytes in z_results:
+        if not zbytes:
             continue
         try:
             with zipfile.ZipFile(io.BytesIO(zbytes)) as zf:
@@ -352,22 +387,35 @@ def _gdelt_events(now, db=None, use_cache=False):
     ordered_cands = sorted(
         candidates.items(),
         key=lambda kv: (
-            not any(m["any_re"].search(f"{kv[1][1]} {kv[0]}") for m in matchers.values()),
+            not any(m["country_re"].search(f"{kv[1][1]} {kv[0]}") for m in matchers.values()),
             kv[1][0] not in ("19", "20"),
+            -int(kv[1][2][:10].replace("-", "")),
         ),
-    )
+    )[:55]
+
+    pre_titles = {}
+    if db is not None:
+        for u, _ in ordered_cands:
+            row = db.execute("SELECT title, lead, text FROM article WHERE url=?", (u,)).fetchone()
+            if row and row[0]:
+                pre_titles[u] = (row[0], row[1] or "", "", row[2])
+
+    to_fetch = [u for u, _ in ordered_cands if u not in pre_titles]
+    with ThreadPoolExecutor(max_workers=12) as pool:
+        fetched_meta = dict(zip(to_fetch, pool.map(_extract_html_meta, to_fetch)))
 
     verified = []
     seen_titles = set()
-    for u, (root, loc, dt_iso) in ordered_cands[:35]:
-        title, lead, site, text = None, "", "", None
-        if db is not None:
-            row = db.execute("SELECT title, lead, text FROM article WHERE url=?", (u,)).fetchone()
-            if row and row[0]:
-                title, lead, text = row[0], row[1] or "", row[2]
-        if not title:
-            title, lead, site, text = _extract_html_meta(u)
-        if not title or not VIOLENCE_IMPACT_RE.search(title) or EXCLUDE_RE.search(title):
+    for u, (root, loc, dt_iso) in ordered_cands:
+        title, lead, site, text = pre_titles.get(u) or fetched_meta.get(u) or (None, "", "", None)
+        if (
+            not title
+            or len(title) > 190
+            or title.count(";") >= 3
+            or not ARMED_CONFLICT_RE.search(title)
+            or not VIOLENCE_IMPACT_RE.search(title)
+            or EXCLUDE_RE.search(title)
+        ):
             continue
         norm_t = re.sub(r"\W+", " ", title.lower()).strip()
         if norm_t in seen_titles:
@@ -440,32 +488,115 @@ def _acled_events(now):
     return out
 
 
-def _dedup_and_cap(items):
+_STOP_TOKENS = {
+    "attack", "attacks", "strike", "strikes", "clash", "clashes", "killed", "kills", "kill", "killing",
+    "dead", "death", "over", "after", "with", "from", "into", "amid", "says", "said", "report", "reports",
+    "news", "more", "than", "least", "three", "four", "five", "amid", "against", "under", "near",
+}
+
+
+def _sig_tokens(title):
+    words = re.findall(r"[a-z0-9]{4,}", (title or "").lower())
+    return {w.rstrip("s") for w in words if w not in _STOP_TOKENS and len(w.rstrip("s")) >= 3}
+
+
+def _dedup_and_cap(items, max_items=5):
     seen = set()
-    green_counts = {}
+    seen_toks = []
     out = []
     for i in sorted(items, key=lambda x: x.get("date") or "", reverse=True):
         key = (i["kind"], i["title"].lower())
         if key in seen:
             continue
-        if i["kind"] == "GDACS" and (i.get("level") or "").lower() == "green":
-            gkey = re.sub(r"\d+", "", i["title"].lower())
-            green_counts[gkey] = green_counts.get(gkey, 0) + 1
-            if green_counts[gkey] > 2:
-                continue
+        toks = _sig_tokens(i["title"])
+        if len(toks) >= 2 and any(
+            len(toks & prev) >= 2 and len(toks & prev) / max(1, min(len(toks), len(prev))) >= 0.5
+            for prev in seen_toks
+        ):
+            continue
         seen.add(key)
+        if toks:
+            seen_toks.append(toks)
         out.append(i)
+        if len(out) >= max_items:
+            break
     return out
+
+
+def _prev_gdelt_items(recent_iso):
+    f = SITE_DATA / "crisis.json"
+    if not f.exists():
+        return []
+    try:
+        data = json.loads(f.read_text(encoding="utf8"))
+    except Exception:
+        return []
+    seen_urls = set()
+    kept = []
+    for items in (data.get("countries") or {}).values():
+        for it in items:
+            if it.get("kind") != "GDELT Live Event":
+                continue
+            u = it.get("url")
+            dt = it.get("date") or ""
+            title = it.get("title") or ""
+            if (
+                not u
+                or u in seen_urls
+                or dt < recent_iso
+                or len(title) > 190
+                or title.count(";") >= 3
+                or not ARMED_CONFLICT_RE.search(title)
+                or not VIOLENCE_IMPACT_RE.search(title)
+                or EXCLUDE_RE.search(title)
+            ):
+                continue
+            seen_urls.add(u)
+            kept.append({
+                **it,
+                "_loc": f"{it.get('summary') or ''} {title}".lower(),
+                "_raw_loc": (it.get("summary") or "").split("·")[-1].strip(),
+            })
+    return kept
 
 
 def run(db=None):
     now = datetime.now(timezone.utc)
     recent = now - timedelta(days=RECENT_DAYS)
-    cutoff_30d = now - timedelta(days=30)
-    cutoff_90d = now - timedelta(days=90)
-    gdacs, usgs, eonet, us = _feed(GDACS), _feed(USGS), _eonet(), _feed(US)
-    cg, un, hrw, lwj, msf = _feed(CRISISGROUP), _feed(UN_PEACE), _feed(HRW), _feed(LWJ), _feed(MSF)
-    gdelt = _gdelt_events(now, db, use_cache=True)
+    recent_iso = recent.isoformat(timespec="seconds")
+    cutoff_14d = now - timedelta(days=14)
+
+    feed_urls = {
+        "gdacs": GDACS,
+        "usgs": USGS,
+        "us": US,
+        "cg": CRISISGROUP,
+        "un": UN_PEACE,
+        "hrw": HRW,
+        "lwj": LWJ,
+        "msf": MSF,
+    }
+    uk_slugs_by_cid = {}
+    for cid in packs.pack_ids():
+        pack = packs.load(cid)
+        uk_slug = UK_SLUGS[cid] if cid in UK_SLUGS else (pack.get("uk_slug") or pack["name"].lower().replace(" ", "-"))
+        if uk_slug:
+            uk_slugs_by_cid[cid] = uk_slug
+
+    with ThreadPoolExecutor(max_workers=16) as pool:
+        f_futures = {k: pool.submit(_feed, u) for k, u in feed_urls.items()}
+        eonet_fut = pool.submit(_eonet)
+        uk_futures = {cid: pool.submit(_feed, UK.format(slug)) for cid, slug in uk_slugs_by_cid.items()}
+        f_res = {k: fut.result() for k, fut in f_futures.items()}
+        eonet = eonet_fut.result()
+        uk_res = {cid: fut.result() for cid, fut in uk_futures.items()}
+
+    gdacs, usgs, us = f_res["gdacs"], f_res["usgs"], f_res["us"]
+    cg, un, hrw, lwj, msf = f_res["cg"], f_res["un"], f_res["hrw"], f_res["lwj"], f_res["msf"]
+    fresh_gdelt = _gdelt_events(now, db, use_cache=True)
+    prev_gdelt = _prev_gdelt_items(recent_iso)
+    seen_gdelt_urls = {ev["url"] for ev in fresh_gdelt}
+    gdelt = fresh_gdelt + [ev for ev in prev_gdelt if ev["url"] not in seen_gdelt_urls]
     acled = _acled_events(now)
 
     out = {}
@@ -475,20 +606,43 @@ def run(db=None):
         mention_terms = [m.lower() for m in pack.get("mention", []) if len(m) >= 4]
         all_names = list(dict.fromkeys([*country_names, *mention_terms[:18]]))
 
-        has_country = lambda text: any(re.search(rf"\b{re.escape(n)}\b", (text or "").lower()) for n in country_names)
+        def has_country(text):
+            low = (text or "").lower()
+            if cid == "lebanon" and "kataib hezbollah" in low and "lebanon" not in low and "beirut" not in low:
+                return False
+            return any(re.search(rf"\b{re.escape(n)}\b", low) for n in country_names)
         has_any = lambda text: any(re.search(rf"\b{re.escape(n)}\b", (text or "").lower()) for n in all_names)
 
         items = []
-        items += [_item("GDACS", e, e.get("gdacs_alertlevel")) for e in gdacs if has_country(e.get("gdacs_country")) or has_country(e.title)]
-        items += [_item("USGS", e) for e in usgs if has_country(e.title)]
+        # GDACS: keep Orange and Red disaster alerts, plus named cyclones/tsunamis (drop routine Green brush fire notifications).
+        for e in gdacs:
+            if not (has_country(e.get("gdacs_country")) or has_country(e.title)):
+                continue
+            lvl = (e.get("gdacs_alertlevel") or "").strip()
+            t_low = (e.title or "").lower()
+            if lvl.lower() == "green" and not re.search(r"\b(cyclone|typhoon|hurricane|tsunami)\b", t_low):
+                continue
+            items.append(_item("GDACS", e, lvl or "Alert"))
+
+        # USGS: keep significant earthquakes M5.0+ (filter out minor M4.5-4.9 tremors).
+        for e in usgs:
+            if not has_country(e.title):
+                continue
+            m_mag = re.search(r"\bM\s*(\d+(?:\.\d+)?)\b", e.title or "")
+            mag = float(m_mag.group(1)) if m_mag else 0.0
+            if mag < 5.0:
+                continue
+            lvl = "Warning" if mag >= 6.0 else ("Alert" if mag >= 5.5 else "Caution")
+            items.append(_item("USGS", e, lvl))
+
         for ev in eonet:
             if has_country(ev.get("title")):
                 cat = ((ev.get("categories") or [{}])[0]).get("title") or "Natural event"
                 src_url = ((ev.get("sources") or [{}])[0]).get("url") or ev.get("link") or ""
                 dt = ((ev.get("geometry") or [{}])[-1]).get("date")
-                items.append({"kind": "NASA EONET", "title": clean(ev["title"]), "summary": clean(cat), "url": src_url, "level": None, "date": dt})
+                items.append({"kind": "NASA EONET", "title": clean(ev["title"]), "summary": clean(cat), "url": src_url, "level": "Caution", "date": dt})
 
-        # Conflict, human rights, insurgency, and humanitarian monitors (last 30 days).
+        # Conflict, human rights, insurgency, and humanitarian monitors (last 7 days; match headline to avoid summary false positives).
         for kind, feed_entries, lvl in (
             ("UN Peace & Security", un, "Security"),
             ("Crisis Group", cg, "Alert"),
@@ -497,20 +651,20 @@ def run(db=None):
             ("MSF Crisis Update", msf, "Alert"),
         ):
             for e in feed_entries:
-                if has_any(e.title) or has_country(e.get("summary")):
+                if has_country(e.title):
                     it = _item(kind, e, lvl)
-                    if it["date"] and datetime.fromisoformat(it["date"]) >= cutoff_30d:
+                    if it["date"] and datetime.fromisoformat(it["date"]) >= recent:
                         items.append(it)
 
-        # Real-time GDELT 2.0 and optional ACLED events matched to this desk.
+        # Real-time GDELT 2.0 and optional ACLED events matched to this desk (require primary/regional country match in title or location+title).
         for ev in gdelt:
-            if has_any(ev["_loc"]):
+            if has_country(ev.get("title")) or (has_country(ev.get("_raw_loc")) and has_any(ev.get("title"))):
                 items.append({k: v for k, v in ev.items() if not k.startswith("_")})
         for ev in acled:
-            if has_any(ev["_loc"]):
+            if has_country(ev["_loc"]):
                 items.append({k: v for k, v in ev.items() if not k.startswith("_")})
 
-        # US travel advisories: keep active Level 3/4 updated in last 90d, or Level 2 updated in last 30d with conflict/terror risk.
+        # US travel advisories: keep Level 3/4 updated in last 14d, or Level 2 updated in last 7d with conflict/terror risk.
         for e in us:
             if has_country(e.title.split(" - ")[0]) and "Level 1" not in e.title:
                 lvl = "Warning" if "Level 4" in e.title else ("Alert" if "Level 3" in e.title else "Caution")
@@ -518,24 +672,24 @@ def run(db=None):
                 if not it["date"]:
                     continue
                 dt = datetime.fromisoformat(it["date"])
-                if lvl in ("Warning", "Alert") and dt >= cutoff_90d:
+                if lvl in ("Warning", "Alert") and dt >= cutoff_14d:
                     items.append(it)
-                elif lvl == "Caution" and dt >= cutoff_30d and re.search(r"\b(terror|unrest|conflict|kidnap|armed|violence)\b", (it["summary"] or "").lower()):
+                elif lvl == "Caution" and dt >= recent and re.search(r"\b(terror|unrest|conflict|kidnap|armed|violence)\b", (it["summary"] or "").lower()):
                     items.append(it)
 
-        # Include UK travel advice updates within the last 30 days.
-        uk_slug = UK_SLUGS[cid] if cid in UK_SLUGS else (pack.get("uk_slug") or pack["name"].lower().replace(" ", "-"))
-        if uk_slug:
-            uk = [_item("UK travel advice", e) for e in _feed(UK.format(uk_slug))[:3]]
-            items += [i for i in uk if i["date"] and datetime.fromisoformat(i["date"]) >= cutoff_30d]
+        # UK travel advice updates within the last 7 days with security/crisis relevance.
+        for e in (uk_res.get(cid) or [])[:3]:
+            it = _item("UK travel advice", e, "Caution")
+            if (
+                it["date"]
+                and datetime.fromisoformat(it["date"]) >= recent
+                and UK_SECURITY_RE.search(it["title"])
+                and not UK_ROUTINE_EXCLUDE_RE.search(it["title"])
+            ):
+                items.append(it)
 
-        # Disasters older than a week are history; conflict monitors and active advisories keep their window.
-        items = [
-            i for i in items
-            if i["kind"] not in ("GDACS", "USGS", "NASA EONET")
-            or (i["date"] and datetime.fromisoformat(i["date"]) >= recent)
-        ]
-        out[cid] = _dedup_and_cap(items)
+        items = [i for i in items if i.get("date") and datetime.fromisoformat(i["date"]) >= (cutoff_14d if i["kind"] == "US travel advisory" else recent)]
+        out[cid] = _dedup_and_cap(items, max_items=5)
         print(f"crisis: {cid}: {len(out[cid])} items")
     SITE_DATA.mkdir(parents=True, exist_ok=True)
     _write("crisis", {"generated_at": now.isoformat(timespec="seconds"), "countries": out}, "ARGOS_CRISIS")

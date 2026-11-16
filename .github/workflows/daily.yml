@@ -54,8 +54,8 @@ jobs:
         run: |
           mkdir -p .argos-data/models/multilingual-e5-small
           base=https://huggingface.co/intfloat/multilingual-e5-small/resolve/main/onnx
-          curl -fL -o .argos-data/models/multilingual-e5-small/model.onnx "$base/model.onnx"
-          curl -fL -o .argos-data/models/multilingual-e5-small/tokenizer.json "$base/tokenizer.json"
+          curl -fL --retry 3 --retry-all-errors -o .argos-data/models/multilingual-e5-small/model.onnx "$base/model.onnx"
+          curl -fL --retry 3 --retry-all-errors -o .argos-data/models/multilingual-e5-small/tokenizer.json "$base/tokenizer.json"
 
       - name: Cache Hugging Face models
         uses: actions/cache@v4
@@ -92,7 +92,9 @@ jobs:
       - name: Publish to Cloudflare Pages
         run: |
           git pull origin main || true
-          npx --yes wrangler@4 pages deploy site --project-name=argos-monitor --branch=main
+          npx --yes wrangler@4 pages deploy site --project-name=argos-monitor --branch=main || \
+            (sleep 10 && npx --yes wrangler@4 pages deploy site --project-name=argos-monitor --branch=main) || \
+            (sleep 20 && npx --yes wrangler@4 pages deploy site --project-name=argos-monitor --branch=main)
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

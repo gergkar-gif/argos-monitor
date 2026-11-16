@@ -1,11 +1,11 @@
 """Cloud go/no-go test. Run from a cloud machine (the GitHub 'Cloud probe' workflow) to see which news sites
-refuse it. Fetches every active feed, then a few article pages per outlet, then GDELT and the model host.
+refuse it. Fetches every active feed, then a sample of article pages, then GDELT and the model host.
 Prints a table; it never fails the job, because the result is the information."""
 import collections
 import os
 import pathlib
 import sys
-from urllib.parse import urlparse
+from concurrent.futures import ThreadPoolExecutor
 
 import feedparser
 import trafilatura
@@ -17,39 +17,62 @@ from argos.fetch import get               # noqa: E402
 
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 sys.stdout.reconfigure(encoding="utf-8")
-PAGES_PER_OUTLET = 3
+PAGES_PER_OUTLET = 1
+MAX_SAMPLE_OUTLETS = 60
 
 sources = [s for d in sorted((ROOT / "countries").iterdir()) if (d / "sources.yaml").exists()
            for s in yaml.safe_load((d / "sources.yaml").read_text(encoding="utf8"))["sources"]]
 print(f"Running on: {os.environ.get('RUNNER_OS', 'unknown')} | data dir {DATA_DIR}\n")
 
 print("== FEEDS")
-feed_bad, sample = 0, collections.defaultdict(list)
-for s in sources:
-    for f in s.get("feeds", []):
-        if not f.get("active", True):
-            continue
-        code, body = get(f["url"])
+feed_tasks = [(s["id"], f["url"]) for s in sources for f in s.get("feeds", []) if f.get("active", True)]
+
+
+def _probe_feed(task):
+    sid, url = task
+    try:
+        code, body = get(url)
         parsed = feedparser.parse(body) if code == 200 else None
-        n = len(parsed.entries) if parsed else 0
+        entries = getattr(parsed, "entries", None) or []
+        links = [e.link for e in entries[:PAGES_PER_OUTLET] if e.get("link")]
+        return sid, url, code, len(entries), links
+    except Exception:
+        return sid, url, 0, 0, []
+
+
+feed_bad, sample = 0, collections.defaultdict(list)
+with ThreadPoolExecutor(max_workers=20) as pool:
+    for sid, url, code, n, links in pool.map(_probe_feed, feed_tasks):
         ok = n > 0
         feed_bad += not ok
-        print(f"{'OK  ' if ok else 'FAIL'} {s['id']:15} HTTP {code} items {n:4}  {f['url']}")
-        if ok and len(sample[s["id"]]) < PAGES_PER_OUTLET:
-            sample[s["id"]] += [e.link for e in parsed.entries[:PAGES_PER_OUTLET] if e.get("link")]
+        print(f"{'OK  ' if ok else 'FAIL'} {sid:15} HTTP {code} items {n:4}  {url}")
+        if ok and len(sample) < MAX_SAMPLE_OUTLETS and len(sample[sid]) < PAGES_PER_OUTLET:
+            sample[sid] += links[:PAGES_PER_OUTLET - len(sample[sid])]
 print(f"\nfeeds failing: {feed_bad}")
 
-print("\n== ARTICLE PAGES (first few per outlet)")
-page_ok = page_bad = 0
-for sid, urls in sample.items():
-    results = []
-    for u in urls[:PAGES_PER_OUTLET]:
+print("\n== ARTICLE PAGES (sample per outlet)")
+page_tasks = [(sid, u) for sid, urls in list(sample.items())[:MAX_SAMPLE_OUTLETS] for u in urls[:PAGES_PER_OUTLET]]
+
+
+def _probe_page(task):
+    sid, u = task
+    try:
         code, body = get(u)
         text = trafilatura.extract(body) if code == 200 else None
         good = bool(text and len(text) > 200)
-        results.append(f"{code}{'+text' if good else ''}")
+        return sid, code, good
+    except Exception:
+        return sid, 0, False
+
+
+page_ok = page_bad = 0
+by_sid = collections.defaultdict(list)
+with ThreadPoolExecutor(max_workers=16) as pool:
+    for sid, code, good in pool.map(_probe_page, page_tasks):
+        by_sid[sid].append(f"{code}{'+text' if good else ''}")
         page_ok += good
         page_bad += not good
+for sid, results in by_sid.items():
     print(f"{sid:15} {' '.join(results)}")
 print(f"\npages with usable text: {page_ok}, without: {page_bad}")
 

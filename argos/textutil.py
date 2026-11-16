@@ -47,7 +47,8 @@ def strip_emoji(s):
 
 def clean(s):
     """Rule 3: NFC; Rule 7: strip emojis; decode entities, resolve styled characters, and collapse spaces."""
-    s = s or ""
+    if not isinstance(s, str):
+        s = str(s or "")
     for _ in range(2):
         s = html.unescape(s)
     s = unicodedata.normalize("NFKC", s)
@@ -58,7 +59,7 @@ def clean(s):
 def clean_url(raw_url):
     """Normalize a URL: strip tracking/marketing query parameters, strip fragments,
     normalize lower-case scheme/hostname, and clean redundant path separators (Media Cloud lift)."""
-    if not raw_url:
+    if not raw_url or not isinstance(raw_url, str):
         return ""
     try:
         p = urllib.parse.urlsplit(raw_url.strip())
@@ -81,9 +82,14 @@ def clean_url(raw_url):
 def parse_date(entry):
     """ISO UTC string or None. Handles feedparser's parsed time, plus the 'M/D/YYYY h:mm:ss AM' format
     that Tuoi Tre and Bao Chinh phu use (Vietnam time), and ISO 8601 strings."""
-    if entry.get("published_parsed"):
-        return datetime(*entry.published_parsed[:6], tzinfo=timezone.utc).isoformat(timespec="seconds")
-    raw = (entry.get("published") or entry.get("updated") or "").strip()
+    st = entry.get("published_parsed") or entry.get("updated_parsed")
+    if st:
+        try:
+            return datetime(*st[:6], tzinfo=timezone.utc).isoformat(timespec="seconds")
+        except (ValueError, TypeError):
+            pass
+    raw = entry.get("published") or entry.get("updated") or ""
+    raw = raw.strip() if isinstance(raw, str) else ""
     if not raw:
         return None
     try:

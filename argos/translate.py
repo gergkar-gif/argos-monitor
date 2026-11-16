@@ -4,6 +4,7 @@ Runs offline on CPU via MarianMT (Helsinki-NLP/opus-mt-*) models.
 Translations are strictly reading aids: the dashboard always shows or links to the original headline.
 Cached in the SQLite `translation` table so no headline is ever translated twice.
 """
+import os
 import re
 from .rank import dashboard_story_ids
 
@@ -65,7 +66,7 @@ def translate_batch(texts, lang):
     tok, model, model_name = translator
     try:
         batch = tok(texts, return_tensors="pt", padding=True, truncation=True, max_length=128)
-        gen = model.generate(**batch, max_length=128, num_beams=2)
+        gen = model.generate(**batch, max_length=128, num_beams=1)
         outputs = tok.batch_decode(gen, skip_special_tokens=True)
     except Exception as e:
         print(f"translate: batch generation failed for {lang}: {e}")
@@ -88,22 +89,24 @@ def run(db):
     ids = dashboard_story_ids(db)
     if not ids:
         return
-    rows = []
-    for i in range(0, len(ids), 500):
-        chunk = ids[i:i + 500]
-        rows.extend(db.execute(
-            "SELECT a.id, a.title, a.language FROM story s JOIN article a ON a.id=s.representative_article_id "
-            f"WHERE s.id IN ({','.join('?' * len(chunk))}) AND a.language != 'en' "
-            "AND a.id NOT IN (SELECT article_id FROM translation)", chunk).fetchall())
-
-    todo = [r for r in rows if r["language"] in MODELS]
-    print(f"translate: {len(todo)} non-English headlines to translate across {len(set(r['language'] for r in todo))} languages")
-    if not todo:
-        return
+    per_lang_limit = int(os.environ.get("ARGOS_TRANSLATE_LIMIT", "150"))
+    rows = db.execute(
+        "SELECT a.id, a.title, a.language, MAX(COALESCE(s.score, 0.0)) AS max_score "
+        "FROM story s JOIN article a ON a.id=s.representative_article_id "
+        "WHERE a.language != 'en' AND a.id NOT IN (SELECT article_id FROM translation) "
+        "GROUP BY a.id ORDER BY max_score DESC"
+    ).fetchall()
 
     by_lang = {}
-    for r in todo:
-        by_lang.setdefault(r["language"], []).append(r)
+    for r in rows:
+        lang = r["language"]
+        if lang in MODELS and len(by_lang.get(lang, ())) < per_lang_limit:
+            by_lang.setdefault(lang, []).append(r)
+
+    total_todo = sum(len(v) for v in by_lang.values())
+    print(f"translate: {total_todo} non-English headlines to translate across {len(by_lang)} languages")
+    if not total_todo:
+        return
 
     total_translated = 0
     for lang, items in by_lang.items():

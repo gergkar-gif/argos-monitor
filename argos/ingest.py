@@ -124,7 +124,16 @@ def load_registry(db):
     reconcile_ratings(db)
 
 
-def ingest_feeds(db, country):
+def _fetch_one_feed(f):
+    try:
+        etag = f["etag"] if "etag" in f.keys() else None
+        last_mod = f["last_modified"] if "last_modified" in f.keys() else None
+        return f["id"], get(f["url"], etag=etag, last_modified=last_mod, return_headers=True)
+    except Exception:
+        return f["id"], (0, b"", {})
+
+
+def ingest_feeds(db, country, prefetched=None):
     pack = packs.load(country)
     # International feeds cover many topics, so keep only items that mention the country.
     international = {s["id"] for s in pack["sources"] if s["scope"] == "international"}
@@ -136,16 +145,11 @@ def ingest_feeds(db, country):
     known = _known_titles(db, country)
     # Direct feeds first and aggregators last, so a headline we already hold directly is not added a second time.
     feeds = sorted(feeds, key=lambda f: bool(by_id[f["source_id"]].get("aggregator")))
-    now_init = now()
-    active_feeds = [f for f in feeds if not (f["retry_after"] and f["retry_after"] > now_init)]
-
-    def _fetch_one(f):
-        etag = f["etag"] if "etag" in f.keys() else None
-        last_mod = f["last_modified"] if "last_modified" in f.keys() else None
-        return f["id"], get(f["url"], etag=etag, last_modified=last_mod, return_headers=True)
-
-    with ThreadPoolExecutor(max_workers=8) as pool:
-        prefetched = dict(pool.map(_fetch_one, active_feeds))
+    if prefetched is None:
+        now_init = now()
+        active_feeds = [f for f in feeds if not (f["retry_after"] and f["retry_after"] > now_init)]
+        with ThreadPoolExecutor(max_workers=12) as pool:
+            prefetched = dict(pool.map(_fetch_one_feed, active_feeds))
 
     for feed in feeds:
         now_str = now()
@@ -162,8 +166,11 @@ def ingest_feeds(db, country):
             print(f"  304  {country[:4]} {feed['source_id']:15} {feed['section_label'] or '':22} (not modified)")
             continue
 
-        parsed = feedparser.parse(body) if code == 200 else None
-        if not parsed or not parsed.entries:
+        try:
+            parsed = feedparser.parse(body) if code == 200 else None
+        except Exception:
+            parsed = None
+        if not parsed or not getattr(parsed, "entries", None):
             err_count = ((feed["consecutive_errors"] or 0) if "consecutive_errors" in feed.keys() else 0) + 1
             # Exponential backoff starting at 3 consecutive failures: 6h, 12h, 24h, max 48h (Media Cloud lift)
             retry_after = (datetime.now(timezone.utc) + timedelta(hours=min(48, 6 * (2 ** max(0, err_count - 3))))).isoformat(timespec="seconds") if err_count >= 3 else None
@@ -176,41 +183,45 @@ def ingest_feeds(db, country):
         new_etag = headers.get("etag")
         new_lm = headers.get("last-modified")
 
-        if by_id[feed["source_id"]].get("aggregator"):
-            n = ingest_aggregator(db, pack, by_id[feed["source_id"]], feed, parsed, known)
+        try:
+            if by_id[feed["source_id"]].get("aggregator"):
+                n = ingest_aggregator(db, pack, by_id[feed["source_id"]], feed, parsed, known)
+                db.execute("UPDATE feed SET last_ok_at=?, last_error=NULL, consecutive_errors=0, retry_after=NULL, "
+                           "etag=COALESCE(?, etag), last_modified=COALESCE(?, last_modified) WHERE id=?",
+                           (now_str, new_etag, new_lm, feed["id"]))
+                added += n
+                print(f"  ok   {country[:4]} {feed['source_id']:15} {feed['section_label'] or '':22} +{n}")
+                db.commit()
+                continue
+
+            n = 0
+            cutoff = (datetime.now(timezone.utc) - timedelta(days=WINDOW_DAYS)).isoformat(timespec="seconds")
+            entries = sorted(parsed.entries, key=lambda e: parse_date(e) or "", reverse=True)[:MAX_PER_FEED]
+            for e in entries:
+                if (parse_date(e) or cutoff) < cutoff:
+                    continue
+                url, title = clean_url(e.get("link")), clean(e.get("title"))
+                lead = clean(e.get("summary") or e.get("description"))
+                if not url or not title:
+                    continue
+                if feed["source_id"] in international and not pack["mention_re"].search(title + " " + lead):
+                    continue
+                cur = db.execute(
+                    "INSERT OR IGNORE INTO article (source_id,feed_id,url,title,lead,language,published_at,fetched_at,extract_status,country) "
+                    "VALUES (?,?,?,?,?,?,?,?,'pending',?)",
+                    (feed["source_id"], feed["id"], url, title, lead, feed["language"], parse_date(e), now_str, country))
+                n += cur.rowcount
+                if cur.rowcount:
+                    known.add(title_key(title))
             db.execute("UPDATE feed SET last_ok_at=?, last_error=NULL, consecutive_errors=0, retry_after=NULL, "
                        "etag=COALESCE(?, etag), last_modified=COALESCE(?, last_modified) WHERE id=?",
                        (now_str, new_etag, new_lm, feed["id"]))
             added += n
             print(f"  ok   {country[:4]} {feed['source_id']:15} {feed['section_label'] or '':22} +{n}")
             db.commit()
-            continue
-
-        n = 0
-        cutoff = (datetime.now(timezone.utc) - timedelta(days=WINDOW_DAYS)).isoformat(timespec="seconds")
-        entries = sorted(parsed.entries, key=lambda e: parse_date(e) or "", reverse=True)[:MAX_PER_FEED]
-        for e in entries:
-            if (parse_date(e) or cutoff) < cutoff:
-                continue
-            url, title = clean_url(e.get("link")), clean(e.get("title"))
-            lead = clean(e.get("summary") or e.get("description"))
-            if not url or not title:
-                continue
-            if feed["source_id"] in international and not pack["mention_re"].search(title + " " + lead):
-                continue
-            cur = db.execute(
-                "INSERT OR IGNORE INTO article (source_id,feed_id,url,title,lead,language,published_at,fetched_at,extract_status,country) "
-                "VALUES (?,?,?,?,?,?,?,?,'pending',?)",
-                (feed["source_id"], feed["id"], url, title, lead, feed["language"], parse_date(e), now_str, country))
-            n += cur.rowcount
-            if cur.rowcount:
-                known.add(title_key(title))
-        db.execute("UPDATE feed SET last_ok_at=?, last_error=NULL, consecutive_errors=0, retry_after=NULL, "
-                   "etag=COALESCE(?, etag), last_modified=COALESCE(?, last_modified) WHERE id=?",
-                   (now_str, new_etag, new_lm, feed["id"]))
-        added += n
-        print(f"  ok   {country[:4]} {feed['source_id']:15} {feed['section_label'] or '':22} +{n}")
-        db.commit()
+        except Exception as err:
+            db.rollback()
+            print(f"  FAIL {feed['url']} (parse error: {err})")
     return added
 
 
@@ -250,13 +261,23 @@ def ingest_gdelt(db, country):
 
 def run(db):
     load_registry(db)
+    now_init = now()
+    all_active = [
+        f for f in db.execute("SELECT * FROM feed WHERE active=1").fetchall()
+        if not (f["retry_after"] and f["retry_after"] > now_init)
+    ]
+    with ThreadPoolExecutor(max_workers=20) as pool:
+        prefetched = dict(pool.map(_fetch_one_feed, all_active))
     for country in packs.pack_ids():
         print(f"ingest {country}")
-        a = ingest_feeds(db, country)
+        a = ingest_feeds(db, country, prefetched=prefetched)
         b = ingest_gdelt(db, country)
         print(f"ingest {country}: {a} new from feeds, {b} new from GDELT")
-    from . import crisis
-    crisis._gdelt_events(datetime.now(timezone.utc), db)
+    try:
+        from . import crisis
+        crisis._gdelt_events(datetime.now(timezone.utc), db)
+    except Exception as e:
+        print(f"ingest: GDELT 2.0 event stream warning: {e}")
 
 
 def reconcile_aggregator_sources(db):

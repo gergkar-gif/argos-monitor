@@ -2,7 +2,7 @@ import sqlite3
 import unittest
 from unittest.mock import patch
 
-from argos import excerpts, extract, ingest, packs, ratings, reddit
+from argos import excerpts, extract, ingest, packs, ratings, reddit, textutil
 from argos.db import SCHEMA
 
 
@@ -110,6 +110,22 @@ class TestPipelineGuards(unittest.TestCase):
             if len(doms) < floor:
                 deficits.append((cid, len(doms), floor))
         self.assertEqual(deficits, [], f"Desks below independent publisher floor: {deficits}")
+
+    def test_parse_date_and_extract_one_resilience(self):
+        # Malformed published_parsed tuples from feedparser must not raise ValueError
+        self.assertEqual(
+            textutil.parse_date({"published_parsed": (0, 0, 0, 0, 0, 0), "published": "2026-11-16T00:00:00Z"}),
+            "2026-11-16T00:00:00+00:00",
+        )
+        self.assertIsNone(textutil.parse_date({"published_parsed": (10000, 13, 40, 25, 0, 0)}))
+
+        # Malformed URL or trafilatura exception in extract._one must return ("error") instead of crashing pool
+        self.assertEqual(extract._one({"id": 99, "url": "not-a-valid-url"}), (99, None, "error"))
+        extract._robots.clear()
+        with patch("argos.extract.get", return_value=(200, b"<html></html>")), patch(
+            "argos.extract.trafilatura.extract", side_effect=RuntimeError("corrupt html")
+        ):
+            self.assertEqual(extract._one({"id": 100, "url": "https://ok.example/a"}), (100, None, "error"))
 
 
 if __name__ == "__main__":

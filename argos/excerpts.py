@@ -58,10 +58,17 @@ def sentences(text, pack, first_n=8):
 
 
 def run(db):
-    ids = dashboard_story_ids(db)
+    has_text_sids = {
+        r[0] for r in db.execute(
+            "SELECT DISTINCT sa.story_id FROM story_article sa JOIN article a ON a.id=sa.article_id "
+            "WHERE COALESCE(sa.similarity, 1.0) >= 0.93 AND a.text IS NOT NULL AND a.syndicated_of IS NULL"
+        ).fetchall()
+    }
+    ids = [sid for sid in dashboard_story_ids(db) if sid in has_text_sids]
     emb = Embedder()
     db.execute("DELETE FROM excerpt")
     total = 0
+    span_cache = {}
     for sid in ids:
         pack = packs.load(db.execute("SELECT country FROM story WHERE id=?", (sid,)).fetchone()[0])
         arts = db.execute(
@@ -74,10 +81,14 @@ def run(db):
         centre /= np.linalg.norm(centre)
         best_per_source = {}
         for a in arts:
-            spans = sentences(a["text"], pack)
+            aid = a["id"]
+            if aid not in span_cache:
+                spans = sentences(a["text"], pack)
+                vecs = emb.encode(["passage: " + a["text"][s:e] for s, e in spans]) if spans else None
+                span_cache[aid] = (spans, vecs)
+            spans, vecs = span_cache[aid]
             if not spans:
                 continue
-            vecs = emb.encode(["passage: " + a["text"][s:e] for s, e in spans])
             raw_sims = vecs @ centre
             scores = [float(s) + (0.02 if QUOTE_CUES.search(a["text"][sp[0]:sp[1]]) else 0.0) for sp, s in zip(spans, raw_sims)]
             k = int(np.argmax(scores))

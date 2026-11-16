@@ -66,13 +66,25 @@ class TestDeltaClassification(unittest.TestCase):
         self.assertEqual(dt.month, 10)
         self.assertEqual(dt.day, 23)
 
-        # GDACS Green spam capping & deduplication
+        # GDACS & near-duplicate event collapsing & per-desk cap
         raw_items = [
-            {"kind": "GDACS", "title": "Green forest fire notification in Australia", "level": "Green", "date": f"2026-11-0{i}T00:00:00+00:00"}
-            for i in range(1, 6)
+            {"kind": "GDELT Live Event", "title": "Iran targets US military base in Bahrain with drone attack", "level": "Alert", "date": "2026-11-16T00:00:00+00:00"},
+            {"kind": "GDELT Live Event", "title": "Iranian drone attack targets radar system at US military base in Bahrain", "level": "Alert", "date": "2026-11-15T19:15:00+00:00"},
+            {"kind": "GDACS", "title": "Orange tropical cyclone alert in Philippines", "level": "Orange", "date": "2026-11-15T12:00:00+00:00"},
         ]
-        deduped = crisis._dedup_and_cap(raw_items)
-        self.assertEqual(len(deduped), 1)
+        deduped = crisis._dedup_and_cap(raw_items, max_items=5)
+        self.assertEqual(len(deduped), 2)
+        self.assertEqual(deduped[0]["title"], "Iran targets US military base in Bahrain with drone attack")
+
+        # HRW image caption boilerplate stripping & USGS epicenter/depth summary formatting
+        self.assertEqual(
+            crisis._summary("Human Rights Watch", {"summary": "Click to expand Image Protesters gather in Paris on November 12. More text."}),
+            "Protesters gather in Paris on November 12.",
+        )
+        self.assertEqual(
+            crisis._summary("USGS", {"summary": "DYFI? - III Time 2026-11-15 03:59:59 UTC Location 9.760°N 126.200°E Depth 9.97 km (6.19 mi)."}),
+            "Epicenter 9.760°N 126.200°E · Depth 9.97 km",
+        )
 
         # Kinetic violence vs routine defence diplomacy & sports exclusion
         s_strike = {"headline": {"title": "Drone strike and artillery shelling reported in Kharkiv"}, "themes": ["Security and defence"], "sources": []}

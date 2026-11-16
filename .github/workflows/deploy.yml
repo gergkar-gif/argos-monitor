@@ -46,7 +46,7 @@ jobs:
         run: |
           pip install -r requirements.txt
           mkdir -p site/data
-          if [ -f .argos-data/argos.db ]; then
+          if [ -f .argos-data/argos.db ] || [ ! -f site/data/index.json ]; then
             python run.py export watch || true
           fi
           if [ ! -f site/data/crisis.json ]; then
@@ -55,7 +55,10 @@ jobs:
 
       # Fast publish directly to Cloudflare Pages
       - name: Publish to Cloudflare Pages
-        run: npx --yes wrangler@4 pages deploy site --project-name=argos-monitor --branch=main
+        run: |
+          npx --yes wrangler@4 pages deploy site --project-name=argos-monitor --branch=main || \
+            (sleep 10 && npx --yes wrangler@4 pages deploy site --project-name=argos-monitor --branch=main) || \
+            (sleep 20 && npx --yes wrangler@4 pages deploy site --project-name=argos-monitor --branch=main)
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

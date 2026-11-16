@@ -4,6 +4,7 @@ Sorted by search volume (highest first) and filtered to drop foreign sports scor
 and bare newspaper navigation searches (e.g. "dân trí", "bama.hu").
 """
 import re
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from urllib.parse import urlparse
 
@@ -59,19 +60,28 @@ def _keep(pack, outlets, item):
 
 def run(db=None):
     out = {}
-    for cid in packs.pack_ids():
+    cids = packs.pack_ids()
+    geos = {cid: packs.load(cid).get("geo") for cid in cids}
+    unique_geos = sorted({g for g in geos.values() if g})
+    with ThreadPoolExecutor(max_workers=12) as pool:
+        fetched = dict(zip(unique_geos, pool.map(lambda g: fetch.get(URL.format(g)), unique_geos)))
+    for cid in cids:
         pack = packs.load(cid)
-        geo = pack.get("geo")
-        status, body = fetch.get(URL.format(geo)) if geo else (0, b"")
+        geo = geos[cid]
+        status, body = fetched.get(geo, (0, b"")) if geo else (0, b"")
         if status != 200:
             print(f"trends: {cid}: HTTP {status}, skipped")
             continue
         outlets = ({str(o).lower() for lst in pack.get("aggregator_outlets", {}).values() for o in lst}
                    | {str(s["name"]).lower() for s in pack["sources"]}
                    | {urlparse(s.get("homepage") or "").netloc.removeprefix("www.").split(".")[0].lower() for s in pack["sources"]})
+        try:
+            entries = feedparser.parse(body).entries
+        except Exception:
+            entries = []
         items = [{"term": clean(e.title), "traffic": e.get("ht_approx_traffic"), "news": clean(e.get("ht_news_item_title")) or None,
                   "url": e.get("ht_news_item_url"), "source": clean(e.get("ht_news_item_source")) or None}
-                 for e in feedparser.parse(body).entries]
+                 for e in entries]
         kept = [x for x in items if _keep(pack, outlets, x)]
         kept.sort(key=lambda x: _traffic(x.get("traffic")), reverse=True)
         out[cid] = kept[:8]

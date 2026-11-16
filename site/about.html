@@ -159,7 +159,7 @@
 
   <section id="pipeline">
     <h2>How the 11-stage pipeline works</h2>
-    <p>A scheduled GitHub Actions job runs the full pipeline daily at 21:17 UTC and deploys static JSON bundles to Cloudflare Pages, with 4-hourly feed snapshots (01:00–17:00 UTC) so breaking articles are captured before fast RSS queues rotate. Each desk tracks 10–15 representative outlets rather than attempting exhaustive archival.</p>
+    <p>A scheduled GitHub Actions job runs the full pipeline daily at 21:17 UTC and deploys static JSON bundles to Cloudflare Pages, paired with 4-hourly feed snapshots (01:00–17:00 UTC) and a lightweight 2-hourly 0–24h live alert updater (<code>alerts.yml</code>) that refreshes crisis, conflict, and sensor alerts around the clock in under 45 seconds. Each desk tracks 10–15 representative outlets rather than attempting exhaustive archival.</p>
     <div class="pipeline">
       <div class="step"><b>01 · Ingest</b><span>Polls 1,627 RSS/Atom feeds via HTTP 304 conditional GETs and ingests verified GDELT 2.0 conflict URLs into SQLite.</span></div>
       <div class="step"><b>02 · Extract</b><span>Pulls full article text with Trafilatura for top multi-outlet stories in round-robin order across all 87 desks, followed by a second shingle deduplication pass.</span></div>
@@ -266,8 +266,8 @@
       <div class="fold-body">
         <div class="pipeline">
           <div class="step">
-            <b>Track 1 · Live streams, field monitors &amp; sensors</b>
-            <span>Ingests <strong>GDELT 2.0</strong> CAMEO conflict codes (18, 19, 20, 145) directly into SQLite, optional <strong>ACLED</strong> battle/fatality records, field reports from <strong>UN Peace &amp; Security</strong>, <strong>Crisis Group</strong>, <strong>HRW</strong>, <strong>LWJ</strong>, and <strong>MSF</strong>, <strong>US State Dept / UK FCDO</strong> advisories, and <strong>GDACS / USGS M4.5+ / NASA EONET</strong> hazard feeds.</span>
+            <b>Track 1 · 0–24h live streams, field monitors &amp; sensors</b>
+            <span>Refreshed every 2 hours around the clock (and on-demand in the browser): ingests <strong>GDELT 2.0</strong> CAMEO conflict codes (18, 19, 20, 145) with verbatim headline verification, optional <strong>ACLED</strong> battle/fatality records, field reports from <strong>UN Peace &amp; Security</strong>, <strong>Crisis Group</strong>, <strong>HRW</strong>, <strong>LWJ</strong>, and <strong>MSF</strong>, <strong>US State Dept / UK FCDO</strong> security advisories, and <strong>GDACS (Orange/Red) / USGS M5.0+ / NASA EONET</strong> hazard feeds, deduplicating near-identical event rewrites to surface only the top most recent alerts.</span>
           </div>
           <div class="step">
             <b>Track 2 · Kinetic conflict classification</b>

@@ -450,6 +450,7 @@
         monitorPeriod = (t === '14d' || t === '30d') ? '7d' : t;
         try { $('#q').value = q ? decodeURIComponent(q) : ''; } catch {}
       } else {
+        if (c === 'alerts') monitorPeriod = '24h';
         try { $('#q').value = t ? decodeURIComponent(t) : ''; } catch {}
       }
     } else if (c === 'home' || !c) {
@@ -618,6 +619,7 @@
       syncCountryInput('all');
     } else if (cid === 'alerts' || cid === 'disasters' || cid === 'violence') {
       activeTab = cid;
+      if (cid === 'alerts') { monitorPeriod = '24h'; showAllAlerts = false; }
       syncCountryInput('all');
     } else if (cid === 'relations') {
       activeTab = 'relations';
@@ -905,87 +907,190 @@
       q && !list.includes(q) && h('button', { type: 'button', class: 'more', text: `Watch "${q}"`, onclick: () => setWatched([...list, q]) }));
   }
 
+  const TOP_ALERTS_LIMIT = 15;
+  let showAllAlerts = false;
   const getCrisis = () => { const raw = window.ARGOS_CRISIS; return raw && (raw.countries ? raw : raw.crisis); };
   const isHotAlert = (i) => /^(Red|Orange|Warning|Alert)$/.test(i.level || '') || /Level [34]/.test(i.title) || /^(GDELT Live Event|ACLED)$/.test(i.kind || '');
-  function allCrisisAlerts() {
+  const alertCutoff = (per) => {
     const c = getCrisis();
-    const out = [];
+    const ref = (c && c.generated_at) ? Math.min(Date.now(), new Date(c.generated_at).getTime()) : Date.now();
+    if (per === '24h') return ref - 24 * 3600 * 1000;
+    if (per === '7d') return ref - 7 * 86400 * 1000;
+    return 0;
+  };
+
+  function allCrisisAlerts({ dedup = true } = {}) {
+    const c = getCrisis();
+    const raw = [];
     if (c && c.countries) {
       for (const [cid, list] of Object.entries(c.countries)) {
         const cname = prettyName(cid);
         const region = getRegion(cid);
-        for (const item of list) out.push({ ...item, cid, cname, region });
+        for (const item of list) raw.push({ ...item, cid, cname, region, countries: [{ cid, cname }] });
       }
     }
-    return out.sort((a, b) => isHotAlert(b) - isHotAlert(a));
+    raw.sort((a, b) => (new Date(b.date || 0).getTime() - new Date(a.date || 0).getTime()) || (isHotAlert(b) - isHotAlert(a)));
+    if (!dedup) return raw;
+    const byKey = new Map();
+    for (const item of raw) {
+      const k = `${item.kind}|${(item.title || '').toLowerCase()}`;
+      const existing = byKey.get(k);
+      if (existing) {
+        if (!existing.countries.some((x) => x.cid === item.cid)) {
+          existing.countries.push({ cid: item.cid, cname: item.cname });
+        }
+      } else {
+        byKey.set(k, item);
+      }
+    }
+    return [...byKey.values()];
+  }
+
+  function recent24hAlerts(inRegFn = () => true) {
+    const cut24 = alertCutoff('24h');
+    const all = allCrisisAlerts({ dedup: true }).filter(inRegFn);
+    const h24 = all.filter((i) => i.date && new Date(i.date).getTime() >= cut24);
+    return h24.length ? h24 : all;
+  }
+
+  function updateAlertBadge() {
+    if (!$('#alert-count')) return;
+    const cut24 = alertCutoff('24h');
+    const h24 = allCrisisAlerts({ dedup: true }).filter((i) => i.date && new Date(i.date).getTime() >= cut24);
+    const n = h24.length || allCrisisAlerts({ dedup: true }).length;
+    $('#alert-count').textContent = n ? `[${n}]` : '';
+  }
+
+  function refreshCrisisAlerts(btn) {
+    if (btn) { btn.disabled = true; btn.textContent = 'Refreshing…'; }
+    const s = document.createElement('script');
+    s.src = `data/crisis.js?t=${Date.now()}`;
+    const done = () => {
+      s.remove();
+      updateAlertBadge();
+      if (btn) { btn.disabled = false; btn.textContent = '↻ Refresh 0–24h'; }
+      if (activeTab === 'alerts') renderAlerts();
+      else if (activeTab === 'home') renderHome();
+      else if (activeTab === 'disasters' || activeTab === 'violence') renderEventMonitor(activeTab);
+      else if (current) render(false);
+    };
+    s.onload = done;
+    s.onerror = done;
+    document.head.append(s);
   }
 
   function alerts() {
     const c = getCrisis();
     if (!c) return null;
-    const items = c.countries[country.value] || [];
+    const items = [...(c.countries[country.value] || [])]
+      .sort((a, b) => new Date(b.date || 0).getTime() - new Date(a.date || 0).getTime());
     if (!items.length) return null;
+    const topItems = items.slice(0, 3);
     return h('section', { class: 'alerts side-alert', 'aria-label': 'Official alerts' },
-      h('h2', { text: plural(items.length, 'Official alert', 'Official alerts') }),
-      h('ul', null, items.map((item) => h('li', null,
+      h('h2', { text: `${plural(items.length, 'Official alert', 'Official alerts')} (top recent)` }),
+      h('ul', null, topItems.map((item) => h('li', null,
         h('span', { class: 'stamp ' + (isHotAlert(item) ? 'red' : 'indigo'), text: item.kind }),
+        item.date && h('span', { class: 'meta', text: fmtTime.format(new Date(item.date)) }),
         h('a', { href: safeUrl(item.url), target: '_blank', rel: 'noopener noreferrer', text: item.title }),
-        item.summary && h('p', { class: 'byline', text: item.summary })))));
+        item.summary && h('p', { class: 'byline', text: item.summary })))),
+      items.length > 3 && h('button', {
+        type: 'button',
+        class: 'desk-link',
+        style: 'margin-top:0.5rem',
+        text: `All ${items.length} alerts for ${prettyName(country.value)} →`,
+        onclick: () => { monitorCountry = country.value; monitorPeriod = '7d'; openCountry('alerts'); }
+      }));
   }
 
   function renderAlerts() {
     const c = getCrisis();
     const filterCountry = monitorCountry !== 'all' ? monitorCountry : null;
-    const cutoff = periodCutoff(monitorPeriod);
-    const all = allCrisisAlerts().filter((i) => {
+    const q = ($('#q').value || '').trim().toLowerCase();
+    const cutoff = alertCutoff(monitorPeriod);
+    const pool = allCrisisAlerts({ dedup: !filterCountry });
+    let all = pool.filter((i) => {
       if (filterCountry && i.cid !== filterCountry) return false;
       if (cutoff && (!i.date || new Date(i.date).getTime() < cutoff)) return false;
+      if (q && !fold(`${i.cname} ${i.region} ${i.kind} ${i.title} ${i.summary || ''}`).includes(fold(q))) return false;
       return true;
     });
-    // Organised by recency
+    let effectivePeriod = monitorPeriod;
+    if (!all.length && monitorPeriod === '24h') {
+      const cut7 = alertCutoff('7d');
+      all = pool.filter((i) => {
+        if (filterCountry && i.cid !== filterCountry) return false;
+        if (cut7 && (!i.date || new Date(i.date).getTime() < cut7)) return false;
+        if (q && !fold(`${i.cname} ${i.region} ${i.kind} ${i.title} ${i.summary || ''}`).includes(fold(q))) return false;
+        return true;
+      });
+      if (all.length) effectivePeriod = '7d';
+    }
+    // Strictly organised by recency (newest first)
     all.sort((a, b) => new Date(b.date || 0).getTime() - new Date(a.date || 0).getTime());
+    const shown = (showAllAlerts || filterCountry) ? all : all.slice(0, TOP_ALERTS_LIMIT);
     const countryName = filterCountry ? prettyName(filterCountry) : null;
-    const periodLabel = (MONITOR_PERIODS.find(([v]) => v === monitorPeriod) || [])[1] || 'Past 7 days';
+    const periodLabel = effectivePeriod === '24h' ? '0–24 hours (live)' : 'Past 7 days';
+    const refreshBtn = h('button', {
+      type: 'button',
+      class: 'desk-link',
+      title: 'Fetch latest 0–24h crisis & sensor alerts',
+      text: '↻ Refresh 0–24h',
+      onclick: () => refreshCrisisAlerts(refreshBtn)
+    });
     const bar = h('div', { class: 'monitor-bar' },
       h('div', { class: 'monitor-filters' },
         countryPicker(monitorCountry, (val) => {
           monitorCountry = val;
+          showAllAlerts = false;
           setHash(hashFor('all'));
           renderAlerts();
         }),
         periodPicker(monitorPeriod, (val) => {
           monitorPeriod = val;
+          showAllAlerts = false;
           setHash(hashFor('all'));
           renderAlerts();
         })
       ),
-      filterCountry
-        ? h('button', { type: 'button', class: 'desk-link', text: `View all country alerts (${allCrisisAlerts().length})`, onclick: () => { monitorCountry = 'all'; setHash(hashFor('all')); renderAlerts(); } })
-        : h('span', { class: 'typed', text: `${all.length} active alerts (${periodLabel})` })
+      h('div', { class: 'monitor-filters' },
+        filterCountry
+          ? h('button', { type: 'button', class: 'desk-link', text: 'All countries →', onclick: () => { monitorCountry = 'all'; showAllAlerts = false; setHash(hashFor('all')); renderAlerts(); } })
+          : h('span', { class: 'typed', text: shown.length < all.length ? `Top ${shown.length} most recent of ${all.length} (${periodLabel})` : `${all.length} active alerts (${periodLabel})` }),
+        refreshBtn
+      )
     );
 
     results.replaceChildren(...[
       h('p', { class: 'result-line' },
-        h('b', { text: filterCountry ? `Official alerts · ${countryName}` : 'Active crisis, conflict & official travel alerts' }),
-        ` · ${periodLabel} · ${plural(all.length, 'alert', 'alerts')}${c ? ` · checked ${fmtTime.format(new Date(c.generated_at))}` : ''} · `,
+        h('b', { text: filterCountry ? `Official & live alerts · ${countryName}` : '0–24h Live Crisis, Conflict & Official Alerts (Top Most Recent)' }),
+        ` · ${periodLabel} · ${shown.length < all.length ? `showing top ${shown.length} of ${all.length}` : plural(all.length, 'alert', 'alerts')}${c ? ` · checked ${fmtTime.format(new Date(c.generated_at))}` : ''} · `,
         h('button', { type: 'button', class: 'desk-link', text: '← Back to Overview', onclick: () => openCountry('home') })),
       bar,
-      all.length
+      shown.length
         ? h('div', { class: 'desk-wrap' },
           h('table', { class: 'desk-table' },
-            h('thead', null, h('tr', null, ['Country', 'Region', 'Source', 'Alert / Advisory & Details', 'Date'].map((x) => h('th', { text: x })))),
-            h('tbody', null, all.map((i) => h('tr', null,
-              h('td', { class: 'cell-head' }, index.countries.some((x) => x.id === i.cid)
-                ? h('button', { type: 'button', class: 'stamp country-tag', text: i.cname, onclick: () => { monitorCountry = i.cid; setHash(hashFor('all')); renderAlerts(); } })
-                : h('span', { class: 'stamp', text: i.cname })),
+            h('thead', null, h('tr', null, ['Country', 'Region', 'Source', 'Alert / Advisory & Verbatim Details', 'Timestamp'].map((x) => h('th', { text: x })))),
+            h('tbody', null, shown.map((i) => h('tr', null,
+              h('td', { class: 'cell-head' },
+                h('span', { class: 'desk-badges' },
+                  ...(i.countries || [{ cid: i.cid, cname: i.cname }]).slice(0, 2).map((ct) =>
+                    index.countries.some((x) => x.id === ct.cid)
+                      ? h('button', { type: 'button', class: 'stamp country-tag', text: ct.cname, onclick: () => { monitorCountry = ct.cid; setHash(hashFor('all')); renderAlerts(); } })
+                      : h('span', { class: 'stamp', text: ct.cname })))),
               h('td', { class: 'meta', text: i.region }),
               h('td', null, h('span', { class: 'stamp ' + (isHotAlert(i) ? 'red' : 'indigo'), text: i.kind })),
               h('td', { class: 'cell-body' },
                 h('a', { href: safeUrl(i.url), target: '_blank', rel: 'noopener noreferrer', text: i.title }),
                 i.summary && h('p', { class: 'byline', text: i.summary })),
-              h('td', { class: 'typed', text: i.date ? fmtDay.format(new Date(i.date)) : '—' }))))))
-        : h('p', { class: 'state', text: filterCountry ? `No active official alerts for ${countryName}.` : 'No matching alerts.' }),
-      h('p', { class: 'fine', text: 'Sources: GDELT 2.0 real-time CAMEO conflict stream (verbatim headline verified), ACLED (optional API), Global Disaster Alert and Coordination System (GDACS), US Geological Survey (USGS M4.5+ earthquakes), NASA Earth Observatory (EONET), United Nations Peace & Security, International Crisis Group, Human Rights Watch (HRW), Long War Journal (LWJ), Médecins Sans Frontières (MSF), UK FCDO, and US Department of State elevated travel advisories.' }),
+              h('td', { class: 'typed', text: i.date ? fmtTime.format(new Date(i.date)) : '—' }))))))
+        : h('p', { class: 'state', text: filterCountry ? `No active official alerts for ${countryName} in this window.` : 'No matching alerts in this window.' }),
+      all.length > shown.length && h('button', {
+        type: 'button',
+        class: 'more',
+        text: `Show all ${all.length} alerts (${periodLabel})`,
+        onclick: () => { showAllAlerts = true; renderAlerts(); }
+      }),
+      h('p', { class: 'fine', text: 'Updated 0–24h around the clock. Sources: GDELT 2.0 real-time CAMEO conflict stream (verbatim headline verified), ACLED (optional API), Global Disaster Alert and Coordination System (GDACS Orange/Red), US Geological Survey (USGS M5.0+ earthquakes), NASA Earth Observatory (EONET), United Nations Peace & Security, International Crisis Group, Human Rights Watch (HRW), Long War Journal (LWJ), Médecins Sans Frontières (MSF), UK FCDO, and US Department of State elevated travel advisories.' }),
     ].filter(Boolean));
   }
 
@@ -1566,7 +1671,7 @@
     const filter = (arr, limit) => (arr || [])
       .filter((s) => inReg(s) && (!q || matchStory(s, q)))
       .slice(0, limit);
-    const allAlerts = allCrisisAlerts().filter(inReg);
+    const allAlerts = recent24hAlerts(inReg);
     const pool = [...(hm.elections || []), ...(hm.growing || []), ...(hm.most_reported || [])]
       .filter((s, i, a) => inReg(s) && a.findIndex((x) => x.id === s.id) === i);
 
@@ -1589,8 +1694,15 @@
     });
 
     const tabs = regionTabs((r) => r === 'all' ? allDesks.length : allDesks.filter((d) => d.region === r).length, renderHome);
-    const topAlerts = allAlerts.slice(0, 3);
+    const topAlerts = allAlerts.slice(0, 5);
     const dirSortLabels = [['attention', 'Attention'], ['24h', '24h'], ['7d', '7d'], ['az', 'A–Z']];
+    const homeRefreshBtn = h('button', {
+      type: 'button',
+      class: 'desk-link',
+      title: 'Fetch latest 0–24h crisis & sensor alerts',
+      text: '↻ Refresh 0–24h',
+      onclick: () => refreshCrisisAlerts(homeRefreshBtn)
+    });
 
     results.replaceChildren(...[
       h('p', { class: 'result-line' },
@@ -1598,13 +1710,19 @@
         ` · ${plural(allDesks.filter(inReg).length, 'country', 'countries')} · updated ${fmtTime.format(new Date(hm.generated_at))}`),
       watchbar(q, pool),
       tabs,
-      allAlerts.length > 0 && h('div', { class: 'crisis-strip', role: 'region', 'aria-label': 'Active crisis alerts' },
+      allAlerts.length > 0 && h('div', { class: 'crisis-strip', role: 'region', 'aria-label': 'Active 0–24h crisis alerts' },
         h('div', { class: 'crisis-strip-head' },
-          h('span', { class: 'stamp red', text: `${plural(allAlerts.length, 'active alert', 'active alerts')}` }),
-          h('button', { type: 'button', class: 'desk-link', text: `All ${allAlerts.length} alerts →`, onclick: () => openCountry('alerts') })),
+          h('span', { class: 'stamp red', text: `0–24H LIVE · ${plural(allAlerts.length, 'recent alert', 'recent alerts')}` }),
+          c && c.generated_at && h('span', { class: 'meta', text: `checked ${fmtTime.format(new Date(c.generated_at))}` }),
+          homeRefreshBtn,
+          h('button', { type: 'button', class: 'desk-link', text: `Top ${allAlerts.length} alerts →`, onclick: () => openCountry('alerts') })),
         h('ul', { class: 'crisis-strip-list' }, topAlerts.map((al) => h('li', null,
           h('button', { type: 'button', class: 'desk-link', text: al.cname, onclick: () => openCountry(al.cid) }),
-          ` — ${al.summary || al.title}`)))),
+          ` · `,
+          h('span', { class: 'stamp ' + (isHotAlert(al) ? 'red' : 'indigo'), text: al.kind }),
+          ` — `,
+          h('a', { href: safeUrl(al.url), target: '_blank', rel: 'noopener noreferrer', text: al.title }),
+          al.date && h('span', { class: 'meta', text: ` (${fmtTime.format(new Date(al.date))})` }))))),
       homeSection('Elections & ballot coverage', 'Priority diplomatic & electoral tracking', filter(hm.elections, 4)),
       homeSection('Fastest growing (last 24 hours)', 'Most new coverage in the last 24 hours', filter(hm.growing, 6)),
       homeSection('Most reported (last 7 days)', 'Ranked by independent outlet count', filter(hm.most_reported, openRegion === 'all' ? 6 : 4)),
@@ -1885,7 +2003,8 @@
   fillCountrySelect(lastCountry || index.countries[0].id);
   setupCountryCombobox();
   fillTopics('all');
-  if ($('#alert-count')) { const n = allCrisisAlerts().length; if (n) $('#alert-count').textContent = `[${n}]`; }
+  updateAlertBadge();
+  setInterval(() => refreshCrisisAlerts(), 5 * 60 * 1000);
   readHash();
   $('#home-link').addEventListener('click', (e) => { e.preventDefault(); openCountry('home'); });
   if ($('#nav-home')) $('#nav-home').addEventListener('click', (e) => { e.preventDefault(); activeTab = 'home'; openCountry('home'); });
