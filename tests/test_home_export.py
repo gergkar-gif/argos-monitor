@@ -4,7 +4,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from argos import export, policy
+from argos import export, packs, policy, relevance, textutil
 
 
 def _story(sid, category="internal_politics", score=5.0, outlets=3, last_24h=2, themes=None, delta=None):
@@ -78,6 +78,63 @@ class HomeExportTests(unittest.TestCase):
         s_bahas = _story("id1")
         s_bahas["headline"]["title"] = "Prabowo Kumpulkan Ketum Parpol, Bahas Pengganti Gibran"
         self.assertIsNone(export._classify_disaster(s_bahas))
+
+    def test_vietnam_election_false_positives_and_foreign_sections(self):
+        packs.load.cache_clear()
+        vn = packs.load("vietnam")
+        elec = next(t for t in vn["themes"]["themes"] if t["id"] == "elections")
+        self.assertEqual(
+            policy._keyword_share([("fed sẽ không bỏ phiếu về lãi suất tại cuộc họp tháng 10 năm 2027", "")], elec["keywords"]),
+            0.0,
+        )
+        self.assertGreater(
+            policy._keyword_share([("bầu cử đại biểu quốc hội khóa xvi", "")], elec["keywords"]),
+            0.0,
+        )
+        self.assertFalse(relevance.is_relevant(
+            vn, "domestic", "general", "Tin mới nhất",
+            "https://www.qdnd.vn/quoc-te/doi-song/chinh-sach-trung-dong-cua-my-sau-bau-cu-giua-nhiem-ky-1064548",
+            "Chính sách Trung Đông của Mỹ sau bầu cử giữa nhiệm kỳ", "", "",
+        ))
+
+    def test_sports_stream_spam_rejected_and_real_news_kept(self):
+        spam_cases = [
+            ("!+!LIVE. France v Turkey Match LIVE Stream Tv Channel", "Universitat de Barcelona"),
+            ("$#→ 【TRT1-CANLI+!】 Türkiye - Fransa maçı Canlı izle ! ** 15 Kasım 2026", "Universitat de Barcelona"),
+            ("[MATCH!LIVE] Serbia v Germany LIVE Stream", "日本取引所グループ"),
+            ("Greece vs Serbia prediction and betting tips 16 November 2026", "Dailysports"),
+            ("EN VIVO: Guatemala vs Canadá por los Cuartos de Final de la CONCACAF Nations League", "TUDN"),
+            ("Kazakhstan vs Slovakia: UEFA Nations League stats & head-to-head", "BBC"),
+            ("Fransa-Türkiye maçı ne zaman, saat kaçta, hangi kanalda?", "Evrensel"),
+            ("How to watch France vs Turkey: TV channel and live stream for Nations League today", "London Evening Standard"),
+        ]
+        for title, outlet in spam_cases:
+            self.assertTrue(textutil.is_sports_stream_spam(title, outlet=outlet), f"Expected spam reject for: {title}")
+
+        real_cases = [
+            ("Estonia to close Russian border crossings over suspected sabotage", "Business Day"),
+            ("Turkey and Qatar sign mutual defense pact", "Israel National News"),
+            ("Australia signs defence pact with Philippines amid China tensions", "Inquirer"),
+        ]
+        for title, outlet in real_cases:
+            self.assertFalse(textutil.is_sports_stream_spam(title, outlet=outlet), f"False positive on real news: {title}")
+
+        # _home must drop both stream spam and Sport and entertainment stories from briefing lists
+        with tempfile.TemporaryDirectory() as tmp:
+            data_dir = Path(tmp)
+            s_spam = _story("spam1", category="foreign_policy", score=50.0, outlets=12, last_24h=94)
+            s_spam["headline"]["title"] = "!+!LIVE. France v Turkey Match LIVE Stream Tv Channel"
+            s_spam["headline"]["source"] = "Universitat de Barcelona"
+            s_sport = _story("sport1", category="society", score=20.0, outlets=8, last_24h=10, themes=["Sport and entertainment"])
+            s_real = _story("real1", category="foreign_policy", score=15.0, outlets=5, last_24h=4)
+            d7 = {"totals": {"foreign_policy": 2, "society": 1}, "stories": [s_spam, s_sport, s_real]}
+            (data_dir / "turkey-7d.json").write_text(json.dumps(d7), encoding="utf8")
+            (data_dir / "turkey-24h.json").write_text(json.dumps({"totals": {}, "stories": []}), encoding="utf8")
+            with patch.object(export, "SITE_DATA", data_dir):
+                home = export._home("2026-11-16T00:00:00+00:00", [{"id": "turkey", "name": "Turkey", "region": "Mediterranean"}])
+            self.assertEqual([s["id"] for s in home["most_reported"]], ["real1"])
+            self.assertEqual([s["id"] for s in home["growing"]], ["real1"])
+            self.assertEqual(home["desks"][0]["lead"]["title"], "Headline real1")
 
 
 if __name__ == "__main__":

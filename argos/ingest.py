@@ -17,7 +17,7 @@ import feedparser
 from . import packs
 from .fetch import get
 from .ratings import lookup_rating
-from .textutil import clean, clean_url, parse_date
+from .textutil import clean, clean_url, is_sports_stream_spam, parse_date
 
 WINDOW_DAYS = 7      # the longest window the site shows
 MAX_PER_FEED = 100   # feeds like VietnamNet return ~1000 items; keep the newest
@@ -71,6 +71,8 @@ def ingest_aggregator(db, pack, src, feed, parsed, known):
             title = clean(OUTLET_SUFFIX.sub("", title))
         url = clean_url(e.get("link"))
         if not (outlet and title and url) or title_key(title) in known:
+            continue
+        if is_sports_stream_spam(title, outlet=outlet, url=url):
             continue
         slug = re.sub(r"[^\w]+", "-", outlet.lower(), flags=re.UNICODE).strip("-")
         sid = f"gn:{slug}" if slug else f"gn:{re.sub(r'[^a-z0-9]+', '', url.lower())[-12:]}"

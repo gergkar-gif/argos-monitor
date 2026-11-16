@@ -104,3 +104,49 @@ def parse_date(entry):
         return d.astimezone(timezone.utc).isoformat(timespec="seconds")
     except (ValueError, TypeError):
         return None
+
+
+_SPAM_DELIM_RE = re.compile(
+    r"(!\+!|\$\#|【[^】]*(?:live|canl[ıi]|stream|tv|ma[cç]|izle|watch)[^】]*】|\[(?:match|live|stream|watch|tv)[^\]]*\])",
+    re.I,
+)
+_STREAM_PHRASE_RE = re.compile(
+    r"\b(?:live\s+stream|livestream|stream\s+tv\s+channel|tv\s+channel\b.*\b(?:live|match|stream)|"
+    r"how\s+to\s+watch|watch\s+live|free\s+live\s+stream|canl[ıi]\s+izle|canl[ıi]\s+yay[ıi]n|"
+    r"ne\s+zaman[,:\s]+saat\s+ka[cç]ta|hangi\s+kanalda|ver\s+en\s+vivo|"
+    r"en\s+vivo\b.*\b(?:vs\.?|v\.?)\b|transmisi[oó]n\s+en\s+vivo|"
+    r"prediction\s+and\s+betting\s+tips|betting\s+tips|betting\s+odds|"
+    r"stats\s*&\s*head-to-head|head-to-head\b.*\b(?:uefa|nations\s+league|concacaf|fifa|world\s+cup|premier\s+league|la\s+liga|serie\s+a|bundesliga|champions\s+league|europa\s+league))\b",
+    re.I,
+)
+_LEAGUE_FIXTURE_RE = re.compile(
+    r"\b(?:uefa\s+nations\s+league|concacaf\s+nations\s+league|champions\s+league|europa\s+league|"
+    r"premier\s+league|la\s+liga|serie\s+a|bundesliga|copa\s+am[eé]rica)\b",
+    re.I,
+)
+_VS_MATCH_RE = re.compile(
+    r"\b(?:v|vs\.?)\s+[^\n,:;]{2,35}\s+(?:match\s+live|live\s+stream|prediction|betting|preview|highlights|stats)\b",
+    re.I,
+)
+_SPORTS_OUTLETS = {
+    "dailysports", "tudn", "espn", "onefootball", "goal", "flashscore", "sofascore",
+    "sky sports", "beinsports", "bein sports", "marca", "as", "l'équipe", "l'equipe",
+    "nemzeti sport", "m4 sport", "trt spor", "a spor", "fanatik", "fotomac", "fotomaç",
+}
+_SPAM_HOST_OUTLETS = ("universitat de barcelona", "日本取引所グループ", "ub.edu", "jpx.co.jp")
+
+
+def is_sports_stream_spam(title, outlet="", url=""):
+    """Reject SEO live-stream spam, betting tips, and routine sports match broadcasts."""
+    t = (title or "").strip()
+    o = (outlet or "").strip().lower()
+    u = (url or "").strip().lower()
+    if o in _SPORTS_OUTLETS:
+        return True
+    if not t:
+        return False
+    if _SPAM_DELIM_RE.search(t) or _STREAM_PHRASE_RE.search(t) or _LEAGUE_FIXTURE_RE.search(t) or _VS_MATCH_RE.search(t):
+        return True
+    if any(h in o or h in u for h in _SPAM_HOST_OUTLETS) and re.search(r"\b(live|stream|match|canl[ıi]|izle|tv|vs\.?|v)\b", t, re.I):
+        return True
+    return False

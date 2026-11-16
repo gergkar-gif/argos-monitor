@@ -18,6 +18,7 @@ from .embed import DIM
 from .ingest import reconcile_ratings
 from .rank import dashboard_story_ids
 from .ratings import lookup_rating
+from .textutil import is_sports_stream_spam
 
 SITE_DATA = ROOT / "site" / "data"
 WINDOWS = {1: "24h", 7: "7d"}
@@ -362,14 +363,31 @@ def _is_election(s):
     return any(w in themes_str for w in _ELECTION_TERMS)
 
 
+def _is_sports_spam_story(s):
+    h = s.get("headline") or {}
+    return (
+        is_sports_stream_spam(h.get("title"), outlet=h.get("source") or "", url=h.get("url") or "")
+        or is_sports_stream_spam(h.get("en_title"), outlet=h.get("source") or "")
+    )
+
+
+def _is_low_sport_story(s):
+    if _is_sports_spam_story(s):
+        return True
+    themes = [t.lower() for t in (s.get("themes") or [])]
+    return bool(themes) and all("sport" in t or "entertainment" in t for t in themes)
+
+
 def _pick_desk_lead(stories):
-    """Prefer substantive policy/news leads over 'other' (e.g. tabloid/entertainment) when available."""
+    """Prefer substantive policy/news leads over 'other' (e.g. tabloid/entertainment) and sports when available."""
     if not stories:
         return None
-    for s in stories:
+    non_sport = [s for s in stories if not _is_low_sport_story(s)]
+    pool = non_sport or stories
+    for s in pool:
         if s.get("category") != "other":
             return s
-    return stories[0]
+    return pool[0]
 
 
 def _home(now, countries):
@@ -386,6 +404,8 @@ def _home(now, countries):
         elections_n = 0
         intl_pickups = 0
         for s in d7["stories"]:
+            if _is_low_sport_story(s):
+                continue
             d_type = _classify_disaster(s)
             v_type = _classify_violence(s)
             delta = s.get("delta") or {}
@@ -443,10 +463,11 @@ def run(db):
                 (cid, days, window_cutoff),
             ).fetchall()
             prev_by_sid, prev_cats = _prev_window_matches(db, cid, days, prev_cutoff, window_cutoff) if story_rows else ({}, Counter())
-            stories = [_story(db, sr, now, days, prev_by_sid.get(sr["id"])) for sr in story_rows]
+            all_stories = [_story(db, sr, now, days, prev_by_sid.get(sr["id"])) for sr in story_rows]
+            stories = [st for st in all_stories if not _is_sports_spam_story(st)]
             stories.sort(key=lambda st: -(st["score"] or 0.0))
-            totals = {c: db.execute("SELECT COUNT(*) FROM story WHERE country=? AND window_days=? AND category=? AND COALESCE(last_seen, first_seen, '') >= ?", (cid, days, c, window_cutoff)).fetchone()[0] if stories else 0
-                      for c in CATEGORIES}          # all stories found in the window, of which the top ones are exported
+            totals = Counter(st.get("category") or "other" for st in stories)
+            totals = {c: totals.get(c, 0) for c in CATEGORIES}
             agenda_delta = _agenda_delta(db, cid, days, now, prev_cats) if stories else None
             payload = {"country": cid, "period": label, "days": days, "generated_at": now, "categories": CATEGORIES,
                        "totals": totals, "agenda_delta": agenda_delta, "stories": stories}
