@@ -989,7 +989,7 @@
     const done = () => {
       s.remove();
       updateAlertBadge();
-      if (btn) { btn.disabled = false; btn.textContent = '↻ Check alerts'; }
+      if (btn) { btn.disabled = false; btn.textContent = '↻ Check'; }
       if (activeTab === 'alerts') renderAlerts();
       else if (activeTab === 'home') renderHome();
       else if (activeTab === 'disasters' || activeTab === 'violence') renderEventMonitor(activeTab);
@@ -1714,27 +1714,19 @@
         || (b.stories_7d - a.stories_7d);
     });
 
-    const tabs = regionTabs((r) => r === 'all' ? allDesks.length : allDesks.filter((d) => d.region === r).length, renderHome);
+    const regCount = (r) => r === 'all' ? allDesks.length : allDesks.filter((d) => d.region === r).length;
+    const regionOpts = [['all', 'All regions', regCount('all')], ...REGIONS.filter((r) => regCount(r) > 0).map((r) => [r, r, regCount(r)])];
     const cut24 = alertCutoff('24h');
     const has24hAlerts = allAlerts.some((i) => i.date && new Date(i.date).getTime() >= cut24);
-    const topAlerts = allAlerts.slice(0, 5);
-    const leadAlert = topAlerts[0];
-    const moreAlerts = topAlerts.slice(1);
+    const leadAlert = allAlerts[0];
     const dirSortLabels = [['attention', 'Attention'], ['24h', '24h'], ['7d', '7d'], ['az', 'A–Z']];
     const homeRefreshBtn = h('button', {
       type: 'button',
       class: 'desk-link',
       title: 'Check for newer crisis & hazard alerts',
-      text: '↻ Check alerts',
+      text: '↻ Check',
       onclick: () => refreshCrisisAlerts(homeRefreshBtn)
     });
-    const renderAlertItem = (al) => h('li', null,
-      h('button', { type: 'button', class: 'desk-link', text: al.cname, onclick: () => openCountry(al.cid) }),
-      ` · `,
-      h('span', { class: 'stamp ' + (isHotAlert(al) ? 'red' : 'indigo'), title: al.kind, text: plainAlertKind(al.kind) }),
-      ` — `,
-      h('a', { href: safeUrl(al.url), target: '_blank', rel: 'noopener noreferrer', text: al.title }),
-      al.date && h('span', { class: 'meta', text: ` (${fmtTime.format(new Date(al.date))})` }));
 
     const seenIds = new Set();
     const takeUnique = (arr, limit) => {
@@ -1748,47 +1740,48 @@
     const noSearchMatches = Boolean(q) && desks.length === 0 && !electionsList.length && !growingList.length && !mostReportedList.length;
 
     results.replaceChildren(...[
-      h('p', { class: 'result-line' },
-        h('b', { text: openRegion === 'all' ? 'Overview across all monitored countries' : `Regional Desk · ${openRegion}` }),
-        ` · ${plural(allDesks.filter(inReg).length, 'country', 'countries')} · updated ${fmtUpdated(hm.generated_at)}`,
-        q && [' · ', h('button', { type: 'button', class: 'desk-link', text: 'Clear search', onclick: () => { $('#q').value = ''; setHash(hashFor(openTopic)); renderHome(); $('#q').focus(); } })]),
-      h('p', { class: 'home-intro', text: 'Countries are ranked by active alerts, elections, and surging coverage. Select any country for its full brief.' }),
       watchbar(q, pool),
-      tabs,
-      allAlerts.length > 0 && h('section', { class: 'crisis-strip crisis-compact', 'aria-labelledby': 'home-alerts-heading' },
-        h('div', { class: 'crisis-strip-head' },
-          h('h2', { id: 'home-alerts-heading', class: 'crisis-heading', text: `${has24hAlerts ? 'Last 24h alerts' : 'Latest alerts (none in last 24h)'} · ${allAlerts.length}` }),
-          homeRefreshBtn,
-          h('button', { type: 'button', class: 'desk-link', text: `All ${allAlerts.length} alerts →`, onclick: () => openCountry('alerts') })),
-        leadAlert && h('p', { class: 'crisis-top-inline' },
+      allAlerts.length > 0 && h('section', { class: 'crisis-strip crisis-inline', 'aria-labelledby': 'home-alerts-heading' },
+        h('h2', { id: 'home-alerts-heading', class: 'crisis-heading', text: `${has24hAlerts ? 'Last 24h alerts' : 'Latest alerts (none in last 24h)'} · ${allAlerts.length}` }),
+        leadAlert && h('span', { class: 'crisis-top-inline' },
           h('button', { type: 'button', class: 'desk-link', text: leadAlert.cname, onclick: () => openCountry(leadAlert.cid) }),
-          ` · `,
-          h('span', { class: 'stamp ' + (isHotAlert(leadAlert) ? 'red' : 'indigo'), title: leadAlert.kind, text: plainAlertKind(leadAlert.kind) }),
           ` — `,
-          h('a', { href: safeUrl(leadAlert.url), target: '_blank', rel: 'noopener noreferrer', text: leadAlert.title }),
-          leadAlert.date && h('span', { class: 'meta', text: ` (${fmtTime.format(new Date(leadAlert.date))})` })),
-        moreAlerts.length > 0 && h('details', { class: 'crisis-more' },
-          h('summary', { text: `Show ${moreAlerts.length} more alerts` }),
-          h('ul', { class: 'crisis-strip-list' }, moreAlerts.map(renderAlertItem)))),
+          h('a', { href: safeUrl(leadAlert.url), target: '_blank', rel: 'noopener noreferrer', text: leadAlert.title })),
+        h('span', { class: 'crisis-actions' },
+          homeRefreshBtn,
+          h('button', { type: 'button', class: 'desk-link', text: `All ${allAlerts.length} →`, onclick: () => openCountry('alerts') }))),
       noSearchMatches && h('div', { class: 'empty-state' },
         h('span', { text: `No countries or stories match "${$('#q').value.trim()}".` }),
         h('button', { type: 'button', class: 'more', text: 'Clear search', onclick: () => { $('#q').value = ''; setHash(hashFor(openTopic)); renderHome(); $('#q').focus(); } })),
       desks.length > 0 && h('section', { class: 'drawer' },
-        h('div', { class: 'drawer-head' },
-          h('h2', { text: 'Monitored countries directory' }),
-          h('span', { class: 'count', text: plural(desks.length, 'country', 'countries') })),
+        h('div', { class: 'home-head' },
+          h('h2', { text: openRegion === 'all' ? `Monitored countries · ${desks.length}` : `${openRegion} · ${plural(desks.length, 'country', 'countries')}` }),
+          h('span', { class: 'meta' },
+            `Updated ${fmtUpdated(hm.generated_at)}`,
+            q && [' · ', h('button', { type: 'button', class: 'desk-link', text: 'Clear search', onclick: () => { $('#q').value = ''; setHash(hashFor(openTopic)); renderHome(); $('#q').focus(); } })])),
         h('div', { class: 'desk-controls' },
-          h('div', { class: 'desk-sorts', role: 'group', 'aria-label': 'Sort countries' },
-            h('span', { class: 'meta', text: 'Sort:' }),
-            dirSortLabels.map(([id, label]) => h('button', {
-              type: 'button',
-              class: 'agenda-filter-btn' + (deskSort === id ? ' active' : ''),
-              text: label,
-              onclick: () => { deskSort = id; renderHome(); }
-            }))),
+          h('div', { class: 'desk-filters' },
+            regionOpts.length > 2 && h('label', { class: 'desk-region' },
+              h('span', { text: 'Region' }),
+              h('select', {
+                'aria-label': 'Filter by region',
+                onchange: (e) => { openRegion = e.target.value; renderHome(); }
+              }, regionOpts.map(([id, label, n]) => h('option', {
+                value: id,
+                selected: openRegion === id,
+                text: `${label} (${n})`
+              })))),
+            h('div', { class: 'desk-sorts', role: 'group', 'aria-label': 'Sort countries' },
+              h('span', { class: 'meta', text: 'Sort:' }),
+              dirSortLabels.map(([id, label]) => h('button', {
+                type: 'button',
+                class: 'agenda-filter-btn' + (deskSort === id ? ' active' : ''),
+                text: label,
+                onclick: () => { deskSort = id; renderHome(); }
+              })))),
           h('details', { class: 'dir-legend' },
-            h('summary', { text: 'How to read tags & counts' }),
-            h('p', { text: '24h / 7d count grouped stories, not raw reprints. Alerts mark recent conflict or hazard reports; Election marks ballot coverage; Surging counts stories growing faster than the prior window.' }))),
+            h('summary', { text: 'How to read' }),
+            h('p', { text: 'Ranked by active alerts, elections, and surging coverage. Select any country for its full brief. 24h / 7d count grouped stories, not raw reprints.' }))),
         h('div', { class: 'desk-wrap' },
           h('table', { class: 'desk-table' },
             h('thead', null, h('tr', null,

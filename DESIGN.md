@@ -90,9 +90,7 @@ Argos Monitor is an evidence-first open-source media and crisis intelligence das
 - **Container:** single centered column (`max-width: 68rem`), `1.5rem` horizontal padding on desktop (`1rem` on mobile).
 - **Home Page Order:**
   1. Masthead, primary navigation, and unified filter bar (Country combobox + Search).
-  2. Overview status line & watchlist chips.
-  3. Sticky region tab strip (horizontally scrollable with right-edge fade cue on desktop; native `<select>` on mobile).
-  4. Compact one-line crisis alert summary (with expandable detail).
-  5. **Monitored countries directory** (centerpiece table on desktop; stacked cards on mobile).
-  6. Thematic story sections below (Elections & ballot coverage, Fastest growing, Most reported).
+  2. One-line crisis alert summary (lead alert + link to full Alerts view).
+  3. **Monitored countries directory** (centerpiece table on desktop with inline Region select and Sort controls; stacked cards on mobile).
+  4. Thematic story sections below (Elections & ballot coverage, Fastest growing, Most reported).
 - **Touch Targets:** minimum `44px` (`2.75rem`) height for interactive controls on mobile.
