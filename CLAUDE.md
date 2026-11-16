@@ -19,11 +19,12 @@ The project has not been built yet. Read these before doing any work:
 6. **The About page (`site/about.html`) is CRUCIAL and must always be kept up-to-date.** Whenever adding country desks, changing pipeline stages, or introducing new analytical features (such as political alignment, editorial leaning, factuality, or state-affiliated corroboration), the About page's explanatory sections, telemetry badges, desk lists, and methodology must be updated in the same change.
 7. **Zero emojis across the entire project.** Argos Monitor is designed for serious diplomatic, institutional, and foreign-office press review. Never use emojis in dashboard UI, badges, alerts, charts, documentation, commit messages, or metadata. Strip emojis during text ingestion/normalisation (`clean()`) so external RSS symbols do not leak into the broadsheet interface. Use clean typographic labels (`[NEW]`, `[SURGE]`, `[OFFICIAL]`), plain integers (`+14`), or standard directional indicators (`↑`, `↓`).
 8. **Elections always get priority coverage.** National, presidential, parliamentary, and local elections, ballot results, voter turnout, referendums, and official campaign outcomes receive top policy weighting (1.0) and priority placement at the top of diplomatic news briefs (`site/brief.html`) and desk overviews across all countries.
+9. **Run scripts and deploy to the live site yourself.** Never ask the user to run Python scripts or local commands. After changing pipeline code, country packs, themes, or `site/` files, run the needed `run.py` stages and tests yourself, commit and push to `main` (triggering `.github/workflows/deploy.yml` / `.github/workflows/daily.yml` to publish to Cloudflare Pages), and verify the change is live on `https://argosmonitor.uk`.
 
 ## Environment
 - Windows 11, 8 GB RAM, Python 3.14. Everything must run on CPU and stay light on memory.
 - **The project folder is on Google Drive. Never put the SQLite database or caches inside it**, because Drive sync corrupts or locks database files. Data goes in `ARGOS_DATA_DIR` (default `C:\ArgosData`).
-- The user doesn't write code. Explain how to run things in plain steps, one command at a time.
+- The user doesn't write code and does not want to run scripts manually; execute commands yourself and confirm changes on the live site.
 - The `impeccable` design skill is installed in `.claude/skills/`. Use it for dashboard/UI work (`/impeccable init` once there is a UI to design).
 
 ## Conventions
