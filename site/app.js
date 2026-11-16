@@ -81,7 +81,8 @@
   }
 
   const country = $('#country'), countrySearch = $('#country-search'), countryMenu = $('#country-menu'), countryArrow = $('#country-arrow');
-  const period = $('#period'), topic = $('#topic'), results = $('#results');
+  const period = $('#period'), topic = $('#topic'), results = $('#results'), qInput = $('#q'), qClear = $('#q-clear');
+  const HOME_DESKS_LIMIT = 15;
   let current = null;   // the loaded data file
   let openTopic = 'all';
   let openRegion = 'all';
@@ -89,8 +90,23 @@
   let deskFilter = '';
   let openSubType = 'all';
   let movementFilter = 'all';
+  let showAllDesks = false;
   let extra = {};   // extra stories revealed per topic in the overview ("Show more")
+  const openStoryIds = new Set();
   const GLOBAL_VIEWS = new Set(['home', 'alerts', 'disasters', 'violence', 'relations']);
+  const syncSearchClear = () => { if (qClear && qInput) qClear.hidden = !qInput.value; };
+  const clearSearch = () => {
+    if (!qInput) return;
+    qInput.value = '';
+    syncSearchClear();
+    setHash(hashFor(openTopic));
+    if (activeTab === 'home') renderHome();
+    else if (activeTab === 'relations') renderRelations();
+    else if (activeTab === 'alerts') renderAlerts();
+    else if (activeTab === 'disasters' || activeTab === 'violence') renderEventMonitor(activeTab);
+    else if (current) render(false);
+    qInput.focus();
+  };
 
   const REGIONS = [
     'North America', 'Western Europe', 'Central & Southeast Europe', 'Eastern Europe',
@@ -243,8 +259,10 @@
           for (const c of list) {
             const isSel = c.id === country.value && activeTab === 'country';
             const item = h('div', {
+              id: `c-opt-${c.id}`,
               class: 'combobox-item' + (isSel ? ' selected' : ''),
               role: 'option',
+              'aria-selected': String(isSel),
               'data-id': c.id,
               'data-name': c.name,
               onclick: () => selectCountry(c.id, c.name),
@@ -270,8 +288,10 @@
             const isSel = c.id === country.value && activeTab === 'country';
             const reg = getRegion(c.id);
             const item = h('div', {
+              id: `c-opt-${c.id}`,
               class: 'combobox-item' + (isSel ? ' selected' : ''),
               role: 'option',
+              'aria-selected': String(isSel),
               'data-id': c.id,
               'data-name': c.name,
               onclick: () => selectCountry(c.id, c.name),
@@ -291,12 +311,17 @@
     }
 
     function updateHighlight() {
+      let activeId = '';
       visibleItems.forEach((it, idx) => {
-        it.el.classList.toggle('highlighted', idx === highlightedIndex);
-        if (idx === highlightedIndex) {
+        const isHi = idx === highlightedIndex;
+        it.el.classList.toggle('highlighted', isHi);
+        if (isHi) {
+          activeId = it.el.id;
           it.el.scrollIntoView({ block: 'nearest' });
         }
       });
+      if (activeId) countrySearch.setAttribute('aria-activedescendant', activeId);
+      else countrySearch.removeAttribute('aria-activedescendant');
     }
 
     function selectCountry(cid, cname) {
@@ -315,6 +340,7 @@
     function closeMenu() {
       countryMenu.hidden = true;
       countrySearch.setAttribute('aria-expanded', 'false');
+      countrySearch.removeAttribute('aria-activedescendant');
       highlightedIndex = -1;
     }
 
@@ -772,7 +798,8 @@
             r.published && h('span', { text: fmtTime.format(new Date(r.published)) }),
             r.copy && h('span', { text: 'reprint, counted once' })));
       };
-      const details = h('details', null,
+      const storyKey = s.id != null ? String(s.id) : null;
+      const details = h('details', { open: Boolean(storyKey && openStoryIds.has(storyKey)) },
         h('summary', { text: `All ${s.articles} articles` }),
         present.length > 1 && h('div', { class: 'cover', 'aria-label': 'Where the coverage comes from' },
           present.map(([id, label]) => h('span', null, h('b', { text: String(s.by_scope[id]) }), ` ${s.by_scope[id] === 1 ? 'article' : 'articles'} from ${label}`))),
@@ -793,7 +820,14 @@
           h('ul', { class: 'sources' }, list.map(renderItem)))),
         s.articles > rest.length && h('p', { class: 'byline', text: `Showing ${rest.length} of ${s.articles}.` }),
       );
+      if (details.open) {
+        lateItems.splice(0).forEach((it) => track(...it));
+      }
       details.addEventListener('toggle', () => {
+        if (storyKey) {
+          if (details.open) openStoryIds.add(storyKey);
+          else openStoryIds.delete(storyKey);
+        }
         if (!details.open) return;
         lateItems.splice(0).forEach((it) => track(...it));
         translatePending();
@@ -915,6 +949,23 @@
     try { localStorage.setItem('argos.watch', JSON.stringify(list)); } catch { /* storage not available: ignore */ }
     activeTab === 'home' ? renderHome() : render(false);
   }
+  const pinnedDesks = () => { try { return JSON.parse(localStorage.getItem('argos.pins') || '[]'); } catch { return []; } };
+  const isPinned = (cid) => pinnedDesks().includes(cid);
+  function togglePin(cid) {
+    const cur = pinnedDesks();
+    const next = cur.includes(cid) ? cur.filter((x) => x !== cid) : [...cur, cid];
+    try { localStorage.setItem('argos.pins', JSON.stringify(next)); } catch { /* storage not available: ignore */ }
+    activeTab === 'home' ? renderHome() : render(false);
+  }
+  function pinnedBar() {
+    const list = pinnedDesks().filter((cid) => index.countries.some((c) => c.id === cid));
+    if (!list.length) return null;
+    return h('div', { class: 'watch', 'aria-label': 'Pinned country desks' },
+      h('span', { class: 'meta', text: 'Pinned desks' }),
+      list.map((cid) => h('span', { class: 'chip' },
+        h('button', { type: 'button', class: 'more', title: `Open ${getCountryName(cid)}`, text: `${getCountryName(cid)} →`, onclick: () => openCountry(cid) }),
+        h('button', { type: 'button', class: 'x', 'aria-label': `Unpin ${getCountryName(cid)}`, text: '×', onclick: () => togglePin(cid) }))));
+  }
   function watchbar(q, pool = current ? current.stories : []) {
     const list = watched();
     if (!list.length && !q) return null;
@@ -923,7 +974,7 @@
       list.map((w) => h('span', { class: 'chip' },
         h('button', { type: 'button', class: 'more', title: 'Show these stories',
           text: `${w} (${pool.filter((s) => matchStory(s, w)).length})`,
-          onclick: () => { $('#q').value = w; setHash(hashFor(openTopic)); activeTab === 'home' ? renderHome() : render(false); } }),
+          onclick: () => { $('#q').value = w; syncSearchClear(); setHash(hashFor(openTopic)); activeTab === 'home' ? renderHome() : render(false); } }),
         h('button', { type: 'button', class: 'x', 'aria-label': `Stop watching ${w}`, text: '×', onclick: () => setWatched(list.filter((x) => x !== w)) }))),
       q && !list.includes(q) && h('button', { type: 'button', class: 'more', text: `Watch "${q}"`, onclick: () => setWatched([...list, q]) }));
   }
@@ -1720,11 +1771,13 @@
     const has24hAlerts = allAlerts.some((i) => i.date && new Date(i.date).getTime() >= cut24);
     const leadAlert = allAlerts[0];
     const dirSortLabels = [['attention', 'Attention'], ['24h', '24h'], ['7d', '7d'], ['az', 'A–Z']];
+    const isDefaultDir = openRegion === 'all' && !q;
+    const shownDesks = (isDefaultDir && !showAllDesks) ? desks.slice(0, HOME_DESKS_LIMIT) : desks;
     const homeRefreshBtn = h('button', {
       type: 'button',
       class: 'desk-link',
       title: 'Check for newer crisis & hazard alerts',
-      text: '↻ Check',
+      text: 'Refresh',
       onclick: () => refreshCrisisAlerts(homeRefreshBtn)
     });
 
@@ -1740,25 +1793,29 @@
     const noSearchMatches = Boolean(q) && desks.length === 0 && !electionsList.length && !growingList.length && !mostReportedList.length;
 
     results.replaceChildren(...[
+      pinnedBar(),
       watchbar(q, pool),
       allAlerts.length > 0 && h('section', { class: 'crisis-strip crisis-inline', 'aria-labelledby': 'home-alerts-heading' },
-        h('h2', { id: 'home-alerts-heading', class: 'crisis-heading', text: `${has24hAlerts ? 'Last 24h alerts' : 'Latest alerts (none in last 24h)'} · ${allAlerts.length}` }),
-        leadAlert && h('span', { class: 'crisis-top-inline' },
-          h('button', { type: 'button', class: 'desk-link', text: leadAlert.cname, onclick: () => openCountry(leadAlert.cid) }),
-          ` — `,
-          h('a', { href: safeUrl(leadAlert.url), target: '_blank', rel: 'noopener noreferrer', text: leadAlert.title })),
-        h('span', { class: 'crisis-actions' },
+        h('div', { class: 'crisis-lead' },
+          h('h2', { id: 'home-alerts-heading', class: 'crisis-heading', text: `${has24hAlerts ? 'Last 24h alerts' : 'Latest alerts (none in last 24h)'} · ${allAlerts.length}` }),
+          leadAlert && h('span', { class: 'crisis-top-inline' },
+            h('button', { type: 'button', class: 'desk-link', text: leadAlert.cname, onclick: () => openCountry(leadAlert.cid) }),
+            ` — `,
+            h('a', { href: safeUrl(leadAlert.url), target: '_blank', rel: 'noopener noreferrer', text: leadAlert.title }))),
+        h('div', { class: 'crisis-actions' },
           homeRefreshBtn,
           h('button', { type: 'button', class: 'desk-link', text: `All ${allAlerts.length} →`, onclick: () => openCountry('alerts') }))),
       noSearchMatches && h('div', { class: 'empty-state' },
         h('span', { text: `No countries or stories match "${$('#q').value.trim()}".` }),
-        h('button', { type: 'button', class: 'more', text: 'Clear search', onclick: () => { $('#q').value = ''; setHash(hashFor(openTopic)); renderHome(); $('#q').focus(); } })),
+        h('button', { type: 'button', class: 'more', text: 'Clear search', onclick: clearSearch })),
       desks.length > 0 && h('section', { class: 'drawer' },
         h('div', { class: 'home-head' },
-          h('h2', { text: openRegion === 'all' ? `Monitored countries · ${desks.length}` : `${openRegion} · ${plural(desks.length, 'country', 'countries')}` }),
+          h('h2', { text: openRegion === 'all'
+            ? (shownDesks.length < desks.length ? `Monitored countries · top ${shownDesks.length} of ${desks.length}` : `Monitored countries · ${desks.length}`)
+            : `${openRegion} · ${plural(desks.length, 'country', 'countries')}` }),
           h('span', { class: 'meta' },
             `Updated ${fmtUpdated(hm.generated_at)}`,
-            q && [' · ', h('button', { type: 'button', class: 'desk-link', text: 'Clear search', onclick: () => { $('#q').value = ''; setHash(hashFor(openTopic)); renderHome(); $('#q').focus(); } })])),
+            q && [' · ', h('button', { type: 'button', class: 'desk-link', text: 'Clear search', onclick: clearSearch })])),
         h('div', { class: 'desk-controls' },
           h('div', { class: 'desk-filters' },
             regionOpts.length > 2 && h('label', { class: 'desk-region' },
@@ -1791,7 +1848,7 @@
               h('th', { text: '7d' }),
               h('th', { text: 'Signals' }),
               h('th', { text: 'Lead story (7d)' }))),
-            h('tbody', null, desks.map((d) => {
+            h('tbody', null, shownDesks.map((d) => {
               const sigs = [];
               if (d.nAlerts) sigs.push(h('span', { class: 'stamp red', text: `${d.nAlerts} alert${d.nAlerts > 1 ? 's' : ''}` }));
               if (d.elections) sigs.push(h('span', { class: 'stamp purple', text: 'Election' }));
@@ -1809,7 +1866,13 @@
                   track(a, d.lead.title, cl, o);
                   return [a, o, h('span', { class: 'meta', text: ` (${d.lead.source} · ${d.lead.outlets} outlets)` })];
                 })() : '—'));
-            }))))),
+            })))),
+        isDefaultDir && desks.length > HOME_DESKS_LIMIT && h('button', {
+          type: 'button',
+          class: 'more dir-toggle',
+          text: showAllDesks ? `Show top ${HOME_DESKS_LIMIT}` : `Show all ${desks.length} countries`,
+          onclick: () => { showAllDesks = !showAllDesks; renderHome(); }
+        })),
       homeSection('Elections & ballot coverage', 'Priority diplomatic & electoral tracking', electionsList),
       homeSection('Fastest growing (last 24 hours)', 'Most new coverage in the last 24 hours', growingList),
       homeSection('Most reported (last 7 days)', 'Ranked by independent outlet count', mostReportedList),
@@ -1931,6 +1994,10 @@
       fallbackNotice && h('p', { class: 'notice quiet', text: fallbackNotice }),
       h('p', { class: 'result-line' }, h('b', { text: country.options[country.selectedIndex].text }),
         ` · ${periodLabel} · ${plural(totalStories, 'story', 'stories')} found · updated ${fmtTime.format(updated)}${ageH > STALE_HOURS ? ` (${Math.round(ageH / 24)}d old)` : ''} · `,
+        h('button', { type: 'button', class: 'desk-link', text: isPinned(country.value) ? 'Pinned' : '+ Pin desk', 'aria-pressed': String(isPinned(country.value)), onclick: () => togglePin(country.value) }),
+        ' · ',
+        h('a', { class: 'desk-link', href: `brief.html#${country.value}`, text: 'Printable brief' }),
+        ' · ',
         h('button', { type: 'button', class: 'desk-link', text: '← All countries overview', onclick: () => openCountry('home') })),
       noOutside && h('p', { class: 'notice quiet', text: `No coverage from ${(index.countries.find((x) => x.id === country.value) || {}).abroad_label || 'outlets abroad'} or from international outlets has been collected for this period yet, so the "not in domestic press" check cannot run.` }),
       watchbar(q),
@@ -1961,7 +2028,8 @@
       slip.hidden = activeTab !== 'country' && activeTab !== 'home';
       slip.classList.toggle('slip-home', activeTab === 'home');
     }
-    if ($('#q')) $('#q').placeholder = activeTab === 'home' ? 'Filter countries or stories…' : 'Words in a headline or quote';
+    if ($('#q')) $('#q').placeholder = activeTab === 'home' ? 'Filter directory & stories…' : 'Words in a headline or quote';
+    syncSearchClear();
     fillPeriods();
     if (activeTab === 'country' && country.value) lastCountry = country.value;
     if ($('#nav-home')) $('#nav-home').setAttribute('aria-current', activeTab === 'home' ? 'page' : 'false');
@@ -2054,14 +2122,22 @@
   });
   period.addEventListener('change', research);
   topic.addEventListener('change', research);
-  $('#q').addEventListener('input', () => {
+  let qTimer = null;
+  const applySearch = () => {
     setHash(hashFor(openTopic));
     if (activeTab === 'home') renderHome();
     else if (activeTab === 'relations') renderRelations();
     else if (activeTab === 'alerts') renderAlerts();
     else if (activeTab === 'disasters' || activeTab === 'violence') renderEventMonitor(activeTab);
     else if (current) render(false);
+  };
+  $('#q').addEventListener('input', () => {
+    syncSearchClear();
+    clearTimeout(qTimer);
+    qTimer = setTimeout(applySearch, 150);
   });
+  if (qClear) qClear.addEventListener('click', clearSearch);
+  syncSearchClear();
   const totop = $('#totop');
   addEventListener('scroll', () => { totop.hidden = scrollY < 800; }, { passive: true });
   totop.addEventListener('click', () => scrollTo({ top: 0, behavior: 'smooth' }));

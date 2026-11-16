@@ -95,7 +95,7 @@
       <div class="field country-field notranslate" translate="no">
         <label for="country-search"><span>Country</span></label>
         <div class="combobox-wrap">
-          <input id="country-search" type="search" placeholder="Type country or select…" autocomplete="off" spellcheck="false" data-1p-ignore data-lpignore="true" class="combobox-input notranslate" translate="no" role="combobox" aria-expanded="false" aria-controls="country-menu">
+          <input id="country-search" type="search" placeholder="Open a country desk…" autocomplete="off" spellcheck="false" data-1p-ignore data-lpignore="true" class="combobox-input notranslate" translate="no" role="combobox" aria-expanded="false" aria-controls="country-menu">
           <button type="button" id="country-arrow" class="combobox-arrow" aria-label="Toggle country list" tabindex="-1">▾</button>
           <div id="country-menu" class="combobox-menu notranslate" translate="no" role="listbox" hidden></div>
         </div>
@@ -103,7 +103,13 @@
       </div>
       <label class="field period-field"><span>Period</span><select id="period" name="period" translate="no" class="notranslate"></select></label>
       <label class="field topic-field"><span>Topic</span><select id="topic" name="topic"></select></label>
-      <label class="field"><span>Search</span><input id="q" name="q" type="search" placeholder="Words in a headline or quote" autocomplete="off"></label>
+      <div class="field search-field">
+        <label for="q"><span>Search</span></label>
+        <div class="search-wrap">
+          <input id="q" name="q" type="search" placeholder="Words in a headline or quote" autocomplete="off">
+          <button type="button" id="q-clear" class="search-clear" aria-label="Clear search" hidden>×</button>
+        </div>
+      </div>
       <button type="submit" class="research">Filter</button>
     </form>
   </div>
