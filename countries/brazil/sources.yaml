@@ -127,7 +127,7 @@ sources:
   state_affiliated: false
   notes: Prominent Brazilian center-right national daily covering federal politics and economics.
   feeds:
-  - url: https://www.gazetadopovo.com.br/feed/rss/brasil.xml
+  - url: https://news.google.com/rss/search?q=site:gazetadopovo.com.br+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: conjur_br
   name: Consultor Jurídico (ConJur)

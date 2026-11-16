@@ -11,7 +11,7 @@ sources:
   feeds:
   - url: https://feeds.yle.fi/uutiset/v1/recent.rss?publisherIds=YLE_UUTISET
     category_hint: internal_politics
-  - url: https://feeds.yle.fi/uutiset/v1/majorHeadlines/domestic.rss
+  - url: https://news.google.com/rss/search?q=site:yle.fi+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: yle_news_en
   name: Yle News (English)

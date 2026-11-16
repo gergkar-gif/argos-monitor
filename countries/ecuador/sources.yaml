@@ -10,7 +10,7 @@ sources:
   notes: Guayaquil daily broadsheet of record founded in 1921 covering national security, port operations, and presidential
     policy.
   feeds:
-  - url: https://www.eluniverso.com/arc/outboundfeeds/rss/category/noticias/politica/
+  - url: https://news.google.com/rss/search?q=site:eluniverso.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: primicias_ec
   name: Primicias
@@ -23,7 +23,7 @@ sources:
   notes: Independent Quito digital investigative newsroom specializing in organized crime, energy crisis, and institutional
     reform.
   feeds:
-  - url: https://www.primicias.ec/feed/
+  - url: https://news.google.com/rss/search?q=site:primicias.ec+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: defence_security
 - id: gnews_ecuador_intl
   name: Google News (Ecuador Security & Energy - International)
@@ -48,7 +48,7 @@ sources:
   state_affiliated: false
   notes: Historic Quito daily broadsheet of record covering presidential policy and national economics.
   feeds:
-  - url: https://www.elcomercio.com/feed/
+  - url: https://news.google.com/rss/search?q=site:elcomercio.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: radio_pichincha_ec
   name: Radio Pichincha
@@ -60,7 +60,7 @@ sources:
   state_affiliated: false
   notes: Public and community-oriented broadcaster in Quito covering legislative debates and social movements.
   feeds:
-  - url: https://radiopichincha.com/feed/
+  - url: https://news.google.com/rss/search?q=site:radiopichincha.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: confirmado_net_ec
   name: Confirmado.net
@@ -72,7 +72,7 @@ sources:
   state_affiliated: false
   notes: Independent digital news portal covering executive accountability and judicial affairs.
   feeds:
-  - url: https://confirmado.net/feed/
+  - url: https://news.google.com/rss/search?q=site:confirmado.net+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: diario_extra_ec
   name: Diario Extra Ecuador
@@ -84,7 +84,7 @@ sources:
   state_affiliated: false
   notes: Widely read Ecuadorian daily covering breaking security and public affairs.
   feeds:
-  - url: https://www.extra.ec/feed
+  - url: https://news.google.com/rss/search?q=site:extra.ec+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: defence_security
 - id: aldia_ec
   name: ALDIA
@@ -96,7 +96,7 @@ sources:
   state_affiliated: false
   notes: Coastal and Los Ríos regional news daily reporting on local agricultural economy and security.
   feeds:
-  - url: https://www.aldia.com.ec/feed/
+  - url: https://news.google.com/rss/search?q=site:aldia.com.ec+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: general
 - id: el_mercurio_cuenca_ec
   name: El Mercurio (Cuenca)
@@ -108,7 +108,7 @@ sources:
   state_affiliated: false
   notes: Major Southern Ecuadorian daily newspaper of record covering regional governance and infrastructure.
   feeds:
-  - url: https://elmercurio.com.ec/feed/
+  - url: https://news.google.com/rss/search?q=site:elmercurio.com.ec+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: metro_ecuador_ec
   name: Metro Ecuador

@@ -10,9 +10,9 @@ sources:
   notes: Israel's oldest independent daily paper of record, center-left editorial
     stance.
   feeds:
-  - url: https://www.haaretz.com/cmlink/1.4605912
+  - url: https://news.google.com/rss/search?q=site:haaretz.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
-  - url: https://www.haaretz.com/cmlink/1.4605916
+  - url: https://news.google.com/rss/search?q=site:haaretz.com+israel+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: defence_security
 - id: times_of_israel
   name: The Times of Israel
@@ -25,7 +25,7 @@ sources:
   notes: Fast-breaking, independent digital daily of record covering politics, security
     and regional diplomacy.
   feeds:
-  - url: https://www.timesofisrael.com/feed/
+  - url: https://news.google.com/rss/search?q=site:timesofisrael.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: jerusalem_post
   name: The Jerusalem Post
@@ -40,7 +40,7 @@ sources:
   feeds:
   - url: https://www.jpost.com/rss/rssfeedsfrontpage.aspx
     category_hint: internal_politics
-  - url: https://www.jpost.com/rss/rssfeedsdefense.aspx
+  - url: https://news.google.com/rss/search?q=site:jpost.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: defence_security
 - id: ynetnews
   name: Ynetnews
@@ -160,7 +160,7 @@ sources:
   notes: Israeli independent military, counter-terrorism, and strategic intelligence
     review.
   feeds:
-  - url: https://www.debka.com/feed/
+  - url: https://news.google.com/rss/search?q=site:debka.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: defence_security
 - id: haredim10_news
   name: Haredim10

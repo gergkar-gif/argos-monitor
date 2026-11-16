@@ -9,7 +9,7 @@ sources:
   state_affiliated: true
   notes: Statutory official news agency of the Kingdom of Morocco.
   feeds:
-  - url: https://www.mapnews.ma/fr/rss.xml
+  - url: https://news.google.com/rss/search?q=site:mapnews.ma+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: morocco_world_news
   name: Morocco World News
@@ -21,7 +21,7 @@ sources:
   state_affiliated: false
   notes: Leading independent English-language Moroccan daily covering diplomacy, Sahara dispute, and investment.
   feeds:
-  - url: https://www.moroccoworldnews.com/feed
+  - url: https://news.google.com/rss/search?q=site:moroccoworldnews.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: foreign_policy
 - id: gnews_morocco_intl
   name: Google News (Morocco Diplomacy & Trade)

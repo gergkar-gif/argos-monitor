@@ -22,7 +22,7 @@ sources:
     governing_body: 24.kg News Agency (independent national daily portal in Bishkek)
     state_affiliated: false
     feeds:
-      - {url: "https://24.kg/rss/", section: Новости, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=site:24.kg+when:7d&hl=en-US&gl=US&ceid=US:en", section: Новости, category_hint: general}
 
   - id: gnews_kg_domestic
     name: Kaktus.media / AKIpress (Independent Digital Media via Google News)
@@ -82,7 +82,7 @@ sources:
     state_affiliated: false
     notes: Dedicated financial and macroeconomic news agency covering investment and state budgets in Kyrgyzstan.
     feeds:
-    - url: https://economist.kg/feed/
+    - url: https://news.google.com/rss/search?q=site:economist.kg+when:7d&hl=en-US&gl=US&ceid=US:en
       category_hint: economics
   - id: kabar_kg
     name: Kabar National News Agency
@@ -154,7 +154,7 @@ sources:
     state_affiliated: false
     notes: Kyrgyz online news agency reporting on social, political, and economic developments.
     feeds:
-    - url: https://bulak.kg/feed/
+    - url: https://news.google.com/rss/search?q=site:bulak.kg+when:7d&hl=en-US&gl=US&ceid=US:en
       category_hint: general
   - id: elgezit_kg
     name: Elgezit.kg

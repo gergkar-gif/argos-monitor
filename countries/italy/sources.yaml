@@ -39,9 +39,9 @@ sources:
   state_affiliated: false
   notes: Major national progressive newspaper of record based in Rome.
   feeds:
-  - url: https://www.repubblica.it/rss/politica/rss2.0.xml
+  - url: https://news.google.com/rss/search?q=site:repubblica.it+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
-  - url: https://www.repubblica.it/rss/economia/rss2.0.xml
+  - url: https://news.google.com/rss/search?q=site:repubblica.it+italy+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: economics
 - id: il_sole_24_ore
   name: Il Sole 24 Ore
@@ -127,7 +127,7 @@ sources:
   state_affiliated: false
   notes: Independent subscription-based ad-free investigative journal.
   feeds:
-  - url: https://lindipendente.online/feed/
+  - url: https://news.google.com/rss/search?q=site:lindipendente.online+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: general
 - id: google_news_italy_politics
   name: Google News (Italy Government & Meloni)

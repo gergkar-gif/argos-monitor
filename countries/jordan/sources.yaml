@@ -9,7 +9,7 @@ sources:
   state_affiliated: false
   notes: Amman daily broadsheet paper of record covering royal decrees, foreign policy, and economic reforms.
   feeds:
-  - url: https://jordantimes.com/rss.xml
+  - url: https://news.google.com/rss/search?q=site:jordantimes.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: roya_news_en_jo
   name: Roya News (English)
@@ -21,7 +21,7 @@ sources:
   state_affiliated: false
   notes: Leading independent Jordanian commercial television network and news service.
   feeds:
-  - url: https://en.royanews.tv/rss/local
+  - url: https://news.google.com/rss/search?q=site:en.royanews.tv+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: roya_news_ar
   name: Roya News (Arabic)

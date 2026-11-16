@@ -10,7 +10,7 @@ sources:
   notes: Premier independent English-language Tanzanian daily covering EAC integration,
     port trade, and energy.
   feeds:
-  - url: https://www.thecitizen.co.tz/tanzania/news/rss.xml
+  - url: https://news.google.com/rss/search?q=site:thecitizen.co.tz+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: daily_monitor_ug
   name: Daily Monitor (Uganda)
@@ -23,7 +23,7 @@ sources:
   notes: Leading independent Kampala daily broadsheet covering parliamentary politics,
     oil pipeline projects, and Great Lakes security.
   feeds:
-  - url: https://www.monitor.co.ug/uganda/news/national/rss.xml
+  - url: https://news.google.com/rss/search?q=site:monitor.co.ug+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: sudan_tribune_ea
   name: Sudan Tribune
@@ -36,7 +36,7 @@ sources:
   notes: Independent Paris/Khartoum diaspora newsroom providing authoritative coverage
     of the Sudan conflict and peace diplomacy.
   feeds:
-  - url: https://sudantribune.com/feed/
+  - url: https://news.google.com/rss/search?q=site:sudantribune.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: defence_security
 - id: gnews_eastafrica_intl
   name: Google News (East Africa & Horn Regional Affairs)
@@ -126,7 +126,7 @@ sources:
   state_affiliated: false
   notes: Independent news service tracking political developments and diplomacy across Sudan and South Sudan.
   feeds:
-  - url: https://sudanspost.com/feed/
+  - url: https://news.google.com/rss/search?q=site:sudanspost.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: foreign_policy
 
 - id: softpower_ug
@@ -139,7 +139,7 @@ sources:
   state_affiliated: false
   notes: Independent East African digital news publication reporting on regional diplomacy, business integration, and security.
   feeds:
-  - url: https://softpower.ug/feed/
+  - url: https://news.google.com/rss/search?q=site:softpower.ug+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: observer_ug

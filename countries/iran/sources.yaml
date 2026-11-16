@@ -229,7 +229,7 @@ sources:
     state_affiliated: false
     notes: "Independent English-language news portal covering Iranian domestic unrest, sanctions, and regional security."
     feeds:
-    - url: https://iranfocus.com/feed/
+    - url: https://news.google.com/rss/search?q=site:iranfocus.com+when:7d&hl=en-US&gl=US&ceid=US:en
       category_hint: internal_politics
 
   - id: iranprimer_en
@@ -255,5 +255,5 @@ sources:
     state_affiliated: false
     notes: "Major independent moderate/pragmatist analytical news portal in Tehran covering domestic politics and foreign affairs."
     feeds:
-    - url: https://www.asriran.com/fa/rss/allnews
+    - url: https://news.google.com/rss/search?q=site:asriran.com+when:7d&hl=en-US&gl=US&ceid=US:en
       category_hint: internal_politics

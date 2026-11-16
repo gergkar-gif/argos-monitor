@@ -9,7 +9,7 @@ sources:
   state_affiliated: true
   notes: Statutory state news agency of the Republic of Algeria.
   feeds:
-  - url: https://www.aps.dz/algerie/feed
+  - url: https://news.google.com/rss/search?q=site:aps.dz+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: tsa_algerie_dz
   name: Tout Sur l'Algérie (TSA)

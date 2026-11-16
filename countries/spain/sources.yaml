@@ -10,9 +10,9 @@ sources:
   notes: Spain's statutory state news agency and the world's premier Spanish-language
     wire.
   feeds:
-  - url: https://efe.com/espana/politica/feed/
+  - url: https://news.google.com/rss/search?q=site:efe.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
-  - url: https://efe.com/economia/feed/
+  - url: https://news.google.com/rss/search?q=site:efe.com+spain+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: economics
 - id: el_pais_es
   name: El País
@@ -66,7 +66,7 @@ sources:
   state_affiliated: false
   notes: Spain's premier financial, corporate and economic daily broadsheet.
   feeds:
-  - url: https://feeds.elpais.com/mrss-s/pages/ep/site/cincodias.com/portada
+  - url: https://news.google.com/rss/search?q=site:cincodias.elpais.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: economics
 - id: abc_es
   name: ABC

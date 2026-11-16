@@ -38,7 +38,7 @@ sources:
     needs_mention: true     # article addresses carry no section, so every article must mention Hungary to count
     notes: Article addresses carry no section, so foreign and domestic items cannot be told apart by address.
     feeds:
-      - {url: "https://444.hu/feed", section: Latest, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=site:444.hu+when:7d&hl=en-US&gl=US&ceid=US:en", section: Latest, category_hint: general}
 
   - id: 24hu
     name: 24.hu

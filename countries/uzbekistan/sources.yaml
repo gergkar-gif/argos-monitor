@@ -153,7 +153,7 @@ sources:
     state_affiliated: false
     notes: Business and financial daily covering Uzbek industrial investment and state tenders.
     feeds:
-    - url: https://uz.kursiv.media/ru/feed/
+    - url: https://news.google.com/rss/search?q=site:uz.kursiv.media+when:7d&hl=en-US&gl=US&ceid=US:en
       category_hint: economics
   - id: uza_uz_en
     name: UzA (Uzbekistan National News Agency)

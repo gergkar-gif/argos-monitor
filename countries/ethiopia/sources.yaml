@@ -22,7 +22,7 @@ sources:
     governing_body: Media & Communications Center (independent private weekly in Addis Ababa)
     state_affiliated: false
     feeds:
-      - {url: "https://www.thereporterethiopia.com/feed/", section: Latest, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=site:thereporterethiopia.com+when:7d&hl=en-US&gl=US&ceid=US:en", section: Latest, category_hint: general}
 
   - id: capital_et
     name: Capital Ethiopia

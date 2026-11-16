@@ -9,9 +9,9 @@ sources:
   state_affiliated: true
   notes: Primary statutory state wire agency of the People's Republic of China.
   feeds:
-  - url: https://www.news.cn/english/rss/topnews.xml
+  - url: https://news.google.com/rss/search?q=site:news.cn+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
-  - url: https://www.news.cn/english/rss/chinanews.xml
+  - url: https://news.google.com/rss/search?q=site:news.cn+china+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: global_times
   name: Global Times
@@ -23,7 +23,7 @@ sources:
   state_affiliated: true
   notes: Nationalistic English-language daily reflecting official foreign and security perspectives.
   feeds:
-  - url: https://www.globaltimes.cn/rss/outbound.xml
+  - url: https://news.google.com/rss/search?q=site:globaltimes.cn+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: foreign_policy
 - id: scmp_hk
   name: South China Morning Post
@@ -49,7 +49,7 @@ sources:
   state_affiliated: false
   notes: Premier independent Chinese financial and investigative business news daily.
   feeds:
-  - url: https://www.caixinglobal.com/rss/index.xml
+  - url: https://news.google.com/rss/search?q=site:caixinglobal.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: economics
 - id: bbc_zhongwen
   name: BBC News Chinese
@@ -73,7 +73,7 @@ sources:
   state_affiliated: false
   notes: US-funded diaspora Mandarin news covering human rights, politics, and defense.
   feeds:
-  - url: https://www.rfa.org/mandarin/rss2.xml
+  - url: https://news.google.com/rss/search?q=site:rfa.org+china+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: lianhe_zaobao
   name: Lianhe Zaobao
@@ -85,7 +85,7 @@ sources:
   state_affiliated: false
   notes: Leading Southeast Asian Chinese-language paper of record with extensive China reporting.
   feeds:
-  - url: https://www.zaobao.com.sg/rss/realtime/china
+  - url: https://news.google.com/rss/search?q=site:zaobao.com.sg+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: google_news_china_politics
   name: Google News (China Politics & Governance)
@@ -148,7 +148,7 @@ sources:
   state_affiliated: false
   notes: French public international broadcaster Chinese desk tracking mainland affairs.
   feeds:
-  - url: https://www.rfi.fr/cn/%E4%B8%AD%E5%9B%BD/rss
+  - url: https://news.google.com/rss/search?q=site:rfi.fr+china+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: aljazeera_chinese
   name: Al Jazeera (Chinese)

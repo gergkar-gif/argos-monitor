@@ -59,7 +59,7 @@ sources:
   state_affiliated: false
   notes: Independent English-language daily covering Russia from exile.
   feeds:
-  - url: https://www.themoscowtimes.com/feeds/rss
+  - url: https://news.google.com/rss/search?q=site:themoscowtimes.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: radio_svoboda
   name: Radio Svoboda (RFE/RL Russian)
@@ -72,7 +72,7 @@ sources:
   notes: US-funded independent Russian-language service covering human rights and
     politics.
   feeds:
-  - url: https://www.svoboda.org/api/z$rqiteu_i
+  - url: https://news.google.com/rss/search?q=site:svoboda.org+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: google_news_russia_kremlin
   name: Google News (Russia Kremlin & Domestic Politics)

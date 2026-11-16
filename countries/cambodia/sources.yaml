@@ -114,7 +114,7 @@ sources:
   state_affiliated: false
   reprints_vna: false
   feeds:
-  - url: https://www.rfi.fr/km/general/rss
+  - url: https://news.google.com/rss/search?q=site:rfi.fr+when:7d&hl=en-US&gl=US&ceid=US:en
     section: General
     category_hint: general
 - id: rfa_km
@@ -127,7 +127,7 @@ sources:
   state_affiliated: false
   reprints_vna: false
   feeds:
-  - url: https://www.rfa.org/arc/outboundfeeds/khmer/rss/
+  - url: https://news.google.com/rss/search?q=site:rfa.org+when:7d&hl=en-US&gl=US&ceid=US:en
     section: News
     category_hint: general
 - id: gnews_kh

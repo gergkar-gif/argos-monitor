@@ -9,7 +9,7 @@ sources:
   state_affiliated: false
   notes: Statutory international service of the Swiss Broadcasting Corporation providing public-service coverage in 10 languages.
   feeds:
-  - url: https://www.swissinfo.ch/eng/rss
+  - url: https://news.google.com/rss/search?q=site:swissinfo.ch+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: srf_news_de
   name: SRF News

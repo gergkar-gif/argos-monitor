@@ -11,7 +11,7 @@ sources:
     governing_body: Ziarul de Gardă (independent investigative newspaper in Chișinău)
     state_affiliated: false
     feeds:
-      - {url: "https://www.zdg.md/feed/", section: Actualitate, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=site:zdg.md+when:7d&hl=en-US&gl=US&ceid=US:en", section: Actualitate, category_hint: general}
 
   - id: newsmaker_md
     name: NewsMaker (Romanian)
@@ -81,7 +81,7 @@ sources:
     state_affiliated: false
     notes: "Russian-language edition of Moldova's leading investigative anti-corruption newsroom."
     feeds:
-      - url: https://www.zdg.md/ru/feed/
+      - url: https://news.google.com/rss/search?q=site:zdg.md+moldova+when:7d&hl=en-US&gl=US&ceid=US:en
         category_hint: internal_politics
 
   - id: newsmaker_ru
@@ -107,7 +107,7 @@ sources:
     state_affiliated: false
     notes: "Independent television and digital newsroom specializing in hard-hitting political investigations and talk shows."
     feeds:
-      - url: https://tv8.md/ro/rss
+      - url: https://news.google.com/rss/search?q=site:tv8.md+when:7d&hl=en-US&gl=US&ceid=US:en
         category_hint: internal_politics
 
   - id: realitatea_md

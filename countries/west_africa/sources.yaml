@@ -10,7 +10,7 @@ sources:
   notes: Premier French public broadcaster with comprehensive ground correspondence
     across West Africa and the Sahel.
   feeds:
-  - url: https://www.rfi.fr/fr/afrique/rss
+  - url: https://news.google.com/rss/search?q=site:rfi.fr+west_africa+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: jeune_afrique
   name: Jeune Afrique
@@ -23,7 +23,7 @@ sources:
   notes: Authoritative Paris-based Pan-African weekly of record covering ECOWAS, diplomacy,
     and Sahelian security.
   feeds:
-  - url: https://www.jeuneafrique.com/feed/
+  - url: https://news.google.com/rss/search?q=site:jeuneafrique.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: foreign_policy
 - id: gnews_westafrica_intl
   name: Google News (ECOWAS & Sahel Regional Affairs)

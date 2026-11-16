@@ -9,7 +9,7 @@ sources:
   state_affiliated: true
   notes: Statutory official news wire agency of the Republic of Iraq.
   feeds:
-  - url: https://ina.iq/rss.xml
+  - url: https://news.google.com/rss/search?q=site:ina.iq+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: shafaq_news_en
   name: Shafaq News (English)
@@ -21,7 +21,7 @@ sources:
   state_affiliated: false
   notes: Independent Iraqi digital news agency covering federal politics, Kurdistan disputes, and security developments.
   feeds:
-  - url: https://shafaq.com/en/rss/iraq-news
+  - url: https://news.google.com/rss/search?q=site:shafaq.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: rudaw_english_iq
   name: Rudaw English
@@ -33,7 +33,7 @@ sources:
   state_affiliated: false
   notes: Major Iraqi Kurdish media network broadcasting from Erbil covering KRG affairs, federal treaties, and energy.
   feeds:
-  - url: https://www.rudaw.net/english/rss
+  - url: https://news.google.com/rss/search?q=site:rudaw.net+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: gnews_iraq_intl
   name: Google News (Iraq Oil & Security - International)
@@ -58,7 +58,7 @@ sources:
   state_affiliated: false
   notes: Independent Iraqi news agency covering Council of Representatives and provincial governance.
   feeds:
-  - url: https://baghdadtoday.news/rss/
+  - url: https://news.google.com/rss/search?q=site:baghdadtoday.news+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: kitabat_iq
   name: Kitabat
@@ -82,7 +82,7 @@ sources:
   state_affiliated: false
   notes: Independent news platform covering Iraqi domestic security, economy, and foreign relations.
   feeds:
-  - url: https://skypressiq.net/rss
+  - url: https://news.google.com/rss/search?q=site:skypressiq.net+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: iraq_oil_report
   name: Iraq Oil Report
@@ -130,7 +130,7 @@ sources:
   state_affiliated: true
   notes: Official statutory English wire service of the Iraqi News Agency covering ministerial communiques.
   feeds:
-  - url: https://ina.iq/eng/rss.xml
+  - url: https://news.google.com/rss/search?q=site:ina.iq+iraq+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: gnews_iraq_ar
   name: Google News (Iraq National News - Arabic)

@@ -66,7 +66,7 @@ sources:
     governing_body: The Times Group / Bennett, Coleman & Co. Ltd. (premier financial daily)
     state_affiliated: false
     feeds:
-      - {url: "https://economictimes.indiatimes.com/rssfeedstopstories.cms", section: Top Stories, category_hint: economics}
+      - {url: "https://news.google.com/rss/search?q=site:economictimes.indiatimes.com+when:7d&hl=en-US&gl=US&ceid=US:en", section: Top Stories, category_hint: economics}
 
   - id: ndtv_news
     name: NDTV News
@@ -110,7 +110,7 @@ sources:
     governing_body: Greynium Information Technologies (independent national digital news portal)
     state_affiliated: false
     feeds:
-      - {url: "https://www.oneindia.com/rss/news-india-fb.xml", section: India News, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=site:oneindia.com+when:7d&hl=en-US&gl=US&ceid=US:en", section: India News, category_hint: general}
 
   - id: the_wire
     name: The Wire

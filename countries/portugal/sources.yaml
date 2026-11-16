@@ -57,7 +57,7 @@ sources:
   state_affiliated: false
   notes: Premier Portuguese business, financial and capital markets daily.
   feeds:
-  - url: https://www.jornaldenegocios.pt/rss
+  - url: https://news.google.com/rss/search?q=site:jornaldenegocios.pt+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: economics
 - id: eco_pt
   name: ECO Economia Online
@@ -69,7 +69,7 @@ sources:
   state_affiliated: false
   notes: Leading independent digital business and macroeconomic news daily.
   feeds:
-  - url: https://eco.sapo.pt/feed/
+  - url: https://news.google.com/rss/search?q=site:eco.sapo.pt+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: economics
 - id: noticiasaominuto_pt
   name: Notícias ao Minuto

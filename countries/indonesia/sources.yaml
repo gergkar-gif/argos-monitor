@@ -66,7 +66,7 @@ sources:
     governing_body: PT Katadata Indonesia (economic and financial data journalism)
     state_affiliated: false
     feeds:
-      - {url: "https://katadata.co.id/rss", section: Berita, category_hint: economics}
+      - {url: "https://news.google.com/rss/search?q=site:katadata.co.id+when:7d&hl=en-US&gl=US&ceid=US:en", section: Berita, category_hint: economics}
 
   - id: inews_id
     name: iNews.id
@@ -121,7 +121,7 @@ sources:
     governing_body: B-Universe (premier financial and capital markets daily)
     state_affiliated: false
     feeds:
-      - {url: "https://investor.id/rss/investor", section: Pasar Modal, category_hint: economics}
+      - {url: "https://news.google.com/rss/search?q=site:investor.id+when:7d&hl=en-US&gl=US&ceid=US:en", section: Pasar Modal, category_hint: economics}
 
   - id: tempo_id
     name: Tempo.co (Indonesia)

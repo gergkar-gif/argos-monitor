@@ -52,7 +52,7 @@ sources:
   state_affiliated: true
   notes: Official public radio broadcaster of Pakistan.
   feeds:
-  - url: https://radio.gov.pk/rss/national
+  - url: https://news.google.com/rss/search?q=site:radio.gov.pk+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: google_news_pakistan_politics
   name: Google News (Pakistan Government & Politics)

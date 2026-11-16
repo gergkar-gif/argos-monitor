@@ -9,7 +9,7 @@ sources:
   state_affiliated: false
   notes: Leading independent Colombo English broadsheet paper of record covering executive governance and economy.
   feeds:
-  - url: https://www.dailymirror.lk/RSS_Feeds/breaking-news
+  - url: https://news.google.com/rss/search?q=site:dailymirror.lk+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: ada_derana_lk
   name: Ada Derana (English)

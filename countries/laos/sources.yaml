@@ -23,7 +23,7 @@ sources:
   state_affiliated: false
   notes: Independent Lao-language investigative news service covering land rights, dam construction, and governance.
   feeds:
-  - url: https://www.rfa.org/arc/outboundfeeds/lao/rss/
+  - url: https://news.google.com/rss/search?q=site:rfa.org+laos+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: society
 - id: voa_lao
   name: Voice of America (Lao)
@@ -35,7 +35,7 @@ sources:
   state_affiliated: false
   notes: Lao-language news and current affairs broadcasting on regional diplomacy, economy, and bilateral US-Lao relations.
   feeds:
-  - url: https://lao.voanews.com/api/zrjtrl-vomx-tpeo_gq
+  - url: https://news.google.com/rss/search?q=site:lao.voanews.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: foreign_policy
 - id: inside_laos
   name: Inside Laos

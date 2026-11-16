@@ -39,9 +39,9 @@ sources:
   state_affiliated: false
   notes: Major center-right national broadsheet of record.
   feeds:
-  - url: https://www.telegraph.co.uk/politics/rss.xml
+  - url: https://news.google.com/rss/search?q=site:telegraph.co.uk+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
-  - url: https://www.telegraph.co.uk/business/rss.xml
+  - url: https://news.google.com/rss/search?q=site:telegraph.co.uk+united_kingdom+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: economics
 - id: sky_news_uk
   name: Sky News
@@ -67,7 +67,7 @@ sources:
   state_affiliated: true
   notes: Official press announcements and ministerial speeches.
   feeds:
-  - url: https://www.gov.uk/government/announcements.atom
+  - url: https://news.google.com/rss/search?q=site:gov.uk+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: google_news_uk_politics
   name: Google News (UK Westminster & Government)

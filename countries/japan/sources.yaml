@@ -201,7 +201,7 @@ sources:
   notes: Independent multi-language public policy digest covering Japanese politics,
     economy, and society.
   feeds:
-  - url: https://www.nippon.com/list/feed/rss_en
+  - url: https://news.google.com/rss/search?q=site:nippon.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: okinawa_times
   name: Okinawa Times
@@ -214,7 +214,7 @@ sources:
   notes: Leading regional newspaper covering maritime defense, US military bases,
     and southern islands.
   feeds:
-  - url: https://www.okinawatimes.co.jp/list/feed/rss
+  - url: https://news.google.com/rss/search?q=site:okinawatimes.co.jp+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: defence_security
 - id: japan_forward
   name: JAPAN Forward
@@ -227,7 +227,7 @@ sources:
   notes: English-language news and opinion platform focused on foreign relations and
     Indo-Pacific security.
   feeds:
-  - url: https://japan-forward.com/feed/
+  - url: https://news.google.com/rss/search?q=site:japan-forward.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: foreign_policy
 - id: yahoo_jp_picks
   name: Yahoo! Japan News
@@ -240,7 +240,7 @@ sources:
   notes: Japan largest digital portal curated top national political and economic
     stories.
   feeds:
-  - url: https://news.yahoo.co.jp/rss/topics/top-picks.xml
+  - url: https://news.google.com/rss/search?q=site:news.yahoo.co.jp+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: yomiuri_jp
   name: The Yomiuri Shimbun (Japan News)

@@ -23,7 +23,7 @@ sources:
   state_affiliated: false
   notes: Lima paper of record founded in 1839 covering institutional politics, justice investigations, and macroeconomic policy.
   feeds:
-  - url: https://elcomercio.pe/arc/outboundfeeds/rss/category/politica/
+  - url: https://news.google.com/rss/search?q=site:elcomercio.pe+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: gestion_pe
   name: Gestión
@@ -35,7 +35,7 @@ sources:
   state_affiliated: false
   notes: Premier Peruvian financial and economic daily covering mining investments, central bank decisions, and trade.
   feeds:
-  - url: https://gestion.pe/arc/outboundfeeds/rss/category/economia/
+  - url: https://news.google.com/rss/search?q=site:gestion.pe+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: economics
 - id: gnews_peru_intl
   name: Google News (Peru Politics & Mining - International)

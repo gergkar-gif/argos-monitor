@@ -46,7 +46,7 @@ sources:
   state_affiliated: false
   notes: US-funded independent Korean service with extensive investigative DPRK coverage.
   feeds:
-  - url: https://www.rfa.org/korean/rss2.xml
+  - url: https://news.google.com/rss/search?q=site:rfa.org+north_korea+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: voa_korea_dprk
   name: Voice of America (Korean - DPRK Service)
@@ -111,7 +111,7 @@ sources:
   notes: Specialized North Korea news coverage analyzing military provocations, Kim
     Jong Un's speeches, and inter-Korean border dynamics.
   feeds:
-  - url: https://www.koreatimes.co.kr/www/rss/northkorea.xml
+  - url: https://news.google.com/rss/search?q=site:koreatimes.co.kr+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: arms_control_dprk
   name: Arms Control Association (DPRK Proliferation)

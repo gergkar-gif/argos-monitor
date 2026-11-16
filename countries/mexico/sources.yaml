@@ -130,7 +130,7 @@ sources:
     state_affiliated: false
     notes: Independent investigative magazine specializing in national security, public finance, Pemex, and corporate audits.
     feeds:
-      - url: https://contralinea.com.mx/feed/
+      - url: https://news.google.com/rss/search?q=site:contralinea.com.mx+when:7d&hl=en-US&gl=US&ceid=US:en
         category_hint: internal_politics
 
   - id: polemon_mx

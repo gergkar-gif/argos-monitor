@@ -81,7 +81,7 @@ sources:
   governing_body: Radio Free Asia (USAGM)
   state_affiliated: false
   feeds:
-  - url: https://www.rfa.org/arc/outboundfeeds/burmese/rss/
+  - url: https://news.google.com/rss/search?q=site:rfa.org+myanmar+when:7d&hl=en-US&gl=US&ceid=US:en
     section: Burmese
     category_hint: general
 - id: shannews_my

@@ -9,7 +9,7 @@ sources:
   state_affiliated: true
   notes: Official statutory news agency of the United Arab Emirates.
   feeds:
-  - url: https://www.wam.ae/en/rss/all.xml
+  - url: https://news.google.com/rss/search?q=site:wam.ae+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: the_national
   name: The National
@@ -21,7 +21,7 @@ sources:
   state_affiliated: true
   notes: Leading Abu Dhabi English-language daily broadsheet of record.
   feeds:
-  - url: https://www.thenationalnews.com/arc/outboundfeeds/rss/category/uae/?outputType=xml
+  - url: https://news.google.com/rss/search?q=site:thenationalnews.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
   - url: https://www.thenationalnews.com/arc/outboundfeeds/rss/category/business/?outputType=xml
     category_hint: economics
@@ -35,9 +35,9 @@ sources:
   state_affiliated: false
   notes: Major English-language Dubai daily covering UAE politics, business and society.
   feeds:
-  - url: https://gulfnews.com/rss/uae
+  - url: https://news.google.com/rss/search?q=site:gulfnews.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
-  - url: https://gulfnews.com/rss/business
+  - url: https://news.google.com/rss/search?q=site:gulfnews.com+united_arab_emirates+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: economics
 - id: khaleej_times
   name: Khaleej Times
@@ -49,9 +49,9 @@ sources:
   state_affiliated: false
   notes: Longest-running English-language daily in the UAE.
   feeds:
-  - url: https://www.khaleejtimes.com/rss/uae
+  - url: https://news.google.com/rss/search?q=site:khaleejtimes.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
-  - url: https://www.khaleejtimes.com/rss/business
+  - url: https://news.google.com/rss/search?q=site:khaleejtimes.com+united_arab_emirates+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: economics
 - id: google_news_uae_politics
   name: Google News (UAE Leadership & Governance)

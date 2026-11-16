@@ -9,9 +9,9 @@ sources:
   state_affiliated: true
   notes: Statutory national news agency of Romania.
   feeds:
-  - url: https://www.agerpres.ro/politica.xml
+  - url: https://news.google.com/rss/search?q=site:agerpres.ro+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
-  - url: https://www.agerpres.ro/economic.xml
+  - url: https://news.google.com/rss/search?q=site:agerpres.ro+romania+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: economics
 - id: digi24_ro
   name: Digi24
@@ -35,7 +35,7 @@ sources:
   state_affiliated: false
   notes: Independent English-language Romanian news platform covering governance, business, and Black Sea security.
   feeds:
-  - url: https://www.romania-insider.com/rss
+  - url: https://news.google.com/rss/search?q=site:romania-insider.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: general
 - id: gnews_romania_intl
   name: Google News (Romania Governance & Black Sea - International)

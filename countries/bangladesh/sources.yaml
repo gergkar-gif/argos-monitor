@@ -23,7 +23,7 @@ sources:
   state_affiliated: false
   notes: Premier national English news daily covering interim government reforms and South Asian geopolitics.
   feeds:
-  - url: https://www.dhakatribune.com/rss
+  - url: https://news.google.com/rss/search?q=site:dhakatribune.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: prothom_alo_en
   name: Prothom Alo (English)
@@ -35,7 +35,7 @@ sources:
   state_affiliated: false
   notes: English portal of Bangladesh's largest circulation broadsheet newspaper of record.
   feeds:
-  - url: https://en.prothomalo.com/feed
+  - url: https://news.google.com/rss/search?q=site:en.prothomalo.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: prothom_alo_bn
   name: Prothom Alo (Bangla)

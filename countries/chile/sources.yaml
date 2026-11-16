@@ -9,9 +9,9 @@ sources:
   state_affiliated: false
   notes: Digital arm of Chile paper of record covering executive politics, mining, and institutional reform.
   feeds:
-  - url: https://www.emol.com/rss/nacional.xml
+  - url: https://news.google.com/rss/search?q=site:emol.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
-  - url: https://www.emol.com/rss/economia.xml
+  - url: https://news.google.com/rss/search?q=site:emol.com+chile+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: economics
 - id: biobiochile_cl
   name: BioBioChile
@@ -23,7 +23,7 @@ sources:
   state_affiliated: false
   notes: Leading independent Chilean radio and news daily covering breaking national and investigative stories.
   feeds:
-  - url: https://www.biobiochile.cl/feed
+  - url: https://news.google.com/rss/search?q=site:biobiochile.cl+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: gnews_chile_intl
   name: Google News (Chile Politics & Lithium - International)

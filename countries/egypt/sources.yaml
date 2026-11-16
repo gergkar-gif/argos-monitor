@@ -9,9 +9,9 @@ sources:
   state_affiliated: true
   notes: English-language digital paper of record from state-owned publisher.
   feeds:
-  - url: https://english.ahram.org.eg/rss/politics.xml
+  - url: https://news.google.com/rss/search?q=site:english.ahram.org.eg+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
-  - url: https://english.ahram.org.eg/rss/economy.xml
+  - url: https://news.google.com/rss/search?q=site:english.ahram.org.eg+egypt+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: economics
 - id: daily_news_egypt
   name: Daily News Egypt
@@ -35,9 +35,9 @@ sources:
   state_affiliated: true
   notes: Major English-language news daily affiliated with state media group.
   feeds:
-  - url: https://www.egypttoday.com/RSS/Politics
+  - url: https://news.google.com/rss/search?q=site:egypttoday.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
-  - url: https://www.egypttoday.com/RSS/Business
+  - url: https://news.google.com/rss/search?q=site:egypttoday.com+egypt+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: economics
 - id: mada_masr_en
   name: Mada Masr (English)

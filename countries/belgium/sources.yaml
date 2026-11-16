@@ -21,7 +21,7 @@ sources:
   state_affiliated: false
   notes: Brussels broadsheet paper of record covering federal governance, coalition talks, and EU affairs.
   feeds:
-  - url: https://www.lesoir.be/rss/8186/actualite/belgique
+  - url: https://news.google.com/rss/search?q=site:lesoir.be+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: brussels_times
   name: The Brussels Times
@@ -33,7 +33,7 @@ sources:
   state_affiliated: false
   notes: Independent English-language Belgian daily covering national politics, EU institutions, and expat community affairs.
   feeds:
-  - url: https://www.brusselstimes.com/feed
+  - url: https://news.google.com/rss/search?q=site:brusselstimes.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: general
 - id: demorgen_be
   name: De Morgen

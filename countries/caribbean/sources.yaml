@@ -10,7 +10,7 @@ sources:
   notes: Official communications organ of the Caribbean Community intergovernmental
     organization.
   feeds:
-  - url: https://today.caricom.org/feed/
+  - url: https://news.google.com/rss/search?q=site:today.caricom.org+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: foreign_policy
 - id: jamaica_gleaner
   name: The Gleaner (Jamaica)
@@ -36,7 +36,7 @@ sources:
   notes: Leading regional and diaspora weekly covering Anglo-Caribbean governance
     and trade.
   feeds:
-  - url: https://www.caribbeannationalweekly.com/feed/
+  - url: https://news.google.com/rss/search?q=site:caribbeannationalweekly.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: general
 - id: caribbean_news_global
   name: Caribbean News Global

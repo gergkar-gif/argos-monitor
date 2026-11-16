@@ -99,7 +99,7 @@ sources:
     governing_body: Mindanao News and Information Cooperative Center (independent regional news service)
     state_affiliated: false
     feeds:
-      - {url: "https://mindanews.com/feed/", section: News, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=site:mindanews.com+when:7d&hl=en-US&gl=US&ceid=US:en", section: News, category_hint: general}
 
   - id: mindanaotimes_ph
     name: Mindanao Times
@@ -110,7 +110,7 @@ sources:
     governing_body: Mindanao Times Publishing Corp. (oldest independent daily in Mindanao)
     state_affiliated: false
     feeds:
-      - {url: "https://mindanaotimes.com.ph/feed/", section: Top News, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=site:mindanaotimes.com.ph+when:7d&hl=en-US&gl=US&ceid=US:en", section: Top News, category_hint: general}
 
   - id: gnews_pna
     name: Philippine News Agency (PNA via Google News)

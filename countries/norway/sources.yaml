@@ -21,7 +21,7 @@ sources:
   state_affiliated: false
   notes: Oslo subscription broadsheet paper of record covering Storting policy, defense, and foreign affairs.
   feeds:
-  - url: https://www.aftenposten.no/rss
+  - url: https://news.google.com/rss/search?q=site:aftenposten.no+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: the_local_no
   name: The Local Norway
@@ -33,7 +33,7 @@ sources:
   state_affiliated: false
   notes: Independent English-language digital news service covering Norwegian governance, energy, and economy.
   feeds:
-  - url: https://www.thelocal.no/feed
+  - url: https://news.google.com/rss/search?q=site:thelocal.no+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: general
 - id: dagbladet_no
   name: Dagbladet
@@ -45,7 +45,7 @@ sources:
   state_affiliated: false
   notes: Major national daily newspaper and digital investigative newsroom.
   feeds:
-  - url: https://www.dagbladet.no/rss/
+  - url: https://news.google.com/rss/search?q=site:dagbladet.no+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: general
 - id: klassekampen_no
   name: Klassekampen
@@ -57,7 +57,7 @@ sources:
   state_affiliated: false
   notes: Independent left-wing national daily newspaper covering labor, defense and politics.
   feeds:
-  - url: https://klassekampen.no/rss/
+  - url: https://news.google.com/rss/search?q=site:klassekampen.no+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: tv2_no
   name: TV 2 Nyheter

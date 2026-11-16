@@ -9,9 +9,9 @@ sources:
   state_affiliated: true
   notes: Official statutory wire agency of the Kingdom of Saudi Arabia.
   feeds:
-  - url: https://www.spa.gov.sa/en/rss/General.xml
+  - url: https://news.google.com/rss/search?q=site:spa.gov.sa+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
-  - url: https://www.spa.gov.sa/en/rss/Economic.xml
+  - url: https://news.google.com/rss/search?q=site:spa.gov.sa+saudi_arabia+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: economics
 - id: arab_news
   name: Arab News
@@ -23,9 +23,9 @@ sources:
   state_affiliated: true
   notes: Leading English-language Saudi daily paper of record.
   feeds:
-  - url: https://www.arabnews.com/rss.xml
+  - url: https://news.google.com/rss/search?q=site:arabnews.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
-  - url: https://www.arabnews.com/cat/4/rss.xml
+  - url: https://news.google.com/rss/search?q=site:arabnews.com+saudi_arabia+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: economics
 - id: asharq_alawsat_en
   name: Asharq Al-Awsat (English)
@@ -49,7 +49,7 @@ sources:
   state_affiliated: true
   notes: Saudi-owned regional broadcast network.
   feeds:
-  - url: https://english.alarabiya.net/.mrss/en.xml
+  - url: https://news.google.com/rss/search?q=site:english.alarabiya.net+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: okaz_sa
   name: Okaz

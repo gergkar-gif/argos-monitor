@@ -23,9 +23,9 @@ sources:
   state_affiliated: false
   notes: Leading French center-right daily of record.
   feeds:
-  - url: https://www.lefigaro.fr/rss/figaro_politique.xml
+  - url: https://news.google.com/rss/search?q=site:lefigaro.fr+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
-  - url: https://www.lefigaro.fr/rss/figaro_economie.xml
+  - url: https://news.google.com/rss/search?q=site:lefigaro.fr+france+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: economics
 - id: france_info
   name: France Info
@@ -51,9 +51,9 @@ sources:
   state_affiliated: false
   notes: Premier French business, macroeconomic and financial daily.
   feeds:
-  - url: https://services.lesechos.fr/rss/les-echos-politique.xml
+  - url: https://news.google.com/rss/search?q=site:lesechos.fr+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
-  - url: https://services.lesechos.fr/rss/les-echos-economie.xml
+  - url: https://news.google.com/rss/search?q=site:lesechos.fr+france+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: economics
 - id: france_24_fr
   name: France 24 (Français)
@@ -155,7 +155,7 @@ sources:
   notes: French public international broadcaster tracking French foreign policy and
     diplomacy.
   feeds:
-  - url: https://www.rfi.fr/fr/general/rss
+  - url: https://news.google.com/rss/search?q=site:rfi.fr+france+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: foreign_policy
 - id: lexpress_fr
   name: L'Express

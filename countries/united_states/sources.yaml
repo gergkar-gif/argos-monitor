@@ -9,9 +9,9 @@ sources:
   state_affiliated: false
   notes: Primary American wire service and paper of record.
   feeds:
-  - url: https://feedx.net/rss/apnews.xml
+  - url: https://news.google.com/rss/search?q=site:apnews.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
-  - url: https://apnews.com/hub/politics.rss
+  - url: https://news.google.com/rss/search?q=site:apnews.com+united_states+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: politico_us
   name: Politico
@@ -167,7 +167,7 @@ sources:
   state_affiliated: false
   notes: Major American national daily of record with Capitol Hill and executive focus.
   feeds:
-  - url: https://feeds.washingtonpost.com/rss/politics
+  - url: https://news.google.com/rss/search?q=site:washingtonpost.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: cnbc_us
   name: CNBC

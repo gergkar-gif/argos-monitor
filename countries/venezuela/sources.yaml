@@ -10,7 +10,7 @@ sources:
   notes: Leading independent Venezuelan digital daily covering politics, human rights
     and elections.
   feeds:
-  - url: https://efectococuyo.com/feed/
+  - url: https://news.google.com/rss/search?q=site:efectococuyo.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: el_nacional_ve
   name: El Nacional
@@ -151,7 +151,7 @@ sources:
   notes: High-reach independent digital news outlet covering breaking national politics,
     human rights, and migration.
   feeds:
-  - url: https://www.lapatilla.com/feed/
+  - url: https://news.google.com/rss/search?q=site:lapatilla.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: general
 - id: monitoreamos_ve
   name: Monitoreamos

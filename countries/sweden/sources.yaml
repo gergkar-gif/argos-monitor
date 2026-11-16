@@ -9,11 +9,11 @@ sources:
   state_affiliated: false
   notes: Swedish national public television news service of record.
   feeds:
-  - url: https://www.svt.se/nyheter/rss.xml
+  - url: https://news.google.com/rss/search?q=site:svt.se+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
-  - url: https://www.svt.se/nyheter/inrikes/rss.xml
+  - url: https://news.google.com/rss/search?q=site:svt.se+sweden+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
-  - url: https://www.svt.se/nyheter/ekonomi/rss.xml
+  - url: https://news.google.com/rss/search?q=site:svt.se+svt_nyheter_2+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: economics
 - id: sr_nyheter
   name: Sveriges Radio (Ekot)
@@ -25,7 +25,7 @@ sources:
   state_affiliated: false
   notes: Flagship public radio news broadcasting service in Sweden.
   feeds:
-  - url: https://api.sr.se/api/rss/program/83
+  - url: https://news.google.com/rss/search?q=site:sverigesradio.se+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: dagens_nyheter
   name: Dagens Nyheter
@@ -37,9 +37,9 @@ sources:
   state_affiliated: false
   notes: Sweden's leading morning newspaper of record, independent liberal stance.
   feeds:
-  - url: https://www.dn.se/rss/nyheter/sverige/
+  - url: https://news.google.com/rss/search?q=site:dn.se+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
-  - url: https://www.dn.se/rss/ekonomi/
+  - url: https://news.google.com/rss/search?q=site:dn.se+sweden+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: economics
 - id: svenska_dagbladet
   name: Svenska Dagbladet
@@ -51,7 +51,7 @@ sources:
   state_affiliated: false
   notes: Leading Swedish national morning broadsheet, independent conservative stance.
   feeds:
-  - url: https://www.svd.se/?service=rss
+  - url: https://news.google.com/rss/search?q=site:svd.se+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: aftonbladet_se
   name: Aftonbladet

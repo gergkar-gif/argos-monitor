@@ -9,9 +9,9 @@ sources:
   state_affiliated: true
   notes: Official statutory wire agency of the Republic of Belarus.
   feeds:
-  - url: https://eng.belta.by/rss/all/
+  - url: https://news.google.com/rss/search?q=site:eng.belta.by+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
-  - url: https://eng.belta.by/rss/president/
+  - url: https://news.google.com/rss/search?q=site:eng.belta.by+belarus+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: zerkalo_io
   name: Zerkalo.io
@@ -23,7 +23,7 @@ sources:
   state_affiliated: false
   notes: Premier exiled independent Belarusian newsroom, successor to TUT.BY.
   feeds:
-  - url: https://zerkalo.io/rss/all.rss
+  - url: https://news.google.com/rss/search?q=site:zerkalo.io+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: nasha_niva
   name: Nasha Niva
@@ -35,7 +35,7 @@ sources:
   state_affiliated: false
   notes: Oldest independent Belarusian cultural and political daily.
   feeds:
-  - url: https://nashaniva.com/rss.php
+  - url: https://news.google.com/rss/search?q=site:nashaniva.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: euroradio_fm
   name: Euroradio
@@ -47,7 +47,7 @@ sources:
   state_affiliated: false
   notes: Independent broadcasting service covering Belarusian politics and society.
   feeds:
-  - url: https://euroradio.fm/rss.xml
+  - url: https://news.google.com/rss/search?q=site:euroradio.fm+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: svaboda_by
   name: Radio Svaboda (Belarusian)
@@ -59,7 +59,7 @@ sources:
   state_affiliated: false
   notes: US-funded independent Belarusian service covering politics and human rights.
   feeds:
-  - url: https://www.svaboda.org/api/z$rq_teu_i
+  - url: https://news.google.com/rss/search?q=site:svaboda.org+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: google_news_belarus_politics
   name: Google News (Belarus Regime & Opposition)

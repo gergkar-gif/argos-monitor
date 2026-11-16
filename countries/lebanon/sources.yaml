@@ -9,7 +9,7 @@ sources:
   state_affiliated: false
   notes: Independent English-language Lebanese news platform covering security, institutional deadlock, and economics.
   feeds:
-  - url: https://today.lorientlejour.com/rss/news.xml
+  - url: https://news.google.com/rss/search?q=site:today.lorientlejour.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: naharnet_lb
   name: Naharnet
@@ -21,7 +21,7 @@ sources:
   state_affiliated: false
   notes: Beirut digital news service covering Lebanese politics, regional clashes, and economic updates.
   feeds:
-  - url: https://www.naharnet.com/rss/lebanon
+  - url: https://news.google.com/rss/search?q=site:naharnet.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: nna_en
   name: National News Agency (English)

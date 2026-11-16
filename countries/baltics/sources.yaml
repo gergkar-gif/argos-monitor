@@ -193,7 +193,7 @@ sources:
   state_affiliated: false
   notes: Flagship Lithuanian-language public service portal covering Seimas affairs, national defense, and regional politics.
   feeds:
-  - url: https://www.lrt.lt/naujienos/lietuva?rss
+  - url: https://news.google.com/rss/search?q=site:lrt.lt+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: gnews_baltics_lt

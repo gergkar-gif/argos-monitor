@@ -22,7 +22,7 @@ sources:
   state_affiliated: false
   notes: Suva daily of record founded in 1869 covering Fijian and South Pacific governance.
   feeds:
-  - url: https://www.fijitimes.com.fj/feed/
+  - url: https://news.google.com/rss/search?q=site:fijitimes.com.fj+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: islands_business
   name: Islands Business
@@ -73,7 +73,7 @@ sources:
   state_affiliated: true
   notes: Statutory public broadcaster providing comprehensive national and regional coverage of Fiji and the Pacific Islands Forum.
   feeds:
-  - url: https://www.fbcnews.com.fj/feed/
+  - url: https://news.google.com/rss/search?q=site:fbcnews.com.fj+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: cookislandsnews

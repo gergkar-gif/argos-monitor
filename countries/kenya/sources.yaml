@@ -109,7 +109,7 @@ sources:
     state_affiliated: true
     notes: "Statutory national wire news agency of the Republic of Kenya covering official announcements across all 47 counties."
     feeds:
-      - url: https://www.kenyanews.go.ke/feed/
+      - url: https://news.google.com/rss/search?q=site:kenyanews.go.ke+when:7d&hl=en-US&gl=US&ceid=US:en
         category_hint: internal_politics
 
   - id: tuko_ke

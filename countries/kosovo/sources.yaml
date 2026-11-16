@@ -143,7 +143,7 @@ sources:
     state_affiliated: false
     notes: Digital news platform focusing on Kosovo politics and regional Western Balkans security.
     feeds:
-    - url: https://ballkani.info/feed/
+    - url: https://news.google.com/rss/search?q=site:ballkani.info+when:7d&hl=en-US&gl=US&ceid=US:en
       category_hint: foreign_policy
   - id: epokaere_ks
     name: Epoka e Re

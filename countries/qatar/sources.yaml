@@ -9,7 +9,7 @@ sources:
   state_affiliated: true
   notes: Official statutory wire agency of the State of Qatar.
   feeds:
-  - url: https://www.qna.org.qa/en/Rss-Feed
+  - url: https://news.google.com/rss/search?q=site:qna.org.qa+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: al_jazeera_en
   name: Al Jazeera English
@@ -58,7 +58,7 @@ sources:
   state_affiliated: false
   notes: Leading English-language daily newspaper in Qatar.
   feeds:
-  - url: https://thepeninsulaqatar.com/rss
+  - url: https://news.google.com/rss/search?q=site:thepeninsulaqatar.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: gulf_times
   name: Gulf Times
@@ -70,9 +70,9 @@ sources:
   state_affiliated: false
   notes: First English-language daily newspaper published in Qatar.
   feeds:
-  - url: https://www.gulf-times.com/rss/qatar
+  - url: https://news.google.com/rss/search?q=site:gulf-times.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
-  - url: https://www.gulf-times.com/rss/business
+  - url: https://news.google.com/rss/search?q=site:gulf-times.com+qatar+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: economics
 - id: doha_news
   name: Doha News

@@ -23,9 +23,9 @@ sources:
   state_affiliated: false
   notes: Australia's premier national financial and business broadsheet.
   feeds:
-  - url: https://www.afr.com/rss/politics/federal
+  - url: https://news.google.com/rss/search?q=site:afr.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
-  - url: https://www.afr.com/rss/policy/economy
+  - url: https://news.google.com/rss/search?q=site:afr.com+australia+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: economics
 - id: smh_au
   name: The Sydney Morning Herald
@@ -51,7 +51,7 @@ sources:
   state_affiliated: false
   notes: Australian multicultural public service news network.
   feeds:
-  - url: https://www.sbs.com.au/news/topic/australia/feed
+  - url: https://news.google.com/rss/search?q=site:sbs.com.au+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: guardian_au
   name: Guardian Australia

@@ -265,7 +265,7 @@ sources:
   reprints_vna: false
   notes: WordPress feed, low volume (about 10 items).
   feeds:
-  - url: https://www.nso.gov.vn/feed/
+  - url: https://news.google.com/rss/search?q=site:nso.gov.vn+when:7d&hl=en-US&gl=US&ceid=US:en
     section: Tin tức
     category_hint: economics
 - id: mofa
@@ -335,10 +335,10 @@ sources:
   state_affiliated: false
   reprints_vna: false
   feeds:
-  - url: https://www.rfi.fr/vi/rss
+  - url: https://news.google.com/rss/search?q=site:rfi.fr+vietnam+when:7d&hl=en-US&gl=US&ceid=US:en
     section: All
     category_hint: general
-  - url: https://www.rfi.fr/vi/việt-nam/rss
+  - url: https://news.google.com/rss/search?q=site:rfi.fr+rfi_vi_2+when:7d&hl=en-US&gl=US&ceid=US:en
     section: Việt Nam
     category_hint: general
 - id: luatkhoa
@@ -352,7 +352,7 @@ sources:
   reprints_vna: false
   notes: The old domain luatkhoa.org redirects here. Low volume (about 10 items in the feed).
   feeds:
-  - url: https://luatkhoa.news/feed/
+  - url: https://news.google.com/rss/search?q=site:luatkhoa.news+when:7d&hl=en-US&gl=US&ceid=US:en
     section: All
     category_hint: internal_politics
 - id: rfa_vi
@@ -400,7 +400,7 @@ sources:
   reprints_vna: false
   notes: Feed covers all topics, so filter for Vietnam.
   feeds:
-  - url: https://thediplomat.com/feed/
+  - url: https://news.google.com/rss/search?q=site:thediplomat.com+when:7d&hl=en-US&gl=US&ceid=US:en
     section: All
     category_hint: general
 - id: scmp
