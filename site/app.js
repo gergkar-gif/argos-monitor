@@ -91,6 +91,7 @@
   let deskFilter = '';
   let openSubType = 'all';
   let movementFilter = 'all';
+  let exportOpen = false;
   let extra = {};   // extra stories revealed per topic in the overview ("Show more")
   const openStoryIds = new Set();
   const GLOBAL_VIEWS = new Set(['home', 'alerts', 'disasters', 'violence', 'relations']);
@@ -506,6 +507,7 @@
     }
     fillPeriods();
     movementFilter = 'all';
+    exportOpen = false;
     research();
     scrollTo({ top: 0, behavior: 'smooth' });
   }
@@ -1831,6 +1833,55 @@
     );
   }
 
+  function flashBtn(btn, msg) {
+    const orig = btn.textContent;
+    btn.textContent = msg;
+    setTimeout(() => { if (btn.isConnected) btn.textContent = orig; }, 2200);
+  }
+
+  function buildBriefMarkdown({ countryObj, periodLabel, updated, filterParts, sections }) {
+    const totalShown = sections.reduce((acc, s) => acc + s.shown.length, 0);
+    const lines = [
+      '# ARGOS MONITOR · COUNTRY BRIEF',
+      `TARGET: ${countryObj.name.toUpperCase()} (${getRegion(countryObj.id).toUpperCase()})`,
+      `WINDOW: ${periodLabel}`,
+      `UPDATED: ${updated.toUTCString()}`,
+      `FILTERS: ${filterParts.length ? filterParts.join(' · ') : 'None (top-reported order by category)'}`,
+      `COVERAGE: ${plural(totalShown, 'story', 'stories')} across ${plural(sections.length, 'category', 'categories')}`,
+      '',
+    ];
+    for (const sec of sections) {
+      lines.push(`## ${sec.name.toUpperCase()} (${sec.shown.length}${sec.shown.length < sec.stories.length ? ` of ${sec.stories.length}` : ''})`, '');
+      sec.shown.forEach((s, idx) => {
+        const enTitle = s.headline.en_title || T.byText.get(s.headline.title) || s.headline.title;
+        const flags = [
+          s.evidence === 'OFFICIAL' ? '[OFFICIAL SOURCE]' : '',
+          s.delta && s.delta.state === 'surging' ? `[SURGING ${s.delta.net > 0 ? '+' : ''}${s.delta.net}]` : '',
+          s.delta && s.delta.state === 'new' ? '[NEW TODAY]' : '',
+          s.delta && s.delta.scope_shift === 'international_pickup' ? '[INTL PICKUP]' : '',
+          `(${plural(s.independent_sources, 'independent outlet', 'independent outlets')}, ${plural(s.articles, 'article', 'articles')})`,
+        ].filter(Boolean).join(' ');
+        lines.push(`### ${idx + 1}. ${enTitle} ${flags}`);
+        lines.push(`Source: ${s.headline.source} · ${safeUrl(s.headline.url)}`);
+        if (s.headline.language !== 'en' && enTitle.trim() !== s.headline.title.trim()) {
+          lines.push(`Original (${s.headline.source}): "${s.headline.title}"`);
+        }
+        const ex = s.excerpts && s.excerpts[0];
+        if (ex && ex.text) {
+          lines.push('', `> "${T.byText.get(ex.text) || ex.text}"`, `> — ${ex.source} (${safeUrl(ex.url)})`);
+        }
+        const outlets = [...new Set((s.sources || []).map((r) => r.source))];
+        if (outlets.length) {
+          const shownOutlets = outlets.slice(0, 5);
+          lines.push(`Outlets: ${shownOutlets.join(', ')}${outlets.length > 5 ? ` +${outlets.length - 5} more` : ''}`);
+        }
+        lines.push('');
+      });
+    }
+    lines.push('---', 'Compiled deterministically from stored articles · Argos Monitor');
+    return lines.join('\n');
+  }
+
   function render(animate = true) {
     const d = current;
     results.classList.toggle('still', !animate);
@@ -1865,38 +1916,74 @@
       'Filter by topic',
       `${getCountryName(country.value)} · ${periodLabel}`);
 
+    const order = openTopic === 'all'
+      ? TOPICS.map((t) => t.id).filter((id) => byTopic(id).length)
+          .sort((a, b) => (a === 'other') - (b === 'other') || byTopic(b)[0].score - byTopic(a)[0].score)
+      : (byTopic(openTopic).length ? [openTopic] : []);
+    const activeSections = order.map((id) => {
+      const list = byTopic(id);
+      const limit = openTopic === 'all'
+        ? PER_TOPIC_IN_OVERVIEW + (extra[id] || 0)
+        : (Boolean(extra[id + '_all']) || list.length <= TOPIC_PAGE_CHUNK ? 0 : Math.min(list.length, TOPIC_PAGE_CHUNK + (extra[id] || 0)));
+      return { id, name: topicName(id), stories: list, limit, shown: limit ? list.slice(0, limit) : list };
+    });
+
     const body = [];
     const staleEmptyMsg = (!q && movementFilter === 'all' && windowStories.length === 0 && d.stories.length > 0)
       ? `No stories in the ${periodLabel} — this snapshot was last updated ${fmtTime.format(updated)}${ageH > STALE_HOURS ? ` (${Math.round(ageH / 24)}d old)` : ''}. Run "python run.py" to collect fresh news.`
       : null;
-    if (openTopic === 'all') {
-      const order = TOPICS.map((t) => t.id).filter((id) => byTopic(id).length)
-        .sort((a, b) => (a === 'other') - (b === 'other') || byTopic(b)[0].score - byTopic(a)[0].score);
-      if (order.length) {
-        order.forEach((id) => body.push(drawer(id, byTopic(id), count(id), PER_TOPIC_IN_OVERVIEW + (extra[id] || 0))));
-      } else {
-        body.push(h('p', { class: 'state quiet', text: staleEmptyMsg || (q ? `No stories match "${q}" here.` : `No stories found for ${country.options[country.selectedIndex] ? country.options[country.selectedIndex].text : 'this desk'} in this time period.`) }));
-      }
-    } else if (byTopic(openTopic).length) {
-      const topicStories = byTopic(openTopic);
-      const isAll = Boolean(extra[openTopic + '_all']);
-      const currentLimit = isAll || topicStories.length <= TOPIC_PAGE_CHUNK ? 0 : Math.min(topicStories.length, TOPIC_PAGE_CHUNK + (extra[openTopic] || 0));
-      body.push(drawer(openTopic, topicStories, count(openTopic), currentLimit));
+    if (activeSections.length) {
+      activeSections.forEach((sec) => body.push(drawer(sec.id, sec.stories, count(sec.id), sec.limit)));
+    } else if (openTopic === 'all') {
+      body.push(h('p', { class: 'state quiet', text: staleEmptyMsg || (q ? `No stories match "${q}" here.` : `No stories found for ${country.options[country.selectedIndex] ? country.options[country.selectedIndex].text : 'this desk'} in this time period.`) }));
     } else {
       body.push(h('p', { class: 'state', text: staleEmptyMsg || (q ? `No stories match "${q}" here.` : `No ${topicName(openTopic).toLowerCase()} stories in this period.`) }));
     }
 
     const side = [alerts(), trends(), reddit(), social()].filter(Boolean);
+    const countryObj = index.countries.find((x) => x.id === country.value) || index.countries[0];
+    const filterParts = [
+      openTopic !== 'all' ? topicName(openTopic) : null,
+      movementFilter === 'surge_new' ? 'Surging & New' : (movementFilter === 'pickup' ? 'Intl Pickups' : null),
+      q ? `Search: "${q}"` : null,
+    ].filter(Boolean);
+    const exportedCount = activeSections.reduce((n, sec) => n + sec.shown.length, 0);
+    const makeMd = () => buildBriefMarkdown({ countryObj, periodLabel, updated, filterParts, sections: activeSections });
 
     results.replaceChildren(...[
       fallbackNotice && h('p', { class: 'notice quiet', text: fallbackNotice }),
+      h('header', { class: 'print-head' },
+        h('div', { class: 'print-agency' },
+          h('span', { text: 'ARGOS MONITOR · COUNTRY BRIEF' }),
+          h('span', { text: 'UNCLASSIFIED // OSINT' })),
+        h('h2', { class: 'print-title', text: `${countryObj.name} · ${periodLabel}` }),
+        h('p', { class: 'print-meta', text: `Updated ${fmtTimeTz.format(updated)} · ${plural(exportedCount, 'story', 'stories')} shown${filterParts.length ? ` · Filters: ${filterParts.join(' · ')}` : ''}` })),
       h('p', { class: 'result-line' }, h('b', { text: country.options[country.selectedIndex].text }),
         ` · ${periodLabel} · ${plural(totalStories, 'story', 'stories')} found · updated ${fmtTime.format(updated)}${ageH > STALE_HOURS ? ` (${Math.round(ageH / 24)}d old)` : ''} · `,
         h('button', { type: 'button', class: 'desk-link', text: isPinned(country.value) ? 'Pinned' : '+ Pin desk', 'aria-pressed': String(isPinned(country.value)), onclick: () => togglePin(country.value) }),
-        ' · ',
-        h('a', { class: 'desk-link', href: `brief.html#${country.value}`, text: 'Printable brief' }),
+        exportedCount > 0 && ' · ',
+        exportedCount > 0 && h('button', { type: 'button', class: 'desk-link', text: exportOpen ? 'Export brief ▴' : 'Export brief ▾', 'aria-expanded': String(exportOpen), onclick: () => { exportOpen = !exportOpen; render(false); } }),
         ' · ',
         h('button', { type: 'button', class: 'desk-link', text: '← All countries overview', onclick: () => openCountry('home') })),
+      exportOpen && exportedCount > 0 && h('div', { class: 'export-bar no-print', role: 'region', 'aria-label': 'Export country brief' },
+        h('span', { class: 'meta', text: `Export ${plural(exportedCount, 'story', 'stories')}${filterParts.length ? ` (${filterParts.join(' · ')})` : ''}:` }),
+        h('button', { type: 'button', class: 'agenda-filter-btn', text: 'Print / Save PDF', onclick: () => { exportOpen = false; render(false); setTimeout(() => window.print(), 20); } }),
+        h('button', { type: 'button', class: 'agenda-filter-btn', text: 'Copy Markdown', onclick: (e) => {
+          const btn = e.currentTarget;
+          const md = makeMd();
+          navigator.clipboard.writeText(md).then(() => flashBtn(btn, 'Copied!')).catch(() => prompt('Copy brief markdown:', md));
+        } }),
+        h('button', { type: 'button', class: 'agenda-filter-btn', text: 'Download .md', onclick: (e) => {
+          const btn = e.currentTarget;
+          const blob = new Blob([makeMd()], { type: 'text/markdown;charset=utf-8' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `argos-${countryObj.id}-${detectedPeriod}-brief.md`;
+          a.click();
+          setTimeout(() => URL.revokeObjectURL(url), 1000);
+          flashBtn(btn, 'Downloaded!');
+        } })),
       noOutside && h('p', { class: 'notice quiet', text: `No coverage from ${(index.countries.find((x) => x.id === country.value) || {}).abroad_label || 'outlets abroad'} or from international outlets has been collected for this period yet, so the "not in domestic press" check cannot run.` }),
       watchbar(q),
       agendaBar(d),
@@ -1936,16 +2023,6 @@
     if ($('#nav-alerts')) $('#nav-alerts').setAttribute('aria-current', activeTab === 'alerts' ? 'page' : 'false');
     if ($('#nav-disasters')) $('#nav-disasters').setAttribute('aria-current', activeTab === 'disasters' ? 'page' : 'false');
     if ($('#nav-violence')) $('#nav-violence').setAttribute('aria-current', activeTab === 'violence' ? 'page' : 'false');
-    const briefLink = $('#nav-brief') || $('#brief');
-    if (briefLink) {
-      if (activeTab === 'home' || activeTab === 'relations') {
-        briefLink.href = 'brief.html';
-      } else if (activeTab === 'alerts' || activeTab === 'disasters' || activeTab === 'violence') {
-        briefLink.href = monitorCountry !== 'all' ? `brief.html#${monitorCountry}` : 'brief.html';
-      } else {
-        briefLink.href = `brief.html#${country.value}`;
-      }
-    }
     if (activeTab === 'home') {
       setHash(hashFor('all'));
       renderHome();

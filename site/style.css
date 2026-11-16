@@ -888,3 +888,53 @@ summary:hover { color: var(--ink); }
   .legend-inner { padding: 1.5rem 1rem 2.5rem; }
   .totop { right: 0.85rem; bottom: calc(0.85rem + env(safe-area-inset-bottom)); height: 2.75rem; width: 2.75rem; }
 }
+
+/* ---- Inline Country Brief Export Bar & A4 Print Styles ---- */
+.export-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.65rem;
+  margin: -0.25rem 0 1rem;
+  padding: 0.55rem 0.85rem;
+  background: var(--surface-warm);
+  border: 1px solid var(--rule);
+  font: 400 var(--fs-xs)/1.3 var(--sans);
+}
+.print-head { display: none; }
+
+@page {
+  size: A4 portrait;
+  margin: 1.4cm 1.5cm 1.8cm;
+}
+@media print {
+  body { background: #fff !important; color: #000 !important; font-size: 9.5pt; }
+  .bureau, .watch, .agenda-bar, .tab-bar, .tab-rolldown, .country-side, .trans, .totop, .legend, .result-line, .export-bar, .desk-link, .drawer > button.more, .clip > details, .notice, .monitor-bar, .no-print {
+    display: none !important;
+  }
+  main#results { max-width: 100% !important; padding: 0 !important; margin: 0 !important; }
+  .print-head {
+    display: block !important;
+    border-top: 3px solid #000;
+    border-bottom: 1.5px solid #000;
+    padding: 0.6rem 0;
+    margin-bottom: 1.25rem;
+  }
+  .print-agency {
+    display: flex;
+    justify-content: space-between;
+    font: 700 7.5pt/1.3 var(--sans);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #444;
+    margin-bottom: 0.25rem;
+  }
+  .print-title { font: 700 15pt/1.2 var(--sans); margin: 0 0 0.25rem; color: #000; }
+  .print-meta { font: 400 8.5pt/1.35 var(--sans); margin: 0; color: #333; }
+  .country-layout, .grid { display: block !important; }
+  .drawer { margin-bottom: 1.4rem; }
+  .drawer-head { border-bottom: 1.5px solid #000; margin-bottom: 0.75rem; padding-bottom: 0.25rem; }
+  .clip { break-inside: avoid; page-break-inside: avoid; margin-bottom: 1rem; padding-left: 0.85rem; }
+  .clip a { color: #000 !important; text-decoration: none !important; }
+  .strip { background: #f7f6f2 !important; }
+}
