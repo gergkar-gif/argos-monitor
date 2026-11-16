@@ -19,6 +19,8 @@ env:
   ARGOS_DATA_DIR: ${{ github.workspace }}/.argos-data
   ARGOS_EXTRACT_STORY_ONLY: "1"
   ARGOS_EXTRACT_LIMIT: "400"
+  PYTHONFAULTHANDLER: "1"
+  TOKENIZERS_PARALLELISM: "false"
 
 jobs:
   build:

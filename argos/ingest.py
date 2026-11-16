@@ -157,7 +157,7 @@ def ingest_feeds(db, country, prefetched=None):
             print(f"  backoff {country[:4]} {feed['source_id']:15} (retry after {feed['retry_after']})")
             continue
 
-        code, body, headers = prefetched[feed["id"]]
+        code, body, headers = prefetched.pop(feed["id"])
 
         if code == 304:
             # HTTP 304 Not Modified (Media Cloud conditional fetch)
@@ -266,7 +266,7 @@ def run(db):
         f for f in db.execute("SELECT * FROM feed WHERE active=1").fetchall()
         if not (f["retry_after"] and f["retry_after"] > now_init)
     ]
-    with ThreadPoolExecutor(max_workers=20) as pool:
+    with ThreadPoolExecutor(max_workers=10) as pool:
         prefetched = dict(pool.map(_fetch_one_feed, all_active))
     for country in packs.pack_ids():
         print(f"ingest {country}")

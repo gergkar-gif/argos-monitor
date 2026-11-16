@@ -4,6 +4,7 @@ Runs offline on CPU via MarianMT (Helsinki-NLP/opus-mt-*) models.
 Translations are strictly reading aids: the dashboard always shows or links to the original headline.
 Cached in the SQLite `translation` table so no headline is ever translated twice.
 """
+import gc
 import os
 import re
 from .rank import dashboard_story_ids
@@ -65,8 +66,10 @@ def translate_batch(texts, lang):
         return [None] * len(texts)
     tok, model, model_name = translator
     try:
+        import torch
         batch = tok(texts, return_tensors="pt", padding=True, truncation=True, max_length=128)
-        gen = model.generate(**batch, max_length=128, num_beams=1)
+        with torch.inference_mode():
+            gen = model.generate(**batch, max_length=128, num_beams=1)
         outputs = tok.batch_decode(gen, skip_special_tokens=True)
     except Exception as e:
         print(f"translate: batch generation failed for {lang}: {e}")
@@ -127,5 +130,9 @@ def run(db):
                 db.commit()
                 total_translated += len(inserts)
         print(f"translate: {lang}: {len(items)} headlines processed")
+        # Release one language's MarianMT weights before loading the next to stay within CI RAM limits.
+        _LOADED_MODELS.pop(lang, None)
+        del translator
+        gc.collect()
 
     print(f"translate: {total_translated} translations saved in database")

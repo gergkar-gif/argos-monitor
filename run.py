@@ -1,5 +1,7 @@
 """Run the pipeline. `python run.py` runs every stage; `python run.py extract` runs one
 (ingest | normalise | relevance | embed | cluster | classify | policy | rank | extract | excerpts | verify | translate | export | crisis | trends | reddit | watch | prune | report | top | sample)."""
+import faulthandler
+import gc
 import sys
 
 from argos import classify, cluster, db as dbmod, embed, crisis, excerpts, export, extract, ingest, normalise, policy, prune, rank, relevance, translate, trends, reddit, social, watch
@@ -61,6 +63,7 @@ STAGES = {"ingest": ingest.run, "extract": extract.run, "normalise": normalise.r
           "report": report, "top": top, "sample": sample}
 
 if __name__ == "__main__":
+    faulthandler.enable()
     sys.stdout.reconfigure(encoding="utf-8")
     db = dbmod.connect()
     for name in sys.argv[1:] or ["ingest", "normalise", "relevance", "embed", "cluster", "classify", "policy", "rank", "extract", "normalise", "excerpts", "verify", "export", "crisis", "trends", "reddit", "social", "watch", "prune", "report"]:
@@ -76,3 +79,5 @@ if __name__ == "__main__":
                 print(f"WARNING: auxiliary stage '{name}' failed ({e}), continuing pipeline...")
             else:
                 raise
+        finally:
+            gc.collect()
