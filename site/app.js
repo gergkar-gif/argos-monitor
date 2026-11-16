@@ -69,7 +69,8 @@
   const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
   const topicName = (id) => (TOPICS.find((t) => t.id === id) || {}).name || id;
   const topicVar = (id) => `--tab: var(--t-${id})`;
-  const fold = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/ł/g, 'l').replace(/ı/g, 'i');
+  const SHARED = window.ARGOS_SHARED || {};
+  const fold = SHARED.fold || ((s) => (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/ł/g, 'l').replace(/ı/g, 'i'));
 
   const index = window.ARGOS_INDEX;
   function getCountryName(id) {
@@ -108,32 +109,8 @@
     qInput.focus();
   };
 
-  const REGIONS = [
-    'North America', 'Western Europe', 'Central & Southeast Europe', 'Eastern Europe',
-    'South Caucasus', 'Middle East', 'Mediterranean', 'Central Asia', 'South Asia',
-    'East Asia', 'Southeast Asia', 'Oceania', 'Sub-Saharan Africa', 'South America', 'Central America', 'Caribbean'
-  ];
-  const COUNTRY_REGION = {
-    canada: 'North America', united_states: 'North America',
-    belgium: 'Western Europe', denmark: 'Western Europe', finland: 'Western Europe', france: 'Western Europe', germany: 'Western Europe', ireland: 'Western Europe', italy: 'Western Europe',
-    netherlands: 'Western Europe', norway: 'Western Europe', portugal: 'Western Europe', spain: 'Western Europe', sweden: 'Western Europe', switzerland: 'Western Europe', united_kingdom: 'Western Europe',
-    austria: 'Central & Southeast Europe', bosnia: 'Central & Southeast Europe', czechia: 'Central & Southeast Europe', hungary: 'Central & Southeast Europe', kosovo: 'Central & Southeast Europe', poland: 'Central & Southeast Europe', serbia: 'Central & Southeast Europe', slovakia: 'Central & Southeast Europe',
-    baltics: 'Eastern Europe', belarus: 'Eastern Europe', moldova: 'Eastern Europe', romania: 'Eastern Europe', russia: 'Eastern Europe', ukraine: 'Eastern Europe',
-    armenia: 'South Caucasus', azerbaijan: 'South Caucasus', georgia: 'South Caucasus',
-    iran: 'Middle East', iraq: 'Middle East', jordan: 'Middle East', qatar: 'Middle East', saudi_arabia: 'Middle East', syria: 'Middle East', united_arab_emirates: 'Middle East',
-    algeria: 'Mediterranean', egypt: 'Mediterranean', greece: 'Mediterranean', israel: 'Mediterranean', lebanon: 'Mediterranean', morocco: 'Mediterranean', turkey: 'Mediterranean',
-    kazakhstan: 'Central Asia', kyrgyzstan: 'Central Asia', uzbekistan: 'Central Asia',
-    bangladesh: 'South Asia', india: 'South Asia', pakistan: 'South Asia', sri_lanka: 'South Asia',
-    china: 'East Asia', japan: 'East Asia', north_korea: 'East Asia', south_korea: 'East Asia', taiwan: 'East Asia',
-    cambodia: 'Southeast Asia', indonesia: 'Southeast Asia', laos: 'Southeast Asia', malaysia: 'Southeast Asia', myanmar: 'Southeast Asia',
-    philippines: 'Southeast Asia', singapore: 'Southeast Asia', thailand: 'Southeast Asia', vietnam: 'Southeast Asia',
-    australia: 'Oceania', pacific_islands: 'Oceania',
-    dr_congo: 'Sub-Saharan Africa', east_africa: 'Sub-Saharan Africa', ethiopia: 'Sub-Saharan Africa', kenya: 'Sub-Saharan Africa', nigeria: 'Sub-Saharan Africa', south_africa: 'Sub-Saharan Africa', west_africa: 'Sub-Saharan Africa',
-    argentina: 'South America', brazil: 'South America', chile: 'South America', colombia: 'South America', ecuador: 'South America', mexico: 'South America', peru: 'South America', venezuela: 'South America',
-    central_america: 'Central America',
-    caribbean: 'Caribbean',
-  };
-  const getRegion = (cid) => ((index && index.countries.find((x) => x.id === cid) || {}).region) || COUNTRY_REGION[cid] || 'Other';
+  const REGIONS = SHARED.REGIONS || [];
+  const getRegion = (cid) => (SHARED.getRegion ? SHARED.getRegion(cid, index && index.countries) : 'Other');
   const prettyName = (cid) => ((index && index.countries.find((x) => x.id === cid) || {}).name) || cid.replace(/_/g, ' ').replace(/\b\w/g, (m) => m.toUpperCase());
 
   // ---------- data loading (script tags, so it works when the page is opened from a folder) ----------
@@ -235,185 +212,25 @@
   }
 
   function setupCountryCombobox() {
-    if (!countrySearch || !countryMenu) return;
-
-    let highlightedIndex = -1;
-    let visibleItems = [];
-
-    function renderMenu(query = '') {
-      const q = fold(query.trim());
-      visibleItems = [];
-      countryMenu.replaceChildren();
-
-      if (!q) {
-        // Group by Region
-        const groups = new Map(REGIONS.map((r) => [r, []]));
-        for (const c of index.countries) {
-          const r = getRegion(c.id);
-          if (!groups.has(r)) groups.set(r, []);
-          groups.get(r).push(c);
-        }
-        for (const [reg, list] of groups.entries()) {
-          if (!list.length) continue;
-          countryMenu.append(h('div', { class: 'combobox-group-label', text: reg }));
-          for (const c of list) {
-            const isSel = c.id === country.value && activeTab === 'country';
-            const item = h('div', {
-              id: `c-opt-${c.id}`,
-              class: 'combobox-item' + (isSel ? ' selected' : ''),
-              role: 'option',
-              'aria-selected': String(isSel),
-              'data-id': c.id,
-              'data-name': c.name,
-              onclick: () => selectCountry(c.id, c.name),
-            },
-              h('span', { class: 'c-name', text: c.name }),
-              h('span', { class: 'c-region', text: reg })
-            );
-            countryMenu.append(item);
-            visibleItems.push({ el: item, id: c.id, name: c.name });
-          }
-        }
-      } else {
-        // Filter matching countries by name, id, region, or mention aliases
-        const matches = index.countries.filter((c) => {
-          if (fold(c.name).includes(q) || fold(c.id).includes(q) || fold(getRegion(c.id)).includes(q)) return true;
-          return (c.mentions || []).some((m) => fold(m).includes(q));
-        });
-
-        if (!matches.length) {
-          countryMenu.append(h('div', { class: 'combobox-empty', text: `No countries matching "${query}"` }));
-        } else {
-          for (const c of matches) {
-            const isSel = c.id === country.value && activeTab === 'country';
-            const reg = getRegion(c.id);
-            const item = h('div', {
-              id: `c-opt-${c.id}`,
-              class: 'combobox-item' + (isSel ? ' selected' : ''),
-              role: 'option',
-              'aria-selected': String(isSel),
-              'data-id': c.id,
-              'data-name': c.name,
-              onclick: () => selectCountry(c.id, c.name),
-            },
-              h('span', { class: 'c-name', text: c.name }),
-              h('span', { class: 'c-region', text: reg })
-            );
-            countryMenu.append(item);
-            visibleItems.push({ el: item, id: c.id, name: c.name });
-          }
-        }
-      }
-
-      highlightedIndex = visibleItems.findIndex((it) => it.id === country.value);
-      if (highlightedIndex === -1 && visibleItems.length) highlightedIndex = 0;
-      updateHighlight();
-    }
-
-    function updateHighlight() {
-      let activeId = '';
-      visibleItems.forEach((it, idx) => {
-        const isHi = idx === highlightedIndex;
-        it.el.classList.toggle('highlighted', isHi);
-        if (isHi) {
-          activeId = it.el.id;
-          it.el.scrollIntoView({ block: 'nearest' });
-        }
-      });
-      if (activeId) countrySearch.setAttribute('aria-activedescendant', activeId);
-      else countrySearch.removeAttribute('aria-activedescendant');
-    }
-
-    function selectCountry(cid, cname) {
-      country.value = cid;
-      countrySearch.value = cname;
-      closeMenu();
-      openCountry(cid);
-    }
-
-    function openMenu() {
-      renderMenu(countrySearch.value === getCountryName(country.value) ? '' : countrySearch.value);
-      countryMenu.hidden = false;
-      countrySearch.setAttribute('aria-expanded', 'true');
-    }
-
-    function closeMenu() {
-      countryMenu.hidden = true;
-      countrySearch.setAttribute('aria-expanded', 'false');
-      countrySearch.removeAttribute('aria-activedescendant');
-      highlightedIndex = -1;
-    }
-
-    countrySearch.addEventListener('focus', () => {
-      countrySearch.select();
-      openMenu();
-    });
-
-    countrySearch.addEventListener('input', () => {
-      openMenu();
-      renderMenu(countrySearch.value);
-    });
-
-    countrySearch.addEventListener('keydown', (e) => {
-      if (countryMenu.hidden) {
-        if (e.key === 'ArrowDown' || e.key === 'ArrowUp' || e.key === 'Enter') {
-          e.preventDefault();
-          openMenu();
-          return;
-        }
-      }
-
-      if (e.key === 'ArrowDown') {
-        e.preventDefault();
-        if (visibleItems.length) {
-          highlightedIndex = (highlightedIndex + 1) % visibleItems.length;
-          updateHighlight();
-        }
-      } else if (e.key === 'ArrowUp') {
-        e.preventDefault();
-        if (visibleItems.length) {
-          highlightedIndex = (highlightedIndex - 1 + visibleItems.length) % visibleItems.length;
-          updateHighlight();
-        }
-      } else if (e.key === 'Enter') {
-        e.preventDefault();
-        if (highlightedIndex >= 0 && visibleItems[highlightedIndex]) {
-          selectCountry(visibleItems[highlightedIndex].id, visibleItems[highlightedIndex].name);
-        } else if (visibleItems.length === 1) {
-          selectCountry(visibleItems[0].id, visibleItems[0].name);
-        }
-      } else if (e.key === 'Escape') {
-        e.preventDefault();
-        syncCountryInput(country.value);
-        closeMenu();
-        countrySearch.blur();
-      }
-    });
-
-    if (countryArrow) {
-      countryArrow.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (countryMenu.hidden) {
-          countrySearch.focus();
-          openMenu();
-        } else {
-          closeMenu();
-        }
-      });
-    }
-
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('.country-field')) {
-        if (!countryMenu.hidden) {
-          closeMenu();
-          syncCountryInput(country.value);
-        }
-      }
+    if (!countrySearch || !countryMenu || !SHARED.setupCountryCombobox) return;
+    SHARED.setupCountryCombobox({
+      countries: index.countries,
+      searchEl: countrySearch,
+      menuEl: countryMenu,
+      arrowEl: countryArrow,
+      selectEl: country,
+      isSelected: (c) => c.id === country.value && activeTab === 'country',
+      getQuerySeed: () => (countrySearch.value === getCountryName(country.value) ? '' : countrySearch.value),
+      onSelect: (cid) => openCountry(cid),
+      onCloseSync: () => syncCountryInput(country.value),
     });
   }
-  // Desktop: horizontal tab strip. Mobile (<=45.99rem): native rolldown select so no menu ever scrolls sideways.
-  function tabBar(items, activeId, onSelect, labelText, ariaLabel) {
+  // Desktop: wrapped tab strip. Mobile (<=45.99rem): native rolldown select so no menu ever scrolls sideways.
+  function tabBar(items, activeId, onSelect, labelText, ariaLabel, ctxText) {
     return h('div', { class: 'tab-bar' },
+      ctxText && h('div', { class: 'tab-ctx' },
+        h('span', null, h('strong', { text: ctxText })),
+        h('button', { type: 'button', class: 'desk-link', text: 'Top ↑', onclick: () => scrollTo({ top: 0, behavior: 'smooth' }) })),
       h('ul', { class: 'tabs', role: 'list', 'aria-label': ariaLabel || labelText },
         items.map(([id, label, n, style]) =>
           h('li', null, h('button', {
@@ -726,36 +543,42 @@
           text: `Religious sensitivity: ${s.religious_traditions.join(', ')}`
         }),
         (() => {
-          const parts = [`${s.headline.source}, ${fmtDay.format(new Date(s.last_seen))}`, outlets];
-          if (s.evidence === 'OFFICIAL') parts.push('official source');
+          const base = `${s.headline.source}, ${fmtDay.format(new Date(s.last_seen))} · ${outlets}`;
+          const badges = [];
+          const secondary = [];
+
+          if (s.evidence === 'OFFICIAL') badges.push(h('span', { class: 'stamp red', text: 'Official source' }));
           else if (s.perspectives) {
             const sh = s.perspectives.state_share;
             const nAlign = Object.keys(s.perspectives.alignment || {}).length;
             const nBias = Object.keys(s.perspectives.bias || {}).length;
-            if (sh >= 0.7) parts.push('mostly state media');
-            else if (sh >= 0.35) parts.push('mixed state & independent');
-            else if (nAlign > 1 || nBias > 1) parts.push('multiple viewpoints');
-            else if (s.independent_sources >= 2) parts.push('independent press');
+            if (sh >= 0.7) badges.push(h('span', { class: 'stamp orange', text: 'Mostly state media' }));
+            else if (sh >= 0.35) secondary.push('mixed state & independent');
+            else if (nAlign > 1 || nBias > 1) secondary.push('multiple viewpoints');
+            else if (s.independent_sources >= 2) secondary.push('independent press');
           }
-          let isSurge = false;
-          let surgeText = '';
+
           if (s.delta) {
-            if (s.delta.state === 'new') parts.push('new today');
-            else if (s.delta.state === 'surging') {
-              isSurge = true;
+            if (s.delta.state === 'surging') {
               const netStr = s.delta.net > 0 ? `+${s.delta.net}` : String(s.delta.net);
-              surgeText = `Surging (${netStr})`;
-            } else if (s.delta.state === 'cooling') parts.push('cooling');
-            if (s.delta.scope_shift === 'international_pickup') parts.push('picked up internationally');
-            else if (s.delta.scope_shift === 'diaspora_pickup') parts.push('picked up abroad');
-            if (s.delta.state_surge) parts.push('state coverage rising');
+              badges.push(h('span', { class: 'stamp stamp-surge', text: `Surging (${netStr})` }));
+            } else if (s.delta.state === 'new') {
+              badges.push(h('span', { class: 'stamp stamp-new', text: 'New today' }));
+            } else if (s.delta.state === 'cooling') {
+              secondary.push('cooling');
+            }
+            if (s.delta.scope_shift === 'international_pickup') badges.push(h('span', { class: 'stamp stamp-pickup', text: 'Intl pickup' }));
+            else if (s.delta.scope_shift === 'diaspora_pickup') secondary.push('picked up abroad');
+            if (s.delta.state_surge) secondary.push('state coverage rising');
           } else {
             const tr = trend(s);
-            if (tr && tr[0] !== 'Quiet') parts.push(tr[0].toLowerCase());
+            if (tr && tr[0] !== 'Quiet') secondary.push(tr[0].toLowerCase());
           }
+
+          s._secondaryMeta = secondary;
           return [
-            h('span', { text: parts.join(' · ') }),
-            isSurge && h('span', { class: 'stamp red', text: `· ${surgeText}` }),
+            h('span', { text: base }),
+            ...badges.slice(0, 2),
           ];
         })(),
       ),
@@ -801,6 +624,7 @@
       const storyKey = s.id != null ? String(s.id) : null;
       const details = h('details', { open: Boolean(storyKey && openStoryIds.has(storyKey)) },
         h('summary', { text: `All ${s.articles} articles` }),
+        s._secondaryMeta && s._secondaryMeta.length > 0 && h('p', { class: 'byline', text: `Signals: ${s._secondaryMeta.join(' · ')}` }),
         present.length > 1 && h('div', { class: 'cover', 'aria-label': 'Where the coverage comes from' },
           present.map(([id, label]) => h('span', null, h('b', { text: String(s.by_scope[id]) }), ` ${s.by_scope[id] === 1 ? 'article' : 'articles'} from ${label}`))),
         s.perspectives && (Object.keys(s.perspectives.alignment || {}).length > 0 || Object.keys(s.perspectives.bias || {}).length > 0) && h('div', { class: 'cover', 'aria-label': 'Perspective breakdown' },
@@ -1369,22 +1193,25 @@
       ? allOfficial
       : (openSubType !== 'all' ? allOfficial.filter((i) => matchAlertConflictTrack(i, openSubType)) : allOfficial);
 
+    const countryName = filterCountry ? prettyName(filterCountry) : null;
+    const periodLabel = (MONITOR_PERIODS.find(([v]) => v === monitorPeriod) || [])[1] || 'Past 7 days';
+    const ctxText = `${isDis ? 'Disasters' : 'Conflict & Security'} · ${countryName || 'All countries'} · ${periodLabel}`;
     const subTabs = isDis
       ? tabBar(
           [['all', 'All types', allStories.length], ...DISASTER_RULES.map(([label]) => [label, label, allStories.filter((s) => s.disaster_type === label).length])],
           openSubType,
           (id) => { openSubType = id; renderEventMonitor(mode); },
           'Event',
-          'Filter by event type')
+          'Filter by event type',
+          ctxText)
       : tabBar(
           CONFLICT_TRACKS.map(([id, label]) => [id, label, allStories.filter((s) => matchConflictTrack(s, id)).length]),
           openSubType,
           (id) => { openSubType = id; renderEventMonitor(mode); },
           'Track',
-          'Filter by conflict track & religious sensitivity');
+          'Filter by conflict track & religious sensitivity',
+          ctxText);
 
-    const countryName = filterCountry ? prettyName(filterCountry) : null;
-    const periodLabel = (MONITOR_PERIODS.find(([v]) => v === monitorPeriod) || [])[1] || 'Past 7 days';
     const titleText = filterCountry
       ? (isDis ? `Disasters & Severe Weather · ${countryName}` : `Conflict & Security · ${countryName}`)
       : (isDis ? 'Natural Disasters & Severe Weather Monitor' : 'Conflict & Security Monitor (Live Events, Field Monitors & Press)');
@@ -1965,7 +1792,8 @@
       openTopic,
       (id) => choose(id),
       'Topic',
-      'Filter by topic');
+      'Filter by topic',
+      `${getCountryName(country.value)} · ${periodLabel}`);
 
     const body = [];
     const staleEmptyMsg = (!q && movementFilter === 'all' && windowStories.length === 0 && d.stories.length > 0)

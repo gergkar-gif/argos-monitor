@@ -26,7 +26,7 @@
 
 <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png">
 <link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="style.css?v=4.1">
+<link rel="stylesheet" href="style.css?v=4.2">
 <style>
   /* ---- Foreign Ministry / Diplomatic Brief Document Styling ---- */
   .brief-wrap { max-width: 58rem; margin: 0 auto; padding: 1.5rem 1.5rem 4rem; }
@@ -122,6 +122,7 @@
     font-style: italic;
     margin: 0;
   }
+  body:not(.show-orig) .dispatch-orig { display: none; }
   .dispatch-lead {
     font: 400 var(--fs-base)/1.55 var(--sans);
     color: var(--ink);
@@ -259,6 +260,8 @@
 
 <main class="brief-wrap">
   <div class="print-action-bar no-print">
+    <a id="brief-back" class="desk-link" href="index.html#country" style="margin-right:auto">← Country Brief</a>
+    <button type="button" id="brief-orig-toggle" class="more">Show original headlines</button>
     <button type="button" class="more" onclick="window.print()">Print / Export PDF Brief</button>
     <button type="button" class="more" onclick="window.copyBriefCable(this)">Copy as Cable / Markdown</button>
   </div>
@@ -268,6 +271,7 @@
 </main>
 
 <script src="data/index.js?v=2.8"></script>
+<script src="shared.js?v=4.2"></script>
 <script>
 (() => {
   'use strict';
@@ -344,39 +348,15 @@
     return text;
   }
 
-  const REGIONS = [
-    'North America', 'Western Europe', 'Central & Southeast Europe', 'Eastern Europe',
-    'South Caucasus', 'Middle East', 'Mediterranean', 'Central Asia', 'South Asia',
-    'East Asia', 'Southeast Asia', 'Oceania', 'Sub-Saharan Africa', 'South America', 'Central America', 'Caribbean'
-  ];
-  const COUNTRY_REGION = {
-    canada: 'North America', united_states: 'North America',
-    belgium: 'Western Europe', denmark: 'Western Europe', finland: 'Western Europe', france: 'Western Europe', germany: 'Western Europe', ireland: 'Western Europe', italy: 'Western Europe',
-    netherlands: 'Western Europe', norway: 'Western Europe', portugal: 'Western Europe', spain: 'Western Europe', sweden: 'Western Europe', switzerland: 'Western Europe', united_kingdom: 'Western Europe',
-    austria: 'Central & Southeast Europe', bosnia: 'Central & Southeast Europe', czechia: 'Central & Southeast Europe', hungary: 'Central & Southeast Europe', kosovo: 'Central & Southeast Europe', poland: 'Central & Southeast Europe', serbia: 'Central & Southeast Europe', slovakia: 'Central & Southeast Europe',
-    baltics: 'Eastern Europe', belarus: 'Eastern Europe', moldova: 'Eastern Europe', romania: 'Eastern Europe', russia: 'Eastern Europe', ukraine: 'Eastern Europe',
-    armenia: 'South Caucasus', azerbaijan: 'South Caucasus', georgia: 'South Caucasus',
-    iran: 'Middle East', iraq: 'Middle East', jordan: 'Middle East', qatar: 'Middle East', saudi_arabia: 'Middle East', syria: 'Middle East', united_arab_emirates: 'Middle East',
-    algeria: 'Mediterranean', egypt: 'Mediterranean', greece: 'Mediterranean', israel: 'Mediterranean', lebanon: 'Mediterranean', morocco: 'Mediterranean', turkey: 'Mediterranean',
-    kazakhstan: 'Central Asia', kyrgyzstan: 'Central Asia', uzbekistan: 'Central Asia',
-    bangladesh: 'South Asia', india: 'South Asia', pakistan: 'South Asia', sri_lanka: 'South Asia',
-    china: 'East Asia', japan: 'East Asia', north_korea: 'East Asia', south_korea: 'East Asia', taiwan: 'East Asia',
-    cambodia: 'Southeast Asia', indonesia: 'Southeast Asia', laos: 'Southeast Asia', malaysia: 'Southeast Asia', myanmar: 'Southeast Asia',
-    philippines: 'Southeast Asia', singapore: 'Southeast Asia', thailand: 'Southeast Asia', vietnam: 'Southeast Asia',
-    australia: 'Oceania', pacific_islands: 'Oceania',
-    dr_congo: 'Sub-Saharan Africa', east_africa: 'Sub-Saharan Africa', ethiopia: 'Sub-Saharan Africa', kenya: 'Sub-Saharan Africa', nigeria: 'Sub-Saharan Africa', south_africa: 'Sub-Saharan Africa', west_africa: 'Sub-Saharan Africa',
-    argentina: 'South America', brazil: 'South America', chile: 'South America', colombia: 'South America', ecuador: 'South America', mexico: 'South America', peru: 'South America', venezuela: 'South America',
-    central_america: 'Central America',
-    caribbean: 'Caribbean',
-  };
-  const getRegion = (c) => c.region || COUNTRY_REGION[c.id] || 'Other';
+  const SHARED = window.ARGOS_SHARED || {};
+  const REGIONS = SHARED.REGIONS || [];
+  const getRegion = (c) => (SHARED.getRegion ? SHARED.getRegion(c.id, index.countries) : (c.region || 'Other'));
+  const fold = SHARED.fold || ((s) => (s || '').toLowerCase());
 
   cSel.replaceChildren(...REGIONS.flatMap((r) => {
     const items = index.countries.filter((c) => getRegion(c) === r);
     return items.length ? [el('optgroup', { label: r, class: 'notranslate', translate: 'no' }, ...items.map((x) => el('option', { value: x.id, text: x.name, class: 'notranslate', translate: 'no' })))] : [];
   }));
-
-  const fold = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/ł/g, 'l').replace(/ı/g, 'i');
 
   const ALL_PERIODS = [
     ['24h', 'Last 24 hours'],
@@ -395,178 +375,52 @@
   }
   syncCountryInput();
 
-  function setupCountryCombobox() {
-    if (!cSearch || !cMenu) return;
-    let highlightedIndex = -1;
-    let visibleItems = [];
-
-    function renderMenu(query = '') {
-      const q = fold(query.trim());
-      visibleItems = [];
-      cMenu.replaceChildren();
-
-      if (!q) {
-        const groups = new Map(REGIONS.map((r) => [r, []]));
-        for (const c of index.countries) {
-          const r = getRegion(c);
-          if (!groups.has(r)) groups.set(r, []);
-          groups.get(r).push(c);
-        }
-        for (const [reg, list] of groups.entries()) {
-          if (!list.length) continue;
-          cMenu.append(el('div', { class: 'combobox-group-label', text: reg }));
-          for (const c of list) {
-            const isSel = c.id === cSel.value;
-            const item = el('div', {
-              class: 'combobox-item' + (isSel ? ' selected' : ''),
-              role: 'option',
-              'data-id': c.id,
-              'data-name': c.name,
-              onclick: () => selectCountry(c.id, c.name),
-            },
-              el('span', { class: 'c-name', text: c.name }),
-              el('span', { class: 'c-region', text: reg })
-            );
-            cMenu.append(item);
-            visibleItems.push({ el: item, id: c.id, name: c.name });
-          }
-        }
-      } else {
-        const matches = index.countries.filter((c) => {
-          if (fold(c.name).includes(q) || fold(c.id).includes(q) || fold(getRegion(c)).includes(q)) return true;
-          return (c.mentions || []).some((m) => fold(m).includes(q));
-        });
-
-        if (!matches.length) {
-          cMenu.append(el('div', { class: 'combobox-empty', text: `No countries matching "${query}"` }));
-        } else {
-          for (const c of matches) {
-            const isSel = c.id === cSel.value;
-            const reg = getRegion(c);
-            const item = el('div', {
-              class: 'combobox-item' + (isSel ? ' selected' : ''),
-              role: 'option',
-              'data-id': c.id,
-              'data-name': c.name,
-              onclick: () => selectCountry(c.id, c.name),
-            },
-              el('span', { class: 'c-name', text: c.name }),
-              el('span', { class: 'c-region', text: reg })
-            );
-            cMenu.append(item);
-            visibleItems.push({ el: item, id: c.id, name: c.name });
-          }
-        }
-      }
-
-      highlightedIndex = visibleItems.findIndex((it) => it.id === cSel.value);
-      if (highlightedIndex === -1 && visibleItems.length) highlightedIndex = 0;
-      updateHighlight();
-    }
-
-    function updateHighlight() {
-      visibleItems.forEach((it, idx) => {
-        it.el.classList.toggle('highlighted', idx === highlightedIndex);
-        if (idx === highlightedIndex) it.el.scrollIntoView({ block: 'nearest' });
-      });
-    }
-
-    function selectCountry(cid, cname) {
-      cSel.value = cid;
-      cSearch.value = cname;
-      closeMenu();
-      renderBrief();
-    }
-
-    function openMenu() {
-      const cur = index.countries.find((x) => x.id === cSel.value);
-      renderMenu(cSearch.value === (cur ? cur.name : '') ? '' : cSearch.value);
-      cMenu.hidden = false;
-      cSearch.setAttribute('aria-expanded', 'true');
-    }
-
-    function closeMenu() {
-      cMenu.hidden = true;
-      cSearch.setAttribute('aria-expanded', 'false');
-      highlightedIndex = -1;
-    }
-
-    cSearch.addEventListener('focus', () => {
-      cSearch.select();
-      openMenu();
-    });
-
-    cSearch.addEventListener('input', () => {
-      openMenu();
-      renderMenu(cSearch.value);
-    });
-
-    cSearch.addEventListener('keydown', (e) => {
-      if (cMenu.hidden) {
-        if (e.key === 'ArrowDown' || e.key === 'ArrowUp' || e.key === 'Enter') {
-          e.preventDefault();
-          openMenu();
-          return;
-        }
-      }
-
-      if (e.key === 'ArrowDown') {
-        e.preventDefault();
-        if (visibleItems.length) {
-          highlightedIndex = (highlightedIndex + 1) % visibleItems.length;
-          updateHighlight();
-        }
-      } else if (e.key === 'ArrowUp') {
-        e.preventDefault();
-        if (visibleItems.length) {
-          highlightedIndex = (highlightedIndex - 1 + visibleItems.length) % visibleItems.length;
-          updateHighlight();
-        }
-      } else if (e.key === 'Enter') {
-        e.preventDefault();
-        if (highlightedIndex >= 0 && visibleItems[highlightedIndex]) {
-          selectCountry(visibleItems[highlightedIndex].id, visibleItems[highlightedIndex].name);
-        } else if (visibleItems.length === 1) {
-          selectCountry(visibleItems[0].id, visibleItems[0].name);
-        }
-      } else if (e.key === 'Escape') {
-        e.preventDefault();
-        syncCountryInput();
-        closeMenu();
-        cSearch.blur();
-      }
-    });
-
-    if (cArrow) {
-      cArrow.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (cMenu.hidden) {
-          cSearch.focus();
-          openMenu();
-        } else {
-          closeMenu();
-        }
-      });
-    }
-
-    document.addEventListener('click', (e) => {
-      if (!cSearch.contains(e.target) && !cMenu.contains(e.target) && (!cArrow || !cArrow.contains(e.target))) {
-        closeMenu();
-        syncCountryInput();
-      }
+  if (SHARED.setupCountryCombobox) {
+    SHARED.setupCountryCombobox({
+      countries: index.countries,
+      searchEl: cSearch,
+      menuEl: cMenu,
+      arrowEl: cArrow,
+      selectEl: cSel,
+      getQuerySeed: () => {
+        const cur = index.countries.find((x) => x.id === cSel.value);
+        return cSearch.value === (cur ? cur.name : '') ? '' : cSearch.value;
+      },
+      onSelect: () => renderBrief(),
+      onCloseSync: syncCountryInput,
     });
   }
 
-  setupCountryCombobox();
+  const origToggle = document.getElementById('brief-orig-toggle');
+  const syncOrigBtn = () => {
+    const on = document.body.classList.contains('show-orig');
+    if (origToggle) {
+      origToggle.setAttribute('aria-pressed', String(on));
+      origToggle.textContent = on ? 'Hide original headlines' : 'Show original headlines';
+    }
+  };
+  try { if (localStorage.getItem('argos.showOriginal') === '1') document.body.classList.add('show-orig'); } catch {}
+  syncOrigBtn();
+  if (origToggle) {
+    origToggle.addEventListener('click', () => {
+      const next = !document.body.classList.contains('show-orig');
+      document.body.classList.toggle('show-orig', next);
+      try { localStorage.setItem('argos.showOriginal', next ? '1' : '0'); } catch {}
+      syncOrigBtn();
+    });
+  }
 
   async function renderBrief() {
     const c = index.countries.find((x) => x.id === cSel.value) || index.countries[0];
     syncCountryInput();
+    const backLink = document.getElementById('brief-back');
+    if (backLink) backLink.href = `index.html#${c.id}`;
     const periodVal = pSel.value || '7d';
     const limit = Math.min(1000, Math.max(1, parseInt(nSel.value, 10) || 10));
     try { if (location.protocol !== 'file:') history.replaceState(null, '', `#${c.id}`); } catch {}
 
-    doc.replaceChildren(el('p', { class: 'state', text: `Assembling intelligence dispatches for ${c.name} in English…` }));
+    const statusEl = el('p', { class: 'state', text: `Assembling intelligence dispatches for ${c.name} in English…` });
+    doc.replaceChildren(statusEl);
 
     let rawData = null;
     try {
@@ -619,6 +473,7 @@
     const dispatches = [];
     const BATCH_SIZE = 5;
     for (let b = 0; b < stories.length; b += BATCH_SIZE) {
+      statusEl.textContent = `Translating dispatches for ${c.name} (${Math.min(b + BATCH_SIZE, stories.length)} of ${stories.length})…`;
       const slice = stories.slice(b, b + BATCH_SIZE);
       const batchResults = await Promise.all(slice.map(async (s, sIdx) => {
         const idx = b + sIdx;
@@ -827,6 +682,6 @@
 })();
 </script>
 <script src="data/crisis.js"></script>
-<script src="nav.js"></script>
+<script src="nav.js?v=4.2"></script>
 </body>
 </html>
