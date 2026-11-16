@@ -244,15 +244,15 @@
             <span><strong>Very High</strong> (major wires with primary-source standards), <strong>High</strong> (credible mainstream reporting), <strong>Mostly Factual</strong> (factual core with partisan framing), and <strong>Mixed</strong> (subject to censorship or selective omission).</span>
           </div>
           <div class="step">
-            <b>04 · Official corroboration tags</b>
-            <span>Separates state messaging from independent reporting:</span>
+            <b>04 · Official corroboration labels</b>
+            <span>Separates state messaging from independent reporting in each story&rsquo;s summary line:</span>
             <div class="step-tags">
               <div class="step-tag-row">
-                <span class="stamp red">Official</span>
+                <span class="typed">Official source</span>
                 <span>Any state-controlled outlet covers the cluster</span>
               </div>
               <div class="step-tag-row">
-                <span class="stamp red">State-Dominated</span>
+                <span class="typed">Mostly state media</span>
                 <span>Over 70% of corroborating coverage comes from state media</span>
               </div>
             </div>
@@ -278,7 +278,7 @@
             <span>Tags stories only when a confessional identity or sacred site co-occurs with active violence or coercion (Judaism, Christianity, Islam, Other Faiths &amp; Sacred Sites).</span>
             <div class="step-tags">
               <div class="step-tag-row">
-                <span class="stamp stamp-sectarian">REL SENSITIVITY: TRADITION</span>
+                <span class="stamp stamp-sectarian">Religious sensitivity: tradition</span>
                 <span>Linked directly to verifiable verbatim quotes</span>
               </div>
             </div>
@@ -295,18 +295,18 @@
             <b>01 · Story velocity</b>
             <span>Compares each current story centroid against prior-window article embeddings (&ge; 0.895 cosine similarity) across the preceding equal period (24h or 7d):</span>
             <div class="step-tags">
-              <div class="step-tag-row"><span class="stamp stamp-new">NEW</span><span>Zero articles in the prior period</span></div>
-              <div class="step-tag-row"><span class="stamp stamp-surge">SURGE +&Delta;N</span><span>Gain &ge; 3 articles and velocity &ge; 1.75&times;</span></div>
-              <div class="step-tag-row"><span class="stamp stamp-cooling">COOLING</span><span>Drop &ge; 3 articles and velocity &le; 0.40&times;</span></div>
+              <div class="step-tag-row"><span class="typed">New today</span><span>Zero articles in the prior period</span></div>
+              <div class="step-tag-row"><span class="stamp red">Surging (+&Delta;N)</span><span>Gain &ge; 3 articles and velocity &ge; 1.75&times;</span></div>
+              <div class="step-tag-row"><span class="typed">Cooling</span><span>Drop &ge; 3 articles and velocity &le; 0.40&times;</span></div>
             </div>
           </div>
           <div class="step">
             <b>02 · Scope escalation &amp; state drift</b>
             <span>Flags domestic stories picked up abroad or dominated by state media:</span>
             <div class="step-tags">
-              <div class="step-tag-row"><span class="stamp stamp-pickup">INTL PICKUP</span><span>Picked up by international wire services</span></div>
-              <div class="step-tag-row"><span class="stamp stamp-pickup">DIASPORA PICKUP</span><span>Reported by diaspora or exile outlets</span></div>
-              <div class="step-tag-row"><span class="stamp red">STATE SURGE</span><span>State media share gain &ge; +30%</span></div>
+              <div class="step-tag-row"><span class="typed">Picked up internationally</span><span>Picked up by international wire services</span></div>
+              <div class="step-tag-row"><span class="typed">Picked up abroad</span><span>Reported by diaspora or exile outlets</span></div>
+              <div class="step-tag-row"><span class="typed">State coverage rising</span><span>State media share gain &ge; +30%</span></div>
             </div>
           </div>
           <div class="step">
@@ -315,7 +315,7 @@
           </div>
           <div class="step">
             <b>04 · Ranking formula &amp; noise suppression</b>
-            <span><code>Score = Coverage &times; (0.6 + 0.5 &times; Policy) + 1.2 &times; Policy + Election_Bonus</code>. Corroboration across 3+ and 5+ independent outlets amplifies rank; local crime, traffic, and celebrity items get low weights (0.05–0.2); elections get top weight (1.0) and <span class="stamp stamp-election">ELECTION PRIORITY</span> placement.</span>
+            <span><code>Score = Coverage &times; (0.6 + 0.5 &times; Policy) + 1.2 &times; Policy + Election_Bonus</code>. Corroboration across 3+ and 5+ independent outlets amplifies rank; local crime, traffic, and celebrity items get low weights (0.05–0.2); elections get top weight (1.0) and <span class="stamp purple">Election</span> priority placement.</span>
           </div>
           <div class="step">
             <b>05 · Overview triage &amp; desk directory</b>

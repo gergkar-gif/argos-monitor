@@ -22,6 +22,29 @@
   const $ = (sel) => document.querySelector(sel);
   const fmtDay = new Intl.DateTimeFormat(undefined, { day: 'numeric', month: 'short' });
   const fmtTime = new Intl.DateTimeFormat(undefined, { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+  const fmtTimeTz = new Intl.DateTimeFormat(undefined, { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', timeZoneName: 'short' });
+  function fmtUpdated(iso) {
+    const ms = Date.parse(iso);
+    if (Number.isNaN(ms)) return String(iso || '');
+    const mins = Math.max(0, Math.round((Date.now() - ms) / 60000));
+    const ago = mins < 2 ? 'just now'
+      : mins < 60 ? `${mins} min ago`
+      : mins < 2880 ? `${Math.round(mins / 60)} h ago`
+      : `${Math.round(mins / 1440)} d ago`;
+    return `${fmtTimeTz.format(new Date(ms))} (${ago})`;
+  }
+  function plainAlertKind(kind) {
+    return ({
+      'GDELT Live Event': 'News event',
+      'GDACS': 'Disaster alert',
+      'USGS': 'Earthquake',
+      'NASA EONET': 'Natural event',
+    })[kind] || kind;
+  }
+  function announceStatus(msg) {
+    const el = $('#sr-status');
+    if (el) el.textContent = msg;
+  }
 
   // Build DOM with textContent only: headlines come from third-party feeds and are never treated as HTML.
   function h(tag, attrs, ...kids) {
@@ -647,7 +670,7 @@
 
     const hasEn = Boolean(s.headline && s.headline.en_title);
     const displayTitle = hasEn ? s.headline.en_title : s.headline.title;
-    const headLink = h('a', { href: safeUrl(s.headline.url), target: '_blank', rel: 'noopener noreferrer', lang: hasEn ? 'en' : s.headline.language, text: displayTitle });
+    const headLink = h('a', { href: safeUrl(s.headline.url), target: '_blank', rel: 'noopener noreferrer', lang: hasEn ? 'en' : s.headline.language, title: displayTitle, text: displayTitle });
     const headOrig = h('p', { class: 'orig', hidden: !hasEn, title: 'Original headline', text: hasEn ? s.headline.title : '' });
     if (!hasEn) {
       track(headLink, s.headline.title, s.headline.language, headOrig);
@@ -673,44 +696,42 @@
         s.violence_type && h('span', { class: 'stamp red', text: s.violence_type }),
         s.religious_traditions && s.religious_traditions.length > 0 && h('span', {
           class: 'stamp stamp-sectarian',
-          title: `Religious & Sectarian Sensitivity: ${s.religious_traditions.join(', ')}`,
-          text: `REL SENSITIVITY: ${s.religious_traditions.join(' / ').toUpperCase()}`
+          title: `Religious & sectarian sensitivity: ${s.religious_traditions.join(', ')}`,
+          text: `Religious sensitivity: ${s.religious_traditions.join(', ')}`
         }),
-        h('span', { text: `${s.headline.source}, ${fmtDay.format(new Date(s.last_seen))} · ${outlets}` }),
-        s.evidence === 'OFFICIAL' && h('span', { class: 'stamp red', title: 'A government or Party outlet is among the sources.', text: 'Official' }),
         (() => {
-          if (!s.perspectives) return null;
-          const sh = s.perspectives.state_share;
-          if (sh >= 0.7) return h('span', { class: 'stamp red', title: `${Math.round(sh * 100)}% of corroborating coverage is from state-controlled or pro-government outlets`, text: 'State-Dominated' });
-          if (sh >= 0.35) return h('span', { class: 'stamp orange', title: 'Mixed reporting between state and independent outlets', text: 'State & Indep' });
-          const nAlign = Object.keys(s.perspectives.alignment || {}).length;
-          const nBias = Object.keys(s.perspectives.bias || {}).length;
-          if (nAlign > 1 || nBias > 1) return h('span', { class: 'stamp indigo', title: 'Coverage spans multiple editorial perspectives and affiliations', text: 'Cross-Spectrum' });
-          if (s.independent_sources >= 2) return h('span', { class: 'stamp teal', title: 'Predominantly reported by independent press', text: 'Independent' });
-          return null;
+          const parts = [`${s.headline.source}, ${fmtDay.format(new Date(s.last_seen))}`, outlets];
+          if (s.evidence === 'OFFICIAL') parts.push('official source');
+          else if (s.perspectives) {
+            const sh = s.perspectives.state_share;
+            const nAlign = Object.keys(s.perspectives.alignment || {}).length;
+            const nBias = Object.keys(s.perspectives.bias || {}).length;
+            if (sh >= 0.7) parts.push('mostly state media');
+            else if (sh >= 0.35) parts.push('mixed state & independent');
+            else if (nAlign > 1 || nBias > 1) parts.push('multiple viewpoints');
+            else if (s.independent_sources >= 2) parts.push('independent press');
+          }
+          let isSurge = false;
+          let surgeText = '';
+          if (s.delta) {
+            if (s.delta.state === 'new') parts.push('new today');
+            else if (s.delta.state === 'surging') {
+              isSurge = true;
+              const netStr = s.delta.net > 0 ? `+${s.delta.net}` : String(s.delta.net);
+              surgeText = `Surging (${netStr})`;
+            } else if (s.delta.state === 'cooling') parts.push('cooling');
+            if (s.delta.scope_shift === 'international_pickup') parts.push('picked up internationally');
+            else if (s.delta.scope_shift === 'diaspora_pickup') parts.push('picked up abroad');
+            if (s.delta.state_surge) parts.push('state coverage rising');
+          } else {
+            const tr = trend(s);
+            if (tr && tr[0] !== 'Quiet') parts.push(tr[0].toLowerCase());
+          }
+          return [
+            h('span', { text: parts.join(' · ') }),
+            isSurge && h('span', { class: 'stamp red', text: `· ${surgeText}` }),
+          ];
         })(),
-        (() => {
-          if (!s.delta) return null;
-          const badges = [];
-          if (s.delta.state === 'new') {
-            badges.push(h('span', { class: 'stamp stamp-new', title: 'Fresh emergence: no recorded coverage in prior reference window', text: 'NEW' }));
-          } else if (s.delta.state === 'surging') {
-            const netStr = s.delta.net > 0 ? `+${s.delta.net}` : String(s.delta.net);
-            badges.push(h('span', { class: 'stamp stamp-surge', title: `Surging coverage: ${s.delta.curr} articles vs ${s.delta.prev} in prior window (${s.delta.ratio}x velocity)`, text: `SURGE ${netStr}` }));
-          } else if (s.delta.state === 'cooling') {
-            badges.push(h('span', { class: 'stamp stamp-cooling', title: `Cooling coverage: ${s.delta.curr} articles vs ${s.delta.prev} in prior window`, text: 'COOLING' }));
-          }
-          if (s.delta.scope_shift === 'international_pickup') {
-            badges.push(h('span', { class: 'stamp stamp-pickup', title: 'International wire pickup of domestic reporting', text: 'INTL PICKUP' }));
-          } else if (s.delta.scope_shift === 'diaspora_pickup') {
-            badges.push(h('span', { class: 'stamp stamp-pickup', title: 'Diaspora / foreign-language pickup of domestic reporting', text: 'DIASPORA PICKUP' }));
-          }
-          if (s.delta.state_surge) {
-            badges.push(h('span', { class: 'stamp red', title: `Official state narrative surge: state-affiliated share increased by ${Math.round((s.delta.state_share_curr - s.delta.state_share_prev) * 100)}%`, text: 'STATE SURGE' }));
-          }
-          return badges.length ? badges : null;
-        })(),
-        (!s.delta || s.delta.state === 'steady' || s.delta.state === 'trace') && trend(s) && trend(s)[0] !== 'Quiet' && h('span', { class: 'stamp indigo', title: trend(s)[2], text: trend(s)[0] }),
       ),
     ].filter(Boolean));
 
@@ -968,7 +989,7 @@
     const done = () => {
       s.remove();
       updateAlertBadge();
-      if (btn) { btn.disabled = false; btn.textContent = '↻ Refresh 0–24h'; }
+      if (btn) { btn.disabled = false; btn.textContent = '↻ Check alerts'; }
       if (activeTab === 'alerts') renderAlerts();
       else if (activeTab === 'home') renderHome();
       else if (activeTab === 'disasters' || activeTab === 'violence') renderEventMonitor(activeTab);
@@ -1675,7 +1696,7 @@
     const pool = [...(hm.elections || []), ...(hm.growing || []), ...(hm.most_reported || [])]
       .filter((s, i, a) => inReg(s) && a.findIndex((x) => x.id === s.id) === i);
 
-    const deskQuery = (deskFilter || q).trim().toLowerCase();
+    const deskQuery = q;
     const desks = allDesks.filter((d) => {
       if (!inReg(d)) return false;
       if (!deskQuery) return true;
@@ -1694,42 +1715,68 @@
     });
 
     const tabs = regionTabs((r) => r === 'all' ? allDesks.length : allDesks.filter((d) => d.region === r).length, renderHome);
+    const cut24 = alertCutoff('24h');
+    const has24hAlerts = allAlerts.some((i) => i.date && new Date(i.date).getTime() >= cut24);
     const topAlerts = allAlerts.slice(0, 5);
+    const leadAlert = topAlerts[0];
+    const moreAlerts = topAlerts.slice(1);
     const dirSortLabels = [['attention', 'Attention'], ['24h', '24h'], ['7d', '7d'], ['az', 'A–Z']];
     const homeRefreshBtn = h('button', {
       type: 'button',
       class: 'desk-link',
-      title: 'Fetch latest 0–24h crisis & sensor alerts',
-      text: '↻ Refresh 0–24h',
+      title: 'Check for newer crisis & hazard alerts',
+      text: '↻ Check alerts',
       onclick: () => refreshCrisisAlerts(homeRefreshBtn)
     });
+    const renderAlertItem = (al) => h('li', null,
+      h('button', { type: 'button', class: 'desk-link', text: al.cname, onclick: () => openCountry(al.cid) }),
+      ` · `,
+      h('span', { class: 'stamp ' + (isHotAlert(al) ? 'red' : 'indigo'), title: al.kind, text: plainAlertKind(al.kind) }),
+      ` — `,
+      h('a', { href: safeUrl(al.url), target: '_blank', rel: 'noopener noreferrer', text: al.title }),
+      al.date && h('span', { class: 'meta', text: ` (${fmtTime.format(new Date(al.date))})` }));
+
+    const seenIds = new Set();
+    const takeUnique = (arr, limit) => {
+      const out = filter(arr, arr ? arr.length : 0).filter((s) => !seenIds.has(s.id)).slice(0, limit);
+      out.forEach((s) => seenIds.add(s.id));
+      return out;
+    };
+    const electionsList = takeUnique(hm.elections, 4);
+    const growingList = takeUnique(hm.growing, 6);
+    const mostReportedList = takeUnique(hm.most_reported, openRegion === 'all' ? 6 : 4);
+    const noSearchMatches = Boolean(q) && desks.length === 0 && !electionsList.length && !growingList.length && !mostReportedList.length;
 
     results.replaceChildren(...[
       h('p', { class: 'result-line' },
         h('b', { text: openRegion === 'all' ? 'Overview across all monitored countries' : `Regional Desk · ${openRegion}` }),
-        ` · ${plural(allDesks.filter(inReg).length, 'country', 'countries')} · updated ${fmtTime.format(new Date(hm.generated_at))}`),
+        ` · ${plural(allDesks.filter(inReg).length, 'country', 'countries')} · updated ${fmtUpdated(hm.generated_at)}`,
+        q && [' · ', h('button', { type: 'button', class: 'desk-link', text: 'Clear search', onclick: () => { $('#q').value = ''; setHash(hashFor(openTopic)); renderHome(); $('#q').focus(); } })]),
+      h('p', { class: 'home-intro', text: 'Countries are ranked by active alerts, elections, and surging coverage. Select any country for its full brief.' }),
       watchbar(q, pool),
       tabs,
-      allAlerts.length > 0 && h('div', { class: 'crisis-strip', role: 'region', 'aria-label': 'Active 0–24h crisis alerts' },
+      allAlerts.length > 0 && h('section', { class: 'crisis-strip crisis-compact', 'aria-labelledby': 'home-alerts-heading' },
         h('div', { class: 'crisis-strip-head' },
-          h('span', { class: 'stamp red', text: `0–24H LIVE · ${plural(allAlerts.length, 'recent alert', 'recent alerts')}` }),
-          c && c.generated_at && h('span', { class: 'meta', text: `checked ${fmtTime.format(new Date(c.generated_at))}` }),
+          h('h2', { id: 'home-alerts-heading', class: 'crisis-heading', text: `${has24hAlerts ? 'Last 24h alerts' : 'Latest alerts (none in last 24h)'} · ${allAlerts.length}` }),
           homeRefreshBtn,
-          h('button', { type: 'button', class: 'desk-link', text: `Top ${allAlerts.length} alerts →`, onclick: () => openCountry('alerts') })),
-        h('ul', { class: 'crisis-strip-list' }, topAlerts.map((al) => h('li', null,
-          h('button', { type: 'button', class: 'desk-link', text: al.cname, onclick: () => openCountry(al.cid) }),
+          h('button', { type: 'button', class: 'desk-link', text: `All ${allAlerts.length} alerts →`, onclick: () => openCountry('alerts') })),
+        leadAlert && h('p', { class: 'crisis-top-inline' },
+          h('button', { type: 'button', class: 'desk-link', text: leadAlert.cname, onclick: () => openCountry(leadAlert.cid) }),
           ` · `,
-          h('span', { class: 'stamp ' + (isHotAlert(al) ? 'red' : 'indigo'), text: al.kind }),
+          h('span', { class: 'stamp ' + (isHotAlert(leadAlert) ? 'red' : 'indigo'), title: leadAlert.kind, text: plainAlertKind(leadAlert.kind) }),
           ` — `,
-          h('a', { href: safeUrl(al.url), target: '_blank', rel: 'noopener noreferrer', text: al.title }),
-          al.date && h('span', { class: 'meta', text: ` (${fmtTime.format(new Date(al.date))})` }))))),
-      homeSection('Elections & ballot coverage', 'Priority diplomatic & electoral tracking', filter(hm.elections, 4)),
-      homeSection('Fastest growing (last 24 hours)', 'Most new coverage in the last 24 hours', filter(hm.growing, 6)),
-      homeSection('Most reported (last 7 days)', 'Ranked by independent outlet count', filter(hm.most_reported, openRegion === 'all' ? 6 : 4)),
-      h('section', { class: 'drawer' },
+          h('a', { href: safeUrl(leadAlert.url), target: '_blank', rel: 'noopener noreferrer', text: leadAlert.title }),
+          leadAlert.date && h('span', { class: 'meta', text: ` (${fmtTime.format(new Date(leadAlert.date))})` })),
+        moreAlerts.length > 0 && h('details', { class: 'crisis-more' },
+          h('summary', { text: `Show ${moreAlerts.length} more alerts` }),
+          h('ul', { class: 'crisis-strip-list' }, moreAlerts.map(renderAlertItem)))),
+      noSearchMatches && h('div', { class: 'empty-state' },
+        h('span', { text: `No countries or stories match "${$('#q').value.trim()}".` }),
+        h('button', { type: 'button', class: 'more', text: 'Clear search', onclick: () => { $('#q').value = ''; setHash(hashFor(openTopic)); renderHome(); $('#q').focus(); } })),
+      desks.length > 0 && h('section', { class: 'drawer' },
         h('div', { class: 'drawer-head' },
           h('h2', { text: 'Monitored countries directory' }),
-          h('span', { class: 'count', text: `${desks.length} active packs` })),
+          h('span', { class: 'count', text: plural(desks.length, 'country', 'countries') })),
         h('div', { class: 'desk-controls' },
           h('div', { class: 'desk-sorts', role: 'group', 'aria-label': 'Sort countries' },
             h('span', { class: 'meta', text: 'Sort:' }),
@@ -1739,20 +1786,9 @@
               text: label,
               onclick: () => { deskSort = id; renderHome(); }
             }))),
-          h('input', {
-            type: 'search',
-            class: 'desk-filter-input',
-            placeholder: 'Filter directory…',
-            'aria-label': 'Filter monitored countries directory',
-            value: deskFilter,
-            oninput: (e) => {
-              deskFilter = e.target.value;
-              const pos = e.target.selectionStart;
-              renderHome();
-              const next = $('.desk-filter-input');
-              if (next) { next.focus(); if (pos != null) next.setSelectionRange(pos, pos); }
-            }
-          })),
+          h('details', { class: 'dir-legend' },
+            h('summary', { text: 'How to read tags & counts' }),
+            h('p', { text: '24h / 7d count grouped stories, not raw reprints. Alerts mark recent conflict or hazard reports; Election marks ballot coverage; Surging counts stories growing faster than the prior window.' }))),
         h('div', { class: 'desk-wrap' },
           h('table', { class: 'desk-table' },
             h('thead', null, h('tr', null,
@@ -1765,8 +1801,8 @@
             h('tbody', null, desks.map((d) => {
               const sigs = [];
               if (d.nAlerts) sigs.push(h('span', { class: 'stamp red', text: `${d.nAlerts} alert${d.nAlerts > 1 ? 's' : ''}` }));
-              if (d.elections) sigs.push(h('span', { class: 'stamp indigo', text: '[ELECTION]' }));
-              if (d.surging) sigs.push(h('span', { class: 'stamp indigo', text: `↑ ${d.surging}` }));
+              if (d.elections) sigs.push(h('span', { class: 'stamp purple', text: 'Election' }));
+              if (d.surging) sigs.push(h('span', { class: 'stamp indigo', text: `↑ ${d.surging} surging` }));
               return h('tr', null,
                 h('td', { class: 'cell-head' }, h('button', { type: 'button', class: 'desk-link', text: `${d.name} →`, onclick: () => openCountry(d.id) })),
                 h('td', { class: 'meta', text: d.region }),
@@ -1781,8 +1817,12 @@
                   return [a, o, h('span', { class: 'meta', text: ` (${d.lead.source} · ${d.lead.outlets} outlets)` })];
                 })() : '—'));
             }))))),
+      homeSection('Elections & ballot coverage', 'Priority diplomatic & electoral tracking', electionsList),
+      homeSection('Fastest growing (last 24 hours)', 'Most new coverage in the last 24 hours', growingList),
+      homeSection('Most reported (last 7 days)', 'Ranked by independent outlet count', mostReportedList),
       h('div', { id: 'trans', class: 'trans' }),
     ].filter(Boolean));
+    announceStatus(noSearchMatches ? 'No matching countries or stories.' : `${desks.length} countries shown.`);
     paintTranslationBar();
     translatePending();
   }
@@ -1928,6 +1968,7 @@
       slip.hidden = activeTab !== 'country' && activeTab !== 'home';
       slip.classList.toggle('slip-home', activeTab === 'home');
     }
+    if ($('#q')) $('#q').placeholder = activeTab === 'home' ? 'Filter countries or stories…' : 'Words in a headline or quote';
     fillPeriods();
     if (activeTab === 'country' && country.value) lastCountry = country.value;
     if ($('#nav-home')) $('#nav-home').setAttribute('aria-current', activeTab === 'home' ? 'page' : 'false');
