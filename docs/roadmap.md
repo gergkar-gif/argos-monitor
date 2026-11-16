@@ -5,7 +5,7 @@ Active queue and open work only. Completed work is logged in `ACHIEVED.md`.
 ## Active Queue
 
 1. **Saved watches and morning executive brief automation**
-   - State: Local browser localStorage watch chips and static printable brief page (`site/brief.html`) implemented.
+   - State: Local browser localStorage watch chips and inline Country Brief export (Print/PDF, Copy Markdown, Download `.md`, with `site/brief.html` redirecting to `#country`) implemented.
    - Next: Build automated email or webhook delivery of the morning executive delta brief (e.g. top surging stories, international pickups, macro agenda shifts) via scheduled GitHub Actions runner.
 
 2. **Optional LLM layer for top stories with strict quote verification**
