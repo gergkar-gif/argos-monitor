@@ -438,8 +438,11 @@
       const th = (s.themes || []).join(' ').toLowerCase();
       if (th.includes('election') || th.includes('választás') || th.includes('bầu cử') || th.includes('élection') || th.includes('elección') || th.includes('wahl') || th.includes('wybory') || th.includes('выборы') || th.includes('seçim') || th.includes('انتخابات')) return 1;
       const t = (s.headline && s.headline.title ? s.headline.title : '').toLowerCase();
-      return /\b(election|elections|presidential election|parliamentary election|general election|ballot|ballots|voter turnout|voter registration|referendum|by-election|választás|bầu cử)\b/i.test(t) ? 1 : 0;
+      return /\b(election|elections|presidential election|parliamentary election|general election|voter turnout|voter registration|referendum|by-election|választás|bầu cử)\b/i.test(t) ? 1 : 0;
     }
+
+    // Only pin corroborated (2+ independent outlets) election stories ahead of multi-outlet national news.
+    const isPriorityElection = (s) => (isElectionStory(s) && (s.independent_sources || 0) >= 2) ? 1 : 0;
 
     const now = new Date();
     if (rawData && rawData.period && rawData.period !== periodVal && pSel.querySelector(`option[value="${rawData.period}"]`)) {
@@ -466,7 +469,7 @@
     }
 
     const stories = [...windowStories]
-      .sort((a, b) => isElectionStory(b) - isElectionStory(a) || b.independent_sources - a.independent_sources || b.score - a.score)
+      .sort((a, b) => isPriorityElection(b) - isPriorityElection(a) || b.independent_sources - a.independent_sources || b.score - a.score)
       .slice(0, limit);
 
     // Translate top stories to clean English in throttled concurrency batches of 5
@@ -538,7 +541,7 @@
               isElectionStory(s) && el('span', { class: 'stamp stamp-election', text: 'ELECTION PRIORITY' }),
               isOfficial && el('span', { class: 'stamp red', text: 'OFFICIAL RECORD' }),
               isAbroadOnly && el('span', { class: 'stamp teal', text: 'NOT IN DOMESTIC PRESS' }),
-              el('span', { class: 'typed', text: `${s.independent_sources} independent outlets · ${s.articles} articles` })
+              el('span', { class: 'typed', text: `${s.independent_sources} independent ${s.independent_sources === 1 ? 'outlet' : 'outlets'} · ${s.articles} ${s.articles === 1 ? 'article' : 'articles'}` })
             ),
             el('h2', { class: 'dispatch-headline' },
               el('a', { href: safe(s.headline.url), target: '_blank', rel: 'noopener noreferrer', text: enTitle })
@@ -631,7 +634,7 @@
       const flags = [
         item.isOfficial ? '[OFFICIAL RECORD]' : '',
         item.isAbroadOnly ? '[NOT IN DOMESTIC PRESS]' : '',
-        `(${item.sourcesCount} independent outlets, ${item.articlesCount} articles)`
+        `(${item.sourcesCount} independent ${item.sourcesCount === 1 ? 'outlet' : 'outlets'}, ${item.articlesCount} ${item.articlesCount === 1 ? 'article' : 'articles'})`
       ].filter(Boolean).join(' ');
 
       lines.push(`### DISPATCH #${String(item.num).padStart(2, '0')} · ${item.category} ${flags}`);

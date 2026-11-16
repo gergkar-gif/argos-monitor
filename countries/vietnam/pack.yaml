@@ -14,6 +14,10 @@ mention: ["việt nam", "viet nam", "vietnam", "vietnamese", "việt kiều", "n
           "hai phong", "mekong", "mê kông", "biển đông", "east sea", "south china sea"]
 mention_section: "Việt Nam"      # a feed section with this exact name counts as about the country (e.g. RFI's Vietnam section)
 
+url_sections:
+  foreign: [the-gioi, quoc-te, quan-su-the-gioi, world, international, foreign]
+  skip: [the-thao, sport, sports, giai-tri, entertainment, lifestyle, travel, auto]
+
 # Outlets that Google News names, sorted by where they belong (lower-case names). An outlet in neither list takes the
 # default of the feed it came from (international for the English edition).
 aggregator_outlets:
