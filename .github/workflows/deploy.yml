@@ -16,7 +16,7 @@ env:
 jobs:
   deploy:
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
 
@@ -44,7 +44,7 @@ jobs:
 
       - name: Refresh exported site data from database
         run: |
-          pip install -r requirements.txt
+          pip install pyyaml feedparser trafilatura numpy scikit-learn
           mkdir -p site/data
           if [ -f .argos-data/argos.db ] || [ ! -f site/data/index.json ]; then
             python run.py export watch || true

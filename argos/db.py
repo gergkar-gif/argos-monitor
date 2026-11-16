@@ -31,6 +31,8 @@ CREATE INDEX IF NOT EXISTS article_status ON article(extract_status);
 CREATE INDEX IF NOT EXISTS article_country ON article(country);
 CREATE INDEX IF NOT EXISTS story_country ON story(country, window_days);
 CREATE INDEX IF NOT EXISTS story_article_article ON story_article(article_id);
+CREATE INDEX IF NOT EXISTS excerpt_story ON excerpt(story_id);
+CREATE INDEX IF NOT EXISTS story_related_story ON story_related(story_id);
 """
 
 

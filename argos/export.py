@@ -438,10 +438,12 @@ def run(db):
         for days, label in WINDOWS.items():
             window_cutoff = (now_dt - timedelta(days=days)).isoformat(timespec="seconds")
             prev_cutoff = (now_dt - timedelta(days=2 * days)).isoformat(timespec="seconds")
-            ids = dashboard_story_ids(db, cid, days)
-            prev_by_sid, prev_cats = _prev_window_matches(db, cid, days, prev_cutoff, window_cutoff) if ids else ({}, Counter())
-            stories = [_story(db, db.execute("SELECT * FROM story WHERE id=?", (i,)).fetchone(), now, days, prev_by_sid.get(i)) for i in ids] if ids else []
-            stories = [st for st in stories if (st.get("last_seen") or st.get("first_seen") or "") >= window_cutoff]
+            story_rows = db.execute(
+                "SELECT * FROM story WHERE country=? AND window_days=? AND COALESCE(last_seen, first_seen, '') >= ? ORDER BY COALESCE(score, 0.0) DESC",
+                (cid, days, window_cutoff),
+            ).fetchall()
+            prev_by_sid, prev_cats = _prev_window_matches(db, cid, days, prev_cutoff, window_cutoff) if story_rows else ({}, Counter())
+            stories = [_story(db, sr, now, days, prev_by_sid.get(sr["id"])) for sr in story_rows]
             stories.sort(key=lambda st: -(st["score"] or 0.0))
             totals = {c: db.execute("SELECT COUNT(*) FROM story WHERE country=? AND window_days=? AND category=? AND COALESCE(last_seen, first_seen, '') >= ?", (cid, days, c, window_cutoff)).fetchone()[0] if stories else 0
                       for c in CATEGORIES}          # all stories found in the window, of which the top ones are exported

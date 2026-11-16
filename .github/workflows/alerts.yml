@@ -17,7 +17,7 @@ env:
 jobs:
   alerts:
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
 
@@ -35,7 +35,7 @@ jobs:
 
       - name: Update 0-24h crisis & official alerts
         run: |
-          pip install -r requirements.txt
+          pip install pyyaml feedparser trafilatura numpy scikit-learn
           mkdir -p site/data
           if [ ! -f site/data/index.json ]; then
             python run.py export watch || true
