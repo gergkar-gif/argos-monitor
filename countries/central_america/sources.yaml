@@ -187,7 +187,7 @@ sources:
   state_affiliated: false
   notes: Premier Guatemalan broadcast and digital news network covering executive policy, courts, and regional migration.
   feeds:
-  - url: https://emisorasunidas.com/feed/
+  - url: https://news.google.com/rss/search?q=site:emisorasunidas.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: prensa_grafica_sv
@@ -213,7 +213,7 @@ sources:
   state_affiliated: false
   notes: Independent Salvadoran investigative journalism magazine focusing on human rights, public finance transparency, and democracy.
   feeds:
-  - url: https://gatoencerrado.news/feed/
+  - url: https://news.google.com/rss/search?q=site:gatoencerrado.news+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: elmundo_sv
@@ -265,7 +265,7 @@ sources:
   state_affiliated: false
   notes: Pioneering independent Honduran digital news daily covering congressional debates, diplomacy, and public security.
   feeds:
-  - url: https://procesodigital.hn/feed/
+  - url: https://news.google.com/rss/search?q=site:procesodigital.hn+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: latribuna_hn
@@ -278,7 +278,7 @@ sources:
   state_affiliated: false
   notes: Major Tegucigalpa daily newspaper founded in 1976 covering constitutional politics, legislation, and economic policy.
   feeds:
-  - url: https://www.latribuna.hn/feed/
+  - url: https://news.google.com/rss/search?q=site:latribuna.hn+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: la_prensa_ni
@@ -304,7 +304,7 @@ sources:
   state_affiliated: false
   notes: Independent Nicaraguan investigative and breaking news platform reporting from exile on state policy and civil liberties.
   feeds:
-  - url: https://www.articulo66.com/feed/
+  - url: https://news.google.com/rss/search?q=site:articulo66.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: 100noticias_ni
@@ -317,7 +317,7 @@ sources:
   state_affiliated: false
   notes: Prominent independent Nicaraguan television and digital news outlet operating from exile.
   feeds:
-  - url: https://100noticias.com.ni/feed/
+  - url: https://news.google.com/rss/search?q=site:100noticias.com.ni+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: crhoy_cr
@@ -330,7 +330,7 @@ sources:
   state_affiliated: false
   notes: Costa Rica's most-read independent digital newspaper covering Legislative Assembly politics, judiciary, and fiscal policy.
   feeds:
-  - url: https://www.crhoy.com/feed/
+  - url: https://news.google.com/rss/search?q=site:crhoy.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: delfino_cr
@@ -369,7 +369,7 @@ sources:
   state_affiliated: false
   notes: Panama's oldest daily newspaper of record founded in 1853 covering national politics, Panama Canal trade, and diplomacy.
   feeds:
-  - url: https://www.laestrella.com.pa/rss/nacional.xml
+  - url: https://news.google.com/rss/search?q=site:laestrella.com.pa+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: tvn_noticias_pa

@@ -220,7 +220,7 @@ sources:
   state_affiliated: false
   notes: "Premier open-source intelligence and policy analysis journal dedicated to North Korean WMD, economy, and leadership."
   feeds:
-  - url: https://www.38north.org/feed/
+  - url: https://news.google.com/rss/search?q=site:38north.org+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: defence_security
 
 - id: rimjin_gang_kp
@@ -233,5 +233,5 @@ sources:
   state_affiliated: false
   notes: "Independent investigative publication staffed by undercover North Korean citizen reporters documenting domestic conditions."
   feeds:
-  - url: https://www.asiapress.org/rimjingang/english/feed/
+  - url: https://news.google.com/rss/search?q=site:asiapress.org+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics

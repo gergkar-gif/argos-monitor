@@ -167,5 +167,5 @@ sources:
   state_affiliated: false
   notes: "Independent Beirut investigative and analytical media platform covering Lebanese banking crisis, judiciary, and sovereignty."
   feeds:
-  - url: https://megaphone.news/feed
+  - url: https://news.google.com/rss/search?q=site:megaphone.news+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics

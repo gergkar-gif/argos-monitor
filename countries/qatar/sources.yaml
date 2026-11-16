@@ -204,7 +204,7 @@ sources:
   state_affiliated: false
   notes: "Leading Qatari economic and financial daily newspaper covering LNG expansion, banking, and national legislation."
   feeds:
-  - url: https://lusailnews.net/rss
+  - url: https://news.google.com/rss/search?q=site:lusailnews.net+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: economics
 
 - id: al_sharq_qa
@@ -230,5 +230,5 @@ sources:
   state_affiliated: false
   notes: "Prominent Doha daily newspaper covering Qatari ministerial policy, economy, and foreign relations."
   feeds:
-  - url: https://www.raya.com/feed/
+  - url: https://news.google.com/rss/search?q=site:raya.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics

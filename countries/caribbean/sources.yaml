@@ -194,7 +194,7 @@ sources:
   state_affiliated: false
   notes: Independent Kingston digital daily covering Jamaican business, central bank policy, and governance.
   feeds:
-  - url: https://our.today/feed/
+  - url: https://news.google.com/rss/search?q=site:our.today+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: economics
 
 - id: trinidad_express_tt
@@ -207,7 +207,7 @@ sources:
   state_affiliated: false
   notes: Premier daily newspaper in Trinidad and Tobago covering parliamentary debates, energy sector policy, and regional security.
   feeds:
-  - url: https://trinidadexpress.com/search/?f=rss&t=article&c=news&l=50&s=start_time&sd=desc
+  - url: https://news.google.com/rss/search?q=site:trinidadexpress.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: trinidad_guardian_tt
@@ -233,7 +233,7 @@ sources:
   state_affiliated: false
   notes: Major independent daily newspaper in Port of Spain covering national politics, petrochemical economics, and public safety.
   feeds:
-  - url: https://newsday.co.tt/feed/
+  - url: https://news.google.com/rss/search?q=site:newsday.co.tt+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: cnc3_tt
@@ -259,7 +259,7 @@ sources:
   state_affiliated: false
   notes: Independent digital news portal in Trinidad and Tobago covering public administration, courts, and regional diplomacy.
   feeds:
-  - url: https://azpnews.com/feed/
+  - url: https://news.google.com/rss/search?q=site:azpnews.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: nationnews_bb
@@ -285,7 +285,7 @@ sources:
   state_affiliated: false
   notes: Historic Barbadian daily newspaper founded in 1895 covering constitutional governance, courts, and business.
   feeds:
-  - url: https://www.barbadosadvocate.com/feed/
+  - url: https://news.google.com/rss/search?q=site:barbadosadvocate.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: bajan_reporter_bb
@@ -324,7 +324,7 @@ sources:
   state_affiliated: false
   notes: Authoritative independent daily newspaper of record in Georgetown covering oil revenues, governance, and Essequibo diplomacy.
   feeds:
-  - url: https://www.stabroeknews.com/feed/
+  - url: https://news.google.com/rss/search?q=site:stabroeknews.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: kaieteur_news_gy
@@ -363,7 +363,7 @@ sources:
   state_affiliated: false
   notes: Independent multimedia newsroom in Guyana covering executive policy, oil and gas investment, and border security.
   feeds:
-  - url: https://newsroom.gy/feed/
+  - url: https://news.google.com/rss/search?q=site:newsroom.gy+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: tribune242_bs
@@ -402,7 +402,7 @@ sources:
   state_affiliated: false
   notes: Independent Bahamian broadcast and digital news portal covering cabinet policy, tourism economy, and storm resilience.
   feeds:
-  - url: https://ewnews.com/feed
+  - url: https://news.google.com/rss/search?q=site:ewnews.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: bahamas_press_bs

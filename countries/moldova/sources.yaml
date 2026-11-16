@@ -172,7 +172,7 @@ sources:
     state_affiliated: false
     notes: "Major independent Moldovan analytical and investigative news portal covering EU accession, justice reform, and economy."
     feeds:
-      - url: https://agora.md/rss
+      - url: https://news.google.com/rss/search?q=site:agora.md+when:7d&hl=en-US&gl=US&ceid=US:en
         category_hint: internal_politics
 
   - id: jurnal_md
@@ -185,5 +185,5 @@ sources:
     state_affiliated: false
     notes: "Prominent independent Chișinău news network covering national politics, anti-corruption, and security."
     feeds:
-      - url: https://www.jurnal.md/ro/rss
+      - url: https://news.google.com/rss/search?q=site:jurnal.md+when:7d&hl=en-US&gl=US&ceid=US:en
         category_hint: internal_politics

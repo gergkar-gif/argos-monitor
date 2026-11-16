@@ -165,7 +165,7 @@ sources:
   state_affiliated: false
   notes: Tanzania's largest-circulation independent Swahili daily covering national politics, parliament, and economic development.
   feeds:
-  - url: https://www.mwananchi.co.tz/tanzania/habari/rss.xml
+  - url: https://news.google.com/rss/search?q=site:mwananchi.co.tz+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: ippmedia_tz
@@ -204,7 +204,7 @@ sources:
   state_affiliated: false
   notes: Independent Dar es Salaam digital news portal covering Tanzanian business, trade corridors, and national politics.
   feeds:
-  - url: https://dar24.com/feed/
+  - url: https://news.google.com/rss/search?q=site:dar24.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: economics
 
 - id: newtimes_rw
@@ -321,7 +321,7 @@ sources:
   state_affiliated: false
   notes: Independent Sudanese daily newspaper covering democratic transition movements, human rights, and conflict diplomacy.
   feeds:
-  - url: https://www.altaghyeer.info/en/feed/
+  - url: https://news.google.com/rss/search?q=site:altaghyeer.info+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: juba_echo_ss
@@ -412,7 +412,7 @@ sources:
   state_affiliated: false
   notes: Award-winning independent Mogadishu broadcaster reporting on Somali security operations, governance, and civil society.
   feeds:
-  - url: https://radioshabelle.com/feed/
+  - url: https://news.google.com/rss/search?q=site:radioshabelle.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: defence_security
 
 - id: theeastafrican_ea
@@ -425,5 +425,5 @@ sources:
   state_affiliated: false
   notes: Authoritative pan-East African weekly newspaper of record covering EAC integration, regional diplomacy, and cross-border trade.
   feeds:
-  - url: https://www.theeastafrican.co.ke/tea/rss.xml
+  - url: https://news.google.com/rss/search?q=site:theeastafrican.co.ke+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: foreign_policy

@@ -271,7 +271,7 @@ sources:
   state_affiliated: false
   notes: Leading independent Latvian news portal covering Saeima legislation, Baltic defense, and economic policy.
   feeds:
-  - url: https://www.delfi.lv/rss?channel=delfi
+  - url: https://news.google.com/rss/search?q=site:delfi.lv+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: la_lv
@@ -310,7 +310,7 @@ sources:
   state_affiliated: false
   notes: Major independent Lithuanian daily news and investigative portal covering national politics and economy.
   feeds:
-  - url: https://www.15min.lt/rss
+  - url: https://news.google.com/rss/search?q=site:15min.lt+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: vz_lt
@@ -336,5 +336,5 @@ sources:
   state_affiliated: false
   notes: Prominent independent Lithuanian daily news portal covering national governance, justice, and regional security.
   feeds:
-  - url: https://www.lrytas.lt/rss
+  - url: https://news.google.com/rss/search?q=site:lrytas.lt+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics

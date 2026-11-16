@@ -133,7 +133,7 @@ sources:
     state_affiliated: false
     notes: Indonesia's premier independent investigative news magazine and daily portal covering politics, anti-corruption, and law.
     feeds:
-      - {url: "https://rss.tempo.co/nasional", section: Nasional, category_hint: internal_politics}
+      - {url: "https://news.google.com/rss/search?q=site:tempo.co+when:7d&hl=id&gl=ID&ceid=ID:id", section: Nasional, category_hint: internal_politics}
 
   - id: gnews_en_id
     name: Google News (Indonesia - English)

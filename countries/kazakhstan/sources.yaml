@@ -173,7 +173,7 @@ sources:
     state_affiliated: false
     notes: "Kazakhstan service of RFE/RL covering civil liberties, labor disputes, parliamentary politics, and energy governance."
     feeds:
-      - url: https://rus.azattyq.org/api/z-pqpiev-qpp
+      - url: https://news.google.com/rss/search?q=site:rus.azattyq.org+when:7d&hl=en-US&gl=US&ceid=US:en
         category_hint: internal_politics
 
   - id: respublika_kz
@@ -199,5 +199,5 @@ sources:
     state_affiliated: false
     notes: "Long-running independent Almaty online newspaper covering parliamentary debates, economic policy, and society."
     feeds:
-    - url: https://zonakz.net/feed/
+    - url: https://news.google.com/rss/search?q=site:zonakz.net+when:7d&hl=en-US&gl=US&ceid=US:en
       category_hint: internal_politics

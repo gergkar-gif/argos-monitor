@@ -211,7 +211,7 @@ sources:
   state_affiliated: false
   notes: "Pakistan's premier independent political and analytical weekly covering civil-military relations and constitutional law."
   feeds:
-  - url: https://thefridaytimes.com/feed
+  - url: https://news.google.com/rss/search?q=site:thefridaytimes.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: brecorder_pk

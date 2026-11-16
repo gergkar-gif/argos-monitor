@@ -198,5 +198,5 @@ sources:
   state_affiliated: false
   notes: "Authoritative London-based global financial and political broadsheet covering Whitehall, Bank of England, and trade."
   feeds:
-  - url: https://www.ft.com/united-kingdom?format=rss
+  - url: https://news.google.com/rss/search?q=site:ft.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: economics

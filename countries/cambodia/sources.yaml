@@ -179,7 +179,7 @@ sources:
   state_affiliated: false
   notes: "Independent Phnom Penh digital newsroom covering Cambodian business, technology, economy, and governance."
   feeds:
-  - url: https://kiripost.com/feed
+  - url: https://news.google.com/rss/search?q=site:kiripost.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: economics
 
 - id: cambodianess_kh
@@ -218,7 +218,7 @@ sources:
   state_affiliated: false
   notes: "Leading independent Cambodian human rights organization documenting land disputes, labor rights, and judicial trials."
   feeds:
-  - url: https://www.licadho-cambodia.org/rss.php
+  - url: https://news.google.com/rss/search?q=site:licadho-cambodia.org+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: society
 
 - id: cambodia_daily_kh

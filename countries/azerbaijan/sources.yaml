@@ -213,7 +213,7 @@ sources:
   state_affiliated: false
   notes: "Azerbaijani service of RFE/RL covering civil liberties, energy politics, and South Caucasus diplomacy."
   feeds:
-  - url: https://www.azadliq.org/api/z-pqpiev-qpp
+  - url: https://news.google.com/rss/search?q=site:azadliq.org+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: arqument_az
@@ -252,7 +252,7 @@ sources:
   state_affiliated: false
   notes: "Independent European analytical portal tracking South Caucasus security, Karabakh reconstruction, and diplomacy."
   feeds:
-  - url: https://caucasuswatch.de/feed.rss
+  - url: https://news.google.com/rss/search?q=site:caucasuswatch.de+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: foreign_policy
 
 - id: JAMnews_az

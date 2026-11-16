@@ -158,5 +158,5 @@ sources:
   state_affiliated: false
   notes: "Cooperative-owned independent Athens daily newspaper covering parliamentary politics, justice, and social policy."
   feeds:
-  - url: https://www.efsyn.gr/rss.xml
+  - url: https://news.google.com/rss/search?q=site:efsyn.gr+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics

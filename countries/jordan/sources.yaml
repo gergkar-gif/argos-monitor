@@ -155,5 +155,5 @@ sources:
   state_affiliated: false
   notes: "Pioneering independent Jordanian community radio and investigative news portal covering parliament and civil liberties."
   feeds:
-  - url: https://ammannet.net/rss.xml
+  - url: https://news.google.com/rss/search?q=site:ammannet.net+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics

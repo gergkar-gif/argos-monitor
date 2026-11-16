@@ -161,7 +161,7 @@ sources:
   state_affiliated: false
   notes: Pioneering independent Dakar daily newspaper founded in 1993 covering Senegalese democracy, constitutional law, and economy.
   feeds:
-  - url: https://www.sudquotidien.sn/feed/
+  - url: https://news.google.com/rss/search?q=site:sudquotidien.sn+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: citinewsroom_gh
@@ -174,7 +174,7 @@ sources:
   state_affiliated: false
   notes: Authoritative independent Ghanaian broadcast and digital newsroom covering parliamentary politics, debt restructuring, and governance.
   feeds:
-  - url: https://citinewsroom.com/feed/
+  - url: https://news.google.com/rss/search?q=site:citinewsroom.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: ghanaweb_gh
@@ -213,7 +213,7 @@ sources:
   state_affiliated: false
   notes: Non-profit public-interest investigative journalism project in Accra uncovering corruption, procurement, and environmental governance.
   feeds:
-  - url: https://thefourthestategh.com/feed/
+  - url: https://news.google.com/rss/search?q=site:thefourthestategh.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: abidjan_net_ci
@@ -252,7 +252,7 @@ sources:
   state_affiliated: false
   notes: Prominent independent Abidjan-based West African news agency covering Ivorian politics and Sahelian security.
   feeds:
-  - url: https://www.koaci.com/rss.xml
+  - url: https://news.google.com/rss/search?q=site:koaci.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: connectionivoirienne_ci
@@ -278,7 +278,7 @@ sources:
   state_affiliated: false
   notes: Independent Ivorian multimedia newsroom covering economic policy, infrastructure, and national politics.
   feeds:
-  - url: https://www.7info.ci/feed/
+  - url: https://news.google.com/rss/search?q=site:7info.ci+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: malijet_ml
@@ -304,7 +304,7 @@ sources:
   state_affiliated: false
   notes: Pioneering Malian digital newspaper aggregating independent Bamako print press, political analysis, and security reporting.
   feeds:
-  - url: https://www.maliweb.net/feed
+  - url: https://news.google.com/rss/search?q=site:maliweb.net+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: studio_tamani_ml
@@ -395,7 +395,7 @@ sources:
   state_affiliated: false
   notes: Premier independent Nigerien digital daily covering Niamey governance, uranium/oil sector policy, and Sahel security.
   feeds:
-  - url: https://www.actuniger.com/feed/?format=rss
+  - url: https://news.google.com/rss/search?q=site:actuniger.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: nigerdiaspora_ne
@@ -408,7 +408,7 @@ sources:
   state_affiliated: false
   notes: Independent Nigerien diaspora and domestic news portal covering political transitions, human rights, and regional diplomacy.
   feeds:
-  - url: https://www.nigerdiaspora.net/index.php?format=feed&type=rss
+  - url: https://news.google.com/rss/search?q=site:nigerdiaspora.net+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: airinfo_agadez_ne

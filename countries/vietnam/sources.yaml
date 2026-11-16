@@ -491,5 +491,5 @@ sources:
   state_affiliated: false
   notes: "Independent research and advocacy organization monitoring human rights, civil society, and legal policy in Vietnam."
   feeds:
-  - url: https://the88project.org/feed/
+  - url: https://news.google.com/rss/search?q=site:the88project.org+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: society

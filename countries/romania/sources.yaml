@@ -158,5 +158,5 @@ sources:
   state_affiliated: false
   notes: "Leading non-profit independent Romanian investigative news portal covering government coalitions, justice, and EU affairs."
   feeds:
-  - url: https://www.g4media.ro/feed
+  - url: https://news.google.com/rss/search?q=site:g4media.ro+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics

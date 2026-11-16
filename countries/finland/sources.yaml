@@ -201,7 +201,7 @@ sources:
   state_affiliated: false
   notes: Finland's leading commercial television and digital news network covering Eduskunta politics, defense, and economy.
   feeds:
-  - url: https://api.mtvuutiset.fi/graphql/caas/v1/rss/uutiset
+  - url: https://news.google.com/rss/search?q=site:mtvuutiset.fi+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: aamulehti_fi
@@ -214,5 +214,5 @@ sources:
   state_affiliated: false
   notes: "Finland's second-largest daily morning broadsheet newspaper covering national politics and economic policy."
   feeds:
-  - url: https://www.aamulehti.fi/rss.xml
+  - url: https://news.google.com/rss/search?q=site:aamulehti.fi+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics

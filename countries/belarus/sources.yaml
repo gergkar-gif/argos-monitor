@@ -203,5 +203,5 @@ sources:
   state_affiliated: false
   notes: "Independent Belarusian news agency operating in exile, founded by journalists of the shuttered BelaPAN wire."
   feeds:
-  - url: https://pozirk.online/feed/
+  - url: https://news.google.com/rss/search?q=site:pozirk.online+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics

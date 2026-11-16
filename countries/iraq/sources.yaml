@@ -155,7 +155,7 @@ sources:
   state_affiliated: false
   notes: Independent Iraqi satellite television network and news portal covering parliamentary politics, security, and governance.
   feeds:
-  - url: https://www.alsumaria.tv/Rss/News-ar.xml
+  - url: https://news.google.com/rss/search?q=site:alsumaria.tv+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: kirkuknow_iq
@@ -168,5 +168,5 @@ sources:
   state_affiliated: false
   notes: "Independent multilingual Iraqi news portal covering disputed territories, minority rights, and provincial governance."
   feeds:
-  - url: https://kirkuknow.com/en/feed
+  - url: https://news.google.com/rss/search?q=site:kirkuknow.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics

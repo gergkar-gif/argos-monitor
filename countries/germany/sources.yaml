@@ -197,7 +197,7 @@ sources:
   state_affiliated: false
   notes: "Cooperative-owned independent Berlin daily newspaper covering Bundestag politics, climate policy, and civil rights."
   feeds:
-  - url: https://taz.de/!p4608;rss/
+  - url: https://news.google.com/rss/search?q=site:taz.de+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: tagesspiegel_de

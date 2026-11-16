@@ -160,7 +160,7 @@ sources:
     state_affiliated: false
     notes: "Independent Ethiopian news and analysis portal covering regional conflict, federal politics, and Horn of Africa diplomacy."
     feeds:
-      - url: https://borkena.com/feed/
+      - url: https://news.google.com/rss/search?q=site:borkena.com+when:7d&hl=en-US&gl=US&ceid=US:en
         category_hint: internal_politics
 
   - id: addisstandard_et
@@ -173,5 +173,5 @@ sources:
     state_affiliated: false
     notes: "Ethiopia's leading independent English-language socio-political news publication covering federal governance and conflict."
     feeds:
-    - url: https://addisstandard.com/feed/
+    - url: https://news.google.com/rss/search?q=site:addisstandard.com+when:7d&hl=en-US&gl=US&ceid=US:en
       category_hint: internal_politics

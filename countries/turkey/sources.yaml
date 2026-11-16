@@ -188,7 +188,7 @@ sources:
   state_affiliated: false
   notes: "Turkey's premier independent online newspaper covering Ankara politics, judicial rulings, and macroeconomic policy."
   feeds:
-  - url: https://t24.com.tr/rss
+  - url: https://news.google.com/rss/search?q=site:t24.com.tr+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: diken_tr

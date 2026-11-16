@@ -155,7 +155,7 @@ sources:
   state_affiliated: false
   notes: Leading independent Moroccan economic and political digital daily covering public finance, business regulation, and governance.
   feeds:
-  - url: https://medias24.com/feed/
+  - url: https://news.google.com/rss/search?q=site:medias24.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: economics
 
 - id: ledesk_ma
@@ -168,5 +168,5 @@ sources:
   state_affiliated: false
   notes: "Independent Moroccan investigative digital newspaper covering state contracts, diplomacy, and political economy."
   feeds:
-  - url: https://ledesk.ma/feed/
+  - url: https://news.google.com/rss/search?q=site:ledesk.ma+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics

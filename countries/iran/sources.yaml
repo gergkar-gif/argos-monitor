@@ -216,7 +216,7 @@ sources:
     state_affiliated: false
     notes: "Independent Amsterdam-based Persian media platform covering Iranian civil society, labor protests, and human rights."
     feeds:
-    - url: https://www.radiozamaneh.com/feed/
+    - url: https://news.google.com/rss/search?q=site:radiozamaneh.com+when:7d&hl=en-US&gl=US&ceid=US:en
       category_hint: society
 
   - id: iranfocus_en
@@ -242,7 +242,7 @@ sources:
     state_affiliated: false
     notes: "Authoritative policy analysis portal tracking Iranian nuclear diplomacy, military doctrine, and factional politics."
     feeds:
-    - url: https://iranprimer.usip.org/rss.xml
+    - url: https://news.google.com/rss/search?q=site:iranprimer.usip.org+when:7d&hl=en-US&gl=US&ceid=US:en
       category_hint: foreign_policy
 
   - id: asriran_fa

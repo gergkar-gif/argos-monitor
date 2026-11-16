@@ -238,5 +238,5 @@ sources:
   state_affiliated: false
   notes: "Authoritative Dubai-based business and infrastructure intelligence journal covering UAE sovereign projects and energy."
   feeds:
-  - url: https://www.meed.com/feed
+  - url: https://news.google.com/rss/search?q=site:meed.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: economics

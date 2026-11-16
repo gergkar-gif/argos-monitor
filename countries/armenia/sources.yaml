@@ -198,7 +198,7 @@ sources:
   state_affiliated: false
   notes: Independent Yerevan digital television and investigative newsroom covering South Caucasus diplomacy and democracy.
   feeds:
-  - url: https://www.civilnet.am/en/feed/
+  - url: https://news.google.com/rss/search?q=site:civilnet.am+armenia+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: foreign_policy
 - id: azatutyun_am
   name: Azatutyun (RFE/RL Armenia)
@@ -210,7 +210,7 @@ sources:
   state_affiliated: false
   notes: Armenian service of RFE/RL providing comprehensive reporting on National Assembly politics, security, and peace talks.
   feeds:
-  - url: https://www.azatutyun.am/api/z-pqpiev-qpp
+  - url: https://news.google.com/rss/search?q=site:azatutyun.am+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: 168_am
   name: 168 Zham (Armenia)

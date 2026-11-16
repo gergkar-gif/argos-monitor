@@ -185,7 +185,7 @@ sources:
   state_affiliated: false
   notes: Leading independent Georgian news agency covering parliamentary sessions, judicial decisions, and foreign relations.
   feeds:
-  - url: https://www.interpressnews.ge/ka/rss.xml
+  - url: https://news.google.com/rss/search?q=site:interpressnews.ge+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: tabula_ge
   name: Tabula (Georgia)
@@ -197,5 +197,5 @@ sources:
   state_affiliated: false
   notes: Independent Tbilisi political and analytical magazine covering Euro-Atlantic integration, elections, and civil liberties.
   feeds:
-  - url: https://tabula.ge/ge/rss.xml
+  - url: https://news.google.com/rss/search?q=site:tabula.ge+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics

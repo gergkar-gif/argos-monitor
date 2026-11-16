@@ -195,5 +195,5 @@ sources:
   state_affiliated: false
   notes: "Acclaimed independent Italian digital daily newspaper known for explanatory reporting on government policy and international affairs."
   feeds:
-  - url: https://www.ilpost.it/feed/
+  - url: https://news.google.com/rss/search?q=site:ilpost.it+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics

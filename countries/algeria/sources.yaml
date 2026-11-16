@@ -184,5 +184,5 @@ sources:
   state_affiliated: false
   notes: "Algeria's historic French-language daily newspaper covering national politics, economy, and Maghreb diplomacy."
   feeds:
-  - url: https://elwatan-dz.com/feed
+  - url: https://news.google.com/rss/search?q=site:elwatan-dz.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics

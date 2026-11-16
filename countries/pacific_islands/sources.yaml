@@ -151,7 +151,7 @@ sources:
   state_affiliated: false
   notes: Major Suva daily newspaper covering Fijian parliamentary politics, trade, sugar industry, and regional security.
   feeds:
-  - url: https://fijisun.com.fj/feed/
+  - url: https://news.google.com/rss/search?q=site:fijisun.com.fj+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: fijivillage_fj
@@ -177,7 +177,7 @@ sources:
   state_affiliated: false
   notes: Independent Suva online news portal covering Fijian politics, judiciary, economy, and South Pacific diplomacy.
   feeds:
-  - url: https://fijilive.com/feed/
+  - url: https://news.google.com/rss/search?q=site:fijilive.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: mai_tv_fj
@@ -190,7 +190,7 @@ sources:
   state_affiliated: false
   notes: Independent Fijian free-to-air television broadcaster and digital news service covering national governance.
   feeds:
-  - url: https://maitv.com.fj/feed/
+  - url: https://news.google.com/rss/search?q=site:maitv.com.fj+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: general
 
 - id: thenational_png
@@ -203,7 +203,7 @@ sources:
   state_affiliated: false
   notes: Papua New Guinea's top-selling daily newspaper covering Port Moresby parliament, LNG projects, and provincial governance.
   feeds:
-  - url: https://www.thenational.com.pg/feed/
+  - url: https://news.google.com/rss/search?q=site:thenational.com.pg+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: emtv_png
@@ -216,7 +216,7 @@ sources:
   state_affiliated: false
   notes: Papua New Guinea's oldest national television network covering parliamentary politics, resource economics, and security.
   feeds:
-  - url: https://emtv.com.pg/feed/
+  - url: https://news.google.com/rss/search?q=site:emtv.com.pg+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: png_attitude
@@ -229,7 +229,7 @@ sources:
   state_affiliated: false
   notes: Independent commentary and political analysis journal dedicated to Papua New Guinea governance and Australia-PNG relations.
   feeds:
-  - url: https://www.pngattitude.com/atom.xml
+  - url: https://news.google.com/rss/search?q=site:pngattitude.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: foreign_policy
 
 - id: inside_png
@@ -255,7 +255,7 @@ sources:
   state_affiliated: false
   notes: Honiara's leading independent daily newspaper covering Solomon Islands parliamentary politics, forestry, and security treaties.
   feeds:
-  - url: https://www.solomonstarnews.com/feed/
+  - url: https://news.google.com/rss/search?q=site:solomonstarnews.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: island_sun_sb
@@ -294,7 +294,7 @@ sources:
   state_affiliated: false
   notes: Independent digital daily in the Solomon Islands covering economic development, maritime security, and foreign relations.
   feeds:
-  - url: https://www.solomontimes.com/rss.xml
+  - url: https://news.google.com/rss/search?q=site:solomontimes.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: in_depth_solomons_sb
@@ -307,7 +307,7 @@ sources:
   state_affiliated: false
   notes: Independent investigative journalism outlet in Honiara uncovering logging, mining, and political accountability.
   feeds:
-  - url: https://indepthsolomons.com.sb/feed/
+  - url: https://news.google.com/rss/search?q=site:indepthsolomons.com.sb+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: samoa_observer_ws
@@ -333,7 +333,7 @@ sources:
   state_affiliated: false
   notes: Leading independent Samoan digital news agency covering parliamentary sessions, cabinet policy, and Pacific regionalism.
   feeds:
-  - url: https://talamua.com/feed/
+  - url: https://news.google.com/rss/search?q=site:talamua.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: samoa_global_news_ws
@@ -372,7 +372,7 @@ sources:
   state_affiliated: false
   notes: Independent commercial broadcaster and newsroom in Samoa covering national governance and social affairs.
   feeds:
-  - url: https://radiopolynesiasamoa.com/feed/
+  - url: https://news.google.com/rss/search?q=site:radiopolynesiasamoa.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: general
 
 - id: vanuatu_daily_post_vu
@@ -385,7 +385,7 @@ sources:
   state_affiliated: false
   notes: Vanuatu's only independent daily newspaper of record covering Port Vila parliamentary politics, climate justice, and diplomacy.
   feeds:
-  - url: https://www.dailypost.vu/search/?f=rss&t=article&c=news&l=50&s=start_time&sd=desc
+  - url: https://news.google.com/rss/search?q=site:dailypost.vu+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: vbtc_vu
@@ -411,7 +411,7 @@ sources:
   state_affiliated: false
   notes: Independent Vanuatu civic and political news portal covering governance, infrastructure, and public accountability.
   feeds:
-  - url: https://yumitoktokstret.com/feed/
+  - url: https://news.google.com/rss/search?q=site:yumitoktokstret.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: vanuatu_independent_vu
@@ -489,5 +489,5 @@ sources:
   state_affiliated: false
   notes: Independent Tongan online news portal reporting on legislative assembly debates, public services, and regional trade.
   feeds:
-  - url: https://nepituno.to/feed/
+  - url: https://news.google.com/rss/search?q=site:nepituno.to+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics

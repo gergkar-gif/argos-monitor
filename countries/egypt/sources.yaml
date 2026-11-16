@@ -207,7 +207,7 @@ sources:
   state_affiliated: false
   notes: Egypt's largest privately owned daily newspaper covering parliamentary legislation, macroeconomic reforms, and regional diplomacy.
   feeds:
-  - url: https://www.almasryalyoum.com/rss/rssfeeds
+  - url: https://news.google.com/rss/search?q=site:almasryalyoum.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: shorouk_eg
@@ -220,7 +220,7 @@ sources:
   state_affiliated: false
   notes: "Prominent independent Cairo daily newspaper covering Egyptian politics, economy, and Arab diplomatic affairs."
   feeds:
-  - url: https://www.shorouknews.com/rss
+  - url: https://news.google.com/rss/search?q=site:shorouknews.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 
 - id: za2ed18_eg

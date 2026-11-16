@@ -248,7 +248,7 @@ sources:
   state_affiliated: false
   notes: "Independent London-based Saudi human rights watchdog documenting judicial rulings, detainees, and legal reforms."
   feeds:
-  - url: https://www.alqst.org/en/rss
+  - url: https://news.google.com/rss/search?q=site:alqst.org+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: society
 
 - id: sanad_sa
@@ -261,7 +261,7 @@ sources:
   state_affiliated: false
   notes: "Independent diaspora advocacy and monitoring platform tracking civil liberties and governance in Saudi Arabia."
   feeds:
-  - url: https://sanad.uk/en/feed/
+  - url: https://news.google.com/rss/search?q=site:sanad.uk+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: society
 
 - id: agbi_sa
@@ -287,5 +287,5 @@ sources:
   state_affiliated: false
   notes: "Independent policy research institution analyzing Saudi foreign policy, defense posture, and energy transition."
   feeds:
-  - url: https://www.mei.edu/rss.xml
+  - url: https://news.google.com/rss/search?q=site:mei.edu+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: foreign_policy

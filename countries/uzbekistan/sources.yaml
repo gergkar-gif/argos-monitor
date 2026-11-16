@@ -226,5 +226,5 @@ sources:
     state_affiliated: false
     notes: "Uzbek-language service of RFE/RL providing independent investigative reporting on Tashkent governance and human rights."
     feeds:
-    - url: https://www.ozodlik.org/api/z-pqpiev-qpp
+    - url: https://news.google.com/rss/search?q=site:ozodlik.org+uzbekistan+when:7d&hl=en-US&gl=US&ceid=US:en
       category_hint: internal_politics

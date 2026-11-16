@@ -160,5 +160,5 @@ sources:
     state_affiliated: false
     notes: "Slovakia's leading independent daily broadsheet newspaper of record covering national politics, economy, and justice."
     feeds:
-    - url: https://rss.sme.sk/rss/rss.asp?sek=smeonline
+    - url: https://news.google.com/rss/search?q=site:sme.sk+when:7d&hl=en-US&gl=US&ceid=US:en
       category_hint: internal_politics

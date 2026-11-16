@@ -174,5 +174,5 @@ sources:
   state_affiliated: false
   notes: "Award-winning independent Peruvian investigative journalism outlet covering corruption, extractive industries, and democracy."
   feeds:
-  - url: https://ojo-publico.com/rss.xml
+  - url: https://news.google.com/rss/search?q=site:ojo-publico.com+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
