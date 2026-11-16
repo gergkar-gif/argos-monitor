@@ -121,11 +121,13 @@ _STREAM_PHRASE_RE = re.compile(
 )
 _LEAGUE_FIXTURE_RE = re.compile(
     r"\b(?:uefa\s+nations\s+league|concacaf\s+nations\s+league|champions\s+league|europa\s+league|"
-    r"premier\s+league|la\s+liga|serie\s+a|bundesliga|copa\s+am[eé]rica)\b",
+    r"premier\s+league|la\s+liga|serie\s+a|bundesliga|copa\s+am[eé]rica|echipa\s+național[ăa]|"
+    r"лиг[еаи]\s+наций|обзор\s+матча|первая\s+лига|تصفيات\s+أمم\s+أفريقيا|بهدف\s+قاتل)\b",
     re.I,
 )
 _VS_MATCH_RE = re.compile(
-    r"\b(?:v|vs\.?)\s+[^\n,:;]{2,35}\s+(?:match\s+live|live\s+stream|prediction|betting|preview|highlights|stats)\b",
+    r"(?:\b(?:v|vs\.?)\s+[^\n,:;]{2,35}\s+(?:match\s+live|live\s+stream|prediction|betting|preview|highlights|stats)\b|"
+    r"\bin\s+match\s+against\b|^\d+[-:]\d+[.\s]+.*\b(?:serie|liga|match|goal|gol|win|beat|defeat)\b)",
     re.I,
 )
 _SPORTS_OUTLETS = {

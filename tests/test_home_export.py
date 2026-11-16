@@ -107,6 +107,9 @@ class HomeExportTests(unittest.TestCase):
             ("Kazakhstan vs Slovakia: UEFA Nations League stats & head-to-head", "BBC"),
             ("Fransa-Türkiye maçı ne zaman, saat kaçta, hangi kanalda?", "Evrensel"),
             ("How to watch France vs Turkey: TV channel and live stream for Nations League today", "London Evening Standard"),
+            ("Сборная Казахстана проиграла Молдове в Лиге наций", "Sports.kz"),
+            ("Бумпром — Динамо-Минск-2 2:1: обзор матча, Первая лига, Тур 21", "Football.by"),
+            ("Incredible comeback: Uzbekistan loses lead in match against Russia", "Sport"),
         ]
         for title, outlet in spam_cases:
             self.assertTrue(textutil.is_sports_stream_spam(title, outlet=outlet), f"Expected spam reject for: {title}")
