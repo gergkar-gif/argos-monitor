@@ -160,7 +160,7 @@
 
   <section id="pipeline">
     <h2>How the 11-stage pipeline works</h2>
-    <p>A scheduled GitHub Actions job runs the full pipeline every 12 hours (09:17 and 21:17 UTC) and deploys static JSON bundles to Cloudflare Pages, paired with 4-hourly feed snapshots (01:00–17:00 UTC) and a lightweight 2-hourly 0–24h live alert updater (<code>alerts.yml</code>) that refreshes crisis, conflict, and sensor alerts around the clock in under 45 seconds. Each desk tracks 10–15+ representative outlets rather than attempting exhaustive archival.</p>
+    <p>Scheduled GitHub Actions workflows run the full deep-extraction pipeline every 12 hours (09:17 and 21:17 UTC), paired with 4-hourly fast feed snapshots (01:00–17:00 UTC) that re-cluster, re-rank, and publish updated country briefs to Cloudflare Pages 6 times a day, plus a 2-hourly 0–24h live alert updater (<code>alerts.yml</code>) that refreshes crisis, conflict, and sensor alerts around the clock in under 45 seconds. Each desk tracks 10–15+ representative outlets rather than attempting exhaustive archival.</p>
     <div class="pipeline">
       <div class="step"><b>01 · Ingest</b><span>Polls 1,769 RSS/Atom feeds via HTTP 304 conditional GETs and ingests verified GDELT 2.0 conflict URLs into SQLite.</span></div>
       <div class="step"><b>02 · Extract</b><span>Pulls full article text with Trafilatura for top multi-outlet stories in round-robin order across all 96 desks, followed by a second shingle deduplication pass.</span></div>

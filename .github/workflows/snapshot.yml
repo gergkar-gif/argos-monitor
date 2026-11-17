@@ -1,9 +1,8 @@
 name: Multi-run feed snapshot
 
-# Lightweight multi-run feed ingestion every 4 hours (decision D15 / Audit Fix #4).
-# Ingests, normalises and filters active RSS feeds to capture breaking items before
-# they get pushed out of high-velocity outlet feed queues, caching the SQLite database
-# for the daily digest run.
+# Fast 4-hourly feed ingestion, clustering, ranking, and Cloudflare Pages deployment (01:00, 05:00, 09:00, 13:00, 17:00 UTC).
+# Captures breaking items across all 96 desks every 4 hours and updates argosmonitor.uk immediately,
+# while leaving deep full-text extraction and MarianMT batch translation to the twice-daily digest.
 on:
   schedule:
     - cron: "0 1,5,9,13,17 * * *"
@@ -15,11 +14,13 @@ concurrency:
 
 env:
   ARGOS_DATA_DIR: ${{ github.workspace }}/.argos-data
+  PYTHONFAULTHANDLER: "1"
+  TOKENIZERS_PARALLELISM: "false"
 
 jobs:
   snapshot:
     runs-on: ubuntu-24.04
-    timeout-minutes: 40
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
 
@@ -37,8 +38,30 @@ jobs:
           key: argos-db-${{ github.run_id }}
           restore-keys: argos-db-
 
-      - name: Lightweight feed snapshot
-        run: python run.py ingest normalise relevance
+      - name: Restore site data cache
+        uses: actions/cache/restore@v4
+        with:
+          path: site/data
+          key: site-data-${{ github.run_id }}
+          restore-keys: site-data-
+
+      - name: Restore embedding model
+        id: model
+        uses: actions/cache@v4
+        with:
+          path: .argos-data/models
+          key: e5-small-onnx-v1
+
+      - name: Download embedding model (first run only)
+        if: steps.model.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p .argos-data/models/multilingual-e5-small
+          base=https://huggingface.co/intfloat/multilingual-e5-small/resolve/main/onnx
+          curl -fL --retry 3 --retry-all-errors -o .argos-data/models/multilingual-e5-small/model.onnx "$base/model.onnx"
+          curl -fL --retry 3 --retry-all-errors -o .argos-data/models/multilingual-e5-small/tokenizer.json "$base/tokenizer.json"
+
+      - name: Fast feed snapshot, cluster, rank and export
+        run: python run.py ingest normalise relevance embed cluster classify policy rank export crisis watch
 
       - name: Save database
         uses: actions/cache/save@v4
@@ -46,3 +69,20 @@ jobs:
         with:
           path: .argos-data/argos.db
           key: argos-db-${{ github.run_id }}
+
+      - name: Save site data cache
+        uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: site/data
+          key: site-data-${{ github.run_id }}
+
+      - name: Publish to Cloudflare Pages
+        run: |
+          git pull origin main || true
+          npx --yes wrangler@4 pages deploy site --project-name=argos-monitor --branch=main || \
+            (sleep 10 && npx --yes wrangler@4 pages deploy site --project-name=argos-monitor --branch=main) || \
+            (sleep 20 && npx --yes wrangler@4 pages deploy site --project-name=argos-monitor --branch=main)
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

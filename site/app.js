@@ -1964,8 +1964,9 @@
     });
 
     const body = [];
+    const staleTag = ageH > STALE_HOURS ? ` (${ageH < 48 ? Math.round(ageH) + 'h' : Math.round(ageH / 24) + 'd'} old)` : '';
     const staleEmptyMsg = (!q && movementFilter === 'all' && windowStories.length === 0 && d.stories.length > 0)
-      ? `No stories in the ${periodLabel} — this snapshot was last updated ${fmtTime.format(updated)}${ageH > STALE_HOURS ? ` (${Math.round(ageH / 24)}d old)` : ''}. Run "python run.py" to collect fresh news.`
+      ? `No stories in the ${periodLabel} — this snapshot was last updated ${fmtTime.format(updated)}${staleTag}. Run "python run.py" to collect fresh news.`
       : null;
     if (activeSections.length) {
       activeSections.forEach((sec) => body.push(drawer(sec.id, sec.stories, count(sec.id), sec.limit)));
@@ -1994,7 +1995,7 @@
         h('h2', { class: 'print-title', text: `${countryObj.name} · ${periodLabel}` }),
         h('p', { class: 'print-meta', text: `Updated ${fmtTimeTz.format(updated)} · ${plural(exportedCount, 'story', 'stories')} shown${filterParts.length ? ` · Filters: ${filterParts.join(' · ')}` : ''}` })),
       h('p', { class: 'result-line' }, h('b', { text: country.options[country.selectedIndex].text }),
-        ` · ${periodLabel} · ${plural(totalStories, 'story', 'stories')} found · updated ${fmtTime.format(updated)}${ageH > STALE_HOURS ? ` (${Math.round(ageH / 24)}d old)` : ''} · `,
+        ` · ${periodLabel} · ${plural(totalStories, 'story', 'stories')} found · updated ${fmtTime.format(updated)}${staleTag} · `,
         h('button', { type: 'button', class: 'desk-link', text: isPinned(country.value) ? 'Pinned' : '+ Pin desk', 'aria-pressed': String(isPinned(country.value)), onclick: () => togglePin(country.value) }),
         exportedCount > 0 && ' · ',
         exportedCount > 0 && h('button', { type: 'button', class: 'desk-link', text: exportOpen ? 'Export brief ▴' : 'Export brief ▾', 'aria-expanded': String(exportOpen), onclick: () => { exportOpen = !exportOpen; render(false); } }),

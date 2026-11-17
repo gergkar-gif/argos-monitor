@@ -339,9 +339,9 @@ def _write(name, payload, var):
     """Write <name>.json, and <name>.js which sets a global. The page loads the .js through a script tag,
     because browsers refuse to fetch() local files when the page is opened straight from a folder."""
     SITE_DATA.mkdir(parents=True, exist_ok=True)
-    text = json.dumps(payload, ensure_ascii=False, indent=1)
+    text = json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
     (SITE_DATA / f"{name}.json").write_text(text, encoding="utf8")
-    head = f'window.{var} = window.{var} || {{}}; window.{var}["{name}"] = {text};' if var == "ARGOS_DATA" else f"window.{var} = {text};"
+    head = f'window.{var}=window.{var}||{{}};window.{var}["{name}"]={text};' if var == "ARGOS_DATA" else f"window.{var}={text};"
     (SITE_DATA / f"{name}.js").write_text(head + "\n", encoding="utf8")
 
 
@@ -454,7 +454,7 @@ def _home(now, countries):
             country_stories.append({
                 **s, "country": cid, "country_name": c["name"], "region": reg,
                 "disaster_type": d_type, "violence_type": v_type,
-                "excerpts": s.get("excerpts", [])[:1], "sources": s.get("sources", [])[:12],
+                "excerpts": s.get("excerpts", [])[:1], "sources": s.get("sources", [])[:6],
             })
         pool.extend(country_stories)
         briefing_pool.extend(_cluster_country_elections(country_stories))
@@ -478,19 +478,19 @@ def _home(now, countries):
             } if top else None,
         })
     most = _top_global_and_regional(
-        briefing_pool, lambda s: (s.get("category") != "other", s["independent_sources"], s.get("score") or 0.0), 8)
+        briefing_pool, lambda s: (s.get("category") != "other", s["independent_sources"], s.get("score") or 0.0), 8, r_limit=3)
     growing = _top_global_and_regional(
         (s for s in briefing_pool if (s.get("last_24h") or 0) >= 2),
-        lambda s: (s.get("category") != "other", s.get("last_24h") or 0, s.get("score") or 0.0), 6)
+        lambda s: (s.get("category") != "other", s.get("last_24h") or 0, s.get("score") or 0.0), 6, r_limit=3)
     elections = _top_global_and_regional(
         (s for s in briefing_pool if _is_election(s)),
-        lambda s: (s["independent_sources"], s.get("score") or 0.0), 6, r_limit=4)
+        lambda s: (s["independent_sources"], s.get("score") or 0.0), 6, r_limit=3)
     disasters = _top_global_and_regional(
         (s for s in pool if s.get("disaster_type")),
-        lambda s: ((s.get("last_24h") or 0) > 0, s["independent_sources"], s.get("score") or 0.0), 12, r_limit=8)
+        lambda s: ((s.get("last_24h") or 0) > 0, s["independent_sources"], s.get("score") or 0.0), 12, r_limit=5)
     violent = _top_global_and_regional(
         (s for s in pool if s.get("violence_type")),
-        lambda s: ((s.get("last_24h") or 0) > 0, s["independent_sources"], s.get("score") or 0.0), 12, r_limit=8)
+        lambda s: ((s.get("last_24h") or 0) > 0, s["independent_sources"], s.get("score") or 0.0), 12, r_limit=5)
     return {"generated_at": now, "desks": desks, "most_reported": most, "abroad_only": [],
             "growing": growing, "elections": elections, "disasters": disasters, "violent_events": violent}
 

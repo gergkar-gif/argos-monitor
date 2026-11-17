@@ -128,7 +128,7 @@ def _fetch_one_feed(f):
     try:
         etag = f["etag"] if "etag" in f.keys() else None
         last_mod = f["last_modified"] if "last_modified" in f.keys() else None
-        return f["id"], get(f["url"], etag=etag, last_modified=last_mod, return_headers=True)
+        return f["id"], get(f["url"], timeout=10, etag=etag, last_modified=last_mod, return_headers=True)
     except Exception:
         return f["id"], (0, b"", {})
 
@@ -275,7 +275,7 @@ def run(db):
         f for f in db.execute("SELECT * FROM feed WHERE active=1").fetchall()
         if not (f["retry_after"] and f["retry_after"] > now_init)
     ]
-    with ThreadPoolExecutor(max_workers=10) as pool:
+    with ThreadPoolExecutor(max_workers=20) as pool:
         prefetched = dict(pool.map(_fetch_one_feed, all_active))
     for country in packs.pack_ids():
         print(f"ingest {country}")

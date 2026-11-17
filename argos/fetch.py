@@ -9,10 +9,9 @@ def get(url, timeout=15, etag=None, last_modified=None, return_headers=False):
     """Return (status_code, body_bytes) or (status_code, body_bytes, headers_dict).
     Status 0 means connection failed. Supports conditional GET headers (ETag, Last-Modified)
     inspired by Media Cloud ingestion."""
-    cmd = [
-        "curl", "-sL", "-m", str(timeout), "--compressed", "-A", USER_AGENT,
-        "-c", str(COOKIE_JAR), "-b", str(COOKIE_JAR)
-    ]
+    cmd = ["curl", "-sL", "-m", str(timeout), "--compressed", "-A", USER_AGENT]
+    if "qdnd.vn" in url:
+        cmd.extend(["-c", str(COOKIE_JAR), "-b", str(COOKIE_JAR)])
     if etag:
         cmd.extend(["-H", f'If-None-Match: "{etag.strip(chr(34))}"'])
     if last_modified:
