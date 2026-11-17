@@ -789,25 +789,25 @@
   }
 
   function social() {
-    const sData = (window.ARGOS_SOCIAL && (window.ARGOS_SOCIAL.countries || (window.ARGOS_SOCIAL.social || {}).countries) || {})[country.value];
-    if (!sData || !sData.length) return null;
+    const raw = (window.ARGOS_SOCIAL && (window.ARGOS_SOCIAL.countries || (window.ARGOS_SOCIAL.social || {}).countries) || {})[country.value];
+    const sData = (raw || []).filter((x) => !x.platform || x.platform === 'telegram');
+    if (!sData.length) return null;
     const cLang = (index.countries.find((c) => c.id === country.value) || {}).language || 'en';
-    return h('section', { class: 'alerts', 'aria-label': 'Telegram & Bluesky Signals' },
-      h('h2', { text: 'Telegram & Bluesky signals' }),
+    return h('section', { class: 'alerts', 'aria-label': 'Telegram Signals' },
+      h('h2', { text: 'Telegram signals' }),
       h('ul', null, sData.map((x) => {
         const a = h('a', { href: safeUrl(x.url), target: '_blank', rel: 'noopener noreferrer', lang: cLang, text: x.text });
         const origEl = h('span', { class: 'orig', hidden: true });
         track(a, x.text, cLang, origEl);
-        const platTag = x.platform === 'telegram' ? 'TG' : 'BSKY';
         const dt = x.published && !Number.isNaN(Date.parse(x.published)) ? fmtTime.format(new Date(x.published)) : '';
         return h('li', null,
           h('span', { class: 'meta' },
-            h('span', { class: 'stamp ' + (x.platform === 'telegram' ? 'indigo' : 'teal'), text: `[${platTag}: ${x.author}]` }),
+            h('span', { class: 'stamp indigo', text: `[TG: ${x.author}]` }),
             dt && h('span', { text: dt })
           ),
           a, origEl);
       })),
-      h('p', { class: 'byline', text: 'Original posts from the last 7 days. Unverified desk signals.' }));
+      h('p', { class: 'byline', text: 'Original Telegram posts from the last 7 days. Unverified desk signals.' }));
   }
 
   const watched = () => { try { return JSON.parse(localStorage.getItem('argos.watch') || '[]'); } catch { return []; } };

@@ -26,10 +26,11 @@ class TestSignals(unittest.TestCase):
         self.assertLessEqual(len(clipped), 52)
 
         deduped = social._dedupe_and_cap([
-            {"platform": "bluesky", "author": "@kyivindependent.com", "url": "https://bsky.app/1", "published": fresh, "text": "US Democrats direct Musk to preserve records on Ukraine's Starlink"},
+            {"platform": "telegram", "author": "@liveuamap", "url": "https://t.me/liveuamap/1", "published": fresh, "text": "US Democrats direct Musk to preserve records on Ukraine's Starlink"},
             {"platform": "telegram", "author": "@kyivindependent_official", "url": "https://t.me/1", "published": fresh, "text": "US Democrats direct Musk to preserve records on Ukraine's Starlink"},
         ])
         self.assertEqual(len(deduped), 1)
+        self.assertFalse(hasattr(social, "_fetch_bluesky"))
 
     def test_reddit_chunk_countries(self):
         by_country = {f"c{i}": [f"sub{i}a", f"sub{i}b"] for i in range(12)}

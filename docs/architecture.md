@@ -20,7 +20,7 @@ countries/<id>/*.yaml ─▶ ingest ─▶ normalise ─▶ relevance ─▶ emb
 | **08 · Extract** | `argos/extract.py` | Round-robin full-text extraction via `trafilatura` for active clustered stories (`ARGOS_EXTRACT_STORY_ONLY=1`), respecting per-domain rate limits. |
 | **09 · Excerpts & Verify** | `argos/excerpts.py`, `argos/verify.py` | Extracts representative sentences and verifies every excerpt by exact character-offset substring match (`article.text[char_start:char_end]`). Unverified quotes are dropped. |
 | **10 · Translate** | `argos/translate.py` | Offline CPU sequence-to-sequence headline translation via MarianMT (`Helsinki-NLP/opus-mt-*`) with domain entity glossaries, cached in SQLite while preserving the original-language headline as authoritative. |
-| **11 · Signals & Export** | `argos/crisis.py`, `argos/trends.py`, `argos/social.py`, `argos/reddit.py`, `argos/export.py` | Integrates GDELT 2.0 conflict streams, GDACS/USGS/NASA EONET hazard feeds, US State Dept & UK FCDO advisories, UN/ICG/HRW field reports, auxiliary Telegram/Bluesky/Reddit signals, and period-over-period delta metrics (`docs/delta_spec.md`) into static JSON/JS bundles in `site/data/`. |
+| **11 · Signals & Export** | `argos/crisis.py`, `argos/trends.py`, `argos/social.py`, `argos/reddit.py`, `argos/export.py` | Integrates GDELT 2.0 conflict streams, GDACS/USGS/NASA EONET hazard feeds, US State Dept & UK FCDO advisories, UN/ICG/HRW field reports, auxiliary Telegram/Reddit signals, and period-over-period delta metrics (`docs/delta_spec.md`) into static JSON/JS bundles in `site/data/`. |
 
 ## Core Data Model (SQLite)
 

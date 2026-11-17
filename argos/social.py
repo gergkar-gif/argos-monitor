@@ -1,16 +1,15 @@
-"""Stage: auxiliary Telegram and Bluesky signals for crisis & active desks.
+"""Stage: auxiliary Telegram signals for crisis & active desks.
 
-Fetches public channel previews (t.me/s/) and open AT Protocol feeds (public.api.bsky.app).
+Fetches public channel previews (t.me/s/).
 Normalises with NFC (Rule 3) and strips emojis (Rule 7).
 Zero API keys or authentication required.
 """
 import html
-import json
 import re
 import urllib.request
 from datetime import datetime, timedelta, timezone
 
-from . import fetch, packs
+from . import packs
 from .export import SITE_DATA, _write
 from .textutil import clean
 
@@ -24,10 +23,6 @@ TG_MSG_RE = re.compile(
 
 MAX_AGE_HOURS = 168  # 7 days: never surface stale posts from months ago as real-time signals
 GLOBAL_CRISIS_TG = ["liveuamap", "insiderpaper"]
-GLOBAL_CRISIS_BSKY = [
-    "reuters.com", "apnews.com", "afp.com", "aljazeera.com", "bloomberg.com",
-    "theguardian.com", "france24.com", "euronews.com", "bellingcat.com", "thediplomat.com",
-]
 
 
 def _clip(text, limit=260):
@@ -85,45 +80,6 @@ def _fetch_telegram(slug, now_dt=None):
     return posts
 
 
-def _fetch_bluesky(handle, now_dt=None):
-    now_dt = now_dt or datetime.now(timezone.utc)
-    url = f"https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor={handle}&filter=posts_no_replies&limit=15"
-    req = urllib.request.Request(url, headers={"User-Agent": "ArgosMonitor/1.0"})
-    try:
-        with urllib.request.urlopen(req, timeout=8) as resp:
-            data = json.loads(resp.read().decode("utf8", errors="ignore"))
-    except Exception as e:
-        print(f"social: bsky @{handle} failed: {e}")
-        return []
-
-    posts = []
-    for item in data.get("feed", []):
-        if item.get("reason"):
-            continue  # skip reposts
-        p = item.get("post") or {}
-        rec = p.get("record") or {}
-        if rec.get("reply"):
-            continue
-        published = rec.get("createdAt") or ""
-        if not _is_recent(published, now_dt):
-            continue
-        raw_text = rec.get("text") or ""
-        cleaned = clean(" ".join(raw_text.split()))
-        if len(cleaned) < 25:
-            continue
-        uri = p.get("uri") or ""
-        rkey = uri.split("/")[-1] if uri else ""
-        author_handle = (p.get("author") or {}).get("handle") or handle
-        posts.append({
-            "platform": "bluesky",
-            "author": f"@{author_handle}",
-            "url": f"https://bsky.app/profile/{author_handle}/post/{rkey}" if rkey else "",
-            "published": published,
-            "text": _clip(cleaned),
-        })
-    return posts
-
-
 def _dedupe_and_cap(pool, limit=8, per_author=5):
     pool = sorted(pool, key=lambda x: x.get("published") or "", reverse=True)
     seen_urls, seen_keys, by_author, out = set(), set(), {}, []
@@ -155,24 +111,17 @@ def run(db=None):
     global_pool = []
     for ch in GLOBAL_CRISIS_TG:
         global_pool.extend(_fetch_telegram(ch, now_dt))
-    for ac in GLOBAL_CRISIS_BSKY:
-        global_pool.extend(_fetch_bluesky(ac, now_dt))
-    print(f"social: fetched {len(global_pool)} recent posts from global crisis/wire monitors")
+    print(f"social: fetched {len(global_pool)} recent posts from global Telegram crisis monitors")
 
     for cid in packs.pack_ids():
         pack = packs.load(cid)
         tg_channels = pack.get("telegram") or []
         if isinstance(tg_channels, str):
             tg_channels = [tg_channels]
-        bsky_actors = pack.get("bluesky") or []
-        if isinstance(bsky_actors, str):
-            bsky_actors = [bsky_actors]
 
         pool = []
         for ch in tg_channels:
             pool.extend(_fetch_telegram(ch, now_dt))
-        for ac in bsky_actors:
-            pool.extend(_fetch_bluesky(ac, now_dt))
 
         names = [n.lower() for n in [pack["name"], *pack.get("crisis_names", []), *pack.get("mention", [])]]
         names = [n for n in names if len(n) >= 3]
@@ -185,7 +134,7 @@ def run(db=None):
         deduped = _dedupe_and_cap(pool)
         if deduped:
             countries[cid] = deduped
-            print(f"social: {cid}: {len(deduped)} posts collected (TG & Bluesky)")
+            print(f"social: {cid}: {len(deduped)} posts collected (Telegram)")
 
     payload = {"generated_at": now, "countries": countries}
     _write("social", payload, "ARGOS_SOCIAL")

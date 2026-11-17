@@ -62,7 +62,7 @@ flowchart LR
 | **08 · Policy & Rank** | [`argos/policy.py`](argos/policy.py), [`argos/rank.py`](argos/rank.py) | Scores stories by foreign-desk priority themes (`themes.yaml`), independent outlet count, scope diversity, and recency. |
 | **09 · Excerpts & Verify** | [`argos/excerpts.py`](argos/excerpts.py), [`argos/verify.py`](argos/verify.py) | Selects informative sentences and asserts each excerpt is a verbatim substring of the source article. |
 | **10 · Offline Translation** | [`argos/translate.py`](argos/translate.py) | Translates non-English representative headlines into English using CPU-friendly MarianMT sequence-to-sequence models with entity glossaries, caching results in SQLite while keeping original text authoritative. |
-| **11 · Signals & Export** | [`argos/crisis.py`](argos/crisis.py), [`argos/trends.py`](argos/trends.py), [`argos/social.py`](argos/social.py), [`argos/reddit.py`](argos/reddit.py), [`argos/export.py`](argos/export.py) | Integrates GDACS/USGS/NASA EONET disasters, UK FCDO & US State Dept travel advisories, UN/ICG/HRW field reports, auxiliary Telegram/Bluesky crisis signals, Google Trends, and policy-filtered Reddit discussions into static bundles. |
+| **11 · Signals & Export** | [`argos/crisis.py`](argos/crisis.py), [`argos/trends.py`](argos/trends.py), [`argos/social.py`](argos/social.py), [`argos/reddit.py`](argos/reddit.py), [`argos/export.py`](argos/export.py) | Integrates GDACS/USGS/NASA EONET disasters, UK FCDO & US State Dept travel advisories, UN/ICG/HRW field reports, auxiliary Telegram crisis signals, Google Trends, and policy-filtered Reddit discussions into static bundles. |
 
 ---
 

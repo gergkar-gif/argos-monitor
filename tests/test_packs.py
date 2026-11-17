@@ -49,7 +49,7 @@ class TestPacks(unittest.TestCase):
 
     def test_no_deprecated_top_level_keys(self):
         """No country pack.yaml may use deprecated bare top-level keys."""
-        disallowed = {"skip_sections", "dateline", "subreddits"}
+        disallowed = {"skip_sections", "dateline", "subreddits", "bluesky"}
         for d in COUNTRIES_DIR.iterdir():
             pf = d / "pack.yaml"
             if not pf.exists():
