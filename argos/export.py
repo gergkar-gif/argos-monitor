@@ -485,10 +485,12 @@ def _home(now, countries):
     elections = _top_global_and_regional(
         (s for s in briefing_pool if _is_election(s)),
         lambda s: (s["independent_sources"], s.get("score") or 0.0), 6, r_limit=4)
-    disasters = _top_global_and_regional((s for s in pool if s.get("disaster_type")), lambda s: (s["independent_sources"], s.get("score") or 0.0), 12, r_limit=8)
+    disasters = _top_global_and_regional(
+        (s for s in pool if s.get("disaster_type")),
+        lambda s: ((s.get("last_24h") or 0) > 0, s["independent_sources"], s.get("score") or 0.0), 12, r_limit=8)
     violent = _top_global_and_regional(
         (s for s in pool if s.get("violence_type")),
-        lambda s: (s["independent_sources"], s.get("score") or 0.0), 12, r_limit=8)
+        lambda s: ((s.get("last_24h") or 0) > 0, s["independent_sources"], s.get("score") or 0.0), 12, r_limit=8)
     return {"generated_at": now, "desks": desks, "most_reported": most, "abroad_only": [],
             "growing": growing, "elections": elections, "disasters": disasters, "violent_events": violent}
 
