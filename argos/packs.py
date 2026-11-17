@@ -51,8 +51,45 @@ def load(country):
     pack["noise_re"] = re.compile(noise, re.I) if noise else None
     if "reddit" not in pack and "subreddits" in pack:
         pack["reddit"] = pack["subreddits"]
+    overrides = {}
+    for sc, names in (pack.get("aggregator_outlets") or {}).items():
+        for n in (names or []):
+            overrides[str(n).lower().strip()] = sc
+    pack["outlet_overrides"] = overrides
+    pack["outlet_patterns"] = [
+        (re.compile(r"\b" + re.escape(pat) + r"\b"), sc)
+        for pat, sc in overrides.items()
+        if len(pat) >= 4
+    ]
     pack["themes"] = merged_themes(d)
     return pack
+
+
+def resolve_scope(country, source_id, source_name, source_scope, feed_scope=None):
+    """Resolve the reporting scope of a source for a specific country desk.
+    Catalogued direct sources belong to one country only and use their own source_scope.
+    Google News ('gn:*') sources are shared across desks, so their scope is resolved against
+    the target country's aggregator_outlets rules first, falling back to feed_scope or 'international'."""
+    sid = str(source_id or "")
+    if not sid.startswith("gn:"):
+        return source_scope or "domestic"
+    if not country or not (COUNTRIES_DIR / country / "pack.yaml").exists():
+        return feed_scope or source_scope or "international"
+    pack = load(country)
+    overrides = pack["outlet_overrides"]
+    nl = str(source_name or "").lower().strip()
+    if nl in overrides:
+        return overrides[nl]
+    cl = re.split(r"\s+[|\-–—·]\s+|\s*\(", nl)[0].strip()
+    cl = re.sub(r"^(the|báo)\s+", "", cl).strip()
+    if cl in overrides:
+        return overrides[cl]
+    for reg, sc in pack["outlet_patterns"]:
+        if reg.search(nl) or reg.search(cl):
+            return sc
+    if feed_scope in ("domestic", "abroad_local", "international"):
+        return feed_scope
+    return "international"
 
 
 def merged_themes(country_dir):

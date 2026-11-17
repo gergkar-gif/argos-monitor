@@ -152,6 +152,27 @@ class TestPipelineGuards(unittest.TestCase):
         self.assertEqual(results, ["ok"] * 6)
         self.assertEqual(max_active, 1)
 
+    def test_per_country_gn_scope_and_gnews_redirect_exclusion(self):
+        packs.load.cache_clear()
+        # Reuters is domestic in the US pack, but must resolve to international on the Hungary desk
+        self.assertEqual(packs.resolve_scope("united_states", "gn:reuters", "Reuters", "domestic", "international"), "domestic")
+        self.assertEqual(packs.resolve_scope("hungary", "gn:reuters", "Reuters", "domestic", "international"), "international")
+        # Telex is domestic and Maszol.ro is abroad_local on the Hungary desk
+        self.assertEqual(packs.resolve_scope("hungary", "gn:telex", "Telex", "international", "international"), "domestic")
+        self.assertEqual(packs.resolve_scope("hungary", "gn:maszol-ro", "Maszol.ro", "domestic", "domestic"), "abroad_local")
+
+        # _select_pending must skip Google News redirect URLs even if marked pending
+        db = sqlite3.connect(":memory:")
+        db.row_factory = sqlite3.Row
+        db.executescript(SCHEMA)
+        db.execute("INSERT INTO article (id, source_id, url, title, extract_status, country) VALUES (1, 's1', 'https://news.google.com/rss/articles/CBMi123', 'GN', 'pending', 'hungary')")
+        db.execute("INSERT INTO article (id, source_id, url, title, extract_status, country) VALUES (2, 's2', 'https://telex.hu/belfold/2026/11/17/test', 'Direct', 'pending', 'hungary')")
+        db.execute("INSERT INTO story (id, country, window_days, score, representative_article_id) VALUES (1, 'hungary', 7, 10.0, 1)")
+        db.execute("INSERT INTO story_article (story_id, article_id, similarity) VALUES (1, 1, 1.0), (1, 2, 0.96)")
+        picked = extract._select_pending(db, limit=5, story_only=True)
+        self.assertEqual([r["id"] for r in picked], [2])
+        db.close()
+
 
 if __name__ == "__main__":
     unittest.main()

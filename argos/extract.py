@@ -75,7 +75,7 @@ def _select_pending(db, limit=None, country=None, story_only=True):
     """Prioritize pending articles from top-ranked multi-outlet stories that lack extracted text,
     interleaved round-robin across country desks so alphabetical tail packs never starve earlier desks."""
     if not story_only:
-        where = ["extract_status='pending'"]
+        where = ["extract_status='pending'", "url NOT LIKE 'https://news.google.com/%'"]
         params = []
         if country:
             where.append("country=?")
@@ -102,7 +102,7 @@ def _select_pending(db, limit=None, country=None, story_only=True):
         story_sizes[sid] += 1
         if r["has_text"] and r["syndicated_of"] is None:
             story_texts[sid] += 1
-        elif r["extract_status"] == "pending" and r["syndicated_of"] is None:
+        elif r["extract_status"] == "pending" and r["syndicated_of"] is None and not (r["url"] or "").startswith("https://news.google.com/"):
             by_story[sid].append(r)
 
     raw_by_country = defaultdict(list)

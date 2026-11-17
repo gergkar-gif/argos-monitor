@@ -34,14 +34,16 @@ def is_relevant(pack, scope, category_hint, section, url, title, lead, text, nee
 
 def run(db):
     rows = db.execute(
-        "SELECT a.id, a.country, a.source_id, a.feed_id, f.source_id AS feed_source, a.url, s.scope, f.category_hint, f.section_label, a.title, a.lead, a.text "
-        "FROM article a JOIN source s ON s.id=a.source_id LEFT JOIN feed f ON f.id=a.feed_id").fetchall()
+        "SELECT a.id, a.country, a.source_id, a.feed_id, f.source_id AS feed_source, fs.scope AS feed_scope, "
+        "a.url, s.name AS source_name, s.scope, f.category_hint, f.section_label, a.title, a.lead, a.text "
+        "FROM article a JOIN source s ON s.id=a.source_id LEFT JOIN feed f ON f.id=a.feed_id LEFT JOIN source fs ON fs.id=f.source_id").fetchall()
     needs = {s["id"]: s.get("needs_mention", False) for c in packs.pack_ids() for s in packs.load(c)["sources"]}
     keep = []
     for r in rows:
         pack = packs.load(r["country"])
+        eff_scope = packs.resolve_scope(r["country"], r["source_id"], r["source_name"], r["scope"], r["feed_scope"])
         is_gdelt = r["feed_id"] is None or (r["source_id"] or "").startswith("gdelt:")
-        keep.append((int(is_relevant(pack, r["scope"], r["category_hint"], r["section_label"], r["url"],
+        keep.append((int(is_relevant(pack, eff_scope, r["category_hint"], r["section_label"], r["url"],
                                      r["title"], r["lead"], r["text"], needs.get(r["source_id"], False) or needs.get(r["feed_source"], False),
                                      is_gdelt=is_gdelt)), r["id"]))
     db.executemany("UPDATE article SET relevant=? WHERE id=?", keep)

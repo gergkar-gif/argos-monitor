@@ -76,13 +76,12 @@ def ingest_aggregator(db, pack, src, feed, parsed, known):
             continue
         slug = re.sub(r"[^\w]+", "-", outlet.lower(), flags=re.UNICODE).strip("-")
         sid = f"gn:{slug}" if slug else f"gn:{re.sub(r'[^a-z0-9]+', '', url.lower())[-12:]}"
-        scope = _match_outlet_scope(outlet, overrides, src["scope"])
+        scope = packs.resolve_scope(pack["id"], sid, outlet, src["scope"], src["scope"])
         rating = lookup_rating(outlet, False, "media")
         db.execute(
             "INSERT INTO source (id, name, homepage, language, scope, kind, governing_body, state_affiliated, reprints_vna, notes, bias, alignment, factuality) "
             "VALUES (?,?,?,?,?,'media','found via Google News',0,0,'aggregator item',?,?,?) "
             "ON CONFLICT(id) DO UPDATE SET "
-            "scope=CASE WHEN (scope='international' AND excluded.scope != 'international') OR (excluded.scope='domestic' AND scope != 'domestic') THEN excluded.scope ELSE scope END, "
             "bias=COALESCE(excluded.bias, bias), alignment=COALESCE(excluded.alignment, alignment), factuality=COALESCE(excluded.factuality, factuality)",
             (sid, outlet, ((e.get("source") or {}).get("href") or ""), src["language"], scope, rating["bias"], rating["alignment"], rating["factuality"]))
         cur = db.execute(
@@ -122,7 +121,6 @@ def load_registry(db):
     urls = list(seen)
     db.execute(f"UPDATE feed SET active=0 WHERE url NOT IN ({','.join('?' * len(urls))})", urls)   # feeds removed from a yaml
     db.commit()
-    reconcile_aggregator_sources(db)
     reconcile_ratings(db)
 
 
@@ -197,21 +195,30 @@ def ingest_feeds(db, country, prefetched=None):
                 continue
 
             n = 0
+            is_gnews_feed = "news.google.com" in (feed["url"] or "")
             cutoff = (datetime.now(timezone.utc) - timedelta(days=WINDOW_DAYS)).isoformat(timespec="seconds")
             entries = sorted(parsed.entries, key=lambda e: parse_date(e) or "", reverse=True)[:MAX_PER_FEED]
             for e in entries:
                 if (parse_date(e) or cutoff) < cutoff:
                     continue
                 url, title = clean_url(e.get("link")), clean(e.get("title"))
-                lead = clean(e.get("summary") or e.get("description"))
+                if is_gnews_feed or "news.google.com/" in (url or ""):
+                    outlet = ((e.get("source") or {}).get("title") or "").strip(" |-–—")
+                    if outlet and title.endswith(outlet) and OUTLET_SUFFIX.search(title):
+                        title = clean(OUTLET_SUFFIX.sub("", title))
+                    lead = ""
+                    ext_status = "nofetch"
+                else:
+                    lead = clean(e.get("summary") or e.get("description"))
+                    ext_status = "pending"
                 if not url or not title:
                     continue
                 if feed["source_id"] in international and not pack["mention_re"].search(title + " " + lead):
                     continue
                 cur = db.execute(
                     "INSERT OR IGNORE INTO article (source_id,feed_id,url,title,lead,language,published_at,fetched_at,extract_status,country) "
-                    "VALUES (?,?,?,?,?,?,?,?,'pending',?)",
-                    (feed["source_id"], feed["id"], url, title, lead, feed["language"], parse_date(e), now_str, country))
+                    "VALUES (?,?,?,?,?,?,?,?,?,?)",
+                    (feed["source_id"], feed["id"], url, title, lead, feed["language"], parse_date(e), now_str, ext_status, country))
                 n += cur.rowcount
                 if cur.rowcount:
                     known.add(title_key(title))

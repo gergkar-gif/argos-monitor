@@ -69,11 +69,12 @@ def _prev_window_matches(db, cid, days, prev_start, curr_start):
     """Match relevant articles from the prior window [prev_start, curr_start) to current stories
     via cosine similarity (>= 0.895) against each story's core centroid, and tally prior category counts."""
     prev_rows = db.execute(
-        "SELECT a.id, COALESCE(a.published_at, a.fetched_at) AS t, src.scope, src.kind, src.alignment, "
+        "SELECT a.id, COALESCE(a.published_at, a.fetched_at) AS t, src.id AS source_id, src.name AS source, "
+        "src.scope, fs.scope AS feed_scope, src.kind, src.alignment, "
         "f.category_hint, (SELECT s2.category FROM story_article sa2 JOIN story s2 ON s2.id=sa2.story_id "
         "WHERE sa2.article_id=a.id ORDER BY s2.window_days ASC LIMIT 1) AS story_cat, e.vec "
         "FROM article a JOIN source src ON src.id=a.source_id LEFT JOIN feed f ON f.id=a.feed_id "
-        "LEFT JOIN embedding e ON e.article_id=a.id "
+        "LEFT JOIN source fs ON fs.id=f.source_id LEFT JOIN embedding e ON e.article_id=a.id "
         "WHERE a.relevant=1 AND a.country=? AND COALESCE(a.published_at, a.fetched_at) >= ? "
         "AND COALESCE(a.published_at, a.fetched_at) < ?",
         (cid, prev_start, curr_start),
@@ -155,13 +156,16 @@ def _filter_strict_themes(country, raw_themes, core_rows):
 def _story(db, s, now_iso=None, days=None, prev_matches=None):
     rows = db.execute(
         "SELECT a.id, a.title, a.lead, a.url, a.language, a.published_at, a.fetched_at, a.syndicated_of, COALESCE(sa.similarity, 1.0) AS similarity, "
-        "src.id AS source_id, src.name AS source, src.scope, src.kind, src.bias, src.alignment, src.factuality "
+        "src.id AS source_id, src.name AS source, src.scope, fs.scope AS feed_scope, src.kind, src.bias, src.alignment, src.factuality "
         "FROM story_article sa JOIN article a ON a.id=sa.article_id JOIN source src ON src.id=a.source_id "
+        "LEFT JOIN feed f ON f.id=a.feed_id LEFT JOIN source fs ON fs.id=f.source_id "
         "WHERE sa.story_id=? ORDER BY (COALESCE(sa.similarity, 1.0) >= 0.93) DESC, (COALESCE(sa.similarity, 1.0) >= 0.85) DESC, "
         "(a.syndicated_of IS NOT NULL), COALESCE(sa.similarity, 1.0) DESC, a.published_at", (s["id"],)).fetchall()
+    cid = s["country"] if "country" in s.keys() else None
+    r_scope = lambda r: packs.resolve_scope(cid, r["source_id"], r["source"], r["scope"], r["feed_scope"] if "feed_scope" in r.keys() else None)
     core_rows = [r for r in rows if r["similarity"] >= 0.93] or rows
     independent = {r["source_id"] for r in core_rows if r["syndicated_of"] is None}
-    by_scope = {sc: sum(r["scope"] == sc for r in core_rows) for sc in ("domestic", "abroad_local", "international")}
+    by_scope = {sc: sum(r_scope(r) == sc for r in core_rows) for sc in ("domestic", "abroad_local", "international")}
 
     align_counts, bias_counts = {}, {}
     state_count, total_rated = 0, 0
@@ -242,8 +246,8 @@ def _story(db, s, now_iso=None, days=None, prev_matches=None):
         else:
             st = "trace"
 
-        scopes_curr = {r["scope"] for r in t_curr}
-        scopes_prev = {r["scope"] for r in t_prev}
+        scopes_curr = {r_scope(r) for r in t_curr}
+        scopes_prev = {r_scope(r) for r in t_prev}
         if scopes_prev == {"domestic"} and "international" in scopes_curr:
             scope_shift = "international_pickup"
         elif scopes_prev == {"domestic"} and "abroad_local" in scopes_curr and "international" not in scopes_curr:
@@ -287,7 +291,7 @@ def _story(db, s, now_iso=None, days=None, prev_matches=None):
         "abroad_only": False,
         "related": [{"title": r["title"], "url": r["url"], "source": r["source"], "articles": r["n"]} for r in related[:2]],   # possibly the same event
         "excerpts": [{"text": x["text"], "source": x["source"], "scope": x["scope"], "url": x["url"]} for x in excerpts],
-        "sources": [{"title": r["title"], "url": r["url"], "source": r["source"], "scope": r["scope"],
+        "sources": [{"title": r["title"], "url": r["url"], "source": r["source"], "scope": r_scope(r),
                      "language": r["language"], "published": r["published_at"], "copy": r["syndicated_of"] is not None,
                      "sim": int(round(r["similarity"] * 100)),
                      "bias": r["bias"] or "unrated", "alignment": r["alignment"] or "unrated", "factuality": r["factuality"] or "unrated"}
@@ -460,9 +464,16 @@ def _home(now, countries):
             "surging": surging,
             "elections": elections_n,
             "intl_pickups": intl_pickups,
-            "lead": {"title": top["headline"]["title"], "url": top["headline"]["url"], "source": top["headline"]["source"],
-                     "outlets": top["independent_sources"], "category": top.get("category"),
-                     "is_election": _is_election(top)} if top else None,
+            "lead": {
+                "title": top["headline"]["title"],
+                **({"en_title": top["headline"]["en_title"]} if top["headline"].get("en_title") else {}),
+                "language": top["headline"].get("language", "en"),
+                "url": top["headline"]["url"],
+                "source": top["headline"]["source"],
+                "outlets": top["independent_sources"],
+                "category": top.get("category"),
+                "is_election": _is_election(top),
+            } if top else None,
         })
     most = _top_global_and_regional(
         briefing_pool, lambda s: (s.get("category") != "other", s["independent_sources"], s.get("score") or 0.0), 8)

@@ -15,6 +15,8 @@ A high-consensus multi-outlet national story reliably outranks a single-outlet i
 import math
 from datetime import datetime, timedelta, timezone
 
+from . import packs
+
 
 def dashboard_story_ids(db, country=None, window_days=None, n=None, per_category=None):
     """Stories the site shows for a country and window.
@@ -39,13 +41,25 @@ def dashboard_story_ids(db, country=None, window_days=None, n=None, per_category
 
 def run(db):
     recent = (datetime.now(timezone.utc) - timedelta(hours=24)).isoformat(timespec="seconds")
-    for sid, in db.execute("SELECT id FROM story").fetchall():
-        rows = db.execute(
-            "SELECT a.source_id, a.syndicated_of, COALESCE(a.published_at, a.fetched_at) t, s.scope, s.kind "
-            "FROM story_article sa JOIN article a ON a.id=sa.article_id JOIN source s ON s.id=a.source_id "
-            "WHERE sa.story_id=? AND COALESCE(sa.similarity, 1.0) >= 0.93", (sid,)).fetchall()
+    has_country = "country" in {r[1] for r in db.execute("PRAGMA table_info(story)")}
+    has_feed = bool(db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='feed'").fetchone())
+    story_sql = "SELECT id, country FROM story" if has_country else "SELECT id, NULL AS country FROM story"
+    row_sql = (
+        "SELECT a.source_id, a.syndicated_of, COALESCE(a.published_at, a.fetched_at) t, "
+        "s.name AS source_name, s.scope, s.kind, fs.scope AS feed_scope "
+        "FROM story_article sa JOIN article a ON a.id=sa.article_id JOIN source s ON s.id=a.source_id "
+        "LEFT JOIN feed f ON f.id=a.feed_id LEFT JOIN source fs ON fs.id=f.source_id "
+        "WHERE sa.story_id=? AND COALESCE(sa.similarity, 1.0) >= 0.93"
+        if has_feed else
+        "SELECT a.source_id, a.syndicated_of, COALESCE(a.published_at, a.fetched_at) t, "
+        "s.name AS source_name, s.scope, s.kind, NULL AS feed_scope "
+        "FROM story_article sa JOIN article a ON a.id=sa.article_id JOIN source s ON s.id=a.source_id "
+        "WHERE sa.story_id=? AND COALESCE(sa.similarity, 1.0) >= 0.93"
+    )
+    for sid, country in db.execute(story_sql).fetchall():
+        rows = db.execute(row_sql, (sid,)).fetchall()
         independent = {r["source_id"] for r in rows if r["syndicated_of"] is None}
-        scopes = {r["scope"] for r in rows}
+        scopes = {packs.resolve_scope(country, r["source_id"], r["source_name"], r["scope"], r["feed_scope"]) for r in rows}
         growing = sum(r["t"] >= recent for r in rows) / len(rows) >= 0.4
         n_indep = len(independent)
         consensus = (2.0 + 0.5 * (n_indep - 5)) if n_indep >= 5 else (1.0 if n_indep >= 3 else 0.0)

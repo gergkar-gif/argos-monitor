@@ -3,11 +3,11 @@
   'use strict';
 
   const TOPICS = [
-    { id: 'internal_politics', name: 'Internal politics' },
-    { id: 'economics', name: 'Economy' },
-    { id: 'foreign_policy', name: 'Foreign policy' },
-    { id: 'defence_security', name: 'Defence and security' },
-    { id: 'society', name: 'Society' },
+    { id: 'internal_politics', name: 'Politics & Governance' },
+    { id: 'economics', name: 'Economy & Trade' },
+    { id: 'foreign_policy', name: 'Diplomacy & Foreign Policy' },
+    { id: 'defence_security', name: 'Defence & Security' },
+    { id: 'society', name: 'Society & Rights' },
     { id: 'other', name: 'Other' },
   ];
   const PER_TOPIC_IN_OVERVIEW = 4;
@@ -1614,7 +1614,8 @@
       if (!deskQuery) return true;
       return d.name.toLowerCase().includes(deskQuery)
         || d.region.toLowerCase().includes(deskQuery)
-        || (d.lead && d.lead.title && d.lead.title.toLowerCase().includes(deskQuery));
+        || (d.lead && d.lead.title && d.lead.title.toLowerCase().includes(deskQuery))
+        || (d.lead && d.lead.en_title && d.lead.en_title.toLowerCase().includes(deskQuery));
     }).sort((a, b) => {
       if (deskSort === '24h') return (b.stories_24h - a.stories_24h) || (b.stories_7d - a.stories_7d);
       if (deskSort === '7d') return (b.stories_7d - a.stories_7d) || (b.stories_24h - a.stories_24h);
@@ -1733,10 +1734,12 @@
               h('td', { class: 'typed', 'data-label': '7d', text: String(d.stories_7d) }),
               h('td', { 'data-label': 'Signals' }, sigs.length ? h('span', { class: 'desk-badges' }, sigs) : h('span', { class: 'meta', text: '—' })),
               h('td', { class: 'cell-body' }, d.lead ? (() => {
-                const cl = (index.countries.find((x) => x.id === d.id) || {}).language || 'en';
-                const a = h('a', { href: safeUrl(d.lead.url), target: '_blank', rel: 'noopener noreferrer', lang: cl, text: d.lead.title });
-                const o = h('span', { class: 'orig', hidden: true });
-                track(a, d.lead.title, cl, o);
+                const cl = d.lead.language || (index.countries.find((x) => x.id === d.id) || {}).language || 'en';
+                const hasEn = Boolean(d.lead.en_title);
+                const disp = hasEn ? d.lead.en_title : d.lead.title;
+                const a = h('a', { href: safeUrl(d.lead.url), target: '_blank', rel: 'noopener noreferrer', lang: hasEn ? 'en' : cl, text: disp });
+                const o = h('span', { class: 'orig', hidden: !hasEn, text: hasEn ? d.lead.title : '' });
+                if (!hasEn) track(a, d.lead.title, cl, o);
                 return [a, o, h('span', { class: 'meta', text: ` (${d.lead.source} · ${d.lead.outlets} outlets)` })];
               })() : '—'));
           })))));
@@ -1865,6 +1868,25 @@
         ].filter(Boolean).join(' ');
         lines.push(`### ${idx + 1}. ${enTitle} ${flags}`);
         lines.push(`Source: ${s.headline.source} · ${safeUrl(s.headline.url)}`);
+        const bySc = s.by_scope || {};
+        const scParts = [
+          bySc.domestic ? `${bySc.domestic} domestic` : '',
+          bySc.abroad_local ? `${bySc.abroad_local} diaspora/abroad` : '',
+          bySc.international ? `${bySc.international} international` : '',
+        ].filter(Boolean);
+        let perspLabel = '';
+        if (s.perspectives) {
+          const sh = s.perspectives.state_share;
+          const nAlign = Object.keys(s.perspectives.alignment || {}).length;
+          const nBias = Object.keys(s.perspectives.bias || {}).length;
+          if (sh >= 0.7) perspLabel = 'Mostly state media';
+          else if (sh >= 0.35) perspLabel = 'Mixed state & independent';
+          else if (nAlign > 1 || nBias > 1) perspLabel = 'Multiple viewpoints';
+          else if (s.independent_sources >= 2) perspLabel = 'Independent press';
+        }
+        if (scParts.length || perspLabel) {
+          lines.push(`Scope: ${scParts.join(' · ') || '—'}${perspLabel ? ` | Perspective: ${perspLabel}` : ''}`);
+        }
         if (s.headline.language !== 'en' && enTitle.trim() !== s.headline.title.trim()) {
           lines.push(`Original (${s.headline.source}): "${s.headline.title}"`);
         }

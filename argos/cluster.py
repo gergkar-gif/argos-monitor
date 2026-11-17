@@ -77,13 +77,14 @@ OPINION_RE = re.compile(
 )
 
 
-def _pick_representative(rows, X, indices, centroid):
+def _pick_representative(rows, X, indices, centroid, scopes=None):
     """Select the most authoritative, representative article for a cluster rather than picking
     pure centroid proximity, preventing fringe blogs or opinion op-eds from leading the story."""
     if len(indices) == 1:
         return int(indices[0])
 
-    has_domestic = any((rows[idx]["scope"] or "") == "domestic" for idx in indices)
+    get_sc = (lambda idx: scopes[idx]) if scopes is not None else (lambda idx: rows[idx]["scope"] or "")
+    has_domestic = any(get_sc(idx) == "domestic" for idx in indices)
     best_idx = indices[0]
     best_score = -999.0
 
@@ -102,18 +103,29 @@ def _pick_representative(rows, X, indices, centroid):
             bonus -= 0.15
 
         # Prefer domestic or local-abroad reporting over remote scrapers when domestic coverage exists
-        scope = r["scope"] or ""
+        scope = get_sc(idx)
         if has_domestic and scope == "domestic":
             bonus += 0.06
         elif has_domestic and scope == "abroad_local":
             bonus += 0.03
 
-        # Prefer core journalistic or official outlets over generic aggregators/portals
+        # Prefer core journalistic or official outlets and high-factuality papers of record over tabloids/aggregators
         kind = r["kind"] or ""
-        if kind in ("official", "paper", "media", "broadcast"):
-            bonus += 0.05
+        if kind in ("official", "paper", "media", "broadcast", "wire"):
+            bonus += 0.04
         elif kind in ("aggregator", "portal"):
             bonus -= 0.05
+
+        fact = (r["factuality"] if "factuality" in r.keys() else None) or ""
+        if fact in ("very_high", "high"):
+            bonus += 0.04
+        elif fact == "mixed":
+            bonus -= 0.04
+
+        sid = str((r["source_id"] if "source_id" in r.keys() else None) or "")
+        url_val = str((r["url"] if "url" in r.keys() else None) or "")
+        if not sid.startswith("gn:") and not url_val.startswith("https://news.google.com/"):
+            bonus += 0.03
 
         score = sim + bonus
         if score > best_score:
@@ -127,11 +139,13 @@ def _cluster_window(db, country, days, similarity):
     now = datetime.now(timezone.utc)
     cutoff = (now - timedelta(days=days)).isoformat(timespec="seconds")
     rows = db.execute(
-        "SELECT a.id, a.title, a.source_id, a.published_at, a.fetched_at, a.syndicated_of, "
-        "s.scope, s.kind, e.vec "
+        "SELECT a.id, a.title, a.url, a.source_id, a.published_at, a.fetched_at, a.syndicated_of, "
+        "s.name AS source_name, s.scope, s.kind, s.factuality, fs.scope AS feed_scope, e.vec "
         "FROM article a "
         "JOIN embedding e ON e.article_id=a.id "
         "LEFT JOIN source s ON s.id=a.source_id "
+        "LEFT JOIN feed f ON f.id=a.feed_id "
+        "LEFT JOIN source fs ON fs.id=f.source_id "
         "WHERE a.relevant=1 AND a.country=? AND COALESCE(a.published_at, a.fetched_at) >= ? "
         "ORDER BY a.id",
         (country, cutoff),
@@ -140,6 +154,10 @@ def _cluster_window(db, country, days, similarity):
     if n == 0:
         print(f"cluster {country} {days}d: no articles")
         return
+    resolved_scopes = [
+        packs.resolve_scope(country, r["source_id"], r["source_name"], r["scope"], r["feed_scope"])
+        for r in rows
+    ]
     X = np.frombuffer(b"".join(r["vec"] for r in rows), dtype=np.float32).reshape(n, DIM)
     t = np.array([_time(r) for r in rows])
     if n == 1:
@@ -164,7 +182,7 @@ def _cluster_window(db, country, days, similarity):
         m = np.where(labels == l)[0]
         c = X[m].mean(0)
         centres[l], los[l], his[l], sizes[l] = c, float(t[m].min()), float(t[m].max()), len(m)
-        reps[l] = _pick_representative(rows, X, m, c / np.linalg.norm(c))
+        reps[l] = _pick_representative(rows, X, m, c / np.linalg.norm(c), scopes=resolved_scopes)
 
     # Absorb small (1-2 article) clusters or cross-lingual pickups (3-4 articles with international/abroad scope)
     # whose average cosine sits in the 85-93% band (RAW_85 = 0.895) of a larger story within MAX_GAP_DAYS (decision D20).
@@ -172,7 +190,7 @@ def _cluster_window(db, country, days, similarity):
     abs_counts = {}
     for b in core_labels:
         b_indices = np.where(labels == b)[0]
-        b_scopes = {rows[m]["scope"] for m in b_indices}
+        b_scopes = {resolved_scopes[m] for m in b_indices}
         is_cross_scope = (sizes[b] <= 4 and ("international" in b_scopes or "abroad_local" in b_scopes))
         if sizes[b] > 2 and not is_cross_scope:
             continue
