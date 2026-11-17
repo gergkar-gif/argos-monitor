@@ -590,6 +590,7 @@
           s._secondaryMeta = secondary;
           return [
             h('span', { text: base }),
+            present.length > 0 && h('span', { class: 'print-scope', text: `· ${present.map(([id, label]) => `${s.by_scope[id]} ${label}`).join(', ')}` }),
             ...badges.slice(0, 2),
           ];
         })(),
@@ -625,11 +626,17 @@
           right: 'Right',
           state_aligned: 'State-aligned',
         }[r.bias];
+        const factLabel = {
+          high: 'High Factuality',
+          mostly_factual: 'Mostly Factual',
+          mixed: 'Mixed Factuality',
+        }[r.factuality];
         const ratingTag = [alignLabel, biasLabel].filter(Boolean).join(' · ');
+        const ratingTitle = `Affiliation: ${alignLabel || 'Unrated'} · Bias: ${biasLabel || 'Unrated'} · Factuality: ${factLabel || 'Unrated'}`;
         return h('li', null, a, o,
           h('span', { class: 'meta' },
             h('span', { class: 'stamp indigo', text: r.source }),
-            ratingTag && h('span', { class: 'stamp typed', title: `Affiliation: ${r.alignment || 'unrated'} | Bias: ${r.bias || 'unrated'} | Factuality: ${r.factuality || 'unrated'}`, text: ratingTag }),
+            ratingTag && h('span', { class: 'stamp typed', title: ratingTitle, text: ratingTag }),
             r.sim != null && h('span', { class: 'typed', text: `${r.sim}%` }),
             r.published && h('span', { text: fmtTime.format(new Date(r.published)) }),
             r.copy && h('span', { text: 'reprint, counted once' })));
@@ -1146,16 +1153,18 @@
 
   const storyRecency = (s) => new Date(s.last_seen || (s.headline && s.headline.published) || s.first_seen || 0).getTime();
 
-  const loadedPeriods = new Set();
-  function ensurePeriodLoaded(per) {
-    if (loadedPeriods.has(per)) return;
-    loadedPeriods.add(per);
-    Promise.allSettled(index.countries.map((c) => load(`${c.id}-${per}.json`))).then(() => {
+  const loadedCountryPeriods = new Set();
+  function ensureCountryPeriodLoaded(cid, per) {
+    if (!cid || cid === 'all') return;
+    const key = `${cid}-${per}`;
+    if (loadedCountryPeriods.has(key) || (window.ARGOS_DATA && window.ARGOS_DATA[key])) return;
+    loadedCountryPeriods.add(key);
+    load(`${key}.json`).then(() => {
       if (activeTab === 'disasters' || activeTab === 'violence') renderEventMonitor(activeTab);
-    });
+    }).catch(() => {});
   }
 
-  function collectEventPool(mode, per = monitorPeriod) {
+  function collectEventPool(mode, per = monitorPeriod, filterCountry = null) {
     const hm = window.ARGOS_HOME || {};
     const seen = new Set();
     const out = [];
@@ -1187,7 +1196,7 @@
       const d = window.ARGOS_DATA && window.ARGOS_DATA[`${c.id}-${per}`];
       if (d && d.stories) d.stories.forEach((s) => add(s, c.id, c.name, getRegion(c.id)));
     }
-    ensurePeriodLoaded(per);
+    if (filterCountry) ensureCountryPeriodLoaded(filterCountry, per);
     return out.sort((a, b) => storyRecency(b) - storyRecency(a));
   }
 
@@ -1197,7 +1206,7 @@
     const filterCountry = monitorCountry !== 'all' ? monitorCountry : null;
     const cutoff = periodCutoff(monitorPeriod);
 
-    const allStories = collectEventPool(mode, monitorPeriod).filter((s) => {
+    const allStories = collectEventPool(mode, monitorPeriod, filterCountry).filter((s) => {
       if (filterCountry && s.country !== filterCountry) return false;
       return true;
     });

@@ -494,7 +494,8 @@ a.stamp:hover { text-decoration: underline; }
   border: 0;
   font: 400 var(--fs-base)/1.5 var(--sans); color: var(--ink-2);
 }
-.strip p { max-width: 64ch; text-wrap: pretty; }
+.strip p { font-family: var(--serif); max-width: 64ch; text-wrap: pretty; }
+.print-scope { display: none; }
 .strip footer { margin-top: 0.2rem; }
 
 details { padding-top: 0.25rem; }
@@ -936,5 +937,6 @@ summary:hover { color: var(--ink); }
   .drawer-head { border-bottom: 1.5px solid #000; margin-bottom: 0.75rem; padding-bottom: 0.25rem; }
   .clip { break-inside: avoid; page-break-inside: avoid; margin-bottom: 1rem; padding-left: 0.85rem; }
   .clip a { color: #000 !important; text-decoration: none !important; }
+  .print-scope { display: inline !important; }
   .strip { background: #f7f6f2 !important; }
 }
