@@ -53,6 +53,7 @@ UK_SLUGS = {
     "dr_congo": "democratic-republic-of-the-congo",
     "united_states": "usa",
     "united_kingdom": None,
+    "czechia": "czech-republic",
     "east_africa": "sudan",
     "west_africa": "mali",
     "caribbean": "haiti",

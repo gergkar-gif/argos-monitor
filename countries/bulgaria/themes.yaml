@@ -1,0 +1,28 @@
+# Bulgaria's additions to the shared themes (../../themes.yaml).
+themes:
+  - id: party_gov
+    label: "National Assembly Coalitions, Judicial Reform & Anti-Corruption"
+    weight: 1.0
+    category: internal_politics
+    describe:
+      - Bulgarian National Assembly (Народно събрание) coalition negotiations, GERB-SDS (Boyko Borissov), PP-DB, DPS factions (Delyan Peevski), Vazrazhdane, President Rumen Radev, Supreme Judicial Council and anti-corruption commission
+      - Народно събрание, правителство, Бойко Борисов, ГЕРБ, ПП-ДБ, Румен Радев, Делян Пеевски, ДПС, Възраждане, съдебна реформа
+    keywords: ["народно събрание", "борисов", "borissov", "радев", "radev", "пеевски", "peevski", "герб", "gerb", "пп-дб", "дпс", "възраждане", "служебно правителство"]
+
+  - id: energy_infra
+    label: "Balkan Stream (TurkStream Gas Transit), Kozloduy Nuclear & Eurozone Entry"
+    weight: 1.0
+    category: economics
+    describe:
+      - Bulgartransgaz Balkan Stream / TurkStream natural gas transit fees and supply to Serbia and Hungary, Vertical Gas Corridor, Kozloduy Nuclear Power Plant expansion (Westinghouse AP1000), Lukoil Neftochim Burgas refinery, and Eurozone accession
+      - Булгартрансгаз, Балкански поток, Турски поток, транзит на газ за Сърбия и Унгария, Вертикален газов коридор, АЕЦ Козлодуй, Лукойл Нефтохим Бургас, еврозона, БНБ
+    keywords: ["булгартрансгаз", "bulgartransgaz", "балкански поток", "турски поток", "turkstream", "balkan stream", "козлодуй", "kozloduy", "лукойл", "нефтохим", "еврозона", "eurozone", "бнб"]
+
+  - id: diplomacy
+    label: "Schengen Corridor, North Macedonia Veto / Accession & Black Sea Security"
+    weight: 0.95
+    category: foreign_policy
+    describe:
+      - Full Schengen land-border integration with Romania and Greece, bilateral treaty and constitutional minority dispute with North Macedonia, NATO Black Sea eastern flank defense, and Turkey border security
+      - Шенген, сухопътни граници, Северна Македония, вписване на българите в конституцията, Черно море, НАТО, F-16, граница с Турция
+    keywords: ["шенген", "schengen", "северна македония", "north macedonia", "черно море", "black sea", "f-16", "гранична полиция"]

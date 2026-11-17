@@ -1,0 +1,55 @@
+id: montenegro
+name: Montenegro
+region: Central & Southeast Europe
+language: sr
+abroad_label: Regional & International Montenegrin coverage
+
+mention:
+  - "crna gora"
+  - "crne gore"
+  - "crnoj gori"
+  - "crnogorski"
+  - "podgorica"
+  - "montenegro"
+  - "montenegrin"
+  - "milojko spajić"
+  - "spajić"
+  - "spajic"
+  - "jakov milatović"
+  - "milatović"
+  - "milatovic"
+  - "andrija mandić"
+  - "mandic"
+  - "milo đukanović"
+  - "djukanovic"
+mention_regex: ['\bcrn[aeo]j?\s+gor', '\bcrnogors', '\bmontenegr']
+mention_section: null
+
+url_sections:
+  foreign: [svijet, planet, regija, globus]
+  skip: [sport, zabava, kultura, magazin, lifestyle, auto, tech, showbiz]
+
+aggregator_outlets:
+  domestic: ["mina", "rtcg", "vijesti", "vijesti.me", "pobjeda", "cdm", "cdm.me", "portal analitika", "dan", "dan.co.me",
+             "antena m", "adria tv", "gradski.me", "bankar.me", "investitor.me", "monitor.co.me", "borba.me"]
+  abroad_local: ["slobodna evropa", "al jazeera balkans", "balkan insight"]
+
+excerpt:
+  dateline: '^\s*(?:MINA|RTCG|PODGORICA)\s*[-–—:]\s*'
+  noise: '^(foto|izvor|video|pročitajte više|oglas|\(|\[)'
+
+classify:
+  internal_politics:
+    - "Vlada Crne Gore, Skupština Crne Gore, premijer Milojko Spajić, predsjednik Jakov Milatović, Andrija Mandić, PES (Evropa sad), DPS, izbori, Ustavni sud"
+  economics:
+    - "ekonomija, budžet, Evropa sad 2, inflacija, turizam, Luka Bar, autoput Bar-Boljare, energetika, EPCG, investicije"
+  foreign_policy:
+    - "vanjska politika, Evropska unija, IBAR, zatvaranje poglavlja, odnosi sa Srbijom, Hrvatskom, Mađarskom, NATO"
+  defence_security:
+    - "Vojska Crne Gore, Ministarstvo odbrane, NATO, ANB, SDT, Specijalno državno tužilaštvo, organizovani kriminal, kavački i škaljarski klan, policija"
+  society:
+    - "obrazovanje, zdravstvo, penzije, popis stanovništva, SPC, pravosuđe, korupcija, protest"
+
+geo: ME
+reddit: [montenegro]
+last_reviewed: 2026-11-17

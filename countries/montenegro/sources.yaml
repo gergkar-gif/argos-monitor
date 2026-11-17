@@ -1,0 +1,160 @@
+# Montenegro source registry (decision D15).
+# Combines statutory public broadcaster (RTCG) and wire agency (MINA) with leading Podgorica dailies and investigative portals (Vijesti, Pobjeda, CdM / Cafe del Montenegro, Dan, Portal Analitika, Antena M, Monitor, Bankar.me, Investitor.me, Gradski, Adria TV).
+
+sources:
+  - id: rtcg_me
+    name: RTCG (Radio and Television of Montenegro)
+    homepage: https://rtcg.me
+    language: sr
+    scope: domestic
+    kind: official
+    aggregator: google_news
+    governing_body: Radio i Televizija Crne Gore (statutory national public-service broadcaster)
+    state_affiliated: true
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:rtcg.me+when:3d&hl=sr&gl=ME&ceid=ME:sr", section: RTCG, category_hint: general}
+
+  - id: vijesti_me
+    name: Vijesti
+    homepage: https://www.vijesti.me
+    language: sr
+    scope: domestic
+    kind: media
+    governing_body: Daily Press d.o.o. / United Media (Podgorica — Montenegro's most influential independent daily newspaper and television network)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.vijesti.me/rss", section: Najnovije, category_hint: internal_politics}
+
+  - id: cdm_me
+    name: Cafe del Montenegro (CdM)
+    homepage: https://www.cdm.me
+    language: sr
+    scope: domestic
+    kind: media
+    governing_body: CdM Media d.o.o. (high-traffic independent Podgorica digital news daily covering politics, EU accession, and security)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.cdm.me/feed/", section: Politika & Društvo, category_hint: internal_politics}
+
+  - id: pobjeda_me
+    name: Pobjeda
+    homepage: https://www.pobjeda.me
+    language: sr
+    scope: domestic
+    kind: media
+    governing_body: Nova Pobjeda d.o.o. (Montenegro's oldest daily newspaper of record founded in 1944 in Podgorica)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:pobjeda.me+when:3d&hl=sr&gl=ME&ceid=ME:sr", section: Politika, category_hint: internal_politics}
+
+  - id: dan_me
+    name: Dan
+    homepage: https://www.dan.co.me
+    language: sr
+    scope: domestic
+    kind: media
+    governing_body: Jumedia Mont d.o.o. (major Podgorica daily newspaper covering parliamentary politics, judiciary, and regional ties)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.dan.co.me/rss", section: Vijesti, category_hint: internal_politics}
+
+  - id: portalanalitika_me
+    name: Portal Analitika
+    homepage: https://www.portalanalitika.me
+    language: sr
+    scope: domestic
+    kind: media
+    governing_body: Analitika Informacije d.o.o. (independent Podgorica political and macroeconomic analytical daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.portalanalitika.me/rss", section: Politika & Ekonomija, category_hint: internal_politics}
+
+  - id: antenam_me
+    name: Antena M
+    homepage: https://www.antenam.net
+    language: sr
+    scope: domestic
+    kind: media
+    governing_body: Antena M Radio & Portal (independent pro-Western civic broadcaster and news portal in Podgorica)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.antenam.net/rss", section: Politika, category_hint: internal_politics}
+
+  - id: bankar_me
+    name: Bankar.me
+    homepage: https://www.bankar.me
+    language: sr
+    scope: domestic
+    kind: media
+    governing_body: Bankar Media Podgorica (Montenegro's premier banking, fiscal policy, and macroeconomic portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.bankar.me/feed/", section: Ekonomija, category_hint: economics}
+
+  - id: investitor_me
+    name: Investitor.me
+    homepage: https://investitor.me
+    language: sr
+    scope: domestic
+    kind: media
+    governing_body: Investitor Media d.o.o. (business, infrastructure, energy, and regional investment daily in Podgorica)
+    state_affiliated: false
+    feeds:
+      - {url: "https://investitor.me/feed/", section: Biznis, category_hint: economics}
+
+  - id: monitor_me
+    name: Monitor (Crna Gora)
+    homepage: https://www.monitor.co.me
+    language: sr
+    scope: domestic
+    kind: media
+    governing_body: Monitor d.o.o. (pioneering independent Montenegrin investigative political weekly founded in 1990)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.monitor.co.me/feed/", section: Politika, category_hint: internal_politics}
+
+  - id: gradski_me
+    name: Gradski Portal
+    homepage: https://gradski.me
+    language: sr
+    scope: domestic
+    kind: media
+    governing_body: RTV Podgorica / Gradski Media (capital city broadcast and national political news portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://gradski.me/feed/", section: Vijesti, category_hint: general}
+
+  - id: adria_me
+    name: Adria TV
+    homepage: https://adria.tv
+    language: sr
+    scope: domestic
+    kind: media
+    governing_body: Adria Media (Podgorica television and digital news portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://adria.tv/feed/", section: Vijesti, category_hint: general}
+
+  - id: slobodnaevropa_me
+    name: Radio Slobodna Evropa (Crna Gora)
+    homepage: https://www.slobodnaevropa.org
+    language: sr
+    scope: abroad_local
+    kind: media
+    aggregator: google_news
+    governing_body: Radio Free Europe / Radio Liberty (USAGM)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:slobodnaevropa.org+(%22Crna+Gora%22+OR+Podgorica+OR+Spaji%C4%87)+when:7d&hl=sr&gl=ME&ceid=ME:sr", section: RSE Crna Gora, category_hint: internal_politics}
+
+  - id: gnews_en_me
+    name: Google News (Montenegro - International)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Montenegro+(Podgorica+OR+Spajic+OR+Milatovic+OR+%22EU+accession%22+OR+NATO)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Montenegro politics & EU, category_hint: foreign_policy}

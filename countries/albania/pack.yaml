@@ -1,0 +1,51 @@
+id: albania
+name: Albania
+region: Central & Southeast Europe
+language: sq
+abroad_label: Regional & International Albanian coverage
+
+mention:
+  - "shqipëri"
+  - "shqipëria"
+  - "shqiptar"
+  - "tiranë"
+  - "tirana"
+  - "albania"
+  - "albanian"
+  - "edi rama"
+  - "rama"
+  - "sali berisha"
+  - "berisha"
+  - "kuvendi"
+  - "spak"
+mention_regex: ['\bshqip', '\balbani']
+mention_section: null
+
+url_sections:
+  foreign: [bota, rajoni, kosova, world]
+  skip: [sport, showbiz, lifestyle, kultura, roze, fun, horoskopi, auto, tech]
+
+aggregator_outlets:
+  domestic: ["ata", "atsh", "rtsh", "balkanweb", "top channel", "klan", "tv klan", "panorama", "gazeta panorama",
+             "shqiptarja.com", "reporter.al", "exit.al", "monitor.al", "syri.net", "oranews", "lapsi.al", "vizion plus", "dosja.al", "albanian daily news"]
+  abroad_local: ["balkan insight", "evropa e lire", "euronews albania"]
+
+excerpt:
+  dateline: '^\s*(?:ATSH|ATA|TIRANË|TIRANA)\s*[-–—:]\s*'
+  noise: '^(foto|burimi|video|lexo më shumë|reklamë|\(|\[)'
+
+classify:
+  internal_politics:
+    - "Qeveria e Shqipërisë, Kuvendi, kryeministri Edi Rama, Partia Socialiste (PS), Partia Demokratike (PD), Sali Berisha, SPAK, GJKKO, zgjedhjet"
+  economics:
+    - "ekonomia, buxheti, Banka e Shqipërisë, turizmi, energjia, investimet, porti i Durrësit, Korridori 8, inflacioni"
+  foreign_policy:
+    - "politika e jashtme, Bashkimi Evropian, integrimi evropian, marrëdhëniet me Italinë, Greqinë, Kosovën, Hungarinë, SHBA, NATO"
+  defence_security:
+    - "Ministria e Mbrojtjes, Forcat e Armatosura, baza e Kuçovës, NATO, siguria kombëtare, policia, krimi i organizuar"
+  society:
+    - "arsimi, shëndetësia, pensionet, drejtësia, korrupsioni, emigracioni, protesta, moti"
+
+geo: AL
+reddit: [albania]
+last_reviewed: 2026-11-17

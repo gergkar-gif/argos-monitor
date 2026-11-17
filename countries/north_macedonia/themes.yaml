@@ -1,0 +1,28 @@
+# North Macedonia's additions to the shared themes (../../themes.yaml).
+themes:
+  - id: party_gov
+    label: "Mickoski (VMRO-DPMNE) Government, VLEN-DUI Dynamics & Judicial Reform"
+    weight: 1.0
+    category: internal_politics
+    describe:
+      - Prime Minister Hristijan Mickoski (VMRO-DPMNE), President Gordana Siljanovska-Davkova, VLEN Albanian coalition partner vs. DUI opposition (Ali Ahmeti), SDSM opposition, and anti-corruption investigations
+      - Влада на Христијан Мицкоски, ВМРО-ДПМНЕ, Гордана Сиљановска-Давкова, ВЛЕН, ДУИ, СДСМ, Собрание, судски реформи
+    keywords: ["мицкоски", "mickoski", "сиљановска", "siljanovska", "вмро-дпмне", "vmro-dpmne", "влен", "vlen", "дуи", "dui", "сдсм", "sdsm", "собрание"]
+
+  - id: diplomacy
+    label: "EU Accession Constitutional Dispute (Bulgaria) & Strategic Partnership with Hungary"
+    weight: 1.0
+    category: foreign_policy
+    describe:
+      - EU accession negotiating framework and constitutional amendment dispute with Bulgaria, Prespa Agreement relations with Greece, strategic intergovernmental summits and sovereign loan cooperation with Hungary, and Western Balkans Growth Plan
+      - преговарачка рамка со ЕУ, уставни измени, спор со Бугарија, стратешко партнерство и заем од Унгарија, План за раст на Западен Балкан
+    keywords: ["уставни измени", "преговарачка рамка", "бугарија", "унгарија", "орбан", "европска унија", "преспански договор", "hungarian loan"]
+
+  - id: energy_infra
+    label: "Corridor 8 & Corridor 10 Rail/Motorway Infrastructure & Energy Interconnectors"
+    weight: 0.95
+    category: economics
+    describe:
+      - Pan-European Corridor 10 (North-South Belgrade–Skopje–Thessaloniki–Budapest transit route) and Corridor 8 (Adriatic–Black Sea) highway and railway construction (Bechtel-Enka), Greece–North Macedonia gas interconnector, and Hungarian Eximbank sovereign financing
+      - Коридор 10, Коридор 8, автопат, железница, Бехтел и Енка, гасен интерконектор со Грција, унгарски кредит, буџет
+    keywords: ["коридор 10", "коридор 8", "corridor 10", "corridor 8", "бехтел", "интерконектор", "железница", "кредит"]

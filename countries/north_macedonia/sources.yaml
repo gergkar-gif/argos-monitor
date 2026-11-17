@@ -1,0 +1,160 @@
+# North Macedonia source registry (decision D15).
+# Combines statutory state wire (MIA) and public broadcaster (MRT) with leading independent investigative and analytical outlets (360 Stepeni, SDK.mk / Sakam Da Kazam, Prizma / BIRN, Telma, Sloboden Pečat, Nezavisen, Nova Makedonija, Makfax, Plusinfo, Alsat-M, Kanal 5).
+
+sources:
+  - id: mia_mk
+    name: MIA (Media Information Agency)
+    homepage: https://mia.mk
+    language: mk
+    scope: domestic
+    kind: official
+    aggregator: google_news
+    governing_body: Медиумска информативна агенција (statutory national news wire of North Macedonia)
+    state_affiliated: true
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:mia.mk+when:3d&hl=mk&gl=MK&ceid=MK:mk", section: МИА, category_hint: general}
+
+  - id: 360stepeni_mk
+    name: 360 Stepeni (360 Степени)
+    homepage: https://360stepeni.mk
+    language: mk
+    scope: domestic
+    kind: media
+    governing_body: 360 Stepeni Media (Skopje — premier independent political analysis and investigative journalism portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://360stepeni.mk/feed/", section: Вести, category_hint: internal_politics}
+
+  - id: sdk_mk
+    name: SDK.mk (Сакам Да Кажам)
+    homepage: https://sdk.mk
+    language: mk
+    scope: domestic
+    kind: media
+    governing_body: Sakam Da Kazam DOOEL (independent Skopje digital daily covering judiciary, rule of law, and governance)
+    state_affiliated: false
+    feeds:
+      - {url: "https://sdk.mk/index.php/feed/", section: Македонија, category_hint: internal_politics}
+
+  - id: slobodenpecat_mk
+    name: Sloboden Pečat (Слободен печат)
+    homepage: https://www.slobodenpecat.mk
+    language: mk
+    scope: domestic
+    kind: media
+    governing_body: Sloboden Pecat DOO (North Macedonia's highest-circulation daily newspaper and digital portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.slobodenpecat.mk/feed/", section: Македонија, category_hint: general}
+
+  - id: telma_mk
+    name: Telma TV (Телма)
+    homepage: https://telma.com.mk
+    language: mk
+    scope: domestic
+    kind: media
+    governing_body: Makpetrol AD / Telma Television (independent national television broadcaster renowned for balanced political reporting)
+    state_affiliated: false
+    feeds:
+      - {url: "https://telma.com.mk/feed/", section: Вести, category_hint: internal_politics}
+
+  - id: prizma_mk
+    name: Prizma.mk (BIRN Macedonia)
+    homepage: https://prizma.mk
+    language: mk
+    scope: domestic
+    kind: media
+    governing_body: Balkan Investigative Reporting Network Macedonia (premier investigative journalism center in Skopje)
+    state_affiliated: false
+    feeds:
+      - {url: "https://prizma.mk/feed/", section: Истражувања, category_hint: internal_politics}
+
+  - id: makfax_mk
+    name: Makfax (Макфакс)
+    homepage: https://makfax.com.mk
+    language: mk
+    scope: domestic
+    kind: wire
+    governing_body: Makfax Independent News Agency (private news agency founded in 1992 in Skopje)
+    state_affiliated: false
+    feeds:
+      - {url: "https://makfax.com.mk/feed/", section: Македонија, category_hint: general}
+
+  - id: nezavisen_mk
+    name: Nezavisen Vesnik (Независен)
+    homepage: https://nezavisen.mk
+    language: mk
+    scope: domestic
+    kind: media
+    governing_body: Nezavisen Vesnik DOO (independent Skopje daily newspaper covering politics, economy, and EU integration)
+    state_affiliated: false
+    feeds:
+      - {url: "https://nezavisen.mk/feed/", section: Македонија, category_hint: internal_politics}
+
+  - id: novamakedonija_mk
+    name: Nova Makedonija (Нова Македонија)
+    homepage: https://www.novamakedonija.com.mk
+    language: mk
+    scope: domestic
+    kind: media
+    governing_body: Rekord Media (historic Skopje daily newspaper founded in 1944)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.novamakedonija.com.mk/feed/", section: Македонија, category_hint: internal_politics}
+
+  - id: plusinfo_mk
+    name: Plusinfo (Плусинфо)
+    homepage: https://plusinfo.mk
+    language: mk
+    scope: domestic
+    kind: media
+    governing_body: Sloboden Pecat / Plusinfo Media (high-reach Skopje political and opinion news portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://plusinfo.mk/feed/", section: Вести, category_hint: internal_politics}
+
+  - id: alsat_mk
+    name: Alsat-M
+    homepage: https://alsat.mk
+    language: mk
+    scope: domestic
+    kind: media
+    governing_body: Alsat-M Television (bilingual Albanian and Macedonian national broadcaster in Skopje)
+    state_affiliated: false
+    feeds:
+      - {url: "https://alsat.mk/feed/", section: Вести, category_hint: internal_politics}
+
+  - id: faktor_mk
+    name: Faktor.mk (Фактор)
+    homepage: https://faktor.mk
+    language: mk
+    scope: domestic
+    kind: media
+    governing_body: Faktor Media Skopje (leading Macedonian business, banking, and economic news portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://faktor.mk/feed", section: Економија, category_hint: economics}
+
+  - id: slobodnaevropa_mk
+    name: Radio Slobodna Evropa (RFE/RL Macedonian)
+    homepage: https://www.slobodnaevropa.mk
+    language: mk
+    scope: abroad_local
+    kind: media
+    aggregator: google_news
+    governing_body: Radio Free Europe / Radio Liberty (USAGM)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:slobodnaevropa.mk+when:7d&hl=mk&gl=MK&ceid=MK:mk", section: РСЕ, category_hint: internal_politics}
+
+  - id: gnews_en_mk
+    name: Google News (North Macedonia - International)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=%22North+Macedonia%22+(Skopje+OR+Mickoski+OR+EU+OR+Bulgaria+OR+Hungary)+when:7d&hl=en-US&gl=US&ceid=US:en", section: North Macedonia politics & diplomacy, category_hint: foreign_policy}
