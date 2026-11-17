@@ -345,20 +345,67 @@ def _write(name, payload, var):
     (SITE_DATA / f"{name}.js").write_text(head + "\n", encoding="utf8")
 
 
-def _top_global_and_regional(items, key, g_limit, r_limit=6):
+def _top_global_and_regional(items, key, g_limit, r_limit=6, c_limit=2):
     ranked = sorted(items, key=key, reverse=True)
-    out, seen, r_counts = [], set(), {}
-    for s in ranked[:g_limit]:
+    out, seen, r_counts, c_counts = [], set(), {}, {}
+    distinct_countries = len({s.get("country") for s in ranked if s.get("country")})
+    global_c_limit = 1 if distinct_countries >= g_limit else c_limit
+    for s in ranked:
+        if len(out) >= g_limit:
+            break
+        cid = s.get("country")
+        if global_c_limit and cid and c_counts.get(cid, 0) >= global_c_limit:
+            continue
         out.append(s)
         seen.add(s["id"])
+        if cid:
+            c_counts[cid] = c_counts.get(cid, 0) + 1
     for s in ranked:
         reg = s.get("region") or "Other"
+        cid = s.get("country")
+        if c_limit and cid and c_counts.get(cid, 0) >= c_limit:
+            continue
         if r_counts.get(reg, 0) < r_limit:
-            r_counts[reg] = r_counts.get(reg, 0) + 1
             if s["id"] not in seen:
                 out.append(s)
                 seen.add(s["id"])
+                r_counts[reg] = r_counts.get(reg, 0) + 1
+                if cid:
+                    c_counts[cid] = c_counts.get(cid, 0) + 1
     return out
+
+
+@lru_cache(maxsize=None)
+def _desk_outlet_scale(cid):
+    if cid and cid in packs.pack_ids():
+        return max(12, len(packs.load(cid)["sources"]))
+    return 15
+
+
+def _norm_breadth(s):
+    """Normalize independent outlet count against the desk's catalogued outlet pool and compress
+    Google News / GDELT echo amplification so 30-outlet mega-desks don't drown out 12-16 outlet desks."""
+    scale = _desk_outlet_scale(s.get("country"))
+    indep = s.get("independent_sources") or 0
+    core_share = min(indep, scale) / float(scale)
+    echo_tail = 0.12 * math.log2(1 + max(0, indep - scale))
+    by_scope = s.get("by_scope") or {}
+    dom_bonus = 0.12 if (by_scope.get("domestic") or 0) >= 2 else 0.0
+    multi_scope = 0.08 if sum(1 for v in by_scope.values() if v) >= 2 else 0.0
+    return core_share + echo_tail + dom_bonus + multi_scope
+
+
+def _norm_velocity_24h(s):
+    """Estimate independent 24h outlet breadth normalized by desk size, preventing single-outlet
+    dispatch floods (e.g. 5 outlets publishing 30 items) from outranking 20-outlet breaking stories."""
+    scale = _desk_outlet_scale(s.get("country"))
+    indep = s.get("independent_sources") or 0
+    arts = max(1, s.get("articles") or 1)
+    l24 = s.get("last_24h") or 0
+    est_indep_24h = min(float(indep), float(l24) * (float(indep) / float(arts)))
+    core_share = min(est_indep_24h, float(scale)) / float(scale)
+    echo_tail = 0.12 * math.log2(1.0 + max(0.0, est_indep_24h - float(scale)))
+    return core_share + echo_tail
 
 
 _ELECTION_TERMS = ("election", "választás", "bầu cử", "élection", "elección", "wahl", "wybory", "выборы", "seçim", "انتخابات")
@@ -478,19 +525,19 @@ def _home(now, countries):
             } if top else None,
         })
     most = _top_global_and_regional(
-        briefing_pool, lambda s: (s.get("category") != "other", s["independent_sources"], s.get("score") or 0.0), 8, r_limit=3)
+        briefing_pool, lambda s: (s.get("category") != "other", round(_norm_breadth(s), 4), s.get("score") or 0.0), 8, r_limit=3, c_limit=2)
     growing = _top_global_and_regional(
-        (s for s in briefing_pool if (s.get("last_24h") or 0) >= 2),
-        lambda s: (s.get("category") != "other", s.get("last_24h") or 0, s.get("score") or 0.0), 6, r_limit=3)
+        (s for s in briefing_pool if (s.get("last_24h") or 0) >= 2 and (s.get("independent_sources") or 0) >= 2),
+        lambda s: (s.get("category") != "other", round(_norm_velocity_24h(s), 4), round(_norm_breadth(s), 4), s.get("score") or 0.0), 6, r_limit=3, c_limit=2)
     elections = _top_global_and_regional(
         (s for s in briefing_pool if _is_election(s)),
-        lambda s: (s["independent_sources"], s.get("score") or 0.0), 6, r_limit=3)
+        lambda s: (round(_norm_breadth(s), 4), s.get("score") or 0.0), 6, r_limit=3, c_limit=1)
     disasters = _top_global_and_regional(
         (s for s in pool if s.get("disaster_type")),
-        lambda s: ((s.get("last_24h") or 0) > 0, s["independent_sources"], s.get("score") or 0.0), 12, r_limit=5)
+        lambda s: ((s.get("last_24h") or 0) > 0, round(_norm_breadth(s), 4), s.get("score") or 0.0), 12, r_limit=5, c_limit=2)
     violent = _top_global_and_regional(
         (s for s in pool if s.get("violence_type")),
-        lambda s: ((s.get("last_24h") or 0) > 0, s["independent_sources"], s.get("score") or 0.0), 12, r_limit=5)
+        lambda s: ((s.get("last_24h") or 0) > 0, round(_norm_breadth(s), 4), s.get("score") or 0.0), 12, r_limit=5, c_limit=2)
     return {"generated_at": now, "desks": desks, "most_reported": most, "abroad_only": [],
             "growing": growing, "elections": elections, "disasters": disasters, "violent_events": violent}
 

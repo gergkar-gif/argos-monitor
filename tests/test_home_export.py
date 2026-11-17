@@ -184,6 +184,38 @@ class HomeExportTests(unittest.TestCase):
             self.assertEqual(spain_desk["elections"], 7)
             self.assertEqual([s["id"] for s in home["violent_events"]], ["es_e2"])
 
+    def test_cross_country_desk_size_and_spam_normalization(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            data_dir = Path(tmp)
+            # Vietnam (30-source desk): 6 outlets pumping 98 articles (30 in 24h)
+            vn_spam = _story("vn_spam", category="foreign_policy", score=12.0, outlets=6, last_24h=30)
+            vn_spam["articles"] = 98
+            vn_spam["by_scope"] = {"domestic": 6, "abroad_local": 0, "international": 0}
+            # France (16-source desk): 10 outlets with 12 genuine articles (10 in 24h)
+            fr_real = _story("fr_real", category="foreign_policy", score=12.0, outlets=10, last_24h=10)
+            fr_real["articles"] = 12
+            fr_real["by_scope"] = {"domestic": 10, "abroad_local": 0, "international": 0}
+
+            (data_dir / "vietnam-7d.json").write_text(json.dumps({"totals": {"foreign_policy": 1}, "stories": [vn_spam]}), encoding="utf8")
+            (data_dir / "vietnam-24h.json").write_text(json.dumps({"totals": {}, "stories": []}), encoding="utf8")
+            (data_dir / "france-7d.json").write_text(json.dumps({"totals": {"foreign_policy": 1}, "stories": [fr_real]}), encoding="utf8")
+            (data_dir / "france-24h.json").write_text(json.dumps({"totals": {}, "stories": []}), encoding="utf8")
+
+            with patch.object(export, "SITE_DATA", data_dir):
+                home = export._home("2026-11-17T00:00:00+00:00", [
+                    {"id": "vietnam", "name": "Vietnam", "region": "Southeast Asia"},
+                    {"id": "france", "name": "France", "region": "Western Europe"},
+                ])
+
+            # France must beat Vietnam in both fastest growing and most reported
+            self.assertEqual(home["growing"][0]["id"], "fr_real")
+            self.assertEqual(home["most_reported"][0]["id"], "fr_real")
+            # Equal outlet counts favor the tighter desk (France 5/16 > Vietnam 5/30)
+            self.assertGreater(
+                export._norm_breadth({"country": "france", "independent_sources": 5, "by_scope": {"domestic": 5}}),
+                export._norm_breadth({"country": "vietnam", "independent_sources": 5, "by_scope": {"domestic": 5}}),
+            )
+
 
 if __name__ == "__main__":
     unittest.main()
