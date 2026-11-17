@@ -1,0 +1,231 @@
+sources:
+- id: ruv_is
+  name: RÚV
+  homepage: https://www.ruv.is
+  language: is
+  scope: domestic
+  kind: media
+  governing_body: Ríkisútvarpið (Icelandic National Broadcasting Service)
+  state_affiliated: false
+  notes: Statutory Icelandic public broadcaster covering Alþingi, civil protection, and economy.
+  feeds:
+  - url: https://www.ruv.is/rss/frettir
+    category_hint: internal_politics
+- id: ruv_en_is
+  name: RÚV English
+  homepage: https://www.ruv.is/english
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Ríkisútvarpið (Icelandic National Broadcasting Service)
+  state_affiliated: false
+  notes: English-language public service desk of RÚV covering Icelandic politics and volcanic events.
+  feeds:
+  - url: https://www.ruv.is/rss/english
+    category_hint: general
+- id: mbl_is
+  name: Morgunblaðið (mbl.is)
+  homepage: https://www.mbl.is
+  language: is
+  scope: domestic
+  kind: media
+  governing_body: Árvakur hf.
+  state_affiliated: false
+  notes: Iceland's historic conservative national daily newspaper of record founded in 1913.
+  feeds:
+  - url: https://www.mbl.is/feeds/fp/
+    category_hint: internal_politics
+  - url: https://www.mbl.is/feeds/innlent/
+    category_hint: internal_politics
+- id: visir_is
+  name: Vísir
+  homepage: https://www.visir.is
+  language: is
+  scope: domestic
+  kind: media
+  governing_body: Sýn hf. (Stöð 2 / Bylgjan)
+  state_affiliated: false
+  notes: Iceland's highest-traffic commercial broadcast and digital breaking-news portal.
+  feeds:
+  - url: https://www.visir.is/rss/allt
+    category_hint: general
+- id: heimildin_is
+  name: Heimildin
+  homepage: https://heimildin.is
+  language: is
+  scope: domestic
+  kind: media
+  governing_body: Heimildin ehf.
+  state_affiliated: false
+  notes: Independent investigative news outlet formed by the merger of Stundin and Kjarninn.
+  feeds:
+  - url: https://heimildin.is/rss/
+    category_hint: internal_politics
+- id: vb_is
+  name: Viðskiptablaðið
+  homepage: https://www.vb.is
+  language: is
+  scope: domestic
+  kind: media
+  governing_body: Myllusetur ehf.
+  state_affiliated: false
+  notes: Iceland's premier business, finance, and fisheries weekly and daily portal.
+  feeds:
+  - url: https://www.vb.is/rss/
+    category_hint: economics
+- id: dv_is
+  name: DV
+  homepage: https://www.dv.is
+  language: is
+  scope: domestic
+  kind: media
+  governing_body: Frjáls fjölmiðlun ehf.
+  state_affiliated: false
+  notes: Mass-market Icelandic tabloid and digital news portal.
+  feeds:
+  - url: https://www.dv.is/feed
+    category_hint: general
+- id: samstodin_is
+  name: Samstöðin
+  homepage: https://samstodin.is
+  language: is
+  scope: domestic
+  kind: media
+  governing_body: Alþýðufélagið
+  state_affiliated: false
+  notes: Independent left-wing Icelandic media outlet focusing on labour and public policy.
+  feeds:
+  - url: https://samstodin.is/feed/
+    category_hint: internal_politics
+- id: midjan_is
+  name: Miðjan
+  homepage: https://www.midjan.is
+  language: is
+  scope: domestic
+  kind: media
+  governing_body: Miðjan ehf.
+  state_affiliated: false
+  notes: Independent Icelandic political news and parliamentary commentary site.
+  feeds:
+  - url: https://www.midjan.is/feed/
+    category_hint: internal_politics
+- id: akureyri_is
+  name: Akureyri.net
+  homepage: https://www.akureyri.net
+  language: is
+  scope: domestic
+  kind: media
+  governing_body: Akureyri.net
+  state_affiliated: false
+  notes: Independent regional news outlet for Akureyri and Northern Iceland.
+  feeds:
+  - url: https://www.akureyri.net/feed/
+    category_hint: general
+- id: vikubladid_is
+  name: Vikublaðið
+  homepage: https://www.vikubladid.is
+  language: is
+  scope: domestic
+  kind: media
+  governing_body: Útgáfufélagið Vikublaðið ehf.
+  state_affiliated: false
+  notes: Regional weekly and digital news service for Northeast Iceland.
+  feeds:
+  - url: https://www.vikubladid.is/feed/
+    category_hint: general
+- id: bb_is
+  name: Bæjarins besta
+  homepage: https://bb.is
+  language: is
+  scope: domestic
+  kind: media
+  governing_body: Bæjarins besta ehf.
+  state_affiliated: false
+  notes: Regional news portal covering the Westfjords and Ísafjörður.
+  feeds:
+  - url: https://bb.is/feed/
+    category_hint: general
+- id: sunnlenska_is
+  name: Sunnlenska
+  homepage: https://www.sunnlenska.is
+  language: is
+  scope: domestic
+  kind: media
+  governing_body: Sunnlenska ehf.
+  state_affiliated: false
+  notes: Regional news portal covering Southern Iceland and Selfoss.
+  feeds:
+  - url: https://www.sunnlenska.is/feed/
+    category_hint: general
+- id: feykir_is
+  name: Feykir
+  homepage: https://www.feykir.is
+  language: is
+  scope: domestic
+  kind: media
+  governing_body: Nýprent ehf.
+  state_affiliated: false
+  notes: Regional newspaper for Northwest Iceland (Skagafjörður and Húnavatnssýslur).
+  feeds:
+  - url: https://www.feykir.is/feed/
+    category_hint: general
+- id: eyjafrettir_is
+  name: Eyjafréttir
+  homepage: https://eyjafrettir.is
+  language: is
+  scope: domestic
+  kind: media
+  governing_body: Eyjafréttir ehf.
+  state_affiliated: false
+  notes: Regional news outlet for the Westman Islands (Vestmannaeyjar) fisheries hub.
+  feeds:
+  - url: https://eyjafrettir.is/feed/
+    category_hint: general
+- id: icelandreview_is
+  name: Iceland Review
+  homepage: https://www.icelandreview.com
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: MD Reykjavík ehf.
+  state_affiliated: false
+  notes: Historic English-language Icelandic news publication founded in 1963.
+  feeds:
+  - url: https://www.icelandreview.com/feed/
+    category_hint: general
+- id: grapevine_is
+  name: The Reykjavík Grapevine
+  homepage: https://grapevine.is
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Fröken Ltd.
+  state_affiliated: false
+  notes: Independent English-language Reykjavík newspaper covering politics, society, and culture.
+  feeds:
+  - url: https://grapevine.is/feed/
+    category_hint: society
+- id: stjornarradid_is
+  name: Government of Iceland (Stjórnarráðið)
+  homepage: https://www.stjornarradid.is
+  language: is
+  scope: domestic
+  kind: official
+  governing_body: Prime Minister's Office of Iceland
+  state_affiliated: true
+  notes: Official Icelandic government ministries, Alþingi, and Central Bank announcements.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:stjornarradid.is+OR+site:government.is+OR+site:althingi.is)+when:7d&hl=en-US&gl=US&ceid=US:en
+    category_hint: internal_politics
+- id: gnews_iceland_intl
+  name: Google News (Iceland - International Press)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Iceland+OR+Icelandic+OR+Reykjavik)+(government+OR+NATO+OR+volcano+OR+Grindavik+OR+economy)+when:3d&hl=en-US&gl=US&ceid=US:en
+    category_hint: foreign_policy

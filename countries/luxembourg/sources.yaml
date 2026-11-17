@@ -16,14 +16,15 @@ sources:
 
   - id: rtl_lu
     name: RTL Lëtzebuerg / RTL Today
-    homepage: https://www.rtl.lu
+    homepage: https://today.rtl.lu
     language: en
     scope: domestic
     kind: media
     governing_body: CLT-UFA / RTL Group (Luxembourg's national public-service contract broadcaster in Luxembourgish, French, and English)
     state_affiliated: false
     feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:today.rtl.lu+OR+site:infos.rtl.lu)+when:3d&hl=en-US&gl=US&ceid=US:en", section: RTL News, category_hint: general}
+      - {url: "https://today.rtl.lu/rss/news", section: RTL Today News, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=(site:rtl.lu+OR+site:infos.rtl.lu)+when:3d&hl=fr&gl=LU&ceid=LU:fr", section: RTL Lëtzebuerg & Infos, category_hint: general}
 
   - id: wort_lu
     name: Luxemburger Wort / Virgule
@@ -78,7 +79,7 @@ sources:
     governing_body: Editpress / Lumédia (independent French-language daily newspaper in Luxembourg)
     state_affiliated: false
     feeds:
-      - {url: "https://lequotidien.lu/feed/", section: Luxembourg, category_hint: internal_politics}
+      - {url: "https://news.google.com/rss/search?q=site:lequotidien.lu+when:7d&hl=fr&gl=LU&ceid=LU:fr", section: Luxembourg, category_hint: internal_politics}
 
   - id: tageblatt_lu
     name: Tageblatt
@@ -122,7 +123,18 @@ sources:
     governing_body: G-Media S.à r.l. (independent English-language daily news portal in Luxembourg)
     state_affiliated: false
     feeds:
-      - {url: "https://chronicle.lu/rss.xml", section: Luxembourg News, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=site:chronicle.lu+when:7d&hl=en-US&gl=US&ceid=US:en", section: Luxembourg News, category_hint: general}
+
+  - id: land_lu
+    name: d'Lëtzebuerger Land
+    homepage: https://www.land.lu
+    language: fr
+    scope: domestic
+    kind: media
+    governing_body: Éditions d'Lëtzebuerger Land (independent political, economic, and cultural weekly founded in 1954)
+    state_affiliated: false
+    feeds:
+      - {url: "https://land.lu/feed/", section: Politique & Économie, category_hint: internal_politics}
 
   - id: woxx_lu
     name: woxx
@@ -134,6 +146,18 @@ sources:
     state_affiliated: false
     feeds:
       - {url: "https://www.woxx.lu/feed/", section: Politik, category_hint: internal_politics}
+
+  - id: gnews_luxembourg_batch
+    name: Google News (Luxembourg Public Radio & Green/Parliament - 100komma7/Infogreen/Chd.lu)
+    homepage: https://news.google.com
+    language: fr
+    scope: domestic
+    kind: media
+    governing_body: Google LLC
+    state_affiliated: false
+    aggregator: google_news
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:100komma7.lu+OR+site:infogreen.lu+OR+site:chd.lu)+when:7d&hl=fr&gl=LU&ceid=LU:fr", section: Radio & Parlement, category_hint: internal_politics}
 
   - id: gnews_en_lu
     name: Google News (Luxembourg & ECJ/EIB - International)

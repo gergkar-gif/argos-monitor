@@ -23,10 +23,20 @@ sources:
   state_affiliated: false
   notes: Leading French center-right daily of record.
   feeds:
-  - url: https://news.google.com/rss/search?q=site:lefigaro.fr+when:7d&hl=en-US&gl=US&ceid=US:en
+  - url: https://news.google.com/rss/search?q=site:lefigaro.fr+when:3d&hl=fr&gl=FR&ceid=FR:fr
     category_hint: internal_politics
-  - url: https://news.google.com/rss/search?q=site:lefigaro.fr+france+when:7d&hl=en-US&gl=US&ceid=US:en
-    category_hint: economics
+- id: liberation
+  name: Libération
+  homepage: https://www.liberation.fr
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Fonds de dotation pour une presse indépendante
+  state_affiliated: false
+  notes: Major French center-left national daily of record.
+  feeds:
+  - url: https://www.liberation.fr/arc/outboundfeeds/rss-all/
+    category_hint: internal_politics
 - id: france_info
   name: France Info
   homepage: https://www.francetvinfo.fr
@@ -41,20 +51,18 @@ sources:
     category_hint: internal_politics
   - url: https://www.francetvinfo.fr/economie.rss
     category_hint: economics
-- id: les_echos
-  name: Les Echos
-  homepage: https://www.lesechos.fr
+- id: rfi_fr
+  name: Radio France Internationale (RFI)
+  homepage: https://www.rfi.fr/fr
   language: fr
   scope: domestic
   kind: media
-  governing_body: LVMH Media
+  governing_body: France Médias Monde (public broadcaster)
   state_affiliated: false
-  notes: Premier French business, macroeconomic and financial daily.
+  notes: French public international broadcaster tracking French foreign policy and diplomacy.
   feeds:
-  - url: https://news.google.com/rss/search?q=site:lesechos.fr+when:7d&hl=en-US&gl=US&ceid=US:en
-    category_hint: internal_politics
-  - url: https://news.google.com/rss/search?q=site:lesechos.fr+france+when:7d&hl=en-US&gl=US&ceid=US:en
-    category_hint: economics
+  - url: https://www.rfi.fr/fr/france/rss
+    category_hint: foreign_policy
 - id: france_24_fr
   name: France 24 (Français)
   homepage: https://www.france24.com/fr
@@ -67,57 +75,113 @@ sources:
   feeds:
   - url: https://www.france24.com/fr/france/rss
     category_hint: internal_politics
-- id: google_news_france_politics
-  name: Google News (France Élysée & Assemblée Nationale)
-  homepage: https://news.google.com
+- id: les_echos
+  name: Les Echos
+  homepage: https://www.lesechos.fr
   language: fr
   scope: domestic
   kind: media
-  governing_body: Google LLC
+  governing_body: LVMH Media
   state_affiliated: false
-  aggregator: google_news
-  notes: Aggregator feed tracking Macron, Barnier government, and legislative votes.
+  notes: Premier French business, macroeconomic and financial daily.
   feeds:
-  - url: https://news.google.com/rss/search?q=Macron+OR+Barnier+OR+%22Assembl%C3%A9e+nationale%22+OR+%22motion+de+censure%22+when:3d&hl=fr&gl=FR&ceid=FR:fr
-    category_hint: internal_politics
-- id: google_news_france_economy
-  name: Google News (France Public Debt & Deficit)
-  homepage: https://news.google.com
-  language: fr
-  scope: domestic
-  kind: media
-  governing_body: Google LLC
-  state_affiliated: false
-  aggregator: google_news
-  notes: Aggregator feed tracking sovereign deficit, budget negotiations, and Banque
-    de France.
-  feeds:
-  - url: https://news.google.com/rss/search?q=%22d%C3%A9ficit+public%22+OR+%22Banque+de+France%22+OR+budget+2025+France+when:3d&hl=fr&gl=FR&ceid=FR:fr
+  - url: https://news.google.com/rss/search?q=site:lesechos.fr+when:3d&hl=fr&gl=FR&ceid=FR:fr
     category_hint: economics
-- id: google_news_france_defense
-  name: Google News (France Strategic Autonomy & Defense)
-  homepage: https://news.google.com
+- id: latribune_fr
+  name: La Tribune
+  homepage: https://www.latribune.fr
   language: fr
   scope: domestic
   kind: media
-  governing_body: Google LLC
+  governing_body: La Tribune Nouvelle
   state_affiliated: false
-  aggregator: google_news
-  notes: Aggregator feed tracking French military posture, Lecornu, and European defense.
+  notes: Major French financial and economic daily covering industrial policy and European markets.
   feeds:
-  - url: https://news.google.com/rss/search?q=%22Minist%C3%A8re+des+Arm%C3%A9es%22+OR+Lecornu+OR+%22autonomie+strat%C3%A9gique%22+OR+dissuasion+France+when:3d&hl=fr&gl=FR&ceid=FR:fr
-    category_hint: defence_security
-- id: liberation
-  name: Libération
-  homepage: https://www.liberation.fr
+  - url: https://www.latribune.fr/feed.xml
+    category_hint: economics
+- id: le_parisien
+  name: Le Parisien
+  homepage: https://www.leparisien.fr
   language: fr
   scope: domestic
   kind: media
-  governing_body: Fonds de dotation pour une presse indépendante
+  governing_body: LVMH Media
   state_affiliated: false
-  notes: Major French center-left national daily of record.
+  notes: Major French popular daily covering Paris region, policing, and national politics.
   feeds:
-  - url: https://www.liberation.fr/arc/outboundfeeds/rss-all/
+  - url: https://feeds.leparisien.fr/leparisien/rss
+    category_hint: general
+- id: ouest_france
+  name: Ouest-France
+  homepage: https://www.ouest-france.fr
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Association pour le soutien des principes de la démocratie humaniste
+  state_affiliated: false
+  notes: Highest-circulation French daily covering national politics and regional economy.
+  feeds:
+  - url: https://www.ouest-france.fr/rss/une
+    category_hint: internal_politics
+- id: sudouest_fr
+  name: Sud Ouest
+  homepage: https://www.sudouest.fr
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Groupe Sud Ouest
+  state_affiliated: false
+  notes: Major regional daily newspaper of record in southwestern France.
+  feeds:
+  - url: https://www.sudouest.fr/rss.xml
+    category_hint: general
+- id: bfmtv_fr
+  name: BFMTV
+  homepage: https://www.bfmtv.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: CMA Média
+  state_affiliated: false
+  notes: France's highest-reach 24-hour television news network.
+  feeds:
+  - url: https://www.bfmtv.com/rss/news-24-7/
+    category_hint: general
+- id: publicsenat_fr
+  name: Public Sénat
+  homepage: https://www.publicsenat.fr
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Sénat / Public Sénat (parliamentary channel)
+  state_affiliated: false
+  notes: French parliamentary television channel covering Senate bills and institutional debates.
+  feeds:
+  - url: https://www.publicsenat.fr/feed
+    category_hint: internal_politics
+- id: vingt_minutes_fr
+  name: 20 Minutes (France)
+  homepage: https://www.20minutes.fr
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Rossel / Groupe SIPA Ouest-France
+  state_affiliated: false
+  notes: Widely read French national news portal.
+  feeds:
+  - url: https://www.20minutes.fr/feeds/rss-une.xml
+    category_hint: general
+- id: lexpress_fr
+  name: L'Express
+  homepage: https://www.lexpress.fr
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Groupe L'Express
+  state_affiliated: false
+  notes: Leading French weekly news magazine focusing on politics, defense, and economy.
+  feeds:
+  - url: https://www.lexpress.fr/rss/politique.xml
     category_hint: internal_politics
 - id: courrier_intl
   name: Courrier International
@@ -131,44 +195,167 @@ sources:
   feeds:
   - url: https://www.courrierinternational.com/feed/all/rss.xml
     category_hint: foreign_policy
-- id: ouest_france
-  name: Ouest-France
-  homepage: https://www.ouest-france.fr
+- id: marianne_fr
+  name: Marianne
+  homepage: https://www.marianne.net
   language: fr
   scope: domestic
   kind: media
-  governing_body: Association pour le soutien des principes de la démocratie humaniste
+  governing_body: CMI France
   state_affiliated: false
-  notes: Highest-circulation French daily covering national politics and regional
-    maritime economy.
+  notes: French republican weekly news magazine covering politics, secularism, and social policy.
   feeds:
-  - url: https://www.ouest-france.fr/rss/une
+  - url: https://www.marianne.net/rss.xml
     category_hint: internal_politics
-- id: rfi_fr
-  name: Radio France Internationale (RFI)
-  homepage: https://www.rfi.fr/fr
+- id: valeursactuelles_fr
+  name: Valeurs Actuelles
+  homepage: https://www.valeursactuelles.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Valmonde
+  state_affiliated: false
+  notes: Right-wing French weekly political magazine.
+  feeds:
+  - url: https://www.valeursactuelles.com/feed/
+    category_hint: internal_politics
+- id: humanite_fr
+  name: L'Humanité
+  homepage: https://www.humanite.fr
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Société Nouvelle du Journal L'Humanité
+  state_affiliated: false
+  notes: Historic French left-wing daily newspaper covering unions and social policy.
+  feeds:
+  - url: https://www.humanite.fr/feed
+    category_hint: internal_politics
+- id: challenges_fr
+  name: Challenges
+  homepage: https://www.challenges.fr
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Éditions Croque Futur (LVMH)
+  state_affiliated: false
+  notes: French weekly business and economic policy magazine.
+  feeds:
+  - url: https://www.challenges.fr/rss.xml
+    category_hint: economics
+- id: mediapart_fr
+  name: Mediapart
+  homepage: https://www.mediapart.fr
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Société Éditrice de Mediapart (independent)
+  state_affiliated: false
+  notes: France's leading independent, reader-funded investigative journal.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:mediapart.fr+when:7d&hl=fr&gl=FR&ceid=FR:fr
+    category_hint: internal_politics
+- id: blast_fr
+  name: Blast
+  homepage: https://www.blast-info.fr
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Blast SAS
+  state_affiliated: false
+  notes: Independent French investigative web media outlet.
+  feeds:
+  - url: https://api.blast-info.fr/rss.xml
+    category_hint: internal_politics
+- id: afp_fr
+  name: AFP (France)
+  homepage: https://www.afp.com
+  language: fr
+  scope: domestic
+  kind: wire
+  governing_body: Agence France-Presse
+  state_affiliated: false
+  notes: France's statutory global news agency and wire of record.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:afp.com+france+when:7d&hl=fr&gl=FR&ceid=FR:fr
+    category_hint: internal_politics
+- id: elysee_gov_fr
+  name: Gouvernement.fr / Vie-publique
+  homepage: https://www.info.gouv.fr
   language: fr
   scope: domestic
   kind: official
-  governing_body: France Médias Monde (state broadcaster)
+  governing_body: Government of the French Republic
   state_affiliated: true
-  notes: French public international broadcaster tracking French foreign policy and
-    diplomacy.
+  notes: Official French executive announcements, Matignon decrees, and legislative briefs.
   feeds:
-  - url: https://news.google.com/rss/search?q=site:rfi.fr+france+when:7d&hl=en-US&gl=US&ceid=US:en
-    category_hint: foreign_policy
-- id: lexpress_fr
-  name: L'Express
-  homepage: https://www.lexpress.fr
+  - url: https://news.google.com/rss/search?q=(site:elysee.fr+OR+site:info.gouv.fr+OR+site:vie-publique.fr)+when:7d&hl=fr&gl=FR&ceid=FR:fr
+    category_hint: internal_politics
+- id: gnews_france_media_batch
+  name: Google News (France TV, Radio & Weeklies - TF1/Le Point/La Croix/CNews/RTL/Europe 1)
+  homepage: https://news.google.com
   language: fr
   scope: domestic
   kind: media
-  governing_body: Groupe L'Express
+  governing_body: Google LLC
   state_affiliated: false
-  notes: Leading French weekly news magazine focusing on politics, defense, and economy.
+  aggregator: google_news
+  notes: Aggregator capturing major RSS-blocked French broadcasters, dailies, and weeklies.
   feeds:
-  - url: https://www.lexpress.fr/rss/politique.xml
+  - url: https://news.google.com/rss/search?q=(site:tf1info.fr+OR+site:lepoint.fr+OR+site:la-croix.com+OR+site:cnews.fr+OR+site:rtl.fr+OR+site:europe1.fr)+when:3d&hl=fr&gl=FR&ceid=FR:fr
     category_hint: internal_politics
+- id: gnews_france_regional_batch
+  name: Google News (France Regional, Business & Investigative - La Dépêche/Le Progrès/Capital/Disclose)
+  homepage: https://news.google.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator capturing regional dailies, business magazines, and investigative outlets.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:ladepeche.fr+OR+site:leprogres.fr+OR+site:capital.fr+OR+site:disclose.ngo+OR+site:francebleu.fr)+when:3d&hl=fr&gl=FR&ceid=FR:fr
+    category_hint: general
+- id: google_news_france_politics
+  name: Google News (France Élysée & Assemblée Nationale)
+  homepage: https://news.google.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator feed tracking Macron, Matignon, and Assemblée nationale votes.
+  feeds:
+  - url: https://news.google.com/rss/search?q=Macron+OR+Matignon+OR+%22Assembl%C3%A9e+nationale%22+OR+%22motion+de+censure%22+when:3d&hl=fr&gl=FR&ceid=FR:fr
+    category_hint: internal_politics
+- id: google_news_france_economy
+  name: Google News (France Public Debt & Deficit)
+  homepage: https://news.google.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator feed tracking sovereign deficit, budget negotiations, and Banque de France.
+  feeds:
+  - url: https://news.google.com/rss/search?q=%22d%C3%A9ficit+public%22+OR+%22Banque+de+France%22+OR+%22projet+de+loi+de+finances%22+France+when:3d&hl=fr&gl=FR&ceid=FR:fr
+    category_hint: economics
+- id: google_news_france_defense
+  name: Google News (France Strategic Autonomy & Defense)
+  homepage: https://news.google.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator feed tracking French military posture, Lecornu, and European defense.
+  feeds:
+  - url: https://news.google.com/rss/search?q=%22Minist%C3%A8re+des+Arm%C3%A9es%22+OR+%22autonomie+strat%C3%A9gique%22+OR+dissuasion+France+when:3d&hl=fr&gl=FR&ceid=FR:fr
+    category_hint: defence_security
 - id: gnews_france_intl
   name: Google News (France - International Press)
   homepage: https://news.google.com
@@ -184,29 +371,3 @@ sources:
     section: International Coverage
     category_hint: foreign_policy
     active: true
-
-- id: mediapart_fr
-  name: "Mediapart"
-  homepage: https://www.mediapart.fr
-  language: fr
-  scope: domestic
-  kind: media
-  governing_body: "Société Éditrice de Mediapart (independent)"
-  state_affiliated: false
-  notes: "France's leading independent, reader-funded investigative journal uncovering political finance and state accountability."
-  feeds:
-  - url: https://www.mediapart.fr/articles/feed
-    category_hint: internal_politics
-
-- id: latribune_fr
-  name: "La Tribune"
-  homepage: https://www.latribune.fr
-  language: fr
-  scope: domestic
-  kind: media
-  governing_body: "La Tribune Nouvelle"
-  state_affiliated: false
-  notes: "Major French financial and economic daily covering industrial policy, defense procurement, and European markets."
-  feeds:
-  - url: https://www.latribune.fr/feed.xml
-    category_hint: economics

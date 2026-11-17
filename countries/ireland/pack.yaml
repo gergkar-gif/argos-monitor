@@ -8,9 +8,9 @@ mention:
 - irish
 - dublin
 - cork
+- micheál martin
+- micheal martin
 - simon harris
-- harris
-- mícheál martin
 - dáil
 - taoiseach
 - tánaiste
@@ -34,11 +34,26 @@ geo: IE
 aggregator_outlets:
   domestic:
   - RTÉ
+  - RTÉ News
   - The Irish Times
   - Irish Independent
   - TheJournal.ie
   - Irish Examiner
+  - Business Post
+  - Newstalk
+  - BreakingNews.ie
+  - The Currency
+  - The Ditch
+  - Gript
+  - Agriland
+  - Extra.ie
+  - Irish Mirror
+  - EchoLive.ie
+  - Sunday World
+  - Gov.ie
   abroad_local:
   - BBC Northern Ireland
   - Belfast Telegraph
-last_reviewed: 2026-11-12
+  - The Irish News
+  - The Irish Post
+last_reviewed: 2026-11-17

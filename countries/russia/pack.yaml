@@ -52,6 +52,8 @@ aggregator_outlets:
     - "rg.ru"
     - "rt"
     - "sputnik"
+    - "lenta.ru"
+    - "fontanka"
   abroad_local:
     - "meduza"
     - "the moscow times"
@@ -62,6 +64,15 @@ aggregator_outlets:
     - "current time"
     - "holod"
     - "the insider"
+    - "the bell"
+    - "istories"
+    - "agentstvo"
+    - "agents.media"
+    - "proekt"
+    - "mediazona"
+    - "verstka"
+    - "ovd-info"
+    - "7x7"
 
 excerpt:
   dateline: '^\s*(?:MOSCOW|TASS|RIA NOVOSTI|INTERFAX|МОСКВА|ТАСС|РИА НОВОСТИ)\s*[-–—:]\s*'

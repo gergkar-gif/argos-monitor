@@ -6,7 +6,7 @@
 
 <p align="center">
   <strong>Open-source multilingual media &amp; crisis intelligence monitor for foreign-affairs analysts</strong><br>
-  <em>96 country desks · 1,586 sources (1,769 feeds) · Deterministic ONNX clustering · Syndication deduplication · State-media tagging · Offline MarianMT translation · Zero LLM hallucinations</em>
+  <em>99 country desks · 1,900 sources (2,079 feeds) · Deterministic ONNX clustering · Syndication deduplication · State-media tagging · Offline MarianMT translation · Zero LLM hallucinations</em>
 </p>
 
 <p align="center">
@@ -38,7 +38,7 @@ A scheduled GitHub Actions workflow runs every 12 hours (at 09:17 and 21:17 UTC)
 
 ```mermaid
 flowchart LR
-    A["01 · Ingest<br/>1,769 RSS & Google News feeds"] --> B["02 · Extract<br/>Round-robin Trafilatura full-text"]
+    A["01 · Ingest<br/>2,079 RSS & Google News feeds"] --> B["02 · Extract<br/>Round-robin Trafilatura full-text"]
     B --> C["03 · Normalise<br/>Unicode NFC"]
     C --> D["04 · Relevance<br/>Section & mention gate"]
     D --> E["05 · Embed<br/>ONNX multilingual-e5-small"]
@@ -52,7 +52,7 @@ flowchart LR
 
 | Stage | Module | Description |
 | :--- | :--- | :--- |
-| **01 · Ingest** | [`argos/ingest.py`](argos/ingest.py) | Polls domestic, diaspora (`abroad_local`), and international RSS/Atom feeds across 96 country desks. |
+| **01 · Ingest** | [`argos/ingest.py`](argos/ingest.py) | Polls domestic, diaspora (`abroad_local`), and international RSS/Atom feeds across 99 country desks. |
 | **02 · Extract** | [`argos/extract.py`](argos/extract.py) | Fetches full article text via Trafilatura and resolves syndicated publisher names. |
 | **03 · Normalise** | [`argos/normalise.py`](argos/normalise.py) | Applies Unicode NFC normalisation across all text fields (essential for Vietnamese diacritics and Khmer script). |
 | **04 · Relevance** | [`argos/relevance.py`](argos/relevance.py) | Filters out lifestyle/sport noise and enforces country-mention rules on general international feeds. |
@@ -74,12 +74,12 @@ Each monitored country is defined declaratively in `countries/<id>/` with zero c
 - **`sources.yaml`** — Curated media directory across three scopes (`domestic`, `abroad_local`, `international`) with ownership metadata and `state_affiliated` flags.
 - **`themes.yaml`** — Bilingual foreign-desk priority themes, weights, keywords, and semantic descriptions tailored to the country's geopolitical fault lines.
 
-### Currently Active Country Packs (96 Countries across 16 Regional Desks)
+### Currently Active Country Packs (99 Countries across 16 Regional Desks)
 
 - **North America (2 Desks):**
   - **United States** (`countries/united_states/`) — Papers of record (*AP*, *Politico*, *The Hill*, *NPR*, *Defense News*), official White House / State Dept briefings, and international perspectives (`en`).
   - **Canada** (`countries/canada/`) — National papers of record and public broadcaster (*CBC News*, *The Globe and Mail*, *National Post*, *Toronto Star*), and Bank of Canada/trade reporting (`en`).
-- **Western Europe (15 Desks):**
+- **Western Europe (16 Desks):**
   - **United Kingdom** (`countries/united_kingdom/`) — National papers of record and broadcasters (*BBC News*, *The Guardian*, *The Telegraph*, *Sky News*), official Downing Street releases, and global European coverage (`en`).
   - **Germany** (`countries/germany/`) — Public broadcasters (*Tagesschau / ARD*, *ZDFheute*), leading news weeklies (*Der Spiegel*), and financial dailies (*Handelsblatt*) (`de` / `en`).
   - **France** (`countries/france/`) — Papers of record (*Le Monde*, *Le Figaro*), public broadcaster (*France Info*, *France 24*), and macroeconomic daily (*Les Echos*) (`fr` / `en`).
@@ -94,7 +94,8 @@ Each monitored country is defined declaratively in `countries/<id>/` with zero c
   - **Ireland** (`countries/ireland/`) — National public service broadcaster (*RTÉ News*), paper of record (*The Irish Times*), and independent press (*Irish Independent*) (`en`).
   - **Portugal** (`countries/portugal/`) — National broadsheet of record (*Público*), public broadcaster (*RTP*), and English service (*Portugal Resident*) (`pt` / `en`).
   - **Sweden** (`countries/sweden/`) — National public broadcasters (*SVT*, *Sveriges Radio*), and leading morning broadsheets (*Dagens Nyheter*, *Svenska Dagbladet*) (`sv` / `en`).
-  - **Finland** (`countries/finland/`) — Statutory national broadcaster (*Yle Uutiset* / *Yle News*), subscription paper of record (*Helsingin Sanomat*), and financial daily (*Kauppalehti*) (`fi` / `en`).
+  - **Finland** (`countries/finland/`) — Statutory national broadcaster (*Yle Uutiset* / *Yle News*), subscription paper of record (*Helsingin Sanomat*), financial daily (*Kauppalehti*), regional dailies (*Turun Sanomat*, *Kaleva*, *Savon Sanomat*), and Swedish-language press (*HBL*, *Svenska Yle*) (`fi` / `sv` / `en`).
+  - **Iceland** (`countries/iceland/`) — Statutory public broadcaster (*RÚV*), newspapers of record (*Morgunblaðið / mbl.is*, *Vísir*), financial press (*Viðskiptablaðið*), investigative/popular outlets (*Heimildin*, *DV*, *Samstöðin*, *Miðjan*), regional papers (*Akureyri.net*, *Vikublaðið*, *Bæjarins besta*), and English press (*Iceland Review*, *The Reykjavík Grapevine*) (`is` / `en`).
 - **Central & Southeast Europe (14 Desks):**
   - **Austria** (`countries/austria/`) — Statutory public broadcaster (*ORF*), national broadsheet papers of record (*Der Standard*, *Die Presse*), investigative weekly (*Falter*), and Vienna coalition monitors (`de` / `en`).
   - **Hungary** (`countries/hungary/`) — Independent dailies and investigative portals (*Telex*, *HVG*, *444*, *24.hu*, *Válasz Online*, *Átlátszó*, *Portfolio*, *G7*, *Népszava*), statutory wire/broadcaster (*MTI / Hirado.hu*) and pro-government press (*Magyar Nemzet*, *Origo*, *Mandiner*), cross-border Carpathian Basin Hungarian press (*Maszol*, *Transtelex*, *Krónika*, *Új Szó*, *Magyar Szó*, *KISZó*), and international coverage (`hu` / `en`).
@@ -110,13 +111,15 @@ Each monitored country is defined declaratively in `countries/<id>/` with zero c
   - **North Macedonia** (`countries/north_macedonia/`) — State wire (*MIA*), investigative & analytical outlets (*360 Stepeni*, *SDK.mk*, *Prizma / BIRN*, *Telma TV*), and national dailies (*Sloboden Pečat*, *Nezavisen*, *Nova Makedonija*, *Makfax*, *Alsat-M*) (`mk` / `en`).
   - **Albania** (`countries/albania/`) — State wire (*ATSH*), investigative center (*Reporter.al / BIRN*), leading broadcasters and dailies (*BalkanWeb*, *Top Channel*, *Gazeta Panorama*, *Shqiptarja.com*, *Lapsi.al*, *Euronews Albania*), financial magazine (*Revista Monitor*), and English daily (*Albanian Daily News*) (`sq` / `en`).
   - **Kosovo** (`countries/kosovo/`) — Paper of record (*Koha Ditore*), public broadcaster (*RTK*), digital media (*Gazeta Express*, *Kallxo*), and North Mitrovica local coverage (*KoSSev*) (`sq` / `sr` / `en`).
-- **Eastern Europe (6 Desks):**
-  - **Russia** (`countries/russia/`) — State wire agencies and financial dailies (*TASS*, *Interfax*, *Kommersant*) contrasted against exiled independent journalism (*Meduza*, *The Moscow Times*, *Radio Svoboda*) (`ru` / `en`).
-  - **Ukraine** (`countries/ukraine/`) — State wire (*Ukrinform*), leading independent wartime press (*The Kyiv Independent*, *Ukrainska Pravda*, *NV*, *Babel*, *Interfax-Ukraine*), and diaspora coverage (*Radio Svoboda*) (`uk` / `en`).
-  - **Belarus** (`countries/belarus/`) — State wire (*BelTA*) alongside premier exiled independent newsrooms (*Zerkalo.io*, *Nasha Niva*, *Euroradio*, *Radio Svaboda*) (`be` / `ru` / `en`).
-  - **Moldova** (`countries/moldova/`) — Investigative & independent Chișinău press (*Ziarul de Gardă*, *NewsMaker*, *Deschide.md*), state wire (*Moldpres* / *TRM*), and Romanian/EU regional coverage (`ro` / `en`).
-  - **Romania** (`countries/romania/`) — National news agency (*Agerpres*), investigative & digital outlets (*HotNews.ro*, *Digi24*, *G4Media*), and English service (*Romania Insider*) (`ro` / `en`).
-  - **Baltics** (`countries/baltics/`) — Public service broadcasters (*ERR* Estonia, *LSM* Latvia, *LRT* Lithuania), and independent Baltic regional daily (*The Baltic Times*) (`en` / `et` / `lv` / `lt`).
+- **Eastern Europe (8 Desks):**
+  - **Russia** (`countries/russia/`) — State wire agencies and domestic press (*TASS*, *RIA Novosti*, *Interfax*, *Kommersant*, *RBC*, *Vedomosti*, *Izvestia*, *Fontanka*) contrasted against exiled independent & investigative journalism (*Meduza*, *Novaya Gazeta Europe*, *The Moscow Times*, *The Bell*, *IStories*, *Agentstvo*, *Proekt*, *Mediazona*, *Radio Svoboda*) (`ru` / `en`).
+  - **Ukraine** (`countries/ukraine/`) — State wire & broadcaster (*Ukrinform*, *Suspilne*), independent wires (*Interfax-Ukraine*, *UNIAN*), leading wartime, investigative & defense press (*Ukrainska Pravda*, *The Kyiv Independent*, *NV*, *LB.ua*, *ZN.UA*, *Babel*, *Hromadske*, *Bihus.Info*, *Detector Media*, *Militarnyi*, *European Pravda*), and *Radio Svoboda* (`uk` / `en`).
+  - **Belarus** (`countries/belarus/`) — State wire (*BelTA*) alongside exiled independent & regional newsrooms (*Zerkalo.io*, *Nasha Niva*, *Charter'97*, *REFORM.news*, *Salidarnasts*, *Euroradio*, *Belsat*, *Radio Svaboda*, *Radio Racyja*, *Pozirk*, *Hrodna.life*) (`be` / `ru` / `en`).
+  - **Moldova** (`countries/moldova/`) — Investigative & independent Chișinău media (*Ziarul de Gardă*, *RISE Moldova*, *NewsMaker*, *TV8*, *PRO TV Chișinău*, *Jurnal.md*, *AGORA*), national & financial portals (*Deschide.md*, *Point.md*, *UNIMEDIA*, *Bani.md*, *Mold-Street*), regional press (*SP Bălți*, *Nokta*), and *Moldpres* / *TRM* (`ro` / `ru` / `en`).
+  - **Romania** (`countries/romania/`) — Statutory/commercial wires (*Agerpres*, *News.ro*, *Mediafax*), broadsheets & portals (*HotNews.ro*, *Adevărul*, *G4Media*, *Libertatea*, *Cotidianul*), investigative newsrooms (*Recorder*, *PressOne*), financial press (*Ziarul Financiar*, *Profit.ro*, *Economedia*), broadcast (*Digi24*, *PRO TV*, *Europa FM*, *TVR Info*), and *Romania Insider* (`ro` / `en`).
+  - **Estonia** (`countries/estonia/`) — Statutory public broadcaster (*ERR Uudised* / *ERR News*), national broadsheets & portals (*Postimees*, *Eesti Päevaleht*, *Delfi Estonia*, *Õhtuleht*, *Maaleht*), financial daily (*Äripäev*), investigative journalism (*Eesti Ekspress*), regional papers (*Tartu Postimees*, *Pärnu Postimees*, *Sakala*, *Saarte Hääl*, *Lääne Elu*), and *Estonian World* (`et` / `ru` / `en`).
+  - **Latvia** (`countries/latvia/`) — Statutory public broadcaster (*LSM.lv* in Latvian, English & Russian), national & financial dailies (*Diena*, *Latvijas Avīze*, *Dienas Bizness*), commercial & regional portals (*Delfi Latvia*, *TVNET*, *Apollo.lv*, *Jauns.lv*, *Liepājniekiem*), investigative/analytical outlets (*Re:Baltica*, *Ir*, *Pietiek.com*, *Puaro.lv*), and *Chayka.lv* (`lv` / `ru` / `en`).
+  - **Lithuania** (`countries/lithuania/`) — Statutory public broadcaster (*LRT Naujienos* / *LRT English*), broadsheets & financial daily (*Verslo žinios*, *Kauno diena*, *Respublika.lt*, *Bernardinai.lt*), high-reach portals (*15min*, *Delfi Lithuania*, *Lrytas.lt*, *TV3.lt*, *Alfa.lt*), regional press (*Atvira Klaipėda*, *Vakarų ekspresas*, *Made in Vilnius*), Polish minority daily (*Kurier Wileński*), and investigative center (*Siena*) (`lt` / `en`).
 - **South Caucasus (3 Desks):**
   - **Georgia** (`countries/georgia/`) — Bilingual independent daily (*Civil.ge* in Georgian & English), Caucasus investigative outlets (*OC Media*, *JAMnews*), and official government press (`ka` / `en`).
   - **Azerbaijan** (`countries/azerbaijan/`) — Official/pro-government Baku wires (*AZERTAC*, *Trend*, *APA*) contrasted against exiled independent outlets (*Meydan TV* in Azerbaijani & English, *OC Media*) (`az` / `en`).

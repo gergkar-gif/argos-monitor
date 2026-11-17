@@ -9,6 +9,8 @@ sources:
   state_affiliated: false
   notes: Statutory national public service broadcaster of Ireland.
   feeds:
+  - url: https://www.rte.ie/feeds/rss/?index=/news/ireland/
+    category_hint: general
   - url: https://www.rte.ie/feeds/rss/?index=/news/politics/
     category_hint: internal_politics
   - url: https://www.rte.ie/feeds/rss/?index=/news/business/
@@ -21,8 +23,7 @@ sources:
   kind: media
   governing_body: The Irish Times Trust
   state_affiliated: false
-  notes: Dublin daily broadsheet paper of record founded in 1859 covering parliamentary
-    politics and European affairs.
+  notes: Dublin daily broadsheet paper of record founded in 1859.
   feeds:
   - url: https://www.irishtimes.com/arc/outboundfeeds/rss/category/politics/
     category_hint: internal_politics
@@ -38,6 +39,30 @@ sources:
   feeds:
   - url: https://www.independent.ie/rss
     category_hint: general
+- id: irishexaminer_ie
+  name: Irish Examiner
+  homepage: https://www.irishexaminer.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: The Irish Times Group
+  state_affiliated: false
+  notes: Cork-based national broadsheet newspaper covering Munster and national affairs.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:irishexaminer.com+when:3d&hl=en-IE&gl=IE&ceid=IE:en
+    category_hint: internal_politics
+- id: businesspost_ie
+  name: Business Post
+  homepage: https://www.businesspost.ie
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Kilcullen Kapital Partners
+  state_affiliated: false
+  notes: Premier Irish weekly financial, corporate, and political intelligence newspaper.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:businesspost.ie+when:7d&hl=en-IE&gl=IE&ceid=IE:en
+    category_hint: economics
 - id: thejournal_ie
   name: TheJournal.ie
   homepage: https://www.thejournal.ie
@@ -50,6 +75,18 @@ sources:
   feeds:
   - url: https://www.thejournal.ie/feed/
     category_hint: general
+- id: thecurrency_ie
+  name: The Currency
+  homepage: https://thecurrency.news
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Currency Media Ltd
+  state_affiliated: false
+  notes: Independent Irish investigative business, tax, and public-policy journal.
+  feeds:
+  - url: https://thecurrency.news/feed/
+    category_hint: economics
 - id: ontheditch_ie
   name: The Ditch
   homepage: https://www.ontheditch.com
@@ -70,7 +107,7 @@ sources:
   kind: media
   governing_body: Media Grand Ltd
   state_affiliated: false
-  notes: Independent digital news and commentary website covering Irish politics and society.
+  notes: Independent conservative digital news and commentary website.
   feeds:
   - url: https://gript.ie/feed/
     category_hint: internal_politics
@@ -94,7 +131,7 @@ sources:
   kind: media
   governing_body: Silicon Republic
   state_affiliated: false
-  notes: Leading European technology, science and digital economy news service based in Dublin.
+  notes: Irish technology, science and digital economy news service based in Dublin.
   feeds:
   - url: https://www.siliconrepublic.com/feed
     category_hint: economics
@@ -118,7 +155,7 @@ sources:
   kind: media
   governing_body: Reach plc
   state_affiliated: false
-  notes: National daily news and investigative reporting outlet.
+  notes: National daily tabloid news outlet.
   feeds:
   - url: https://www.irishmirror.ie/news/?service=rss
     category_hint: general
@@ -130,21 +167,46 @@ sources:
   kind: media
   governing_body: Irish Post Media
   state_affiliated: false
-  notes: Long-established publication covering Irish affairs and the global diaspora.
+  notes: Publication covering Irish affairs and the diaspora in Britain.
   feeds:
   - url: https://www.irishpost.com/feed
     category_hint: general
-- id: broadsheet_ie
-  name: Broadsheet.ie
-  homepage: https://www.broadsheet.ie
+- id: gov_ie_press
+  name: Government of Ireland (Gov.ie)
+  homepage: https://www.gov.ie
+  language: en
+  scope: domestic
+  kind: official
+  governing_body: Government of Ireland
+  state_affiliated: true
+  notes: Official press releases from Irish ministries and the Department of the Taoiseach.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:gov.ie+when:7d&hl=en-IE&gl=IE&ceid=IE:en
+    category_hint: internal_politics
+- id: gnews_ireland_media_batch
+  name: Google News (Ireland Broadcast, Regional & Tabloid - Newstalk/BreakingNews/Irish News/Sunday World/Echo)
+  homepage: https://news.google.com
   language: en
   scope: domestic
   kind: media
-  governing_body: Broadsheet Media
+  governing_body: Google LLC
   state_affiliated: false
-  notes: Independent daily news, satire and political commentary journal.
+  aggregator: google_news
+  notes: Aggregator capturing radio, regional, and tabloid Irish outlets without open RSS.
   feeds:
-  - url: https://www.broadsheet.ie/feed/
+  - url: https://news.google.com/rss/search?q=(site:newstalk.com+OR+site:breakingnews.ie+OR+site:irishnews.com+OR+site:sundayworld.com+OR+site:echolive.ie)+when:3d&hl=en-IE&gl=IE&ceid=IE:en
+    category_hint: general
+- id: gnews_ireland_ie
+  name: Google News (Ireland National News)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss?hl=en-IE&gl=IE&ceid=IE:en
     category_hint: internal_politics
 - id: gnews_ireland_intl
   name: Google News (Ireland Politics & Economy - International)

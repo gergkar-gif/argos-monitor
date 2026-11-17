@@ -1,0 +1,61 @@
+id: latvia
+name: Latvia
+region: Eastern Europe
+language: lv
+abroad_label: Regional & diaspora Latvian outlets
+mention:
+- latvia
+- latvian
+- latvija
+- latvijas
+- latvijā
+- riga
+- rīga
+- saeima
+- evika siliņa
+- siliņa
+- edgars rinkēvičs
+- rinkēvičs
+- daugavpils
+- liepāja
+url_sections:
+  skip:
+  - sport
+  - sports
+  - entertainment
+  - lifestyle
+  - izklaide
+excerpt:
+  dateline: ^\s*(?:RIGA|RĪGA|LETA|BNS|LSM)\s*[-–:]\s*
+reddit:
+- latvia
+geo: LV
+aggregator_outlets:
+  domestic:
+  - LSM
+  - LSM.lv
+  - Delfi
+  - Delfi.lv
+  - TVNET
+  - Diena
+  - Latvijas Avīze
+  - LA.lv
+  - Jauns.lv
+  - Apollo.lv
+  - Dienas Bizness
+  - Re:Baltica
+  - Neatkarīgā Rīta Avīze
+  - NRA.lv
+  - Ir.lv
+  - LETA
+  - Puaro.lv
+  - Pietiek.com
+  - Kursors.lv
+  - Chayka.lv
+  - BB.lv
+  - MK.gov.lv
+  abroad_local:
+  - The Baltic Times
+  - Meduza
+  - Barents Observer
+last_reviewed: 2026-11-17

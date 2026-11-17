@@ -1,5 +1,8 @@
 # Albania source registry (decision D15).
-# Combines statutory state wire (ATSH / ATA) and public broadcaster (RTSH) with leading investigative and analytical portals (Reporter.al / BIRN Albania, BalkanWeb, Top Channel, Panorama, Shqiptarja.com, Monitor.al, Exit.al, Lapsi.al, Syri.net, Dosja.al, Albanian Daily News).
+# Combines statutory wire (ATSH / ATA) and public broadcaster (RTSH) with investigative portals (Reporter.al / BIRN Albania,
+# BoldNews), high-reach digital & broadcast outlets (BalkanWeb, Euronews Albania, ABC News, Gazeta Si, JavaNews, Faxweb, Fjala,
+# Argumentum, Botimet Nazarko), and major TV/print/economic dailies covered via Google News (Top Channel, Panorama, Shqiptarja,
+# Monitor.al, Syri.net, Dosja.al, Lapsi.al, TV Klan, Gazeta Tema, Ora News, Albanian Daily News).
 
 sources:
   - id: atsh_al
@@ -8,11 +11,21 @@ sources:
     language: sq
     scope: domestic
     kind: official
-    aggregator: google_news
     governing_body: Agjencia Telegrafike Shqiptare (official statutory state news agency of Albania)
     state_affiliated: true
     feeds:
-      - {url: "https://news.google.com/rss/search?q=site:ata.gov.al+when:3d&hl=sq&gl=AL&ceid=AL:sq", section: ATSH, category_hint: general}
+      - {url: "https://ata.gov.al/feed/", section: ATSH, category_hint: general}
+
+  - id: rtsh_al
+    name: RTSH (Albanian Radio Television)
+    homepage: https://rtsh.al
+    language: sq
+    scope: domestic
+    kind: official
+    governing_body: Radio Televizioni Shqiptar (statutory national public-service broadcaster)
+    state_affiliated: false
+    feeds:
+      - {url: "https://rtsh.al/feed/", section: Lajme, category_hint: general}
 
   - id: reporter_al
     name: Reporter.al (BIRN Albania)
@@ -36,94 +49,6 @@ sources:
     feeds:
       - {url: "https://www.balkanweb.com/feed/", section: Lajme, category_hint: general}
 
-  - id: topchannel_al
-    name: Top Channel
-    homepage: https://top-channel.tv
-    language: sq
-    scope: domestic
-    kind: media
-    governing_body: Top Media Group (leading national commercial television broadcaster and news portal in Tirana)
-    state_affiliated: false
-    feeds:
-      - {url: "https://top-channel.tv/feed/", section: Lajme, category_hint: general}
-
-  - id: panorama_al
-    name: Gazeta Panorama
-    homepage: https://www.panorama.com.al
-    language: sq
-    scope: domestic
-    kind: media
-    governing_body: Panorama Group Sh.a. (Albania's highest-circulation daily print and digital newspaper)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.panorama.com.al/feed/", section: Politike, category_hint: internal_politics}
-
-  - id: shqiptarja_al
-    name: Shqiptarja.com
-    homepage: https://shqiptarja.com
-    language: sq
-    scope: domestic
-    kind: media
-    governing_body: Report TV / Carlo Bollino Media Group (major national political daily and broadcast newsroom)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:shqiptarja.com+when:3d&hl=sq&gl=AL&ceid=AL:sq", section: Politikë, category_hint: internal_politics}
-
-  - id: monitor_al
-    name: Revista Monitor
-    homepage: https://www.monitor.al
-    language: sq
-    scope: domestic
-    kind: media
-    governing_body: Monitor Media Group (Albania's premier economic, banking, energy, and fiscal policy weekly magazine)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.monitor.al/feed/", section: Ekonomi, category_hint: economics}
-
-  - id: lapsi_al
-    name: Lapsi.al
-    homepage: https://lapsi.al
-    language: sq
-    scope: domestic
-    kind: media
-    governing_body: Lapsi Media (independent Tirana political commentary and investigative portal founded by Armand Shkullaku and Andi Bushati)
-    state_affiliated: false
-    feeds:
-      - {url: "https://lapsi.al/feed/", section: Politikë, category_hint: internal_politics}
-
-  - id: syri_al
-    name: Syri.net
-    homepage: https://www.syri.net
-    language: sq
-    scope: domestic
-    kind: media
-    governing_body: Syri TV Media (major opposition-aligned television and digital news portal in Tirana)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:syri.net+when:3d&hl=sq&gl=AL&ceid=AL:sq", section: Politikë, category_hint: internal_politics}
-
-  - id: dosja_al
-    name: Dosja.al
-    homepage: https://dosja.al
-    language: sq
-    scope: domestic
-    kind: media
-    governing_body: Dosja Media Sh.p.k. (independent Tirana digital daily covering parliamentary politics, SPAK, and justice)
-    state_affiliated: false
-    feeds:
-      - {url: "https://dosja.al/rss", section: Aktualitet, category_hint: internal_politics}
-
-  - id: albaniandailynews_al
-    name: Albanian Daily News
-    homepage: https://albaniandailynews.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: ADN Media Group (Tirana — premier English-language daily newspaper covering Albanian politics, diplomacy, and business since 1995)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:albaniandailynews.com+when:7d&hl=en-US&gl=US&ceid=US:en", section: News, category_hint: general}
-
   - id: euronews_al
     name: Euronews Albania
     homepage: https://euronews.al
@@ -134,6 +59,131 @@ sources:
     state_affiliated: false
     feeds:
       - {url: "https://euronews.al/feed/", section: Lajme, category_hint: general}
+      - {url: "https://euronews.al/en/feed/", section: English News, category_hint: general}
+
+  - id: abcnews_al
+    name: ABC News Albania
+    homepage: https://abcnews.al
+    language: sq
+    scope: domestic
+    kind: media
+    governing_body: ABC Management (major Tirana national television broadcaster and political digital portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://abcnews.al/feed/", section: Politikë, category_hint: internal_politics}
+
+  - id: gazetasi_al
+    name: Gazeta Si
+    homepage: https://gazetasi.al
+    language: sq
+    scope: domestic
+    kind: media
+    governing_body: Gazeta Si Media (Tirana independent analytical political and economic digital newspaper)
+    state_affiliated: false
+    feeds:
+      - {url: "https://gazetasi.al/feed/", section: Politikë & Ekonomi, category_hint: internal_politics}
+
+  - id: boldnews_al
+    name: BoldNews.al
+    homepage: https://boldnews.al
+    language: sq
+    scope: domestic
+    kind: media
+    governing_body: BoldNews Media (Tirana investigative portal focused on justice, SPAK prosecutions, and procurement)
+    state_affiliated: false
+    feeds:
+      - {url: "https://boldnews.al/feed/", section: Investigim, category_hint: internal_politics}
+
+  - id: faxweb_al
+    name: FaxWeb (Fax News)
+    homepage: https://faxweb.al
+    language: sq
+    scope: domestic
+    kind: media
+    governing_body: Fax News Media Group (24-hour Tirana broadcast news channel and fast-breaking portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://faxweb.al/feed/", section: Aktualitet, category_hint: general}
+
+  - id: javanews_al
+    name: JavaNews
+    homepage: https://javanews.al
+    language: sq
+    scope: domestic
+    kind: media
+    governing_body: JavaNews Media (Albanian daily political commentary and parliamentary news portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://javanews.al/feed/", section: Politikë, category_hint: internal_politics}
+
+  - id: botimetnazarko_al
+    name: Botimet Nazarko / Konica
+    homepage: https://botimetnazarko.al
+    language: sq
+    scope: domestic
+    kind: media
+    governing_body: Botimet Nazarko (Albanian political analysis, diplomacy, and civic commentary portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://botimetnazarko.al/feed/", section: Analiza, category_hint: internal_politics}
+
+  - id: argumentum_al
+    name: Argumentum.al
+    homepage: https://www.argumentum.al
+    language: sq
+    scope: domestic
+    kind: media
+    governing_body: Argumentum Media (bilingual Tirana portal covering foreign policy, EU integration, and governance)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.argumentum.al/feed/", section: Politikë, category_hint: foreign_policy}
+
+  - id: fjala_al
+    name: Gazeta Fjala
+    homepage: https://fjala.al
+    language: sq
+    scope: domestic
+    kind: media
+    governing_body: Fjala Media Sh.p.k. (Albanian daily newspaper covering domestic politics, economy, and diaspora affairs)
+    state_affiliated: false
+    feeds:
+      - {url: "https://fjala.al/feed/", section: Politikë, category_hint: internal_politics}
+
+  - id: gnews_al_tv_print
+    name: Top Channel / Panorama / Shqiptarja / Dosja / Syri / Lapsi (via Google News)
+    homepage: https://top-channel.tv
+    language: sq
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: Top Media / Panorama Group / Report TV / Dosja / Syri TV / Lapsi
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:top-channel.tv+OR+site:shqiptarja.com+OR+site:panorama.com.al+OR+site:dosja.al+OR+site:syri.net+OR+site:lapsi.al)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Lajme kombëtare, category_hint: internal_politics}
+
+  - id: gnews_al_econ_broadcast
+    name: Monitor.al / TV Klan / Ora News / Vizion Plus / Gazeta Tema / A2 CNN (via Google News)
+    homepage: https://www.monitor.al
+    language: sq
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: Monitor Media / TV Klan / Ora News / Vizion Plus / Gazeta Tema / A2 CNN
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:monitor.al+OR+site:oranews.tv+OR+site:tvklan.al+OR+site:vizionplus.tv+OR+site:gazetatema.net+OR+site:a2news.com)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Ekonomi & Televizione, category_hint: general}
+
+  - id: albaniandailynews_al
+    name: Albanian Daily News / Exit / Tirana Times (English Press via Google News)
+    homepage: https://albaniandailynews.com
+    language: en
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: ADN Media Group / Exit News / Tirana Times
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:albaniandailynews.com+OR+site:exit.al+OR+site:tiranatimes.com)+when:7d&hl=en-US&gl=US&ceid=US:en", section: English Dailies, category_hint: general}
 
   - id: gnews_en_al
     name: Google News (Albania - International)

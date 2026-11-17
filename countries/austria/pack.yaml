@@ -49,7 +49,24 @@ aggregator_outlets:
   - Kurier
   - Kleine Zeitung
   - Salzburger Nachrichten
+  - Kronen Zeitung
+  - oe24
+  - Heute
+  - Profil
+  - Falter
+  - Oberösterreichische Nachrichten
+  - Tiroler Tageszeitung
+  - VIENNA.AT
+  - VOL.AT
+  - Puls 24
+  - ServusTV
+  - Trend
+  - eXXpress
+  - Kontrast.at
+  - ZackZack
+  - APA
+  - Bundeskanzleramt
   abroad_local:
   - The Local Austria
   - Vindobona
-last_reviewed: 2026-11-12
+last_reviewed: 2026-11-17

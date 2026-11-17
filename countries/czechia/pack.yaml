@@ -63,6 +63,17 @@ aggregator_outlets:
     - "respekt"
     - "reflex"
     - "echo24"
+    - "lidovky.cz"
+    - "deník.cz"
+    - "blesk"
+    - "cnn prima news"
+    - "forum 24"
+    - "e15"
+    - "info.cz"
+    - "deník alarm"
+    - "investigace.cz"
+    - "hlídacípes"
+    - "parlamentní listy"
     - "prague morning"
     - "ceskenoviny.cz"
   abroad_local:
@@ -70,6 +81,8 @@ aggregator_outlets:
     - "teraz.sk"
     - "aktuality.sk"
     - "sme.sk"
+    - "expats.cz"
+last_reviewed: 2026-11-17
 
 excerpt:
   dateline: '^\s*(?:PRAHA|BRNO|OSTRAVA|ČTK|ČT24)\s*[-–—:]\s*'

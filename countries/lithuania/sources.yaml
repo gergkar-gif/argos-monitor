@@ -1,0 +1,194 @@
+sources:
+- id: lrt_lt
+  name: LRT Naujienos
+  homepage: https://www.lrt.lt
+  language: lt
+  scope: domestic
+  kind: media
+  governing_body: Lietuvos nacionalinis radijas ir televizija (LRT)
+  state_affiliated: false
+  notes: Statutory Lithuanian public service broadcaster covering Seimas, defense, and national policy.
+  feeds:
+  - url: https://www.lrt.lt/?rss
+    category_hint: internal_politics
+- id: lrt_en_lt
+  name: LRT English
+  homepage: https://www.lrt.lt/en/news-in-english
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Lietuvos nacionalinis radijas ir televizija (LRT)
+  state_affiliated: false
+  notes: English-language portal of Lithuanian public broadcaster.
+  feeds:
+  - url: https://www.lrt.lt/en/news-in-english?rss
+    category_hint: defence_security
+- id: delfi_lt
+  name: Delfi Lithuania
+  homepage: https://www.delfi.lt
+  language: lt
+  scope: domestic
+  kind: media
+  governing_body: Ekspress Grupp
+  state_affiliated: false
+  notes: Lithuania's largest digital news portal covering politics, economy, and defense.
+  feeds:
+  - url: https://feed.delfi.lt/v2/articles/1?format=rss
+    category_hint: internal_politics
+- id: delfi_en_lt
+  name: Delfi EN (Lithuania)
+  homepage: https://www.delfi.lt/en
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Ekspress Grupp
+  state_affiliated: false
+  notes: English-language news desk of Delfi Lithuania.
+  feeds:
+  - url: https://feed.delfi.lt/v2?format=rss
+    category_hint: internal_politics
+- id: vz_lt
+  name: Verslo žinios
+  homepage: https://www.vz.lt
+  language: lt
+  scope: domestic
+  kind: media
+  governing_body: Bonnier Business Press
+  state_affiliated: false
+  notes: Lithuania's paper of record for business, macroeconomics, and energy security.
+  feeds:
+  - url: https://www.vz.lt/rss
+    category_hint: economics
+- id: 15min_lt
+  name: 15min (Lithuania)
+  homepage: https://www.15min.lt
+  language: lt
+  scope: domestic
+  kind: media
+  governing_body: Postimees Grupp
+  state_affiliated: false
+  notes: Major independent Lithuanian daily news and investigative portal.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:15min.lt+when:3d&hl=lt&gl=LT&ceid=LT:lt
+    category_hint: internal_politics
+- id: lrytas_lt
+  name: Lrytas.lt
+  homepage: https://www.lrytas.lt
+  language: lt
+  scope: domestic
+  kind: media
+  governing_body: UAB Lrytas
+  state_affiliated: false
+  notes: Major Lithuanian national daily portal covering governance and society.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:lrytas.lt+when:3d&hl=lt&gl=LT&ceid=LT:lt
+    category_hint: internal_politics
+- id: tv3_lt
+  name: TV3.lt
+  homepage: https://www.tv3.lt
+  language: lt
+  scope: domestic
+  kind: media
+  governing_body: All Media Lithuania (TV3 Group)
+  state_affiliated: false
+  notes: Major commercial television newsroom and breaking-news portal in Lithuania.
+  feeds:
+  - url: https://www.tv3.lt/rss/sarasas/0
+    category_hint: general
+- id: respublika_lt
+  name: Respublika.lt
+  homepage: https://www.respublika.lt
+  language: lt
+  scope: domestic
+  kind: media
+  governing_body: UAB Respublikos leidiniai
+  state_affiliated: false
+  notes: Nationalist-populist Lithuanian daily newspaper and commentary portal.
+  feeds:
+  - url: https://www.respublika.lt/feed.php?format=rss
+    category_hint: internal_politics
+- id: bernardinai_lt
+  name: Bernardinai.lt
+  homepage: https://www.bernardinai.lt
+  language: lt
+  scope: domestic
+  kind: media
+  governing_body: VšĮ Bernardinai.lt
+  state_affiliated: false
+  notes: Independent Lithuanian public-affairs, Catholic, and cultural journal.
+  feeds:
+  - url: https://www.bernardinai.lt/feed/
+    category_hint: society
+- id: atviraklaipeda_lt
+  name: Atvira Klaipėda
+  homepage: https://www.atviraklaipeda.lt
+  language: lt
+  scope: domestic
+  kind: media
+  governing_body: VšĮ Kitas požiūris
+  state_affiliated: false
+  notes: Independent investigative and regional news portal covering Klaipėda port and coastal policy.
+  feeds:
+  - url: https://www.atviraklaipeda.lt/feed/
+    category_hint: general
+- id: kurierwilenski_lt
+  name: Kurier Wileński
+  homepage: https://kurierwilenski.lt
+  language: pl
+  scope: domestic
+  kind: media
+  governing_body: VšĮ Kurier Wileński
+  state_affiliated: false
+  notes: Historic Polish-language daily in Vilnius covering minority rights and Lithuanian politics.
+  feeds:
+  - url: https://kurierwilenski.lt/feed/
+    category_hint: society
+- id: lrv_lt
+  name: Government of Lithuania (LRV.lt)
+  homepage: https://lrv.lt
+  language: lt
+  scope: domestic
+  kind: official
+  governing_body: Office of the Government of the Republic of Lithuania
+  state_affiliated: true
+  notes: Official press releases from the Lithuanian Cabinet, Seimas, and BNS wire.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:lrv.lt+OR+site:lrs.lt+OR+site:bns.lt)+when:7d&hl=lt&gl=LT&ceid=LT:lt
+    category_hint: internal_politics
+- id: gnews_lithuania_regional_batch
+  name: Google News (Lithuania Regional & Investigative - Kauno diena/VE/Alfa/Siena/Made in Vilnius)
+  homepage: https://news.google.com
+  language: lt
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator capturing RSS-blocked Lithuanian regional dailies, portals, and investigative centers.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:kauno.diena.lt+OR+site:ve.lt+OR+site:alfa.lt+OR+site:madeinvilnius.lt+OR+site:siena.lt+OR+site:zw.lt)+when:3d&hl=lt&gl=LT&ceid=LT:lt
+    category_hint: internal_politics
+- id: gnews_lithuania_lt
+  name: Google News (Lithuania National News - Lithuanian)
+  homepage: https://news.google.com
+  language: lt
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss?hl=lt&gl=LT&ceid=LT:lt
+    category_hint: internal_politics
+- id: gnews_lithuania_intl
+  name: Google News (Lithuania - International Press)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Lithuania+OR+Lithuanian+OR+Vilnius)+(NATO+OR+Russia+OR+Belarus+OR+defense+OR+government)+when:3d&hl=en-US&gl=US&ceid=US:en
+    category_hint: foreign_policy

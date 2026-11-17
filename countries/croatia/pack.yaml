@@ -30,7 +30,9 @@ url_sections:
 
 aggregator_outlets:
   domestic: ["hina", "hrt", "jutarnji list", "večernji list", "vecernji.hr", "index.hr", "n1 hrvatska", "telegram.hr",
-             "slobodna dalmacija", "novi list", "poslovni dnevnik", "24sata", "tportal", "nacional", "glas slavonije"]
+             "slobodna dalmacija", "novi list", "poslovni dnevnik", "24sata", "tportal", "nacional", "glas slavonije",
+             "dnevnik.hr", "glas istre", "dnevno.hr", "net.hr", "lider media", "lider", "faktograf", "narod.hr",
+             "direktno.hr", "dalmatinski portal"]
   abroad_local: ["al jazeera balkans", "slobodna evropa", "balkan insight", "total croatia news"]
 
 excerpt:

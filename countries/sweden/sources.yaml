@@ -9,12 +9,8 @@ sources:
   state_affiliated: false
   notes: Swedish national public television news service of record.
   feeds:
-  - url: https://news.google.com/rss/search?q=site:svt.se+when:7d&hl=en-US&gl=US&ceid=US:en
+  - url: https://www.svt.se/rss.xml
     category_hint: internal_politics
-  - url: https://news.google.com/rss/search?q=site:svt.se+sweden+when:7d&hl=en-US&gl=US&ceid=US:en
-    category_hint: internal_politics
-  - url: https://news.google.com/rss/search?q=site:svt.se+svt_nyheter_2+when:7d&hl=en-US&gl=US&ceid=US:en
-    category_hint: economics
 - id: sr_nyheter
   name: Sveriges Radio (Ekot)
   homepage: https://sverigesradio.se/ekot
@@ -25,7 +21,7 @@ sources:
   state_affiliated: false
   notes: Flagship public radio news broadcasting service in Sweden.
   feeds:
-  - url: https://news.google.com/rss/search?q=site:sverigesradio.se+when:7d&hl=en-US&gl=US&ceid=US:en
+  - url: https://api.sr.se/api/rss/program/83
     category_hint: internal_politics
 - id: dagens_nyheter
   name: Dagens Nyheter
@@ -37,10 +33,8 @@ sources:
   state_affiliated: false
   notes: Sweden's leading morning newspaper of record, independent liberal stance.
   feeds:
-  - url: https://news.google.com/rss/search?q=site:dn.se+when:7d&hl=en-US&gl=US&ceid=US:en
+  - url: https://www.dn.se/rss/
     category_hint: internal_politics
-  - url: https://news.google.com/rss/search?q=site:dn.se+sweden+when:7d&hl=en-US&gl=US&ceid=US:en
-    category_hint: economics
 - id: svenska_dagbladet
   name: Svenska Dagbladet
   homepage: https://www.svd.se
@@ -51,8 +45,32 @@ sources:
   state_affiliated: false
   notes: Leading Swedish national morning broadsheet, independent conservative stance.
   feeds:
-  - url: https://news.google.com/rss/search?q=site:svd.se+when:7d&hl=en-US&gl=US&ceid=US:en
+  - url: https://news.google.com/rss/search?q=site:svd.se+when:3d&hl=sv&gl=SE&ceid=SE:sv
     category_hint: internal_politics
+- id: dagens_industri_se
+  name: Dagens Industri (DI)
+  homepage: https://www.di.se
+  language: sv
+  scope: domestic
+  kind: media
+  governing_body: Bonnier News
+  state_affiliated: false
+  notes: Sweden's premier business, financial, and Riksbank daily broadsheet.
+  feeds:
+  - url: https://www.di.se/rss
+    category_hint: economics
+- id: tv4_nyheterna_se
+  name: TV4 Nyheterna
+  homepage: https://www.tv4.se/nyheter
+  language: sv
+  scope: domestic
+  kind: media
+  governing_body: Telia Company (TV4 Media)
+  state_affiliated: false
+  notes: Sweden's largest commercial television news broadcaster.
+  feeds:
+  - url: https://www.tv4.se/rss
+    category_hint: general
 - id: aftonbladet_se
   name: Aftonbladet
   homepage: https://www.aftonbladet.se
@@ -77,6 +95,54 @@ sources:
   feeds:
   - url: https://feeds.expressen.se/nyheter/
     category_hint: general
+- id: goteborgsposten_se
+  name: Göteborgs-Posten (GP)
+  homepage: https://www.gp.se
+  language: sv
+  scope: domestic
+  kind: media
+  governing_body: Stampen Media
+  state_affiliated: false
+  notes: Leading western Swedish daily broadsheet covering Gothenburg industry and national politics.
+  feeds:
+  - url: https://www.gp.se/rss
+    category_hint: general
+- id: sydsvenskan_se
+  name: Sydsvenskan
+  homepage: https://www.sydsvenskan.se
+  language: sv
+  scope: domestic
+  kind: media
+  governing_body: Bonnier News
+  state_affiliated: false
+  notes: Principal daily newspaper of Malmö and Skåne covering southern Sweden and Øresund region.
+  feeds:
+  - url: https://www.sydsvenskan.se/rss.xml
+    category_hint: general
+- id: altinget_se
+  name: Altinget.se
+  homepage: https://www.altinget.se
+  language: sv
+  scope: domestic
+  kind: media
+  governing_body: Altinget Media
+  state_affiliated: false
+  notes: Specialist Swedish parliamentary and public-policy digital newspaper.
+  feeds:
+  - url: https://www.altinget.se/rss
+    category_hint: internal_politics
+- id: dagenssamhalle_se
+  name: Dagens Samhälle
+  homepage: https://www.dagenssamhalle.se
+  language: sv
+  scope: domestic
+  kind: media
+  governing_body: Bonnier News / SKR
+  state_affiliated: false
+  notes: Swedish public-sector, municipal governance, and welfare policy newspaper.
+  feeds:
+  - url: https://www.dagenssamhalle.se/rss.xml
+    category_hint: internal_politics
 - id: realtid_se
   name: Realtid
   homepage: https://realtid.se
@@ -101,6 +167,18 @@ sources:
   feeds:
   - url: https://arbetet.se/feed/
     category_hint: internal_politics
+- id: etc_se
+  name: Dagens ETC
+  homepage: https://www.etc.se
+  language: sv
+  scope: domestic
+  kind: media
+  governing_body: ETC Tidningsförlag AB
+  state_affiliated: false
+  notes: Independent left-wing Swedish daily newspaper focusing on climate, migration, and social justice.
+  feeds:
+  - url: https://www.etc.se/rss.xml
+    category_hint: internal_politics
 - id: flamman_se
   name: Flamman
   homepage: https://flamman.se
@@ -121,7 +199,7 @@ sources:
   kind: media
   governing_body: Stiftelsen Expo
   state_affiliated: false
-  notes: Independent investigative magazine founded by Stieg Larsson.
+  notes: Independent investigative magazine tracking extremism and far-right networks.
   feeds:
   - url: https://expo.se/feed/
     category_hint: society
@@ -133,9 +211,46 @@ sources:
   kind: media
   governing_body: Publicistgruppen Stockholm AB
   state_affiliated: false
-  notes: Independent digital news portal and political commentary.
+  notes: Independent right-leaning digital news portal and political commentary.
   feeds:
   - url: https://nyheteridag.se/feed/
+    category_hint: internal_politics
+- id: samnytt_se
+  name: Samnytt
+  homepage: https://samnytt.se
+  language: sv
+  scope: domestic
+  kind: media
+  governing_body: Samhällsnytt
+  state_affiliated: false
+  notes: Swedish right-wing nationalist digital news portal.
+  feeds:
+  - url: https://samnytt.se/feed/
+    category_hint: internal_politics
+- id: regeringen_se
+  name: Regeringen.se / Riksdagen
+  homepage: https://www.regeringen.se
+  language: sv
+  scope: domestic
+  kind: official
+  governing_body: Government Offices of Sweden
+  state_affiliated: true
+  notes: Official Swedish cabinet press releases, Riksdag bills, and TT wire notices.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:regeringen.se+OR+site:riksdagen.se+OR+site:tt.se)+when:7d&hl=sv&gl=SE&ceid=SE:sv
+    category_hint: internal_politics
+- id: gnews_sweden_press_batch
+  name: Google News (Sweden Weeklies & News Portals - Omni/Kvartal/Fokus/Bulletin)
+  homepage: https://news.google.com
+  language: sv
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator capturing Swedish digital news aggregators and paywalled magazines without open RSS.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:omni.se+OR+site:kvartal.se+OR+site:fokus.se+OR+site:bulletin.nu)+when:3d&hl=sv&gl=SE&ceid=SE:sv
     category_hint: internal_politics
 - id: google_news_sweden_politics
   name: Google News (Sweden Government & Riksdag)

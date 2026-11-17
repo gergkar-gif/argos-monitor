@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Methodology &amp; Architecture · Argos Monitor</title>
-<meta name="description" content="Technical methodology, pipeline architecture, and source directory for Argos Monitor: evidence-first news intelligence across 96 countries with zero LLM hallucinations.">
+<meta name="description" content="Technical methodology, pipeline architecture, and source directory for Argos Monitor: evidence-first news intelligence across 99 countries with zero LLM hallucinations.">
 <link rel="canonical" href="https://argosmonitor.uk/about.html">
 
 <!-- Open Graph / Social -->
@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://argosmonitor.uk/about.html">
 <meta property="og:site_name" content="Argos Monitor">
 <meta property="og:title" content="Methodology &amp; Architecture · Argos Monitor">
-<meta property="og:description" content="Technical methodology, pipeline architecture, and source directory for Argos Monitor: evidence-first news intelligence across 96 countries with zero LLM hallucinations.">
+<meta property="og:description" content="Technical methodology, pipeline architecture, and source directory for Argos Monitor: evidence-first news intelligence across 99 countries with zero LLM hallucinations.">
 <meta property="og:image" content="https://argosmonitor.uk/assets/og-preview.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -21,7 +21,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://argosmonitor.uk/about.html">
 <meta name="twitter:title" content="Methodology &amp; Architecture · Argos Monitor">
-<meta name="twitter:description" content="Technical methodology, pipeline architecture, and source directory for Argos Monitor: evidence-first news intelligence across 96 countries with zero LLM hallucinations.">
+<meta name="twitter:description" content="Technical methodology, pipeline architecture, and source directory for Argos Monitor: evidence-first news intelligence across 99 countries with zero LLM hallucinations.">
 <meta name="twitter:image" content="https://argosmonitor.uk/assets/og-preview.png">
 
 <!-- JSON-LD Structured Data -->
@@ -127,22 +127,22 @@
       <li><a href="#principles">Core principles</a></li>
       <li><a href="#pipeline">11-stage pipeline</a></li>
       <li><a href="#methodology-details">Methodology &amp; scoring</a></li>
-      <li><a href="#sources">Monitored outlets (96 desks)</a></li>
+      <li><a href="#sources">Monitored outlets (99 desks)</a></li>
     </ul>
   </details>
 
   <section>
     <h2>About Argos Monitor</h2>
     <div class="lead-grid">
-      <p class="lead-prose">Argos Monitor tracks news and crisis reporting across 96 countries, comparing domestic press, local-language diaspora outlets, and international coverage side by side. Every headline and quote links directly to the original article; nothing is paraphrased or written by an LLM.</p>
+      <p class="lead-prose">Argos Monitor tracks news and crisis reporting across 99 countries, comparing domestic press, local-language diaspora outlets, and international coverage side by side. Every headline and quote links directly to the original article; nothing is paraphrased or written by an LLM.</p>
       <aside class="colophon" aria-label="Project summary">
         <dl class="facts">
-          <div><dt>Coverage</dt><dd>96 country desks</dd></div>
-          <div><dt>Sources</dt><dd>1,586 outlets (1,769 feeds)</dd></div>
+          <div><dt>Coverage</dt><dd>99 country desks</dd></div>
+          <div><dt>Sources</dt><dd>1,900 outlets (2,079 feeds)</dd></div>
           <div><dt>Languages</dt><dd>10 offline MarianMT + browser</dd></div>
         </dl>
         <p class="author-note">Built by <strong>Károly Gergely</strong> in Python, SQLite, ONNX Runtime, and vanilla JS, automated on GitHub Actions and served on Cloudflare Pages. <a href="https://github.com/gergkar-gif/argos-monitor" target="_blank" rel="noopener noreferrer">Source on GitHub (MIT)</a>.</p>
-        <p class="fine" style="margin-top:0"><a href="#sources">Browse all 96 country desks &amp; 1,586 outlets &rarr;</a></p>
+        <p class="fine" style="margin-top:0"><a href="#sources">Browse all 99 country desks &amp; 1,900 outlets &rarr;</a></p>
       </aside>
     </div>
   </section>
@@ -160,10 +160,10 @@
 
   <section id="pipeline">
     <h2>How the 11-stage pipeline works</h2>
-    <p>Scheduled GitHub Actions workflows run the full deep-extraction pipeline every 12 hours (09:17 and 21:17 UTC), paired with 4-hourly fast feed snapshots (01:00–17:00 UTC) that re-cluster, re-rank, and publish updated country briefs to Cloudflare Pages 6 times a day, plus a 2-hourly 0–24h live alert updater (<code>alerts.yml</code>) that refreshes crisis, conflict, and sensor alerts around the clock in under 45 seconds. Each desk tracks 10–15+ representative outlets rather than attempting exhaustive archival.</p>
+    <p>Scheduled GitHub Actions workflows run the full deep-extraction pipeline every 12 hours (09:17 and 21:17 UTC), paired with 4-hourly fast feed snapshots (01:00–17:00 UTC) that re-cluster, re-rank, and publish updated country briefs to Cloudflare Pages 6 times a day, plus a 2-hourly 0–24h live alert updater (<code>alerts.yml</code>) that refreshes crisis, conflict, and sensor alerts around the clock in under 45 seconds. Desks combine public broadcasters, statutory wires, broadsheets of record, financial press, investigative centers, regional dailies, and high-reach tabloids across direct RSS and country-edition Google News batches.</p>
     <div class="pipeline">
-      <div class="step"><b>01 · Ingest</b><span>Polls 1,769 RSS/Atom feeds via HTTP 304 conditional GETs and ingests verified GDELT 2.0 conflict URLs into SQLite.</span></div>
-      <div class="step"><b>02 · Extract</b><span>Pulls full article text with Trafilatura for top multi-outlet stories in round-robin order across all 96 desks, followed by a second shingle deduplication pass.</span></div>
+      <div class="step"><b>01 · Ingest</b><span>Polls 2,079 RSS/Atom feeds via HTTP 304 conditional GETs and ingests verified GDELT 2.0 conflict URLs into SQLite.</span></div>
+      <div class="step"><b>02 · Extract</b><span>Pulls full article text with Trafilatura for top multi-outlet stories in round-robin order across all 99 desks, followed by a second shingle deduplication pass.</span></div>
       <div class="step"><b>03 · Normalise</b><span>Applies Unicode NFC normalisation (essential for Vietnamese diacritics and Khmer) and strips RSS emojis.</span></div>
       <div class="step"><b>04 · Relevance</b><span>Drops sports/lifestyle noise and checks country mentions on global feeds.</span></div>
       <div class="step"><b>05 · Embed</b><span>Encodes headlines and leads locally on CPU via ONNX Runtime (<code>intfloat/multilingual-e5-small</code>).</span></div>
@@ -320,7 +320,7 @@
           </div>
           <div class="step">
             <b>05 · Overview triage &amp; Country Brief export</b>
-            <span>The Overview opens directly on <strong>Today&rsquo;s Briefing</strong> (active crisis alerts, <strong>Elections &amp; ballot coverage</strong> &mdash; automatically clustered into one lead card per country with expandable sub-stories so a single election never dominates the front page &mdash; 24-hour outlet velocity, and most-reported stories normalized by each desk&rsquo;s catalogued outlet pool with a max-1-per-country global lead cap so large or high-frequency wire desks do not crowd out smaller desks) paired with a <strong>World Directory (96)</strong> tab sorted by <strong>Attention</strong> (alerts, elections, and <code>&uarr;</code> surging stories first) with pinned desks, instant Country jump, and keyword search. Each <strong>Country Brief</strong> desk organises stories by policy category in top-reported order and includes an inline <strong>Export brief</strong> control (A4 Print / PDF, Copy Markdown, and Download <code>.md</code>) that respects active topic, movement, and search filters.</span>
+            <span>The Overview opens directly on <strong>Today&rsquo;s Briefing</strong> (active crisis alerts, <strong>Elections &amp; ballot coverage</strong> &mdash; automatically clustered into one lead card per country with expandable sub-stories so a single election never dominates the front page &mdash; 24-hour outlet velocity, and most-reported stories normalized by each desk&rsquo;s catalogued outlet pool with a max-1-per-country global lead cap so large or high-frequency wire desks do not crowd out smaller desks) paired with a <strong>World Directory (99)</strong> tab sorted by <strong>Attention</strong> (alerts, elections, and <code>&uarr;</code> surging stories first) with pinned desks, instant Country jump, and keyword search. Each <strong>Country Brief</strong> desk organises stories by policy category in top-reported order and includes an inline <strong>Export brief</strong> control (A4 Print / PDF, Copy Markdown, and Download <code>.md</code>) that respects active topic, movement, and search filters.</span>
           </div>
         </div>
       </div>
@@ -354,9 +354,9 @@
   <section>
     <h2>Monitored outlets &amp; source directory</h2>
     <details class="fold" id="sources">
-      <summary>Browse all 96 country desks and filter 1,586 catalogued sources (1,769 feeds)</summary>
+      <summary>Browse all 99 country desks and filter 1,900 catalogued sources (2,079 feeds)</summary>
       <div class="fold-body">
-        <p>Every publication monitored across 96 country desks, classified by reporting scope, alignment, political leaning, factuality, and state affiliation.</p>
+        <p>Every publication monitored across 99 country desks, classified by reporting scope, alignment, political leaning, factuality, and state affiliation.</p>
         <form class="slip notranslate" translate="no" aria-label="Filter sources" onsubmit="event.preventDefault()" style="margin-top: 1rem;">
           <div class="field country-field notranslate" translate="no">
             <label for="s-country-search"><span>Country</span></label>
@@ -457,7 +457,7 @@
     const telemBar = telem ? el('div', { class: 'monitor-bar', style: 'margin: 0.5rem 0 1.25rem; padding: 0.65rem 1rem;' },
       el('div', { style: 'display: flex; flex-wrap: wrap; gap: 1.25rem; align-items: center;' },
         el('span', { class: 'typed', text: `${allCountries.length} Country Desks` }),
-        el('span', { class: 'typed', text: `${totalFeeds ? totalFeeds.toLocaleString() : '1,769'} Live Feeds Polled` }),
+        el('span', { class: 'typed', text: `${totalFeeds ? totalFeeds.toLocaleString() : '2,079'} Live Feeds Polled` }),
         el('span', { class: 'typed', text: `${totalArticles ? totalArticles.toLocaleString() : '35,000+'} Articles Corroborated` }),
         raw.generated_at && el('span', { class: 'meta', text: `Cycle: ${new Date(raw.generated_at).toLocaleDateString()}` })
       )
@@ -485,7 +485,7 @@
       mixed: 'Mixed',
     }[f] || (f && f !== 'unrated' ? f : '—'));
 
-    // No country and no search: a short region-grouped picker instead of 96 full tables.
+    // No country and no search: a short region-grouped picker instead of 99 full tables.
     if (cid === 'all' && !q) {
       const pick = (c) => { cSel.value = c.id; render(); document.getElementById('sources').scrollIntoView(); };
       root.replaceChildren(

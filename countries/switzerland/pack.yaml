@@ -39,11 +39,32 @@ aggregator_outlets:
   domestic:
   - SWI swissinfo.ch
   - SRF
+  - SRF News
   - RTS
+  - RTS Info
+  - RSI
   - Neue Zürcher Zeitung
+  - NZZ
   - Le Temps
   - Tages-Anzeiger
+  - Blick
+  - 20 Minuten
+  - Watson
+  - Aargauer Zeitung
+  - Luzerner Zeitung
+  - Handelszeitung
+  - Finanz und Wirtschaft
+  - WOZ
+  - Weltwoche
+  - Republik
+  - Corriere del Ticino
+  - Tribune de Genève
+  - 24 heures
+  - Der Bund
+  - Basler Zeitung
+  - Berner Zeitung
+  - admin.ch
   abroad_local:
   - Geneva Solutions
   - The Local Switzerland
-last_reviewed: 2026-11-12
+last_reviewed: 2026-11-17

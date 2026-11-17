@@ -1,0 +1,50 @@
+themes:
+- id: elections
+  keywords:
+  - election
+  - valimised
+  - riigikogu valimised
+  - kohalikud valimised
+  - euroopa parlamendi valimised
+  describe:
+  - Estonian national parliamentary elections, local municipal ballots, and voter turnout.
+- id: security
+  keywords:
+  - nato eastern flank
+  - defence spending
+  - border security
+  - kaitsevägi
+  - kaitseliit
+  - narva border
+  - baltic air policing
+  describe:
+  - Estonian Defence Forces, NATO eastern flank deterrence, Russian border incidents, and cyber defence.
+- id: diplomacy
+  keywords:
+  - nordic-baltic
+  - nb8
+  - ukraine aid
+  - eu sanctions
+  - välisministeerium
+  describe:
+  - Estonian foreign policy, EU sanctions on Russia, Ukraine support, and Nordic-Baltic cooperation.
+- id: econ_policy
+  keywords:
+  - rail baltica
+  - estlink
+  - eesti pank
+  - inflation
+  - riigieelarve
+  - maksutõus
+  describe:
+  - Estonian state budget, taxation, Estlink subsea cables, Rail Baltica, and digital economy.
+- id: party_gov
+  keywords:
+  - prime minister
+  - coalition
+  - tallinn
+  - riigikogu
+  - valitsus
+  - stenbocki maja
+  describe:
+  - Stenbock House cabinet decisions, Riigikogu legislation, and governing coalition politics.

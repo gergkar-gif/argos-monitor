@@ -1,0 +1,59 @@
+id: iceland
+name: Iceland
+region: Western Europe
+language: is
+abroad_label: International & English-language Icelandic outlets
+mention:
+- iceland
+- icelandic
+- ísland
+- íslands
+- íslandi
+- reykjavik
+- reykjavík
+- althingi
+- alþingi
+- grindavik
+- grindavík
+- reykjanes
+- kristrún frostadóttir
+- frostadóttir
+- halla tómasdóttir
+- bjarni benediktsson
+url_sections:
+  skip:
+  - sport
+  - sports
+  - itrottir
+  - íþróttir
+  - menning
+excerpt:
+  dateline: ^\s*(?:REYKJAVÍK|REYKJAVIK|AKUREYRI|RÚV|MBL)\s*[-–:]\s*
+reddit:
+- Iceland
+geo: IS
+aggregator_outlets:
+  domestic:
+  - RÚV
+  - Morgunblaðið
+  - mbl.is
+  - Vísir
+  - visir.is
+  - DV
+  - Heimildin
+  - Viðskiptablaðið
+  - Samstöðin
+  - Mannlíf
+  - Akureyri.net
+  - Bæjarins besta
+  - Sunnlenska
+  - Feykir
+  - Eyjafréttir
+  - Vikublaðið
+  - Austurfrétt
+  - Skessuhorn
+  - Stjórnarráðið
+  abroad_local:
+  - Iceland Review
+  - The Reykjavík Grapevine
+last_reviewed: 2026-11-17

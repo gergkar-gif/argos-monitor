@@ -33,7 +33,9 @@ url_sections:
 
 aggregator_outlets:
   domestic: ["mia", "mrt", "telma", "360 stepeni", "360stepeni.mk", "sdk.mk", "sakam da kazam", "sloboden pecat", "slobodenpecat.mk",
-             "nova makedonija", "makfaks", "makfax.com.mk", "plusinfo", "plusinfo.mk", "kanal 5", "sitel", "alsat", "prizma.mk", "nezavisen.mk"]
+             "nova makedonija", "makfaks", "makfax.com.mk", "plusinfo", "plusinfo.mk", "kanal 5", "sitel", "alsat", "prizma.mk",
+             "nezavisen.mk", "24 vesti", "тв 24", "vecer.mk", "meta.mk", "vistinomer", "a1on", "kurir.mk", "republika.mk",
+             "fokus.mk", "lokalno.mk", "racin.mk", "faktor.mk"]
   abroad_local: ["radio slobodna evropa", "dw macedonia", "balkan insight", "al jazeera balkans"]
 
 excerpt:

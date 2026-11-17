@@ -1,16 +1,4 @@
 sources:
-- id: publico_pt
-  name: Público
-  homepage: https://www.publico.pt
-  language: pt
-  scope: domestic
-  kind: media
-  governing_body: Sonaecom
-  state_affiliated: false
-  notes: Lisbon national daily paper of record covering executive policy, European governance, and economic reforms.
-  feeds:
-  - url: https://feeds.feedburner.com/PublicoRSS
-    category_hint: internal_politics
 - id: rtp_noticias_pt
   name: RTP Notícias
   homepage: https://www.rtp.pt/noticias
@@ -19,22 +7,58 @@ sources:
   kind: media
   governing_body: Rádio e Televisão de Portugal (public broadcaster)
   state_affiliated: false
-  notes: Statutory public broadcaster of Portugal providing objective public-service journalism.
+  notes: Statutory public broadcaster of Portugal.
   feeds:
   - url: https://www.rtp.pt/noticias/rss
     category_hint: internal_politics
-- id: portugal_resident
-  name: Portugal Resident
-  homepage: https://www.portugalresident.com
-  language: en
-  scope: abroad_local
-  kind: media
-  governing_body: Open Media Group
-  state_affiliated: false
-  notes: Leading independent English-language Portuguese news service covering politics, taxation, and immigration.
+- id: lusa_pt
+  name: Lusa
+  homepage: https://www.lusa.pt
+  language: pt
+  scope: domestic
+  kind: wire
+  governing_body: Agência Lusa (Portuguese national news agency)
+  state_affiliated: true
+  notes: Portugal's statutory national wire agency and primary source for Lusophone news.
   feeds:
-  - url: https://www.portugalresident.com/feed/
-    category_hint: general
+  - url: https://news.google.com/rss/search?q=site:lusa.pt+when:3d&hl=pt-PT&gl=PT&ceid=PT:pt-150
+    category_hint: internal_politics
+- id: publico_pt
+  name: Público
+  homepage: https://www.publico.pt
+  language: pt
+  scope: domestic
+  kind: media
+  governing_body: Sonaecom
+  state_affiliated: false
+  notes: Lisbon national daily paper of record covering executive policy and European governance.
+  feeds:
+  - url: https://feeds.feedburner.com/PublicoRSS
+    category_hint: internal_politics
+- id: expresso_pt
+  name: Expresso
+  homepage: https://expresso.pt
+  language: pt
+  scope: domestic
+  kind: media
+  governing_body: Grupo Impresa
+  state_affiliated: false
+  notes: Portugal's flagship weekly newspaper of record and political digital portal.
+  feeds:
+  - url: https://rss.impresa.pt/feed/latest/expresso.rss?type=ARTICLE&limit=25
+    category_hint: internal_politics
+- id: dn_pt
+  name: Diário de Notícias
+  homepage: https://www.dn.pt
+  language: pt
+  scope: domestic
+  kind: media
+  governing_body: Global Media Group
+  state_affiliated: false
+  notes: Historic Lisbon national daily newspaper founded in 1864.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:dn.pt+when:3d&hl=pt-PT&gl=PT&ceid=PT:pt-150
+    category_hint: internal_politics
 - id: observador_pt
   name: Observador
   homepage: https://observador.pt
@@ -47,6 +71,42 @@ sources:
   feeds:
   - url: https://observador.pt/feed/
     category_hint: internal_politics
+- id: sicnoticias_pt
+  name: SIC Notícias
+  homepage: https://sicnoticias.pt
+  language: pt
+  scope: domestic
+  kind: media
+  governing_body: Grupo Impresa
+  state_affiliated: false
+  notes: Portugal's leading commercial 24-hour television news network.
+  feeds:
+  - url: https://rss.impresa.pt/feed/latest/sicnot.rss?type=ARTICLE&limit=25
+    category_hint: general
+- id: cnnportugal_pt
+  name: CNN Portugal
+  homepage: https://cnnportugal.iol.pt
+  language: pt
+  scope: domestic
+  kind: media
+  governing_body: Media Capital
+  state_affiliated: false
+  notes: 24-hour national television news channel and digital newsroom.
+  feeds:
+  - url: https://cnnportugal.iol.pt/rss
+    category_hint: general
+- id: cmjornal_pt
+  name: Correio da Manhã
+  homepage: https://www.cmjornal.pt
+  language: pt
+  scope: domestic
+  kind: media
+  governing_body: Medialivre
+  state_affiliated: false
+  notes: Portugal's highest-circulation daily newspaper and tabloid portal.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:cmjornal.pt+when:3d&hl=pt-PT&gl=PT&ceid=PT:pt-150
+    category_hint: general
 - id: negocios_pt
   name: Jornal de Negócios
   homepage: https://www.jornaldenegocios.pt
@@ -57,7 +117,7 @@ sources:
   state_affiliated: false
   notes: Premier Portuguese business, financial and capital markets daily.
   feeds:
-  - url: https://news.google.com/rss/search?q=site:jornaldenegocios.pt+when:7d&hl=en-US&gl=US&ceid=US:en
+  - url: https://news.google.com/rss/search?q=site:jornaldenegocios.pt+when:3d&hl=pt-PT&gl=PT&ceid=PT:pt-150
     category_hint: economics
 - id: eco_pt
   name: ECO Economia Online
@@ -69,7 +129,19 @@ sources:
   state_affiliated: false
   notes: Leading independent digital business and macroeconomic news daily.
   feeds:
-  - url: https://news.google.com/rss/search?q=site:eco.sapo.pt+when:7d&hl=en-US&gl=US&ceid=US:en
+  - url: https://eco.sapo.pt/feed/
+    category_hint: economics
+- id: jornaleconomico_pt
+  name: O Jornal Económico
+  homepage: https://jornaleconomico.sapo.pt
+  language: pt
+  scope: domestic
+  kind: media
+  governing_body: Megafin
+  state_affiliated: false
+  notes: Financial, macroeconomic and corporate daily newspaper.
+  feeds:
+  - url: https://jornaleconomico.sapo.pt/feed
     category_hint: economics
 - id: noticiasaominuto_pt
   name: Notícias ao Minuto
@@ -95,54 +167,42 @@ sources:
   feeds:
   - url: https://visao.pt/feed/
     category_hint: internal_politics
-- id: jornaleconomico_pt
-  name: O Jornal Económico
-  homepage: https://jornaleconomico.sapo.pt
-  language: pt
-  scope: domestic
-  kind: media
-  governing_body: Megafin
-  state_affiliated: false
-  notes: Leading financial, macroeconomic and corporate daily newspaper.
-  feeds:
-  - url: https://jornaleconomico.sapo.pt/feed
-    category_hint: economics
-- id: sabado_pt
-  name: Sábado
-  homepage: https://www.sabado.pt
-  language: pt
-  scope: domestic
-  kind: media
-  governing_body: Medialivre
-  state_affiliated: false
-  notes: Major national investigative weekly magazine covering politics and society.
-  feeds:
-  - url: https://www.sabado.pt/rss
-    category_hint: internal_politics
-- id: cnnportugal_pt
-  name: CNN Portugal
-  homepage: https://cnnportugal.iol.pt
-  language: pt
-  scope: domestic
-  kind: media
-  governing_body: Media Capital
-  state_affiliated: false
-  notes: 24-hour national television news channel and digital newsroom.
-  feeds:
-  - url: https://cnnportugal.iol.pt/rss
-    category_hint: general
-- id: gnews_portugal_intl
-  name: Google News (Portugal Politics & Economy - International)
-  homepage: https://news.google.com
+- id: portugal_resident
+  name: Portugal Resident
+  homepage: https://www.portugalresident.com
   language: en
-  scope: international
+  scope: abroad_local
   kind: media
-  governing_body: n/a (aggregator)
+  governing_body: Open Media Group
+  state_affiliated: false
+  notes: Independent English-language Portuguese news service covering politics and economy.
+  feeds:
+  - url: https://www.portugalresident.com/feed/
+    category_hint: general
+- id: governo_pt
+  name: Portugal.gov.pt
+  homepage: https://www.portugal.gov.pt
+  language: pt
+  scope: domestic
+  kind: official
+  governing_body: Government of the Portuguese Republic
+  state_affiliated: true
+  notes: Official cabinet communiqués and ministerial announcements from Lisbon.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:portugal.gov.pt+when:7d&hl=pt-PT&gl=PT&ceid=PT:pt-150
+    category_hint: internal_politics
+- id: gnews_portugal_media_batch
+  name: Google News (Portugal Press & Radio - JN/TSF/Renascença/Sábado/Polígrafo/Sol)
+  homepage: https://news.google.com
+  language: pt
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
   state_affiliated: false
   aggregator: google_news
+  notes: Aggregator capturing northern daily press, radio networks, fact-checking, and weeklies without open RSS.
   feeds:
-  - url: https://news.google.com/rss/search?q=(Portugal+OR+Lisbon)+(parliament+OR+budget+OR+housing+OR+economy)+when:3d&hl=en-US&gl=US&ceid=US:en
-    section: Governance & Economy
+  - url: https://news.google.com/rss/search?q=(site:jn.pt+OR+site:tsf.pt+OR+site:rr.pt+OR+site:sabado.pt+OR+site:poligrafo.sapo.pt+OR+site:sol.sapo.pt)+when:3d&hl=pt-PT&gl=PT&ceid=PT:pt-150
     category_hint: internal_politics
 - id: gnews_portugal_pt
   name: Google News (Portugal National News - Portuguese)
@@ -156,4 +216,17 @@ sources:
   feeds:
   - url: https://news.google.com/rss/search?q=Portugal+OR+Lisboa+OR+governo+when:2d&hl=pt-PT&gl=PT&ceid=PT:pt-150
     section: National News (Portuguese)
+    category_hint: internal_politics
+- id: gnews_portugal_intl
+  name: Google News (Portugal Politics & Economy - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Portugal+OR+Lisbon)+(parliament+OR+budget+OR+housing+OR+economy)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Governance & Economy
     category_hint: internal_politics

@@ -1,239 +1,232 @@
-sources:
-- id: hetq_hy
-  name: Hetq (Armenian)
-  homepage: https://hetq.am
-  language: hy
-  scope: domestic
-  kind: media
-  governing_body: Investigative Journalists NGO (Yerevan independent investigative outlet)
-  state_affiliated: false
-  feeds:
-  - url: https://hetq.am/hy/rss
-    section: Լուրեր
-    category_hint: general
-- id: hetq_en
-  name: Hetq (English)
-  homepage: https://hetq.am/en
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: Investigative Journalists NGO (Yerevan independent investigative outlet)
-  state_affiliated: false
-  feeds:
-  - url: https://hetq.am/en/rss
-    section: News & Investigations
-    category_hint: general
-- id: factor_am
-  name: Factor.am
-  homepage: https://factor.am
-  language: hy
-  scope: domestic
-  kind: media
-  governing_body: Factor Information Center (independent Yerevan digital & TV outlet)
-  state_affiliated: false
-  feeds:
-  - url: https://factor.am/feed
-    section: Լրահոս
-    category_hint: general
-- id: civilnet_am
-  name: CivilNet
-  homepage: https://www.civilnet.am
-  language: en
-  scope: domestic
-  kind: media
-  aggregator: google_news
-  governing_body: Civilitas Foundation (independent Yerevan media platform)
-  state_affiliated: false
-  feeds:
-  - url: https://news.google.com/rss/search?q=site:civilnet.am+when:7d&hl=en-US&gl=US&ceid=US:en
-    section: Latest
-    category_hint: general
-- id: gnews_am_official
-  name: Armenpress / 1Lurer (State Wire & Public TV via Google News)
-  homepage: https://armenpress.am
-  language: en
-  scope: domestic
-  kind: official
-  aggregator: google_news
-  governing_body: Armenpress State News Agency / Public Television of Armenia
-  state_affiliated: true
-  feeds:
-  - url: https://news.google.com/rss/search?q=(site:armenpress.am+OR+site:1lurer.am)+when:7d&hl=en-US&gl=US&ceid=US:en
-    section: Armenpress & Public TV
-    category_hint: general
-- id: gnews_am_regional
-  name: OC Media / JAMnews (Caucasus Regional Press via Google News)
-  homepage: https://oc-media.org
-  language: en
-  scope: abroad_local
-  kind: media
-  aggregator: google_news
-  governing_body: Open Caucasus Media & JAMnews Regional Media Network
-  state_affiliated: false
-  feeds:
-  - url: https://news.google.com/rss/search?q=(site:oc-media.org+OR+site:jam-news.net)+(Armenia+OR+Yerevan)+when:7d&hl=en-US&gl=US&ceid=US:en
-    section: Regional Caucasus
-    category_hint: general
-- id: gnews_en_am
-  name: Google News (Armenia - International)
-  homepage: https://news.google.com
-  language: en
-  scope: international
-  kind: media
-  aggregator: google_news
-  governing_body: n/a (aggregator)
-  state_affiliated: false
-  feeds:
-  - url: https://news.google.com/rss/search?q=Armenia+(Yerevan+OR+Pashinyan+OR+Mirzoyan+OR+Syunik)+when:1d&hl=en-US&gl=US&ceid=US:en
-    section: Armenia politics & diplomacy
-    category_hint: foreign_policy
-  - url: https://news.google.com/rss/search?q=Armenia+(Azerbaijan+OR+Turkey+OR+CSTO+OR+Russia+OR+%22peace+treaty%22)+when:1d&hl=en-US&gl=US&ceid=US:en
-    section: South Caucasus security
-    category_hint: defence_security
-- id: news_am_en
-  name: NEWS.am (English)
-  homepage: https://news.am/eng
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: NEWS.am Information-Analytical Agency
-  state_affiliated: false
-  notes: High-volume independent Armenian news agency providing continuous national and regional coverage.
-  feeds:
-  - url: https://news.am/eng/rss/
-    category_hint: general
-- id: news_am_hy
-  name: NEWS.am (Armenian)
-  homepage: https://news.am/arm
-  language: hy
-  scope: domestic
-  kind: media
-  governing_body: NEWS.am Information-Analytical Agency
-  state_affiliated: false
-  notes: Armenian-language primary edition of NEWS.am covering parliamentary politics, security, and economy.
-  feeds:
-  - url: https://news.am/arm/rss/
-    category_hint: internal_politics
-- id: panarmenian_en
-  name: PanARMENIAN.Net
-  homepage: https://www.panarmenian.net
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: PanARMENIAN Media LLC
-  state_affiliated: false
-  notes: Independent Armenian news network focusing on diplomacy, South Caucasus peace talks, and diaspora affairs.
-  feeds:
-  - url: https://www.panarmenian.net/eng/rss/
-    category_hint: foreign_policy
-- id: evnreport
-  name: EVN Report
-  homepage: https://evnreport.com
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: EVN Report NGO
-  state_affiliated: false
-  notes: Independent analytical journal based in Yerevan providing investigative features on defense reform, democracy, and
-    economy.
-  feeds:
-  - url: https://evnreport.com/feed/
-    category_hint: internal_politics
-- id: aravot_en
-  name: Aravot (English)
-  homepage: https://en.aravot.am
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: Aravot Daily
-  state_affiliated: false
-  notes: Historic independent daily newspaper founded in 1994, renowned for institutional pluralism and political balance.
-  feeds:
-  - url: https://en.aravot.am/feed/
-    category_hint: internal_politics
-- id: aravot_hy
-  name: Aravot (Armenian)
-  homepage: https://www.aravot.am
-  language: hy
-  scope: domestic
-  kind: media
-  governing_body: Aravot Daily
-  state_affiliated: false
-  notes: Armenian daily edition of Aravot covering judicial trials, parliamentary sessions, and civic protests.
-  feeds:
-  - url: https://www.aravot.am/feed/
-    category_hint: internal_politics
-- id: armradio_hy
-  name: Public Radio of Armenia
-  homepage: https://hy.armradio.am
-  language: hy
-  scope: domestic
-  kind: official
-  governing_body: Public TV and Radio Company of Armenia
-  state_affiliated: true
-  notes: Statutory public broadcaster of Armenia broadcasting authoritative news and executive announcements.
-  feeds:
-  - url: https://hy.armradio.am/feed/
-    category_hint: internal_politics
-- id: gnews_armenia_hy
-  name: Google News (Armenia National News - Armenian)
-  homepage: https://news.google.com
-  language: hy
-  scope: domestic
-  kind: media
-  governing_body: Google LLC
-  state_affiliated: false
-  aggregator: google_news
-  feeds:
-  - url: https://news.google.com/rss/search?q=%D5%80%D5%A1%D5%85%D5%A1%D5%BD%D5%8F%D5%A1%D5%B6+OR+%D4%B5%D6%80%D6%87%D5%A1%D5%B6+when:2d&hl=en-US&gl=US&ceid=US:en
-    section: National News (Armenian)
-    category_hint: internal_politics
-- id: civilnet_am
-  name: CivilNet (Armenia)
-  homepage: https://www.civilnet.am
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: Civilitas Foundation
-  state_affiliated: false
-  notes: Independent Yerevan digital television and investigative newsroom covering South Caucasus diplomacy and democracy.
-  feeds:
-  - url: https://news.google.com/rss/search?q=site:civilnet.am+armenia+when:7d&hl=en-US&gl=US&ceid=US:en
-    category_hint: foreign_policy
-- id: azatutyun_am
-  name: Azatutyun (RFE/RL Armenia)
-  homepage: https://www.azatutyun.am
-  language: hy
-  scope: abroad_local
-  kind: media
-  governing_body: Radio Free Europe / Radio Liberty
-  state_affiliated: false
-  notes: Armenian service of RFE/RL providing comprehensive reporting on National Assembly politics, security, and peace talks.
-  feeds:
-  - url: https://news.google.com/rss/search?q=site:azatutyun.am+when:7d&hl=en-US&gl=US&ceid=US:en
-    category_hint: internal_politics
-- id: 168_am
-  name: 168 Zham (Armenia)
-  homepage: https://168.am
-  language: hy
-  scope: domestic
-  kind: media
-  governing_body: 168 Zham Media
-  state_affiliated: false
-  notes: Prominent independent Yerevan newspaper covering domestic political parties, macroeconomic policy, and defense.
-  feeds:
-  - url: https://168.am/feed
-    category_hint: internal_politics
+# Armenia source registry (decision D15).
+# Combines statutory wire (Armenpress) and public broadcaster (1Lurer / Public Radio of Armenia via GN) with investigative
+# newsrooms (Hetq, FIP.am, CivilNet, Infocom), leading Yerevan dailies and digital portals (NEWS.am, Factor.am, Aravot,
+# PanARMENIAN, EVN Report, 1in.am, 168 Zham, Radar Armenia, Verelq), economic portal ARKA, and regional/diaspora outlets
+# (Azatutyun / RFE-RL, OC Media, JAMnews).
 
-- id: armenpress_indep_am
-  name: "FIP.am (Fact Investigation Platform)"
-  homepage: https://fip.am
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: "Union of Informed Citizens NGO"
-  state_affiliated: false
-  notes: "Independent Yerevan investigative and fact-checking journalism platform examining government claims and security."
-  feeds:
-  - url: https://fip.am/en/feed/
-    category_hint: internal_politics
+sources:
+  - id: hetq_hy
+    name: Hetq (Armenian)
+    homepage: https://hetq.am
+    language: hy
+    scope: domestic
+    kind: media
+    governing_body: Investigative Journalists NGO (Yerevan independent investigative outlet)
+    state_affiliated: false
+    feeds:
+      - {url: "https://hetq.am/hy/rss", section: Լուրեր, category_hint: general}
+
+  - id: hetq_en
+    name: Hetq (English)
+    homepage: https://hetq.am/en
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Investigative Journalists NGO (Yerevan independent investigative outlet)
+    state_affiliated: false
+    feeds:
+      - {url: "https://hetq.am/en/rss", section: News & Investigations, category_hint: general}
+
+  - id: factor_am
+    name: Factor.am
+    homepage: https://factor.am
+    language: hy
+    scope: domestic
+    kind: media
+    governing_body: Factor Information Center (independent Yerevan digital & TV outlet)
+    state_affiliated: false
+    feeds:
+      - {url: "https://factor.am/feed", section: Լրահոս, category_hint: general}
+
+  - id: civilnet_am
+    name: CivilNet
+    homepage: https://www.civilnet.am
+    language: hy
+    scope: domestic
+    kind: media
+    governing_body: Civilitas Foundation (independent Yerevan analytical and investigative platform)
+    state_affiliated: false
+    feeds:
+      - {url: "https://civilnet.am/hy/rss", section: Հայաստան, category_hint: general}
+
+  - id: news_am_en
+    name: NEWS.am (English)
+    homepage: https://news.am/eng
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: NEWS.am Information-Analytical Agency (high-volume Armenian agency)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.am/en/rss", section: English, category_hint: general}
+
+  - id: news_am_hy
+    name: NEWS.am (Armenian)
+    homepage: https://news.am/arm
+    language: hy
+    scope: domestic
+    kind: media
+    governing_body: NEWS.am Information-Analytical Agency
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.am/hy/rss", section: Հայաստան, category_hint: internal_politics}
+
+  - id: panarmenian_en
+    name: PanARMENIAN.Net
+    homepage: https://www.panarmenian.net
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: PanARMENIAN Media LLC (diplomacy, South Caucasus talks, and diaspora news)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.pan.am/en/feed", section: Politics & Diplomacy, category_hint: foreign_policy}
+
+  - id: evnreport
+    name: EVN Report
+    homepage: https://evnreport.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: EVN Report NGO (Yerevan analytical journal covering defence, democracy, and economy)
+    state_affiliated: false
+    feeds:
+      - {url: "https://evnreport.com/feed/", section: Analysis, category_hint: internal_politics}
+
+  - id: aravot_en
+    name: Aravot (English)
+    homepage: https://en.aravot.am
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Aravot Daily (historic independent daily newspaper founded in 1994)
+    state_affiliated: false
+    feeds:
+      - {url: "https://en.aravot.am/feed/", section: English, category_hint: internal_politics}
+
+  - id: aravot_hy
+    name: Aravot (Armenian)
+    homepage: https://www.aravot.am
+    language: hy
+    scope: domestic
+    kind: media
+    governing_body: Aravot Daily
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.aravot.am/feed/", section: Քաղաքականություն, category_hint: internal_politics}
+
+  - id: 168_am
+    name: 168 Zham (Armenia)
+    homepage: https://168.am
+    language: hy
+    scope: domestic
+    kind: media
+    governing_body: 168 Zham Media (Yerevan political daily covering opposition parties and macroeconomic policy)
+    state_affiliated: false
+    feeds:
+      - {url: "https://168.am/feed", section: Քաղաքականություն, category_hint: internal_politics}
+
+  - id: 1in_am
+    name: 1in.am (First News)
+    homepage: https://www.1in.am
+    language: hy
+    scope: domestic
+    kind: media
+    governing_body: 1in.am Armenian News & Analyses (major Yerevan political portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.1in.am/feed", section: Հայաստան, category_hint: internal_politics}
+
+  - id: infocom_am
+    name: Infocom Armenia
+    homepage: https://infocom.am
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Infocom Media (independent Yerevan public-policy and parliamentary reporting outlet)
+    state_affiliated: false
+    feeds:
+      - {url: "https://infocom.am/en/feed/", section: News, category_hint: internal_politics}
+
+  - id: verelq_am
+    name: Verelq.am
+    homepage: https://verelq.am
+    language: hy
+    scope: domestic
+    kind: media
+    governing_body: Verelq Analytical Center (Yerevan political and foreign-policy portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://verelq.am/am/rss", section: Լրահոս, category_hint: foreign_policy}
+
+  - id: radar_am
+    name: Radar Armenia
+    homepage: https://radar.am
+    language: hy
+    scope: domestic
+    kind: media
+    governing_body: Radar Media (Yerevan fast-breaking digital news portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://radar.am/hy/rss/", section: Հայաստան, category_hint: general}
+
+  - id: gnews_am_official
+    name: Armenpress / 1Lurer / Public Radio of Armenia (State Wire & Public Broadcaster via Google News)
+    homepage: https://armenpress.am
+    language: en
+    scope: domestic
+    kind: official
+    aggregator: google_news
+    governing_body: Armenpress State News Agency / Public TV & Radio Company of Armenia
+    state_affiliated: true
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:armenpress.am+OR+site:1lurer.am+OR+site:armradio.am)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Armenpress & Public TV, category_hint: general}
+
+  - id: gnews_am_press
+    name: FIP.am / ARKA / Mediamax (Independent Press & Economy via Google News)
+    homepage: https://fip.am
+    language: en
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: Fact Investigation Platform / ARKA Economic Agency / Mediamax
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:fip.am+OR+site:arka.am+OR+site:mediamax.am)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Investigations & Economy, category_hint: economics}
+
+  - id: azatutyun_am
+    name: Azatutyun (RFE/RL Armenia)
+    homepage: https://www.azatutyun.am
+    language: hy
+    scope: abroad_local
+    kind: media
+    aggregator: google_news
+    governing_body: Radio Free Europe / Radio Liberty (USAGM)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:azatutyun.am+when:7d&hl=ru&gl=RU&ceid=RU:ru", section: Ազատություն, category_hint: internal_politics}
+
+  - id: gnews_am_regional
+    name: OC Media / JAMnews (Caucasus Regional Press via Google News)
+    homepage: https://oc-media.org
+    language: en
+    scope: abroad_local
+    kind: media
+    aggregator: google_news
+    governing_body: Open Caucasus Media & JAMnews Regional Media Network
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:oc-media.org+OR+site:jam-news.net)+(Armenia+OR+Yerevan)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Regional Caucasus, category_hint: general}
+
+  - id: gnews_en_am
+    name: Google News (Armenia - International)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Armenia+(Yerevan+OR+Pashinyan+OR+Mirzoyan+OR+Syunik)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Armenia politics & diplomacy, category_hint: foreign_policy}
+      - {url: "https://news.google.com/rss/search?q=Armenia+(Azerbaijan+OR+Turkey+OR+CSTO+OR+Russia+OR+%22peace+treaty%22)+when:1d&hl=en-US&gl=US&ceid=US:en", section: South Caucasus security, category_hint: defence_security}

@@ -11,7 +11,11 @@ class TestPipelineGuards(unittest.TestCase):
         db = sqlite3.connect(":memory:")
         db.row_factory = sqlite3.Row
         db.executescript(SCHEMA)
+        db.execute("INSERT INTO article (id, source_id, url, title, country) VALUES (999, 'old', 'https://retired.example/1', 'Old', 'baltics')")
+        db.execute("INSERT INTO story (id, country, window_days) VALUES (999, 'baltics', 7)")
         ingest.load_registry(db)
+        self.assertEqual(db.execute("SELECT COUNT(*) FROM article WHERE country='baltics'").fetchone()[0], 0)
+        self.assertEqual(db.execute("SELECT COUNT(*) FROM story WHERE country='baltics'").fetchone()[0], 0)
         feed_count = db.execute("SELECT COUNT(*) FROM feed WHERE active=1").fetchone()[0]
         self.assertGreater(feed_count, 1000)
 
@@ -84,7 +88,6 @@ class TestPipelineGuards(unittest.TestCase):
     def test_all_desks_meet_independent_source_floors(self):
         from urllib.parse import urlparse
         cluster_floors = {
-            "baltics": 15,
             "caribbean": 25,
             "central_america": 30,
             "east_africa": 30,

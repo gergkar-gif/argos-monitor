@@ -7,57 +7,9 @@ sources:
   kind: media
   governing_body: Norsk rikskringkasting (public broadcaster)
   state_affiliated: false
-  notes: Norwegian statutory public broadcaster providing independent editorial reporting across all regions.
+  notes: Norwegian statutory public broadcaster providing independent reporting across all regions.
   feeds:
   - url: https://www.nrk.no/nyheter/siste.rss
-    category_hint: internal_politics
-- id: aftenposten_no
-  name: Aftenposten
-  homepage: https://www.aftenposten.no
-  language: 'no'
-  scope: domestic
-  kind: media
-  governing_body: Schibsted
-  state_affiliated: false
-  notes: Oslo subscription broadsheet paper of record covering Storting policy, defense, and foreign affairs.
-  feeds:
-  - url: https://news.google.com/rss/search?q=site:aftenposten.no+when:7d&hl=en-US&gl=US&ceid=US:en
-    category_hint: internal_politics
-- id: the_local_no
-  name: The Local Norway
-  homepage: https://www.thelocal.no
-  language: en
-  scope: abroad_local
-  kind: media
-  governing_body: The Local Europe AB
-  state_affiliated: false
-  notes: Independent English-language digital news service covering Norwegian governance, energy, and economy.
-  feeds:
-  - url: https://news.google.com/rss/search?q=site:thelocal.no+when:7d&hl=en-US&gl=US&ceid=US:en
-    category_hint: general
-- id: dagbladet_no
-  name: Dagbladet
-  homepage: https://www.dagbladet.no
-  language: 'no'
-  scope: domestic
-  kind: media
-  governing_body: Aller Media
-  state_affiliated: false
-  notes: Major national daily newspaper and digital investigative newsroom.
-  feeds:
-  - url: https://news.google.com/rss/search?q=site:dagbladet.no+when:7d&hl=en-US&gl=US&ceid=US:en
-    category_hint: general
-- id: klassekampen_no
-  name: Klassekampen
-  homepage: https://klassekampen.no
-  language: 'no'
-  scope: domestic
-  kind: media
-  governing_body: Klassekampen AS
-  state_affiliated: false
-  notes: Independent left-wing national daily newspaper covering labor, defense and politics.
-  feeds:
-  - url: https://news.google.com/rss/search?q=site:klassekampen.no+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
 - id: tv2_no
   name: TV 2 Nyheter
@@ -71,9 +23,93 @@ sources:
   feeds:
   - url: https://www.tv2.no/rss/nyheter
     category_hint: general
+- id: vg_no
+  name: VG (Verdens Gang)
+  homepage: https://www.vg.no
+  language: 'no'
+  scope: domestic
+  kind: media
+  governing_body: Schibsted Media
+  state_affiliated: false
+  notes: Norway's largest national newspaper and breaking-news portal.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:vg.no+when:3d&hl=no&gl=NO&ceid=NO:no
+    category_hint: general
+- id: aftenposten_no
+  name: Aftenposten
+  homepage: https://www.aftenposten.no
+  language: 'no'
+  scope: domestic
+  kind: media
+  governing_body: Schibsted Media
+  state_affiliated: false
+  notes: Oslo subscription broadsheet paper of record covering Storting policy, defense, and foreign affairs.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:aftenposten.no+when:3d&hl=no&gl=NO&ceid=NO:no
+    category_hint: internal_politics
+- id: dagbladet_no
+  name: Dagbladet
+  homepage: https://www.dagbladet.no
+  language: 'no'
+  scope: domestic
+  kind: media
+  governing_body: Aller Media
+  state_affiliated: false
+  notes: Major national daily newspaper and digital investigative newsroom.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:dagbladet.no+when:3d&hl=no&gl=NO&ceid=NO:no
+    category_hint: general
+- id: dn_no
+  name: Dagens Næringsliv (DN)
+  homepage: https://www.dn.no
+  language: 'no'
+  scope: domestic
+  kind: media
+  governing_body: NHST Media Group
+  state_affiliated: false
+  notes: Norway's premier business, energy, sovereign wealth fund, and economic daily.
+  feeds:
+  - url: https://services.dn.no/api/feed/rss/
+    category_hint: economics
+- id: e24_no
+  name: E24
+  homepage: https://e24.no
+  language: 'no'
+  scope: domestic
+  kind: media
+  governing_body: Schibsted Media
+  state_affiliated: false
+  notes: Leading Norwegian digital financial, oil, and markets news portal.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:e24.no+when:3d&hl=no&gl=NO&ceid=NO:no
+    category_hint: economics
+- id: nettavisen_no
+  name: Nettavisen
+  homepage: https://www.nettavisen.no
+  language: 'no'
+  scope: domestic
+  kind: media
+  governing_body: Amedia
+  state_affiliated: false
+  notes: High-reach Norwegian digital news portal covering politics and business.
+  feeds:
+  - url: https://www.nettavisen.no/service/rich-rss
+    category_hint: general
+- id: klassekampen_no
+  name: Klassekampen
+  homepage: https://klassekampen.no
+  language: 'no'
+  scope: domestic
+  kind: media
+  governing_body: Klassekampen AS
+  state_affiliated: false
+  notes: Independent left-wing national daily newspaper covering labor, defense and politics.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:klassekampen.no+when:3d&hl=no&gl=NO&ceid=NO:no
+    category_hint: internal_politics
 - id: morgenbladet_no
   name: Morgenbladet
-  homepage: https://morgenbladet.no
+  homepage: https://www.morgenbladet.no
   language: 'no'
   scope: domestic
   kind: media
@@ -81,7 +117,7 @@ sources:
   state_affiliated: false
   notes: Historic independent weekly broadsheet covering politics, culture, and society.
   feeds:
-  - url: https://morgenbladet.no/rss/
+  - url: https://news.google.com/rss/search?q=site:morgenbladet.no+when:7d&hl=no&gl=NO&ceid=NO:no
     category_hint: society
 - id: dagsavisen_no
   name: Dagsavisen
@@ -93,19 +129,7 @@ sources:
   state_affiliated: false
   notes: Independent national daily broadsheet covering executive policy and parliamentary affairs.
   feeds:
-  - url: https://www.dagsavisen.no/rss/
-    category_hint: internal_politics
-- id: document_no
-  name: Document.no
-  homepage: https://www.document.no
-  language: 'no'
-  scope: domestic
-  kind: media
-  governing_body: Document Forlag AS
-  state_affiliated: false
-  notes: Independent political news and analysis portal.
-  feeds:
-  - url: https://www.document.no/feed/
+  - url: https://news.google.com/rss/search?q=site:dagsavisen.no+when:3d&hl=no&gl=NO&ceid=NO:no
     category_hint: internal_politics
 - id: adressa_no
   name: Adresseavisen
@@ -119,19 +143,55 @@ sources:
   feeds:
   - url: https://www.adressa.no/rss/
     category_hint: general
-- id: gnews_norway_intl
-  name: Google News (Norway Energy & Security - International)
-  homepage: https://news.google.com
-  language: en
-  scope: international
+- id: document_no
+  name: Document.no
+  homepage: https://www.document.no
+  language: 'no'
+  scope: domestic
   kind: media
-  governing_body: n/a (aggregator)
+  governing_body: Document Forlag AS
+  state_affiliated: false
+  notes: Independent right-wing political news and analysis portal.
+  feeds:
+  - url: https://www.document.no/feed/
+    category_hint: internal_politics
+- id: the_local_no
+  name: The Local Norway
+  homepage: https://www.thelocal.no
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: The Local Europe AB
+  state_affiliated: false
+  notes: Independent English-language digital news service covering Norwegian governance and economy.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:thelocal.no+when:7d&hl=en-US&gl=US&ceid=US:en
+    category_hint: general
+- id: regjeringen_no
+  name: Regjeringen.no / Stortinget
+  homepage: https://www.regjeringen.no
+  language: 'no'
+  scope: domestic
+  kind: official
+  governing_body: Government of Norway
+  state_affiliated: true
+  notes: Official Norwegian government cabinet notices, Stortinget bills, and NTB wire items.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:regjeringen.no+OR+site:stortinget.no)+when:7d&hl=no&gl=NO&ceid=NO:no
+    category_hint: internal_politics
+- id: gnews_norway_press_batch
+  name: Google News (Norway Regional, Finance & Investigative - BT/Stavanger Aftenblad/Finansavisen/Filter/Minerva/Vårt Land/Nationen)
+  homepage: https://news.google.com
+  language: 'no'
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
   state_affiliated: false
   aggregator: google_news
+  notes: Aggregator capturing Norwegian regional dailies, financial papers, and niche journals without open RSS.
   feeds:
-  - url: https://news.google.com/rss/search?q=(Norway+OR+Norwegian)+(oil+OR+gas+OR+NATO+OR+Arctic+OR+defense)+when:3d&hl=en-US&gl=US&ceid=US:en
-    section: Energy & Security
-    category_hint: defence_security
+  - url: https://news.google.com/rss/search?q=(site:finansavisen.no+OR+site:bt.no+OR+site:aftenbladet.no+OR+site:altinget.no+OR+site:filternyheter.no+OR+site:minerva.no+OR+site:khrono.no+OR+site:vl.no+OR+site:nationen.no+OR+site:abcnyheter.no)+when:3d&hl=no&gl=NO&ceid=NO:no
+    category_hint: internal_politics
 - id: gnews_norway_no
   name: Google News (Norway National News - Norwegian)
   homepage: https://news.google.com
@@ -145,3 +205,16 @@ sources:
   - url: https://news.google.com/rss/search?q=Norge+OR+regjeringen+OR+Stortinget+when:2d&hl=no&gl=NO&ceid=NO:no
     section: National News (Norwegian)
     category_hint: internal_politics
+- id: gnews_norway_intl
+  name: Google News (Norway Energy & Security - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Norway+OR+Norwegian)+(oil+OR+gas+OR+NATO+OR+Arctic+OR+defense)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Energy & Security
+    category_hint: defence_security

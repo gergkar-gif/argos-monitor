@@ -27,6 +27,54 @@ sources:
   feeds:
   - url: https://www.zdf.de/rss/zdf/nachrichten
     category_hint: internal_politics
+- id: deutschlandfunk
+  name: Deutschlandfunk
+  homepage: https://www.deutschlandfunk.de
+  language: de
+  scope: domestic
+  kind: official
+  governing_body: Deutschlandradio (public statutory broadcasting trust)
+  state_affiliated: false
+  notes: German national public radio broadcaster focusing on news, debates, and federal legislation.
+  feeds:
+  - url: https://www.deutschlandfunk.de/nachrichten-100.rss
+    category_hint: internal_politics
+- id: faz_net
+  name: Frankfurter Allgemeine Zeitung (FAZ)
+  homepage: https://www.faz.net
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Fazit-Stiftung
+  state_affiliated: false
+  notes: German national center-right broadsheet of record with extensive foreign policy desk.
+  feeds:
+  - url: https://www.faz.net/rss/aktuell/politik/
+    category_hint: internal_politics
+- id: sueddeutsche
+  name: Süddeutsche Zeitung (SZ)
+  homepage: https://www.sueddeutsche.de
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Südwestdeutsche Medien Holding
+  state_affiliated: false
+  notes: Major German daily broadsheet known for investigative and national governance reporting.
+  feeds:
+  - url: https://rss.sueddeutsche.de/rss/Topthemen
+    category_hint: internal_politics
+- id: die_zeit
+  name: Die Zeit
+  homepage: https://www.zeit.de
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Holtzbrinck Publishing Group
+  state_affiliated: false
+  notes: German national weekly newspaper of record covering politics, institutions, and trade.
+  feeds:
+  - url: https://newsfeed.zeit.de/index
+    category_hint: internal_politics
 - id: der_spiegel
   name: Der Spiegel
   homepage: https://www.spiegel.de
@@ -55,6 +103,210 @@ sources:
     category_hint: internal_politics
   - url: https://www.handelsblatt.com/contentexport/feed/unternehmen
     category_hint: economics
+- id: die_welt
+  name: Die Welt
+  homepage: https://www.welt.de
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Axel Springer SE
+  state_affiliated: false
+  notes: German conservative daily covering security policy, Bundeswehr, and EU affairs.
+  feeds:
+  - url: https://www.welt.de/feeds/latest.rss
+    category_hint: defence_security
+- id: bild_de
+  name: Bild
+  homepage: https://www.bild.de
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Axel Springer SE
+  state_affiliated: false
+  notes: Germany's highest-circulation national daily tabloid.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:bild.de+when:3d&hl=de&gl=DE&ceid=DE:de
+    category_hint: general
+- id: tagesspiegel_de
+  name: Der Tagesspiegel
+  homepage: https://www.tagesspiegel.de
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Verlag Der Tagesspiegel GmbH
+  state_affiliated: false
+  notes: Leading Berlin broadsheet daily of record for federal government policy and European diplomacy.
+  feeds:
+  - url: https://www.tagesspiegel.de/contentexport/feed/politik
+    category_hint: internal_politics
+- id: taz_de
+  name: taz (die tageszeitung)
+  homepage: https://taz.de
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: taz, die tageszeitung Verlagsgenossenschaft eG
+  state_affiliated: false
+  notes: Cooperative-owned independent Berlin daily covering Bundestag politics, climate policy, and civil rights.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:taz.de+when:3d&hl=de&gl=DE&ceid=DE:de
+    category_hint: internal_politics
+- id: berliner_zeitung_de
+  name: Berliner Zeitung
+  homepage: https://www.berliner-zeitung.de
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Berliner Verlag GmbH
+  state_affiliated: false
+  notes: Major Berlin daily newspaper covering federal politics, eastern Germany, and foreign policy.
+  feeds:
+  - url: https://www.berliner-zeitung.de/feed.xml
+    category_hint: internal_politics
+- id: stern_de
+  name: Stern
+  homepage: https://www.stern.de
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: RTL Deutschland / Gruner + Jahr
+  state_affiliated: false
+  notes: Major German weekly news magazine and digital portal.
+  feeds:
+  - url: https://www.stern.de/feed/standard/alle-nachrichten/
+    category_hint: general
+- id: ntv_de
+  name: n-tv
+  homepage: https://www.n-tv.de
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: RTL Deutschland
+  state_affiliated: false
+  notes: Leading German commercial 24-hour news television network and markets portal.
+  feeds:
+  - url: https://www.n-tv.de/rss
+    category_hint: general
+- id: wiwo_de
+  name: WirtschaftsWoche
+  homepage: https://www.wiwo.de
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Handelsblatt Media Group
+  state_affiliated: false
+  notes: Germany's flagship weekly business, industry, and economic policy magazine.
+  feeds:
+  - url: https://feeds.cms.wiwo.de/rss/schlagzeilen
+    category_hint: economics
+- id: wdr_de
+  name: WDR Aktuell
+  homepage: https://www1.wdr.de/nachrichten
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Westdeutscher Rundfunk (ARD)
+  state_affiliated: false
+  notes: Regional public broadcaster serving North Rhine-Westphalia, Germany's largest industrial state.
+  feeds:
+  - url: https://www1.wdr.de/uebersicht-100.feed
+    category_hint: general
+- id: rbb24_de
+  name: rbb24
+  homepage: https://www.rbb24.de
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Rundfunk Berlin-Brandenburg (ARD)
+  state_affiliated: false
+  notes: Regional public broadcaster covering Berlin and Brandenburg.
+  feeds:
+  - url: https://www.rbb24.de/aktuell/index.xml/feed=rss.xml
+    category_hint: general
+- id: mdr_de
+  name: MDR Aktuell
+  homepage: https://www.mdr.de/nachrichten
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Mitteldeutscher Rundfunk (ARD)
+  state_affiliated: false
+  notes: Regional public broadcaster covering Saxony, Saxony-Anhalt, and Thuringia.
+  feeds:
+  - url: https://www.mdr.de/nachrichten/index~rss2.xml
+    category_hint: general
+- id: correctiv_de
+  name: Correctiv
+  homepage: https://correctiv.org
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Correctiv – Recherchen für die Gesellschaft gGmbH
+  state_affiliated: false
+  notes: Non-profit German investigative journalism and fact-checking newsroom.
+  feeds:
+  - url: https://correctiv.org/feed/
+    category_hint: internal_politics
+- id: netzpolitik_de
+  name: netzpolitik.org
+  homepage: https://netzpolitik.org
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: netzpolitik.org e.V.
+  state_affiliated: false
+  notes: Independent German digital rights, intelligence oversight, and tech policy newsroom.
+  feeds:
+  - url: https://netzpolitik.org/feed/
+    category_hint: society
+- id: cicero_de
+  name: Cicero
+  homepage: https://www.cicero.de
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Res Publica Verlags GmbH
+  state_affiliated: false
+  notes: German liberal-conservative monthly political magazine and daily portal.
+  feeds:
+  - url: https://www.cicero.de/rss.xml
+    category_hint: internal_politics
+- id: junge_freiheit_de
+  name: Junge Freiheit
+  homepage: https://jungefreiheit.de
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Junge Freiheit Verlag GmbH & Co. KG
+  state_affiliated: false
+  notes: German national-conservative weekly newspaper.
+  feeds:
+  - url: https://jungefreiheit.de/feed
+    category_hint: internal_politics
+- id: tichy_de
+  name: Tichys Einblick
+  homepage: https://www.tichyseinblick.de
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Tichys Einblick GmbH
+  state_affiliated: false
+  notes: German conservative-libertarian online political magazine.
+  feeds:
+  - url: https://www.tichyseinblick.de/feed/
+    category_hint: internal_politics
+- id: apollo_news_de
+  name: Apollo News
+  homepage: https://apollo-news.net
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Apollo News
+  state_affiliated: false
+  notes: German right-leaning digital news and commentary portal.
+  feeds:
+  - url: https://apollo-news.net/feed/
+    category_hint: internal_politics
 - id: dw_deutsch
   name: Deutsche Welle (Deutsch)
   homepage: https://www.dw.com/de
@@ -67,6 +319,31 @@ sources:
   feeds:
   - url: https://rss.dw.com/rdf/rss-de-all
     category_hint: internal_politics
+- id: bundesregierung_de
+  name: Bundesregierung / Bundesbank
+  homepage: https://www.bundesregierung.de
+  language: de
+  scope: domestic
+  kind: official
+  governing_body: Federal Government of Germany
+  state_affiliated: true
+  notes: Official press announcements from the Federal Chancellery, Bundestag, and Bundesbank.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:bundesregierung.de+OR+site:bundestag.de+OR+site:bundesbank.de)+when:7d&hl=de&gl=DE&ceid=DE:de
+    category_hint: internal_politics
+- id: gnews_germany_press_batch
+  name: Google News (Germany Weeklies, Regional & Policy - Focus/RND/FR/Merkur/Manager Magazin/Table.Media)
+  homepage: https://news.google.com
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator capturing German news portals, regional networks, and policy briefings without open RSS.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:focus.de+OR+site:rnd.de+OR+site:fr.de+OR+site:manager-magazin.de+OR+site:merkur.de+OR+site:table.media)+when:3d&hl=de&gl=DE&ceid=DE:de
+    category_hint: internal_politics
 - id: google_news_germany_politics
   name: Google News (Germany Politics & Coalition)
   homepage: https://news.google.com
@@ -78,7 +355,7 @@ sources:
   aggregator: google_news
   notes: Aggregator feed tracking Federal Chancellery, Bundestag, and party politics.
   feeds:
-  - url: https://news.google.com/rss/search?q=Bundeskanzler+OR+Bundestag+OR+Bundesregierung+OR+Koalition+OR+Scholz+OR+Merz+when:3d&hl=de&gl=DE&ceid=DE:de
+  - url: https://news.google.com/rss/search?q=Bundeskanzler+OR+Bundestag+OR+Bundesregierung+OR+Koalition+OR+Merz+when:3d&hl=de&gl=DE&ceid=DE:de
     category_hint: internal_politics
 - id: google_news_germany_economy
   name: Google News (Germany Industry & Economy)
@@ -89,7 +366,7 @@ sources:
   governing_body: Google LLC
   state_affiliated: false
   aggregator: google_news
-  notes: Aggregator feed tracking German auto industry, energy transition, and recession.
+  notes: Aggregator feed tracking German auto industry, energy transition, and fiscal policy.
   feeds:
   - url: https://news.google.com/rss/search?q=Bundesbank+OR+Schuldenbremse+OR+Wirtschaftskrise+OR+Industrie+Deutschland+when:3d&hl=de&gl=DE&ceid=DE:de
     category_hint: economics
@@ -106,71 +383,6 @@ sources:
   feeds:
   - url: https://news.google.com/rss/search?q=Bundeswehr+OR+Pistorius+OR+Zeitenwende+OR+R%C3%BCstungsausgaben+when:3d&hl=de&gl=DE&ceid=DE:de
     category_hint: defence_security
-- id: faz_net
-  name: Frankfurter Allgemeine Zeitung (FAZ)
-  homepage: https://www.faz.net
-  language: de
-  scope: domestic
-  kind: media
-  governing_body: Fazit-Stiftung
-  state_affiliated: false
-  notes: German national center-right broadsheet of record with extensive foreign
-    policy desk.
-  feeds:
-  - url: https://www.faz.net/rss/aktuell/
-    category_hint: internal_politics
-- id: sueddeutsche
-  name: Süddeutsche Zeitung (SZ)
-  homepage: https://www.sueddeutsche.de
-  language: de
-  scope: domestic
-  kind: media
-  governing_body: Südwestdeutsche Medien Holding
-  state_affiliated: false
-  notes: Major German daily broadsheet known for investigative and national governance
-    reporting.
-  feeds:
-  - url: https://rss.sueddeutsche.de/rss/Topthemen
-    category_hint: internal_politics
-- id: die_zeit
-  name: Die Zeit
-  homepage: https://www.zeit.de
-  language: de
-  scope: domestic
-  kind: media
-  governing_body: Holtzbrinck Publishing Group
-  state_affiliated: false
-  notes: German national weekly newspaper of record covering politics, institutions,
-    and trade.
-  feeds:
-  - url: https://newsfeed.zeit.de/index
-    category_hint: internal_politics
-- id: die_welt
-  name: Die Welt
-  homepage: https://www.welt.de
-  language: de
-  scope: domestic
-  kind: media
-  governing_body: Axel Springer SE
-  state_affiliated: false
-  notes: German conservative daily with heavy coverage of security policy, Bundeswehr,
-    and EU affairs.
-  feeds:
-  - url: https://www.welt.de/feeds/latest.rss
-    category_hint: defence_security
-- id: deutschlandfunk
-  name: Deutschlandfunk
-  homepage: https://www.deutschlandfunk.de
-  language: de
-  scope: domestic
-  kind: official
-  governing_body: Deutschlandradio (public statutory broadcasting trust)
-  state_affiliated: true
-  notes: German national public radio broadcaster focusing on news, debates, and federal
-    legislation.
-  feeds:
-  - url: https://www.deutschlandfunk.de/nachrichten-100.rss
-    category_hint: internal_politics
 - id: gnews_germany_intl
   name: Google News (Germany - International Press)
   homepage: https://news.google.com
@@ -186,29 +398,3 @@ sources:
     section: International Coverage
     category_hint: foreign_policy
     active: true
-
-- id: taz_de
-  name: "taz (die tageszeitung)"
-  homepage: https://taz.de
-  language: de
-  scope: domestic
-  kind: media
-  governing_body: "taz, die tageszeitung Verlagsgenossenschaft eG"
-  state_affiliated: false
-  notes: "Cooperative-owned independent Berlin daily newspaper covering Bundestag politics, climate policy, and civil rights."
-  feeds:
-  - url: https://news.google.com/rss/search?q=site:taz.de+when:7d&hl=en-US&gl=US&ceid=US:en
-    category_hint: internal_politics
-
-- id: tagesspiegel_de
-  name: "Der Tagesspiegel"
-  homepage: https://www.tagesspiegel.de
-  language: de
-  scope: domestic
-  kind: media
-  governing_body: "Verlag Der Tagesspiegel GmbH"
-  state_affiliated: false
-  notes: "Leading Berlin broadsheet daily of record for federal government policy, ministries, and European diplomacy."
-  feeds:
-  - url: https://www.tagesspiegel.de/contentexport/feed/politik
-    category_hint: internal_politics

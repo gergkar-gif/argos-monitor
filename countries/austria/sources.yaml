@@ -25,19 +25,6 @@ sources:
     category_hint: internal_politics
   - url: https://www.derstandard.at/rss/wirtschaft
     category_hint: economics
-- id: gnews_austria_intl
-  name: Google News (Austria Coalition & Central Europe)
-  homepage: https://news.google.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: n/a (aggregator)
-  state_affiliated: false
-  aggregator: google_news
-  feeds:
-  - url: https://news.google.com/rss/search?q=(Austria+OR+Vienna)+(coalition+OR+parliament+OR+neutrality+OR+election)+when:3d&hl=en-US&gl=US&ceid=US:en
-    section: Governance & Diplomacy
-    category_hint: foreign_policy
 - id: diepresse_at
   name: Die Presse
   homepage: https://www.diepresse.com
@@ -46,10 +33,33 @@ sources:
   kind: media
   governing_body: Styria Media Group
   state_affiliated: false
-  notes: Historic bourgeois-liberal paper of record founded in 1848 covering parliamentary politics, constitutional law, and
-    trade.
+  notes: Historic bourgeois-liberal paper of record founded in 1848.
   feeds:
   - url: https://www.diepresse.com/rss
+    category_hint: internal_politics
+- id: kurier_at
+  name: Kurier
+  homepage: https://kurier.at
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Kurier Zeitungsverlag und Druckerei GmbH
+  state_affiliated: false
+  notes: Major Vienna national daily newspaper covering coalition politics, economy, and justice.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:kurier.at+when:3d&hl=de&gl=AT&ceid=AT:de
+    category_hint: internal_politics
+- id: salzburger_nachrichten_at
+  name: Salzburger Nachrichten
+  homepage: https://www.sn.at
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Salzburger Nachrichten Verlagsgesellschaft
+  state_affiliated: false
+  notes: Influential western Austrian quality daily newspaper covering federal politics and trade.
+  feeds:
+  - url: https://www.sn.at/archiv/rss/
     category_hint: internal_politics
 - id: kleinezeitung_at
   name: Kleine Zeitung
@@ -59,7 +69,7 @@ sources:
   kind: media
   governing_body: Styria Media Group
   state_affiliated: false
-  notes: Major regional daily in Styria and Carinthia with influential federal political desk in Vienna.
+  notes: Major daily in Styria and Carinthia with influential federal political desk in Vienna.
   feeds:
   - url: https://www.kleinezeitung.at/rss/politik
     category_hint: internal_politics
@@ -69,24 +79,60 @@ sources:
   language: de
   scope: domestic
   kind: media
-  governing_body: Mediaprint (Dichand & Benko families)
+  governing_body: Mediaprint (Dichand & Funke)
   state_affiliated: false
-  notes: Austria's highest-circulation tabloid daily newspaper with enormous influence on electoral campaigns and public debates.
+  notes: Austria's highest-circulation tabloid daily newspaper.
   feeds:
   - url: https://www.krone.at/nachrichten/rss.html
     category_hint: general
-- id: vienna_at
-  name: VIENNA.AT
-  homepage: https://www.vienna.at
+- id: oe24_at
+  name: oe24
+  homepage: https://www.oe24.at
   language: de
   scope: domestic
   kind: media
-  governing_body: Russmedia Digital GmbH
+  governing_body: Mediengruppe Österreich
   state_affiliated: false
-  notes: High-reach Vienna municipal and federal news daily covering urban planning, security, and local politics.
+  notes: High-reach Austrian tabloid and 24-hour commercial broadcast news portal.
   feeds:
-  - url: https://www.vienna.at/feed/rss
+  - url: https://news.google.com/rss/search?q=site:oe24.at+when:3d&hl=de&gl=AT&ceid=AT:de
     category_hint: general
+- id: heute_at
+  name: Heute
+  homepage: https://www.heute.at
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: AHVV Verlags GmbH
+  state_affiliated: false
+  notes: Widely circulated Austrian commuter daily newspaper.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:heute.at+when:3d&hl=de&gl=AT&ceid=AT:de
+    category_hint: general
+- id: profil_at
+  name: Profil
+  homepage: https://www.profil.at
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Kurier / VGN Medien Holding
+  state_affiliated: false
+  notes: Austria's flagship weekly political news and investigative magazine.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:profil.at+when:7d&hl=de&gl=AT&ceid=AT:de
+    category_hint: internal_politics
+- id: falter_at
+  name: Falter
+  homepage: https://www.falter.at
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Falter Verlagsgesellschaft
+  state_affiliated: false
+  notes: Independent investigative weekly magazine renowned for uncovering judicial corruption.
+  feeds:
+  - url: https://www.falter.at/rss/
+    category_hint: internal_politics
 - id: nachrichten_at
   name: Oberösterreichische Nachrichten
   homepage: https://www.nachrichten.at
@@ -95,7 +141,7 @@ sources:
   kind: media
   governing_body: Wimmer Medien
   state_affiliated: false
-  notes: Leading Upper Austrian daily paper covering industrial heartland manufacturing, energy transition, and federal politics.
+  notes: Leading Upper Austrian daily paper covering industrial manufacturing and federal politics.
   feeds:
   - url: https://www.nachrichten.at/storage/rss/rss/politik.xml
     category_hint: internal_politics
@@ -107,23 +153,22 @@ sources:
   kind: media
   governing_body: Moser Holding
   state_affiliated: false
-  notes: Western Austria's primary daily newspaper covering alpine transit, environmental policy, and federal governance.
+  notes: Western Austria's primary daily newspaper covering alpine transit and federal governance.
   feeds:
   - url: https://www.tt.com/rss/politik.xml
     category_hint: internal_politics
-- id: falter_at
-  name: Falter
-  homepage: https://www.falter.at
+- id: vienna_at
+  name: VIENNA.AT
+  homepage: https://www.vienna.at
   language: de
   scope: domestic
   kind: media
-  governing_body: Falter Verlagsgesellschaft
+  governing_body: Russmedia Digital GmbH
   state_affiliated: false
-  notes: Independent investigative weekly magazine renowned for uncovering judicial corruption and political party funding
-    scandals.
+  notes: High-reach Vienna municipal and federal news daily.
   feeds:
-  - url: https://www.falter.at/rss/
-    category_hint: internal_politics
+  - url: https://www.vienna.at/feed/rss
+    category_hint: general
 - id: vol_at
   name: Vorarlberg Online (VOL.AT)
   homepage: https://www.vol.at
@@ -132,10 +177,71 @@ sources:
   kind: media
   governing_body: Russmedia
   state_affiliated: false
-  notes: Western Austrian regional digital daily covering Lake Constance cross-border trade, industry, and cantonal ties.
+  notes: Western Austrian regional digital daily covering Lake Constance cross-border trade.
   feeds:
   - url: https://www.vol.at/feed/rss
     category_hint: economics
+- id: exxpress_at
+  name: eXXpress
+  homepage: https://exxpress.at
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: eXXpress Medienholding GmbH
+  state_affiliated: false
+  notes: Right-leaning Austrian digital news and political commentary portal.
+  feeds:
+  - url: https://exxpress.at/feed/
+    category_hint: internal_politics
+- id: kontrast_at
+  name: Kontrast.at
+  homepage: https://kontrast.at
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Sozialdemokratischer Parlamentsklub
+  state_affiliated: false
+  notes: Austrian social-democratic political commentary and parliamentary journal.
+  feeds:
+  - url: https://kontrast.at/feed/
+    category_hint: internal_politics
+- id: zackzack_at
+  name: ZackZack
+  homepage: https://zackzack.at
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Zack Media GmbH
+  state_affiliated: false
+  notes: Independent Austrian investigative political news portal.
+  feeds:
+  - url: https://zackzack.at/feed
+    category_hint: internal_politics
+- id: bundeskanzleramt_at
+  name: Bundeskanzleramt / APA OTS
+  homepage: https://www.bundeskanzleramt.gv.at
+  language: de
+  scope: domestic
+  kind: official
+  governing_body: Federal Chancellery of Austria / APA
+  state_affiliated: true
+  notes: Official Austrian government press releases, Parlament bills, and APA wire coverage.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:bundeskanzleramt.gv.at+OR+site:parlament.gv.at+OR+site:ots.at)+when:7d&hl=de&gl=AT&ceid=AT:de
+    category_hint: internal_politics
+- id: gnews_austria_media_batch
+  name: Google News (Austria Broadcast & Business - Puls 24/ServusTV/Trend/Brutkasten)
+  homepage: https://news.google.com
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator capturing Austrian commercial broadcasters and business magazines without open RSS.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:puls24.at+OR+site:servustv.com+OR+site:trend.at+OR+site:brutkasten.com+OR+site:meinbezirk.at)+when:3d&hl=de&gl=AT&ceid=AT:de
+    category_hint: internal_politics
 - id: gnews_austria_de
   name: Google News (Austria National News - German)
   homepage: https://news.google.com
@@ -149,3 +255,16 @@ sources:
   - url: https://news.google.com/rss/search?q=%C3%96sterreich+OR+Wien+OR+Bundesregierung+when:2d&hl=de&gl=AT&ceid=AT:de
     section: National News (German)
     category_hint: internal_politics
+- id: gnews_austria_intl
+  name: Google News (Austria Coalition & Central Europe)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Austria+OR+Vienna)+(coalition+OR+parliament+OR+neutrality+OR+election)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Governance & Diplomacy
+    category_hint: foreign_policy

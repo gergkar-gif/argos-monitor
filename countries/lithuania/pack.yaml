@@ -1,0 +1,63 @@
+id: lithuania
+name: Lithuania
+region: Eastern Europe
+language: lt
+abroad_label: Regional & diaspora Lithuanian outlets
+mention:
+- lithuania
+- lithuanian
+- lietuva
+- lietuvos
+- lietuvoje
+- vilnius
+- kaunas
+- klaipėda
+- seimas
+- gitanas nausėda
+- nausėda
+- ingrida šimonytė
+- gintautas paluckas
+- paluckas
+url_sections:
+  skip:
+  - sport
+  - sports
+  - sportas
+  - entertainment
+  - lifestyle
+  - pramogos
+excerpt:
+  dateline: ^\s*(?:VILNIUS|KAUNAS|BNS|ELTA|LRT)\s*[-–:]\s*
+reddit:
+- lithuania
+geo: LT
+aggregator_outlets:
+  domestic:
+  - LRT
+  - LRT.lt
+  - Delfi
+  - Delfi.lt
+  - 15min
+  - 15min.lt
+  - Lrytas.lt
+  - Lietuvos rytas
+  - Verslo žinios
+  - VŽ.lt
+  - TV3.lt
+  - Respublika
+  - Bernardinai.lt
+  - Kauno diena
+  - Vakarų ekspresas
+  - Alfa.lt
+  - Made in Vilnius
+  - Siena.lt
+  - Atvira Klaipėda
+  - Kurier Wileński
+  - Zw.lt
+  - BNS
+  - ELTA
+  - LRV.lt
+  abroad_local:
+  - The Baltic Times
+  - Delfi EN
+last_reviewed: 2026-11-17

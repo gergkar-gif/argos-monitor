@@ -34,8 +34,9 @@ url_sections:
   skip: [sport, lifestyle, kultura, show, avto, laifstail, zabava, horoskop, любопитно, спорт]
 
 aggregator_outlets:
-  domestic: ["bta", "bnr", "bnt", "dnevnik.bg", "capital.bg", "mediapool.bg", "clubz.bg", "investor.bg",
-             "24 chasa", "24chasa.bg", "dir.bg", "offnews.bg", "segabg.com", "novinite.com", "trud.bg", "actualno.com", "bird.bg"]
+  domestic: ["bta", "bnr", "bnt", "dnevnik.bg", "capital.bg", "mediapool.bg", "clubz.bg", "investor.bg", "bird.bg",
+             "24 chasa", "24chasa.bg", "dir.bg", "offnews.bg", "segabg.com", "novinite.com", "trud.bg", "actualno.com",
+             "news.bg", "nova", "nova.bg", "btv", "btv новините", "дарик", "dariknews.bg", "fakti.bg", "vesti.bg", "frognews", "banker"]
   abroad_local: ["svobodna evropa", "dw bulgaria", "balkan insight", "euractiv bulgaria"]
 
 excerpt:

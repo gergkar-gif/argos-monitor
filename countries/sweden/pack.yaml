@@ -46,12 +46,22 @@ aggregator_outlets:
     - "expressen"
     - "dagens industri"
     - "di"
-    - "the local sweden"
+    - "tv4 nyheterna"
+    - "göteborgs-posten"
+    - "sydsvenskan"
+    - "altinget"
+    - "dagens samhälle"
+    - "omni"
+    - "kvartal"
+    - "fokus"
+    - "bulletin"
+    - "dagens etc"
+    - "tt nyhetsbyrån"
+    - "regeringen.se"
   abroad_local:
-    - "reuters"
+    - "the local sweden"
     - "politico europe"
-    - "bbc news europe"
-    - "financial times"
+last_reviewed: 2026-11-17
 
 excerpt:
   dateline: '^\s*(?:STOCKHOLM|GÖTEBORG|MALMÖ|TT|REUTERS|AFP)\s*[-–—:]\s*'

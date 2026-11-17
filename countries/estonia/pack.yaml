@@ -1,0 +1,57 @@
+id: estonia
+name: Estonia
+region: Eastern Europe
+language: et
+abroad_label: Regional & diaspora Estonian outlets
+mention:
+- estonia
+- estonian
+- eesti
+- eestis
+- eestit
+- tallinn
+- tartu
+- narva
+- riigikogu
+- kristen michal
+- alar karis
+- margus tsahkna
+- hanno pevkur
+- kallas
+url_sections:
+  skip:
+  - sport
+  - sports
+  - entertainment
+  - lifestyle
+  - meelelahutus
+  - elu24
+excerpt:
+  dateline: ^\s*(?:TALLINN|TARTU|BNS|ERR)\s*[-–:]\s*
+reddit:
+- eesti
+geo: EE
+aggregator_outlets:
+  domestic:
+  - ERR
+  - ERR News
+  - Delfi
+  - Delfi.ee
+  - Postimees
+  - Õhtuleht
+  - Äripäev
+  - Eesti Ekspress
+  - Eesti Päevaleht
+  - Maaleht
+  - Geenius
+  - Sirp
+  - Objektiiv
+  - Uued Uudised
+  - Lääne Elu
+  - BNS
+  - Valitsus.ee
+  abroad_local:
+  - The Baltic Times
+  - Estonian World
+  - Barents Observer
+last_reviewed: 2026-11-17

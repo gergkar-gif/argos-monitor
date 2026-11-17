@@ -1,0 +1,49 @@
+themes:
+- id: elections
+  keywords:
+  - election
+  - rinkimai
+  - seimo rinkimai
+  - prezidento rinkimai
+  - savivaldybių rinkimai
+  describe:
+  - Lithuanian Seimas parliamentary elections, presidential ballots, and VRK electoral results.
+- id: security
+  keywords:
+  - nato eastern flank
+  - suwalki gap
+  - defence spending
+  - kariuomenė
+  - krašto apsauga
+  - vokietijos brigada
+  - baltic air policing
+  describe:
+  - Lithuanian Armed Forces, German Bundeswehr brigade deployment in Rūdninkai, Suwałki Gap deterrence, and border security.
+- id: diplomacy
+  keywords:
+  - nordic-baltic
+  - nb8
+  - ukraine aid
+  - eu sanctions
+  - užsienio reikalų ministerija
+  describe:
+  - Lithuanian foreign policy, EU sanctions on Russia and Belarus, Ukraine support, and Indo-Pacific diplomacy.
+- id: econ_policy
+  keywords:
+  - rail baltica
+  - lng klaipeda
+  - lietuvos bankas
+  - biudžetas
+  - inflation
+  describe:
+  - Lithuanian state budget, Klaipėda LNG terminal, Baltic electricity grid synchronization, and Rail Baltica.
+- id: party_gov
+  keywords:
+  - prime minister
+  - coalition
+  - vilnius
+  - seimas
+  - vyriausybė
+  - ministrų kabinetas
+  describe:
+  - Government of Lithuania cabinet policy, Seimas legislative votes, and coalition governance.

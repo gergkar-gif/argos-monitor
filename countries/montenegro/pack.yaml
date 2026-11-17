@@ -31,7 +31,8 @@ url_sections:
 
 aggregator_outlets:
   domestic: ["mina", "rtcg", "vijesti", "vijesti.me", "pobjeda", "cdm", "cdm.me", "portal analitika", "dan", "dan.co.me",
-             "antena m", "adria tv", "gradski.me", "bankar.me", "investitor.me", "monitor.co.me", "borba.me"]
+             "antena m", "adria tv", "gradski.me", "bankar.me", "investitor.me", "monitor.co.me", "borba.me",
+             "rtv nikšić", "rtnk", "aktuelno.me", "volim podgoricu", "standard.co.me", "in4s"]
   abroad_local: ["slobodna evropa", "al jazeera balkans", "balkan insight"]
 
 excerpt:

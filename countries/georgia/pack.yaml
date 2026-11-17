@@ -53,11 +53,22 @@ aggregator_outlets:
     - "formula"
     - "mtavari"
     - "imedi"
+    - "batumelebi"
+    - "on.ge"
+    - "metronome"
+    - "fortuna.ge"
+    - "tabula"
+    - "ambebi.ge"
+    - "bpn.ge"
+    - "newpress.ge"
   abroad_local:
     - "oc media"
     - "jamnews"
     - "radio tavisupleba"
     - "rfe/rl"
+    - "caucasus watch"
+    - "ekho kavkaza"
+    - "sova news"
 
 excerpt:
   dateline: '^\s*(?:TBILISI|Civil\.ge|Agenda\.ge|IPN|1TV)\s*[-–—:]\s*'

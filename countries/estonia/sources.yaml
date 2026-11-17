@@ -1,0 +1,266 @@
+sources:
+- id: err_ee
+  name: ERR Uudised
+  homepage: https://www.err.ee
+  language: et
+  scope: domestic
+  kind: media
+  governing_body: Eesti Rahvusringhääling (Estonian Public Broadcasting)
+  state_affiliated: false
+  notes: Statutory Estonian public broadcaster covering Riigikogu, government policy, and security.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:err.ee+when:3d&hl=et&gl=EE&ceid=EE:et
+    category_hint: internal_politics
+- id: err_news_ee
+  name: ERR News
+  homepage: https://news.err.ee
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Eesti Rahvusringhääling (Estonian Public Broadcasting)
+  state_affiliated: false
+  notes: English-language service of Estonian statutory public broadcaster.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:news.err.ee+when:7d&hl=en-US&gl=US&ceid=US:en
+    category_hint: internal_politics
+- id: postimees_ee
+  name: Postimees
+  homepage: https://www.postimees.ee
+  language: et
+  scope: domestic
+  kind: media
+  governing_body: Postimees Grupp
+  state_affiliated: false
+  notes: Estonia's oldest and highest-circulation daily paper of record founded in 1857.
+  feeds:
+  - url: https://www.postimees.ee/rss
+    category_hint: internal_politics
+- id: postimees_en
+  name: Postimees News (English)
+  homepage: https://news.postimees.ee
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Postimees Grupp
+  state_affiliated: false
+  notes: English edition of Postimees covering Estonian politics and Baltic security.
+  feeds:
+  - url: https://news.postimees.ee/rss
+    category_hint: internal_politics
+- id: postimees_ru
+  name: Rus.Postimees
+  homepage: https://rus.postimees.ee
+  language: ru
+  scope: domestic
+  kind: media
+  governing_body: Postimees Grupp
+  state_affiliated: false
+  notes: Major Russian-language domestic Estonian news portal.
+  feeds:
+  - url: https://rus.postimees.ee/rss
+    category_hint: internal_politics
+- id: delfi_ee
+  name: Delfi Estonia
+  homepage: https://www.delfi.ee
+  language: et
+  scope: domestic
+  kind: media
+  governing_body: Ekspress Grupp
+  state_affiliated: false
+  notes: Estonia's largest digital news portal covering politics, economy, and society.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:delfi.ee+when:3d&hl=et&gl=EE&ceid=EE:et
+    category_hint: internal_politics
+- id: aripaev_ee
+  name: Äripäev
+  homepage: https://www.aripaev.ee
+  language: et
+  scope: domestic
+  kind: media
+  governing_body: Bonnier Business Press
+  state_affiliated: false
+  notes: Estonia's premier financial and investigative business daily.
+  feeds:
+  - url: https://www.aripaev.ee/rss
+    category_hint: economics
+- id: ohtuleht_ee
+  name: Õhtuleht
+  homepage: https://www.ohtuleht.ee
+  language: et
+  scope: domestic
+  kind: media
+  governing_body: AS Õhtuleht Kirjastus
+  state_affiliated: false
+  notes: High-circulation Estonian daily tabloid and civic news outlet.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:ohtuleht.ee+when:3d&hl=et&gl=EE&ceid=EE:et
+    category_hint: general
+- id: tartu_postimees_ee
+  name: Tartu Postimees
+  homepage: https://tartu.postimees.ee
+  language: et
+  scope: domestic
+  kind: media
+  governing_body: Postimees Grupp
+  state_affiliated: false
+  notes: Regional daily newspaper for Tartu and Southern Estonia.
+  feeds:
+  - url: https://tartu.postimees.ee/rss
+    category_hint: general
+- id: parnu_postimees_ee
+  name: Pärnu Postimees
+  homepage: https://parnu.postimees.ee
+  language: et
+  scope: domestic
+  kind: media
+  governing_body: Postimees Grupp
+  state_affiliated: false
+  notes: Regional daily newspaper for Pärnu County.
+  feeds:
+  - url: https://parnu.postimees.ee/rss
+    category_hint: general
+- id: sakala_ee
+  name: Sakala
+  homepage: https://sakala.postimees.ee
+  language: et
+  scope: domestic
+  kind: media
+  governing_body: Postimees Grupp
+  state_affiliated: false
+  notes: Historic Viljandi regional daily newspaper founded in 1878.
+  feeds:
+  - url: https://sakala.postimees.ee/rss
+    category_hint: general
+- id: saartehaal_ee
+  name: Saarte Hääl
+  homepage: https://saartehaal.postimees.ee
+  language: et
+  scope: domestic
+  kind: media
+  governing_body: Postimees Grupp
+  state_affiliated: false
+  notes: Regional daily newspaper for Saaremaa and Western Estonian islands.
+  feeds:
+  - url: https://saartehaal.postimees.ee/rss
+    category_hint: general
+- id: laane_elu_ee
+  name: Lääne Elu
+  homepage: https://online.le.ee
+  language: et
+  scope: domestic
+  kind: media
+  governing_body: OÜ Lääne Elu
+  state_affiliated: false
+  notes: Independent Läänemaa regional newspaper based in Haapsalu.
+  feeds:
+  - url: https://online.le.ee/feed/
+    category_hint: general
+- id: sirp_ee
+  name: Sirp
+  homepage: https://www.sirp.ee
+  language: et
+  scope: domestic
+  kind: media
+  governing_body: SA Kultuurileht
+  state_affiliated: false
+  notes: Estonian cultural, media, and public-policy weekly.
+  feeds:
+  - url: https://www.sirp.ee/feed/
+    category_hint: society
+- id: objektiiv_ee
+  name: Objektiiv
+  homepage: https://objektiiv.ee
+  language: et
+  scope: domestic
+  kind: media
+  governing_body: SAPTK (Sihtasutus Perekonna ja Traditsiooni Kaitseks)
+  state_affiliated: false
+  notes: Estonian conservative political commentary and news portal.
+  feeds:
+  - url: https://objektiiv.ee/feed/
+    category_hint: internal_politics
+- id: uueduudised_ee
+  name: Uued Uudised
+  homepage: https://uueduudised.ee
+  language: et
+  scope: domestic
+  kind: media
+  governing_body: EKRE Media
+  state_affiliated: false
+  notes: National-conservative political news portal aligned with EKRE.
+  feeds:
+  - url: https://uueduudised.ee/feed/
+    category_hint: internal_politics
+- id: telegram_ee
+  name: Telegram.ee
+  homepage: https://www.telegram.ee
+  language: et
+  scope: domestic
+  kind: media
+  governing_body: Telegram OÜ
+  state_affiliated: false
+  notes: Independent Estonian alternative news and commentary portal.
+  feeds:
+  - url: https://www.telegram.ee/feed
+    category_hint: society
+- id: estonianworld_ee
+  name: Estonian World
+  homepage: https://estonianworld.com
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Estonian World OÜ
+  state_affiliated: false
+  notes: Independent English-language magazine covering Estonia and the global Estonian diaspora.
+  feeds:
+  - url: https://estonianworld.com/feed/
+    category_hint: general
+- id: valitsus_ee
+  name: Government of Estonia (Valitsus.ee)
+  homepage: https://valitsus.ee
+  language: et
+  scope: domestic
+  kind: official
+  governing_body: Government Office of Estonia (Riigikantselei)
+  state_affiliated: true
+  notes: Official Estonian government cabinet releases and Riigikogu policy announcements.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:valitsus.ee+OR+site:riigikogu.ee)+when:7d&hl=et&gl=EE&ceid=EE:et
+    category_hint: internal_politics
+- id: gnews_estonia_ekspress_batch
+  name: Google News (Estonia Weeklies & Tech - Ekspress/EPL/Maaleht/Geenius)
+  homepage: https://news.google.com
+  language: et
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator capturing RSS-blocked Estonian weeklies, rural press, and tech newsrooms.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:ekspress.delfi.ee+OR+site:epl.delfi.ee+OR+site:maaleht.delfi.ee+OR+site:geenius.ee)+when:3d&hl=et&gl=EE&ceid=EE:et
+    category_hint: internal_politics
+- id: gnews_estonia_et
+  name: Google News (Estonia National News - Estonian)
+  homepage: https://news.google.com
+  language: et
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss?hl=et&gl=EE&ceid=EE:et
+    category_hint: internal_politics
+- id: gnews_estonia_intl
+  name: Google News (Estonia - International Press)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Estonia+OR+Estonian+OR+Tallinn)+(NATO+OR+Russia+OR+defense+OR+government+OR+Baltic)+when:3d&hl=en-US&gl=US&ceid=US:en
+    category_hint: foreign_policy

@@ -39,6 +39,7 @@ aggregator_outlets:
   domestic:
     - "efe"
     - "agencia efe"
+    - "europa press"
     - "el país"
     - "el pais"
     - "el mundo"
@@ -46,14 +47,27 @@ aggregator_outlets:
     - "abc"
     - "el confidencial"
     - "eldiario.es"
+    - "el español"
+    - "la razón"
+    - "okdiario"
+    - "público"
+    - "el periódico"
+    - "cadena ser"
+    - "vozpópuli"
+    - "the objective"
+    - "el economista"
     - "cinco días"
+    - "expansión"
     - "expansion"
+    - "20 minutos"
+    - "infolibre"
+    - "la voz de galicia"
+    - "el correo"
     - "rtve"
+    - "la moncloa"
   abroad_local:
-    - "reuters"
     - "politico europe"
-    - "bloomberg"
-    - "financial times"
+last_reviewed: 2026-11-17
 
 excerpt:
   dateline: '^\s*(?:MADRID|BARCELONA|EFE|REUTERS|AFP|EUROPA PRESS)\s*[-–—:]\s*'

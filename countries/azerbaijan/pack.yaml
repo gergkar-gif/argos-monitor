@@ -49,6 +49,13 @@ aggregator_outlets:
     - "haqqin.az"
     - "oxu.az"
     - "musavat"
+    - "pressklub.az"
+    - "günün səsi"
+    - "gununsesi"
+    - "modern.az"
+    - "konkret.az"
+    - "qafqazinfo"
+    - "arqument.az"
   abroad_local:
     - "meydan tv"
     - "oc media"
@@ -56,6 +63,13 @@ aggregator_outlets:
     - "azadliq radiosu"
     - "rfe/rl"
     - "turan"
+    - "bbc azərbaycanca"
+    - "mikroskop media"
+    - "abzas media"
+    - "toplum tv"
+    - "baku research institute"
+    - "caucasus watch"
+    - "eurasianet"
 
 excerpt:
   dateline: '^\s*(?:BAKU,\s*Azerbaijan|BAKU|AZERTAC|Trend|APA|Report\.az)\s*[-–—:]\s*'

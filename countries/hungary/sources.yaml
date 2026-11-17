@@ -104,7 +104,84 @@ sources:
     governing_body: G7 Gazdasági Sztorik Zrt. (independent Hungarian economic and investigative analytical portal)
     state_affiliated: false
     feeds:
-      - {url: "https://g7.hu/feed/", section: Gazdaság, category_hint: economics}
+      - {url: "https://news.google.com/rss/search?q=site:g7.hu+when:7d&hl=hu&gl=HU&ceid=HU:hu", section: Gazdaság, category_hint: economics}
+
+  - id: magyarhang_hu
+    name: Magyar Hang
+    homepage: https://hang.hu
+    language: hu
+    scope: domestic
+    kind: media
+    governing_body: Alhambra-Press Bt. (independent conservative civic weekly newspaper and news portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://hang.hu/rss", section: Belföld & Külföld, category_hint: internal_politics}
+
+  - id: direkt36_hu
+    name: Direkt36
+    homepage: https://www.direkt36.hu
+    language: hu
+    scope: domestic
+    kind: media
+    governing_body: Direkt36 Nonprofit Kft. (premier Hungarian investigative journalism center)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.direkt36.hu/feed/", section: Oknyomozás, category_hint: internal_politics}
+
+  - id: magyarnarancs_hu
+    name: Magyar Narancs
+    homepage: https://magyarnarancs.hu
+    language: hu
+    scope: domestic
+    kind: media
+    governing_body: Magyar Narancs.hu Lapkiadó Kft. (historic Hungarian political and cultural weekly)
+    state_affiliated: false
+    feeds:
+      - {url: "https://magyarnarancs.hu/rss", section: Belpol, category_hint: internal_politics}
+
+  - id: klubradio_hu
+    name: Klubrádió
+    homepage: https://www.klubradio.hu
+    language: hu
+    scope: domestic
+    kind: media
+    governing_body: Klubrádió Zrt. (independent opposition talk radio and digital newsroom)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.klubradio.hu/rss", section: Hírek, category_hint: internal_politics}
+
+  - id: atv_hu
+    name: ATV.hu
+    homepage: https://www.atv.hu
+    language: hu
+    scope: domestic
+    kind: media
+    governing_body: ATV Zrt. (major commercial television news channel and political portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.atv.hu/feed/", section: Belföld, category_hint: internal_politics}
+
+  - id: privatbankar_hu
+    name: Privátbankár.hu
+    homepage: https://privatbankar.hu
+    language: hu
+    scope: domestic
+    kind: media
+    governing_body: Klasszis Média Kft. (independent Hungarian financial, banking, and macro news portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://privatbankar.hu/rss", section: Piac & Gazdaság, category_hint: economics}
+
+  - id: novekedes_hu
+    name: Növekedés.hu
+    homepage: https://novekedes.hu
+    language: hu
+    scope: domestic
+    kind: media
+    governing_body: MNB / Növekedés Média (Hungarian economic and central-bank analysis portal)
+    state_affiliated: true
+    feeds:
+      - {url: "https://novekedes.hu/feed/", section: Gazdaság, category_hint: economics}
 
   - id: index
     name: Index
@@ -263,7 +340,7 @@ sources:
     governing_body: Kárpáti Igaz Szó Kiadó (Uzhhorod / Ungvár — Hungarian-language daily in Transcarpathia / Kárpátalja, Ukraine)
     state_affiliated: false
     feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:kiszo.net+OR+site:karpatalja.ma)+when:7d&hl=hu&gl=UA&ceid=UA:uk", section: Kárpátalja, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=(site:kiszo.net+OR+site:karpatalja.ma)+when:7d&hl=hu&gl=HU&ceid=HU:hu", section: Kárpátalja, category_hint: general}
 
   - id: euronews_hu
     name: Euronews (Hungarian edition)
@@ -329,6 +406,18 @@ sources:
       - {url: "https://news.google.com/rss/search?q=Hungary+(EU+funds+OR+%22rule+of+law%22+OR+Brussels+OR+sanctions)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Hungary and the EU, category_hint: general}
       - {url: "https://news.google.com/rss/search?q=Hungary+(trade+OR+investment+OR+tariff+OR+economy+OR+forint)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Hungary economy, category_hint: general}
       - {url: "https://news.google.com/rss/search?q=Hungary+(Ukraine+OR+Russia+OR+NATO+OR+energy+OR+China)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Hungary and its neighbours, category_hint: general}
+
+  - id: gnews_hu_press_batch
+    name: Google News (Hungary Business, TV & Fact-Check - Economx/Mfor/Infostart/RTL/Lakmusz/168)
+    homepage: https://news.google.com
+    language: hu
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: Google LLC
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:economx.hu+OR+site:mfor.hu+OR+site:infostart.hu+OR+site:rtl.hu+OR+site:lakmusz.hu+OR+site:168.hu)+when:3d&hl=hu&gl=HU&ceid=HU:hu", section: Gazdaság & TV, category_hint: general}
 
   - id: gnews_hu
     name: Google News (Hungarian)

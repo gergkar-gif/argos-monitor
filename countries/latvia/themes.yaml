@@ -1,0 +1,48 @@
+themes:
+- id: elections
+  keywords:
+  - election
+  - vēlēšanas
+  - saeimas vēlēšanas
+  - pašvaldību vēlēšanas
+  describe:
+  - Latvian Saeima parliamentary elections, municipal ballots, and Central Election Commission results.
+- id: security
+  keywords:
+  - nato eastern flank
+  - defence spending
+  - border security
+  - aizsardzības spēki
+  - zemessardze
+  - nbs
+  - baltic air policing
+  describe:
+  - Latvian National Armed Forces, NATO multinational brigade at Ādaži, eastern border fortification, and civil defence.
+- id: diplomacy
+  keywords:
+  - nordic-baltic
+  - nb8
+  - ukraine aid
+  - eu sanctions
+  - ārlietu ministrija
+  describe:
+  - Latvian foreign policy, EU sanctions, support for Ukraine, and Baltic-Nordic cooperation.
+- id: econ_policy
+  keywords:
+  - rail baltica
+  - latvijas banka
+  - valsts budžets
+  - inflation
+  - airbaltic
+  describe:
+  - Latvian state budget, Rail Baltica financing, Bank of Latvia forecasts, energy transition, and airBaltic.
+- id: party_gov
+  keywords:
+  - prime minister
+  - coalition
+  - riga
+  - saeima
+  - valdība
+  - ministru kabinets
+  describe:
+  - Cabinet of Ministers decisions, Saeima legislation, and ruling coalition dynamics in Riga.

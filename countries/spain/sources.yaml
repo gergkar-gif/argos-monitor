@@ -7,13 +7,34 @@ sources:
   kind: wire
   governing_body: Sociedad Estatal de Participaciones Industriales (SEPI)
   state_affiliated: true
-  notes: Spain's statutory state news agency and the world's premier Spanish-language
-    wire.
+  notes: Spain's statutory state news agency and the world's premier Spanish-language wire.
   feeds:
-  - url: https://news.google.com/rss/search?q=site:efe.com+when:7d&hl=en-US&gl=US&ceid=US:en
+  - url: https://news.google.com/rss/search?q=site:efe.com+when:3d&hl=es&gl=ES&ceid=ES:es
     category_hint: internal_politics
-  - url: https://news.google.com/rss/search?q=site:efe.com+spain+when:7d&hl=en-US&gl=US&ceid=US:en
-    category_hint: economics
+- id: europapress_es
+  name: Europa Press
+  homepage: https://www.europapress.es
+  language: es
+  scope: domestic
+  kind: wire
+  governing_body: Europa Press Comunicación
+  state_affiliated: false
+  notes: Spain's leading private national wire agency covering national and regional politics.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:europapress.es+when:3d&hl=es&gl=ES&ceid=ES:es
+    category_hint: internal_politics
+- id: rtve_es
+  name: RTVE Noticias
+  homepage: https://www.rtve.es/noticias
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Corporación RTVE (Spanish public broadcaster)
+  state_affiliated: false
+  notes: Statutory national public television and radio news portal of Spain.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:rtve.es+when:3d&hl=es&gl=ES&ceid=ES:es
+    category_hint: internal_politics
 - id: el_pais_es
   name: El País
   homepage: https://elpais.com
@@ -56,18 +77,6 @@ sources:
     category_hint: internal_politics
   - url: https://www.lavanguardia.com/rss/economia.xml
     category_hint: economics
-- id: cinco_dias
-  name: Cinco Días
-  homepage: https://cincodias.elpais.com
-  language: es
-  scope: domestic
-  kind: media
-  governing_body: PRISA
-  state_affiliated: false
-  notes: Spain's premier financial, corporate and economic daily broadsheet.
-  feeds:
-  - url: https://news.google.com/rss/search?q=site:cincodias.elpais.com+when:7d&hl=en-US&gl=US&ceid=US:en
-    category_hint: economics
 - id: abc_es
   name: ABC
   homepage: https://www.abc.es
@@ -79,6 +88,18 @@ sources:
   notes: Spain's historic conservative daily newspaper of record.
   feeds:
   - url: https://www.abc.es/rss/2.0/espana/
+    category_hint: internal_politics
+- id: elconfidencial_es
+  name: El Confidencial
+  homepage: https://www.elconfidencial.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Titania Compañía Editorial
+  state_affiliated: false
+  notes: Influential independent daily news and political intelligence portal.
+  feeds:
+  - url: https://rss.elconfidencial.com/espana/
     category_hint: internal_politics
 - id: eldiario_es
   name: elDiario.es
@@ -92,6 +113,42 @@ sources:
   feeds:
   - url: https://www.eldiario.es/rss/
     category_hint: internal_politics
+- id: elespanol_es
+  name: El Español
+  homepage: https://www.elespanol.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: El León de El Español Publicaciones S.A.
+  state_affiliated: false
+  notes: High-reach centre-right Spanish digital daily covering politics and courts.
+  feeds:
+  - url: https://www.elespanol.com/rss/
+    category_hint: internal_politics
+- id: cinco_dias
+  name: Cinco Días
+  homepage: https://cincodias.elpais.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: PRISA
+  state_affiliated: false
+  notes: Spain's premier financial, corporate and economic daily broadsheet.
+  feeds:
+  - url: https://feeds.elpais.com/mrss-s/pages/ep/site/cincodias.elpais.com/portada
+    category_hint: economics
+- id: expansion_es
+  name: Expansión
+  homepage: https://www.expansion.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Unidad Editorial
+  state_affiliated: false
+  notes: Spain's premier business, financial and capital markets daily.
+  feeds:
+  - url: https://www.expansion.com/rss/portada.xml
+    category_hint: economics
 - id: minutos20_es
   name: 20 minutos
   homepage: https://www.20minutos.es
@@ -104,30 +161,6 @@ sources:
   feeds:
   - url: https://www.20minutos.es/rss/
     category_hint: general
-- id: expansion_es
-  name: Expansión
-  homepage: https://www.expansion.com
-  language: es
-  scope: domestic
-  kind: media
-  governing_body: Unidad Editorial
-  state_affiliated: false
-  notes: Spain's premier business, financial and capital markets daily.
-  feeds:
-  - url: https://e00-expansion.uecdn.es/rss/portada.xml
-    category_hint: economics
-- id: elconfidencial_es
-  name: El Confidencial
-  homepage: https://www.elconfidencial.com
-  language: es
-  scope: domestic
-  kind: media
-  governing_body: Titania Compañía Editorial
-  state_affiliated: false
-  notes: Influential independent daily news and political intelligence portal.
-  feeds:
-  - url: https://rss.elconfidencial.com/espana/
-    category_hint: internal_politics
 - id: infolibre_es
   name: infoLibre
   homepage: https://www.infolibre.es
@@ -140,6 +173,55 @@ sources:
   feeds:
   - url: https://www.infolibre.es/rss/
     category_hint: internal_politics
+- id: lavozdegalicia_es
+  name: La Voz de Galicia
+  homepage: https://www.lavozdegalicia.es
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Corporación Voz de Galicia
+  state_affiliated: false
+  notes: Leading regional daily newspaper of Galicia covering northwest Spain and national affairs.
+  feeds:
+  - url: https://www.lavozdegalicia.es/index.xml
+    category_hint: general
+- id: elcorreo_es
+  name: El Correo
+  homepage: https://www.elcorreo.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Vocento
+  state_affiliated: false
+  notes: Historic Basque Country daily newspaper covering Bilbao, regional industry, and national politics.
+  feeds:
+  - url: https://www.elcorreo.com/rss/2.0/portada.xml
+    category_hint: general
+- id: lamoncloa_es
+  name: La Moncloa / Congreso
+  homepage: https://www.lamoncloa.gob.es
+  language: es
+  scope: domestic
+  kind: official
+  governing_body: Government of Spain
+  state_affiliated: true
+  notes: Official Spanish Council of Ministers releases and parliamentary records.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:lamoncloa.gob.es+OR+site:congreso.es)+when:7d&hl=es&gl=ES&ceid=ES:es
+    category_hint: internal_politics
+- id: gnews_spain_press_batch
+  name: Google News (Spain Press, Radio & Business - La Razón/OKDiario/Público/El Periódico/SER/Vozpópuli/El Economista)
+  homepage: https://news.google.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator capturing major RSS-blocked Spanish dailies, radio networks, and financial portals.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:larazon.es+OR+site:okdiario.com+OR+site:publico.es+OR+site:elperiodico.com+OR+site:cadenaser.com+OR+site:vozpopuli.com+OR+site:theobjective.com+OR+site:eleconomista.es)+when:3d&hl=es&gl=ES&ceid=ES:es
+    category_hint: internal_politics
 - id: google_news_spain_politics
   name: Google News (Spain Government & Congreso)
   homepage: https://news.google.com
@@ -149,9 +231,9 @@ sources:
   governing_body: Google LLC
   state_affiliated: false
   aggregator: google_news
-  notes: Aggregator tracking Pedro Sánchez, La Moncloa, Amnesty Law, and Feijóo.
+  notes: Aggregator tracking Pedro Sánchez, La Moncloa, and Feijóo.
   feeds:
-  - url: https://news.google.com/rss/search?q=%22Pedro+S%C3%A1nchez%22+OR+%22La+Moncloa%22+OR+%22Congreso+de+los+Diputados%22+OR+amnist%C3%ADa+when:3d&hl=es&gl=ES&ceid=ES:es
+  - url: https://news.google.com/rss/search?q=%22Pedro+S%C3%A1nchez%22+OR+%22La+Moncloa%22+OR+%22Congreso+de+los+Diputados%22+OR+Feij%C3%B3o+when:3d&hl=es&gl=ES&ceid=ES:es
     category_hint: internal_politics
 - id: google_news_spain_economy
   name: Google News (Spain Economy & Banco de España)

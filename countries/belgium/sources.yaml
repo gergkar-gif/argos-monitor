@@ -11,6 +11,17 @@ sources:
   feeds:
   - url: https://rss.rtbf.be/article/rss/highlight_rtbf_info.xml
     category_hint: internal_politics
+- id: vrt_nws_be
+  name: VRT NWS
+  homepage: https://www.vrt.be/vrtnws/nl
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: Vlaamse Radio- en Televisieomroeporganisatie (Flemish statutory public-service broadcaster)
+  state_affiliated: false
+  feeds:
+  - url: https://www.vrt.be/vrtnws/nl.rss.articles.xml
+    category_hint: internal_politics
 - id: le_soir_be
   name: Le Soir
   homepage: https://www.lesoir.be
@@ -21,20 +32,20 @@ sources:
   state_affiliated: false
   notes: Brussels broadsheet paper of record covering federal governance, coalition talks, and EU affairs.
   feeds:
-  - url: https://news.google.com/rss/search?q=site:lesoir.be+when:7d&hl=en-US&gl=US&ceid=US:en
+  - url: https://news.google.com/rss/search?q=site:lesoir.be+when:3d&hl=fr&gl=BE&ceid=BE:fr
     category_hint: internal_politics
-- id: brussels_times
-  name: The Brussels Times
-  homepage: https://www.brusselstimes.com
-  language: en
-  scope: abroad_local
+- id: destandaard_be
+  name: De Standaard
+  homepage: https://www.standaard.be
+  language: nl
+  scope: domestic
   kind: media
-  governing_body: The Brussels Times BV
+  governing_body: Mediahuis
   state_affiliated: false
-  notes: Independent English-language Belgian daily covering national politics, EU institutions, and expat community affairs.
+  notes: Flanders' premier quality daily broadsheet of record.
   feeds:
-  - url: https://news.google.com/rss/search?q=site:brusselstimes.com+when:7d&hl=en-US&gl=US&ceid=US:en
-    category_hint: general
+  - url: https://www.standaard.be/rss/
+    category_hint: internal_politics
 - id: demorgen_be
   name: De Morgen
   homepage: https://www.demorgen.be
@@ -59,13 +70,25 @@ sources:
   feeds:
   - url: https://www.lalibre.be/rss/section/belgique.xml
     category_hint: internal_politics
+- id: detijd_be
+  name: De Tijd
+  homepage: https://www.tijd.be
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: Mediafin (Rossel & Roularta)
+  state_affiliated: false
+  notes: Premier Belgian Dutch-language financial, corporate, and economic daily.
+  feeds:
+  - url: https://www.tijd.be/rss/nieuws.xml
+    category_hint: economics
 - id: lecho_be
   name: L'Echo
   homepage: https://www.lecho.be
   language: fr
   scope: domestic
   kind: media
-  governing_body: Mediafin (Rossel & De Persgroep)
+  governing_body: Mediafin (Rossel & Roularta)
   state_affiliated: false
   notes: Premier Belgian French-language financial and macroeconomic daily broadsheet.
   feeds:
@@ -82,6 +105,30 @@ sources:
   notes: Highest-circulation Dutch-language daily newspaper in Belgium.
   feeds:
   - url: https://www.hln.be/rss.xml
+    category_hint: general
+- id: nieuwsblad_be
+  name: Het Nieuwsblad
+  homepage: https://www.nieuwsblad.be
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: Mediahuis
+  state_affiliated: false
+  notes: High-circulation Flemish daily newspaper covering domestic politics and regional news.
+  feeds:
+  - url: https://www.nieuwsblad.be/rss/
+    category_hint: general
+- id: dhnet_be
+  name: La DH Les Sports+
+  homepage: https://www.dhnet.be
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Groupe IPM
+  state_affiliated: false
+  notes: Major French-language popular daily newspaper in Brussels and Wallonia.
+  feeds:
+  - url: https://www.dhnet.be/arc/outboundfeeds/rss/section/actu/?outputType=xml
     category_hint: general
 - id: knack_be
   name: Knack
@@ -131,19 +178,100 @@ sources:
   feeds:
   - url: https://trends.levif.be/feed/
     category_hint: economics
-- id: gnews_belgium_intl
-  name: Google News (Belgium Politics & NATO - International)
-  homepage: https://news.google.com
-  language: en
-  scope: international
+- id: apache_be
+  name: Apache
+  homepage: https://apache.be
+  language: nl
+  scope: domestic
   kind: media
-  governing_body: n/a (aggregator)
+  governing_body: De Werf van De Toekomst cv
+  state_affiliated: false
+  notes: Reader-funded Flemish investigative journalism newsroom in Antwerp and Brussels.
+  feeds:
+  - url: https://apache.be/feed/artikels/nieuws
+    category_hint: internal_politics
+- id: bruzz_be
+  name: BRUZZ
+  homepage: https://www.bruzz.be
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: Vlaams-Brusselse Media vzw
+  state_affiliated: false
+  notes: Brussels multilingual civic broadcaster and news outlet covering the capital region.
+  feeds:
+  - url: https://www.bruzz.be/rss.xml
+    category_hint: general
+- id: belga_be
+  name: Belga News Agency
+  homepage: https://www.belga.be
+  language: fr
+  scope: domestic
+  kind: wire
+  governing_body: Belga News Agency SA
+  state_affiliated: false
+  notes: Belgium's national news agency covering federal and regional institutions.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:belga.be+when:3d&hl=fr&gl=BE&ceid=BE:fr
+    category_hint: internal_politics
+- id: brussels_times
+  name: The Brussels Times
+  homepage: https://www.brusselstimes.com
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: The Brussels Times BV
+  state_affiliated: false
+  notes: Independent English-language Belgian daily covering national politics and EU institutions.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:brusselstimes.com+when:7d&hl=en-US&gl=US&ceid=US:en
+    category_hint: general
+- id: euobserver_be
+  name: EUobserver
+  homepage: https://euobserver.com
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: EUobserver ASBL (Brussels independent non-profit daily covering EU institutions)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:euobserver.com+when:7d&hl=en-US&gl=US&ceid=US:en
+    category_hint: foreign_policy
+- id: euractiv_be
+  name: Euractiv
+  homepage: https://www.euractiv.com
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Mediahuis (pan-European Brussels policy network)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:euractiv.com+when:3d&hl=en-US&gl=US&ceid=US:en
+    category_hint: foreign_policy
+- id: politico_eu_be
+  name: Politico Europe
+  homepage: https://www.politico.eu
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Axel Springer SE (Brussels daily covering EU institutions and NATO)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:politico.eu+when:3d&hl=en-US&gl=US&ceid=US:en
+    category_hint: foreign_policy
+- id: gnews_belgium_media_batch
+  name: Google News (Belgium Commercial TV & Regional Press - RTL Info/VTM/L'Avenir/Sudinfo/GvA/HBvL)
+  homepage: https://news.google.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
   state_affiliated: false
   aggregator: google_news
+  notes: Aggregator capturing Flemish and Walloon regional dailies and commercial broadcasters without open RSS.
   feeds:
-  - url: https://news.google.com/rss/search?q=(Belgium+OR+Brussels)+(coalition+OR+parliament+OR+NATO+OR+EU)+when:3d&hl=en-US&gl=US&ceid=US:en
-    section: Governance & Diplomacy
-    category_hint: foreign_policy
+  - url: https://news.google.com/rss/search?q=(site:rtl.be+OR+site:lavenir.net+OR+site:sudinfo.be+OR+site:gva.be+OR+site:hbvl.be+OR+site:hln.be)+when:3d&hl=fr&gl=BE&ceid=BE:fr
+    category_hint: general
 - id: gnews_belgium_fr
   name: Google News (Belgium National News - French)
   homepage: https://news.google.com
@@ -157,47 +285,16 @@ sources:
   - url: https://news.google.com/rss/search?q=Belgique+OR+Bruxelles+OR+gouvernement+when:2d&hl=fr&gl=BE&ceid=BE:fr
     section: National News (French)
     category_hint: internal_politics
-- id: vrt_nws_be
-  name: VRT NWS
-  homepage: https://www.vrt.be/vrtnws/nl
-  language: nl
-  scope: domestic
-  kind: media
-  governing_body: Vlaamse Radio- en Televisieomroeporganisatie (Flemish statutory public-service broadcaster)
-  state_affiliated: false
-  feeds:
-  - url: https://www.vrt.be/vrtnws/nl.rss.articles.xml
-    category_hint: internal_politics
-- id: euobserver_be
-  name: EUobserver
-  homepage: https://euobserver.com
+- id: gnews_belgium_intl
+  name: Google News (Belgium Politics & NATO - International)
+  homepage: https://news.google.com
   language: en
-  scope: abroad_local
+  scope: international
   kind: media
-  governing_body: EUobserver ASBL (Brussels independent non-profit daily covering EU institutions, rule of law, and foreign policy)
+  governing_body: n/a (aggregator)
   state_affiliated: false
+  aggregator: google_news
   feeds:
-  - url: https://news.google.com/rss/search?q=site:euobserver.com+when:7d&hl=en-US&gl=US&ceid=US:en
-    category_hint: foreign_policy
-- id: euractiv_be
-  name: Euractiv
-  homepage: https://www.euractiv.com
-  language: en
-  scope: abroad_local
-  kind: media
-  governing_body: Mediahuis (pan-European Brussels policy network covering European Commission, Council, and Parliament)
-  state_affiliated: false
-  feeds:
-  - url: https://news.google.com/rss/search?q=site:euractiv.com+when:3d&hl=en-US&gl=US&ceid=US:en
-    category_hint: foreign_policy
-- id: politico_eu_be
-  name: Politico Europe
-  homepage: https://www.politico.eu
-  language: en
-  scope: abroad_local
-  kind: media
-  governing_body: Axel Springer SE (Brussels daily covering European Union institutions, NATO, and European capitals)
-  state_affiliated: false
-  feeds:
-  - url: https://news.google.com/rss/search?q=site:politico.eu+when:3d&hl=en-US&gl=US&ceid=US:en
+  - url: https://news.google.com/rss/search?q=(Belgium+OR+Brussels)+(coalition+OR+parliament+OR+NATO+OR+EU)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Governance & Diplomacy
     category_hint: foreign_policy

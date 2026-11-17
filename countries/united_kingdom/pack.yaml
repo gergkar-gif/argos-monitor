@@ -35,7 +35,6 @@ url_sections:
 aggregator_outlets:
   domestic:
     - "bbc news"
-    - "reuters"
     - "the guardian"
     - "the telegraph"
     - "financial times"
@@ -43,13 +42,29 @@ aggregator_outlets:
     - "sky news"
     - "the times"
     - "daily mail"
+    - "daily mirror"
+    - "daily express"
+    - "the sun"
     - "new statesman"
     - "the spectator"
+    - "the economist"
+    - "itv news"
+    - "lbc"
+    - "gb news"
+    - "channel 4 news"
+    - "city a.m."
+    - "evening standard"
+    - "i news"
+    - "the scotsman"
+    - "the herald"
+    - "walesonline"
+    - "belfast telegraph"
+    - "politicshome"
+    - "byline times"
+    - "pa media"
+    - "gov.uk"
   abroad_local:
     - "politico europe"
-    - "the new york times"
-    - "the washington post"
-    - "le monde"
 
 excerpt:
   dateline: '^\s*(?:LONDON|REUTERS|BBC|PA MEDIA|LONDON \(Reuters\))\s*[-–—:]\s*'

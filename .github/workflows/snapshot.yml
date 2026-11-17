@@ -1,7 +1,7 @@
 name: Multi-run feed snapshot
 
 # Fast 4-hourly feed ingestion, clustering, ranking, and Cloudflare Pages deployment (01:00, 05:00, 09:00, 13:00, 17:00 UTC).
-# Captures breaking items across all 96 desks every 4 hours and updates argosmonitor.uk immediately,
+# Captures breaking items across all 99 desks every 4 hours and updates argosmonitor.uk immediately,
 # while leaving deep full-text extraction and MarianMT batch translation to the twice-daily digest.
 on:
   schedule:

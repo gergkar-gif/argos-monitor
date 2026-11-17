@@ -27,7 +27,9 @@ url_sections:
 
 aggregator_outlets:
   domestic: ["ata", "atsh", "rtsh", "balkanweb", "top channel", "klan", "tv klan", "panorama", "gazeta panorama",
-             "shqiptarja.com", "reporter.al", "exit.al", "monitor.al", "syri.net", "oranews", "lapsi.al", "vizion plus", "dosja.al", "albanian daily news"]
+             "shqiptarja.com", "reporter.al", "exit.al", "monitor.al", "syri.net", "oranews", "lapsi.al", "vizion plus",
+             "dosja.al", "albanian daily news", "abc news", "gazeta si", "boldnews", "faxweb", "javanews", "argumentum",
+             "gazeta fjala", "a2 cnn", "gazeta tema", "tirana times"]
   abroad_local: ["balkan insight", "evropa e lire", "euronews albania"]
 
 excerpt:

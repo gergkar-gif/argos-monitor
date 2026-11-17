@@ -51,12 +51,26 @@ aggregator_outlets:
     - "hnonline"
     - "hospodárske noviny"
     - "ta3"
+    - "tvnoviny.sk"
+    - "markíza"
+    - "noviny.sk"
+    - "trend.sk"
+    - "nový čas"
+    - "plus 7 dní"
+    - "pluska.sk"
+    - "denník postoj"
+    - "denník štandard"
+    - "icjk"
+    - "úrad vlády"
   abroad_local:
     - "čtk"
     - "irozhlas"
     - "seznam zprávy"
     - "respekt"
     - "balkan insight"
+    - "ma7"
+    - "új szó"
+last_reviewed: 2026-11-17
 
 excerpt:
   dateline: '^\s*(?:BRATISLAVA|KOŠICE|TASR|SITA|STVR)\s*[-–—:]\s*'

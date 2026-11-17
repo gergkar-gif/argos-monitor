@@ -13,6 +13,18 @@ sources:
     category_hint: internal_politics
   - url: https://www.dr.dk/nyheder/service/feeds/penge
     category_hint: economics
+- id: tv2_dk
+  name: TV 2 Nyheder
+  homepage: https://nyheder.tv2.dk
+  language: da
+  scope: domestic
+  kind: media
+  governing_body: TV 2 Danmark A/S
+  state_affiliated: false
+  notes: Denmark's leading commercial public-service television news network.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:tv2.dk+when:3d&hl=da&gl=DK&ceid=DK:da
+    category_hint: general
 - id: politiken_dk
   name: Politiken
   homepage: https://politiken.dk
@@ -21,35 +33,58 @@ sources:
   kind: media
   governing_body: JP/Politikens Hus
   state_affiliated: false
-  notes: Copenhagen morning broadsheet paper of record covering executive policy, Nordic defense, and welfare economics.
+  notes: Copenhagen morning broadsheet paper of record covering executive policy and Nordic defense.
   feeds:
   - url: https://politiken.dk/rss/indland.rss
     category_hint: internal_politics
-- id: the_local_dk
-  name: The Local Denmark
-  homepage: https://www.thelocal.dk
-  language: en
-  scope: abroad_local
+- id: berlingske_dk
+  name: Berlingske
+  homepage: https://www.berlingske.dk
+  language: da
+  scope: domestic
   kind: media
-  governing_body: The Local Europe AB
+  governing_body: Berlingske Media
   state_affiliated: false
-  notes: Independent English-language Danish news daily covering cabinet decrees, immigration rules, and economy.
+  notes: Denmark's oldest national broadsheet newspaper of record founded in 1749.
   feeds:
-  - url: https://www.thelocal.dk/feed
-    category_hint: general
-- id: gnews_denmark_intl
-  name: Google News (Denmark Politics & Pharma - International)
-  homepage: https://news.google.com
-  language: en
-  scope: international
+  - url: https://www.berlingske.dk/next-api/feeds/alle
+    category_hint: internal_politics
+- id: jyllandsposten_dk
+  name: Jyllands-Posten
+  homepage: https://jyllands-posten.dk
+  language: da
+  scope: domestic
   kind: media
-  governing_body: n/a (aggregator)
+  governing_body: JP/Politikens Hus
   state_affiliated: false
-  aggregator: google_news
+  notes: Major Danish centre-right national broadsheet based in Aarhus.
   feeds:
-  - url: https://news.google.com/rss/search?q=(Denmark+OR+Danish)+(Frederiksen+OR+Folketinget+OR+Greenland+OR+defense)+when:3d&hl=en-US&gl=US&ceid=US:en
-    section: Governance & Diplomacy
-    category_hint: foreign_policy
+  - url: https://feeds.jp.dk/jp/seneste
+    category_hint: internal_politics
+- id: borsen_dk
+  name: Børsen
+  homepage: https://borsen.dk
+  language: da
+  scope: domestic
+  kind: media
+  governing_body: Dagbladet Børsen A/S (Bonnier Group)
+  state_affiliated: false
+  notes: Denmark's leading business and financial newspaper of record.
+  feeds:
+  - url: https://borsen.dk/rss
+    category_hint: economics
+- id: finans_dk
+  name: Finans.dk
+  homepage: https://finans.dk
+  language: da
+  scope: domestic
+  kind: media
+  governing_body: JP/Politikens Hus
+  state_affiliated: false
+  notes: Major Danish business, shipping, and pharmaceutical industry news portal.
+  feeds:
+  - url: https://feeds.finans.dk/seneste
+    category_hint: economics
 - id: bt_dk
   name: B.T.
   homepage: https://www.bt.dk
@@ -74,18 +109,6 @@ sources:
   feeds:
   - url: https://ekstrabladet.dk/rssfeed/nyheder/
     category_hint: internal_politics
-- id: arbejderen_dk
-  name: Arbejderen
-  homepage: https://arbejderen.dk
-  language: da
-  scope: domestic
-  kind: media
-  governing_body: Arbejderpartiet Kommunisterne
-  state_affiliated: false
-  notes: Independent left-wing daily newspaper focusing on labor markets, welfare, and peace policy.
-  feeds:
-  - url: https://arbejderen.dk/feed/
-    category_hint: internal_politics
 - id: altinget_dk
   name: Altinget
   homepage: https://www.altinget.dk
@@ -98,18 +121,30 @@ sources:
   feeds:
   - url: https://www.altinget.dk/rss
     category_hint: internal_politics
-- id: borsen_dk
-  name: Børsen
-  homepage: https://borsen.dk
+- id: olfi_dk
+  name: OLFI
+  homepage: https://olfi.dk
   language: da
   scope: domestic
   kind: media
-  governing_body: Dagbladet Børsen A/S (Bonnier Group)
+  governing_body: OLFI ApS
   state_affiliated: false
-  notes: Denmark leading business and financial newspaper of record.
+  notes: Independent Danish defense, military procurement, and Arctic security specialist outlet.
   feeds:
-  - url: https://borsen.dk/rss
-    category_hint: economics
+  - url: https://olfi.dk/feed/
+    category_hint: defence_security
+- id: arbejderen_dk
+  name: Arbejderen
+  homepage: https://arbejderen.dk
+  language: da
+  scope: domestic
+  kind: media
+  governing_body: Arbejderpartiet Kommunisterne
+  state_affiliated: false
+  notes: Left-wing daily newspaper focusing on labor markets, welfare, and peace policy.
+  feeds:
+  - url: https://arbejderen.dk/feed/
+    category_hint: internal_politics
 - id: pov_international_dk
   name: POV International
   homepage: https://pov.international
@@ -142,10 +177,47 @@ sources:
   kind: media
   governing_body: Dansk Journalistforbund
   state_affiliated: false
-  notes: Danish press and media journal reviewing national journalism, freedom of speech, and policy.
+  notes: Danish press and media journal reviewing national journalism and media policy.
   feeds:
   - url: https://journalisten.dk/feed/
     category_hint: general
+- id: the_local_dk
+  name: The Local Denmark
+  homepage: https://www.thelocal.dk
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: The Local Europe AB
+  state_affiliated: false
+  notes: Independent English-language Danish news daily covering cabinet decrees and economy.
+  feeds:
+  - url: https://www.thelocal.dk/feed
+    category_hint: general
+- id: statsministeriet_dk
+  name: Statsministeriet / Folketinget
+  homepage: https://www.stm.dk
+  language: da
+  scope: domestic
+  kind: official
+  governing_body: Prime Minister's Office of Denmark
+  state_affiliated: true
+  notes: Official Danish government releases, Folketinget bills, and Ritzau wire dispatches.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:stm.dk+OR+site:ft.dk+OR+site:ritzau.dk)+when:7d&hl=da&gl=DK&ceid=DK:da
+    category_hint: internal_politics
+- id: gnews_denmark_press_batch
+  name: Google News (Denmark Broadsheets & Regional - Information/Kristeligt Dagblad/Weekendavisen/Zetland/Nordjyske/JydskeVestkysten)
+  homepage: https://news.google.com
+  language: da
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator capturing subscription dailies, weeklies, and regional Danish newspapers without open RSS.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:information.dk+OR+site:kristeligt-dagblad.dk+OR+site:weekendavisen.dk+OR+site:zetland.dk+OR+site:nordjyske.dk+OR+site:fyens.dk+OR+site:jv.dk)+when:3d&hl=da&gl=DK&ceid=DK:da
+    category_hint: internal_politics
 - id: gnews_denmark_da
   name: Google News (Denmark National News - Danish)
   homepage: https://news.google.com
@@ -159,3 +231,16 @@ sources:
   - url: https://news.google.com/rss/search?q=Danmark+OR+regeringen+OR+Folketinget+when:2d&hl=da&gl=DK&ceid=DK:da
     section: National News (Danish)
     category_hint: internal_politics
+- id: gnews_denmark_intl
+  name: Google News (Denmark Politics & Pharma - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Denmark+OR+Danish)+(Frederiksen+OR+Folketinget+OR+Greenland+OR+defense)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Governance & Diplomacy
+    category_hint: foreign_policy

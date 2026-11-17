@@ -29,7 +29,9 @@ url_sections:
 
 aggregator_outlets:
   domestic: ["sta", "rtv slo", "rtvslo.si", "delo", "dnevnik", "večer", "vecer.com", "finance", "finance.si",
-             "24ur", "24ur.com", "siol.net", "n1 slovenija", "mladina", "necenzurirano", "domovina", "žurnal24"]
+             "24ur", "24ur.com", "siol.net", "n1 slovenija", "mladina", "necenzurirano", "domovina", "žurnal24",
+             "slovenske novice", "nova24tv", "demokracija", "pod črto", "podcrto.si", "reporter.si", "oštro", "ostro.si", "svet24",
+             "požareport", "pozareport", "plusportal"]
   abroad_local: ["total slovenia news", "balkan insight", "euractiv"]
 
 excerpt:

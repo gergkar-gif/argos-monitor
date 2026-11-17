@@ -25,10 +25,8 @@ sources:
   state_affiliated: false
   notes: Italy's oldest and most influential national broadsheet of record.
   feeds:
-  - url: https://xml2.corriereobjects.it/rss/politica.xml
+  - url: https://news.google.com/rss/search?q=site:corriere.it+when:3d&hl=it&gl=IT&ceid=IT:it
     category_hint: internal_politics
-  - url: https://xml2.corriereobjects.it/rss/economia.xml
-    category_hint: economics
 - id: la_repubblica
   name: La Repubblica
   homepage: https://www.repubblica.it
@@ -39,10 +37,20 @@ sources:
   state_affiliated: false
   notes: Major national progressive newspaper of record based in Rome.
   feeds:
-  - url: https://news.google.com/rss/search?q=site:repubblica.it+when:7d&hl=en-US&gl=US&ceid=US:en
+  - url: https://news.google.com/rss/search?q=site:repubblica.it+when:3d&hl=it&gl=IT&ceid=IT:it
     category_hint: internal_politics
-  - url: https://news.google.com/rss/search?q=site:repubblica.it+italy+when:7d&hl=en-US&gl=US&ceid=US:en
-    category_hint: economics
+- id: lastampa_it
+  name: La Stampa
+  homepage: https://www.lastampa.it
+  language: it
+  scope: domestic
+  kind: media
+  governing_body: GEDI Gruppo Editoriale
+  state_affiliated: false
+  notes: Historic Turin-based national daily newspaper of record.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:lastampa.it+when:3d&hl=it&gl=IT&ceid=IT:it
+    category_hint: internal_politics
 - id: il_sole_24_ore
   name: Il Sole 24 Ore
   homepage: https://www.ilsole24ore.com
@@ -57,6 +65,18 @@ sources:
     category_hint: internal_politics
   - url: https://www.ilsole24ore.com/rss/economia.xml
     category_hint: economics
+- id: ilmessaggero_it
+  name: Il Messaggero
+  homepage: https://www.ilmessaggero.it
+  language: it
+  scope: domestic
+  kind: media
+  governing_body: Caltagirone Editore
+  state_affiliated: false
+  notes: Rome's flagship daily newspaper covering Palazzo Chigi and municipal affairs.
+  feeds:
+  - url: https://www.ilmessaggero.it/rss/home.xml
+    category_hint: internal_politics
 - id: rainews_it
   name: RaiNews.it
   homepage: https://www.rainews.it
@@ -69,6 +89,78 @@ sources:
   feeds:
   - url: https://www.rainews.it/rss/tutti
     category_hint: general
+- id: agi_it
+  name: AGI (Agenzia Giornalistica Italia)
+  homepage: https://www.agi.it
+  language: it
+  scope: domestic
+  kind: wire
+  governing_body: AGI S.p.A.
+  state_affiliated: false
+  notes: Major national press and wire service in Rome.
+  feeds:
+  - url: https://www.agi.it/cronaca/rss
+    category_hint: general
+- id: adnkronos_it
+  name: Adnkronos
+  homepage: https://www.adnkronos.com
+  language: it
+  scope: domestic
+  kind: wire
+  governing_body: Gruppo Adnkronos
+  state_affiliated: false
+  notes: Major Italian private news agency covering parliament and ministries.
+  feeds:
+  - url: https://www.adnkronos.com/RSS_PrimaPagina.xml
+    category_hint: internal_politics
+- id: skytg24_it
+  name: Sky TG24
+  homepage: https://tg24.sky.it
+  language: it
+  scope: domestic
+  kind: media
+  governing_body: Sky Italia (Comcast)
+  state_affiliated: false
+  notes: Leading Italian commercial 24-hour television news network.
+  feeds:
+  - url: https://tg24.sky.it/rss/tg24_flipboard.politica.xml
+    category_hint: internal_politics
+- id: tgcom24_it
+  name: Tgcom24
+  homepage: https://www.tgcom24.mediaset.it
+  language: it
+  scope: domestic
+  kind: media
+  governing_body: Mediaset (MFE)
+  state_affiliated: false
+  notes: Mediaset's national commercial television news portal.
+  feeds:
+  - url: https://www.tgcom24.mediaset.it/rss/cronaca.xml
+    category_hint: general
+- id: ilfattoquotidiano_it
+  name: Il Fatto Quotidiano
+  homepage: https://www.ilfattoquotidiano.it
+  language: it
+  scope: domestic
+  kind: media
+  governing_body: Società Editoriale Il Fatto S.p.A.
+  state_affiliated: false
+  notes: Influential anti-establishment investigative Italian daily newspaper.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:ilfattoquotidiano.it+when:3d&hl=it&gl=IT&ceid=IT:it
+    category_hint: internal_politics
+- id: ilpost_it
+  name: Il Post
+  homepage: https://www.ilpost.it
+  language: it
+  scope: domestic
+  kind: media
+  governing_body: Il Post S.r.l.
+  state_affiliated: false
+  notes: Acclaimed independent Italian digital daily newspaper known for explanatory reporting.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:ilpost.it+when:3d&hl=it&gl=IT&ceid=IT:it
+    category_hint: internal_politics
 - id: open_it
   name: Open
   homepage: https://www.open.online
@@ -80,6 +172,18 @@ sources:
   notes: Independent digital investigative newsroom and fact-checking daily.
   feeds:
   - url: https://www.open.online/feed/
+    category_hint: internal_politics
+- id: domani_it
+  name: Domani
+  homepage: https://www.editorialedomani.it
+  language: it
+  scope: domestic
+  kind: media
+  governing_body: Editoriale Domani S.p.A.
+  state_affiliated: false
+  notes: Independent Italian centre-left investigative daily newspaper.
+  feeds:
+  - url: https://www.editorialedomani.it/rss
     category_hint: internal_politics
 - id: formiche_it
   name: Formiche.net
@@ -93,18 +197,18 @@ sources:
   feeds:
   - url: https://formiche.net/feed/
     category_hint: foreign_policy
-- id: agi_it
-  name: AGI (Agenzia Giornalistica Italia)
-  homepage: https://www.agi.it
+- id: linkiesta_it
+  name: Linkiesta
+  homepage: https://www.linkiesta.it
   language: it
   scope: domestic
-  kind: wire
-  governing_body: AGI S.p.A.
+  kind: media
+  governing_body: Linkiesta.it S.r.l.
   state_affiliated: false
-  notes: Major national press and wire service in Rome.
+  notes: Independent liberal-Atlanticist Italian political and economic daily.
   feeds:
-  - url: https://www.agi.it/cronaca/rss
-    category_hint: general
+  - url: https://www.linkiesta.it/feed/
+    category_hint: internal_politics
 - id: ilmanifesto_it
   name: il manifesto
   homepage: https://ilmanifesto.it
@@ -113,13 +217,25 @@ sources:
   kind: media
   governing_body: Cooperativa Editrice Il Manifesto
   state_affiliated: false
-  notes: Independent cooperative national daily newspaper.
+  notes: Independent cooperative left-wing national daily newspaper.
   feeds:
   - url: https://ilmanifesto.it/feed
     category_hint: internal_politics
+- id: laverita_it
+  name: La Verità
+  homepage: https://www.laverita.info
+  language: it
+  scope: domestic
+  kind: media
+  governing_body: La Verità S.r.l.
+  state_affiliated: false
+  notes: Conservative right-wing Italian national daily newspaper.
+  feeds:
+  - url: https://www.laverita.info/feed
+    category_hint: internal_politics
 - id: lindipendente_it
   name: L'Indipendente
-  homepage: https://lindipendente.online
+  homepage: https://www.lindipendente.online
   language: it
   scope: domestic
   kind: media
@@ -127,8 +243,33 @@ sources:
   state_affiliated: false
   notes: Independent subscription-based ad-free investigative journal.
   feeds:
-  - url: https://news.google.com/rss/search?q=site:lindipendente.online+when:7d&hl=en-US&gl=US&ceid=US:en
+  - url: https://www.lindipendente.online/feed/
     category_hint: general
+- id: governo_it
+  name: Governo Italiano / Banca d'Italia
+  homepage: https://www.governo.it
+  language: it
+  scope: domestic
+  kind: official
+  governing_body: Presidency of the Council of Ministers of Italy
+  state_affiliated: true
+  notes: Official Italian cabinet decrees, Quirinale statements, and Bank of Italy notices.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:governo.it+OR+site:quirinale.it+OR+site:bancaditalia.it)+when:7d&hl=it&gl=IT&ceid=IT:it
+    category_hint: internal_politics
+- id: gnews_italy_press_batch
+  name: Google News (Italy Dailies, Finance & Portals - Il Giornale/Libero/Fanpage/Il Foglio/Avvenire/Milano Finanza)
+  homepage: https://news.google.com
+  language: it
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator capturing conservative dailies, Catholic press, financial press, and digital portals without open RSS.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:ilgiornale.it+OR+site:liberoquotidiano.it+OR+site:fanpage.it+OR+site:ilfoglio.it+OR+site:avvenire.it+OR+site:milanofinanza.it+OR+site:huffingtonpost.it)+when:3d&hl=it&gl=IT&ceid=IT:it
+    category_hint: internal_politics
 - id: google_news_italy_politics
   name: Google News (Italy Government & Meloni)
   homepage: https://news.google.com
@@ -164,8 +305,7 @@ sources:
   governing_body: Google LLC
   state_affiliated: false
   aggregator: google_news
-  notes: Aggregator tracking Crosetto, GCAP fighter, Mediterranean naval ops, and
-    migration pact.
+  notes: Aggregator tracking Crosetto, GCAP fighter, Mediterranean naval ops, and migration pact.
   feeds:
   - url: https://news.google.com/rss/search?q=%22Guido+Crosetto%22+OR+%22Piano+Mattei%22+OR+%22protocollo+Albania%22+OR+GCAP+when:3d&hl=it&gl=IT&ceid=IT:it
     category_hint: defence_security
@@ -184,16 +324,3 @@ sources:
     section: International Coverage
     category_hint: foreign_policy
     active: true
-
-- id: ilpost_it
-  name: "Il Post"
-  homepage: https://www.ilpost.it
-  language: it
-  scope: domestic
-  kind: media
-  governing_body: "Il Post S.r.l."
-  state_affiliated: false
-  notes: "Acclaimed independent Italian digital daily newspaper known for explanatory reporting on government policy and international affairs."
-  feeds:
-  - url: https://news.google.com/rss/search?q=site:ilpost.it+when:7d&hl=en-US&gl=US&ceid=US:en
-    category_hint: internal_politics

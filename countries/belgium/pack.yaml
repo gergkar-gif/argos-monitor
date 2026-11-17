@@ -40,11 +40,27 @@ aggregator_outlets:
   - Le Soir
   - VRT
   - De Standaard
+  - De Morgen
+  - La Libre Belgique
   - L'Echo
   - De Tijd
+  - Het Laatste Nieuws
+  - HLN
+  - Het Nieuwsblad
+  - La DH
+  - Knack
+  - Le Vif
+  - RTL Info
+  - L'Avenir
+  - Sudinfo
+  - Gazet van Antwerpen
+  - Het Belang van Limburg
+  - Belga
+  - BRUZZ
+  - Apache
   - The Brussels Times
   abroad_local:
   - Politico Europe
   - Euractiv
   - EUobserver
-last_reviewed: 2026-11-12
+last_reviewed: 2026-11-17

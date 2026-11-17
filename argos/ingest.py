@@ -2,6 +2,7 @@
 import json
 import re
 import sys
+import threading
 import time
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
@@ -99,10 +100,14 @@ def now():
 
 
 def load_registry(db):
-    """Write every pack's outlets and feeds into the database. A feed address may belong to one pack only."""
+    """Write every pack's outlets and feeds into the database. Source ids and feed urls must be globally unique."""
     seen, owners = {}, {}
     for country in packs.pack_ids():
+        seen_in_pack = set()
         for s in packs.load(country)["sources"]:
+            if s["id"] in seen_in_pack:
+                raise SystemExit(f"Source id {s['id']} is duplicated within {country}/sources.yaml.")
+            seen_in_pack.add(s["id"])
             if owners.setdefault(s["id"], country) != country:
                 raise SystemExit(f"Source id {s['id']} is used by two country packs ({owners[s['id']]} and {country}): ids must be unique.")
             rating = lookup_rating(s["name"], bool(s.get("state_affiliated")), s.get("kind", "media"))
@@ -120,14 +125,33 @@ def load_registry(db):
                            (s["id"], f["url"], f.get("section"), f.get("category_hint"), int(f.get("active", True))))
     urls = list(seen)
     db.execute(f"UPDATE feed SET active=0 WHERE url NOT IN ({','.join('?' * len(urls))})", urls)   # feeds removed from a yaml
+    # Drop orphan rows belonging to retired/renamed country packs so downstream stages never call packs.load() on a missing pack.
+    countries = packs.pack_ids()
+    c_ph = ",".join("?" * len(countries))
+    old_s = f"SELECT id FROM story WHERE country NOT IN ({c_ph})"
+    old_a = f"SELECT id FROM article WHERE country NOT IN ({c_ph})"
+    db.execute(f"DELETE FROM excerpt WHERE story_id IN ({old_s}) OR article_id IN ({old_a})", (*countries, *countries))
+    db.execute(f"DELETE FROM story_related WHERE story_id IN ({old_s}) OR related_id IN ({old_s})", (*countries, *countries))
+    db.execute(f"DELETE FROM story_article WHERE story_id IN ({old_s}) OR article_id IN ({old_a})", (*countries, *countries))
+    db.execute(f"DELETE FROM story WHERE country NOT IN ({c_ph})", countries)
+    db.execute(f"DELETE FROM embedding WHERE article_id IN ({old_a})", countries)
+    db.execute(f"DELETE FROM translation WHERE article_id IN ({old_a})", countries)
+    db.execute(f"DELETE FROM article WHERE country NOT IN ({c_ph})", countries)
     db.commit()
     reconcile_ratings(db)
+
+
+_GNEWS_SEM = threading.Semaphore(2)
 
 
 def _fetch_one_feed(f):
     try:
         etag = f["etag"] if "etag" in f.keys() else None
         last_mod = f["last_modified"] if "last_modified" in f.keys() else None
+        if "news.google.com" in (f["url"] or ""):
+            with _GNEWS_SEM:
+                time.sleep(0.25)
+                return f["id"], get(f["url"], timeout=10, etag=etag, last_modified=last_mod, return_headers=True)
         return f["id"], get(f["url"], timeout=10, etag=etag, last_modified=last_mod, return_headers=True)
     except Exception:
         return f["id"], (0, b"", {})

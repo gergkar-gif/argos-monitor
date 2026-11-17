@@ -1,7 +1,40 @@
 # Slovakia source registry (decision D15).
-# Combines independent Slovak dailies (Denník N, Aktuality.sk, Pravda, The Slovak Spectator), state wire TASR / public broadcaster STVR via Google News, Czech regional press, and international wires.
+# Combines independent Slovak dailies (Denník N, SME.sk, Aktuality.sk, Pravda, Denník Postoj, Denník Štandard, The Slovak Spectator), public broadcaster STVR & state wire TASR, commercial TV & business press (Markíza TVnoviny, TA3, JOJ, Hospodárske noviny, Trend), tabloids & regional press (Nový Čas, Plus 7 Dní, Bystricoviny, Refresher, Hlavné správy), investigative (ICJK), Czech regional press, and international wires.
 
 sources:
+  - id: stvr_sk
+    name: STVR Správy
+    homepage: https://spravy.stvr.sk
+    language: sk
+    scope: domestic
+    kind: official
+    governing_body: Slovenská televízia a rozhlas (statutory Slovak public broadcaster)
+    state_affiliated: true
+    feeds:
+      - {url: "https://spravy.stvr.sk/feed/", section: Správy, category_hint: internal_politics}
+
+  - id: teraz_sk
+    name: Teraz.sk (TASR)
+    homepage: https://www.teraz.sk
+    language: sk
+    scope: domestic
+    kind: official
+    governing_body: News Agency of the Slovak Republic (TASR statutory public wire)
+    state_affiliated: true
+    feeds:
+      - {url: "https://www.teraz.sk/rss/slovensko.rss", section: Slovensko, category_hint: internal_politics}
+
+  - id: sme_sk
+    name: SME.sk
+    homepage: https://www.sme.sk
+    language: sk
+    scope: domestic
+    kind: media
+    governing_body: Petit Press, a.s. (Slovakia's leading independent daily broadsheet newspaper of record)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.sme.sk/rss-title", section: Domáce, category_hint: internal_politics}
+
   - id: dennikn_sk
     name: Denník N
     homepage: https://dennikn.sk
@@ -35,6 +68,39 @@ sources:
     feeds:
       - {url: "https://spravy.pravda.sk/domace/rss/xml/", section: Domáce, category_hint: general}
 
+  - id: hnonline_sk
+    name: Hospodárske noviny (HNonline)
+    homepage: https://hnonline.sk
+    language: sk
+    scope: domestic
+    kind: media
+    governing_body: MAFRA Slovakia (Slovakia's premier economic, business, and financial daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:hnonline.sk+when:3d&hl=sk&gl=SK&ceid=SK:sk", section: Ekonomika & Politika, category_hint: economics}
+
+  - id: tvnoviny_sk
+    name: TVnoviny.sk (Markíza)
+    homepage: https://tvnoviny.sk
+    language: sk
+    scope: domestic
+    kind: media
+    governing_body: CME / TV Markíza (Slovakia's largest commercial television newsroom)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:tvnoviny.sk+when:3d&hl=sk&gl=SK&ceid=SK:sk", section: Domáce, category_hint: general}
+
+  - id: ta3_sk
+    name: TA3
+    homepage: https://www.ta3.com
+    language: sk
+    scope: domestic
+    kind: media
+    governing_body: Blueberg Media (Slovak 24-hour commercial news television channel)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:ta3.com+when:3d&hl=sk&gl=SK&ceid=SK:sk", section: Správy, category_hint: internal_politics}
+
   - id: spectator_sme
     name: The Slovak Spectator (SME)
     homepage: https://spectator.sme.sk
@@ -45,17 +111,6 @@ sources:
     state_affiliated: false
     feeds:
       - {url: "https://spectator.sme.sk/rss", section: Slovakia, category_hint: general}
-
-  - id: teraz_sk
-    name: Teraz.sk (TASR)
-    homepage: https://www.teraz.sk
-    language: sk
-    scope: domestic
-    kind: official
-    governing_body: News Agency of the Slovak Republic (TASR statutory public wire)
-    state_affiliated: true
-    feeds:
-      - {url: "https://www.teraz.sk/rss/slovensko.rss", section: Slovensko, category_hint: internal_politics}
 
   - id: postoj_sk
     name: Denník Postoj
@@ -74,7 +129,7 @@ sources:
     language: sk
     scope: domestic
     kind: media
-    governing_body: Štandard Online, s.r.o. (independent national daily newspaper)
+    governing_body: Štandard Online, s.r.o. (independent national conservative daily)
     state_affiliated: false
     feeds:
       - {url: "https://standard.sk/feed", section: Správy, category_hint: general}
@@ -113,17 +168,29 @@ sources:
       - {url: "https://refresher.sk/rss", section: Správy, category_hint: general}
 
   - id: gnews_sk_official
-    name: TASR / STVR (State Wire & Public Broadcaster via Google News)
+    name: TASR / STVR / Úrad vlády (Official Wire & Public Broadcaster via Google News)
     homepage: https://www.teraz.sk
     language: sk
     scope: domestic
     kind: official
     aggregator: google_news
     needs_mention: true
-    governing_body: News Agency of the Slovak Republic (TASR) / Slovak Television and Radio (STVR)
+    governing_body: News Agency of the Slovak Republic (TASR) / STVR / Government Office
     state_affiliated: true
     feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:teraz.sk+OR+site:spravy.stvr.sk)+when:7d&hl=sk&gl=SK&ceid=SK:sk", section: TASR & STVR, category_hint: general}
+      - {url: "https://news.google.com/rss/search?q=(site:teraz.sk+OR+site:spravy.stvr.sk+OR+site:vlada.gov.sk)+when:7d&hl=sk&gl=SK&ceid=SK:sk", section: TASR & STVR, category_hint: general}
+
+  - id: gnews_sk_press_batch
+    name: Google News (Slovakia Commercial TV, Business & Tabloids - JOJ/Trend/Nový Čas/Pluska/ICJK)
+    homepage: https://news.google.com
+    language: sk
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: Google LLC
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:noviny.sk+OR+site:trend.sk+OR+site:cas.sk+OR+site:pluska.sk+OR+site:icjk.sk)+when:3d&hl=sk&gl=SK&ceid=SK:sk", section: Médiá & Biznis, category_hint: general}
 
   - id: gnews_sk_abroad
     name: Czech & Central European Regional Press (on Slovakia)
@@ -149,16 +216,3 @@ sources:
     feeds:
       - {url: "https://news.google.com/rss/search?q=Slovakia+(Bratislava+OR+Fico+OR+Pellegrini+OR+parliament)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Slovakia politics, category_hint: internal_politics}
       - {url: "https://news.google.com/rss/search?q=Slovakia+(EU+OR+NATO+OR+Ukraine+OR+economy+OR+energy)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Slovakia EU & foreign policy, category_hint: foreign_policy}
-
-  - id: sme_sk
-    name: "SME.sk"
-    homepage: https://www.sme.sk
-    language: sk
-    scope: domestic
-    kind: media
-    governing_body: "Petit Press, a.s."
-    state_affiliated: false
-    notes: "Slovakia's leading independent daily broadsheet newspaper of record covering national politics, economy, and justice."
-    feeds:
-    - url: https://news.google.com/rss/search?q=site:sme.sk+when:7d&hl=en-US&gl=US&ceid=US:en
-      category_hint: internal_politics

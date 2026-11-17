@@ -35,13 +35,32 @@ geo: 'NO'
 aggregator_outlets:
   domestic:
   - NRK
+  - TV 2
   - Aftenposten
   - VG
   - Dagbladet
   - E24
   - Dagens Næringsliv
+  - Nettavisen
+  - Finansavisen
+  - Bergens Tidende
+  - Stavanger Aftenblad
+  - Adresseavisen
+  - Klassekampen
+  - Morgenbladet
+  - Dagsavisen
+  - Altinget
+  - Filter Nyheter
+  - Minerva
+  - Vårt Land
+  - Nationen
+  - ABC Nyheter
+  - Khrono
+  - Document.no
+  - NTB
+  - Regjeringen.no
   abroad_local:
   - The Local Norway
   - News in English Norway
   - Barents Observer
-last_reviewed: 2026-11-12
+last_reviewed: 2026-11-17

@@ -15,6 +15,18 @@ sources:
     category_hint: internal_politics
   - url: https://feeds.nos.nl/nosnieuwseconomie
     category_hint: economics
+- id: rtlnieuws_nl
+  name: RTL Nieuws
+  homepage: https://www.rtl.nl/nieuws
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: RTL Nederland
+  state_affiliated: false
+  notes: Major Dutch commercial television and digital newsroom.
+  feeds:
+  - url: https://www.rtl.nl/rss.xml
+    category_hint: general
 - id: nu_nl
   name: NU.nl
   homepage: https://www.nu.nl
@@ -29,42 +41,6 @@ sources:
     category_hint: internal_politics
   - url: https://www.nu.nl/rss/Economie
     category_hint: economics
-- id: dutchnews_nl
-  name: DutchNews.nl
-  homepage: https://www.dutchnews.nl
-  language: en
-  scope: abroad_local
-  kind: media
-  governing_body: Dutch News BV
-  state_affiliated: false
-  notes: Independent English-language Dutch news daily covering cabinet policy, economy, and EU affairs.
-  feeds:
-  - url: https://www.dutchnews.nl/feed/
-    category_hint: foreign_policy
-- id: telegraaf_nl
-  name: De Telegraaf
-  homepage: https://www.telegraaf.nl
-  language: nl
-  scope: domestic
-  kind: media
-  governing_body: Mediahuis Nederland
-  state_affiliated: false
-  notes: Largest circulation daily newspaper in the Netherlands.
-  feeds:
-  - url: https://www.telegraaf.nl/rss
-    category_hint: general
-- id: ad_nl
-  name: Algemeen Dagblad (AD)
-  homepage: https://www.ad.nl
-  language: nl
-  scope: domestic
-  kind: media
-  governing_body: DPG Media
-  state_affiliated: false
-  notes: Major national and regional daily newspaper.
-  feeds:
-  - url: https://www.ad.nl/rss.xml
-    category_hint: general
 - id: nrc_nl
   name: NRC
   homepage: https://www.nrc.nl
@@ -89,6 +65,66 @@ sources:
   feeds:
   - url: https://www.volkskrant.nl/nieuws-achtergrond/rss.xml
     category_hint: internal_politics
+- id: trouw_nl
+  name: Trouw
+  homepage: https://www.trouw.nl
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: DPG Media
+  state_affiliated: false
+  notes: National broadsheet daily focused on governance, ethics, climate, and society.
+  feeds:
+  - url: https://www.trouw.nl/nieuws/rss.xml
+    category_hint: internal_politics
+- id: telegraaf_nl
+  name: De Telegraaf
+  homepage: https://www.telegraaf.nl
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: Mediahuis Nederland
+  state_affiliated: false
+  notes: Largest circulation daily newspaper in the Netherlands.
+  feeds:
+  - url: https://www.telegraaf.nl/rss
+    category_hint: general
+- id: ad_nl
+  name: Algemeen Dagblad (AD)
+  homepage: https://www.ad.nl
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: DPG Media
+  state_affiliated: false
+  notes: Major national and regional daily newspaper.
+  feeds:
+  - url: https://www.ad.nl/rss.xml
+    category_hint: general
+- id: fd_nl
+  name: Het Financieele Dagblad (FD)
+  homepage: https://fd.nl
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: FD Mediagroep
+  state_affiliated: false
+  notes: Netherlands' premier financial, corporate, and macroeconomic daily broadsheet.
+  feeds:
+  - url: https://fd.nl/?rss
+    category_hint: economics
+- id: parool_nl
+  name: Het Parool
+  homepage: https://www.parool.nl
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: DPG Media
+  state_affiliated: false
+  notes: Historic Amsterdam daily newspaper covering capital politics and national affairs.
+  feeds:
+  - url: https://www.parool.nl/nieuws/rss.xml
+    category_hint: general
 - id: groene_nl
   name: De Groene Amsterdammer
   homepage: https://www.groene.nl
@@ -101,6 +137,18 @@ sources:
   feeds:
   - url: https://www.groene.nl/rss
     category_hint: internal_politics
+- id: ew_nl
+  name: EW (Elsevier Weekblad)
+  homepage: https://www.ewmagazine.nl
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: Roularta Media Nederland
+  state_affiliated: false
+  notes: Influential centre-right Dutch political and economic weekly magazine.
+  feeds:
+  - url: https://www.ewmagazine.nl/feed/
+    category_hint: internal_politics
 - id: tweakers_nl
   name: Tweakers
   homepage: https://tweakers.net
@@ -109,9 +157,9 @@ sources:
   kind: media
   governing_body: DPG Media
   state_affiliated: false
-  notes: Premier Dutch technology, semiconductors and digital economy daily.
+  notes: Premier Dutch technology, semiconductors (ASML) and digital economy daily.
   feeds:
-  - url: https://feeds.feedburner.com/tweakers/nieuws
+  - url: https://news.google.com/rss/search?q=site:tweakers.net+when:3d&hl=nl&gl=NL&ceid=NL:nl
     category_hint: economics
 - id: omroepbrabant_nl
   name: Omroep Brabant
@@ -121,22 +169,70 @@ sources:
   kind: media
   governing_body: Stichting Omroep Brabant
   state_affiliated: false
-  notes: Major regional public service news broadcaster.
+  notes: Major regional public service news broadcaster covering Brainport Eindhoven.
   feeds:
   - url: https://www.omroepbrabant.nl/rss
     category_hint: general
-- id: gnews_netherlands_intl
-  name: Google News (Netherlands Politics & Trade)
-  homepage: https://news.google.com
-  language: en
-  scope: international
+- id: limburger_nl
+  name: De Limburger
+  homepage: https://www.limburger.nl
+  language: nl
+  scope: domestic
   kind: media
-  governing_body: n/a (aggregator)
+  governing_body: Mediahuis Limburg
+  state_affiliated: false
+  notes: Largest regional daily newspaper in Limburg and southern Netherlands.
+  feeds:
+  - url: https://www.limburger.nl/rss/
+    category_hint: general
+- id: dvhn_nl
+  name: Dagblad van het Noorden
+  homepage: https://dvhn.nl
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: Mediahuis Noord
+  state_affiliated: false
+  notes: Principal regional daily newspaper for Groningen and Drenthe.
+  feeds:
+  - url: https://www.dvhn.nl/rss/
+    category_hint: general
+- id: dutchnews_nl
+  name: DutchNews.nl
+  homepage: https://www.dutchnews.nl
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Dutch News BV
+  state_affiliated: false
+  notes: Independent English-language Dutch news daily covering cabinet policy, economy, and EU affairs.
+  feeds:
+  - url: https://www.dutchnews.nl/feed/
+    category_hint: foreign_policy
+- id: rijksoverheid_nl
+  name: Rijksoverheid / Tweede Kamer
+  homepage: https://www.rijksoverheid.nl
+  language: nl
+  scope: domestic
+  kind: official
+  governing_body: Government of the Netherlands
+  state_affiliated: true
+  notes: Official Dutch ministerial press releases and Tweede Kamer parliamentary records.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:rijksoverheid.nl+OR+site:tweedekamer.nl)+when:7d&hl=nl&gl=NL&ceid=NL:nl
+    category_hint: internal_politics
+- id: gnews_netherlands_press_batch
+  name: Google News (Netherlands Investigative, Radio & Portals - BNR/FTM/De Correspondent/GeenStijl/Gelderlander)
+  homepage: https://news.google.com
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
   state_affiliated: false
   aggregator: google_news
+  notes: Aggregator capturing business radio, investigative outlets, regional dailies, and commentary blogs without open RSS.
   feeds:
-  - url: https://news.google.com/rss/search?q=(Netherlands+OR+Dutch)+(cabinet+OR+election+OR+parliament+OR+asylum)+when:3d&hl=en-US&gl=US&ceid=US:en
-    section: Politics & Governance
+  - url: https://news.google.com/rss/search?q=(site:bnr.nl+OR+site:ftm.nl+OR+site:decorrespondent.nl+OR+site:geenstijl.nl+OR+site:gelderlander.nl)+when:3d&hl=nl&gl=NL&ceid=NL:nl
     category_hint: internal_politics
 - id: gnews_netherlands_nl
   name: Google News (Netherlands National News - Dutch)
@@ -150,4 +246,17 @@ sources:
   feeds:
   - url: https://news.google.com/rss/search?q=Nederland+OR+kabinet+OR+Den+Haag+when:2d&hl=nl&gl=NL&ceid=NL:nl
     section: National News (Dutch)
+    category_hint: internal_politics
+- id: gnews_netherlands_intl
+  name: Google News (Netherlands Politics & Trade)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Netherlands+OR+Dutch)+(cabinet+OR+election+OR+parliament+OR+asylum)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Politics & Governance
     category_hint: internal_politics

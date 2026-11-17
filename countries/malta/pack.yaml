@@ -26,7 +26,8 @@ url_sections:
 
 aggregator_outlets:
   domestic: ["times of malta", "malta today", "maltatoday", "the malta independent", "the shift news", "lovin malta",
-             "newsbook", "newsbook.com.mt", "tvmnews", "tvm", "one news", "net news", "illurm", "whoswho.mt", "businessnow.mt"]
+             "newsbook", "newsbook.com.mt", "tvmnews", "tvm", "one news", "net news", "illum", "whoswho.mt",
+             "businessnow.mt", "malta business weekly", "the journal.mt", "gozo news", "gozo.news", "89.7 bay", "guidememalta", "ohmymalta"]
   abroad_local: ["politico europe", "euractiv", "euobserver"]
 
 excerpt:

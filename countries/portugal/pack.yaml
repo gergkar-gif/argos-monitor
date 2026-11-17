@@ -35,12 +35,26 @@ aggregator_outlets:
   domestic:
   - Público
   - RTP
+  - Lusa
   - Diário de Notícias
   - Jornal de Notícias
   - Expresso
   - Observador
+  - SIC Notícias
+  - CNN Portugal
+  - Correio da Manhã
   - Jornal de Negócios
+  - ECO
+  - O Jornal Económico
+  - Notícias ao Minuto
+  - Visão
+  - Sábado
+  - TSF
+  - Rádio Renascença
+  - Polígrafo
+  - Sol
+  - Portugal.gov.pt
   abroad_local:
   - The Portugal News
   - Portugal Resident
-last_reviewed: 2026-11-12
+last_reviewed: 2026-11-17

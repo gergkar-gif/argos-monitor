@@ -41,7 +41,6 @@ REGIONAL_COUNTRIES = {
     "west_africa": ["mali", "burkina faso", "niger", "senegal", "ghana", "ivory coast", "côte d'ivoire", "cote d'ivoire", "guinea", "sierra leone", "liberia", "benin", "togo", "sahel", "bamako", "ouagadougou", "niamey"],
     "caribbean": ["haiti", "jamaica", "trinidad", "tobago", "bahamas", "cuba", "dominican republic", "barbados", "guyana", "suriname", "port-au-prince"],
     "central_america": ["guatemala", "el salvador", "honduras", "nicaragua", "costa rica", "panama", "belize"],
-    "baltics": ["estonia", "latvia", "lithuania"],
     "pacific_islands": ["fiji", "papua new guinea", "solomon islands", "vanuatu", "samoa", "tonga"],
     "israel": ["gaza", "west bank", "hebron", "rafah", "jenin", "nablus", "palestinian", "palestine"],
     "iraq": ["iraqi", "baghdad", "basra", "erbil", "mosul", "kirkuk", "kataib hezbollah"],
@@ -58,7 +57,6 @@ UK_SLUGS = {
     "west_africa": "mali",
     "caribbean": "haiti",
     "central_america": "guatemala",
-    "baltics": "estonia",
     "pacific_islands": "papua-new-guinea",
 }
 

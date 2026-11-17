@@ -1,0 +1,51 @@
+themes:
+- id: elections
+  keywords:
+  - election
+  - kosningar
+  - alþingiskosningar
+  - forsetakosningar
+  - sveitarstjórnarkosningar
+  describe:
+  - Icelandic Alþingi parliamentary elections, presidential votes, and coalition negotiations.
+- id: security
+  keywords:
+  - nato
+  - keflavik
+  - giuk gap
+  - coast guard
+  - landhelgisgæslan
+  - grindavik
+  - eruption
+  - eldgos
+  describe:
+  - NATO North Atlantic air policing at Keflavík, Coast Guard maritime surveillance, and Reykjanes volcanic civil protection.
+- id: diplomacy
+  keywords:
+  - arctic council
+  - eea
+  - efta
+  - nordic council
+  - utanríkisráðuneytið
+  describe:
+  - Icelandic foreign policy, EEA/EFTA single market relations, Arctic Council diplomacy, and Nordic cooperation.
+- id: econ_policy
+  keywords:
+  - seðlabanki
+  - inflation
+  - fisheries
+  - sjávarútvegur
+  - geothermal
+  - aluminum
+  - tourism
+  describe:
+  - Central Bank of Iceland interest rates, inflation, fisheries quotas, geothermal energy, and fiscal budget.
+- id: party_gov
+  keywords:
+  - alþingi
+  - ríkisstjórn
+  - forsætisráðherra
+  - reykjavik
+  - coalition
+  describe:
+  - Icelandic government cabinet policy, Alþingi legislation, and coalition party negotiations.

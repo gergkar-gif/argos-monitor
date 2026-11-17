@@ -39,14 +39,32 @@ geo: NL
 aggregator_outlets:
   domestic:
   - NOS
+  - NOS Nieuws
+  - RTL Nieuws
   - De Telegraaf
+  - Algemeen Dagblad
+  - AD
   - NU.nl
   - De Volkskrant
+  - NRC
   - NRC Handelsblad
   - Trouw
-  - Financieele Dagblad
+  - Het Financieele Dagblad
+  - FD
+  - Het Parool
+  - EW
+  - De Groene Amsterdammer
+  - BNR
+  - Follow the Money
+  - De Correspondent
+  - GeenStijl
+  - De Gelderlander
+  - De Limburger
+  - Dagblad van het Noorden
+  - Tweakers
+  - Rijksoverheid
   abroad_local:
   - DutchNews.nl
   - NL Times
   - Euronews
-last_reviewed: 2026-11-12
+last_reviewed: 2026-11-17

@@ -29,6 +29,18 @@ sources:
     category_hint: internal_politics
   - url: https://www.theguardian.com/politics/rss
     category_hint: internal_politics
+- id: ft_uk
+  name: Financial Times (UK)
+  homepage: https://www.ft.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: The Financial Times Ltd (Nikkei Inc.)
+  state_affiliated: false
+  notes: Authoritative London-based global financial and political broadsheet covering Whitehall, Bank of England, and trade.
+  feeds:
+  - url: https://www.ft.com/rss/home/uk
+    category_hint: economics
 - id: the_telegraph_uk
   name: The Daily Telegraph
   homepage: https://www.telegraph.co.uk
@@ -39,10 +51,20 @@ sources:
   state_affiliated: false
   notes: Major center-right national broadsheet of record.
   feeds:
-  - url: https://news.google.com/rss/search?q=site:telegraph.co.uk+when:7d&hl=en-US&gl=US&ceid=US:en
+  - url: https://news.google.com/rss/search?q=site:telegraph.co.uk+when:3d&hl=en-GB&gl=GB&ceid=GB:en
     category_hint: internal_politics
-  - url: https://news.google.com/rss/search?q=site:telegraph.co.uk+united_kingdom+when:7d&hl=en-US&gl=US&ceid=US:en
-    category_hint: economics
+- id: the_times_uk
+  name: The Times (UK)
+  homepage: https://www.thetimes.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: News UK (News Corp)
+  state_affiliated: false
+  notes: Historic British center-right broadsheet newspaper of record.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:thetimes.com+when:3d&hl=en-GB&gl=GB&ceid=GB:en
+    category_hint: internal_politics
 - id: sky_news_uk
   name: Sky News
   homepage: https://news.sky.com
@@ -57,6 +79,234 @@ sources:
     category_hint: internal_politics
   - url: https://feeds.skynews.com/feeds/rss/politics.xml
     category_hint: internal_politics
+- id: independent_uk
+  name: The Independent
+  homepage: https://www.independent.co.uk
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Independent Digital News & Media Ltd
+  state_affiliated: false
+  notes: Major British digital daily with extensive Westminster and policy coverage.
+  feeds:
+  - url: https://www.independent.co.uk/news/uk/politics/rss
+    category_hint: internal_politics
+- id: inews_uk
+  name: i news
+  homepage: https://inews.co.uk
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Daily Mail and General Trust
+  state_affiliated: false
+  notes: British national concise newspaper covering UK politics and economy.
+  feeds:
+  - url: https://inews.co.uk/feed
+    category_hint: internal_politics
+- id: standard_uk
+  name: Evening Standard
+  homepage: https://www.standard.co.uk
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Lebedev Holdings
+  state_affiliated: false
+  notes: London daily newspaper covering national politics, mayoral policy, and trade.
+  feeds:
+  - url: https://www.standard.co.uk/news/politics/rss
+    category_hint: internal_politics
+- id: dailymail_uk
+  name: Daily Mail
+  homepage: https://www.dailymail.co.uk
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Daily Mail and General Trust (DMGT)
+  state_affiliated: false
+  notes: Highest-reach British right-leaning tabloid daily.
+  feeds:
+  - url: https://www.dailymail.com/news/index.rss
+    category_hint: general
+- id: mirror_uk
+  name: Daily Mirror
+  homepage: https://www.mirror.co.uk
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Reach plc
+  state_affiliated: false
+  notes: Major British centre-left national tabloid daily.
+  feeds:
+  - url: https://www.mirror.co.uk/news/uk-news/?service=rss
+    category_hint: general
+- id: express_uk
+  name: Daily Express
+  homepage: https://www.express.co.uk
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Reach plc
+  state_affiliated: false
+  notes: British right-leaning national tabloid covering Westminster and cost of living.
+  feeds:
+  - url: https://www.express.co.uk/posts/rss/1/uk
+    category_hint: general
+- id: cityam_uk
+  name: City A.M.
+  homepage: https://www.cityam.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: THG plc
+  state_affiliated: false
+  notes: London business and financial daily focused on the City of London and Treasury policy.
+  feeds:
+  - url: https://www.cityam.com/feed/
+    category_hint: economics
+- id: economist_uk
+  name: The Economist
+  homepage: https://www.economist.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: The Economist Group
+  state_affiliated: false
+  notes: Influential London-based global weekly covering British politics, economy, and foreign affairs.
+  feeds:
+  - url: https://www.economist.com/britain/rss.xml
+    category_hint: internal_politics
+- id: new_statesman
+  name: New Statesman
+  homepage: https://www.newstatesman.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Progressive Media International
+  state_affiliated: false
+  notes: British political and cultural magazine covering Labour and social policy.
+  feeds:
+  - url: https://www.newstatesman.com/feed
+    category_hint: internal_politics
+- id: channel4_news
+  name: Channel 4 News
+  homepage: https://www.channel4.com/news
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Channel Four Television Corporation (public trust)
+  state_affiliated: false
+  notes: British public service broadcaster known for investigative reporting.
+  feeds:
+  - url: https://www.channel4.com/news/feed
+    category_hint: internal_politics
+- id: politicshome_uk
+  name: PoliticsHome
+  homepage: https://www.politicshome.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Total Politics Group
+  state_affiliated: false
+  notes: Westminster parliamentary newsroom covering bills, committees, and party whips.
+  feeds:
+  - url: https://www.politicshome.com/news/rss
+    category_hint: internal_politics
+- id: bylinetimes_uk
+  name: Byline Times
+  homepage: https://bylinetimes.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Byline Media Holdings Ltd
+  state_affiliated: false
+  notes: Independent British investigative newspaper examining lobbying, press, and governance.
+  feeds:
+  - url: https://bylinetimes.com/feed/
+    category_hint: internal_politics
+- id: declassified_uk
+  name: Declassified UK
+  homepage: https://www.declassifieduk.org
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Declassified UK
+  state_affiliated: false
+  notes: Independent investigative outlet tracking UK foreign, military, and intelligence policy.
+  feeds:
+  - url: https://www.declassifieduk.org/feed/
+    category_hint: defence_security
+- id: scotsman_uk
+  name: The Scotsman
+  homepage: https://www.scotsman.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: National World
+  state_affiliated: false
+  notes: Scotland's historic national daily broadsheet covering Holyrood and UK affairs.
+  feeds:
+  - url: https://www.scotsman.com/rss
+    category_hint: internal_politics
+- id: walesonline_uk
+  name: WalesOnline
+  homepage: https://www.walesonline.co.uk
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Reach plc
+  state_affiliated: false
+  notes: Major Welsh digital news portal covering Senedd Cymru and Welsh economy.
+  feeds:
+  - url: https://www.walesonline.co.uk/news/?service=rss
+    category_hint: general
+- id: belfasttelegraph_uk
+  name: Belfast Telegraph
+  homepage: https://www.belfasttelegraph.co.uk
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Mediahuis Ireland
+  state_affiliated: false
+  notes: Major Northern Ireland daily newspaper covering Stormont and UK-Ireland affairs.
+  feeds:
+  - url: https://www.belfasttelegraph.co.uk/rss/
+    category_hint: internal_politics
+- id: morningstar_uk
+  name: Morning Star (UK)
+  homepage: https://morningstaronline.co.uk
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: People's Press Printing Society
+  state_affiliated: false
+  notes: Left-wing British daily newspaper covering trade unions and labour disputes.
+  feeds:
+  - url: https://morningstaronline.co.uk/rss.xml
+    category_hint: internal_politics
+- id: guido_uk
+  name: Guido Fawkes
+  homepage: https://order-order.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Global & General Nominees Ltd
+  state_affiliated: false
+  notes: High-traffic Westminster political gossip and breaking-news blog.
+  feeds:
+  - url: https://order-order.com/feed/
+    category_hint: internal_politics
+- id: conhome_uk
+  name: ConservativeHome
+  homepage: https://conservativehome.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: ConservativeHome Ltd
+  state_affiliated: false
+  notes: Influential centre-right commentary and party politics portal in the UK.
+  feeds:
+  - url: https://conservativehome.com/feed/
+    category_hint: internal_politics
 - id: gov_uk_press
   name: UK Government (GOV.UK)
   homepage: https://www.gov.uk
@@ -67,7 +317,20 @@ sources:
   state_affiliated: true
   notes: Official press announcements and ministerial speeches.
   feeds:
-  - url: https://news.google.com/rss/search?q=site:gov.uk+when:7d&hl=en-US&gl=US&ceid=US:en
+  - url: https://www.gov.uk/search/news-and-communications.atom
+    category_hint: internal_politics
+- id: gnews_uk_broadcast_tabloid_batch
+  name: Google News (UK Broadcasters, Tabloids & Weeklies - ITV/LBC/Sun/Spectator/GB News/Herald)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator capturing RSS-blocked UK broadcasters, tabloids, and weeklies.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:itv.com/news+OR+site:lbc.co.uk+OR+site:gbnews.com+OR+site:thesun.co.uk+OR+site:spectator.co.uk+OR+site:heraldscotland.com)+when:3d&hl=en-GB&gl=GB&ceid=GB:en
     category_hint: internal_politics
 - id: google_news_uk_politics
   name: Google News (UK Westminster & Government)
@@ -91,8 +354,7 @@ sources:
   governing_body: Google LLC
   state_affiliated: false
   aggregator: google_news
-  notes: Aggregator feed tracking Bank of England, inflation, gilt market, and Treasury
-    budget.
+  notes: Aggregator feed tracking Bank of England, inflation, gilt market, and Treasury budget.
   feeds:
   - url: https://news.google.com/rss/search?q=%22Bank+of+England%22+OR+%22Rachel+Reeves%22+OR+inflation+OR+%22UK+budget%22+when:3d&hl=en-GB&gl=GB&ceid=GB:en
     category_hint: economics
@@ -105,72 +367,10 @@ sources:
   governing_body: Google LLC
   state_affiliated: false
   aggregator: google_news
-  notes: Aggregator feed tracking Ministry of Defence, Ukraine security assistance,
-    and FCDO diplomacy.
+  notes: Aggregator feed tracking Ministry of Defence, Ukraine security assistance, and FCDO diplomacy.
   feeds:
-  - url: https://news.google.com/rss/search?q=%22Ministry+of+Defence%22+OR+%22David+Lammy%22+OR+FCDO+OR+%22Strategic+Defence+Review%22+UK+when:3d&hl=en-GB&gl=GB&ceid=GB:en
+  - url: https://news.google.com/rss/search?q=%22Ministry+of+Defence%22+OR+%22John+Healey%22+OR+FCDO+OR+%22Strategic+Defence+Review%22+UK+when:3d&hl=en-GB&gl=GB&ceid=GB:en
     category_hint: defence_security
-- id: independent_uk
-  name: The Independent
-  homepage: https://www.independent.co.uk
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: Independent Digital News & Media Ltd
-  state_affiliated: false
-  notes: Major British digital daily with extensive Westminster and policy coverage.
-  feeds:
-  - url: https://www.independent.co.uk/news/uk/politics/rss
-    category_hint: internal_politics
-- id: standard_uk
-  name: Evening Standard
-  homepage: https://www.standard.co.uk
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: Lebedev Holdings
-  state_affiliated: false
-  notes: London daily newspaper covering national politics, mayoral policy, and trade.
-  feeds:
-  - url: https://www.standard.co.uk/news/politics/rss
-    category_hint: internal_politics
-- id: new_statesman
-  name: New Statesman
-  homepage: https://www.newstatesman.com
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: Progressive Media International
-  state_affiliated: false
-  notes: British political and cultural magazine of record covering Labour and social
-    policy.
-  feeds:
-  - url: https://www.newstatesman.com/feed
-    category_hint: internal_politics
-- id: channel4_news
-  name: Channel 4 News
-  homepage: https://www.channel4.com/news
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: Channel Four Television Corporation (public trust)
-  state_affiliated: false
-  notes: British public service broadcaster known for investigative reporting.
-  feeds:
-  - url: https://www.channel4.com/news/feed
-    category_hint: internal_politics
-- id: inews_uk
-  name: i news
-  homepage: https://inews.co.uk
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: Daily Mail and General Trust
-  state_affiliated: false
-  notes: British national concise newspaper covering UK politics and economy.
-  feeds:
-  - url: https://inews.co.uk/feed
-    category_hint: internal_politics
 - id: gnews_united_kingdom_intl
   name: Google News (United Kingdom - International Press)
   homepage: https://news.google.com
@@ -180,23 +380,9 @@ sources:
   governing_body: n/a (aggregator)
   state_affiliated: false
   aggregator: google_news
-  notes: Aggregator stream tracking international English-language reporting on United
-    Kingdom.
+  notes: Aggregator stream tracking international English-language reporting on United Kingdom.
   feeds:
   - url: https://news.google.com/rss/search?q=%28%22United%20Kingdom%22%29%20%28diplomacy%20OR%20government%20OR%20election%20OR%20economy%20OR%20foreign%29%20when%3A3d&hl=en-US&gl=US&ceid=US:en
     section: International Coverage
     category_hint: foreign_policy
     active: true
-
-- id: ft_uk
-  name: "Financial Times (UK)"
-  homepage: https://www.ft.com
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: "The Financial Times Ltd (Nikkei Inc.)"
-  state_affiliated: false
-  notes: "Authoritative London-based global financial and political broadsheet covering Whitehall, Bank of England, and trade."
-  feeds:
-  - url: https://news.google.com/rss/search?q=site:ft.com+when:7d&hl=en-US&gl=US&ceid=US:en
-    category_hint: economics

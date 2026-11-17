@@ -32,11 +32,28 @@ geo: DK
 aggregator_outlets:
   domestic:
   - DR
+  - DR Nyheder
+  - TV 2
+  - TV 2 Nyheder
   - Politiken
   - Berlingske
   - Jyllands-Posten
   - Børsen
+  - Finans
+  - B.T.
+  - Ekstra Bladet
+  - Information
+  - Kristeligt Dagblad
+  - Weekendavisen
+  - Altinget
+  - Zetland
+  - OLFI
+  - Nordjyske
+  - Fyens Stiftstidende
+  - JydskeVestkysten
+  - Ritzau
+  - Statsministeriet
   abroad_local:
   - The Local Denmark
   - Copenhagen Post
-last_reviewed: 2026-11-12
+last_reviewed: 2026-11-17

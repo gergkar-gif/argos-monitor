@@ -1,222 +1,237 @@
+# Russia source registry (decision D15).
+# Combines statutory state wires (TASS, RIA Novosti) and domestic commercial/business/regional press (Interfax, Kommersant, RBC,
+# Vedomosti, Izvestia, RG.ru, Lenta.ru, Fontanka) with independent exiled investigative outlets (Meduza, Novaya Gazeta Europe,
+# The Moscow Times, The Bell, IStories, Holod, Agentstvo, Proekt, Mediazona, Verstka, The Insider, OVD-Info, Radio Svoboda,
+# Sever.Realii, Sibir.Realii, 7x7).
+
 sources:
-- id: tass_en
-  name: TASS (English)
-  homepage: https://tass.com
-  language: en
-  scope: domestic
-  kind: official
-  governing_body: Government of the Russian Federation
-  state_affiliated: true
-  notes: Statutory state news agency of Russia.
-  feeds:
-  - url: https://tass.com/rss/v2.xml
-    category_hint: internal_politics
-- id: interfax_ru
-  name: Interfax
-  homepage: https://interfax.ru
-  language: ru
-  scope: domestic
-  kind: wire
-  governing_body: Interfax Information Services Group
-  state_affiliated: false
-  notes: Leading non-governmental Russian wire agency covering politics and business.
-  feeds:
-  - url: https://www.interfax.ru/rss.asp
-    category_hint: internal_politics
-- id: kommersant
-  name: Kommersant
-  homepage: https://www.kommersant.ru
-  language: ru
-  scope: domestic
-  kind: media
-  governing_body: Kommersant Publishing House
-  state_affiliated: false
-  notes: Premier Russian business and political daily of record.
-  feeds:
-  - url: https://www.kommersant.ru/RSS/news.xml
-    category_hint: economics
-  - url: https://www.kommersant.ru/RSS/main.xml
-    category_hint: internal_politics
-- id: meduza_en
-  name: Meduza (English)
-  homepage: https://meduza.io/en
-  language: en
-  scope: abroad_local
-  kind: media
-  governing_body: Meduza (Riga, Latvia)
-  state_affiliated: false
-  notes: Premier exiled independent Russian investigative daily.
-  feeds:
-  - url: https://meduza.io/rss/en/all
-    category_hint: internal_politics
-- id: the_moscow_times
-  name: The Moscow Times
-  homepage: https://www.themoscowtimes.com
-  language: en
-  scope: abroad_local
-  kind: media
-  governing_body: Stichting 2 Oktober (Amsterdam)
-  state_affiliated: false
-  notes: Independent English-language daily covering Russia from exile.
-  feeds:
-  - url: https://news.google.com/rss/search?q=site:themoscowtimes.com+when:7d&hl=en-US&gl=US&ceid=US:en
-    category_hint: internal_politics
-- id: radio_svoboda
-  name: Radio Svoboda (RFE/RL Russian)
-  homepage: https://www.svoboda.org
-  language: ru
-  scope: abroad_local
-  kind: media
-  governing_body: Radio Free Europe / Radio Liberty
-  state_affiliated: false
-  notes: US-funded independent Russian-language service covering human rights and
-    politics.
-  feeds:
-  - url: https://news.google.com/rss/search?q=site:svoboda.org+when:7d&hl=en-US&gl=US&ceid=US:en
-    category_hint: internal_politics
-- id: google_news_russia_kremlin
-  name: Google News (Russia Kremlin & Domestic Politics)
-  homepage: https://news.google.com
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: Google LLC
-  state_affiliated: false
-  aggregator: google_news
-  notes: Aggregator feed tracking Putin, Kremlin decrees, and State Duma actions.
-  feeds:
-  - url: https://news.google.com/rss/search?q=Putin+OR+Kremlin+OR+%22State+Duma%22+OR+%22Federation+Council%22+Russia+when:3d&hl=en-US&gl=US&ceid=US:en
-    category_hint: internal_politics
-- id: google_news_russia_economy
-  name: Google News (Russian Economy, Sanctions & Central Bank)
-  homepage: https://news.google.com
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: Google LLC
-  state_affiliated: false
-  aggregator: google_news
-  notes: Aggregator feed tracking Bank of Russia interest rates, ruble, oil revenue,
-    and sanctions.
-  feeds:
-  - url: https://news.google.com/rss/search?q=%22Bank+of+Russia%22+OR+Nabiullina+OR+%22Russian+economy%22+OR+ruble+OR+sanctions+Russia+when:3d&hl=en-US&gl=US&ceid=US:en
-    category_hint: economics
-- id: google_news_russia_military
-  name: Google News (Russian Defense & Ukraine War Operations)
-  homepage: https://news.google.com
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: Google LLC
-  state_affiliated: false
-  aggregator: google_news
-  notes: Aggregator feed tracking Ministry of Defense, missile strikes, and battlefield
-    maneuvers.
-  feeds:
-  - url: https://news.google.com/rss/search?q=%22Russian+Defense+Ministry%22+OR+Belousov+OR+Gerasimov+OR+Rostec+when:3d&hl=en-US&gl=US&ceid=US:en
-    category_hint: defence_security
-- id: ria_novosti
-  name: RIA Novosti
-  homepage: https://ria.ru
-  language: ru
-  scope: domestic
-  kind: official
-  governing_body: Rossiya Segodnya (Russian statutory state news agency)
-  state_affiliated: true
-  notes: Primary Russian state domestic wire agency covering Kremlin, Duma, and ministries.
-  feeds:
-  - url: https://ria.ru/export/rss2/archive/index.xml
-    category_hint: internal_politics
-- id: rbc_ru
-  name: RBC (RosBiznesKonsalting)
-  homepage: https://www.rbc.ru
-  language: ru
-  scope: domestic
-  kind: media
-  governing_body: Media-Holding RBC
-  state_affiliated: false
-  notes: Major Russian business daily with heavy coverage of sanctions, central bank,
-    and oligarchic shifts.
-  feeds:
-  - url: https://rssexport.rbc.ru/rbcnews/news/30/full.rss
-    category_hint: economics
-- id: vedomosti_ru
-  name: Vedomosti
-  homepage: https://www.vedomosti.ru
-  language: ru
-  scope: domestic
-  kind: media
-  governing_body: Business News Media
-  state_affiliated: false
-  notes: National business daily covering macroeconomics, federal regulations, and
-    corporate state assets.
-  feeds:
-  - url: https://www.vedomosti.ru/rss/news
-    category_hint: economics
-- id: novaya_gazeta_eu
-  name: Novaya Gazeta Europe
-  homepage: https://novayagazeta.eu
-  language: ru
-  scope: abroad_local
-  kind: media
-  governing_body: Novaya Gazeta Europe (Latvia)
-  state_affiliated: false
-  notes: Independent exiled investigative paper of record founded by Nobel laureate
-    Dmitry Muratov.
-  feeds:
-  - url: https://novayagazeta.eu/feed/rss
-    category_hint: internal_politics
-- id: gnews_russia_ru
-  name: Google News (Russia National News - Russian)
-  homepage: https://news.google.com
-  language: ru
-  scope: domestic
-  kind: media
-  governing_body: Google LLC
-  state_affiliated: false
-  aggregator: google_news
-  feeds:
-  - url: https://news.google.com/rss/search?q=%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F+OR+%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0+OR+%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D1%82%D0%B2%D0%BE+when:2d&hl=ru&gl=RU&ceid=RU:ru
-    section: National News (Russian)
-    category_hint: internal_politics
-- id: gnews_russia_intl
-  name: Google News (Russia - International Press)
-  homepage: https://news.google.com
-  language: en
-  scope: international
-  kind: media
-  governing_body: n/a (aggregator)
-  state_affiliated: false
-  aggregator: google_news
-  notes: Aggregator stream tracking international English-language reporting on Russia.
-  feeds:
-  - url: https://news.google.com/rss/search?q=%28Russia%29%20%28diplomacy%20OR%20government%20OR%20election%20OR%20economy%20OR%20foreign%29%20when%3A3d&hl=en-US&gl=US&ceid=US:en
-    section: International Coverage
-    category_hint: foreign_policy
-    active: true
+  - id: tass_ru
+    name: TASS (Russian & English)
+    homepage: https://tass.ru
+    language: ru
+    scope: domestic
+    kind: official
+    governing_body: Government of the Russian Federation (statutory state news agency)
+    state_affiliated: true
+    feeds:
+      - {url: "https://tass.ru/rss/v2.xml", section: Все новости, category_hint: internal_politics}
+      - {url: "https://tass.com/rss/v2.xml", section: English, category_hint: internal_politics}
 
-- id: thebell_ru
-  name: "The Bell (Russia)"
-  homepage: https://thebell.io
-  language: ru
-  scope: abroad_local
-  kind: media
-  governing_body: "The Bell Media (Elizaveta Osetinskaya)"
-  state_affiliated: false
-  notes: "Authoritative independent Russian economic and political intelligence publication operating in exile."
-  feeds:
-  - url: https://thebell.io/feed
-    category_hint: economics
+  - id: ria_novosti
+    name: RIA Novosti
+    homepage: https://ria.ru
+    language: ru
+    scope: domestic
+    kind: official
+    governing_body: Rossiya Segodnya (Russian statutory state news agency)
+    state_affiliated: true
+    feeds:
+      - {url: "https://ria.ru/export/rss2/archive/index.xml", section: Новости, category_hint: internal_politics}
 
-- id: mediazona_ru
-  name: "Mediazona"
-  homepage: https://zona.media
-  language: ru
-  scope: abroad_local
-  kind: media
-  governing_body: "Mediazona Independent Investigative Outlet"
-  state_affiliated: false
-  notes: "Independent Russian investigative newsroom documenting courts, political prosecutions, and military casualties."
-  feeds:
-  - url: https://zona.media/rss
-    category_hint: internal_politics
+  - id: interfax_ru
+    name: Interfax
+    homepage: https://interfax.ru
+    language: ru
+    scope: domestic
+    kind: wire
+    governing_body: Interfax Information Services Group (major non-state Russian wire agency covering politics and business)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.interfax.ru/rss.asp", section: Главное, category_hint: internal_politics}
+
+  - id: kommersant
+    name: Kommersant
+    homepage: https://www.kommersant.ru
+    language: ru
+    scope: domestic
+    kind: media
+    governing_body: Kommersant Publishing House (premier Russian business and political daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.kommersant.ru/RSS/news.xml", section: Новости, category_hint: economics}
+      - {url: "https://www.kommersant.ru/RSS/main.xml", section: Главное, category_hint: internal_politics}
+
+  - id: rbc_ru
+    name: RBC (RosBiznesKonsalting)
+    homepage: https://www.rbc.ru
+    language: ru
+    scope: domestic
+    kind: media
+    governing_body: Media-Holding RBC (major Russian business daily covering sanctions, Central Bank, and state assets)
+    state_affiliated: false
+    feeds:
+      - {url: "https://rssexport.rbc.ru/rbcnews/news/30/full.rss", section: Новости, category_hint: economics}
+
+  - id: vedomosti_ru
+    name: Vedomosti
+    homepage: https://www.vedomosti.ru
+    language: ru
+    scope: domestic
+    kind: media
+    governing_body: Business News Media (Russian national financial and macroeconomic daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.vedomosti.ru/rss/news", section: Новости, category_hint: economics}
+
+  - id: meduza_ru
+    name: Meduza (Russian & English)
+    homepage: https://meduza.io
+    language: ru
+    scope: abroad_local
+    kind: media
+    governing_body: Meduza (Riga, Latvia — premier exiled independent Russian news and investigative daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://meduza.io/rss/all", section: Все материалы, category_hint: internal_politics}
+      - {url: "https://meduza.io/rss/en/all", section: English, category_hint: internal_politics}
+
+  - id: novaya_gazeta_eu
+    name: Novaya Gazeta Europe
+    homepage: https://novayagazeta.eu
+    language: ru
+    scope: abroad_local
+    kind: media
+    governing_body: Novaya Gazeta Europe (Latvia — exiled investigative paper founded by Nobel laureate Dmitry Muratov)
+    state_affiliated: false
+    feeds:
+      - {url: "https://novayagazeta.eu/feed/rss", section: Статьи и новости, category_hint: internal_politics}
+
+  - id: thebell_ru
+    name: The Bell (Russia)
+    homepage: https://thebell.io
+    language: ru
+    scope: abroad_local
+    kind: media
+    governing_body: The Bell Media (Elizaveta Osetinskaya — authoritative independent economic and political intelligence publication)
+    state_affiliated: false
+    feeds:
+      - {url: "https://thebell.io/feed", section: Экономика и политика, category_hint: economics}
+
+  - id: istories_ru
+    name: IStories (Важные истории)
+    homepage: https://istories.media
+    language: ru
+    scope: abroad_local
+    kind: media
+    governing_body: Important Stories (exiled independent data and investigative journalism newsroom)
+    state_affiliated: false
+    feeds:
+      - {url: "https://istories.media/rss/all.xml", section: Расследования, category_hint: internal_politics}
+
+  - id: holod_ru
+    name: Holod (Холод)
+    homepage: https://holod.media
+    language: ru
+    scope: abroad_local
+    kind: media
+    governing_body: Holod Media (independent exiled Russian social-affairs and human-interest reporting magazine)
+    state_affiliated: false
+    feeds:
+      - {url: "https://holod.media/rss/", section: Материалы, category_hint: society}
+
+  - id: agents_ru
+    name: Agentstvo (Агентство)
+    homepage: https://www.agents.media
+    language: ru
+    scope: abroad_local
+    kind: media
+    governing_body: Agentstvo Media (independent exiled investigative collective founded by Proekt journalists)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.agents.media/feed/", section: Новости, category_hint: internal_politics}
+
+  - id: proekt_ru
+    name: Proekt (Проект)
+    homepage: https://www.proekt.media
+    language: ru
+    scope: abroad_local
+    kind: media
+    governing_body: Proekt Media (independent exiled investigative journalism outlet focusing on Kremlin elites and corruption)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.proekt.media/feed/", section: Расследования, category_hint: internal_politics}
+
+  - id: the_moscow_times
+    name: The Moscow Times
+    homepage: https://www.themoscowtimes.com
+    language: en
+    scope: abroad_local
+    kind: media
+    aggregator: google_news
+    governing_body: Stichting 2 Oktober (Amsterdam — independent English-language daily covering Russia)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:themoscowtimes.com+when:3d&hl=en-US&gl=US&ceid=US:en", section: News, category_hint: internal_politics}
+
+  - id: mediazona_ru
+    name: Mediazona (Медиазона)
+    homepage: https://zona.media
+    language: ru
+    scope: abroad_local
+    kind: media
+    aggregator: google_news
+    governing_body: Mediazona Independent Investigative Outlet (courts, political prosecutions, and military casualties)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:zona.media+when:5d&hl=ru&gl=RU&ceid=RU:ru", section: Суды и новости, category_hint: internal_politics}
+
+  - id: radio_svoboda
+    name: Radio Svoboda (RFE/RL Russian)
+    homepage: https://www.svoboda.org
+    language: ru
+    scope: abroad_local
+    kind: media
+    aggregator: google_news
+    governing_body: Radio Free Europe / Radio Liberty (USAGM)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:svoboda.org+when:3d&hl=ru&gl=RU&ceid=RU:ru", section: Радио Свобода, category_hint: internal_politics}
+
+  - id: gnews_ru_exile_regional
+    name: Verstka / The Insider / OVD-Info / Sever.Realii / Sibir.Realii / Fontanka / 7x7 (via Google News)
+    homepage: https://verstka.media
+    language: ru
+    scope: abroad_local
+    kind: media
+    aggregator: google_news
+    governing_body: Verstka / The Insider / OVD-Info / RFE-RL Regional / Fontanka / 7x7 Horizontal Russia
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:verstka.media+OR+site:theins.ru+OR+site:ovd.info+OR+site:severreal.org+OR+site:sibreal.org+OR+site:fontanka.ru+OR+site:7x7-journal.ru)+when:5d&hl=ru&gl=RU&ceid=RU:ru", section: Независимые и региональные, category_hint: internal_politics}
+
+  - id: gnews_ru_domestic_press
+    name: Izvestia / Rossiyskaya Gazeta / Lenta.ru (Domestic Press via Google News)
+    homepage: https://iz.ru
+    language: ru
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: National Media Group / Government Gazette / Rambler
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:iz.ru+OR+site:rg.ru+OR+site:lenta.ru)+when:2d&hl=ru&gl=RU&ceid=RU:ru", section: Российская пресса, category_hint: general}
+
+  - id: gnews_russia_ru
+    name: Google News (Russia National News - Russian)
+    homepage: https://news.google.com
+    language: ru
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    needs_mention: true
+    governing_body: Google LLC
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F+OR+%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0+OR+%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D1%82%D0%B2%D0%BE+when:2d&hl=ru&gl=RU&ceid=RU:ru", section: National News (Russian), category_hint: internal_politics}
+
+  - id: gnews_russia_intl
+    name: Google News (Russia - International Press)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=%28Russia%29%20%28diplomacy%20OR%20government%20OR%20election%20OR%20economy%20OR%20foreign%29%20when%3A3d&hl=en-US&gl=US&ceid=US:en", section: International Coverage, category_hint: foreign_policy}

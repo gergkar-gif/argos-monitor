@@ -1,0 +1,242 @@
+sources:
+- id: lsm_lv
+  name: LSM.lv (Latvian)
+  homepage: https://www.lsm.lv
+  language: lv
+  scope: domestic
+  kind: media
+  governing_body: Public Broadcasting of Latvia (LSM)
+  state_affiliated: false
+  notes: Primary Latvian public-service news portal covering Saeima, government, and defense.
+  feeds:
+  - url: https://www.lsm.lv/rss/
+    category_hint: internal_politics
+- id: lsm_eng_lv
+  name: LSM.lv English
+  homepage: https://eng.lsm.lv
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Public Broadcasting of Latvia (LSM)
+  state_affiliated: false
+  notes: English-language portal of Latvian public television and radio.
+  feeds:
+  - url: https://eng.lsm.lv/rss/
+    category_hint: internal_politics
+- id: lsm_rus
+  name: LSM.lv (Russian)
+  homepage: https://rus.lsm.lv
+  language: ru
+  scope: domestic
+  kind: media
+  governing_body: Public Broadcasting of Latvia (LSM)
+  state_affiliated: false
+  notes: Russian-language public service portal for Latvia's Russian-speaking communities.
+  feeds:
+  - url: https://rus.lsm.lv/rss/
+    category_hint: internal_politics
+- id: delfi_lv
+  name: Delfi Latvia
+  homepage: https://www.delfi.lv
+  language: lv
+  scope: domestic
+  kind: media
+  governing_body: Ekspress Grupp
+  state_affiliated: false
+  notes: Leading independent Latvian digital news portal covering politics and business.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:delfi.lv+when:3d&hl=lv&gl=LV&ceid=LV:lv
+    category_hint: internal_politics
+- id: tvnet_lv
+  name: TVNET
+  homepage: https://www.tvnet.lv
+  language: lv
+  scope: domestic
+  kind: media
+  governing_body: TVNET Grupa (Postimees Grupp)
+  state_affiliated: false
+  notes: Major Latvian digital news daily covering national politics, economy, and EU affairs.
+  feeds:
+  - url: https://www.tvnet.lv/rss
+    category_hint: general
+- id: diena_lv
+  name: Diena
+  homepage: https://www.diena.lv
+  language: lv
+  scope: domestic
+  kind: media
+  governing_body: Dienas Mediji
+  state_affiliated: false
+  notes: Historic Latvian daily broadsheet founded in 1990.
+  feeds:
+  - url: https://www.diena.lv/rss/
+    category_hint: internal_politics
+- id: la_lv
+  name: Latvijas Avīze
+  homepage: https://www.la.lv
+  language: lv
+  scope: domestic
+  kind: media
+  governing_body: AS Latvijas Mediji
+  state_affiliated: false
+  notes: National Latvian daily covering parliamentary politics, agriculture, and security.
+  feeds:
+  - url: https://www.la.lv/feed
+    category_hint: internal_politics
+- id: jauns_lv
+  name: Jauns.lv
+  homepage: https://jauns.lv
+  language: lv
+  scope: domestic
+  kind: media
+  governing_body: Rīgas Viļņi
+  state_affiliated: false
+  notes: High-reach Latvian digital news portal and tabloid daily.
+  feeds:
+  - url: https://jauns.lv/rss
+    category_hint: general
+- id: apollo_lv
+  name: Apollo.lv
+  homepage: https://www.apollo.lv
+  language: lv
+  scope: domestic
+  kind: media
+  governing_body: TVNET Grupa (Postimees Grupp)
+  state_affiliated: false
+  notes: Popular Latvian breaking-news and consumer affairs portal.
+  feeds:
+  - url: https://www.apollo.lv/rss
+    category_hint: general
+- id: db_lv
+  name: Dienas Bizness
+  homepage: https://www.db.lv
+  language: lv
+  scope: domestic
+  kind: media
+  governing_body: Dienas Mediji
+  state_affiliated: false
+  notes: Latvia's premier business, finance, and macroeconomic news portal.
+  feeds:
+  - url: https://www.db.lv/rss
+    category_hint: economics
+- id: rebaltica_lv
+  name: Re:Baltica
+  homepage: https://rebaltica.lv
+  language: lv
+  scope: domestic
+  kind: media
+  governing_body: Baltic Center for Investigative Journalism Re:Baltica
+  state_affiliated: false
+  notes: Independent non-profit investigative journalism and fact-checking center in Riga.
+  feeds:
+  - url: https://rebaltica.lv/feed/
+    category_hint: internal_politics
+- id: puaro_lv
+  name: Puaro.lv
+  homepage: https://puaro.lv
+  language: lv
+  scope: domestic
+  kind: media
+  governing_body: Puaro SIA
+  state_affiliated: false
+  notes: Independent Latvian political commentary and accountability portal.
+  feeds:
+  - url: https://puaro.lv/feed/
+    category_hint: internal_politics
+- id: pietiek_lv
+  name: Pietiek.com
+  homepage: https://pietiek.com
+  language: lv
+  scope: domestic
+  kind: media
+  governing_body: Pietiek.com
+  state_affiliated: false
+  notes: Latvian investigative and anti-corruption portal.
+  feeds:
+  - url: https://pietiek.com/rss/
+    category_hint: internal_politics
+- id: kursors_lv
+  name: Kursors.lv
+  homepage: https://kursors.lv
+  language: lv
+  scope: domestic
+  kind: media
+  governing_body: Kursors.lv
+  state_affiliated: false
+  notes: Latvian technology, telecoms, and digital policy publication.
+  feeds:
+  - url: https://kursors.lv/feed/
+    category_hint: economics
+- id: chayka_lv
+  name: Chayka.lv
+  homepage: https://chayka.lv
+  language: ru
+  scope: domestic
+  kind: media
+  governing_body: Chayka Media (Daugavpils)
+  state_affiliated: false
+  notes: Independent regional news outlet in Latgale and Daugavpils.
+  feeds:
+  - url: https://chayka.lv/feed/
+    category_hint: general
+- id: bb_lv
+  name: BB.lv
+  homepage: https://bb.lv
+  language: ru
+  scope: domestic
+  kind: media
+  governing_body: Baltijas Balss
+  state_affiliated: false
+  notes: Russian-language Latvian daily news portal.
+  feeds:
+  - url: https://bb.lv/rss
+    category_hint: general
+- id: mk_gov_lv
+  name: Cabinet of Ministers of Latvia (MK.gov.lv)
+  homepage: https://www.mk.gov.lv
+  language: lv
+  scope: domestic
+  kind: official
+  governing_body: Cabinet of Ministers of the Republic of Latvia
+  state_affiliated: true
+  notes: Official press releases from the Latvian government and Saeima.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:mk.gov.lv+OR+site:saeima.lv+OR+site:leta.lv)+when:7d&hl=lv&gl=LV&ceid=LV:lv
+    category_hint: internal_politics
+- id: gnews_latvia_weeklies_batch
+  name: Google News (Latvia Weeklies & Regional - Ir/NRA/Liepājniekiem)
+  homepage: https://news.google.com
+  language: lv
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator capturing RSS-blocked Latvian weeklies, dailies, and regional newspapers.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:ir.lv+OR+site:nra.lv+OR+site:liepajniekiem.lv)+when:3d&hl=lv&gl=LV&ceid=LV:lv
+    category_hint: internal_politics
+- id: gnews_latvia_lv
+  name: Google News (Latvia National News - Latvian)
+  homepage: https://news.google.com
+  language: lv
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss?hl=lv&gl=LV&ceid=LV:lv
+    category_hint: internal_politics
+- id: gnews_latvia_intl
+  name: Google News (Latvia - International Press)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Latvia+OR+Latvian+OR+Riga)+(NATO+OR+Russia+OR+defense+OR+government+OR+Baltic)+when:3d&hl=en-US&gl=US&ceid=US:en
+    category_hint: foreign_policy

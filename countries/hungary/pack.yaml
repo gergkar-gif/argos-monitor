@@ -24,7 +24,8 @@ aggregator_outlets:
              "444", "444.hu", "index", "index.hu", "hvg", "hvg.hu", "24.hu", "magyar nemzet", "budapest business journal",
              "budapest times", "hungarian insider", "about hungary", "hír tv", "origo", "magyar hírlap", "portfolio.hu", "blikk",
              "válasz online", "valaszonline.hu", "átlátszó", "atlatszo.hu", "direkt36", "g7", "g7.hu", "mandiner", "népszava", "nepszava.hu",
-             "hirado.hu", "mti", "kormany.hu", "economx", "mfor.hu", "privatbankar.hu"]
+             "hirado.hu", "mti", "kormany.hu", "economx", "mfor.hu", "privatbankar.hu", "magyar hang", "hang.hu", "magyar narancs",
+             "klubrádió", "atv.hu", "növekedés.hu", "infostart", "rtl.hu", "lakmusz", "168 óra"]
   abroad_local: ["euronews", "euronews magyar", "szabad európa", "bbc news magyar", "deutsche welle", "maszol.ro", "székelyhon",
                  "krónika", "krónika online", "transtelex", "új szó", "ujszo.com", "ma7", "ma7.sk", "paraméter", "parameter.sk",
                  "magyar szó", "magyarszo.rs", "szabad magyar szó", "vajdaság ma", "kárpátalja.ma", "karpatalja.ma",

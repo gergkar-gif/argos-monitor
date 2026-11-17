@@ -1,6 +1,6 @@
 # Source Registry & Taxonomy
 
-The declarative source registry is the foundation of Argos Monitor's independent corroboration model. Across **96 country desks**, **1,586 outlets** (**1,769 feeds**) are catalogued in `countries/<id>/sources.yaml` and enriched via `argos/ratings.py`.
+The declarative source registry is the foundation of Argos Monitor's independent corroboration model. Across **99 country desks**, **1,900 outlets** (**2,079 feeds**) are catalogued in `countries/<id>/sources.yaml` and enriched via `argos/ratings.py`.
 
 You can browse and filter the complete live registry interactively at [`https://argosmonitor.uk/about.html#sources`](https://argosmonitor.uk/about.html#sources).
 
@@ -67,7 +67,7 @@ State wire dispatches and commercial agency copy are frequently reprinted verbat
 
 ## 4. Verification & Maintenance
 
-Feed reachability and schema integrity across all 87 country packs are validated via:
+Feed reachability and schema integrity across all 99 country packs are validated via:
 ```powershell
 python -m unittest discover -s tests
 python tools/check_feeds.py

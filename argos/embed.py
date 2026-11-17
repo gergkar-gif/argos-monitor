@@ -1,11 +1,13 @@
 """Stage 4a: embed title + lead of each article with multilingual-e5-small (ONNX, CPU)."""
+import os
+
 import numpy as np
 
 from .config import DATA_DIR
 
 MODEL_DIR = DATA_DIR / "models" / "multilingual-e5-small"
 MAX_TOKENS = 128
-BATCH = 32
+BATCH = 64
 DIM = 384
 
 
@@ -22,7 +24,7 @@ class Embedder:
         self.tok.enable_truncation(MAX_TOKENS)
         self.tok.enable_padding()
         opts = ort.SessionOptions()
-        opts.intra_op_num_threads = 4
+        opts.intra_op_num_threads = min(os.cpu_count() or 4, 8)
         self.sess = ort.InferenceSession(str(MODEL_DIR / "model.onnx"), opts, providers=["CPUExecutionProvider"])
         self.input_names = {i.name for i in self.sess.get_inputs()}
 
@@ -42,9 +44,15 @@ class Embedder:
 
 
 def run(db):
-    rows = db.execute("SELECT a.id, a.title, a.lead FROM article a LEFT JOIN embedding e ON e.article_id=a.id "
-                      "WHERE e.article_id IS NULL").fetchall()
-    print(f"embed: {len(rows)} articles to embed")
+    days = int(os.environ.get("ARGOS_EMBED_DAYS", "14"))
+    rows = db.execute(
+        "SELECT a.id, a.title, a.lead FROM article a LEFT JOIN embedding e ON e.article_id=a.id "
+        "WHERE e.article_id IS NULL AND COALESCE(a.relevant, 1) = 1 "
+        "AND (COALESCE(a.published_at, a.fetched_at) IS NULL "
+        "OR COALESCE(a.published_at, a.fetched_at) >= datetime('now', ?))",
+        (f"-{days} days",),
+    ).fetchall()
+    print(f"embed: {len(rows)} articles to embed", flush=True)
     if not rows:
         return
     emb = Embedder()
@@ -53,7 +61,7 @@ def run(db):
         vecs = emb.encode([article_text(r) for r in chunk])
         db.executemany("INSERT OR REPLACE INTO embedding VALUES (?,?)",
                        [(r["id"], v.tobytes()) for r, v in zip(chunk, vecs)])
-        if (i // BATCH) % 20 == 0:
+        if (i // BATCH) % 10 == 0:
             db.commit()
-            print(f"  {i + len(chunk)}/{len(rows)}")
+            print(f"  {i + len(chunk)}/{len(rows)}", flush=True)
     db.commit()

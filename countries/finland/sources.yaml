@@ -11,8 +11,6 @@ sources:
   feeds:
   - url: https://feeds.yle.fi/uutiset/v1/recent.rss?publisherIds=YLE_UUTISET
     category_hint: internal_politics
-  - url: https://news.google.com/rss/search?q=site:yle.fi+when:7d&hl=en-US&gl=US&ceid=US:en
-    category_hint: internal_politics
 - id: yle_news_en
   name: Yle News (English)
   homepage: https://yle.fi/news
@@ -39,8 +37,8 @@ sources:
     category_hint: internal_politics
   - url: https://www.hs.fi/rss/politiikka.xml
     category_hint: internal_politics
-  - url: https://www.hs.fi/rss/talous.xml
-    category_hint: economics
+  - url: https://www.hs.fi/rss/suomi.xml
+    category_hint: internal_politics
 - id: kauppalehti_fi
   name: Kauppalehti
   homepage: https://www.kauppalehti.fi
@@ -52,6 +50,18 @@ sources:
   notes: Finland's premier daily business, commerce and financial newspaper.
   feeds:
   - url: https://feeds.kauppalehti.fi/rss/main
+    category_hint: economics
+- id: taloussanomat_fi
+  name: Taloussanomat
+  homepage: https://www.is.fi/taloussanomat
+  language: fi
+  scope: domestic
+  kind: media
+  governing_body: Sanoma Media Finland
+  state_affiliated: false
+  notes: Leading Finnish economic, banking and corporate news daily.
+  feeds:
+  - url: https://www.is.fi/rss/taloussanomat.xml
     category_hint: economics
 - id: iltasanomat_fi
   name: Ilta-Sanomat
@@ -77,17 +87,53 @@ sources:
   feeds:
   - url: https://www.iltalehti.fi/rss/uutiset.xml
     category_hint: general
-- id: taloussanomat_fi
-  name: Taloussanomat
-  homepage: https://www.is.fi/taloussanomat
+- id: mtv_uutiset_fi
+  name: MTV Uutiset (Finland)
+  homepage: https://www.mtvuutiset.fi
+  language: fi
+  scope: domestic
+  kind: media
+  governing_body: MTV Oy (Telia / Schibsted)
+  state_affiliated: false
+  notes: Finland's leading commercial television and digital news network.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:mtvuutiset.fi+when:3d&hl=fi&gl=FI&ceid=FI:fi
+    category_hint: internal_politics
+- id: aamulehti_fi
+  name: Aamulehti
+  homepage: https://www.aamulehti.fi
   language: fi
   scope: domestic
   kind: media
   governing_body: Sanoma Media Finland
   state_affiliated: false
-  notes: Leading Finnish economic, banking and corporate news daily.
+  notes: Finland's second-largest daily morning broadsheet newspaper based in Tampere.
   feeds:
-  - url: https://www.is.fi/rss/taloussanomat.xml
+  - url: https://news.google.com/rss/search?q=site:aamulehti.fi+when:3d&hl=fi&gl=FI&ceid=FI:fi
+    category_hint: internal_politics
+- id: turun_sanomat_fi
+  name: Turun Sanomat
+  homepage: https://www.ts.fi
+  language: fi
+  scope: domestic
+  kind: media
+  governing_body: TS-Yhtymä Oy
+  state_affiliated: false
+  notes: Major daily broadsheet of Southwest Finland covering Turku marine industry and national politics.
+  feeds:
+  - url: https://www.ts.fi/rss.xml
+    category_hint: general
+- id: maaseudun_tulevaisuus_fi
+  name: Maaseudun Tulevaisuus
+  homepage: https://www.maaseuduntulevaisuus.fi
+  language: fi
+  scope: domestic
+  kind: media
+  governing_body: Viestimedia Oy (MTK)
+  state_affiliated: false
+  notes: Influential national Finnish daily covering forestry, agriculture, energy, and regional policy.
+  feeds:
+  - url: https://www.maaseuduntulevaisuus.fi/feeds/maaseuduntulevaisuus
     category_hint: economics
 - id: suomenkuvalehti_fi
   name: Suomen Kuvalehti
@@ -101,18 +147,6 @@ sources:
   feeds:
   - url: https://suomenkuvalehti.fi/feed/
     category_hint: internal_politics
-- id: demokraatti_fi
-  name: Demokraatti
-  homepage: https://demokraatti.fi
-  language: fi
-  scope: domestic
-  kind: media
-  governing_body: Kustannus Oy Demari
-  state_affiliated: false
-  notes: Political and social policy daily news publication.
-  feeds:
-  - url: https://demokraatti.fi/feed/
-    category_hint: internal_politics
 - id: verkkouutiset_fi
   name: Verkkouutiset
   homepage: https://www.verkkouutiset.fi
@@ -121,9 +155,45 @@ sources:
   kind: media
   governing_body: Kansalliskustannus Oy
   state_affiliated: false
-  notes: Leading political, parliament and national security news online.
+  notes: Leading centre-right political, parliament and national security news portal.
   feeds:
   - url: https://www.verkkouutiset.fi/feed/
+    category_hint: internal_politics
+- id: demokraatti_fi
+  name: Demokraatti
+  homepage: https://demokraatti.fi
+  language: fi
+  scope: domestic
+  kind: media
+  governing_body: Kustannus Oy Demari
+  state_affiliated: false
+  notes: Social-democratic political and labour policy publication.
+  feeds:
+  - url: https://demokraatti.fi/feed/
+    category_hint: internal_politics
+- id: suomenmaa_fi
+  name: Suomenmaa
+  homepage: https://www.suomenmaa.fi
+  language: fi
+  scope: domestic
+  kind: media
+  governing_body: Suomenmaan Kustannus Oy
+  state_affiliated: false
+  notes: Centre Party-aligned Finnish political daily covering Eduskunta and regional policy.
+  feeds:
+  - url: https://www.suomenmaa.fi/feed/
+    category_hint: internal_politics
+- id: kansan_uutiset_fi
+  name: Kansan Uutiset
+  homepage: https://www.ku.fi
+  language: fi
+  scope: domestic
+  kind: media
+  governing_body: Kansan Uutiset Oy
+  state_affiliated: false
+  notes: Independent left-wing Finnish political magazine and news portal.
+  feeds:
+  - url: https://www.ku.fi/feed
     category_hint: internal_politics
 - id: hbl_fi
   name: Hufvudstadsbladet (HBL)
@@ -137,6 +207,55 @@ sources:
   feeds:
   - url: https://hbl.fi/feed/
     category_hint: general
+- id: savonsanomat_fi
+  name: Savon Sanomat
+  homepage: https://www.savonsanomat.fi
+  language: fi
+  scope: domestic
+  kind: media
+  governing_body: Keskisuomalainen Oyj
+  state_affiliated: false
+  notes: Major eastern Finnish regional daily based in Kuopio.
+  feeds:
+  - url: https://www.savonsanomat.fi/feed/rss/
+    category_hint: general
+- id: ksml_fi
+  name: Keskisuomalainen
+  homepage: https://www.ksml.fi
+  language: fi
+  scope: domestic
+  kind: media
+  governing_body: Keskisuomalainen Oyj
+  state_affiliated: false
+  notes: Major central Finnish daily newspaper based in Jyväskylä.
+  feeds:
+  - url: https://www.ksml.fi/feed/rss/
+    category_hint: general
+- id: valtioneuvosto_fi
+  name: Valtioneuvosto / Eduskunta
+  homepage: https://valtioneuvosto.fi
+  language: fi
+  scope: domestic
+  kind: official
+  governing_body: Finnish Government (Valtioneuvosto)
+  state_affiliated: true
+  notes: Official Finnish Cabinet releases, Parliament records, and STT news agency items.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:valtioneuvosto.fi+OR+site:eduskunta.fi+OR+site:stt.fi)+when:7d&hl=fi&gl=FI&ceid=FI:fi
+    category_hint: internal_politics
+- id: gnews_finland_press_batch
+  name: Google News (Finland Regional & Business Weeklies - Kaleva/Talouselämä/Tekniikka&Talous/Svenska Yle)
+  homepage: https://news.google.com
+  language: fi
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator capturing northern daily Kaleva, business magazines, and Swedish-language public news.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:kaleva.fi+OR+site:talouselama.fi+OR+site:tekniikkatalous.fi+OR+site:svenska.yle.fi)+when:3d&hl=fi&gl=FI&ceid=FI:fi
+    category_hint: economics
 - id: google_news_finland_politics
   name: Google News (Finland Government & Stubb)
   homepage: https://news.google.com
@@ -191,28 +310,3 @@ sources:
     section: International Coverage
     category_hint: foreign_policy
     active: true
-- id: mtv_uutiset_fi
-  name: MTV Uutiset (Finland)
-  homepage: https://www.mtvuutiset.fi
-  language: fi
-  scope: domestic
-  kind: media
-  governing_body: MTV Oy (Schibsted Media)
-  state_affiliated: false
-  notes: Finland's leading commercial television and digital news network covering Eduskunta politics, defense, and economy.
-  feeds:
-  - url: https://news.google.com/rss/search?q=site:mtvuutiset.fi+when:7d&hl=en-US&gl=US&ceid=US:en
-    category_hint: internal_politics
-
-- id: aamulehti_fi
-  name: "Aamulehti"
-  homepage: https://www.aamulehti.fi
-  language: fi
-  scope: domestic
-  kind: media
-  governing_body: "Sanoma Media Finland"
-  state_affiliated: false
-  notes: "Finland's second-largest daily morning broadsheet newspaper covering national politics and economic policy."
-  feeds:
-  - url: https://news.google.com/rss/search?q=site:aamulehti.fi+when:7d&hl=en-US&gl=US&ceid=US:en
-    category_hint: internal_politics
