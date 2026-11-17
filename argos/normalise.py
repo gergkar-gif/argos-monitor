@@ -3,6 +3,7 @@ Guarantees independent source counts (Rule 5) by detecting exact and near-duplic
 import hashlib
 import re
 from collections import defaultdict
+from datetime import datetime, timedelta, timezone
 
 from .ingest import title_key
 
@@ -31,13 +32,31 @@ def _hashes(text):
 
 
 def run(db):
-    rows = db.execute("SELECT id, source_id, title, lead, text FROM article WHERE text IS NOT NULL OR lead IS NOT NULL "
-                      "ORDER BY COALESCE(published_at,'9'), id").fetchall()
-    # Cache source kinds for wire attribution
+    cols = {r[1] for r in db.execute("PRAGMA table_info(article)")}
+    has_country = "country" in cols
+    has_fetched = "fetched_at" in cols
+    cutoff_10d = (datetime.now(timezone.utc) - timedelta(days=10)).isoformat(timespec="seconds")
+    country_sel = "country" if has_country else "'' AS country"
+    if has_fetched:
+        rows = db.execute(
+            f"SELECT id, {country_sel}, source_id, title, lead, text FROM article "
+            "WHERE (text IS NOT NULL OR lead IS NOT NULL) "
+            "AND (content_hash IS NULL OR COALESCE(published_at, fetched_at, '9') >= ?) "
+            "ORDER BY COALESCE(published_at, fetched_at, '9'), id",
+            (cutoff_10d,),
+        ).fetchall()
+    else:
+        rows = db.execute(
+            f"SELECT id, {country_sel}, source_id, title, lead, text FROM article "
+            "WHERE text IS NOT NULL OR lead IS NOT NULL "
+            "ORDER BY COALESCE(published_at,'9'), id"
+        ).fetchall()
+    # Cache source kinds for wire attribution (including MTI, Tanjug, Agerpres, TASR, HINA, STA, BTA)
     wire_sources = {r[0] for r in db.execute("SELECT id FROM source WHERE kind='wire' OR state_affiliated=1").fetchall()}
-    index = defaultdict(set)  # shingle hash -> earlier article ids containing it
+    index = defaultdict(set)  # (country, shingle hash) -> earlier article ids containing it
     src, marked = {}, 0
     for r in rows:
+        cid = r["country"] or ""
         content = r["text"] or (r["title"] + " " + (r["lead"] or ""))
         db.execute("UPDATE article SET content_hash=?, syndicated_of=NULL WHERE id=?",
                    (hashlib.sha256(content.encode()).hexdigest(), r["id"]))
@@ -47,7 +66,7 @@ def run(db):
             continue
         votes = defaultdict(int)
         for h in hs:
-            for other in index[h]:
+            for other in index[(cid, h)]:
                 if src[other] != r["source_id"]:
                     votes[other] += 1
         if votes:
@@ -58,15 +77,27 @@ def run(db):
                 db.execute("UPDATE article SET syndicated_of=? WHERE id=?", (best, r["id"]))
                 marked += 1
         for h in hs:
-            index[h].add(r["id"])
+            index[(cid, h)].add(r["id"])
 
-    # Headline-only articles (aggregator items) have no text to compare. The same headline from different outlets is
-    # one wire story reprinted, so it counts once.
-    db.execute("UPDATE article SET syndicated_of=NULL WHERE extract_status='nofetch'")
+    # Headline-only articles (aggregator items) have no text to compare. The same headline from different outlets
+    # within the same country desk is one wire story reprinted, so it counts once.
+    if has_fetched:
+        db.execute("UPDATE article SET syndicated_of=NULL WHERE extract_status='nofetch' AND COALESCE(published_at, fetched_at, '9') >= ?", (cutoff_10d,))
+        nofetch_rows = db.execute(
+            f"SELECT id, {country_sel}, source_id, title FROM article "
+            "WHERE extract_status='nofetch' AND COALESCE(published_at, fetched_at, '9') >= ? "
+            "ORDER BY COALESCE(published_at, fetched_at, '9'), id",
+            (cutoff_10d,),
+        ).fetchall()
+    else:
+        db.execute("UPDATE article SET syndicated_of=NULL WHERE extract_status='nofetch'")
+        nofetch_rows = db.execute(
+            f"SELECT id, {country_sel}, source_id, title FROM article WHERE extract_status='nofetch' "
+            "ORDER BY COALESCE(published_at,'9'), id"
+        ).fetchall()
     first = {}
-    for r in db.execute("SELECT id, source_id, title FROM article WHERE extract_status='nofetch' "
-                        "ORDER BY COALESCE(published_at,'9'), id").fetchall():
-        key = title_key(r["title"])
+    for r in nofetch_rows:
+        key = (r["country"] or "", title_key(r["title"]))
         if key in first and first[key][1] != r["source_id"]:
             db.execute("UPDATE article SET syndicated_of=? WHERE id=?", (first[key][0], r["id"]))
             marked += 1

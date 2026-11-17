@@ -61,7 +61,7 @@ def run(db):
         independent = {r["source_id"] for r in rows if r["syndicated_of"] is None}
         scopes = {packs.resolve_scope(country, r["source_id"], r["source_name"], r["scope"], r["feed_scope"]) for r in rows}
         growing = sum(r["t"] >= recent for r in rows) / len(rows) >= 0.4
-        n_indep = len(independent)
+        n_indep = max(1, len(independent)) if rows else 0
         consensus = (2.0 + 0.5 * (n_indep - 5)) if n_indep >= 5 else (1.0 if n_indep >= 3 else 0.0)
         coverage = (n_indep + consensus + 0.5 * (len(scopes) - 1) + (1.0 if growing else 0.0)
                     + 0.2 * math.log2(len(rows)))

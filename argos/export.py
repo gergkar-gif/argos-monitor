@@ -188,8 +188,10 @@ def _story(db, s, now_iso=None, days=None, prev_matches=None):
     raw_lead = (rep["lead"] or "").strip() or next(((r["lead"] or "").strip() for r in rows if (r["lead"] or "").strip()), "")
     lead_val = (raw_lead[:220].rsplit(" ", 1)[0] + "…") if len(raw_lead) > 220 else raw_lead
     excerpts = db.execute(
-        "SELECT x.id, x.text, a.url, src.name AS source, src.scope FROM excerpt x JOIN article a ON a.id=x.article_id "
-        "JOIN source src ON src.id=a.source_id WHERE x.story_id=? ORDER BY x.id", (s["id"],)).fetchall()
+        "SELECT x.id, x.text, a.url, a.source_id, src.name AS source, src.scope, fs.scope AS feed_scope "
+        "FROM excerpt x JOIN article a ON a.id=x.article_id "
+        "JOIN source src ON src.id=a.source_id LEFT JOIN feed f ON f.id=a.feed_id LEFT JOIN source fs ON fs.id=f.source_id "
+        "WHERE x.story_id=? ORDER BY x.id", (s["id"],)).fetchall()
     related = db.execute(
         "SELECT o.id, a.title, a.url, src.name AS source, (SELECT COUNT(*) FROM story_article WHERE story_id=r.related_id AND COALESCE(similarity, 1.0) >= 0.93) AS n "
         "FROM story_related r JOIN story o ON o.id=r.related_id JOIN article a ON a.id=o.representative_article_id "
@@ -283,14 +285,14 @@ def _story(db, s, now_iso=None, days=None, prev_matches=None):
         "first_seen": s["first_seen"],
         "last_seen": s["last_seen"],
         "articles": len(rows),
-        "independent_sources": len(independent),
+        "independent_sources": max(1, len(independent)) if rows else 0,
         "by_scope": by_scope,
         "evidence": "OFFICIAL" if any(r["kind"] == "official" for r in core_rows) else "REPORTED",
         "perspectives": perspectives,
         "delta": delta,
         "abroad_only": False,
         "related": [{"title": r["title"], "url": r["url"], "source": r["source"], "articles": r["n"]} for r in related[:2]],   # possibly the same event
-        "excerpts": [{"text": x["text"], "source": x["source"], "scope": x["scope"], "url": x["url"]} for x in excerpts],
+        "excerpts": [{"text": x["text"], "source": x["source"], "scope": r_scope(x), "url": x["url"]} for x in excerpts],
         "sources": [{"title": r["title"], "url": r["url"], "source": r["source"], "scope": r_scope(r),
                      "language": r["language"], "published": r["published_at"], "copy": r["syndicated_of"] is not None,
                      "sim": int(round(r["similarity"] * 100)),

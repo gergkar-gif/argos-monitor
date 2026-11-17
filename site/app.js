@@ -418,7 +418,7 @@
           }
           T.byText.set(text, en);
           added++;
-        } catch { break; }
+        } catch { continue; }
       }
       if (added && ($('#q').value || '').trim()) {
         T.running = false;
@@ -430,8 +430,11 @@
   }
   async function startTranslator(button) {
     const langs = T.lang === 'multi' ? [...new Set(T.queue.map((q) => q.lang))] : [T.lang];
-    for (const l of langs) await getTranslator(l, button);
-    T.state = 'ready';
+    let ok = 0;
+    for (const l of langs) {
+      try { await getTranslator(l, button); ok++; } catch { /* skip unsupported script */ }
+    }
+    T.state = ok > 0 ? 'ready' : 'none';
   }
   function useLanguage(lang) {
     T.lang = lang; T.state = 'checking';

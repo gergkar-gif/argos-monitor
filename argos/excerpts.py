@@ -70,10 +70,13 @@ def run(db):
     total = 0
     span_cache = {}
     for sid in ids:
-        pack = packs.load(db.execute("SELECT country FROM story WHERE id=?", (sid,)).fetchone()[0])
+        cid = db.execute("SELECT country FROM story WHERE id=?", (sid,)).fetchone()[0]
+        pack = packs.load(cid)
         arts = db.execute(
-            "SELECT a.id, a.source_id, a.text, s.scope, e.vec FROM story_article sa JOIN article a ON a.id=sa.article_id "
-            "JOIN source s ON s.id=a.source_id JOIN embedding e ON e.article_id=a.id "
+            "SELECT a.id, a.source_id, a.text, s.name AS source_name, s.scope, fs.scope AS feed_scope, e.vec "
+            "FROM story_article sa JOIN article a ON a.id=sa.article_id "
+            "JOIN source s ON s.id=a.source_id LEFT JOIN feed f ON f.id=a.feed_id LEFT JOIN source fs ON fs.id=f.source_id "
+            "JOIN embedding e ON e.article_id=a.id "
             "WHERE sa.story_id=? AND COALESCE(sa.similarity, 1.0) >= 0.93 AND a.text IS NOT NULL AND a.syndicated_of IS NULL", (sid,)).fetchall()
         if not arts:
             continue
@@ -93,8 +96,9 @@ def run(db):
             scores = [float(s) + (0.02 if QUOTE_CUES.search(a["text"][sp[0]:sp[1]]) else 0.0) for sp, s in zip(spans, raw_sims)]
             k = int(np.argmax(scores))
             score = float(scores[k])
+            resolved_scope = packs.resolve_scope(cid, a["source_id"], a["source_name"], a["scope"], a["feed_scope"])
             if a["source_id"] not in best_per_source or score > best_per_source[a["source_id"]][0]:
-                best_per_source[a["source_id"]] = (score, a["id"], spans[k], a["scope"])
+                best_per_source[a["source_id"]] = (score, a["id"], spans[k], resolved_scope)
         # one sentence per source, best first, preferring a mix of scopes
         ranked = sorted(best_per_source.values(), key=lambda c: -c[0])
         chosen = []

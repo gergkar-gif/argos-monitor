@@ -76,6 +76,22 @@ class TestNormaliseSyndication(unittest.TestCase):
         r11 = self.db.execute("SELECT syndicated_of FROM article WHERE id=11").fetchone()
         self.assertEqual(r11["syndicated_of"], 10, "Article crediting wire with partial overlap must be marked as syndicated")
 
+    def test_cross_country_not_syndicated(self):
+        self.db.execute("ALTER TABLE article ADD COLUMN country TEXT")
+        body = ("Brussels - European Union energy ministers convened on Tuesday to finalize "
+                "cross-border electricity interconnectors and winter gas storage obligations. "
+                "The council adopted binding regional solidarity rules across all member states.")
+        self.db.execute("INSERT INTO source VALUES ('reuters', 'Reuters', 'wire', 0, 0)")
+        self.db.execute("INSERT INTO source VALUES ('politico', 'Politico Europe', 'media', 0, 0)")
+        self.db.execute("INSERT INTO article (id, country, source_id, title, text, published_at) "
+                        "VALUES (20, 'hungary', 'reuters', 'EU ministers finalize energy solidarity rules', ?, '2026-11-10T08:00:00Z')", (body,))
+        self.db.execute("INSERT INTO article (id, country, source_id, title, text, published_at) "
+                        "VALUES (21, 'romania', 'politico', 'EU ministers finalize energy solidarity rules', ?, '2026-11-10T08:15:00Z')", (body,))
+
+        normalise.run(self.db)
+        r21 = self.db.execute("SELECT syndicated_of FROM article WHERE id=21").fetchone()
+        self.assertIsNone(r21["syndicated_of"], "Articles on different country desks must not be marked syndicated_of across countries")
+
 
 if __name__ == "__main__":
     unittest.main()
