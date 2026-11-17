@@ -92,22 +92,32 @@ def resolve_scope(country, source_id, source_name, source_scope, feed_scope=None
     return "international"
 
 
+def _str_list(items):
+    out = []
+    for x in (items or []):
+        if isinstance(x, dict):
+            out.extend(f"{k}: {v}" for k, v in x.items())
+        elif x is not None:
+            out.append(str(x))
+    return out
+
+
 def merged_themes(country_dir):
     """The shared themes plus the country's additions: same id extends (keywords and descriptions are added,
     label and weight may be overridden), a new id adds a theme."""
     base = _read(ROOT / "themes.yaml")
-    themes = {t["id"]: dict(t, keywords=list(t.get("keywords", [])), describe=list(t.get("describe", []))) for t in base["themes"]}
+    themes = {t["id"]: dict(t, keywords=_str_list(t.get("keywords")), describe=_str_list(t.get("describe"))) for t in base["themes"]}
     extra = country_dir / "themes.yaml"
     for t in (_read(extra).get("themes", []) if extra.exists() else []):
         if t["id"] in themes:
             cur = themes[t["id"]]
-            cur["keywords"] += t.get("keywords", [])
-            cur["describe"] += t.get("describe", [])
+            cur["keywords"] += _str_list(t.get("keywords"))
+            cur["describe"] += _str_list(t.get("describe"))
             for k in ("label", "weight", "category"):
                 if k in t:
                     cur[k] = t[k]
         else:
-            themes[t["id"]] = dict(t, keywords=list(t.get("keywords", [])), describe=list(t.get("describe", [])))
+            themes[t["id"]] = dict(t, keywords=_str_list(t.get("keywords")), describe=_str_list(t.get("describe")))
     return {"default_weight": base["default_weight"], "themes": list(themes.values())}
 
 

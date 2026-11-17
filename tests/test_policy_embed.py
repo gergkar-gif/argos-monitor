@@ -29,20 +29,34 @@ class TestEmbedPolicy(unittest.TestCase):
         self.assertFalse(np.isnan(proto).any())
 
     def test_all_country_packs_have_valid_theme_prototypes(self):
-        """Ensure all 96 country packs define themes with non-empty labels or descriptions."""
+        """Ensure all 96 country packs define themes with non-empty string labels, descriptions, and keywords."""
+        import yaml
+        from argos.config import COUNTRIES_DIR
         pack_list = packs.pack_ids()
         self.assertGreater(len(pack_list), 0, "At least one country pack should exist")
         for cid in pack_list:
+            raw_tf = COUNTRIES_DIR / cid / "themes.yaml"
+            if raw_tf.exists():
+                raw_data = yaml.safe_load(raw_tf.read_text(encoding="utf8")) or {}
+                for rt in raw_data.get("themes", []):
+                    for d in (rt.get("describe") or []):
+                        self.assertIsInstance(d, str, f"Raw describe item in {cid}/{rt.get('id')} must be str, got {type(d)}")
+                    for k in (rt.get("keywords") or []):
+                        self.assertIsInstance(k, str, f"Raw keyword item in {cid}/{rt.get('id')} must be str, got {type(k)}")
             cfg = packs.load(cid).get("themes") or {}
             themes = cfg.get("themes") or []
             self.assertGreater(len(themes), 0, f"Pack {cid} must have themes defined")
             for t in themes:
                 tid = t.get("id")
                 self.assertTrue(tid, f"Theme in pack {cid} missing id")
-                self.assertTrue(t.get("label"), f"Theme {tid} in pack {cid} missing label")
+                self.assertIsInstance(t.get("label"), str, f"Theme {tid} in pack {cid} label must be str")
                 desc = t.get("describe") or [t.get("label")]
-                self.assertTrue(desc and any(d and str(d).strip() for d in desc),
-                                f"Theme {tid} in pack {cid} must have non-empty describe or label")
+                self.assertIsInstance(desc, list, f"Theme {tid} in pack {cid} describe must be list")
+                self.assertTrue(desc and all(isinstance(d, str) and d.strip() for d in desc),
+                                f"Theme {tid} in pack {cid} must have non-empty string describe items")
+                kws = t.get("keywords") or []
+                self.assertTrue(all(isinstance(k, str) and k.strip() for k in kws),
+                                f"Theme {tid} in pack {cid} keywords must all be non-empty strings")
 
     def test_sectarian_conflict_theme_configuration(self):
         """Verify sectarian_conflict theme is configured in defence_security category with high weight and keywords."""

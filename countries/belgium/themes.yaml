@@ -14,8 +14,8 @@ themes:
     weight: 1.0
     category: internal_politics
     describe:
-      - Belgian federal coalition government under Prime Minister Bart De Wever (Arizona coalition: N-VA, MR, Les Engagés, Vooruit, CD&V), Chamber of Representatives, Flemish and Walloon regional governance
-      - gouvernement fédéral belge, Bart De Wever, coalition Arizona, Chambre des représentants, Vlaamse regering, Wallonie, Bruxelles
+      - "Belgian federal coalition government under Prime Minister Bart De Wever (Arizona coalition: N-VA, MR, Les Engagés, Vooruit, CD&V), Chamber of Representatives, Flemish and Walloon regional governance"
+      - "gouvernement fédéral belge, Bart De Wever, coalition Arizona, Chambre des représentants, Vlaamse regering, Wallonie, Bruxelles"
     keywords:
       - "gouvernement fédéral"
       - "chambre des représentants"
