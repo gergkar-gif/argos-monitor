@@ -14,10 +14,10 @@ from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 
 import feedparser
-import trafilatura
 
 from . import fetch, packs
 from .export import SITE_DATA, _write
+from .extract import extract_text
 from .ingest import _match_outlet_scope
 from .ratings import lookup_rating
 from .textutil import clean, clean_url, nfc
@@ -210,7 +210,7 @@ def _extract_html_meta(url):
     )
     site = clean(html.unescape(sm.group(1).strip())) if sm else suffix_site
     try:
-        extracted = trafilatura.extract(body, include_comments=False, include_tables=False, favor_precision=True)
+        extracted = extract_text(body)
     except Exception:
         extracted = None
     text = nfc(extracted) if (extracted and len(extracted) > 200) else None

@@ -127,6 +127,31 @@ class TestPipelineGuards(unittest.TestCase):
         ):
             self.assertEqual(extract._one({"id": 100, "url": "https://ok.example/a"}), (100, None, "error"))
 
+    def test_extract_text_is_serialized_across_threads(self):
+        import threading
+        import time
+        from concurrent.futures import ThreadPoolExecutor
+
+        active = 0
+        max_active = 0
+        counter_lock = threading.Lock()
+
+        def fake_extract(*args, **kwargs):
+            nonlocal active, max_active
+            with counter_lock:
+                active += 1
+                max_active = max(max_active, active)
+            time.sleep(0.02)
+            with counter_lock:
+                active -= 1
+            return "ok"
+
+        with patch("argos.extract.trafilatura.extract", side_effect=fake_extract):
+            with ThreadPoolExecutor(max_workers=6) as pool:
+                results = list(pool.map(extract.extract_text, [b"<html></html>"] * 6))
+        self.assertEqual(results, ["ok"] * 6)
+        self.assertEqual(max_active, 1)
+
 
 if __name__ == "__main__":
     unittest.main()

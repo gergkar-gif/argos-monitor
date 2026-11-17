@@ -17,6 +17,13 @@ from .textutil import nfc
 HOST_DELAY = 0.7  # seconds between requests to the same host
 _locks, _last, _robots = {}, {}, {}
 _guard = threading.Lock()
+_extract_lock = threading.Lock()
+
+
+def extract_text(body):
+    # Serialize trafilatura/lxml calls: libxml2 is not thread-safe across concurrent parser threads.
+    with _extract_lock:
+        return trafilatura.extract(body, include_comments=False, include_tables=False, favor_precision=True)
 
 
 def _robots_for(origin):
@@ -56,7 +63,7 @@ def _one(row):
         code, body = get(url)
         if code != 200:
             return row["id"], None, f"http{code}"
-        text = trafilatura.extract(body, include_comments=False, include_tables=False, favor_precision=True)
+        text = extract_text(body)
         if text and len(text) > 200:
             return row["id"], nfc(text), "ok"
         return row["id"], None, "empty"
