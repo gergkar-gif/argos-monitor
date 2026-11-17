@@ -20,11 +20,14 @@ mention:
   - "pentagon"
   - "federal reserve"
   - "supreme court"
-  - "biden"
+  - "donald trump"
   - "trump"
-  - "harris"
+  - "jd vance"
+  - "marco rubio"
+  - "rubio"
+  - "pete hegseth"
+  - "scott bessent"
   - "state department"
-  - "blinken"
   - "treasury"
 
 mention_regex: ['\b(?:united states|u\.s\.|washington|white house|capitol hill|congress|senate|pentagon|federal reserve|supreme court)\b']

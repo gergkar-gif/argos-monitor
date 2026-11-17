@@ -11,16 +11,13 @@ mention:
   - "berlin"
   - "bundestag"
   - "bundesrat"
-  - "scholz"
-  - "olaf scholz"
   - "merz"
   - "friedrich merz"
-  - "habeck"
-  - "robert habeck"
-  - "lindner"
-  - "christian lindner"
-  - "baerbock"
-  - "annalena baerbock"
+  - "klingbeil"
+  - "lars klingbeil"
+  - "pistorius"
+  - "boris pistorius"
+  - "wadephul"
   - "bundeskanzler"
   - "bundesbank"
   - "bundeswehr"
@@ -29,7 +26,7 @@ mention:
   - "deutsche"
   - "bundesregierung"
 
-mention_regex: ['\b(?:germany|german|bundestag|scholz|bundeswehr|bundesbank)\b', 'deutschland', 'bundesregierung', 'bundestag', 'scholz']
+mention_regex: ['\b(?:germany|german|bundestag|merz|bundeswehr|bundesbank)\b', 'deutschland', 'bundesregierung', 'bundestag', 'merz']
 mention_section: "Germany"
 
 url_sections:

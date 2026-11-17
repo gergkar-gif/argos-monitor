@@ -23,7 +23,7 @@ MODELS = {
     "ar": "Helsinki-NLP/opus-mt-ar-en",
 }
 
-# Post-processing glossary to fix known archaic/Sino-Vietnamese mappings in Marian
+# Post-processing glossary to fix known archaic/Sino-Vietnamese and literal Hungarian mappings in Marian
 GLOSSARY = {
     "vi": [
         (r"\bSong Lin\b", "To Lam"),
@@ -35,6 +35,13 @@ GLOSSARY = {
         (r"\bTran Thanh Man\b", "Tran Thanh Man"),
         (r"\bLuang Cuong\b", "Luong Cuong"),
         (r"\bBao Gia\b", "Gia Lai"),
+    ],
+    "hu": [
+        (r"\b(?:Hungarian|Magyar)\s+P(?:eter|éter)\b", "Péter Magyar"),
+        (r"\bP(?:eter|éter)\s+Hungarian\b", "Péter Magyar"),
+        (r"\bTisza\s+[Pp]arty\b", "Tisza Party"),
+        (r"\bFriendship\s+(?:oil\s+)?pipeline\b", "Druzhba oil pipeline"),
+        (r"\bSovereignty\s+Protection\s+Office\b", "Sovereignty Protection Office"),
     ],
     "uk": [
         (r"\b(\w\.\s*){3,}", ""),

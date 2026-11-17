@@ -30,7 +30,6 @@ excerpt:
   dateline: ^\s*(?:RABAT|CASABLANCA|MAP|MAROC)\s*[-–:]\s*
 reddit:
 - morocco
-- Moroccanfootball
 geo: MA
 aggregator_outlets:
   domestic:

@@ -27,7 +27,6 @@ excerpt:
   dateline: ^\s*(?:COLOMBO|KANDY|SRI LANKA)\s*[-–:]\s*
 reddit:
 - srilanka
-- srilankasports
 geo: LK
 aggregator_outlets:
   domestic:

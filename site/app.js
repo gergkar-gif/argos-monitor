@@ -308,7 +308,7 @@
           }
         }
       }
-      if (!selectedCountries.length) selectedCountries = ['cambodia', 'vietnam'];
+      if (!selectedCountries.length) selectedCountries = ['czechia', 'hungary', 'poland', 'slovakia'];
     } else if (c === 'alerts' || c === 'disasters' || c === 'violence') {
       activeTab = c;
       monitorCountry = (p && index.countries.some((x) => x.id === p)) ? p : 'all';
@@ -1302,33 +1302,35 @@
 
   // ---------- Bilateral & Joint Affairs Monitor ----------
   const COMMON_PARTNERS = [
-    { id: 'laos', name: 'Laos', terms: ['laos', 'vientiane', 'luang prabang', 'ລາວ'] },
-    { id: 'china', name: 'China', terms: ['china', 'chinese', 'beijing', 'trung quốc', 'kínai', 'chine', 'pekin', 'xi jinping'] },
-    { id: 'us', name: 'United States', terms: ['united states', 'usa', 'u.s.', 'washington', 'mỹ', 'hoa kỳ', 'amerika', 'américain', 'biden', 'trump'] },
-    { id: 'russia', name: 'Russia', terms: ['russia', 'russian', 'moscow', 'nga', 'orosz', 'kremlin', 'putin', 'россия'] },
-    { id: 'eu', name: 'European Union', terms: ['european union', 'eu', 'brussels', 'liên minh châu âu', 'európai unió', 'bruxelles'] },
-    { id: 'uk', name: 'United Kingdom', terms: ['united kingdom', 'britain', 'british', 'london', 'anh quốc', 'nagy-britannia'] },
-    { id: 'india', name: 'India', terms: ['india', 'indian', 'new delhi', 'ấn độ', 'delhi', 'modi'] },
-    { id: 'japan', name: 'Japan', terms: ['japan', 'japanese', 'tokyo', 'nhật bản', 'japán'] },
-    { id: 'south_korea', name: 'South Korea', terms: ['south korea', 'korean', 'seoul', 'hàn quốc', 'dél-korea'] },
+    { id: 'eu', name: 'European Union', terms: ['european union', 'eu', 'brussels', 'european commission', 'european council', 'európai unió', 'brüsszel', 'európai bizottság', 'bruxelles', 'liên minh châu âu'] },
+    { id: 'us', name: 'United States', terms: ['united states', 'usa', 'u.s.', 'washington', 'white house', 'amerika', 'egyesült államok', 'trump', 'américain', 'mỹ', 'hoa kỳ'] },
+    { id: 'china', name: 'China', terms: ['china', 'chinese', 'beijing', 'kína', 'kínai', 'peking', 'xi jinping', 'chine', 'pekin', 'trung quốc'] },
+    { id: 'russia', name: 'Russia', terms: ['russia', 'russian', 'moscow', 'oroszország', 'orosz', 'moszkva', 'kremlin', 'kreml', 'putin', 'putgyin', 'россия', 'nga'] },
+    { id: 'ukraine', name: 'Ukraine', terms: ['ukraine', 'ukrainian', 'kyiv', 'ukrajna', 'ukrán', 'kijev', 'kárpátalja', 'zelensky', 'zelenskyy', 'zelenszkij', 'україна'] },
+    { id: 'germany', name: 'Germany', terms: ['germany', 'german', 'berlin', 'németország', 'német', 'merz', 'deutschland'] },
+    { id: 'uk', name: 'United Kingdom', terms: ['united kingdom', 'britain', 'british', 'london', 'egyesült királyság', 'nagy-britannia', 'anh quốc'] },
+    { id: 'turkey', name: 'Turkey', terms: ['turkey', 'turkiye', 'turkish', 'ankara', 'törökország', 'török', 'erdogan', 'erdoğan', 'türkiye'] },
+    { id: 'india', name: 'India', terms: ['india', 'indian', 'new delhi', 'delhi', 'modi', 'ấn độ'] },
+    { id: 'japan', name: 'Japan', terms: ['japan', 'japanese', 'tokyo', 'japán', 'tokió', 'nhật bản'] },
+    { id: 'south_korea', name: 'South Korea', terms: ['south korea', 'korean', 'seoul', 'dél-korea', 'szöul', 'hàn quốc'] },
   ];
 
   const QUICK_PRESETS = [
-    [['cambodia', 'vietnam'], 'Cambodia & Vietnam'],
-    [['cambodia', 'laos', 'vietnam'], 'Mekong Basin (KH, LA, VN)'],
-    [['japan', 'south_korea', 'taiwan'], 'East Asia Tech & Security (JP, KR, TW)'],
-    [['japan', 'malaysia', 'indonesia', 'cambodia', 'laos'], 'East & SE Asia Corridor (JP, MY, ID, KH, LA)'],
-    [['kazakhstan', 'azerbaijan', 'georgia', 'turkey'], 'Middle Corridor (KZ, AZ, GE, TR)'],
     [['czechia', 'hungary', 'poland', 'slovakia'], 'Visegrád Four (V4: CZ, HU, PL, SK)'],
-    [['serbia', 'kosovo', 'bosnia'], 'Balkans Triangle (RS, XK, BA)'],
-    [['uzbekistan', 'kazakhstan', 'kyrgyzstan'], 'Central Asia (UZ, KZ, KG)'],
+    [['hungary', 'romania', 'slovakia', 'serbia', 'ukraine'], 'Carpathian Basin (HU, RO, SK, RS, UA)'],
+    [['hungary', 'belgium', 'germany'], 'Hungary, EU & Germany (HU, BE, DE)'],
+    [['hungary', 'serbia', 'bulgaria', 'turkey', 'azerbaijan'], 'Southern Energy Corridor (HU, RS, BG, TR, AZ)'],
+    [['serbia', 'bosnia', 'montenegro', 'north_macedonia', 'albania', 'kosovo'], 'Western Balkans (RS, BA, ME, MK, AL, XK)'],
+    [['kazakhstan', 'azerbaijan', 'georgia', 'turkey'], 'Middle Corridor & Turkic Vector (KZ, AZ, GE, TR)'],
+    [['united_states', 'russia', 'ukraine'], 'US, Russia & Ukraine'],
+    [['china', 'germany', 'united_states'], 'US, China & EU Trade'],
     [['armenia', 'azerbaijan'], 'Armenia & Azerbaijan'],
-    [['malaysia', 'indonesia'], 'Malaysia & Indonesia'],
-    [['kenya', 'ethiopia'], 'Horn of Africa (KE, ET)'],
+    [['japan', 'south_korea', 'taiwan'], 'East Asia Security (JP, KR, TW)'],
+    [['cambodia', 'laos', 'vietnam'], 'Mekong Basin (KH, LA, VN)'],
     [['argentina', 'brazil', 'colombia'], 'South America (AR, BR, CO)'],
   ];
 
-  let selectedCountries = ['cambodia', 'vietnam'];
+  let selectedCountries = ['czechia', 'hungary', 'poland', 'slovakia'];
   let relPeriod = '7d';
 
   function getCountryTerms(id) {
@@ -1430,7 +1432,7 @@
 
   async function renderRelations() {
     T.queue.length = 0;
-    if (!selectedCountries.length) selectedCountries = ['cambodia', 'vietnam'];
+    if (!selectedCountries.length) selectedCountries = ['czechia', 'hungary', 'poland', 'slovakia'];
     const names = selectedCountries.map(getCountryName);
     const titleStr = names.join(names.length === 2 ? ' & ' : ', ');
 
@@ -1904,7 +1906,6 @@
     }
     const isFiltered = Boolean(q || movementFilter !== 'all' || windowStories.length !== d.stories.length);
     const count = (id) => (isFiltered ? stories.filter((s) => s.category === id).length : d.totals[id]);
-    const noOutside = windowStories.every((s) => !s.by_scope.abroad_local && !s.by_scope.international);
     const byTopic = (id) => stories.filter((s) => s.category === id);
     const totalStories = isFiltered ? stories.length : Object.values(d.totals).reduce((a, b) => a + b, 0);
 
@@ -1984,7 +1985,6 @@
           setTimeout(() => URL.revokeObjectURL(url), 1000);
           flashBtn(btn, 'Downloaded!');
         } })),
-      noOutside && h('p', { class: 'notice quiet', text: `No coverage from ${(index.countries.find((x) => x.id === country.value) || {}).abroad_label || 'outlets abroad'} or from international outlets has been collected for this period yet, so the "not in domestic press" check cannot run.` }),
       watchbar(q),
       agendaBar(d),
       tabs,

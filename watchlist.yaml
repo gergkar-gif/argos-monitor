@@ -1,5 +1,19 @@
 ﻿watch:
-  # Words to follow. Every run writes site/watch.xml (an RSS feed of the stories that mention any of them),
-  # so a feed reader can alert you. Edit this list and push.
-  - hun sen
+  # Priority diplomatic, energy-corridor, and Carpathian Basin watch terms.
+  # Every run writes site/watch.xml (an RSS feed of the stories that mention any of them).
   - Orbán
+  - Szijjártó
+  - Kárpátalja
+  - Transcarpathia
+  - Druzhba
+  - Barátság kőolajvezeték
+  - TurkStream
+  - Török Áramlat
+  - JANAF
+  - Paks
+  - RMDSZ
+  - Visegrád
+  - Western Balkans
+  - Organization of Turkic States
+  - EU funds
+  - rule of law

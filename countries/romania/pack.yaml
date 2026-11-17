@@ -10,9 +10,13 @@ mention:
 - bucharest
 - marcel ciolacu
 - ciolacu
-- nicolae ciucă
-- klaus iohannis
-- iohannis
+- ilie bolojan
+- bolojan
+- nicușor dan
+- nicusor dan
+- kelemen hunor
+- rmdsz
+- udmr
 - parlamentul româniei
 - psd
 - pnl
@@ -29,7 +33,8 @@ excerpt:
   dateline: ^\s*(?:BUCUREȘTI|BUCHAREST|AGERPRES|ROMANIA)\s*[-–:]\s*
 reddit:
 - romania
-- RomaniaPorn
+- bucuresti
+- cluj
 geo: RO
 aggregator_outlets:
   domestic:
