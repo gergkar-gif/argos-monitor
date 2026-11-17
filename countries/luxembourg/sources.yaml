@@ -1,0 +1,148 @@
+# Luxembourg source registry (decision D15).
+# Combines official government portal (gouvernement.lu) and public service broadcaster (RTL Lëtzebuerg / RTL Today) with leading broadsheets (Luxemburger Wort, Virgule, Luxembourg Times, Tageblatt, Le Quotidien, L'essentiel), financial and EU-institutional press (Paperjam, Delano, Chronicle.lu), and investigative journalism (Reporter.lu, d'Lëtzebuerger Land, woxx).
+
+sources:
+  - id: gov_lu
+    name: Gouvernement.lu (Official Portal of the Grand Duchy)
+    homepage: https://gouvernement.lu
+    language: fr
+    scope: domestic
+    kind: official
+    aggregator: google_news
+    governing_body: Government of the Grand Duchy of Luxembourg (Ministry of State / SIP)
+    state_affiliated: true
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:gouvernement.lu+when:7d&hl=fr&gl=LU&ceid=LU:fr", section: Communiqués officiels, category_hint: internal_politics}
+
+  - id: rtl_lu
+    name: RTL Lëtzebuerg / RTL Today
+    homepage: https://www.rtl.lu
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: CLT-UFA / RTL Group (Luxembourg's national public-service contract broadcaster in Luxembourgish, French, and English)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:today.rtl.lu+OR+site:infos.rtl.lu)+when:3d&hl=en-US&gl=US&ceid=US:en", section: RTL News, category_hint: general}
+
+  - id: wort_lu
+    name: Luxemburger Wort / Virgule
+    homepage: https://www.wort.lu
+    language: fr
+    scope: domestic
+    kind: media
+    governing_body: Mediahuis Luxembourg (Grand Duchy's flagship daily newspaper of record founded in 1848)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:wort.lu+OR+site:virgule.lu)+when:3d&hl=fr&gl=LU&ceid=LU:fr", section: Politique & Économie, category_hint: internal_politics}
+
+  - id: luxtimes_lu
+    name: Luxembourg Times
+    homepage: https://www.luxtimes.lu
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Mediahuis Luxembourg (premier English-language newspaper covering Luxembourg politics, financial center, and EU institutions in Kirchberg)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:luxtimes.lu+when:7d&hl=en-US&gl=US&ceid=US:en", section: Luxembourg & EU, category_hint: internal_politics}
+
+  - id: paperjam_lu
+    name: Paperjam
+    homepage: https://paperjam.lu
+    language: fr
+    scope: domestic
+    kind: media
+    governing_body: Maison Moderne (Luxembourg's premier business, investment fund, banking, and economic policy daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:paperjam.lu+when:3d&hl=fr&gl=LU&ceid=LU:fr", section: Économie & Finance, category_hint: economics}
+
+  - id: delano_lu
+    name: Delano
+    homepage: https://delano.lu
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Maison Moderne (English-language financial, regulatory, and policy magazine in Luxembourg)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:delano.lu+when:7d&hl=en-US&gl=US&ceid=US:en", section: Policy & Finance, category_hint: economics}
+
+  - id: lequotidien_lu
+    name: Le Quotidien
+    homepage: https://lequotidien.lu
+    language: fr
+    scope: domestic
+    kind: media
+    governing_body: Editpress / Lumédia (independent French-language daily newspaper in Luxembourg)
+    state_affiliated: false
+    feeds:
+      - {url: "https://lequotidien.lu/feed/", section: Luxembourg, category_hint: internal_politics}
+
+  - id: tageblatt_lu
+    name: Tageblatt
+    homepage: https://www.tageblatt.lu
+    language: de
+    scope: domestic
+    kind: media
+    governing_body: Editpress Luxembourg (historic Esch-sur-Alzette German/French daily newspaper founded in 1913)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:tageblatt.lu+when:7d&hl=de&gl=LU&ceid=LU:de", section: Politik, category_hint: internal_politics}
+
+  - id: reporter_lu
+    name: Reporter.lu
+    homepage: https://www.reporter.lu
+    language: de
+    scope: domestic
+    kind: media
+    governing_body: Reporter Media S.à r.l. (independent reader-funded investigative digital magazine in Luxembourg)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.reporter.lu/feed/", section: Politik & Wirtschaft, category_hint: internal_politics}
+
+  - id: lessentiel_lu
+    name: L'essentiel
+    homepage: https://www.lessentiel.lu
+    language: fr
+    scope: domestic
+    kind: media
+    governing_body: Edita SA / Tamedia & Editpress (highest-circulation daily newspaper in Luxembourg)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:lessentiel.lu+when:3d&hl=fr&gl=LU&ceid=LU:fr", section: Actualités, category_hint: general}
+
+  - id: chronicle_lu
+    name: Chronicle.lu
+    homepage: https://chronicle.lu
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: G-Media S.à r.l. (independent English-language daily news portal in Luxembourg)
+    state_affiliated: false
+    feeds:
+      - {url: "https://chronicle.lu/rss.xml", section: Luxembourg News, category_hint: general}
+
+  - id: woxx_lu
+    name: woxx
+    homepage: https://www.woxx.lu
+    language: de
+    scope: domestic
+    kind: media
+    governing_body: Coopérative woxx (independent multilingual political and environmental weekly newspaper in Luxembourg)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.woxx.lu/feed/", section: Politik, category_hint: internal_politics}
+
+  - id: gnews_en_lu
+    name: Google News (Luxembourg & ECJ/EIB - International)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Luxembourg+(%22Luc+Frieden%22+OR+%22Xavier+Bettel%22+OR+%22European+Court+of+Justice%22+OR+ECJ+OR+EIB)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Luxembourg & EU institutions, category_hint: foreign_policy}

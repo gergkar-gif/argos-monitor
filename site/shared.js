@@ -10,13 +10,13 @@
 
   const COUNTRY_REGION = {
     canada: 'North America', united_states: 'North America',
-    belgium: 'Western Europe', denmark: 'Western Europe', finland: 'Western Europe', france: 'Western Europe', germany: 'Western Europe', ireland: 'Western Europe', italy: 'Western Europe',
+    belgium: 'Western Europe', denmark: 'Western Europe', finland: 'Western Europe', france: 'Western Europe', germany: 'Western Europe', ireland: 'Western Europe', italy: 'Western Europe', luxembourg: 'Western Europe',
     netherlands: 'Western Europe', norway: 'Western Europe', portugal: 'Western Europe', spain: 'Western Europe', sweden: 'Western Europe', switzerland: 'Western Europe', united_kingdom: 'Western Europe',
     albania: 'Central & Southeast Europe', austria: 'Central & Southeast Europe', bosnia: 'Central & Southeast Europe', bulgaria: 'Central & Southeast Europe', croatia: 'Central & Southeast Europe', czechia: 'Central & Southeast Europe', hungary: 'Central & Southeast Europe', kosovo: 'Central & Southeast Europe', montenegro: 'Central & Southeast Europe', north_macedonia: 'Central & Southeast Europe', poland: 'Central & Southeast Europe', serbia: 'Central & Southeast Europe', slovakia: 'Central & Southeast Europe', slovenia: 'Central & Southeast Europe',
     baltics: 'Eastern Europe', belarus: 'Eastern Europe', moldova: 'Eastern Europe', romania: 'Eastern Europe', russia: 'Eastern Europe', ukraine: 'Eastern Europe',
     armenia: 'South Caucasus', azerbaijan: 'South Caucasus', georgia: 'South Caucasus',
     iran: 'Middle East', iraq: 'Middle East', jordan: 'Middle East', qatar: 'Middle East', saudi_arabia: 'Middle East', syria: 'Middle East', united_arab_emirates: 'Middle East',
-    algeria: 'Mediterranean', egypt: 'Mediterranean', greece: 'Mediterranean', israel: 'Mediterranean', lebanon: 'Mediterranean', morocco: 'Mediterranean', turkey: 'Mediterranean',
+    algeria: 'Mediterranean', cyprus: 'Mediterranean', egypt: 'Mediterranean', greece: 'Mediterranean', israel: 'Mediterranean', lebanon: 'Mediterranean', malta: 'Mediterranean', morocco: 'Mediterranean', turkey: 'Mediterranean',
     kazakhstan: 'Central Asia', kyrgyzstan: 'Central Asia', uzbekistan: 'Central Asia',
     bangladesh: 'South Asia', india: 'South Asia', pakistan: 'South Asia', sri_lanka: 'South Asia',
     china: 'East Asia', japan: 'East Asia', north_korea: 'East Asia', south_korea: 'East Asia', taiwan: 'East Asia',

@@ -6,7 +6,7 @@
 
 <p align="center">
   <strong>Open-source multilingual media &amp; crisis intelligence monitor for foreign-affairs analysts</strong><br>
-  <em>93 country desks · 1,547 sources (1,730 feeds) · Deterministic ONNX clustering · Syndication deduplication · State-media tagging · Offline MarianMT translation · Zero LLM hallucinations</em>
+  <em>96 country desks · 1,586 sources (1,769 feeds) · Deterministic ONNX clustering · Syndication deduplication · State-media tagging · Offline MarianMT translation · Zero LLM hallucinations</em>
 </p>
 
 <p align="center">
@@ -38,7 +38,7 @@ A scheduled GitHub Actions workflow runs every 12 hours (at 09:17 and 21:17 UTC)
 
 ```mermaid
 flowchart LR
-    A["01 · Ingest<br/>1,730 RSS & Google News feeds"] --> B["02 · Extract<br/>Round-robin Trafilatura full-text"]
+    A["01 · Ingest<br/>1,769 RSS & Google News feeds"] --> B["02 · Extract<br/>Round-robin Trafilatura full-text"]
     B --> C["03 · Normalise<br/>Unicode NFC"]
     C --> D["04 · Relevance<br/>Section & mention gate"]
     D --> E["05 · Embed<br/>ONNX multilingual-e5-small"]
@@ -52,7 +52,7 @@ flowchart LR
 
 | Stage | Module | Description |
 | :--- | :--- | :--- |
-| **01 · Ingest** | [`argos/ingest.py`](argos/ingest.py) | Polls domestic, diaspora (`abroad_local`), and international RSS/Atom feeds across 93 country desks. |
+| **01 · Ingest** | [`argos/ingest.py`](argos/ingest.py) | Polls domestic, diaspora (`abroad_local`), and international RSS/Atom feeds across 96 country desks. |
 | **02 · Extract** | [`argos/extract.py`](argos/extract.py) | Fetches full article text via Trafilatura and resolves syndicated publisher names. |
 | **03 · Normalise** | [`argos/normalise.py`](argos/normalise.py) | Applies Unicode NFC normalisation across all text fields (essential for Vietnamese diacritics and Khmer script). |
 | **04 · Relevance** | [`argos/relevance.py`](argos/relevance.py) | Filters out lifestyle/sport noise and enforces country-mention rules on general international feeds. |
@@ -74,18 +74,19 @@ Each monitored country is defined declaratively in `countries/<id>/` with zero c
 - **`sources.yaml`** — Curated media directory across three scopes (`domestic`, `abroad_local`, `international`) with ownership metadata and `state_affiliated` flags.
 - **`themes.yaml`** — Bilingual foreign-desk priority themes, weights, keywords, and semantic descriptions tailored to the country's geopolitical fault lines.
 
-### Currently Active Country Packs (93 Countries across 16 Regional Desks)
+### Currently Active Country Packs (96 Countries across 16 Regional Desks)
 
 - **North America (2 Desks):**
   - **United States** (`countries/united_states/`) — Papers of record (*AP*, *Politico*, *The Hill*, *NPR*, *Defense News*), official White House / State Dept briefings, and international perspectives (`en`).
   - **Canada** (`countries/canada/`) — National papers of record and public broadcaster (*CBC News*, *The Globe and Mail*, *National Post*, *Toronto Star*), and Bank of Canada/trade reporting (`en`).
-- **Western Europe (14 Desks):**
+- **Western Europe (15 Desks):**
   - **United Kingdom** (`countries/united_kingdom/`) — National papers of record and broadcasters (*BBC News*, *The Guardian*, *The Telegraph*, *Sky News*), official Downing Street releases, and global European coverage (`en`).
   - **Germany** (`countries/germany/`) — Public broadcasters (*Tagesschau / ARD*, *ZDFheute*), leading news weeklies (*Der Spiegel*), and financial dailies (*Handelsblatt*) (`de` / `en`).
   - **France** (`countries/france/`) — Papers of record (*Le Monde*, *Le Figaro*), public broadcaster (*France Info*, *France 24*), and macroeconomic daily (*Les Echos*) (`fr` / `en`).
   - **Italy** (`countries/italy/`) — Statutory wire (*ANSA*), premier broadsheets (*Corriere della Sera*, *La Repubblica*), and financial daily (*Il Sole 24 Ore*) (`it` / `en`).
   - **Spain** (`countries/spain/`) — Statutory wire (*EFE*), major national dailies (*El País*, *El Mundo*, *La Vanguardia*), and financial press (*Cinco Días*) (`es` / `en`).
-  - **Belgium** (`countries/belgium/`) — Public broadcasters (*RTBF*, *VRT NWS*), national paper of record (*Le Soir*), and Brussels EU affairs press (*The Brussels Times*) (`fr` / `nl` / `en`).
+  - **Belgium** (`countries/belgium/`) — Public broadcasters (*RTBF*, *VRT NWS*), national paper of record (*Le Soir*), and Brussels EU affairs press (*The Brussels Times*, *Politico Europe*, *Euractiv*, *EUobserver*) (`fr` / `nl` / `en`).
+  - **Luxembourg** (`countries/luxembourg/`) — Public-service broadcaster (*RTL Lëtzebuerg / RTL Today*), papers of record (*Luxemburger Wort / Virgule*, *Luxembourg Times*, *Tageblatt*, *Le Quotidien*), financial press (*Paperjam*, *Delano*), and investigative portal (*Reporter.lu*) (`fr` / `de` / `en`).
   - **Netherlands** (`countries/netherlands/`) — Statutory public broadcaster (*NOS Nieuws*), leading news portal (*NU.nl*), national paper of record (*De Telegraaf*), and English daily (*DutchNews.nl*) (`nl` / `en`).
   - **Switzerland** (`countries/switzerland/`) — Multi-language public broadcasters (*SWI swissinfo.ch*, *SRF News*), papers of record (*NZZ*, *Le Temps*), and financial/neutrality reporting (`de` / `fr` / `en`).
   - **Norway** (`countries/norway/`) — National public broadcaster (*NRK*), subscription paper of record (*Aftenposten*), and English daily (*The Local Norway*) (`no` / `en`).
@@ -128,12 +129,14 @@ Each monitored country is defined declaratively in `countries/<id>/` with zero c
   - **Iraq** (`countries/iraq/`) — Statutory news agency (*INA*), Kurdish regional network (*Rudaw* in English & Arabic), and Baghdad independent reporting (`ar` / `en`).
   - **Syria** (`countries/syria/`) — State wire (*SANA*), independent exiled investigative press (*Enab Baladi*), and conflict monitors (*Syria TV*) (`ar` / `en`).
   - **Iran** (`countries/iran/`) — Statutory news agencies and state media (*IRNA*, *Mehr*, *Tehran Times*) contrasted with prominent Persian exile and diaspora journalism (*BBC Persian*, *Iran International*, *Radio Farda*, *IranWire*) (`fa` / `en`).
-- **Mediterranean (7 Desks):**
+- **Mediterranean (9 Desks):**
   - **Israel** (`countries/israel/`) — Independent papers of record (*Haaretz*, *The Times of Israel*, *Ynetnews*, *The Jerusalem Post*) and regional security reporting (`he` / `en`).
   - **Lebanon** (`countries/lebanon/`) — Independent English paper of record (*L'Orient Today*), digital portal (*Naharnet*), and statutory wire (*NNA*) (`en` / `fr`).
   - **Turkey** (`countries/turkey/`) — State wire & pro-government press (*Anadolu Agency*, *Daily Sabah*) contrasted with independent/opposition dailies (*Cumhuriyet*, *Sözcü*, *BirGün*, *Bianet*) and diaspora coverage (`tr` / `en`).
   - **Egypt** (`countries/egypt/`) — Historical daily paper of record (*Al-Ahram* / *Ahram Online*), financial press (*Daily News Egypt*), and independent investigative journalism (*Mada Masr*) (`ar` / `en`).
   - **Greece** (`countries/greece/`) — English daily of record (*Ekathimerini*), state news agency (*ANA-MPA*), and Aegean/Balkans reporting (`el` / `en`).
+  - **Cyprus** (`countries/cyprus/`) — State news agency (*CNA / ΚΥΠΕ*), leading Greek-Cypriot broadsheets (*Phileleftheros*, *Politis*, *Kathimerini Cyprus*, *SigmaLive*), English dailies and financial press (*Cyprus Mail*, *In-Cyprus*, *StockWatch*, *Financial Mirror*), and Turkish-Cypriot press (*Kıbrıs Postası*, *Yenidüzen*) (`el` / `tr` / `en`).
+  - **Malta** (`countries/malta/`) — Public broadcaster (*TVMnews*), national papers of record (*Times of Malta*, *MaltaToday*, *The Malta Independent*, *Newsbook*), investigative portal (*The Shift News*), and financial press (*Who's Who.mt*, *BusinessNow.mt*) (`en` / `mt`).
   - **Morocco** (`countries/morocco/`) — Statutory news agency (*MAP*), independent digital dailies (*Le360*, *Hespress*), and English paper of record (*Morocco World News*) (`fr` / `en`).
   - **Algeria** (`countries/algeria/`) — Statutory news agency (*APS* in French & Arabic), independent national dailies (*El Watan*, *TSA Algérie*) (`fr` / `ar`).
 - **Central Asia (3 Desks):**

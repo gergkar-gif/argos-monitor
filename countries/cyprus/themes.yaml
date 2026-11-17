@@ -1,0 +1,28 @@
+# Cyprus's additions to the shared themes (../../themes.yaml).
+themes:
+  - id: diplomacy
+    label: "Cyprus Issue (UN Talks / Buffer Zone), EU Council & East Med Strategic Alignment"
+    weight: 1.0
+    category: foreign_policy
+    describe:
+      - UN-facilitated Cyprus settlement talks, President Nikos Christodoulides, Turkish-Cypriot leadership, UNFICYP buffer zone incidents, EU Council positions, strategic defense and intelligence cooperation with the US, Israel, Greece, and France
+      - Κυπριακό πρόβλημα, Ηνωμένα Έθνη, Νίκος Χριστοδουλίδης, Πράσινη Γραμμή, UNFICYP, σχέσεις με Ελλάδα, Τουρκία, Ισραήλ και ΗΠΑ
+    keywords: ["christodoulides", "χριστοδουλίδης", "κυπριακό", "unficyp", "πράσινη γραμμή", "buffer zone", "varosha", "βαρώσια", "tatar"]
+
+  - id: energy_infra
+    label: "Eastern Mediterranean Offshore Gas (EEZ Aphrodite/Cronos), Great Sea Interconnector & Shipping"
+    weight: 1.0
+    category: economics
+    describe:
+      - Republic of Cyprus Exclusive Economic Zone (EEZ) offshore natural gas blocks (Aphrodite, Cronos, Pegasus — Chevron, Eni, TotalEnergies, ExxonMobil), Great Sea Interconnector subsea power cable to Greece and Israel, and Limassol maritime shipping registry
+      - Κυπριακή ΑΟΖ, κοιτάσματα φυσικού αερίου Αφροδίτη και Κρόνος, ηλεκτρική διασύνδεση Great Sea Interconnector, ναυτιλία, Κεντρική Τράπεζα
+    keywords: ["αοζ", "eez", "aphrodite gas", "great sea interconnector", "gsi", "φυσικό αέριο", "chevron", "exxonmobil", "eni"]
+
+  - id: party_gov
+    label: "Presidential Administration, House of Representatives (DISY/AKEL/DIKO) & Financial Compliance"
+    weight: 0.95
+    category: internal_politics
+    describe:
+      - President Nikos Christodoulides cabinet, House of Representatives (Speaker Annita Demetriou, DISY, AKEL, DIKO, ELAM), anti-money-laundering and sanctions compliance reforms, and migration management
+      - Βουλή των Αντιπροσώπων, Αννίτα Δημητρίου, ΔΗΣΥ, ΑΚΕΛ, ΔΗΚΟ, ΕΛΑΜ, κυρώσεις, μεταναστευτικό
+    keywords: ["βουλή των αντιπροσώπων", "αννίτα δημητρίου", "δησυ", "ακελ", "δηκο", "ελαμ", "κυρώσεις"]

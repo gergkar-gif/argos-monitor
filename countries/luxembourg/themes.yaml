@@ -1,0 +1,28 @@
+# Luxembourg's additions to the shared themes (../../themes.yaml).
+themes:
+  - id: diplomacy
+    label: "European Court of Justice (ECJ / CJUE), EU Council (Kirchberg) & Benelux Diplomacy"
+    weight: 1.0
+    category: foreign_policy
+    describe:
+      - Court of Justice of the European Union (ECJ / CJUE) rulings on rule of law, state aid, and EU treaties, European Public Prosecutor's Office (EPPO) headquarters in Kirchberg, EU Foreign Affairs and General Affairs Council meetings in Luxembourg, and Foreign Minister Xavier Bettel diplomacy
+      - Cour de justice de l'Union européenne (CJUE), Parquet européen (EPPO), Conseil de l'UE à Kirchberg, Xavier Bettel, Benelux
+    keywords: ["cour de justice", "cjue", "ecj", "european court of justice", "parquet européen", "eppo", "kirchberg", "xavier bettel", "bettel"]
+
+  - id: econ_policy
+    label: "European Investment Bank (EIB), Sovereign Fund Hub, Tax Policy & Wage Indexation"
+    weight: 1.0
+    category: economics
+    describe:
+      - European Investment Bank (EIB / BEI) defense and infrastructure financing, European Stability Mechanism (ESM), CSSF financial regulation, cross-border investment funds, corporate tax policy, and STATEC wage indexation
+      - Banque européenne d'investissement (BEI / EIB), Nadia Calviño, place financière, CSSF, fonds d'investissement, STATEC, indexation des salaires, ArcelorMittal, SES
+    keywords: ["banque européenne d'investissement", "bei", "eib", "place financière", "cssf", "statec", "indexation", "arcelormittal", "ses"]
+
+  - id: party_gov
+    label: "CSV-DP Coalition (Luc Frieden) & Chamber of Deputies"
+    weight: 0.95
+    category: internal_politics
+    describe:
+      - Prime Minister Luc Frieden (CSV-DP coalition government), Chamber of Deputies (Chambre des députés), LSAP and Déi Gréng opposition, Grand Ducal transition (Lieutenancy of Prince Guillaume), and pension/housing reforms
+      - Premier ministre Luc Frieden, gouvernement CSV-DP, Chambre des députés, réforme des pensions, logement
+    keywords: ["luc frieden", "frieden", "chambre des députés", "csv", "lsap", "déi gréng", "grand-duc"]

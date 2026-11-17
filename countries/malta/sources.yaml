@@ -1,0 +1,136 @@
+# Malta source registry (decision D15).
+# Combines public broadcaster (TVMnews / PBS) and official government information (DOI) with leading national papers of record (Times of Malta, MaltaToday, The Malta Independent, Newsbook), investigative journalism (The Shift News), digital portals (Lovin Malta, Illum), and business press (Who's Who.mt, BusinessNow.mt, The Malta Business Weekly).
+
+sources:
+  - id: tvm_mt
+    name: TVMnews (Television Malta)
+    homepage: https://tvmnews.mt
+    language: en
+    scope: domestic
+    kind: official
+    governing_body: Public Broadcasting Services Ltd (PBS — statutory national public broadcaster of Malta)
+    state_affiliated: true
+    feeds:
+      - {url: "https://tvmnews.mt/en/feed/", section: News, category_hint: general}
+
+  - id: timesofmalta_mt
+    name: Times of Malta
+    homepage: https://timesofmalta.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Allied Newspapers Ltd (Valletta — Malta's oldest and largest national daily newspaper of record founded in 1935)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:timesofmalta.com+when:3d&hl=en-US&gl=US&ceid=US:en", section: National, category_hint: internal_politics}
+
+  - id: maltatoday_mt
+    name: MaltaToday
+    homepage: https://www.maltatoday.com.mt
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: MediaToday Co. Ltd (independent investigative and political newspaper in San Ġwann)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.maltatoday.com.mt/rss", section: News, category_hint: internal_politics}
+
+  - id: independent_mt
+    name: The Malta Independent
+    homepage: https://www.independent.com.mt
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Standard Publications Ltd (major national English-language daily and Sunday newspaper)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:independent.com.mt+when:3d&hl=en-US&gl=US&ceid=US:en", section: Local News, category_hint: internal_politics}
+
+  - id: theshift_mt
+    name: The Shift News
+    homepage: https://theshiftnews.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: The Shift News (independent investigative journalism platform focused on rule of law, public procurement, and press freedom in Malta)
+    state_affiliated: false
+    feeds:
+      - {url: "https://theshiftnews.com/feed/", section: Investigations, category_hint: internal_politics}
+
+  - id: newsbook_mt
+    name: Newsbook Malta
+    homepage: https://newsbook.com.mt
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Beacon Media Group (independent bilingual Maltese and English newsroom)
+    state_affiliated: false
+    feeds:
+      - {url: "https://newsbook.com.mt/en/feed/", section: News, category_hint: general}
+
+  - id: lovinmalta_mt
+    name: Lovin Malta
+    homepage: https://lovinmalta.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Lovin Media Group (high-reach digital news and political portal in St Julian's)
+    state_affiliated: false
+    feeds:
+      - {url: "https://lovinmalta.com/feed/", section: News, category_hint: general}
+
+  - id: whoswho_mt
+    name: Who's Who.mt
+    homepage: https://whoswho.mt
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Content House Group (Malta's leading corporate, financial regulation, and economic policy portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://whoswho.mt/en/feed", section: Business & Economy, category_hint: economics}
+
+  - id: businessnow_mt
+    name: BusinessNow.mt
+    homepage: https://businessnow.mt
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Content House Group (Maltese business, banking, shipping, and investment daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://businessnow.mt/feed/", section: Economy, category_hint: economics}
+
+  - id: illum_mt
+    name: Illum
+    homepage: https://www.illum.com.mt
+    language: mt
+    scope: domestic
+    kind: media
+    governing_body: MediaToday Co. Ltd (Maltese-language political and investigative Sunday newspaper and portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.illum.com.mt/rss", section: Aħbarijiet, category_hint: internal_politics}
+
+  - id: maltabusinessweekly_mt
+    name: The Malta Business Weekly
+    homepage: https://maltabusinessweekly.com
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Standard Publications Ltd (Malta's dedicated financial and commercial weekly newspaper)
+    state_affiliated: false
+    feeds:
+      - {url: "https://maltabusinessweekly.com/feed/", section: Business, category_hint: economics}
+
+  - id: gnews_en_mt
+    name: Google News (Malta - International)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Malta+(Valletta+OR+%22Robert+Abela%22+OR+Metsola+OR+migration+OR+%22rule+of+law%22)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Malta politics & EU, category_hint: foreign_policy}
