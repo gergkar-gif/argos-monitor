@@ -77,5 +77,5 @@ geo: VE
 reddit: [geopolitics, venezuela]
 
 # Auxiliary real-time and crisis social channels
-telegram: ['runrunesweb']
-last_reviewed: 2026-11-12
+telegram: [CocuyoTelegram, elpitazo, runrunes]
+last_reviewed: 2026-11-17

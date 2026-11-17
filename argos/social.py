@@ -7,6 +7,7 @@ Zero API keys or authentication required.
 import html
 import re
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
 
 from . import packs
@@ -22,7 +23,7 @@ TG_MSG_RE = re.compile(
 
 
 MAX_AGE_HOURS = 168  # 7 days: never surface stale posts from months ago as real-time signals
-GLOBAL_CRISIS_TG = ["liveuamap", "insiderpaper"]
+GLOBAL_CRISIS_TG = ["liveuamap"]
 
 
 def _clip(text, limit=260):
@@ -108,20 +109,25 @@ def run(db=None):
     SITE_DATA.mkdir(parents=True, exist_ok=True)
     countries = {}
 
-    global_pool = []
-    for ch in GLOBAL_CRISIS_TG:
-        global_pool.extend(_fetch_telegram(ch, now_dt))
-    print(f"social: fetched {len(global_pool)} recent posts from global Telegram crisis monitors")
-
+    pack_list = []
+    all_channels = list(GLOBAL_CRISIS_TG)
     for cid in packs.pack_ids():
         pack = packs.load(cid)
-        tg_channels = pack.get("telegram") or []
-        if isinstance(tg_channels, str):
-            tg_channels = [tg_channels]
+        tgs = pack.get("telegram") or []
+        if isinstance(tgs, str):
+            tgs = [tgs]
+        pack_list.append((cid, pack, tgs))
+        all_channels.extend(tgs)
 
-        pool = []
-        for ch in tg_channels:
-            pool.extend(_fetch_telegram(ch, now_dt))
+    unique_channels = list(dict.fromkeys(all_channels))
+    with ThreadPoolExecutor(max_workers=8) as ex:
+        fetched = dict(zip(unique_channels, ex.map(lambda ch: _fetch_telegram(ch, now_dt), unique_channels)))
+
+    global_pool = [p for ch in GLOBAL_CRISIS_TG for p in fetched.get(ch, [])]
+    print(f"social: fetched {len(global_pool)} recent posts from global Telegram crisis monitors")
+
+    for cid, pack, tg_channels in pack_list:
+        pool = [p for ch in tg_channels for p in fetched.get(ch, [])]
 
         names = [n.lower() for n in [pack["name"], *pack.get("crisis_names", []), *pack.get("mention", [])]]
         names = [n for n in names if len(n) >= 3]

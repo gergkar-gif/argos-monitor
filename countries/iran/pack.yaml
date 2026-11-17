@@ -104,5 +104,5 @@ geo: IR
 reddit: [iran, newiran]
 
 # Auxiliary real-time and crisis social channels
-telegram: ['iranintl_en']
-last_reviewed: 2026-11-12
+telegram: [iranintltv, radiofarda, Farsi_Iranwire]
+last_reviewed: 2026-11-17

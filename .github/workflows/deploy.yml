@@ -3,7 +3,7 @@ name: Fast Site Deploy
 on:
   push:
     branches: [main]
-    paths: ["site/**", "argos/export.py", "argos/crisis.py", "themes.yaml", "countries/**/themes.yaml", ".github/workflows/deploy.yml", ".github/workflows/alerts.yml"]
+    paths: ["site/**", "argos/export.py", "argos/crisis.py", "argos/social.py", "themes.yaml", "countries/**/themes.yaml", ".github/workflows/deploy.yml", ".github/workflows/alerts.yml"]
   workflow_dispatch:
 
 concurrency:
@@ -49,9 +49,9 @@ jobs:
           if [ -f .argos-data/argos.db ] || [ ! -f site/data/index.json ]; then
             python run.py export watch || true
           fi
-          python run.py crisis || true
+          python run.py crisis social || true
           if [ ! -f site/data/trends.json ]; then
-            python run.py trends social || true
+            python run.py trends || true
           fi
 
       - name: Save updated site data cache

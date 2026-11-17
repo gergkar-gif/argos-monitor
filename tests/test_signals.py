@@ -1,5 +1,6 @@
 import unittest
 from datetime import datetime, timedelta, timezone
+from unittest.mock import patch
 
 from argos import reddit, social, trends
 
@@ -31,6 +32,26 @@ class TestSignals(unittest.TestCase):
         ])
         self.assertEqual(len(deduped), 1)
         self.assertFalse(hasattr(social, "_fetch_bluesky"))
+
+    def test_social_run_fetches_unique_channels_once(self):
+        calls = []
+
+        def fake_fetch(slug, now_dt=None):
+            calls.append(slug)
+            if slug == "liveuamap":
+                return [{"platform": "telegram", "author": "@liveuamap", "url": "https://t.me/liveuamap/1", "published": "2026-11-17T06:00:00+00:00", "text": "Qatar mediates ceasefire talks in Doha today."}]
+            if slug == "QatarNewsAgency":
+                return [{"platform": "telegram", "author": "@QatarNewsAgency", "url": "https://t.me/QatarNewsAgency/1", "published": "2026-11-17T05:00:00+00:00", "text": "Amir receives foreign delegation in Doha palace."}]
+            return []
+
+        written = {}
+        with patch.object(social, "_fetch_telegram", side_effect=fake_fetch), patch.object(
+            social, "_write", side_effect=lambda name, payload, var: written.update(payload)
+        ):
+            social.run()
+        self.assertEqual(len(calls), len(set(calls)))
+        qatar = written["countries"].get("qatar") or []
+        self.assertEqual({p["author"] for p in qatar}, {"@liveuamap", "@QatarNewsAgency"})
 
     def test_reddit_chunk_countries(self):
         by_country = {f"c{i}": [f"sub{i}a", f"sub{i}b"] for i in range(12)}
