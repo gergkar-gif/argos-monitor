@@ -44,7 +44,7 @@ jobs:
 
       - name: Save updated site data cache
         uses: actions/cache/save@v4
-        if: always()
+        if: success()
         with:
           path: site/data
           key: site-data-${{ github.run_id }}

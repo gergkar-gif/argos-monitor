@@ -495,6 +495,19 @@ def _home(now, countries):
             "growing": growing, "elections": elections, "disasters": disasters, "violent_events": violent}
 
 
+def _stamp_html_versions(ver):
+    """Stamp ?v=<ver> onto data/*.js script tags in site/*.html so browsers and CDN edges
+    never serve a cached data bundle after an export."""
+    pat = re.compile(r'(<script\s+src="data/[a-z_]+\.js)(?:\?v=[^"]*)?(")')
+    for html_name in ("index.html", "about.html", "sources.html"):
+        p = ROOT / "site" / html_name
+        if p.exists():
+            orig = p.read_text(encoding="utf8")
+            updated = pat.sub(rf"\1?v={ver}\2", orig)
+            if updated != orig:
+                p.write_text(updated, encoding="utf8")
+
+
 def run(db):
     SITE_DATA.mkdir(parents=True, exist_ok=True)
     reconcile_ratings(db)
@@ -560,6 +573,7 @@ def run(db):
     _write("sources", {"generated_at": now, "telemetry": telemetry, "sources": sources_by_country}, "ARGOS_SOURCES")
     _write("index", {"generated_at": now, "countries": countries}, "ARGOS_INDEX")
     _write("home", _home(now, countries), "ARGOS_HOME")
+    _stamp_html_versions(now_dt.strftime("%Y%m%dT%H%M%SZ"))
     for pat in ("*-14d.json", "*-14d.js", "*-30d.json", "*-30d.js"):
         for old in SITE_DATA.glob(pat):
             old.unlink(missing_ok=True)

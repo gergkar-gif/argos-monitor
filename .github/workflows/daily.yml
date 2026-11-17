@@ -43,6 +43,13 @@ jobs:
           key: argos-db-${{ github.run_id }}
           restore-keys: argos-db-
 
+      - name: Restore site data cache
+        uses: actions/cache/restore@v4
+        with:
+          path: site/data
+          key: site-data-${{ github.run_id }}
+          restore-keys: site-data-
+
       - name: Restore embedding model
         id: model
         uses: actions/cache@v4
@@ -77,7 +84,7 @@ jobs:
 
       - name: Save site data cache
         uses: actions/cache/save@v4
-        if: always()
+        if: success()
         with:
           path: site/data
           key: site-data-${{ github.run_id }}

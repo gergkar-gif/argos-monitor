@@ -899,22 +899,38 @@
     $('#alert-count').textContent = n ? `[${n}]` : '';
   }
 
+  function loadScriptFresh(src) {
+    return new Promise((resolve) => {
+      const s = document.createElement('script');
+      s.src = `${src}?t=${Date.now()}`;
+      const done = () => { s.remove(); resolve(); };
+      s.onload = done;
+      s.onerror = done;
+      document.head.append(s);
+    });
+  }
+
   function refreshCrisisAlerts(btn) {
     if (btn) { btn.disabled = true; btn.textContent = 'Refreshing…'; }
-    const s = document.createElement('script');
-    s.src = `data/crisis.js?t=${Date.now()}`;
-    const done = () => {
-      s.remove();
+    const tasks = [loadScriptFresh('data/crisis.js')];
+    const hmAgeMs = window.ARGOS_HOME && window.ARGOS_HOME.generated_at ? (Date.now() - Date.parse(window.ARGOS_HOME.generated_at)) : Infinity;
+    if (btn || hmAgeMs > 30 * 60 * 1000) {
+      tasks.push(loadScriptFresh('data/index.js'), loadScriptFresh('data/home.js'));
+    }
+    Promise.all(tasks).then(() => {
+      if (window.ARGOS_INDEX && window.ARGOS_INDEX.countries) {
+        index.generated_at = window.ARGOS_INDEX.generated_at;
+        index.countries = window.ARGOS_INDEX.countries;
+        fillCountrySelect(lastCountry || country.value || index.countries[0].id);
+        setupCountryCombobox();
+      }
       updateAlertBadge();
-      if (btn) { btn.disabled = false; btn.textContent = '↻ Check'; }
+      if (btn) { btn.disabled = false; btn.textContent = 'Refresh'; }
       if (activeTab === 'alerts') renderAlerts();
       else if (activeTab === 'home') renderHome();
       else if (activeTab === 'disasters' || activeTab === 'violence') renderEventMonitor(activeTab);
       else if (current) render(false);
-    };
-    s.onload = done;
-    s.onerror = done;
-    document.head.append(s);
+    });
   }
 
   function alerts() {
