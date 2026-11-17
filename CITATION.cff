@@ -3,8 +3,8 @@ title: "Argos Monitor: Open-Source Multilingual Media and Crisis Intelligence Mo
 message: "If you use Argos Monitor in your research or analysis, please cite it as below."
 type: software
 authors:
-  - family-names: "Károly"
-    given-names: "Gergely"
+  - family-names: "Gergely"
+    given-names: "Károly"
 repository-code: "https://github.com/gergkar-gif/argos-monitor"
 url: "https://argosmonitor.uk"
 license: MIT

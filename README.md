@@ -34,7 +34,7 @@ Unlike LLM-based news summarizers—which risk hallucinated claims, flattened di
 
 ## Architecture & 11-Stage Pipeline
 
-A scheduled GitHub Actions workflow runs daily at 21:17 UTC, updating the SQLite store and publishing static JSON/JS data bundles to Cloudflare Pages:
+A scheduled GitHub Actions workflow runs every 12 hours (at 09:17 and 21:17 UTC), updating the SQLite store and publishing static JSON/JS data bundles to Cloudflare Pages:
 
 ```mermaid
 flowchart LR
@@ -58,11 +58,11 @@ flowchart LR
 | **04 · Relevance** | [`argos/relevance.py`](argos/relevance.py) | Filters out lifestyle/sport noise and enforces country-mention rules on general international feeds. |
 | **05 · Embed** | [`argos/embed.py`](argos/embed.py) | Encodes headlines and leads into 384-d vectors via ONNX Runtime (`intfloat/multilingual-e5-small`). |
 | **06 · Cluster** | [`argos/cluster.py`](argos/cluster.py) | Two-pass agglomerative cosine clustering into event stories, flagging near-duplicate reprints ($\ge 0.95$) and related clusters. |
-| **07 · Classify** | [`argos/classify.py`](argos/classify.py) | Assigns stories to 6 policy desks (`Internal politics`, `Economy`, `Foreign policy`, `Defence & security`, `Society`, `Other`) using feed hints + bilingual anchor embeddings. |
+| **07 · Classify** | [`argos/classify.py`](argos/classify.py) | Assigns stories to 6 policy domains (`Politics & Governance`, `Diplomacy & Foreign Policy`, `Economy & Trade`, `Defence & Security`, `Society & Rights`, `Environment & Energy`) using feed hints + bilingual anchor embeddings. |
 | **08 · Policy & Rank** | [`argos/policy.py`](argos/policy.py), [`argos/rank.py`](argos/rank.py) | Scores stories by foreign-desk priority themes (`themes.yaml`), independent outlet count, scope diversity, and recency. |
 | **09 · Excerpts & Verify** | [`argos/excerpts.py`](argos/excerpts.py), [`argos/verify.py`](argos/verify.py) | Selects informative sentences and asserts each excerpt is a verbatim substring of the source article. |
 | **10 · Offline Translation** | [`argos/translate.py`](argos/translate.py) | Translates non-English representative headlines into English using CPU-friendly MarianMT sequence-to-sequence models with entity glossaries, caching results in SQLite while keeping original text authoritative. |
-| **11 · Signals & Export** | [`argos/crisis.py`](argos/crisis.py), [`argos/trends.py`](argos/trends.py), [`argos/social.py`](argos/social.py), [`argos/reddit.py`](argos/reddit.py), [`argos/export.py`](argos/export.py) | Integrates GDACS/USGS disasters, UK FCDO & US State Dept travel advisories, auxiliary Telegram/Bluesky crisis signals, Google Trends, and policy-filtered Reddit discussions into static bundles. |
+| **11 · Signals & Export** | [`argos/crisis.py`](argos/crisis.py), [`argos/trends.py`](argos/trends.py), [`argos/social.py`](argos/social.py), [`argos/reddit.py`](argos/reddit.py), [`argos/export.py`](argos/export.py) | Integrates GDACS/USGS/NASA EONET disasters, UK FCDO & US State Dept travel advisories, UN/ICG/HRW field reports, auxiliary Telegram/Bluesky crisis signals, Google Trends, and policy-filtered Reddit discussions into static bundles. |
 
 ---
 

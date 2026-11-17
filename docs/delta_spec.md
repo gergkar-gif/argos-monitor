@@ -2,8 +2,6 @@
 
 This document defines the mathematical models, classification rules, data schemas, and UI rendering standards for comparing news coverage between contiguous monitoring windows.
 
-Settled decisions: [D24](decisions.md#d24) (zero-emoji broadsheet policy) and [D25](decisions.md#d25) (deterministic delta comparisons).
-
 ---
 
 ## 1. Operational Rationale
@@ -69,9 +67,9 @@ If $\mathcal{O}_{T_{-1}}(S) = \{\text{domestic}\}$ and $\text{abroad\_local} \in
 - `scope_shift: "diaspora_pickup"`
 - Broadsheet Badge: `[DIASPORA PICKUP]`
 
-### 3.3 State Media Narrative Drift (D22 Integration)
+### 3.3 State Media Narrative Drift
 
-Using source ratings established in [D22](decisions.md#d22):
+Using the source rating taxonomy (`argos/ratings.py`):
 - Let $\text{state\_share}_T(S)$ be the proportion of core articles in $S$ during $T$ from state-controlled, pro-government, or official ministry sources.
 - Let $\Delta \text{state\_share}(S) = \text{state\_share}_T(S) - \text{state\_share}_{T_{-1}}(S)$.
 
