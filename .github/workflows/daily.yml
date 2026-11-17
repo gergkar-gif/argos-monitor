@@ -1,11 +1,10 @@
 name: Daily digest
 
-# Collects the news for every country pack and publishes the site to Cloudflare Pages, once daily at 21:17 UTC.
-# Runs at 21:17 UTC (04:17 in Vietnam / 22:17 in Hungary), leaving a generous margin for the morning review
-# to be fresh and ready by 07:00 local time without exhausting monthly GitHub Actions runner minutes.
+# Collects the news for every country pack and publishes the site to Cloudflare Pages, every 12 hours (09:17 and 21:17 UTC).
+# 21:17 UTC (04:17 GMT+7 / 22:17 CET) prepares the morning review by 07:00; 09:17 UTC (16:17 GMT+7 / 10:17 CET) refreshes mid-day.
 on:
   schedule:
-    - cron: "17 21 * * *"
+    - cron: "17 9,21 * * *"
   workflow_dispatch:
   push:
     branches: [main]
