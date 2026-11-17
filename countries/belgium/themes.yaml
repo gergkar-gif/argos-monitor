@@ -1,37 +1,85 @@
+# Belgium & EU Institutions (Brussels) additions to the shared themes (../../themes.yaml).
 themes:
-- id: elections
-  keywords:
-  - élections fédérales
-  - verkiezingen
-  - scrutin
-- id: party_gov
-  keywords:
-  - gouvernement fédéral
-  - chambre des représentants
-  - de wever
-  - premier ministre
-  - vlaamse regering
-  - wallonie
-  - bruxelles
-- id: econ_policy
-  keywords:
-  - déficit budgétaire
-  - dette publique
-  - ue procédure
-  - begroting
-  - inflatie
-  - pension reform
-- id: diplomacy
-  keywords:
-  - otan
-  - union européenne
-  - siège otan
-  - diplomatie belge
-  - eu presidency
-- id: security
-  keywords:
-  - défense belge
-  - armée
-  - sécurité portuaire
-  - anvers drogue
-  - lutte contre le terrorisme
+  - id: elections
+    describe:
+      - Belgian federal, regional (Flemish, Walloon, Brussels), and European Parliament elections
+      - élections fédérales, élections régionales, federale verkiezingen, Vlaamse verkiezingen
+    keywords:
+      - "élections fédérales"
+      - "verkiezingen"
+      - "scrutin"
+
+  - id: party_gov
+    label: "Belgian Federal Coalition (Arizona) & Regional Governments"
+    weight: 1.0
+    category: internal_politics
+    describe:
+      - Belgian federal coalition government under Prime Minister Bart De Wever (Arizona coalition: N-VA, MR, Les Engagés, Vooruit, CD&V), Chamber of Representatives, Flemish and Walloon regional governance
+      - gouvernement fédéral belge, Bart De Wever, coalition Arizona, Chambre des représentants, Vlaamse regering, Wallonie, Bruxelles
+    keywords:
+      - "gouvernement fédéral"
+      - "chambre des représentants"
+      - "bart de wever"
+      - "de wever"
+      - "arizona"
+      - "premier ministre"
+      - "vlaamse regering"
+      - "wallonie"
+      - "bruxelles"
+
+  - id: econ_policy
+    label: "Fiscal Deficit, Euroclear Frozen Assets & Industrial Competitiveness"
+    weight: 0.95
+    category: economics
+    describe:
+      - Belgian federal budget deficit and EU excessive deficit procedure, pension and tax reform, Euroclear windfall profits from immobilized Russian sovereign assets, Port of Antwerp-Bruges trade and chemical industry
+      - déficit budgétaire, dette publique, procédure de déficit excessif, réforme des pensions, Euroclear, actifs russes gelés, begroting, inflatie
+    keywords:
+      - "déficit budgétaire"
+      - "dette publique"
+      - "begroting"
+      - "inflatie"
+      - "pension reform"
+      - "réforme des pensions"
+      - "euroclear"
+      - "frozen assets"
+
+  - id: diplomacy
+    label: "EU Institutions (Commission, Council, ECJ) & NATO Headquarters"
+    weight: 1.0
+    category: foreign_policy
+    describe:
+      - European Commission (Ursula von der Leyen), European Council summits (António Costa), EU Foreign Affairs Council, Article 7 and rule-of-law conditionality, MFF budget and cohesion funds, NATO headquarters ministerial meetings in Brussels
+      - Commission européenne, Conseil européen, Ursula von der Leyen, António Costa, état de droit, fonds européens, siège de l'OTAN à Bruxelles, Europese Commissie, Europese Raad
+    keywords:
+      - "otan"
+      - "union européenne"
+      - "commission européenne"
+      - "conseil européen"
+      - "europese commissie"
+      - "europese raad"
+      - "von der leyen"
+      - "antónio costa"
+      - "mark rutte"
+      - "coreper"
+      - "article 7"
+      - "rule of law"
+      - "cohesion funds"
+      - "siège otan"
+      - "diplomatie belge"
+
+  - id: security
+    label: "Belgian Defence, Port of Antwerp Security & Counter-Terrorism"
+    weight: 0.9
+    category: defence_security
+    describe:
+      - Belgian Armed Forces (F-35 procurement, NATO spending target), Port of Antwerp-Bruges critical infrastructure and counter-narcotics security, cyber defense and counter-espionage in the Brussels institutional quarter
+      - défense belge, armée belge, sécurité portuaire d'Anvers, lutte contre le narcotrafic et le terrorisme, Defensie, haven van Antwerpen
+    keywords:
+      - "défense belge"
+      - "armée belge"
+      - "sécurité portuaire"
+      - "anvers drogue"
+      - "lutte contre le terrorisme"
+      - "defensie"
+      - "haven van antwerpen"

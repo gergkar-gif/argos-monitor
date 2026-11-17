@@ -10,13 +10,13 @@ themes:
     keywords: ["tcmb", "merkez bankası", "mehmet şimşek", "şimşek", "simsek", "faiz kararı", "enflasyon", "türk lirası", "lira", "tüik", "bütçe", "ovp"]
 
   - id: diplomacy
-    label: NATO, Middle East & Black Sea balancing
+    label: NATO, Middle East, Black Sea & Organization of Turkic States
     weight: 1.0
     category: foreign_policy
     describe:
-      - Foreign Minister Hakan Fidan, Turkey-US and NATO relations, Syria normalization and border security, Russia-Ukraine Black Sea diplomacy, EU relations
-      - Dışişleri Bakanı Hakan Fidan, Türkiye-ABD ve NATO ilişkileri, Suriye, Rusya-Ukrayna, Avrupa Birliği, Doğu Akdeniz
-    keywords: ["hakan fidan", "fidan", "dışişleri", "nato", "suriye", "syria", "doğu akdeniz", "brics", "avrupa birliği", "f-16", "eurofighter"]
+      - Foreign Minister Hakan Fidan, Turkey-US and NATO relations, Syria reconstruction and border security, Russia-Ukraine Black Sea and TurkStream energy diplomacy, EU relations, and Organization of Turkic States (OTS)
+      - Dışişleri Bakanı Hakan Fidan, Türkiye-ABD ve NATO ilişkileri, Suriye, Rusya-Ukrayna, TürkAkım, Türk Devletleri Teşkilatı (TDT), Avrupa Birliği, Doğu Akdeniz
+    keywords: ["hakan fidan", "fidan", "dışişleri", "nato", "suriye", "syria", "doğu akdeniz", "brics", "avrupa birliği", "f-16", "eurofighter", "türk devletleri teşkilatı", "turkic states", "türkakım", "turkstream"]
 
   - id: security
     label: Cross-border operations & Defence industry

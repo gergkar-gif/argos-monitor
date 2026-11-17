@@ -1,37 +1,85 @@
+# Austria's additions to the shared themes (../../themes.yaml).
 themes:
-- id: elections
-  keywords:
-  - nationalratswahl
-  - wahl
-- id: party_gov
-  keywords:
-  - nationalrat
-  - bundeskanzler
-  - övp
-  - fpö
-  - spö
-  - neos
-  - grüne
-  - ministerrat
-- id: econ_policy
-  keywords:
-  - inflation
-  - budgetdefizit
-  - oenb
-  - zinsen
-  - schulden
-  - steuern
-  - wifo
-- id: diplomacy
-  keywords:
-  - neutralität
-  - eu-ratspräsidentschaft
-  - osze
-  - wien-diplomatie
-  - botschafter
-- id: security
-  keywords:
-  - bundesheer
-  - staatsvertrag
-  - neutralität
-  - sicherheitsstrategie
+  - id: elections
+    describe:
+      - Austrian parliamentary (Nationalrat), presidential, and provincial (Landtag) elections, ballot results, voter turnout, and coalition negotiations
+      - Nationalratswahl, Landtagswahl, Bundespräsidentenwahl, Wahlergebnis, Wahlbeteiligung, Koalitionsverhandlungen
+    keywords:
+      - "nationalratswahl"
+      - "landtagswahl"
+      - "bundespräsidentenwahl"
+      - "wahlergebnis"
+      - "stichwahl"
+
+  - id: party_gov
+    label: "Federal Coalition, Parliament & Migration Policy"
+    weight: 1.0
+    category: internal_politics
+    describe:
+      - Austrian federal coalition government (ÖVP, SPÖ, NEOS) and FPÖ opposition in the Nationalrat, Chancellor Christian Stocker, President Alexander Van der Bellen, asylum and Schengen border controls with Hungary and Slovenia
+      - Österreichische Bundesregierung, Nationalrat, Bundeskanzler Christian Stocker, Herbert Kickl, Andreas Babler, Beate Meinl-Reisinger, ÖVP, SPÖ, NEOS, FPÖ, Grenzkontrollen
+    keywords:
+      - "nationalrat"
+      - "bundeskanzler"
+      - "bundesregierung"
+      - "stocker"
+      - "kickl"
+      - "babler"
+      - "meinl-reisinger"
+      - "van der bellen"
+      - "övp"
+      - "fpö"
+      - "spö"
+      - "neos"
+      - "ministerrat"
+      - "grenzkontrollen"
+      - "burgenland"
+
+  - id: econ_policy
+    label: "Budget Consolidation, OMV Energy & Banking (Raiffeisen / Erste)"
+    weight: 0.95
+    category: economics
+    describe:
+      - Austrian federal budget deficit consolidation, OeNB monetary policy, WIFO/IHS economic forecasts, OMV gas diversification and Neptun Deep project, Raiffeisen Bank International and Erste Group Central European operations
+      - Budgetdefizit, Sanierungspaket, OeNB, WIFO, Inflation, OMV, Gaslieferungen, Raiffeisen, Erste Group
+    keywords:
+      - "budgetdefizit"
+      - "oenb"
+      - "wifo"
+      - "omv"
+      - "raiffeisen"
+      - "erste group"
+      - "gaslieferungen"
+      - "schulden"
+      - "steuern"
+      - "sparprogramm"
+
+  - id: diplomacy
+    label: "Neutrality, Central Europe (C5) & Western Balkans Enlargement"
+    weight: 0.95
+    category: foreign_policy
+    describe:
+      - Austrian constitutional neutrality, Central Five (C5) diplomacy, EU enlargement advocacy for the Western Balkans, bilateral relations with Hungary and neighbours, OSCE and UN headquarters in Vienna
+      - österreichische Neutralität, Außenministerium, Westbalkan, EU-Erweiterung, OSZE, UNO-City Wien, Nachbarländer
+    keywords:
+      - "neutralität"
+      - "außenministerium"
+      - "westbalkan"
+      - "osze"
+      - "botschafter"
+      - "eu-erweiterung"
+
+  - id: security
+    label: "Bundesheer Modernization & European Sky Shield"
+    weight: 0.9
+    category: defence_security
+    describe:
+      - Austrian Armed Forces (Bundesheer) Aufbauplan 2032 modernization, European Sky Shield Initiative (ESSI) air defense participation, and counter-espionage reform (DSN)
+      - Bundesheer, Aufbauplan, Sky Shield, Luftabwehr, Direktion Staatsschutz und Nachrichtendienst (DSN), Sicherheitsstrategie
+    keywords:
+      - "bundesheer"
+      - "sky shield"
+      - "luftabwehr"
+      - "dsn"
+      - "staatsschutz"
+      - "sicherheitsstrategie"

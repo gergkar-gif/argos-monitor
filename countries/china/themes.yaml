@@ -1,10 +1,12 @@
 # China editorial policy priority themes.
-# High-weight themes for foreign-affairs analysts and diplomatic observers.
-
 themes:
   - id: party_state_consolidation
     label: "Party-State Consolidation & Personnel"
     weight: 1.0
+    category: internal_politics
+    describe:
+      - CCP leadership decisions under Xi Jinping, Politburo and Central Committee plenums, CCDI anti-corruption purges, National People's Congress legislation, and PLA/provincial personnel changes
+      - 习近平, 中共中央政治局, 中央委员会, 中纪委反腐, 全国人大, 国务院, 人事任免
     keywords:
       - "xi jinping"
       - "politburo"
@@ -15,12 +17,20 @@ themes:
       - "national people's congress"
       - "two sessions"
       - "party plenum"
-      - "ideological discipline"
-    description: "CCP leadership decisions, anti-corruption purges, Central Committee plenums, personnel changes in the military and provinces."
+      - "习近平"
+      - "政治局"
+      - "中纪委"
+      - "国务院"
+      - "全国人大"
+      - "李强"
 
   - id: industrial_policy_decoupling
-    label: "Industrial Policy & Tech Self-Reliance"
+    label: "Industrial Policy, EV / Battery Expansion & Tech Self-Reliance"
     weight: 0.95
+    category: economics
+    describe:
+      - Chinese industrial upgrading, semiconductor fabrication (SMIC, Huawei) under US export controls, EV and battery manufacturing outbound investment in Europe (BYD, CATL, EU EV tariffs), and critical mineral restrictions
+      - 新质生产力, 半导体, 芯片, 华为, 新能源汽车, 比亚迪, 宁德时代, 欧盟关税, 出口管制, 稀土
     keywords:
       - "semiconductor"
       - "smic"
@@ -32,11 +42,23 @@ themes:
       - "rare earths"
       - "self-reliance"
       - "supply chain"
-    description: "Chinese industrial upgrading, semiconductor fabrication under US sanctions, green energy manufacturing, and critical mineral restrictions."
+      - "ev tariffs"
+      - "半导体"
+      - "芯片"
+      - "华为"
+      - "比亚迪"
+      - "宁德时代"
+      - "新能源汽车"
+      - "稀土"
+      - "出口管制"
 
   - id: cross_strait_maritime_security
     label: "Cross-Strait & Maritime Sovereignty"
     weight: 0.95
+    category: defence_security
+    describe:
+      - PLA military exercises around Taiwan, grey-zone incursions, South China Sea territorial confrontations, and naval power projection
+      - 台海局势, 解放军东部战区, 联合利剑, 南海, 海警, 航母
     keywords:
       - "taiwan strait"
       - "joint sword"
@@ -48,11 +70,19 @@ themes:
       - "aircraft carrier"
       - "pla eastern theater"
       - "blockade simulation"
-    description: "PLA military exercises around Taiwan, grey-zone incursions, South China Sea territorial confrontations, and naval power projection."
+      - "解放军"
+      - "东部战区"
+      - "台海"
+      - "南海"
+      - "海警"
 
   - id: macroeconomic_debt_real_estate
-    label: "Macroeconomic Rebalancing & Debt"
-    weight: 0.85
+    label: "Macroeconomic Rebalancing, Stimulus & Local Debt"
+    weight: 0.9
+    category: economics
+    describe:
+      - People's Bank of China (PBOC) monetary stimulus, local government debt swaps, property sector stabilization, fiscal bond issuance, and domestic consumption
+      - 中国人民银行, 央行降息, 地方债, 房地产市场, 财政刺激, 超长期特别国债, 通缩
     keywords:
       - "pboc"
       - "gdp target"
@@ -63,11 +93,19 @@ themes:
       - "bond issuance"
       - "consumer spending"
       - "youth unemployment"
-    description: "Property sector defaults, local government debt swaps, fiscal stimulus measures, deflationary pressures, and central bank liquidity."
+      - "人民银行"
+      - "央行"
+      - "地方债"
+      - "房地产"
+      - "特别国债"
 
   - id: global_south_brics_diplomacy
-    label: "Global South & Multilateral Diplomacy"
-    weight: 0.8
+    label: "Belt & Road, European Connectivity & Multilateral Diplomacy"
+    weight: 0.85
+    category: foreign_policy
+    describe:
+      - Belt and Road Initiative (BRI) infrastructure and rail corridors (Budapest-Belgrade railway, Middle Corridor), Wang Yi diplomacy, EU-China trade negotiations, BRICS, and SCO summits
+      - 一带一路, 中欧班列, 匈塞铁路, 王毅, 外交部, 中欧关系, 金砖国家, 上合组织
     keywords:
       - "belt and road"
       - "brics"
@@ -77,4 +115,8 @@ themes:
       - "wang yi"
       - "strategic partnership"
       - "de-dollarization"
-    description: "Chinese diplomatic initiatives across Africa, Latin America, Middle East, and Eurasia challenging Western-led international governance."
+      - "一带一路"
+      - "王毅"
+      - "中欧关系"
+      - "匈塞铁路"
+      - "金砖国家"

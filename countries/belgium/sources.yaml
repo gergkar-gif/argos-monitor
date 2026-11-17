@@ -157,3 +157,47 @@ sources:
   - url: https://news.google.com/rss/search?q=Belgique+OR+Bruxelles+OR+gouvernement+when:2d&hl=fr&gl=BE&ceid=BE:fr
     section: National News (French)
     category_hint: internal_politics
+- id: vrt_nws_be
+  name: VRT NWS
+  homepage: https://www.vrt.be/vrtnws/nl
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: Vlaamse Radio- en Televisieomroeporganisatie (Flemish statutory public-service broadcaster)
+  state_affiliated: false
+  feeds:
+  - url: https://www.vrt.be/vrtnws/nl.rss.articles.xml
+    category_hint: internal_politics
+- id: euobserver_be
+  name: EUobserver
+  homepage: https://euobserver.com
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: EUobserver ASBL (Brussels independent non-profit daily covering EU institutions, rule of law, and foreign policy)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:euobserver.com+when:7d&hl=en-US&gl=US&ceid=US:en
+    category_hint: foreign_policy
+- id: euractiv_be
+  name: Euractiv
+  homepage: https://www.euractiv.com
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Mediahuis (pan-European Brussels policy network covering European Commission, Council, and Parliament)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:euractiv.com+when:3d&hl=en-US&gl=US&ceid=US:en
+    category_hint: foreign_policy
+- id: politico_eu_be
+  name: Politico Europe
+  homepage: https://www.politico.eu
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Axel Springer SE (Brussels daily covering European Union institutions, NATO, and European capitals)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:politico.eu+when:3d&hl=en-US&gl=US&ceid=US:en
+    category_hint: foreign_policy

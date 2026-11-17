@@ -1,0 +1,162 @@
+# Slovenia source registry (decision D15).
+# Combines statutory public broadcaster (RTV Slovenija) and state wire (STA via Google News) with leading national broadsheets (Delo, Dnevnik, Večer), financial daily (Finance.si), and investigative/digital portals (N1 Slovenija, 24ur, Siol.net, Mladina, Necenzurirano, Domovina, Žurnal24).
+
+sources:
+  - id: rtvslo_si
+    name: RTV Slovenija (MMC)
+    homepage: https://www.rtvslo.si
+    language: sl
+    scope: domestic
+    kind: official
+    governing_body: Radiotelevizija Slovenija (statutory national public-service broadcaster)
+    state_affiliated: false
+    feeds:
+      - {url: "https://img.rtvslo.si/feeds/00.xml", section: Vse новице, category_hint: general}
+      - {url: "https://img.rtvslo.si/feeds/01.xml", section: Slovenija, category_hint: internal_politics}
+      - {url: "https://img.rtvslo.si/feeds/06.xml", section: Gospodarstvo, category_hint: economics}
+
+  - id: sta_si
+    name: STA (Slovenian Press Agency)
+    homepage: https://www.sta.si
+    language: sl
+    scope: domestic
+    kind: official
+    aggregator: google_news
+    governing_body: Slovenska tiskovna agencija (statutory national news wire)
+    state_affiliated: true
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:sta.si+when:7d&hl=sl&gl=SI&ceid=SI:sl", section: STA, category_hint: general}
+
+  - id: delo_si
+    name: Delo
+    homepage: https://www.delo.si
+    language: sl
+    scope: domestic
+    kind: media
+    governing_body: Delo d.o.o. / Kolektor Group (Ljubljana — Slovenia's premier national morning broadsheet paper of record)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.delo.si/rss/", section: Novice, category_hint: internal_politics}
+
+  - id: dnevnik_si
+    name: Dnevnik
+    homepage: https://www.dnevnik.si
+    language: sl
+    scope: domestic
+    kind: media
+    governing_body: Dnevnik d.d. (Ljubljana — major national daily newspaper covering domestic politics and economy)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.dnevnik.si/rss", section: Novice, category_hint: general}
+
+  - id: vecer_si
+    name: Večer
+    homepage: https://vecer.com
+    language: sl
+    scope: domestic
+    kind: media
+    governing_body: Časnik Večer d.o.o. (Maribor — leading newspaper of northeastern Slovenia, Styria, and Prekmurje / Muravidék border region)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=site:vecer.com+when:3d&hl=sl&gl=SI&ceid=SI:sl", section: Slovenija, category_hint: general}
+
+  - id: finance_si
+    name: Finance.si
+    homepage: https://www.finance.si
+    language: sl
+    scope: domestic
+    kind: media
+    governing_body: Časnik Finance d.o.o. / Bonnier Business Press (Slovenia's premier financial, energy, and macroeconomic daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.finance.si/xml-rss", section: Finance, category_hint: economics}
+
+  - id: n1_si
+    name: N1 Slovenija
+    homepage: https://n1info.si
+    language: sl
+    scope: domestic
+    kind: media
+    governing_body: United Media Group (independent investigative and political digital broadcaster in Ljubljana)
+    state_affiliated: false
+    feeds:
+      - {url: "https://n1info.si/feed/", section: Najnovejše, category_hint: internal_politics}
+
+  - id: 24ur_si
+    name: 24ur.com
+    homepage: https://www.24ur.com
+    language: sl
+    scope: domestic
+    kind: media
+    governing_body: PRO PLUS d.o.o. / PPF Group (POP TV flagship national news portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.24ur.com/rss", section: Novice, category_hint: general}
+
+  - id: siol_si
+    name: Siol.net
+    homepage: https://siol.net
+    language: sl
+    scope: domestic
+    kind: media
+    governing_body: TSmedia d.o.o. / Telekom Slovenije (high-reach national digital news portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://siol.net/feeds/latest", section: Novice, category_hint: general}
+
+  - id: mladina_si
+    name: Mladina
+    homepage: https://www.mladina.si
+    language: sl
+    scope: domestic
+    kind: media
+    governing_body: Mladina d.d. (influential Ljubljana political and investigative weekly magazine)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.mladina.si/rss/", section: Politika, category_hint: internal_politics}
+
+  - id: necenzurirano_si
+    name: Necenzurirano.si
+    homepage: https://necenzurirano.si
+    language: sl
+    scope: domestic
+    kind: media
+    governing_body: Svet24 d.o.o. (specialized Slovenian investigative journalism portal covering energy, procurement, and corruption)
+    state_affiliated: false
+    feeds:
+      - {url: "https://necenzurirano.si/rss", section: Preiskovalno, category_hint: internal_politics}
+
+  - id: domovina_si
+    name: Domovina.je
+    homepage: https://www.domovina.je
+    language: sl
+    scope: domestic
+    kind: media
+    governing_body: Zavod Iskreni (independent conservative political and analytical daily portal)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.domovina.je/feed/", section: Politika, category_hint: internal_politics}
+
+  - id: zurnal24_si
+    name: Žurnal24
+    homepage: https://www.zurnal24.si
+    language: sl
+    scope: domestic
+    kind: media
+    governing_body: Styria Media Si d.o.o. (major national digital daily newspaper)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.zurnal24.si/feeds/latest", section: Slovenija, category_hint: general}
+
+  - id: gnews_en_si
+    name: Google News (Slovenia - International)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=Slovenia+(Ljubljana+OR+Golob+OR+Jansa+OR+government)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Slovenia politics, category_hint: internal_politics}
+      - {url: "https://news.google.com/rss/search?q=Slovenia+(Koper+OR+Krsko+OR+economy+OR+Schengen+OR+EU)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Slovenia economy & EU, category_hint: economics}

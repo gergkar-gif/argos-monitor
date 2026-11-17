@@ -1,0 +1,54 @@
+id: croatia
+name: Croatia
+region: Central & Southeast Europe
+language: hr
+abroad_label: Regional & International Croatian coverage
+
+mention:
+  - "hrvatska"
+  - "hrvatske"
+  - "hrvatskoj"
+  - "croatia"
+  - "croatian"
+  - "zagreb"
+  - "plenković"
+  - "plenkovic"
+  - "milanović"
+  - "milanovic"
+  - "sabor"
+  - "hdz"
+  - "sdp"
+  - "janaf"
+  - "krk lng"
+  - "ina-mol"
+mention_regex: ['\bhrvatsk']
+mention_section: null
+
+url_sections:
+  foreign: [svijet, vanjska-politika, eu, regija]
+  skip: [sport, show, magazin, lifestyle, kultura, auto, tech, scena, zabava, horoskop, fit, moda]
+
+aggregator_outlets:
+  domestic: ["hina", "hrt", "jutarnji list", "večernji list", "vecernji.hr", "index.hr", "n1 hrvatska", "telegram.hr",
+             "slobodna dalmacija", "novi list", "poslovni dnevnik", "24sata", "tportal", "nacional", "glas slavonije"]
+  abroad_local: ["al jazeera balkans", "slobodna evropa", "balkan insight", "total croatia news"]
+
+excerpt:
+  dateline: '^\s*(?:HINA|Hina|HRT|ZAGREB)\s*[-–—:]\s*'
+  noise: '^(foto|izvor|video|pročitajte više|oglas|vezane vijesti|\(|\[)'
+
+classify:
+  internal_politics:
+    - "Vlada Republike Hrvatske, Hrvatski sabor, premijer Andrej Plenković, predsjednik Zoran Milanović, HDZ, SDP, Možemo, Domovinski pokret, izbori, Ustavni sud"
+  economics:
+    - "gospodarstvo, inflacija, proračun, HNB, euro, JANAF, LNG terminal Krk, INA, MOL, turizam, energetika, investicije"
+  foreign_policy:
+    - "vanjska politika, Europska unija, Schengen, OECD, odnosi sa susjedima, Bosna i Hercegovina, Srbija, Mađarska, Slovenija, NATO"
+  defence_security:
+    - "MORH, Hrvatska vojska, OSRH, obrana, Rafale, vojni rok, nacionalna sigurnost, granica, policija"
+  society:
+    - "obrazovanje, zdravstvo, mirovine, demografija, pravosuđe, USKOK, EPPO, korupcija, nesreća, vrijeme"
+
+geo: HR
+reddit: [croatia, zagreb, Split, Rijeka, Osijek]
+last_reviewed: 2026-11-17

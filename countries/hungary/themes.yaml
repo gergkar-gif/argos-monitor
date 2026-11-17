@@ -1,33 +1,33 @@
-# Hungary's additions to the shared themes (../../themes.yaml): Hungarian keywords and descriptions, plus one theme
-# that matters a great deal in Hungary's case: its relations with the EU and with Russia, Ukraine and China.
+# Hungary's additions to the shared themes (../../themes.yaml): Hungarian keywords and descriptions, plus strategic
+# foreign-policy themes critical from a Budapest / Carpathian Basin perspective.
 themes:
   - id: elections
-    describe: ["országgyűlési választás, önkormányzati választás, európai parlamenti választás, szavazás, kampány, jelölt, Nemzeti Választási Iroda, mandátum"]
-    keywords: ["választás", "választások", "országgyűlési választás", "önkormányzati választás", "időközi választás", "szavazás", "szavazatok", "voksolás", "nemzeti választási iroda", "nvi", "választási kampány", "képviselőjelölt"]
+    describe: ["országgyűlési választás, önkormányzati választás, európai parlamenti választás, szavazás, kampány, jelölt, Nemzeti Választási Iroda, mandátum, közvélemény-kutatás"]
+    keywords: ["választás", "választások", "országgyűlési választás", "önkormányzati választás", "időközi választás", "szavazás", "szavazatok", "voksolás", "nemzeti választási iroda", "nvi", "választási kampány", "képviselőjelölt", "egyéni választókerület"]
   - id: diplomacy
-    describe: ["állami látogatás, kétoldalú tárgyalás, diplomáciai kapcsolatok, nagykövet, külügyminiszter, Szijjártó Péter"]
-    keywords: ["állami látogatás", "kétoldalú", "nagykövet", "külügyminiszter", "szijjártó", "csúcstalálkozó", "külügyminisztérium", "diplomáciai"]
+    describe: ["állami látogatás, kétoldalú tárgyalás, diplomáciai kapcsolatok, nagykövet, külügyminiszter, Szijjártó Péter, V4, Türk Államok Szervezete"]
+    keywords: ["állami látogatás", "kétoldalú", "nagykövet", "külügyminiszter", "szijjártó", "csúcstalálkozó", "külügyminisztérium", "diplomáciai", "visegrádi", "türk államok"]
   - id: trade
-    describe: ["kereskedelmi megállapodás, vámok, export és import, külkereskedelmi többlet, szabadkereskedelem"]
-    keywords: ["kereskedelem", "kereskedelmi", "vámok", "vámot", "szabadkereskedelmi", "külkereskedelmi", "kivitel", "behozatal"]
+    describe: ["kereskedelmi megállapodás, vámok, export és import, külkereskedelmi többlet, szabadkereskedelem, keleti nyitás"]
+    keywords: ["kereskedelem", "kereskedelmi", "vámok", "vámot", "szabadkereskedelmi", "külkereskedelmi", "kivitel", "behozatal", "keleti nyitás"]
   - id: investment
-    describe: ["külföldi működőtőke, befektetők, nagy beruházások, ipari parkok, akkumulátorgyár, félvezető, adatközpont"]
-    keywords: ["beruházás", "befektető", "külföldi működőtőke", "ipari park", "akkumulátor", "félvezető", "adatközpont", "byd", "catl", "gyárat"]
+    describe: ["külföldi működőtőke, befektetők, nagy beruházások, ipari parkok, akkumulátorgyár, autóipar, félvezető, adatközpont, BYD, CATL, BMW"]
+    keywords: ["beruházás", "befektető", "külföldi működőtőke", "ipari park", "akkumulátor", "akkumulátorgyár", "félvezető", "adatközpont", "byd", "catl", "gyárat"]
   - id: econ_policy
-    describe: ["gazdaságpolitika, új rendelet, törvényjavaslat, jegybank, alapkamat, forintárfolyam, adó, költségvetés, államadósság, reform"]
-    keywords: ["rendelet", "törvényjavaslat", "költségvetés", "jegybank", "mnb", "alapkamat", "infláció", "forintárfolyam", "forint árfolyam", "erős forint", "gyenge forint", "adócsomag", "államadósság", "reform", "árrésstop", "kamatstop", "gazdaságpolitika"]
+    describe: ["gazdaságpolitika, új rendelet, törvényjavaslat, Magyar Nemzeti Bank, jegybank, alapkamat, forintárfolyam, adó, költségvetés, államadósság, infláció, Nagy Márton, Varga Mihály"]
+    keywords: ["rendelet", "törvényjavaslat", "költségvetés", "jegybank", "mnb", "alapkamat", "infláció", "forintárfolyam", "forint árfolyam", "erős forint", "gyenge forint", "adócsomag", "államadósság", "reform", "árrésstop", "kamatstop", "gazdaságpolitika", "nagy márton", "varga mihály"]
   - id: party_gov
-    describe: ["kormányzati döntések, országgyűlési ülés, kormányátalakítás, miniszterelnöki utasítás, választás, Fidesz, Tisza"]
-    keywords: ["országgyűlés", "miniszterelnök", "kormányülés", "kormányinfó", "fidesz", "tisza", "választás", "parlament"]
+    describe: ["kormányzati döntések, országgyűlési ülés, kormányátalakítás, miniszterelnöki utasítás, Fidesz-KDNP, Tisza Párt, Magyar Péter, Orbán Viktor, Szuverenitásvédelmi Hivatal"]
+    keywords: ["országgyűlés", "miniszterelnök", "kormányülés", "kormányinfó", "fidesz", "tisza párt", "magyar péter", "orbán viktor", "parlament", "szuverenitásvédelmi"]
   - id: security
-    describe: ["védelmi együttműködés, honvédség, katonai gyakorlat, kibervédelem, nemzetbiztonság"]
-    keywords: ["honvédség", "védelmi", "haderő", "hadsereg", "nemzetbiztonság", "kibervédelem", "katonai"]
+    describe: ["védelmi együttműködés, Magyar Honvédség, haderőfejlesztés, katonai gyakorlat, kibervédelem, nemzetbiztonság, Szalay-Bobrovniczky Kristóf, hadiipar, Rheinmetall"]
+    keywords: ["honvédség", "védelmi", "haderő", "haderőfejlesztés", "hadsereg", "nemzetbiztonság", "kibervédelem", "katonai", "szalay-bobrovniczky", "rheinmetall"]
   - id: anticorruption
-    describe: ["korrupcióellenes küzdelem, Európai Ügyészség, OLAF, közbeszerzési botrány, vagyonvisszaszerzés"]
-    keywords: ["korrupció", "korrupciós", "európai ügyészség", "olaf", "vagyonvisszaszerzési", "közbeszerzés"]
+    describe: ["korrupcióellenes küzdelem, Integritás Hatóság, Európai Ügyészség, OLAF, közbeszerzési botrány, vagyonvisszaszerzés"]
+    keywords: ["korrupció", "korrupciós", "integritás hatóság", "európai ügyészség", "olaf", "vagyonvisszaszerzési", "közbeszerzés", "hadházy"]
   - id: energy_infra
-    describe: ["energiapolitika, Paks, atomerőmű, olaj és földgáz, gázszállítás, napenergia, vasút, autópálya"]
-    keywords: ["energia", "paks", "atomerőmű", "földgáz", "kőolaj", "barátság kőolajvezeték", "napelem", "vasút", "autópálya"]
+    describe: ["energiapolitika, Paks II atomerőmű, MOL, Barátság kőolajvezeték, Török Áramlat, Adria-vezeték, JANAF, földgáz, kőolaj, Budapest-Belgrád vasútvonal, MÁV"]
+    keywords: ["energia", "paks", "atomerőmű", "földgáz", "kőolaj", "barátság kőolajvezeték", "török áramlat", "janaf", "adria-vezeték", "mol-csoport", "napelem", "vasút", "autópálya", "budapest-belgrád"]
   - id: crime_local
     describe: ["bűncselekmény, őrizetbe vétel, vádemelés, bírósági ítélet, csalás, rendőrségi nyomozás"]
     keywords: ["őrizetbe", "letartóztat", "gyanúsított", "vádemelés", "ítélet", "csalás", "gyilkosság", "rablás", "rendőrség"]
@@ -38,12 +38,20 @@ themes:
     describe: ["labdarúgó-mérkőzés, bajnokság, énekes, színész, film, hírességek"]
     keywords: ["labdarúgás", "foci", "bajnokság", "olimpia", "énekes", "színész", "celeb", "meccs", "válogatott", "nemzetek ligája", "uefa"]
 
-  # Hungary-specific theme: the EU funds and rule-of-law dispute, and Hungary's line on Russia, Ukraine and China.
   - id: eu_relations
-    label: EU, Russia and Ukraine
+    label: EU Funds, Rule of Law & Great-Power Diplomacy
     weight: 1.0
     category: foreign_policy
     describe:
-      - EU funding and rule-of-law dispute, Brussels, sanctions and vetoes, Hungary's stance on Ukraine and Russia, ties with China
-      - uniós források, jogállamiság, Brüsszel, szankciók, vétó, ukrajnai háború, kapcsolat Oroszországgal és Kínával
-    keywords: ["uniós forrás", "uniós pénz", "jogállamiság", "brüsszel", "európai bizottság", "európai parlament", "szankció", "vétó", "eu funds", "rule of law", "brussels", "european commission", "sanctions", "veto", "ukraine", "russia", "ukrajn", "oroszország"]
+      - EU funding and rule-of-law conditionality dispute, European Commission and European Court of Justice rulings, sanctions and vetoes, Hungary's stance on Ukraine, Russia, China, and US relations
+      - uniós források, jogállamisági eljárás, kohéziós alapok, Brüsszel, szankciók, vétó, ukrajnai háború, kapcsolat Oroszországgal, Kínával és az Egyesült Államokkal
+    keywords: ["uniós forrás", "uniós pénz", "jogállamiság", "brüsszel", "európai bizottság", "európai parlament", "európai bíróság", "szankció", "vétó", "eu funds", "rule of law", "brussels", "european commission", "sanctions", "veto", "ukraine", "russia", "ukrajn", "oroszország", "bóka jános"]
+
+  - id: carpathian_basin
+    label: Carpathian Basin & Cross-Border Hungarian Communities (Külhoni)
+    weight: 0.95
+    category: foreign_policy
+    describe:
+      - Hungarian minority rights, language use, autonomy, and political representation in Transylvania (RMDSZ), Slovakia (Magyar Szövetség, Beneš decrees), Vojvodina (VMSZ), and Transcarpathia (KMKSZ, Ukrainian education and language laws)
+      - külhoni magyarok, nemzetpolitika, kisebbségi jogok, nyelvhasználat, Erdély, RMDSZ, Felvidék, Beneš-dekrétumok, Vajdaság, VMSZ, Kárpátalja, KMKSZ
+    keywords: ["külhoni", "nemzetpolitika", "kárpátalja", "kárpátaljai", "kmksz", "rmdsz", "székelyföld", "felvidék", "felvidéki", "beneš-dekrétum", "benes-dekretum", "vajdaság", "vmsz", "kisebbségi jog", "nyelvtörvény"]

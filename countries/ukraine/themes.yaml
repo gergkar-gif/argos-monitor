@@ -19,19 +19,19 @@ themes:
     keywords: ["зсу", "сирський", "syrskyi", "покровськ", "pokrovsk", "куп'янськ", "курськ", "kursk", "фронт", "ппо", "patriot", "ракет", "дрон", "атака", "зброя"]
 
   - id: diplomacy
-    label: Peace Formula, EU Accession & Transatlantic Alliances
+    label: Peace Formula, EU Accession, Transcarpathia Minority Rights & Neighbour Relations
     weight: 1.0
     category: foreign_policy
     describe:
-      - Ukraine peace formula, international peace summits, European Union accession cluster negotiations, bilateral security agreements, relations with United States, NATO members, and Global South
-      - Формула миру, саміт миру, переговори про вступ до ЄС, безпекові угоди, НАТО, США, Польща, Німеччина, військова допомога
-    keywords: ["формула миру", "peace formula", "єс", "nato", "нато", "євросоюз", "саміт", "допомога", "союзник", "дипломат"]
+      - Ukraine peace formula, European Union accession negotiations, national minority language and education rights in Transcarpathia (Zakarpattia / Uzhhorod), bilateral relations with Hungary, Slovakia, Poland, and NATO allies
+      - Формула миру, переговори про вступ до ЄС, права національних меншин, Закарпаття, Ужгород, угорська меншина, безпекові угоди, НАТО, США, Польща, Угорщина, Словаччина
+    keywords: ["формула миру", "peace formula", "єс", "nato", "нато", "євросоюз", "саміт", "допомога", "союзник", "дипломат", "закарпаття", "ужгород", "нацменшин", "угорщин", "transcarpathia", "zakarpattia"]
 
   - id: energy_econ
-    label: Energy Grid Resilience, Black Sea Shipping & Reconstruction
+    label: Energy Grid Resilience, Druzhba / Gas Transit, Black Sea Shipping & Reconstruction
     weight: 1.0
     category: economics
     describe:
-      - Restoration of power grid after Russian strikes (Ukrenergo, DTEK, Energoatom), decentralized generation, Black Sea maritime export corridor, IMF lending benchmarks, and state budget financing
-      - Енергосистема, Укренерго, ДТЕК, Енергоатом, блекаут, електроенергія, зерновий коридор, Чорне море, експорт, МВФ, бюджет
-    keywords: ["укренерго", "дтек", "енергоатом", "енергет", "блекаут", "світло", "експорт", "зерно", "чорне море", "мвф", "бюджет", "гривня"]
+      - Restoration of power grid after Russian strikes (Ukrenergo, DTEK, Energoatom), cross-border electricity imports from Central Europe, Druzhba oil pipeline and natural gas transit to Hungary and Slovakia, Black Sea maritime export corridor, and IMF budget financing
+      - Енергосистема, Укренерго, ДТЕК, Енергоатом, блекаут, нафтопровід Дружба, транзит газу, зерновий коридор, Чорне море, експорт, МВФ, бюджет
+    keywords: ["укренерго", "дтек", "енергоатом", "енергет", "блекаут", "світло", "дружба", "транзит газу", "лукойл", "експорт", "зерно", "чорне море", "мвф", "бюджет", "гривня", "druzhba"]

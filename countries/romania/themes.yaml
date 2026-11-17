@@ -1,36 +1,85 @@
+# Romania's additions to the shared themes (../../themes.yaml).
 themes:
-- id: elections
-  keywords:
-  - alegeri prezidențiale
-  - alegeri parlamentare
-  - vot
-  - turul doi
-  - secții de votare
-  - biroul electoral central
-- id: party_gov
-  keywords:
-  - marcel ciolacu
-  - klaus iohannis
-  - guvernul româniei
-  - parlament
-  - coaliția psd-pnl
-- id: security
-  keywords:
-  - flancul estic
-  - marea neagră
-  - baza mihail kogălniceanu
-  - drone căzute
-  - armata română
-- id: econ_policy
-  keywords:
-  - deficit bugetar
-  - banca națională a româniei
-  - inflație
-  - fonduri europene
-  - pnrr
-- id: diplomacy
-  keywords:
-  - schengen
-  - moldova sprijin
-  - ministerul afacerilor externe
-  - parteneriat strategic
+  - id: elections
+    describe:
+      - Romanian presidential, parliamentary, and local elections, Permanent Electoral Authority (AEP), Constitutional Court (CCR) validations, and runoff voting
+      - alegeri prezidențiale, alegeri parlamentare, alegeri locale, Biroul Electoral Central, Autoritatea Electorală Permanentă, turul doi
+    keywords:
+      - "alegeri prezidențiale"
+      - "alegeri parlamentare"
+      - "turul doi"
+      - "secții de votare"
+      - "biroul electoral central"
+      - "autoritatea electorală"
+
+  - id: party_gov
+    label: "Government Coalition, Parliament & RMDSZ / UDMR Representation"
+    weight: 1.0
+    category: internal_politics
+    describe:
+      - Romanian governing coalition (PSD, PNL, UDMR/RMDSZ) and parliamentary opposition (USR, AUR), Prime Minister Marcel Ciolacu, Ilie Bolojan, Nicușor Dan, Kelemen Hunor, Constitutional Court (CCR) rulings, and minority rights in Transylvania
+      - Guvernul României, Parlament, PSD, PNL, UDMR, RMDSZ, Kelemen Hunor, Marcel Ciolacu, Ilie Bolojan, Nicușor Dan, USR, AUR, Curtea Constituțională (CCR), Transilvania
+    keywords:
+      - "guvernul româniei"
+      - "ciolacu"
+      - "bolojan"
+      - "nicușor dan"
+      - "kelemen hunor"
+      - "udmr"
+      - "rmdsz"
+      - "coaliția"
+      - "curtea constituțională"
+      - "ccr"
+      - "parlament"
+      - "transilvania"
+      - "ținutul secuiesc"
+
+  - id: security
+    label: "NATO Black Sea Deterrence, Mihail Kogălniceanu Base & Air Defense"
+    weight: 1.0
+    category: defence_security
+    describe:
+      - NATO eastern flank posture on the Black Sea, expansion of Mihail Kogălniceanu airbase, Russian drone airspace violations in the Danube Delta, Romanian Armed Forces (MApN) F-35 and Patriot procurement
+      - flancul estic NATO, Marea Neagră, baza Mihail Kogălniceanu, drone rusești în Delta Dunării, Ministerul Apărării Naționale (MApN), Armata Română
+    keywords:
+      - "flancul estic"
+      - "marea neagră"
+      - "kogălniceanu"
+      - "drone căzute"
+      - "spațiul aerian"
+      - "mapn"
+      - "armata română"
+      - "csat"
+
+  - id: econ_policy
+    label: "Fiscal Deficit, EU PNRR Funds & Black Sea Gas (Neptun Deep)"
+    weight: 0.95
+    category: economics
+    describe:
+      - Fiscal deficit reduction and tax package, National Bank of Romania (BNR) monetary policy, EU Recovery and Resilience Facility (PNRR) disbursements, Neptun Deep offshore Black Sea natural gas development (OMV Petrom, Romgaz), and cross-border energy interconnectors with Hungary and Moldova
+      - deficit bugetar, Banca Națională a României (BNR), Mugur Isărescu, inflație, fonduri europene, PNRR, Neptun Deep, gaze din Marea Neagră, Romgaz, OMV Petrom, BRUA
+    keywords:
+      - "deficit bugetar"
+      - "banca națională"
+      - "bnr"
+      - "isărescu"
+      - "fonduri europene"
+      - "pnrr"
+      - "neptun deep"
+      - "romgaz"
+      - "omv petrom"
+      - "hidroelectrica"
+
+  - id: diplomacy
+    label: "Schengen Corridor, Republic of Moldova Support & Regional Ties"
+    weight: 0.95
+    category: foreign_policy
+    describe:
+      - Full Schengen land-border integration and cross-border motorway corridors with Hungary, strategic support and energy/grid integration with the Republic of Moldova, Ukraine grain transit, and US/EU strategic partnerships
+      - spațiul Schengen, frontiera româno-ungară, sprijin pentru Republica Moldova, Ministerul Afacerilor Externe (MAE), parteneriat strategic
+    keywords:
+      - "schengen"
+      - "republica moldova"
+      - "ministerul afacerilor externe"
+      - "parteneriat strategic"
+      - "autostrada transilvania"

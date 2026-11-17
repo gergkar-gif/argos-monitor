@@ -1,35 +1,34 @@
-# Hungary country pack (decision D15). See ../vietnam/pack.yaml for what each field means.
+# Hungary country pack (decision D15).
 id: hungary
 name: Hungary
 region: Central & Southeast Europe
 language: hu
-abroad_label: Hungarian-language outlets abroad
+abroad_label: Hungarian-language outlets abroad (Külhoni & Diaspora)
 
 mention: ["magyarország", "magyarorszag", "hungary", "hungarian", "budapest", "orbán", "orban", "fidesz", "tisza párt",
           "tisza party", "magyar péter", "szijjártó", "szijjarto", "magyar kormány", "magyar nemzeti bank", "forint",
-          "mol group", "paks", "viktor orbán", "hungarians"]
+          "mol group", "paks", "viktor orbán", "hungarians", "sulyok tamás", "nagy márton", "gulyás gergely", "lázár jános"]
 # Raw regular expressions, for word forms a plain list cannot catch: "magyar" (Hungarian) and its endings, but not
 # "magyarázat" (explanation) or "magyarít".
 mention_regex: ['\bmagyar(?!áz|ít|ul\b)', '\bmagyaro']
 mention_section: null
 
-# Most Hungarian outlets publish one feed for everything, so the section is read from the article's web address:
-# the first part of the path (for example telex.hu/kulfold/...). "foreign" sections need a mention of Hungary to
-# count; "skip" sections (sport, culture, lifestyle) are left out.
 url_sections:
   foreign: [kulfold, kulpol, vilag, nagyvilag, global, nemzetkozi, europa]
   skip: [sport, kultura, kultur, teve, tv, sztarvilag, bulvar, elet, elet-stilus, eletmod, mindekozben, cegauto, otthon, auto,
          tudomany, techtud, podcast, jo, szorakozas, utazas, gasztro, egeszseg, ingatlan, fomo, kiralyi-csalad,
          itthon-hirdetes, auto-motor, auto-motor-2, mozaik, montazs]
 
-# Outlets that Google News names, sorted by where they belong (lower-case names). An outlet in neither list takes the
-# default of the Google News feed it came from: international for the English edition, domestic for the Hungarian one.
 aggregator_outlets:
   domestic: ["daily news hungary", "hungary today", "hungarian conservative", "hungarian spectrum", "telex", "telex english",
              "444", "444.hu", "index", "index.hu", "hvg", "hvg.hu", "24.hu", "magyar nemzet", "budapest business journal",
-             "budapest times", "hungarian insider", "about hungary", "hír tv", "origo", "magyar hírlap", "portfolio.hu", "blikk"]
-  abroad_local: ["vietnam.vn", "informat.ro", "euronews", "euronews magyar", "szabad európa", "bbc news magyar", "deutsche welle", "maszol.ro", "székelyhon",
-                 "krónika", "krónika online", "transtelex", "új szó", "ujszo.com", "magyar szó", "erdélyma", "erdély ma"]
+             "budapest times", "hungarian insider", "about hungary", "hír tv", "origo", "magyar hírlap", "portfolio.hu", "blikk",
+             "válasz online", "valaszonline.hu", "átlátszó", "atlatszo.hu", "direkt36", "g7", "g7.hu", "mandiner", "népszava", "nepszava.hu",
+             "hirado.hu", "mti", "kormany.hu", "economx", "mfor.hu", "privatbankar.hu"]
+  abroad_local: ["euronews", "euronews magyar", "szabad európa", "bbc news magyar", "deutsche welle", "maszol.ro", "székelyhon",
+                 "krónika", "krónika online", "transtelex", "új szó", "ujszo.com", "ma7", "ma7.sk", "paraméter", "parameter.sk",
+                 "magyar szó", "magyarszo.rs", "szabad magyar szó", "vajdaság ma", "kárpátalja.ma", "karpatalja.ma",
+                 "kárpáti igaz szó", "kiszo.net", "erdélyma", "erdély ma"]
 
 excerpt:
   dateline: '^\s*(?:MTI|\(MTI\)|Telex|hvg\.hu|24\.hu)\s*[-–—:]\s*'
@@ -44,18 +43,15 @@ classify:
     - "vállalatok, beruházás, export, import, kereskedelem, gyár, munkahelyek, bérek"
   foreign_policy:
     - "külpolitika, külügyminiszter, nagykövet, kétoldalú tárgyalás, uniós csúcs, Brüsszel, NATO"
-    - "uniós források, jogállamiság, szankciók, vétó, kapcsolat Oroszországgal, Ukrajnával, Kínával"
+    - "uniós források, jogállamiság, szankciók, vétó, kapcsolat Oroszországgal, Ukrajnával, Kínával, külhoni magyarok"
   defence_security:
-    - "honvédség, védelem, haderő, nemzetbiztonság, kibervédelem, fegyverbeszerzés"
+    - "honvédség, védelem, haderő, nemzetbiztonság, kibervédelem, fegyverbeszerzés, Szuverenitásvédelmi Hivatal"
   society:
     - "oktatás, egészségügy, kórház, iskola, tanárok, nyugdíj, szociális ügyek"
     - "bűnügy, baleset, időjárás, természeti csapás, rendőrség, bíróság, ítélet"
 
-# Country code for Google Trends.
 geo: HU
-
-# Subreddits for the Reddit panel (first is primary; all are polled in one combined feed).
 reddit: [hungary, kiszamolo, budapest, Debrecen, szeged]
 telegram: [telexhu]
 bluesky: [444.hu]
-last_reviewed: 2026-11-12
+last_reviewed: 2026-11-17

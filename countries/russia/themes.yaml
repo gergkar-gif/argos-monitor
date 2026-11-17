@@ -1,10 +1,12 @@
 # Russia editorial policy priority themes.
-# High-weight themes for foreign-affairs analysts and diplomatic observers.
-
 themes:
   - id: kremlin_decision_making_security_services
     label: "Kremlin Decision-Making & Security Services"
     weight: 1.0
+    category: internal_politics
+    describe:
+      - Presidential decrees, Security Council meetings, FSB operations, Defense Ministry under Andrey Belousov, State Duma legislation, personnel rotations, and state suppression of internal dissent
+      - Владимир Путин, Кремль, Совет Безопасности, ФСБ, Государственная Дума, Андрей Белоусов, кадровые перестановки, иноагенты
     keywords:
       - "putin"
       - "kremlin"
@@ -16,11 +18,22 @@ themes:
       - "belousov"
       - "patrushev"
       - "foreign agent"
-    description: "Presidential decrees, Security Council meetings, FSB operations, personnel rotations, and state suppression of internal dissent."
+      - "путин"
+      - "кремл"
+      - "совбез"
+      - "фсб"
+      - "госдум"
+      - "белоусов"
+      - "песков"
+      - "мишустин"
 
   - id: wartime_defense_mobilization
     label: "Wartime Defense Production & Operations"
     weight: 0.95
+    category: defence_security
+    describe:
+      - State defense orders, Rostec output, contract soldier recruitment, nuclear deterrence doctrine, and missile/drone strikes against Ukraine
+      - Министерство обороны РФ, гособоронзаказ, Ростех, контрактники, ядерное сдерживание, Орешник, беспилотники, фронт
     keywords:
       - "rostec"
       - "defense ministry"
@@ -32,11 +45,22 @@ themes:
       - "geran drone"
       - "su-57"
       - "ammunition production"
-    description: "State defense orders, Rostec output, recruitment bounties, nuclear deterrence posturing, and high-intensity missile/drone strikes."
+      - "минобороны"
+      - "ростех"
+      - "гособоронзаказ"
+      - "контрактник"
+      - "ядерн"
+      - "орешник"
+      - "беспилотник"
+      - "пво"
 
   - id: sanctions_resistance_macroeconomy
-    label: "Sanctions Evasion & Wartime Economy"
-    weight: 0.9
+    label: "Sanctions, Energy Corridors (Gazprom / Rosatom / Druzhba) & Wartime Economy"
+    weight: 0.95
+    category: economics
+    describe:
+      - Bank of Russia monetary policy under Elvira Nabiullina, wartime inflation, ruble exchange rate, oil price cap and shadow fleet, Gazprom pipeline flows (TurkStream, Druzhba oil pipeline), and Rosatom international nuclear projects (Paks II, Akkuyu)
+      - Банк России, Эльвира Набиуллина, ключевая ставка, инфляция, рубль, санкции, теневой флот, Газпром, Турецкий поток, нефтепровод Дружба, Росатом, Пакш
     keywords:
       - "bank of russia"
       - "nabiullina"
@@ -48,18 +72,42 @@ themes:
       - "sanctions evasion"
       - "parallel import"
       - "budget deficit"
-    description: "Central bank monetary tightening to tame wartime inflation, shadow tanker exports, sovereign wealth fund drawdowns, and secondary sanctions."
+      - "gazprom"
+      - "rosatom"
+      - "turkstream"
+      - "druzhba"
+      - "лукойл"
+      - "газпром"
+      - "росатом"
+      - "набиуллина"
+      - "центробанк"
+      - "ключевая ставка"
+      - "инфляци"
+      - "санкци"
+      - "рубл"
+      - "турецкий поток"
+      - "дружба"
+      - "пакш"
 
   - id: anti_western_geopolitical_coalition
-    label: "Eurasian Coalition & Global South Diplomacy"
-    weight: 0.85
+    label: "Eurasian Coalition, BRICS & Foreign Ministry Diplomacy"
+    weight: 0.9
+    category: foreign_policy
+    describe:
+      - Strategic partnership with China, military agreements with North Korea and Iran, Foreign Minister Sergey Lavrov diplomacy, BRICS, SCO, and EAEU summits
+      - МИД России, Сергей Лавров, стратегическое партнерство с Китаем, КНДР, Ираном, БРИКС, ШОС, ЕАЭС
     keywords:
       - "brics"
       - "north korea troops"
       - "iran missiles"
       - "china trade"
       - "sergey lavrov"
+      - "lavrov"
       - "multipolar world"
       - "de-dollarization"
       - "global south"
-    description: "Strategic partnerships with China, arms and troop agreements with North Korea, Iranian drone transfers, and diplomatic rallies at BRICS."
+      - "лавров"
+      - "мид рф"
+      - "брикс"
+      - "шос"
+      - "кндр"

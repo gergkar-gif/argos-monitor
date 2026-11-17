@@ -10,7 +10,7 @@ countries/<id>/*.yaml ─▶ ingest ─▶ normalise ─▶ relevance ─▶ emb
 
 | Stage | Module | Description |
 | :--- | :--- | :--- |
-| **01 · Ingest** | `argos/ingest.py` | Polls 1,627 RSS/Atom and Google News aggregator feeds across 87 country desks (`domestic`, `abroad_local`, `international`) and reconciles source ratings (`argos/ratings.py`). |
+| **01 · Ingest** | `argos/ingest.py` | Polls 1,672 RSS/Atom and Google News aggregator feeds across 89 country desks (`domestic`, `abroad_local`, `international`) and reconciles source ratings (`argos/ratings.py`). |
 | **02 · Normalise** | `argos/normalise.py` | Applies Unicode NFC normalisation, strips control characters and emojis, and computes content hashes for syndication detection. |
 | **03 · Relevance** | `argos/relevance.py` | Enforces URL section filters (`url_sections`) and country-mention gates on multi-country and international feeds. |
 | **04 · Embed** | `argos/embed.py` | Encodes `title + lead` into 384-dimensional vectors on CPU via ONNX Runtime (`intfloat/multilingual-e5-small`). |
@@ -48,7 +48,7 @@ excerpt       id, story_id, article_id, text, char_start, char_end
 ```
 argos-monitor/
   argos/                  11-stage pipeline modules, source ratings, and signal collectors
-  countries/<id>/         87 declarative country packs (pack.yaml, sources.yaml, themes.yaml)
+  countries/<id>/         89 declarative country packs (pack.yaml, sources.yaml, themes.yaml)
   docs/                   Architecture, source registry schema, and delta specification
   site/                   Static broadsheet frontend (HTML, CSS, vanilla JS, precomputed data/)
   tests/                  Unit and invariant guard suites

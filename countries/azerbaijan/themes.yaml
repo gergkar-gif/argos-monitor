@@ -1,13 +1,13 @@
 # Azerbaijan's additions to the shared themes (../../themes.yaml).
 themes:
   - id: diplomacy
-    label: Armenia-Azerbaijan peace talks & Zangezur corridor
+    label: Armenia-Azerbaijan peace talks, Zangezur corridor & Turkic States
     weight: 1.0
     category: foreign_policy
     describe:
-      - Armenia-Azerbaijan peace treaty negotiations, border delimitation, Zangezur transit corridor, relations with Turkey, Russia, Iran, Israel and the EU
-      - Ermənistan-Azərbaycan sülh müqaviləsi, sərhədlərin delimitasiyası, Zəngəzur dəhlizi, xarici siyasət
-    keywords: ["peace treaty", "delimitation", "zangezur", "karabakh", "garabagh", "jeyhun bayramov", "bayramov", "ilham aliyev", "pashinyan", "sülh müqaviləsi", "zəngəzur", "qarabağ"]
+      - Armenia-Azerbaijan peace treaty negotiations, border delimitation, Zangezur transit corridor, Organization of Turkic States (OTS), relations with Turkey, Russia, Iran, Israel, Hungary and the EU
+      - Ermənistan-Azərbaycan sülh müqaviləsi, sərhədlərin delimitasiyası, Zəngəzur dəhlizi, Türk Dövlətləri Təşkilatı, xarici siyasət
+    keywords: ["peace treaty", "delimitation", "zangezur", "karabakh", "garabagh", "jeyhun bayramov", "bayramov", "ilham aliyev", "pashinyan", "sülh müqaviləsi", "zəngəzur", "qarabağ", "turkic states", "türk dövlətləri"]
 
   - id: energy_infra
     label: Southern Gas Corridor, SOCAR & Middle Corridor transit
