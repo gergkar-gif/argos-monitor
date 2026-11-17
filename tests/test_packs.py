@@ -35,9 +35,9 @@ class TestPacks(unittest.TestCase):
         self.assertIsNotNone(re.search(_term_regex("東京"), "日本東京都", re.I))
 
     def test_all_packs_load_and_have_required_fields(self):
-        """All 87 country packs must load cleanly and have standardized attributes."""
+        """All 96 country packs must load cleanly and have standardized attributes."""
         cids = packs.pack_ids()
-        self.assertGreaterEqual(len(cids), 87)
+        self.assertGreaterEqual(len(cids), 96)
         for cid in cids:
             p = packs.load(cid)
             self.assertIn("id", p)

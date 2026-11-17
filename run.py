@@ -66,7 +66,7 @@ if __name__ == "__main__":
     faulthandler.enable()
     sys.stdout.reconfigure(encoding="utf-8")
     db = dbmod.connect()
-    for name in sys.argv[1:] or ["ingest", "normalise", "relevance", "embed", "cluster", "classify", "policy", "rank", "extract", "normalise", "excerpts", "verify", "export", "crisis", "trends", "reddit", "social", "watch", "prune", "report"]:
+    for name in sys.argv[1:] or ["ingest", "normalise", "relevance", "embed", "cluster", "classify", "policy", "rank", "extract", "normalise", "excerpts", "verify", "translate", "export", "crisis", "trends", "reddit", "social", "watch", "prune", "report"]:
         print(f"\n== {name}")
         try:
             res = STAGES[name](db)

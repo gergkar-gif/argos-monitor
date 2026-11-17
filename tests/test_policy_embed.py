@@ -29,7 +29,7 @@ class TestEmbedPolicy(unittest.TestCase):
         self.assertFalse(np.isnan(proto).any())
 
     def test_all_country_packs_have_valid_theme_prototypes(self):
-        """Ensure all 87 country packs define themes with non-empty labels or descriptions."""
+        """Ensure all 96 country packs define themes with non-empty labels or descriptions."""
         pack_list = packs.pack_ids()
         self.assertGreater(len(pack_list), 0, "At least one country pack should exist")
         for cid in pack_list:

@@ -457,7 +457,7 @@
     const telemBar = telem ? el('div', { class: 'monitor-bar', style: 'margin: 0.5rem 0 1.25rem; padding: 0.65rem 1rem;' },
       el('div', { style: 'display: flex; flex-wrap: wrap; gap: 1.25rem; align-items: center;' },
         el('span', { class: 'typed', text: `${allCountries.length} Country Desks` }),
-        el('span', { class: 'typed', text: `${totalFeeds || '760+'} Live Feeds Polled` }),
+        el('span', { class: 'typed', text: `${totalFeeds ? totalFeeds.toLocaleString() : '1,769'} Live Feeds Polled` }),
         el('span', { class: 'typed', text: `${totalArticles ? totalArticles.toLocaleString() : '35,000+'} Articles Corroborated` }),
         raw.generated_at && el('span', { class: 'meta', text: `Cycle: ${new Date(raw.generated_at).toLocaleDateString()}` })
       )
@@ -485,7 +485,7 @@
       mixed: 'Mixed',
     }[f] || (f && f !== 'unrated' ? f : '—'));
 
-    // No country and no search: a short region-grouped picker instead of 87 full tables.
+    // No country and no search: a short region-grouped picker instead of 96 full tables.
     if (cid === 'all' && !q) {
       const pick = (c) => { cSel.value = c.id; render(); document.getElementById('sources').scrollIntoView(); };
       root.replaceChildren(

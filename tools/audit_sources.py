@@ -85,7 +85,7 @@ if __name__ == "__main__":
         for err in schema_errors:
             print(f"  - {err}")
     else:
-        print("\n[PASS] All 87 pack.yaml files adhere strictly to standard schema.")
+        print(f"\n[PASS] All {len(results)} pack.yaml files adhere strictly to standard schema.")
 
     if args.fail_under and (any(not r["compliant"] for r in results) or schema_errors):
         sys.exit(1)

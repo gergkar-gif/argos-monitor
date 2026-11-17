@@ -15,7 +15,7 @@ else:
 
 if sys.version_info < (3, 12):
     problems.append(f"Python {sys.version.split()[0]} is too old; need 3.12 or newer.")
-for mod in ("yaml", "feedparser", "trafilatura", "sklearn", "jinja2"):
+for mod in ("yaml", "feedparser", "trafilatura", "sklearn", "onnxruntime", "tokenizers"):
     try:
         importlib.import_module(mod)
     except ImportError:
