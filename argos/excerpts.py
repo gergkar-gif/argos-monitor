@@ -13,11 +13,12 @@ from .embed import DIM, Embedder
 from .rank import dashboard_story_ids
 
 MAX_EXCERPTS = 3
-MIN_LEN, MAX_LEN = 60, 320
-SENTENCE_END = re.compile(r"(?<=[.!?…])\s+")
+MIN_LEN, MIN_LEN_CJK, MAX_LEN = 60, 20, 320
+_CJK_RE = re.compile(r"[\u3040-\u30ff\u4e00-\u9fff]")
+SENTENCE_END = re.compile(r"(?<=[.!?…])\s+|(?<=[。！？])(?![”」』）\)])|(?<=[。！？][”」』）])")
 # Direct quotation / statement markers (EMM quotefinder lift) to prioritize executive quotes
 QUOTE_CUES = re.compile(
-    r'["“”«»]|(?:\b(?:said|stated|announced|confirmed|told|khẳng định|nhấn mạnh|tuyên bố|cho biết|chỉ đạo|yêu cầu|közölte|mondta)\b)',
+    r'["“”«»「」『』]|(?:\b(?:said|stated|announced|confirmed|told|khẳng định|nhấn mạnh|tuyên bố|cho biết|chỉ đạo|yêu cầu|közölte|mondta)\b)|(?:表示|指出|强调|強調|声明|聲明|宣布|宣佈|回应|回應)',
     re.I
 )
 
@@ -50,7 +51,8 @@ def sentences(text, pack, first_n=8):
             if tag:
                 start += tag.end()
                 part = part[tag.end():]
-            if MIN_LEN <= len(part) <= MAX_LEN and not (pack["noise_re"] and pack["noise_re"].match(part)) and part[-1] in ".!?…\"”":
+            min_len = MIN_LEN_CJK if _CJK_RE.search(part) else MIN_LEN
+            if min_len <= len(part) <= MAX_LEN and not (pack["noise_re"] and pack["noise_re"].match(part)) and part[-1] in ".!?…\"”。！？…」』":
                 found.append((start, start + len(part)))
         if len(found) >= first_n:
             break

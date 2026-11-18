@@ -1,3 +1,10 @@
+# China source registry (decision D15).
+# Combines statutory PRC state wires & official portals (Xinhua, Global Times, China Daily, CGTN, ECNS/CNS, RTHK),
+# Hong Kong broadsheets & independent outlets (SCMP, HKFP, Ming Pao, InMediaHK, The Witness), mainland financial/tech
+# press (Caixin Global, TechNode, Pandaily, The Paper / Yicai / People's Daily via Chinese Google News), and overseas
+# Chinese-language & specialist outlets (BBC Chinese, DW Chinese, RFI Chinese, RFA Mandarin, VOA Chinese, Initium Media,
+# Lianhe Zaobao, China Digital Times, CNA Cross-Strait, Pekingnology, China Media Project, Financial Times).
+
 sources:
 - id: xinhua_en
   name: Xinhua News Agency (English)
@@ -9,10 +16,9 @@ sources:
   state_affiliated: true
   notes: Primary statutory state wire agency of the People's Republic of China.
   feeds:
-  - url: https://news.google.com/rss/search?q=site:news.cn+when:7d&hl=en-US&gl=US&ceid=US:en
-    category_hint: internal_politics
-  - url: https://news.google.com/rss/search?q=site:news.cn+china+when:7d&hl=en-US&gl=US&ceid=US:en
-    category_hint: internal_politics
+  - url: https://news.google.com/rss/search?q=site:news.cn+china+when:5d&hl=en-US&gl=US&ceid=US:en
+    category_hint: general
+
 - id: global_times
   name: Global Times
   homepage: https://www.globaltimes.cn
@@ -21,10 +27,74 @@ sources:
   kind: official
   governing_body: People's Daily / CCP Central Committee
   state_affiliated: true
+  needs_mention: true
   notes: Nationalistic English-language daily reflecting official foreign and security perspectives.
   feeds:
-  - url: https://news.google.com/rss/search?q=site:globaltimes.cn+when:7d&hl=en-US&gl=US&ceid=US:en
-    category_hint: foreign_policy
+  - url: https://news.google.com/rss/search?q=site:globaltimes.cn+when:5d&hl=en-US&gl=US&ceid=US:en
+    category_hint: general
+
+- id: chinadaily_en
+  name: China Daily
+  homepage: https://www.chinadaily.com.cn
+  language: en
+  scope: domestic
+  kind: official
+  governing_body: Publicity Department of the CCP Central Committee
+  state_affiliated: true
+  needs_mention: true
+  notes: Official PRC English-language broadsheet targeting international and diplomatic audiences.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:chinadaily.com.cn+china+when:5d&hl=en-US&gl=US&ceid=US:en
+    category_hint: general
+
+- id: cgtn_en
+  name: CGTN
+  homepage: https://www.cgtn.com
+  language: en
+  scope: domestic
+  kind: official
+  governing_body: China Media Group (State Council)
+  state_affiliated: true
+  needs_mention: true
+  notes: International English broadcast arm of China Media Group covering PRC policy and economic diplomacy.
+  feeds:
+  - url: https://www.cgtn.com/subscribe/rss/section/china.xml
+    section: China
+    category_hint: general
+  - url: https://www.cgtn.com/subscribe/rss/section/business.xml
+    section: Business
+    category_hint: economics
+
+- id: ecns_en
+  name: ECNS (China News Service)
+  homepage: https://www.ecns.cn
+  language: en
+  scope: domestic
+  kind: wire
+  governing_body: China News Service (United Front Work Department)
+  state_affiliated: true
+  needs_mention: true
+  notes: Official English-language wire service of China News Service covering domestic policy and diplomacy.
+  feeds:
+  - url: https://www.ecns.cn/rss/rss.xml
+    section: Wire
+    category_hint: general
+
+- id: rthk_hk
+  name: RTHK (Radio Television Hong Kong)
+  homepage: https://news.rthk.hk
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Hong Kong Special Administrative Region Government
+  state_affiliated: true
+  needs_mention: true
+  notes: Hong Kong government-run public broadcaster covering Greater China politics, finance, and SAR governance.
+  feeds:
+  - url: https://rthk.hk/rthk/news/rss/e_expressnews_egreaterchina.xml
+    section: China
+    category_hint: general
+
 - id: scmp_hk
   name: South China Morning Post
   homepage: https://www.scmp.com
@@ -36,9 +106,15 @@ sources:
   notes: Hong Kong English daily of record covering mainland politics, economy, and diplomacy.
   feeds:
   - url: https://www.scmp.com/rss/4/feed
-    category_hint: internal_politics
+    section: China
+    category_hint: general
   - url: https://www.scmp.com/rss/92/feed
+    section: Economy
     category_hint: economics
+  - url: https://www.scmp.com/rss/318198/feed
+    section: Politics
+    category_hint: internal_politics
+
 - id: caixin_global
   name: Caixin Global
   homepage: https://www.caixinglobal.com
@@ -49,11 +125,84 @@ sources:
   state_affiliated: false
   notes: Premier independent Chinese financial and investigative business news daily.
   feeds:
-  - url: https://news.google.com/rss/search?q=site:caixinglobal.com+when:7d&hl=en-US&gl=US&ceid=US:en
+  - url: https://news.google.com/rss/search?q=site:caixinglobal.com+when:5d&hl=en-US&gl=US&ceid=US:en
     category_hint: economics
+
+- id: hkfp
+  name: Hong Kong Free Press (HKFP)
+  homepage: https://hongkongfp.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Hong Kong Free Press Ltd. (independent non-profit newsroom)
+  state_affiliated: false
+  notes: Independent non-profit English newsroom covering Hong Kong governance, civil liberties, and mainland affairs.
+  feeds:
+  - url: https://hongkongfp.com/feed/
+    section: Hong Kong
+    category_hint: general
+
+- id: inmediahk
+  name: InMediaHK (獨立媒體)
+  homepage: https://www.inmediahk.net
+  language: zh
+  scope: domestic
+  kind: media
+  governing_body: Inmediahk.net (independent civic media cooperative)
+  state_affiliated: false
+  notes: Independent Hong Kong Chinese-language civic newsroom covering public policy, policing, and civil society.
+  feeds:
+  - url: https://www.inmediahk.net/rss.xml
+    section: Civic News
+    category_hint: general
+
+- id: thewitness_hk
+  name: The Witness (法庭線)
+  homepage: https://thewitnesshk.com
+  language: zh
+  scope: domestic
+  kind: media
+  governing_body: The Witness Media Ltd. (independent Hong Kong court-reporting newsroom)
+  state_affiliated: false
+  notes: Independent investigative Hong Kong legal journalism covering National Security Law trials and judicial proceedings.
+  feeds:
+  - url: https://thewitnesshk.com/feed/
+    section: Courts & NSL
+    category_hint: internal_politics
+
+- id: technode
+  name: TechNode
+  homepage: https://technode.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: TechNode Global (independent Shanghai-founded technology media)
+  state_affiliated: false
+  needs_mention: true
+  notes: Independent China technology, semiconductor, AI, and electric vehicle industry reporting.
+  feeds:
+  - url: https://technode.com/feed/
+    section: China Tech
+    category_hint: economics
+
+- id: pandaily
+  name: Pandaily
+  homepage: https://pandaily.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Pandaily Media
+  state_affiliated: false
+  needs_mention: true
+  notes: English-language reporting on Chinese technology firms, robotics, semiconductors, and EV supply chains.
+  feeds:
+  - url: https://pandaily.com/feed/
+    section: Tech & EVs
+    category_hint: economics
+
 - id: bbc_zhongwen
   name: BBC News Chinese
-  homepage: https://www.bbc.com/zhongwen/simp
+  homepage: https://www.bbc.com/zhongwen/trad
   language: zh
   scope: abroad_local
   kind: media
@@ -61,71 +210,10 @@ sources:
   state_affiliated: false
   notes: Independent Chinese-language reporting outside mainland censorship.
   feeds:
-  - url: https://feeds.bbci.co.uk/zhongwen/simp/rss.xml
-    category_hint: internal_politics
-- id: rfa_chinese
-  name: Radio Free Asia (Chinese)
-  homepage: https://www.rfa.org/mandarin
-  language: zh
-  scope: abroad_local
-  kind: media
-  governing_body: US Agency for Global Media (USAGM)
-  state_affiliated: false
-  notes: US-funded diaspora Mandarin news covering human rights, politics, and defense.
-  feeds:
-  - url: https://news.google.com/rss/search?q=site:rfa.org+china+when:7d&hl=en-US&gl=US&ceid=US:en
-    category_hint: internal_politics
-- id: lianhe_zaobao
-  name: Lianhe Zaobao
-  homepage: https://www.zaobao.com.sg
-  language: zh
-  scope: abroad_local
-  kind: media
-  governing_body: SPH Media (Singapore)
-  state_affiliated: false
-  notes: Leading Southeast Asian Chinese-language paper of record with extensive China reporting.
-  feeds:
-  - url: https://news.google.com/rss/search?q=site:zaobao.com.sg+when:7d&hl=en-US&gl=US&ceid=US:en
-    category_hint: internal_politics
-- id: google_news_china_politics
-  name: Google News (China Politics & Governance)
-  homepage: https://news.google.com
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: Google LLC
-  state_affiliated: false
-  aggregator: google_news
-  notes: Aggregator feed tracking top Chinese Communist Party and State Council developments.
-  feeds:
-  - url: https://news.google.com/rss/search?q=%22Xi+Jinping%22+OR+%22Politburo%22+OR+%22State+Council%22+OR+%22National+People%27s+Congress%22+when:3d&hl=en-US&gl=US&ceid=US:en
-    category_hint: internal_politics
-- id: google_news_china_economy
-  name: Google News (China Macroeconomy & Industrial Policy)
-  homepage: https://news.google.com
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: Google LLC
-  state_affiliated: false
-  aggregator: google_news
-  notes: Aggregator feed tracking Chinese stimulus, PBOC policy, real estate, and tech sanctions.
-  feeds:
-  - url: https://news.google.com/rss/search?q=%22People%27s+Bank+of+China%22+OR+%22Chinese+economy%22+OR+PBOC+OR+%22real+estate%22+China+when:3d&hl=en-US&gl=US&ceid=US:en
-    category_hint: economics
-- id: google_news_china_pla
-  name: Google News (China PLA & Taiwan Strait Security)
-  homepage: https://news.google.com
-  language: en
-  scope: domestic
-  kind: media
-  governing_body: Google LLC
-  state_affiliated: false
-  aggregator: google_news
-  notes: Aggregator feed tracking PLA exercises, Taiwan Strait security, and South China Sea maneuvers.
-  feeds:
-  - url: https://news.google.com/rss/search?q=%22People%27s+Liberation+Army%22+OR+%22Taiwan+Strait%22+OR+%22South+China+Sea%22+PLA+when:3d&hl=en-US&gl=US&ceid=US:en
-    category_hint: defence_security
+  - url: https://feeds.bbci.co.uk/zhongwen/trad/rss.xml
+    section: BBC Chinese
+    category_hint: general
+
 - id: dw_chinese
   name: Deutsche Welle (Chinese)
   homepage: https://www.dw.com/zh
@@ -134,10 +222,12 @@ sources:
   kind: media
   governing_body: Deutsche Welle (Germany)
   state_affiliated: false
-  notes: German public international broadcaster Mandarin service covering China politics.
+  notes: German public international broadcaster Chinese desk covering China politics and EU-China ties.
   feeds:
   - url: https://rss.dw.com/rdf/rss-chi-all
-    category_hint: internal_politics
+    section: DW Chinese
+    category_hint: general
+
 - id: rfi_chinese
   name: Radio France Internationale (Chinese)
   homepage: https://www.rfi.fr/cn
@@ -148,46 +238,41 @@ sources:
   state_affiliated: false
   notes: French public international broadcaster Chinese desk tracking mainland affairs.
   feeds:
-  - url: https://news.google.com/rss/search?q=site:rfi.fr+china+when:7d&hl=en-US&gl=US&ceid=US:en
-    category_hint: internal_politics
-- id: aljazeera_chinese
-  name: Al Jazeera (Chinese)
-  homepage: https://chinese.aljazeera.net
-  language: zh
-  scope: international
-  kind: media
-  governing_body: Al Jazeera Media Network (Qatar)
-  state_affiliated: false
-  notes: Independent Middle Eastern network Chinese language desk covering Sino-global diplomacy.
-  feeds:
-  - url: https://www.aljazeera.net/aljazeerarss/a7c186be-1baa-4bd4-9d80-a84db769f779/73d0e1b4-532f-45ef-b135-bfdff8b8cab9
-    category_hint: foreign_policy
-- id: gnews_china_zh
-  name: Google News (China National News - Chinese)
-  homepage: https://news.google.com
-  language: zh
-  scope: domestic
-  kind: media
-  governing_body: Google LLC
-  state_affiliated: false
-  aggregator: google_news
-  feeds:
-  - url: https://news.google.com/rss/search?q=%E4%B8%AD%E5%9B%BD+OR+%E5%8C%97%E4%BA%AC+OR+%E5%9B%BD%E5%8A%A1%E9%99%A2+when:2d&hl=zh-CN&gl=CN&ceid=CN:zh-Hans
-    section: National News (Chinese)
-    category_hint: internal_politics
+  - url: https://www.rfi.fr/cn/%E4%B8%AD%E5%9B%BD/rss
+    section: China
+    category_hint: general
 
-- id: chinadigitaltimes_cn
-  name: "China Digital Times"
-  homepage: https://chinadigitaltimes.net
-  language: en
+- id: rfa_chinese
+  name: Radio Free Asia (Chinese)
+  homepage: https://www.rfa.org/mandarin
+  language: zh
   scope: abroad_local
   kind: media
-  governing_body: "China Digital Times Inc. (Berkeley)"
+  governing_body: US Agency for Global Media (USAGM)
   state_affiliated: false
-  notes: "Independent bilingual media organization monitoring Chinese censorship, civil society, and domestic policy debates."
+  notes: US-funded diaspora Mandarin news covering human rights, politics, economy, and defense.
   feeds:
-  - url: https://chinadigitaltimes.net/feed/
-    category_hint: internal_politics
+  - url: https://www.rfa.org/arc/outboundfeeds/mandarin/rss/
+    section: RFA Mandarin
+    category_hint: general
+
+- id: voa_chinese
+  name: Voice of America (Chinese)
+  homepage: https://www.voachinese.com
+  language: zh
+  scope: abroad_local
+  kind: media
+  governing_body: US Agency for Global Media (USAGM)
+  state_affiliated: false
+  needs_mention: true
+  notes: Overseas Chinese-language service covering US-China diplomacy, tech controls, and human rights.
+  feeds:
+  - url: https://www.voachinese.com/api/zm_yql-vomx-tpeybti
+    section: Top News
+    category_hint: general
+  - url: https://www.voachinese.com/api/zj_yql-vomx-tpebbtq
+    section: US-China
+    category_hint: foreign_policy
 
 - id: initium_cn
   name: "Initium Media (端傳媒)"
@@ -197,7 +282,177 @@ sources:
   kind: media
   governing_body: "Initium Media (Singapore)"
   state_affiliated: false
-  notes: "Award-winning independent Chinese-language investigative digital outlet covering mainland China, Hong Kong, and Taiwan."
+  notes: "Independent Chinese-language investigative digital outlet covering mainland China, Hong Kong, and Taiwan."
   feeds:
-  - url: https://news.google.com/rss/search?q=site:theinitium.com+when:7d&hl=zh-TW&gl=TW&ceid=TW:zh-Hant
+  - url: https://theinitium.com/rss/
+    section: Initium
+    category_hint: general
+
+- id: lianhe_zaobao
+  name: Lianhe Zaobao (联合早报)
+  homepage: https://www.zaobao.com.sg
+  language: zh
+  scope: abroad_local
+  kind: media
+  governing_body: SPH Media (Singapore)
+  state_affiliated: false
+  notes: Leading Southeast Asian Chinese-language paper of record with extensive Greater China reporting.
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:zaobao.com.sg+(%E4%B8%AD%E5%9B%BD+OR+%E5%8C%97%E4%BA%AC+OR+%E4%B9%A0%E8%BF%91%E5%B9%B3+OR+%E4%B8%AD%E7%BE%8E+OR+%E5%8F%B0%E6%B5%B7)+when:5d&hl=zh-SG&gl=SG&ceid=SG:zh-Hans
+    category_hint: general
+
+- id: chinadigitaltimes_cn
+  name: "China Digital Times (中国数字时代)"
+  homepage: https://chinadigitaltimes.net
+  language: zh
+  scope: abroad_local
+  kind: media
+  governing_body: "China Digital Times Inc. (Berkeley)"
+  state_affiliated: false
+  notes: "Independent bilingual media organization monitoring Chinese censorship, civil society, and domestic policy debates."
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:chinadigitaltimes.net/chinese+when:14d&hl=zh-CN&gl=CN&ceid=CN:zh-Hans
     category_hint: internal_politics
+
+- id: cna_mainland
+  name: "Central News Agency (Cross-Strait / 中央社兩岸)"
+  homepage: https://www.cna.com.tw/list/acn.aspx
+  language: zh
+  scope: abroad_local
+  kind: wire
+  governing_body: "Central News Agency (Taiwan statutory national wire service)"
+  state_affiliated: false
+  notes: "Dedicated Mainland China and Cross-Strait desk of Taiwan's statutory Central News Agency."
+  feeds:
+  - url: https://feeds.feedburner.com/rsscna/mainland
+    section: China
+    category_hint: general
+
+- id: pekingnology
+  name: Pekingnology
+  homepage: https://www.pekingnology.com
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Pekingnology (independent PRC policy translation & commentary)
+  state_affiliated: false
+  notes: Independent English translations and analysis of mainland Chinese policy debates, scholars, and official directives.
+  feeds:
+  - url: https://www.pekingnology.com/feed
+    section: Policy Analysis
+    category_hint: internal_politics
+
+- id: cmp_china
+  name: China Media Project
+  homepage: https://chinamediaproject.org
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: China Media Project (independent research & media monitor)
+  state_affiliated: false
+  notes: Independent research project monitoring CCP propaganda directives, media control, and discourse shifts.
+  feeds:
+  - url: https://chinamediaproject.org/feed/
+    section: Media & Propaganda
+    category_hint: internal_politics
+
+- id: ft_china
+  name: Financial Times (China)
+  homepage: https://www.ft.com/china
+  language: en
+  scope: international
+  kind: media
+  governing_body: Nikkei Inc. / Financial Times Group
+  state_affiliated: false
+  notes: International financial daily reporting on Chinese macroeconomy, trade, geopolitics, and technology decoupling.
+  feeds:
+  - url: https://www.ft.com/china?format=rss
+    section: China
+    category_hint: general
+
+- id: gnews_cn_top
+  name: Google News (China Top Stories - Chinese)
+  homepage: https://news.google.com
+  language: zh
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  needs_mention: true
+  feeds:
+  - url: https://news.google.com/rss?hl=zh-CN&gl=CN&ceid=CN:zh-Hans
+    section: Top Stories
+    category_hint: general
+
+- id: gnews_cn_mainland_press
+  name: The Paper / Caixin / Yicai / People's Daily / China News (via Google News)
+  homepage: https://www.thepaper.cn
+  language: zh
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  needs_mention: true
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:thepaper.cn+OR+site:caixin.com+OR+site:yicai.com+OR+site:people.com.cn+OR+site:chinanews.com.cn)+when:2d&hl=zh-CN&gl=CN&ceid=CN:zh-Hans
+    section: Mainland Press
+    category_hint: general
+
+- id: gnews_china_zh
+  name: Google News (China Policy & Economy - Chinese)
+  homepage: https://news.google.com
+  language: zh
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  needs_mention: true
+  feeds:
+  - url: https://news.google.com/rss/search?q=(%E4%B8%AD%E5%9B%BD+OR+%E5%9B%BD%E5%8A%A1%E9%99%A2+OR+%E5%A4%96%E4%BA%A4%E9%83%A8+OR+%E5%8F%91%E6%94%B9%E5%A7%94+OR+%E5%A4%AE%E8%A1%8C+OR+%E4%B9%A0%E8%BF%91%E5%B9%B3+OR+%E5%8F%B0%E6%B5%B7+OR+%E5%8D%97%E6%B5%B7)+when:2d&hl=zh-CN&gl=CN&ceid=CN:zh-Hans
+    section: Policy & Economy (Chinese)
+    category_hint: general
+
+- id: google_news_china_politics
+  name: Google News (China Politics & Governance - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: International aggregator feed tracking CCP leadership, State Council, and diplomatic coverage.
+  feeds:
+  - url: https://news.google.com/rss/search?q=%22Xi+Jinping%22+OR+%22Politburo%22+OR+%22State+Council%22+OR+%22National+People%27s+Congress%22+China+when:3d&hl=en-US&gl=US&ceid=US:en
+    category_hint: internal_politics
+
+- id: google_news_china_economy
+  name: Google News (China Macroeconomy & Industrial Policy - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: International aggregator feed tracking Chinese stimulus, PBOC policy, real estate, and tech sanctions.
+  feeds:
+  - url: https://news.google.com/rss/search?q=%22People%27s+Bank+of+China%22+OR+%22Chinese+economy%22+OR+PBOC+OR+%22real+estate%22+China+when:3d&hl=en-US&gl=US&ceid=US:en
+    category_hint: economics
+
+- id: google_news_china_pla
+  name: Google News (China PLA & Taiwan Strait Security - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: International aggregator feed tracking PLA exercises, Taiwan Strait security, and South China Sea maneuvers.
+  feeds:
+  - url: https://news.google.com/rss/search?q=%22People%27s+Liberation+Army%22+OR+%22Taiwan+Strait%22+OR+%22South+China+Sea%22+PLA+when:3d&hl=en-US&gl=US&ceid=US:en
+    category_hint: defence_security

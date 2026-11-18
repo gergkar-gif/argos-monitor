@@ -216,6 +216,126 @@ class HomeExportTests(unittest.TestCase):
                 export._norm_breadth({"country": "vietnam", "independent_sources": 5, "by_scope": {"domestic": 5}}),
             )
 
+    def test_russia_ukraine_morphology_scope_ratings_and_themes(self):
+        from argos import ratings
+        packs.load.cache_clear()
+        ru = packs.load("russia")
+        ua = packs.load("ukraine")
+
+        # Inflected Russian & Ukrainian cases must pass abroad_local / foreign-section relevance gates
+        self.assertTrue(relevance.is_relevant(
+            ru, "abroad_local", "general", "", "https://thebell.io/story",
+            "Эстония с 1 декабря закроет границу с Россией", "", "",
+        ))
+        self.assertTrue(relevance.is_relevant(
+            ru, "abroad_local", "general", "", "https://istories.media/news/1",
+            "В Москве задержали подозреваемую в подрыве", "", "",
+        ))
+        self.assertFalse(relevance.is_relevant(
+            ru, "abroad_local", "general", "", "https://istories.media/news/2",
+            "Даниил Медведев вышел в полуфинал турнира в ОАЭ", "", "",
+        ))
+        self.assertFalse(relevance.is_relevant(
+            ru, "domestic", "general", "", "https://tass.ru/mezhdunarodnaya-panorama/123",
+            "В Гагаузии проходит голосование на выборах главы автономии", "", "",
+        ))
+
+        self.assertTrue(relevance.is_relevant(
+            ua, "abroad_local", "general", "", "https://www.radiosvoboda.org/a/1",
+            "Сибіга анонсував зустріч Зеленського і Петера Мадяра", "", "",
+        ))
+        self.assertTrue(relevance.is_relevant(
+            ua, "abroad_local", "general", "", "https://www.radiosvoboda.org/a/2",
+            "У Києві уламки БпЛА впали у дворі багатоповерхівки", "", "",
+        ))
+        self.assertFalse(relevance.is_relevant(
+            ua, "domestic", "general", "", "https://www.ukrinform.ua/rubric-world/123",
+            "Президент Монголії оголосив про відставку", "", "",
+        ))
+        self.assertFalse(relevance.is_relevant(
+            ua, "domestic", "general", "", "https://glavred.net/life/123",
+            "Дорогі ароматизатори більше не потрібні", "", "",
+        ))
+
+        # Cyrillic Google News outlets must resolve accurately to domestic / abroad_local and non-unrated ratings
+        self.assertEqual(packs.resolve_scope("ukraine", "gn:українська-правда", "Українська правда", "international", "international"), "domestic")
+        self.assertEqual(packs.resolve_scope("ukraine", "gn:суспільне-новини", "Суспільне | Новини", "international", "international"), "domestic")
+        self.assertEqual(packs.resolve_scope("ukraine", "gn:радіо-свобода", "Радіо Свобода", "international", "international"), "abroad_local")
+        self.assertEqual(packs.resolve_scope("russia", "gn:медиазона", "Медиазона", "international", "international"), "abroad_local")
+        self.assertEqual(packs.resolve_scope("russia", "gn:российская-газета", "Российская газета", "international", "international"), "domestic")
+
+        self.assertEqual(ratings.lookup_rating("ОВД-Инфо")["factuality"], "very_high")
+        self.assertEqual(ratings.lookup_rating("OVD-Info")["factuality"], "very_high")
+        self.assertEqual(ratings.lookup_rating("Bihus.Info")["factuality"], "very_high")
+        self.assertEqual(ratings.lookup_rating("Суспільне | Новини")["alignment"], "public_broadcaster")
+        self.assertEqual(ratings.lookup_rating("Президент России")["alignment"], "state_controlled")
+
+        # Inflected Russian & Ukrainian war/sanctions/sports headlines must trigger exact theme keywords
+        ru_def = next(t for t in ru["themes"]["themes"] if t["id"] == "wartime_defense_mobilization")
+        ru_sport = next(t for t in ru["themes"]["themes"] if t["id"] == "sport_culture")
+        self.assertGreater(policy._keyword_share([("собянин: силы пво сбили три летевших на москву бпла", "")], ru_def["keywords"]), 0.0)
+        self.assertGreater(policy._keyword_share([("кагановская и некрасов победили в танцах на льду на этапе гран-при в омске", "")], ru_sport["keywords"]), 0.0)
+
+        ua_def = next(t for t in ua["themes"]["themes"] if t["id"] == "defence_security")
+        self.assertGreater(policy._keyword_share([("у запоріжжі через удар російського дрона поранена жінка", "")], ua_def["keywords"]), 0.0)
+        self.assertGreater(policy._keyword_share([("польща призупинила фінансування закупівель американської зброї", "")], ua_def["keywords"]), 0.0)
+        self.assertTrue(textutil.is_sports_stream_spam("Журова о допуске к МЧМ", outlet="Sportbox"))
+
+    def test_china_traditional_simplified_scope_ratings_themes_and_excerpts(self):
+        from argos import excerpts, ratings
+        packs.load.cache_clear()
+        cn = packs.load("china")
+
+        # Both Traditional Chinese (BBC Chinese / Initium) and Simplified Chinese must pass abroad_local gates
+        self.assertTrue(relevance.is_relevant(
+            cn, "abroad_local", "general", "", "https://www.bbc.com/zhongwen/articles/1",
+            "APEC深圳峰會：中方確認美中俄會晤，習近平將主持會議", "", "",
+        ))
+        self.assertTrue(relevance.is_relevant(
+            cn, "abroad_local", "general", "", "https://theinitium.com/20261117-mainland",
+            "中國如何成為「水電國家」？專訪環境史學者", "", "",
+        ))
+        # Pure Taipei local election or foreign non-China story must be rejected on abroad_local
+        self.assertFalse(relevance.is_relevant(
+            cn, "abroad_local", "general", "", "https://theinitium.com/20261117-whatsnew",
+            "台北市長封關民調出爐：四家結果兩勝兩負", "", "",
+        ))
+        self.assertFalse(relevance.is_relevant(
+            cn, "domestic", "general", "", "https://www.scmp.com/news/world/europe/123",
+            "French lawmakers debate pension budget", "", "",
+        ))
+
+        # English & Chinese Google News outlets on China desk must resolve accurately
+        self.assertEqual(packs.resolve_scope("china", "gn:reuters", "Reuters", "international", "international"), "international")
+        self.assertEqual(packs.resolve_scope("china", "gn:人民网", "人民网", "domestic", "domestic"), "domestic")
+        self.assertEqual(packs.resolve_scope("china", "gn:bbc-news-中文", "BBC News 中文", "domestic", "domestic"), "abroad_local")
+        self.assertEqual(packs.resolve_scope("china", "gn:纽约时报中文网", "纽约时报中文网", "domestic", "domestic"), "abroad_local")
+
+        # PRC state outlets and HK/overseas outlets must not resolve as unrated/independent
+        self.assertEqual(ratings.lookup_rating("人民网")["alignment"], "state_controlled")
+        self.assertEqual(ratings.lookup_rating("央视网")["alignment"], "state_controlled")
+        self.assertEqual(ratings.lookup_rating("军网")["alignment"], "state_controlled")
+        self.assertEqual(ratings.lookup_rating("ThePaper.cn")["alignment"], "state_controlled")
+        self.assertEqual(ratings.lookup_rating("北京市人民政府门户网站")["alignment"], "state_controlled")
+        self.assertEqual(ratings.lookup_rating("Hong Kong Free Press")["alignment"], "independent")
+        self.assertEqual(ratings.lookup_rating("The Witness (法庭線)")["factuality"], "very_high")
+
+        # Latin acronyms embedded inside CJK text (e.g. 读懂APEC / 中国GDP) must match theme keywords
+        dip = next(t for t in cn["themes"]["themes"] if t["id"] == "diplomacy")
+        sport = next(t for t in cn["themes"]["themes"] if t["id"] == "sport_culture")
+        weather = next(t for t in cn["themes"]["themes"] if t["id"] == "accident_weather")
+        self.assertGreater(policy._keyword_share([("一组数据读懂apec“中国年”新机遇", "")], dip["keywords"]), 0.0)
+        self.assertGreater(policy._keyword_share([("中国队，拿下13金！", "")], sport["keywords"]), 0.0)
+        self.assertGreater(policy._keyword_share([("冷空气到场！北京周末再迎弱雨雪", "")], weather["keywords"]), 0.0)
+
+        # CJK full-text sentences ending in Chinese punctuation must be extracted verbatim
+        sample_txt = "原标题\n中国国务院副总理表示，必须加快人工智能与半导体领域自主创新能力建设。\n国际机构指出，该政策旨在强化本土供应链韧性。"
+        spans = excerpts.sentences(sample_txt, cn)
+        self.assertEqual(len(spans), 2)
+        for s, e in spans:
+            self.assertEqual(sample_txt[s:e], sample_txt[s:e])
+            self.assertTrue(sample_txt[s:e].endswith("。"))
+
 
 if __name__ == "__main__":
     unittest.main()

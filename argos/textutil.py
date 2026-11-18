@@ -134,6 +134,9 @@ _SPORTS_OUTLETS = {
     "dailysports", "tudn", "espn", "onefootball", "goal", "flashscore", "sofascore",
     "sky sports", "beinsports", "bein sports", "marca", "as", "l'équipe", "l'equipe",
     "nemzeti sport", "m4 sport", "trt spor", "a spor", "fanatik", "fotomac", "fotomaç",
+    "sportbox", "championat", "championat.com", "championat.ru", "sports.ru",
+    "российский футбольный союз", "алтайский спорт", "хоккейный клуб «динамо» москва",
+    "sport.ua", "ua-football",
 }
 _SPAM_HOST_OUTLETS = ("universitat de barcelona", "日本取引所グループ", "ub.edu", "jpx.co.jp")
 

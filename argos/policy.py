@@ -22,22 +22,28 @@ ALWAYS = {"anticorruption", "security", "diplomacy", "elections", "unrest_confli
 STRICT_KEYWORD_THEMES = {"elections", "unrest_conflict", "sectarian_conflict"}   # alert-banner themes require keyword evidence, never embedding z-score alone
 
 
+_UNSPACED_RE = re.compile(r"[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uac00-\ud7af\u0e00-\u0e7f\u1780-\u17ff\u0e80-\u0eff]")
+_LEFT_BOUND = r"(?:(?<!\w)|(?<=[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uac00-\ud7af\u0e00-\u0e7f\u1780-\u17ff\u0e80-\u0eff]))"
+_RIGHT_BOUND = r"(?:(?!\w)|(?=[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uac00-\ud7af\u0e00-\u0e7f\u1780-\u17ff\u0e80-\u0eff]))"
+
+
 def _is_unspaced_script(term):
-    return any(any(unicodedata.name(ch, "").startswith(p) for p in ("CJK", "HIRAGANA", "KATAKANA", "THAI", "KHMER", "LAO")) for ch in term)
+    return bool(_UNSPACED_RE.search(term))
 
 
 def _matcher(keywords):
-    """Short keywords (<=7 chars) match whole words only; longer spaced-script terms anchor at word start (?<!\\w)
-    so 'elección' never hits 'selección' and 'scrutin' never hits 'scrutiny', while still matching inflected suffixes."""
+    """Short keywords (<=7 chars) match whole words only; longer spaced-script terms anchor at word start
+    so 'elección' never hits 'selección' and 'scrutin' never hits 'scrutiny', while still matching inflected suffixes.
+    CJK/unspaced boundaries allow Latin acronyms like 'APEC' or 'GDP' embedded directly adjacent to CJK text."""
     unspaced = [k for k in keywords if _is_unspaced_script(k)]
     spaced = [k for k in keywords if k not in unspaced]
     whole = [k for k in spaced if len(k) <= 7]
     prefix = [k for k in spaced if len(k) > 7]
     parts = []
     if whole:
-        parts.append(r"(?<!\w)(?:" + "|".join(re.escape(k) for k in whole) + r")(?!\w)")
+        parts.append(_LEFT_BOUND + r"(?:" + "|".join(re.escape(k) for k in whole) + r")" + _RIGHT_BOUND)
     if prefix:
-        parts.append(r"(?<!\w)(?:" + "|".join(re.escape(k) for k in prefix) + r")")
+        parts.append(_LEFT_BOUND + r"(?:" + "|".join(re.escape(k) for k in prefix) + r")")
     pat = re.compile("|".join(parts)) if parts else None
     return lambda text: (pat is not None and bool(pat.search(text))) or any(k in text for k in unspaced)
 

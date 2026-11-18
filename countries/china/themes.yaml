@@ -1,14 +1,15 @@
-# China editorial policy priority themes.
+# China editorial policy priority themes (extends ../../themes.yaml with Simplified & Traditional Chinese).
 themes:
   - id: party_state_consolidation
     label: "Party-State Consolidation & Personnel"
     weight: 1.0
     category: internal_politics
     describe:
-      - CCP leadership decisions under Xi Jinping, Politburo and Central Committee plenums, CCDI anti-corruption purges, National People's Congress legislation, and PLA/provincial personnel changes
-      - 习近平, 中共中央政治局, 中央委员会, 中纪委反腐, 全国人大, 国务院, 人事任免
+      - "CCP leadership decisions under Xi Jinping, Politburo and Central Committee plenums, CCDI anti-corruption purges, National People's Congress legislation, and PLA or provincial personnel changes"
+      - "习近平, 習近平, 中共中央政治局, 中央委员会, 中央委員會, 中纪委反腐, 中紀委, 全国人大, 全國人大, 国务院, 國務院, 人事任免"
     keywords:
       - "xi jinping"
+      - "li qiang"
       - "politburo"
       - "central committee"
       - "standing committee"
@@ -17,24 +18,36 @@ themes:
       - "national people's congress"
       - "two sessions"
       - "party plenum"
+      - "national security law"
       - "习近平"
+      - "習近平"
       - "政治局"
+      - "中央委员会"
+      - "中央委員會"
       - "中纪委"
+      - "中紀委"
       - "国务院"
+      - "國務院"
       - "全国人大"
+      - "全國人大"
       - "李强"
+      - "李強"
+      - "国安法"
+      - "國安法"
+      - "47人案"
 
   - id: industrial_policy_decoupling
     label: "Industrial Policy, EV / Battery Expansion & Tech Self-Reliance"
     weight: 0.95
     category: economics
     describe:
-      - Chinese industrial upgrading, semiconductor fabrication (SMIC, Huawei) under US export controls, EV and battery manufacturing outbound investment in Europe (BYD, CATL, EU EV tariffs), and critical mineral restrictions
-      - 新质生产力, 半导体, 芯片, 华为, 新能源汽车, 比亚迪, 宁德时代, 欧盟关税, 出口管制, 稀土
+      - "Chinese industrial upgrading, semiconductor fabrication (SMIC, Huawei) under US export controls, EV and battery manufacturing outbound investment (BYD, CATL, EU EV tariffs), AI chips, and critical mineral restrictions"
+      - "新质生产力, 新質生產力, 半导体, 半導體, 芯片, 晶片, 华为, 華為, 新能源汽车, 新能源汽車, 比亚迪, 比亞迪, 宁德时代, 寧德時代, 欧盟关税, 出口管制, 稀土"
     keywords:
       - "semiconductor"
       - "smic"
       - "huawei"
+      - "nvidia"
       - "electric vehicle"
       - "byd"
       - "catl"
@@ -44,21 +57,32 @@ themes:
       - "supply chain"
       - "ev tariffs"
       - "半导体"
+      - "半導體"
       - "芯片"
+      - "晶片"
       - "华为"
+      - "華為"
       - "比亚迪"
+      - "比亞迪"
       - "宁德时代"
+      - "寧德時代"
       - "新能源汽车"
+      - "新能源汽車"
+      - "电动车"
+      - "電動車"
       - "稀土"
       - "出口管制"
+      - "算力"
+      - "光刻机"
+      - "光刻機"
 
   - id: cross_strait_maritime_security
     label: "Cross-Strait & Maritime Sovereignty"
     weight: 0.95
     category: defence_security
     describe:
-      - PLA military exercises around Taiwan, grey-zone incursions, South China Sea territorial confrontations, and naval power projection
-      - 台海局势, 解放军东部战区, 联合利剑, 南海, 海警, 航母
+      - "PLA military exercises around Taiwan, grey-zone incursions, South China Sea territorial confrontations, and naval power projection"
+      - "台海局势, 臺海局勢, 解放军东部战区, 解放軍東部戰區, 联合利剑, 聯合利劍, 南海, 海警, 航母"
     keywords:
       - "taiwan strait"
       - "joint sword"
@@ -71,18 +95,26 @@ themes:
       - "pla eastern theater"
       - "blockade simulation"
       - "解放军"
+      - "解放軍"
       - "东部战区"
+      - "東部戰區"
       - "台海"
+      - "臺海"
+      - "台湾海峡"
+      - "台灣海峽"
       - "南海"
       - "海警"
+      - "军演"
+      - "軍演"
+      - "航母"
 
   - id: macroeconomic_debt_real_estate
     label: "Macroeconomic Rebalancing, Stimulus & Local Debt"
     weight: 0.9
     category: economics
     describe:
-      - People's Bank of China (PBOC) monetary stimulus, local government debt swaps, property sector stabilization, fiscal bond issuance, and domestic consumption
-      - 中国人民银行, 央行降息, 地方债, 房地产市场, 财政刺激, 超长期特别国债, 通缩
+      - "People's Bank of China (PBOC) monetary stimulus, local government debt swaps, property sector stabilization, fiscal bond issuance, and domestic consumption"
+      - "中国人民银行, 中國人民銀行, 央行降息, 地方债, 地方債, 房地产市场, 房地產, 财政刺激, 超长期特别国债, 通缩"
     keywords:
       - "pboc"
       - "gdp target"
@@ -94,18 +126,26 @@ themes:
       - "consumer spending"
       - "youth unemployment"
       - "人民银行"
+      - "人民銀行"
       - "央行"
       - "地方债"
+      - "地方債"
       - "房地产"
+      - "房地產"
+      - "楼市"
+      - "樓市"
       - "特别国债"
+      - "特別國債"
+      - "通缩"
+      - "通縮"
 
   - id: global_south_brics_diplomacy
     label: "Belt & Road, European Connectivity & Multilateral Diplomacy"
     weight: 0.85
     category: foreign_policy
     describe:
-      - Belt and Road Initiative (BRI) infrastructure and rail corridors (Budapest-Belgrade railway, Middle Corridor), Wang Yi diplomacy, EU-China trade negotiations, BRICS, and SCO summits
-      - 一带一路, 中欧班列, 匈塞铁路, 王毅, 外交部, 中欧关系, 金砖国家, 上合组织
+      - "Belt and Road Initiative (BRI) infrastructure and rail corridors, Wang Yi diplomacy, APEC and multilateral summits, EU-China trade negotiations, BRICS, and SCO summits"
+      - "一带一路, 一帶一路, 中欧班列, 匈塞铁路, 王毅, 外交部, 中欧关系, 中歐關係, 金砖国家, 金磚國家, 上合组织"
     keywords:
       - "belt and road"
       - "brics"
@@ -116,7 +156,335 @@ themes:
       - "strategic partnership"
       - "de-dollarization"
       - "一带一路"
+      - "一帶一路"
       - "王毅"
       - "中欧关系"
+      - "中歐關係"
       - "匈塞铁路"
       - "金砖国家"
+      - "金磚國家"
+      - "上合组织"
+      - "上合組織"
+
+  # Extend shared themes from ../../themes.yaml with Simplified & Traditional Chinese coverage
+  - id: elections
+    describe:
+      - "Electoral campaigns, municipal or legislative voting, voter turnout, ballot counting, and referendums"
+      - "选举, 選舉, 大选, 大選, 补选, 補選, 公投, 投票, 选民, 選民, 选票, 選票"
+    keywords:
+      - "选举"
+      - "選舉"
+      - "大选"
+      - "大選"
+      - "补选"
+      - "補選"
+      - "公投"
+      - "投票"
+      - "选民"
+      - "選民"
+      - "选情"
+      - "選情"
+      - "选票"
+      - "選票"
+
+  - id: diplomacy
+    describe:
+      - "State visits, bilateral summits, foreign minister talks, APEC, ambassadors, strategic partnerships, and bilateral treaties"
+      - "外交, 外长, 外長, 峰会, 峰會, 国事访问, 國事訪問, 双边会谈, 雙邊會談, 战略伙伴, 戰略夥伴, 亚太经合, 亞太經合, 联合声明"
+    keywords:
+      - "外交"
+      - "外长"
+      - "外長"
+      - "峰会"
+      - "峰會"
+      - "国事访问"
+      - "國事訪問"
+      - "双边"
+      - "雙邊"
+      - "会晤"
+      - "會晤"
+      - "会谈"
+      - "會談"
+      - "大使"
+      - "战略伙伴"
+      - "戰略夥伴"
+      - "建交"
+      - "联合声明"
+      - "聯合聲明"
+      - "亚太经合"
+      - "亞太經合"
+      - "亚太"
+      - "亞太"
+      - "联合国"
+      - "聯合國"
+
+  - id: trade
+    describe:
+      - "Tariffs, trade agreements, exports and imports, trade surplus, anti-dumping investigations, and customs"
+      - "贸易, 貿易, 关税, 關稅, 出口, 进口, 進口, 反倾销, 反傾銷, 海关, 海關, 自贸, 自貿, 顺差, 逆差"
+    keywords:
+      - "贸易"
+      - "貿易"
+      - "关税"
+      - "關稅"
+      - "出口"
+      - "进口"
+      - "進口"
+      - "反倾销"
+      - "反傾銷"
+      - "海关"
+      - "海關"
+      - "自贸"
+      - "自貿"
+      - "顺差"
+      - "順差"
+      - "逆差"
+
+  - id: investment
+    describe:
+      - "Foreign direct investment, cross-border capital flows, industrial parks, semiconductors, data centres, and battery factories"
+      - "外资, 外資, 投资, 投資, 投资者, 投資者, 晶圆, 晶圓, 数据中心, 數據中心, 电池厂, 電池廠"
+    keywords:
+      - "外资"
+      - "外資"
+      - "投资"
+      - "投資"
+      - "投资者"
+      - "投資者"
+      - "晶圆"
+      - "晶圓"
+      - "数据中心"
+      - "數據中心"
+      - "电池厂"
+      - "電池廠"
+
+  - id: econ_policy
+    describe:
+      - "Monetary and fiscal policy, central bank rates, exchange rates, inflation, budgets, sovereign debt, and regulatory reform"
+      - "经济政策, 經濟政策, 降准, 降準, 降息, 利率, 汇率, 匯率, 通胀, 通脹, 财政, 財政, 预算, 預算, 国债, 國債"
+    keywords:
+      - "经济政策"
+      - "經濟政策"
+      - "降准"
+      - "降準"
+      - "降息"
+      - "利率"
+      - "汇率"
+      - "匯率"
+      - "通胀"
+      - "通脹"
+      - "财政"
+      - "財政"
+      - "预算"
+      - "預算"
+      - "国债"
+      - "國債"
+
+  - id: security
+    describe:
+      - "Defence posture, military exercises, cybersecurity, national security, aircraft carriers, missiles, and naval patrols"
+      - "国防, 國防, 军事, 軍事, 演习, 演習, 网络安全, 網絡安全, 網路安全, 国家安全, 國家安全, 战机, 戰機, 导弹, 導彈"
+    keywords:
+      - "国防"
+      - "國防"
+      - "军事"
+      - "軍事"
+      - "演习"
+      - "演習"
+      - "网络安全"
+      - "網絡安全"
+      - "網路安全"
+      - "国家安全"
+      - "國家安全"
+      - "战机"
+      - "戰機"
+      - "导弹"
+      - "導彈"
+
+  - id: unrest_conflict
+    describe:
+      - "Protests, strikes, riots, violent clashes, bombings, airstrikes, martial law, curfews, and security crackdowns"
+      - "抗议, 抗議, 示威, 骚乱, 騷亂, 暴动, 暴動, 罢工, 罷工, 冲突, 衝突, 袭击, 襲擊, 爆炸, 空袭, 空襲, 戒严, 戒嚴, 宵禁, 镇压, 鎮壓, 维权, 維權"
+    keywords:
+      - "抗议"
+      - "抗議"
+      - "示威"
+      - "骚乱"
+      - "騷亂"
+      - "暴动"
+      - "暴動"
+      - "罢工"
+      - "罷工"
+      - "冲突"
+      - "衝突"
+      - "袭击"
+      - "襲擊"
+      - "爆炸"
+      - "空袭"
+      - "空襲"
+      - "戒严"
+      - "戒嚴"
+      - "宵禁"
+      - "镇压"
+      - "鎮壓"
+      - "维权"
+      - "維權"
+
+  - id: anticorruption
+    describe:
+      - "Anti-corruption purges, disciplinary probes, bribery, embezzlement, and senior official removals"
+      - "反腐, 反贪, 反貪, 落马, 落馬, 双开, 雙開, 违纪, 違紀, 受贿, 受賄, 贪污, 貪污, 巡视组, 巡視組"
+    keywords:
+      - "反腐"
+      - "反贪"
+      - "反貪"
+      - "落马"
+      - "落馬"
+      - "双开"
+      - "雙開"
+      - "违纪"
+      - "違紀"
+      - "受贿"
+      - "受賄"
+      - "贪污"
+      - "貪污"
+      - "巡视组"
+      - "巡視組"
+
+  - id: energy_infra
+    describe:
+      - "Energy policy, nuclear power, solar and wind renewables, high-speed rail, ports, power grids, and supply chains"
+      - "能源, 核电, 核電, 风电, 風電, 光伏, 高铁, 高鐵, 港口, 供应链, 供應鏈, 电网, 電網"
+    keywords:
+      - "能源"
+      - "核电"
+      - "核電"
+      - "风电"
+      - "風電"
+      - "光伏"
+      - "高铁"
+      - "高鐵"
+      - "港口"
+      - "供应链"
+      - "供應鏈"
+      - "电网"
+      - "電網"
+
+  - id: crime_local
+    describe:
+      - "Individual criminal cases, arrests, court trials, fraud, theft, murder, and police warnings"
+      - "逮捕, 拘留, 起诉, 起訴, 判刑, 诈骗, 詐騙, 盗窃, 盜竊, 抢劫, 搶劫, 谋杀, 謀殺, 警方, 庭审, 庭審, 认罪, 認罪"
+    keywords:
+      - "逮捕"
+      - "拘留"
+      - "起诉"
+      - "起訴"
+      - "判刑"
+      - "诈骗"
+      - "詐騙"
+      - "盗窃"
+      - "盜竊"
+      - "抢劫"
+      - "搶劫"
+      - "谋杀"
+      - "謀殺"
+      - "警方"
+      - "庭审"
+      - "庭審"
+      - "认罪"
+      - "認罪"
+      - "偷拍"
+      - "還押"
+
+  - id: accident_weather
+    describe:
+      - "Traffic accidents, fires, weather forecasts, cold fronts, snow, fog alerts, storms, typhoons, floods, and earthquakes"
+      - "台风, 颱風, 暴雨, 洪水, 洪涝, 洪澇, 寒潮, 冷空气, 冷空氣, 雨雪, 大雾, 大霧, 降温, 降溫, 预警, 預警, 天气, 天氣, 气象, 氣象, 地震, 火灾, 火災, 车祸, 車禍"
+    keywords:
+      - "台风"
+      - "颱風"
+      - "暴雨"
+      - "洪水"
+      - "洪涝"
+      - "洪澇"
+      - "寒潮"
+      - "冷空气"
+      - "冷空氣"
+      - "雨雪"
+      - "大雾"
+      - "大霧"
+      - "降温"
+      - "降溫"
+      - "预警"
+      - "預警"
+      - "天气"
+      - "天氣"
+      - "气象"
+      - "氣象"
+      - "地震"
+      - "火灾"
+      - "火災"
+      - "车祸"
+      - "車禍"
+
+  - id: sport_culture
+    describe:
+      - "Football, basketball, Olympic medals, esports tournaments, cinema, music concerts, theatre forums, and cultural festivals"
+      - "足球, 篮球, 籃球, 乒乓球, 羽毛球, 奥运, 奧運, 青奥, 青奧, 金牌, 夺金, 奪金, 冠军, 冠軍, 联赛, 聯賽, 世界杯, 世界盃, 锦标赛, 錦標賽, 总决赛, 總決賽, 电影, 電影, 剧院, 劇院, 魔术, 魔術, 体育, 體育"
+    keywords:
+      - "足球"
+      - "篮球"
+      - "籃球"
+      - "乒乓球"
+      - "羽毛球"
+      - "网球"
+      - "網球"
+      - "奥运"
+      - "奧運"
+      - "青奥"
+      - "青奧"
+      - "金牌"
+      - "银牌"
+      - "銀牌"
+      - "铜牌"
+      - "銅牌"
+      - "奖牌"
+      - "獎牌"
+      - "夺金"
+      - "奪金"
+      - "摘金"
+      - "中国队"
+      - "中國隊"
+      - "冠军"
+      - "冠軍"
+      - "决赛"
+      - "決賽"
+      - "半决赛"
+      - "亞運"
+      - "亚运"
+      - "全运"
+      - "全運"
+      - "冬奥"
+      - "冬奧"
+      - "世锦赛"
+      - "世錦賽"
+      - "联赛"
+      - "聯賽"
+      - "世界杯"
+      - "世界盃"
+      - "锦标赛"
+      - "錦標賽"
+      - "男足"
+      - "女足"
+      - "总决赛"
+      - "總決賽"
+      - "电影"
+      - "電影"
+      - "演唱会"
+      - "演唱會"
+      - "剧院"
+      - "劇院"
+      - "魔术"
+      - "魔術"
+      - "体育"
+      - "體育"

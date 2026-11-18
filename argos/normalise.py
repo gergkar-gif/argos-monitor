@@ -16,16 +16,23 @@ WIRE_THRESHOLD = 0.35  # lower threshold when text explicitly credits a wire age
 WIRE_CREDIT_RE = re.compile(
     r"\b(?:theo\s+ttxvn|nguồn:\s*ttxvn|\(ttxvn\)|theo\s+vna|\(vna\)|"
     r"selon\s+l'aps|\(aps\)|\(belta\)|\(белта\)|\(тасс\)|\(ria\s+novosti\)|\(риа\s+новости\)|"
-    r"\(reuters\)|\(ap\)|\(afp\)|\bafp\b|\breuters\b)\b",
+    r"\(reuters\)|\(ap\)|\(afp\)|\bafp\b|\breuters\b|\(xinhua\)|\(cns\))\b|"
+    r"(?:新华社|新華社|中新社|据新华社|據新華社|央视新闻|央視新聞)",
     re.I
 )
+_CJK_SPAN_RE = re.compile(r"[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff]+")
 
 
 def _hashes(text):
-    words = re.findall(r"\w+", text.lower())
+    tokens = []
+    for tok in re.findall(r"\w+", text.lower()):
+        if _CJK_SPAN_RE.search(tok) and len(tok) > 1:
+            tokens.extend(tok[i:i + 2] for i in range(len(tok) - 1))
+        else:
+            tokens.append(tok)
     out = set()
-    for i in range(len(words) - SHINGLE + 1):
-        h = int.from_bytes(hashlib.md5(" ".join(words[i:i + SHINGLE]).encode()).digest()[:8], "big")
+    for i in range(len(tokens) - SHINGLE + 1):
+        h = int.from_bytes(hashlib.md5(" ".join(tokens[i:i + SHINGLE]).encode()).digest()[:8], "big")
         if h % SAMPLE == 0:
             out.add(h)
     return out

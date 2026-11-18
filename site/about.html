@@ -138,11 +138,11 @@
       <aside class="colophon" aria-label="Project summary">
         <dl class="facts">
           <div><dt>Coverage</dt><dd>99 country desks</dd></div>
-          <div><dt>Sources</dt><dd>1,900 outlets (2,079 feeds)</dd></div>
+          <div><dt>Sources</dt><dd>1,937 outlets (2,119 feeds)</dd></div>
           <div><dt>Languages</dt><dd>10 offline MarianMT + browser</dd></div>
         </dl>
         <p class="author-note">Built by <strong>Károly Gergely</strong> in Python, SQLite, ONNX Runtime, and vanilla JS, automated on GitHub Actions and served on Cloudflare Pages. <a href="https://github.com/gergkar-gif/argos-monitor" target="_blank" rel="noopener noreferrer">Source on GitHub (MIT)</a>.</p>
-        <p class="fine" style="margin-top:0"><a href="#sources">Browse all 99 country desks &amp; 1,900 outlets &rarr;</a></p>
+        <p class="fine" style="margin-top:0"><a href="#sources">Browse all 99 country desks &amp; 1,937 outlets &rarr;</a></p>
       </aside>
     </div>
   </section>
@@ -162,7 +162,7 @@
     <h2>How the 11-stage pipeline works</h2>
     <p>Scheduled GitHub Actions workflows run the full deep-extraction pipeline every 12 hours (09:17 and 21:17 UTC), paired with 4-hourly fast feed snapshots (01:00–17:00 UTC) that re-cluster, re-rank, and publish updated country briefs to Cloudflare Pages 6 times a day, plus a 2-hourly 0–24h live alert updater (<code>alerts.yml</code>) that refreshes crisis, conflict, and sensor alerts around the clock in under 45 seconds. Desks combine public broadcasters, statutory wires, broadsheets of record, financial press, investigative centers, regional dailies, and high-reach tabloids across direct RSS and country-edition Google News batches.</p>
     <div class="pipeline">
-      <div class="step"><b>01 · Ingest</b><span>Polls 2,079 RSS/Atom feeds via HTTP 304 conditional GETs and ingests verified GDELT 2.0 conflict URLs into SQLite.</span></div>
+      <div class="step"><b>01 · Ingest</b><span>Polls 2,119 RSS/Atom feeds via HTTP 304 conditional GETs and ingests verified GDELT 2.0 conflict URLs into SQLite.</span></div>
       <div class="step"><b>02 · Extract</b><span>Pulls full article text with Trafilatura for top multi-outlet stories in round-robin order across all 99 desks, followed by a second shingle deduplication pass.</span></div>
       <div class="step"><b>03 · Normalise</b><span>Applies Unicode NFC normalisation (essential for Vietnamese diacritics and Khmer) and strips RSS emojis.</span></div>
       <div class="step"><b>04 · Relevance</b><span>Drops sports/lifestyle noise and checks country mentions on global feeds.</span></div>
@@ -354,7 +354,7 @@
   <section>
     <h2>Monitored outlets &amp; source directory</h2>
     <details class="fold" id="sources">
-      <summary>Browse all 99 country desks and filter 1,900 catalogued sources (2,079 feeds)</summary>
+      <summary>Browse all 99 country desks and filter 1,937 catalogued sources (2,119 feeds)</summary>
       <div class="fold-body">
         <p>Every publication monitored across 99 country desks, classified by reporting scope, alignment, political leaning, factuality, and state affiliation.</p>
         <form class="slip notranslate" translate="no" aria-label="Filter sources" onsubmit="event.preventDefault()" style="margin-top: 1rem;">
@@ -381,8 +381,8 @@
     </details>
   </section>
 </main>
-<script src="data/index.js"></script>
-<script src="data/sources.js"></script>
+<script src="data/index.js?v=20261117T091526Z"></script>
+<script src="data/sources.js?v=20261117T091526Z"></script>
 <script src="shared.js?v=4.5"></script>
 <script>
 (() => {
@@ -457,7 +457,7 @@
     const telemBar = telem ? el('div', { class: 'monitor-bar', style: 'margin: 0.5rem 0 1.25rem; padding: 0.65rem 1rem;' },
       el('div', { style: 'display: flex; flex-wrap: wrap; gap: 1.25rem; align-items: center;' },
         el('span', { class: 'typed', text: `${allCountries.length} Country Desks` }),
-        el('span', { class: 'typed', text: `${totalFeeds ? totalFeeds.toLocaleString() : '2,079'} Live Feeds Polled` }),
+        el('span', { class: 'typed', text: `${totalFeeds ? totalFeeds.toLocaleString() : '2,119'} Live Feeds Polled` }),
         el('span', { class: 'typed', text: `${totalArticles ? totalArticles.toLocaleString() : '35,000+'} Articles Corroborated` }),
         raw.generated_at && el('span', { class: 'meta', text: `Cycle: ${new Date(raw.generated_at).toLocaleDateString()}` })
       )
@@ -483,6 +483,7 @@
       high: 'High',
       mostly_factual: 'Mostly Factual',
       mixed: 'Mixed',
+      low: 'Low',
     }[f] || (f && f !== 'unrated' ? f : '—'));
 
     // No country and no search: a short region-grouped picker instead of 99 full tables.
@@ -531,7 +532,7 @@
   render();
 })();
 </script>
-<script src="data/crisis.js"></script>
+<script src="data/crisis.js?v=20261117T091526Z"></script>
 <script src="nav.js?v=4.2"></script>
 </body>
 </html>

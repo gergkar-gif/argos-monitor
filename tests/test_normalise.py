@@ -92,6 +92,24 @@ class TestNormaliseSyndication(unittest.TestCase):
         r21 = self.db.execute("SELECT syndicated_of FROM article WHERE id=21").fetchone()
         self.assertIsNone(r21["syndicated_of"], "Articles on different country desks must not be marked syndicated_of across countries")
 
+    def test_cjk_wire_reprint_marked_syndicated(self):
+        wire_body = (
+            "新华社北京11月17日电 中国外交部发言人17日在例行记者会上表示，中方一贯秉持相互尊重、"
+            "和平共处、合作共赢原则处理中美关系，推动亚太经合组织深圳峰会取得务实合作成果。"
+            "发言人强调，各国应当共同维护多边贸易体制与全球产业链供应链稳定畅通。"
+        )
+        self.db.execute("INSERT INTO source VALUES ('xinhua', 'Xinhua', 'official', 1, 0)")
+        self.db.execute("INSERT INTO source VALUES ('portal', 'Sohu', 'media', 0, 0)")
+        self.db.execute("INSERT INTO article (id, source_id, title, text, published_at) "
+                        "VALUES (30, 'xinhua', '外交部回应深圳APEC合作', ?, '2026-11-17T08:00:00Z')", (wire_body,))
+        reprint = "据新华社报道，" + wire_body
+        self.db.execute("INSERT INTO article (id, source_id, title, text, published_at) "
+                        "VALUES (31, 'portal', '中方回应亚太经合组织峰会', ?, '2026-11-17T08:20:00Z')", (reprint,))
+
+        normalise.run(self.db)
+        r31 = self.db.execute("SELECT syndicated_of FROM article WHERE id=31").fetchone()
+        self.assertEqual(r31["syndicated_of"], 30, "Chinese Xinhua reprint must be marked as syndicated")
+
 
 if __name__ == "__main__":
     unittest.main()

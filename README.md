@@ -6,7 +6,7 @@
 
 <p align="center">
   <strong>Open-source multilingual media &amp; crisis intelligence monitor for foreign-affairs analysts</strong><br>
-  <em>99 country desks · 1,900 sources (2,079 feeds) · Deterministic ONNX clustering · Syndication deduplication · State-media tagging · Offline MarianMT translation · Zero LLM hallucinations</em>
+  <em>99 country desks · 1,937 sources (2,119 feeds) · Deterministic ONNX clustering · Syndication deduplication · State-media tagging · Offline MarianMT translation · Zero LLM hallucinations</em>
 </p>
 
 <p align="center">
@@ -38,7 +38,7 @@ A scheduled GitHub Actions workflow runs every 12 hours (at 09:17 and 21:17 UTC)
 
 ```mermaid
 flowchart LR
-    A["01 · Ingest<br/>2,079 RSS & Google News feeds"] --> B["02 · Extract<br/>Round-robin Trafilatura full-text"]
+    A["01 · Ingest<br/>2,119 RSS & Google News feeds"] --> B["02 · Extract<br/>Round-robin Trafilatura full-text"]
     B --> C["03 · Normalise<br/>Unicode NFC"]
     C --> D["04 · Relevance<br/>Section & mention gate"]
     D --> E["05 · Embed<br/>ONNX multilingual-e5-small"]
@@ -112,8 +112,8 @@ Each monitored country is defined declaratively in `countries/<id>/` with zero c
   - **Albania** (`countries/albania/`) — State wire (*ATSH*), investigative center (*Reporter.al / BIRN*), leading broadcasters and dailies (*BalkanWeb*, *Top Channel*, *Gazeta Panorama*, *Shqiptarja.com*, *Lapsi.al*, *Euronews Albania*), financial magazine (*Revista Monitor*), and English daily (*Albanian Daily News*) (`sq` / `en`).
   - **Kosovo** (`countries/kosovo/`) — Paper of record (*Koha Ditore*), public broadcaster (*RTK*), digital media (*Gazeta Express*, *Kallxo*), and North Mitrovica local coverage (*KoSSev*) (`sq` / `sr` / `en`).
 - **Eastern Europe (8 Desks):**
-  - **Russia** (`countries/russia/`) — State wire agencies and domestic press (*TASS*, *RIA Novosti*, *Interfax*, *Kommersant*, *RBC*, *Vedomosti*, *Izvestia*, *Fontanka*) contrasted against exiled independent & investigative journalism (*Meduza*, *Novaya Gazeta Europe*, *The Moscow Times*, *The Bell*, *IStories*, *Agentstvo*, *Proekt*, *Mediazona*, *Radio Svoboda*) (`ru` / `en`).
-  - **Ukraine** (`countries/ukraine/`) — State wire & broadcaster (*Ukrinform*, *Suspilne*), independent wires (*Interfax-Ukraine*, *UNIAN*), leading wartime, investigative & defense press (*Ukrainska Pravda*, *The Kyiv Independent*, *NV*, *LB.ua*, *ZN.UA*, *Babel*, *Hromadske*, *Bihus.Info*, *Detector Media*, *Militarnyi*, *European Pravda*), and *Radio Svoboda* (`uk` / `en`).
+  - **Russia** (`countries/russia/`) — Statutory state wires & official portals (*TASS*, *RIA Novosti*, *Rossiyskaya Gazeta*, *Government.ru*, *Central Bank*, *Lenta.ru*, *Izvestia*) and commercial/business press (*Interfax*, *Kommersant*, *RBC*, *Vedomosti*, *BFM.ru*) contrasted against exiled independent & investigative newsrooms and public broadcasters (*Meduza*, *Novaya Gazeta Europe*, *The Moscow Times*, *The Insider*, *OVD-Info*, *Verstka*, *The Bell*, *IStories*, *Holod*, *Agentstvo*, *Proekt*, *Mediazona*, *Paperpaper*, *Radio Svoboda*, *Current Time*, *BBC News Russian*, *DW Russian*, *Fontanka*, *7x7*) (`ru` / `en`).
+  - **Ukraine** (`countries/ukraine/`) — Statutory wire & executive portal (*Ukrinform*, *Cabinet of Ministers*), public broadcasters (*Suspilne*, *Radio Svoboda*, *Krym.Realii*, *BBC News Ukrainian*), independent wires (*Interfax-Ukraine*, *UNIAN*, *UNN*), leading wartime, investigative & defense press (*Ukrainska Pravda*, *The Kyiv Independent*, *Kyiv Post*, *Euromaidan Press*, *NV*, *LB.ua*, *ZN.UA*, *Babel*, *Hromadske*, *Slidstvo.Info*, *Texty.org.ua*, *Bihus.Info*, *Detector Media*, *Militarnyi*, *European Pravda*, *Rubryka*), and national portals (*24 Kanal*, *Espreso TV*, *Fakty*, *Glavred*, *RBC-Ukraine*) (`uk` / `en`).
   - **Belarus** (`countries/belarus/`) — State wire (*BelTA*) alongside exiled independent & regional newsrooms (*Zerkalo.io*, *Nasha Niva*, *Charter'97*, *REFORM.news*, *Salidarnasts*, *Euroradio*, *Belsat*, *Radio Svaboda*, *Radio Racyja*, *Pozirk*, *Hrodna.life*) (`be` / `ru` / `en`).
   - **Moldova** (`countries/moldova/`) — Investigative & independent Chișinău media (*Ziarul de Gardă*, *RISE Moldova*, *NewsMaker*, *TV8*, *PRO TV Chișinău*, *Jurnal.md*, *AGORA*), national & financial portals (*Deschide.md*, *Point.md*, *UNIMEDIA*, *Bani.md*, *Mold-Street*), regional press (*SP Bălți*, *Nokta*), and *Moldpres* / *TRM* (`ro` / `ru` / `en`).
   - **Romania** (`countries/romania/`) — Statutory/commercial wires (*Agerpres*, *News.ro*, *Mediafax*), broadsheets & portals (*HotNews.ro*, *Adevărul*, *G4Media*, *Libertatea*, *Cotidianul*), investigative newsrooms (*Recorder*, *PressOne*), financial press (*Ziarul Financiar*, *Profit.ro*, *Economedia*), broadcast (*Digi24*, *PRO TV*, *Europa FM*, *TVR Info*), and *Romania Insider* (`ro` / `en`).
@@ -152,7 +152,7 @@ Each monitored country is defined declaratively in `countries/<id>/` with zero c
   - **Bangladesh** (`countries/bangladesh/`) — National papers of record (*The Daily Star*, *Dhaka Tribune*), state agency (*BSS*), and interim governance reporting (`en`).
   - **Sri Lanka** (`countries/sri_lanka/`) — National papers of record (*Daily FT*, *Daily Mirror*, *The Island*, *Ada Derana*), and Colombo economic recovery reporting (`en`).
 - **East Asia (5 Desks):**
-  - **China** (`countries/china/`) — Statutory state media (*Xinhua*, *Global Times*, *China Daily*) contrasted with Hong Kong papers of record (*SCMP*), financial dailies (*Caixin*), and diaspora coverage (*Lianhe Zaobao*, *BBC Chinese*) (`zh` / `en`).
+  - **China** (`countries/china/`) — Statutory state wires & official portals (*Xinhua*, *Global Times*, *China Daily*, *CGTN*, *ECNS / CNS*, *RTHK*) contrasted with Hong Kong broadsheets & independent outlets (*SCMP*, *HKFP*, *InMediaHK*, *The Witness*), mainland financial & tech press (*Caixin Global*, *TechNode*, *Pandaily*), and overseas Chinese & specialist outlets (*BBC Chinese*, *DW Chinese*, *RFI Chinese*, *RFA Mandarin*, *VOA Chinese*, *Initium Media*, *Lianhe Zaobao*, *China Digital Times*, *CNA Cross-Strait*, *Pekingnology*, *China Media Project*) (`zh` / `en`).
   - **North Korea** (`countries/north_korea/`) — Specialist independent monitoring networks (*NK News*, *Daily NK*, *RFA Korean*) tracking nuclear proliferation, troop deployments, and regime policy (`ko` / `en`).
   - **Japan** (`countries/japan/`) — Leading national dailies (*The Mainichi*, *Asahi Shimbun*, *The Japan Times*), state/independent wires (*Kyodo News*), and East Asian security coverage (`ja` / `en`).
   - **South Korea** (`countries/south_korea/`) — Papers of record (*Dong-A Ilbo*, *Chosun Ilbo*, *The Korea Herald*, *The Korea Times*), state agency (*Yonhap*), and inter-Korean affairs (`ko` / `en`).

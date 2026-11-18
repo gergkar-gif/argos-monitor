@@ -27,16 +27,16 @@ CATEGORIES = ["internal_politics", "economics", "foreign_policy", "defence_secur
 MAX_ARTICLES_LISTED = 12
 
 DISASTER_RULES = [
-    ("Storm & Cyclone", r"\b(typhoon|cyclone|hurricane|tropical storm|tornado|gale|bão|siêu bão|áp thấp nhiệt đới|lốc xoáy|taufan|badai|bagyo|พายุ|မုန်တိုင်း|vihar|orkán|burza|tufão|ciclone|fırtına|kasırga)\b"),
-    ("Flood & Landslide", r"\b(flood|floods|flooding|flash flood|landslide|mudslide|inundation|lũ|lũ lụt|ngập lụt|ngập sâu|sạt lở|triều cường|banjir|longsor|pagbaha|baha sa|guho|น้ำท่วม|ดินถล่ม|ရေကြီး|árvíz|powódź|poplava|sel|heyelan|enchente|deslizamento)\b"),
-    ("Earthquake & Volcano", r"\b(earthquake|tremor|seismic|tsunami|volcano|volcanic|eruption|động đất|núi lửa|sóng thần|gempa|gunung berapi|lindol|bulkan|แผ่นดินไหว|ငလျင်|földrengés|trzęsienie ziemi|zemljotres|deprem|yanardağ|terremoto|zəlzələ)\b"),
-    ("Wildfire & Drought", r"\b(wildfire|forest fire|bushfire|drought|heatwave|cháy rừng|hạn hán|kebakaran hutan|kekeringan|ไฟป่า|ภัยแล้ง|erdőtűz|aszály|pożar lasu|suša|orman yangını|kuraklık|incêndio florestal|seca)\b"),
+    ("Storm & Cyclone", r"(?:\b(typhoon|cyclone|hurricane|tropical storm|tornado|gale|bão|siêu bão|áp thấp nhiệt đới|lốc xoáy|taufan|badai|bagyo|พายุ|မုန်တိုင်း|vihar|orkán|burza|tufão|ciclone|fırtına|kasırga)\b|台风|颱風)"),
+    ("Flood & Landslide", r"(?:\b(flood|floods|flooding|flash flood|landslide|mudslide|inundation|lũ|lũ lụt|ngập lụt|ngập sâu|sạt lở|triều cường|banjir|longsor|pagbaha|baha sa|guho|น้ำท่วม|ดินถล่ม|ရေကြီး|árvíz|powódź|poplava|sel|heyelan|enchente|deslizamento)\b|暴雨|洪水|洪涝|洪澇|山体滑坡|山泥傾瀉|泥石流)"),
+    ("Earthquake & Volcano", r"(?:\b(earthquake|tremor|seismic|tsunami|volcano|volcanic|eruption|động đất|núi lửa|sóng thần|gempa|gunung berapi|lindol|bulkan|แผ่นดินไหว|ငလျင်|földrengés|trzęsienie ziemi|zemljotres|deprem|yanardağ|terremoto|zəlzələ)\b|地震|海啸|海嘯|火山喷发|火山噴發)"),
+    ("Wildfire & Drought", r"(?:\b(wildfire|forest fire|bushfire|drought|heatwave|cháy rừng|hạn hán|kebakaran hutan|kekeringan|ไฟป่า|ภัยแล้ง|erdőtűz|aszály|pożar lasu|suša|orman yangını|kuraklık|incêndio florestal|seca)\b|山火|森林火灾|森林火災|旱灾|旱災)"),
 ]
 
 VIOLENCE_RULES = [
-    ("Insurgency & Terror", r"\b(terror|terrorist|terrorism|insurgent|insurgency|militant|militants|boko haram|iswap|al-shabaab|isis|daesh|jihad|jihadist|taliban|houthi|houthis|hezbollah|hamas|ied|suicide bomb|car bomb|ambush|kidnap|kidnapped|abduct|abducted|hostage|massacre|khủng bố|bắt cóc|phiến quân)\b"),
-    ("Armed Clash & Strike", r"\b(airstrike|air strike|drone strike|missile strike|shelling|shelled|mortar|artillery|armed clash|clashes|firefight|gunbattle|gunmen|bombardment|incursion|ceasefire violation|cross-border fire|tập kích|không kích|pháo kích|giao tranh)\b"),
-    ("Civil Unrest & Crackdown", r"\b(riot|riots|violent protest|clashes with police|tear gas|water cannon|curfew|martial law|coup|state of emergency|crackdown|mass arrest|looting|arson|bạo loạn|biểu tình|thiết quân luật|đảo chính)\b"),
+    ("Insurgency & Terror", r"(?:\b(terror|terrorist|terrorism|insurgent|insurgency|militant|militants|boko haram|iswap|al-shabaab|isis|daesh|jihad|jihadist|taliban|houthi|houthis|hezbollah|hamas|ied|suicide bomb|car bomb|ambush|kidnap|kidnapped|abduct|abducted|hostage|massacre|khủng bố|bắt cóc|phiến quân)\b|恐怖袭击|恐怖襲擊|恐袭|恐襲|爆炸袭击|爆炸襲擊|人质|人質)"),
+    ("Armed Clash & Strike", r"(?:\b(airstrike|air strike|drone strike|missile strike|shelling|shelled|mortar|artillery|armed clash|clashes|firefight|gunbattle|gunmen|bombardment|incursion|ceasefire violation|cross-border fire|tập kích|không kích|pháo kích|giao tranh)\b|空袭|空襲|炮击|砲擊|交火|武装冲突|武裝衝突)"),
+    ("Civil Unrest & Crackdown", r"(?:\b(riot|riots|violent protest|clashes with police|tear gas|water cannon|curfew|martial law|coup|state of emergency|crackdown|mass arrest|looting|arson|bạo loạn|biểu tình|thiết quân luật|đảo chính)\b|暴动|暴動|骚乱|騷亂|镇压|鎮壓|宵禁|戒严|戒嚴|政变|政變)"),
 ]
 VIOLENCE_EXCLUDE = re.compile(
     r"\b(festival|dance|theatre|theater|concert|music|album|song|singer|film|movie|championship|tournament|league|match|coach|player|stadium|actor|actress|football|soccer|basketball|baseball|cricket|tennis|golf)\b",

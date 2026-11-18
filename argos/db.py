@@ -42,7 +42,7 @@ def _columns(db, table):
 
 def connect():
     DATA_DIR.mkdir(parents=True, exist_ok=True)
-    db = sqlite3.connect(DB_PATH)
+    db = sqlite3.connect(DB_PATH, timeout=30.0)
     db.row_factory = sqlite3.Row
     cols = _columns(db, "story")
     if cols and "window_days" not in cols:      # stories are derived data: rebuilt by the cluster stage

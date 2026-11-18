@@ -1332,9 +1332,9 @@
   const COMMON_PARTNERS = [
     { id: 'eu', name: 'European Union', terms: ['european union', 'eu', 'brussels', 'european commission', 'european council', 'európai unió', 'brüsszel', 'európai bizottság', 'bruxelles', 'liên minh châu âu'] },
     { id: 'us', name: 'United States', terms: ['united states', 'usa', 'u.s.', 'washington', 'white house', 'amerika', 'egyesült államok', 'trump', 'américain', 'mỹ', 'hoa kỳ'] },
-    { id: 'china', name: 'China', terms: ['china', 'chinese', 'beijing', 'kína', 'kínai', 'peking', 'xi jinping', 'chine', 'pekin', 'trung quốc'] },
-    { id: 'russia', name: 'Russia', terms: ['russia', 'russian', 'moscow', 'oroszország', 'orosz', 'moszkva', 'kremlin', 'kreml', 'putin', 'putgyin', 'россия', 'nga'] },
-    { id: 'ukraine', name: 'Ukraine', terms: ['ukraine', 'ukrainian', 'kyiv', 'ukrajna', 'ukrán', 'kijev', 'kárpátalja', 'zelensky', 'zelenskyy', 'zelenszkij', 'україна'] },
+    { id: 'china', name: 'China', terms: ['china', 'chinese', 'beijing', 'kína', 'kínai', 'peking', 'xi jinping', 'chine', 'pekin', 'trung quốc', '中国', '中國', '习近平', '習近平', '北京'] },
+    { id: 'russia', name: 'Russia', terms: ['russia', 'russian', 'moscow', 'oroszország', 'orosz', 'moszkva', 'kremlin', 'kreml', 'putin', 'putyin', 'росси', 'москв', 'кремл', 'путин', 'nga'] },
+    { id: 'ukraine', name: 'Ukraine', terms: ['ukraine', 'ukrainian', 'kyiv', 'ukrajna', 'ukrán', 'kijev', 'kárpátalja', 'zelensky', 'zelenskyy', 'zelenszkij', 'україн', 'київ', 'києв', 'зеленськ'] },
     { id: 'germany', name: 'Germany', terms: ['germany', 'german', 'berlin', 'németország', 'német', 'merz', 'deutschland'] },
     { id: 'uk', name: 'United Kingdom', terms: ['united kingdom', 'britain', 'british', 'london', 'egyesült királyság', 'nagy-britannia', 'anh quốc'] },
     { id: 'turkey', name: 'Turkey', terms: ['turkey', 'turkiye', 'turkish', 'ankara', 'törökország', 'török', 'erdogan', 'erdoğan', 'türkiye'] },
@@ -1363,14 +1363,15 @@
 
   function getCountryTerms(id) {
     const c = index.countries.find((x) => x.id === id);
+    const keepTerm = (x) => x && (x.length > 2 || (x.length >= 2 && /[\u3040-\u9fff]/.test(x))) && !(id === 'laos' && x === 'lao');
     if (c) {
       const list = [fold(c.name), fold(c.id), ...(c.mentions || []).map(fold)];
-      return [...new Set(list.filter((x) => x && x.length > 2 && !(id === 'laos' && x === 'lao')))];
+      return [...new Set(list.filter(keepTerm))];
     }
     const p = COMMON_PARTNERS.find((x) => x.id === id);
     if (p) {
       const list = [fold(p.name), fold(p.id), ...p.terms.map(fold)];
-      return [...new Set(list.filter((x) => x && x.length > 2 && !(id === 'laos' && x === 'lao')))];
+      return [...new Set(list.filter(keepTerm))];
     }
     if (id) {
       return [fold(id)];

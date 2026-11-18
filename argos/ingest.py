@@ -141,18 +141,27 @@ def load_registry(db):
     reconcile_ratings(db)
 
 
-_GNEWS_SEM = threading.Semaphore(2)
+_GNEWS_SEM = threading.Semaphore(1)
 
 
 def _fetch_one_feed(f):
     try:
         etag = f["etag"] if "etag" in f.keys() else None
         last_mod = f["last_modified"] if "last_modified" in f.keys() else None
-        if "news.google.com" in (f["url"] or ""):
+        url = f["url"] or ""
+        if "news.google.com" in url:
             with _GNEWS_SEM:
-                time.sleep(0.25)
-                return f["id"], get(f["url"], timeout=10, etag=etag, last_modified=last_mod, return_headers=True)
-        return f["id"], get(f["url"], timeout=10, etag=etag, last_modified=last_mod, return_headers=True)
+                time.sleep(0.5)
+                res = get(url, timeout=15, etag=etag, last_modified=last_mod, return_headers=True)
+                if res[0] == 429:
+                    time.sleep(2.0)
+                    res = get(url, timeout=15, etag=etag, last_modified=last_mod, return_headers=True)
+                return f["id"], res
+        res = get(url, timeout=15, etag=etag, last_modified=last_mod, return_headers=True)
+        if res[0] == 0:
+            time.sleep(1.0)
+            res = get(url, timeout=15, etag=etag, last_modified=last_mod, return_headers=True)
+        return f["id"], res
     except Exception:
         return f["id"], (0, b"", {})
 

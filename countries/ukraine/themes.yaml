@@ -1,37 +1,86 @@
 # Ukraine's additions to the shared themes (../../themes.yaml).
+# Remember policy._matcher: len <= 7 matches whole words only; len > 7 matches word-start prefixes.
 themes:
+  - id: elections
+    describe:
+      - Ukrainian presidential, parliamentary, and local elections, Central Election Commission (CVK), voting, referendums, and wartime electoral law
+      - вибори в Україні, президентські вибори, парламентські вибори, ЦВК, голосування, референдум, виборчий кодекс
+    keywords: ["вибори", "виборів", "виборах", "виборам", "виборчий", "виборча", "голосуван", "референдум", "бюлетень", "цвк"]
+
   - id: party_gov
     label: Wartime Governance, Presidential Administration & Anti-Corruption
     weight: 1.0
     category: internal_politics
     describe:
-      - President Volodymyr Zelenskyy, Office of the President under Andriy Yermak, cabinet of ministers led by Denys Shmyhal, Verkhovna Rada legislation, anti-corruption enforcement by NABU and SAPO
-      - Володимир Зеленський, Офіс Президента, Андрій Єрмак, Денис Шмигаль, уряд, Верховна Рада, НАБУ, САП, антикорупція, воєнний стан
-    keywords: ["зеленський", "zelensky", "zelenskyy", "єрмак", "yermak", "шмигаль", "shmyhal", "рада", "уряд", "набу", "сап", "корупція", "воєнний стан"]
+      - President Volodymyr Zelenskyy, Office of the President under Andriy Yermak, cabinet of ministers led by Denys Shmyhal, Verkhovna Rada legislation, anti-corruption enforcement by NABU, SAPO, and HACC
+      - Володимир Зеленський, Офіс Президента, Андрій Єрмак, Денис Шмигаль, уряд, Верховна Рада, НАБУ, САП, ВАКС, антикорупція, воєнний стан
+    keywords: ["зеленськ", "zelensky", "zelenskyy", "єрмак", "єрмака", "yermak", "шмигаль", "шмигаля", "shmyhal", "свириденк", "рада", "ради", "раду", "уряд", "уряду", "урядом", "кабмін", "кабміну", "набу", "сап", "вакс", "корупція", "корупції", "корупцію", "корупційн", "воєнний стан", "воєнного стану"]
 
   - id: defence_security
     label: Frontline Operations, Air Defense & Long-Range Strikes
     weight: 1.0
     category: defence_security
     describe:
-      - General Staff operations under Commander Oleksandr Syrskyi, battles in Pokrovsk, Kupiansk, Toretsk, and Kursk, air defense against missile and drone barrages (Patriot, NASAMS), long-range strikes
-      - Генеральний штаб, Олександр Сирський, бойові дії, фронт, Покровськ, Куп'янськ, Курськ, ППО Patriot, далекобійні удари, дрони, зброя
-    keywords: ["зсу", "сирський", "syrskyi", "покровськ", "pokrovsk", "куп'янськ", "курськ", "kursk", "фронт", "ппо", "patriot", "ракет", "дрон", "атака", "зброя"]
+      - General Staff operations under Commander Oleksandr Syrskyi, Kyrylo Budanov, battles in Pokrovsk, Kupiansk, Toretsk, and Kursk, air defense against missile and drone barrages (Patriot, NASAMS), long-range strikes
+      - Генеральний штаб ЗСУ, Олександр Сирський, Кирило Буданов, бойові дії, фронт, Покровськ, Куп'янськ, Курськ, ППО Patriot, далекобійні удари, дрони, БпЛА, зброя
+    keywords: ["зсу", "сирський", "сирського", "syrskyi", "буданов", "буданова", "budanov", "покровськ", "куп'янськ", "курськ", "курська", "курську", "kursk", "фронт", "фронту", "фронті", "ппо", "patriot", "ракета", "ракети", "ракету", "ракет", "ракетний", "ракетами", "дрон", "дрона", "дрони", "дронів", "дронами", "дроном", "drone", "drones", "strike", "strikes", "struck", "attack", "attacks", "attacked", "missile", "missiles", "air defense", "air defence", "shelling", "crimea", "crimean", "kerch", "frontline", "бпла", "безпілот", "атака", "атаки", "атаку", "атакувал", "удар", "удари", "удару", "ударів", "ударом", "зброя", "зброї", "зброю", "укроборон", "боєзіткнен", "мобілізац", "обмін полон"]
+
+  - id: unrest_conflict
+    describe:
+      - Russian missile and drone barrages on Ukrainian cities, shelling, explosions, frontline clashes, casualties, and protests
+      - російська атака, обстріл, вибух, влучання, удар дронами, ракетний удар, загиблі, поранені, тривога
+    keywords: ["обстріл", "обстріли", "обстрілів", "обстріля", "вибух", "вибухи", "вибуху", "влучання", "загиблі", "загинули", "поранені", "поранено", "постраждал", "ракетний", "дронами", "дронів", "бпла", "повітрян", "протест"]
 
   - id: diplomacy
     label: Peace Formula, EU Accession, Transcarpathia Minority Rights & Neighbour Relations
     weight: 1.0
     category: foreign_policy
     describe:
-      - Ukraine peace formula, European Union accession negotiations, national minority language and education rights in Transcarpathia (Zakarpattia / Uzhhorod), bilateral relations with Hungary, Slovakia, Poland, and NATO allies
-      - Формула миру, переговори про вступ до ЄС, права національних меншин, Закарпаття, Ужгород, угорська меншина, безпекові угоди, НАТО, США, Польща, Угорщина, Словаччина
-    keywords: ["формула миру", "peace formula", "єс", "nato", "нато", "євросоюз", "саміт", "допомога", "союзник", "дипломат", "закарпаття", "ужгород", "нацменшин", "угорщин", "transcarpathia", "zakarpattia"]
+      - Ukraine peace formula, European Union accession negotiations, Foreign Minister Andrii Sybiha, national minority language and education rights in Transcarpathia (Zakarpattia / Uzhhorod), bilateral relations with Hungary, Slovakia, Poland, and NATO allies
+      - Формула миру, переговори про вступ до ЄС, Андрій Сибіга, права національних меншин, Закарпаття, Ужгород, угорська меншина, безпекові угоди, НАТО, США, Польща, Угорщина, Словаччина
+    keywords: ["формула миру", "peace formula", "сибіга", "сибіги", "sybiha", "умєров", "умєрова", "єс", "nato", "нато", "євросоюз", "єврокоміс", "саміт", "саміту", "допомога", "допомоги", "допомогу", "союзник", "дипломат", "переговор", "закарпат", "ужгород", "нацменшин", "угорщина", "угорщини", "угорщині", "угорська", "угорські", "угорсько", "польща", "польщі", "польщею", "transcarpathia", "zakarpattia"]
+
+  - id: trade
+    describe:
+      - Grain corridor maritime exports, EU agricultural quotas and tariffs, cross-border freight, customs, sanctions enforcement
+      - експорт зерна, імпорт, мита, торгівля з ЄС, прикордонна блокада, санкції
+    keywords: ["експорт", "експорту", "імпорт", "імпорту", "торгівля", "торгівлі", "мита", "митниця", "митниці", "зерновий", "зернова", "зернових", "санкції", "санкцій", "санкційн"]
+
+  - id: econ_policy
+    describe:
+      - National Bank of Ukraine (NBU), key rate, inflation, hryvnia exchange rate, state budget, IMF financing, wartime taxes
+      - Національний банк, НБУ, держбюджет, інфляція, курс гривні, МВФ, податки, фінансова допомога
+    keywords: ["нбу", "нацбанк", "бюджет", "бюджету", "бюджеті", "мвф", "гривня", "гривні", "гривню", "інфляція", "інфляції", "податок", "податки", "податків", "економік"]
 
   - id: energy_econ
     label: Energy Grid Resilience, Druzhba / Gas Transit, Black Sea Shipping & Reconstruction
     weight: 1.0
     category: economics
     describe:
-      - Restoration of power grid after Russian strikes (Ukrenergo, DTEK, Energoatom), cross-border electricity imports from Central Europe, Druzhba oil pipeline and natural gas transit to Hungary and Slovakia, Black Sea maritime export corridor, and IMF budget financing
-      - Енергосистема, Укренерго, ДТЕК, Енергоатом, блекаут, нафтопровід Дружба, транзит газу, зерновий коридор, Чорне море, експорт, МВФ, бюджет
-    keywords: ["укренерго", "дтек", "енергоатом", "енергет", "блекаут", "світло", "дружба", "транзит газу", "лукойл", "експорт", "зерно", "чорне море", "мвф", "бюджет", "гривня", "druzhba"]
+      - Restoration of power grid after Russian strikes (Ukrenergo, DTEK, Energoatom, Naftogaz), cross-border electricity imports from Central Europe, Druzhba oil pipeline and natural gas transit to Hungary and Slovakia, Black Sea maritime export corridor, and IMF budget financing
+      - Енергосистема, Укренерго, ДТЕК, Енергоатом, Нафтогаз, блекаут, відключення світла, нафтопровід Дружба, транзит газу, зерновий коридор, Чорне море, експорт, МВФ, бюджет
+    keywords: ["укренерго", "дтек", "енергоатом", "нафтогаз", "корецький", "корецько", "енергети", "блекаут", "відключен", "світло", "світла", "електроен", "дружба", "дружби", "транзит газу", "лукойл", "зерно", "чорне море", "чорному", "druzhba"]
+
+  - id: anticorruption
+    describe:
+      - Anti-corruption investigations and High Anti-Corruption Court (HACC) rulings, NABU, SAPO, defense procurement audits
+      - НАБУ, САП, ВАКС, антикорупційний суд, підозра, хабар, корупція, розслідування Bihus.Info
+    keywords: ["набу", "сап", "вакс", "корупція", "корупції", "корупційн", "хабар", "підозра", "підозру", "розкрадан"]
+
+  - id: crime_local
+    describe:
+      - Individual criminal court cases, arrests, murder, fraud, domestic police investigations
+      - суд, вирок, затримання, вбивство, шахрайство, поліція, кримінальна справа
+    keywords: ["вирок", "вбивство", "вбивства", "шахрайст", "крадіжка", "крадіжки", "поліція", "поліції", "криміналь", "затримано"]
+
+  - id: accident_weather
+    describe:
+      - Traffic accidents, fires, storms, floods, heat waves, weather alerts
+      - ДТП, аварія, пожежа, негода, буревій, повінь, ожеледиця, заморозки
+    keywords: ["дтп", "аварія", "аварії", "пожежа", "пожежі", "негода", "негоди", "буревій", "повінь", "шторм"]
+
+  - id: sport_culture
+    describe:
+      - Football, UEFA, boxing, Olympic sports, cinema, actors, concerts, celebrity lifestyle
+      - футбол, УПЛ, Ліга чемпіонів, збірна України, бокс, Усик, теніс, олімпіада, фільм, прем'єра, актор, співачка, концерт
+    keywords: ["футбол", "упл", "теніс", "бокс", "чемпіон", "чемпіонат", "олімпіад", "матч", "турнір", "фільм", "фільму", "прем'єрі", "актор", "співачка", "співачки", "концерт"]

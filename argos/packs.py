@@ -13,13 +13,18 @@ import yaml
 from .config import COUNTRIES_DIR, ROOT
 
 
+_UNSPACED_RE = re.compile(r"[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uac00-\ud7af\u0e00-\u0e7f\u1780-\u17ff\u0e80-\u0eff]")
+_LEFT_BOUND = r"(?:(?<!\w)|(?<=[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uac00-\ud7af\u0e00-\u0e7f\u1780-\u17ff\u0e80-\u0eff]))"
+_RIGHT_BOUND = r"(?:(?!\w)|(?=[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uac00-\ud7af\u0e00-\u0e7f\u1780-\u17ff\u0e80-\u0eff]))"
+
+
 def _term_regex(term):
     """Anchor term with word boundaries for spaced scripts, avoiding substring false positives."""
     escaped = re.escape(term)
-    if any(any(unicodedata.name(ch, "").startswith(p) for p in ("CJK", "HIRAGANA", "KATAKANA", "THAI", "KHMER", "LAO", "HANGUL")) for ch in term):
+    if _UNSPACED_RE.search(term):
         return escaped
-    prefix = r"\b" if re.match(r"^\w", term, re.UNICODE) else ""
-    suffix = r"\b" if re.match(r".*\w$", term, re.UNICODE) else ""
+    prefix = _LEFT_BOUND if re.match(r"^\w", term, re.UNICODE) else ""
+    suffix = _RIGHT_BOUND if re.match(r".*\w$", term, re.UNICODE) else ""
     return f"{prefix}{escaped}{suffix}"
 
 

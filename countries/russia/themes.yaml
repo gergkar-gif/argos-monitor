@@ -1,12 +1,37 @@
 # Russia editorial policy priority themes.
+# Remember policy._matcher: len <= 7 matches whole words only; len > 7 matches word-start prefixes.
 themes:
+  - id: elections
+    describe:
+      - Russian presidential, State Duma, regional gubernatorial, and municipal elections, Central Election Commission (CIK), voting, turnout, and referendums
+      - выборы в России, президентские выборы, выборы в Госдуму, ЦИК, избирательная кампания, голосование, референдум, явка избирателей
+    keywords: ["выборы", "выборов", "выборах", "выборам", "выборный", "избирател", "голосован", "референдум", "бюллетен", "цик"]
+
+  - id: diplomacy
+    describe:
+      - Russian Foreign Ministry (MID) talks, Sergey Lavrov diplomacy, ambassadors, peace negotiations, bilateral summits, visa and border closures
+      - МИД России, Сергей Лавров, посол, дипломатические отношения, переговоры, саммит, закрытие границы, двусторонние отношения
+    keywords: ["дипломат", "переговоры", "переговоров", "переговорам", "переговорах", "саммит", "саммита", "саммите", "посольств", "внешнепол", "мид", "лавров", "лаврова", "лавровым", "посла", "граница", "границы", "границу", "границе"]
+
+  - id: trade
+    describe:
+      - Russian oil, gas, grain, and LNG exports, import substitution, tariffs, customs duties, trade with China, India, and Turkey
+      - экспорт нефти и газа, импорт, внешняя торговля, таможенные пошлины, параллельный импорт, товарооборот
+    keywords: ["экспорт", "экспорта", "импорт", "импорта", "торговля", "торговли", "торговле", "торговый", "торговых", "пошлина", "пошлины", "пошлин", "таможня", "таможни", "таможенн", "товарооб", "нефтегаз", "зерновой"]
+
+  - id: econ_policy
+    describe:
+      - Bank of Russia monetary policy, key interest rate, inflation, ruble exchange rate, federal budget, tax hikes, sovereign wealth fund
+      - Банк России, Центробанк, ключевая ставка, инфляция, курс рубля, федеральный бюджет, налоги, госдолг, ВВП
+    keywords: ["центробанк", "набиуллин", "ключевой", "ключевая", "ставка", "ставки", "ставку", "инфляция", "инфляции", "инфляцию", "инфляцио", "бюджет", "бюджета", "бюджете", "налог", "налоги", "налогов", "рубль", "рубля", "рублей", "рублем", "экономика", "экономики", "экономику", "экономиче", "ввп"]
+
   - id: kremlin_decision_making_security_services
     label: "Kremlin Decision-Making & Security Services"
     weight: 1.0
     category: internal_politics
     describe:
       - Presidential decrees, Security Council meetings, FSB operations, Defense Ministry under Andrey Belousov, State Duma legislation, personnel rotations, and state suppression of internal dissent
-      - Владимир Путин, Кремль, Совет Безопасности, ФСБ, Государственная Дума, Андрей Белоусов, кадровые перестановки, иноагенты
+      - Владимир Путин, Кремль, Совет Безопасности, ФСБ, Государственная Дума, Андрей Белоусов, кадровые перестановки, иноагенты, Роскомнадзор, цензура
     keywords:
       - "putin"
       - "kremlin"
@@ -17,23 +42,43 @@ themes:
       - "federation council"
       - "belousov"
       - "patrushev"
+      - "roskomnadzor"
       - "foreign agent"
       - "путин"
-      - "кремл"
+      - "путина"
+      - "путину"
+      - "путиным"
+      - "путине"
+      - "кремль"
+      - "кремля"
+      - "кремле"
+      - "кремлем"
+      - "кремлём"
       - "совбез"
+      - "совбеза"
       - "фсб"
-      - "госдум"
+      - "свр"
+      - "госдума"
+      - "госдумы"
+      - "госдуму"
+      - "госдуме"
       - "белоусов"
       - "песков"
+      - "пескова"
       - "мишустин"
+      - "собянин"
+      - "иноагент"
+      - "роскомнад"
+      - "экстремиз"
+      - "блокировк"
 
   - id: wartime_defense_mobilization
     label: "Wartime Defense Production & Operations"
     weight: 0.95
     category: defence_security
     describe:
-      - State defense orders, Rostec output, contract soldier recruitment, nuclear deterrence doctrine, and missile/drone strikes against Ukraine
-      - Министерство обороны РФ, гособоронзаказ, Ростех, контрактники, ядерное сдерживание, Орешник, беспилотники, фронт
+      - State defense orders, Rostec output, contract soldier recruitment, nuclear deterrence doctrine, air defense interceptions, and missile/drone strikes
+      - Министерство обороны РФ, гособоронзаказ, Ростех, контрактники, ядерное сдерживание, Орешник, беспилотники, БПЛА, ПВО, фронт, дроны
     keywords:
       - "rostec"
       - "defense ministry"
@@ -42,17 +87,50 @@ themes:
       - "contract soldiers"
       - "nuclear drills"
       - "missile strike"
-      - "geran drone"
-      - "su-57"
+      - "air defense"
+      - "drone attack"
+      - "drone strike"
+      - "uav"
       - "ammunition production"
-      - "минобороны"
+      - "миноборон"
       - "ростех"
-      - "гособоронзаказ"
-      - "контрактник"
-      - "ядерн"
+      - "ростеха"
+      - "гособорон"
+      - "контрактн"
+      - "ядерный"
+      - "ядерная"
+      - "ядерное"
+      - "ядерных"
       - "орешник"
-      - "беспилотник"
+      - "беспилот"
+      - "бпла"
       - "пво"
+      - "дрон"
+      - "дрона"
+      - "дроны"
+      - "дронов"
+      - "дронами"
+      - "мобилизац"
+      - "призывник"
+      - "призывно"
+      - "военный"
+      - "военная"
+      - "военное"
+      - "военных"
+      - "военным"
+      - "ракета"
+      - "ракеты"
+      - "ракет"
+      - "ракетный"
+      - "ракетная"
+      - "ракетных"
+      - "сво"
+
+  - id: unrest_conflict
+    describe:
+      - Armed clashes, drone and missile strikes inside Russia or on the front, bombings, explosions, sabotage, terror attacks, protests, and security crackdowns
+      - атака дронов, удары БПЛА, ракетный удар, взрыв, теракт, диверсия, обстрел, протест, митинг, задержание
+    keywords: ["атака", "атаки", "атаку", "атакован", "удар", "удары", "удара", "ударов", "взрыв", "взрывы", "взрыва", "взрыву", "взорвали", "подрыв", "подрыва", "подрыве", "покушени", "обстрел", "теракт", "теракты", "диверсия", "диверсии", "протест", "митинг", "беспоряд", "беспилот", "дронов", "бпла", "пво"]
 
   - id: sanctions_resistance_macroeconomy
     label: "Sanctions, Energy Corridors (Gazprom / Rosatom / Druzhba) & Wartime Economy"
@@ -60,7 +138,7 @@ themes:
     category: economics
     describe:
       - Bank of Russia monetary policy under Elvira Nabiullina, wartime inflation, ruble exchange rate, oil price cap and shadow fleet, Gazprom pipeline flows (TurkStream, Druzhba oil pipeline), and Rosatom international nuclear projects (Paks II, Akkuyu)
-      - Банк России, Эльвира Набиуллина, ключевая ставка, инфляция, рубль, санкции, теневой флот, Газпром, Турецкий поток, нефтепровод Дружба, Росатом, Пакш
+      - Банк России, Эльвира Набиуллина, ключевая ставка, инфляция, рубль, санкции, теневой флот, Газпром, Турецкий поток, нефтепровод Дружба, Росатом, Лукойл, Роснефть, нефтеперерабатывающий завод
     keywords:
       - "bank of russia"
       - "nabiullina"
@@ -69,6 +147,7 @@ themes:
       - "shadow fleet"
       - "oil price cap"
       - "ruble"
+      - "sanctions"
       - "sanctions evasion"
       - "parallel import"
       - "budget deficit"
@@ -76,17 +155,34 @@ themes:
       - "rosatom"
       - "turkstream"
       - "druzhba"
+      - "нпз"
       - "лукойл"
+      - "лукойла"
       - "газпром"
+      - "газпрома"
       - "росатом"
-      - "набиуллина"
-      - "центробанк"
-      - "ключевая ставка"
-      - "инфляци"
-      - "санкци"
-      - "рубл"
+      - "росатома"
+      - "роснефть"
+      - "роснефти"
+      - "набиуллин"
+      - "центробан"
+      - "ключевой"
+      - "ключевая"
+      - "инфляция"
+      - "инфляции"
+      - "санкция"
+      - "санкции"
+      - "санкций"
+      - "санкциям"
+      - "санкцион"
+      - "рубль"
+      - "рубля"
+      - "рублей"
+      - "рублем"
       - "турецкий поток"
       - "дружба"
+      - "дружбы"
+      - "теневой флот"
       - "пакш"
 
   - id: anti_western_geopolitical_coalition
@@ -107,7 +203,33 @@ themes:
       - "de-dollarization"
       - "global south"
       - "лавров"
+      - "лаврова"
       - "мид рф"
       - "брикс"
       - "шос"
       - "кндр"
+      - "еаэс"
+
+  - id: anticorruption
+    describe:
+      - Anti-corruption prosecutions, bribery, embezzlement by governors, generals, or state officials, and nationalization of private assets
+      - коррупция, взятка, хищение, конфискация, арест чиновника, дело о мошенничестве, Генпрокуратура
+    keywords: ["коррупция", "коррупции", "коррупцию", "коррупцио", "взятка", "взятки", "взятку", "взяток", "взяточни", "хищение", "хищения", "хищений", "растрата", "растраты", "конфиска", "национализ"]
+
+  - id: crime_local
+    describe:
+      - Individual criminal court cases, arrests, murder, robbery, fraud, domestic violence, or routine police investigations
+      - суд, арест, приговор, убийство, кража, мошенничество, уголовное дело, следственный комитет, полиция
+    keywords: ["приговор", "убийство", "убийства", "убийстве", "кража", "кражи", "мошеннич", "уголовно", "уголовны", "полиция", "полиции", "следком", "задержан", "задержал"]
+
+  - id: accident_weather
+    describe:
+      - Traffic accidents, plane crashes, industrial fires, weather warnings, storms, frost, floods
+      - ДТП, авария, пожар, непогода, шторм, снегопад, мороз, наводнение, ураган
+    keywords: ["дтп", "авария", "аварии", "пожар", "шторм", "непогода", "непогоды", "снегопад", "наводнен", "ураган"]
+
+  - id: sport_culture
+    describe:
+      - Football, hockey, KHL, RPL, figure skating, tennis, Olympic athletes, cinema, concerts, celebrity gossip
+      - футбол, хоккей, КХЛ, РПЛ, фигурное катание, танцы на льду, гран-при, теннис, чемпионат, сборная, олимпиада, актер, певец, фильм, концерт
+    keywords: ["футбол", "хоккей", "кхл", "рпл", "фигурное", "фигурист", "танцах на льду", "гран-при", "теннис", "чемпион", "чемпионат", "сборная", "сборной", "олимпиад", "олимпийск", "матч", "матча", "турнир", "болельщи", "актер", "актриса", "певец", "певица", "фильм", "концерт", "киркоров"]
