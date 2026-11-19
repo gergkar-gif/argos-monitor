@@ -69,6 +69,8 @@ sources:
     category_hint: defence_security
   - url: https://www.defensenews.com/arc/outboundfeeds/rss/category/congress/?outputType=xml
     category_hint: defence_security
+  - url: https://www.defensenews.com/arc/outboundfeeds/rss/category/industry/?outputType=xml
+    category_hint: defence_security
 - id: state_dept
   name: US Department of State
   homepage: https://www.state.gov
@@ -197,3 +199,55 @@ sources:
     section: International Coverage
     category_hint: foreign_policy
     active: true
+- id: breaking_defense_us
+  name: Breaking Defense
+  homepage: https://breakingdefense.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Breaking Media
+  state_affiliated: false
+  needs_mention: true
+  notes: Specialized defence industry, Pentagon acquisition, and military technology publication.
+  feeds:
+  - url: https://breakingdefense.com/feed/
+    category_hint: defence_security
+- id: defense_one_us
+  name: Defense One
+  homepage: https://www.defenseone.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: GovExec
+  state_affiliated: false
+  needs_mention: true
+  notes: US national security, Pentagon procurement, and defence industrial base coverage.
+  feeds:
+  - url: https://www.defenseone.com/rss/all/
+    category_hint: defence_security
+- id: the_war_zone_us
+  name: The War Zone
+  homepage: https://www.twz.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Recurrent Ventures
+  state_affiliated: false
+  needs_mention: true
+  notes: Aerospace, naval, and military hardware and procurement reporting.
+  feeds:
+  - url: https://www.twz.com/feed
+    category_hint: defence_security
+- id: google_news_us_def_industry
+  name: Google News (US Defence Industry & Contractors)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator tracking US defence primes, Pentagon contracts, and arms production.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(%22Lockheed+Martin%22+OR+%22Northrop+Grumman%22+OR+%22General+Dynamics%22+OR+Raytheon+OR+Anduril)+Pentagon+OR+contract+OR+missile+when:7d&hl=en-US&gl=US&ceid=US:en
+    category_hint: defence_security

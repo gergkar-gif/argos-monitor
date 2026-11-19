@@ -260,3 +260,16 @@ sources:
   - url: https://news.google.com/rss/search?q=(Netherlands+OR+Dutch)+(cabinet+OR+election+OR+parliament+OR+asylum)+when:3d&hl=en-US&gl=US&ceid=US:en
     section: Politics & Governance
     category_hint: internal_politics
+- id: google_news_nl_def_industry
+  name: Google News (Netherlands Defence Industry & Naval Procurement)
+  homepage: https://news.google.com
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator tracking Damen, Thales Nederland, naval shipbuilding, and Dutch defence procurement.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Damen+OR+%22Thales+Nederland%22+OR+defensie-industrie+OR+defensiebegroting)+(Defensie+OR+fregat+OR+onderzeeboot+OR+munitie)+when:14d&hl=nl&gl=NL&ceid=NL:nl
+    category_hint: defence_security

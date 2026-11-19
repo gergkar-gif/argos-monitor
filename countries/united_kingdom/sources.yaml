@@ -386,3 +386,40 @@ sources:
     section: International Coverage
     category_hint: foreign_policy
     active: true
+- id: uk_defence_journal
+  name: UK Defence Journal
+  homepage: https://ukdefencejournal.org.uk
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: UK Defence Journal
+  state_affiliated: false
+  notes: Independent British defence reporting covering Royal Navy shipbuilding, RAF, and MoD procurement.
+  feeds:
+  - url: https://ukdefencejournal.org.uk/feed/
+    category_hint: defence_security
+- id: navy_lookout_uk
+  name: Navy Lookout
+  homepage: https://www.navylookout.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Navy Lookout
+  state_affiliated: false
+  notes: Specialist British naval analysis covering Royal Navy fleet and UK maritime defence industry.
+  feeds:
+  - url: https://www.navylookout.com/feed/
+    category_hint: defence_security
+- id: google_news_uk_def_industry
+  name: Google News (UK Defence Industry & Procurement)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator tracking BAE Systems, Rolls-Royce Defence, Babcock, MBDA, and MoD procurement.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(%22BAE+Systems%22+OR+Rolls-Royce+OR+Babcock+OR+Leonardo+OR+MBDA+OR+%22defence+industry%22+OR+%22defence+procurement%22)+UK+when:7d&hl=en-GB&gl=GB&ceid=GB:en
+    category_hint: defence_security

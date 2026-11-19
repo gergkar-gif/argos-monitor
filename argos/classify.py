@@ -34,6 +34,7 @@ DESCRIPTIONS = {
     ],
     "defence_security": [
         "military, defence ministry, armed forces, exercises, border guards, intelligence, cybersecurity, terrorism, national security",
+        "defence industry, arms procurement, defence contractors, munitions and weapons manufacturing, military aerospace and naval shipbuilding, arms exports, defence budget",
     ],
     "society": [
         "education, schools, health care, hospitals, disease, vaccines, pensions, social issues",

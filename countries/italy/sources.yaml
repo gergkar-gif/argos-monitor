@@ -324,3 +324,29 @@ sources:
     section: International Coverage
     category_hint: foreign_policy
     active: true
+- id: analisidifesa_it
+  name: Analisi Difesa
+  homepage: https://www.analisidifesa.it
+  language: it
+  scope: domestic
+  kind: media
+  governing_body: Analisi Difesa
+  state_affiliated: false
+  needs_mention: true
+  notes: Italian specialist defence, aerospace, and armaments industry journal.
+  feeds:
+  - url: https://www.analisidifesa.it/feed/
+    category_hint: defence_security
+- id: google_news_italy_def_industry
+  name: Google News (Italy Defence Industry & Procurement)
+  homepage: https://news.google.com
+  language: it
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator tracking Leonardo, Fincantieri, Avio, MBDA Italia, and Italian defence procurement.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Leonardo+OR+Fincantieri+OR+Avio+OR+MBDA+OR+%22industria+della+difesa%22)+Italia+OR+Italy+when:7d&hl=it&gl=IT&ceid=IT:it
+    category_hint: defence_security

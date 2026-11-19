@@ -282,3 +282,15 @@ sources:
     feeds:
       - {url: "https://news.google.com/rss/search?q=Czechia+(Prague+OR+Fiala+OR+Pavel+OR+Babis)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Czechia politics, category_hint: internal_politics}
       - {url: "https://news.google.com/rss/search?q=Czechia+(EU+OR+NATO+OR+Ukraine+OR+ammunition)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Czechia EU & diplomacy, category_hint: foreign_policy}
+
+  - id: gnews_cz_def_industry
+    name: Google News (Czechia Defence Industry & Procurement)
+    homepage: https://news.google.com
+    language: cs
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:czdefence.cz+OR+site:czdefence.com+OR+((CSG+OR+%22Czechoslovak+Group%22+OR+Aero+Vodochody+OR+Tatra)+(arm%C3%A1da+OR+obrana+OR+munice)))+when:7d&hl=cs&gl=CZ&ceid=CZ:cs", section: Obranný průmysl, category_hint: defence_security}

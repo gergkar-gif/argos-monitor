@@ -217,3 +217,16 @@ sources:
   feeds:
   - url: https://fulcrum.sg/tag/singapore/feed/
     category_hint: foreign_policy
+- id: google_news_sg_def_industry
+  name: Google News (Singapore Defence Industry & ST Engineering)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator tracking ST Engineering Defence, DSTA, and Singapore defence procurement.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(%22ST+Engineering%22+defence+OR+Singapore+%22defence+industry%22+OR+DSTA)+when:14d&hl=en-SG&gl=SG&ceid=SG:en
+    category_hint: defence_security

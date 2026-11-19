@@ -6,7 +6,7 @@
 
 <p align="center">
   <strong>Open-source multilingual media &amp; crisis intelligence monitor for foreign-affairs analysts</strong><br>
-  <em>99 country desks · 1,937 sources (2,119 feeds) · Deterministic ONNX clustering · Syndication deduplication · State-media tagging · Offline MarianMT translation · Zero LLM hallucinations</em>
+  <em>99 country desks · 1,987 sources (2,180 feeds) · Deterministic ONNX clustering · Syndication deduplication · State-media tagging · Offline MarianMT translation · Zero LLM hallucinations</em>
 </p>
 
 <p align="center">
@@ -38,7 +38,7 @@ A scheduled GitHub Actions workflow runs every 12 hours (at 09:17 and 21:17 UTC)
 
 ```mermaid
 flowchart LR
-    A["01 · Ingest<br/>2,119 RSS & Google News feeds"] --> B["02 · Extract<br/>Round-robin Trafilatura full-text"]
+    A["01 · Ingest<br/>2,180 RSS & Google News feeds"] --> B["02 · Extract<br/>Round-robin Trafilatura full-text"]
     B --> C["03 · Normalise<br/>Unicode NFC"]
     C --> D["04 · Relevance<br/>Section & mention gate"]
     D --> E["05 · Embed<br/>ONNX multilingual-e5-small"]
@@ -153,10 +153,10 @@ Each monitored country is defined declaratively in `countries/<id>/` with zero c
   - **Sri Lanka** (`countries/sri_lanka/`) — National papers of record (*Daily FT*, *Daily Mirror*, *The Island*, *Ada Derana*), and Colombo economic recovery reporting (`en`).
 - **East Asia (5 Desks):**
   - **China** (`countries/china/`) — Statutory state wires & official portals (*Xinhua*, *Global Times*, *China Daily*, *CGTN*, *ECNS / CNS*, *RTHK*) contrasted with Hong Kong broadsheets & independent outlets (*SCMP*, *HKFP*, *InMediaHK*, *The Witness*), mainland financial & tech press (*Caixin Global*, *TechNode*, *Pandaily*), and overseas Chinese & specialist outlets (*BBC Chinese*, *DW Chinese*, *RFI Chinese*, *RFA Mandarin*, *VOA Chinese*, *Initium Media*, *Lianhe Zaobao*, *China Digital Times*, *CNA Cross-Strait*, *Pekingnology*, *China Media Project*) (`zh` / `en`).
-  - **North Korea** (`countries/north_korea/`) — Specialist independent monitoring networks (*NK News*, *Daily NK*, *RFA Korean*) tracking nuclear proliferation, troop deployments, and regime policy (`ko` / `en`).
-  - **Japan** (`countries/japan/`) — Leading national dailies (*The Mainichi*, *Asahi Shimbun*, *The Japan Times*), state/independent wires (*Kyodo News*), and East Asian security coverage (`ja` / `en`).
-  - **South Korea** (`countries/south_korea/`) — Papers of record (*Dong-A Ilbo*, *Chosun Ilbo*, *The Korea Herald*, *The Korea Times*), state agency (*Yonhap*), and inter-Korean affairs (`ko` / `en`).
-  - **Taiwan** (`countries/taiwan/`) — Central news agency (*Focus Taiwan* / *CNA*), national press (*Taipei Times*, *Taiwan News*), and Cross-Strait security reporting (`zh` / `en`).
+  - **North Korea** (`countries/north_korea/`) — Specialist monitoring networks (*NK News*, *Daily NK*, *38 North*, *Sino-NK*, *Beyond Parallel*, *VOA Korean*, *RFA Korean*, *Tongil News*), official diaspora organ (*Choson Sinbo*), and South Korean/international coverage tracking nuclear proliferation, Russia troop deployments, and regime policy (`ko` / `en`).
+  - **Japan** (`countries/japan/`) — Public broadcaster (*NHK News Web*), leading national dailies & weeklies (*The Mainichi*, *Asahi Shimbun*, *The Japan Times*, *Yomiuri / Japan News*, *Okinawa Times*, *Toyo Keizai*, *Bunshun Online*), wires (*Jiji Press*, *Kyodo News*), and East Asian security coverage (`ja` / `en`).
+  - **South Korea** (`countries/south_korea/`) — Papers of record & broadcasters (*SBS News*, *KBS World*, *Dong-A Ilbo*, *Chosun Ilbo*, *The Hankyoreh*, *Kyunghyang Shinmun*, *Kookmin Ilbo*, *The Korea Times*), financial press (*Maeil Business*, *Financial News*, *Edaily*, *Money Today*, *ETNews*), investigative digital outlets (*OhmyNews*, *No Cut News*), statutory wire (*Yonhap*), and inter-Korean affairs (`ko` / `en`).
+  - **Taiwan** (`countries/taiwan/`) — Statutory national wire (*Central News Agency / CNA*, *Focus Taiwan*), public broadcaster (*PTS News*), national & financial dailies (*Liberty Times*, *Taipei Times*, *Economic Daily News / UDN*, *ETtoday*, *TechNews*), investigative & commentary portals (*Mirror Media*, *The Reporter*, *Newtalk*, *The News Lens*, *Crossing*), and Cross-Strait reporting (`zh` / `en`).
 - **Southeast Asia (9 Desks):**
   - **Singapore** (`countries/singapore/`) — National daily of record (*The Straits Times*), pan-Asian regional broadcaster (*CNA*), financial daily (*The Business Times*), and digital media (*Mothership*) (`en`).
   - **Vietnam** (`countries/vietnam/`) — Domestic state/party press, overseas Vietnamese media, and international wires (`vi` / `en`).

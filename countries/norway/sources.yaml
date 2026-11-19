@@ -218,3 +218,16 @@ sources:
   - url: https://news.google.com/rss/search?q=(Norway+OR+Norwegian)+(oil+OR+gas+OR+NATO+OR+Arctic+OR+defense)+when:3d&hl=en-US&gl=US&ceid=US:en
     section: Energy & Security
     category_hint: defence_security
+- id: google_news_norway_def_industry
+  name: Google News (Norway Defence Industry & Kongsberg)
+  homepage: https://news.google.com
+  language: nb
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator tracking Kongsberg, Nammo, and Norwegian defence procurement.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Kongsberg+OR+Nammo+OR+forsvarsindustri)+(Forsvaret+OR+Norge+OR+Norway)+when:14d&hl=no&gl=NO&ceid=NO:no
+    category_hint: defence_security

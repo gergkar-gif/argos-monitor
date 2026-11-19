@@ -310,3 +310,16 @@ sources:
     section: International Coverage
     category_hint: foreign_policy
     active: true
+- id: google_news_finland_def_industry
+  name: Google News (Finland Defence Industry & Patria)
+  homepage: https://news.google.com
+  language: fi
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator tracking Patria, Finnish defence procurement, and Nordic defence manufacturing.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Patria+OR+puolustusteollisuus+OR+puolustushankinnat)+(Puolustusvoimat+OR+Suomi+OR+Finland)+when:14d&hl=fi&gl=FI&ceid=FI:fi
+    category_hint: defence_security

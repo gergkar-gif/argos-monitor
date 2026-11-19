@@ -268,3 +268,26 @@ sources:
       - {url: "https://news.google.com/rss/search?q=(Turkey+OR+Turkiye)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Turkey, category_hint: general}
       - {url: "https://news.google.com/rss/search?q=(Turkey+OR+Turkiye)+(Erdogan+OR+NATO+OR+Syria+OR+Russia+OR+Fidan)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Turkey diplomacy & security, category_hint: foreign_policy}
       - {url: "https://news.google.com/rss/search?q=(Turkey+OR+Turkiye)+(lira+OR+inflation+OR+%22central+bank%22+OR+Simsek+OR+economy)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Turkey economy, category_hint: economics}
+
+  - id: savunmasanayist_tr
+    name: SavunmaSanayiST
+    homepage: https://www.savunmasanayist.com
+    language: tr
+    scope: domestic
+    kind: media
+    governing_body: SavunmaSanayiST
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.savunmasanayist.com/feed/", section: Savunma Sanayii, category_hint: defence_security}
+
+  - id: gnews_turkey_def_industry
+    name: Google News (Turkey Defence Industry & Procurement)
+    homepage: https://news.google.com
+    language: tr
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(Baykar+OR+ASELSAN+OR+TAI+OR+Roketsan+OR+%22savunma+sanayii%22)+when:7d&hl=tr&gl=TR&ceid=TR:tr", section: Savunma Sanayii, category_hint: defence_security}

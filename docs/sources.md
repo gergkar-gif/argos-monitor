@@ -1,6 +1,6 @@
 # Source Registry & Taxonomy
 
-The declarative source registry is the foundation of Argos Monitor's independent corroboration model. Across **99 country desks**, **1,937 outlets** (**2,119 feeds**) are catalogued in `countries/<id>/sources.yaml` and enriched via `argos/ratings.py`.
+The declarative source registry is the foundation of Argos Monitor's independent corroboration model. Across **99 country desks**, **1,987 outlets** (**2,180 feeds**) are catalogued in `countries/<id>/sources.yaml` and enriched via `argos/ratings.py`.
 
 You can browse and filter the complete live registry interactively at [`https://argosmonitor.uk/about.html#sources`](https://argosmonitor.uk/about.html#sources).
 

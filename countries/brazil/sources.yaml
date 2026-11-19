@@ -166,3 +166,16 @@ sources:
   - url: https://news.google.com/rss/search?q=Brasil+OR+Bras%C3%ADlia+OR+governo+when:2d&hl=pt-BR&gl=BR&ceid=BR:pt-419
     section: National News (Portuguese)
     category_hint: internal_politics
+- id: google_news_brazil_def_industry
+  name: Google News (Brazil Defence Industry & Embraer Defense)
+  homepage: https://news.google.com
+  language: pt
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator tracking Embraer Defense, PROSUB submarines, Avibras, and Brazilian defence exports.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Embraer+Defesa+OR+Avibras+OR+PROSUB+OR+%22ind%C3%BAstria+de+defesa%22)+Brasil+when:14d&hl=pt-BR&gl=BR&ceid=BR:pt-419
+    category_hint: defence_security

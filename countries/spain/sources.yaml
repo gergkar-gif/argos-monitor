@@ -276,3 +276,16 @@ sources:
     section: International Coverage
     category_hint: foreign_policy
     active: true
+- id: defensa_es
+  name: Defensa.com
+  homepage: https://www.defensa.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Grupo Edefa S.A.
+  state_affiliated: false
+  needs_mention: true
+  notes: Spanish defence, aerospace, and military procurement publication.
+  feeds:
+  - url: https://www.defensa.com/rss
+    category_hint: defence_security

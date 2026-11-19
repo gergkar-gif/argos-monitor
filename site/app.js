@@ -91,8 +91,10 @@
   let deskFilter = '';
   let openSubType = 'all';
   let movementFilter = 'all';
+  let defenceSubFilter = 'all';
   let exportOpen = false;
   let extra = {};   // extra stories revealed per topic in the overview ("Show more")
+  const isDefenceIndustry = (s) => (s.themes || []).includes('Defence industry and procurement');
   const openStoryIds = new Set();
   const GLOBAL_VIEWS = new Set(['home', 'alerts', 'disasters', 'violence', 'relations']);
   const syncSearchClear = () => { if (qClear && qInput) qClear.hidden = !qInput.value; };
@@ -510,6 +512,7 @@
     }
     fillPeriods();
     movementFilter = 'all';
+    defenceSubFilter = 'all';
     exportOpen = false;
     research();
     scrollTo({ top: 0, behavior: 'smooth' });
@@ -549,6 +552,7 @@
         s.election_cluster && s.election_cluster.count > 1 && h('span', { class: 'stamp purple', text: `${s.election_cluster.count} election stories` }),
         s.disaster_type && h('span', { class: 'stamp teal', text: s.disaster_type }),
         s.violence_type && h('span', { class: 'stamp red', text: s.violence_type }),
+        isDefenceIndustry(s) && h('span', { class: 'stamp indigo', text: 'Defence industry' }),
         s.religious_traditions && s.religious_traditions.length > 0 && h('span', {
           class: 'stamp stamp-sectarian',
           title: `Religious & sectarian sensitivity: ${s.religious_traditions.join(', ')}`,
@@ -702,13 +706,27 @@
     return clip;
   }
 
-  function drawer(id, stories, total, limit) {
+  function drawer(id, stories, total, limit, defAllCount = null, defIndCount = null) {
     const shown = limit ? stories.slice(0, limit) : stories;
     const countText = shown.length >= total ? `${total} stories` : `Top ${shown.length} of ${total} stories`;
+    const showDefSub = id === 'defence_security' && openTopic === 'defence_security' && defIndCount > 0;
     const sec = h('section', { class: 'drawer', style: topicVar(id), 'aria-labelledby': `d-${id}` },
       h('div', { class: 'drawer-head' },
         h('h2', { id: `d-${id}`, text: topicName(id) }),
         h('span', { class: 'count', text: countText })),
+      showDefSub && h('div', { class: 'agenda-filters', style: 'margin-bottom:0.85rem' },
+        h('span', { class: 'meta', text: 'Focus:' }),
+        h('button', {
+          type: 'button',
+          class: 'agenda-filter-btn' + (defenceSubFilter === 'all' ? ' active' : ''),
+          onclick: () => { defenceSubFilter = 'all'; render(false); }
+        }, `All defence (${defAllCount})`),
+        h('button', {
+          type: 'button',
+          class: 'agenda-filter-btn' + (defenceSubFilter === 'industry' ? ' active' : ''),
+          onclick: () => { defenceSubFilter = 'industry'; render(false); }
+        }, `Defence industry & procurement (${defIndCount})`)
+      ),
       h('div', { class: 'grid' }, shown.map((s, i) => story(s, { lead: i === 0, i }))),
     );
     if (limit && stories.length > limit) {
@@ -1339,8 +1357,8 @@
     { id: 'uk', name: 'United Kingdom', terms: ['united kingdom', 'britain', 'british', 'london', 'egyesült királyság', 'nagy-britannia', 'anh quốc'] },
     { id: 'turkey', name: 'Turkey', terms: ['turkey', 'turkiye', 'turkish', 'ankara', 'törökország', 'török', 'erdogan', 'erdoğan', 'türkiye'] },
     { id: 'india', name: 'India', terms: ['india', 'indian', 'new delhi', 'delhi', 'modi', 'ấn độ'] },
-    { id: 'japan', name: 'Japan', terms: ['japan', 'japanese', 'tokyo', 'japán', 'tokió', 'nhật bản'] },
-    { id: 'south_korea', name: 'South Korea', terms: ['south korea', 'korean', 'seoul', 'dél-korea', 'szöul', 'hàn quốc'] },
+    { id: 'japan', name: 'Japan', terms: ['japan', 'japanese', 'tokyo', 'japán', 'tokió', 'nhật bản', '日本', '東京', '高市'] },
+    { id: 'south_korea', name: 'South Korea', terms: ['south korea', 'korean', 'seoul', 'dél-korea', 'szöul', 'hàn quốc', '한국', '대한민국', '서울'] },
   ];
 
   const QUICK_PRESETS = [
@@ -1363,7 +1381,7 @@
 
   function getCountryTerms(id) {
     const c = index.countries.find((x) => x.id === id);
-    const keepTerm = (x) => x && (x.length > 2 || (x.length >= 2 && /[\u3040-\u9fff]/.test(x))) && !(id === 'laos' && x === 'lao');
+    const keepTerm = (x) => x && (x.length > 2 || (x.length >= 2 && /[\u3040-\u9fff\uac00-\ud7af]/.test(x))) && !(id === 'laos' && x === 'lao');
     if (c) {
       const list = [fold(c.name), fold(c.id), ...(c.mentions || []).map(fold)];
       return [...new Set(list.filter(keepTerm))];
@@ -1973,11 +1991,22 @@
           .sort((a, b) => (a === 'other') - (b === 'other') || byTopic(b)[0].score - byTopic(a)[0].score)
       : (byTopic(openTopic).length ? [openTopic] : []);
     const activeSections = order.map((id) => {
-      const list = byTopic(id);
+      const baseList = byTopic(id);
+      const isDefTab = id === 'defence_security' && openTopic === 'defence_security';
+      const defIndList = isDefTab ? baseList.filter(isDefenceIndustry) : null;
+      if (isDefTab && defenceSubFilter === 'industry' && (!defIndList || !defIndList.length)) {
+        defenceSubFilter = 'all';
+      }
+      const list = (isDefTab && defenceSubFilter === 'industry' && defIndList) ? defIndList : baseList;
       const limit = openTopic === 'all'
         ? PER_TOPIC_IN_OVERVIEW + (extra[id] || 0)
         : (Boolean(extra[id + '_all']) || list.length <= TOPIC_PAGE_CHUNK ? 0 : Math.min(list.length, TOPIC_PAGE_CHUNK + (extra[id] || 0)));
-      return { id, name: topicName(id), stories: list, limit, shown: limit ? list.slice(0, limit) : list };
+      return {
+        id, name: topicName(id), stories: list, total: list.length,
+        defAllCount: isDefTab ? baseList.length : null,
+        defIndCount: defIndList ? defIndList.length : null,
+        limit, shown: limit ? list.slice(0, limit) : list,
+      };
     });
 
     const body = [];
@@ -1986,7 +2015,7 @@
       ? `No stories in the ${periodLabel} — this snapshot was last updated ${fmtTime.format(updated)}${staleTag}. Run "python run.py" to collect fresh news.`
       : null;
     if (activeSections.length) {
-      activeSections.forEach((sec) => body.push(drawer(sec.id, sec.stories, count(sec.id), sec.limit)));
+      activeSections.forEach((sec) => body.push(drawer(sec.id, sec.stories, sec.id === 'defence_security' && openTopic === 'defence_security' ? sec.total : count(sec.id), sec.limit, sec.defAllCount, sec.defIndCount)));
     } else if (openTopic === 'all') {
       body.push(h('p', { class: 'state quiet', text: staleEmptyMsg || (q ? `No stories match "${q}" here.` : `No stories found for ${country.options[country.selectedIndex] ? country.options[country.selectedIndex].text : 'this desk'} in this time period.`) }));
     } else {
@@ -2053,6 +2082,7 @@
 
   function choose(id) {
     openTopic = id;
+    defenceSubFilter = 'all';
     topic.value = id;
     setHash(hashFor(id));
     render(false);

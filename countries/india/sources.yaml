@@ -171,3 +171,26 @@ sources:
     state_affiliated: false
     feeds:
       - {url: "https://news.google.com/rss/search?q=India+(Army+OR+Navy+OR+Air+Force+OR+DRDO+OR+missile+OR+border)+when:1d&hl=en-IN&gl=IN&ceid=IN:en", section: Defence & Security, category_hint: defence_security}
+
+  - id: indian_defense_news
+    name: Indian Defense News
+    homepage: https://www.indiandefensenews.in
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Indian Defense News
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.indiandefensenews.in/feeds/posts/default?alt=rss", section: Defence & Procurement, category_hint: defence_security}
+
+  - id: gnews_in_def_industry
+    name: Google News (India Defence Manufacturing & Procurement)
+    homepage: https://news.google.com
+    language: en
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(India+(HAL+OR+DRDO+OR+%22defense+manufacturing%22+OR+%22defence+procurement%22+OR+%22defence+exports%22))+when:7d&hl=en-IN&gl=IN&ceid=IN:en", section: Defence Industry, category_hint: defence_security}

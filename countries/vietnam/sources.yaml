@@ -493,3 +493,16 @@ sources:
   feeds:
   - url: https://news.google.com/rss/search?q=site:the88project.org+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: society
+- id: google_news_vn_def_industry
+  name: Google News (Vietnam Defence Industry & Expo)
+  homepage: https://news.google.com
+  language: vi
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator tracking Vietnam defence industry, Viettel defense technology, and Vietnam Defence Expo.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(%22c%C3%B4ng+nghi%E1%BB%87p+qu%E1%BB%91c+ph%C3%B2ng%22+OR+%22tri%E1%BB%83n+l%C3%A3m+qu%E1%BB%91c+ph%C3%B2ng%22)+Vi%E1%BB%87t+Nam+when:30d&hl=vi&gl=VN&ceid=VN:vi
+    category_hint: defence_security

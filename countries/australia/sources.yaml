@@ -179,3 +179,29 @@ sources:
     section: International Coverage
     category_hint: foreign_policy
     active: true
+- id: apdr_au
+  name: Asia-Pacific Defence Reporter
+  homepage: https://asiapacificdefencereporter.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Ventura Media
+  state_affiliated: false
+  needs_mention: true
+  notes: Australian defence industry, AUKUS, and Indo-Pacific military procurement journal.
+  feeds:
+  - url: https://www.asiapacificdefencereporter.com/feed/
+    category_hint: defence_security
+- id: google_news_au_def_industry
+  name: Google News (Australia Defence Industry & AUKUS)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator tracking Australian Defence Magazine, Defence Connect, AUKUS submarines, and ADF procurement.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:australiandefence.com.au+OR+site:defenceconnect.com.au+OR+(Australia+(AUKUS+submarine+OR+%22defence+industry%22+OR+%22defence+procurement%22)))+when:7d&hl=en-AU&gl=AU&ceid=AU:en
+    category_hint: defence_security

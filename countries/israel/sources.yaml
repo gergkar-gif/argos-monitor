@@ -203,3 +203,16 @@ sources:
     section: International Coverage
     category_hint: foreign_policy
     active: true
+- id: google_news_israel_def_industry
+  name: Google News (Israel Defence Industry & Exports)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator tracking IsraelDefense, Elbit Systems, Rafael, IAI, and Israeli arms exports.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:israeldefense.co.il+OR+(Israel+(%22Elbit+Systems%22+OR+%22Rafael+Advanced%22+OR+%22Israel+Aerospace%22+OR+%22defense+exports%22+OR+%22defense+industry%22)))+when:7d&hl=en-US&gl=US&ceid=US:en
+    category_hint: defence_security

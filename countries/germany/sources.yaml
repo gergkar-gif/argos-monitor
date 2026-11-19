@@ -398,3 +398,53 @@ sources:
     section: International Coverage
     category_hint: foreign_policy
     active: true
+- id: hartpunkt_de
+  name: Hartpunkt
+  homepage: https://www.hartpunkt.de
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Hartpunkt GmbH
+  state_affiliated: false
+  notes: Specialist German defence technology, Bundeswehr procurement, and armaments industry portal.
+  feeds:
+  - url: https://www.hartpunkt.de/feed/
+    category_hint: defence_security
+- id: augengeradeaus_de
+  name: Augen geradeaus!
+  homepage: https://augengeradeaus.net
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Thomas Wiegold (independent defence journalism)
+  state_affiliated: false
+  notes: Authoritative German defence policy and Bundeswehr reporting.
+  feeds:
+  - url: https://augengeradeaus.net/feed
+    category_hint: defence_security
+- id: esd_de
+  name: European Security & Defence
+  homepage: https://euro-sd.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Mittler Report Verlag GmbH (Bonn)
+  state_affiliated: false
+  needs_mention: true
+  notes: German-published European defence policy and armaments industry journal.
+  feeds:
+  - url: https://euro-sd.com/feed/
+    category_hint: defence_security
+- id: google_news_germany_def_industry
+  name: Google News (Germany Defence Industry & Procurement)
+  homepage: https://news.google.com
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator tracking Rheinmetall, Hensoldt, Diehl, TKMS, and German armaments procurement.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Rheinmetall+OR+Hensoldt+OR+Diehl+OR+TKMS+OR+Airbus+OR+R%C3%BCstungsindustrie+OR+R%C3%BCstung)+(Bundeswehr+OR+Deutschland+OR+Germany)+when:7d&hl=de&gl=DE&ceid=DE:de
+    category_hint: defence_security

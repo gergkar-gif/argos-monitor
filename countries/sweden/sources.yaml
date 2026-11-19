@@ -306,3 +306,16 @@ sources:
     section: International Coverage
     category_hint: foreign_policy
     active: true
+- id: google_news_sweden_def_industry
+  name: Google News (Sweden Defence Industry & Saab)
+  homepage: https://news.google.com
+  language: sv
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator tracking Saab, FMV, BAE Systems Hägglunds, and Swedish defence industry.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Saab+OR+Gripen+OR+f%C3%B6rsvarsindustri+OR+FMV)+Sweden+OR+Sverige+when:7d&hl=sv&gl=SE&ceid=SE:sv
+    category_hint: defence_security

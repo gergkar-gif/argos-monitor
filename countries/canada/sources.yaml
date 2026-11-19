@@ -182,3 +182,16 @@ sources:
     section: International Coverage
     category_hint: foreign_policy
     active: true
+- id: google_news_canada_def_industry
+  name: Google News (Canada Defence Procurement & Industry)
+  homepage: https://news.google.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator tracking Canadian defence procurement, shipbuilding, NORAD modernization, and fighter contracts.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Canada+(%22defence+procurement%22+OR+%22defence+industry%22+OR+%22Canadian+Surface+Combatant%22+OR+F-35+OR+NORAD+contract))+when:7d&hl=en-CA&gl=CA&ceid=CA:en
+    category_hint: defence_security

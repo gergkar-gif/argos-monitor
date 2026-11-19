@@ -371,3 +371,16 @@ sources:
     section: International Coverage
     category_hint: foreign_policy
     active: true
+- id: google_news_france_def_industry
+  name: Google News (France Defence Industry & Armaments)
+  homepage: https://news.google.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Google LLC
+  state_affiliated: false
+  aggregator: google_news
+  notes: Aggregator tracking Opex360, Meta-Defense, Dassault, Thales, Naval Group, MBDA, KNDS, and DGA procurement.
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:opex360.com+OR+site:meta-defense.fr+OR+((%22industrie+de+d%C3%A9fense%22+OR+DGA+OR+KNDS+OR+MBDA+OR+%22Naval+Group%22+OR+Dassault)+(armement+OR+d%C3%A9fense+OR+contrat)))+when:7d&hl=fr&gl=FR&ceid=FR:fr
+    category_hint: defence_security

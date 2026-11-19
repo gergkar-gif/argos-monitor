@@ -273,3 +273,37 @@ sources:
     feeds:
       - {url: "https://news.google.com/rss/search?q=(rz%C4%85d+OR+Sejm+OR+Tusk+OR+PiS)+when:1d&hl=pl&gl=PL&ceid=PL:pl", section: Polityka, category_hint: internal_politics}
       - {url: "https://news.google.com/rss/search?q=(Wojsko+Polskie+OR+MON+OR+granica+OR+NATO)+when:1d&hl=pl&gl=PL&ceid=PL:pl", section: Obronność, category_hint: defence_security}
+
+  - id: milmag_pl
+    name: MILMAG
+    homepage: https://milmag.pl
+    language: pl
+    scope: domestic
+    kind: media
+    governing_body: MILMAG Military Magazine
+    state_affiliated: false
+    feeds:
+      - {url: "https://milmag.pl/feed/", section: Przemysł zbrojeniowy, category_hint: defence_security}
+
+  - id: zbiam_pl
+    name: ZBiAM
+    homepage: https://zbiam.pl
+    language: pl
+    scope: domestic
+    kind: media
+    governing_body: Zespół Badań i Analiz Militarnych
+    state_affiliated: false
+    feeds:
+      - {url: "https://zbiam.pl/feed/", section: Technika wojskowa, category_hint: defence_security}
+
+  - id: gnews_pl_def_industry
+    name: Google News (Poland Defence Industry & Procurement)
+    homepage: https://news.google.com
+    language: pl
+    scope: domestic
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(PGZ+OR+WB+Group+OR+zbrojeni%C3%B3wka+OR+przemys%C5%82+zbrojeniowy+OR+uzbrojenie)+Polska+OR+Poland+when:7d&hl=pl&gl=PL&ceid=PL:pl", section: Przemysł obronny, category_hint: defence_security}

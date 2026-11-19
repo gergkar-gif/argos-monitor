@@ -162,7 +162,7 @@ class HomeExportTests(unittest.TestCase):
             )
             (data_dir / "malaysia-24h.json").write_text(json.dumps({"totals": {}, "stories": []}), encoding="utf8")
 
-            with patch.object(export, "SITE_DATA", data_dir):
+            with patch.object(export, "SITE_DATA", data_dir), patch.object(export, "_desk_outlet_scale", return_value=20):
                 home = export._home("2026-11-16T00:00:00+00:00", [
                     {"id": "spain", "name": "Spain", "region": "Western Europe"},
                     {"id": "malaysia", "name": "Malaysia", "region": "Southeast Asia"},
@@ -335,6 +335,50 @@ class HomeExportTests(unittest.TestCase):
         for s, e in spans:
             self.assertEqual(sample_txt[s:e], sample_txt[s:e])
             self.assertTrue(sample_txt[s:e].endswith("。"))
+
+    def test_east_asia_sibling_desks_scopes_themes_and_ratings(self):
+        from argos import packs, policy, ratings, relevance, textutil
+
+        # Taiwan: avoid generic semiconductor leak; resolve domestic vs abroad_local; check Traditional Chinese keywords
+        tw = packs.load("taiwan")
+        self.assertFalse(relevance.is_relevant(tw, "international", "general", "", "https://example.com/1", "全球半導體關稅衝擊歐洲車廠", "", ""))
+        self.assertTrue(relevance.is_relevant(tw, "international", "general", "", "https://example.com/2", "台積電擴大美國亞利桑那廠投資", "", ""))
+        self.assertEqual(packs.resolve_scope("taiwan", "gn:udn", "UDN", "domestic", "domestic"), "domestic")
+        self.assertEqual(packs.resolve_scope("taiwan", "gn:bbc-news-中文", "BBC News 中文", "domestic", "domestic"), "abroad_local")
+        self.assertEqual(ratings.lookup_rating("Focus Taiwan")["alignment"], "public_broadcaster")
+        self.assertEqual(ratings.lookup_rating("PTS News (公視新聞網)")["alignment"], "public_broadcaster")
+        self.assertEqual(ratings.lookup_rating("工商時報")["bias"], "center-right")
+        tw_el = next(t for t in tw["themes"]["themes"] if t["id"] == "elections")
+        self.assertGreater(policy._keyword_share([("九合一地方選舉投票率創新高", "")], tw_el["keywords"]), 0.0)
+
+        # Japan: current PM Takaichi mention match, scopes, ratings, Japanese elections
+        jp = packs.load("japan")
+        self.assertTrue(relevance.is_relevant(jp, "international", "general", "", "https://example.com/3", "2日の高市首相の動静", "", ""))
+        self.assertEqual(packs.resolve_scope("japan", "gn:日本経済新聞", "日本経済新聞", "domestic", "domestic"), "domestic")
+        self.assertEqual(packs.resolve_scope("japan", "gn:ニューズウィーク日本版", "ニューズウィーク日本版", "domestic", "domestic"), "abroad_local")
+        self.assertEqual(ratings.lookup_rating("NHK News Web")["alignment"], "public_broadcaster")
+        self.assertEqual(ratings.lookup_rating("Bunshun Online (文春オンライン)")["alignment"], "independent")
+        self.assertEqual(ratings.lookup_rating("産経ニュース")["bias"], "right")
+
+        # South Korea: bare 'won' must not match English verb; SBS must be independent; fnnews comma-date must parse
+        kr = packs.load("south_korea")
+        self.assertFalse(relevance.is_relevant(kr, "international", "general", "", "https://example.com/4", "Arsenal won the Premier League clash in London", "", ""))
+        self.assertTrue(relevance.is_relevant(kr, "international", "general", "", "https://example.com/5", "이재명 대통령이 역대 최대 예산안을 발표했다", "", ""))
+        self.assertEqual(packs.resolve_scope("south_korea", "gn:한국경제", "한국경제", "domestic", "domestic"), "domestic")
+        self.assertEqual(packs.resolve_scope("south_korea", "gn:bbc-news-코리아", "BBC News 코리아", "domestic", "domestic"), "abroad_local")
+        self.assertEqual(ratings.lookup_rating("SBS 뉴스 (SBS News)")["alignment"], "independent")
+        self.assertEqual(textutil.parse_date({"published": "Thu,19 Nov 2026 01:07:10 +0900"}), "2026-11-18T16:07:10+00:00")
+
+        # North Korea: bare '조선' must not match Chosun Ilbo; SK/US outlets must not resolve domestic; Sino-NK rated
+        kp = packs.load("north_korea")
+        self.assertFalse(relevance.is_relevant(kp, "abroad_local", "general", "", "https://example.com/6", "[조선일보] 서울 부동산 시장 전망", "", ""))
+        self.assertTrue(relevance.is_relevant(kp, "abroad_local", "general", "", "https://example.com/7", "IAEA '영변 우라늄 농축시설 증축 완공'", "", ""))
+        self.assertEqual(packs.resolve_scope("north_korea", "gn:reuters", "Reuters", "international", "international"), "international")
+        self.assertEqual(packs.resolve_scope("north_korea", "gn:연합뉴스", "연합뉴스", "domestic", "abroad_local"), "abroad_local")
+        self.assertEqual(packs.resolve_scope("north_korea", "gn:조선중앙통신", "조선중앙통신", "international", "international"), "domestic")
+        self.assertEqual(ratings.lookup_rating("Sino-NK")["factuality"], "very_high")
+        kp_ru = next(t for t in kp["themes"]["themes"] if t["id"] == "russia_dprk_military_alliance")
+        self.assertGreater(policy._keyword_share([("북한군 러시아 쿠르스크 파병 확대", "")], kp_ru["keywords"]), 0.0)
 
 
 if __name__ == "__main__":

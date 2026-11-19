@@ -378,3 +378,15 @@ sources:
     feeds:
       - {url: "https://news.google.com/rss/search?q=(Ukraine+OR+Kyiv)+(frontline+OR+Zelenskyy+OR+Pokrovsk+OR+drone+OR+missile)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Frontline & War, category_hint: defence_security}
       - {url: "https://news.google.com/rss/search?q=Ukraine+(sanctions+OR+EU+accession+OR+NATO+OR+diplomacy+OR+energy+OR+reconstruction)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Diplomacy & Economy, category_hint: foreign_policy}
+
+  - id: gnews_ua_def_industry
+    name: Google News (Ukraine Defence Industry & Production)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(site:defence-ua.com+OR+site:en.defence-ua.com+OR+(Ukroboronprom+OR+%22defense+industry%22+OR+%22weapons+production%22+Ukraine))+when:7d&hl=en-US&gl=US&ceid=US:en", section: Defence Industry, category_hint: defence_security}

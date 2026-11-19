@@ -10,14 +10,14 @@ countries/<id>/*.yaml ─▶ ingest ─▶ normalise ─▶ relevance ─▶ emb
 
 | Stage | Module | Description |
 | :--- | :--- | :--- |
-| **01 · Ingest** | `argos/ingest.py` | Polls 2,119 RSS/Atom and Google News aggregator feeds across 99 country desks (`domestic`, `abroad_local`, `international`) and reconciles source ratings (`argos/ratings.py`). |
+| **01 · Ingest** | `argos/ingest.py` | Polls 2,180 RSS/Atom and Google News aggregator feeds across 99 country desks (`domestic`, `abroad_local`, `international`) and reconciles source ratings (`argos/ratings.py`). |
 | **02 · Normalise** | `argos/normalise.py` | Applies Unicode NFC normalisation, strips control characters and emojis, and computes content hashes for syndication detection. |
 | **03 · Relevance** | `argos/relevance.py` | Enforces URL section filters (`url_sections`) and country-mention gates on multi-country and international feeds. |
 | **04 · Embed** | `argos/embed.py` | Encodes `title + lead` into 384-dimensional vectors on CPU via ONNX Runtime (`intfloat/multilingual-e5-small`). |
 | **05 · Cluster** | `argos/cluster.py` | Two-pass agglomerative cosine clustering within active time windows (24h, 7d), collapsing syndicated wire reprints ($\ge 0.95$ cosine similarity) so independent outlet counts remain accurate. |
 | **06 · Classify** | `argos/classify.py` | Assigns stories to 6 policy domains (`Politics & Governance`, `Economy & Trade`, `Diplomacy & Foreign Policy`, `Defence & Security`, `Society & Rights`, `Other`) using feed category hints and bilingual anchor embeddings. |
 | **07 · Policy & Rank** | `argos/policy.py`, `argos/rank.py` | Scores stories against shared and country-specific geopolitical fault lines (`themes.yaml`), weighting independent outlet diversity, scope spread, and election priority. |
-| **08 · Extract** | `argos/extract.py` | Round-robin full-text extraction via `trafilatura` for active clustered stories (`ARGOS_EXTRACT_STORY_ONLY=1`), respecting per-domain rate limits. |
+| **08 · Extract** | `argos/extract.py` | Round-robin full-text extraction via `trafilatura` for active clustered stories (`ARGOS_EXTRACT_STORY_ONLY=1`, prioritising 24-hour briefs), respecting per-domain rate limits. |
 | **09 · Excerpts & Verify** | `argos/excerpts.py`, `argos/verify.py` | Extracts representative sentences and verifies every excerpt by exact character-offset substring match (`article.text[char_start:char_end]`). Unverified quotes are dropped. |
 | **10 · Translate** | `argos/translate.py` | Offline CPU sequence-to-sequence headline translation via MarianMT (`Helsinki-NLP/opus-mt-*`) with domain entity glossaries, cached in SQLite while preserving the original-language headline as authoritative. |
 | **11 · Signals & Export** | `argos/crisis.py`, `argos/trends.py`, `argos/social.py`, `argos/reddit.py`, `argos/export.py` | Integrates GDELT 2.0 conflict streams, GDACS/USGS/NASA EONET hazard feeds, US State Dept & UK FCDO advisories, UN/ICG/HRW field reports, auxiliary Telegram/Reddit signals, and period-over-period delta metrics (`docs/delta_spec.md`) into static JSON/JS bundles in `site/data/`. |

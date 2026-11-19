@@ -76,6 +76,25 @@ class TestEmbedPolicy(unittest.TestCase):
         self.assertTrue(any("church" in k or "pastor" in k or "priest" in k for k in kw))
         self.assertTrue(any("mosque" in k or "blasphemy" in k or "rohingya" in k for k in kw))
 
+    def test_defence_industry_theme_and_classify(self):
+        """Verify defence_industry theme routes to defence_security and matches procurement/contractor news."""
+        import yaml
+        from argos import classify, policy
+        with open("themes.yaml", "r", encoding="utf-8") as f:
+            cfg = yaml.safe_load(f)
+        themes = {t["id"]: t for t in cfg.get("themes", [])}
+        self.assertIn("defence_industry", themes)
+        di = themes["defence_industry"]
+        self.assertEqual(di.get("category"), "defence_security")
+        self.assertGreaterEqual(di.get("weight", 0), 0.8)
+        self.assertIn("defence_industry", policy.ALWAYS)
+        kw = di.get("keywords", [])
+        self.assertGreaterEqual(policy._keyword_share([("rheinmetall wins artillery shell procurement contract", "")], kw), policy.KEYWORD_SHARE)
+        self.assertEqual(policy._keyword_share([("rafael nadal wins tennis match", "")], kw), 0.0)
+        desc_blob = " ".join(classify.DESCRIPTIONS["defence_security"]).lower()
+        self.assertIn("defence industry", desc_blob)
+        self.assertIn("procurement", desc_blob)
+
 
 if __name__ == "__main__":
     unittest.main()
