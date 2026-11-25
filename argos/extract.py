@@ -88,7 +88,8 @@ def _select_pending(db, limit=None, country=None, story_only=True):
     cond = "WHERE COALESCE(sa.similarity, 1.0) >= 0.93" + (" AND s.country=?" if country else "")
     params = [country] if country else []
     rows = db.execute(
-        f"SELECT s.id AS story_id, s.country, COALESCE(s.score, 0.0) AS score, s.representative_article_id, "
+        f"SELECT s.id AS story_id, s.country, COALESCE(s.window_days, 7) AS window_days, "
+        f"COALESCE(s.score, 0.0) AS score, s.representative_article_id, "
         f"a.id AS id, a.url AS url, a.extract_status, a.syndicated_of, (a.text IS NOT NULL) AS has_text "
         f"FROM story s JOIN story_article sa ON sa.story_id=s.id JOIN article a ON a.id=sa.article_id {cond}",
         params,
@@ -112,7 +113,7 @@ def _select_pending(db, limit=None, country=None, story_only=True):
         base_texts = story_texts[sid]
         for rank_in_story, r in enumerate(arts[:3]):
             eff_texts = base_texts + rank_in_story
-            prio = (eff_texts == 0, eff_texts < 2, is_multi, float(r["score"]), r["id"] == r["representative_article_id"], r["id"])
+            prio = (eff_texts == 0, eff_texts < 2, r["window_days"] == 1, is_multi, float(r["score"]), r["id"] == r["representative_article_id"], r["id"])
             raw_by_country[r["country"]].append((prio, r))
 
     by_country = {}

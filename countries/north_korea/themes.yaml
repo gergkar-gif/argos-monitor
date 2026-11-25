@@ -1,58 +1,146 @@
+# North Korea's additions to the shared themes (../../themes.yaml): English & Korean keywords and descriptions.
 themes:
-- id: russia_dprk_military_alliance
-  label: Russia-DPRK Defense Pact & Troop Deployment
-  weight: 1.0
-  keywords:
-  - russia troops
-  - mutual defense treaty
-  - vladimir putin
-  - artillery shells
-  - ballistic missiles
-  - technology transfer
-  - kursk
-  - space technology
-  describe:
-  - North Korean military personnel deployed to Russian war zones, ammunition transfers, and Russian technical assistance
-    for satellites and submarines.
-- id: strategic_deterrence_icbm_testing
-  label: Strategic Nuclear & ICBM Development
-  weight: 0.95
-  keywords:
-  - hwasong
-  - icbm
-  - solid-fuel
-  - nuclear warhead
-  - hypersonic glide
-  - submarine launched
-  - reconnaissance satellite
-  - missile test
-  describe:
-  - High-angle ICBM test launches, multi-warhead guidance testing, solid-fuel rocket motor advances, and nuclear doctrine
-    formalization.
-- id: regime_succession_ideological_doctrine
-  label: Regime Succession & Anti-Reunification Shift
-  weight: 0.85
-  keywords:
-  - kim ju ae
-  - kim yo jong
-  - two-state doctrine
-  - constitutional revision
-  - hostile state
-  - workers party
-  - monument demolition
-  describe:
-  - Designation of South Korea as primary hostile state, abandonment of peaceful reunification rhetoric, and promotion of
-    Kim Ju Ae.
-- id: sanctions_evasion_cyber_operations
-  label: Sanctions Evasion & State Cyber Operations
-  weight: 0.8
-  keywords:
-  - lazarus group
-  - cryptocurrency theft
-  - illicit finance
-  - ship-to-ship transfer
-  - dandong border
-  - labor exports
-  describe:
-  - State-sponsored cyber espionage and cryptocurrency heists, maritime sanctions evasion for refined petroleum, and border
-    smuggling networks.
+  - id: russia_dprk_military_alliance
+    category: defence_security
+    label: Russia-DPRK Defense Pact & Troop Deployment
+    weight: 1.0
+    keywords:
+    - russia troops
+    - mutual defense treaty
+    - vladimir putin
+    - artillery shells
+    - ballistic missiles
+    - technology transfer
+    - kursk
+    - space technology
+    - "북러"
+    - "조러"
+    - "러시아 파병"
+    - "북한군 파병"
+    - "파병"
+    - "쿠르스크"
+    - "포탄"
+    - "군사협력"
+    - "푸틴"
+    describe:
+    - North Korean military personnel deployed to Russian war zones, ammunition transfers, and Russian technical assistance for satellites and submarines.
+    - "러시아 파병 북한군, 쿠르스크 전선, 포탄 및 탄도미사일 무기 이전, 북러 포괄적 전략적 동반자 조약, 군사기술 이전"
+
+  - id: strategic_deterrence_icbm_testing
+    category: defence_security
+    label: Strategic Nuclear & ICBM Development
+    weight: 0.95
+    keywords:
+    - hwasong
+    - icbm
+    - solid-fuel
+    - nuclear warhead
+    - hypersonic glide
+    - submarine launched
+    - reconnaissance satellite
+    - missile test
+    - "화성"
+    - "탄도미사일"
+    - "미사일"
+    - "핵실험"
+    - "핵무기"
+    - "전술핵"
+    - "우라늄"
+    - "영변"
+    - "군사정찰위성"
+    - "핵잠수함"
+    describe:
+    - High-angle ICBM test launches, multi-warhead guidance testing, solid-fuel rocket motor advances, uranium enrichment, and nuclear doctrine.
+    - "대륙간탄도미사일 화성형 시험발사, 고체연료 미사일, 영변 우라늄 농축시설, 전술핵탄두, 군사정찰위성 발사"
+
+  - id: regime_succession_ideological_doctrine
+    category: internal_politics
+    label: Regime Succession & Anti-Reunification Shift
+    weight: 0.85
+    keywords:
+    - kim ju ae
+    - kim yo jong
+    - two-state doctrine
+    - constitutional revision
+    - hostile state
+    - workers party
+    - monument demolition
+    - "김정은"
+    - "김여정"
+    - "김주애"
+    - "조선로동당"
+    - "노동당"
+    - "당중앙위"
+    - "최고인민회의"
+    - "적대적 두 국가"
+    - "통일 지우기"
+    - "국기"
+    describe:
+    - Designation of South Korea as primary hostile state, abandonment of peaceful reunification rhetoric, party plenums, and Kim Ju Ae succession signals.
+    - "김정은 총비서 동향, 김여정 담화, 김주애 후계 구도, 적대적 두 국가론 개헌, 조선로동당 전원회의 및 최고인민회의"
+
+  - id: sanctions_evasion_cyber_operations
+    category: economics
+    label: Sanctions Evasion & State Cyber Operations
+    weight: 0.8
+    keywords:
+    - lazarus group
+    - cryptocurrency theft
+    - illicit finance
+    - ship-to-ship transfer
+    - dandong border
+    - labor exports
+    - "대북제재"
+    - "제재 회피"
+    - "라자루스"
+    - "해킹"
+    - "해커"
+    - "암호화폐"
+    - "가상자산 탈취"
+    - "불법 환적"
+    - "밀수"
+    describe:
+    - State-sponsored cyber espionage and cryptocurrency heists, maritime sanctions evasion for refined petroleum, and border smuggling networks.
+    - "북한 해커 조직 라자루스의 가상자산 암호화폐 탈취, 해상 불법 환적, 대북제재 회피 및 북중 국경 밀수"
+
+  - id: diplomacy
+    describe:
+      - US-DPRK summit signals, Russia-DPRK foreign minister talks, Beijing-Pyongyang ties, UN human rights resolution and IAEA proliferation debates
+      - 북미회담, 미북 정상회담, 조용원 러시아 방문, 북중 외교, 유엔 북한인권결의안, 외무성 담화
+    keywords: ["북미", "미북", "북미회담", "미북회담", "북중", "조러", "외무성", "정상회담", "트럼프", "시진핑", "북한인권", "유엔", "IAEA", "특사", "방러"]
+
+  - id: security
+    describe:
+      - Korean People's Army naval inspection, artillery drills, DMZ fortifications, South Korea-US joint drills responses, cyber warfare
+      - 조선인민군, 해군대학 시찰, 한미연합훈련, 대남 도발, 포격 훈련, 휴전선, 오물풍선
+    keywords: ["인민군", "조선인민군", "해군", "국방", "무력", "도발", "한미연합훈련", "군사훈련", "핵", "비핵화"]
+
+  - id: econ_policy
+    describe:
+      - DPRK grain prices, rural flood relief, 20x10 regional industrial factory campaign, border market crackdown, state ration system
+      - 지방발전 20×10, 쌀값, 환율, 배급, 국경 단속, 곡물 유출 통제, 경제계획
+    keywords: ["배급", "장마당", "쌀값", "식량", "곡물", "지방발전", "경제", "단속", "무역", "국경"]
+
+  - id: trade
+    describe:
+      - Cross-border Sino-DPRK rail and truck freight, customs seizures, coal and textiles sanctions breaches
+      - 북중무역, 세관, 단둥 신의주 교역, 밀무역, 수출입
+    keywords: ["북중무역", "세관", "단둥", "신의주", "무역", "교역", "수출", "수입"]
+
+  - id: energy_infra
+    describe:
+      - Power outages, hydropower stations, fuel smuggling, Sinpho nuclear shipyard infrastructure, urban construction projects in Pyongyang
+      - 전력난, 수력발전소, 원유 공급, 평양 주택 건설, 도로 철도
+    keywords: ["전력", "발전소", "원유", "유류", "철도", "건설"]
+
+  - id: accident_weather
+    describe:
+      - Yalu River flooding, typhoon damage, harvest failure droughts, emergency infrastructure collapse
+      - 수해, 홍수, 압록강 수해, 태풍, 가뭄, 작황
+    keywords: ["수해", "홍수", "태풍", "가뭄", "산불", "화재", "폭우"]
+
+  - id: sport_culture
+    describe:
+      - International sports tournaments, Taekwondo UNESCO heritage, youth football, Chongryon cultural schools
+      - 태권도, 유네스코, 여자축구, 월드컵, 올림픽, 우리학교
+    keywords: ["태권도", "유네스코", "축구", "올림픽", "월드컵", "선수", "대회"]

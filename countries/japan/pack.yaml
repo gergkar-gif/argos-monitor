@@ -14,9 +14,11 @@ mention:
   - "yokohama"
   - "hokkaido"
   - "okinawa"
-  - "kishida"
+  - "takaichi"
+  - "sanae takaichi"
   - "ishiba"
   - "shigeru ishiba"
+  - "kishida"
   - "ldp"
   - "liberal democratic party"
   - "komeito"
@@ -37,12 +39,16 @@ mention:
   - "横浜"
   - "北海道"
   - "沖縄"
+  - "高市"
+  - "高市早苗"
   - "石破"
   - "石破茂"
   - "岸田"
   - "自民党"
   - "公明党"
   - "立憲民主党"
+  - "国民民主党"
+  - "日本維新の会"
   - "国会"
   - "衆議院"
   - "参議院"
@@ -55,12 +61,12 @@ mention:
   - "外務省"
   - "福島"
 
-mention_regex: ['\b(?:japan|japanese|tokyo|ishiba|nikkei|yen)\b', '日本', '日銀', '自衛隊', '石破']
+mention_regex: ['\b(?:japan|japanese|tokyo|takaichi|ishiba|nikkei|yen)\b', '日本', '日銀', '自衛隊', '高市', '石破']
 mention_section: null
 
 url_sections:
   foreign: [world, international, global, foreign, kokusai, asia]
-  skip: [sports, sport, entertainment, lifestyle, gourmet, travel, geinou]
+  skip: [sports, sport, entertainment, lifestyle, gourmet, travel, geinou, anime, game, beauty, fashion, auto, car]
 
 aggregator_outlets:
   domestic:
@@ -77,6 +83,7 @@ aggregator_outlets:
     - "yomiuri"
     - "yomiuri shimbun"
     - "the yomiuri shimbun"
+    - "the japan news"
     - "nikkei"
     - "nikkei asia"
     - "nihon keizai shimbun"
@@ -86,12 +93,67 @@ aggregator_outlets:
     - "sankei shimbun"
     - "nhk"
     - "nhk world"
+    - "nippon.com"
+    - "japan forward"
+    - "japan today"
+    - "news on japan"
+    - "forbes japan"
+    - "日本経済新聞"
+    - "日経"
+    - "日経ビジネス"
+    - "産経ニュース"
+    - "産経新聞"
+    - "読売新聞"
+    - "朝日新聞"
+    - "毎日新聞"
+    - "時事ドットコム"
+    - "時事通信"
+    - "共同通信"
+    - "47news"
+    - "nhkニュース"
+    - "テレ朝news"
+    - "日テレnews"
+    - "tbs news dig"
+    - "fnnプライムオンライン"
+    - "東洋経済"
+    - "東洋経済オンライン"
+    - "文春オンライン"
+    - "プレジデントオンライン"
+    - "itmedia"
+    - "ねとらぼ"
+    - "財経新聞"
+    - "株探"
+    - "沖縄タイムス"
+    - "琉球新報"
+    - "北海道新聞"
+    - "東京新聞"
+    - "中日新聞"
+    - "西日本新聞"
+    - "京都新聞"
+    - "福井新聞社"
+    - "yahoo!ニュース"
+    - "yahoo! ニュース"
+    - "yahoo"
+    - "car watch"
+    - "ベストカーweb"
   abroad_local:
+    - "bbc"
+    - "bbc news"
     - "bbc news japan"
     - "bbc japan"
+    - "bbcニュース"
     - "newsweek japan"
+    - "ニューズウィーク日本版"
     - "reuters japan"
+    - "ロイター"
     - "bloomberg japan"
+    - "ブルームバーグ"
+    - "cnn.co.jp"
+    - "afpbb news"
+    - "中央日報"
+    - "朝鮮日報"
+    - "rfa"
+    - "voa"
 
 excerpt:
   dateline: '^\s*(?:TOKYO|OSAKA|NAGOYA|KYODO|JIJI|NHK|共同通信|時事通信)\s*[-–—:]\s*'
@@ -99,21 +161,21 @@ excerpt:
 
 classify:
   internal_politics:
-    - "Prime Minister Shigeru Ishiba, cabinet, Liberal Democratic Party (LDP), Komeito coalition, Constitutional Democratic Party (CDP Yoshihiko Noda), National Diet (House of Representatives, House of Councillors), snap elections, political funding scandal, political reform"
-    - "首相, 内閣, 石破茂, 岸田文雄, 自民党, 公明党, 立憲民主党, 国会, 衆議院, 参議院, 選挙, 政治改革, 政治資金問題, 連立政権"
+    - "Prime Minister Sanae Takaichi administration, Shigeru Ishiba, cabinet, Liberal Democratic Party (LDP), coalition partners, Constitutional Democratic Party (CDP), National Diet, snap elections, political funding reform"
+    - "首相, 内閣, 高市早苗, 高市首相, 石破茂, 自民党, 公明党, 立憲民主党, 国民民主党, 日本維新の会, 国会, 衆議院, 参議院, 選挙, 政治改革"
   economics:
-    - "Bank of Japan (BOJ Governor Kazuo Ueda), monetary policy, interest rate hike, yen exchange rate (USD/JPY), inflation, wage negotiations (shunto), Nikkei 225 stock average, semiconductor investment (Rapidus, TSMC Kumamoto), supplemental budget"
-    - "日本銀行, 日銀, 植田和男, 利上げ, マイナス金利解除, 為替, 円安, 円高, 物価高, インフレ, 賃上げ, 春闘, 日経平均, 半導体, ラピダス, 補正予算, 財政"
+    - "Bank of Japan (BOJ Governor Kazuo Ueda), monetary policy, interest rate hike, yen exchange rate (USD/JPY), inflation, wage negotiations (shunto), Nikkei 225, semiconductor investment (Rapidus, TSMC Kumamoto), supplemental budget"
+    - "日本銀行, 日銀, 植田和男, 利上げ, 為替, 円安, 円高, 物価高, インフレ, 賃上げ, 春闘, 日経平均, 半導体, ラピダス, 補正予算, 財政"
   foreign_policy:
     - "Ministry of Foreign Affairs (MOFA), Japan-US Security Alliance, Free and Open Indo-Pacific (FOIP), Japan-China relations, Japan-South Korea bilateral cooperation, QUAD, G7, ASEAN-Japan relations, North Korea abduction issue"
     - "外務省, 日米同盟, インド太平洋, 日中関係, 日韓関係, クアッド, G7, アセアン, 北朝鮮, 拉致問題, 外交"
   defence_security:
-    - "Japan Self-Defense Forces (JSDF), Ministry of Defense, 2% GDP defense spending, counterstrike capabilities, Tomahawk missiles, US military bases in Okinawa, Senkaku Islands maritime defense, Taiwan Strait contingency"
+    - "Japan Self-Defense Forces (JSDF), Ministry of Defense, defense spending, counterstrike capabilities, Tomahawk missiles, US military bases in Okinawa, Senkaku Islands maritime defense, Taiwan Strait contingency"
     - "自衛隊, 防衛省, 防衛費, 反撃能力, トマホーク, 尖閣諸島, 沖縄基地, 台湾有事, 安全保障, ミサイル防衛"
   society:
-    - "Declining birthrate, population aging, demographic crisis, foreign worker visa expansion, labor shortages, Noto Peninsula earthquake recovery, Fukushima treated water release, nuclear power plant restarts"
-    - "少子化対策, 高齢化, 人口減少, 外国人材, 人手不足, 能登半島地震, 復興, 福島第一原発, 処理水, 原発再稼働, 社会問題"
+    - "Declining birthrate, population aging, demographic crisis, foreign worker visa expansion, labor shortages, earthquake recovery, nuclear power plant restarts"
+    - "少子化対策, 高齢化, 人口減少, 外国人材, 人手不足, 地震復興, 原発再稼働, 社会問題"
 
 geo: JP
 reddit: [japan, tokyo, japannews]
-last_reviewed: 2026-11-12
+last_reviewed: 2026-11-19

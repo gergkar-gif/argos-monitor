@@ -76,6 +76,20 @@ class TestPipelineGuards(unittest.TestCase):
         self.assertEqual(picked[0]["id"], 1)
         self.assertEqual({r["id"] for r in picked}, {1, 14})
 
+    def test_select_pending_prioritizes_24h_stories_over_stale_7d(self):
+        db = sqlite3.connect(":memory:")
+        db.row_factory = sqlite3.Row
+        db.executescript(SCHEMA)
+        db.execute("INSERT INTO article (id, source_id, url, title, extract_status, country) VALUES (1, 's1', 'https://c.example/7d', 'Stale 7d', 'pending', 'china')")
+        db.execute("INSERT INTO article (id, source_id, url, title, extract_status, country) VALUES (2, 's1', 'https://c.example/24h', 'Fresh 24h', 'pending', 'china')")
+        db.execute("INSERT INTO story (id, country, window_days, score, representative_article_id) VALUES (1, 'china', 7, 45.0, 1)")
+        db.execute("INSERT INTO story (id, country, window_days, score, representative_article_id) VALUES (2, 'china', 1, 5.0, 2)")
+        db.execute("INSERT INTO story_article (story_id, article_id, similarity) VALUES (1, 1, 1.0), (2, 2, 1.0)")
+
+        picked = extract._select_pending(db, limit=1, story_only=True)
+        self.assertEqual([r["id"] for r in picked], [2])
+        db.close()
+
     def test_all_catalogued_sources_have_ratings(self):
         unrated = []
         for cid in packs.pack_ids():

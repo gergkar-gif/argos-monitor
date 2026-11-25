@@ -3,7 +3,7 @@ id: north_korea
 name: North Korea
 region: East Asia
 language: ko
-abroad_label: Specialist DPRK monitors & international outlets
+abroad_label: Specialist DPRK monitors, South Korean & diaspora Korean-language outlets
 
 mention:
   - "north korea"
@@ -11,24 +11,36 @@ mention:
   - "pyongyang"
   - "kim jong un"
   - "kim yo jong"
+  - "kim ju ae"
   - "workers' party of korea"
   - "kpa"
   - "korean people's army"
   - "hwasong"
   - "icbm"
   - "nuclear test"
+  - "yongbyon"
   - "kcna"
   - "rodong sinmun"
   - "북한"
-  - "조선"
   - "김정은"
   - "김여정"
+  - "김주애"
   - "평양"
   - "조선로동당"
+  - "조선중앙통신"
+  - "조선인민군"
+  - "조선반도"
+  - "로동신문"
   - "인민군"
   - "화성"
+  - "영변"
+  - "대북"
+  - "북핵"
+  - "북러"
+  - "북중"
+  - "남북"
 
-mention_regex: ['\b(?:north korea|dprk|pyongyang|kim jong un|kim yo jong|icbm|hwasong)\b', '북한', '조선', '김정은', '평양', '조선로동당']
+mention_regex: ['\b(?:north korea|dprk|pyongyang|kim jong[- ]un|kim yo[- ]jong|icbm|hwasong|yongbyon|kcna|rodong sinmun)\b', '북한', '김정은', '김여정', '김주애', '평양', '조선로동당', '조선중앙통신', '로동신문', '영변', '북핵', '대북', '북러']
 mention_section: "North Korea"
 
 url_sections:
@@ -39,38 +51,104 @@ aggregator_outlets:
   domestic:
     - "kcna"
     - "rodong sinmun"
+    - "조선중앙통신"
+    - "로동신문"
+    - "노동신문"
+    - "민주조선"
+    - "우리민족끼리"
   abroad_local:
     - "nk news"
     - "daily nk"
+    - "daily nk (korean)"
+    - "daily nk (english)"
+    - "데일리nk"
     - "nk pro"
     - "38 north"
+    - "beyond parallel"
+    - "sino-nk"
+    - "rimjin-gang"
+    - "choson sinbo"
+    - "tongil news"
+    - "통일뉴스"
+    - "spn 서울평양뉴스"
     - "yonhap"
+    - "yonhap news"
+    - "yonhap news agency"
+    - "연합뉴스"
+    - "연합뉴스tv"
+    - "연합인포맥스"
+    - "한겨레"
+    - "경향신문"
+    - "조선일보"
+    - "the chosun daily"
+    - "동아일보"
+    - "중앙일보"
+    - "korea joongang daily"
+    - "the korea times"
+    - "the korea herald"
+    - "한국일보"
+    - "국민일보"
+    - "세계일보"
+    - "서울신문"
+    - "한국경제"
+    - "매일경제"
+    - "서울경제"
+    - "seoul economic daily"
+    - "아시아경제"
+    - "파이낸셜뉴스"
+    - "헤럴드경제"
+    - "이데일리"
+    - "머니투데이"
+    - "뉴스핌"
+    - "뉴스1"
+    - "뉴시스"
+    - "노컷뉴스"
+    - "오마이뉴스"
+    - "kbs"
+    - "kbs 뉴스"
+    - "kbs world"
+    - "mbc"
+    - "mbc 뉴스"
+    - "sbs"
+    - "sbs 뉴스"
+    - "news.sbs.co.kr"
+    - "ytn"
+    - "jtbc"
+    - "채널a"
+    - "mbn"
+    - "tv조선"
+    - "bbs불교방송"
+    - "rfa"
     - "rfa korean"
+    - "자유아시아방송"
+    - "voa"
+    - "voa korean"
+    - "voa 한국어 홈페이지"
+    - "bbc news 코리아"
     - "bbc news korean"
-    - "reuters"
-    - "ap news"
+    - "bbc korean"
 
 excerpt:
-  dateline: '^\s*(?:PYONGYANG|SEOUL|KCNA|YONHAP|NK NEWS|REUTERS)\s*[-–—:]\s*'
-  noise: '^(Photo|Credit|Source|Read more|Watch|\(|\[)'
+  dateline: '^\s*(?:PYONGYANG|SEOUL|KCNA|YONHAP|NK NEWS|REUTERS|연합뉴스)\s*[-–—:]\s*'
+  noise: '^(Photo|Credit|Source|Read more|Watch|뉴스|사진|\(|\[)'
 
 classify:
   internal_politics:
     - "Kim Jong Un, Workers' Party of Korea (WPK) Central Committee, Supreme People's Assembly, Kim Yo Jong statements, Kim Ju Ae succession signals, ideological elimination of reunification concepts"
-    - "김정은, 조선로동당, 당중앙위원회, 최고인민회의, 김여정 담화, 김주애, 2국가론, 통일 지우기, 내부 정치"
+    - "김정은, 조선로동당, 당중앙위원회, 최고인민회의, 김여정 담화, 김주애, 2국가론, 적대적 두 국가, 내부 정치"
   economics:
     - "State economic planning, grain and food rations, border trade with China (Dandong-Sinuiju corridor), illicit coal and oil ship-to-ship transfers, cryptocurrency theft, Russian fuel supplies"
-    - "국가경제발전 5개년 계획, 배급제, 북중무역, 대북제재 회피, 암호화폐 탈취, 러시아 유류 공급"
+    - "국가경제발전, 배급제, 북중무역, 대북제재 회피, 암호화폐 탈취, 해킹, 러시아 유류 공급, 시장 단속"
   foreign_policy:
-    - "Comprehensive Strategic Partnership with Russia, Vladimir Putin summit, mutual defense pact, diplomatic confrontations with US and South Korea, relations with Beijing, arms deliveries"
-    - "조러 조약, 북러 군사동맹, 푸틴, 대미 적대관계, 대남 적대, 북중관계, 외교 정책"
+    - "Comprehensive Strategic Partnership with Russia, US-DPRK summit signals, diplomatic confrontations with US and South Korea, relations with Beijing, UN human rights and sanctions debates"
+    - "조러 조약, 북러 군사동맹, 북미회담, 트럼프 김정은, 대미 적대관계, 대남 적대, 북중관계, 유엔 북한인권결의안, 외교 정책"
   defence_security:
-    - "Korean People's Army (KPA), North Korean troop deployments to Russia, Hwasong-19 ICBM launches, solid-fuel missiles, tactical nuclear warheads, nuclear submarine projects, military reconnaissance satellites"
-    - "조선인민군, 러시아 파병, 화성-19형, ICBM 발사, 고체연료 미사일, 전술핵, 군사정찰위성, 국방발전"
+    - "Korean People's Army (KPA), North Korean troop deployments to Russia, Yongbyon uranium enrichment, Hwasong-19 ICBM launches, solid-fuel missiles, nuclear submarine projects, reconnaissance satellites"
+    - "조선인민군, 러시아 파병, 영변 핵시설, 우라늄 농축, 화성-19형, ICBM 발사, 고체연료 미사일, 전술핵, 군사정찰위성, 해군대학"
   society:
     - "Reactionary Ideology and Culture Rejection Law, strict surveillance by Ministry of State Security, border defectors, energy shortages, flood reconstruction in North Pyongan province"
-    - "반동사상문화배격법, 국가보위성, 국경 경비, 압록강 수해 복구, 탈북, 주민 통제"
+    - "반동사상문화배격법, 국가보위성, 국경 경비, 수해 복구, 탈북민, 주민 통제, 식량난"
 
 geo: KP
 reddit: [geopolitics, northkorea]
-last_reviewed: 2026-11-12
+last_reviewed: 2026-11-19

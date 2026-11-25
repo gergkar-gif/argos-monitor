@@ -1,28 +1,64 @@
 # Japan's additions to the shared themes (../../themes.yaml): English & Japanese keywords and descriptions.
 themes:
+  - id: elections
+    describe:
+      - Lower House snap election, Upper House House of Councillors election, gubernatorial and mayoral polls, voter turnout, ballot counting, exit polls
+      - 衆院選, 参院選, 総選挙, 都知事選, 市長選, 知事選, 統一地方選, 投票率, 開票結果, 出口調査, 期日前投票
+    keywords: ["選挙", "総選挙", "衆院選", "参院選", "地方選", "知事選", "市長選", "都知事選", "補選", "投票", "投票率", "開票", "投開票", "出口調査", "期日前投票", "有権者", "立候補", "選挙戦", "住民投票", "比例代表"]
+
   - id: party_gov
     describe:
-      - Shigeru Ishiba administration, Liberal Democratic Party (LDP), Komeito, opposition Constitutional Democratic Party (CDP), National Diet, snap elections, political funds control act
-      - 石破内閣, 自民党, 公明党, 立憲民主党, 国会, 衆議院選挙, 政治改革, 政治資金問題, 連立政権
-    keywords: ["shigeru ishiba", "ishiba", "fumio kishida", "kishida", "ldp", "liberal democratic party", "komeito", "cdp", "yoshihiko noda", "diet", "house of representatives", "snap election", "political funding", "slush fund", "political reform", "石破茂", "石破", "岸田", "自民党", "公明党", "立憲民主党", "野田佳彦", "国会", "衆議院", "参議院", "解散総選挙", "政治資金", "裏金", "政治改革"]
+      - Prime Minister Sanae Takaichi administration, Shigeru Ishiba, Liberal Democratic Party (LDP), coalition partners, opposition Constitutional Democratic Party (CDP), National Diet, political funds reform
+      - 高市内閣, 高市早苗首相, 石破茂, 自民党, 公明党, 立憲民主党, 国民民主党, 国会, 衆議院, 参議院, 政治改革, 政治資金問題, 連立政権
+    keywords: ["sanae takaichi", "takaichi", "shigeru ishiba", "ishiba", "fumio kishida", "kishida", "ldp", "liberal democratic party", "komeito", "cdp", "yoshihiko noda", "diet", "house of representatives", "political funding", "slush fund", "political reform", "高市早苗", "高市", "石破茂", "石破", "岸田", "自民党", "公明党", "立憲民主党", "国民民主党", "日本維新の会", "野田佳彦", "玉木雄一郎", "国会", "衆議院", "参議院", "政治資金", "裏金", "政治改革", "内閣"]
 
   - id: econ_policy
     describe:
-      - Bank of Japan (BOJ), Governor Kazuo Ueda, interest rate hike, monetary tightening, yen carry trade, USD/JPY rate, inflation, shunto wage growth, Nikkei 225
-      - 日本銀行, 植田和男, 利上げ, 追加利上げ, 為替介入, 円安, 円高, 物価高, 春闘, 賃上げ, 日経平均株価
-    keywords: ["bank of japan", "boj", "kazuo ueda", "interest rate hike", "rate hike", "monetary policy", "yen", "usd/jpy", "carry trade", "inflation", "shunto", "wage growth", "nikkei 225", "tse", "tokyo stock exchange", "日本銀行", "日銀", "植田和男", "利上げ", "金融政策", "円安", "円高", "為替", "インフレ", "物価高", "春闘", "賃上げ", "日経平均"]
+      - Bank of Japan (BOJ), Governor Kazuo Ueda, interest rate hike, monetary tightening, yen exchange rate, USD/JPY rate, inflation, shunto wage growth, Nikkei 225, fiscal stimulus
+      - 日本銀行, 植田和男, 利上げ, 追加利上げ, 為替介入, 円安, 円高, 物価高, 春闘, 賃上げ, 日経平均株価, 補正予算
+    keywords: ["bank of japan", "boj", "kazuo ueda", "interest rate hike", "rate hike", "monetary policy", "yen", "usd/jpy", "carry trade", "inflation", "shunto", "wage growth", "nikkei 225", "tse", "tokyo stock exchange", "日本銀行", "日銀", "植田和男", "利上げ", "金利", "金融政策", "円安", "円高", "為替", "インフレ", "物価高", "春闘", "賃上げ", "日経平均", "GDP", "補正予算", "経済対策", "消費減税"]
+
+  - id: trade
+    describe:
+      - Japanese exports and imports, US tariffs, auto tariffs, trade surplus, customs, CPTPP and RCEP trade frameworks, economic security
+      - 貿易収支, 輸出入, 米国関税, 自動車関税, CPTPP, 通商交渉, 反ダンピング
+    keywords: ["関税", "相互関税", "貿易", "輸出", "輸入", "貿易赤字", "貿易黒字", "通商", "経済連携", "CPTPP", "EPA"]
+
+  - id: investment
+    describe:
+      - Foreign direct investment in Japan, outbound corporate acquisitions, AI data center infrastructure, domestic capex, startup investment
+      - 対日投資, 海外買収, AIデータセンター投資, 設備投資, 企業買収
+    keywords: ["投資", "対日投資", "設備投資", "買収", "M&A", "出資", "データセンター", "ファンド"]
+
+  - id: energy_infra
+    describe:
+      - Nuclear power plant restarts, Kashiwazaki-Kariwa, renewable offshore wind, hydrogen strategy, electricity grid, Shinkansen maglev infrastructure
+      - 原発再稼働, 柏崎刈羽原発, 再生可能エネルギー, 洋上風力, 水素戦略, 電力網, リニア中央新幹線
+    keywords: ["原発", "原子力", "再稼働", "電力", "エネルギー", "再生可能エネルギー", "洋上風力", "送電網", "脱炭素", "新幹線", "インフラ", "GX"]
 
   - id: diplomacy
     describe:
-      - Japanese diplomacy, Japan-US Alliance, Free and Open Indo-Pacific, Japan-China relations, Japan-South Korea bilateral cooperation, QUAD, G7, ASEAN-Japan relations, North Korea abduction
+      - Japanese diplomacy, Japan-US Alliance, Free and Open Indo-Pacific, Japan-China relations, Japan-South Korea bilateral cooperation, QUAD, G7, ASEAN-Japan relations, North Korea abduction issue
       - 外務省, 日米同盟, インド太平洋, 日中首脳会談, 日韓関係, クアッド, G7, アセアン, 北朝鮮拉致問題
-    keywords: ["takeshi iwaya", "mofa", "japan-us alliance", "indo-pacific", "foip", "quad", "g7", "japan-china", "japan-korea", "yoon suk yeol", "abduction issue", "asean-japan", "外務省", "岩屋毅", "日米同盟", "インド太平洋", "クアッド", "日中", "日韓", "拉致問題", "アセアン"]
+    keywords: ["mofa", "japan-us alliance", "indo-pacific", "foip", "quad", "g7", "japan-china", "japan-korea", "abduction issue", "asean-japan", "外務省", "外相", "日米", "日米同盟", "インド太平洋", "クアッド", "日中", "日韓", "日露", "拉致問題", "アセアン", "首脳会談", "外交"]
 
   - id: security
     describe:
-      - Japan Self-Defense Forces, Ministry of Defense, 2% defense budget target, counterstrike capabilities, Tomahawk cruise missiles, Okinawa US bases, Senkaku Islands defense, Taiwan contingency
+      - Japan Self-Defense Forces, Ministry of Defense, defense budget, counterstrike capabilities, Tomahawk cruise missiles, Okinawa US bases, Senkaku Islands defense, Taiwan contingency
       - 自衛隊, 防衛省, 防衛費増額, 反撃能力, 敵基地攻撃能力, トマホーク, 尖閣諸島, 沖縄米軍基地, 台湾有事
-    keywords: ["jsdf", "japan self-defense forces", "ministry of defense", "defense budget", "counterstrike capability", "tomahawk", "senkaku", "okinawa", "futenma", "henoko", "taiwan contingency", "pac-3", "自衛隊", "陸上自衛隊", "海上自衛隊", "航空自衛隊", "防衛省", "防衛費", "反撃能力", "トマホーク", "尖閣諸島", "尖閣", "沖縄基地", "辺野古", "台湾有事"]
+    keywords: ["jsdf", "japan self-defense forces", "ministry of defense", "defense budget", "counterstrike capability", "tomahawk", "senkaku", "okinawa", "futenma", "henoko", "taiwan contingency", "pac-3", "自衛隊", "陸上自衛隊", "海上自衛隊", "航空自衛隊", "防衛省", "防衛費", "防衛装備", "反撃能力", "トマホーク", "尖閣諸島", "尖閣", "沖縄基地", "辺野古", "台湾有事", "安全保障", "ミサイル", "領海侵犯"]
+
+  - id: unrest_conflict
+    describe:
+      - Protests, demonstrations, violent clashes, terrorist attacks, bombings, shootings, airstrikes, armed conflicts abroad affecting Japanese nationals
+      - 抗議デモ, 暴動, 衝突, テロ攻撃, 爆発, 銃撃, 空爆, 紛争
+    keywords: ["デモ", "抗議", "暴動", "テロ", "爆破", "爆発", "銃撃", "空爆", "攻撃", "ミサイル攻撃", "武力衝突", "停戦", "クーデター", "戒厳令"]
+
+  - id: anticorruption
+    describe:
+      - Special Investigation Department bribery probes, political slush fund indictments, bid-rigging scandals, corporate fraud enforcement
+      - 東京地検特捜部, 汚職収賄, 裏金事件, 談合摘発, 不正会計
+    keywords: ["汚職", "収賄", "贈賄", "特捜部", "談合", "背任", "横領", "裏金", "不正会計", "書類送検", "強制捜査"]
 
   - id: demographics_labor
     category: society
@@ -30,8 +66,8 @@ themes:
     label: Demographics & Foreign Workers
     describe:
       - Low birthrate, population decline, childcare allowance, elderly healthcare, foreign worker visa (Specified Skilled Worker), labor shortages
-      - 少子化対策, 人口減少, 児童手当, 異次元の少子化対策, 高齢化, 特定技能, 育成就労, 外国人材, 人手不足
-    keywords: ["birthrate", "fertility rate", "childcare allowance", "demographic decline", "aging population", "foreign workers", "specified skilled worker", "labor shortage", "少子化", "出生率", "異次元の少子化対策", "児童手当", "人口減少", "高齢化", "特定技能", "育成就労", "人手不足"]
+      - 少子化対策, 人口減少, 児童手当, 高齢化, 特定技能, 育成就労, 外国人材, 人手不足
+    keywords: ["birthrate", "fertility rate", "childcare allowance", "demographic decline", "aging population", "foreign workers", "specified skilled worker", "labor shortage", "少子化", "出生率", "児童手当", "人口減少", "高齢化", "特定技能", "育成就労", "人手不足", "外国人労働者"]
 
   - id: semiconductors_tech
     category: economics
@@ -40,4 +76,22 @@ themes:
     describe:
       - Rapidus semiconductor project in Hokkaido, TSMC fab in Kumamoto, silicon island Kyushu, generative AI subsidies
       - 半導体戦略, ラピダス, 北海道千歳, TSMC熊本工場, 九州半導体, 先端半導体支援
-    keywords: ["rapidus", "tsmc kumamoto", "semiconductor", "hokkaido chitose", "chips act", "advanced packaging", "silicon island", "半導体", "ラピダス", "TSMC", "熊本", "千歳", "日の丸半導体"]
+    keywords: ["rapidus", "tsmc kumamoto", "semiconductor", "hokkaido chitose", "chips act", "advanced packaging", "silicon island", "半導体", "ラピダス", "TSMC", "熊本", "千歳", "日の丸半導体", "生成AI", "データセンター"]
+
+  - id: crime_local
+    describe:
+      - Police arrests, criminal trials, fraud scams, dark part-time jobs, theft, homicide investigations, cyber leaks
+      - 警察逮捕, 刑事裁判, 特殊詐欺, 闇バイト, 窃盗強盗, 個人情報流出
+    keywords: ["逮捕", "容疑", "起訴", "裁判", "有罪", "判決", "詐欺", "闇バイト", "窃盗", "強盗", "殺人", "警視庁", "情報漏洩"]
+
+  - id: accident_weather
+    describe:
+      - Earthquake seismic intensity alerts, typhoon warnings, torrential rain landslides, volcano eruptions, wildfires, traffic or rail accidents
+      - 地震震度情報, 台風接近, 大雨警報, 土砂災害, 火山噴火, 山火事, 交通事故
+    keywords: ["地震", "震度", "津波", "台風", "大雨", "豪雨", "洪水", "土砂災害", "噴火", "山火事", "火災", "事故", "気象庁", "天気予報"]
+
+  - id: sport_culture
+    describe:
+      - MLB Shohei Ohtani, NPB Japanese baseball, J-League football, sumo tournaments, anime/film box office, music and celebrity news
+      - 大谷翔平MLB, プロ野球, Jリーグサッカー, 大相撲, アニメ映画興行, 音楽芸能
+    keywords: ["大谷翔平", "MLB", "ドジャース", "プロ野球", "Jリーグ", "日本代表", "大相撲", "五輪", "オリンピック", "ワールドカップ", "W杯", "優勝", "映画", "アニメ", "紅白", "コンサート", "芸能", "ベストカー"]

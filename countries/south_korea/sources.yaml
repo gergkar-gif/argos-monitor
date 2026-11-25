@@ -1,5 +1,5 @@
 # South Korea source registry (decision D15).
-# Combines national news agency Yonhap (English & Korean), established national dailies (The Korea Times, Dong-A Ilbo), regional Korean diaspora broadcasters, and Google News aggregators.
+# Combines national news agency Yonhap (English & Korean), major national dailies, broadcasters (SBS, KBS World), financial press, digital investigative outlets, and Google News aggregators.
 
 sources:
   - id: yna_en
@@ -35,6 +35,18 @@ sources:
     feeds:
       - {url: "https://www.koreatimes.co.kr/www/rss/rss.xml", section: All News, category_hint: general}
 
+  - id: sbs_ko
+    name: SBS 뉴스 (SBS News)
+    homepage: https://news.sbs.co.kr
+    language: ko
+    scope: domestic
+    kind: media
+    governing_body: Seoul Broadcasting System (major South Korean commercial television network)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=01&plink=RSSREADER", section: Politics, category_hint: internal_politics}
+      - {url: "https://news.sbs.co.kr/news/TopicRssFeed.do?plink=RSSREADER", section: Top Picks, category_hint: general}
+
   - id: donga_ko
     name: Dong-A Ilbo
     homepage: https://www.donga.com
@@ -56,6 +68,7 @@ sources:
     state_affiliated: false
     feeds:
       - {url: "https://www.chosun.com/arc/outboundfeeds/rss/category/politics/?outputType=xml", section: Politics, category_hint: internal_politics}
+      - {url: "https://www.chosun.com/arc/outboundfeeds/rss/?outputType=xml", section: All News, category_hint: general}
 
   - id: hani_co_kr
     name: The Hankyoreh
@@ -68,6 +81,17 @@ sources:
     feeds:
       - {url: "https://www.hani.co.kr/rss/", section: Total, category_hint: general}
 
+  - id: kmib_ko
+    name: Kookmin Ilbo (국민일보)
+    homepage: https://www.kmib.co.kr
+    language: ko
+    scope: domestic
+    kind: media
+    governing_body: Kukmin Ilbo Co. (independent national daily newspaper in Seoul)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.kmib.co.kr/rss/data/kmibRssAll.xml", section: All News, category_hint: general}
+
   - id: maeil_business
     name: Maeil Business Newspaper (MK)
     homepage: https://www.mk.co.kr
@@ -78,6 +102,51 @@ sources:
     state_affiliated: false
     feeds:
       - {url: "https://www.mk.co.kr/rss/30000001/", section: Headlines, category_hint: economics}
+      - {url: "https://www.mk.co.kr/rss/30200030/", section: Politics, category_hint: internal_politics}
+
+  - id: mk_pulse_en
+    name: Pulse by Maeil Business News
+    homepage: https://pulsenews.co.kr
+    language: en
+    scope: domestic
+    kind: media
+    governing_body: Maekyung Media Group (English business and markets wire)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.mk.co.kr/rss/30800011/", section: Business & Markets, category_hint: economics}
+
+  - id: fnnews_ko
+    name: Financial News (파이낸셜뉴스)
+    homepage: https://www.fnnews.com
+    language: ko
+    scope: domestic
+    kind: media
+    governing_body: Financial News Co. (major South Korean financial and industrial daily)
+    state_affiliated: false
+    feeds:
+      - {url: "https://www.fnnews.com/rss/r20/fn_realnews_all.xml", section: Realtime, category_hint: economics}
+
+  - id: edaily_ko
+    name: Edaily (이데일리)
+    homepage: https://www.edaily.co.kr
+    language: ko
+    scope: domestic
+    kind: media
+    governing_body: KG Media / Edaily Co. (financial and economic news wire)
+    state_affiliated: false
+    feeds:
+      - {url: "http://rss.edaily.co.kr/edaily_news.xml", section: All News, category_hint: economics}
+
+  - id: moneytoday_ko
+    name: Money Today (머니투데이)
+    homepage: https://www.mt.co.kr
+    language: ko
+    scope: domestic
+    kind: media
+    governing_body: Money Today Media Group (major financial and industrial news organisation)
+    state_affiliated: false
+    feeds:
+      - {url: "https://rss.mt.co.kr/mt_news.xml", section: All News, category_hint: economics}
 
   - id: kbs_world
     name: KBS World News
@@ -122,6 +191,19 @@ sources:
     state_affiliated: false
     feeds:
       - {url: "http://rss.ohmynews.com/rss/ohmynews.xml", section: Top Stories, category_hint: general}
+
+  - id: kyunghyang_kr
+    name: "Kyunghyang Shinmun (경향신문)"
+    homepage: https://www.khan.co.kr
+    language: ko
+    scope: domestic
+    kind: media
+    governing_body: "Kyunghyang Shinmun Co. (employee-owned)"
+    state_affiliated: false
+    notes: "Major independent employee-owned Seoul daily broadsheet covering National Assembly politics, labor, and inter-Korean relations."
+    feeds:
+      - {url: "https://www.khan.co.kr/rss/rssdata/total_news.xml", section: Total News, category_hint: general}
+      - {url: "https://www.khan.co.kr/rss/rssdata/politic_news.xml", section: Politics, category_hint: internal_politics}
 
   - id: gnews_ko_top
     name: Google News (South Korea Top Stories - Korean)
@@ -207,15 +289,14 @@ sources:
     feeds:
       - {url: "https://news.google.com/rss/search?q=%22South+Korea%22+(missile+OR+defense+OR+military+OR+%22North+Korea%22)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Security, category_hint: defence_security}
 
-  - id: kyunghyang_kr
-    name: "Kyunghyang Shinmun"
-    homepage: https://english.khan.co.kr
+  - id: gnews_kr_def_industry
+    name: Google News (South Korea K-Defense & Arms Exports)
+    homepage: https://news.google.com
     language: en
-    scope: domestic
+    scope: international
     kind: media
-    governing_body: "Kyunghyang Shinmun Co. (employee-owned)"
+    aggregator: google_news
+    governing_body: n/a (aggregator)
     state_affiliated: false
-    notes: "Major independent employee-owned Seoul daily broadsheet covering National Assembly politics, labor, and inter-Korean relations."
     feeds:
-    - url: https://www.khan.co.kr/rss/rssdata/total_news.xml
-      category_hint: internal_politics
+      - {url: "https://news.google.com/rss/search?q=(%22Hanwha+Aerospace%22+OR+%22LIG+Nex1%22+OR+KAI+OR+%22Hyundai+Rotem%22+OR+K-defense+OR+%EB%B0%A9%EC%82%B0)+%22South+Korea%22+OR+%ED%95%9C%EA%B5%AD+when:7d&hl=en-US&gl=US&ceid=US:en", section: K-Defense Industry, category_hint: defence_security}

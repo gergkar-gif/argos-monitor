@@ -1,28 +1,64 @@
 # Taiwan's additions to the shared themes (../../themes.yaml): English & Traditional Chinese keywords and descriptions.
 themes:
+  - id: elections
+    describe:
+      - National presidential and legislative elections, local nine-in-one municipal polls, recall votes, referendums, voter turnout, campaign rallies, Central Election Commission
+      - 總統大選, 立委選舉, 九合一地方選舉, 罷免投票, 公投, 投票率, 開票結果, 候選人造勢, 中選會
+    keywords: ["大選", "總統大選", "立委選舉", "地方選舉", "九合一", "選舉", "選民", "投票", "投票率", "開票", "公投", "公民投票", "罷免案", "罷免投票", "罷免", "補選", "候選人", "中選會", "造勢", "政見發表", "民調"]
+
   - id: party_gov
     describe:
       - President Lai Ching-te, Vice President Hsiao Bi-khim, Premier Cho Jung-tai cabinet, DPP minority government, opposition KMT and TPP majority in Legislative Yuan, legislative reform controversies
-      - 賴清德總統, 蕭美琴副總統, 卓榮泰內閣, 民進黨執政, 國民黨與民眾黨立院多數, 國會改革法案, 釋憲案, 覆議案, 罷免
-    keywords: ["lai ching-te", "william lai", "hsiao bi-khim", "cho jung-tai", "dpp", "kmt", "tpp", "ko wen-je", "han kuo-yu", "legislative yuan", "constitutional court", "judicial yuan", "cabinet", "賴清德", "蕭美琴", "卓榮泰", "民進黨", "國民黨", "民眾黨", "柯文哲", "韓國瑜", "立法院", "國會改革", "覆議", "憲法法庭", "釋憲", "內閣"]
+      - 賴清德總統, 蕭美琴副總統, 卓榮泰內閣, 民進黨執政, 國民黨與民眾黨立院多數, 國會改革法案, 釋憲案, 覆議案
+    keywords: ["lai ching-te", "william lai", "hsiao bi-khim", "cho jung-tai", "dpp", "kmt", "tpp", "ko wen-je", "han kuo-yu", "legislative yuan", "constitutional court", "judicial yuan", "cabinet", "賴清德", "蕭美琴", "卓榮泰", "民進黨", "國民黨", "民眾黨", "柯文哲", "韓國瑜", "黃國昌", "立法院", "國會改革", "覆議", "憲法法庭", "釋憲", "內閣", "行政院"]
 
   - id: econ_policy
     describe:
-      - Central Bank of Taiwan, NTD exchange rate, semiconductor fab investments, AI server manufacturing boom, foreign investment, electricity tariffs, renewable energy
-      - 中央銀行, 楊金龍, 新台幣匯率, 利率政策, 晶圓代工, AI伺服器供應鏈, 輝達合作, 電價調整, 綠能轉型
-    keywords: ["central bank of the roc", "yang chin-long", "new taiwan dollar", "ntd", "exchange rate", "tsmc", "semiconductor", "foundry", "ai server", "foxconn", "quanta", "nvidia", "electricity tariff", "green energy", "中央銀行", "央行", "新台幣", "匯率", "台積電", "半導體", "晶圓", "AI伺服器", "鴻海", "廣達", "電價", "出口"]
+      - Central Bank of Taiwan, NTD exchange rate, inflation, central bank interest rate, financial supervision, fiscal budget
+      - 中央銀行, 楊金龍, 新台幣匯率, 利率政策, 通膨, 財政預算, 主計總處, 景氣燈號
+    keywords: ["central bank of the roc", "yang chin-long", "new taiwan dollar", "ntd", "exchange rate", "inflation", "interest rate", "中央銀行", "央行", "楊金龍", "新台幣", "匯率", "利率", "通膨", "景氣燈號", "主計總處", "總預算", "財政部", "金管會"]
+
+  - id: trade
+    describe:
+      - Taiwan bilateral trade, tariffs, semiconductor exports, customs, US-Taiwan 21st Century Trade Initiative, CPTPP accession, cross-border supply chains
+      - 對外貿易, 出口訂單, 關稅談判, 對等關稅, 台美21世紀貿易倡議, 反傾銷, 貿易順差, CPTPP
+    keywords: ["tariff", "tariffs", "trade surplus", "exports", "imports", "customs", "cptpp", "關稅", "對等關稅", "貿易", "出口", "進口", "順差", "逆差", "海關", "反傾銷", "經貿談判", "貿易倡議"]
+
+  - id: investment
+    describe:
+      - Foreign direct investment, TSMC fab expansion, AI data centers, Nvidia partnerships, venture capital, corporate expansion
+      - 外資投資, 赴美設廠, 建廠投資, 資料中心, 輝達投資, 企業併購, 募資擴廠
+    keywords: ["tsmc", "nvidia", "foxconn", "quanta", "ai server", "foundry", "投資", "外資", "設廠", "建廠", "擴廠", "資料中心", "數據中心", "伺服器", "鴻海", "廣達", "輝達", "併購", "創投", "增資"]
+
+  - id: energy_infra
+    describe:
+      - Taipower grid resilience, electricity tariffs, offshore wind, solar energy, nuclear power policy, high-speed rail, ports, industrial power supply
+      - 台電電網韌性, 電價調整, 離岸風電, 太陽光電, 核能延役, 高鐵建設, 港口基礎設施, 供電穩定
+    keywords: ["taipower", "electricity tariff", "green energy", "offshore wind", "nuclear power", "能源", "電力", "電價", "停電", "跳電", "供電", "缺電", "電網", "台電", "核電", "核能", "核三", "再生能源", "離岸風電", "太陽能", "綠能", "高鐵", "基礎建設"]
 
   - id: diplomacy
     describe:
       - Taiwanese diplomacy, Lin Chia-lung, US-Taiwan bilateral relations, Taiwan Relations Act, European Parliament declarations, global semiconductor diplomacy, official diplomatic allies
       - 外交部, 林佳龍, 台美關係, 台灣關係法, 歐洲議會挺台, 總合外交, 晶片外交, 邦交國維繫
-    keywords: ["lin chia-lung", "mofa", "taiwan relations act", "tra", "us-taiwan", "american institute in taiwan", "ait", "european parliament", "diplomatic allies", "chip diplomacy", "diplomatic visit", "外交部", "林佳龍", "台美關係", "美國在台協會", "AIT", "歐洲議會", "邦交國", "友邦", "實質外交", "晶片外交"]
+    keywords: ["lin chia-lung", "mofa", "taiwan relations act", "tra", "us-taiwan", "american institute in taiwan", "ait", "european parliament", "diplomatic allies", "chip diplomacy", "diplomatic visit", "外交部", "林佳龍", "台美關係", "美國在台協會", "AIT", "歐洲議會", "邦交國", "友邦", "實質外交", "晶片外交", "出訪"]
 
   - id: security
     describe:
       - Ministry of National Defense, Taiwanese Armed Forces, PLA daily airspace incursions, Taiwan Strait median line, joint blockade military exercises, Hai Kun submarine, US foreign military sales
       - 國防部, 國軍, 共機擾台, 防空識別區, 台海中線, 圍台軍演, 灰色地帶作戰, 海鯤號潛艦, 對台軍售, 不對稱作戰
-    keywords: ["wellington koo", "defense ministry", "pla", "peoples liberation army", "adiz", "median line", "taiwan strait", "joint sword", "blockade drill", "grey-zone", "hai kun", "indigenous submarine", "asymmetric defense", "arms sale", "國防部", "顧立雄", "國軍", "共機", "共艦", "防空識別區", "ADIZ", "海峽中線", "聯合利劍", "圍台演習", "灰色地帶", "海鯤號", "潛艦國造", "軍售", "不對稱作戰"]
+    keywords: ["wellington koo", "defense ministry", "pla", "peoples liberation army", "adiz", "median line", "taiwan strait", "joint sword", "blockade drill", "grey-zone", "hai kun", "indigenous submarine", "asymmetric defense", "arms sale", "國防部", "顧立雄", "國軍", "共機", "共艦", "防空識別區", "ADIZ", "海峽中線", "聯合利劍", "圍台演習", "灰色地帶", "海鯤號", "潛艦國造", "軍售", "不對稱作戰", "漢光演習"]
+
+  - id: unrest_conflict
+    describe:
+      - Street protests, political demonstrations, violent clashes, bombings, shootings, martial law debates, air strikes, civil unrest
+      - 街頭抗議, 示威遊行, 警民衝突, 暴力事件, 槍擊案, 爆炸攻擊, 空襲警報, 戒嚴爭議
+    keywords: ["抗議", "示威", "遊行", "街頭抗爭", "陳抗", "暴動", "衝突", "恐攻", "爆炸", "槍擊", "空襲", "戒嚴", "流血衝突"]
+
+  - id: anticorruption
+    describe:
+      - Anti-corruption investigations, bribery charges, profiteering probes, prosecutors detaining politicians or officials, judicial corruption crackdowns
+      - 貪污調查, 收賄起訴, 圖利罪, 檢調偵辦, 羈押禁見, 廉政署肅貪, 司法反貪
+    keywords: ["貪污", "貪瀆", "涉貪", "圖利", "收賄", "行賄", "檢調", "廉政署", "羈押", "起訴", "偵辦", "約談", "搜索", "肅貪", "洗錢"]
 
   - id: silicon_shield
     category: economics
@@ -31,4 +67,22 @@ themes:
     describe:
       - Global semiconductor supply chain reliance on Taiwan, TSMC advanced 2nm / A16 processes, fab construction abroad (Kumamoto, Arizona, Dresden) vs domestic hub retention
       - 矽盾效應, 全球半導體供應鏈, 台積電2奈米先進製程, 海外設廠（熊本、亞利桑那、德勒斯登）, 研發留在台灣
-    keywords: ["silicon shield", "tsmc fab", "2nm", "a16 process", "advanced packaging", "cowos", "arizona fab", "kumamoto fab", "dresden fab", "hsinchu science park", "矽盾", "台積電", "先進製程", "2奈米", "CoWoS", "先進封裝", "竹科", "中科", "南科"]
+    keywords: ["silicon shield", "tsmc fab", "2nm", "a16 process", "advanced packaging", "cowos", "arizona fab", "kumamoto fab", "dresden fab", "hsinchu science park", "矽盾", "台積電", "半導體", "晶圓", "先進製程", "2奈米", "CoWoS", "先進封裝", "竹科", "中科", "南科"]
+
+  - id: crime_local
+    describe:
+      - Individual criminal arrest, fraud rings, telecommunication scams, theft, embezzlement, drug busts, traffic court trials
+      - 治安事件, 詐騙集團, 打詐逮捕, 竊盜案, 法院判刑, 酒駕肇事
+    keywords: ["逮捕", "判刑", "詐欺", "詐騙", "竊盜", "搶劫", "販毒", "毒品", "酒駕", "命案", "通緝", "地檢署", "警政"]
+
+  - id: accident_weather
+    describe:
+      - Typhoon landfall, earthquake alerts, torrential rain, flooding, landslides, urban fires, fatal traffic accidents, Central Weather Administration warnings
+      - 颱風警報, 地震報告, 豪大雨特報, 淹水災情, 土石流, 火災火警, 車禍意外
+    keywords: ["颱風", "地震", "豪雨", "暴雨", "淹水", "積水", "土石流", "氣象署", "火災", "火警", "車禍", "意外", "墜機", "停班停課"]
+
+  - id: sport_culture
+    describe:
+      - CPBL baseball, MLB Shohei Ohtani, NBA basketball, Olympic badminton and sports tournaments, concerts, Golden Horse Awards, entertainment and celebrity news
+      - 中華職棒, MLB道奇大谷翔平, NBA籃球, 羽球賽事, 奧運金牌, 演唱會, 金馬獎電影, 演藝娛樂
+    keywords: ["職棒", "中華職棒", "大巨蛋", "MLB", "NBA", "大谷翔平", "羽球", "網球", "高爾夫", "奧運", "世足", "棒球", "籃球", "演唱會", "票房", "金馬獎", "金曲獎", "娛樂", "明星", "藝人", "電影", "影集"]

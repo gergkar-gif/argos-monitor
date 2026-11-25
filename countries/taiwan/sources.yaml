@@ -1,5 +1,5 @@
 # Taiwan source registry (decision D15).
-# Combines premier English daily Taipei Times, leading national daily Liberty Times (Chinese), national wires (CNA / Focus Taiwan via Google News), and diaspora Chinese reporting.
+# Combines English & Chinese national dailies, statutory national news agency (CNA / Focus Taiwan), public broadcaster (PTS), investigative portals, and diaspora Chinese reporting.
 
 sources:
   - id: taipeitimes_en
@@ -12,6 +12,41 @@ sources:
     state_affiliated: false
     feeds:
       - {url: "https://www.taipeitimes.com/xml/index.rss", section: Top Stories, category_hint: general}
+
+  - id: cna_tw
+    name: Central News Agency (中央社)
+    homepage: https://www.cna.com.tw
+    language: zh
+    scope: domestic
+    kind: wire
+    governing_body: Central News Agency (statutory public-interest national news agency of Taiwan)
+    state_affiliated: false
+    feeds:
+      - {url: "https://feeds.feedburner.com/rsscna/politics", section: Politics, category_hint: internal_politics}
+      - {url: "https://feeds.feedburner.com/rsscna/finance", section: Finance, category_hint: economics}
+      - {url: "https://feeds.feedburner.com/rsscna/intworld", section: International, category_hint: foreign_policy}
+
+  - id: focustaiwan_en
+    name: Focus Taiwan (CNA English)
+    homepage: https://focustaiwan.tw
+    language: en
+    scope: domestic
+    kind: wire
+    governing_body: Central News Agency (English service)
+    state_affiliated: false
+    feeds:
+      - {url: "https://feeds.feedburner.com/rsscna/engnews", section: Top News, category_hint: general}
+
+  - id: pts_tw
+    name: PTS News (公視新聞網)
+    homepage: https://news.pts.org.tw
+    language: zh
+    scope: domestic
+    kind: media
+    governing_body: Public Television Service Foundation (Taiwan public broadcaster)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.pts.org.tw/xml/newsfeed.xml", section: Top News, category_hint: general}
 
   - id: ltn_politics
     name: Liberty Times (Politics - Traditional Chinese)
@@ -36,15 +71,16 @@ sources:
       - {url: "https://news.ltn.com.tw/rss/business.xml", section: Business, category_hint: economics}
 
   - id: udn_tw
-    name: United Daily News (UDN)
-    homepage: https://udn.com
+    name: Economic Daily News / UDN Group (經濟日報)
+    homepage: https://money.udn.com
     language: zh
     scope: domestic
     kind: media
-    governing_body: United Daily News Group (major national daily newspaper of record)
+    governing_body: United Daily News Group (major national financial and business daily)
     state_affiliated: false
     feeds:
-      - {url: "https://udn.com/rssfeed/news/2/6638?ch=news", section: Realtime, category_hint: general}
+      - {url: "https://money.udn.com/rssfeed/news/1001/5588", section: Macroeconomics & Market, category_hint: economics}
+      - {url: "https://money.udn.com/rssfeed/news/1001/5591", section: Tech & Industry, category_hint: economics}
 
   - id: ettoday_tw
     name: ETtoday
@@ -124,13 +160,13 @@ sources:
       - {url: "https://crossing.cw.com.tw/rss", section: International & Society, category_hint: foreign_policy}
 
   - id: gnews_tw_domestic
-    name: Focus Taiwan / CNA / Taiwan News (via Google News)
-    homepage: https://focustaiwan.tw
+    name: Taiwan News & Domestic English Press (via Google News)
+    homepage: https://www.taiwannews.com.tw
     language: en
     scope: domestic
     kind: wire
     aggregator: google_news
-    governing_body: Central News Agency (CNA, national news agency of Taiwan)
+    governing_body: n/a (aggregator)
     state_affiliated: false
     feeds:
       - {url: "https://news.google.com/rss/search?q=(site:focustaiwan.tw+OR+site:taipeitimes.com+OR+site:taiwannews.com.tw)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Domestic Wires, category_hint: general}
@@ -206,3 +242,15 @@ sources:
     state_affiliated: false
     feeds:
       - {url: "https://news.google.com/rss/search?q=Taiwan+(China+OR+military+OR+PLA+OR+Strait+OR+blockade+OR+defense)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Security, category_hint: defence_security}
+
+  - id: gnews_tw_def_industry
+    name: Google News (Taiwan Defence Industry & Arms Procurement)
+    homepage: https://news.google.com
+    language: en
+    scope: international
+    kind: media
+    aggregator: google_news
+    governing_body: n/a (aggregator)
+    state_affiliated: false
+    feeds:
+      - {url: "https://news.google.com/rss/search?q=(Taiwan+(%22defense+industry%22+OR+%22arms+sales%22+OR+NCSIST+OR+AIDC+OR+%22indigenous+submarine%22))+when:14d&hl=en-US&gl=US&ceid=US:en", section: Defence Industry, category_hint: defence_security}

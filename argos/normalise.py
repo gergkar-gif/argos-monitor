@@ -17,7 +17,7 @@ WIRE_CREDIT_RE = re.compile(
     r"\b(?:theo\s+ttxvn|nguồn:\s*ttxvn|\(ttxvn\)|theo\s+vna|\(vna\)|"
     r"selon\s+l'aps|\(aps\)|\(belta\)|\(белта\)|\(тасс\)|\(ria\s+novosti\)|\(риа\s+новости\)|"
     r"\(reuters\)|\(ap\)|\(afp\)|\bafp\b|\breuters\b|\(xinhua\)|\(cns\))\b|"
-    r"(?:新华社|新華社|中新社|据新华社|據新華社|央视新闻|央視新聞)",
+    r"(?:新华社|新華社|中新社|据新华社|據新華社|央视新闻|央視新聞|中央社|共同通信|時事通信|연합뉴스|뉴시스)",
     re.I
 )
 _CJK_SPAN_RE = re.compile(r"[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff]+")

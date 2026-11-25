@@ -3,6 +3,7 @@ import re
 import unicodedata
 import urllib.parse
 from datetime import datetime, timedelta, timezone
+from email.utils import parsedate_to_datetime
 
 VN = timezone(timedelta(hours=7))
 
@@ -96,6 +97,13 @@ def parse_date(entry):
         d = datetime.strptime(raw, "%m/%d/%Y %I:%M:%S %p").replace(tzinfo=VN)
         return d.astimezone(timezone.utc).isoformat(timespec="seconds")
     except ValueError:
+        pass
+    try:
+        d = parsedate_to_datetime(re.sub(r",(?=\S)", ", ", raw))
+        if d.tzinfo is None:
+            d = d.replace(tzinfo=timezone.utc)
+        return d.astimezone(timezone.utc).isoformat(timespec="seconds")
+    except (ValueError, TypeError):
         pass
     try:
         d = datetime.fromisoformat(raw.replace("Z", "+00:00"))

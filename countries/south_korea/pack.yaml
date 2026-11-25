@@ -14,11 +14,10 @@ mention:
   - "incheon"
   - "daegu"
   - "daejeon"
+  - "lee jae-myung"
   - "yoon suk yeol"
-  - "yoon"
   - "han duck-soo"
   - "han dong-hoon"
-  - "lee jae-myung"
   - "ppp"
   - "people power party"
   - "dpk"
@@ -26,7 +25,9 @@ mention:
   - "national assembly"
   - "bank of korea"
   - "bok"
-  - "won"
+  - "korean won"
+  - "south korean won"
+  - "krw"
   - "samsung"
   - "sk hynix"
   - "hyundai"
@@ -41,10 +42,10 @@ mention:
   - "부산"
   - "인천"
   - "대구"
+  - "이재명"
   - "윤석열"
   - "한덕수"
   - "한동훈"
-  - "이재명"
   - "국민의힘"
   - "더불어민주당"
   - "국회"
@@ -59,17 +60,18 @@ mention:
   - "외교부"
   - "북한"
 
-mention_regex: ['\b(?:south korea|korean?|seoul|yoon suk yeol|chaebol|won)\b', '한국', '대한민국', '서울', '윤석열', '국회']
+mention_regex: ['\b(?:south korea|korean?|seoul|lee jae-myung|yoon suk yeol|chaebol|korean won|krw)\b', '한국', '대한민국', '서울', '이재명', '윤석열', '국회', '원화']
 mention_section: null
 
 url_sections:
   foreign: [world, international, global, foreign]
-  skip: [sports, sport, entertainment, lifestyle, celebrity, enter]
+  skip: [sports, sport, entertainment, lifestyle, celebrity, enter, star, culture]
 
 aggregator_outlets:
   domestic:
     - "yonhap"
     - "yonhap news"
+    - "yonhap news agency"
     - "yna"
     - "the korea herald"
     - "korea herald"
@@ -79,43 +81,101 @@ aggregator_outlets:
     - "donga ilbo"
     - "chosun"
     - "chosun ilbo"
+    - "chosunbiz"
+    - "the chosun daily"
     - "joongang"
     - "joongang ilbo"
     - "korea joongang daily"
     - "hankyoreh"
     - "the hankyoreh"
+    - "kyunghyang shinmun"
+    - "maeil business"
+    - "mae-il business"
+    - "seoul economic daily"
+    - "businesskorea"
+    - "pulsenews"
     - "kbs"
     - "kbs world"
     - "mbc"
     - "sbs"
     - "ytn"
+    - "연합뉴스"
+    - "연합뉴스tv"
+    - "연합인포맥스"
+    - "한겨레"
+    - "경향신문"
+    - "조선일보"
+    - "조선비즈"
+    - "동아일보"
+    - "중앙일보"
+    - "한국경제"
+    - "매일경제"
+    - "서울경제"
+    - "헤럴드경제"
+    - "아시아경제"
+    - "파이낸셜뉴스"
+    - "이데일리"
+    - "머니투데이"
+    - "뉴스1"
+    - "뉴시스"
+    - "노컷뉴스"
+    - "오마이뉴스"
+    - "국민일보"
+    - "서울신문"
+    - "세계일보"
+    - "한국일보"
+    - "디지털타임스"
+    - "전자신문"
+    - "지디넷코리아"
+    - "블로터"
+    - "kbs 뉴스"
+    - "mbc 뉴스"
+    - "sbs 뉴스"
+    - "news.sbs.co.kr"
+    - "jtbc"
+    - "채널a"
+    - "mbn"
+    - "tv조선"
+    - "대한민국 정책브리핑"
+    - "한국무역협회-kita.net"
+    - "데일리메디"
+    - "medi:gate news"
+    - "재경일보"
+    - "뉴스핌"
   abroad_local:
+    - "bbc"
+    - "bbc news"
     - "bbc news korean"
     - "bbc korean"
+    - "bbc news 코리아"
+    - "rfa"
     - "rfa korean"
+    - "자유아시아방송"
+    - "voa"
     - "voa korean"
+    - "voa 한국어 홈페이지"
 
 excerpt:
-  dateline: '^\s*(?:SEOUL|SEJONG|BUSAN|YONHAP|KBS|연합뉴스)\s*[-–—:]\s*'
+  dateline: '^\s*(?:SEOUL|SEJONG|BUSAN|YONHAP|KBS|SBS|연합뉴스)\s*[-–—:]\s*'
   noise: '^(Photo|Credit|File photo|Read also|사진|\(|\[)'
 
 classify:
   internal_politics:
-    - "President Yoon Suk Yeol, First Lady Kim Keon-hee allegations, People Power Party (Han Dong-hoon), Democratic Party of Korea (Lee Jae-myung), National Assembly partisan clash, special counsel probe bills, cabinet"
-    - "대통령, 윤석열, 김건희, 국민의힘, 한동훈, 더불어민주당, 이재명, 국회, 특검, 청문회, 탄핵, 총선, 정당"
+    - "President Lee Jae-myung administration, Democratic Party of Korea (DPK), opposition People Power Party (PPP), Yoon Suk Yeol insurrection and special counsel trials, National Assembly legislation, cabinet and budget debates"
+    - "대통령, 이재명, 김민석, 더불어민주당, 민주당, 국민의힘, 윤석열 재판, 특검, 국회, 예산안, 청문회, 정당"
   economics:
-    - "Bank of Korea monetary policy, interest rates, Korean won exchange rate, semiconductor memory exports (Samsung Electronics, SK Hynix HBM chips), chaebol reform, household debt, real estate project finance"
+    - "Bank of Korea monetary policy, interest rates, Korean won exchange rate, semiconductor memory exports (Samsung Electronics, SK Hynix HBM chips), chaebol governance, household debt, real estate market"
     - "한국은행, 이창용, 기준금리, 원달러 환율, 원화, 반도체, 삼성전자, SK하이닉스, HBM, 현대차, 가계부채, 부동산, 물가, 무역수지"
   foreign_policy:
-    - "Ministry of Foreign Affairs (MOFA), ROK-US Alliance, Camp David trilateral partnership with US & Japan, ROK-Japan diplomatic thaw, China relations, K-defense weapons exports (Poland, Australia), ASEAN engagement"
-    - "외교부, 조태열, 한미동맹, 한미일 협력, 한일관계, 대중관계, 방산수출, K-방산, 다자외교, 아세안"
+    - "Ministry of Foreign Affairs (MOFA), ROK-US Alliance, US trade and tariff talks, trilateral cooperation with US & Japan, ROK-Japan ties, China relations, K-defense weapons exports, ASEAN"
+    - "외교부, 한미동맹, 관세협상, 한미일 협력, 한일관계, 대중관계, 방산수출, K-방산, 다자외교, 아세안"
   defence_security:
-    - "Ministry of National Defense, Joint Chiefs of Staff, North Korean ballistic missile tests, North Korea-Russia military pact and troop deployment, DMZ border security, USFK, solid-fuel spy satellites"
-    - "국방부, 합동참모본부, 군, 북한 미사일 도발, 핵위협, 북러 군사협력, 파병, DMZ, 주한미군, 방위비, 안보"
+    - "Ministry of National Defense, Joint Chiefs of Staff, North Korean ballistic missile tests, North Korea-Russia military cooperation, DMZ and ADIZ security, USFK, defense procurement"
+    - "국방부, 합동참모본부, 군, 북한 미사일 도발, 핵위협, 북러 군사협력, DMZ, 주한미군, 방위비, 안보, 카디즈"
   society:
-    - "World's lowest fertility rate, aging demographics, doctors' strike and medical school quota dispute, university admissions, Seoul housing costs, environmental green transition"
-    - "저출산, 저출생, 초고령사회, 의대정원, 전공의 파업, 의료대란, 사교육, 킬러문항, 부동산, 사회"
+    - "Low fertility rate, aging demographics, healthcare & medical quota dispute, university admissions, Seoul housing costs, AI deepfake & cyber regulation, labor policy"
+    - "저출산, 저출생, 초고령사회, 의대정원, 의료개혁, 수능, 사교육, 부동산, AI 규제, 사회"
 
 geo: KR
 reddit: [korea, seoul, southkorea]
-last_reviewed: 2026-11-12
+last_reviewed: 2026-11-19
