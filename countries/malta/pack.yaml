@@ -3,49 +3,80 @@ name: Malta
 region: Mediterranean
 language: en
 abroad_label: Regional & International Maltese coverage
-
 mention:
-  - "malta"
-  - "maltese"
-  - "valletta"
-  - "robert abela"
-  - "abela"
-  - "bernard grech"
-  - "roberta metsola"
-  - "metsola"
-  - "ian borg"
-  - "partit laburista"
-  - "partit nazzjonalista"
-  - "gozo"
-mention_regex: ['\bmalt(?:a|ese)\b']
+- malta
+- maltese
+- valletta
+- robert abela
+- abela
+- bernard grech
+- roberta metsola
+- metsola
+- ian borg
+- partit laburista
+- partit nazzjonalista
+- gozo
+mention_regex:
+- \bmalt(?:a|ese)\b
 mention_section: null
-
 url_sections:
-  foreign: [world, foreign, international]
-  skip: [sport, sports, lifestyle, entertainment, motoring, tech, bizarre, xarabank]
-
+  foreign:
+  - world
+  - foreign
+  - international
+  skip:
+  - sport
+  - sports
+  - lifestyle
+  - entertainment
+  - motoring
+  - tech
+  - bizarre
+  - xarabank
 aggregator_outlets:
-  domestic: ["times of malta", "malta today", "maltatoday", "the malta independent", "the shift news", "lovin malta",
-             "newsbook", "newsbook.com.mt", "tvmnews", "tvm", "one news", "net news", "illum", "whoswho.mt",
-             "businessnow.mt", "malta business weekly", "the journal.mt", "gozo news", "gozo.news", "89.7 bay", "guidememalta", "ohmymalta"]
-  abroad_local: ["politico europe", "euractiv", "euobserver"]
-
+  domestic:
+  - times of malta
+  - malta today
+  - maltatoday
+  - the malta independent
+  - the shift news
+  - lovin malta
+  - newsbook
+  - newsbook.com.mt
+  - tvmnews
+  - tvm
+  - one news
+  - net news
+  - illum
+  - whoswho.mt
+  - businessnow.mt
+  - malta business weekly
+  - the journal.mt
+  - gozo news
+  - gozo.news
+  - 89.7 bay
+  - guidememalta
+  - ohmymalta
+  - maltaceos.mt
+  abroad_local:
+  - politico europe
+  - euractiv
+  - euobserver
 excerpt:
-  dateline: '^\s*(?:VALLETTA|TVM)\s*[-–—:]\s*'
-  noise: '^(photo|source|video|read more|sponsored|\(|\[)'
-
+  dateline: ^\s*(?:VALLETTA|TVM)\s*[-–—:]\s*
+  noise: ^(photo|source|video|read more|sponsored|\(|\[)
 classify:
   internal_politics:
-    - "Government of Malta, Prime Minister Robert Abela, Labour Party (PL), Nationalist Party (PN), Bernard Grech, Parliament of Malta, magisterial inquiries, rule of law"
+  - Government of Malta, Prime Minister Robert Abela, Labour Party (PL), Nationalist Party (PN), Bernard Grech, Parliament of Malta, magisterial inquiries, rule of law
   economics:
-    - "economy, budget, Central Bank of Malta, MFSA, financial services, shipping registry, energy interconnector, Enemalta, tourism, inflation"
+  - economy, budget, Central Bank of Malta, MFSA, financial services, shipping registry, energy interconnector, Enemalta, tourism, inflation
   foreign_policy:
-    - "foreign policy, European Union, Roberta Metsola, Ian Borg, OSCE, Central Mediterranean migration route, Libya, neutrality"
+  - foreign policy, European Union, Roberta Metsola, Ian Borg, OSCE, Central Mediterranean migration route, Libya, neutrality
   defence_security:
-    - "Armed Forces of Malta (AFM), maritime search and rescue, border security, coastguard, national security, police"
+  - Armed Forces of Malta (AFM), maritime search and rescue, border security, coastguard, national security, police
   society:
-    - "justice, courts, anti-corruption, Daphne Caruana Galizia inquiry, planning authority, environment, healthcare, education"
-
+  - justice, courts, anti-corruption, Daphne Caruana Galizia inquiry, planning authority, environment, healthcare, education
 geo: MT
-reddit: [malta]
-last_reviewed: 2026-11-17
+reddit:
+- malta
+last_reviewed: '2026-11-25'

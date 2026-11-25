@@ -2,199 +2,219 @@
 # Combines broadsheet of record (Koha.net), news agency (KosovaPress), public broadcaster (RTK via GN), leading Pristina
 # digital dailies (Telegrafi, Gazeta Express, Reporteri, Epoka e Re, Sinjali, Dukagjini, Lajmi.net, Paparaci, Botapress,
 # Nacionale, Periskopi, Zëri, Klan Kosova, Kallxo, Bota Sot), northern Serb portals (KoSSev, Radio Kim), and diaspora/regional outlets.
-
 sources:
-  - id: koha_net
-    name: Koha Ditore (Koha.net)
-    homepage: https://www.koha.net
-    language: sq
-    scope: domestic
-    kind: media
-    governing_body: Koha Group (independent daily newspaper of record in Pristina)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.koha.net/rss", section: Lajmet, category_hint: general}
-      - {url: "https://www.koha.net/en/rss", section: English News, category_hint: general}
-
-  - id: telegrafi_ks
-    name: Telegrafi
-    homepage: https://telegrafi.com
-    language: sq
-    scope: domestic
-    kind: media
-    governing_body: Telegrafi LLC (leading independent digital news portal in Kosovo covering politics and economy)
-    state_affiliated: false
-    feeds:
-      - {url: "https://telegrafi.com/feed/", section: Lajme, category_hint: internal_politics}
-
-  - id: kosovapress_ks
-    name: KosovaPress
-    homepage: https://kosovapress.com
-    language: sq
-    scope: domestic
-    kind: wire
-    governing_body: KosovaPress News Agency (major Kosovo news wire covering governance and parliament)
-    state_affiliated: false
-    feeds:
-      - {url: "https://kosovapress.com/feed/", section: Politikë, category_hint: internal_politics}
-
-  - id: reporteri_ks
-    name: Gazeta Online Reporteri
-    homepage: https://reporteri.net
-    language: sq
-    scope: domestic
-    kind: media
-    governing_body: Reporteri Media Group (Pristina independent investigative and political daily)
-    state_affiliated: false
-    feeds:
-      - {url: "https://reporteri.net/feed/", section: Lajme, category_hint: internal_politics}
-
-  - id: sinjali_ks
-    name: Gazeta Sinjali
-    homepage: https://sinjali.com
-    language: sq
-    scope: domestic
-    kind: media
-    governing_body: Sinjali Media (independent news daily covering justice, rule of law, and governance in Kosovo)
-    state_affiliated: false
-    feeds:
-      - {url: "https://sinjali.com/feed/", section: Lajme, category_hint: internal_politics}
-
-  - id: epokaere_ks
-    name: Epoka e Re
-    homepage: https://www.epokaere.com
-    language: sq
-    scope: domestic
-    kind: media
-    governing_body: Epoka e Re Publishing (Pristina daily broadsheet covering constitutional and party politics)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.epokaere.com/feed/", section: Politikë, category_hint: internal_politics}
-
-  - id: dukagjini_ks
-    name: RTV Dukagjini
-    homepage: https://www.dukagjini.com
-    language: sq
-    scope: domestic
-    kind: media
-    governing_body: Dukagjini Group (major Kosovo television broadcaster and national news portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.dukagjini.com/sq/rss.xml", section: Lajme, category_hint: internal_politics}
-
-  - id: lajmi_ks
-    name: Lajmi.net
-    homepage: https://lajmi.net
-    language: sq
-    scope: domestic
-    kind: media
-    governing_body: Lajmi Media (high-traffic Pristina digital news portal covering politics and economy)
-    state_affiliated: false
-    feeds:
-      - {url: "https://lajmi.net/feed/", section: Lajme, category_hint: internal_politics}
-
-  - id: paparaci_ks
-    name: Paparaci.com
-    homepage: https://paparaci.com
-    language: sq
-    scope: domestic
-    kind: media
-    governing_body: Paparaci Media (independent investigative and political news portal in Pristina)
-    state_affiliated: false
-    feeds:
-      - {url: "https://paparaci.com/feed/", section: Politikë, category_hint: internal_politics}
-
-  - id: botapress_ks
-    name: Botapress
-    homepage: https://botapress.info
-    language: sq
-    scope: domestic
-    kind: media
-    governing_body: Botapress Media (Kosovo news portal reporting on governance, economy, and public debates)
-    state_affiliated: false
-    feeds:
-      - {url: "https://botapress.info/feed/", section: Lajme, category_hint: general}
-
-  - id: radiokim_ks
-    name: Radio Kim (KiM Radio)
-    homepage: https://radiokim.net
-    language: sr
-    scope: domestic
-    kind: media
-    governing_body: KiM Studio (Čaglavica — independent Kosovo-Serb community broadcaster covering Serbian enclaves and dialogue)
-    state_affiliated: false
-    feeds:
-      - {url: "https://radiokim.net/feed/", section: Vesti, category_hint: society}
-
-  - id: gnews_xk_official
-    name: RTK (Radio Television of Kosovo via Google News)
-    homepage: https://www.rtklive.com
-    language: sq
-    scope: domestic
-    kind: official
-    aggregator: google_news
-    governing_body: Radio Television of Kosovo (statutory public broadcaster)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:rtklive.com+when:7d&hl=en-US&gl=US&ceid=US:en", section: RTK, category_hint: general}
-
-  - id: gnews_xk_domestic
-    name: Gazeta Express / Kallxo / Insajderi / IndeksOnline / Nacionale / Periskopi / Zëri / Klan Kosova / Bota Sot (via Google News)
-    homepage: https://www.gazetaexpress.com
-    language: sq
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: MediaWorks / Internews Kosova / Insajderi / IndeksOnline / Nacionale / Zëri / Klan Kosova
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:gazetaexpress.com+OR+site:kallxo.com+OR+site:insajderi.org+OR+site:indeksonline.net+OR+site:botasot.info)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Lajme Kombëtare, category_hint: internal_politics}
-      - {url: "https://news.google.com/rss/search?q=(site:zeri.info+OR+site:nacionale.com+OR+site:periskopi.com+OR+site:demokracia.com+OR+site:arbresh.info+OR+site:klankosova.tv)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Portale & Televizione, category_hint: general}
-
-  - id: gnews_xk_north
-    name: KoSSev / Prishtina Insight (via Google News)
-    homepage: https://kossev.info
-    language: sr
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: Center for Community Development (North Mitrovica) / BIRN Prishtina Insight
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:kossev.info+OR+site:prishtinainsight.com)+when:7d&hl=sr&gl=RS&ceid=RS:sr", section: KoSSev & Insight, category_hint: general}
-
-  - id: albinfo_ch_ks
-    name: Albinfo.ch
-    homepage: https://www.albinfo.ch
-    language: sq
-    scope: abroad_local
-    kind: media
-    governing_body: Albinfo Association (independent Swiss-Kosovar diaspora and bilateral news platform)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.albinfo.ch/feed/", section: Diaspora, category_hint: foreign_policy}
-
-  - id: gnews_xk_abroad
-    name: Radio Evropa e Lirë / Balkan Insight (on Kosovo via Google News)
-    homepage: https://www.evropaelire.org
-    language: sq
-    scope: abroad_local
-    kind: media
-    aggregator: google_news
-    governing_body: Radio Free Europe / BIRN
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:evropaelire.org+OR+site:balkaninsight.com)+(Kosova+OR+Kosovo+OR+Kurti+OR+Prishtina)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Evropa e Lirë, category_hint: general}
-
-  - id: gnews_en_xk
-    name: Google News (Kosovo - International)
-    homepage: https://news.google.com
-    language: en
-    scope: international
-    kind: media
-    aggregator: google_news
-    governing_body: n/a (aggregator)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=Kosovo+(Pristina+OR+Kurti+OR+Mitrovica+OR+%22Serb+List%22)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Kosovo politics & north, category_hint: internal_politics}
-      - {url: "https://news.google.com/rss/search?q=Kosovo+(Serbia+OR+KFOR+OR+NATO+OR+EU+OR+Ohrid)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Kosovo dialogue & security, category_hint: defence_security}
+- id: koha_net
+  name: Koha Ditore (Koha.net)
+  homepage: https://www.koha.net
+  language: sq
+  scope: domestic
+  kind: media
+  governing_body: Koha Group (independent daily newspaper of record in Pristina)
+  state_affiliated: false
+  feeds:
+  - url: https://www.koha.net/rss
+    section: Lajmet
+    category_hint: general
+- id: telegrafi_ks
+  name: Telegrafi
+  homepage: https://telegrafi.com
+  language: sq
+  scope: domestic
+  kind: media
+  governing_body: Telegrafi LLC (leading independent digital news portal in Kosovo covering politics and economy)
+  state_affiliated: false
+  feeds:
+  - url: https://telegrafi.com/feed/
+    section: Lajme
+    category_hint: internal_politics
+- id: kosovapress_ks
+  name: KosovaPress
+  homepage: https://kosovapress.com
+  language: sq
+  scope: domestic
+  kind: wire
+  governing_body: KosovaPress News Agency (major Kosovo news wire covering governance and parliament)
+  state_affiliated: false
+  feeds:
+  - url: https://kosovapress.com/feed/
+    section: Politikë
+    category_hint: internal_politics
+- id: reporteri_ks
+  name: Gazeta Online Reporteri
+  homepage: https://reporteri.net
+  language: sq
+  scope: domestic
+  kind: media
+  governing_body: Reporteri Media Group (Pristina independent investigative and political daily)
+  state_affiliated: false
+  feeds:
+  - url: https://reporteri.net/feed/
+    section: Lajme
+    category_hint: internal_politics
+- id: sinjali_ks
+  name: Gazeta Sinjali
+  homepage: https://sinjali.com
+  language: sq
+  scope: domestic
+  kind: media
+  governing_body: Sinjali Media (independent news daily covering justice, rule of law, and governance in Kosovo)
+  state_affiliated: false
+  feeds:
+  - url: https://sinjali.com/feed/
+    section: Lajme
+    category_hint: internal_politics
+- id: epokaere_ks
+  name: Epoka e Re
+  homepage: https://www.epokaere.com
+  language: sq
+  scope: domestic
+  kind: media
+  governing_body: Epoka e Re Publishing (Pristina daily broadsheet covering constitutional and party politics)
+  state_affiliated: false
+  feeds:
+  - url: https://www.epokaere.com/feed/
+    section: Politikë
+    category_hint: internal_politics
+- id: dukagjini_ks
+  name: RTV Dukagjini
+  homepage: https://www.dukagjini.com
+  language: sq
+  scope: domestic
+  kind: media
+  governing_body: Dukagjini Group (major Kosovo television broadcaster and national news portal)
+  state_affiliated: false
+  feeds:
+  - url: https://www.dukagjini.com/sq/rss.xml
+    section: Lajme
+    category_hint: internal_politics
+- id: lajmi_ks
+  name: Lajmi.net
+  homepage: https://lajmi.net
+  language: sq
+  scope: domestic
+  kind: media
+  governing_body: Lajmi Media (high-traffic Pristina digital news portal covering politics and economy)
+  state_affiliated: false
+  feeds:
+  - url: https://lajmi.net/feed/
+    section: Lajme
+    category_hint: internal_politics
+- id: paparaci_ks
+  name: Paparaci.com
+  homepage: https://paparaci.com
+  language: sq
+  scope: domestic
+  kind: media
+  governing_body: Paparaci Media (independent investigative and political news portal in Pristina)
+  state_affiliated: false
+  feeds:
+  - url: https://paparaci.com/feed/
+    section: Politikë
+    category_hint: internal_politics
+- id: botapress_ks
+  name: Botapress
+  homepage: https://botapress.info
+  language: sq
+  scope: domestic
+  kind: media
+  governing_body: Botapress Media (Kosovo news portal reporting on governance, economy, and public debates)
+  state_affiliated: false
+  feeds:
+  - url: https://botapress.info/feed/
+    section: Lajme
+    category_hint: general
+- id: radiokim_ks
+  name: Radio Kim (KiM Radio)
+  homepage: https://radiokim.net
+  language: sr
+  scope: domestic
+  kind: media
+  governing_body: KiM Studio (Čaglavica — independent Kosovo-Serb community broadcaster covering Serbian enclaves and dialogue)
+  state_affiliated: false
+  feeds:
+  - url: https://radiokim.net/feed/
+    section: Vesti
+    category_hint: society
+- id: gnews_xk_official
+  name: RTK (Radio Television of Kosovo via Google News)
+  homepage: https://www.rtklive.com
+  language: sq
+  scope: domestic
+  kind: official
+  aggregator: google_news
+  governing_body: Radio Television of Kosovo (statutory public broadcaster)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:rtklive.com+when:7d&hl=en-US&gl=US&ceid=US:en
+    section: RTK
+    category_hint: general
+- id: gnews_xk_domestic
+  name: Gazeta Express / Kallxo / Insajderi / IndeksOnline / Nacionale / Periskopi / Zëri / Klan Kosova / Bota Sot (via Google News)
+  homepage: https://www.gazetaexpress.com
+  language: sq
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: MediaWorks / Internews Kosova / Insajderi / IndeksOnline / Nacionale / Zëri / Klan Kosova
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:gazetaexpress.com+OR+site:kallxo.com+OR+site:insajderi.org+OR+site:indeksonline.net+OR+site:botasot.info)+when:7d&hl=en-US&gl=US&ceid=US:en
+    section: Lajme Kombëtare
+    category_hint: internal_politics
+  - url: https://news.google.com/rss/search?q=(site:zeri.info+OR+site:nacionale.com+OR+site:periskopi.com+OR+site:demokracia.com+OR+site:arbresh.info+OR+site:klankosova.tv)+when:7d&hl=en-US&gl=US&ceid=US:en
+    section: Portale & Televizione
+    category_hint: general
+- id: gnews_xk_north
+  name: KoSSev / Prishtina Insight (via Google News)
+  homepage: https://kossev.info
+  language: sr
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: Center for Community Development (North Mitrovica) / BIRN Prishtina Insight
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:kossev.info+OR+site:prishtinainsight.com)+when:7d&hl=sr&gl=RS&ceid=RS:sr
+    section: KoSSev & Insight
+    category_hint: general
+- id: albinfo_ch_ks
+  name: Albinfo.ch
+  homepage: https://www.albinfo.ch
+  language: sq
+  scope: abroad_local
+  kind: media
+  governing_body: Albinfo Association (independent Swiss-Kosovar diaspora and bilateral news platform)
+  state_affiliated: false
+  feeds:
+  - url: https://www.albinfo.ch/feed/
+    section: Diaspora
+    category_hint: foreign_policy
+- id: gnews_xk_abroad
+  name: Radio Evropa e Lirë / Balkan Insight (on Kosovo via Google News)
+  homepage: https://www.evropaelire.org
+  language: sq
+  scope: abroad_local
+  kind: media
+  aggregator: google_news
+  governing_body: Radio Free Europe / BIRN
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:evropaelire.org+OR+site:balkaninsight.com)+(Kosova+OR+Kosovo+OR+Kurti+OR+Prishtina)+when:7d&hl=en-US&gl=US&ceid=US:en
+    section: Evropa e Lirë
+    category_hint: general
+- id: gnews_en_xk
+  name: Google News (Kosovo - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  aggregator: google_news
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=Kosovo+(Pristina+OR+Kurti+OR+Mitrovica+OR+%22Serb+List%22)+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Kosovo politics & north
+    category_hint: internal_politics
+  - url: https://news.google.com/rss/search?q=Kosovo+(Serbia+OR+KFOR+OR+NATO+OR+EU+OR+Ohrid)+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Kosovo dialogue & security
+    category_hint: defence_security

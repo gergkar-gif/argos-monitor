@@ -11,6 +11,10 @@ sources:
   feeds:
   - url: https://www.nrk.no/nyheter/siste.rss
     category_hint: internal_politics
+  - url: https://www.nrk.no/norge/toppsaker.rss
+    category_hint: internal_politics
+  - url: https://www.nrk.no/urix/toppsaker.rss
+    category_hint: foreign_policy
 - id: tv2_no
   name: TV 2 Nyheter
   homepage: https://www.tv2.no
@@ -57,7 +61,7 @@ sources:
   state_affiliated: false
   notes: Major national daily newspaper and digital investigative newsroom.
   feeds:
-  - url: https://news.google.com/rss/search?q=site:dagbladet.no+when:3d&hl=no&gl=NO&ceid=NO:no
+  - url: https://www.dagbladet.no/emne/utenriks/innenriks?lab_viewport=rss
     category_hint: general
 - id: dn_no
   name: Dagens Næringsliv (DN)
@@ -105,7 +109,7 @@ sources:
   state_affiliated: false
   notes: Independent left-wing national daily newspaper covering labor, defense and politics.
   feeds:
-  - url: https://news.google.com/rss/search?q=site:klassekampen.no+when:3d&hl=no&gl=NO&ceid=NO:no
+  - url: https://klassekampen.no/api/newsfeed/rss
     category_hint: internal_politics
 - id: morgenbladet_no
   name: Morgenbladet
@@ -117,8 +121,8 @@ sources:
   state_affiliated: false
   notes: Historic independent weekly broadsheet covering politics, culture, and society.
   feeds:
-  - url: https://news.google.com/rss/search?q=site:morgenbladet.no+when:7d&hl=no&gl=NO&ceid=NO:no
-    category_hint: society
+  - url: https://www.morgenbladet.no/?lab_viewport=rss
+    category_hint: internal_politics
 - id: dagsavisen_no
   name: Dagsavisen
   homepage: https://www.dagsavisen.no
@@ -129,7 +133,7 @@ sources:
   state_affiliated: false
   notes: Independent national daily broadsheet covering executive policy and parliamentary affairs.
   feeds:
-  - url: https://news.google.com/rss/search?q=site:dagsavisen.no+when:3d&hl=no&gl=NO&ceid=NO:no
+  - url: https://www.dagsavisen.no/?lab_viewport=rss
     category_hint: internal_politics
 - id: adressa_no
   name: Adresseavisen
@@ -179,6 +183,54 @@ sources:
   feeds:
   - url: https://news.google.com/rss/search?q=(site:regjeringen.no+OR+site:stortinget.no)+when:7d&hl=no&gl=NO&ceid=NO:no
     category_hint: internal_politics
+- id: fvn_no
+  name: Fædrelandsvennen
+  homepage: https://www.fvn.no
+  language: 'no'
+  scope: domestic
+  kind: media
+  governing_body: Schibsted / Polaris Media
+  state_affiliated: false
+  notes: Southern Norway flagship daily broadsheet based in Kristiansand.
+  feeds:
+  - url: https://www.fvn.no/rss
+    category_hint: internal_politics
+- id: smp_no
+  name: Sunnmørsposten
+  homepage: https://www.smp.no
+  language: 'no'
+  scope: domestic
+  kind: media
+  governing_body: Polaris Media
+  state_affiliated: false
+  notes: Western Norway coastal daily covering maritime industry, fisheries, and Ålesund.
+  feeds:
+  - url: https://www.smp.no/rss
+    category_hint: society
+- id: itromso_no
+  name: iTromsø
+  homepage: https://www.itromso.no
+  language: 'no'
+  scope: domestic
+  kind: media
+  governing_body: Polaris Media
+  state_affiliated: false
+  notes: Arctic Norway daily newspaper covering Tromsø, High North security, and northern policy.
+  feeds:
+  - url: https://www.itromso.no/rss
+    category_hint: society
+- id: tu_no
+  name: Teknisk Ukeblad
+  homepage: https://www.tu.no
+  language: 'no'
+  scope: domestic
+  kind: media
+  governing_body: Teknisk Ukeblad Media AS
+  state_affiliated: false
+  notes: Norwegian engineering, offshore energy, maritime, and defense technology journal.
+  feeds:
+  - url: https://www.tu.no/?lab_viewport=rss
+    category_hint: economics
 - id: gnews_norway_press_batch
   name: Google News (Norway Regional, Finance & Investigative - BT/Stavanger Aftenblad/Finansavisen/Filter/Minerva/Vårt Land/Nationen)
   homepage: https://news.google.com

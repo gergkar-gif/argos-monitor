@@ -11,6 +11,8 @@ sources:
   feeds:
   - url: https://www.lsm.lv/rss/
     category_hint: internal_politics
+  - url: https://www.lsm.lv/rss/?lang=lv&catid=14
+    category_hint: internal_politics
 - id: lsm_eng_lv
   name: LSM.lv English
   homepage: https://eng.lsm.lv
@@ -93,8 +95,9 @@ sources:
   state_affiliated: false
   notes: High-reach Latvian digital news portal and tabloid daily.
   feeds:
-  - url: https://jauns.lv/rss
+  - url: https://news.google.com/rss/search?q=site:jauns.lv+when:3d&hl=lv&gl=LV&ceid=LV:lv
     category_hint: general
+  aggregator: google_news
 - id: apollo_lv
   name: Apollo.lv
   homepage: https://www.apollo.lv
@@ -203,6 +206,42 @@ sources:
   feeds:
   - url: https://news.google.com/rss/search?q=(site:mk.gov.lv+OR+site:saeima.lv+OR+site:leta.lv)+when:7d&hl=lv&gl=LV&ceid=LV:lv
     category_hint: internal_politics
+- id: bnn_lv
+  name: Baltic News Network (LV)
+  homepage: https://bnn.lv
+  language: lv
+  scope: domestic
+  kind: media
+  governing_body: Baltic News Network
+  state_affiliated: false
+  notes: Latvian-language business, energy, and political news portal.
+  feeds:
+  - url: https://bnn.lv/feed.xml
+    category_hint: economics
+- id: bnn_en_lv
+  name: Baltic News Network (EN)
+  homepage: https://bnn-news.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Baltic News Network
+  state_affiliated: false
+  notes: English-language Baltic and Latvian political and economic news portal.
+  feeds:
+  - url: https://bnn-news.com/feed.xml
+    category_hint: economics
+- id: kurzemnieks_lv
+  name: Kurzemnieks
+  homepage: https://kurzemnieks.lv
+  language: lv
+  scope: domestic
+  kind: media
+  governing_body: SIA Kurzemnieks
+  state_affiliated: false
+  notes: Kurzeme regional newspaper covering western Latvia.
+  feeds:
+  - url: https://kurzemnieks.lv/feed/
+    category_hint: society
 - id: gnews_latvia_weeklies_batch
   name: Google News (Latvia Weeklies & Regional - Ir/NRA/Liepājniekiem)
   homepage: https://news.google.com

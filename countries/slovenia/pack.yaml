@@ -3,53 +3,92 @@ name: Slovenia
 region: Central & Southeast Europe
 language: sl
 abroad_label: Regional & International Slovenian coverage
-
 mention:
-  - "slovenija"
-  - "slovenije"
-  - "sloveniji"
-  - "slovenia"
-  - "slovenian"
-  - "ljubljana"
-  - "robert golob"
-  - "golob"
-  - "janez janša"
-  - "jansa"
-  - "nataša pirc musar"
-  - "pirc musar"
-  - "državni zbor"
-  - "luka koper"
-  - "krško"
-mention_regex: ['\bslovensk']
+- slovenija
+- slovenije
+- sloveniji
+- slovenia
+- slovenian
+- ljubljana
+- robert golob
+- golob
+- janez janša
+- jansa
+- nataša pirc musar
+- pirc musar
+- državni zbor
+- luka koper
+- krško
+mention_regex:
+- \bslovensk
 mention_section: null
-
 url_sections:
-  foreign: [svet, tujina, eu]
-  skip: [sport, zabava, kultura, avto, stil, horoskop, magazin, scena, trendi]
-
+  foreign:
+  - svet
+  - tujina
+  - eu
+  skip:
+  - sport
+  - zabava
+  - kultura
+  - avto
+  - stil
+  - horoskop
+  - magazin
+  - scena
+  - trendi
 aggregator_outlets:
-  domestic: ["sta", "rtv slo", "rtvslo.si", "delo", "dnevnik", "večer", "vecer.com", "finance", "finance.si",
-             "24ur", "24ur.com", "siol.net", "n1 slovenija", "mladina", "necenzurirano", "domovina", "žurnal24",
-             "slovenske novice", "nova24tv", "demokracija", "pod črto", "podcrto.si", "reporter.si", "oštro", "ostro.si", "svet24",
-             "požareport", "pozareport", "plusportal"]
-  abroad_local: ["total slovenia news", "balkan insight", "euractiv"]
-
+  domestic:
+  - sta
+  - rtv slo
+  - rtvslo.si
+  - delo
+  - dnevnik
+  - večer
+  - vecer.com
+  - finance
+  - finance.si
+  - 24ur
+  - 24ur.com
+  - siol.net
+  - n1 slovenija
+  - mladina
+  - necenzurirano
+  - domovina
+  - žurnal24
+  - slovenske novice
+  - nova24tv
+  - demokracija
+  - pod črto
+  - podcrto.si
+  - reporter.si
+  - oštro
+  - ostro.si
+  - svet24
+  - požareport
+  - pozareport
+  - plusportal
+  abroad_local:
+  - total slovenia news
+  - balkan insight
+  - euractiv
 excerpt:
-  dateline: '^\s*(?:STA|RTV SLO|LJUBLJANA)\s*[-–—:]\s*'
-  noise: '^(foto|vir|video|preberite še|oglas|\(|\[)'
-
+  dateline: ^\s*(?:STA|RTV SLO|LJUBLJANA)\s*[-–—:]\s*
+  noise: ^(foto|vir|video|preberite še|oglas|\(|\[)
 classify:
   internal_politics:
-    - "Vlada Republike Slovenije, Državni zbor, premier Robert Golob, predsednica Nataša Pirc Musar, Gibanje Svoboda, SDS, Janez Janša, SD, Levica, NSi, volitve"
+  - Vlada Republike Slovenije, Državni zbor, premier Robert Golob, predsednica Nataša Pirc Musar, Gibanje Svoboda, SDS, Janez Janša, SD, Levica, NSi, volitve
   economics:
-    - "gospodarstvo, inflacija, proračun, Banka Slovenije, Luka Koper, JEK2, nuklearka Krško, energetika, davki, investicije"
+  - gospodarstvo, inflacija, proračun, Banka Slovenije, Luka Koper, JEK2, nuklearka Krško, energetika, davki, investicije
   foreign_policy:
-    - "zunanja politika, Tanja Fajon, Evropska unija, Varnostni svet OZN, Schengen, Zahodni Balkan, odnosi s Hrvaško, Italijo, Avstrijo, Madžarsko"
+  - zunanja politika, Tanja Fajon, Evropska unija, Varnostni svet OZN, Schengen, Zahodni Balkan, odnosi s Hrvaško, Italijo, Avstrijo, Madžarsko
   defence_security:
-    - "Slovenska vojska, MORS, obramba, NATO, nacionalna varnost, mejni nadzor, policija"
+  - Slovenska vojska, MORS, obramba, NATO, nacionalna varnost, mejni nadzor, policija
   society:
-    - "zdravstvo, šolstvo, pokojnine, sodstvo, KPK, korupcija, stavka, poplave, vreme"
-
+  - zdravstvo, šolstvo, pokojnine, sodstvo, KPK, korupcija, stavka, poplave, vreme
 geo: SI
-reddit: [Slovenia, Ljubljana, Maribor]
-last_reviewed: 2026-11-17
+reddit:
+- Slovenia
+- Ljubljana
+- Maribor
+last_reviewed: '2026-11-25'

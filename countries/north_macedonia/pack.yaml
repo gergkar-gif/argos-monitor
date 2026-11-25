@@ -3,57 +3,101 @@ name: North Macedonia
 region: Central & Southeast Europe
 language: mk
 abroad_label: Regional & International Macedonian coverage
-
 mention:
-  - "македонија"
-  - "македонски"
-  - "скопје"
-  - "north macedonia"
-  - "macedonia"
-  - "macedonian"
-  - "skopje"
-  - "hristijan mickoski"
-  - "mickoski"
-  - "мицкоски"
-  - "gordana siljanovska"
-  - "сиљановска"
-  - "vmro-dpmne"
-  - "вмро-дпмне"
-  - "sdsm"
-  - "сдсм"
-  - "dui"
-  - "дуи"
-  - "vlen"
-mention_regex: ['\bмакедон', '\bmacedoni']
+- македонија
+- македонски
+- скопје
+- north macedonia
+- macedonia
+- macedonian
+- skopje
+- hristijan mickoski
+- mickoski
+- мицкоски
+- gordana siljanovska
+- сиљановска
+- vmro-dpmne
+- вмро-дпмне
+- sdsm
+- сдсм
+- dui
+- дуи
+- vlen
+mention_regex:
+- \bмакедон
+- \bmacedoni
 mention_section: null
-
 url_sections:
-  foreign: [svet, balkan, region, svetot]
-  skip: [sport, zabava, kultura, magazin, avto, stil, scena, спорт, забава]
-
+  foreign:
+  - svet
+  - balkan
+  - region
+  - svetot
+  skip:
+  - sport
+  - zabava
+  - kultura
+  - magazin
+  - avto
+  - stil
+  - scena
+  - спорт
+  - забава
 aggregator_outlets:
-  domestic: ["mia", "mrt", "telma", "360 stepeni", "360stepeni.mk", "sdk.mk", "sakam da kazam", "sloboden pecat", "slobodenpecat.mk",
-             "nova makedonija", "makfaks", "makfax.com.mk", "plusinfo", "plusinfo.mk", "kanal 5", "sitel", "alsat", "prizma.mk",
-             "nezavisen.mk", "24 vesti", "тв 24", "vecer.mk", "meta.mk", "vistinomer", "a1on", "kurir.mk", "republika.mk",
-             "fokus.mk", "lokalno.mk", "racin.mk", "faktor.mk"]
-  abroad_local: ["radio slobodna evropa", "dw macedonia", "balkan insight", "al jazeera balkans"]
-
+  domestic:
+  - mia
+  - mrt
+  - telma
+  - 360 stepeni
+  - 360stepeni.mk
+  - sdk.mk
+  - sakam da kazam
+  - sloboden pecat
+  - slobodenpecat.mk
+  - nova makedonija
+  - makfaks
+  - makfax.com.mk
+  - plusinfo
+  - plusinfo.mk
+  - kanal 5
+  - sitel
+  - alsat
+  - prizma.mk
+  - nezavisen.mk
+  - 24 vesti
+  - тв 24
+  - vecer.mk
+  - meta.mk
+  - vistinomer
+  - a1on
+  - kurir.mk
+  - republika.mk
+  - fokus.mk
+  - lokalno.mk
+  - racin.mk
+  - faktor.mk
+  - radio lider
+  - alfa tv
+  abroad_local:
+  - radio slobodna evropa
+  - dw macedonia
+  - balkan insight
+  - al jazeera balkans
 excerpt:
-  dateline: '^\s*(?:МИА|MIA|СКОПЈЕ|SKOPJE)\s*[-–—:]\s*'
-  noise: '^(фото|извор|видео|прочитај повеќе|реклама|\(|\[)'
-
+  dateline: ^\s*(?:МИА|MIA|СКОПЈЕ|SKOPJE)\s*[-–—:]\s*
+  noise: ^(фото|извор|видео|прочитај повеќе|реклама|\(|\[)
 classify:
   internal_politics:
-    - "Влада на Северна Македонија, Собрание, премиер Христијан Мицкоски, претседателка Гордана Сиљановска-Давкова, ВМРО-ДПМНЕ, СДСМ, ВЛЕН, ДУИ, избори, уставни измени"
+  - Влада на Северна Македонија, Собрание, премиер Христијан Мицкоски, претседателка Гордана Сиљановска-Давкова, ВМРО-ДПМНЕ, СДСМ, ВЛЕН, ДУИ, избори, уставни измени
   economics:
-    - "економија, инфлација, буџет, НБРСМ, Коридор 8, Коридор 10, железница, заем од Унгарија, инвестиции, енергетика"
+  - економија, инфлација, буџет, НБРСМ, Коридор 8, Коридор 10, железница, заем од Унгарија, инвестиции, енергетика
   foreign_policy:
-    - "надворешна политика, Европска унија, преговарачка рамка, односи со Бугарија, Грција, Унгарија, Србија, Албанија, НАТО"
+  - надворешна политика, Европска унија, преговарачка рамка, односи со Бугарија, Грција, Унгарија, Србија, Албанија, НАТО
   defence_security:
-    - "АРМ, Министерство за одбрана, НАТО, безбедност, полиција, МВР, граница"
+  - АРМ, Министерство за одбрана, НАТО, безбедност, полиција, МВР, граница
   society:
-    - "образование, здравство, судство, обвинителство, корупција, меѓуетнички односи, протест"
-
+  - образование, здравство, судство, обвинителство, корупција, меѓуетнички односи, протест
 geo: MK
-reddit: [mkd]
-last_reviewed: 2026-11-17
+reddit:
+- mkd
+last_reviewed: '2026-11-25'

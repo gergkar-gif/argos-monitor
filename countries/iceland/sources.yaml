@@ -37,6 +37,10 @@ sources:
     category_hint: internal_politics
   - url: https://www.mbl.is/feeds/innlent/
     category_hint: internal_politics
+  - url: https://www.mbl.is/feeds/erlent/
+    category_hint: foreign_policy
+  - url: https://www.mbl.is/feeds/vidskipti/
+    category_hint: economics
 - id: visir_is
   name: Vísir
   homepage: https://www.visir.is
@@ -49,6 +53,8 @@ sources:
   feeds:
   - url: https://www.visir.is/rss/allt
     category_hint: general
+  - url: https://www.visir.is/rss/vidskipti
+    category_hint: economics
 - id: heimildin_is
   name: Heimildin
   homepage: https://heimildin.is
@@ -217,6 +223,30 @@ sources:
   feeds:
   - url: https://news.google.com/rss/search?q=(site:stjornarradid.is+OR+site:government.is+OR+site:althingi.is)+when:7d&hl=en-US&gl=US&ceid=US:en
     category_hint: internal_politics
+- id: bbl_is
+  name: Bændablaðið
+  homepage: https://www.bbl.is
+  language: is
+  scope: domestic
+  kind: media
+  governing_body: Bændasamtök Íslands
+  state_affiliated: false
+  notes: Icelandic national rural, fisheries, agriculture, and resource-policy newspaper.
+  feeds:
+  - url: https://www.bbl.is/rss/
+    category_hint: economics
+- id: nutiminn_is
+  name: Nútíminn
+  homepage: https://www.nutiminn.is
+  language: is
+  scope: domestic
+  kind: media
+  governing_body: Nútíminn ehf.
+  state_affiliated: false
+  notes: Icelandic digital news and political current-affairs portal.
+  feeds:
+  - url: https://www.nutiminn.is/feed/
+    category_hint: general
 - id: gnews_iceland_intl
   name: Google News (Iceland - International Press)
   homepage: https://news.google.com

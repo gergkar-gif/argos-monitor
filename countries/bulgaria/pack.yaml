@@ -3,58 +3,102 @@ name: Bulgaria
 region: Central & Southeast Europe
 language: bg
 abroad_label: Regional & International Bulgarian coverage
-
 mention:
-  - "българия"
-  - "български"
-  - "софия"
-  - "bulgaria"
-  - "bulgarian"
-  - "sofia"
-  - "ruman radev"
-  - "radev"
-  - "радев"
-  - "boyko borissov"
-  - "borissov"
-  - "борисов"
-  - "народно събрание"
-  - "gerb"
-  - "герб"
-  - "pp-db"
-  - "пп-дб"
-  - "bulgartransgaz"
-  - "булгартрансгаз"
-  - "kozloduy"
-  - "козлодуй"
-mention_regex: ['\bбългар', '\bbulgari']
+- българия
+- български
+- софия
+- bulgaria
+- bulgarian
+- sofia
+- ruman radev
+- radev
+- радев
+- boyko borissov
+- borissov
+- борисов
+- народно събрание
+- gerb
+- герб
+- pp-db
+- пп-дб
+- bulgartransgaz
+- булгартрансгаз
+- kozloduy
+- козлодуй
+mention_regex:
+- \bбългар
+- \bbulgari
 mention_section: null
-
 url_sections:
-  foreign: [svyat, world, balkanite, eu]
-  skip: [sport, lifestyle, kultura, show, avto, laifstail, zabava, horoskop, любопитно, спорт]
-
+  foreign:
+  - svyat
+  - world
+  - balkanite
+  - eu
+  skip:
+  - sport
+  - lifestyle
+  - kultura
+  - show
+  - avto
+  - laifstail
+  - zabava
+  - horoskop
+  - любопитно
+  - спорт
 aggregator_outlets:
-  domestic: ["bta", "bnr", "bnt", "dnevnik.bg", "capital.bg", "mediapool.bg", "clubz.bg", "investor.bg", "bird.bg",
-             "24 chasa", "24chasa.bg", "dir.bg", "offnews.bg", "segabg.com", "novinite.com", "trud.bg", "actualno.com",
-             "news.bg", "nova", "nova.bg", "btv", "btv новините", "дарик", "dariknews.bg", "fakti.bg", "vesti.bg", "frognews", "banker"]
-  abroad_local: ["svobodna evropa", "dw bulgaria", "balkan insight", "euractiv bulgaria"]
-
+  domestic:
+  - bta
+  - bnr
+  - bnt
+  - dnevnik.bg
+  - capital.bg
+  - mediapool.bg
+  - clubz.bg
+  - investor.bg
+  - bird.bg
+  - 24 chasa
+  - 24chasa.bg
+  - dir.bg
+  - offnews.bg
+  - segabg.com
+  - novinite.com
+  - trud.bg
+  - actualno.com
+  - news.bg
+  - nova
+  - nova.bg
+  - btv
+  - btv новините
+  - дарик
+  - dariknews.bg
+  - fakti.bg
+  - vesti.bg
+  - frognews
+  - banker
+  - club z
+  - defakto.bg
+  abroad_local:
+  - svobodna evropa
+  - dw bulgaria
+  - balkan insight
+  - euractiv bulgaria
 excerpt:
-  dateline: '^\s*(?:БТА|BTA|БНР|BNR|СОФИЯ|SOFIA)\s*[-–—:]\s*'
-  noise: '^(снимка|източник|видео|прочетете още|реклама|\(|\[)'
-
+  dateline: ^\s*(?:БТА|BTA|БНР|BNR|СОФИЯ|SOFIA)\s*[-–—:]\s*
+  noise: ^(снимка|източник|видео|прочетете още|реклама|\(|\[)
 classify:
   internal_politics:
-    - "Министерски съвет, Народно събрание, парламент, президент Румен Радев, Бойко Борисов, ГЕРБ, ПП-ДБ, ДПС, Възраждане, избори, правителство"
+  - Министерски съвет, Народно събрание, парламент, президент Румен Радев, Бойко Борисов, ГЕРБ, ПП-ДБ, ДПС, Възраждане, избори, правителство
   economics:
-    - "икономика, инфлация, бюджет, БНБ, еврозона, Булгартрансгаз, АЕЦ Козлодуй, енергетика, инвестиции, газ, ПВУ"
+  - икономика, инфлация, бюджет, БНБ, еврозона, Булгартрансгаз, АЕЦ Козлодуй, енергетика, инвестиции, газ, ПВУ
   foreign_policy:
-    - "външна политика, Европейски съюз, Шенген, НАТО, отношения със Северна Македония, Румъния, Турция, Гърция, Черно море"
+  - външна политика, Европейски съюз, Шенген, НАТО, отношения със Северна Македония, Румъния, Турция, Гърция, Черно море
   defence_security:
-    - "Министерство на отбраната, Българска армия, отбрана, F-16, национална сигурност, ДАНС, граница, мигранти"
+  - Министерство на отбраната, Българска армия, отбрана, F-16, национална сигурност, ДАНС, граница, мигранти
   society:
-    - "образование, здравеопазване, пенсии, демография, съдебна система, прокуратура, корупция, протест, времето"
-
+  - образование, здравеопазване, пенсии, демография, съдебна система, прокуратура, корупция, протест, времето
 geo: BG
-reddit: [bulgaria, Sofia]
-last_reviewed: 2026-11-17
+reddit:
+- bulgaria
+- Sofia
+last_reviewed: '2026-11-25'

@@ -3,253 +3,325 @@
 # (HotNews.ro, Adevărul, Cotidianul, Jurnalul Național), investigative centers (Recorder, PressOne, G4Media, Europa Liberă),
 # financial dailies (Ziarul Financiar, Profit.ro, Economedia), broadcast/radio (Digi24, Europa FM, PRO TV, TVR Info, Antena 3,
 # România TV, B1 TV), sectoral portals (Edupedu, Biziday, Romania24), high-reach tabloids (Libertatea), and Romania Insider.
-
 sources:
-  - id: agerpres_ro
-    name: Agerpres
-    homepage: https://agerpres.ro
-    language: ro
-    scope: domestic
-    kind: official
-    aggregator: google_news
-    governing_body: Agenția Națională de Presă AGERPRES (statutory national news agency of Romania)
-    state_affiliated: true
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:agerpres.ro+when:3d&hl=ro&gl=RO&ceid=RO:ro", section: Național, category_hint: internal_politics}
-
-  - id: digi24_ro
-    name: Digi24
-    homepage: https://www.digi24.ro
-    language: ro
-    scope: domestic
-    kind: media
-    governing_body: RCS & RDS (Digi Communications — leading 24-hour television news network and portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.digi24.ro/rss", section: Știri, category_hint: internal_politics}
-
-  - id: hotnews_ro
-    name: HotNews.ro
-    homepage: https://www.hotnews.ro
-    language: ro
-    scope: domestic
-    kind: media
-    governing_body: Media Sud Europa (pioneer independent Romanian digital daily focused on politics, justice, and EU affairs)
-    state_affiliated: false
-    feeds:
-      - {url: "https://hotnews.ro/feed", section: Actualitate, category_hint: internal_politics}
-
-  - id: recorder_ro
-    name: Recorder.ro
-    homepage: https://recorder.ro
-    language: ro
-    scope: domestic
-    kind: media
-    governing_body: Recorder Comm S.R.L. (reader-funded flagship investigative journalism newsroom in Bucharest)
-    state_affiliated: false
-    feeds:
-      - {url: "https://recorder.ro/feed/", section: Investigații, category_hint: internal_politics}
-
-  - id: pressone_ro
-    name: PressOne
-    homepage: https://pressone.ro
-    language: ro
-    scope: domestic
-    kind: media
-    governing_body: PressOne Media (independent analytical and investigative journalism platform)
-    state_affiliated: false
-    feeds:
-      - {url: "https://pressone.ro/api/rss", section: Reportaj & Analiză, category_hint: society}
-
-  - id: zf_ro
-    name: Ziarul Financiar
-    homepage: https://www.zf.ro
-    language: ro
-    scope: domestic
-    kind: media
-    governing_body: Mediafax Group (Romania's premier financial, banking, and macroeconomic daily newspaper)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.zf.ro/rss/", section: Economie & Finanțe, category_hint: economics}
-
-  - id: profit_ro
-    name: Profit.ro
-    homepage: https://www.profit.ro
-    language: ro
-    scope: domestic
-    kind: media
-    governing_body: Profit.ro Media (independent Romanian business, fiscal policy, and energy market daily)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.profit.ro/rss", section: Economie, category_hint: economics}
-
-  - id: adevarul_ro
-    name: Adevărul
-    homepage: https://adevarul.ro
-    language: ro
-    scope: domestic
-    kind: media
-    governing_body: Adevărul Holding (historic Bucharest daily newspaper founded in 1888)
-    state_affiliated: false
-    feeds:
-      - {url: "https://adevarul.ro/rss/index", section: Politică & Lume, category_hint: internal_politics}
-
-  - id: news_ro
-    name: News.ro
-    homepage: https://www.news.ro
-    language: ro
-    scope: domestic
-    kind: wire
-    governing_body: News.ro Independent Agency (independent Bucharest commercial newswire founded in 2016)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.news.ro/rss", section: Flux, category_hint: general}
-
-  - id: spotmedia_ro
-    name: Spotmedia
-    homepage: https://spotmedia.ro
-    language: ro
-    scope: domestic
-    kind: media
-    governing_body: Spot Media SRL (independent analytical portal covering justice reform, economy, and security)
-    state_affiliated: false
-    feeds:
-      - {url: "https://spotmedia.ro/feed", section: Politică, category_hint: internal_politics}
-
-  - id: europafm_ro
-    name: Europa FM Romania
-    homepage: https://www.europafm.ro
-    language: ro
-    scope: domestic
-    kind: media
-    governing_body: Czech Media Invest (national commercial radio news network and civic portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.europafm.ro/feed/", section: Știri, category_hint: internal_politics}
-
-  - id: cotidianul_ro
-    name: Cotidianul
-    homepage: https://www.cotidianul.ro
-    language: ro
-    scope: domestic
-    kind: media
-    governing_body: Cotidianul S.R.L. (established Bucharest daily newspaper covering parliament and political commentary)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.cotidianul.ro/feed/", section: Politică, category_hint: internal_politics}
-
-  - id: jurnalul_ro
-    name: Jurnalul Național
-    homepage: https://jurnalul.ro
-    language: ro
-    scope: domestic
-    kind: media
-    governing_body: Intact Media Group (major Romanian daily newspaper covering national politics and administration)
-    state_affiliated: false
-    feeds:
-      - {url: "https://jurnalul.ro/rss/", section: Știri, category_hint: internal_politics}
-
-  - id: biziday_ro
-    name: Biziday
-    homepage: https://www.biziday.ro
-    language: ro
-    scope: domestic
-    kind: media
-    governing_body: Biziday Media (independent breaking-news and fiscal commentary platform)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.biziday.ro/feed/", section: Știri, category_hint: general}
-
-  - id: edupedu_ro
-    name: Edupedu.ro
-    homepage: https://www.edupedu.ro
-    language: ro
-    scope: domestic
-    kind: media
-    governing_body: Edupedu (specialized Bucharest portal covering education, public administration, and youth policy)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.edupedu.ro/feed/", section: Educație & Politici, category_hint: society}
-
-  - id: romania24_ro
-    name: Romania24
-    homepage: https://romania24.ro
-    language: ro
-    scope: domestic
-    kind: media
-    governing_body: Romania24 Media (digital news portal tracking regional infrastructure and municipal governance)
-    state_affiliated: false
-    feeds:
-      - {url: "https://romania24.ro/feed", section: Național, category_hint: general}
-
-  - id: romania_insider
-    name: Romania Insider
-    homepage: https://www.romania-insider.com
-    language: en
-    scope: abroad_local
-    kind: media
-    governing_body: City Compass Media (leading English-language Romanian news platform covering governance, business, and security)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.romania-insider.com/feed", section: News, category_hint: general}
-
-  - id: g4media_ro
-    name: G4Media.ro
-    homepage: https://www.g4media.ro
-    language: ro
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: G4Media Group (non-profit independent investigative portal covering coalitions, justice, and EU affairs)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:g4media.ro+when:2d&hl=ro&gl=RO&ceid=RO:ro", section: Politică & Justiție, category_hint: internal_politics}
-
-  - id: libertatea_ro
-    name: Libertatea
-    homepage: https://www.libertatea.ro
-    language: ro
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: Ringier Romania (high-circulation popular daily renowned for social and public-spending investigations)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:libertatea.ro+when:2d&hl=ro&gl=RO&ceid=RO:ro", section: Știri, category_hint: general}
-
-  - id: gnews_ro_press
-    name: Știrile PRO TV / Economedia / TVR Info / Mediafax / Antena 3 / România TV / Stiripesurse / Europa Liberă (via Google News)
-    homepage: https://stirileprotv.ro
-    language: ro
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: PRO TV / Economedia / TVR / Mediafax / Antena 3 / România TV / RFE-RL România
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:stirileprotv.ro+OR+site:economedia.ro+OR+site:tvrinfo.ro+OR+site:mediafax.ro+OR+site:stiripesurse.ro+OR+site:antena3.ro+OR+site:romaniatv.net+OR+site:b1tv.ro+OR+site:europa.libera.org)+when:2d&hl=ro&gl=RO&ceid=RO:ro", section: Televiziuni & Agenții, category_hint: general}
-
-  - id: gnews_romania_ro
-    name: Google News (Romania National News - Romanian)
-    homepage: https://news.google.com
-    language: ro
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    needs_mention: true
-    governing_body: Google LLC
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=Rom%C3%A2nia+OR+Bucure%C8%99ti+OR+Guvern+when:2d&hl=ro&gl=RO&ceid=RO:ro", section: National News (Romanian), category_hint: internal_politics}
-
-  - id: gnews_romania_intl
-    name: Google News (Romania Governance & Black Sea - International)
-    homepage: https://news.google.com
-    language: en
-    scope: international
-    kind: media
-    aggregator: google_news
-    governing_body: n/a (aggregator)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=Romania+(election+OR+parliament+OR+NATO+OR+%22Black+Sea%22)+when:3d&hl=en-US&gl=US&ceid=US:en", section: Politics & Defense, category_hint: defence_security}
+- id: agerpres_ro
+  name: Agerpres
+  homepage: https://agerpres.ro
+  language: ro
+  scope: domestic
+  kind: official
+  aggregator: google_news
+  governing_body: Agenția Națională de Presă AGERPRES (statutory national news agency of Romania)
+  state_affiliated: true
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:agerpres.ro+when:3d&hl=ro&gl=RO&ceid=RO:ro
+    section: Național
+    category_hint: internal_politics
+- id: digi24_ro
+  name: Digi24
+  homepage: https://www.digi24.ro
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: RCS & RDS (Digi Communications — leading 24-hour television news network and portal)
+  state_affiliated: false
+  feeds:
+  - url: https://www.digi24.ro/rss
+    section: Știri
+    category_hint: internal_politics
+  - url: https://www.digi24.ro/rss/stiri/actualitate/politica
+    category_hint: internal_politics
+- id: hotnews_ro
+  name: HotNews.ro
+  homepage: https://www.hotnews.ro
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: Media Sud Europa (pioneer independent Romanian digital daily focused on politics, justice, and EU affairs)
+  state_affiliated: false
+  feeds:
+  - url: https://hotnews.ro/feed
+    section: Actualitate
+    category_hint: internal_politics
+  - url: https://hotnews.ro/c/economie/feed
+    category_hint: economics
+- id: recorder_ro
+  name: Recorder.ro
+  homepage: https://recorder.ro
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: Recorder Comm S.R.L. (reader-funded flagship investigative journalism newsroom in Bucharest)
+  state_affiliated: false
+  feeds:
+  - url: https://recorder.ro/feed/
+    section: Investigații
+    category_hint: internal_politics
+- id: pressone_ro
+  name: PressOne
+  homepage: https://pressone.ro
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: PressOne Media (independent analytical and investigative journalism platform)
+  state_affiliated: false
+  feeds:
+  - url: https://pressone.ro/api/rss
+    section: Reportaj & Analiză
+    category_hint: society
+- id: zf_ro
+  name: Ziarul Financiar
+  homepage: https://www.zf.ro
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: Mediafax Group (Romania's premier financial, banking, and macroeconomic daily newspaper)
+  state_affiliated: false
+  feeds:
+  - url: https://www.zf.ro/rss/
+    section: Economie & Finanțe
+    category_hint: economics
+- id: profit_ro
+  name: Profit.ro
+  homepage: https://www.profit.ro
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: Profit.ro Media (independent Romanian business, fiscal policy, and energy market daily)
+  state_affiliated: false
+  feeds:
+  - url: https://www.profit.ro/rss
+    section: Economie
+    category_hint: economics
+- id: adevarul_ro
+  name: Adevărul
+  homepage: https://adevarul.ro
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: Adevărul Holding (historic Bucharest daily newspaper founded in 1888)
+  state_affiliated: false
+  feeds:
+  - url: https://adevarul.ro/rss/index
+    section: Politică & Lume
+    category_hint: internal_politics
+- id: news_ro
+  name: News.ro
+  homepage: https://www.news.ro
+  language: ro
+  scope: domestic
+  kind: wire
+  governing_body: News.ro Independent Agency (independent Bucharest commercial newswire founded in 2016)
+  state_affiliated: false
+  feeds:
+  - url: https://www.news.ro/rss
+    section: Flux
+    category_hint: general
+- id: spotmedia_ro
+  name: Spotmedia
+  homepage: https://spotmedia.ro
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: Spot Media SRL (independent analytical portal covering justice reform, economy, and security)
+  state_affiliated: false
+  feeds:
+  - url: https://spotmedia.ro/feed
+    section: Politică
+    category_hint: internal_politics
+- id: europafm_ro
+  name: Europa FM Romania
+  homepage: https://www.europafm.ro
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: Czech Media Invest (national commercial radio news network and civic portal)
+  state_affiliated: false
+  feeds:
+  - url: https://www.europafm.ro/feed/
+    section: Știri
+    category_hint: internal_politics
+- id: cotidianul_ro
+  name: Cotidianul
+  homepage: https://www.cotidianul.ro
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: Cotidianul S.R.L. (established Bucharest daily newspaper covering parliament and political commentary)
+  state_affiliated: false
+  feeds:
+  - url: https://www.cotidianul.ro/feed/
+    section: Politică
+    category_hint: internal_politics
+- id: jurnalul_ro
+  name: Jurnalul Național
+  homepage: https://jurnalul.ro
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: Intact Media Group (major Romanian daily newspaper covering national politics and administration)
+  state_affiliated: false
+  feeds:
+  - url: https://jurnalul.ro/rss/
+    section: Știri
+    category_hint: internal_politics
+- id: biziday_ro
+  name: Biziday
+  homepage: https://www.biziday.ro
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: Biziday Media (independent breaking-news and fiscal commentary platform)
+  state_affiliated: false
+  feeds:
+  - url: https://www.biziday.ro/feed/
+    section: Știri
+    category_hint: general
+- id: edupedu_ro
+  name: Edupedu.ro
+  homepage: https://www.edupedu.ro
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: Edupedu (specialized Bucharest portal covering education, public administration, and youth policy)
+  state_affiliated: false
+  feeds:
+  - url: https://www.edupedu.ro/feed/
+    section: Educație & Politici
+    category_hint: society
+- id: romania24_ro
+  name: Romania24
+  homepage: https://romania24.ro
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: Romania24 Media (digital news portal tracking regional infrastructure and municipal governance)
+  state_affiliated: false
+  feeds:
+  - url: https://romania24.ro/feed
+    section: Național
+    category_hint: general
+- id: romania_insider
+  name: Romania Insider
+  homepage: https://www.romania-insider.com
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: City Compass Media (leading English-language Romanian news platform covering governance, business, and security)
+  state_affiliated: false
+  feeds:
+  - url: https://www.romania-insider.com/feed
+    section: News
+    category_hint: general
+- id: g4media_ro
+  name: G4Media.ro
+  homepage: https://www.g4media.ro
+  language: ro
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: G4Media Group (non-profit independent investigative portal covering coalitions, justice, and EU affairs)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:g4media.ro+when:2d&hl=ro&gl=RO&ceid=RO:ro
+    section: Politică & Justiție
+    category_hint: internal_politics
+- id: libertatea_ro
+  name: Libertatea
+  homepage: https://www.libertatea.ro
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: Ringier Romania (high-circulation popular daily renowned for social and public-spending investigations)
+  state_affiliated: false
+  feeds:
+  - url: https://www.libertatea.ro/feed
+    category_hint: internal_politics
+- id: snoop_ro
+  name: Snoop
+  homepage: https://snoop.ro
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: Snoop Investigative Journalism
+  state_affiliated: false
+  notes: Independent Romanian investigative newsroom covering public procurement and power.
+  feeds:
+  - url: https://snoop.ro/feed/
+    category_hint: internal_politics
+- id: context_ro
+  name: Context.ro
+  homepage: https://context.ro
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: Context Investigative Journalism
+  state_affiliated: false
+  notes: OCCRP-member Romanian investigative journalism project covering corruption and Russian influence.
+  feeds:
+  - url: https://context.ro/feed/
+    category_hint: internal_politics
+- id: cluj24_ro
+  name: Cluj24.ro
+  homepage: https://cluj24.ro
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: Cluj24 Media
+  state_affiliated: false
+  notes: Transylvania regional news portal covering Cluj-Napoca economy, tech, and governance.
+  feeds:
+  - url: https://cluj24.ro/feed
+    category_hint: society
+- id: bursa_ro
+  name: Bursa.ro
+  homepage: https://www.bursa.ro
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: Bursa Press
+  state_affiliated: false
+  notes: Romanian capital markets, banking, energy, and fiscal policy daily.
+  feeds:
+  - url: https://www.bursa.ro/_rss/?t=tzs
+    category_hint: economics
+- id: gnews_ro_press
+  name: Știrile PRO TV / Economedia / TVR Info / Mediafax / Antena 3 / România TV / Stiripesurse / Europa Liberă (via Google News)
+  homepage: https://stirileprotv.ro
+  language: ro
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: PRO TV / Economedia / TVR / Mediafax / Antena 3 / România TV / RFE-RL România
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:stirileprotv.ro+OR+site:economedia.ro+OR+site:tvrinfo.ro+OR+site:mediafax.ro+OR+site:stiripesurse.ro+OR+site:antena3.ro+OR+site:romaniatv.net+OR+site:b1tv.ro+OR+site:europa.libera.org)+when:2d&hl=ro&gl=RO&ceid=RO:ro
+    section: Televiziuni & Agenții
+    category_hint: general
+- id: gnews_romania_ro
+  name: Google News (Romania National News - Romanian)
+  homepage: https://news.google.com
+  language: ro
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  needs_mention: true
+  governing_body: Google LLC
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=Rom%C3%A2nia+OR+Bucure%C8%99ti+OR+Guvern+when:2d&hl=ro&gl=RO&ceid=RO:ro
+    section: National News (Romanian)
+    category_hint: internal_politics
+- id: gnews_romania_intl
+  name: Google News (Romania Governance & Black Sea - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  aggregator: google_news
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=Romania+(election+OR+parliament+OR+NATO+OR+%22Black+Sea%22)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Politics & Defense
+    category_hint: defence_security

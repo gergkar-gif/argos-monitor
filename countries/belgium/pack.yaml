@@ -59,8 +59,10 @@ aggregator_outlets:
   - BRUZZ
   - Apache
   - The Brussels Times
+  - moustique
   abroad_local:
   - Politico Europe
   - Euractiv
   - EUobserver
-last_reviewed: 2026-11-17
+  - rapporteur
+last_reviewed: '2026-11-25'

@@ -27,6 +27,8 @@ sources:
   feeds:
   - url: https://www.irishtimes.com/arc/outboundfeeds/rss/category/politics/
     category_hint: internal_politics
+  - url: https://www.irishtimes.com/arc/outboundfeeds/rss/category/business/
+    category_hint: economics
 - id: independent_ie
   name: Irish Independent
   homepage: https://www.independent.ie
@@ -39,6 +41,8 @@ sources:
   feeds:
   - url: https://www.independent.ie/rss
     category_hint: general
+  - url: https://www.independent.ie/business/rss/
+    category_hint: economics
 - id: irishexaminer_ie
   name: Irish Examiner
   homepage: https://www.irishexaminer.com
@@ -183,6 +187,42 @@ sources:
   feeds:
   - url: https://news.google.com/rss/search?q=site:gov.ie+when:7d&hl=en-IE&gl=IE&ceid=IE:en
     category_hint: internal_politics
+- id: limerickleader_ie
+  name: Limerick Leader
+  homepage: https://www.limerickleader.ie
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Iconic Media
+  state_affiliated: false
+  notes: Mid-West Ireland regional newspaper covering Limerick, Shannon industry, and local governance.
+  feeds:
+  - url: https://www.limerickleader.ie/rss
+    category_hint: society
+- id: belfastlive_ie
+  name: Belfast Live
+  homepage: https://www.belfastlive.co.uk
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Reach plc
+  state_affiliated: false
+  notes: Northern Ireland digital newsroom covering Stormont, cross-border trade, and Belfast affairs.
+  feeds:
+  - url: https://www.belfastlive.co.uk/news/?service=rss
+    category_hint: society
+- id: munsterexpress_ie
+  name: Munster Express
+  homepage: https://www.munster-express.ie
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Munster Express
+  state_affiliated: false
+  notes: South-east Ireland regional newspaper based in Waterford.
+  feeds:
+  - url: https://www.munster-express.ie/feed/
+    category_hint: society
 - id: gnews_ireland_media_batch
   name: Google News (Ireland Broadcast, Regional & Tabloid - Newstalk/BreakingNews/Irish News/Sunday World/Echo)
   homepage: https://news.google.com

@@ -3,243 +3,272 @@
 # (Kathimerini / Ekathimerini, To Vima, Ta Nea, EfSyn, Naftemporiki, Avgi), commercial portals and TV (Proto Thema,
 # iefimerida, in.gr, Enikos, Skai, Capital.gr, News247, Eleftheros Typos, Ethnos), and investigative/magazine outlets
 # (Documento, The Press Project, LiFO, Protagon).
-
 sources:
-  - id: ert_gr
-    name: ERT News (Hellenic Broadcasting Corporation)
-    homepage: https://www.ertnews.gr
-    language: el
-    scope: domestic
-    kind: official
-    governing_body: Elliniki Radiofonia Tileorasi S.A. (statutory Greek public-service broadcaster)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.ertnews.gr/feed/", section: Ειδήσεις, category_hint: general}
-
-  - id: amna_news_gr
-    name: Athens-Macedonian News Agency (ANA-MPA)
-    homepage: https://www.amna.gr
-    language: el
-    scope: domestic
-    kind: official
-    aggregator: google_news
-    governing_body: Hellenic Republic (statutory national news wire)
-    state_affiliated: true
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:amna.gr+when:3d&hl=el&gl=GR&ceid=GR:el", section: ΑΠΕ-ΜΠΕ, category_hint: general}
-
-  - id: kathimerini_en_gr
-    name: Ekathimerini
-    homepage: https://www.ekathimerini.com
-    language: en
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: Kathimerini Publishing (English-language edition of Greece's flagship broadsheet of record)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:ekathimerini.com+when:7d&hl=en-US&gl=US&ceid=US:en", section: Politics & Diplomacy, category_hint: internal_politics}
-
-  - id: tovima_gr
-    name: To Vima
-    homepage: https://www.tovima.gr
-    language: el
-    scope: domestic
-    kind: media
-    governing_body: Alter Ego Media (historic Athens newspaper of record founded in 1922)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.tovima.gr/feed/", section: Πολιτική, category_hint: internal_politics}
-
-  - id: tanea_gr
-    name: Ta Nea
-    homepage: https://www.tanea.gr
-    language: el
-    scope: domestic
-    kind: media
-    governing_body: Alter Ego Media (historic high-circulation Athens daily broadsheet)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.tanea.gr/feed/", section: Ελλάδα, category_hint: internal_politics}
-
-  - id: naftemporiki_gr
-    name: Naftemporiki
-    homepage: https://www.naftemporiki.gr
-    language: el
-    scope: domestic
-    kind: media
-    governing_body: Melisanidis Group (premier Greek financial, shipping, and macroeconomic daily founded in 1924)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.naftemporiki.gr/feed/", section: Οικονομία, category_hint: economics}
-
-  - id: protothema_gr
-    name: Proto Thema
-    homepage: https://www.protothema.gr
-    language: el
-    scope: domestic
-    kind: media
-    governing_body: Proto Thema S.A. (Greece's highest-traffic commercial weekly and digital news daily)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.protothema.gr/rss/", section: Ειδήσεις, category_hint: general}
-
-  - id: iefimerida_gr
-    name: iefimerida
-    homepage: https://www.iefimerida.gr
-    language: el
-    scope: domestic
-    kind: media
-    governing_body: New Media Network (influential Athens political and digital news daily)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.iefimerida.gr/rss.xml", section: Πολιτική, category_hint: internal_politics}
-
-  - id: in_gr
-    name: in.gr
-    homepage: https://www.in.gr
-    language: el
-    scope: domestic
-    kind: media
-    governing_body: Alter Ego Media (major national general-news portal in Greece)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.in.gr/feed/", section: Ειδήσεις, category_hint: general}
-
-  - id: enikos_gr
-    name: Enikos
-    homepage: https://www.enikos.gr
-    language: el
-    scope: domestic
-    kind: media
-    governing_body: Nikos Chatzinikolaou (major independent political portal and broadcast newsroom)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.enikos.gr/feed/", section: Πολιτική, category_hint: internal_politics}
-
-  - id: documentonews_gr
-    name: Documento
-    homepage: https://www.documentonews.gr
-    language: el
-    scope: domestic
-    kind: media
-    governing_body: Kostas Vaxevanis (investigative Sunday newspaper and daily portal covering procurement and judicial scoops)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.documentonews.gr/feed/", section: Πολιτική, category_hint: internal_politics}
-
-  - id: ethnos_gr
-    name: Ethnos
-    homepage: https://www.ethnos.gr
-    language: el
-    scope: domestic
-    kind: media
-    governing_body: Open Digital Group (historic Athens daily covering domestic governance, economy, and northern Greece)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.ethnos.gr/rss", section: Ελλάδα, category_hint: general}
-
-  - id: avgi_gr
-    name: Avgi (Η Αυγή)
-    homepage: https://www.avgi.gr
-    language: el
-    scope: domestic
-    kind: media
-    governing_body: Avgi S.A. (left-wing Athens political daily newspaper founded in 1952)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.avgi.gr/rss.xml", section: Πολιτική, category_hint: internal_politics}
-
-  - id: thepressproject_gr
-    name: The Press Project
-    homepage: https://thepressproject.gr
-    language: el
-    scope: domestic
-    kind: media
-    governing_body: The Press Project (reader-funded independent investigative and human-rights portal in Athens)
-    state_affiliated: false
-    feeds:
-      - {url: "https://thepressproject.gr/feed/", section: Ελλάδα, category_hint: internal_politics}
-
-  - id: lifo_gr
-    name: LiFO
-    homepage: https://www.lifo.gr
-    language: el
-    scope: domestic
-    kind: media
-    governing_body: Dyodeka S.A. (major Athens urban news, society, and cultural investigative weekly/portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.lifo.gr/rss.xml", section: Ειδήσεις, category_hint: society}
-
-  - id: protagon_gr
-    name: Protagon.gr
-    homepage: https://www.protagon.gr
-    language: el
-    scope: domestic
-    kind: media
-    governing_body: Protagon S.A. (established Athens commentary, economic, and political analysis portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.protagon.gr/feed", section: Επικαιρότητα, category_hint: internal_politics}
-
-  - id: kathimerini_el_gr
-    name: Kathimerini (Η Καθημερινή)
-    homepage: https://www.kathimerini.gr
-    language: el
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: Kathimerini Publishing (Greece's foremost broadsheet newspaper of record in Greek)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:kathimerini.gr+when:2d&hl=el&gl=GR&ceid=GR:el", section: Πολιτική & Κόσμος, category_hint: internal_politics}
-
-  - id: efsyn_gr
-    name: Efimerida ton Syntakton (EfSyn)
-    homepage: https://www.efsyn.gr
-    language: el
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: Independent Journalists' Cooperative of Athens (cooperative-owned centre-left daily newspaper)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:efsyn.gr+when:3d&hl=el&gl=GR&ceid=GR:el", section: Πολιτική, category_hint: internal_politics}
-
-  - id: gnews_gr_press
-    name: Skai / Capital.gr / News247 / Eleftheros Typos / Moneyreview / Liberal (via Google News)
-    homepage: https://www.skai.gr
-    language: el
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: Skai Group / Capital.gr / 24MEDIA / Eleftheros Typos / Kathimerini Moneyreview / Liberal.gr
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:skai.gr+OR+site:capital.gr+OR+site:news247.gr+OR+site:eleftherostypos.gr+OR+site:moneyreview.gr+OR+site:liberal.gr+OR+site:megatv.com+OR+site:antenna.gr)+when:2d&hl=el&gl=GR&ceid=GR:el", section: Εθνικά & Οικονομικά ΜΜΕ, category_hint: general}
-
-  - id: gnews_greece_el
-    name: Google News (Greece National News - Greek)
-    homepage: https://news.google.com
-    language: el
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    needs_mention: true
-    governing_body: Google LLC
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=%CE%95%CE%BB%CE%BB%CE%AC%CE%B4%CE%B1+OR+%CE%BA%CF%85%CE%B2%CE%AD%CF%81%CE%BD%CE%B7%CF%83%CE%B7+OR+%CE%91%CE%B8%CE%AE%CE%BD%CE%B1+when:2d&hl=el&gl=GR&ceid=GR:el", section: National News (Greek), category_hint: internal_politics}
-
-  - id: gnews_greece_intl
-    name: Google News (Greece - International)
-    homepage: https://news.google.com
-    language: en
-    scope: international
-    kind: media
-    aggregator: google_news
-    governing_body: n/a (aggregator)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(Greece+OR+Athens)+(Mitsotakis+OR+economy+OR+Turkey+OR+defense)+when:3d&hl=en-US&gl=US&ceid=US:en", section: Politics & Diplomacy, category_hint: foreign_policy}
+- id: ert_gr
+  name: ERT News (Hellenic Broadcasting Corporation)
+  homepage: https://www.ertnews.gr
+  language: el
+  scope: domestic
+  kind: official
+  governing_body: Elliniki Radiofonia Tileorasi S.A. (statutory Greek public-service broadcaster)
+  state_affiliated: false
+  feeds:
+  - url: https://www.ertnews.gr/feed/
+    section: Ειδήσεις
+    category_hint: general
+- id: amna_news_gr
+  name: Athens-Macedonian News Agency (ANA-MPA)
+  homepage: https://www.amna.gr
+  language: el
+  scope: domestic
+  kind: official
+  aggregator: google_news
+  governing_body: Hellenic Republic (statutory national news wire)
+  state_affiliated: true
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:amna.gr+when:3d&hl=el&gl=GR&ceid=GR:el
+    section: ΑΠΕ-ΜΠΕ
+    category_hint: general
+- id: kathimerini_en_gr
+  name: Ekathimerini
+  homepage: https://www.ekathimerini.com
+  language: en
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: Kathimerini Publishing (English-language edition of Greece's flagship broadsheet of record)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:ekathimerini.com+when:7d&hl=en-US&gl=US&ceid=US:en
+    section: Politics & Diplomacy
+    category_hint: internal_politics
+- id: tovima_gr
+  name: To Vima
+  homepage: https://www.tovima.gr
+  language: el
+  scope: domestic
+  kind: media
+  governing_body: Alter Ego Media (historic Athens newspaper of record founded in 1922)
+  state_affiliated: false
+  feeds:
+  - url: https://www.tovima.gr/feed/
+    section: Πολιτική
+    category_hint: internal_politics
+  - url: https://www.tovima.gr/category/politics/feed/
+    category_hint: internal_politics
+  - url: https://www.tovima.gr/category/finance/feed/
+    category_hint: economics
+- id: tanea_gr
+  name: Ta Nea
+  homepage: https://www.tanea.gr
+  language: el
+  scope: domestic
+  kind: media
+  governing_body: Alter Ego Media (historic high-circulation Athens daily broadsheet)
+  state_affiliated: false
+  feeds:
+  - url: https://www.tanea.gr/feed/
+    section: Ελλάδα
+    category_hint: internal_politics
+- id: naftemporiki_gr
+  name: Naftemporiki
+  homepage: https://www.naftemporiki.gr
+  language: el
+  scope: domestic
+  kind: media
+  governing_body: Melisanidis Group (premier Greek financial, shipping, and macroeconomic daily founded in 1924)
+  state_affiliated: false
+  feeds:
+  - url: https://www.naftemporiki.gr/feed/
+    section: Οικονομία
+    category_hint: economics
+  - url: https://www.naftemporiki.gr/politics/feed/
+    category_hint: internal_politics
+  - url: https://www.naftemporiki.gr/finance/feed/
+    category_hint: economics
+- id: protothema_gr
+  name: Proto Thema
+  homepage: https://www.protothema.gr
+  language: el
+  scope: domestic
+  kind: media
+  governing_body: Proto Thema S.A. (Greece's highest-traffic commercial weekly and digital news daily)
+  state_affiliated: false
+  feeds:
+  - url: https://www.protothema.gr/rss/
+    section: Ειδήσεις
+    category_hint: general
+- id: iefimerida_gr
+  name: iefimerida
+  homepage: https://www.iefimerida.gr
+  language: el
+  scope: domestic
+  kind: media
+  governing_body: New Media Network (influential Athens political and digital news daily)
+  state_affiliated: false
+  feeds:
+  - url: https://www.iefimerida.gr/rss.xml
+    section: Πολιτική
+    category_hint: internal_politics
+- id: in_gr
+  name: in.gr
+  homepage: https://www.in.gr
+  language: el
+  scope: domestic
+  kind: media
+  governing_body: Alter Ego Media (major national general-news portal in Greece)
+  state_affiliated: false
+  feeds:
+  - url: https://www.in.gr/feed/
+    section: Ειδήσεις
+    category_hint: general
+- id: enikos_gr
+  name: Enikos
+  homepage: https://www.enikos.gr
+  language: el
+  scope: domestic
+  kind: media
+  governing_body: Nikos Chatzinikolaou (major independent political portal and broadcast newsroom)
+  state_affiliated: false
+  feeds:
+  - url: https://www.enikos.gr/feed/
+    section: Πολιτική
+    category_hint: internal_politics
+- id: documentonews_gr
+  name: Documento
+  homepage: https://www.documentonews.gr
+  language: el
+  scope: domestic
+  kind: media
+  governing_body: Kostas Vaxevanis (investigative Sunday newspaper and daily portal covering procurement and judicial scoops)
+  state_affiliated: false
+  feeds:
+  - url: https://www.documentonews.gr/feed/
+    section: Πολιτική
+    category_hint: internal_politics
+- id: ethnos_gr
+  name: Ethnos
+  homepage: https://www.ethnos.gr
+  language: el
+  scope: domestic
+  kind: media
+  governing_body: Open Digital Group (historic Athens daily covering domestic governance, economy, and northern Greece)
+  state_affiliated: false
+  feeds:
+  - url: https://www.ethnos.gr/rss
+    section: Ελλάδα
+    category_hint: general
+- id: avgi_gr
+  name: Avgi (Η Αυγή)
+  homepage: https://www.avgi.gr
+  language: el
+  scope: domestic
+  kind: media
+  governing_body: Avgi S.A. (left-wing Athens political daily newspaper founded in 1952)
+  state_affiliated: false
+  feeds:
+  - url: https://www.avgi.gr/rss.xml
+    section: Πολιτική
+    category_hint: internal_politics
+- id: thepressproject_gr
+  name: The Press Project
+  homepage: https://thepressproject.gr
+  language: el
+  scope: domestic
+  kind: media
+  governing_body: The Press Project (reader-funded independent investigative and human-rights portal in Athens)
+  state_affiliated: false
+  feeds:
+  - url: https://thepressproject.gr/feed/
+    section: Ελλάδα
+    category_hint: internal_politics
+- id: lifo_gr
+  name: LiFO
+  homepage: https://www.lifo.gr
+  language: el
+  scope: domestic
+  kind: media
+  governing_body: Dyodeka S.A. (major Athens urban news, society, and cultural investigative weekly/portal)
+  state_affiliated: false
+  feeds:
+  - url: https://www.lifo.gr/rss.xml
+    section: Ειδήσεις
+    category_hint: society
+- id: protagon_gr
+  name: Protagon.gr
+  homepage: https://www.protagon.gr
+  language: el
+  scope: domestic
+  kind: media
+  governing_body: Protagon S.A. (established Athens commentary, economic, and political analysis portal)
+  state_affiliated: false
+  feeds:
+  - url: https://www.protagon.gr/feed
+    section: Επικαιρότητα
+    category_hint: internal_politics
+- id: kathimerini_el_gr
+  name: Kathimerini (Η Καθημερινή)
+  homepage: https://www.kathimerini.gr
+  language: el
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: Kathimerini Publishing (Greece's foremost broadsheet newspaper of record in Greek)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:kathimerini.gr+when:2d&hl=el&gl=GR&ceid=GR:el
+    section: Πολιτική & Κόσμος
+    category_hint: internal_politics
+- id: efsyn_gr
+  name: Efimerida ton Syntakton (EfSyn)
+  homepage: https://www.efsyn.gr
+  language: el
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: Independent Journalists' Cooperative of Athens (cooperative-owned centre-left daily newspaper)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:efsyn.gr+when:3d&hl=el&gl=GR&ceid=GR:el
+    section: Πολιτική
+    category_hint: internal_politics
+- id: gnews_gr_press
+  name: Skai / Capital.gr / News247 / Eleftheros Typos / Moneyreview / Liberal (via Google News)
+  homepage: https://www.skai.gr
+  language: el
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: Skai Group / Capital.gr / 24MEDIA / Eleftheros Typos / Kathimerini Moneyreview / Liberal.gr
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:skai.gr+OR+site:capital.gr+OR+site:news247.gr+OR+site:eleftherostypos.gr+OR+site:moneyreview.gr+OR+site:liberal.gr+OR+site:megatv.com+OR+site:antenna.gr)+when:2d&hl=el&gl=GR&ceid=GR:el
+    section: Εθνικά & Οικονομικά ΜΜΕ
+    category_hint: general
+- id: gnews_greece_el
+  name: Google News (Greece National News - Greek)
+  homepage: https://news.google.com
+  language: el
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  needs_mention: true
+  governing_body: Google LLC
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=%CE%95%CE%BB%CE%BB%CE%AC%CE%B4%CE%B1+OR+%CE%BA%CF%85%CE%B2%CE%AD%CF%81%CE%BD%CE%B7%CF%83%CE%B7+OR+%CE%91%CE%B8%CE%AE%CE%BD%CE%B1+when:2d&hl=el&gl=GR&ceid=GR:el
+    section: National News (Greek)
+    category_hint: internal_politics
+- id: gnews_greece_intl
+  name: Google News (Greece - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  aggregator: google_news
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(Greece+OR+Athens)+(Mitsotakis+OR+economy+OR+Turkey+OR+defense)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Politics & Diplomacy
+    category_hint: foreign_policy

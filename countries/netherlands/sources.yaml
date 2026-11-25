@@ -113,6 +113,8 @@ sources:
   feeds:
   - url: https://fd.nl/?rss
     category_hint: economics
+  - url: https://fd.nl/?rss&section=politiek
+    category_hint: internal_politics
 - id: parool_nl
   name: Het Parool
   homepage: https://www.parool.nl
@@ -221,8 +223,104 @@ sources:
   feeds:
   - url: https://news.google.com/rss/search?q=(site:rijksoverheid.nl+OR+site:tweedekamer.nl)+when:7d&hl=nl&gl=NL&ceid=NL:nl
     category_hint: internal_politics
+- id: bnr_nl
+  name: BNR Nieuwsradio
+  homepage: https://www.bnr.nl
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: FD Mediagroep
+  state_affiliated: false
+  notes: Dutch national business, markets, and economic policy news radio network.
+  feeds:
+  - url: https://static.bnr.nl/assets/bnr-next/rss/feed.xml
+    category_hint: economics
+- id: gelderlander_nl
+  name: De Gelderlander
+  homepage: https://www.gelderlander.nl
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: DPG Media
+  state_affiliated: false
+  notes: Eastern Netherlands regional daily covering Arnhem, Nijmegen, and Gelderland.
+  feeds:
+  - url: https://www.gelderlander.nl/home/rss.xml
+    category_hint: society
+- id: eindhovensdagblad_nl
+  name: Eindhovens Dagblad
+  homepage: https://www.ed.nl
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: DPG Media
+  state_affiliated: false
+  notes: Brainport Eindhoven regional daily covering ASML, high-tech industry, and Brabant.
+  feeds:
+  - url: https://www.ed.nl/home/rss.xml
+    category_hint: economics
+- id: brabantsdagblad_nl
+  name: Brabants Dagblad
+  homepage: https://www.bd.nl
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: DPG Media
+  state_affiliated: false
+  notes: North Brabant regional daily covering 's-Hertogenbosch, Tilburg, and regional governance.
+  feeds:
+  - url: https://www.bd.nl/home/rss.xml
+    category_hint: society
+- id: tubantia_nl
+  name: Tubantia
+  homepage: https://www.tubantia.nl
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: DPG Media
+  state_affiliated: false
+  notes: Twente regional daily covering Enschede, cross-border German trade, and regional politics.
+  feeds:
+  - url: https://www.tubantia.nl/home/rss.xml
+    category_hint: society
+- id: destentor_nl
+  name: De Stentor
+  homepage: https://www.destentor.nl
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: DPG Media
+  state_affiliated: false
+  notes: Overijssel and Flevoland regional daily newspaper.
+  feeds:
+  - url: https://www.destentor.nl/home/rss.xml
+    category_hint: society
+- id: nd_nl
+  name: Nederlands Dagblad
+  homepage: https://www.nd.nl
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: Nederlands Dagblad BV
+  state_affiliated: false
+  notes: Independent Dutch national Christian-social daily newspaper covering The Hague politics.
+  feeds:
+  - url: https://www.nd.nl/rss
+    category_hint: internal_politics
+- id: vn_nl
+  name: Vrij Nederland
+  homepage: https://www.vn.nl
+  language: nl
+  scope: domestic
+  kind: media
+  governing_body: WPG Media
+  state_affiliated: false
+  notes: Historic Dutch investigative journalism and political analysis magazine.
+  feeds:
+  - url: https://www.vn.nl/feed/
+    category_hint: internal_politics
 - id: gnews_netherlands_press_batch
-  name: Google News (Netherlands Investigative, Radio & Portals - BNR/FTM/De Correspondent/GeenStijl/Gelderlander)
+  name: Google News (Netherlands Investigative, Radio & Portals - FTM/De Correspondent/GeenStijl)
   homepage: https://news.google.com
   language: nl
   scope: domestic
@@ -232,7 +330,7 @@ sources:
   aggregator: google_news
   notes: Aggregator capturing business radio, investigative outlets, regional dailies, and commentary blogs without open RSS.
   feeds:
-  - url: https://news.google.com/rss/search?q=(site:bnr.nl+OR+site:ftm.nl+OR+site:decorrespondent.nl+OR+site:geenstijl.nl+OR+site:gelderlander.nl)+when:3d&hl=nl&gl=NL&ceid=NL:nl
+  - url: https://news.google.com/rss/search?q=(site:ftm.nl+OR+site:decorrespondent.nl+OR+site:geenstijl.nl)+when:3d&hl=nl&gl=NL&ceid=NL:nl
     category_hint: internal_politics
 - id: gnews_netherlands_nl
   name: Google News (Netherlands National News - Dutch)

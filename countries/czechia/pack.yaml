@@ -4,107 +4,124 @@ name: Czechia
 region: Central & Southeast Europe
 language: cs
 abroad_label: Slovak & Central European regional outlets
-
 mention:
-  - "czechia"
-  - "czech republic"
-  - "czech"
-  - "prague"
-  - "praha"
-  - "brno"
-  - "ostrava"
-  - "petr fiala"
-  - "fiala"
-  - "petr pavel"
-  - "pavel"
-  - "andrej babiš"
-  - "andrej babis"
-  - "babiš"
-  - "babis"
-  - "ano 2011"
-  - "hnutí ano"
-  - "spolu"
-  - "česko"
-  - "česká republika"
-  - "české"
-  - "česká"
-  - "poslanecká sněmovna"
-  - "senát"
-
-mention_regex: ['\b(?:czechia|czech|prague|praha|česko|české|česká|fiala|babiš|babis|pavel)\b']
+- czechia
+- czech republic
+- czech
+- prague
+- praha
+- brno
+- ostrava
+- petr fiala
+- fiala
+- petr pavel
+- pavel
+- andrej babiš
+- andrej babis
+- babiš
+- babis
+- ano 2011
+- hnutí ano
+- spolu
+- česko
+- česká republika
+- české
+- česká
+- poslanecká sněmovna
+- senát
+mention_regex:
+- \b(?:czechia|czech|prague|praha|česko|české|česká|fiala|babiš|babis|pavel)\b
 mention_section: null
-
 url_sections:
-  foreign: [zahranici, zahraničí, world, international, svet, svět]
-  skip: [sport, sporty, fotbal, hokej, kultura, lifestyle, auto, magazin, revue, celebrity, bydleni]
-
+  foreign:
+  - zahranici
+  - zahraničí
+  - world
+  - international
+  - svet
+  - svět
+  skip:
+  - sport
+  - sporty
+  - fotbal
+  - hokej
+  - kultura
+  - lifestyle
+  - auto
+  - magazin
+  - revue
+  - celebrity
+  - bydleni
 aggregator_outlets:
   domestic:
-    - "čtk"
-    - "ctk"
-    - "česká tisková kancelář"
-    - "česká televize"
-    - "ceska televize"
-    - "čt24"
-    - "ct24"
-    - "český rozhlas"
-    - "irozhlas"
-    - "seznam zprávy"
-    - "seznam zpravy"
-    - "novinky.cz"
-    - "idnes.cz"
-    - "idnes"
-    - "deník n"
-    - "denik n"
-    - "hospodářské noviny"
-    - "ihned"
-    - "aktualne.cz"
-    - "aktuálně.cz"
-    - "respekt"
-    - "reflex"
-    - "echo24"
-    - "lidovky.cz"
-    - "deník.cz"
-    - "blesk"
-    - "cnn prima news"
-    - "forum 24"
-    - "e15"
-    - "info.cz"
-    - "deník alarm"
-    - "investigace.cz"
-    - "hlídacípes"
-    - "parlamentní listy"
-    - "prague morning"
-    - "ceskenoviny.cz"
+  - čtk
+  - ctk
+  - česká tisková kancelář
+  - česká televize
+  - ceska televize
+  - čt24
+  - ct24
+  - český rozhlas
+  - irozhlas
+  - seznam zprávy
+  - seznam zpravy
+  - novinky.cz
+  - idnes.cz
+  - idnes
+  - deník n
+  - denik n
+  - hospodářské noviny
+  - ihned
+  - aktualne.cz
+  - aktuálně.cz
+  - respekt
+  - reflex
+  - echo24
+  - lidovky.cz
+  - deník.cz
+  - blesk
+  - cnn prima news
+  - forum 24
+  - e15
+  - info.cz
+  - deník alarm
+  - investigace.cz
+  - hlídacípes
+  - parlamentní listy
+  - prague morning
+  - ceskenoviny.cz
+  - neovlivní.cz
+  - neovlivni
+  - czdefence
+  - kurzy.cz
   abroad_local:
-    - "tasr"
-    - "teraz.sk"
-    - "aktuality.sk"
-    - "sme.sk"
-    - "expats.cz"
-last_reviewed: 2026-11-17
-
+  - tasr
+  - teraz.sk
+  - aktuality.sk
+  - sme.sk
+  - expats.cz
+last_reviewed: '2026-11-25'
 excerpt:
-  dateline: '^\s*(?:PRAHA|BRNO|OSTRAVA|ČTK|ČT24)\s*[-–—:]\s*'
-  noise: '^(Foto|Zdroj|Čtěte také|Photo|Credit|\(|\[)'
-
+  dateline: ^\s*(?:PRAHA|BRNO|OSTRAVA|ČTK|ČT24)\s*[-–—:]\s*
+  noise: ^(Foto|Zdroj|Čtěte také|Photo|Credit|\(|\[)
 classify:
   internal_politics:
-    - "Prime Minister Petr Fiala, President Petr Pavel, Andrej Babiš and ANO opposition, SPOLU coalition (ODS, KDU-ČSL, TOP 09), STAN, Chamber of Deputies (Poslanecká sněmovna) and Senate"
-    - "Petr Fiala, Petr Pavel, Andrej Babiš, vláda, Poslanecká sněmovna, Senát, ANO, ODS, SPOLU, Piráti, STAN, opozice"
+  - Prime Minister Petr Fiala, President Petr Pavel, Andrej Babiš and ANO opposition, SPOLU coalition (ODS, KDU-ČSL, TOP 09), STAN, Chamber of Deputies (Poslanecká sněmovna) and Senate
+  - Petr Fiala, Petr Pavel, Andrej Babiš, vláda, Poslanecká sněmovna, Senát, ANO, ODS, SPOLU, Piráti, STAN, opozice
   economics:
-    - "Czech National Bank (ČNB), inflation and interest rates, state budget deficit, automotive sector Škoda Auto, nuclear expansion Dukovany (KHNP), ČEZ energy utility"
-    - "Česká národní banka, ČNB, státní rozpočet, inflace, úrokové sazby, Škoda Auto, Dukovany, energetika, ČEZ"
+  - Czech National Bank (ČNB), inflation and interest rates, state budget deficit, automotive sector Škoda Auto, nuclear expansion Dukovany (KHNP), ČEZ energy utility
+  - Česká národní banka, ČNB, státní rozpočet, inflace, úrokové sazby, Škoda Auto, Dukovany, energetika, ČEZ
   foreign_policy:
-    - "Czechia in European Union and NATO, Czech ammunition initiative for Ukraine, relations with Slovakia, Poland and Germany, Visegrad Four (V4), Western Balkans diplomacy"
-    - "Evropská unie, NATO, muniční iniciativa, Ukrajina, V4, Visegrád, Slovensko, Polsko, Německo, diplomacie"
+  - Czechia in European Union and NATO, Czech ammunition initiative for Ukraine, relations with Slovakia, Poland and Germany, Visegrad Four (V4), Western Balkans diplomacy
+  - Evropská unie, NATO, muniční iniciativa, Ukrajina, V4, Visegrád, Slovensko, Polsko, Německo, diplomacie
   defence_security:
-    - "Czech Armed Forces (Armáda ČR), Defence Minister Jana Černochová, F-35 procurement, NATO deterrence, BIS counterintelligence, cyber security NÚKIB"
-    - "Armáda České republiky, Jana Černochová, stíhačky F-35, obrana, bezpečnost, BIS, NÚKIB, policie"
+  - Czech Armed Forces (Armáda ČR), Defence Minister Jana Černochová, F-35 procurement, NATO deterrence, BIS counterintelligence, cyber security NÚKIB
+  - Armáda České republiky, Jana Černochová, stíhačky F-35, obrana, bezpečnost, BIS, NÚKIB, policie
   society:
-    - "healthcare and doctors, education and universities, pensions reform, justice system, environment and floods"
-    - "zdravotnictví, školství, důchodová reforma, justice, životní prostředí, povodně"
-
+  - healthcare and doctors, education and universities, pensions reform, justice system, environment and floods
+  - zdravotnictví, školství, důchodová reforma, justice, životní prostředí, povodně
 geo: CZ
-reddit: [czech, czechia, prague]
-last_reviewed: 2026-11-12
+reddit:
+- czech
+- czechia
+- prague

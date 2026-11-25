@@ -64,7 +64,9 @@ aggregator_outlets:
   - Basler Zeitung
   - Berner Zeitung
   - admin.ch
+  - cash.ch
+  - infosperber
   abroad_local:
   - Geneva Solutions
   - The Local Switzerland
-last_reviewed: 2026-11-17
+last_reviewed: '2026-11-25'

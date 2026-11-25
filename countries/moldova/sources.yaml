@@ -3,197 +3,258 @@
 # Chișinău media (Ziarul de Gardă, RISE Moldova, NewsMaker RO/RU, TV8, PRO TV Chișinău, Jurnal.md, AGORA, Europa Liberă),
 # national and regional portals (Deschide.md, Realitatea.md, UNIMEDIA, Cotidianul.md, Point.md, Știri.md, IPN, SP Bălți),
 # and economic portals (Bani.md, Mold-Street).
-
 sources:
-  - id: gnews_md_official
-    name: Moldpres / Moldova 1 (Official & Public Press via Google News)
-    homepage: https://www.moldpres.md
-    language: ro
-    scope: domestic
-    kind: official
-    aggregator: google_news
-    governing_body: State Information Agency Moldpres / Teleradio-Moldova (TRM)
-    state_affiliated: true
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:moldpres.md+OR+site:trm.md)+when:7d&hl=ro&gl=RO&ceid=RO:ro", section: Oficial & Public, category_hint: general}
-
-  - id: newsmaker_md
-    name: NewsMaker (Romanian)
-    homepage: https://newsmaker.md/ro
-    language: ro
-    scope: domestic
-    kind: media
-    governing_body: NewsMaker Media (independent Chișinău bilingual political daily)
-    state_affiliated: false
-    feeds:
-      - {url: "https://newsmaker.md/ro/feed", section: Știri, category_hint: general}
-
-  - id: newsmaker_ru
-    name: NewsMaker (Russian)
-    homepage: https://newsmaker.md/ru
-    language: ru
-    scope: domestic
-    kind: media
-    governing_body: NewsMaker Media (Russian-language edition covering Moldovan politics, Gagauzia, and Transnistria)
-    state_affiliated: false
-    feeds:
-      - {url: "https://newsmaker.md/ru/feed", section: Новости, category_hint: internal_politics}
-
-  - id: rise_md
-    name: RISE Moldova
-    homepage: https://www.rise.md
-    language: ro
-    scope: domestic
-    kind: media
-    governing_body: RISE Moldova (pioneering Chișinău investigative journalism center covering illicit finance and Russian interference)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.rise.md/feed/", section: Investigații, category_hint: internal_politics}
-
-  - id: tv8_md
-    name: TV8 Moldova
-    homepage: https://tv8.md
-    language: ro
-    scope: domestic
-    kind: media
-    governing_body: AO Media Alternativa (independent television broadcaster and investigative newsroom)
-    state_affiliated: false
-    feeds:
-      - {url: "https://tv8.md/rss", section: Știri, category_hint: internal_politics}
-
-  - id: protv_md
-    name: PRO TV Chișinău
-    homepage: https://protv.md
-    language: ro
-    scope: domestic
-    kind: media
-    governing_body: PRO TV Chișinău (major independent national television broadcaster and political portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://protv.md/rss", section: Politic & Actual, category_hint: general}
-
-  - id: deschide_md
-    name: Deschide.md
-    homepage: https://www.deschide.md
-    language: ro
-    scope: domestic
-    kind: media
-    governing_body: Deschide.md (independent Chișinău pro-European political and security news portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.deschide.md/rss.xml", section: Politic & Social, category_hint: general}
-
-  - id: realitatea_md
-    name: Realitatea.md
-    homepage: https://realitatea.md
-    language: ro
-    scope: domestic
-    kind: media
-    governing_body: Realitatea Media Group (Chișinău digital daily tracking Parliament and European integration)
-    state_affiliated: false
-    feeds:
-      - {url: "https://realitatea.md/feed/", section: Politic, category_hint: internal_politics}
-
-  - id: unimedia_md
-    name: UNIMEDIA
-    homepage: https://unimedia.info
-    language: ro
-    scope: domestic
-    kind: media
-    governing_body: Interact Media (one of Moldova's longest-running digital news portals)
-    state_affiliated: false
-    feeds:
-      - {url: "https://unimedia.info/ro/rss/all", section: Știri, category_hint: internal_politics}
-
-  - id: cotidianul_md
-    name: Cotidianul.md
-    homepage: https://cotidianul.md
-    language: ro
-    scope: domestic
-    kind: media
-    governing_body: Cotidianul Media (Chișinău political and social news portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://cotidianul.md/feed/", section: Actualitate, category_hint: internal_politics}
-
-  - id: point_md
-    name: Point.md
-    homepage: https://point.md
-    language: ru
-    scope: domestic
-    kind: media
-    governing_body: Simpals Media (Moldova's highest-traffic Russian-language general news and civic portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://point.md/ru/rss/", section: Новости, category_hint: general}
-
-  - id: esp_md
-    name: SP Bălți
-    homepage: https://esp.md
-    language: ro
-    scope: domestic
-    kind: media
-    governing_body: SP Media Group (independent regional news daily in Bălți covering northern Moldova)
-    state_affiliated: false
-    feeds:
-      - {url: "https://esp.md/ro/rss.xml", section: Bălți & Nord, category_hint: general}
-
-  - id: bani_md
-    name: Bani.md
-    homepage: https://bani.md
-    language: ro
-    scope: domestic
-    kind: media
-    governing_body: Bani Media (dedicated Moldovan financial, banking, energy, and macroeconomic portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://bani.md/feed/", section: Economie, category_hint: economics}
-
-  - id: zdg_md
-    name: Ziarul de Gardă
-    homepage: https://www.zdg.md
-    language: ro
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: Ziarul de Gardă (premier independent investigative anti-corruption newspaper in Chișinău)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:zdg.md+when:5d&hl=ro&gl=RO&ceid=RO:ro", section: Actualitate, category_hint: internal_politics}
-
-  - id: gnews_md_press
-    name: AGORA / Jurnal.md / IPN / Mold-Street / Știri.md / Nokta (via Google News)
-    homepage: https://agora.md
-    language: ro
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: Interact Media / Jurnal Trust / IPN / Mold-Street / Știri.md / Nokta (Gagauzia)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:agora.md+OR+site:jurnal.md+OR+site:ipn.md+OR+site:mold-street.com+OR+site:stiri.md+OR+site:nokta.md)+when:3d&hl=ro&gl=RO&ceid=RO:ro", section: Portale naționale & Găgăuzia, category_hint: internal_politics}
-
-  - id: gnews_md_abroad
-    name: Radio Europa Liberă Moldova / G4Media (Regional & Diaspora)
-    homepage: https://moldova.europalibera.org
-    language: ro
-    scope: abroad_local
-    kind: media
-    aggregator: google_news
-    governing_body: RFE/RL Moldovan Service & Romanian independent press
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:moldova.europalibera.org+OR+(site:g4media.ro+Moldova))+when:7d&hl=ro&gl=RO&ceid=RO:ro", section: Europa Liberă & România, category_hint: general}
-
-  - id: gnews_en_md
-    name: Google News (Moldova - International)
-    homepage: https://news.google.com
-    language: en
-    scope: international
-    kind: media
-    aggregator: google_news
-    governing_body: n/a (aggregator)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=Moldova+(Chisinau+OR+%22Maia+Sandu%22+OR+Recean+OR+Transnistria+OR+Gagauzia)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Moldova politics & security, category_hint: internal_politics}
-      - {url: "https://news.google.com/rss/search?q=Moldova+(EU+OR+Russia+OR+Romania+OR+Ukraine+OR+energy)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Moldova EU & geopolitics, category_hint: foreign_policy}
+- id: jurnal_md
+  name: Jurnal.md
+  homepage: https://www.jurnal.md
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: Jurnal Trust Media
+  state_affiliated: false
+  notes: Independent Chișinău newsroom covering anti-corruption, justice, and parliament.
+  feeds:
+  - url: https://www.jurnal.md/ro/rss/all
+    category_hint: internal_politics
+- id: europalibera_md
+  name: Radio Europa Liberă Moldova
+  homepage: https://www.europalibera.md
+  language: ro
+  scope: abroad_local
+  kind: media
+  governing_body: Radio Free Europe / Radio Liberty
+  state_affiliated: false
+  notes: Independent Moldovan service of RFE/RL covering EU accession, Transnistria, and energy security.
+  feeds:
+  - url: https://www.europalibera.md/api/
+    category_hint: internal_politics
+- id: ziarulnational_md
+  name: Ziarul Național
+  homepage: https://www.ziarulnational.md
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: Ziarul Național Moldova
+  state_affiliated: false
+  notes: Chișinău political and public-affairs newspaper covering EU integration and regional security.
+  feeds:
+  - url: https://www.ziarulnational.md/events/item/index.rss
+    section: Noutăți
+    category_hint: general
+  - url: https://www.ziarulnational.md/events/item/index/20.rss
+    section: Actualitate
+    category_hint: internal_politics
+  - url: https://www.ziarulnational.md/events/item/index/4.rss
+    section: Politică
+    category_hint: internal_politics
+- id: gnews_md_official
+  name: Moldpres / Moldova 1 (Official & Public Press via Google News)
+  homepage: https://www.moldpres.md
+  language: ro
+  scope: domestic
+  kind: official
+  aggregator: google_news
+  governing_body: State Information Agency Moldpres / Teleradio-Moldova (TRM)
+  state_affiliated: true
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:moldpres.md+OR+site:trm.md)+when:7d&hl=ro&gl=RO&ceid=RO:ro
+    section: Oficial & Public
+    category_hint: general
+- id: newsmaker_md
+  name: NewsMaker (Romanian)
+  homepage: https://newsmaker.md/ro
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: NewsMaker Media (independent Chișinău bilingual political daily)
+  state_affiliated: false
+  feeds:
+  - url: https://newsmaker.md/ro/feed
+    section: Știri
+    category_hint: general
+- id: newsmaker_ru
+  name: NewsMaker (Russian)
+  homepage: https://newsmaker.md/ru
+  language: ru
+  scope: domestic
+  kind: media
+  governing_body: NewsMaker Media (Russian-language edition covering Moldovan politics, Gagauzia, and Transnistria)
+  state_affiliated: false
+  feeds:
+  - url: https://newsmaker.md/ru/feed
+    section: Новости
+    category_hint: internal_politics
+- id: rise_md
+  name: RISE Moldova
+  homepage: https://www.rise.md
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: RISE Moldova (pioneering Chișinău investigative journalism center covering illicit finance and Russian interference)
+  state_affiliated: false
+  feeds:
+  - url: https://www.rise.md/feed/
+    section: Investigații
+    category_hint: internal_politics
+- id: tv8_md
+  name: TV8 Moldova
+  homepage: https://tv8.md
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: AO Media Alternativa (independent television broadcaster and investigative newsroom)
+  state_affiliated: false
+  feeds:
+  - url: https://tv8.md/rss
+    section: Știri
+    category_hint: internal_politics
+- id: protv_md
+  name: PRO TV Chișinău
+  homepage: https://protv.md
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: PRO TV Chișinău (major independent national television broadcaster and political portal)
+  state_affiliated: false
+  feeds:
+  - url: https://protv.md/rss
+    section: Politic & Actual
+    category_hint: general
+- id: deschide_md
+  name: Deschide.md
+  homepage: https://www.deschide.md
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: Deschide.md (independent Chișinău pro-European political and security news portal)
+  state_affiliated: false
+  feeds:
+  - url: https://www.deschide.md/rss.xml
+    section: Politic & Social
+    category_hint: general
+- id: realitatea_md
+  name: Realitatea.md
+  homepage: https://realitatea.md
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: Realitatea Media Group (Chișinău digital daily tracking Parliament and European integration)
+  state_affiliated: false
+  feeds:
+  - url: https://realitatea.md/feed/
+    section: Politic
+    category_hint: internal_politics
+- id: unimedia_md
+  name: UNIMEDIA
+  homepage: https://unimedia.info
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: Interact Media (one of Moldova's longest-running digital news portals)
+  state_affiliated: false
+  feeds:
+  - url: https://unimedia.info/ro/rss/all
+    section: Știri
+    category_hint: internal_politics
+- id: cotidianul_md
+  name: Cotidianul.md
+  homepage: https://cotidianul.md
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: Cotidianul Media (Chișinău political and social news portal)
+  state_affiliated: false
+  feeds:
+  - url: https://cotidianul.md/feed/
+    section: Actualitate
+    category_hint: internal_politics
+- id: point_md
+  name: Point.md
+  homepage: https://point.md
+  language: ru
+  scope: domestic
+  kind: media
+  governing_body: Simpals Media (Moldova's highest-traffic Russian-language general news and civic portal)
+  state_affiliated: false
+  feeds:
+  - url: https://point.md/ru/rss/
+    section: Новости
+    category_hint: general
+- id: esp_md
+  name: SP Bălți
+  homepage: https://esp.md
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: SP Media Group (independent regional news daily in Bălți covering northern Moldova)
+  state_affiliated: false
+  feeds:
+  - url: https://esp.md/ro/rss.xml
+    section: Bălți & Nord
+    category_hint: general
+- id: bani_md
+  name: Bani.md
+  homepage: https://bani.md
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: Bani Media (dedicated Moldovan financial, banking, energy, and macroeconomic portal)
+  state_affiliated: false
+  feeds:
+  - url: https://bani.md/feed/
+    section: Economie
+    category_hint: economics
+- id: zdg_md
+  name: Ziarul de Gardă
+  homepage: https://www.zdg.md
+  language: ro
+  scope: domestic
+  kind: media
+  governing_body: Ziarul de Gardă (premier independent investigative anti-corruption newspaper in Chișinău)
+  state_affiliated: false
+  feeds:
+  - url: https://www.zdg.md/feed/
+    section: Investigații
+    category_hint: internal_politics
+- id: gnews_md_press
+  name: AGORA / IPN / Mold-Street / Știri.md / Nokta (via Google News)
+  homepage: https://agora.md
+  language: ro
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: Interact Media / Jurnal Trust / IPN / Mold-Street / Știri.md / Nokta (Gagauzia)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:agora.md+OR+site:ipn.md+OR+site:mold-street.com+OR+site:stiri.md+OR+site:nokta.md)+when:3d&hl=ro&gl=RO&ceid=RO:ro
+    section: Portale naționale & Găgăuzia
+    category_hint: internal_politics
+- id: gnews_md_abroad
+  name: G4Media (Regional & Diaspora)
+  homepage: https://moldova.europalibera.org
+  language: ro
+  scope: abroad_local
+  kind: media
+  aggregator: google_news
+  governing_body: RFE/RL Moldovan Service & Romanian independent press
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=((site:g4media.ro+Moldova))+when:7d&hl=ro&gl=RO&ceid=RO:ro
+    section: Europa Liberă & România
+    category_hint: general
+- id: gnews_en_md
+  name: Google News (Moldova - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  aggregator: google_news
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=Moldova+(Chisinau+OR+%22Maia+Sandu%22+OR+Recean+OR+Transnistria+OR+Gagauzia)+when:7d&hl=en-US&gl=US&ceid=US:en
+    section: Moldova politics & security
+    category_hint: internal_politics
+  - url: https://news.google.com/rss/search?q=Moldova+(EU+OR+Russia+OR+Romania+OR+Ukraine+OR+energy)+when:7d&hl=en-US&gl=US&ceid=US:en
+    section: Moldova EU & geopolitics
+    category_hint: foreign_policy

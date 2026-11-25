@@ -1,19 +1,86 @@
 # Georgia's additions to the shared themes (../../themes.yaml).
 themes:
-  - id: party_gov
-    label: Georgian Dream & Constitutional crisis
-    weight: 1.0
-    category: internal_politics
-    describe:
-      - Georgian Dream ruling party, Bidzina Ivanishvili, Prime Minister Irakli Kobakhidze, President Salome Zourabichvili, contested parliamentary elections, opposition protests, foreign influence law
-      - ქართული ოცნება, ბიძინა ივანიშვილი, ირაკლი კობახიძე, სალომე ზურაბიშვილი, საპარლამენტო არჩევნები, ოპოზიცია, აქციები
-    keywords: ["georgian dream", "ivanishvili", "kobakhidze", "zourabichvili", "zurabishvili", "foreign agents", "foreign influence", "central election commission", "ქართული ოცნება", "ივანიშვილი", "კობახიძე", "ზურაბიშვილი", "არჩევნები"]
-
-  - id: diplomacy
-    label: EU Accession Freeze, US Sanctions & Russia/China pivot
-    weight: 1.0
-    category: foreign_policy
-    describe:
-      - European Union accession freeze, US visa restrictions and sanctions, relations with Moscow and Beijing, Anaklia Chinese consortium
-      - ევროკავშირში გაწევრიანება, აშშ-ის სანქციები, რუსეთთან და ჩინეთთან ურთიერთობა
-    keywords: ["eu accession", "candidate status", "visa-free", "sanctions", "abkhazia", "south ossetia", "anaklia", "middle corridor", "ევროკავშირი", "სანქციები", "აფხაზეთი", "ანაკლია"]
+- id: party_gov
+  label: Georgian Dream & Constitutional crisis
+  weight: 1.0
+  category: internal_politics
+  describe:
+  - Georgian Dream ruling party, Bidzina Ivanishvili, Prime Minister Irakli Kobakhidze, President Salome Zourabichvili, contested parliamentary elections, opposition protests, foreign influence law
+  - ქართული ოცნება, ბიძინა ივანიშვილი, ირაკლი კობახიძე, სალომე ზურაბიშვილი, საპარლამენტო არჩევნები, ოპოზიცია, აქციები
+  keywords:
+  - georgian dream
+  - ivanishvili
+  - kobakhidze
+  - zourabichvili
+  - zurabishvili
+  - foreign agents
+  - foreign influence
+  - central election commission
+  - ქართული ოცნება
+  - ივანიშვილი
+  - კობახიძე
+  - ზურაბიშვილი
+  - არჩევნები
+- id: diplomacy
+  label: EU Accession Freeze, US Sanctions & Russia/China pivot
+  weight: 1.0
+  category: foreign_policy
+  describe:
+  - European Union accession freeze, US visa restrictions and sanctions, relations with Moscow and Beijing, Anaklia Chinese consortium
+  - ევროკავშირში გაწევრიანება, აშშ-ის სანქციები, რუსეთთან და ჩინეთთან ურთიერთობა
+  keywords:
+  - eu accession
+  - candidate status
+  - visa-free
+  - sanctions
+  - abkhazia
+  - south ossetia
+  - anaklia
+  - middle corridor
+  - ევროკავშირი
+  - სანქციები
+  - აფხაზეთი
+  - ანაკლია
+- id: elections
+  describe:
+  - Georgian parliamentary and municipal elections, Central Election Commission (CEC) audits, observer reports, and electoral fraud probes
+  - საპარლამენტო არჩევნები, ცესკო, ამომრჩეველთა აქტივობა, ეუთო/ოდირი
+  keywords:
+  - არჩევნები
+  - ცესკო
+  - ბიულეტენ
+  - osce/odihr
+  - election audit
+  - ballot
+  - turnout
+- id: econ_policy
+  label: National Bank, Anaklia Deep-Sea Port & Transit Corridor
+  weight: 0.9
+  category: economics
+  describe:
+  - National Bank of Georgia monetary policy, Georgian lari (GEL), Anaklia deep-sea port consortium, Middle Corridor rail/ports, and EU/US sanctions impact
+  - ეროვნული ბანკი, ანაკლიის პორტი, შუა დერეფანი, ლარი, ბიუჯეტი, სანქციები
+  keywords:
+  - ანაკლი
+  - ეროვნული ბანკი
+  - ლარი
+  - შუა დერეფან
+  - anaklia
+  - lari
+  - middle corridor
+- id: security
+  label: Occupied Regions (Abkhazia / Tskhinvali) & NATO Posture
+  weight: 0.95
+  category: defence_security
+  describe:
+  - Russian occupation lines in Abkhazia and Tskhinvali region (South Ossetia), borderization detentions, Ochamchire naval base, and State Security Service (SSG)
+  - ოკუპაცია, აფხაზეთი, ცხინვალი, ბორდერიზაცია, სუს-ი, თავდაცვა
+  keywords:
+  - ოკუპაცია
+  - აფხაზეთი
+  - ცხინვალი
+  - ბორდერიზაცია
+  - abkhazia
+  - tskhinvali
+  - ochamchire
+  - borderization

@@ -3,233 +3,291 @@
 # tabloids and high-reach commercial portals (24sata, Dnevnik.hr, Index.hr, Tportal, Net.hr, Dnevno.hr), investigative and analytical outlets
 # (N1 Hrvatska, Telegram.hr, Nacional, Faktograf), financial press (Poslovni dnevnik, Lider Media), and regional dailies
 # (Slobodna Dalmacija, Novi list, Glas Slavonije, Glas Istre).
-
 sources:
-  - id: hrt_hr
-    name: HRT Vijesti (Croatian Radiotelevision)
-    homepage: https://vijesti.hrt.hr
-    language: hr
-    scope: domestic
-    kind: official
-    aggregator: google_news
-    governing_body: Hrvatska radiotelevizija (statutory national public-service broadcaster)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:hrt.hr+when:3d&hl=hr&gl=HR&ceid=HR:hr", section: Vijesti, category_hint: general}
-
-  - id: hina_hr
-    name: HINA (Croatian News Agency)
-    homepage: https://www.hina.hr
-    language: hr
-    scope: domestic
-    kind: official
-    aggregator: google_news
-    governing_body: Hrvatska izvještajna novinska agencija (statutory national news wire)
-    state_affiliated: true
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:hina.hr+when:7d&hl=hr&gl=HR&ceid=HR:hr", section: HINA, category_hint: general}
-
-  - id: jutarnji_hr
-    name: Jutarnji list
-    homepage: https://www.jutarnji.hr
-    language: hr
-    scope: domestic
-    kind: media
-    governing_body: Hanza Media d.o.o. (leading Zagreb national morning daily newspaper of record)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.jutarnji.hr/feed", section: Vijesti, category_hint: internal_politics}
-
-  - id: vecernji_hr
-    name: Večernji list
-    homepage: https://www.vecernji.hr
-    language: hr
-    scope: domestic
-    kind: media
-    governing_body: Styria Media Group AG (major Zagreb national daily newspaper covering politics, security, and regional affairs)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.vecernji.hr/feeds/latest", section: Najnovije, category_hint: general}
-
-  - id: n1_hr
-    name: N1 Hrvatska
-    homepage: https://n1info.hr
-    language: hr
-    scope: domestic
-    kind: media
-    governing_body: United Media Group (independent 24-hour cable news broadcaster and political portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://n1info.hr/feed/", section: Najnovije, category_hint: internal_politics}
-
-  - id: telegram_hr
-    name: Telegram.hr
-    homepage: https://www.telegram.hr
-    language: hr
-    scope: domestic
-    kind: media
-    governing_body: Telegram Media Grupa d.o.o. (premier Croatian investigative and analytical daily portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.telegram.hr/feed/", section: Politika & Kriminal, category_hint: internal_politics}
-
-  - id: dnevnik_hr
-    name: Dnevnik.hr (Nova TV)
-    homepage: https://dnevnik.hr
-    language: hr
-    scope: domestic
-    kind: media
-    governing_body: Nova TV d.d. / United Media (Croatia's highest-reach commercial television broadcaster and portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://dnevnik.hr/assets/feed/articles", section: Vijesti, category_hint: general}
-
-  - id: 24sata_hr
-    name: 24sata
-    homepage: https://www.24sata.hr
-    language: hr
-    scope: domestic
-    kind: media
-    governing_body: Styria Media Group AG (Croatia's highest-circulation popular tabloid daily and portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.24sata.hr/feeds/najnovije.xml", section: Najnovije, category_hint: general}
-
-  - id: poslovni_hr
-    name: Poslovni dnevnik
-    homepage: https://www.poslovni.hr
-    language: hr
-    scope: domestic
-    kind: media
-    governing_body: Styria Media Group AG (Croatia's primary business, energy, and macroeconomic daily newspaper)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.poslovni.hr/feed", section: Gospodarstvo, category_hint: economics}
-
-  - id: slobodnadalmacija_hr
-    name: Slobodna Dalmacija
-    homepage: https://slobodnadalmacija.hr
-    language: hr
-    scope: domestic
-    kind: media
-    governing_body: Hanza Media d.o.o. (Split — premier Adriatic and Dalmatian daily newspaper covering maritime, port, and national politics)
-    state_affiliated: false
-    feeds:
-      - {url: "https://slobodnadalmacija.hr/feed", section: Vijesti, category_hint: general}
-
-  - id: novilist_hr
-    name: Novi list
-    homepage: https://www.novilist.hr
-    language: hr
-    scope: domestic
-    kind: media
-    governing_body: Glas Istre / Novi list d.o.o. (Rijeka — historic daily of record covering Kvarner, Port of Rijeka, and Krk LNG energy terminal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.novilist.hr/feed/", section: Vijesti, category_hint: general}
-
-  - id: glasistre_hr
-    name: Glas Istre
-    homepage: https://www.glasistre.hr
-    language: hr
-    scope: domestic
-    kind: media
-    governing_body: Glas Istre Novine d.o.o. (Pula — regional daily newspaper covering Istria, shipbuilding, and Italian/Slovenian border affairs)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.glasistre.hr/rss.xml", section: Vijesti, category_hint: general}
-
-  - id: nacional_hr
-    name: Nacional
-    homepage: https://www.nacional.hr
-    language: hr
-    scope: domestic
-    kind: media
-    governing_body: Nacional News Corporation d.o.o. (influential Zagreb investigative political weekly)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.nacional.hr/feed/", section: Politika, category_hint: internal_politics}
-
-  - id: dnevno_hr
-    name: Dnevno.hr
-    homepage: https://www.dnevno.hr
-    language: hr
-    scope: domestic
-    kind: media
-    governing_body: Dnevno d.o.o. (national populist and right-leaning political digital daily)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.dnevno.hr/feed/", section: Vijesti, category_hint: internal_politics}
-
-  - id: index_hr
-    name: Index.hr
-    homepage: https://www.index.hr
-    language: hr
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: Index Promocija d.o.o. (Croatia's highest-traffic independent news and investigative portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:index.hr+when:2d&hl=hr&gl=HR&ceid=HR:hr", section: Vijesti, category_hint: general}
-
-  - id: tportal_hr
-    name: Tportal.hr
-    homepage: https://www.tportal.hr
-    language: hr
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: Hrvatski Telekom d.d. (major national news and business portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:tportal.hr+when:3d&hl=hr&gl=HR&ceid=HR:hr", section: Vijesti, category_hint: general}
-
-  - id: glasslavonije_hr
-    name: Glas Slavonije
-    homepage: https://www.glas-slavonije.hr
-    language: hr
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: Glas Slavonije d.d. (Osijek — eastern Croatia and Slavonia daily covering agriculture, Danube corridor, and border ties)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:glas-slavonije.hr+when:7d&hl=hr&gl=HR&ceid=HR:hr", section: Slavonija & Hrvatska, category_hint: general}
-
-  - id: gnews_hr_press
-    name: Net.hr / Lider Media / Faktograf / Narod.hr / Direktno / Dalmatinski Portal (via Google News)
-    homepage: https://net.hr
-    language: hr
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: RTL Hrvatska / Lider Media / GONG Faktograf / U ime obitelji / Direktno / Dalmatinski Portal
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:net.hr+OR+site:lidermedia.hr+OR+site:faktograf.hr+OR+site:narod.hr+OR+site:direktno.hr+OR+site:dalmatinskiportal.hr)+when:3d&hl=hr&gl=HR&ceid=HR:hr", section: Nacionalni i specijalizirani mediji, category_hint: general}
-
-  - id: gnews_hr_abroad
-    name: Al Jazeera Balkans / Balkan Insight / Slobodna Evropa (on Croatia)
-    homepage: https://balkans.aljazeera.net
-    language: hr
-    scope: abroad_local
-    kind: media
-    aggregator: google_news
-    governing_body: Al Jazeera Media Network / BIRN / RFE-RL
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:balkans.aljazeera.net+OR+site:balkaninsight.com+OR+site:slobodnaevropa.org)+(Hrvatska+OR+Croatia+OR+Zagreb+OR+Plenkovi%C4%87)+when:7d&hl=hr&gl=HR&ceid=HR:hr", section: Regija, category_hint: general}
-
-  - id: gnews_en_hr
-    name: Google News (Croatia - International)
-    homepage: https://news.google.com
-    language: en
-    scope: international
-    kind: media
-    aggregator: google_news
-    governing_body: n/a (aggregator)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=Croatia+(Zagreb+OR+Plenkovic+OR+Milanovic+OR+government)+when:3d&hl=en-US&gl=US&ceid=US:en", section: Croatia politics, category_hint: internal_politics}
-      - {url: "https://news.google.com/rss/search?q=Croatia+(JANAF+OR+LNG+OR+INA+OR+energy+OR+NATO+OR+Schengen)+when:3d&hl=en-US&gl=US&ceid=US:en", section: Croatia energy & security, category_hint: economics}
+- id: hrt_hr
+  name: HRT Vijesti (Croatian Radiotelevision)
+  homepage: https://vijesti.hrt.hr
+  language: hr
+  scope: domestic
+  kind: official
+  aggregator: google_news
+  governing_body: Hrvatska radiotelevizija (statutory national public-service broadcaster)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:hrt.hr+when:3d&hl=hr&gl=HR&ceid=HR:hr
+    section: Vijesti
+    category_hint: general
+- id: hina_hr
+  name: HINA (Croatian News Agency)
+  homepage: https://www.hina.hr
+  language: hr
+  scope: domestic
+  kind: official
+  aggregator: google_news
+  governing_body: Hrvatska izvještajna novinska agencija (statutory national news wire)
+  state_affiliated: true
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:hina.hr+when:7d&hl=hr&gl=HR&ceid=HR:hr
+    section: HINA
+    category_hint: general
+- id: jutarnji_hr
+  name: Jutarnji list
+  homepage: https://www.jutarnji.hr
+  language: hr
+  scope: domestic
+  kind: media
+  governing_body: Hanza Media d.o.o. (leading Zagreb national morning daily newspaper of record)
+  state_affiliated: false
+  feeds:
+  - url: https://www.jutarnji.hr/feed
+    section: Vijesti
+    category_hint: internal_politics
+- id: vecernji_hr
+  name: Večernji list
+  homepage: https://www.vecernji.hr
+  language: hr
+  scope: domestic
+  kind: media
+  governing_body: Styria Media Group AG (major Zagreb national daily newspaper covering politics, security, and regional affairs)
+  state_affiliated: false
+  feeds:
+  - url: https://www.vecernji.hr/feeds/latest
+    section: Najnovije
+    category_hint: general
+- id: n1_hr
+  name: N1 Hrvatska
+  homepage: https://n1info.hr
+  language: hr
+  scope: domestic
+  kind: media
+  governing_body: United Media Group (independent 24-hour cable news broadcaster and political portal)
+  state_affiliated: false
+  feeds:
+  - url: https://n1info.hr/feed/
+    section: Najnovije
+    category_hint: internal_politics
+- id: telegram_hr
+  name: Telegram.hr
+  homepage: https://www.telegram.hr
+  language: hr
+  scope: domestic
+  kind: media
+  governing_body: Telegram Media Grupa d.o.o. (premier Croatian investigative and analytical daily portal)
+  state_affiliated: false
+  feeds:
+  - url: https://www.telegram.hr/feed/
+    section: Politika & Kriminal
+    category_hint: internal_politics
+- id: dnevnik_hr
+  name: Dnevnik.hr (Nova TV)
+  homepage: https://dnevnik.hr
+  language: hr
+  scope: domestic
+  kind: media
+  governing_body: Nova TV d.d. / United Media (Croatia's highest-reach commercial television broadcaster and portal)
+  state_affiliated: false
+  feeds:
+  - url: https://dnevnik.hr/assets/feed/articles
+    section: Vijesti
+    category_hint: general
+- id: 24sata_hr
+  name: 24sata
+  homepage: https://www.24sata.hr
+  language: hr
+  scope: domestic
+  kind: media
+  governing_body: Styria Media Group AG (Croatia's highest-circulation popular tabloid daily and portal)
+  state_affiliated: false
+  feeds:
+  - url: https://www.24sata.hr/feeds/najnovije.xml
+    section: Najnovije
+    category_hint: general
+- id: poslovni_hr
+  name: Poslovni dnevnik
+  homepage: https://www.poslovni.hr
+  language: hr
+  scope: domestic
+  kind: media
+  governing_body: Styria Media Group AG (Croatia's primary business, energy, and macroeconomic daily newspaper)
+  state_affiliated: false
+  feeds:
+  - url: https://www.poslovni.hr/feed
+    section: Gospodarstvo
+    category_hint: economics
+- id: slobodnadalmacija_hr
+  name: Slobodna Dalmacija
+  homepage: https://slobodnadalmacija.hr
+  language: hr
+  scope: domestic
+  kind: media
+  governing_body: Hanza Media d.o.o. (Split — premier Adriatic and Dalmatian daily newspaper covering maritime, port, and national politics)
+  state_affiliated: false
+  feeds:
+  - url: https://slobodnadalmacija.hr/feed
+    section: Vijesti
+    category_hint: general
+- id: novilist_hr
+  name: Novi list
+  homepage: https://www.novilist.hr
+  language: hr
+  scope: domestic
+  kind: media
+  governing_body: Glas Istre / Novi list d.o.o. (Rijeka — historic daily of record covering Kvarner, Port of Rijeka, and Krk LNG energy terminal)
+  state_affiliated: false
+  feeds:
+  - url: https://www.novilist.hr/feed/
+    section: Vijesti
+    category_hint: general
+- id: glasistre_hr
+  name: Glas Istre
+  homepage: https://www.glasistre.hr
+  language: hr
+  scope: domestic
+  kind: media
+  governing_body: Glas Istre Novine d.o.o. (Pula — regional daily newspaper covering Istria, shipbuilding, and Italian/Slovenian border affairs)
+  state_affiliated: false
+  feeds:
+  - url: https://www.glasistre.hr/rss.xml
+    section: Vijesti
+    category_hint: general
+- id: nacional_hr
+  name: Nacional
+  homepage: https://www.nacional.hr
+  language: hr
+  scope: domestic
+  kind: media
+  governing_body: Nacional News Corporation d.o.o. (influential Zagreb investigative political weekly)
+  state_affiliated: false
+  feeds:
+  - url: https://www.nacional.hr/feed/
+    section: Politika
+    category_hint: internal_politics
+- id: dnevno_hr
+  name: Dnevno.hr
+  homepage: https://www.dnevno.hr
+  language: hr
+  scope: domestic
+  kind: media
+  governing_body: Dnevno d.o.o. (national populist and right-leaning political digital daily)
+  state_affiliated: false
+  feeds:
+  - url: https://www.dnevno.hr/feed/
+    section: Vijesti
+    category_hint: internal_politics
+- id: index_hr
+  name: Index.hr
+  homepage: https://www.index.hr
+  language: hr
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: Index Promocija d.o.o. (Croatia's highest-traffic independent news and investigative portal)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:index.hr+when:2d&hl=hr&gl=HR&ceid=HR:hr
+    section: Vijesti
+    category_hint: general
+- id: tportal_hr
+  name: Tportal.hr
+  homepage: https://www.tportal.hr
+  language: hr
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: Hrvatski Telekom d.d. (major national news and business portal)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:tportal.hr+when:3d&hl=hr&gl=HR&ceid=HR:hr
+    section: Vijesti
+    category_hint: general
+- id: glasslavonije_hr
+  name: Glas Slavonije
+  homepage: https://www.glas-slavonije.hr
+  language: hr
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: Glas Slavonije d.d. (Osijek — eastern Croatia and Slavonia daily covering agriculture, Danube corridor, and border ties)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:glas-slavonije.hr+when:7d&hl=hr&gl=HR&ceid=HR:hr
+    section: Slavonija & Hrvatska
+    category_hint: general
+- id: dubrovackivjesnik_hr
+  name: Dubrovački vjesnik
+  homepage: https://dubrovacki.slobodnadalmacija.hr
+  language: hr
+  scope: domestic
+  kind: media
+  governing_body: Hanza Media
+  state_affiliated: false
+  notes: Historic southern Dalmatia regional daily covering Dubrovnik, tourism, and coastal policy.
+  feeds:
+  - url: https://dubrovacki.slobodnadalmacija.hr/dubrovnik/feed
+    category_hint: society
+- id: zadarskilist_hr
+  name: Zadarski list
+  homepage: https://zadarskilist.novilist.hr
+  language: hr
+  scope: domestic
+  kind: media
+  governing_body: Novi list Media
+  state_affiliated: false
+  notes: Northern Dalmatia daily newspaper covering regional economy and Adriatic affairs.
+  feeds:
+  - url: https://zadarskilist.novilist.hr/feed/
+    category_hint: society
+- id: totalcroatianews_hr
+  name: Total Croatia News
+  homepage: https://total-croatia-news.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Total Croatia News
+  state_affiliated: false
+  notes: Independent English-language Croatian news, business, and tourism policy portal.
+  feeds:
+  - url: https://total-croatia-news.com/feed/
+    category_hint: general
+- id: gnews_hr_press
+  name: Net.hr / Lider Media / Faktograf / Narod.hr / Direktno / Dalmatinski Portal (via Google News)
+  homepage: https://net.hr
+  language: hr
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: RTL Hrvatska / Lider Media / GONG Faktograf / U ime obitelji / Direktno / Dalmatinski Portal
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:net.hr+OR+site:lidermedia.hr+OR+site:faktograf.hr+OR+site:narod.hr+OR+site:direktno.hr+OR+site:dalmatinskiportal.hr)+when:3d&hl=hr&gl=HR&ceid=HR:hr
+    section: Nacionalni i specijalizirani mediji
+    category_hint: general
+- id: gnews_hr_abroad
+  name: Al Jazeera Balkans / Balkan Insight / Slobodna Evropa (on Croatia)
+  homepage: https://balkans.aljazeera.net
+  language: hr
+  scope: abroad_local
+  kind: media
+  aggregator: google_news
+  governing_body: Al Jazeera Media Network / BIRN / RFE-RL
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:balkans.aljazeera.net+OR+site:balkaninsight.com+OR+site:slobodnaevropa.org)+(Hrvatska+OR+Croatia+OR+Zagreb+OR+Plenkovi%C4%87)+when:7d&hl=hr&gl=HR&ceid=HR:hr
+    section: Regija
+    category_hint: general
+- id: gnews_en_hr
+  name: Google News (Croatia - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  aggregator: google_news
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=Croatia+(Zagreb+OR+Plenkovic+OR+Milanovic+OR+government)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Croatia politics
+    category_hint: internal_politics
+  - url: https://news.google.com/rss/search?q=Croatia+(JANAF+OR+LNG+OR+INA+OR+energy+OR+NATO+OR+Schengen)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Croatia energy & security
+    category_hint: economics

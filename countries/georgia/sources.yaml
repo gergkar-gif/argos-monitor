@@ -3,190 +3,234 @@
 # Georgian newsrooms (Civil Georgia EN/KA, Netgazeti, Batumelebi, Publika, Tabula, Radio Tavisupleba, On.ge, Metronome,
 # Fortuna, InterPressNews), business/broadcast media (BM.ge, BPN.ge, Formula, Mtavari, Ambebi, SOVA, Georgia Today),
 # and Caucasus regional outlets (OC Media, JAMnews, Caucasus Watch).
-
 sources:
-  - id: civil_ge_en
-    name: Civil Georgia (English)
-    homepage: https://civil.ge
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: UN Association of Georgia (premier independent non-profit daily paper of record)
-    state_affiliated: false
-    feeds:
-      - {url: "https://civil.ge/feed", section: Latest, category_hint: general}
-
-  - id: civil_ge_ka
-    name: Civil Georgia (Georgian)
-    homepage: https://civil.ge/ka
-    language: ka
-    scope: domestic
-    kind: media
-    governing_body: UN Association of Georgia
-    state_affiliated: false
-    feeds:
-      - {url: "https://civil.ge/ka/feed", section: სიახლეები, category_hint: general}
-
-  - id: netgazeti_ge
-    name: Netgazeti
-    homepage: https://netgazeti.ge
-    language: ka
-    scope: domestic
-    kind: media
-    governing_body: Gazeti Batumelebi LLC (major independent Tbilisi digital daily covering politics and human rights)
-    state_affiliated: false
-    feeds:
-      - {url: "https://netgazeti.ge/feed/", section: პოლიტიკა, category_hint: internal_politics}
-
-  - id: batumelebi_ge
-    name: Batumelebi
-    homepage: https://batumelebi.netgazeti.ge
-    language: ka
-    scope: domestic
-    kind: media
-    governing_body: Gazeti Batumelebi LLC (award-winning regional investigative newspaper covering Adjara and Batumi)
-    state_affiliated: false
-    feeds:
-      - {url: "https://batumelebi.netgazeti.ge/feed/", section: აჭარა & საქართველო, category_hint: internal_politics}
-
-  - id: publika_ge
-    name: Publika
-    homepage: https://publika.ge
-    language: ka
-    scope: domestic
-    kind: media
-    governing_body: Publika Publishing (independent analytical and human-rights digital daily in Tbilisi)
-    state_affiliated: false
-    feeds:
-      - {url: "https://publika.ge/feed/", section: სიახლეები, category_hint: internal_politics}
-
-  - id: on_ge
-    name: On.ge
-    homepage: https://on.ge
-    language: ka
-    scope: domestic
-    kind: media
-    governing_body: On.ge Media (major independent Georgian general digital news portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://on.ge/rss", section: ამბები, category_hint: general}
-
-  - id: metronome_ge
-    name: Metronome.ge
-    homepage: https://metronome.ge
-    language: ka
-    scope: domestic
-    kind: media
-    governing_body: Metronome Media (Tbilisi digital portal covering Georgian domestic politics and parliament)
-    state_affiliated: false
-    feeds:
-      - {url: "https://metronome.ge/feed", section: პოლიტიკა, category_hint: internal_politics}
-
-  - id: fortuna_ge
-    name: Fortuna.ge
-    homepage: https://fortuna.ge
-    language: ka
-    scope: domestic
-    kind: media
-    governing_body: Fortuna Holding (commercial radio and fast-breaking national portal in Tbilisi)
-    state_affiliated: false
-    feeds:
-      - {url: "https://fortuna.ge/feed/", section: სიახლეები, category_hint: general}
-
-  - id: ocmedia
-    name: OC Media
-    homepage: https://oc-media.org
-    language: en
-    scope: abroad_local
-    kind: media
-    governing_body: Open Caucasus Media (independent regional investigative outlet)
-    state_affiliated: false
-    needs_mention: true
-    feeds:
-      - {url: "https://oc-media.org/feed/", section: Caucasus, category_hint: general}
-
-  - id: jamnews_en
-    name: JAMnews
-    homepage: https://jam-news.net
-    language: en
-    scope: abroad_local
-    kind: media
-    governing_body: JAMnews Regional Media Network (independent Caucasus outlet)
-    state_affiliated: false
-    needs_mention: true
-    feeds:
-      - {url: "https://jam-news.net/feed/", section: Caucasus, category_hint: general}
-      - {url: "https://jam-news.net/ru/feed/", section: Кавказ (RU), category_hint: foreign_policy}
-
-  - id: newpress_ge
-    name: NewPress.ge
-    homepage: https://newpress.ge
-    language: ka
-    scope: domestic
-    kind: media
-    governing_body: NewPress Media (independent Kutaisi / Imereti regional investigative and municipal portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://newpress.ge/feed/", section: იმერეთი & საქართველო, category_hint: society}
-
-  - id: gnews_ge_official
-    name: Agenda.ge / 1TV (Official & Public Press via Google News)
-    homepage: https://agenda.ge
-    language: en
-    scope: domestic
-    kind: official
-    aggregator: google_news
-    governing_body: Administration of the Government of Georgia / Georgian Public Broadcaster
-    state_affiliated: true
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:agenda.ge+OR+site:1tv.ge)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Government & GPB, category_hint: general}
-
-  - id: gnews_ge_press_en
-    name: InterPressNews / BM.ge / Formula / Mtavari / Ambebi / Georgia Today / Tabula (via Google News)
-    homepage: https://www.interpressnews.ge
-    language: en
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: Palitra Media / Business Media Georgia / Formula TV / Mtavari / Tabula / Georgia Today
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:interpressnews.ge+OR+site:bm.ge+OR+site:formula.ge+OR+site:mtavari.tv+OR+site:ambebi.ge+OR+site:bpn.ge+OR+site:tabula.ge+OR+site:georgiatoday.ge)+when:5d&hl=en-US&gl=US&ceid=US:en", section: Georgian Press & Business, category_hint: internal_politics}
-
-  - id: gnews_ge_ru_press
-    name: Radio Tavisupleba / SOVA News / Ekho Kavkaza (via Google News)
-    homepage: https://www.radiotavisupleba.ge
-    language: ka
-    scope: abroad_local
-    kind: media
-    aggregator: google_news
-    governing_body: Radio Free Europe / SOVA Media
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:radiotavisupleba.ge+OR+site:sova.news+OR+site:ekhokavkaza.com)+when:7d&hl=ru&gl=RU&ceid=RU:ru", section: RFE/RL & SOVA, category_hint: internal_politics}
-
-  - id: gnews_georgia_ka
-    name: Google News (Georgia National News - Georgian)
-    homepage: https://news.google.com
-    language: ka
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    needs_mention: true
-    governing_body: Google LLC
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=%E1%83%A1%E1%83%90%E1%83%A5%E1%83%90%E1%83%A0%E1%83%97%E1%83%95%E1%83%94%E1%83%9A%E1%83%9D+when:2d&hl=en-US&gl=US&ceid=US:en", section: National News (Georgian), category_hint: internal_politics}
-
-  - id: gnews_en_ge
-    name: Google News (Georgia - International)
-    homepage: https://news.google.com
-    language: en
-    scope: international
-    kind: media
-    aggregator: google_news
-    governing_body: n/a (aggregator)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=Georgia+(Tbilisi+OR+%22Georgian+Dream%22+OR+Kobakhidze+OR+Ivanishvili+OR+Zourabichvili)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Georgia politics, category_hint: internal_politics}
-      - {url: "https://news.google.com/rss/search?q=Georgia+(Tbilisi+OR+Abkhazia+OR+Anaklia+OR+Caucasus)+(EU+OR+Russia+OR+sanctions+OR+election)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Georgia EU & geopolitics, category_hint: foreign_policy}
+- id: civil_ge_en
+  name: Civil Georgia (English)
+  homepage: https://civil.ge
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: UN Association of Georgia (premier independent non-profit daily paper of record)
+  state_affiliated: false
+  feeds:
+  - url: https://civil.ge/feed
+    section: Latest
+    category_hint: general
+- id: civil_ge_ka
+  name: Civil Georgia (Georgian)
+  homepage: https://civil.ge/ka
+  language: ka
+  scope: domestic
+  kind: media
+  governing_body: UN Association of Georgia
+  state_affiliated: false
+  feeds:
+  - url: https://civil.ge/ka/feed
+    section: სიახლეები
+    category_hint: general
+- id: netgazeti_ge
+  name: Netgazeti
+  homepage: https://netgazeti.ge
+  language: ka
+  scope: domestic
+  kind: media
+  governing_body: Gazeti Batumelebi LLC (major independent Tbilisi digital daily covering politics and human rights)
+  state_affiliated: false
+  feeds:
+  - url: https://netgazeti.ge/feed/
+    section: პოლიტიკა
+    category_hint: internal_politics
+- id: batumelebi_ge
+  name: Batumelebi
+  homepage: https://batumelebi.netgazeti.ge
+  language: ka
+  scope: domestic
+  kind: media
+  governing_body: Gazeti Batumelebi LLC (award-winning regional investigative newspaper covering Adjara and Batumi)
+  state_affiliated: false
+  feeds:
+  - url: https://batumelebi.netgazeti.ge/feed/
+    section: აჭარა & საქართველო
+    category_hint: internal_politics
+- id: publika_ge
+  name: Publika
+  homepage: https://publika.ge
+  language: ka
+  scope: domestic
+  kind: media
+  governing_body: Publika Publishing (independent analytical and human-rights digital daily in Tbilisi)
+  state_affiliated: false
+  feeds:
+  - url: https://publika.ge/feed/
+    section: სიახლეები
+    category_hint: internal_politics
+- id: on_ge
+  name: On.ge
+  homepage: https://on.ge
+  language: ka
+  scope: domestic
+  kind: media
+  governing_body: On.ge Media (major independent Georgian general digital news portal)
+  state_affiliated: false
+  feeds:
+  - url: https://on.ge/rss
+    section: ამბები
+    category_hint: general
+- id: metronome_ge
+  name: Metronome.ge
+  homepage: https://metronome.ge
+  language: ka
+  scope: domestic
+  kind: media
+  governing_body: Metronome Media (Tbilisi digital portal covering Georgian domestic politics and parliament)
+  state_affiliated: false
+  feeds:
+  - url: https://metronome.ge/feed
+    section: პოლიტიკა
+    category_hint: internal_politics
+- id: fortuna_ge
+  name: Fortuna.ge
+  homepage: https://fortuna.ge
+  language: ka
+  scope: domestic
+  kind: media
+  governing_body: Fortuna Holding (commercial radio and fast-breaking national portal in Tbilisi)
+  state_affiliated: false
+  feeds:
+  - url: https://fortuna.ge/feed/
+    section: სიახლეები
+    category_hint: general
+- id: ocmedia
+  name: OC Media
+  homepage: https://oc-media.org
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Open Caucasus Media (independent regional investigative outlet)
+  state_affiliated: false
+  needs_mention: true
+  feeds:
+  - url: https://oc-media.org/feed/
+    section: Caucasus
+    category_hint: general
+- id: jamnews_en
+  name: JAMnews
+  homepage: https://jam-news.net
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: JAMnews Regional Media Network (independent Caucasus outlet)
+  state_affiliated: false
+  needs_mention: true
+  feeds:
+  - url: https://jam-news.net/feed/
+    section: Caucasus
+    category_hint: general
+  - url: https://jam-news.net/ru/feed/
+    section: Кавказ (RU)
+    category_hint: foreign_policy
+- id: newpress_ge
+  name: NewPress.ge
+  homepage: https://newpress.ge
+  language: ka
+  scope: domestic
+  kind: media
+  governing_body: NewPress Media (independent Kutaisi / Imereti regional investigative and municipal portal)
+  state_affiliated: false
+  feeds:
+  - url: https://newpress.ge/feed/
+    section: იმერეთი & საქართველო
+    category_hint: society
+- id: radiotavisupleba_ge
+  name: Radio Tavisupleba (RFE/RL Georgia)
+  homepage: https://www.radiotavisupleba.ge
+  language: ka
+  scope: abroad_local
+  kind: media
+  governing_body: Radio Free Europe / Radio Liberty
+  state_affiliated: false
+  notes: Independent Georgian-language service of RFE/RL covering Tbilisi protests, elections, and foreign policy.
+  feeds:
+  - url: https://www.radiotavisupleba.ge/api/
+    category_hint: internal_politics
+- id: sovanews_ge
+  name: SOVA News
+  homepage: https://sovanews.tv
+  language: ru
+  scope: domestic
+  kind: media
+  governing_body: SOVA News Georgia
+  state_affiliated: false
+  notes: Independent Tbilisi-based Russian-language analytical portal covering Georgia and South Caucasus.
+  feeds:
+  - url: https://sovanews.tv/feed/
+    category_hint: internal_politics
+- id: gnews_ge_official
+  name: Agenda.ge / 1TV (Official & Public Press via Google News)
+  homepage: https://agenda.ge
+  language: en
+  scope: domestic
+  kind: official
+  aggregator: google_news
+  governing_body: Administration of the Government of Georgia / Georgian Public Broadcaster
+  state_affiliated: true
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:agenda.ge+OR+site:1tv.ge)+when:7d&hl=en-US&gl=US&ceid=US:en
+    section: Government & GPB
+    category_hint: general
+- id: gnews_ge_press_en
+  name: InterPressNews / BM.ge / Formula / Mtavari / Ambebi / Georgia Today / Tabula (via Google News)
+  homepage: https://www.interpressnews.ge
+  language: en
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: Palitra Media / Business Media Georgia / Formula TV / Mtavari / Tabula / Georgia Today
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:interpressnews.ge+OR+site:bm.ge+OR+site:formula.ge+OR+site:mtavari.tv+OR+site:ambebi.ge+OR+site:bpn.ge+OR+site:tabula.ge+OR+site:georgiatoday.ge)+when:5d&hl=en-US&gl=US&ceid=US:en
+    section: Georgian Press & Business
+    category_hint: internal_politics
+- id: gnews_ge_ru_press
+  name: Ekho Kavkaza (via Google News)
+  homepage: https://www.radiotavisupleba.ge
+  language: ka
+  scope: abroad_local
+  kind: media
+  aggregator: google_news
+  governing_body: Radio Free Europe / SOVA Media
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:sova.news+OR+site:ekhokavkaza.com)+when:7d&hl=ru&gl=RU&ceid=RU:ru
+    section: RFE/RL & SOVA
+    category_hint: internal_politics
+- id: gnews_georgia_ka
+  name: Google News (Georgia National News - Georgian)
+  homepage: https://news.google.com
+  language: ka
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  needs_mention: true
+  governing_body: Google LLC
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=%E1%83%A1%E1%83%90%E1%83%A5%E1%83%90%E1%83%A0%E1%83%97%E1%83%95%E1%83%94%E1%83%9A%E1%83%9D+when:2d&hl=en-US&gl=US&ceid=US:en
+    section: National News (Georgian)
+    category_hint: internal_politics
+- id: gnews_en_ge
+  name: Google News (Georgia - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  aggregator: google_news
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=Georgia+(Tbilisi+OR+%22Georgian+Dream%22+OR+Kobakhidze+OR+Ivanishvili+OR+Zourabichvili)+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Georgia politics
+    category_hint: internal_politics
+  - url: https://news.google.com/rss/search?q=Georgia+(Tbilisi+OR+Abkhazia+OR+Anaklia+OR+Caucasus)+(EU+OR+Russia+OR+sanctions+OR+election)+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Georgia EU & geopolitics
+    category_hint: foreign_policy

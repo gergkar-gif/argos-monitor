@@ -3,208 +3,254 @@
 # and portals (Philenews / Phileleftheros, Politis, Kathimerini Cyprus, Dialogos, SigmaLive, AlphaNews, Reporter, Offsite),
 # English-language dailies and financial press (Cyprus Mail, In-Cyprus, StockWatch, Financial Mirror, Nomisma), and
 # Turkish-Cypriot northern press (Kıbrıs Gazetesi, Kıbrıs Postası, Yenidüzen, Gazedda Kıbrıs, Havadis).
-
 sources:
-  - id: cna_cy
-    name: Cyprus News Agency (CNA / ΚΥΠΕ)
-    homepage: https://www.cna.org.cy
-    language: el
-    scope: domestic
-    kind: official
-    aggregator: google_news
-    governing_body: Κυπριακό Πρακτορείο Ειδήσεων (statutory national news wire of the Republic of Cyprus)
-    state_affiliated: true
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:cna.org.cy+when:3d&hl=el&gl=GR&ceid=GR:el", section: ΚΥΠΕ, category_hint: general}
-
-  - id: philenews_cy
-    name: Phileleftheros (Philenews)
-    homepage: https://www.philenews.com
-    language: el
-    scope: domestic
-    kind: media
-    governing_body: Phileleftheros Public Company Ltd (Nicosia — Cyprus's oldest and largest-circulation Greek-language daily newspaper of record)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.philenews.com/feed/", section: Ειδήσεις, category_hint: internal_politics}
-
-  - id: politis_cy
-    name: Politis (Πολίτης)
-    homepage: https://politis.com.cy
-    language: el
-    scope: domestic
-    kind: media
-    governing_body: Politis Press Ltd (Nicosia — major independent investigative and political daily newspaper)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.politis.com.cy/feed/", section: Κύπρος, category_hint: internal_politics}
-
-  - id: dialogos_cy
-    name: Dialogos (Διάλογος)
-    homepage: https://dialogos.com.cy
-    language: el
-    scope: domestic
-    kind: media
-    governing_body: Dialogos Media Group (Nicosia — left-wing political daily portal covering Parliament, bicommunal talks, and labour)
-    state_affiliated: false
-    feeds:
-      - {url: "https://dialogos.com.cy/feed/", section: Πολιτική, category_hint: internal_politics}
-
-  - id: cyprusmail_cy
-    name: Cyprus Mail
-    homepage: https://cyprus-mail.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: Cyprus Mail Co Ltd (Nicosia — premier English-language daily newspaper in Cyprus founded in 1945)
-    state_affiliated: false
-    feeds:
-      - {url: "https://cyprus-mail.com/feed", section: Cyprus News, category_hint: general}
-
-  - id: nomisma_cy
-    name: Nomisma.com.cy
-    homepage: https://nomisma.com.cy
-    language: el
-    scope: domestic
-    kind: media
-    governing_body: Nomisma Media (Cypriot economic, fiscal policy, banking, and maritime business portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://nomisma.com.cy/feed/", section: Οικονομία, category_hint: economics}
-
-  - id: financialmirror_cy
-    name: Financial Mirror
-    homepage: https://www.financialmirror.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: Financial Mirror Media Ltd (English-language business, shipping, and East Med energy weekly in Nicosia)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.financialmirror.com/feed/", section: Business & Economy, category_hint: economics}
-
-  - id: yeniduzen_cy
-    name: Yenidüzen
-    homepage: https://www.yeniduzen.com
-    language: tr
-    scope: domestic
-    kind: media
-    governing_body: Yenidüzen Newspaper (independent pro-reunification Turkish-Cypriot daily in Nicosia)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.yeniduzen.com/rss", section: Haberler, category_hint: internal_politics}
-
-  - id: kibrisgazetesi_cy
-    name: Kıbrıs Gazetesi
-    homepage: https://kibrisgazetesi.com
-    language: tr
-    scope: domestic
-    kind: media
-    governing_body: Kıbrıs Media Group (North Nicosia — flagship high-circulation Turkish-Cypriot daily newspaper)
-    state_affiliated: false
-    feeds:
-      - {url: "https://kibrisgazetesi.com/feed/", section: Kıbrıs, category_hint: internal_politics}
-
-  - id: gazeddakibris_cy
-    name: Gazedda Kıbrıs
-    homepage: https://gazeddakibris.com
-    language: tr
-    scope: domestic
-    kind: media
-    governing_body: Gazedda Kıbrıs (independent investigative and pro-federation Turkish-Cypriot digital portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://gazeddakibris.com/feed/", section: Politika, category_hint: internal_politics}
-
-  - id: tothema_cy
-    name: ThemaOnline (ToThemaOnline)
-    homepage: https://www.tothemaonline.com
-    language: el
-    scope: domestic
-    kind: media
-    governing_body: ThemaOnline Media (high-reach Nicosia general and tabloid political digital daily)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.tothemaonline.com/rss", section: Κύπρος, category_hint: general}
-
-  - id: cyprus_24h
-    name: 24h.com.cy
-    homepage: https://24h.com.cy
-    language: el
-    scope: domestic
-    kind: media
-    governing_body: 24h Cyprus Media (digital portal covering Cypriot municipal politics, society, and regional developments)
-    state_affiliated: false
-    feeds:
-      - {url: "https://24h.com.cy/feed/", section: Κύπρος, category_hint: general}
-
-  - id: bugunkibris_cy
-    name: Bugün Kıbrıs
-    homepage: https://bugunkibris.com
-    language: tr
-    scope: domestic
-    kind: media
-    governing_body: Bugün Kıbrıs Media (independent North Nicosia opposition and investigative Turkish-Cypriot daily)
-    state_affiliated: false
-    feeds:
-      - {url: "https://bugunkibris.com/feed/", section: Kıbrıs, category_hint: internal_politics}
-
-  - id: kathimerini_cy
-    name: Kathimerini Cyprus (Η Καθημερινή)
-    homepage: https://www.kathimerini.com.cy
-    language: el
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: SPP Media Group (Cypriot edition of the broadsheet paper of record covering diplomacy, energy, and governance)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:kathimerini.com.cy+when:3d&hl=el&gl=GR&ceid=GR:el", section: Πολιτική & Οικονομία, category_hint: internal_politics}
-
-  - id: gnews_cy_greek_press
-    name: SigmaLive / AlphaNews / Reporter / Offsite / OmegaLive / RIK (via Google News)
-    homepage: https://www.sigmalive.com
-    language: el
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: Dias Media / Alpha TV Cyprus / IMH / Offsite / Omega / CyBC RIK
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:sigmalive.com+OR+site:alphanews.live+OR+site:reporter.com.cy+OR+site:offsite.com.cy+OR+site:omegalive.com.cy+OR+site:brief.com.cy+OR+site:riknews.com.cy)+when:3d&hl=el&gl=GR&ceid=GR:el", section: Κυπριακά ΜΜΕ, category_hint: general}
-
-  - id: gnews_cy_en_press
-    name: In-Cyprus / StockWatch Cyprus (via Google News)
-    homepage: https://in-cyprus.philenews.com
-    language: en
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: Phileleftheros Media Group / StockWatch Ltd
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:in-cyprus.philenews.com+OR+site:stockwatch.com.cy)+when:7d&hl=en-US&gl=US&ceid=US:en", section: English & Finance, category_hint: economics}
-
-  - id: kibrispostasi_cy
-    name: Kıbrıs Postası / Havadis Kıbrıs (Turkish Cypriot via Google News)
-    homepage: https://www.kibrispostasi.com
-    language: tr
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: Kıbrıs Postası Media / Havadis Gazetesi
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:kibrispostasi.com+OR+site:havadiskibris.com)+when:3d&hl=tr&gl=TR&ceid=TR:tr", section: Kıbrıs, category_hint: internal_politics}
-
-  - id: gnews_en_cy
-    name: Google News (Cyprus - International)
-    homepage: https://news.google.com
-    language: en
-    scope: international
-    kind: media
-    aggregator: google_news
-    governing_body: n/a (aggregator)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=Cyprus+(Nicosia+OR+Christodoulides+OR+UNFICYP+OR+%22East+Med%22+OR+gas+OR+EU)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Cyprus geopolitics & energy, category_hint: foreign_policy}
+- id: cna_cy
+  name: Cyprus News Agency (CNA / ΚΥΠΕ)
+  homepage: https://www.cna.org.cy
+  language: el
+  scope: domestic
+  kind: official
+  aggregator: google_news
+  governing_body: Κυπριακό Πρακτορείο Ειδήσεων (statutory national news wire of the Republic of Cyprus)
+  state_affiliated: true
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:cna.org.cy+when:3d&hl=el&gl=GR&ceid=GR:el
+    section: ΚΥΠΕ
+    category_hint: general
+- id: philenews_cy
+  name: Phileleftheros (Philenews)
+  homepage: https://www.philenews.com
+  language: el
+  scope: domestic
+  kind: media
+  governing_body: Phileleftheros Public Company Ltd (Nicosia — Cyprus's oldest and largest-circulation Greek-language daily newspaper of record)
+  state_affiliated: false
+  feeds:
+  - url: https://www.philenews.com/feed/
+    section: Ειδήσεις
+    category_hint: internal_politics
+- id: politis_cy
+  name: Politis (Πολίτης)
+  homepage: https://politis.com.cy
+  language: el
+  scope: domestic
+  kind: media
+  governing_body: Politis Press Ltd (Nicosia — major independent investigative and political daily newspaper)
+  state_affiliated: false
+  feeds:
+  - url: https://www.politis.com.cy/feed/
+    section: Κύπρος
+    category_hint: internal_politics
+- id: dialogos_cy
+  name: Dialogos (Διάλογος)
+  homepage: https://dialogos.com.cy
+  language: el
+  scope: domestic
+  kind: media
+  governing_body: Dialogos Media Group (Nicosia — left-wing political daily portal covering Parliament, bicommunal talks, and labour)
+  state_affiliated: false
+  feeds:
+  - url: https://dialogos.com.cy/feed/
+    section: Πολιτική
+    category_hint: internal_politics
+  - url: https://dialogos.com.cy/category/politiki/feed/
+    category_hint: internal_politics
+    section: Πολιτική
+- id: cyprusmail_cy
+  name: Cyprus Mail
+  homepage: https://cyprus-mail.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Cyprus Mail Co Ltd (Nicosia — premier English-language daily newspaper in Cyprus founded in 1945)
+  state_affiliated: false
+  feeds:
+  - url: https://cyprus-mail.com/feed
+    section: Cyprus News
+    category_hint: general
+- id: nomisma_cy
+  name: Nomisma.com.cy
+  homepage: https://nomisma.com.cy
+  language: el
+  scope: domestic
+  kind: media
+  governing_body: Nomisma Media (Cypriot economic, fiscal policy, banking, and maritime business portal)
+  state_affiliated: false
+  feeds:
+  - url: https://nomisma.com.cy/feed/
+    section: Οικονομία
+    category_hint: economics
+- id: financialmirror_cy
+  name: Financial Mirror
+  homepage: https://www.financialmirror.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Financial Mirror Media Ltd (English-language business, shipping, and East Med energy weekly in Nicosia)
+  state_affiliated: false
+  feeds:
+  - url: https://www.financialmirror.com/feed/
+    section: Business & Economy
+    category_hint: economics
+- id: yeniduzen_cy
+  name: Yenidüzen
+  homepage: https://www.yeniduzen.com
+  language: tr
+  scope: domestic
+  kind: media
+  governing_body: Yenidüzen Newspaper (independent pro-reunification Turkish-Cypriot daily in Nicosia)
+  state_affiliated: false
+  feeds:
+  - url: https://www.yeniduzen.com/rss
+    section: Haberler
+    category_hint: internal_politics
+- id: kibrisgazetesi_cy
+  name: Kıbrıs Gazetesi
+  homepage: https://kibrisgazetesi.com
+  language: tr
+  scope: domestic
+  kind: media
+  governing_body: Kıbrıs Media Group (North Nicosia — flagship high-circulation Turkish-Cypriot daily newspaper)
+  state_affiliated: false
+  feeds:
+  - url: https://kibrisgazetesi.com/feed/
+    section: Kıbrıs
+    category_hint: internal_politics
+- id: gazeddakibris_cy
+  name: Gazedda Kıbrıs
+  homepage: https://gazeddakibris.com
+  language: tr
+  scope: domestic
+  kind: media
+  governing_body: Gazedda Kıbrıs (independent investigative and pro-federation Turkish-Cypriot digital portal)
+  state_affiliated: false
+  feeds:
+  - url: https://gazeddakibris.com/feed/
+    section: Politika
+    category_hint: internal_politics
+- id: tothema_cy
+  name: ThemaOnline (ToThemaOnline)
+  homepage: https://www.tothemaonline.com
+  language: el
+  scope: domestic
+  kind: media
+  governing_body: ThemaOnline Media (high-reach Nicosia general and tabloid political digital daily)
+  state_affiliated: false
+  feeds:
+  - url: https://www.tothemaonline.com/rss
+    section: Κύπρος
+    category_hint: general
+- id: cyprus_24h
+  name: 24h.com.cy
+  homepage: https://24h.com.cy
+  language: el
+  scope: domestic
+  kind: media
+  governing_body: 24h Cyprus Media (digital portal covering Cypriot municipal politics, society, and regional developments)
+  state_affiliated: false
+  feeds:
+  - url: https://24h.com.cy/feed/
+    section: Κύπρος
+    category_hint: general
+- id: bugunkibris_cy
+  name: Bugün Kıbrıs
+  homepage: https://bugunkibris.com
+  language: tr
+  scope: domestic
+  kind: media
+  governing_body: Bugün Kıbrıs Media (independent North Nicosia opposition and investigative Turkish-Cypriot daily)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:bugunkibris.com+when:7d&hl=tr&gl=CY&ceid=CY:tr
+    section: Kıbrıs
+    category_hint: internal_politics
+  aggregator: google_news
+- id: kathimerini_cy
+  name: Kathimerini Cyprus (Η Καθημερινή)
+  homepage: https://www.kathimerini.com.cy
+  language: el
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: SPP Media Group (Cypriot edition of the broadsheet paper of record covering diplomacy, energy, and governance)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:kathimerini.com.cy+when:3d&hl=el&gl=GR&ceid=GR:el
+    section: Πολιτική & Οικονομία
+    category_hint: internal_politics
+- id: sigmalive_cy
+  name: SigmaLive
+  homepage: https://www.sigmalive.com
+  language: el
+  scope: domestic
+  kind: media
+  governing_body: Dias Media Group
+  state_affiliated: false
+  notes: Leading Cypriot digital breaking-news and political portal.
+  feeds:
+  - url: https://www.sigmalive.com/rss
+    category_hint: internal_politics
+- id: havadis_cy
+  name: Havadis Kıbrıs
+  homepage: https://www.havadiskibris.com
+  language: tr
+  scope: domestic
+  kind: media
+  governing_body: Havadis Gazetesi
+  state_affiliated: false
+  notes: Independent Turkish Cypriot daily newspaper in northern Nicosia.
+  feeds:
+  - url: https://www.havadiskibris.com/feed/
+    category_hint: internal_politics
+- id: gnews_cy_greek_press
+  name: AlphaNews / Reporter / Offsite / OmegaLive / RIK (via Google News)
+  homepage: https://www.sigmalive.com
+  language: el
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: Dias Media / Alpha TV Cyprus / IMH / Offsite / Omega / CyBC RIK
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:alphanews.live+OR+site:reporter.com.cy+OR+site:offsite.com.cy+OR+site:omegalive.com.cy+OR+site:brief.com.cy+OR+site:riknews.com.cy)+when:3d&hl=el&gl=GR&ceid=GR:el
+    section: Κυπριακά ΜΜΕ
+    category_hint: general
+- id: gnews_cy_en_press
+  name: In-Cyprus / StockWatch Cyprus (via Google News)
+  homepage: https://in-cyprus.philenews.com
+  language: en
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: Phileleftheros Media Group / StockWatch Ltd
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:in-cyprus.philenews.com+OR+site:stockwatch.com.cy)+when:7d&hl=en-US&gl=US&ceid=US:en
+    section: English & Finance
+    category_hint: economics
+- id: kibrispostasi_cy
+  name: Kıbrıs Postası (Turkish Cypriot via Google News)
+  homepage: https://www.kibrispostasi.com
+  language: tr
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: Kıbrıs Postası Media / Havadis Gazetesi
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:kibrispostasi.com)+when:3d&hl=tr&gl=TR&ceid=TR:tr
+    section: Kıbrıs
+    category_hint: internal_politics
+- id: gnews_en_cy
+  name: Google News (Cyprus - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  aggregator: google_news
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=Cyprus+(Nicosia+OR+Christodoulides+OR+UNFICYP+OR+%22East+Med%22+OR+gas+OR+EU)+when:7d&hl=en-US&gl=US&ceid=US:en
+    section: Cyprus geopolitics & energy
+    category_hint: foreign_policy

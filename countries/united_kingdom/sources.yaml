@@ -29,6 +29,8 @@ sources:
     category_hint: internal_politics
   - url: https://www.theguardian.com/politics/rss
     category_hint: internal_politics
+  - url: https://www.theguardian.com/uk/business/rss
+    category_hint: economics
 - id: ft_uk
   name: Financial Times (UK)
   homepage: https://www.ft.com
@@ -41,6 +43,8 @@ sources:
   feeds:
   - url: https://www.ft.com/rss/home/uk
     category_hint: economics
+  - url: https://www.ft.com/world-uk?format=rss
+    category_hint: internal_politics
 - id: the_telegraph_uk
   name: The Daily Telegraph
   homepage: https://www.telegraph.co.uk
@@ -51,7 +55,7 @@ sources:
   state_affiliated: false
   notes: Major center-right national broadsheet of record.
   feeds:
-  - url: https://news.google.com/rss/search?q=site:telegraph.co.uk+when:3d&hl=en-GB&gl=GB&ceid=GB:en
+  - url: https://www.telegraph.co.uk/rss.xml
     category_hint: internal_politics
 - id: the_times_uk
   name: The Times (UK)
@@ -79,6 +83,8 @@ sources:
     category_hint: internal_politics
   - url: https://feeds.skynews.com/feeds/rss/politics.xml
     category_hint: internal_politics
+  - url: https://feeds.skynews.com/feeds/rss/business.xml
+    category_hint: economics
 - id: independent_uk
   name: The Independent
   homepage: https://www.independent.co.uk
@@ -319,6 +325,102 @@ sources:
   feeds:
   - url: https://www.gov.uk/search/news-and-communications.atom
     category_hint: internal_politics
+- id: irishnews_uk
+  name: The Irish News
+  homepage: https://www.irishnews.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: The Irish News Ltd
+  state_affiliated: false
+  notes: Belfast-based Northern Ireland daily newspaper covering Stormont and Windsor Framework.
+  feeds:
+  - url: https://www.irishnews.com/arc/outboundfeeds/rss/
+    category_hint: internal_politics
+- id: yorkshirepost_uk
+  name: The Yorkshire Post
+  homepage: https://www.yorkshirepost.co.uk
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: National World
+  state_affiliated: false
+  notes: Historic northern England broadsheet covering regional devolution, energy, and industry.
+  feeds:
+  - url: https://www.yorkshirepost.co.uk/rss
+    category_hint: society
+- id: men_uk
+  name: Manchester Evening News
+  homepage: https://www.manchestereveningnews.co.uk
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Reach plc
+  state_affiliated: false
+  notes: Greater Manchester regional daily covering northern rail, devolution, and civic affairs.
+  feeds:
+  - url: https://www.manchestereveningnews.co.uk/news/?service=rss
+    category_hint: society
+- id: liverpoolecho_uk
+  name: Liverpool Echo
+  homepage: https://www.liverpoolecho.co.uk
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Reach plc
+  state_affiliated: false
+  notes: Merseyside regional daily newspaper.
+  feeds:
+  - url: https://www.liverpoolecho.co.uk/news/?service=rss
+    category_hint: society
+- id: birminghammail_uk
+  name: BirminghamLive
+  homepage: https://www.birminghammail.co.uk
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Reach plc
+  state_affiliated: false
+  notes: West Midlands regional daily covering Birmingham municipal finance and manufacturing.
+  feeds:
+  - url: https://www.birminghammail.co.uk/news/?service=rss
+    category_hint: society
+- id: unherd_uk
+  name: UnHerd
+  homepage: https://unherd.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: UnHerd Ventures
+  state_affiliated: false
+  notes: British political commentary, culture, and heterodox policy journal.
+  feeds:
+  - url: https://unherd.com/feed/
+    category_hint: internal_politics
+- id: fullfact_uk
+  name: Full Fact
+  homepage: https://fullfact.org
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Full Fact (independent UK fact-checking charity)
+  state_affiliated: false
+  notes: Independent UK fact-checking organization auditing Westminster and policy claims.
+  feeds:
+  - url: https://fullfact.org/feed/
+    category_hint: internal_politics
+- id: boe_uk
+  name: Bank of England
+  homepage: https://www.bankofengland.co.uk
+  language: en
+  scope: domestic
+  kind: official
+  governing_body: Bank of England (UK Central Bank)
+  state_affiliated: true
+  notes: Official monetary policy, MPC rate decisions, and financial stability releases.
+  feeds:
+  - url: https://www.bankofengland.co.uk/rss/news
+    category_hint: economics
 - id: gnews_uk_broadcast_tabloid_batch
   name: Google News (UK Broadcasters, Tabloids & Weeklies - ITV/LBC/Sun/Spectator/GB News/Herald)
   homepage: https://news.google.com

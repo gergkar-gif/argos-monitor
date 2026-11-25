@@ -37,6 +37,10 @@ sources:
   feeds:
   - url: https://www.diepresse.com/rss
     category_hint: internal_politics
+  - url: https://www.diepresse.com/rss/Politik
+    category_hint: internal_politics
+  - url: https://www.diepresse.com/rss/Wirtschaft
+    category_hint: economics
 - id: kurier_at
   name: Kurier
   homepage: https://kurier.at
@@ -71,7 +75,7 @@ sources:
   state_affiliated: false
   notes: Major daily in Styria and Carinthia with influential federal political desk in Vienna.
   feeds:
-  - url: https://www.kleinezeitung.at/rss/politik
+  - url: https://www.kleinezeitung.at/rss/rubriken/politik
     category_hint: internal_politics
 - id: krone_at
   name: Kronen Zeitung
@@ -229,8 +233,32 @@ sources:
   feeds:
   - url: https://news.google.com/rss/search?q=(site:bundeskanzleramt.gv.at+OR+site:parlament.gv.at+OR+site:ots.at)+when:7d&hl=de&gl=AT&ceid=AT:de
     category_hint: internal_politics
+- id: wienerzeitung_at
+  name: Wiener Zeitung
+  homepage: https://www.wienerzeitung.at
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Wiener Zeitung GmbH (Republic of Austria public-mandate media)
+  state_affiliated: false
+  notes: Historic Vienna political and analytical publication founded in 1703.
+  feeds:
+  - url: https://www.wienerzeitung.at/rss.xml
+    category_hint: internal_politics
+- id: brutkasten_at
+  name: Brutkasten
+  homepage: https://brutkasten.com
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Brutkasten Media GmbH
+  state_affiliated: false
+  notes: Austrian startup, innovation, technology, and business policy daily.
+  feeds:
+  - url: https://brutkasten.com/feed
+    category_hint: economics
 - id: gnews_austria_media_batch
-  name: Google News (Austria Broadcast & Business - Puls 24/ServusTV/Trend/Brutkasten)
+  name: Google News (Austria Broadcast & Business - Puls 24/ServusTV/Trend)
   homepage: https://news.google.com
   language: de
   scope: domestic
@@ -240,7 +268,7 @@ sources:
   aggregator: google_news
   notes: Aggregator capturing Austrian commercial broadcasters and business magazines without open RSS.
   feeds:
-  - url: https://news.google.com/rss/search?q=(site:puls24.at+OR+site:servustv.com+OR+site:trend.at+OR+site:brutkasten.com+OR+site:meinbezirk.at)+when:3d&hl=de&gl=AT&ceid=AT:de
+  - url: https://news.google.com/rss/search?q=(site:puls24.at+OR+site:servustv.com+OR+site:trend.at+OR+site:meinbezirk.at)+when:3d&hl=de&gl=AT&ceid=AT:de
     category_hint: internal_politics
 - id: gnews_austria_de
   name: Google News (Austria National News - German)

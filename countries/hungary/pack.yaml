@@ -4,53 +4,187 @@ name: Hungary
 region: Central & Southeast Europe
 language: hu
 abroad_label: Hungarian-language outlets abroad (Külhoni & Diaspora)
-
-mention: ["magyarország", "magyarorszag", "hungary", "hungarian", "budapest", "orbán", "orban", "fidesz", "tisza párt",
-          "tisza party", "magyar péter", "szijjártó", "szijjarto", "magyar kormány", "magyar nemzeti bank", "forint",
-          "mol group", "paks", "viktor orbán", "hungarians", "sulyok tamás", "nagy márton", "gulyás gergely", "lázár jános"]
-# Raw regular expressions, for word forms a plain list cannot catch: "magyar" (Hungarian) and its endings, but not
-# "magyarázat" (explanation) or "magyarít".
-mention_regex: ['\bmagyar(?!áz|ít|ul\b)', '\bmagyaro']
+mention:
+- magyarország
+- magyarorszag
+- hungary
+- hungarian
+- budapest
+- orbán
+- orban
+- fidesz
+- tisza párt
+- tisza party
+- magyar péter
+- szijjártó
+- szijjarto
+- magyar kormány
+- magyar nemzeti bank
+- forint
+- mol group
+- paks
+- viktor orbán
+- hungarians
+- sulyok tamás
+- nagy márton
+- gulyás gergely
+- lázár jános
+- debrecen
+- szeged
+- pécs
+- győr
+- miskolc
+- országgyűlés
+- alkotmánybíróság
+- nemzetgazdasági
+- külügyminisztérium
+- költségvetés
+mention_regex:
+- \bmagyar(?!áz|ít|ul\b)
+- \bmagyaro
 mention_section: null
-
 url_sections:
-  foreign: [kulfold, kulpol, vilag, nagyvilag, global, nemzetkozi, europa]
-  skip: [sport, kultura, kultur, teve, tv, sztarvilag, bulvar, elet, elet-stilus, eletmod, mindekozben, cegauto, otthon, auto,
-         tudomany, techtud, podcast, jo, szorakozas, utazas, gasztro, egeszseg, ingatlan, fomo, kiralyi-csalad,
-         itthon-hirdetes, auto-motor, auto-motor-2, mozaik, montazs]
-
+  foreign:
+  - kulfold
+  - kulpol
+  - vilag
+  - nagyvilag
+  - global
+  - nemzetkozi
+  - europa
+  skip:
+  - sport
+  - kultura
+  - kultur
+  - teve
+  - tv
+  - sztarvilag
+  - bulvar
+  - elet
+  - elet-stilus
+  - eletmod
+  - mindekozben
+  - cegauto
+  - otthon
+  - auto
+  - tudomany
+  - techtud
+  - podcast
+  - jo
+  - szorakozas
+  - utazas
+  - gasztro
+  - egeszseg
+  - ingatlan
+  - fomo
+  - kiralyi-csalad
+  - itthon-hirdetes
+  - auto-motor
+  - auto-motor-2
+  - mozaik
+  - montazs
 aggregator_outlets:
-  domestic: ["daily news hungary", "hungary today", "hungarian conservative", "hungarian spectrum", "telex", "telex english",
-             "444", "444.hu", "index", "index.hu", "hvg", "hvg.hu", "24.hu", "magyar nemzet", "budapest business journal",
-             "budapest times", "hungarian insider", "about hungary", "hír tv", "origo", "magyar hírlap", "portfolio.hu", "blikk",
-             "válasz online", "valaszonline.hu", "átlátszó", "atlatszo.hu", "direkt36", "g7", "g7.hu", "mandiner", "népszava", "nepszava.hu",
-             "hirado.hu", "mti", "kormany.hu", "economx", "mfor.hu", "privatbankar.hu", "magyar hang", "hang.hu", "magyar narancs",
-             "klubrádió", "atv.hu", "növekedés.hu", "infostart", "rtl.hu", "lakmusz", "168 óra"]
-  abroad_local: ["euronews", "euronews magyar", "szabad európa", "bbc news magyar", "deutsche welle", "maszol.ro", "székelyhon",
-                 "krónika", "krónika online", "transtelex", "új szó", "ujszo.com", "ma7", "ma7.sk", "paraméter", "parameter.sk",
-                 "magyar szó", "magyarszo.rs", "szabad magyar szó", "vajdaság ma", "kárpátalja.ma", "karpatalja.ma",
-                 "kárpáti igaz szó", "kiszo.net", "erdélyma", "erdély ma"]
-
+  domestic:
+  - daily news hungary
+  - hungary today
+  - hungarian conservative
+  - hungarian spectrum
+  - telex
+  - telex english
+  - '444'
+  - 444.hu
+  - index
+  - index.hu
+  - hvg
+  - hvg.hu
+  - 24.hu
+  - magyar nemzet
+  - budapest business journal
+  - budapest times
+  - hungarian insider
+  - about hungary
+  - hír tv
+  - origo
+  - magyar hírlap
+  - portfolio.hu
+  - blikk
+  - válasz online
+  - valaszonline.hu
+  - átlátszó
+  - atlatszo.hu
+  - direkt36
+  - g7
+  - g7.hu
+  - mandiner
+  - népszava
+  - nepszava.hu
+  - hirado.hu
+  - mti
+  - kormany.hu
+  - economx
+  - mfor.hu
+  - privatbankar.hu
+  - magyar hang
+  - hang.hu
+  - magyar narancs
+  - klubrádió
+  - atv.hu
+  - növekedés.hu
+  - infostart
+  - rtl.hu
+  - lakmusz
+  - 168 óra
+  - szabad pécs
+  abroad_local:
+  - euronews
+  - euronews magyar
+  - szabad európa
+  - bbc news magyar
+  - deutsche welle
+  - maszol.ro
+  - székelyhon
+  - krónika
+  - krónika online
+  - transtelex
+  - új szó
+  - ujszo.com
+  - ma7
+  - ma7.sk
+  - paraméter
+  - parameter.sk
+  - magyar szó
+  - magyarszo.rs
+  - szabad magyar szó
+  - vajdaság ma
+  - kárpátalja.ma
+  - karpatalja.ma
+  - kárpáti igaz szó
+  - kiszo.net
+  - erdélyma
+  - erdély ma
 excerpt:
-  dateline: '^\s*(?:MTI|\(MTI\)|Telex|hvg\.hu|24\.hu)\s*[-–—:]\s*'
-  noise: '^(fotó|forrás|videó|kép|olvasd tovább|hirdetés|ez is érdekelheti|\(|\[)'
-
+  dateline: ^\s*(?:MTI|\(MTI\)|Telex|hvg\.hu|24\.hu)\s*[-–—:]\s*
+  noise: ^(fotó|forrás|videó|kép|olvasd tovább|hirdetés|ez is érdekelheti|\(|\[)
 classify:
   internal_politics:
-    - "kormány, országgyűlés, parlament, miniszterelnök, minisztérium, Fidesz, Tisza, ellenzék"
-    - "választás, kormányzati döntés, törvényjavaslat, kinevezés, lemondás, politikai botrány"
+  - kormány, országgyűlés, parlament, miniszterelnök, minisztérium, Fidesz, Tisza, ellenzék
+  - választás, kormányzati döntés, törvényjavaslat, kinevezés, lemondás, politikai botrány
   economics:
-    - "gazdaság, infláció, forint, jegybank, kamat, költségvetés, adó, GDP"
-    - "vállalatok, beruházás, export, import, kereskedelem, gyár, munkahelyek, bérek"
+  - gazdaság, infláció, forint, jegybank, kamat, költségvetés, adó, GDP
+  - vállalatok, beruházás, export, import, kereskedelem, gyár, munkahelyek, bérek
   foreign_policy:
-    - "külpolitika, külügyminiszter, nagykövet, kétoldalú tárgyalás, uniós csúcs, Brüsszel, NATO"
-    - "uniós források, jogállamiság, szankciók, vétó, kapcsolat Oroszországgal, Ukrajnával, Kínával, külhoni magyarok"
+  - külpolitika, külügyminiszter, nagykövet, kétoldalú tárgyalás, uniós csúcs, Brüsszel, NATO
+  - uniós források, jogállamiság, szankciók, vétó, kapcsolat Oroszországgal, Ukrajnával, Kínával, külhoni magyarok
   defence_security:
-    - "honvédség, védelem, haderő, nemzetbiztonság, kibervédelem, fegyverbeszerzés, Szuverenitásvédelmi Hivatal"
+  - honvédség, védelem, haderő, nemzetbiztonság, kibervédelem, fegyverbeszerzés, Szuverenitásvédelmi Hivatal
   society:
-    - "oktatás, egészségügy, kórház, iskola, tanárok, nyugdíj, szociális ügyek"
-    - "bűnügy, baleset, időjárás, természeti csapás, rendőrség, bíróság, ítélet"
-
+  - oktatás, egészségügy, kórház, iskola, tanárok, nyugdíj, szociális ügyek
+  - bűnügy, baleset, időjárás, természeti csapás, rendőrség, bíróság, ítélet
 geo: HU
-reddit: [hungary, kiszamolo, budapest, Debrecen, szeged]
-last_reviewed: 2026-11-17
+reddit:
+- hungary
+- kiszamolo
+- budapest
+- Debrecen
+- szeged
+last_reviewed: '2026-11-25'

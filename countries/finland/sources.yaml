@@ -39,6 +39,8 @@ sources:
     category_hint: internal_politics
   - url: https://www.hs.fi/rss/suomi.xml
     category_hint: internal_politics
+  - url: https://www.hs.fi/rss/talous.xml
+    category_hint: economics
 - id: kauppalehti_fi
   name: Kauppalehti
   homepage: https://www.kauppalehti.fi
@@ -109,7 +111,7 @@ sources:
   state_affiliated: false
   notes: Finland's second-largest daily morning broadsheet newspaper based in Tampere.
   feeds:
-  - url: https://news.google.com/rss/search?q=site:aamulehti.fi+when:3d&hl=fi&gl=FI&ceid=FI:fi
+  - url: https://www.aamulehti.fi/rss/uutiset.xml
     category_hint: internal_politics
 - id: turun_sanomat_fi
   name: Turun Sanomat
@@ -243,8 +245,92 @@ sources:
   feeds:
   - url: https://news.google.com/rss/search?q=(site:valtioneuvosto.fi+OR+site:eduskunta.fi+OR+site:stt.fi)+when:7d&hl=fi&gl=FI&ceid=FI:fi
     category_hint: internal_politics
+- id: talouselama_fi
+  name: Talouselämä
+  homepage: https://www.talouselama.fi
+  language: fi
+  scope: domestic
+  kind: media
+  governing_body: Alma Media
+  state_affiliated: false
+  notes: Finland's flagship weekly business, industry, and economic policy magazine.
+  feeds:
+  - url: https://www.talouselama.fi/api/feed/v2/rss/te
+    category_hint: economics
+- id: tekniikkatalous_fi
+  name: Tekniikka&Talous
+  homepage: https://www.tekniikkatalous.fi
+  language: fi
+  scope: domestic
+  kind: media
+  governing_body: Alma Media
+  state_affiliated: false
+  notes: Finnish industrial technology, energy infrastructure, and defense-tech newspaper.
+  feeds:
+  - url: https://www.tekniikkatalous.fi/api/feed/v2/rss/tt
+    category_hint: economics
+- id: arvopaperi_fi
+  name: Arvopaperi
+  homepage: https://www.arvopaperi.fi
+  language: fi
+  scope: domestic
+  kind: media
+  governing_body: Alma Media
+  state_affiliated: false
+  notes: Finnish equities, capital markets, and corporate finance journal.
+  feeds:
+  - url: https://www.arvopaperi.fi/api/feed/v2/rss/ap
+    category_hint: economics
+- id: ess_fi
+  name: Etelä-Suomen Sanomat
+  homepage: https://www.ess.fi
+  language: fi
+  scope: domestic
+  kind: media
+  governing_body: Keskisuomalainen Oyj
+  state_affiliated: false
+  notes: Lahti and Päijät-Häme regional daily newspaper.
+  feeds:
+  - url: https://www.ess.fi/feed/rss/
+    category_hint: society
+- id: satakunnankansa_fi
+  name: Satakunnan Kansa
+  homepage: https://www.satakunnankansa.fi
+  language: fi
+  scope: domestic
+  kind: media
+  governing_body: Sanoma Media Finland
+  state_affiliated: false
+  notes: Pori and Satakunta regional daily covering west-coast industry and energy.
+  feeds:
+  - url: https://www.satakunnankansa.fi/rss/uutiset.xml
+    category_hint: society
+- id: karjalainen_fi
+  name: Karjalainen
+  homepage: https://www.karjalainen.fi
+  language: fi
+  scope: domestic
+  kind: media
+  governing_body: PunaMusta Media
+  state_affiliated: false
+  notes: Joensuu and North Karelia regional daily covering eastern border affairs.
+  feeds:
+  - url: https://www.karjalainen.fi/feed/rss/
+    category_hint: society
+- id: helsinginuutiset_fi
+  name: Helsingin Uutiset
+  homepage: https://www.helsinginuutiset.fi
+  language: fi
+  scope: domestic
+  kind: media
+  governing_body: Keskisuomalainen Oyj
+  state_affiliated: false
+  notes: Helsinki metropolitan local news and municipal politics portal.
+  feeds:
+  - url: https://www.helsinginuutiset.fi/feed/rss/
+    category_hint: society
 - id: gnews_finland_press_batch
-  name: Google News (Finland Regional & Business Weeklies - Kaleva/Talouselämä/Tekniikka&Talous/Svenska Yle)
+  name: Google News (Finland Regional & Business Weeklies - Kaleva/Svenska Yle)
   homepage: https://news.google.com
   language: fi
   scope: domestic
@@ -254,7 +340,7 @@ sources:
   aggregator: google_news
   notes: Aggregator capturing northern daily Kaleva, business magazines, and Swedish-language public news.
   feeds:
-  - url: https://news.google.com/rss/search?q=(site:kaleva.fi+OR+site:talouselama.fi+OR+site:tekniikkatalous.fi+OR+site:svenska.yle.fi)+when:3d&hl=fi&gl=FI&ceid=FI:fi
+  - url: https://news.google.com/rss/search?q=(site:kaleva.fi+OR+site:svenska.yle.fi)+when:3d&hl=fi&gl=FI&ceid=FI:fi
     category_hint: economics
 - id: google_news_finland_politics
   name: Google News (Finland Government & Stubb)

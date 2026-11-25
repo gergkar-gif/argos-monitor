@@ -3,272 +3,344 @@
 # (360 Stepeni, SDK.mk, Prizma / BIRN, Meta.mk, Vistinomer, Fokus), national dailies and commercial TV
 # (Sloboden Pečat, Nova Makedonija, Nezavisen, Telma, Sitel, 24 Vesti, Alsat-M, Kanal 5), high-reach digital portals
 # (Makfax, Večer, Plusinfo, A1on, Kurir.mk, Republika, Lokalno, Racin), business portal Faktor.mk, and RFE/RL Macedonian.
-
 sources:
-  - id: mia_mk
-    name: MIA (Media Information Agency)
-    homepage: https://mia.mk
-    language: mk
-    scope: domestic
-    kind: official
-    aggregator: google_news
-    governing_body: Медиумска информативна агенција (statutory national news wire of North Macedonia)
-    state_affiliated: true
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:mia.mk+when:3d&hl=bg&gl=BG&ceid=BG:bg", section: МИА, category_hint: general}
-
-  - id: mrt_mk
-    name: MRT (Macedonian Radio Television)
-    homepage: https://mrt.com.mk
-    language: mk
-    scope: domestic
-    kind: official
-    governing_body: Македонска радио-телевизија (statutory national public-service broadcaster)
-    state_affiliated: false
-    feeds:
-      - {url: "https://mrt.com.mk/rss.xml", section: Вести, category_hint: general}
-
-  - id: 360stepeni_mk
-    name: 360 Stepeni (360 Степени)
-    homepage: https://360stepeni.mk
-    language: mk
-    scope: domestic
-    kind: media
-    governing_body: 360 Stepeni Media (Skopje — premier independent political analysis and investigative journalism portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://360stepeni.mk/feed/", section: Вести, category_hint: internal_politics}
-
-  - id: telma_mk
-    name: Telma TV (Телма)
-    homepage: https://telma.com.mk
-    language: mk
-    scope: domestic
-    kind: media
-    governing_body: Makpetrol AD / Telma Television (independent national television broadcaster renowned for balanced political reporting)
-    state_affiliated: false
-    feeds:
-      - {url: "https://telma.com.mk/feed/", section: Вести, category_hint: internal_politics}
-
-  - id: sitel_mk
-    name: Sitel TV (Сител)
-    homepage: https://sitel.com.mk
-    language: mk
-    scope: domestic
-    kind: media
-    governing_body: Sitel Television (major national commercial television network in Skopje)
-    state_affiliated: false
-    feeds:
-      - {url: "https://sitel.com.mk/rss.xml", section: Вести, category_hint: general}
-
-  - id: tv24_mk
-    name: 24 Vesti (ТВ 24)
-    homepage: https://24.mk
-    language: mk
-    scope: domestic
-    kind: media
-    governing_body: Televizija 24 Vesti DOO (24-hour Skopje news television channel and portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://admin.24.mk/api/rss.xml", section: Вести, category_hint: internal_politics}
-
-  - id: alsat_mk
-    name: Alsat-M
-    homepage: https://alsat.mk
-    language: mk
-    scope: domestic
-    kind: media
-    governing_body: Alsat-M Television (bilingual Albanian and Macedonian national broadcaster in Skopje)
-    state_affiliated: false
-    feeds:
-      - {url: "https://alsat.mk/feed/", section: Вести, category_hint: internal_politics}
-
-  - id: prizma_mk
-    name: Prizma.mk (BIRN Macedonia)
-    homepage: https://prizma.mk
-    language: mk
-    scope: domestic
-    kind: media
-    governing_body: Balkan Investigative Reporting Network Macedonia (premier investigative journalism center in Skopje)
-    state_affiliated: false
-    feeds:
-      - {url: "https://prizma.mk/feed/", section: Истражувања, category_hint: internal_politics}
-
-  - id: meta_mk
-    name: Meta.mk
-    homepage: https://meta.mk
-    language: mk
-    scope: domestic
-    kind: media
-    governing_body: Metamorphosis Foundation (independent Skopje civic news agency covering reforms and EU integration)
-    state_affiliated: false
-    feeds:
-      - {url: "https://meta.mk/feed/", section: Новости, category_hint: internal_politics}
-
-  - id: vistinomer_mk
-    name: Vistinomer.mk (Вистиномер)
-    homepage: https://vistinomer.mk
-    language: mk
-    scope: domestic
-    kind: media
-    governing_body: Metamorphosis Foundation (Macedonian fact-checking and political accountability platform)
-    state_affiliated: false
-    feeds:
-      - {url: "https://vistinomer.mk/feed/", section: Политичка сцена, category_hint: internal_politics}
-
-  - id: makfax_mk
-    name: Makfax (Макфакс)
-    homepage: https://makfax.com.mk
-    language: mk
-    scope: domestic
-    kind: wire
-    governing_body: Makfax Independent News Agency (private news agency founded in 1992 in Skopje)
-    state_affiliated: false
-    feeds:
-      - {url: "https://makfax.com.mk/feed/", section: Македонија, category_hint: general}
-
-  - id: nezavisen_mk
-    name: Nezavisen Vesnik (Независен)
-    homepage: https://nezavisen.mk
-    language: mk
-    scope: domestic
-    kind: media
-    governing_body: Nezavisen Vesnik DOO (independent Skopje daily newspaper covering politics, economy, and EU integration)
-    state_affiliated: false
-    feeds:
-      - {url: "https://nezavisen.mk/feed/", section: Македонија, category_hint: internal_politics}
-
-  - id: novamakedonija_mk
-    name: Nova Makedonija (Нова Македонија)
-    homepage: https://www.novamakedonija.com.mk
-    language: mk
-    scope: domestic
-    kind: media
-    governing_body: Rekord Media (historic Skopje daily newspaper founded in 1944)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.novamakedonija.com.mk/feed/", section: Македонија, category_hint: internal_politics}
-
-  - id: fokus_mk
-    name: Fokus (Фокус)
-    homepage: https://fokus.mk
-    language: mk
-    scope: domestic
-    kind: media
-    governing_body: Fokus Media DOOEL (influential Skopje political weekly and investigative portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://fokus.mk/feed/", section: Македонија, category_hint: internal_politics}
-
-  - id: faktor_mk
-    name: Faktor.mk (Фактор)
-    homepage: https://faktor.mk
-    language: mk
-    scope: domestic
-    kind: media
-    governing_body: Faktor Media Skopje (leading Macedonian business, banking, and economic news portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://faktor.mk/feed", section: Економија, category_hint: economics}
-
-  - id: vecer_mk
-    name: Večer (Вечер)
-    homepage: https://vecer.mk
-    language: mk
-    scope: domestic
-    kind: media
-    governing_body: Večer Press (high-circulation Skopje daily newspaper and portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://vecer.mk/feed", section: Македонија, category_hint: general}
-
-  - id: a1on_mk
-    name: A1on.mk
-    homepage: https://a1on.mk
-    language: mk
-    scope: domestic
-    kind: media
-    governing_body: A1on Media (high-traffic independent digital news portal in Skopje)
-    state_affiliated: false
-    feeds:
-      - {url: "https://a1on.mk/feed/", section: Македонија, category_hint: general}
-
-  - id: kurir_mk
-    name: Kurir.mk (Курир)
-    homepage: https://kurir.mk
-    language: mk
-    scope: domestic
-    kind: media
-    governing_body: EM Media (conservative pro-VMRO political digital daily portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://kurir.mk/feed/", section: Македонија, category_hint: internal_politics}
-
-  - id: republika_mk
-    name: Republika.mk (Република)
-    homepage: https://republika.mk
-    language: mk
-    scope: domestic
-    kind: media
-    governing_body: Prva Republika (conservative weekly and online political portal in Skopje)
-    state_affiliated: false
-    feeds:
-      - {url: "https://republika.mk/feed/", section: Вести, category_hint: internal_politics}
-
-  - id: lokalno_mk
-    name: Lokalno.mk (Локално)
-    homepage: https://lokalno.mk
-    language: mk
-    scope: domestic
-    kind: media
-    governing_body: Lokalno Media (Skopje digital portal covering national and municipal governance)
-    state_affiliated: false
-    feeds:
-      - {url: "https://lokalno.mk/feed/", section: Вести, category_hint: general}
-
-  - id: racin_mk
-    name: Racin.mk (Рацин)
-    homepage: https://racin.mk
-    language: mk
-    scope: domestic
-    kind: media
-    governing_body: Racin.mk (progressive analytical and social-affairs portal in Skopje)
-    state_affiliated: false
-    feeds:
-      - {url: "https://racin.mk/feed/", section: Македонија, category_hint: society}
-
-  - id: gnews_mk_press
-    name: SDK.mk / Sloboden Pečat / Plusinfo / Kanal 5 (via Google News)
-    homepage: https://sdk.mk
-    language: mk
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: Sakam Da Kazam / Sloboden Pečat / Plusinfo / Kanal 5 TV
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:sdk.mk+OR+site:slobodenpecat.mk+OR+site:plusinfo.mk+OR+site:kanal5.com.mk)+when:3d&hl=bg&gl=BG&ceid=BG:bg", section: Национални медии, category_hint: internal_politics}
-
-  - id: slobodnaevropa_mk
-    name: Radio Slobodna Evropa (RFE/RL Macedonian)
-    homepage: https://www.slobodnaevropa.mk
-    language: mk
-    scope: abroad_local
-    kind: media
-    aggregator: google_news
-    governing_body: Radio Free Europe / Radio Liberty (USAGM)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:slobodnaevropa.mk+when:7d&hl=bg&gl=BG&ceid=BG:bg", section: РСЕ, category_hint: internal_politics}
-
-  - id: gnews_en_mk
-    name: Google News (North Macedonia - International)
-    homepage: https://news.google.com
-    language: en
-    scope: international
-    kind: media
-    aggregator: google_news
-    governing_body: n/a (aggregator)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=%22North+Macedonia%22+(Skopje+OR+Mickoski+OR+EU+OR+Bulgaria+OR+Hungary)+when:7d&hl=en-US&gl=US&ceid=US:en", section: North Macedonia politics & diplomacy, category_hint: foreign_policy}
+- id: mia_mk
+  name: MIA (Media Information Agency)
+  homepage: https://mia.mk
+  language: mk
+  scope: domestic
+  kind: official
+  aggregator: google_news
+  governing_body: Медиумска информативна агенција (statutory national news wire of North Macedonia)
+  state_affiliated: true
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:mia.mk+when:3d&hl=bg&gl=BG&ceid=BG:bg
+    section: МИА
+    category_hint: general
+- id: mrt_mk
+  name: MRT (Macedonian Radio Television)
+  homepage: https://mrt.com.mk
+  language: mk
+  scope: domestic
+  kind: official
+  governing_body: Македонска радио-телевизија (statutory national public-service broadcaster)
+  state_affiliated: false
+  feeds:
+  - url: https://mrt.com.mk/rss.xml
+    section: Вести
+    category_hint: general
+- id: 360stepeni_mk
+  name: 360 Stepeni (360 Степени)
+  homepage: https://360stepeni.mk
+  language: mk
+  scope: domestic
+  kind: media
+  governing_body: 360 Stepeni Media (Skopje — premier independent political analysis and investigative journalism portal)
+  state_affiliated: false
+  feeds:
+  - url: https://360stepeni.mk/feed/
+    section: Вести
+    category_hint: internal_politics
+- id: telma_mk
+  name: Telma TV (Телма)
+  homepage: https://telma.com.mk
+  language: mk
+  scope: domestic
+  kind: media
+  governing_body: Makpetrol AD / Telma Television (independent national television broadcaster renowned for balanced political reporting)
+  state_affiliated: false
+  feeds:
+  - url: https://telma.com.mk/feed/
+    section: Вести
+    category_hint: internal_politics
+- id: sitel_mk
+  name: Sitel TV (Сител)
+  homepage: https://sitel.com.mk
+  language: mk
+  scope: domestic
+  kind: media
+  governing_body: Sitel Television (major national commercial television network in Skopje)
+  state_affiliated: false
+  feeds:
+  - url: https://sitel.com.mk/rss.xml
+    section: Вести
+    category_hint: general
+- id: tv24_mk
+  name: 24 Vesti (ТВ 24)
+  homepage: https://24.mk
+  language: mk
+  scope: domestic
+  kind: media
+  governing_body: Televizija 24 Vesti DOO (24-hour Skopje news television channel and portal)
+  state_affiliated: false
+  feeds:
+  - url: https://admin.24.mk/api/rss.xml
+    section: Вести
+    category_hint: internal_politics
+- id: alsat_mk
+  name: Alsat-M
+  homepage: https://alsat.mk
+  language: mk
+  scope: domestic
+  kind: media
+  governing_body: Alsat-M Television (bilingual Albanian and Macedonian national broadcaster in Skopje)
+  state_affiliated: false
+  feeds:
+  - url: https://alsat.mk/feed/
+    section: Вести
+    category_hint: internal_politics
+- id: prizma_mk
+  name: Prizma.mk (BIRN Macedonia)
+  homepage: https://prizma.mk
+  language: mk
+  scope: domestic
+  kind: media
+  governing_body: Balkan Investigative Reporting Network Macedonia (premier investigative journalism center in Skopje)
+  state_affiliated: false
+  feeds:
+  - url: https://prizma.mk/feed/
+    section: Истражувања
+    category_hint: internal_politics
+- id: meta_mk
+  name: Meta.mk
+  homepage: https://meta.mk
+  language: mk
+  scope: domestic
+  kind: media
+  governing_body: Metamorphosis Foundation (independent Skopje civic news agency covering reforms and EU integration)
+  state_affiliated: false
+  feeds:
+  - url: https://meta.mk/feed/
+    section: Новости
+    category_hint: internal_politics
+- id: vistinomer_mk
+  name: Vistinomer.mk (Вистиномер)
+  homepage: https://vistinomer.mk
+  language: mk
+  scope: domestic
+  kind: media
+  governing_body: Metamorphosis Foundation (Macedonian fact-checking and political accountability platform)
+  state_affiliated: false
+  feeds:
+  - url: https://vistinomer.mk/feed/
+    section: Политичка сцена
+    category_hint: internal_politics
+- id: makfax_mk
+  name: Makfax (Макфакс)
+  homepage: https://makfax.com.mk
+  language: mk
+  scope: domestic
+  kind: wire
+  governing_body: Makfax Independent News Agency (private news agency founded in 1992 in Skopje)
+  state_affiliated: false
+  feeds:
+  - url: https://makfax.com.mk/feed/
+    section: Македонија
+    category_hint: general
+- id: nezavisen_mk
+  name: Nezavisen Vesnik (Независен)
+  homepage: https://nezavisen.mk
+  language: mk
+  scope: domestic
+  kind: media
+  governing_body: Nezavisen Vesnik DOO (independent Skopje daily newspaper covering politics, economy, and EU integration)
+  state_affiliated: false
+  feeds:
+  - url: https://nezavisen.mk/feed/
+    section: Македонија
+    category_hint: internal_politics
+- id: novamakedonija_mk
+  name: Nova Makedonija (Нова Македонија)
+  homepage: https://www.novamakedonija.com.mk
+  language: mk
+  scope: domestic
+  kind: media
+  governing_body: Rekord Media (historic Skopje daily newspaper founded in 1944)
+  state_affiliated: false
+  feeds:
+  - url: https://www.novamakedonija.com.mk/feed/
+    section: Македонија
+    category_hint: internal_politics
+- id: fokus_mk
+  name: Fokus (Фокус)
+  homepage: https://fokus.mk
+  language: mk
+  scope: domestic
+  kind: media
+  governing_body: Fokus Media DOOEL (influential Skopje political weekly and investigative portal)
+  state_affiliated: false
+  feeds:
+  - url: https://fokus.mk/feed/
+    section: Македонија
+    category_hint: internal_politics
+- id: faktor_mk
+  name: Faktor.mk (Фактор)
+  homepage: https://faktor.mk
+  language: mk
+  scope: domestic
+  kind: media
+  governing_body: Faktor Media Skopje (leading Macedonian business, banking, and economic news portal)
+  state_affiliated: false
+  feeds:
+  - url: https://faktor.mk/feed
+    section: Економија
+    category_hint: economics
+- id: vecer_mk
+  name: Večer (Вечер)
+  homepage: https://vecer.mk
+  language: mk
+  scope: domestic
+  kind: media
+  governing_body: Večer Press (high-circulation Skopje daily newspaper and portal)
+  state_affiliated: false
+  feeds:
+  - url: https://vecer.mk/feed
+    section: Македонија
+    category_hint: general
+- id: a1on_mk
+  name: A1on.mk
+  homepage: https://a1on.mk
+  language: mk
+  scope: domestic
+  kind: media
+  governing_body: A1on Media (high-traffic independent digital news portal in Skopje)
+  state_affiliated: false
+  feeds:
+  - url: https://a1on.mk/feed/
+    section: Македонија
+    category_hint: general
+- id: kurir_mk
+  name: Kurir.mk (Курир)
+  homepage: https://kurir.mk
+  language: mk
+  scope: domestic
+  kind: media
+  governing_body: EM Media (conservative pro-VMRO political digital daily portal)
+  state_affiliated: false
+  feeds:
+  - url: https://kurir.mk/feed/
+    section: Македонија
+    category_hint: internal_politics
+- id: republika_mk
+  name: Republika.mk (Република)
+  homepage: https://republika.mk
+  language: mk
+  scope: domestic
+  kind: media
+  governing_body: Prva Republika (conservative weekly and online political portal in Skopje)
+  state_affiliated: false
+  feeds:
+  - url: https://republika.mk/feed/
+    section: Вести
+    category_hint: internal_politics
+- id: lokalno_mk
+  name: Lokalno.mk (Локално)
+  homepage: https://lokalno.mk
+  language: mk
+  scope: domestic
+  kind: media
+  governing_body: Lokalno Media (Skopje digital portal covering national and municipal governance)
+  state_affiliated: false
+  feeds:
+  - url: https://lokalno.mk/feed/
+    section: Вести
+    category_hint: general
+- id: racin_mk
+  name: Racin.mk (Рацин)
+  homepage: https://racin.mk
+  language: mk
+  scope: domestic
+  kind: media
+  governing_body: Racin.mk (progressive analytical and social-affairs portal in Skopje)
+  state_affiliated: false
+  feeds:
+  - url: https://racin.mk/feed/
+    section: Македонија
+    category_hint: society
+- id: sdk_mk
+  name: SDK.mk
+  homepage: https://sdk.mk
+  language: mk
+  scope: domestic
+  kind: media
+  governing_body: Sakam Da Kažam
+  state_affiliated: false
+  notes: Leading independent investigative and political news portal in Skopje.
+  feeds:
+  - url: https://sdk.mk/index.php/mk/feed/
+    category_hint: internal_politics
+- id: plusinfo_mk
+  name: Plusinfo
+  homepage: https://plusinfo.mk
+  language: mk
+  scope: domestic
+  kind: media
+  governing_body: Plusinfo Media
+  state_affiliated: false
+  notes: High-reach Skopje breaking news and parliamentary affairs portal.
+  feeds:
+  - url: https://plusinfo.mk/feed/
+    category_hint: internal_politics
+- id: lider_mk
+  name: Radio Lider
+  homepage: https://lider.mk
+  language: mk
+  scope: domestic
+  kind: media
+  governing_body: Lider Media
+  state_affiliated: false
+  notes: North Macedonian political and economic news portal.
+  feeds:
+  - url: https://lider.mk/feed/
+    category_hint: internal_politics
+- id: alfa_mk
+  name: Alfa TV
+  homepage: https://vesti.alfa.mk
+  language: mk
+  scope: domestic
+  kind: media
+  governing_body: Alfa TV Skopje
+  state_affiliated: false
+  notes: National Macedonian commercial television newsroom.
+  feeds:
+  - url: https://vesti.alfa.mk/feed/
+    category_hint: internal_politics
+- id: gnews_mk_press
+  name: Sloboden Pečat / Kanal 5 (via Google News)
+  homepage: https://sdk.mk
+  language: mk
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: Sakam Da Kazam / Sloboden Pečat / Plusinfo / Kanal 5 TV
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:slobodenpecat.mk+OR+site:kanal5.com.mk)+when:3d&hl=bg&gl=BG&ceid=BG:bg
+    section: Национални медии
+    category_hint: internal_politics
+- id: slobodnaevropa_mk
+  name: Radio Slobodna Evropa (RFE/RL Macedonian)
+  homepage: https://www.slobodnaevropa.mk
+  language: mk
+  scope: abroad_local
+  kind: media
+  aggregator: google_news
+  governing_body: Radio Free Europe / Radio Liberty (USAGM)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:slobodnaevropa.mk+when:7d&hl=bg&gl=BG&ceid=BG:bg
+    section: РСЕ
+    category_hint: internal_politics
+- id: gnews_en_mk
+  name: Google News (North Macedonia - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  aggregator: google_news
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=%22North+Macedonia%22+(Skopje+OR+Mickoski+OR+EU+OR+Bulgaria+OR+Hungary)+when:7d&hl=en-US&gl=US&ceid=US:en
+    section: North Macedonia politics & diplomacy
+    category_hint: foreign_policy

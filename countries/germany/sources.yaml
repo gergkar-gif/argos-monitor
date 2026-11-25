@@ -51,6 +51,8 @@ sources:
   feeds:
   - url: https://www.faz.net/rss/aktuell/politik/
     category_hint: internal_politics
+  - url: https://www.faz.net/rss/aktuell/wirtschaft/
+    category_hint: economics
 - id: sueddeutsche
   name: Süddeutsche Zeitung (SZ)
   homepage: https://www.sueddeutsche.de
@@ -63,6 +65,10 @@ sources:
   feeds:
   - url: https://rss.sueddeutsche.de/rss/Topthemen
     category_hint: internal_politics
+  - url: https://rss.sueddeutsche.de/rss/Politik
+    category_hint: internal_politics
+  - url: https://rss.sueddeutsche.de/rss/Wirtschaft
+    category_hint: economics
 - id: die_zeit
   name: Die Zeit
   homepage: https://www.zeit.de
@@ -75,6 +81,10 @@ sources:
   feeds:
   - url: https://newsfeed.zeit.de/index
     category_hint: internal_politics
+  - url: https://newsfeed.zeit.de/politik/index
+    category_hint: internal_politics
+  - url: https://newsfeed.zeit.de/wirtschaft/index
+    category_hint: economics
 - id: der_spiegel
   name: Der Spiegel
   homepage: https://www.spiegel.de
@@ -115,6 +125,10 @@ sources:
   feeds:
   - url: https://www.welt.de/feeds/latest.rss
     category_hint: defence_security
+  - url: https://www.welt.de/feeds/section/politik.rss
+    category_hint: internal_politics
+  - url: https://www.welt.de/feeds/section/wirtschaft.rss
+    category_hint: economics
 - id: bild_de
   name: Bild
   homepage: https://www.bild.de
@@ -139,6 +153,8 @@ sources:
   feeds:
   - url: https://www.tagesspiegel.de/contentexport/feed/politik
     category_hint: internal_politics
+  - url: https://www.tagesspiegel.de/contentexport/feed/wirtschaft
+    category_hint: economics
 - id: taz_de
   name: taz (die tageszeitung)
   homepage: https://taz.de
@@ -331,8 +347,128 @@ sources:
   feeds:
   - url: https://news.google.com/rss/search?q=(site:bundesregierung.de+OR+site:bundestag.de+OR+site:bundesbank.de)+when:7d&hl=de&gl=DE&ceid=DE:de
     category_hint: internal_politics
+- id: fr_de
+  name: Frankfurter Rundschau
+  homepage: https://www.fr.de
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Ippen Media
+  state_affiliated: false
+  notes: National center-left daily newspaper based in Frankfurt am Main.
+  feeds:
+  - url: https://www.fr.de/rssfeed.rdf
+    category_hint: internal_politics
+- id: rnd_de
+  name: RedaktionsNetzwerk Deutschland (RND)
+  homepage: https://www.rnd.de
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Madsack Mediengruppe
+  state_affiliated: false
+  notes: National editorial syndicate supplying German regional dailies with federal politics coverage.
+  feeds:
+  - url: https://www.rnd.de/arc/outboundfeeds/rss/
+    category_hint: internal_politics
+- id: br24_de
+  name: BR24 (Bayerischer Rundfunk)
+  homepage: https://www.br.de/nachrichten
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Bayerischer Rundfunk (ARD public broadcaster)
+  state_affiliated: false
+  notes: Bavarian public service news portal covering Munich politics and southern German industry.
+  feeds:
+  - url: https://nachrichtenfeeds.br.de/rdf/boards/QXAPkQJ
+    category_hint: internal_politics
+- id: ndr_de
+  name: NDR Info
+  homepage: https://www.ndr.de
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Norddeutscher Rundfunk (ARD public broadcaster)
+  state_affiliated: false
+  notes: Northern German public broadcaster covering maritime security, energy, and northern Länder.
+  feeds:
+  - url: https://www.ndr.de/nachrichten/schleswig-holstein/index~rdf.xml
+    category_hint: society
+- id: swr_de
+  name: SWR Aktuell
+  homepage: https://www.swr.de/swraktuell
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Südwestrundfunk (ARD public broadcaster)
+  state_affiliated: false
+  notes: Southwestern German public broadcaster covering Baden-Württemberg and Rhineland-Palatinate.
+  feeds:
+  - url: https://www.swr.de/~rss/swraktuell/index.xml
+    category_hint: society
+- id: hessenschau_de
+  name: hessenschau
+  homepage: https://www.hessenschau.de
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Hessischer Rundfunk (ARD public broadcaster)
+  state_affiliated: false
+  notes: Hesse public broadcaster covering Frankfurt financial hub and state politics.
+  feeds:
+  - url: https://www.hessenschau.de/index.rss
+    category_hint: society
+- id: merkur_de
+  name: Münchner Merkur
+  homepage: https://www.merkur.de
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Ippen Media
+  state_affiliated: false
+  notes: Major Bavarian daily newspaper covering Munich, CSU politics, and German affairs.
+  feeds:
+  - url: https://www.merkur.de/rssfeed.rdf
+    category_hint: internal_politics
+- id: rp_online_de
+  name: Rheinische Post
+  homepage: https://rp-online.de
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Rheinische Post Mediengruppe
+  state_affiliated: false
+  notes: Düsseldorf daily broadsheet covering North Rhine-Westphalia industry and federal politics.
+  feeds:
+  - url: https://rp-online.de/feed.rss
+    category_hint: internal_politics
+- id: augsburger_allg_de
+  name: Augsburger Allgemeine
+  homepage: https://www.augsburger-allgemeine.de
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Mediengruppe Pressedruck
+  state_affiliated: false
+  notes: Large Bavarian regional broadsheet covering southern German economy and politics.
+  feeds:
+  - url: https://www.augsburger-allgemeine.de/rss
+    category_hint: society
+- id: manager_magazin_de
+  name: manager magazin
+  homepage: https://www.manager-magazin.de
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Spiegel-Verlag
+  state_affiliated: false
+  notes: German corporate governance, DAX industry, and executive finance magazine.
+  feeds:
+  - url: https://www.manager-magazin.de/news/index.rss
+    category_hint: economics
 - id: gnews_germany_press_batch
-  name: Google News (Germany Weeklies, Regional & Policy - Focus/RND/FR/Merkur/Manager Magazin/Table.Media)
+  name: Google News (Germany Weeklies, Regional & Policy - Focus/Table.Media)
   homepage: https://news.google.com
   language: de
   scope: domestic
@@ -342,7 +478,7 @@ sources:
   aggregator: google_news
   notes: Aggregator capturing German news portals, regional networks, and policy briefings without open RSS.
   feeds:
-  - url: https://news.google.com/rss/search?q=(site:focus.de+OR+site:rnd.de+OR+site:fr.de+OR+site:manager-magazin.de+OR+site:merkur.de+OR+site:table.media)+when:3d&hl=de&gl=DE&ceid=DE:de
+  - url: https://news.google.com/rss/search?q=(site:focus.de+OR+site:table.media)+when:3d&hl=de&gl=DE&ceid=DE:de
     category_hint: internal_politics
 - id: google_news_germany_politics
   name: Google News (Germany Politics & Coalition)

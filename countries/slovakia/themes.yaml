@@ -1,19 +1,83 @@
 # Slovakia's additions to the shared themes (../../themes.yaml).
 themes:
-  - id: party_gov
-    label: Fico Coalition, Rule of Law, Public Media (STVR) & Minority Policy
-    weight: 1.0
-    category: internal_politics
-    describe:
-      - Prime Minister Robert Fico, President Peter Pellegrini, Smer-Hlas-SNS coalition, opposition led by Progressive Slovakia (Michal Šimečka), STVR public broadcaster and judicial changes, Hungarian minority policy (Magyar Szövetség, Beneš decrees, language law)
-      - Robert Fico, Peter Pellegrini, vláda Smer-Hlas-SNS, Národná rada, Progresívne Slovensko, STVR, trestný zákon, Maďarská aliancia, Benešove dekréty, jazykový zákon
-    keywords: ["fico", "pellegrini", "šimečka", "simecka", "kaliňák", "kalinak", "smer", "progresívne slovensko", "stvr", "národná rada", "ústavný súd", "maďarská aliancia", "benešove dekréty", "jazykový zákon"]
-
-  - id: diplomacy
-    label: EU Funds, Ukraine Policy, Energy Transit & Visegrad Diplomacy
-    weight: 1.0
-    category: foreign_policy
-    describe:
-      - European Commission rule-of-law review and EU funds, Slovakia stance on Ukraine military aid, Druzhba oil and gas transit corridors with Hungary, Gabčíkovo–Nagymaros Danube cooperation, and Visegrad Group (V4) relations
-      - Európska komisia, eurofondy, Ukrajina, tranzit plynu, ropovod Družba, Slovnaft, Gabčíkovo, V4, NATO
-    keywords: ["eurofond", "európska komisia", "ukrajin", "v4", "visegrad", "nato", "sankcie", "plyn", "družba", "slovnaft", "gabčíkovo"]
+- id: party_gov
+  label: Fico Coalition, Rule of Law, Public Media (STVR) & Minority Policy
+  weight: 1.0
+  category: internal_politics
+  describe:
+  - Prime Minister Robert Fico, President Peter Pellegrini, Smer-Hlas-SNS coalition, opposition led by Progressive Slovakia (Michal Šimečka), STVR public broadcaster and judicial changes, Hungarian minority policy (Magyar Szövetség, Beneš decrees, language law)
+  - Robert Fico, Peter Pellegrini, vláda Smer-Hlas-SNS, Národná rada, Progresívne Slovensko, STVR, trestný zákon, Maďarská aliancia, Benešove dekréty, jazykový zákon
+  keywords:
+  - fico
+  - pellegrini
+  - šimečka
+  - simecka
+  - kaliňák
+  - kalinak
+  - smer
+  - progresívne slovensko
+  - stvr
+  - národná rada
+  - ústavný súd
+  - maďarská aliancia
+  - benešove dekréty
+  - jazykový zákon
+- id: diplomacy
+  label: EU Funds, Ukraine Policy, Energy Transit & Visegrad Diplomacy
+  weight: 1.0
+  category: foreign_policy
+  describe:
+  - European Commission rule-of-law review and EU funds, Slovakia stance on Ukraine military aid, Druzhba oil and gas transit corridors with Hungary, Gabčíkovo–Nagymaros Danube cooperation, and Visegrad Group (V4) relations
+  - Európska komisia, eurofondy, Ukrajina, tranzit plynu, ropovod Družba, Slovnaft, Gabčíkovo, V4, NATO
+  keywords:
+  - eurofond
+  - európska komisia
+  - ukrajin
+  - v4
+  - visegrad
+  - nato
+  - sankcie
+  - plyn
+  - družba
+  - slovnaft
+  - gabčíkovo
+- id: elections
+  describe:
+  - Slovak parliamentary, presidential, and municipal elections, Statistical Office results, and voter turnout
+  - Parlamentné voľby, prezidentské voľby, volebná účasť, výsledky volieb
+  keywords:
+  - voľby
+  - volebná účasť
+  - kandidátka
+  - referendum
+  - ballot
+  - turnout
+- id: econ_policy
+  label: Fiscal Consolidation, Auto Industry & Russian Gas Transit
+  weight: 0.95
+  category: economics
+  describe:
+  - Slovak fiscal consolidation package, transaction tax, Slovnaft and SPP gas/oil transit, automotive manufacturing (VW, Kia, Jaguar Land Rover, Volvo), and EU Recovery Plan funds
+  - Konsolidácia verejných financií, transakčná daň, SPP, Slovnaft, automobilky, plán obnovy
+  keywords:
+  - konsolidácia
+  - transakčná daň
+  - slovnaft
+  - spp
+  - plán obnovy
+  - rozpočet
+  - inflácia
+- id: security
+  label: SIS Intelligence, F-16 Delivery & Eastern Border Defence
+  weight: 0.9
+  category: defence_security
+  describe:
+  - Slovak Armed Forces (OS SR) modernization, F-16 fighters and air defense, SIS intelligence oversight, and Ukraine border logistics
+  - Ozbrojené sily SR, SIS, protivzdušná obrana, stíhačky F-16, ministerstvo obrany
+  keywords:
+  - ozbrojené sily
+  - sis
+  - protivzdušná obrana
+  - f-16
+  - kaliňák
+  - zbrojný

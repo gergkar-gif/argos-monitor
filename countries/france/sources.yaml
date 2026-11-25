@@ -13,6 +13,10 @@ sources:
     category_hint: internal_politics
   - url: https://www.lemonde.fr/economie/rss_full.xml
     category_hint: economics
+  - url: https://www.lemonde.fr/international/rss_full.xml
+    category_hint: foreign_policy
+  - url: https://www.lemonde.fr/europe/rss_full.xml
+    category_hint: foreign_policy
 - id: le_figaro
   name: Le Figaro
   homepage: https://www.lefigaro.fr
@@ -63,6 +67,10 @@ sources:
   feeds:
   - url: https://www.rfi.fr/fr/france/rss
     category_hint: foreign_policy
+  - url: https://www.rfi.fr/fr/monde/rss
+    category_hint: foreign_policy
+  - url: https://www.rfi.fr/fr/europe/rss
+    category_hint: foreign_policy
 - id: france_24_fr
   name: France 24 (Français)
   homepage: https://www.france24.com/fr
@@ -75,6 +83,10 @@ sources:
   feeds:
   - url: https://www.france24.com/fr/france/rss
     category_hint: internal_politics
+  - url: https://www.france24.com/fr/%C3%A9co-tech/rss
+    category_hint: economics
+  - url: https://www.france24.com/fr/europe/rss
+    category_hint: foreign_policy
 - id: les_echos
   name: Les Echos
   homepage: https://www.lesechos.fr
@@ -291,8 +303,140 @@ sources:
   feeds:
   - url: https://news.google.com/rss/search?q=(site:elysee.fr+OR+site:info.gouv.fr+OR+site:vie-publique.fr)+when:7d&hl=fr&gl=FR&ceid=FR:fr
     category_hint: internal_politics
+- id: la_croix_fr
+  name: La Croix
+  homepage: https://www.la-croix.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Bayard Presse
+  state_affiliated: false
+  notes: French national daily broadsheet known for nuanced political, social, and international reporting.
+  feeds:
+  - url: https://www.la-croix.com/feeds/rss/site.xml
+    category_hint: internal_politics
+- id: nouvelobs_fr
+  name: Le Nouvel Obs
+  homepage: https://www.nouvelobs.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Groupe Le Monde
+  state_affiliated: false
+  notes: Historic French center-left weekly political and investigative news magazine.
+  feeds:
+  - url: https://www.nouvelobs.com/a-la-une/rss.xml
+    category_hint: internal_politics
+- id: ladepeche_fr
+  name: La Dépêche du Midi
+  homepage: https://www.ladepeche.fr
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Groupe La Dépêche
+  state_affiliated: false
+  notes: Major Toulouse and Occitanie regional daily covering aerospace, agriculture, and politics.
+  feeds:
+  - url: https://www.ladepeche.fr/rss.xml
+    category_hint: society
+- id: leprogres_fr
+  name: Le Progrès
+  homepage: https://www.leprogres.fr
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Groupe EBRA
+  state_affiliated: false
+  notes: Lyon and Auvergne-Rhône-Alpes regional daily newspaper.
+  feeds:
+  - url: https://www.leprogres.fr/rss
+    category_hint: society
+- id: ledauphine_fr
+  name: Le Dauphiné Libéré
+  homepage: https://www.ledauphine.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Groupe EBRA
+  state_affiliated: false
+  notes: Grenoble and Alpine regional daily covering industry, energy, and local politics.
+  feeds:
+  - url: https://www.ledauphine.com/rss
+    category_hint: society
+- id: midilibre_fr
+  name: Midi Libre
+  homepage: https://www.midilibre.fr
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Groupe La Dépêche
+  state_affiliated: false
+  notes: Montpellier and Mediterranean Occitanie regional daily newspaper.
+  feeds:
+  - url: https://www.midilibre.fr/rss.xml
+    category_hint: society
+- id: nicematin_fr
+  name: Nice-Matin
+  homepage: https://www.nicematin.com
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Groupe Nice-Matin (NJJ)
+  state_affiliated: false
+  notes: Côte d'Azur daily newspaper covering Mediterranean France and border policing.
+  feeds:
+  - url: https://www.nicematin.com/rss
+    category_hint: society
+- id: dna_fr
+  name: Dernières Nouvelles d'Alsace (DNA)
+  homepage: https://www.dna.fr
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Groupe EBRA
+  state_affiliated: false
+  notes: Strasbourg and Alsace daily covering European Parliament, Franco-German border, and regional politics.
+  feeds:
+  - url: https://www.dna.fr/rss
+    category_hint: society
+- id: estrepublicain_fr
+  name: L'Est Républicain
+  homepage: https://www.estrepublicain.fr
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: Groupe EBRA
+  state_affiliated: false
+  notes: Nancy and Lorraine regional daily newspaper.
+  feeds:
+  - url: https://www.estrepublicain.fr/rss
+    category_hint: society
+- id: bfm_business_fr
+  name: BFM Business
+  homepage: https://www.bfmtv.com/economie/
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: RMC BFM (CMA CGM)
+  state_affiliated: false
+  notes: French financial, markets, and corporate economy news network.
+  feeds:
+  - url: https://www.bfmtv.com/rss/economie/
+    category_hint: economics
+- id: touteleurope_fr
+  name: Toute l'Europe
+  homepage: https://www.touteleurope.eu
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: GIP Toute l'Europe
+  state_affiliated: false
+  notes: French European Union policy, diplomacy, and Brussels institutions portal.
+  feeds:
+  - url: https://www.touteleurope.eu/feed/
+    category_hint: foreign_policy
 - id: gnews_france_media_batch
-  name: Google News (France TV, Radio & Weeklies - TF1/Le Point/La Croix/CNews/RTL/Europe 1)
+  name: Google News (France TV, Radio & Weeklies - TF1/Le Point/CNews/RTL/Europe 1)
   homepage: https://news.google.com
   language: fr
   scope: domestic
@@ -302,10 +446,10 @@ sources:
   aggregator: google_news
   notes: Aggregator capturing major RSS-blocked French broadcasters, dailies, and weeklies.
   feeds:
-  - url: https://news.google.com/rss/search?q=(site:tf1info.fr+OR+site:lepoint.fr+OR+site:la-croix.com+OR+site:cnews.fr+OR+site:rtl.fr+OR+site:europe1.fr)+when:3d&hl=fr&gl=FR&ceid=FR:fr
+  - url: https://news.google.com/rss/search?q=(site:tf1info.fr+OR+site:lepoint.fr+OR+site:cnews.fr+OR+site:rtl.fr+OR+site:europe1.fr)+when:3d&hl=fr&gl=FR&ceid=FR:fr
     category_hint: internal_politics
 - id: gnews_france_regional_batch
-  name: Google News (France Regional, Business & Investigative - La Dépêche/Le Progrès/Capital/Disclose)
+  name: Google News (France Regional, Business & Investigative - Capital/Disclose)
   homepage: https://news.google.com
   language: fr
   scope: domestic
@@ -315,7 +459,7 @@ sources:
   aggregator: google_news
   notes: Aggregator capturing regional dailies, business magazines, and investigative outlets.
   feeds:
-  - url: https://news.google.com/rss/search?q=(site:ladepeche.fr+OR+site:leprogres.fr+OR+site:capital.fr+OR+site:disclose.ngo+OR+site:francebleu.fr)+when:3d&hl=fr&gl=FR&ceid=FR:fr
+  - url: https://news.google.com/rss/search?q=(site:capital.fr+OR+site:disclose.ngo+OR+site:francebleu.fr)+when:3d&hl=fr&gl=FR&ceid=FR:fr
     category_hint: general
 - id: google_news_france_politics
   name: Google News (France Élysée & Assemblée Nationale)

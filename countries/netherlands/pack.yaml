@@ -63,8 +63,15 @@ aggregator_outlets:
   - Dagblad van het Noorden
   - Tweakers
   - Rijksoverheid
+  - bnr nieuwsradio
+  - eindhovens dagblad
+  - brabants dagblad
+  - tubantia
+  - de stentor
+  - nederlands dagblad
+  - vrij nederland
   abroad_local:
   - DutchNews.nl
   - NL Times
   - Euronews
-last_reviewed: 2026-11-17
+last_reviewed: '2026-11-25'

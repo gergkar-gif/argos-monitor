@@ -50,8 +50,12 @@ aggregator_outlets:
   - Lääne Elu
   - BNS
   - Valitsus.ee
+  - lõuna-eesti postimees
+  - virumaa teataja
+  - järva teataja
+  - vooremaa
   abroad_local:
   - The Baltic Times
   - Estonian World
   - Barents Observer
-last_reviewed: 2026-11-17
+last_reviewed: '2026-11-25'

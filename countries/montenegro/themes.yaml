@@ -1,28 +1,75 @@
 # Montenegro's additions to the shared themes (../../themes.yaml).
 themes:
-  - id: party_gov
-    label: "Spajić (PES) Coalition, Milatović Split, Mandić Parliament & SDT Anti-Mafia Prosecutions"
-    weight: 1.0
-    category: internal_politics
-    describe:
-      - Prime Minister Milojko Spajić (Europe Now Movement / PES), President Jakov Milatović, Parliament Speaker Andrija Mandić (ZBCG), DPS opposition, Special State Prosecutor's Office (SDT / Vladimir Novović) prosecutions of organized crime and judicial corruption
-      - Vlada Milojka Spajića, Pokret Evropa sad (PES), predsjednik Jakov Milatović, Andrija Mandić, Skupština Crne Gore, DPS, Specijalno državno tužilaštvo (SDT), Vladimir Novović, SKY ECC
-    keywords: ["spajić", "spajic", "milatović", "milatovic", "mandić", "mandic", "evropa sad", "sdt", "novović", "dps", "skupština crne gore"]
-
-  - id: diplomacy
-    label: "Frontrunner EU Accession (IBAR / 2028 Target), NATO & Regional Relations"
-    weight: 1.0
-    category: foreign_policy
-    describe:
-      - Montenegro's EU accession chapter closures following IBAR (Interim Benchmark Assessment Report) targeting 2028 EU membership, bilateral relations with Serbia, Croatia (Prevlaka / resolution disputes), and Hungary, and NATO Adriatic security
-      - pristupanje Evropskoj uniji, IBAR, zatvaranje pregovaračkih poglavlja, odnosi sa Srbijom, Hrvatskom i Mađarskom, NATO
-    keywords: ["ibar", "pregovaračka poglavlja", "evropska unija", "eu accession", "prevlaka", "nato"]
-
-  - id: energy_infra
-    label: "Port of Bar (Luka Bar), Bar–Boljare Motorway, EPCG Energy & Evropa Sad 2 Fiscal Program"
-    weight: 0.95
-    category: economics
-    describe:
-      - Port of Bar (Luka Bar) maritime logistics and Belgrade–Bar railway reconstruction, Bar–Boljare highway second section, EPCG power utility and undersea power cable to Italy, and Evropa Sad 2 wage/pension fiscal reforms
-      - Luka Bar, autoput Bar-Boljare, željeznica Beograd-Bar, Elektroprivreda Crne Gore (EPCG), program Evropa sad 2, budžet, turizam
-    keywords: ["luka bar", "bar-boljare", "autoput", "epcg", "elektroprivreda", "evropa sad 2", "budžet"]
+- id: party_gov
+  label: Spajić (PES) Coalition, Milatović Split, Mandić Parliament & SDT Anti-Mafia Prosecutions
+  weight: 1.0
+  category: internal_politics
+  describe:
+  - Prime Minister Milojko Spajić (Europe Now Movement / PES), President Jakov Milatović, Parliament Speaker Andrija Mandić (ZBCG), DPS opposition, Special State Prosecutor's Office (SDT / Vladimir Novović) prosecutions of organized crime and judicial corruption
+  - Vlada Milojka Spajića, Pokret Evropa sad (PES), predsjednik Jakov Milatović, Andrija Mandić, Skupština Crne Gore, DPS, Specijalno državno tužilaštvo (SDT), Vladimir Novović, SKY ECC
+  keywords:
+  - spajić
+  - spajic
+  - milatović
+  - milatovic
+  - mandić
+  - mandic
+  - evropa sad
+  - sdt
+  - novović
+  - dps
+  - skupština crne gore
+- id: diplomacy
+  label: Frontrunner EU Accession (IBAR / 2028 Target), NATO & Regional Relations
+  weight: 1.0
+  category: foreign_policy
+  describe:
+  - Montenegro's EU accession chapter closures following IBAR (Interim Benchmark Assessment Report) targeting 2028 EU membership, bilateral relations with Serbia, Croatia (Prevlaka / resolution disputes), and Hungary, and NATO Adriatic security
+  - pristupanje Evropskoj uniji, IBAR, zatvaranje pregovaračkih poglavlja, odnosi sa Srbijom, Hrvatskom i Mađarskom, NATO
+  keywords:
+  - ibar
+  - pregovaračka poglavlja
+  - evropska unija
+  - eu accession
+  - prevlaka
+  - nato
+- id: energy_infra
+  label: Port of Bar (Luka Bar), Bar–Boljare Motorway, EPCG Energy & Evropa Sad 2 Fiscal Program
+  weight: 0.95
+  category: economics
+  describe:
+  - Port of Bar (Luka Bar) maritime logistics and Belgrade–Bar railway reconstruction, Bar–Boljare highway second section, EPCG power utility and undersea power cable to Italy, and Evropa Sad 2 wage/pension fiscal reforms
+  - Luka Bar, autoput Bar-Boljare, željeznica Beograd-Bar, Elektroprivreda Crne Gore (EPCG), program Evropa sad 2, budžet, turizam
+  keywords:
+  - luka bar
+  - bar-boljare
+  - autoput
+  - epcg
+  - elektroprivreda
+  - evropa sad 2
+  - budžet
+- id: elections
+  describe:
+  - Montenegrin parliamentary, presidential, and local elections (Podgorica, Nikšić, Budva), DIK results, and turnout
+  - Parlamentarni izbori, lokalni izbori, DIK, izlaznost
+  keywords:
+  - izbori
+  - dik
+  - izlaznost
+  - biračko
+  - glasanje
+  - ballot
+- id: econ_policy
+  label: Evropa Sad Fiscal Program, Port of Bar & EU IBAR Benchmarks
+  weight: 0.95
+  category: economics
+  describe:
+  - Montenegro Evropa Sad wage/tax reforms, Bar-Boljare motorway financing, Port of Bar logistics, tourism revenues, and EU Chapter 23/24 IBAR benchmarks
+  - Evropa sad, Luka Bar, auto-put, budžet, MMF, poglavlje 23, IBAR
+  keywords:
+  - evropa sad
+  - luka bar
+  - ibar
+  - auto-put
+  - budžet
+  - poglavlje 23

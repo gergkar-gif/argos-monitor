@@ -3,60 +3,104 @@ name: Romania
 region: Eastern Europe
 language: ro
 abroad_label: International & English-language Romanian outlets
-
 mention:
-  - "românia"
-  - "romania"
-  - "romanian"
-  - "bucurești"
-  - "bucharest"
-  - "nicușor dan"
-  - "nicusor dan"
-  - "ilie bolojan"
-  - "bolojan"
-  - "kelemen hunor"
-  - "rmdsz"
-  - "udmr"
-  - "parlamentul româniei"
-  - "guvernul româniei"
-  - "cotroceni"
-  - "csat"
-  - "psd"
-  - "pnl"
-  - "aur"
-  - "usr"
-  - "bnr"
-  - "banca națională"
-mention_regex: ['\bromân', '\bbucure[șs]ti', '\bromania']
+- românia
+- romania
+- romanian
+- bucurești
+- bucharest
+- nicușor dan
+- nicusor dan
+- ilie bolojan
+- bolojan
+- kelemen hunor
+- rmdsz
+- udmr
+- parlamentul româniei
+- guvernul româniei
+- cotroceni
+- csat
+- psd
+- pnl
+- aur
+- usr
+- bnr
+- banca națională
+mention_regex:
+- \bromân
+- \bbucure[șs]ti
+- \bromania
 mention_section: null
-
 url_sections:
-  foreign: [externe, international, lume, world]
-  skip: [sport, fotbal, monden, life, vedete, horoscop, auto, lifestyle, retete]
-
+  foreign:
+  - externe
+  - international
+  - lume
+  - world
+  skip:
+  - sport
+  - fotbal
+  - monden
+  - life
+  - vedete
+  - horoscop
+  - auto
+  - lifestyle
+  - retete
 aggregator_outlets:
-  domestic: ["agerpres", "digi24", "hotnews.ro", "adevarul", "g4media", "ziarul financiar", "recorder", "pressone",
-             "profit.ro", "news.ro", "spotmedia", "europa fm", "cotidianul", "jurnalul național", "biziday", "edupedu",
-             "romania24", "libertatea", "stirile protv", "economedia", "tvr info", "mediafax", "stiripesurse",
-             "antena 3", "romania tv", "b1 tv"]
-  abroad_local: ["romania insider", "balkan insight", "europa liberă românia", "europa libera"]
-
+  domestic:
+  - agerpres
+  - digi24
+  - hotnews.ro
+  - adevarul
+  - g4media
+  - ziarul financiar
+  - recorder
+  - pressone
+  - profit.ro
+  - news.ro
+  - spotmedia
+  - europa fm
+  - cotidianul
+  - jurnalul național
+  - biziday
+  - edupedu
+  - romania24
+  - libertatea
+  - stirile protv
+  - economedia
+  - tvr info
+  - mediafax
+  - stiripesurse
+  - antena 3
+  - romania tv
+  - b1 tv
+  - snoop
+  - context.ro
+  - cluj24.ro
+  - bursa.ro
+  abroad_local:
+  - romania insider
+  - balkan insight
+  - europa liberă românia
+  - europa libera
 excerpt:
-  dateline: '^\s*(?:BUCUREȘTI|BUCHAREST|AGERPRES|MEDIAFAX|NEWS\.RO|ROMANIA)\s*[-–—:]\s*'
-  noise: '^(foto|sursa|video|citește și|publicitate|\(|\[)'
-
+  dateline: ^\s*(?:BUCUREȘTI|BUCHAREST|AGERPRES|MEDIAFAX|NEWS\.RO|ROMANIA)\s*[-–—:]\s*
+  noise: ^(foto|sursa|video|citește și|publicitate|\(|\[)
 classify:
   internal_politics:
-    - "Președintele Nicușor Dan, premierul Ilie Bolojan, Guvernul României, Parlamentul, PSD, PNL, USR, AUR, UDMR, Curtea Constituțională, alegeri, DNA"
+  - Președintele Nicușor Dan, premierul Ilie Bolojan, Guvernul României, Parlamentul, PSD, PNL, USR, AUR, UDMR, Curtea Constituțională, alegeri, DNA
   economics:
-    - "economie, Banca Națională a României (BNR), deficit bugetar, inflație, PNRR, fiscalitate, energie, Neptun Deep, Marea Neagră, investiții"
+  - economie, Banca Națională a României (BNR), deficit bugetar, inflație, PNRR, fiscalitate, energie, Neptun Deep, Marea Neagră, investiții
   foreign_policy:
-    - "politică externă, Uniunea Europeană, Schengen, NATO, Republica Moldova, Ucraina, Marea Neagră, parteneriat strategic SUA"
+  - politică externă, Uniunea Europeană, Schengen, NATO, Republica Moldova, Ucraina, Marea Neagră, parteneriat strategic SUA
   defence_security:
-    - "MApN, Armata Română, CSAT, flancul estic NATO, bază Mihail Kogălniceanu, drone, apărare antiaeriană, Patriot, F-16"
+  - MApN, Armata Română, CSAT, flancul estic NATO, bază Mihail Kogălniceanu, drone, apărare antiaeriană, Patriot, F-16
   society:
-    - "educație, sănătate, justiție, pensii, proteste, infrastructură, autostrăzi, vreme"
-
+  - educație, sănătate, justiție, pensii, proteste, infrastructură, autostrăzi, vreme
 geo: RO
-reddit: [Romania, bucuresti, cluj]
-last_reviewed: 2026-11-17
+reddit:
+- Romania
+- bucuresti
+- cluj
+last_reviewed: '2026-11-25'

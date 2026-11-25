@@ -49,6 +49,8 @@ sources:
     category_hint: internal_politics
   - url: https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/economia/portada
     category_hint: economics
+  - url: https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/internacional/portada
+    category_hint: foreign_policy
 - id: el_mundo_es
   name: El Mundo
   homepage: https://www.elmundo.es
@@ -89,6 +91,8 @@ sources:
   feeds:
   - url: https://www.abc.es/rss/2.0/espana/
     category_hint: internal_politics
+  - url: https://www.abc.es/rss/2.0/economia/
+    category_hint: economics
 - id: elconfidencial_es
   name: El Confidencial
   homepage: https://www.elconfidencial.com
@@ -209,6 +213,102 @@ sources:
   feeds:
   - url: https://news.google.com/rss/search?q=(site:lamoncloa.gob.es+OR+site:congreso.es)+when:7d&hl=es&gl=ES&ceid=ES:es
     category_hint: internal_politics
+- id: ara_cat
+  name: Ara
+  homepage: https://www.ara.cat
+  language: ca
+  scope: domestic
+  kind: media
+  governing_body: Edició de Premsa Periòdica Ara
+  state_affiliated: false
+  notes: Leading Catalan-language daily newspaper covering Barcelona politics and Spanish governance.
+  feeds:
+  - url: https://www.ara.cat/rss/
+    category_hint: internal_politics
+- id: elnacional_cat
+  name: El Nacional.cat
+  homepage: https://www.elnacional.cat
+  language: ca
+  scope: domestic
+  kind: media
+  governing_body: Grup Les Notícies de Catalunya
+  state_affiliated: false
+  notes: High-reach Catalan digital daily covering Madrid-Barcelona politics and courts.
+  feeds:
+  - url: https://www.elnacional.cat/uploads/feeds/feed_ca.xml
+    category_hint: internal_politics
+- id: naciodigital_es
+  name: NacióDigital
+  homepage: https://naciodigital.cat
+  language: ca
+  scope: domestic
+  kind: media
+  governing_body: Grup Nació
+  state_affiliated: false
+  notes: Catalan digital newspaper network covering regional politics and municipal affairs.
+  feeds:
+  - url: https://naciodigital.cat/rss/
+    category_hint: internal_politics
+- id: diariodesevilla_es
+  name: Diario de Sevilla
+  homepage: https://www.diariodesevilla.es
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Grupo Joly
+  state_affiliated: false
+  notes: Flagship Andalusia daily covering Seville regional government, energy, and agriculture.
+  feeds:
+  - url: https://www.diariodesevilla.es/rss/
+    category_hint: society
+- id: heraldo_es
+  name: Heraldo de Aragón
+  homepage: https://www.heraldo.es
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Grupo Henneo
+  state_affiliated: false
+  notes: Historic Zaragoza and Aragón regional daily founded in 1895.
+  feeds:
+  - url: https://www.heraldo.es/rss/
+    category_hint: society
+- id: eldebate_es
+  name: El Debate
+  homepage: https://www.eldebate.com
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Asociación Católica de Propagandistas
+  state_affiliated: false
+  notes: Conservative Spanish national digital daily covering Cortes Generales and judiciary.
+  feeds:
+  - url: https://www.eldebate.com/rss/home.xml
+    category_hint: internal_politics
+- id: maldita_es
+  name: Maldita.es
+  homepage: https://maldita.es
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Fundación Maldita.es
+  state_affiliated: false
+  notes: Independent Spanish fact-checking and disinformation-tracking newsroom.
+  feeds:
+  - url: https://maldita.es/feed
+    category_hint: society
+- id: elcano_es
+  name: Real Instituto Elcano
+  homepage: https://www.realinstitutoelcano.org
+  language: es
+  scope: domestic
+  kind: media
+  governing_body: Fundación Real Instituto Elcano
+  state_affiliated: false
+  notes: Spain's premier foreign policy, European strategy, and defense think tank.
+  feeds:
+  - url: https://www.realinstitutoelcano.org/feed/
+    category_hint: foreign_policy
 - id: gnews_spain_press_batch
   name: Google News (Spain Press, Radio & Business - La Razón/OKDiario/Público/El Periódico/SER/Vozpópuli/El Economista)
   homepage: https://news.google.com

@@ -3,258 +3,317 @@
 # Minval.az, Oxu.az, Report.az, Caliber.az, AzerNews) with independent domestic & exiled outlets (Turan, PressKlub.az,
 # Günün Səsi, Meydan TV, Abzas Media, Toplum TV, Mikroskop Media, Azadlıq Radiosu, Baku Research Institute, Konkret.az,
 # Modern.az) and regional/international broadcasters (BBC News Azərbaycanca, OC Media, JAMnews, Caucasus Watch, Eurasianet).
-
 sources:
-  - id: azertag_en
-    name: AZERTAC (Azerbaijan State News Agency)
-    homepage: https://azertag.az/en
-    language: en
-    scope: domestic
-    kind: official
-    governing_body: Azerbaijan State News Agency (official state wire)
-    state_affiliated: true
-    feeds:
-      - {url: "https://azertag.az/en/rss", section: Latest, category_hint: general}
-
-  - id: trend_en
-    name: Trend News Agency
-    homepage: https://en.trend.az
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: Trend News Agency (pro-government Baku wire)
-    state_affiliated: true
-    feeds:
-      - {url: "https://en.trend.az/feeds/index.rss", section: All News, category_hint: general}
-
-  - id: apa_en
-    name: APA (Azeri-Press Agency)
-    homepage: https://apa.az
-    language: az
-    scope: domestic
-    kind: media
-    governing_body: APA Holding (pro-government Baku news agency)
-    state_affiliated: true
-    feeds:
-      - {url: "https://apa.az/rss", section: Xəbərlər, category_hint: general}
-      - {url: "https://en.apa.az/rss", section: English, category_hint: general}
-
-  - id: vesti_az
-    name: Vesti.az
-    homepage: https://vesti.az
-    language: ru
-    scope: domestic
-    kind: media
-    governing_body: APA Group (pro-government Baku Russian-language agency)
-    state_affiliated: true
-    feeds:
-      - {url: "https://vesti.az/rss", section: Политика, category_hint: internal_politics}
-
-  - id: day_az
-    name: Day.az
-    homepage: https://news.day.az
-    language: ru
-    scope: domestic
-    kind: media
-    governing_body: Day Media Holding (high-reach pro-government Baku portal)
-    state_affiliated: true
-    feeds:
-      - {url: "https://news.day.az/rss/all.rss", section: Все новости, category_hint: general}
-
-  - id: haqqin_ru
-    name: Haqqin.az
-    homepage: https://haqqin.az
-    language: ru
-    scope: domestic
-    kind: media
-    governing_body: Eynulla Fatullayev Media (state-aligned analytical daily)
-    state_affiliated: true
-    feeds:
-      - {url: "https://haqqin.az/rss", section: Политика, category_hint: foreign_policy}
-
-  - id: minval_ru
-    name: Minval.az
-    homepage: https://minval.az
-    language: ru
-    scope: domestic
-    kind: media
-    governing_body: Minval Information Agency (pro-government defense and geopolitics portal)
-    state_affiliated: true
-    feeds:
-      - {url: "https://minval.az/rss", section: Главное, category_hint: defence_security}
-
-  - id: oxu_az
-    name: Oxu.az
-    homepage: https://oxu.az
-    language: az
-    scope: domestic
-    kind: media
-    governing_body: Global Media Group (Azerbaijan's highest-traffic commercial pro-government news portal)
-    state_affiliated: true
-    feeds:
-      - {url: "https://oxu.az/feed", section: Son xəbərlər, category_hint: general}
-
-  - id: pressklub_az
-    name: PressKlub.az (Baku Press Club)
-    homepage: https://pressklub.az
-    language: az
-    scope: domestic
-    kind: media
-    governing_body: Baku Press Club (independent Azerbaijani journalism platform covering media freedom, parliament, and society)
-    state_affiliated: false
-    feeds:
-      - {url: "https://pressklub.az/az/rss/posts", section: Xəbərlər, category_hint: internal_politics}
-
-  - id: gununsesi_az
-    name: Günün Səsi
-    homepage: https://www.gununsesi.info
-    language: az
-    scope: domestic
-    kind: media
-    governing_body: Gununsesi.info (independent Baku political and human-rights portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.gununsesi.info/feed/", section: Siyasət, category_hint: internal_politics}
-
-  - id: modern_az
-    name: Modern.az
-    homepage: https://modern.az
-    language: az
-    scope: domestic
-    kind: media
-    governing_body: Modern Media Group (Baku parliamentary, bureaucratic, and socio-economic news portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://modern.az/rss", section: Siyasət, category_hint: internal_politics}
-
-  - id: konkret_az
-    name: Konkret.az
-    homepage: https://konkret.az
-    language: az
-    scope: domestic
-    kind: media
-    governing_body: Konkret Media (Baku fast-breaking political and regional portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://konkret.az/feed/", section: Gündəm, category_hint: general}
-
-  - id: meydan_en
-    name: Meydan TV (English & Azerbaijani)
-    homepage: https://www.meydan.tv
-    language: en
-    scope: abroad_local
-    kind: media
-    governing_body: Association for the Democracy in Azerbaijan (independent exiled media in Berlin)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.meydan.tv/en/feed/", section: English, category_hint: general}
-      - {url: "https://www.meydan.tv/az/feed/", section: Azərbaycanca, category_hint: general}
-      - {url: "https://www.meydan.tv/ru/feed/", section: Русский, category_hint: general}
-
-  - id: mikroskop_az
-    name: Mikroskop Media
-    homepage: https://mikroskopmedia.com
-    language: az
-    scope: abroad_local
-    kind: media
-    governing_body: Mikroskop Media Foundation (Berlin — exiled data and investigative journalism platform)
-    state_affiliated: false
-    feeds:
-      - {url: "https://mikroskopmedia.com/feed/", section: Araşdırma, category_hint: internal_politics}
-
-  - id: bakuresearch_az
-    name: Baku Research Institute
-    homepage: https://bakuresearchinstitute.org
-    language: en
-    scope: abroad_local
-    kind: media
-    governing_body: Baku Research Institute (independent analytical think tank on economy, society, and geopolitics)
-    state_affiliated: false
-    feeds:
-      - {url: "https://bakuresearchinstitute.org/en/feed/", section: Analysis, category_hint: internal_politics}
-
-  - id: bbc_azeri_az
-    name: BBC News Azərbaycanca
-    homepage: https://www.bbc.com/azeri
-    language: az
-    scope: abroad_local
-    kind: media
-    governing_body: British Broadcasting Corporation (independent Azerbaijani-language public international service)
-    state_affiliated: false
-    feeds:
-      - {url: "https://feeds.bbci.co.uk/azeri/rss.xml", section: Azərbaycan, category_hint: general}
-
-  - id: jamnews_az
-    name: JAMnews (Azerbaijan Desk)
-    homepage: https://jam-news.net
-    language: en
-    scope: abroad_local
-    kind: media
-    governing_body: JAMnews Regional Media Network (independent cross-border South Caucasus newsroom)
-    state_affiliated: false
-    feeds:
-      - {url: "https://jam-news.net/category/azerbaijan/feed/", section: Azerbaijan, category_hint: foreign_policy}
-
-  - id: caucasuswatch_az
-    name: Caucasus Watch (on Azerbaijan)
-    homepage: https://caucasuswatch.de
-    language: en
-    scope: abroad_local
-    kind: media
-    governing_body: Caucasus Watch Media (independent European analytical portal tracking South Caucasus diplomacy)
-    state_affiliated: false
-    needs_mention: true
-    feeds:
-      - {url: "https://caucasuswatch.de/feed", section: South Caucasus, category_hint: foreign_policy}
-
-  - id: gnews_az_domestic_gn
-    name: Turan / Report.az / Caliber.az / AzerNews / Qafqazinfo / Müsavat / Arqument (via Google News)
-    homepage: https://turan.az
-    language: en
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: Turan / Report.az / Caliber.az / AzerNews / Qafqazinfo / Müsavat / Arqument
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:turan.az+OR+site:report.az+OR+site:caliber.az+OR+site:azernews.az)+when:7d&hl=en-US&gl=US&ceid=US:en", section: Baku English & Agencies, category_hint: foreign_policy}
-      - {url: "https://news.google.com/rss/search?q=(site:report.az+OR+site:qafqazinfo.az+OR+site:musavat.com+OR+site:arqument.az+OR+site:turan.az)+when:7d&hl=ru&gl=RU&ceid=RU:ru", section: Пресса Азербайджана, category_hint: internal_politics}
-
-  - id: gnews_az_abroad
-    name: Azadlıq Radiosu / Abzas / Toplum TV / OC Media / Eurasianet (via Google News)
-    homepage: https://www.azadliq.org
-    language: en
-    scope: abroad_local
-    kind: media
-    aggregator: google_news
-    governing_body: RFE-RL Azadlıq / Abzas Media / Toplum TV / OC Media / Eurasianet
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:azadliq.org+OR+site:abzas.org+OR+site:toplum.tv+OR+((site:oc-media.org+OR+site:eurasianet.org)+Azerbaijan))+when:7d&hl=en-US&gl=US&ceid=US:en", section: Exiled & Regional Press, category_hint: internal_politics}
-
-  - id: gnews_azerbaijan_az
-    name: Google News (Azerbaijan National News - Azerbaijani)
-    homepage: https://news.google.com
-    language: az
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    needs_mention: true
-    governing_body: Google LLC
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=Az%C9%99rbaycan+OR+Bak%C4%B1+when:2d&hl=en-US&gl=US&ceid=US:en", section: National News (Azerbaijani), category_hint: internal_politics}
-
-  - id: gnews_en_az
-    name: Google News (Azerbaijan - International)
-    homepage: https://news.google.com
-    language: en
-    scope: international
-    kind: media
-    aggregator: google_news
-    governing_body: n/a (aggregator)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=Azerbaijan+when:1d&hl=en-US&gl=US&ceid=US:en", section: Azerbaijan, category_hint: general}
-      - {url: "https://news.google.com/rss/search?q=Azerbaijan+(Armenia+OR+peace+OR+Aliyev+OR+Zangezur+OR+Karabakh)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Peace talks & diplomacy, category_hint: foreign_policy}
-      - {url: "https://news.google.com/rss/search?q=Azerbaijan+(SOCAR+OR+gas+OR+energy+OR+corridor+OR+oil)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Energy & Middle Corridor, category_hint: economics}
+- id: azertag_en
+  name: AZERTAC (Azerbaijan State News Agency)
+  homepage: https://azertag.az/en
+  language: en
+  scope: domestic
+  kind: official
+  governing_body: Azerbaijan State News Agency (official state wire)
+  state_affiliated: true
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:azertag.az+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Latest
+    category_hint: general
+  aggregator: google_news
+- id: trend_en
+  name: Trend News Agency
+  homepage: https://en.trend.az
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Trend News Agency (pro-government Baku wire)
+  state_affiliated: true
+  feeds:
+  - url: https://en.trend.az/feeds/index.rss
+    section: All News
+    category_hint: general
+- id: apa_en
+  name: APA (Azeri-Press Agency)
+  homepage: https://apa.az
+  language: az
+  scope: domestic
+  kind: media
+  governing_body: APA Holding (pro-government Baku news agency)
+  state_affiliated: true
+  feeds:
+  - url: https://apa.az/rss
+    section: Xəbərlər
+    category_hint: general
+  - url: https://en.apa.az/rss
+    section: English
+    category_hint: general
+- id: vesti_az
+  name: Vesti.az
+  homepage: https://vesti.az
+  language: ru
+  scope: domestic
+  kind: media
+  governing_body: APA Group (pro-government Baku Russian-language agency)
+  state_affiliated: true
+  feeds:
+  - url: https://vesti.az/rss
+    section: Политика
+    category_hint: internal_politics
+- id: day_az
+  name: Day.az
+  homepage: https://news.day.az
+  language: ru
+  scope: domestic
+  kind: media
+  governing_body: Day Media Holding (high-reach pro-government Baku portal)
+  state_affiliated: true
+  feeds:
+  - url: https://news.day.az/rss/all.rss
+    section: Все новости
+    category_hint: general
+- id: haqqin_ru
+  name: Haqqin.az
+  homepage: https://haqqin.az
+  language: ru
+  scope: domestic
+  kind: media
+  governing_body: Eynulla Fatullayev Media (state-aligned analytical daily)
+  state_affiliated: true
+  feeds:
+  - url: https://haqqin.az/rss
+    section: Политика
+    category_hint: foreign_policy
+- id: minval_ru
+  name: Minval.az
+  homepage: https://minval.az
+  language: ru
+  scope: domestic
+  kind: media
+  governing_body: Minval Information Agency (pro-government defense and geopolitics portal)
+  state_affiliated: true
+  feeds:
+  - url: https://minval.az/rss
+    section: Главное
+    category_hint: defence_security
+- id: oxu_az
+  name: Oxu.az
+  homepage: https://oxu.az
+  language: az
+  scope: domestic
+  kind: media
+  governing_body: Global Media Group (Azerbaijan's highest-traffic commercial pro-government news portal)
+  state_affiliated: true
+  feeds:
+  - url: https://oxu.az/feed
+    section: Son xəbərlər
+    category_hint: general
+- id: pressklub_az
+  name: PressKlub.az (Baku Press Club)
+  homepage: https://pressklub.az
+  language: az
+  scope: domestic
+  kind: media
+  governing_body: Baku Press Club (independent Azerbaijani journalism platform covering media freedom, parliament, and society)
+  state_affiliated: false
+  feeds:
+  - url: https://pressklub.az/az/rss/posts
+    section: Xəbərlər
+    category_hint: internal_politics
+- id: gununsesi_az
+  name: Günün Səsi
+  homepage: https://www.gununsesi.info
+  language: az
+  scope: domestic
+  kind: media
+  governing_body: Gununsesi.info (independent Baku political and human-rights portal)
+  state_affiliated: false
+  feeds:
+  - url: https://www.gununsesi.info/feed/
+    section: Siyasət
+    category_hint: internal_politics
+- id: modern_az
+  name: Modern.az
+  homepage: https://modern.az
+  language: az
+  scope: domestic
+  kind: media
+  governing_body: Modern Media Group (Baku parliamentary, bureaucratic, and socio-economic news portal)
+  state_affiliated: false
+  feeds:
+  - url: https://modern.az/rss
+    section: Siyasət
+    category_hint: internal_politics
+- id: konkret_az
+  name: Konkret.az
+  homepage: https://konkret.az
+  language: az
+  scope: domestic
+  kind: media
+  governing_body: Konkret Media (Baku fast-breaking political and regional portal)
+  state_affiliated: false
+  feeds:
+  - url: https://konkret.az/feed/
+    section: Gündəm
+    category_hint: general
+- id: meydan_en
+  name: Meydan TV (English & Azerbaijani)
+  homepage: https://www.meydan.tv
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Association for the Democracy in Azerbaijan (independent exiled media in Berlin)
+  state_affiliated: false
+  feeds:
+  - url: https://www.meydan.tv/en/feed/
+    section: English
+    category_hint: general
+  - url: https://www.meydan.tv/az/feed/
+    section: Azərbaycanca
+    category_hint: general
+  - url: https://www.meydan.tv/ru/feed/
+    section: Русский
+    category_hint: general
+- id: mikroskop_az
+  name: Mikroskop Media
+  homepage: https://mikroskopmedia.com
+  language: az
+  scope: abroad_local
+  kind: media
+  governing_body: Mikroskop Media Foundation (Berlin — exiled data and investigative journalism platform)
+  state_affiliated: false
+  feeds:
+  - url: https://mikroskopmedia.com/feed/
+    section: Araşdırma
+    category_hint: internal_politics
+- id: bakuresearch_az
+  name: Baku Research Institute
+  homepage: https://bakuresearchinstitute.org
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Baku Research Institute (independent analytical think tank on economy, society, and geopolitics)
+  state_affiliated: false
+  feeds:
+  - url: https://bakuresearchinstitute.org/en/feed/
+    section: Analysis
+    category_hint: internal_politics
+- id: bbc_azeri_az
+  name: BBC News Azərbaycanca
+  homepage: https://www.bbc.com/azeri
+  language: az
+  scope: abroad_local
+  kind: media
+  governing_body: British Broadcasting Corporation (independent Azerbaijani-language public international service)
+  state_affiliated: false
+  feeds:
+  - url: https://feeds.bbci.co.uk/azeri/rss.xml
+    section: Azərbaycan
+    category_hint: general
+- id: jamnews_az
+  name: JAMnews (Azerbaijan Desk)
+  homepage: https://jam-news.net
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: JAMnews Regional Media Network (independent cross-border South Caucasus newsroom)
+  state_affiliated: false
+  feeds:
+  - url: https://jam-news.net/category/azerbaijan/feed/
+    section: Azerbaijan
+    category_hint: foreign_policy
+- id: caucasuswatch_az
+  name: Caucasus Watch (on Azerbaijan)
+  homepage: https://caucasuswatch.de
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Caucasus Watch Media (independent European analytical portal tracking South Caucasus diplomacy)
+  state_affiliated: false
+  needs_mention: true
+  feeds:
+  - url: https://caucasuswatch.de/feed
+    section: South Caucasus
+    category_hint: foreign_policy
+- id: azernews_az
+  name: AzerNews
+  homepage: https://www.azernews.az
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: AzerNews / Trend Media Group
+  state_affiliated: true
+  notes: Baku English-language daily covering energy, Caspian transport corridors, and state policy.
+  feeds:
+  - url: https://www.azernews.az/feed.php
+    category_hint: economics
+- id: azadliq_az
+  name: Azadlıq Radiosu (RFE/RL Azerbaijan)
+  homepage: https://www.azadliq.org
+  language: az
+  scope: abroad_local
+  kind: media
+  governing_body: Radio Free Europe / Radio Liberty
+  state_affiliated: false
+  notes: Independent Azerbaijani-language service of RFE/RL covering governance, human rights, and energy.
+  feeds:
+  - url: https://www.azadliq.org/api/
+    category_hint: internal_politics
+- id: gnews_az_domestic_gn
+  name: Turan / Report.az / Caliber.az / Qafqazinfo / Müsavat / Arqument (via Google News)
+  homepage: https://turan.az
+  language: en
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: Turan / Report.az / Caliber.az / AzerNews / Qafqazinfo / Müsavat / Arqument
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:turan.az+OR+site:report.az+OR+site:caliber.az)+when:7d&hl=en-US&gl=US&ceid=US:en
+    section: Baku English & Agencies
+    category_hint: foreign_policy
+  - url: https://news.google.com/rss/search?q=(site:report.az+OR+site:qafqazinfo.az+OR+site:musavat.com+OR+site:arqument.az+OR+site:turan.az)+when:7d&hl=ru&gl=RU&ceid=RU:ru
+    section: Пресса Азербайджана
+    category_hint: internal_politics
+- id: gnews_az_abroad
+  name: Abzas / Toplum TV / OC Media / Eurasianet (via Google News)
+  homepage: https://www.azadliq.org
+  language: en
+  scope: abroad_local
+  kind: media
+  aggregator: google_news
+  governing_body: RFE-RL Azadlıq / Abzas Media / Toplum TV / OC Media / Eurasianet
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:abzas.org+OR+site:toplum.tv+OR+((site:oc-media.org+OR+site:eurasianet.org)+Azerbaijan))+when:7d&hl=en-US&gl=US&ceid=US:en
+    section: Exiled & Regional Press
+    category_hint: internal_politics
+- id: gnews_azerbaijan_az
+  name: Google News (Azerbaijan National News - Azerbaijani)
+  homepage: https://news.google.com
+  language: az
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  needs_mention: true
+  governing_body: Google LLC
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=Az%C9%99rbaycan+OR+Bak%C4%B1+when:2d&hl=en-US&gl=US&ceid=US:en
+    section: National News (Azerbaijani)
+    category_hint: internal_politics
+- id: gnews_en_az
+  name: Google News (Azerbaijan - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  aggregator: google_news
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=Azerbaijan+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Azerbaijan
+    category_hint: general
+  - url: https://news.google.com/rss/search?q=Azerbaijan+(Armenia+OR+peace+OR+Aliyev+OR+Zangezur+OR+Karabakh)+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Peace talks & diplomacy
+    category_hint: foreign_policy
+  - url: https://news.google.com/rss/search?q=Azerbaijan+(SOCAR+OR+gas+OR+energy+OR+corridor+OR+oil)+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Energy & Middle Corridor
+    category_hint: economics

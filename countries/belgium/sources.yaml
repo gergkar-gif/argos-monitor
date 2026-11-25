@@ -82,6 +82,8 @@ sources:
   feeds:
   - url: https://www.tijd.be/rss/nieuws.xml
     category_hint: economics
+  - url: https://www.tijd.be/rss/politiek.xml
+    category_hint: internal_politics
 - id: lecho_be
   name: L'Echo
   homepage: https://www.lecho.be
@@ -94,6 +96,8 @@ sources:
   feeds:
   - url: https://www.lecho.be/rss/actualite.xml
     category_hint: economics
+  - url: https://www.lecho.be/rss/politique.xml
+    category_hint: internal_politics
 - id: hln_be
   name: Het Laatste Nieuws (HLN)
   homepage: https://www.hln.be
@@ -235,7 +239,7 @@ sources:
   governing_body: EUobserver ASBL (Brussels independent non-profit daily covering EU institutions)
   state_affiliated: false
   feeds:
-  - url: https://news.google.com/rss/search?q=site:euobserver.com+when:7d&hl=en-US&gl=US&ceid=US:en
+  - url: https://euobserver.com/feed/
     category_hint: foreign_policy
 - id: euractiv_be
   name: Euractiv
@@ -259,6 +263,30 @@ sources:
   feeds:
   - url: https://news.google.com/rss/search?q=site:politico.eu+when:3d&hl=en-US&gl=US&ceid=US:en
     category_hint: foreign_policy
+- id: rapporteur_be
+  name: Rapporteur (Euractiv)
+  homepage: https://www.rapporteur.com
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: Euractiv Media Network (Brussels)
+  state_affiliated: false
+  notes: Brussels EU policy, parliamentary, and institutional intelligence briefing portal.
+  feeds:
+  - url: https://www.rapporteur.com/feed/
+    category_hint: foreign_policy
+- id: moustique_be
+  name: Moustique
+  homepage: https://www.moustique.be
+  language: fr
+  scope: domestic
+  kind: media
+  governing_body: IPM Group
+  state_affiliated: false
+  notes: Belgian French-language weekly political and societal news magazine.
+  feeds:
+  - url: https://www.moustique.be/arc/outboundfeeds/rss/?outputType=xml
+    category_hint: internal_politics
 - id: gnews_belgium_media_batch
   name: Google News (Belgium Commercial TV & Regional Press - RTL Info/VTM/L'Avenir/Sudinfo/GvA/HBvL)
   homepage: https://news.google.com

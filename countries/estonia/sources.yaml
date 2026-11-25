@@ -35,6 +35,8 @@ sources:
   feeds:
   - url: https://www.postimees.ee/rss
     category_hint: internal_politics
+  - url: https://majandus.postimees.ee/rss
+    category_hint: economics
 - id: postimees_en
   name: Postimees News (English)
   homepage: https://news.postimees.ee
@@ -227,6 +229,54 @@ sources:
   feeds:
   - url: https://news.google.com/rss/search?q=(site:valitsus.ee+OR+site:riigikogu.ee)+when:7d&hl=et&gl=EE&ceid=EE:et
     category_hint: internal_politics
+- id: lounapostimees_ee
+  name: Lõuna-Eesti Postimees
+  homepage: https://lounapostimees.postimees.ee
+  language: et
+  scope: domestic
+  kind: media
+  governing_body: Postimees Grupp
+  state_affiliated: false
+  notes: Southern Estonia regional newspaper covering Võru, Valga, Põlva, and border-region affairs.
+  feeds:
+  - url: https://lounapostimees.postimees.ee/rss
+    category_hint: society
+- id: virumaateataja_ee
+  name: Virumaa Teataja
+  homepage: https://virumaateataja.postimees.ee
+  language: et
+  scope: domestic
+  kind: media
+  governing_body: Postimees Grupp
+  state_affiliated: false
+  notes: Lääne-Viru regional newspaper covering Tapa defense garrison and northern Estonia.
+  feeds:
+  - url: https://virumaateataja.postimees.ee/rss
+    category_hint: society
+- id: jarvateataja_ee
+  name: Järva Teataja
+  homepage: https://jarvateataja.postimees.ee
+  language: et
+  scope: domestic
+  kind: media
+  governing_body: Postimees Grupp
+  state_affiliated: false
+  notes: Central Estonia regional daily covering Paide and regional economy.
+  feeds:
+  - url: https://jarvateataja.postimees.ee/rss
+    category_hint: society
+- id: vooremaa_ee
+  name: Vooremaa
+  homepage: https://www.vooremaa.ee
+  language: et
+  scope: domestic
+  kind: media
+  governing_body: Jõgeva Majandusühistu / Vooremaa
+  state_affiliated: false
+  notes: Jõgeva County independent regional newspaper in eastern Estonia.
+  feeds:
+  - url: https://www.vooremaa.ee/feed/
+    category_hint: society
 - id: gnews_estonia_ekspress_batch
   name: Google News (Estonia Weeklies & Tech - Ekspress/EPL/Maaleht/Geenius)
   homepage: https://news.google.com

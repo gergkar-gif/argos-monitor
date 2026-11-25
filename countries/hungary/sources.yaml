@@ -3,434 +3,503 @@
 # statutory state wire/broadcaster (MTI / Hirado.hu) and KESMA/pro-government press (Magyar Nemzet, Origo, Mandiner, Index),
 # cross-border Carpathian Basin Hungarian press in Transylvania, Slovakia, Vojvodina, and Transcarpathia (Maszol, Krónika, Transtelex, Új Szó, Ma7, Magyar Szó, KISZó),
 # and international coverage.
-
 sources:
-  - id: telex
-    name: Telex
-    homepage: https://telex.hu
-    language: hu
-    scope: domestic
-    kind: media
-    governing_body: Van Másik Zrt. (reader-funded independent daily founded in 2020)
-    state_affiliated: false
-    feeds:
-      - {url: "https://telex.hu/rss", section: Latest, category_hint: general}
-
-  - id: hvg
-    name: HVG
-    homepage: https://hvg.hu
-    language: hu
-    scope: domestic
-    kind: media
-    governing_body: HVG Kiadó Zrt. (independent political and economic weekly and news portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://hvg.hu/rss", section: Latest, category_hint: general}
-
-  - id: 444
-    name: 444
-    homepage: https://444.hu
-    language: hu
-    scope: domestic
-    kind: media
-    governing_body: Magyar Jeti Zrt. (independent investigative and political news portal)
-    state_affiliated: false
-    needs_mention: true
-    notes: Article URLs carry no section path, so items require a Hungary mention.
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:444.hu+when:7d&hl=hu&gl=HU&ceid=HU:hu", section: Latest, category_hint: general}
-
-  - id: 24hu
-    name: 24.hu
-    homepage: https://24.hu
-    language: hu
-    scope: domestic
-    kind: media
-    governing_body: Central Médiacsoport Zrt. (independent national digital daily)
-    state_affiliated: false
-    feeds:
-      - {url: "https://24.hu/feed/", section: Latest, category_hint: general}
-
-  - id: valaszonline
-    name: Válasz Online
-    homepage: https://www.valaszonline.hu
-    language: hu
-    scope: domestic
-    kind: media
-    governing_body: Válasz Online Kiadó Kft. (reader-funded independent conservative investigative and foreign-affairs journal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.valaszonline.hu/feed/", section: Cikkek, category_hint: internal_politics}
-
-  - id: portfolio
-    name: Portfolio.hu
-    homepage: https://www.portfolio.hu
-    language: hu
-    scope: domestic
-    kind: media
-    governing_body: NET Média Zrt. (premier Hungarian financial, macroeconomic, and energy news portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.portfolio.hu/rss/all.xml", section: All news, category_hint: economics}
-
-  - id: atlatszo
-    name: Átlátszó
-    homepage: https://atlatszo.hu
-    language: hu
-    scope: domestic
-    kind: media
-    governing_body: Átlátszó.hu Közhasznú Nonprofit Kft. (independent investigative watchdog and FOI center)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:atlatszo.hu+when:7d&hl=hu&gl=HU&ceid=HU:hu", section: Tényfeltárás, category_hint: internal_politics}
-
-  - id: nepszava
-    name: Népszava
-    homepage: https://nepszava.hu
-    language: hu
-    scope: domestic
-    kind: media
-    governing_body: XXI. Század Média Kft. (independent social-democratic national daily newspaper)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:nepszava.hu+when:3d&hl=hu&gl=HU&ceid=HU:hu", section: Belföld & Külföld, category_hint: internal_politics}
-
-  - id: g7_hu
-    name: G7.hu
-    homepage: https://g7.hu
-    language: hu
-    scope: domestic
-    kind: media
-    governing_body: G7 Gazdasági Sztorik Zrt. (independent Hungarian economic and investigative analytical portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:g7.hu+when:7d&hl=hu&gl=HU&ceid=HU:hu", section: Gazdaság, category_hint: economics}
-
-  - id: magyarhang_hu
-    name: Magyar Hang
-    homepage: https://hang.hu
-    language: hu
-    scope: domestic
-    kind: media
-    governing_body: Alhambra-Press Bt. (independent conservative civic weekly newspaper and news portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://hang.hu/rss", section: Belföld & Külföld, category_hint: internal_politics}
-
-  - id: direkt36_hu
-    name: Direkt36
-    homepage: https://www.direkt36.hu
-    language: hu
-    scope: domestic
-    kind: media
-    governing_body: Direkt36 Nonprofit Kft. (premier Hungarian investigative journalism center)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.direkt36.hu/feed/", section: Oknyomozás, category_hint: internal_politics}
-
-  - id: magyarnarancs_hu
-    name: Magyar Narancs
-    homepage: https://magyarnarancs.hu
-    language: hu
-    scope: domestic
-    kind: media
-    governing_body: Magyar Narancs.hu Lapkiadó Kft. (historic Hungarian political and cultural weekly)
-    state_affiliated: false
-    feeds:
-      - {url: "https://magyarnarancs.hu/rss", section: Belpol, category_hint: internal_politics}
-
-  - id: klubradio_hu
-    name: Klubrádió
-    homepage: https://www.klubradio.hu
-    language: hu
-    scope: domestic
-    kind: media
-    governing_body: Klubrádió Zrt. (independent opposition talk radio and digital newsroom)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.klubradio.hu/rss", section: Hírek, category_hint: internal_politics}
-
-  - id: atv_hu
-    name: ATV.hu
-    homepage: https://www.atv.hu
-    language: hu
-    scope: domestic
-    kind: media
-    governing_body: ATV Zrt. (major commercial television news channel and political portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.atv.hu/feed/", section: Belföld, category_hint: internal_politics}
-
-  - id: privatbankar_hu
-    name: Privátbankár.hu
-    homepage: https://privatbankar.hu
-    language: hu
-    scope: domestic
-    kind: media
-    governing_body: Klasszis Média Kft. (independent Hungarian financial, banking, and macro news portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://privatbankar.hu/rss", section: Piac & Gazdaság, category_hint: economics}
-
-  - id: novekedes_hu
-    name: Növekedés.hu
-    homepage: https://novekedes.hu
-    language: hu
-    scope: domestic
-    kind: media
-    governing_body: MNB / Növekedés Média (Hungarian economic and central-bank analysis portal)
-    state_affiliated: true
-    feeds:
-      - {url: "https://novekedes.hu/feed/", section: Gazdaság, category_hint: economics}
-
-  - id: index
-    name: Index
-    homepage: https://index.hu
-    language: hu
-    scope: domestic
-    kind: media
-    governing_body: Indamedia Network Zrt. (high-reach national news portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://index.hu/belfold/rss/", section: Belföld (domestic), category_hint: internal_politics}
-      - {url: "https://index.hu/gazdasag/rss/", section: Gazdaság (economy), category_hint: economics}
-      - {url: "https://index.hu/24ora/rss/", section: 24 óra, category_hint: general}
-
-  - id: mti_hirado
-    name: MTI / Hirado.hu
-    homepage: https://hirado.hu
-    language: hu
-    scope: domestic
-    kind: official
-    aggregator: google_news
-    needs_mention: true
-    governing_body: Médiaszolgáltatás-támogató és Vagyonkezelő Alap (MTVA / Duna Médiaszolgáltató — statutory state wire and public broadcaster)
-    state_affiliated: true
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:hirado.hu+OR+site:kormany.hu)+when:2d&hl=hu&gl=HU&ceid=HU:hu", section: MTI & Kormány.hu, category_hint: internal_politics}
-
-  - id: magyarnemzet
-    name: Magyar Nemzet
-    homepage: https://magyarnemzet.hu
-    language: hu
-    scope: domestic
-    kind: media
-    governing_body: Mediaworks Hungary Zrt. / KESMA (Central European Press and Media Foundation — pro-government flagship daily)
-    state_affiliated: true
-    feeds:
-      - {url: "https://magyarnemzet.hu/feed", section: Latest, category_hint: general}
-
-  - id: origo
-    name: Origo
-    homepage: https://www.origo.hu
-    language: hu
-    scope: domestic
-    kind: media
-    governing_body: Mediaworks Hungary Zrt. / KESMA (Central European Press and Media Foundation)
-    state_affiliated: true
-    feeds:
-      - {url: "https://www.origo.hu/publicapi/hu/rss/origo/articles", section: Latest, category_hint: general}
-
-  - id: mandiner
-    name: Mandiner
-    homepage: https://mandiner.hu
-    language: hu
-    scope: domestic
-    kind: media
-    governing_body: Mandiner Press Kft. / Mediaworks / KESMA (pro-government conservative weekly and political portal)
-    state_affiliated: true
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:mandiner.hu+when:3d&hl=hu&gl=HU&ceid=HU:hu", section: Belföld & Külföld, category_hint: internal_politics}
-
-  - id: magyarhirlap
-    name: Magyar Hírlap
-    homepage: https://magyarhirlap.hu
-    language: hu
-    scope: domestic
-    kind: media
-    governing_body: Magyar Hírlap Kiadói Kft. (pro-government conservative daily)
-    state_affiliated: true
-    feeds:
-      - {url: "https://magyarhirlap.hu/rss", section: Latest, category_hint: general}
-
-  - id: hungarytoday
-    name: Hungary Today
-    homepage: https://hungarytoday.hu
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: Friends of Hungary Foundation (Magyarország Barátai Alapítvány)
-    state_affiliated: true
-    feeds:
-      - {url: "https://hungarytoday.hu/feed/", section: Latest, category_hint: general}
-
-  - id: hungarianconservative
-    name: Hungarian Conservative
-    homepage: https://www.hungarianconservative.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: Batthyány Lajos Foundation / Danube Institute (English-language conservative quarterly and portal)
-    state_affiliated: true
-    feeds:
-      - {url: "https://www.hungarianconservative.com/feed/", section: Latest, category_hint: general}
-
-  # ---- Külhoni (Carpathian Basin cross-border Hungarian press) & Hungarian-language outlets abroad ----
-  - id: maszol
-    name: Maszol.ro
-    homepage: https://maszol.ro
-    language: hu
-    scope: abroad_local
-    kind: media
-    governing_body: Progress Alapítvány (Cluj-Napoca / Kolozsvár — Hungarian-language daily in Transylvania, Romania)
-    state_affiliated: false
-    feeds:
-      - {url: "https://maszol.ro/rss", section: Latest, category_hint: general}
-
-  - id: transtelex
-    name: Transtelex
-    homepage: https://transtelex.ro
-    language: hu
-    scope: abroad_local
-    kind: media
-    governing_body: Asociația Transtelex (independent Hungarian-language investigative portal in Transylvania, Romania)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:transtelex.ro+when:7d&hl=hu&gl=RO&ceid=RO:hu", section: Erdély, category_hint: general}
-
-  - id: kronika_ro
-    name: Krónika
-    homepage: https://kronikaonline.ro
-    language: hu
-    scope: abroad_local
-    kind: media
-    governing_body: Primo Press Kft. (Erdélyi Médiatér Egyesület — Transylvanian Hungarian daily in Cluj-Napoca)
-    state_affiliated: true
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:kronikaonline.ro+OR+site:szekelyhon.ro)+when:3d&hl=hu&gl=RO&ceid=RO:hu", section: Erdély & Székelyföld, category_hint: general}
-
-  - id: ujszo_sk
-    name: Új Szó
-    homepage: https://ujszo.com
-    language: hu
-    scope: abroad_local
-    kind: media
-    governing_body: Duel-Press s.r.o. (Bratislava / Pozsony — premier Hungarian-language daily newspaper in Slovakia / Felvidék)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:ujszo.com+OR+site:parameter.sk+OR+site:ma7.sk)+when:3d&hl=hu&gl=SK&ceid=SK:hu", section: Felvidék, category_hint: general}
-
-  - id: magyarszo_rs
-    name: Magyar Szó
-    homepage: https://www.magyarszo.rs
-    language: hu
-    scope: abroad_local
-    kind: media
-    governing_body: Magyar Szó Lapkiadó Kft. (Novi Sad / Újvidék — Hungarian National Council daily in Vojvodina, Serbia)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:magyarszo.rs+OR+site:szmsz.press)+when:7d&hl=hu&gl=RS&ceid=RS:sr", section: Vajdaság, category_hint: general}
-
-  - id: kiszo_ua
-    name: Kárpáti Igaz Szó (KISZó)
-    homepage: https://kiszo.net
-    language: hu
-    scope: abroad_local
-    kind: media
-    governing_body: Kárpáti Igaz Szó Kiadó (Uzhhorod / Ungvár — Hungarian-language daily in Transcarpathia / Kárpátalja, Ukraine)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:kiszo.net+OR+site:karpatalja.ma)+when:7d&hl=hu&gl=HU&ceid=HU:hu", section: Kárpátalja, category_hint: general}
-
-  - id: euronews_hu
-    name: Euronews (Hungarian edition)
-    homepage: https://hu.euronews.com
-    language: hu
-    scope: abroad_local
-    kind: media
-    governing_body: Euronews SA (European multilingual news broadcaster — Hungarian service)
-    state_affiliated: false
-    notes: Covers all of Europe; only items that mention Hungary are kept.
-    feeds:
-      - {url: "https://hu.euronews.com/rss", section: Latest, category_hint: general}
-
-  # ---- International ----
-  - id: balkaninsight
-    name: Balkan Insight (BIRN)
-    homepage: https://balkaninsight.com
-    language: en
-    scope: international
-    kind: media
-    governing_body: Balkan Investigative Reporting Network (independent regional investigative network)
-    state_affiliated: false
-    notes: Covers Central and Southeast Europe; only items that mention Hungary are kept.
-    feeds:
-      - {url: "https://balkaninsight.com/feed/", section: All, category_hint: general}
-
-  - id: euronews_en
-    name: Euronews
-    homepage: https://www.euronews.com
-    language: en
-    scope: international
-    kind: media
-    governing_body: Euronews SA (European international news broadcaster)
-    state_affiliated: false
-    notes: Covers Europe and world affairs; only items that mention Hungary are kept.
-    feeds:
-      - {url: "https://www.euronews.com/rss", section: All, category_hint: general}
-
-  - id: dw_eu
-    name: Deutsche Welle (Europe)
-    homepage: https://www.dw.com
-    language: en
-    scope: international
-    kind: media
-    governing_body: Deutsche Welle (German statutory public international broadcaster)
-    state_affiliated: false
-    notes: Only items that mention Hungary are kept.
-    feeds:
-      - {url: "https://rss.dw.com/xml/rss-en-eu", section: Europe, category_hint: general}
-
-  # ---- Aggregators (decision D16) ----
-  - id: gnews_en_hu
-    name: Google News (English)
-    homepage: https://news.google.com
-    language: en
-    scope: international
-    kind: media
-    aggregator: google_news
-    governing_body: n/a (aggregator)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=Hungary+when:1d&hl=en-US&gl=US&ceid=US:en", section: Hungary, category_hint: general}
-      - {url: "https://news.google.com/rss/search?q=Hungary+(EU+funds+OR+%22rule+of+law%22+OR+Brussels+OR+sanctions)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Hungary and the EU, category_hint: general}
-      - {url: "https://news.google.com/rss/search?q=Hungary+(trade+OR+investment+OR+tariff+OR+economy+OR+forint)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Hungary economy, category_hint: general}
-      - {url: "https://news.google.com/rss/search?q=Hungary+(Ukraine+OR+Russia+OR+NATO+OR+energy+OR+China)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Hungary and its neighbours, category_hint: general}
-
-  - id: gnews_hu_press_batch
-    name: Google News (Hungary Business, TV & Fact-Check - Economx/Mfor/Infostart/RTL/Lakmusz/168)
-    homepage: https://news.google.com
-    language: hu
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: Google LLC
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:economx.hu+OR+site:mfor.hu+OR+site:infostart.hu+OR+site:rtl.hu+OR+site:lakmusz.hu+OR+site:168.hu)+when:3d&hl=hu&gl=HU&ceid=HU:hu", section: Gazdaság & TV, category_hint: general}
-
-  - id: gnews_hu
-    name: Google News (Hungarian)
-    homepage: https://news.google.com
-    language: hu
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    needs_mention: true
-    governing_body: n/a (aggregator)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=korm%C3%A1ny+when:1d&hl=hu&gl=HU&ceid=HU:hu", section: Kormány, category_hint: general}
-      - {url: "https://news.google.com/rss/search?q=gazdas%C3%A1g+when:1d&hl=hu&gl=HU&ceid=HU:hu", section: Gazdaság, category_hint: general}
-      - {url: "https://news.google.com/rss/search?q=(k%C3%BCl%C3%BCgyminiszter+OR+nagyk%C3%B6vet+OR+Br%C3%BCsszel)+when:1d&hl=hu&gl=HU&ceid=HU:hu", section: Külügy, category_hint: general}
-      - {url: "https://news.google.com/rss/search?q=(Magyar+P%C3%A9ter+OR+Orb%C3%A1n+Viktor)+when:1d&hl=hu&gl=HU&ceid=HU:hu", section: Politika, category_hint: general}
+- id: telex
+  name: Telex
+  homepage: https://telex.hu
+  language: hu
+  scope: domestic
+  kind: media
+  governing_body: Van Másik Zrt. (reader-funded independent daily founded in 2020)
+  state_affiliated: false
+  feeds:
+  - url: https://telex.hu/rss
+    section: Latest
+    category_hint: general
+  - url: https://telex.hu/rss/kulfold
+    category_hint: foreign_policy
+    section: Külföld
+- id: hvg
+  name: HVG
+  homepage: https://hvg.hu
+  language: hu
+  scope: domestic
+  kind: media
+  governing_body: HVG Kiadó Zrt. (independent political and economic weekly and news portal)
+  state_affiliated: false
+  feeds:
+  - url: https://hvg.hu/rss
+    section: Latest
+    category_hint: general
+  - url: https://hvg.hu/rss/gazdasag
+    category_hint: economics
+    section: Gazdaság
+- id: 444
+  name: 444
+  homepage: https://444.hu
+  language: hu
+  scope: domestic
+  kind: media
+  governing_body: Magyar Jeti Zrt. (independent investigative and political news portal)
+  state_affiliated: false
+  needs_mention: true
+  notes: Article URLs carry no section path, so items require a Hungary mention.
+  feeds:
+  - url: https://444.hu/feed
+    section: Latest
+    category_hint: general
+- id: 24hu
+  name: 24.hu
+  homepage: https://24.hu
+  language: hu
+  scope: domestic
+  kind: media
+  governing_body: Central Médiacsoport Zrt. (independent national digital daily)
+  state_affiliated: false
+  feeds:
+  - url: https://24.hu/feed/
+    section: Latest
+    category_hint: general
+- id: valaszonline
+  name: Válasz Online
+  homepage: https://www.valaszonline.hu
+  language: hu
+  scope: domestic
+  kind: media
+  governing_body: Válasz Online Kiadó Kft. (reader-funded independent conservative investigative and foreign-affairs journal)
+  state_affiliated: false
+  feeds:
+  - url: https://www.valaszonline.hu/feed/
+    section: Cikkek
+    category_hint: internal_politics
+- id: portfolio
+  name: Portfolio.hu
+  homepage: https://www.portfolio.hu
+  language: hu
+  scope: domestic
+  kind: media
+  governing_body: NET Média Zrt. (premier Hungarian financial, macroeconomic, and energy news portal)
+  state_affiliated: false
+  feeds:
+  - url: https://www.portfolio.hu/rss/all.xml
+    section: All news
+    category_hint: economics
+- id: atlatszo
+  name: Átlátszó
+  homepage: https://atlatszo.hu
+  language: hu
+  scope: domestic
+  kind: media
+  governing_body: Átlátszó.hu Közhasznú Nonprofit Kft. (independent investigative watchdog and FOI center)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:atlatszo.hu+when:7d&hl=hu&gl=HU&ceid=HU:hu
+    section: Tényfeltárás
+    category_hint: internal_politics
+- id: nepszava
+  name: Népszava
+  homepage: https://nepszava.hu
+  language: hu
+  scope: domestic
+  kind: media
+  governing_body: XXI. Század Média Kft. (independent social-democratic national daily newspaper)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:nepszava.hu+when:3d&hl=hu&gl=HU&ceid=HU:hu
+    section: Belföld & Külföld
+    category_hint: internal_politics
+- id: g7_hu
+  name: G7.hu
+  homepage: https://g7.hu
+  language: hu
+  scope: domestic
+  kind: media
+  governing_body: G7 Gazdasági Sztorik Zrt. (independent Hungarian economic and investigative analytical portal)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:g7.hu+when:7d&hl=hu&gl=HU&ceid=HU:hu
+    section: Gazdaság
+    category_hint: economics
+- id: magyarhang_hu
+  name: Magyar Hang
+  homepage: https://hang.hu
+  language: hu
+  scope: domestic
+  kind: media
+  governing_body: Alhambra-Press Bt. (independent conservative civic weekly newspaper and news portal)
+  state_affiliated: false
+  feeds:
+  - url: https://hang.hu/rss
+    section: Belföld & Külföld
+    category_hint: internal_politics
+- id: direkt36_hu
+  name: Direkt36
+  homepage: https://www.direkt36.hu
+  language: hu
+  scope: domestic
+  kind: media
+  governing_body: Direkt36 Nonprofit Kft. (premier Hungarian investigative journalism center)
+  state_affiliated: false
+  feeds:
+  - url: https://www.direkt36.hu/feed/
+    section: Oknyomozás
+    category_hint: internal_politics
+- id: magyarnarancs_hu
+  name: Magyar Narancs
+  homepage: https://magyarnarancs.hu
+  language: hu
+  scope: domestic
+  kind: media
+  governing_body: Magyar Narancs.hu Lapkiadó Kft. (historic Hungarian political and cultural weekly)
+  state_affiliated: false
+  feeds:
+  - url: https://magyarnarancs.hu/rss
+    section: Belpol
+    category_hint: internal_politics
+- id: klubradio_hu
+  name: Klubrádió
+  homepage: https://www.klubradio.hu
+  language: hu
+  scope: domestic
+  kind: media
+  governing_body: Klubrádió Zrt. (independent opposition talk radio and digital newsroom)
+  state_affiliated: false
+  feeds:
+  - url: https://www.klubradio.hu/rss
+    section: Hírek
+    category_hint: internal_politics
+- id: atv_hu
+  name: ATV.hu
+  homepage: https://www.atv.hu
+  language: hu
+  scope: domestic
+  kind: media
+  governing_body: ATV Zrt. (major commercial television news channel and political portal)
+  state_affiliated: false
+  feeds:
+  - url: https://www.atv.hu/feed/
+    section: Belföld
+    category_hint: internal_politics
+- id: privatbankar_hu
+  name: Privátbankár.hu
+  homepage: https://privatbankar.hu
+  language: hu
+  scope: domestic
+  kind: media
+  governing_body: Klasszis Média Kft. (independent Hungarian financial, banking, and macro news portal)
+  state_affiliated: false
+  feeds:
+  - url: https://privatbankar.hu/rss
+    section: Piac & Gazdaság
+    category_hint: economics
+- id: novekedes_hu
+  name: Növekedés.hu
+  homepage: https://novekedes.hu
+  language: hu
+  scope: domestic
+  kind: media
+  governing_body: MNB / Növekedés Média (Hungarian economic and central-bank analysis portal)
+  state_affiliated: true
+  feeds:
+  - url: https://novekedes.hu/feed/
+    section: Gazdaság
+    category_hint: economics
+- id: index
+  name: Index
+  homepage: https://index.hu
+  language: hu
+  scope: domestic
+  kind: media
+  governing_body: Indamedia Network Zrt. (high-reach national news portal)
+  state_affiliated: false
+  feeds:
+  - url: https://index.hu/belfold/rss/
+    section: Belföld (domestic)
+    category_hint: internal_politics
+  - url: https://index.hu/gazdasag/rss/
+    section: Gazdaság (economy)
+    category_hint: economics
+  - url: https://index.hu/24ora/rss/
+    section: 24 óra
+    category_hint: general
+- id: mti_hirado
+  name: MTI / Hirado.hu
+  homepage: https://hirado.hu
+  language: hu
+  scope: domestic
+  kind: official
+  aggregator: google_news
+  needs_mention: true
+  governing_body: Médiaszolgáltatás-támogató és Vagyonkezelő Alap (MTVA / Duna Médiaszolgáltató — statutory state wire and public broadcaster)
+  state_affiliated: true
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:hirado.hu+OR+site:kormany.hu)+when:2d&hl=hu&gl=HU&ceid=HU:hu
+    section: MTI & Kormány.hu
+    category_hint: internal_politics
+- id: magyarnemzet
+  name: Magyar Nemzet
+  homepage: https://magyarnemzet.hu
+  language: hu
+  scope: domestic
+  kind: media
+  governing_body: Mediaworks Hungary Zrt. / KESMA (Central European Press and Media Foundation — pro-government flagship daily)
+  state_affiliated: true
+  feeds:
+  - url: https://magyarnemzet.hu/feed
+    section: Latest
+    category_hint: general
+- id: origo
+  name: Origo
+  homepage: https://www.origo.hu
+  language: hu
+  scope: domestic
+  kind: media
+  governing_body: Mediaworks Hungary Zrt. / KESMA (Central European Press and Media Foundation)
+  state_affiliated: true
+  feeds:
+  - url: https://www.origo.hu/publicapi/hu/rss/origo/articles
+    section: Latest
+    category_hint: general
+- id: mandiner
+  name: Mandiner
+  homepage: https://mandiner.hu
+  language: hu
+  scope: domestic
+  kind: media
+  governing_body: Mandiner Press Kft. / Mediaworks / KESMA (pro-government conservative weekly and political portal)
+  state_affiliated: true
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:mandiner.hu+when:3d&hl=hu&gl=HU&ceid=HU:hu
+    section: Belföld & Külföld
+    category_hint: internal_politics
+- id: magyarhirlap
+  name: Magyar Hírlap
+  homepage: https://magyarhirlap.hu
+  language: hu
+  scope: domestic
+  kind: media
+  governing_body: Magyar Hírlap Kiadói Kft. (pro-government conservative daily)
+  state_affiliated: true
+  feeds:
+  - url: https://magyarhirlap.hu/rss
+    section: Latest
+    category_hint: general
+- id: hungarytoday
+  name: Hungary Today
+  homepage: https://hungarytoday.hu
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Friends of Hungary Foundation (Magyarország Barátai Alapítvány)
+  state_affiliated: true
+  feeds:
+  - url: https://hungarytoday.hu/feed/
+    section: Latest
+    category_hint: general
+- id: hungarianconservative
+  name: Hungarian Conservative
+  homepage: https://www.hungarianconservative.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Batthyány Lajos Foundation / Danube Institute (English-language conservative quarterly and portal)
+  state_affiliated: true
+  feeds:
+  - url: https://www.hungarianconservative.com/feed/
+    section: Latest
+    category_hint: general
+- id: maszol
+  name: Maszol.ro
+  homepage: https://maszol.ro
+  language: hu
+  scope: abroad_local
+  kind: media
+  governing_body: Progress Alapítvány (Cluj-Napoca / Kolozsvár — Hungarian-language daily in Transylvania, Romania)
+  state_affiliated: false
+  feeds:
+  - url: https://maszol.ro/rss
+    section: Latest
+    category_hint: general
+- id: transtelex
+  name: Transtelex
+  homepage: https://transtelex.ro
+  language: hu
+  scope: abroad_local
+  kind: media
+  governing_body: Asociația Transtelex (independent Hungarian-language investigative portal in Transylvania, Romania)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:transtelex.ro+when:7d&hl=hu&gl=RO&ceid=RO:hu
+    section: Erdély
+    category_hint: general
+- id: kronika_ro
+  name: Krónika
+  homepage: https://kronikaonline.ro
+  language: hu
+  scope: abroad_local
+  kind: media
+  governing_body: Primo Press Kft. (Erdélyi Médiatér Egyesület — Transylvanian Hungarian daily in Cluj-Napoca)
+  state_affiliated: true
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:kronikaonline.ro+OR+site:szekelyhon.ro)+when:3d&hl=hu&gl=RO&ceid=RO:hu
+    section: Erdély & Székelyföld
+    category_hint: general
+- id: ujszo_sk
+  name: Új Szó
+  homepage: https://ujszo.com
+  language: hu
+  scope: abroad_local
+  kind: media
+  governing_body: Duel-Press s.r.o. (Bratislava / Pozsony — premier Hungarian-language daily newspaper in Slovakia / Felvidék)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:ujszo.com+OR+site:parameter.sk+OR+site:ma7.sk)+when:3d&hl=hu&gl=SK&ceid=SK:hu
+    section: Felvidék
+    category_hint: general
+- id: magyarszo_rs
+  name: Magyar Szó
+  homepage: https://www.magyarszo.rs
+  language: hu
+  scope: abroad_local
+  kind: media
+  governing_body: Magyar Szó Lapkiadó Kft. (Novi Sad / Újvidék — Hungarian National Council daily in Vojvodina, Serbia)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:magyarszo.rs+OR+site:szmsz.press)+when:7d&hl=hu&gl=RS&ceid=RS:sr
+    section: Vajdaság
+    category_hint: general
+- id: kiszo_ua
+  name: Kárpáti Igaz Szó (KISZó)
+  homepage: https://kiszo.net
+  language: hu
+  scope: abroad_local
+  kind: media
+  governing_body: Kárpáti Igaz Szó Kiadó (Uzhhorod / Ungvár — Hungarian-language daily in Transcarpathia / Kárpátalja, Ukraine)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:kiszo.net+OR+site:karpatalja.ma)+when:7d&hl=hu&gl=HU&ceid=HU:hu
+    section: Kárpátalja
+    category_hint: general
+- id: euronews_hu
+  name: Euronews (Hungarian edition)
+  homepage: https://hu.euronews.com
+  language: hu
+  scope: abroad_local
+  kind: media
+  governing_body: Euronews SA (European multilingual news broadcaster — Hungarian service)
+  state_affiliated: false
+  notes: Covers all of Europe; only items that mention Hungary are kept.
+  feeds:
+  - url: https://hu.euronews.com/rss
+    section: Latest
+    category_hint: general
+- id: balkaninsight
+  name: Balkan Insight (BIRN)
+  homepage: https://balkaninsight.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Balkan Investigative Reporting Network (independent regional investigative network)
+  state_affiliated: false
+  notes: Covers Central and Southeast Europe; only items that mention Hungary are kept.
+  feeds:
+  - url: https://balkaninsight.com/feed/
+    section: All
+    category_hint: general
+- id: euronews_en
+  name: Euronews
+  homepage: https://www.euronews.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Euronews SA (European international news broadcaster)
+  state_affiliated: false
+  notes: Covers Europe and world affairs; only items that mention Hungary are kept.
+  feeds:
+  - url: https://www.euronews.com/rss
+    section: All
+    category_hint: general
+- id: dw_eu
+  name: Deutsche Welle (Europe)
+  homepage: https://www.dw.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Deutsche Welle (German statutory public international broadcaster)
+  state_affiliated: false
+  notes: Only items that mention Hungary are kept.
+  feeds:
+  - url: https://rss.dw.com/xml/rss-en-eu
+    section: Europe
+    category_hint: general
+- id: szabadpecs_hu
+  name: Szabad Pécs
+  homepage: https://szabadpecs.hu
+  language: hu
+  scope: domestic
+  kind: media
+  governing_body: Szabad Pécs (independent regional investigative newsroom)
+  state_affiliated: false
+  notes: Independent southern Hungarian regional investigative and public-affairs portal.
+  feeds:
+  - url: https://szabadpecs.hu/feed/
+    section: Hírek
+    category_hint: society
+- id: gnews_en_hu
+  name: Google News (English)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  aggregator: google_news
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=Hungary+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Hungary
+    category_hint: general
+  - url: https://news.google.com/rss/search?q=Hungary+(EU+funds+OR+%22rule+of+law%22+OR+Brussels+OR+sanctions)+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Hungary and the EU
+    category_hint: general
+  - url: https://news.google.com/rss/search?q=Hungary+(trade+OR+investment+OR+tariff+OR+economy+OR+forint)+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Hungary economy
+    category_hint: general
+  - url: https://news.google.com/rss/search?q=Hungary+(Ukraine+OR+Russia+OR+NATO+OR+energy+OR+China)+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Hungary and its neighbours
+    category_hint: general
+- id: gnews_hu_press_batch
+  name: Google News (Hungary Business, TV & Fact-Check - Economx/Mfor/Infostart/RTL/Lakmusz/168)
+  homepage: https://news.google.com
+  language: hu
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: Google LLC
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:economx.hu+OR+site:mfor.hu+OR+site:infostart.hu+OR+site:rtl.hu+OR+site:lakmusz.hu+OR+site:168.hu)+when:3d&hl=hu&gl=HU&ceid=HU:hu
+    section: Gazdaság & TV
+    category_hint: general
+- id: gnews_hu
+  name: Google News (Hungarian)
+  homepage: https://news.google.com
+  language: hu
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  needs_mention: true
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=korm%C3%A1ny+when:1d&hl=hu&gl=HU&ceid=HU:hu
+    section: Kormány
+    category_hint: general
+  - url: https://news.google.com/rss/search?q=gazdas%C3%A1g+when:1d&hl=hu&gl=HU&ceid=HU:hu
+    section: Gazdaság
+    category_hint: general
+  - url: https://news.google.com/rss/search?q=(k%C3%BCl%C3%BCgyminiszter+OR+nagyk%C3%B6vet+OR+Br%C3%BCsszel)+when:1d&hl=hu&gl=HU&ceid=HU:hu
+    section: Külügy
+    category_hint: general
+  - url: https://news.google.com/rss/search?q=(Magyar+P%C3%A9ter+OR+Orb%C3%A1n+Viktor)+when:1d&hl=hu&gl=HU&ceid=HU:hu
+    section: Politika
+    category_hint: general

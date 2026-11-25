@@ -205,8 +205,44 @@ sources:
   feeds:
   - url: https://news.google.com/rss/search?q=(site:stm.dk+OR+site:ft.dk+OR+site:ritzau.dk)+when:7d&hl=da&gl=DK&ceid=DK:da
     category_hint: internal_politics
+- id: danwatch_dk
+  name: Danwatch
+  homepage: https://danwatch.dk
+  language: da
+  scope: domestic
+  kind: media
+  governing_body: Danwatch (independent investigative journalism center)
+  state_affiliated: false
+  notes: Danish investigative journalism center covering defense supply chains, Arctic, and corporate governance.
+  feeds:
+  - url: https://danwatch.dk/feed/
+    category_hint: foreign_policy
+- id: frihedsbrevet_dk
+  name: Frihedsbrevet
+  homepage: https://frihedsbrevet.dk
+  language: da
+  scope: domestic
+  kind: media
+  governing_body: Frihedsbrevet ApS
+  state_affiliated: false
+  notes: Reader-funded Danish investigative newsroom covering ministries, lobbying, and power.
+  feeds:
+  - url: https://frihedsbrevet.dk/feed/
+    category_hint: internal_politics
+- id: nordjyske_dk
+  name: Nordjyske
+  homepage: https://nordjyske.dk
+  language: da
+  scope: domestic
+  kind: media
+  governing_body: Det Nordjyske Mediehus
+  state_affiliated: false
+  notes: Northern Jutland daily broadsheet covering regional industry, energy, and municipal politics.
+  feeds:
+  - url: https://nordjyske.dk/rss/nyheder
+    category_hint: society
 - id: gnews_denmark_press_batch
-  name: Google News (Denmark Broadsheets & Regional - Information/Kristeligt Dagblad/Weekendavisen/Zetland/Nordjyske/JydskeVestkysten)
+  name: Google News (Denmark Broadsheets & Regional - Information/Kristeligt Dagblad/Weekendavisen/Zetland/JydskeVestkysten)
   homepage: https://news.google.com
   language: da
   scope: domestic
@@ -216,7 +252,7 @@ sources:
   aggregator: google_news
   notes: Aggregator capturing subscription dailies, weeklies, and regional Danish newspapers without open RSS.
   feeds:
-  - url: https://news.google.com/rss/search?q=(site:information.dk+OR+site:kristeligt-dagblad.dk+OR+site:weekendavisen.dk+OR+site:zetland.dk+OR+site:nordjyske.dk+OR+site:fyens.dk+OR+site:jv.dk)+when:3d&hl=da&gl=DK&ceid=DK:da
+  - url: https://news.google.com/rss/search?q=(site:information.dk+OR+site:kristeligt-dagblad.dk+OR+site:weekendavisen.dk+OR+site:zetland.dk+OR+site:fyens.dk+OR+site:jv.dk)+when:3d&hl=da&gl=DK&ceid=DK:da
     category_hint: internal_politics
 - id: gnews_denmark_da
   name: Google News (Denmark National News - Danish)

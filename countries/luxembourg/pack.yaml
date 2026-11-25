@@ -3,54 +3,88 @@ name: Luxembourg
 region: Western Europe
 language: fr
 abroad_label: Regional & International Luxembourg coverage
-
 mention:
-  - "luxembourg"
-  - "luxembourgeois"
-  - "luxemburg"
-  - "lëtzebuerg"
-  - "luc frieden"
-  - "frieden"
-  - "xavier bettel"
-  - "bettel"
-  - "csv"
-  - "lsap"
-  - "chambre des députés"
-  - "kirchberg"
-  - "cour de justice"
-  - "ecj"
-  - "cjue"
-  - "bei"
-  - "eib"
-mention_regex: ['\bluxembour', '\bluxemburg', '\blëtzebuerg']
+- luxembourg
+- luxembourgeois
+- luxemburg
+- lëtzebuerg
+- luc frieden
+- frieden
+- xavier bettel
+- bettel
+- csv
+- lsap
+- chambre des députés
+- kirchberg
+- cour de justice
+- ecj
+- cjue
+- bei
+- eib
+mention_regex:
+- \bluxembour
+- \bluxemburg
+- \blëtzebuerg
 mention_section: null
-
 url_sections:
-  foreign: [international, monde, europe, grande-region, welt]
-  skip: [sport, sports, culture, kultur, lifestyle, auto, people, loisirs]
-
+  foreign:
+  - international
+  - monde
+  - europe
+  - grande-region
+  - welt
+  skip:
+  - sport
+  - sports
+  - culture
+  - kultur
+  - lifestyle
+  - auto
+  - people
+  - loisirs
 aggregator_outlets:
-  domestic: ["rtl", "rtl.lu", "rtl today", "luxemburger wort", "wort.lu", "luxembourg times", "virgule", "virgule.lu",
-             "paperjam", "delano", "le quotidien", "lequotidien.lu", "tageblatt", "tageblatt.lu", "lessentiel", "lessentiel.lu",
-             "reporter.lu", "chronicle.lu", "woxx", "land.lu", "infogreen"]
-  abroad_local: ["politico europe", "euractiv", "euobserver"]
-
+  domestic:
+  - rtl
+  - rtl.lu
+  - rtl today
+  - luxemburger wort
+  - wort.lu
+  - luxembourg times
+  - virgule
+  - virgule.lu
+  - paperjam
+  - delano
+  - le quotidien
+  - lequotidien.lu
+  - tageblatt
+  - tageblatt.lu
+  - lessentiel
+  - lessentiel.lu
+  - reporter.lu
+  - chronicle.lu
+  - woxx
+  - land.lu
+  - infogreen
+  - infogreen.lu
+  abroad_local:
+  - politico europe
+  - euractiv
+  - euobserver
 excerpt:
-  dateline: '^\s*(?:RTL|LUXEMBOURG)\s*[-–—:]\s*'
-  noise: '^(photo|source|vidéo|lire aussi|publicité|\(|\[)'
-
+  dateline: ^\s*(?:RTL|LUXEMBOURG)\s*[-–—:]\s*
+  noise: ^(photo|source|vidéo|lire aussi|publicité|\(|\[)
 classify:
   internal_politics:
-    - "Gouvernement du Grand-Duché de Luxembourg, Premier ministre Luc Frieden, Xavier Bettel, Chambre des députés, CSV, DP, LSAP, Grands-Ducs, élections"
+  - Gouvernement du Grand-Duché de Luxembourg, Premier ministre Luc Frieden, Xavier Bettel, Chambre des députés, CSV, DP, LSAP, Grands-Ducs, élections
   economics:
-    - "place financière, CSSF, fonds d'investissement, fiscalité, STATEC, budget, Banque européenne d'investissement (BEI / EIB), ArcelorMittal, SES, inflation"
+  - place financière, CSSF, fonds d'investissement, fiscalité, STATEC, budget, Banque européenne d'investissement (BEI / EIB), ArcelorMittal, SES, inflation
   foreign_policy:
-    - "politique étrangère, Cour de justice de l'Union européenne (CJUE / ECJ), Conseil des affaires générales, Grande Région, Benelux, OTAN"
+  - politique étrangère, Cour de justice de l'Union européenne (CJUE / ECJ), Conseil des affaires générales, Grande Région, Benelux, OTAN
   defence_security:
-    - "Armée luxembourgeoise, défense, satellite militaire, OTAN, sécurité intérieure, police grand-ducale"
+  - Armée luxembourgeoise, défense, satellite militaire, OTAN, sécurité intérieure, police grand-ducale
   society:
-    - "logement, indexation des salaires, frontaliers, santé, CNS, éducation, justice"
-
+  - logement, indexation des salaires, frontaliers, santé, CNS, éducation, justice
 geo: LU
-reddit: [Luxembourg]
-last_reviewed: 2026-11-17
+reddit:
+- Luxembourg
+last_reviewed: '2026-11-25'

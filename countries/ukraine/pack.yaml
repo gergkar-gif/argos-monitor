@@ -4,189 +4,235 @@ name: Ukraine
 region: Eastern Europe
 language: uk
 abroad_label: International & regional Eastern European outlets
-
 mention:
-  - "ukraine"
-  - "ukrainian"
-  - "kyiv"
-  - "kiev"
-  - "zelenskyy"
-  - "zelensky"
-  - "україни"
-  - "україні"
-  - "україну"
-  - "києва"
-  - "києві"
-  - "зеленського"
-  - "зсу"
-  - "sybiha"
-  - "syrskyi"
-  - "budanov"
-  - "umierov"
-  - "shmyhal"
-  - "yermak"
-  - "koretsky"
-  - "kharkiv"
-  - "odesa"
-  - "dnipro"
-  - "lviv"
-  - "zaporizhzhia"
-  - "donetsk"
-  - "luhansk"
-  - "crimea"
-  - "donbas"
-  - "pokrovsk"
-  - "kupiansk"
-  - "verkhovna rada"
-  - "ukrenergo"
-  - "ukroboronprom"
-  - "nabu"
-  - "україна"
-  - "київ"
-  - "зеленський"
-  - "сибіга"
-  - "буданов"
-  - "сирський"
-  - "умєров"
-  - "шмигаль"
-  - "єрмак"
-  - "корецький"
-  - "харків"
-  - "одеса"
-  - "дніпро"
-  - "львів"
-  - "запоріжжя"
-  - "покровськ"
-  - "крим"
-  - "донбас"
-  - "верховна рада"
-
+- ukraine
+- ukrainian
+- kyiv
+- kiev
+- zelenskyy
+- zelensky
+- україни
+- україні
+- україну
+- києва
+- києві
+- зеленського
+- зсу
+- sybiha
+- syrskyi
+- budanov
+- umierov
+- shmyhal
+- yermak
+- koretsky
+- kharkiv
+- odesa
+- dnipro
+- lviv
+- zaporizhzhia
+- donetsk
+- luhansk
+- crimea
+- donbas
+- pokrovsk
+- kupiansk
+- verkhovna rada
+- ukrenergo
+- ukroboronprom
+- nabu
+- україна
+- київ
+- зеленський
+- сибіга
+- буданов
+- сирський
+- умєров
+- шмигаль
+- єрмак
+- корецький
+- харків
+- одеса
+- дніпро
+- львів
+- запоріжжя
+- покровськ
+- крим
+- донбас
+- верховна рада
 mention_regex:
-  - '\b(?:ukraine|ukrainian|ukrainians|kyiv|kiev|zelenskyy|zelensky|syrskyi|zaluzhnyi|sybiha|yermak|shmyhal|umierov|budanov|koretsky|pokrovsk|kupiansk|kharkiv|odesa|odessa|dnipro|lviv|zaporizhzhia|donetsk|luhansk|crimea|donbas|kherson|mykolaiv|sumy|chernihiv|ukrenergo|ukroboronprom|dtek|naftogaz|nabu|sapo)\b'
-  - '(?:^|[^\w])(?:україн\w*|київ\w*|києв\w*|зеленськ\w*|сирськ\w*|сибіг\w*|шмигал\w*|умєров\w*|буданов\w*|єрмак\w*|корецьк\w*|свириденк\w*|харк[іо]в\w*|одес\w*|одещин\w*|дніпр\w*|льв[іо]в\w*|запоріж\w*|донец\w*|донечч\w*|луган\w*|крим\w*|донбас\w*|покровськ\w*|куп[''’]?янськ\w*|херсон\w*|миколаїв\w*|сумщин\w*|черніг[іо]в\w*|полтав\w*|крив\w*\s+р[іо]г\w*|кропивниц\w*|маріупол\w*|мелітопол\w*|енергодар\w*|хмельниц\w*|вінниц\w*|житомир\w*|рівн\w*|волин\w*|закарпат\w*|ужгород\w*|зсу|набу|сап|вакс|дснс|гур|сбу|укренерго|дтек|нафтогаз\w*|укроборонпром\w*|верховн\w*\s+рад\w*)(?=$|[^\w])'
+- \b(?:ukraine|ukrainian|ukrainians|kyiv|kiev|zelenskyy|zelensky|syrskyi|zaluzhnyi|sybiha|yermak|shmyhal|umierov|budanov|koretsky|pokrovsk|kupiansk|kharkiv|odesa|odessa|dnipro|lviv|zaporizhzhia|donetsk|luhansk|crimea|donbas|kherson|mykolaiv|sumy|chernihiv|ukrenergo|ukroboronprom|dtek|naftogaz|nabu|sapo)\b
+- (?:^|[^\w])(?:україн\w*|київ\w*|києв\w*|зеленськ\w*|сирськ\w*|сибіг\w*|шмигал\w*|умєров\w*|буданов\w*|єрмак\w*|корецьк\w*|свириденк\w*|харк[іо]в\w*|одес\w*|одещин\w*|дніпр\w*|льв[іо]в\w*|запоріж\w*|донец\w*|донечч\w*|луган\w*|крим\w*|донбас\w*|покровськ\w*|куп['’]?янськ\w*|херсон\w*|миколаїв\w*|сумщин\w*|черніг[іо]в\w*|полтав\w*|крив\w*\s+р[іо]г\w*|кропивниц\w*|маріупол\w*|мелітопол\w*|енергодар\w*|хмельниц\w*|вінниц\w*|житомир\w*|рівн\w*|волин\w*|закарпат\w*|ужгород\w*|зсу|набу|сап|вакс|дснс|гур|сбу|укренерго|дтек|нафтогаз\w*|укроборонпром\w*|верховн\w*\s+рад\w*)(?=$|[^\w])
 mention_section: null
-
 url_sections:
-  foreign: [world, international, svit, mir, planet, rubric-world, za-kordonom, u-sviti]
-  skip: [sport, sports, football, futbol, hockey, tennis, box, lifestyle, life, lifehack, zhittya, zhyttia, culture, kultura, kino, show, showbiz, shou-biznes, tabloid, curiosities, auto, avto, tech, entertainment, horoscopes, horoskop, astro, weather, pogoda, food, recipes, health, zdorovya, moda, lady, travel, podorozhi, games]
-
+  foreign:
+  - world
+  - international
+  - svit
+  - mir
+  - planet
+  - rubric-world
+  - za-kordonom
+  - u-sviti
+  skip:
+  - sport
+  - sports
+  - football
+  - futbol
+  - hockey
+  - tennis
+  - box
+  - lifestyle
+  - life
+  - lifehack
+  - zhittya
+  - zhyttia
+  - culture
+  - kultura
+  - kino
+  - show
+  - showbiz
+  - shou-biznes
+  - tabloid
+  - curiosities
+  - auto
+  - avto
+  - tech
+  - entertainment
+  - horoscopes
+  - horoskop
+  - astro
+  - weather
+  - pogoda
+  - food
+  - recipes
+  - health
+  - zdorovya
+  - moda
+  - lady
+  - travel
+  - podorozhi
+  - games
 aggregator_outlets:
   domestic:
-    - "ukrinform"
-    - "укрінформ"
-    - "укрінформ - актуальні новини україни та світу"
-    - "ukrainska pravda"
-    - "українська правда"
-    - "уп. життя"
-    - "ekonomichna pravda"
-    - "економічна правда"
-    - "european pravda"
-    - "європейська правда"
-    - "the kyiv independent"
-    - "kyiv independent"
-    - "kyiv post"
-    - "the new voice of ukraine"
-    - "new voice of ukraine"
-    - "united24 media"
-    - "euromaidan press"
-    - "babel"
-    - "бабель"
-    - "nv"
-    - "novoye vremya"
-    - "rbc-ukraine"
-    - "рбк-україна"
-    - "rbc"
-    - "interfax-ukraine"
-    - "інтерфакс-україна"
-    - "hromadske"
-    - "громадське"
-    - "suspilne"
-    - "суспільне"
-    - "суспільне | новини"
-    - "суспільне новини"
-    - "суспільне мовлення"
-    - "censor.net"
-    - "цензор.нет"
-    - "liga.net"
-    - "ліга.нет"
-    - "espreso"
-    - "еспресо"
-    - "unian"
-    - "уніан"
-    - "українські національні новини"
-    - "унн"
-    - "ukrainian news agency"
-    - "bihus.info"
-    - "бігус.інфо"
-    - "detector media"
-    - "детектор медіа"
-    - "militarnyi"
-    - "мілітарний"
-    - "lb.ua"
-    - "лівий берег"
-    - "zn.ua"
-    - "дзеркало тижня"
-    - "fakty"
-    - "факти"
-    - "glavred"
-    - "главред"
-    - "rubryka"
-    - "рубрика"
-    - "forbes ukraine"
-    - "форбс україна"
-    - "tsn"
-    - "тсн"
-    - "24tv"
-    - "24 канал"
-    - "slidstvo.info"
-    - "слідство.інфо"
-    - "texty.org.ua"
-    - "тексти"
-    - "ua.news"
-    - "uatv.ua"
-    - "ukraine business news"
-    - "gwara media"
-    - "mezha.net"
-    - "odessa journal"
-    - "судово-юридична газета"
-    - "офіційне інтернет-представництво президента україни"
-    - "міністерство оборони україни"
-    - "кабінет міністрів україни"
+  - ukrinform
+  - укрінформ
+  - укрінформ - актуальні новини україни та світу
+  - ukrainska pravda
+  - українська правда
+  - уп. життя
+  - ekonomichna pravda
+  - економічна правда
+  - european pravda
+  - європейська правда
+  - the kyiv independent
+  - kyiv independent
+  - kyiv post
+  - the new voice of ukraine
+  - new voice of ukraine
+  - united24 media
+  - euromaidan press
+  - babel
+  - бабель
+  - nv
+  - novoye vremya
+  - rbc-ukraine
+  - рбк-україна
+  - rbc
+  - interfax-ukraine
+  - інтерфакс-україна
+  - hromadske
+  - громадське
+  - suspilne
+  - суспільне
+  - суспільне | новини
+  - суспільне новини
+  - суспільне мовлення
+  - censor.net
+  - цензор.нет
+  - liga.net
+  - ліга.нет
+  - espreso
+  - еспресо
+  - unian
+  - уніан
+  - українські національні новини
+  - унн
+  - ukrainian news agency
+  - bihus.info
+  - бігус.інфо
+  - detector media
+  - детектор медіа
+  - militarnyi
+  - мілітарний
+  - lb.ua
+  - лівий берег
+  - zn.ua
+  - дзеркало тижня
+  - fakty
+  - факти
+  - glavred
+  - главред
+  - rubryka
+  - рубрика
+  - forbes ukraine
+  - форбс україна
+  - tsn
+  - тсн
+  - 24tv
+  - 24 канал
+  - slidstvo.info
+  - слідство.інфо
+  - texty.org.ua
+  - тексти
+  - ua.news
+  - uatv.ua
+  - ukraine business news
+  - gwara media
+  - mezha.net
+  - odessa journal
+  - судово-юридична газета
+  - офіційне інтернет-представництво президента україни
+  - міністерство оборони україни
+  - кабінет міністрів україни
   abroad_local:
-    - "rfe/rl ukrainian"
-    - "radio svoboda"
-    - "радіо свобода"
-    - "крим.реалии"
-    - "крим.реалії"
-    - "bbc news ukrainian"
-    - "bbc news українська"
-    - "dw ukrainian"
-    - "dw українською"
-    - "voice of america ukrainian"
-    - "голос америки"
-
+  - rfe/rl ukrainian
+  - radio svoboda
+  - радіо свобода
+  - крим.реалии
+  - крим.реалії
+  - bbc news ukrainian
+  - bbc news українська
+  - dw ukrainian
+  - dw українською
+  - voice of america ukrainian
+  - голос америки
 excerpt:
-  dateline: '^\s*(?:KYIV|KIEV|UKRINFORM|INTERFAX|RBC|КИЇВ|УКРІНФОРМ|ІНТЕРФАКС|РБК)\s*[-–—:]\s*'
-  noise: '^(Фото|Джерело|Читайте також|Photo|Credit|\(|\[)'
-
+  dateline: ^\s*(?:KYIV|KIEV|UKRINFORM|INTERFAX|RBC|КИЇВ|УКРІНФОРМ|ІНТЕРФАКС|РБК)\s*[-–—:]\s*
+  noise: ^(Фото|Джерело|Читайте також|Photo|Credit|\(|\[)
 classify:
   internal_politics:
-    - "President Volodymyr Zelenskyy, Office of the President (Andriy Yermak), Verkhovna Rada (Parliament), government cabinet (Denys Shmyhal), anti-corruption agencies (NABU, SAPO, HACC), martial law governance"
-    - "Володимир Зеленський, Офіс Президента, Верховна Рада, Кабінет Міністрів, Денис Шмигаль, НАБУ, САП, ВАКС, воєнний стан, вибори, уряд, політика"
+  - President Volodymyr Zelenskyy, Office of the President (Andriy Yermak), Verkhovna Rada (Parliament), government cabinet (Denys Shmyhal), anti-corruption agencies (NABU, SAPO, HACC), martial law governance
+  - Володимир Зеленський, Офіс Президента, Верховна Рада, Кабінет Міністрів, Денис Шмигаль, НАБУ, САП, ВАКС, воєнний стан, вибори, уряд, політика
   economics:
-    - "National Bank of Ukraine (NBU), state budget and Western financial aid, IMF loans, grain corridor export, Black Sea maritime shipping, energy infrastructure repairs (Ukrenergo, DTEK, Naftogaz), hryvnia rate"
-    - "Національний банк України, НБУ, держбюджет, фінансова допомога, МВФ, експорт зерна, чорноморський коридор, енергетика, Укренерго, ДТЕК, Нафтогаз, гривня, відключення світла"
+  - National Bank of Ukraine (NBU), state budget and Western financial aid, IMF loans, grain corridor export, Black Sea maritime shipping, energy infrastructure repairs (Ukrenergo, DTEK, Naftogaz), hryvnia rate
+  - Національний банк України, НБУ, держбюджет, фінансова допомога, МВФ, експорт зерна, чорноморський коридор, енергетика, Укренерго, ДТЕК, Нафтогаз, гривня, відключення світла
   foreign_policy:
-    - "Peace formula diplomacy, peace summits, European Union accession talks, NATO integration and bilateral security agreements, Foreign Minister Andrii Sybiha, relations with US, Poland, Germany, UK, France, Hungary"
-    - "Формула миру, саміт миру, вступ до ЄС, інтеграція в НАТО, безпекові угоди, Андрій Сибіга, США, Польща, Німеччина, Велика Британія, Угорщина, дипломатія"
+  - Peace formula diplomacy, peace summits, European Union accession talks, NATO integration and bilateral security agreements, Foreign Minister Andrii Sybiha, relations with US, Poland, Germany, UK, France, Hungary
+  - Формула миру, саміт миру, вступ до ЄС, інтеграція в НАТО, безпекові угоди, Андрій Сибіга, США, Польща, Німеччина, Велика Британія, Угорщина, дипломатія
   defence_security:
-    - "Armed Forces of Ukraine (ZSU), Commander-in-Chief Oleksandr Syrskyi, Kyrylo Budanov, frontline battles (Pokrovsk, Kupiansk, Kursk), Western weapons (Patriot, F-16, ATACMS), drone warfare, defense industry Ukroboronprom"
-    - "Генеральний штаб ЗСУ, Олександр Сирський, Кирило Буданов, фронт, бойові дії, Покровськ, Куп'янськ, Курська операція, ППО Patriot, винищувачі F-16, далекобійні удари, дрони, БпЛА, Укроборонпром"
+  - Armed Forces of Ukraine (ZSU), Commander-in-Chief Oleksandr Syrskyi, Kyrylo Budanov, frontline battles (Pokrovsk, Kupiansk, Kursk), Western weapons (Patriot, F-16, ATACMS), drone warfare, defense industry Ukroboronprom
+  - Генеральний штаб ЗСУ, Олександр Сирський, Кирило Буданов, фронт, бойові дії, Покровськ, Куп'янськ, Курська операція, ППО Patriot, винищувачі F-16, далекобійні удари, дрони, БпЛА, Укроборонпром
   society:
-    - "Internally displaced persons (IDPs), refugees, civilian war casualties, power outages, winter heating, medical rehabilitation of wounded veterans, wartime schooling"
-    - "Переселенці, біженці, цивільні втрати, відключення світла, опалювальний сезон, ветерани, реабілітація, охорона здоров'я, освіта"
-
+  - Internally displaced persons (IDPs), refugees, civilian war casualties, power outages, winter heating, medical rehabilitation of wounded veterans, wartime schooling
+  - Переселенці, біженці, цивільні втрати, відключення світла, опалювальний сезон, ветерани, реабілітація, охорона здоров'я, освіта
 geo: UA
-reddit: [ukraine, ukraina]
-telegram: [kyivindependent_official, ukrinform_news, uniannet, suspilnenews, ukrpravda_news]
-last_reviewed: 2026-11-17
+reddit:
+- ukraine
+- ukraina
+telegram:
+- kyivindependent_official
+- ukrinform_news
+- uniannet
+- suspilnenews
+- ukrpravda_news
+last_reviewed: '2026-11-25'

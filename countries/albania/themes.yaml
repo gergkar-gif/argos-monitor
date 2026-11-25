@@ -1,28 +1,77 @@
 # Albania's additions to the shared themes (../../themes.yaml).
 themes:
-  - id: party_gov
-    label: "Rama (PS) Government, Berisha (PD) Opposition & SPAK Anti-Corruption"
-    weight: 1.0
-    category: internal_politics
-    describe:
-      - Prime Minister Edi Rama and Socialist Party (PS) government, Sali Berisha and Democratic Party (PD) opposition protests, Special Anti-Corruption Structure (SPAK) and Special Court (GJKKO) prosecutions of high-level officials, parliamentary elections
-      - Kryeministri Edi Rama, Partia Socialiste, Sali Berisha, Partia Demokratike, SPAK, Altin Dumani, GJKKO, Kuvendi i Shqipërisë
-    keywords: ["edi rama", "sali berisha", "berisha", "spak", "gjkko", "altin dumani", "partia socialiste", "partia demokratike", "kuvendi", "ilir meta"]
-
-  - id: diplomacy
-    label: "EU Accession Cluster Negotiations, Italy Migration Protocol & Regional Diplomacy"
-    weight: 1.0
-    category: foreign_policy
-    describe:
-      - Albania EU accession cluster openings, Italy–Albania offshore migrant processing centres (Shëngjin / Gjadër protocol with Giorgia Meloni), bilateral relations with Greece, Kosovo, and Hungary, and NATO Kuçovë airbase
-      - integrimi në Bashkimin Evropian, hapja e grup-kapitujve, marrëveshja me Italinë për emigrantët në Gjadër dhe Shëngjin, baza ajrore e NATO-s në Kuçovë
-    keywords: ["integrimi evropian", "bashkimi evropian", "shëngjin", "gjadër", "meloni", "kuçovë", "nato", "himarë"]
-
-  - id: energy_infra
-    label: "Corridor 8, Port of Durrës Redevelopment, Telecom (4iG) & Hydropower"
-    weight: 0.95
-    category: economics
-    describe:
-      - Port of Durrës and Porto Romano commercial/naval port redevelopment, Corridor 8 rail and highway construction, renewable solar and hydropower investments, and Hungarian (4iG / ONE Albania, OTP Bank) strategic investments
-      - Porti i Durrësit, Porto Romano, Korridori 8, energjia diellore dhe hidrocentralet, KESH, Banka e Shqipërisë, ONE Albania, OTP
-    keywords: ["porti i durrësit", "porto romano", "korridori 8", "kesh", "banka e shqipërisë", "turizmi", "4ig", "one albania"]
+- id: party_gov
+  label: Rama (PS) Government, Berisha (PD) Opposition & SPAK Anti-Corruption
+  weight: 1.0
+  category: internal_politics
+  describe:
+  - Prime Minister Edi Rama and Socialist Party (PS) government, Sali Berisha and Democratic Party (PD) opposition protests, Special Anti-Corruption Structure (SPAK) and Special Court (GJKKO) prosecutions of high-level officials, parliamentary elections
+  - Kryeministri Edi Rama, Partia Socialiste, Sali Berisha, Partia Demokratike, SPAK, Altin Dumani, GJKKO, Kuvendi i Shqipërisë
+  keywords:
+  - edi rama
+  - sali berisha
+  - berisha
+  - spak
+  - gjkko
+  - altin dumani
+  - partia socialiste
+  - partia demokratike
+  - kuvendi
+  - ilir meta
+- id: diplomacy
+  label: EU Accession Cluster Negotiations, Italy Migration Protocol & Regional Diplomacy
+  weight: 1.0
+  category: foreign_policy
+  describe:
+  - Albania EU accession cluster openings, Italy–Albania offshore migrant processing centres (Shëngjin / Gjadër protocol with Giorgia Meloni), bilateral relations with Greece, Kosovo, and Hungary, and NATO Kuçovë airbase
+  - integrimi në Bashkimin Evropian, hapja e grup-kapitujve, marrëveshja me Italinë për emigrantët në Gjadër dhe Shëngjin, baza ajrore e NATO-s në Kuçovë
+  keywords:
+  - integrimi evropian
+  - bashkimi evropian
+  - shëngjin
+  - gjadër
+  - meloni
+  - kuçovë
+  - nato
+  - himarë
+- id: energy_infra
+  label: Corridor 8, Port of Durrës Redevelopment, Telecom (4iG) & Hydropower
+  weight: 0.95
+  category: economics
+  describe:
+  - Port of Durrës and Porto Romano commercial/naval port redevelopment, Corridor 8 rail and highway construction, renewable solar and hydropower investments, and Hungarian (4iG / ONE Albania, OTP Bank) strategic investments
+  - Porti i Durrësit, Porto Romano, Korridori 8, energjia diellore dhe hidrocentralet, KESH, Banka e Shqipërisë, ONE Albania, OTP
+  keywords:
+  - porti i durrësit
+  - porto romano
+  - korridori 8
+  - kesh
+  - banka e shqipërisë
+  - turizmi
+  - 4ig
+  - one albania
+- id: elections
+  describe:
+  - Albanian parliamentary and municipal elections, KQZ diaspora voting, ballot counting, and OSCE/ODIHR reports
+  - Zgjedhjet parlamentare, KQZ, vota e diasporës, numërimi i votave
+  keywords:
+  - kqz
+  - vota e diasporës
+  - fletëvotim
+  - zgjedhjet
+  - ballot
+  - turnout
+- id: rule_of_law
+  label: SPAK Anti-Corruption, GJKKO & EU Accession Clusters
+  weight: 1.0
+  category: internal_politics
+  describe:
+  - Special Anti-Corruption Structure (SPAK) indictments, GJKKO court rulings, judicial vetting, and EU accession negotiating chapters
+  - SPAK, GJKKO, korrupsioni, reforma në drejtësi, negociatat me BE
+  keywords:
+  - spak
+  - gjkko
+  - korrupsion
+  - vetting
+  - drejtësi
+  - klaster

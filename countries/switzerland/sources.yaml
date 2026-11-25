@@ -23,6 +23,10 @@ sources:
   feeds:
   - url: https://www.srf.ch/news/bnf/rss/1646
     category_hint: internal_politics
+  - url: https://www.srf.ch/news/bnf/rss/1890
+    category_hint: internal_politics
+  - url: https://www.srf.ch/news/bnf/rss/1926
+    category_hint: economics
 - id: rts_info_ch
   name: RTS Info
   homepage: https://www.rts.ch/info
@@ -153,7 +157,7 @@ sources:
   state_affiliated: false
   notes: High-reach Swiss digital news portal in German and French.
   feeds:
-  - url: https://news.google.com/rss/search?q=site:watson.ch+when:3d&hl=de-CH&gl=CH&ceid=CH:de
+  - url: https://www.watson.ch/api/1.0/rss/index.xml
     category_hint: general
 - id: republik_ch
   name: Republik
@@ -191,8 +195,56 @@ sources:
   feeds:
   - url: https://news.google.com/rss/search?q=site:admin.ch+when:7d&hl=de-CH&gl=CH&ceid=CH:de
     category_hint: internal_politics
+- id: 20min_ch
+  name: 20 Minuten
+  homepage: https://www.20min.ch
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: TX Group
+  state_affiliated: false
+  notes: Switzerland's highest-circulation German-language daily news portal.
+  feeds:
+  - url: https://partner-feeds.20min.ch/rss/20minuten
+    category_hint: general
+- id: cash_ch
+  name: Cash.ch
+  homepage: https://www.cash.ch
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Ringier Axel Springer Schweiz
+  state_affiliated: false
+  notes: Swiss financial, SNB monetary policy, UBS, and SIX Swiss Exchange portal.
+  feeds:
+  - url: https://www.cash.ch/rss-article.xml
+    category_hint: economics
+- id: woz_ch
+  name: WOZ Die Wochenzeitung
+  homepage: https://www.woz.ch
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Genossenschaft Infolink
+  state_affiliated: false
+  notes: Independent Swiss left-wing investigative and political weekly newspaper.
+  feeds:
+  - url: https://www.woz.ch/t/startseite/feed
+    category_hint: internal_politics
+- id: infosperber_ch
+  name: Infosperber
+  homepage: https://www.infosperber.ch
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Stiftung SSUI
+  state_affiliated: false
+  notes: Independent Swiss non-profit public-interest and media-critique platform.
+  feeds:
+  - url: https://www.infosperber.ch/feed/
+    category_hint: internal_politics
 - id: gnews_switzerland_regional_batch
-  name: Google News (Switzerland Business, Regional & Weeklies - CH Media/20 Minuten/Handelszeitung/WOZ/Weltwoche)
+  name: Google News (Switzerland Business, Regional & Weeklies - CH Media/Handelszeitung/Weltwoche)
   homepage: https://news.google.com
   language: de
   scope: domestic
@@ -202,7 +254,7 @@ sources:
   aggregator: google_news
   notes: Aggregator capturing German-Swiss regional dailies, financial papers, and weeklies without open RSS.
   feeds:
-  - url: https://news.google.com/rss/search?q=(site:20min.ch+OR+site:aargauerzeitung.ch+OR+site:luzernerzeitung.ch+OR+site:handelszeitung.ch+OR+site:fuw.ch+OR+site:woz.ch+OR+site:weltwoche.ch+OR+site:nau.ch)+when:3d&hl=de-CH&gl=CH&ceid=CH:de
+  - url: https://news.google.com/rss/search?q=(site:aargauerzeitung.ch+OR+site:luzernerzeitung.ch+OR+site:handelszeitung.ch+OR+site:fuw.ch+OR+site:weltwoche.ch+OR+site:nau.ch)+when:3d&hl=de-CH&gl=CH&ceid=CH:de
     category_hint: internal_politics
 - id: gnews_switzerland_fr_it
   name: Google News (Switzerland Romandy & Ticino - RSI/Corriere del Ticino/Le Matin)

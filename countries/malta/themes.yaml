@@ -1,28 +1,72 @@
 # Malta's additions to the shared themes (../../themes.yaml).
 themes:
-  - id: party_gov
-    label: "Abela (Labour) Government, Nationalist Opposition & Rule-of-Law / Magisterial Inquiries"
-    weight: 1.0
-    category: internal_politics
-    describe:
-      - Prime Minister Robert Abela (Labour Party / PL), Nationalist Party (PN) opposition under Bernard Grech, magisterial corruption inquiries (Vitals / Steward hospitals prosecution of Joseph Muscat), judicial and media freedom reforms
-      - Prime Minister Robert Abela, Partit Laburista, Bernard Grech, Partit Nazzjonalista, Vitals inquiry, rule of law, Parliament of Malta
-    keywords: ["robert abela", "abela", "bernard grech", "joseph muscat", "partit laburista", "partit nazzjonalista", "magisterial inquiry", "steward", "vitals"]
-
-  - id: diplomacy
-    label: "Central Mediterranean Migration Route, EU Parliament (Metsola) & Constitutional Neutrality"
-    weight: 1.0
-    category: foreign_policy
-    describe:
-      - Central Mediterranean migration route and search-and-rescue coordination with Libya and Italy, European Parliament President Roberta Metsola, Foreign Minister Ian Borg, MED9 summits, and Maltese constitutional neutrality
-      - Central Mediterranean migration, Roberta Metsola, Ian Borg, Armed Forces of Malta search and rescue, Libya coastguard, MED9, neutrality
-    keywords: ["roberta metsola", "metsola", "ian borg", "armed forces of malta", "search and rescue", "med9", "neutrality"]
-
-  - id: econ_policy
-    label: "Sicily–Malta Energy Interconnector, Maritime Registry & Financial Regulation (MFSA)"
-    weight: 0.95
-    category: economics
-    describe:
-      - Second Malta–Sicily subsea electricity interconnector (IC2) and Enemalta grid stability, Malta ship registry and transshipment hub (Malta Freeport), MFSA financial services and gaming regulation, and fiscal budget deficit
-      - Malta-Sicily interconnector, Enemalta, Malta Freeport, maritime registry, MFSA, Central Bank of Malta, Clyde Caruana
-    keywords: ["enemalta", "interconnector", "malta freeport", "mfsa", "central bank of malta", "clyde caruana"]
+- id: party_gov
+  label: Abela (Labour) Government, Nationalist Opposition & Rule-of-Law / Magisterial Inquiries
+  weight: 1.0
+  category: internal_politics
+  describe:
+  - Prime Minister Robert Abela (Labour Party / PL), Nationalist Party (PN) opposition under Bernard Grech, magisterial corruption inquiries (Vitals / Steward hospitals prosecution of Joseph Muscat), judicial and media freedom reforms
+  - Prime Minister Robert Abela, Partit Laburista, Bernard Grech, Partit Nazzjonalista, Vitals inquiry, rule of law, Parliament of Malta
+  keywords:
+  - robert abela
+  - abela
+  - bernard grech
+  - joseph muscat
+  - partit laburista
+  - partit nazzjonalista
+  - magisterial inquiry
+  - steward
+  - vitals
+- id: diplomacy
+  label: Central Mediterranean Migration Route, EU Parliament (Metsola) & Constitutional Neutrality
+  weight: 1.0
+  category: foreign_policy
+  describe:
+  - Central Mediterranean migration route and search-and-rescue coordination with Libya and Italy, European Parliament President Roberta Metsola, Foreign Minister Ian Borg, MED9 summits, and Maltese constitutional neutrality
+  - Central Mediterranean migration, Roberta Metsola, Ian Borg, Armed Forces of Malta search and rescue, Libya coastguard, MED9, neutrality
+  keywords:
+  - roberta metsola
+  - metsola
+  - ian borg
+  - armed forces of malta
+  - search and rescue
+  - med9
+  - neutrality
+- id: econ_policy
+  label: Sicily–Malta Energy Interconnector, Maritime Registry & Financial Regulation (MFSA)
+  weight: 0.95
+  category: economics
+  describe:
+  - Second Malta–Sicily subsea electricity interconnector (IC2) and Enemalta grid stability, Malta ship registry and transshipment hub (Malta Freeport), MFSA financial services and gaming regulation, and fiscal budget deficit
+  - Malta-Sicily interconnector, Enemalta, Malta Freeport, maritime registry, MFSA, Central Bank of Malta, Clyde Caruana
+  keywords:
+  - enemalta
+  - interconnector
+  - malta freeport
+  - mfsa
+  - central bank of malta
+  - clyde caruana
+- id: elections
+  describe:
+  - Maltese general, local council, and European Parliament elections, Electoral Commission counts, and turnout
+  - Elezzjoni ġenerali, kunsilli lokali, Kummissjoni Elettorali
+  keywords:
+  - elezzjoni
+  - votazzjoni
+  - electoral commission
+  - ballot
+  - turnout
+- id: rule_of_law
+  label: Magisterial Inquiries, Vitals/Steward Probe & Rule of Law
+  weight: 0.95
+  category: internal_politics
+  describe:
+  - Maltese magisterial inquiries, Vitals/Steward hospitals corruption case, FIAU anti-money-laundering enforcement, and planning/construction governance
+  - Inkjesta maġisterjali, Vitals, Steward, FIAU, korruzzjoni, qrati
+  keywords:
+  - vitals
+  - steward
+  - inkjesta
+  - magisterial inquiry
+  - fiau
+  - rule of law

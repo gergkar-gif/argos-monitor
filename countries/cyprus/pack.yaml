@@ -3,51 +3,92 @@ name: Cyprus
 region: Mediterranean
 language: el
 abroad_label: Regional & International Cypriot coverage
-
 mention:
-  - "κύπρος"
-  - "κύπρου"
-  - "κυπριακός"
-  - "λευκωσία"
-  - "cyprus"
-  - "cypriot"
-  - "nicosia"
-  - "christodoulides"
-  - "χριστοδουλίδης"
-  - "tatar"
-  - "ufuk"
-  - "kıbrıs"
-  - "lefkoşa"
-mention_regex: ['\bκύπρ', '\bκυπρ', '\bcypri']
+- κύπρος
+- κύπρου
+- κυπριακός
+- λευκωσία
+- cyprus
+- cypriot
+- nicosia
+- christodoulides
+- χριστοδουλίδης
+- tatar
+- ufuk
+- kıbrıs
+- lefkoşa
+mention_regex:
+- \bκύπρ
+- \bκυπρ
+- \bcypri
 mention_section: null
-
 url_sections:
-  foreign: [kosmos, world, diethni, greece, ellada]
-  skip: [athlitika, sports, sport, lifestyle, showbiz, politismos, auto, tech, gastro]
-
+  foreign:
+  - kosmos
+  - world
+  - diethni
+  - greece
+  - ellada
+  skip:
+  - athlitika
+  - sports
+  - sport
+  - lifestyle
+  - showbiz
+  - politismos
+  - auto
+  - tech
+  - gastro
 aggregator_outlets:
-  domestic: ["cna", "rik", "cybc", "philenews", "politis", "kathimerini cyprus", "sigmalive", "alphanews", "in-cyprus",
-             "cyprus mail", "stockwatch", "financial mirror", "kibris postasi", "yeniduzen", "dialogos", "reporter.com.cy",
-             "offsite", "nomisma.com.cy", "kıbrıs gazetesi", "kibrisgazetesi", "gazedda", "omegalive", "brief.com.cy", "havadis",
-             "tothemaonline", "24h.com.cy", "bugün kıbrıs", "bugunkibris"]
-  abroad_local: ["ekathimerini", "euractiv", "politico europe"]
-
+  domestic:
+  - cna
+  - rik
+  - cybc
+  - philenews
+  - politis
+  - kathimerini cyprus
+  - sigmalive
+  - alphanews
+  - in-cyprus
+  - cyprus mail
+  - stockwatch
+  - financial mirror
+  - kibris postasi
+  - yeniduzen
+  - dialogos
+  - reporter.com.cy
+  - offsite
+  - nomisma.com.cy
+  - kıbrıs gazetesi
+  - kibrisgazetesi
+  - gazedda
+  - omegalive
+  - brief.com.cy
+  - havadis
+  - tothemaonline
+  - 24h.com.cy
+  - bugün kıbrıs
+  - bugunkibris
+  - havadis kıbrıs
+  abroad_local:
+  - ekathimerini
+  - euractiv
+  - politico europe
 excerpt:
-  dateline: '^\s*(?:ΚΥΠΕ|CNA|ΛΕΥΚΩΣΙΑ|NICOSIA)\s*[-–—:]\s*'
-  noise: '^(φωτογραφία|πηγή|βίντεο|διαβάστε επίσης|διαφήμιση|\(|\[)'
-
+  dateline: ^\s*(?:ΚΥΠΕ|CNA|ΛΕΥΚΩΣΙΑ|NICOSIA)\s*[-–—:]\s*
+  noise: ^(φωτογραφία|πηγή|βίντεο|διαβάστε επίσης|διαφήμιση|\(|\[)
 classify:
   internal_politics:
-    - "Κυβέρνηση της Κύπρου, Πρόεδρος Νίκος Χριστοδουλίδης, Βουλή των Αντιπροσώπων, ΔΗΣΥ, ΑΚΕΛ, ΔΗΚΟ, εκλογές, Κυπριακό"
+  - Κυβέρνηση της Κύπρου, Πρόεδρος Νίκος Χριστοδουλίδης, Βουλή των Αντιπροσώπων, ΔΗΣΥ, ΑΚΕΛ, ΔΗΚΟ, εκλογές, Κυπριακό
   economics:
-    - "οικονομία, προϋπολογισμός, Κεντρική Τράπεζα της Κύπρου, ενέργεια, ΑΟΖ, φυσικό αέριο, Great Sea Interconnector, ναυτιλία, τουρισμός"
+  - οικονομία, προϋπολογισμός, Κεντρική Τράπεζα της Κύπρου, ενέργεια, ΑΟΖ, φυσικό αέριο, Great Sea Interconnector, ναυτιλία, τουρισμός
   foreign_policy:
-    - "εξωτερική πολιτική, Κυπριακό, Ηνωμένα Έθνη, Ευρωπαϊκή Ένωση, σχέσεις με Ελλάδα, Τουρκία, Ισραήλ, Αίγυπτο, ΗΠΑ"
+  - εξωτερική πολιτική, Κυπριακό, Ηνωμένα Έθνη, Ευρωπαϊκή Ένωση, σχέσεις με Ελλάδα, Τουρκία, Ισραήλ, Αίγυπτο, ΗΠΑ
   defence_security:
-    - "Εθνική Φρουρά, Υπουργείο Άμυνας, UNFICYP, Πράσινη Γραμμή, Βρετανικές Βάσεις Ακρωτηρίου, ασφάλεια, μετανάστευση"
+  - Εθνική Φρουρά, Υπουργείο Άμυνας, UNFICYP, Πράσινη Γραμμή, Βρετανικές Βάσεις Ακρωτηρίου, ασφάλεια, μετανάστευση
   society:
-    - "παιδεία, υγεία, ΓεΣΥ, δικαιοσύνη, διαφθορά, περιβάλλον, καιρός"
-
+  - παιδεία, υγεία, ΓεΣΥ, δικαιοσύνη, διαφθορά, περιβάλλον, καιρός
 geo: CY
-reddit: [cyprus]
-last_reviewed: 2026-11-17
+reddit:
+- cyprus
+last_reviewed: '2026-11-25'

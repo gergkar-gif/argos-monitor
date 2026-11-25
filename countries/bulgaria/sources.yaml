@@ -2,231 +2,301 @@
 # Combines statutory state wire (BTA) and public broadcasters (BNR, BNT) with premier liberal/investigative dailies
 # (Dnevnik.bg, Capital.bg, Mediapool.bg, ClubZ, Sega, OFFNews, BIRD.bg), high-circulation commercial outlets & TV
 # (24 Chasa, Dir.bg, Nova.bg, bTV Novinite, Trud, Darik News, Fakti, Actualno), financial portal Investor.bg, and English wire Novinite.
-
 sources:
-  - id: bta_bg
-    name: BTA (Bulgarian News Agency)
-    homepage: https://www.bta.bg
-    language: bg
-    scope: domestic
-    kind: official
-    governing_body: Българска телеграфна агенция (statutory national news agency of Bulgaria)
-    state_affiliated: true
-    feeds:
-      - {url: "https://www.bta.bg/bg/rss/free", section: БТА, category_hint: general}
-
-  - id: bnt_bg
-    name: BNT (Bulgarian National Television)
-    homepage: https://bntnews.bg
-    language: bg
-    scope: domestic
-    kind: official
-    governing_body: Българска национална телевизия (statutory public-service television broadcaster)
-    state_affiliated: false
-    feeds:
-      - {url: "https://bntnews.bg/bg/rss/news.xml", section: Новини, category_hint: general}
-
-  - id: bnr_bg
-    name: BNR (Bulgarian National Radio)
-    homepage: https://bnr.bg
-    language: bg
-    scope: domestic
-    kind: official
-    aggregator: google_news
-    governing_body: Българско национално радио (statutory public-service radio broadcaster)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:bnr.bg+when:3d&hl=bg&gl=BG&ceid=BG:bg", section: Новини, category_hint: internal_politics}
-
-  - id: capital_bg
-    name: Capital.bg (Капитал)
-    homepage: https://www.capital.bg
-    language: bg
-    scope: domestic
-    kind: media
-    governing_body: Economedia AD (Bulgaria's flagship financial, macroeconomic, and investigative weekly newspaper)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.capital.bg/rss/", section: Икономика & Политика, category_hint: economics}
-
-  - id: mediapool_bg
-    name: Mediapool.bg
-    homepage: https://www.mediapool.bg
-    language: bg
-    scope: domestic
-    kind: media
-    governing_body: Mediapool OOD (pioneering independent Sofia political and investigative news daily founded in 2000)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.mediapool.bg/rss", section: Новини, category_hint: internal_politics}
-
-  - id: segabg
-    name: Sega (Сега)
-    homepage: https://www.segabg.com
-    language: bg
-    scope: domestic
-    kind: media
-    governing_body: Sega AD (independent Sofia political and investigative daily newspaper)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.segabg.com/rss", section: България, category_hint: internal_politics}
-
-  - id: bird_bg
-    name: BIRD.bg (Bureau for Investigative Reporting and Data)
-    homepage: https://bird.bg
-    language: bg
-    scope: domestic
-    kind: media
-    governing_body: BIRD Foundation (independent Bulgarian investigative journalism and anti-corruption portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://bird.bg/feed/", section: Разследвания, category_hint: internal_politics}
-
-  - id: dir_bg
-    name: Dir.bg
-    homepage: https://dir.bg
-    language: bg
-    scope: domestic
-    kind: media
-    governing_body: Dir.bg AD (major Bulgarian national news and business portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://dir.bg/feeds/rss", section: Новини, category_hint: general}
-
-  - id: offnews_bg
-    name: OFFNews.bg
-    homepage: https://offnews.bg
-    language: bg
-    scope: domestic
-    kind: media
-    governing_body: OFF Media AD (independent Sofia digital news daily covering parliament, judiciary, and civil society)
-    state_affiliated: false
-    feeds:
-      - {url: "https://offnews.bg/rss/all", section: Новини, category_hint: internal_politics}
-
-  - id: news_bg
-    name: News.bg
-    homepage: https://news.bg
-    language: bg
-    scope: domestic
-    kind: media
-    governing_body: Web Media Group AD (high-volume Sofia national political and economic news agency)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.bg/services/rss/1", section: Новини, category_hint: general}
-
-  - id: novinite_bg
-    name: Novinite (Sofia News Agency)
-    homepage: https://www.novinite.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: Novinite Group (Bulgaria's largest English-language news agency covering politics, diplomacy, and business)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.novinite.com/services/news_rdf.php", section: Bulgaria News, category_hint: general}
-
-  - id: actualno_bg
-    name: Actualno.com
-    homepage: https://www.actualno.com
-    language: bg
-    scope: domestic
-    kind: media
-    governing_body: Webground EOOD (independent national digital news daily)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.actualno.com/rss", section: Политика, category_hint: general}
-
-  - id: vesti_bg
-    name: Vesti.bg
-    homepage: https://www.vesti.bg
-    language: bg
-    scope: domestic
-    kind: media
-    governing_body: NetInfo / Nova Broadcasting Group (one of Bulgaria's highest-traffic commercial digital news portals)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.vesti.bg/rss", section: България, category_hint: general}
-
-  - id: frognews_bg
-    name: FrogNews.bg
-    homepage: https://frognews.bg
-    language: bg
-    scope: domestic
-    kind: media
-    governing_body: FrogNews EOOD (Sofia investigative, intelligence, and political-tabloid newsroom)
-    state_affiliated: false
-    feeds:
-      - {url: "https://frognews.bg/rss.xml", section: Новини, category_hint: internal_politics}
-
-  - id: banker_bg
-    name: Banker (Банкеръ)
-    homepage: https://banker.bg
-    language: bg
-    scope: domestic
-    kind: media
-    governing_body: Banker Media (Bulgarian banking, fiscal policy, and macroeconomic weekly/daily portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://banker.bg/feed/", section: Финанси, category_hint: economics}
-
-  - id: dnevnik_bg
-    name: Dnevnik.bg
-    homepage: https://www.dnevnik.bg
-    language: bg
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: Economedia AD (Sofia — premier independent liberal broadsheet daily covering governance, EU policy, and rule of law)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:dnevnik.bg+when:3d&hl=bg&gl=BG&ceid=BG:bg", section: Новини, category_hint: internal_politics}
-
-  - id: investor_bg
-    name: Investor.bg
-    homepage: https://www.investor.bg
-    language: bg
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: Investor.BG AD (leading Bulgarian financial, banking, and energy market portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:investor.bg+when:3d&hl=bg&gl=BG&ceid=BG:bg", section: Икономика, category_hint: economics}
-
-  - id: gnews_bg_press
-    name: 24 Chasa / Club Z / Nova / bTV / Trud / Darik / Fakti (via Google News)
-    homepage: https://www.24chasa.bg
-    language: bg
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: 168 Chasa EOOD / Club Z / Nova Broadcasting / bTV Media / Trud / Darik Radio / Fakti.bg
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:24chasa.bg+OR+site:clubz.bg+OR+site:nova.bg+OR+site:btvnovinite.bg+OR+site:trud.bg+OR+site:dariknews.bg+OR+site:fakti.bg)+when:2d&hl=bg&gl=BG&ceid=BG:bg", section: Национални медии, category_hint: general}
-
-  - id: svobodnaevropa_bg
-    name: Svobodna Evropa (RFE/RL Bulgarian)
-    homepage: https://www.svobodnaevropa.bg
-    language: bg
-    scope: abroad_local
-    kind: media
-    aggregator: google_news
-    governing_body: Radio Free Europe / Radio Liberty (USAGM)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:svobodnaevropa.bg+when:7d&hl=bg&gl=BG&ceid=BG:bg", section: Свободна Европа, category_hint: internal_politics}
-
-  - id: gnews_en_bg
-    name: Google News (Bulgaria - International)
-    homepage: https://news.google.com
-    language: en
-    scope: international
-    kind: media
-    aggregator: google_news
-    governing_body: n/a (aggregator)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=Bulgaria+(Sofia+OR+parliament+OR+coalition+OR+Radev+OR+Borissov+OR+Eurozone)+when:3d&hl=en-US&gl=US&ceid=US:en", section: Bulgaria politics & Eurozone, category_hint: internal_politics}
-      - {url: "https://news.google.com/rss/search?q=Bulgaria+(TurkStream+OR+Balkan+Stream+OR+gas+OR+Schengen+OR+NATO+OR+Black+Sea)+when:3d&hl=en-US&gl=US&ceid=US:en", section: Bulgaria energy & security, category_hint: foreign_policy}
+- id: bta_bg
+  name: BTA (Bulgarian News Agency)
+  homepage: https://www.bta.bg
+  language: bg
+  scope: domestic
+  kind: official
+  governing_body: Българска телеграфна агенция (statutory national news agency of Bulgaria)
+  state_affiliated: true
+  feeds:
+  - url: https://www.bta.bg/bg/rss/free
+    section: БТА
+    category_hint: general
+- id: bnt_bg
+  name: BNT (Bulgarian National Television)
+  homepage: https://bntnews.bg
+  language: bg
+  scope: domestic
+  kind: official
+  governing_body: Българска национална телевизия (statutory public-service television broadcaster)
+  state_affiliated: false
+  feeds:
+  - url: https://bntnews.bg/bg/rss/news.xml
+    section: Новини
+    category_hint: general
+- id: bnr_bg
+  name: BNR (Bulgarian National Radio)
+  homepage: https://bnr.bg
+  language: bg
+  scope: domestic
+  kind: official
+  aggregator: google_news
+  governing_body: Българско национално радио (statutory public-service radio broadcaster)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:bnr.bg+when:3d&hl=bg&gl=BG&ceid=BG:bg
+    section: Новини
+    category_hint: internal_politics
+- id: capital_bg
+  name: Capital.bg (Капитал)
+  homepage: https://www.capital.bg
+  language: bg
+  scope: domestic
+  kind: media
+  governing_body: Economedia AD (Bulgaria's flagship financial, macroeconomic, and investigative weekly newspaper)
+  state_affiliated: false
+  feeds:
+  - url: https://www.capital.bg/rss/
+    section: Икономика & Политика
+    category_hint: economics
+- id: mediapool_bg
+  name: Mediapool.bg
+  homepage: https://www.mediapool.bg
+  language: bg
+  scope: domestic
+  kind: media
+  governing_body: Mediapool OOD (pioneering independent Sofia political and investigative news daily founded in 2000)
+  state_affiliated: false
+  feeds:
+  - url: https://www.mediapool.bg/feed/
+    section: Новини
+    category_hint: internal_politics
+- id: segabg
+  name: Sega (Сега)
+  homepage: https://www.segabg.com
+  language: bg
+  scope: domestic
+  kind: media
+  governing_body: Sega AD (independent Sofia political and investigative daily newspaper)
+  state_affiliated: false
+  feeds:
+  - url: https://www.segabg.com/rss
+    section: България
+    category_hint: internal_politics
+- id: bird_bg
+  name: BIRD.bg (Bureau for Investigative Reporting and Data)
+  homepage: https://bird.bg
+  language: bg
+  scope: domestic
+  kind: media
+  governing_body: BIRD Foundation (independent Bulgarian investigative journalism and anti-corruption portal)
+  state_affiliated: false
+  feeds:
+  - url: https://bird.bg/feed/
+    section: Разследвания
+    category_hint: internal_politics
+- id: dir_bg
+  name: Dir.bg
+  homepage: https://dir.bg
+  language: bg
+  scope: domestic
+  kind: media
+  governing_body: Dir.bg AD (major Bulgarian national news and business portal)
+  state_affiliated: false
+  feeds:
+  - url: https://dir.bg/feeds/rss
+    section: Новини
+    category_hint: general
+- id: offnews_bg
+  name: OFFNews.bg
+  homepage: https://offnews.bg
+  language: bg
+  scope: domestic
+  kind: media
+  governing_body: OFF Media AD (independent Sofia digital news daily covering parliament, judiciary, and civil society)
+  state_affiliated: false
+  feeds:
+  - url: https://offnews.bg/rss/all
+    section: Новини
+    category_hint: internal_politics
+- id: news_bg
+  name: News.bg
+  homepage: https://news.bg
+  language: bg
+  scope: domestic
+  kind: media
+  governing_body: Web Media Group AD (high-volume Sofia national political and economic news agency)
+  state_affiliated: false
+  feeds:
+  - url: https://news.bg/services/rss/1
+    section: Новини
+    category_hint: general
+- id: novinite_bg
+  name: Novinite (Sofia News Agency)
+  homepage: https://www.novinite.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Novinite Group (Bulgaria's largest English-language news agency covering politics, diplomacy, and business)
+  state_affiliated: false
+  feeds:
+  - url: https://www.novinite.com/services/news_rdf.php
+    section: Bulgaria News
+    category_hint: general
+- id: actualno_bg
+  name: Actualno.com
+  homepage: https://www.actualno.com
+  language: bg
+  scope: domestic
+  kind: media
+  governing_body: Webground EOOD (independent national digital news daily)
+  state_affiliated: false
+  feeds:
+  - url: https://www.actualno.com/rss
+    section: Политика
+    category_hint: general
+- id: vesti_bg
+  name: Vesti.bg
+  homepage: https://www.vesti.bg
+  language: bg
+  scope: domestic
+  kind: media
+  governing_body: NetInfo / Nova Broadcasting Group (one of Bulgaria's highest-traffic commercial digital news portals)
+  state_affiliated: false
+  feeds:
+  - url: https://www.vesti.bg/rss
+    section: България
+    category_hint: general
+- id: frognews_bg
+  name: FrogNews.bg
+  homepage: https://frognews.bg
+  language: bg
+  scope: domestic
+  kind: media
+  governing_body: FrogNews EOOD (Sofia investigative, intelligence, and political-tabloid newsroom)
+  state_affiliated: false
+  feeds:
+  - url: https://frognews.bg/rss.xml
+    section: Новини
+    category_hint: internal_politics
+- id: banker_bg
+  name: Banker (Банкеръ)
+  homepage: https://banker.bg
+  language: bg
+  scope: domestic
+  kind: media
+  governing_body: Banker Media (Bulgarian banking, fiscal policy, and macroeconomic weekly/daily portal)
+  state_affiliated: false
+  feeds:
+  - url: https://banker.bg/feed/
+    section: Финанси
+    category_hint: economics
+- id: dnevnik_bg
+  name: Dnevnik.bg
+  homepage: https://www.dnevnik.bg
+  language: bg
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: Economedia AD (Sofia — premier independent liberal broadsheet daily covering governance, EU policy, and rule of law)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:dnevnik.bg+when:3d&hl=bg&gl=BG&ceid=BG:bg
+    section: Новини
+    category_hint: internal_politics
+- id: investor_bg
+  name: Investor.bg
+  homepage: https://www.investor.bg
+  language: bg
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: Investor.BG AD (leading Bulgarian financial, banking, and energy market portal)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:investor.bg+when:3d&hl=bg&gl=BG&ceid=BG:bg
+    section: Икономика
+    category_hint: economics
+- id: bta_en_bg
+  name: BTA (English)
+  homepage: https://www.bta.bg/en
+  language: en
+  scope: domestic
+  kind: wire
+  governing_body: Bulgarian News Agency (statutory national agency)
+  state_affiliated: true
+  notes: English-language wire dispatches of the Bulgarian News Agency.
+  feeds:
+  - url: https://www.bta.bg/en/rss/free
+    category_hint: general
+- id: clubz_bg
+  name: Club Z
+  homepage: https://clubz.bg
+  language: bg
+  scope: domestic
+  kind: media
+  governing_body: Club Z Media
+  state_affiliated: false
+  notes: Independent Sofia political, European-affairs, and investigative news portal.
+  feeds:
+  - url: https://clubz.bg/rss.xml
+    category_hint: internal_politics
+- id: fakti_bg
+  name: Fakti.bg
+  homepage: https://fakti.bg
+  language: bg
+  scope: domestic
+  kind: media
+  governing_body: Rezon Media
+  state_affiliated: false
+  notes: High-reach Bulgarian breaking news, political, and economic portal.
+  feeds:
+  - url: https://fakti.bg/feed
+    category_hint: general
+- id: defakto_bg
+  name: DeFakto.bg
+  homepage: https://defakto.bg
+  language: bg
+  scope: domestic
+  kind: media
+  governing_body: DeFakto Legal Portal
+  state_affiliated: false
+  notes: Independent Bulgarian judicial, rule-of-law, and constitutional affairs portal.
+  feeds:
+  - url: https://defakto.bg/feed/
+    category_hint: internal_politics
+- id: gnews_bg_press
+  name: 24 Chasa / Nova / bTV / Trud / Darik (via Google News)
+  homepage: https://www.24chasa.bg
+  language: bg
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: 168 Chasa EOOD / Club Z / Nova Broadcasting / bTV Media / Trud / Darik Radio / Fakti.bg
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:24chasa.bg+OR+site:nova.bg+OR+site:btvnovinite.bg+OR+site:trud.bg+OR+site:dariknews.bg)+when:2d&hl=bg&gl=BG&ceid=BG:bg
+    section: Национални медии
+    category_hint: general
+- id: svobodnaevropa_bg
+  name: Svobodna Evropa (RFE/RL Bulgarian)
+  homepage: https://www.svobodnaevropa.bg
+  language: bg
+  scope: abroad_local
+  kind: media
+  aggregator: google_news
+  governing_body: Radio Free Europe / Radio Liberty (USAGM)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:svobodnaevropa.bg+when:7d&hl=bg&gl=BG&ceid=BG:bg
+    section: Свободна Европа
+    category_hint: internal_politics
+- id: gnews_en_bg
+  name: Google News (Bulgaria - International)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  aggregator: google_news
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=Bulgaria+(Sofia+OR+parliament+OR+coalition+OR+Radev+OR+Borissov+OR+Eurozone)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Bulgaria politics & Eurozone
+    category_hint: internal_politics
+  - url: https://news.google.com/rss/search?q=Bulgaria+(TurkStream+OR+Balkan+Stream+OR+gas+OR+Schengen+OR+NATO+OR+Black+Sea)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Bulgaria energy & security
+    category_hint: foreign_policy

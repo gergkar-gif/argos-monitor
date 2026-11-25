@@ -11,6 +11,10 @@ sources:
   feeds:
   - url: https://www.svt.se/rss.xml
     category_hint: internal_politics
+  - url: https://www.svt.se/nyheter/inrikes/rss.xml
+    category_hint: internal_politics
+  - url: https://www.svt.se/nyheter/ekonomi/rss.xml
+    category_hint: economics
 - id: sr_nyheter
   name: Sveriges Radio (Ekot)
   homepage: https://sverigesradio.se/ekot
@@ -35,6 +39,8 @@ sources:
   feeds:
   - url: https://www.dn.se/rss/
     category_hint: internal_politics
+  - url: https://www.dn.se/rss/ekonomi/
+    category_hint: economics
 - id: svenska_dagbladet
   name: Svenska Dagbladet
   homepage: https://www.svd.se
@@ -239,6 +245,102 @@ sources:
   feeds:
   - url: https://news.google.com/rss/search?q=(site:regeringen.se+OR+site:riksdagen.se+OR+site:tt.se)+when:7d&hl=sv&gl=SE&ceid=SE:sv
     category_hint: internal_politics
+- id: dagensarena_se
+  name: Dagens Arena
+  homepage: https://www.dagensarena.se
+  language: sv
+  scope: domestic
+  kind: media
+  governing_body: Arena Idé
+  state_affiliated: false
+  notes: Independent Swedish social-democratic policy, labor-market, and political portal.
+  feeds:
+  - url: https://www.dagensarena.se/feed/
+    category_hint: internal_politics
+- id: unt_se
+  name: Upsala Nya Tidning
+  homepage: https://www.unt.se
+  language: sv
+  scope: domestic
+  kind: media
+  governing_body: NTM Media
+  state_affiliated: false
+  notes: Uppsala regional daily broadsheet covering university, life sciences, and central Sweden.
+  feeds:
+  - url: https://www.unt.se/rss/lokalt
+    category_hint: society
+- id: corren_se
+  name: Östgöta Correspondenten
+  homepage: https://www.corren.se
+  language: sv
+  scope: domestic
+  kind: media
+  governing_body: NTM Media
+  state_affiliated: false
+  notes: Linköping regional daily covering Saab aerospace hub and Östergötland.
+  feeds:
+  - url: https://www.corren.se/rss/lokalt
+    category_hint: society
+- id: barometern_se
+  name: Barometern
+  homepage: https://www.barometern.se
+  language: sv
+  scope: domestic
+  kind: media
+  governing_body: Gota Media
+  state_affiliated: false
+  notes: Kalmar and southeastern Sweden daily broadsheet.
+  feeds:
+  - url: https://www.barometern.se/feed
+    category_hint: society
+- id: nsd_se
+  name: Norrländska Socialdemokraten
+  homepage: https://www.nsd.se
+  language: sv
+  scope: domestic
+  kind: media
+  governing_body: Norr Media
+  state_affiliated: false
+  notes: Norrbotten daily covering Arctic defense, LKAB mining, and green steel transition.
+  feeds:
+  - url: https://www.nsd.se/rss/lokalt
+    category_hint: society
+- id: hd_se
+  name: Helsingborgs Dagblad
+  homepage: https://www.hd.se
+  language: sv
+  scope: domestic
+  kind: media
+  governing_body: Bonnier News Local
+  state_affiliated: false
+  notes: Northwestern Skåne daily covering Øresund trade and southern Sweden.
+  feeds:
+  - url: https://www.hd.se/rss.xml
+    category_hint: society
+- id: the_local_se
+  name: The Local Sweden
+  homepage: https://www.thelocal.se
+  language: en
+  scope: abroad_local
+  kind: media
+  governing_body: The Local Europe AB
+  state_affiliated: false
+  notes: English-language Swedish political, immigration, and economic news service.
+  feeds:
+  - url: https://feeds.thelocal.com/rss/builder/se
+    category_hint: general
+- id: breakit_se
+  name: Breakit
+  homepage: https://www.breakit.se
+  language: sv
+  scope: domestic
+  kind: media
+  governing_body: Breakit AB
+  state_affiliated: false
+  notes: Swedish tech industry, venture capital, and digital economy daily.
+  feeds:
+  - url: https://www.breakit.se/feed/artiklar
+    category_hint: economics
 - id: gnews_sweden_press_batch
   name: Google News (Sweden Weeklies & News Portals - Omni/Kvartal/Fokus/Bulletin)
   homepage: https://news.google.com

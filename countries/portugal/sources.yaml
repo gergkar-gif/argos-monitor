@@ -11,6 +11,10 @@ sources:
   feeds:
   - url: https://www.rtp.pt/noticias/rss
     category_hint: internal_politics
+  - url: https://www.rtp.pt/noticias/rss/pais
+    category_hint: internal_politics
+  - url: https://www.rtp.pt/noticias/rss/economia
+    category_hint: economics
 - id: lusa_pt
   name: Lusa
   homepage: https://www.lusa.pt
@@ -71,6 +75,14 @@ sources:
   feeds:
   - url: https://observador.pt/feed/
     category_hint: internal_politics
+  - url: https://observador.pt/seccao/politica/feed/
+    category_hint: internal_politics
+  - url: https://observador.pt/seccao/economia/feed/
+    category_hint: economics
+  - url: https://observador.pt/seccao/mundo/feed/
+    category_hint: foreign_policy
+  - url: https://observador.pt/seccao/europa/feed/
+    category_hint: foreign_policy
 - id: sicnoticias_pt
   name: SIC Notícias
   homepage: https://sicnoticias.pt
@@ -131,6 +143,8 @@ sources:
   feeds:
   - url: https://eco.sapo.pt/feed/
     category_hint: economics
+  - url: https://eco.sapo.pt/topico/politica/feed/
+    category_hint: internal_politics
 - id: jornaleconomico_pt
   name: O Jornal Económico
   homepage: https://jornaleconomico.sapo.pt
@@ -191,6 +205,30 @@ sources:
   feeds:
   - url: https://news.google.com/rss/search?q=site:portugal.gov.pt+when:7d&hl=pt-PT&gl=PT&ceid=PT:pt-150
     category_hint: internal_politics
+- id: sapo24_pt
+  name: SAPO 24
+  homepage: https://24noticias.sapo.pt
+  language: pt
+  scope: domestic
+  kind: media
+  governing_body: Altice Portugal / SAPO
+  state_affiliated: false
+  notes: High-reach Portuguese digital breaking news portal.
+  feeds:
+  - url: https://24noticias.sapo.pt/feed
+    category_hint: general
+- id: dinheirovivo_pt
+  name: Dinheiro Vivo
+  homepage: https://dinheirovivo.dn.pt
+  language: pt
+  scope: domestic
+  kind: media
+  governing_body: Global Media Group
+  state_affiliated: false
+  notes: Portuguese economic, banking, and corporate markets portal.
+  feeds:
+  - url: https://dinheirovivo.dn.pt/stories.rss
+    category_hint: economics
 - id: gnews_portugal_media_batch
   name: Google News (Portugal Press & Radio - JN/TSF/Renascença/Sábado/Polígrafo/Sol)
   homepage: https://news.google.com

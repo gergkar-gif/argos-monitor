@@ -59,8 +59,12 @@ aggregator_outlets:
   - Document.no
   - NTB
   - Regjeringen.no
+  - fædrelandsvennen
+  - sunnmørsposten
+  - itromsø
+  - teknisk ukeblad
   abroad_local:
   - The Local Norway
   - News in English Norway
   - Barents Observer
-last_reviewed: 2026-11-17
+last_reviewed: '2026-11-25'

@@ -51,9 +51,12 @@ aggregator_outlets:
   - EchoLive.ie
   - Sunday World
   - Gov.ie
+  - limerick leader
+  - belfast live
+  - munster express
   abroad_local:
   - BBC Northern Ireland
   - Belfast Telegraph
   - The Irish News
   - The Irish Post
-last_reviewed: 2026-11-17
+last_reviewed: '2026-11-25'

@@ -4,89 +4,110 @@ name: United Kingdom
 region: Western Europe
 language: en
 abroad_label: International perspectives on the UK
-
 mention:
-  - "united kingdom"
-  - "uk"
-  - "britain"
-  - "british"
-  - "london"
-  - "downing street"
-  - "10 downing street"
-  - "keir starmer"
-  - "starmer"
-  - "rachel reeves"
-  - "david lammy"
-  - "westminster"
-  - "parliament"
-  - "house of commons"
-  - "house of lords"
-  - "bank of england"
-  - "whitehall"
-  - "labour government"
-
-mention_regex: ['\b(?:united kingdom|britain|british|downing street|starmer|westminster|bank of england)\b']
-mention_section: "UK"
-
+- united kingdom
+- uk
+- britain
+- british
+- london
+- downing street
+- 10 downing street
+- keir starmer
+- starmer
+- rachel reeves
+- david lammy
+- westminster
+- parliament
+- house of commons
+- house of lords
+- bank of england
+- whitehall
+- labour government
+mention_regex:
+- \b(?:united kingdom|britain|british|downing street|starmer|westminster|bank of england)\b
+mention_section: UK
 url_sections:
-  foreign: [world, international, global]
-  skip: [sport, sports, lifestyle, entertainment, celebrity, royal-family, culture, travel, auto, food, astrology, weather]
-
+  foreign:
+  - world
+  - international
+  - global
+  skip:
+  - sport
+  - sports
+  - lifestyle
+  - entertainment
+  - celebrity
+  - royal-family
+  - culture
+  - travel
+  - auto
+  - food
+  - astrology
+  - weather
 aggregator_outlets:
   domestic:
-    - "bbc news"
-    - "the guardian"
-    - "the telegraph"
-    - "financial times"
-    - "the independent"
-    - "sky news"
-    - "the times"
-    - "daily mail"
-    - "daily mirror"
-    - "daily express"
-    - "the sun"
-    - "new statesman"
-    - "the spectator"
-    - "the economist"
-    - "itv news"
-    - "lbc"
-    - "gb news"
-    - "channel 4 news"
-    - "city a.m."
-    - "evening standard"
-    - "i news"
-    - "the scotsman"
-    - "the herald"
-    - "walesonline"
-    - "belfast telegraph"
-    - "politicshome"
-    - "byline times"
-    - "pa media"
-    - "gov.uk"
+  - bbc news
+  - the guardian
+  - the telegraph
+  - financial times
+  - the independent
+  - sky news
+  - the times
+  - daily mail
+  - daily mirror
+  - daily express
+  - the sun
+  - new statesman
+  - the spectator
+  - the economist
+  - itv news
+  - lbc
+  - gb news
+  - channel 4 news
+  - city a.m.
+  - evening standard
+  - i news
+  - the scotsman
+  - the herald
+  - walesonline
+  - belfast telegraph
+  - politicshome
+  - byline times
+  - pa media
+  - gov.uk
+  - the daily telegraph
+  - the irish news
+  - the yorkshire post
+  - manchester evening news
+  - liverpool echo
+  - birminghamlive
+  - unherd
+  - full fact
+  - bank of england
   abroad_local:
-    - "politico europe"
-
+  - politico europe
 excerpt:
-  dateline: '^\s*(?:LONDON|REUTERS|BBC|PA MEDIA|LONDON \(Reuters\))\s*[-–—:]\s*'
-  noise: '^(Photo|Credit|Read more|Watch|Listen|\(|\[)'
-
+  dateline: ^\s*(?:LONDON|REUTERS|BBC|PA MEDIA|LONDON \(Reuters\))\s*[-–—:]\s*
+  noise: ^(Photo|Credit|Read more|Watch|Listen|\(|\[)
 classify:
   internal_politics:
-    - "Prime Minister Keir Starmer, 10 Downing Street, Labour cabinet, Chancellor Rachel Reeves, House of Commons debates, legislative agenda, Conservative opposition, public service reforms"
-    - "Downing Street, Prime Minister, Starmer, Parliament, House of Commons, Labour Party, Westminster, legislation, devolution, public sector pay"
+  - Prime Minister Keir Starmer, 10 Downing Street, Labour cabinet, Chancellor Rachel Reeves, House of Commons debates, legislative agenda, Conservative opposition, public service reforms
+  - Downing Street, Prime Minister, Starmer, Parliament, House of Commons, Labour Party, Westminster, legislation, devolution, public sector pay
   economics:
-    - "Bank of England monetary policy, Governor Andrew Bailey, interest rate decisions, inflation, HM Treasury fiscal policy, autumn budget, tax reforms, gilt yields, sterling exchange rate, economic growth"
-    - "Bank of England, interest rates, inflation, Treasury, budget, taxation, gilt market, pound sterling, GDP, UK productivity"
+  - Bank of England monetary policy, Governor Andrew Bailey, interest rate decisions, inflation, HM Treasury fiscal policy, autumn budget, tax reforms, gilt yields, sterling exchange rate, economic growth
+  - Bank of England, interest rates, inflation, Treasury, budget, taxation, gilt market, pound sterling, GDP, UK productivity
   foreign_policy:
-    - "Foreign, Commonwealth and Development Office (FCDO), Foreign Secretary David Lammy, UK-EU reset negotiations, NATO commitments, Ukraine military assistance, relations with US and Commonwealth"
-    - "FCDO, foreign policy, David Lammy, European Union reset, NATO, Ukraine aid, AUKUS, Commonwealth, bilateral diplomacy"
+  - Foreign, Commonwealth and Development Office (FCDO), Foreign Secretary David Lammy, UK-EU reset negotiations, NATO commitments, Ukraine military assistance, relations with US and Commonwealth
+  - FCDO, foreign policy, David Lammy, European Union reset, NATO, Ukraine aid, AUKUS, Commonwealth, bilateral diplomacy
   defence_security:
-    - "Ministry of Defence (MoD), John Healey, Strategic Defence Review, Royal Navy carrier strike groups, British Army readiness, nuclear deterrent (Trident), MI5, MI6, GCHQ cybersecurity"
-    - "Ministry of Defence, MoD, British Army, Royal Navy, Royal Air Force, Trident, GCHQ, MI6, defence procurement, NATO interoperability"
+  - Ministry of Defence (MoD), John Healey, Strategic Defence Review, Royal Navy carrier strike groups, British Army readiness, nuclear deterrent (Trident), MI5, MI6, GCHQ cybersecurity
+  - Ministry of Defence, MoD, British Army, Royal Navy, Royal Air Force, Trident, GCHQ, MI6, defence procurement, NATO interoperability
   society:
-    - "National Health Service (NHS) waiting lists, immigration and asylum processing, housing crisis, higher education funding, energy price cap, cost of living"
-    - "NHS, healthcare, immigration, asylum seekers, housing, cost of living, social care, policing"
-
+  - National Health Service (NHS) waiting lists, immigration and asylum processing, housing crisis, higher education funding, energy price cap, cost of living
+  - NHS, healthcare, immigration, asylum seekers, housing, cost of living, social care, policing
 geo: GB
-reddit: [geopolitics, ukpolitics, unitedkingdom]
-last_reviewed: 2026-11-12
+reddit:
+- geopolitics
+- ukpolitics
+- unitedkingdom
+last_reviewed: '2026-11-25'

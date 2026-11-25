@@ -3,54 +3,92 @@ name: Montenegro
 region: Central & Southeast Europe
 language: sr
 abroad_label: Regional & International Montenegrin coverage
-
 mention:
-  - "crna gora"
-  - "crne gore"
-  - "crnoj gori"
-  - "crnogorski"
-  - "podgorica"
-  - "montenegro"
-  - "montenegrin"
-  - "milojko spajić"
-  - "spajić"
-  - "spajic"
-  - "jakov milatović"
-  - "milatović"
-  - "milatovic"
-  - "andrija mandić"
-  - "mandic"
-  - "milo đukanović"
-  - "djukanovic"
-mention_regex: ['\bcrn[aeo]j?\s+gor', '\bcrnogors', '\bmontenegr']
+- crna gora
+- crne gore
+- crnoj gori
+- crnogorski
+- podgorica
+- montenegro
+- montenegrin
+- milojko spajić
+- spajić
+- spajic
+- jakov milatović
+- milatović
+- milatovic
+- andrija mandić
+- mandic
+- milo đukanović
+- djukanovic
+mention_regex:
+- \bcrn[aeo]j?\s+gor
+- \bcrnogors
+- \bmontenegr
 mention_section: null
-
 url_sections:
-  foreign: [svijet, planet, regija, globus]
-  skip: [sport, zabava, kultura, magazin, lifestyle, auto, tech, showbiz]
-
+  foreign:
+  - svijet
+  - planet
+  - regija
+  - globus
+  skip:
+  - sport
+  - zabava
+  - kultura
+  - magazin
+  - lifestyle
+  - auto
+  - tech
+  - showbiz
 aggregator_outlets:
-  domestic: ["mina", "rtcg", "vijesti", "vijesti.me", "pobjeda", "cdm", "cdm.me", "portal analitika", "dan", "dan.co.me",
-             "antena m", "adria tv", "gradski.me", "bankar.me", "investitor.me", "monitor.co.me", "borba.me",
-             "rtv nikšić", "rtnk", "aktuelno.me", "volim podgoricu", "standard.co.me", "in4s"]
-  abroad_local: ["slobodna evropa", "al jazeera balkans", "balkan insight"]
-
+  domestic:
+  - mina
+  - rtcg
+  - vijesti
+  - vijesti.me
+  - pobjeda
+  - cdm
+  - cdm.me
+  - portal analitika
+  - dan
+  - dan.co.me
+  - antena m
+  - adria tv
+  - gradski.me
+  - bankar.me
+  - investitor.me
+  - monitor.co.me
+  - borba.me
+  - rtv nikšić
+  - rtnk
+  - aktuelno.me
+  - volim podgoricu
+  - standard.co.me
+  - in4s
+  - boka news
+  - ulcinj info
+  - onogošt
+  - mladi nikšića
+  abroad_local:
+  - slobodna evropa
+  - al jazeera balkans
+  - balkan insight
 excerpt:
-  dateline: '^\s*(?:MINA|RTCG|PODGORICA)\s*[-–—:]\s*'
-  noise: '^(foto|izvor|video|pročitajte više|oglas|\(|\[)'
-
+  dateline: ^\s*(?:MINA|RTCG|PODGORICA)\s*[-–—:]\s*
+  noise: ^(foto|izvor|video|pročitajte više|oglas|\(|\[)
 classify:
   internal_politics:
-    - "Vlada Crne Gore, Skupština Crne Gore, premijer Milojko Spajić, predsjednik Jakov Milatović, Andrija Mandić, PES (Evropa sad), DPS, izbori, Ustavni sud"
+  - Vlada Crne Gore, Skupština Crne Gore, premijer Milojko Spajić, predsjednik Jakov Milatović, Andrija Mandić, PES (Evropa sad), DPS, izbori, Ustavni sud
   economics:
-    - "ekonomija, budžet, Evropa sad 2, inflacija, turizam, Luka Bar, autoput Bar-Boljare, energetika, EPCG, investicije"
+  - ekonomija, budžet, Evropa sad 2, inflacija, turizam, Luka Bar, autoput Bar-Boljare, energetika, EPCG, investicije
   foreign_policy:
-    - "vanjska politika, Evropska unija, IBAR, zatvaranje poglavlja, odnosi sa Srbijom, Hrvatskom, Mađarskom, NATO"
+  - vanjska politika, Evropska unija, IBAR, zatvaranje poglavlja, odnosi sa Srbijom, Hrvatskom, Mađarskom, NATO
   defence_security:
-    - "Vojska Crne Gore, Ministarstvo odbrane, NATO, ANB, SDT, Specijalno državno tužilaštvo, organizovani kriminal, kavački i škaljarski klan, policija"
+  - Vojska Crne Gore, Ministarstvo odbrane, NATO, ANB, SDT, Specijalno državno tužilaštvo, organizovani kriminal, kavački i škaljarski klan, policija
   society:
-    - "obrazovanje, zdravstvo, penzije, popis stanovništva, SPC, pravosuđe, korupcija, protest"
-
+  - obrazovanje, zdravstvo, penzije, popis stanovništva, SPC, pravosuđe, korupcija, protest
 geo: ME
-reddit: [montenegro]
-last_reviewed: 2026-11-17
+reddit:
+- montenegro
+last_reviewed: '2026-11-25'

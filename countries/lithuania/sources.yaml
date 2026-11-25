@@ -11,6 +11,12 @@ sources:
   feeds:
   - url: https://www.lrt.lt/?rss
     category_hint: internal_politics
+  - url: https://www.lrt.lt/naujienos/lietuvoje?rss
+    category_hint: internal_politics
+  - url: https://www.lrt.lt/naujienos/verslas?rss
+    category_hint: economics
+  - url: https://www.lrt.lt/naujienos/pasaulyje?rss
+    category_hint: foreign_policy
 - id: lrt_en_lt
   name: LRT English
   homepage: https://www.lrt.lt/en/news-in-english
@@ -155,6 +161,18 @@ sources:
   feeds:
   - url: https://news.google.com/rss/search?q=(site:lrv.lt+OR+site:lrs.lt+OR+site:bns.lt)+when:7d&hl=lt&gl=LT&ceid=LT:lt
     category_hint: internal_politics
+- id: lithuaniatribune_lt
+  name: The Lithuania Tribune
+  homepage: https://lithuaniatribune.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Lithuania Tribune
+  state_affiliated: false
+  notes: English-language Lithuanian foreign policy, NATO, and Baltic security news portal.
+  feeds:
+  - url: https://lithuaniatribune.com/feed/
+    category_hint: foreign_policy
 - id: gnews_lithuania_regional_batch
   name: Google News (Lithuania Regional & Investigative - Kauno diena/VE/Alfa/Siena/Made in Vilnius)
   homepage: https://news.google.com

@@ -4,92 +4,112 @@ name: Spain
 region: Western Europe
 language: es
 abroad_label: Regional European & Latin American outlets
-
 mention:
-  - "spain"
-  - "spanish"
-  - "madrid"
-  - "barcelona"
-  - "valencia"
-  - "seville"
-  - "pedro sánchez"
-  - "sánchez"
-  - "alberto núñez feijóo"
-  - "feijóo"
-  - "la moncloa"
-  - "congreso de los diputados"
-  - "banco de españa"
-  - "cataluña"
-  - "catalonia"
-  - "junts"
-  - "puigdemont"
-  - "españa"
-  - "española"
-  - "español"
-  - "gobierno de españa"
-
-mention_regex: ['\b(?:spain|spanish|madrid|sánchez|pedro sánchez|moncloa|banco de españa|cataluña)\b', 'españa', 'gobierno de españa', 'la moncloa', 'congreso de los diputados']
-mention_section: "Spain"
-
+- spain
+- spanish
+- madrid
+- barcelona
+- valencia
+- seville
+- pedro sánchez
+- sánchez
+- alberto núñez feijóo
+- feijóo
+- la moncloa
+- congreso de los diputados
+- banco de españa
+- cataluña
+- catalonia
+- junts
+- puigdemont
+- españa
+- española
+- español
+- gobierno de españa
+mention_regex:
+- \b(?:spain|spanish|madrid|sánchez|pedro sánchez|moncloa|banco de españa|cataluña)\b
+- españa
+- gobierno de españa
+- la moncloa
+- congreso de los diputados
+mention_section: Spain
 url_sections:
-  foreign: [internacional, mundo, global]
-  skip: [deportes, futbol, la-liga, gente, estilo, television, viajes, horoscopo, el-tiempo]
-
+  foreign:
+  - internacional
+  - mundo
+  - global
+  skip:
+  - deportes
+  - futbol
+  - la-liga
+  - gente
+  - estilo
+  - television
+  - viajes
+  - horoscopo
+  - el-tiempo
 aggregator_outlets:
   domestic:
-    - "efe"
-    - "agencia efe"
-    - "europa press"
-    - "el país"
-    - "el pais"
-    - "el mundo"
-    - "la vanguardia"
-    - "abc"
-    - "el confidencial"
-    - "eldiario.es"
-    - "el español"
-    - "la razón"
-    - "okdiario"
-    - "público"
-    - "el periódico"
-    - "cadena ser"
-    - "vozpópuli"
-    - "the objective"
-    - "el economista"
-    - "cinco días"
-    - "expansión"
-    - "expansion"
-    - "20 minutos"
-    - "infolibre"
-    - "la voz de galicia"
-    - "el correo"
-    - "rtve"
-    - "la moncloa"
+  - efe
+  - agencia efe
+  - europa press
+  - el país
+  - el pais
+  - el mundo
+  - la vanguardia
+  - abc
+  - el confidencial
+  - eldiario.es
+  - el español
+  - la razón
+  - okdiario
+  - público
+  - el periódico
+  - cadena ser
+  - vozpópuli
+  - the objective
+  - el economista
+  - cinco días
+  - expansión
+  - expansion
+  - 20 minutos
+  - infolibre
+  - la voz de galicia
+  - el correo
+  - rtve
+  - la moncloa
+  - ara
+  - el nacional.cat
+  - naciódigital
+  - diario de sevilla
+  - heraldo de aragón
+  - el debate
+  - maldita.es
+  - real instituto elcano
   abroad_local:
-    - "politico europe"
-last_reviewed: 2026-11-17
-
+  - politico europe
+last_reviewed: '2026-11-25'
 excerpt:
-  dateline: '^\s*(?:MADRID|BARCELONA|EFE|REUTERS|AFP|EUROPA PRESS)\s*[-–—:]\s*'
-  noise: '^(Foto|Crédito|Fuente|Lea también|Photo|Credit|\(|\[)'
-
+  dateline: ^\s*(?:MADRID|BARCELONA|EFE|REUTERS|AFP|EUROPA PRESS)\s*[-–—:]\s*
+  noise: ^(Foto|Crédito|Fuente|Lea también|Photo|Credit|\(|\[)
 classify:
   internal_politics:
-    - "President of the Government Pedro Sánchez, La Moncloa, PSOE, Sumar coalition partner, Alberto Núñez Feijóo (PP), Vox opposition, Catalan separatist leverage (Junts, Carles Puigdemont, ERC), Amnesty Law implementation, judicial appointments"
-    - "Pedro Sánchez, La Moncloa, PSOE, Alberto Núñez Feijóo, PP, Vox, Congreso de los Diputados, ley de amnistía, Carles Puigdemont, Junts, ERC, política interior"
+  - President of the Government Pedro Sánchez, La Moncloa, PSOE, Sumar coalition partner, Alberto Núñez Feijóo (PP), Vox opposition, Catalan separatist leverage (Junts, Carles Puigdemont, ERC), Amnesty Law implementation, judicial appointments
+  - Pedro Sánchez, La Moncloa, PSOE, Alberto Núñez Feijóo, PP, Vox, Congreso de los Diputados, ley de amnistía, Carles Puigdemont, Junts, ERC, política interior
   economics:
-    - "Bank of Spain (Banco de España), Governor José Luis Escrivá, GDP growth outpacing euro area peers, tourism record revenues, public deficit targets, housing supply crisis, renewable energy penetration (wind and solar)"
-    - "Banco de España, José Luis Escrivá, crecimiento del PIB, inflación, deuda pública, turismo, vivienda, hipotecas, fondos europeos Next Generation"
+  - Bank of Spain (Banco de España), Governor José Luis Escrivá, GDP growth outpacing euro area peers, tourism record revenues, public deficit targets, housing supply crisis, renewable energy penetration (wind and solar)
+  - Banco de España, José Luis Escrivá, crecimiento del PIB, inflación, deuda pública, turismo, vivienda, hipotecas, fondos europeos Next Generation
   foreign_policy:
-    - "Ministry of Foreign Affairs (José Manuel Albares), official recognition of the State of Palestine, transatlantic relations, diplomatic leadership in European Union defense funds, bridge to Latin America and North Africa (Morocco ties)"
-    - "Ministerio de Asuntos Exteriores, José Manuel Albares, reconocimiento de Palestina, Unión Europea, relaciones con Marruecos, diplomacia con América Latina"
+  - Ministry of Foreign Affairs (José Manuel Albares), official recognition of the State of Palestine, transatlantic relations, diplomatic leadership in European Union defense funds, bridge to Latin America and North Africa (Morocco ties)
+  - Ministerio de Asuntos Exteriores, José Manuel Albares, reconocimiento de Palestina, Unión Europea, relaciones con Marruecos, diplomacia con América Latina
   defence_security:
-    - "Ministry of Defence (Margarita Robles), Spanish Armed Forces, NATO Eastern Flank battlegroup deployments (Slovakia, Latvia), defense industry (Indra, Navantia), cybersecurity"
-    - "Ministerio de Defensa, Margarita Robles, Fuerzas Armadas, despliegue OTAN, Indra, Navantia, fragatas F-110, seguridad nacional"
+  - Ministry of Defence (Margarita Robles), Spanish Armed Forces, NATO Eastern Flank battlegroup deployments (Slovakia, Latvia), defense industry (Indra, Navantia), cybersecurity
+  - Ministerio de Defensa, Margarita Robles, Fuerzas Armadas, despliegue OTAN, Indra, Navantia, fragatas F-110, seguridad nacional
   society:
-    - "DANA extreme weather catastrophic floods (Valencia disaster recovery), political friction over crisis management, immigration arrivals in Canary Islands, regional language policies"
-    - "DANA, inundaciones en Valencia, emergencia climática, gestión de catástrofes, crisis migratoria en Canarias, sanidad pública"
-
+  - DANA extreme weather catastrophic floods (Valencia disaster recovery), political friction over crisis management, immigration arrivals in Canary Islands, regional language policies
+  - DANA, inundaciones en Valencia, emergencia climática, gestión de catástrofes, crisis migratoria en Canarias, sanidad pública
 geo: ES
-reddit: [geopolitics, spain, esRadio]
-last_reviewed: 2026-11-12
+reddit:
+- geopolitics
+- spain
+- esRadio

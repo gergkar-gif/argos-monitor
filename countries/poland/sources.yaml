@@ -1,309 +1,392 @@
 # Poland source registry (decision D15).
 # Combines state wire (PAP) and public media (TVP Info / Polskie Radio) with major broadsheets (Gazeta Wyborcza, Rzeczpospolita, Dziennik Gazeta Prawna), commercial broadcasters (RMF24, TVN24, Polsat News), portals (Onet, WP, Gazeta.pl, Interia), tabloids (Fakt, Super Express), weeklies (Polityka, Wprost, Do Rzeczy, wPolityce), investigative (OKO.press), English briefers (Notes from Poland), and financial/defense press (Bankier.pl, Money.pl, Puls Biznesu, Defence24, Energetyka24).
-
 sources:
-  - id: pap_en
-    name: Polish Press Agency (PAP)
-    homepage: https://www.pap.pl
-    language: pl
-    scope: domestic
-    kind: official
-    aggregator: google_news
-    governing_body: Polska Agencja Prasowa (state news agency)
-    state_affiliated: true
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:pap.pl+when:7d&hl=pl&gl=PL&ceid=PL:pl", section: PAP Kraj, category_hint: general}
-
-  - id: tvp_info_pl
-    name: TVP Info / Polskie Radio
-    homepage: https://www.tvp.info
-    language: pl
-    scope: domestic
-    kind: official
-    governing_body: Telewizja Polska / Polskie Radio (statutory public broadcasters)
-    state_affiliated: true
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:tvp.info+OR+site:polskieradio.pl)+when:3d&hl=pl&gl=PL&ceid=PL:pl", section: TVP & PR, category_hint: internal_politics}
-
-  - id: gazeta_wyborcza
-    name: Gazeta Wyborcza
-    homepage: https://wyborcza.pl
-    language: pl
-    scope: domestic
-    kind: media
-    governing_body: Agora S.A. (Poland's flagship liberal-democratic broadsheet daily of record)
-    state_affiliated: false
-    feeds:
-      - {url: "https://wyborcza.pl/pub/rss/najnowsze_wyborcza.xml", section: Najnowsze, category_hint: internal_politics}
-
-  - id: rzeczpospolita_pl
-    name: Rzeczpospolita
-    homepage: https://www.rp.pl
-    language: pl
-    scope: domestic
-    kind: media
-    governing_body: Gremi Media S.A. (Poland's premier legal, economic, and centrist-conservative broadsheet of record)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:rp.pl+when:3d&hl=pl&gl=PL&ceid=PL:pl", section: Kraj & Prawo, category_hint: internal_politics}
-
-  - id: dgp_pl
-    name: Dziennik Gazeta Prawna
-    homepage: https://www.gazetaprawna.pl
-    language: pl
-    scope: domestic
-    kind: media
-    governing_body: Infor PL (leading Polish legal, tax, and public-administration daily)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=site:gazetaprawna.pl+when:3d&hl=pl&gl=PL&ceid=PL:pl", section: Prawo i Gospodarka, category_hint: economics}
-
-  - id: notesfrompoland
-    name: Notes from Poland
-    homepage: https://notesfrompoland.com
-    language: en
-    scope: domestic
-    kind: media
-    governing_body: Notes from Poland Foundation (independent non-profit)
-    state_affiliated: false
-    feeds:
-      - {url: "https://notesfrompoland.com/feed/", section: Latest, category_hint: general}
-
-  - id: rmf24
-    name: RMF24
-    homepage: https://www.rmf24.pl
-    language: pl
-    scope: domestic
-    kind: media
-    governing_body: Grupa RMF / Bauer Media (private broadcaster)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.rmf24.pl/feed", section: Najnowsze, category_hint: general}
-
-  - id: tvn24
-    name: TVN24
-    homepage: https://tvn24.pl
-    language: pl
-    scope: domestic
-    kind: media
-    governing_body: TVN Warner Bros. Discovery (private broadcaster)
-    state_affiliated: false
-    feeds:
-      - {url: "https://tvn24.pl/najnowsze.xml", section: Najnowsze, category_hint: general}
-
-  - id: polsatnews
-    name: Polsat News
-    homepage: https://www.polsatnews.pl
-    language: pl
-    scope: domestic
-    kind: media
-    governing_body: Grupa Polsat Plus (private broadcaster)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.polsatnews.pl/rss/wszystkie.xml", section: Wszystkie, category_hint: general}
-
-  - id: onet_pl
-    name: Onet Wiadomości
-    homepage: https://wiadomosci.onet.pl
-    language: pl
-    scope: domestic
-    kind: media
-    governing_body: Ringier Axel Springer Polska (major national news portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://wiadomosci.onet.pl/.feed", section: Wiadomości, category_hint: general}
-
-  - id: wp_pl
-    name: Wirtualna Polska (WP.pl)
-    homepage: https://wiadomosci.wp.pl
-    language: pl
-    scope: domestic
-    kind: media
-    governing_body: Wirtualna Polska Holding S.A. (major national digital news portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://wiadomosci.wp.pl/rss.xml", section: Wiadomości, category_hint: general}
-
-  - id: gazeta_pl
-    name: Gazeta.pl
-    homepage: https://wiadomosci.gazeta.pl
-    language: pl
-    scope: domestic
-    kind: media
-    governing_body: Agora S.A. (high-reach national news portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.gazeta.pl/pub/rss/wiadomosci.xml", section: Wiadomości, category_hint: general}
-
-  - id: interia_pl
-    name: Interia Fakty
-    homepage: https://fakty.interia.pl
-    language: pl
-    scope: domestic
-    kind: media
-    governing_body: Grupa Polsat Plus / Interia (major national news portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://fakty.interia.pl/feed", section: Fakty, category_hint: general}
-
-  - id: fakt_pl
-    name: Fakt
-    homepage: https://www.fakt.pl
-    language: pl
-    scope: domestic
-    kind: media
-    governing_body: Ringier Axel Springer Polska (Poland's highest-circulation daily tabloid)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.fakt.pl/rss", section: Wydarzenia, category_hint: general}
-
-  - id: wpolityce_pl
-    name: wPolityce.pl
-    homepage: https://wpolityce.pl
-    language: pl
-    scope: domestic
-    kind: media
-    governing_body: Fratria Sp. z o.o. (leading Polish conservative-PiS aligned political news portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://wpolityce.pl/rss/kraj.xml", section: Kraj, category_hint: internal_politics}
-
-  - id: oko_press
-    name: OKO.press
-    homepage: https://oko.press
-    language: pl
-    scope: domestic
-    kind: media
-    governing_body: Fundacja Ośrodek Kontroli Obywatelskiej (independent investigative non-profit)
-    state_affiliated: false
-    feeds:
-      - {url: "https://oko.press/feed", section: Najnowsze, category_hint: internal_politics}
-
-  - id: bankier_pl
-    name: Bankier.pl
-    homepage: https://www.bankier.pl
-    language: pl
-    scope: domestic
-    kind: media
-    governing_body: Bonnier Business Polska (private financial portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.bankier.pl/rss/wiadomosci.xml", section: Wiadomości, category_hint: economics}
-
-  - id: money_pl
-    name: Money.pl
-    homepage: https://www.money.pl
-    language: pl
-    scope: domestic
-    kind: media
-    governing_body: Wirtualna Polska Holding (private financial portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://www.money.pl/rss/rss.xml", section: Gospodarka, category_hint: economics}
-
-  - id: defence24_pl
-    name: Defence24
-    homepage: https://defence24.pl
-    language: pl
-    scope: domestic
-    kind: media
-    governing_body: Defence24 Sp. z o.o. (Poland's premier defense procurement, NATO eastern flank, and security portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://defence24.pl/_rss", section: Obronność, category_hint: defence_security}
-
-  - id: energetyka24_pl
-    name: Energetyka24
-    homepage: https://energetyka24.com
-    language: pl
-    scope: domestic
-    kind: media
-    governing_body: Defence24 Sp. z o.o. (Polish energy transition, nuclear, gas, and grid security portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://energetyka24.com/_rss", section: Energetyka, category_hint: economics}
-
-  - id: kresy_pl
-    name: Kresy.pl
-    homepage: https://kresy.pl
-    language: pl
-    scope: domestic
-    kind: media
-    governing_body: Fundacja im. Hetmana Stanisława Żółkiewskiego (foreign affairs & border portal)
-    state_affiliated: false
-    feeds:
-      - {url: "https://kresy.pl/feed/", section: Najnowsze, category_hint: foreign_policy}
-
-  - id: gnews_poland_press_batch
-    name: Google News (Poland Weeklies, Business & Tabloids - Polityka/Wprost/Do Rzeczy/Niezależna/Puls Biznesu/Super Express/300Polityka)
-    homepage: https://news.google.com
-    language: pl
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: Google LLC
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(site:polityka.pl+OR+site:wprost.pl+OR+site:dorzeczy.pl+OR+site:niezalezna.pl+OR+site:pb.pl+OR+site:businessinsider.com.pl+OR+site:se.pl+OR+site:300polityka.pl)+when:3d&hl=pl&gl=PL&ceid=PL:pl", section: Prasa i Tygodniki, category_hint: internal_politics}
-
-  - id: gnews_en_pl
-    name: Google News (Poland - English)
-    homepage: https://news.google.com
-    language: en
-    scope: international
-    kind: media
-    aggregator: google_news
-    governing_body: n/a (aggregator)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=Poland+when:1d&hl=en-US&gl=US&ceid=US:en", section: Poland, category_hint: general}
-      - {url: "https://news.google.com/rss/search?q=Poland+(Tusk+OR+NATO+OR+defence+OR+Ukraine+OR+EU)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Poland security & EU, category_hint: foreign_policy}
-      - {url: "https://news.google.com/rss/search?q=Poland+(economy+OR+investment+OR+energy+OR+zloty)+when:1d&hl=en-US&gl=US&ceid=US:en", section: Poland economy, category_hint: economics}
-
-  - id: gnews_pl
-    name: Google News (Polish)
-    homepage: https://news.google.com
-    language: pl
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    needs_mention: true
-    governing_body: n/a (aggregator)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(rz%C4%85d+OR+Sejm+OR+Tusk+OR+PiS)+when:1d&hl=pl&gl=PL&ceid=PL:pl", section: Polityka, category_hint: internal_politics}
-      - {url: "https://news.google.com/rss/search?q=(Wojsko+Polskie+OR+MON+OR+granica+OR+NATO)+when:1d&hl=pl&gl=PL&ceid=PL:pl", section: Obronność, category_hint: defence_security}
-
-  - id: milmag_pl
-    name: MILMAG
-    homepage: https://milmag.pl
-    language: pl
-    scope: domestic
-    kind: media
-    governing_body: MILMAG Military Magazine
-    state_affiliated: false
-    feeds:
-      - {url: "https://milmag.pl/feed/", section: Przemysł zbrojeniowy, category_hint: defence_security}
-
-  - id: zbiam_pl
-    name: ZBiAM
-    homepage: https://zbiam.pl
-    language: pl
-    scope: domestic
-    kind: media
-    governing_body: Zespół Badań i Analiz Militarnych
-    state_affiliated: false
-    feeds:
-      - {url: "https://zbiam.pl/feed/", section: Technika wojskowa, category_hint: defence_security}
-
-  - id: gnews_pl_def_industry
-    name: Google News (Poland Defence Industry & Procurement)
-    homepage: https://news.google.com
-    language: pl
-    scope: domestic
-    kind: media
-    aggregator: google_news
-    governing_body: n/a (aggregator)
-    state_affiliated: false
-    feeds:
-      - {url: "https://news.google.com/rss/search?q=(PGZ+OR+WB+Group+OR+zbrojeni%C3%B3wka+OR+przemys%C5%82+zbrojeniowy+OR+uzbrojenie)+Polska+OR+Poland+when:7d&hl=pl&gl=PL&ceid=PL:pl", section: Przemysł obronny, category_hint: defence_security}
+- id: pap_en
+  name: Polish Press Agency (PAP)
+  homepage: https://www.pap.pl
+  language: pl
+  scope: domestic
+  kind: official
+  aggregator: google_news
+  governing_body: Polska Agencja Prasowa (state news agency)
+  state_affiliated: true
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:pap.pl+when:7d&hl=pl&gl=PL&ceid=PL:pl
+    section: PAP Kraj
+    category_hint: general
+- id: tvp_info_pl
+  name: TVP Info / Polskie Radio
+  homepage: https://www.tvp.info
+  language: pl
+  scope: domestic
+  kind: official
+  governing_body: Telewizja Polska / Polskie Radio (statutory public broadcasters)
+  state_affiliated: true
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:tvp.info+OR+site:polskieradio.pl)+when:3d&hl=pl&gl=PL&ceid=PL:pl
+    section: TVP & PR
+    category_hint: internal_politics
+- id: gazeta_wyborcza
+  name: Gazeta Wyborcza
+  homepage: https://wyborcza.pl
+  language: pl
+  scope: domestic
+  kind: media
+  governing_body: Agora S.A. (Poland's flagship liberal-democratic broadsheet daily of record)
+  state_affiliated: false
+  feeds:
+  - url: https://wyborcza.pl/pub/rss/najnowsze_wyborcza.xml
+    section: Najnowsze
+    category_hint: internal_politics
+- id: rzeczpospolita_pl
+  name: Rzeczpospolita
+  homepage: https://www.rp.pl
+  language: pl
+  scope: domestic
+  kind: media
+  governing_body: Gremi Media S.A. (Poland's premier legal, economic, and centrist-conservative broadsheet of record)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:rp.pl+when:3d&hl=pl&gl=PL&ceid=PL:pl
+    section: Kraj & Prawo
+    category_hint: internal_politics
+- id: dgp_pl
+  name: Dziennik Gazeta Prawna
+  homepage: https://www.gazetaprawna.pl
+  language: pl
+  scope: domestic
+  kind: media
+  governing_body: Infor PL (leading Polish legal, tax, and public-administration daily)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=site:gazetaprawna.pl+when:3d&hl=pl&gl=PL&ceid=PL:pl
+    section: Prawo i Gospodarka
+    category_hint: economics
+- id: notesfrompoland
+  name: Notes from Poland
+  homepage: https://notesfrompoland.com
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Notes from Poland Foundation (independent non-profit)
+  state_affiliated: false
+  feeds:
+  - url: https://notesfrompoland.com/feed/
+    section: Latest
+    category_hint: general
+- id: rmf24
+  name: RMF24
+  homepage: https://www.rmf24.pl
+  language: pl
+  scope: domestic
+  kind: media
+  governing_body: Grupa RMF / Bauer Media (private broadcaster)
+  state_affiliated: false
+  feeds:
+  - url: https://www.rmf24.pl/feed
+    section: Najnowsze
+    category_hint: general
+  - url: https://www.rmf24.pl/ekonomia/feed
+    category_hint: economics
+- id: tvn24
+  name: TVN24
+  homepage: https://tvn24.pl
+  language: pl
+  scope: domestic
+  kind: media
+  governing_body: TVN Warner Bros. Discovery (private broadcaster)
+  state_affiliated: false
+  feeds:
+  - url: https://tvn24.pl/najnowsze.xml
+    section: Najnowsze
+    category_hint: general
+- id: polsatnews
+  name: Polsat News
+  homepage: https://www.polsatnews.pl
+  language: pl
+  scope: domestic
+  kind: media
+  governing_body: Grupa Polsat Plus (private broadcaster)
+  state_affiliated: false
+  feeds:
+  - url: https://www.polsatnews.pl/rss/wszystkie.xml
+    section: Wszystkie
+    category_hint: general
+- id: onet_pl
+  name: Onet Wiadomości
+  homepage: https://wiadomosci.onet.pl
+  language: pl
+  scope: domestic
+  kind: media
+  governing_body: Ringier Axel Springer Polska (major national news portal)
+  state_affiliated: false
+  feeds:
+  - url: https://wiadomosci.onet.pl/.feed
+    section: Wiadomości
+    category_hint: general
+- id: wp_pl
+  name: Wirtualna Polska (WP.pl)
+  homepage: https://wiadomosci.wp.pl
+  language: pl
+  scope: domestic
+  kind: media
+  governing_body: Wirtualna Polska Holding S.A. (major national digital news portal)
+  state_affiliated: false
+  feeds:
+  - url: https://wiadomosci.wp.pl/rss.xml
+    section: Wiadomości
+    category_hint: general
+- id: gazeta_pl
+  name: Gazeta.pl
+  homepage: https://wiadomosci.gazeta.pl
+  language: pl
+  scope: domestic
+  kind: media
+  governing_body: Agora S.A. (high-reach national news portal)
+  state_affiliated: false
+  feeds:
+  - url: https://www.gazeta.pl/pub/rss/wiadomosci.xml
+    section: Wiadomości
+    category_hint: general
+- id: interia_pl
+  name: Interia Fakty
+  homepage: https://fakty.interia.pl
+  language: pl
+  scope: domestic
+  kind: media
+  governing_body: Grupa Polsat Plus / Interia (major national news portal)
+  state_affiliated: false
+  feeds:
+  - url: https://fakty.interia.pl/feed
+    section: Fakty
+    category_hint: general
+- id: fakt_pl
+  name: Fakt
+  homepage: https://www.fakt.pl
+  language: pl
+  scope: domestic
+  kind: media
+  governing_body: Ringier Axel Springer Polska (Poland's highest-circulation daily tabloid)
+  state_affiliated: false
+  feeds:
+  - url: https://www.fakt.pl/rss
+    section: Wydarzenia
+    category_hint: general
+- id: wpolityce_pl
+  name: wPolityce.pl
+  homepage: https://wpolityce.pl
+  language: pl
+  scope: domestic
+  kind: media
+  governing_body: Fratria Sp. z o.o. (leading Polish conservative-PiS aligned political news portal)
+  state_affiliated: false
+  feeds:
+  - url: https://wpolityce.pl/rss/kraj.xml
+    section: Kraj
+    category_hint: internal_politics
+- id: oko_press
+  name: OKO.press
+  homepage: https://oko.press
+  language: pl
+  scope: domestic
+  kind: media
+  governing_body: Fundacja Ośrodek Kontroli Obywatelskiej (independent investigative non-profit)
+  state_affiliated: false
+  feeds:
+  - url: https://oko.press/feed
+    section: Najnowsze
+    category_hint: internal_politics
+- id: bankier_pl
+  name: Bankier.pl
+  homepage: https://www.bankier.pl
+  language: pl
+  scope: domestic
+  kind: media
+  governing_body: Bonnier Business Polska (private financial portal)
+  state_affiliated: false
+  feeds:
+  - url: https://www.bankier.pl/rss/wiadomosci.xml
+    section: Wiadomości
+    category_hint: economics
+- id: money_pl
+  name: Money.pl
+  homepage: https://www.money.pl
+  language: pl
+  scope: domestic
+  kind: media
+  governing_body: Wirtualna Polska Holding (private financial portal)
+  state_affiliated: false
+  feeds:
+  - url: https://www.money.pl/rss/rss.xml
+    section: Gospodarka
+    category_hint: economics
+- id: defence24_pl
+  name: Defence24
+  homepage: https://defence24.pl
+  language: pl
+  scope: domestic
+  kind: media
+  governing_body: Defence24 Sp. z o.o. (Poland's premier defense procurement, NATO eastern flank, and security portal)
+  state_affiliated: false
+  feeds:
+  - url: https://defence24.pl/_rss
+    section: Obronność
+    category_hint: defence_security
+- id: energetyka24_pl
+  name: Energetyka24
+  homepage: https://energetyka24.com
+  language: pl
+  scope: domestic
+  kind: media
+  governing_body: Defence24 Sp. z o.o. (Polish energy transition, nuclear, gas, and grid security portal)
+  state_affiliated: false
+  feeds:
+  - url: https://energetyka24.com/_rss
+    section: Energetyka
+    category_hint: economics
+- id: kresy_pl
+  name: Kresy.pl
+  homepage: https://kresy.pl
+  language: pl
+  scope: domestic
+  kind: media
+  governing_body: Fundacja im. Hetmana Stanisława Żółkiewskiego (foreign affairs & border portal)
+  state_affiliated: false
+  feeds:
+  - url: https://kresy.pl/feed/
+    section: Najnowsze
+    category_hint: foreign_policy
+- id: pb_pl
+  name: Puls Biznesu
+  homepage: https://www.pb.pl
+  language: pl
+  scope: domestic
+  kind: media
+  governing_body: Bonnier Business Polska
+  state_affiliated: false
+  notes: Poland's premier financial, corporate, and macroeconomic daily newspaper.
+  feeds:
+  - url: https://www.pb.pl/rss/najnowsze.xml
+    category_hint: economics
+- id: businessinsider_pl
+  name: Business Insider Polska
+  homepage: https://businessinsider.com.pl
+  language: pl
+  scope: domestic
+  kind: media
+  governing_body: Ringier Axel Springer Polska
+  state_affiliated: false
+  notes: High-reach Polish business, macroeconomy, and fiscal policy portal.
+  feeds:
+  - url: https://businessinsider.com.pl/.feed
+    category_hint: economics
+- id: krytykapolityczna_pl
+  name: Krytyka Polityczna
+  homepage: https://krytykapolityczna.pl
+  language: pl
+  scope: domestic
+  kind: media
+  governing_body: Stowarzyszenie im. Stanisława Brzozowskiego
+  state_affiliated: false
+  notes: Independent Polish progressive political commentary and social policy journal.
+  feeds:
+  - url: https://krytykapolityczna.pl/feed/
+    category_hint: internal_politics
+- id: klubjagiellonski_pl
+  name: Klub Jagielloński
+  homepage: https://klubjagiellonski.pl
+  language: pl
+  scope: domestic
+  kind: media
+  governing_body: Klub Jagielloński
+  state_affiliated: false
+  notes: Independent center-right Polish policy think-tank and public-affairs journal.
+  feeds:
+  - url: https://klubjagiellonski.pl/feed/
+    category_hint: internal_politics
+- id: gnews_poland_press_batch
+  name: Google News (Poland Weeklies, Business & Tabloids - Polityka/Wprost/Do Rzeczy/Niezależna/Super Express/300Polityka)
+  homepage: https://news.google.com
+  language: pl
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: Google LLC
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:polityka.pl+OR+site:wprost.pl+OR+site:dorzeczy.pl+OR+site:niezalezna.pl+OR+site:businessinsider.com.pl+OR+site:se.pl+OR+site:300polityka.pl)+when:3d&hl=pl&gl=PL&ceid=PL:pl
+    section: Prasa i Tygodniki
+    category_hint: internal_politics
+- id: gnews_en_pl
+  name: Google News (Poland - English)
+  homepage: https://news.google.com
+  language: en
+  scope: international
+  kind: media
+  aggregator: google_news
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=Poland+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Poland
+    category_hint: general
+  - url: https://news.google.com/rss/search?q=Poland+(Tusk+OR+NATO+OR+defence+OR+Ukraine+OR+EU)+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Poland security & EU
+    category_hint: foreign_policy
+  - url: https://news.google.com/rss/search?q=Poland+(economy+OR+investment+OR+energy+OR+zloty)+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Poland economy
+    category_hint: economics
+- id: gnews_pl
+  name: Google News (Polish)
+  homepage: https://news.google.com
+  language: pl
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  needs_mention: true
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(rz%C4%85d+OR+Sejm+OR+Tusk+OR+PiS)+when:1d&hl=pl&gl=PL&ceid=PL:pl
+    section: Polityka
+    category_hint: internal_politics
+  - url: https://news.google.com/rss/search?q=(Wojsko+Polskie+OR+MON+OR+granica+OR+NATO)+when:1d&hl=pl&gl=PL&ceid=PL:pl
+    section: Obronność
+    category_hint: defence_security
+- id: milmag_pl
+  name: MILMAG
+  homepage: https://milmag.pl
+  language: pl
+  scope: domestic
+  kind: media
+  governing_body: MILMAG Military Magazine
+  state_affiliated: false
+  feeds:
+  - url: https://milmag.pl/feed/
+    section: Przemysł zbrojeniowy
+    category_hint: defence_security
+- id: zbiam_pl
+  name: ZBiAM
+  homepage: https://zbiam.pl
+  language: pl
+  scope: domestic
+  kind: media
+  governing_body: Zespół Badań i Analiz Militarnych
+  state_affiliated: false
+  feeds:
+  - url: https://zbiam.pl/feed/
+    section: Technika wojskowa
+    category_hint: defence_security
+- id: gnews_pl_def_industry
+  name: Google News (Poland Defence Industry & Procurement)
+  homepage: https://news.google.com
+  language: pl
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  governing_body: n/a (aggregator)
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(PGZ+OR+WB+Group+OR+zbrojeni%C3%B3wka+OR+przemys%C5%82+zbrojeniowy+OR+uzbrojenie)+Polska+OR+Poland+when:7d&hl=pl&gl=PL&ceid=PL:pl
+    section: Przemysł obronny
+    category_hint: defence_security

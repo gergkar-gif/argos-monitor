@@ -1,28 +1,80 @@
 # Slovenia's additions to the shared themes (../../themes.yaml).
 themes:
-  - id: party_gov
-    label: "Golob Coalition, Janša (SDS) Opposition & Public Sector Reforms"
-    weight: 1.0
-    category: internal_politics
-    describe:
-      - Prime Minister Robert Golob (Freedom Movement, SD, Left coalition), President Nataša Pirc Musar, Janez Janša and SDS opposition, National Assembly (Državni zbor) legislation, healthcare and tax reforms, Commission for the Prevention of Corruption (KPK)
-      - Vlada Roberta Goloba, Gibanje Svoboda, Janez Janša, SDS, Nataša Pirc Musar, Državni zbor, KPK, davčna in zdravstvena reforma
-    keywords: ["robert golob", "golob", "gibanje svoboda", "janez janša", "janša", "jansa", "pirc musar", "državni zbor", "kpk", "sds", "levica"]
-
-  - id: energy_infra
-    label: "Port of Koper Logistics Corridor, Krško Nuclear (JEK2) & Rail Infrastructure"
-    weight: 1.0
-    category: economics
-    describe:
-      - Port of Koper (Luka Koper) Adriatic maritime gateway for Central Europe and Hungary, second track Divača–Koper railway, Krško Nuclear Power Plant (JEK2) expansion, and bilateral energy interconnectors with Hungary (Cirkovce–Pince) and Italy
-      - Luka Koper, drugi tir Divača-Koper, Nuklearna elektrarna Krško, JEK2, energetika, Banka Slovenije
-    keywords: ["luka koper", "koper", "drugi tir", "krško", "jek2", "nuklearka", "eles", "banka slovenije", "proračun"]
-
-  - id: diplomacy
-    label: "Schengen Border Controls, Western Balkans, C5 & UN Security Council"
-    weight: 0.95
-    category: foreign_policy
-    describe:
-      - Foreign Minister Tanja Fajon, Slovenia's non-permanent seat on the UN Security Council, internal Schengen border controls with Croatia and Hungary, Central Five (C5) diplomacy, and Prekmurje (Muravidék) bilateral minority cooperation
-      - Tanja Fajon, Varnostni svet OZN, mejni nadzor na meji s Hrvaško in Madžarsko, Schengen, Zahodni Balkan, Prekmurje
-    keywords: ["tanja fajon", "fajon", "varnostni svet", "mejni nadzor", "schengen", "zahodni balkan", "prekmurje", "arbitraža"]
+- id: party_gov
+  label: Golob Coalition, Janša (SDS) Opposition & Public Sector Reforms
+  weight: 1.0
+  category: internal_politics
+  describe:
+  - Prime Minister Robert Golob (Freedom Movement, SD, Left coalition), President Nataša Pirc Musar, Janez Janša and SDS opposition, National Assembly (Državni zbor) legislation, healthcare and tax reforms, Commission for the Prevention of Corruption (KPK)
+  - Vlada Roberta Goloba, Gibanje Svoboda, Janez Janša, SDS, Nataša Pirc Musar, Državni zbor, KPK, davčna in zdravstvena reforma
+  keywords:
+  - robert golob
+  - golob
+  - gibanje svoboda
+  - janez janša
+  - janša
+  - jansa
+  - pirc musar
+  - državni zbor
+  - kpk
+  - sds
+  - levica
+- id: energy_infra
+  label: Port of Koper Logistics Corridor, Krško Nuclear (JEK2) & Rail Infrastructure
+  weight: 1.0
+  category: economics
+  describe:
+  - Port of Koper (Luka Koper) Adriatic maritime gateway for Central Europe and Hungary, second track Divača–Koper railway, Krško Nuclear Power Plant (JEK2) expansion, and bilateral energy interconnectors with Hungary (Cirkovce–Pince) and Italy
+  - Luka Koper, drugi tir Divača-Koper, Nuklearna elektrarna Krško, JEK2, energetika, Banka Slovenije
+  keywords:
+  - luka koper
+  - koper
+  - drugi tir
+  - krško
+  - jek2
+  - nuklearka
+  - eles
+  - banka slovenije
+  - proračun
+- id: diplomacy
+  label: Schengen Border Controls, Western Balkans, C5 & UN Security Council
+  weight: 0.95
+  category: foreign_policy
+  describe:
+  - Foreign Minister Tanja Fajon, Slovenia's non-permanent seat on the UN Security Council, internal Schengen border controls with Croatia and Hungary, Central Five (C5) diplomacy, and Prekmurje (Muravidék) bilateral minority cooperation
+  - Tanja Fajon, Varnostni svet OZN, mejni nadzor na meji s Hrvaško in Madžarsko, Schengen, Zahodni Balkan, Prekmurje
+  keywords:
+  - tanja fajon
+  - fajon
+  - varnostni svet
+  - mejni nadzor
+  - schengen
+  - zahodni balkan
+  - prekmurje
+  - arbitraža
+- id: elections
+  describe:
+  - Slovenian parliamentary, presidential, local, and consultative referendum votes, DVK results, and turnout
+  - Državnozborske volitve, referendum, DVK, volilna udeležba
+  keywords:
+  - volitve
+  - referendum
+  - dvk
+  - volilna udeležba
+  - glasovanje
+  - ballot
+- id: econ_policy
+  label: NEK2 Nuclear Expansion, Port of Koper & Wage/Tax Reform
+  weight: 0.95
+  category: economics
+  describe:
+  - Krško JEK2 nuclear power plant expansion, Luka Koper railway second track, Slovenian public-sector wage reform, and inflation
+  - JEK2, Nuklearna elektrarna Krško, Luka Koper, drugi tir, proračun, davčna reforma
+  keywords:
+  - jek2
+  - krško
+  - luka koper
+  - drugi tir
+  - proračun
+  - davčna
+  - inflacija
