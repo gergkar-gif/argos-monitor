@@ -190,11 +190,10 @@ sources:
   language: sl
   scope: domestic
   kind: media
-  aggregator: google_news
   governing_body: Časnik Večer d.o.o. (Maribor — leading newspaper of northeastern Slovenia, Styria, and Prekmurje border region)
   state_affiliated: false
   feeds:
-  - url: https://news.google.com/rss/search?q=site:vecer.com+when:3d&hl=sl&gl=SI&ceid=SI:sl
+  - url: https://www.vecer.com/rss
     section: Slovenija
     category_hint: general
 - id: finance_si
@@ -223,6 +222,79 @@ sources:
   - url: https://news.google.com/rss/search?q=(site:mladina.si+OR+site:necenzurirano.si+OR+site:zurnal24.si+OR+site:reporter.si+OR+site:ostro.si+OR+site:svet24.si)+when:3d&hl=sl&gl=SI&ceid=SI:sl
     section: Nacionalni in preiskovalni mediji
     category_hint: internal_politics
+- id: maribor24_si
+  name: Maribor24.si
+  homepage: https://maribor24.si
+  language: sl
+  scope: domestic
+  kind: media
+  governing_body: Maribor24 d.o.o.
+  state_affiliated: false
+  notes: High-volume eastern Slovenian and Styria regional daily news portal.
+  feeds:
+  - url: https://maribor24.si/feed
+    section: Novice
+    category_hint: general
+- id: gnews_si_official
+  name: Slovenian Government / Državni zbor / Banka Slovenije
+  homepage: https://www.gov.si
+  language: sl
+  scope: domestic
+  kind: official
+  aggregator: google_news
+  needs_mention: true
+  governing_body: Government of Slovenia / National Assembly / Bank of Slovenia
+  state_affiliated: true
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:gov.si+OR+site:dz-rs.si+OR+site:bsi.si)+when:7d&hl=sl&gl=SI&ceid=SI:sl
+    section: Uradne objave
+    category_hint: internal_politics
+- id: gnews_si_local
+  name: Google News (Slovenian)
+  homepage: https://news.google.com
+  language: sl
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  needs_mention: true
+  governing_body: Google LLC
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(vlada+OR+%22dr%C5%BEavni+zbor%22+OR+Jan%C5%A1a+OR+Golob)+Slovenija+when:3d&hl=sl&gl=SI&ceid=SI:sl
+    section: Politika
+    category_hint: internal_politics
+  - url: https://news.google.com/rss/search?q=(%22Luka+Koper%22+OR+JEK2+OR+Kr%C5%A1ko+OR+gospodarstvo+OR+prora%C4%8Dun)+Slovenija+when:3d&hl=sl&gl=SI&ceid=SI:sl
+    section: Gospodarstvo
+    category_hint: economics
+  - url: https://news.google.com/rss/search?q=(Slovenija+(EU+OR+Schengen+OR+%22Zahodni+Balkan%22+OR+NATO))+when:3d&hl=sl&gl=SI&ceid=SI:sl
+    section: Zunanja politika
+    category_hint: foreign_policy
+- id: novice_at_si
+  name: Novice (Klagenfurt / Celovec)
+  homepage: https://www.novice.at
+  language: sl
+  scope: abroad_local
+  kind: media
+  governing_body: Slovenska prosvetna zveza (Carinthia, Austria)
+  state_affiliated: false
+  notes: Carinthian Slovene cross-border weekly published in Klagenfurt (Celovec), Austria.
+  feeds:
+  - url: https://www.novice.at/feed/
+    section: Koroška in Slovenija
+    category_hint: general
+- id: gnews_si_abroad
+  name: Cross-Border Slovene & Regional Press
+  homepage: https://www.primorski.eu
+  language: sl
+  scope: abroad_local
+  kind: media
+  aggregator: google_news
+  governing_body: Primorski dnevnik / ORF Volksgruppen / Regional Press
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:primorski.eu+OR+site:volksgruppen.orf.at+OR+site:jutarnji.hr+OR+site:derstandard.at)+(Slovenija+OR+Ljubljana+OR+Jan%C5%A1a+OR+Golob)+when:7d&hl=sl&gl=SI&ceid=SI:sl
+    section: Zamejstvo in sosede
+    category_hint: foreign_policy
 - id: gnews_en_si
   name: Google News (Slovenia - International)
   homepage: https://news.google.com
@@ -233,9 +305,15 @@ sources:
   governing_body: n/a (aggregator)
   state_affiliated: false
   feeds:
-  - url: https://news.google.com/rss/search?q=Slovenia+(Ljubljana+OR+Golob+OR+Jansa+OR+government)+when:7d&hl=en-US&gl=US&ceid=US:en
+  - url: https://news.google.com/rss/search?q=Slovenia+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Slovenia
+    category_hint: general
+  - url: https://news.google.com/rss/search?q=Slovenia+(Ljubljana+OR+Jansa+OR+Golob+OR+%22Pirc+Musar%22+OR+government)+when:7d&hl=en-US&gl=US&ceid=US:en
     section: Slovenia politics
     category_hint: internal_politics
-  - url: https://news.google.com/rss/search?q=Slovenia+(Koper+OR+Krsko+OR+economy+OR+Schengen+OR+EU)+when:7d&hl=en-US&gl=US&ceid=US:en
-    section: Slovenia economy & EU
+  - url: https://news.google.com/rss/search?q=Slovenia+(Koper+OR+Krsko+OR+JEK2+OR+economy+OR+trade)+when:7d&hl=en-US&gl=US&ceid=US:en
+    section: Slovenia economy & energy
     category_hint: economics
+  - url: https://news.google.com/rss/search?q=Slovenia+(EU+OR+Schengen+OR+NATO+OR+Balkans+OR+defence)+when:7d&hl=en-US&gl=US&ceid=US:en
+    section: Slovenia EU & security
+    category_hint: foreign_policy

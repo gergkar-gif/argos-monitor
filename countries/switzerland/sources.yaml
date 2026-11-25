@@ -278,12 +278,88 @@ sources:
   governing_body: Google LLC
   state_affiliated: false
   aggregator: google_news
+  needs_mention: true
   feeds:
-  - url: https://news.google.com/rss/search?q=Schweiz+OR+Bundesrat+OR+Bern+when:2d&hl=de-CH&gl=CH&ceid=CH:de
-    section: National News (German)
+  - url: https://news.google.com/rss/search?q=Schweiz+OR+Bundesrat+OR+Volksabstimmung+OR+Bern+when:2d&hl=de-CH&gl=CH&ceid=CH:de
+    section: Innenpolitik (German)
     category_hint: internal_politics
+  - url: https://news.google.com/rss/search?q=Schweiz+(SNB+OR+UBS+OR+FINMA+OR+Wirtschaft+OR+Franken)+when:3d&hl=de-CH&gl=CH&ceid=CH:de
+    section: Wirtschaft & Finanzplatz (German)
+    category_hint: economics
+  - url: https://news.google.com/rss/search?q=Schweiz+(EU+OR+Bilaterale+OR+Neutralit%C3%A4t+OR+Sicherheit)+when:3d&hl=de-CH&gl=CH&ceid=CH:de
+    section: Außenpolitik & Neutralität (German)
+    category_hint: foreign_policy
+- id: snb_ch
+  name: Swiss National Bank (SNB)
+  homepage: https://www.snb.ch
+  language: de
+  scope: domestic
+  kind: official
+  governing_body: Schweizerische Nationalbank (Swiss central bank)
+  state_affiliated: true
+  notes: Official SNB monetary policy, interest rate, and financial-stability press releases.
+  feeds:
+  - url: https://www.snb.ch/public/de/rss/pressrel
+    section: Medienmitteilungen
+    category_hint: economics
+  - url: https://www.snb.ch/public/en/rss/pressrel
+    section: Press Releases
+    category_hint: economics
+- id: rsi_info_ch
+  name: RSI Info
+  homepage: https://www.rsi.ch
+  language: it
+  scope: domestic
+  kind: media
+  governing_body: SRG SSR (Radiotelevisione svizzera)
+  state_affiliated: false
+  notes: Italian-language Swiss public broadcaster covering Ticino and federal affairs.
+  feeds:
+  - url: https://www.rsi.ch/info/svizzera/?f=rss
+    section: Svizzera
+    category_hint: internal_politics
+- id: finews_ch
+  name: finews.ch
+  homepage: https://www.finews.ch
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: finews AG (Zurich)
+  state_affiliated: false
+  notes: Swiss banking, wealth management, UBS, and Zurich financial-center daily.
+  feeds:
+  - url: https://www.finews.ch/news/finanzplatz?format=feed&type=rss
+    section: Finanzplatz
+    category_hint: economics
+- id: euronews_fr_ch
+  name: Euronews Français
+  homepage: https://fr.euronews.com
+  language: fr
+  scope: abroad_local
+  kind: media
+  governing_body: Euronews SA
+  state_affiliated: false
+  needs_mention: true
+  notes: European multilingual news broadcaster French service; filtered for Switzerland mentions.
+  feeds:
+  - url: https://fr.euronews.com/rss
+    section: Europe & Monde
+    category_hint: general
+- id: gnews_switzerland_abroad
+  name: European Cross-Border Press on Switzerland
+  homepage: https://www.faz.net
+  language: de
+  scope: abroad_local
+  kind: media
+  aggregator: google_news
+  governing_body: FAZ / Der Standard / Le Monde / Corriere della Sera
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:faz.net+OR+site:derstandard.at+OR+site:lemonde.fr+OR+site:corriere.it)+(Schweiz+OR+Suisse+OR+Svizzera+OR+Bern)+when:5d&hl=de&gl=CH&ceid=CH:de
+    section: Nachbarländer
+    category_hint: general
 - id: gnews_switzerland_intl
-  name: Google News (Switzerland Banking & Diplomacy)
+  name: Google News (Switzerland - International)
   homepage: https://news.google.com
   language: en
   scope: international
@@ -292,6 +368,15 @@ sources:
   state_affiliated: false
   aggregator: google_news
   feeds:
-  - url: https://news.google.com/rss/search?q=(Switzerland+OR+Swiss)+(neutrality+OR+sanctions+OR+banking+OR+diplomacy)+when:3d&hl=en-US&gl=US&ceid=US:en
-    section: Diplomacy & Finance
+  - url: https://news.google.com/rss/search?q=(Switzerland+OR+Swiss)+when:2d&hl=en-US&gl=US&ceid=US:en
+    section: Switzerland
+    category_hint: general
+  - url: https://news.google.com/rss/search?q=(Switzerland+OR+Swiss)+(EU+OR+Bilaterals+OR+neutrality+OR+Geneva+OR+sanctions)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Diplomacy & Neutrality
     category_hint: foreign_policy
+  - url: https://news.google.com/rss/search?q=(Switzerland+OR+Swiss)+(SNB+OR+UBS+OR+banking+OR+franc+OR+tariff+OR+trade)+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Banking & Economy
+    category_hint: economics
+  - url: https://news.google.com/rss/search?q=(Switzerland+OR+Swiss)+(referendum+OR+F-35+OR+defence+OR+parliament)+when:5d&hl=en-US&gl=US&ceid=US:en
+    section: Referendums & Defence
+    category_hint: internal_politics

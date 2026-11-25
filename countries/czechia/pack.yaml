@@ -12,25 +12,49 @@ mention:
 - praha
 - brno
 - ostrava
-- petr fiala
-- fiala
+- plzeň
+- olomouc
+- liberec
 - petr pavel
 - pavel
 - andrej babiš
 - andrej babis
 - babiš
 - babis
+- petr fiala
+- fiala
+- karel havlíček
+- alena schillerová
+- vít rakušan
+- tomio okamura
 - ano 2011
 - hnutí ano
 - spolu
+- ods
+- stan
+- piráti
+- kdu-čsl
+- top 09
+- spd
 - česko
 - česká republika
 - české
 - česká
+- vláda čr
 - poslanecká sněmovna
 - senát
+- ústavní soud
+- čnb
+- česká národní banka
+- čez
+- dukovany
+- škoda auto
 mention_regex:
-- \b(?:czechia|czech|prague|praha|česko|české|česká|fiala|babiš|babis|pavel)\b
+- \bčesk\w*
+- \bpraž\w*
+- \bčr\b
+- \bbabiš\w*
+- \bfial\w*
 mention_section: null
 url_sections:
   foreign:
@@ -94,34 +118,43 @@ aggregator_outlets:
   - neovlivni
   - czdefence
   - kurzy.cz
+  - vlada.gov.cz
+  - mzv.gov.cz
+  - cnb.cz
+  - hrad.cz
   abroad_local:
   - tasr
   - teraz.sk
   - aktuality.sk
   - sme.sk
+  - denník n
+  - der standard
+  - rzeczpospolita
+  - telex
   - expats.cz
 last_reviewed: '2026-11-25'
 excerpt:
-  dateline: ^\s*(?:PRAHA|BRNO|OSTRAVA|ČTK|ČT24)\s*[-–—:]\s*
+  dateline: ^\s*(?:PRAHA|BRNO|OSTRAVA|ČTK|CTK|ČT24)\s*[-–—:]\s*
   noise: ^(Foto|Zdroj|Čtěte také|Photo|Credit|\(|\[)
 classify:
   internal_politics:
-  - Prime Minister Petr Fiala, President Petr Pavel, Andrej Babiš and ANO opposition, SPOLU coalition (ODS, KDU-ČSL, TOP 09), STAN, Chamber of Deputies (Poslanecká sněmovna) and Senate
-  - Petr Fiala, Petr Pavel, Andrej Babiš, vláda, Poslanecká sněmovna, Senát, ANO, ODS, SPOLU, Piráti, STAN, opozice
+  - Prime Minister Andrej Babiš and ANO government, President Petr Pavel, SPOLU (ODS, KDU-ČSL, TOP 09), STAN and Pirates opposition, Chamber of Deputies (Poslanecká sněmovna), Senate and Constitutional Court
+  - Andrej Babiš, Petr Pavel, Petr Fiala, vláda, Poslanecká sněmovna, Senát, ANO, ODS, SPOLU, STAN, Piráti, SPD, opozice, Ústavní soud
   economics:
-  - Czech National Bank (ČNB), inflation and interest rates, state budget deficit, automotive sector Škoda Auto, nuclear expansion Dukovany (KHNP), ČEZ energy utility
-  - Česká národní banka, ČNB, státní rozpočet, inflace, úrokové sazby, Škoda Auto, Dukovany, energetika, ČEZ
+  - Czech National Bank (ČNB), inflation and interest rates, state budget deficit, automotive sector Škoda Auto, nuclear expansion Dukovany (KHNP), ČEZ energy utility, ETS2 and energy prices
+  - Česká národní banka, ČNB, státní rozpočet, inflace, úrokové sazby, Škoda Auto, Dukovany, energetika, ČEZ, koruna
   foreign_policy:
-  - Czechia in European Union and NATO, Czech ammunition initiative for Ukraine, relations with Slovakia, Poland and Germany, Visegrad Four (V4), Western Balkans diplomacy
+  - Czechia in European Union and NATO, ammunition initiative and Ukraine policy, relations with Slovakia, Poland, Germany and Austria, Visegrad Four (V4)
   - Evropská unie, NATO, muniční iniciativa, Ukrajina, V4, Visegrád, Slovensko, Polsko, Německo, diplomacie
   defence_security:
-  - Czech Armed Forces (Armáda ČR), Defence Minister Jana Černochová, F-35 procurement, NATO deterrence, BIS counterintelligence, cyber security NÚKIB
-  - Armáda České republiky, Jana Černochová, stíhačky F-35, obrana, bezpečnost, BIS, NÚKIB, policie
+  - Czech Armed Forces (Armáda ČR), F-35 and Leopard procurement, Czechoslovak Group (CSG) and domestic defence industry, NATO deterrence, BIS counterintelligence, cyber security NÚKIB
+  - Armáda České republiky, stíhačky F-35, obrana, bezpečnost, BIS, NÚKIB, CSG, zbrojní průmysl, policie
   society:
-  - healthcare and doctors, education and universities, pensions reform, justice system, environment and floods
-  - zdravotnictví, školství, důchodová reforma, justice, životní prostředí, povodně
+  - healthcare, education and universities, pension policy, justice system, housing, floods and weather
+  - zdravotnictví, školství, důchody, justice, bydlení, životní prostředí, povodně
 geo: CZ
 reddit:
 - czech
 - czechia
 - prague
+- Brno

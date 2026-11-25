@@ -22,6 +22,9 @@ themes:
   - id: security
     describe: ["védelmi együttműködés, Magyar Honvédség, haderőfejlesztés, katonai gyakorlat, kibervédelem, nemzetbiztonság, Szalay-Bobrovniczky Kristóf, hadiipar, Rheinmetall"]
     keywords: ["honvédség", "védelmi", "haderő", "haderőfejlesztés", "hadsereg", "nemzetbiztonság", "kibervédelem", "katonai", "szalay-bobrovniczky", "rheinmetall"]
+  - id: defence_industry
+    describe: ["magyar hadiipar, védelmi ipari beruházások, Zalaegerszeg Lynx gyár, Rheinmetall Hungary, 4iG Space and Defence, Airbus Helicopters Gyula, Gidrán, haditechnikai beszerzés"]
+    keywords: ["hadiipar", "hadiipari", "védelmi ipar", "fegyvergyár", "lynx", "gidrán", "zalaegerszeg", "4ig", "lőszergyár", "fegyverbeszerzés"]
   - id: anticorruption
     describe: ["korrupcióellenes küzdelem, Integritás Hatóság, Európai Ügyészség, OLAF, közbeszerzési botrány, vagyonvisszaszerzés"]
     keywords: ["korrupció", "korrupciós", "integritás hatóság", "európai ügyészség", "olaf", "vagyonvisszaszerzési", "közbeszerzés", "hadházy"]

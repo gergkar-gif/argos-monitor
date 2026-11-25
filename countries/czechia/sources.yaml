@@ -13,6 +13,9 @@ sources:
   - url: https://www.ceskenoviny.cz/sluzby/rss/cr.php
     section: Česká republika
     category_hint: general
+  - url: https://www.ceskenoviny.cz/sluzby/rss/ekonomika.php
+    section: Ekonomika
+    category_hint: economics
 - id: irozhlas_cz
   name: iROZHLAS
   homepage: https://www.irozhlas.cz
@@ -332,12 +335,49 @@ sources:
   scope: abroad_local
   kind: media
   aggregator: google_news
-  governing_body: Slovak News Agency TASR & Aktuality.sk
+  governing_body: Slovak & Central European Regional Press
   state_affiliated: false
   feeds:
-  - url: https://news.google.com/rss/search?q=(site:teraz.sk+OR+site:aktuality.sk)+(Cesko+OR+Fiala+OR+Praha)+when:7d&hl=sk&gl=SK&ceid=SK:sk
+  - url: https://news.google.com/rss/search?q=(site:teraz.sk+OR+site:aktuality.sk+OR+site:sme.sk+OR+site:dennikn.sk)+(Cesko+OR+%C4%8Cesko+OR+Babi%C5%A1+OR+Pavel+OR+Praha)+when:7d&hl=sk&gl=SK&ceid=SK:sk
     section: Slovak coverage of Czechia
     category_hint: general
+  - url: https://news.google.com/rss/search?q=(site:derstandard.at+OR+site:rp.pl+OR+site:telex.hu)+(Tschechien+OR+Czechy+OR+Csehorsz%C3%A1g+OR+Prag+OR+Praga+OR+Babi%C5%A1)+when:7d&hl=en-US&gl=US&ceid=US:en
+    section: DACH & V4 coverage of Czechia
+    category_hint: foreign_policy
+- id: gnews_cz_govt
+  name: Czech Government / MZV / ČNB / Hrad
+  homepage: https://vlada.gov.cz
+  language: cs
+  scope: domestic
+  kind: official
+  aggregator: google_news
+  needs_mention: true
+  governing_body: Government of Czechia / MFA / Czech National Bank / Office of the President
+  state_affiliated: true
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:vlada.gov.cz+OR+site:mzv.gov.cz+OR+site:cnb.cz+OR+site:hrad.cz)+when:7d&hl=cs&gl=CZ&ceid=CZ:cs
+    section: Instituce ČR
+    category_hint: internal_politics
+- id: gnews_cz_local
+  name: Google News (Czech)
+  homepage: https://news.google.com
+  language: cs
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  needs_mention: true
+  governing_body: Google LLC
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(vl%C3%A1da+OR+sn%C4%9Bmovna+OR+Babi%C5%A1+OR+Pavel)+when:2d&hl=cs&gl=CZ&ceid=CZ:cs
+    section: Politika
+    category_hint: internal_politics
+  - url: https://news.google.com/rss/search?q=(%C4%8CNB+OR+ekonomika+OR+Dukovany+OR+%C4%8CEZ+OR+rozpo%C4%8Det)+when:2d&hl=cs&gl=CZ&ceid=CZ:cs
+    section: Ekonomika
+    category_hint: economics
+  - url: https://news.google.com/rss/search?q=(%C4%8Cesko+(EU+OR+NATO+OR+V4+OR+Ukrajina+OR+zahrani%C4%8Dn%C3%AD))+when:2d&hl=cs&gl=CZ&ceid=CZ:cs
+    section: Zahraničí
+    category_hint: foreign_policy
 - id: gnews_en_cz
   name: Google News (Czechia - International)
   homepage: https://news.google.com
@@ -348,12 +388,18 @@ sources:
   governing_body: n/a (aggregator)
   state_affiliated: false
   feeds:
-  - url: https://news.google.com/rss/search?q=Czechia+(Prague+OR+Fiala+OR+Pavel+OR+Babis)+when:7d&hl=en-US&gl=US&ceid=US:en
+  - url: https://news.google.com/rss/search?q=(Czechia+OR+%22Czech+Republic%22)+when:2d&hl=en-US&gl=US&ceid=US:en
+    section: Czechia
+    category_hint: general
+  - url: https://news.google.com/rss/search?q=(Czechia+OR+%22Czech+Republic%22)+(Prague+OR+Pavel+OR+Babis+OR+government)+when:5d&hl=en-US&gl=US&ceid=US:en
     section: Czechia politics
     category_hint: internal_politics
-  - url: https://news.google.com/rss/search?q=Czechia+(EU+OR+NATO+OR+Ukraine+OR+ammunition)+when:7d&hl=en-US&gl=US&ceid=US:en
+  - url: https://news.google.com/rss/search?q=(Czechia+OR+%22Czech+Republic%22)+(EU+OR+NATO+OR+Ukraine+OR+Visegrad+OR+ammunition)+when:5d&hl=en-US&gl=US&ceid=US:en
     section: Czechia EU & diplomacy
     category_hint: foreign_policy
+  - url: https://news.google.com/rss/search?q=(Czechia+OR+%22Czech+Republic%22)+(economy+OR+Dukovany+OR+Skoda+OR+CEZ+OR+CSG+OR+F-35)+when:5d&hl=en-US&gl=US&ceid=US:en
+    section: Czechia economy & defence
+    category_hint: economics
 - id: gnews_cz_def_industry
   name: Google News (Czechia Defence Industry & Procurement)
   homepage: https://news.google.com

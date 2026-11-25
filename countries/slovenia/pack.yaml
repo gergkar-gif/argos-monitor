@@ -10,17 +10,40 @@ mention:
 - slovenia
 - slovenian
 - ljubljana
+- maribor
+- koper
+- celje
+- kranj
+- nova gorica
+- janez janša
+- janša
+- jansa
 - robert golob
 - golob
-- janez janša
-- jansa
 - nataša pirc musar
 - pirc musar
+- tanja fajon
+- fajon
+- vlada rs
 - državni zbor
+- ustavno sodišče
+- sds
+- gibanje svoboda
+- nsi
+- sd
+- levica
 - luka koper
 - krško
+- jek2
+- banka slovenije
+- slovenska vojska
+- petrol
+- krka
+- kpk
 mention_regex:
-- \bslovensk
+- \bslovensk\w*
+- \bljubljan\w*
+- \bjanš\w*
 mention_section: null
 url_sections:
   foreign:
@@ -68,24 +91,39 @@ aggregator_outlets:
   - požareport
   - pozareport
   - plusportal
+  - maribor24.si
+  - maribor24
+  - gov.si
+  - dz-rs.si
+  - bsi.si
   abroad_local:
+  - novice
+  - primorski dnevnik
+  - orf volksgruppen
+  - jutarnji list
+  - der standard
   - total slovenia news
   - balkan insight
   - euractiv
 excerpt:
-  dateline: ^\s*(?:STA|RTV SLO|LJUBLJANA)\s*[-–—:]\s*
+  dateline: ^\s*(?:STA|RTV SLO|LJUBLJANA|MARIBOR)\s*[-–—:]\s*
   noise: ^(foto|vir|video|preberite še|oglas|\(|\[)
 classify:
   internal_politics:
-  - Vlada Republike Slovenije, Državni zbor, premier Robert Golob, predsednica Nataša Pirc Musar, Gibanje Svoboda, SDS, Janez Janša, SD, Levica, NSi, volitve
+  - Prime Minister Janez Janša and SDS government, President Nataša Pirc Musar, Robert Golob and Freedom Movement opposition, National Assembly (Državni zbor), Constitutional Court and KPK anti-corruption commission
+  - Vlada Republike Slovenije, Janez Janša, SDS, Državni zbor, Nataša Pirc Musar, Robert Golob, Gibanje Svoboda, NSi, SD, Levica, volitve, KPK
   economics:
-  - gospodarstvo, inflacija, proračun, Banka Slovenije, Luka Koper, JEK2, nuklearka Krško, energetika, davki, investicije
+  - Port of Koper (Luka Koper) Adriatic logistics corridor, Divača–Koper second rail track, Krško Nuclear Power Plant (JEK2), Banka Slovenije, state budget, inflation and tax policy
+  - gospodarstvo, inflacija, proračun, Banka Slovenije, Luka Koper, drugi tir, JEK2, nuklearka Krško, energetika, davki, investicije
   foreign_policy:
-  - zunanja politika, Tanja Fajon, Evropska unija, Varnostni svet OZN, Schengen, Zahodni Balkan, odnosi s Hrvaško, Italijo, Avstrijo, Madžarsko
+  - Slovenian European Union policy, Schengen internal border controls with Croatia and Austria, Western Balkans enlargement, bilateral relations with Hungary, Italy, Austria and Croatia, Carinthian and Trieste Slovenes
+  - zunanja politika, Evropska unija, Schengen, mejni nadzor, Zahodni Balkan, odnosi s Hrvaško, Italijo, Avstrijo, Madžarsko, zamejstvo
   defence_security:
+  - Slovenian Armed Forces (Slovenska vojska), Ministry of Defence (MORS), NATO deterrence, procurement, border security and police
   - Slovenska vojska, MORS, obramba, NATO, nacionalna varnost, mejni nadzor, policija
   society:
-  - zdravstvo, šolstvo, pokojnine, sodstvo, KPK, korupcija, stavka, poplave, vreme
+  - healthcare, education, pensions, judiciary, labour disputes, floods and severe weather
+  - zdravstvo, šolstvo, pokojnine, sodstvo, stavka, poplave, vreme
 geo: SI
 reddit:
 - Slovenia

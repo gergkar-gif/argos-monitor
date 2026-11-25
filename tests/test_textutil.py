@@ -5,7 +5,7 @@ import pathlib
 import unicodedata
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
-from argos.textutil import clean, clean_url, nfc, strip_emoji
+from argos.textutil import clean, clean_url, is_sports_stream_spam, nfc, strip_emoji
 
 # Rule 7: Zero emojis
 s1 = "Breaking: \U0001f525 Alert in H\u00e0 N\u1ed9i \U0001f1fb\U0001f1f3 - Flood warning \u26a0\ufe0f in Budapest (\u00e1rv\u00edz)"
@@ -35,5 +35,12 @@ assert clean_url(dirty_url) == expected_url, f"URL must be canonicalized and tra
 
 content_url = "https://news.example.com/article?id=9876&utm_medium=rss"
 assert clean_url(content_url) == "https://news.example.com/article?id=9876", "Non-tracking query params must be retained"
+
+# Central European sports outlets and live-ticker spam must be filtered
+for outlet in ("kicker", "sport.pl", "sport.cz", "laola1"):
+    assert is_sports_stream_spam("Match preview", outlet=outlet), f"Sports outlet {outlet} must be filtered"
+for title in ("Bayern gegen BVB im Live-Ticker", "Polska - Niemcy transmisja na żywo", "Sparta vs Slavia přímý přenos"):
+    assert is_sports_stream_spam(title), f"Live stream spam '{title}' must be filtered"
+assert not is_sports_stream_spam("Bundestag verabschiedet Haushalt für das kommende Jahr", outlet="Tagesschau (ARD)")
 
 print("ok textutil tests passed")

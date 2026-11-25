@@ -3,48 +3,82 @@ id: germany
 name: Germany
 region: Western Europe
 language: de
-abroad_label: International & regional European outlets
+abroad_label: International & regional German-language outlets
 mention:
 - germany
 - german
-- berlin
-- bundestag
-- bundesrat
-- merz
-- friedrich merz
-- klingbeil
-- lars klingbeil
-- pistorius
-- boris pistorius
-- wadephul
-- bundeskanzler
-- bundesbank
-- bundeswehr
-- chancellery
 - deutschland
 - deutsche
-- bundesregierung
-mention_regex:
-- \b(?:germany|german|bundestag|merz|bundeswehr|bundesbank)\b
-- deutschland
-- bundesregierung
+- berlin
+- münchen
+- frankfurt
+- hamburg
+- köln
+- stuttgart
+- düsseldorf
+- leipzig
+- dresden
 - bundestag
+- bundesrat
+- bundeskanzler
+- bundesregierung
+- bundesbank
+- bundeswehr
+- bundesverfassungsgericht
+- auswärtiges amt
+- chancellery
+- friedrich merz
 - merz
+- lars klingbeil
+- klingbeil
+- boris pistorius
+- pistorius
+- johann wadephul
+- wadephul
+- frank-walter steinmeier
+- steinmeier
+- cdu
+- csu
+- spd
+- afd
+- bsw
+- grüne
+- schuldenbremse
+- rheinmetall
+- volkswagen
+- siemens
+- basf
+- deutsche bahn
+mention_regex:
+- \bdeutsch\w*
+- \bbundestag\w*
+- \bbundeswehr\w*
+- \bbundesbank\w*
+- \bberliner\w*
 mention_section: Germany
 url_sections:
   foreign:
   - ausland
   - international
+  - welt
   - world
   skip:
   - sport
+  - fussball
+  - bundesliga
   - lifestyle
   - kultur
+  - kino
+  - musik
   - panorama
   - unterhaltung
   - auto
   - reise
   - wetter
+  - gesundheit
+  - genuss
+  - horoskop
+  - leute
 aggregator_outlets:
   domestic:
   - tagesschau
@@ -84,10 +118,20 @@ aggregator_outlets:
   - cicero
   - junge freiheit
   - tichys einblick
+  - apollo news
+  - verfassungsblog
+  - lobbycontrol
+  - bundesbank
+  - deutsche bundesbank
+  - bundesregierung
+  - bundestag
+  - hartpunkt
+  - augen geradeaus!
+  - augen geradeaus
+  - european security & defence
   - wdr
   - mdr
   - rbb24
-  - bundesregierung
   - br24
   - ndr
   - swr
@@ -97,29 +141,36 @@ aggregator_outlets:
   abroad_local:
   - dw
   - deutsche welle
+  - euronews deutsch
+  - nzz
+  - neue zürcher zeitung
+  - der standard
+  - die presse
   - politico europe
-last_reviewed: '2026-11-25'
 excerpt:
-  dateline: ^\s*(?:BERLIN|FRANKFURT|HAMBURG|DPA|REUTERS|AFP|TAGESSCHAU)\s*[-–—:]\s*
-  noise: ^(Foto|Quelle|Lesen Sie auch|Photo|Credit|\(|\[)
+  dateline: ^\s*(?:BERLIN|FRANKFURT|HAMBURG|MÜNCHEN|DPA|DPA-AFX|REUTERS|AFP|EPD|KNA|TAGESSCHAU)\s*[-–—:]\s*
+  noise: ^(Foto|Quelle|Bild|Lesen Sie auch|Mehr dazu|Anzeige|Photo|Credit|\(|\[)
 classify:
   internal_politics:
-  - Federal Chancellor Olaf Scholz, Bundestag legislative debates, coalition dynamics (SPD, Greens, FDP), CDU/CSU opposition (Friedrich Merz), AfD, BSW, state parliamentary elections, federal constitutional court (BVerfG)
-  - Bundeskanzler, Olaf Scholz, Bundestag, Bundesrat, Koalition, CDU/CSU, Friedrich Merz, AfD, BSW, Landtagswahlen, Bundesverfassungsgericht, Innenpolitik
+  - Federal Chancellor Friedrich Merz, CDU/CSU and SPD coalition, Vice Chancellor Lars Klingbeil, Bundestag and Bundesrat legislation, AfD, Greens, Linke and BSW opposition, state Landtag elections, Federal Constitutional Court (BVerfG)
+  - Bundeskanzler Friedrich Merz, Koalition CDU/CSU und SPD, Lars Klingbeil, Bundestag, Bundesrat, AfD, Grüne, BSW, Linke, Landtagswahlen, Bundesverfassungsgericht, Innenpolitik
   economics:
-  - Deutsche Bundesbank, German GDP stagnation, industrial de-industrialization (Volkswagen, BASF, Siemens), high energy costs, debt brake (Schuldenbremse), export headwinds, chemical and automotive sectors
-  - Bundesbank, Wirtschaftswachstum, Rezession, Industrie, Automobilindustrie, Volkswagen, Energiepreise, Schuldenbremse, Haushalt, Inflation
+  - Deutsche Bundesbank, German GDP competitiveness, industrial electricity prices, debt brake (Schuldenbremse) and special infrastructure fund, automotive and chemical supply chains (Volkswagen, BMW, Mercedes, Siemens, BASF)
+  - Bundesbank, Wirtschaftswachstum, Rezession, Industrie, Automobilindustrie, Volkswagen, Energiepreise, Schuldenbremse, Sondervermögen, Haushalt, Inflation
   foreign_policy:
-  - Federal Foreign Office, Annalena Baerbock, European Union diplomacy, Franco-German engine, transatlantic relations with the US, military and humanitarian aid to Ukraine, China de-risking strategy
-  - Auswärtiges Amt, Annalena Baerbock, EU-Politik, deutsch-französische Beziehungen, Ukraine-Hilfe, Außenpolitik, China-Strategie, NATO
+  - Federal Foreign Office under Johann Wadephul, European Union Council diplomacy, Weimar Triangle with France and Poland, transatlantic relations, military and financial aid to Ukraine, China de-risking strategy
+  - Auswärtiges Amt, Johann Wadephul, EU-Politik, Weimarer Dreieck, deutsch-französische Beziehungen, Ukraine-Hilfe, Außenpolitik, China-Strategie, NATO
   defence_security:
-  - Bundeswehr, Federal Minister of Defence Boris Pistorius, Zeitenwende special fund (Sondervermögen), brigade deployment in Lithuania, air defense (Iris-T, Arrow 3), defense spending (2% GDP)
-  - Bundeswehr, Boris Pistorius, Zeitenwende, Sondervermögen, Litauen-Brigade, Rüstungsbeschaffung, NATO-Ostflanke, Luftverteidigung, Verteidigungsetat
+  - Bundeswehr, Defence Minister Boris Pistorius, Zeitenwende procurement (Rheinmetall, KNDS, Diehl, Hensoldt, TKMS), permanent Lithuania brigade, air defence (IRIS-T, Arrow 3, Patriot), NATO deterrence and intelligence oversight
+  - Bundeswehr, Boris Pistorius, Zeitenwende, Sondervermögen, Litauen-Brigade, Rüstungsbeschaffung, Rheinmetall, NATO-Ostflanke, Luftverteidigung, Verteidigungsetat
   society:
-  - Migration and asylum policy, border controls, skilled labor shortages, pension reforms (Rentenpaket), housing crisis, healthcare restructuring
-  - Migration, Asylpolitik, Grenzkontrollen, Fachkräftemangel, Rente, Wohnungsnot, Gesundheitssystem, Bildung
+  - Migration and asylum policy, Schengen border controls, skilled labour shortages, pension reform, housing, healthcare, infrastructure and Deutsche Bahn, severe weather
+  - Migration, Asylpolitik, Grenzkontrollen, Fachkräftemangel, Rente, Wohnungsnot, Gesundheitssystem, Bildung, Deutsche Bahn
 geo: DE
 reddit:
-- geopolitics
 - de
 - germanpolitics
+- Finanzen
+- berlin
+- Munich
+last_reviewed: '2026-11-25'

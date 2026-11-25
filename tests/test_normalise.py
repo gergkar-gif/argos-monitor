@@ -110,6 +110,32 @@ class TestNormaliseSyndication(unittest.TestCase):
         r31 = self.db.execute("SELECT syndicated_of FROM article WHERE id=31").fetchone()
         self.assertEqual(r31["syndicated_of"], 30, "Chinese Xinhua reprint must be marked as syndicated")
 
+    def test_central_european_wire_reprint_marked_syndicated(self):
+        cases = [
+            ("dpa", "dpa", "(dpa) ", "Berlin, Germany - The federal cabinet approved new infrastructure spending across rail corridors, electricity grids, and industrial competitiveness measures on Tuesday after weeks of coalition budget negotiations in the Bundestag and Bundesrat committees."),
+            ("apa", "APA", "laut APA ", "Wien - Der Nationalrat hat am Dienstag das Budgetsanierungspaket sowie neue Investitionen in die Schieneninfrastruktur, Energieversorgung und Landesverteidigung nach intensiven Ausschussberatungen mit klarer Mehrheit im Hohen Haus beschlossen."),
+            ("pap", "PAP", "(PAP) ", "Warszawa - Rząd przyjął we wtorek projekt ustawy budżetowej oraz wieloletni plan modernizacji energetyki jądrowej, sieci przesyłowych i umocnień na granicy wschodniej w ramach programu Tarcza Wschód po konsultacjach resortowych."),
+            ("ctk", "ČTK", "podle ČTK ", "Praha - Vláda v úterý schválila rozpočtový rámec a podporu pro dostavbu nových bloků jaderné elektrárny Dukovany i modernizaci vysokorychlostních železničních koridorů napříč Českou republikou po jednání ministrů a zástupců průmyslu, energetiky a ministerstva financí v Poslanecké sněmovně."),
+            ("mti", "MTI", "(MTI) ", "Budapest - Az Országgyűlés kedden elfogadta a jövő évi költségvetési törvényjavaslatot és a hazai energetikai hálózatfejlesztési beruházások kiemelt támogatását a gazdasági és pénzügyi bizottság jóváhagyását követően."),
+            ("tasr", "TASR", "(TASR) ", "Bratislava - Vláda v utorok schválila konsolidačný balík verejných financií a opatrenia pre energetickú bezpečnosť, tranzit plynu cez územie Slovenska a podporu domáceho automobilového priemyslu na rokovaní kabinetu."),
+            ("sta", "STA", "(STA) ", "Ljubljana - Vlada je v torek potrdila proračunski načrt za prihodnje leto ter strateške ukrepe za širitev pristanišča Luka Koper, gradnjo drugega tira in priprave na energetski projekt JEK2 v Posavju."),
+            ("hina", "HINA", "izvještava HINA ", "Zagreb - Vlada je u utorak donijela paket mjera za energetsku sigurnost preko terminala na Krku i naftovoda JANAF te odobrila nova ulaganja u željezničku infrastrukturu prema luci Rijeka."),
+        ]
+        for idx, (sid, sname, marker, body) in enumerate(cases, start=40):
+            wire_id = idx * 10
+            rep_id = wire_id + 1
+            rep_sid = f"paper_{sid}"
+            self.db.execute("INSERT INTO source VALUES (?, ?, 'wire', 1, 0)", (sid, sname))
+            self.db.execute("INSERT INTO source VALUES (?, ?, 'media', 0, 0)", (rep_sid, f"Daily {sname}"))
+            self.db.execute("INSERT INTO article (id, source_id, title, text, published_at) VALUES (?, ?, 'Wire headline', ?, '2026-11-25T08:00:00Z')", (wire_id, sid, body))
+            reprint = f"{marker}{body} Regional commentators added brief local context regarding parliamentary timetable."
+            self.db.execute("INSERT INTO article (id, source_id, title, text, published_at) VALUES (?, ?, 'Paper headline', ?, '2026-11-25T08:25:00Z')", (rep_id, rep_sid, reprint))
+
+        normalise.run(self.db)
+        for idx, (sid, _, _, _) in enumerate(cases, start=40):
+            r = self.db.execute("SELECT syndicated_of FROM article WHERE id=?", (idx * 10 + 1,)).fetchone()
+            self.assertEqual(r["syndicated_of"], idx * 10, f"Central European wire reprint for {sid} must be marked as syndicated")
+
 
 if __name__ == "__main__":
     unittest.main()

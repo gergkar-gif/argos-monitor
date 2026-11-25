@@ -1,31 +1,88 @@
 # Poland's additions to the shared themes (../../themes.yaml).
 themes:
-  - id: security
-    label: NATO eastern flank & East Shield defence
-    weight: 1.0
-    category: defence_security
+  - id: elections
     describe:
-      - Polish Armed Forces modernization, defence spending (4-5% GDP), East Shield (Tarcza Wschód) border fortifications, Belarus border hybrid pressure, NATO operations
-      - modernizacja Wojska Polskiego, wydatki na obronność, Tarcza Wschód, granica polsko-białoruska, NATO
-    keywords: ["tarcza wschód", "east shield", "wojsko polskie", "mon", "kosiniak-kamysz", "granica z białorusią", "nato", "zbrojenia", "f-35", "abrams", "himars", "patriot"]
-
-  - id: party_gov
-    label: Tusk coalition, Rule of Law & Presidential politics
-    weight: 0.9
-    category: internal_politics
-    describe:
-      - Donald Tusk coalition government, Sejm legislation, judicial reform and rule-of-law restoration, PiS opposition investigations, presidential election
-      - rząd Donalda Tuska, Koalicja Obywatelska, Prawo i Sprawiedliwość (PiS), praworządność, reforma sądownictwa, wybory prezydenckie
-    keywords: ["donald tusk", "tusk", "kaczyński", "duda", "trzaskowski", "sikorski", "bodnar", "koalicja obywatelska", "prawo i sprawiedliwość", "pis", "sejm", "trybunał konstytucyjny", "krs", "praworządność"]
+      - Polish presidential, parliamentary (Sejm and Senate), local, and European elections, PKW results, exit polls, and voter turnout
+      - Wybory prezydenckie, wybory parlamentarne, wybory samorządowe, PKW, frekwencja wyborcza, druga tura, sondaż, głosowanie
+    keywords: ["wybory", "wybory prezydenckie", "druga tura", "frekwencja", "głosowanie", "pkw", "kandydat", "sondaż", "referendum", "kampania wyborcza"]
 
   - id: diplomacy
     describe:
-      - Poland's EU Council leadership, Ukraine military and diplomatic backing, Weimar Triangle, US-Poland strategic partnership
-      - polska prezydencja i rola w UE, wsparcie dla Ukrainy, Trójkąt Weimarski, relacje z USA i Niemcami
-    keywords: ["radosław sikorski", "sikorski", "msz", "trójkąt weimarski", "weimar triangle", "unia europejska", "ukraina", "relacje polsko-ukraińskie"]
+      - Polish foreign policy under Radosław Sikorski, EU Council diplomacy, Weimar Triangle, US-Poland alliance, Ukraine diplomatic relations, and Three Seas Initiative
+      - Polityka zagraniczna, MSZ, Radosław Sikorski, Unia Europejska, Trójkąt Weimarski, relacje z Ukrainą, USA, Niemcami, Trójmorze
+    keywords: ["radosław sikorski", "sikorski", "msz", "trójkąt weimarski", "weimar triangle", "trójmorze", "ambasador", "wizyta państwowa", "dyplomacja"]
+
+  - id: trade
+    describe:
+      - Polish foreign trade, EU single market, Ukraine agricultural and transport corridor disputes, tariffs, exports and imports
+      - Handel zagraniczny, eksport, import, cła, embargo zbożowe, granica z Ukrainą, wolny handel
+    keywords: ["handel zagraniczny", "eksport", "import", "cła", "cło", "embargo", "zboże", "przejście graniczne"]
+
+  - id: investment
+    describe:
+      - Foreign direct investment in Poland, semiconductor and EV battery supply chains, offshore wind (Baltic Power), data centres, and industrial zones
+      - Inwestycje zagraniczne, inwestor, fabryka, półprzewodniki, morska energetyka wiatrowa, centrum danych, strefa ekonomiczna
+    keywords: ["inwestycje", "inwestycja", "inwestor", "półprzewodniki", "centrum danych", "morska farma wiatrowa", "fabryka"]
 
   - id: econ_policy
     describe:
-      - National Bank of Poland (NBP) interest rates, EU KPO recovery funds, nuclear power plant construction, CPK transport hub, Orlen
-      - Narodowy Bank Polski (NBP), Glapiński, środki z KPO, elektrownia jądrowa, Centralny Port Komunikacyjny (CPK), Orlen
-    keywords: ["nbp", "glapiński", "kpo", "krajowy plan odbudowy", "cpk", "centralny port komunikacyjny", "elektrownia jądrowa", "orlen", "stopy procentowe"]
+      - National Bank of Poland (NBP) interest rates, inflation, zloty exchange rate, state budget, EU KPO recovery funds, CPK transport hub, and Orlen
+      - Narodowy Bank Polski (NBP), Adam Glapiński, stopy procentowe, inflacja, złoty, budżet państwa, środki z KPO, CPK, Orlen
+    keywords: ["nbp", "glapiński", "kpo", "krajowy plan odbudowy", "cpk", "centralny port komunikacyjny", "stopy procentowe", "inflacja", "budżet", "orlen", "złoty"]
+
+  - id: party_gov
+    label: "Tusk Coalition, President Nawrocki & Rule of Law"
+    weight: 1.0
+    category: internal_politics
+    describe:
+      - Prime Minister Donald Tusk coalition government, President Karol Nawrocki vetoes and cohabitation, Sejm and Senate legislation, KO, PiS, Trzecia Droga, Lewica, Konfederacja, judicial reform and Constitutional Tribunal
+      - Rząd Donalda Tuska, prezydent Karol Nawrocki, Sejm, Senat, Koalicja Obywatelska, PiS, Konfederacja, Trybunał Konstytucyjny, KRS, praworządność
+    keywords: ["donald tusk", "tusk", "karol nawrocki", "nawrocki", "kaczyński", "trzaskowski", "hołownia", "mentzen", "koalicja obywatelska", "prawo i sprawiedliwość", "pis", "konfederacja", "sejm", "trybunał konstytucyjny", "praworządność"]
+
+  - id: security
+    label: "NATO Eastern Flank, East Shield & Border Defence"
+    weight: 1.0
+    category: defence_security
+    describe:
+      - Polish Armed Forces (Wojsko Polskie) modernization, defence spending (4-5% GDP), East Shield (Tarcza Wschód) fortifications, Belarus border hybrid pressure, ABW counterintelligence and cybersecurity
+      - Wojsko Polskie, MON, Władysław Kosiniak-Kamysz, Tarcza Wschód, granica z Białorusią, NATO, ABW, cyberbezpieczeństwo
+    keywords: ["tarcza wschód", "east shield", "wojsko polskie", "mon", "kosiniak-kamysz", "granica z białorusią", "nato", "abw", "cyberbezpieczeństwo"]
+
+  - id: defence_industry
+    describe:
+      - Polish defence industrial base (PGZ, WB Group, Huta Stalowa Wola, Mesko, PZL), South Korean K2/K9/FA-50 localization, F-35, Abrams, Apache, HIMARS, Patriot, and ammunition production
+      - Przemysł zbrojeniowy, PGZ, Polska Grupa Zbrojeniowa, WB Group, Huta Stalowa Wola, Mesko, zbrojenia, czołgi K2, Borsuk, Krab, F-35, HIMARS, Patriot
+    keywords: ["przemysł zbrojeniowy", "zbrojeniówka", "pgz", "wb group", "stalowa wola", "mesko", "zbrojenia", "f-35", "abrams", "himars", "patriot", "krab", "borsuk"]
+
+  - id: anticorruption
+    describe:
+      - CBA anti-corruption probes, parliamentary inquiry commissions (komisja śledcza), Fundusz Sprawiedliwości, RARS and visa-scandal investigations, Supreme Audit Office (NIK)
+      - Korupcja, CBA, komisja śledcza, Fundusz Sprawiedliwości, NIK, prokuratura, łapówka, afera
+    keywords: ["korupcja", "cba", "komisja śledcza", "fundusz sprawiedliwości", "nik", "łapówka", "afera", "zarzuty"]
+
+  - id: energy_infra
+    describe:
+      - Polish nuclear power plant (Lubiatowo-Kopalino / PEJ), LNG terminal Świnoujście / FSRU Gdańsk, Baltic Pipe, coal phase-out, grid security, and high-speed rail
+      - Elektrownia jądrowa, atom, Świnoujście LNG, Baltic Pipe, transformacja energetyczna, sieć elektroenergetyczna, kolej dużych prędkości
+    keywords: ["elektrownia jądrowa", "energetyka", "atom", "świnoujście", "baltic pipe", "gazoport", "węgiel", "pge", "sieć energetyczna"]
+
+  - id: crime_local
+    describe: ["Policja, zatrzymanie, proces sądowy, wyrok, oszustwo, kradzież, zabójstwo, prokuratura"]
+    keywords: ["zatrzymany", "areszt", "wyrok", "sąd", "oszustwo", "kradzież", "zabójstwo", "policja", "prokuratura"]
+
+  - id: accident_weather
+    describe: ["Wypadek drogowy, pożar, prognoza pogody, burza, powódź, wichura, susza"]
+    keywords: ["wypadek", "pożar", "pogoda", "burza", "powódź", "wichura", "ulewy", "susza"]
+
+  - id: sport_culture
+    describe: ["Piłka nożna, Ekstraklasa, reprezentacja Polski, mistrzostwa, aktor, piosenkarz, film"]
+    keywords: ["piłka nożna", "ekstraklasa", "reprezentacja", "mistrzostwa", "olimpiada", "aktor", "piosenkarz", "celebryta"]
+
+  - id: eastern_flank_east_shield
+    label: "Eastern Border Security, Ukraine Logistics & Kaliningrad Posture"
+    weight: 1.0
+    category: foreign_policy
+    describe:
+      - Poland as NATO frontline logistics hub (Rzeszów-Jasionka), Belarus hybrid migration and Kaliningrad border security, EU Eastern Shield funding, and Polish-Ukrainian historical/security relations
+      - Rzeszów-Jasionka, granica polsko-białoruska, Obwód Królewiecki, wsparcie dla Ukrainy, sankcje wobec Rosji i Białorusi
+    keywords: ["rzeszów", "jasionka", "białoruś", "królewiec", "obwód kaliningradzki", "ukraina", "sankcje", "granica wschodnia"]

@@ -232,6 +232,52 @@ sources:
   - url: https://news.google.com/rss/search?q=(site:noviny.sk+OR+site:trend.sk+OR+site:cas.sk+OR+site:pluska.sk+OR+site:icjk.sk)+when:3d&hl=sk&gl=SK&ceid=SK:sk
     section: Médiá & Biznis
     category_hint: general
+- id: vlada_sk
+  name: Úrad vlády SR
+  homepage: https://www.vlada.gov.sk
+  language: sk
+  scope: domestic
+  kind: official
+  governing_body: Government Office of the Slovak Republic
+  state_affiliated: true
+  notes: Official press releases and cabinet decisions from the Slovak Government Office.
+  feeds:
+  - url: https://www.vlada.gov.sk/rss/
+    section: Aktuality
+    category_hint: internal_politics
+- id: nbs_sk
+  name: National Bank of Slovakia (NBS)
+  homepage: https://nbs.sk
+  language: en
+  scope: domestic
+  kind: official
+  governing_body: Národná banka Slovenska (Slovak central bank)
+  state_affiliated: true
+  notes: Official Slovak central bank macroeconomic, inflation, and banking supervision updates.
+  feeds:
+  - url: https://nbs.sk/en/feed/
+    section: Press & Macro
+    category_hint: economics
+- id: gnews_sk_local
+  name: Google News (Slovak)
+  homepage: https://news.google.com
+  language: sk
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  needs_mention: true
+  governing_body: Google LLC
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(vl%C3%A1da+OR+parlament+OR+Fico+OR+Pellegrini)+Slovensko+when:2d&hl=sk&gl=SK&ceid=SK:sk
+    section: Politika
+    category_hint: internal_politics
+  - url: https://news.google.com/rss/search?q=(konsolid%C3%A1cia+OR+SPP+OR+Slovnaft+OR+ekonomika+OR+infl%C3%A1cia)+Slovensko+when:3d&hl=sk&gl=SK&ceid=SK:sk
+    section: Ekonomika
+    category_hint: economics
+  - url: https://news.google.com/rss/search?q=(Slovensko+(E%C3%9A+OR+NATO+OR+V4+OR+Ukrajina+OR+zahrani%C4%8Dn%C3%A1))+when:3d&hl=sk&gl=SK&ceid=SK:sk
+    section: Zahraničie
+    category_hint: foreign_policy
 - id: gnews_sk_abroad
   name: Czech & Central European Regional Press (on Slovakia)
   homepage: https://www.irozhlas.cz
@@ -239,12 +285,15 @@ sources:
   scope: abroad_local
   kind: media
   aggregator: google_news
-  governing_body: Czech Radio iROZHLAS & Seznam Zprávy
+  governing_body: Czech & Hungarian-language Central European Press
   state_affiliated: false
   feeds:
-  - url: https://news.google.com/rss/search?q=(site:irozhlas.cz+OR+site:seznamzpravy.cz)+(Slovensko+OR+Fico+OR+Bratislava)+when:7d&hl=cs&gl=CZ&ceid=CZ:cs
+  - url: https://news.google.com/rss/search?q=(site:irozhlas.cz+OR+site:seznamzpravy.cz+OR+site:ct24.ceskatelevize.cz+OR+site:denikn.cz)+(Slovensko+OR+Fico+OR+Bratislava)+when:7d&hl=cs&gl=CZ&ceid=CZ:cs
     section: Czech coverage of Slovakia
     category_hint: general
+  - url: https://news.google.com/rss/search?q=(site:ujszo.com+OR+site:ma7.sk+OR+site:parameter.sk+OR+site:telex.hu)+(Szlov%C3%A1kia+OR+Slovensko+OR+Fico+OR+Pozsony)+when:7d&hl=hu&gl=SK&ceid=SK:hu
+    section: Felvidék & Hungarian coverage of Slovakia
+    category_hint: foreign_policy
 - id: gnews_en_sk
   name: Google News (Slovakia - International)
   homepage: https://news.google.com
@@ -255,9 +304,15 @@ sources:
   governing_body: n/a (aggregator)
   state_affiliated: false
   feeds:
-  - url: https://news.google.com/rss/search?q=Slovakia+(Bratislava+OR+Fico+OR+Pellegrini+OR+parliament)+when:7d&hl=en-US&gl=US&ceid=US:en
+  - url: https://news.google.com/rss/search?q=Slovakia+when:3d&hl=en-US&gl=US&ceid=US:en
+    section: Slovakia
+    category_hint: general
+  - url: https://news.google.com/rss/search?q=Slovakia+(Bratislava+OR+Fico+OR+Pellegrini+OR+parliament+OR+STVR)+when:7d&hl=en-US&gl=US&ceid=US:en
     section: Slovakia politics
     category_hint: internal_politics
-  - url: https://news.google.com/rss/search?q=Slovakia+(EU+OR+NATO+OR+Ukraine+OR+economy+OR+energy)+when:7d&hl=en-US&gl=US&ceid=US:en
+  - url: https://news.google.com/rss/search?q=Slovakia+(EU+OR+NATO+OR+Ukraine+OR+Visegrad+OR+sanctions)+when:7d&hl=en-US&gl=US&ceid=US:en
     section: Slovakia EU & foreign policy
     category_hint: foreign_policy
+  - url: https://news.google.com/rss/search?q=Slovakia+(economy+OR+gas+OR+Druzhba+OR+automotive+OR+defence+OR+F-16)+when:7d&hl=en-US&gl=US&ceid=US:en
+    section: Slovakia economy & defence
+    category_hint: economics

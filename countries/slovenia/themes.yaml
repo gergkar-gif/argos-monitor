@@ -1,80 +1,88 @@
 # Slovenia's additions to the shared themes (../../themes.yaml).
 themes:
-- id: party_gov
-  label: Golob Coalition, Janša (SDS) Opposition & Public Sector Reforms
-  weight: 1.0
-  category: internal_politics
-  describe:
-  - Prime Minister Robert Golob (Freedom Movement, SD, Left coalition), President Nataša Pirc Musar, Janez Janša and SDS opposition, National Assembly (Državni zbor) legislation, healthcare and tax reforms, Commission for the Prevention of Corruption (KPK)
-  - Vlada Roberta Goloba, Gibanje Svoboda, Janez Janša, SDS, Nataša Pirc Musar, Državni zbor, KPK, davčna in zdravstvena reforma
-  keywords:
-  - robert golob
-  - golob
-  - gibanje svoboda
-  - janez janša
-  - janša
-  - jansa
-  - pirc musar
-  - državni zbor
-  - kpk
-  - sds
-  - levica
-- id: energy_infra
-  label: Port of Koper Logistics Corridor, Krško Nuclear (JEK2) & Rail Infrastructure
-  weight: 1.0
-  category: economics
-  describe:
-  - Port of Koper (Luka Koper) Adriatic maritime gateway for Central Europe and Hungary, second track Divača–Koper railway, Krško Nuclear Power Plant (JEK2) expansion, and bilateral energy interconnectors with Hungary (Cirkovce–Pince) and Italy
-  - Luka Koper, drugi tir Divača-Koper, Nuklearna elektrarna Krško, JEK2, energetika, Banka Slovenije
-  keywords:
-  - luka koper
-  - koper
-  - drugi tir
-  - krško
-  - jek2
-  - nuklearka
-  - eles
-  - banka slovenije
-  - proračun
-- id: diplomacy
-  label: Schengen Border Controls, Western Balkans, C5 & UN Security Council
-  weight: 0.95
-  category: foreign_policy
-  describe:
-  - Foreign Minister Tanja Fajon, Slovenia's non-permanent seat on the UN Security Council, internal Schengen border controls with Croatia and Hungary, Central Five (C5) diplomacy, and Prekmurje (Muravidék) bilateral minority cooperation
-  - Tanja Fajon, Varnostni svet OZN, mejni nadzor na meji s Hrvaško in Madžarsko, Schengen, Zahodni Balkan, Prekmurje
-  keywords:
-  - tanja fajon
-  - fajon
-  - varnostni svet
-  - mejni nadzor
-  - schengen
-  - zahodni balkan
-  - prekmurje
-  - arbitraža
-- id: elections
-  describe:
-  - Slovenian parliamentary, presidential, local, and consultative referendum votes, DVK results, and turnout
-  - Državnozborske volitve, referendum, DVK, volilna udeležba
-  keywords:
-  - volitve
-  - referendum
-  - dvk
-  - volilna udeležba
-  - glasovanje
-  - ballot
-- id: econ_policy
-  label: NEK2 Nuclear Expansion, Port of Koper & Wage/Tax Reform
-  weight: 0.95
-  category: economics
-  describe:
-  - Krško JEK2 nuclear power plant expansion, Luka Koper railway second track, Slovenian public-sector wage reform, and inflation
-  - JEK2, Nuklearna elektrarna Krško, Luka Koper, drugi tir, proračun, davčna reforma
-  keywords:
-  - jek2
-  - krško
-  - luka koper
-  - drugi tir
-  - proračun
-  - davčna
-  - inflacija
+  - id: elections
+    describe:
+      - Slovenian parliamentary (Državni zbor), presidential, local, European elections, consultative referendums, DVK results, and voter turnout
+      - Državnozborske volitve, predsedniške volitve, lokalne volitve, referendum, DVK, volilna udeležba, rezultati volitev
+    keywords: ["volitve", "referendum", "dvk", "volilna udeležba", "glasovanje", "kandidat", "predvolilna", "anketa"]
+
+  - id: diplomacy
+    describe:
+      - Slovenian foreign policy, EU Council, UN diplomacy, Western Balkans enlargement, bilateral relations with Croatia, Italy, Austria and Hungary
+      - Zunanja politika, MZEZ, veleposlanik, državniški obisk, Evropska unija, NATO, Zahodni Balkan, arbitraža
+    keywords: ["zunanja politika", "mzez", "veleposlanik", "obisk", "evropska unija", "zahodni balkan", "arbitraža", "diplomacij"]
+
+  - id: trade
+    describe:
+      - Slovenian export economy, Port of Koper maritime trade, EU single market, automotive supplier exports, and tariffs
+      - Zunanja trgovina, izvoz, uvoz, carine, Luka Koper, dobavne verige, blagovna menjava
+    keywords: ["zunanja trgovina", "izvoz", "uvoz", "carin", "blagovna menjava", "dobavne verige"]
+
+  - id: investment
+    describe:
+      - Foreign direct investment in Slovenia, pharmaceuticals (Krka, Lek/Sandoz, Novartis), Revoz/automotive, logistics and industrial parks
+      - Tuje investicije, vlagatelj, farmacija, Krka, Lek, Novartis, Revoz, logistika, industrijska cona
+    keywords: ["investicij", "vlagatelj", "krka", "novartis", "revoz", "tovarna", "razvojni center"]
+
+  - id: econ_policy
+    describe:
+      - State budget, tax and wage policy, Banka Slovenije inflation and ECB policy, pension reform, and industrial competitiveness
+      - Proračun, davčna reforma, plačna reforma, Banka Slovenije, inflacija, gospodarska rast, pokojninska reforma
+    keywords: ["proračun", "davčna", "plačna reforma", "banka slovenije", "inflacija", "gospodarstvo", "pokojninska", "bdp"]
+
+  - id: party_gov
+    label: "Janša Government, President Pirc Musar & Parliament"
+    weight: 1.0
+    category: internal_politics
+    describe:
+      - Prime Minister Janez Janša and SDS government, President Nataša Pirc Musar, Robert Golob and Freedom Movement opposition, National Assembly (Državni zbor), NSi, SD, Levica, Constitutional Court
+      - Vlada Janeza Janše, Janez Janša, SDS, Nataša Pirc Musar, Robert Golob, Gibanje Svoboda, Državni zbor, NSi, SD, Levica, Ustavno sodišče
+    keywords: ["janez janša", "janša", "jansa", "sds", "robert golob", "golob", "gibanje svoboda", "pirc musar", "državni zbor", "vlada", "ustavno sodišče", "nsi", "levica"]
+
+  - id: security
+    describe:
+      - Slovenian Armed Forces (Slovenska vojska), Ministry of Defence (MORS), NATO deterrence, SOVA intelligence, cybersecurity and police
+      - Slovenska vojska, MORS, obramba, NATO, SOVA, kibernetska varnost, policija, nacionalna varnost
+    keywords: ["slovenska vojska", "mors", "obramba", "nato", "sova", "kibernetska", "policija", "nacionalna varnost"]
+
+  - id: defence_industry
+    describe:
+      - Slovenian defence procurement and industry (Patria/8x8 armoured vehicles, IRIS-T air defence, Valhalla Turrets, Pipistrel, C-Astral, 2% GDP defence budget)
+      - Obrambna industrija, oklepniki, Patria, IRIS-T, Valhalla Turrets, Pipistrel, C-Astral, oborožitev, obrambni proračun
+    keywords: ["obrambna industrija", "oklepnik", "patria", "iris-t", "valhalla", "pipistrel", "oborožit", "obrambni proračun", "vojska nakup"]
+
+  - id: anticorruption
+    describe:
+      - Commission for the Prevention of Corruption (KPK), Court of Audit (Računsko sodišče), public procurement probes, NPU investigations
+      - Komisija za preprečevanje korupcije (KPK), korupcija, Računsko sodišče, NPU, javno naročilo, podkupovanje
+    keywords: ["kpk", "korupcij", "računsko sodišče", "npu", "podkupov", "preiskav", "javno naročilo"]
+
+  - id: energy_infra
+    label: "Port of Koper Logistics Corridor, Krško Nuclear (JEK2) & Rail"
+    weight: 1.0
+    category: economics
+    describe:
+      - Port of Koper (Luka Koper) Adriatic maritime gateway for Central Europe and Hungary, second track Divača–Koper railway (drugi tir), Krško Nuclear Power Plant (JEK2) expansion, ELES grid and Cirkovce–Pince interconnector
+      - Luka Koper, drugi tir Divača-Koper, Nuklearna elektrarna Krško, JEK2, energetika, ELES, Cirkovce-Pince
+    keywords: ["luka koper", "koper", "drugi tir", "krško", "jek2", "nuklearka", "eles", "energetik", "železnica"]
+
+  - id: crime_local
+    describe: ["Policija, aretacija, sojenje, sodba, goljufija, kraja, umor"]
+    keywords: ["aretacij", "pridržan", "sojenje", "sodba", "sodišče", "goljufij", "kraja", "umor", "policija"]
+
+  - id: accident_weather
+    describe: ["Prometna nesreča, požar, vremenska napoved, neurje, poplave, plaz, suša"]
+    keywords: ["nesreča", "požar", "vreme", "neurje", "poplav", "plaz", "suša", "opozorilo"]
+
+  - id: sport_culture
+    describe: ["Nogomet, košarka, smučanje, kolesarstvo, prvenstvo, pevec, igralec, film"]
+    keywords: ["nogomet", "košarka", "smučanje", "kolesarstvo", "prvenstvo", "olimpij", "igralec", "pevec"]
+
+  - id: adriatic_corridor_schengen
+    label: "Schengen Border Controls, Cross-Border Minorities & C5"
+    weight: 0.95
+    category: foreign_policy
+    describe:
+      - Internal Schengen border controls with Croatia, Italy and Austria, Central Five (C5) regional coordination, Carinthian and Trieste Slovenes, Prekmurje (Muravidék) minority cooperation, and Adriatic transport diplomacy
+      - Mejni nadzor, Schengen, Koroška, Trst, zamejski Slovenci, Prekmurje, Central Five, sosedski odnosi Hrvaška Avstrija Italija Madžarska
+    keywords: ["mejni nadzor", "schengen", "zamej", "koroška", "trst", "prekmurje", "hrvaško", "avstrijo", "madžarsko"]

@@ -1,37 +1,91 @@
 # Croatia's additions to the shared themes (../../themes.yaml).
 themes:
+  - id: elections
+    describe:
+      - Croatian parliamentary (Sabor), presidential, local, and European elections, DIP electoral commission results, runoff ballots, and voter turnout
+      - Parlamentarni izbori, predsjednički izbori, lokalni izbori, DIP, izlaznost, drugi krug, glasanje, rezultati izbora
+    keywords: ["izbori", "izlaznost", "glasanje", "drugi krug", "kandidat", "dip", "referendum", "anketa", "birači"]
+
+  - id: diplomacy
+    describe:
+      - Croatian foreign policy under Gordan Grlić Radman, EU Council, OECD accession, Three Seas Initiative, relations with Bosnia and Herzegovina, Serbia, Hungary and Slovenia
+      - Vanjska politika, MVEP, Gordan Grlić Radman, veleposlanik, Europska unija, OECD, Inicijativa triju mora, NATO
+    keywords: ["vanjska politika", "mvep", "grlić radman", "veleposlanik", "oecd", "tri mora", "europska unija", "diplomacij"]
+
+  - id: trade
+    describe:
+      - Croatian Adriatic port trade, tourism services balance, EU single market, agricultural/industrial exports and tariffs
+      - Vanjska trgovina, izvoz, uvoz, carine, robna razmjena, turizam, Luka Rijeka
+    keywords: ["vanjska trgovina", "izvoz", "uvoz", "carin", "robna razmjena", "luka rijeka"]
+
+  - id: investment
+    describe:
+      - Foreign direct investment in Croatia, Port of Rijeka gateway terminal, Rimac, Končar, LNG terminal expansion, and EU NPOO funds
+      - Strane investicije, ulagači, Rimac, Končar, Rijeka Gateway, NPOO, industrijska zona
+    keywords: ["investicij", "ulaganja", "ulagač", "rimac", "končar", "rijeka gateway", "npoo"]
+
+  - id: econ_policy
+    describe:
+      - Croatian National Bank (HNB), Eurozone inflation, state budget, tax reform, tourism revenue, and EU funds
+      - Hrvatska narodna banka (HNB), inflacija, proračun, porezna reforma, eurozona, BDP, Marko Primorac
+    keywords: ["hnb", "inflacija", "proračun", "porez", "primorac", "bdp", "gospodarstvo", "eurozona"]
+
   - id: party_gov
-    label: "HDZ-DP Coalition, Plenković vs. Milanović & EPPO Anti-Corruption"
+    label: "Plenković Coalition, Milanović & Parliament (Sabor)"
     weight: 1.0
     category: internal_politics
     describe:
-      - Prime Minister Andrej Plenković (HDZ and Homeland Movement coalition), President Zoran Milanović constitutional clashes, Croatian Parliament (Sabor), SDP and Možemo opposition, USKOK and European Public Prosecutor's Office (EPPO) investigations
-      - Vlada Andreja Plenkovića, predsjednik Zoran Milanović, Hrvatski sabor, HDZ, Domovinski pokret, SDP, Možemo, USKOK, EPPO, Ustavni sud
-    keywords: ["plenković", "plenkovic", "milanović", "milanovic", "sabor", "hdz", "domovinski pokret", "sdp", "možemo", "uskok", "eppo", "turudić"]
-
-  - id: energy_infra
-    label: "JANAF (Adria Oil Pipeline), Krk LNG Terminal, INA-MOL & Port of Rijeka"
-    weight: 1.0
-    category: economics
-    describe:
-      - JANAF (Adria oil pipeline) transit fees and capacity disputes with MOL and Hungary, Krk LNG terminal expansion, INA-MOL corporate governance, Port of Rijeka gateway railway corridor, and Eurozone inflation
-      - Jadranski naftovod (JANAF), LNG terminal Krk, INA, MOL, tranzit nafte za Mađarsku i Slovačku, Luka Rijeka, HNB, inflacija
-    keywords: ["janaf", "jadranski naftovod", "krk lng", "lng terminal", "ina", "mol", "luka rijeka", "hnb", "proračun", "inflacija"]
+      - Prime Minister Andrej Plenković (HDZ and coalition), President Zoran Milanović institutional clashes, Croatian Parliament (Sabor), SDP, Možemo, Domovinski pokret, Most, Constitutional Court
+      - Vlada Andreja Plenkovića, predsjednik Zoran Milanović, Hrvatski sabor, HDZ, Domovinski pokret, SDP, Možemo, Most, Ustavni sud
+    keywords: ["plenković", "plenkovic", "milanović", "milanovic", "sabor", "hdz", "domovinski pokret", "sdp", "možemo", "vlada rh", "ustavni sud"]
 
   - id: security
-    label: "Armed Forces Modernization (Rafale / Conscription) & Schengen External Border"
+    label: "Armed Forces Modernization, Conscription & Schengen Border"
     weight: 0.95
     category: defence_security
     describe:
-      - Croatian Armed Forces (OSRH) modernization (Dassault Rafale fighter jets, Leopard 2A8 tanks, HIMARS), reintroduction of mandatory military service (vojni rok), and Schengen external border policing with Bosnia and Serbia
-      - Oružane snage RH (OSRH), MORH, Ivan Anušić, Rafale, Leopard, HIMARS, obvezni vojni rok, Schengen granica
-    keywords: ["morh", "osrh", "anušić", "anusic", "rafale", "himars", "vojni rok", "schengen", "hrvatska vojska"]
+      - Croatian Armed Forces (OSRH) modernization, Defence Minister Ivan Anušić, mandatory military service (vojni rok), SOA intelligence, cybersecurity, and Schengen external border policing
+      - Oružane snage RH (OSRH), MORH, Ivan Anušić, obvezni vojni rok, SOA, Schengen granica, policija, nacionalna sigurnost
+    keywords: ["morh", "osrh", "anušić", "anusic", "vojni rok", "schengen", "hrvatska vojska", "soa", "nacionalna sigurnost"]
 
-  - id: diplomacy
-    label: "Western Balkans, Bosnia Dayton Electoral Reform & Central European Relations"
+  - id: defence_industry
+    describe:
+      - Croatian defence procurement and industry (Dassault Rafale jets, Leopard 2A8, HIMARS, Bradley, Bayraktar TB2, Đuro Đaković, HS Produkt, Šestan-Busch, DOK-ING)
+      - Obrambena industrija, naoružanje, Rafale, Leopard, HIMARS, Bradley, Bayraktar, Đuro Đaković, HS Produkt, DOK-ING
+    keywords: ["obrambena industrija", "naoružanje", "rafale", "himars", "leopard", "bradley", "bayraktar", "đuro đaković", "hs produkt", "dok-ing", "vojna nabava"]
+
+  - id: anticorruption
+    describe:
+      - USKOK, DORH and European Public Prosecutor's Office (EPPO) anti-corruption investigations, public procurement scandals, ministerial resignations
+      - USKOK, EPPO, DORH, korupcija, mito, uhićenje dužnosnika, javna nabava, Turudić
+    keywords: ["uskok", "eppo", "dorh", "korupcija", "mito", "turudić", "zlouporaba", "javna nabava"]
+
+  - id: energy_infra
+    label: "JANAF (Adria Pipeline), Krk LNG Terminal & INA-MOL"
+    weight: 1.0
+    category: economics
+    describe:
+      - JANAF (Adria oil pipeline) transit fees and capacity disputes with MOL, Hungary and Slovakia, Krk LNG terminal expansion, INA-MOL governance, HEP, and Pelješac / rail infrastructure
+      - Jadranski naftovod (JANAF), LNG terminal Krk, INA, MOL, tranzit nafte za Mađarsku i Slovačku, HEP, energetika
+    keywords: ["janaf", "jadranski naftovod", "krk lng", "lng terminal", "ina", "mol", "hep", "energetik", "naftovod"]
+
+  - id: crime_local
+    describe: ["Policija, uhićenje, suđenje, presuda, prijevara, krađa, ubojstvo"]
+    keywords: ["uhićen", "priveden", "suđenje", "presuda", "sud", "prijevara", "krađa", "ubojstvo", "policija"]
+
+  - id: accident_weather
+    describe: ["Prometna nesreća, požar, vremenska prognoza, oluja, poplava, potres, suša"]
+    keywords: ["nesreća", "požar", "vrijeme", "oluja", "poplava", "potres", "suša", "upozorenje"]
+
+  - id: sport_culture
+    describe: ["Nogomet, HNL, Vatreni, prvenstvo, pjevač, glumac, film, koncert"]
+    keywords: ["nogomet", "hnl", "vatreni", "prvenstvo", "olimpij", "glumac", "pjevač", "liga prvaka"]
+
+  - id: adriatic_energy_balkans
+    label: "Bosnia & Herzegovina Electoral Law & Western Balkans Stability"
     weight: 0.95
     category: foreign_policy
     describe:
-      - Croatia's policy on Bosnia and Herzegovina electoral law and Croat constituent rights, bilateral relations with Serbia, Hungary, and Slovenia, OECD accession, and Three Seas Initiative
-      - odnosi s Bosnom i Hercegovinom, Hrvati u BiH, izborni zakon, odnosi sa Srbijom, Mađarskom i Slovenijom, OECD, Inicijativa triju mora
-    keywords: ["bosna i hercegovina", "hrvati u bih", "izborni zakon", "oecd", "tri mora", "grlić radman", "radman"]
+      - Croatia's policy on Bosnia and Herzegovina electoral law and Croat constituent rights under Dayton, relations with Serbia and Montenegro, Adriatic maritime security, and EU enlargement
+      - Bosna i Hercegovina, Hrvati u BiH, izborni zakon, Daytonski sporazum, odnosi sa Srbijom i Crnom Gorom, Jadran, proširenje EU
+    keywords: ["bosna i hercegovina", "hrvati u bih", "izborni zakon", "dayton", "srbij", "crna gora", "proširenje eu"]

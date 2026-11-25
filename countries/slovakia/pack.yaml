@@ -10,25 +10,52 @@ mention:
 - bratislava
 - košice
 - kosice
+- žilina
+- prešov
+- nitra
+- banská bystrica
 - robert fico
 - fico
 - peter pellegrini
 - pellegrini
+- matúš šutaj eštok
+- šutaj eštok
+- juraj blanár
+- blanár
+- ladislav kamenický
+- kamenický
+- robert kaliňák
+- kaliňák
+- kalinak
+- michal šimečka
+- šimečka
+- simecka
 - smer-sd
 - strana smer
 - hlas-sd
 - strana hlas
 - progresívne slovensko
-- šimečka
-- simecka
-- kaliňák
-- kalinak
+- sns
+- kdh
+- sas
+- republika
 - slovensko
 - slovenskej
 - slovenská
 - národná rada
+- ústavný súd
+- úrad vlády
+- nbs
+- národná banka slovenska
+- spp
+- slovnaft
+- mochovce
+- gabčíkovo
 mention_regex:
-- \b(?:slovakia|slovak|bratislava|slovensko|slovenskej|fico|pellegrini)\b
+- \bslovensk\w*
+- \bbratislav\w*
+- \bfic[ao]\w*
+- \bpellegrini\w*
 mention_section: null
 url_sections:
   foreign:
@@ -49,6 +76,7 @@ aggregator_outlets:
   domestic:
   - tasr
   - teraz.sk
+  - sita
   - stvr
   - rtvs
   - sme.sk
@@ -69,34 +97,45 @@ aggregator_outlets:
   - pluska.sk
   - denník postoj
   - denník štandard
+  - hlavné správy
+  - bystricoviny
+  - refresher
   - icjk
   - úrad vlády
+  - úrad vlády sr
+  - nbs
+  - national bank of slovakia
   - napunk
   abroad_local:
   - čtk
+  - čt24
   - irozhlas
   - seznam zprávy
+  - deník n
   - respekt
   - balkan insight
   - ma7
   - új szó
+  - paraméter
+  - telex
+  - hvg
 last_reviewed: '2026-11-25'
 excerpt:
   dateline: ^\s*(?:BRATISLAVA|KOŠICE|TASR|SITA|STVR)\s*[-–—:]\s*
   noise: ^(Foto|Zdroj|Čítajte viac|Photo|Credit|\(|\[)
 classify:
   internal_politics:
-  - Prime Minister Robert Fico, President Peter Pellegrini, Smer-SD, Hlas-SD, SNS coalition, Progressive Slovakia (PS) Michal Šimečka, National Council (Národná rada), criminal code and STVR media reforms
-  - Robert Fico, Peter Pellegrini, vláda, Národná rada, Smer, Hlas, SNS, Progresívne Slovensko, Michal Šimečka, koalícia, opozícia
+  - Prime Minister Robert Fico, President Peter Pellegrini, Smer-SD, Hlas-SD, SNS coalition, Progressive Slovakia (PS) Michal Šimečka, KDH and SaS opposition, National Council (Národná rada), Constitutional Court and STVR media policy
+  - Robert Fico, Peter Pellegrini, vláda, Národná rada, Ústavný súd, Smer, Hlas, SNS, Progresívne Slovensko, Michal Šimečka, koalícia, opozícia
   economics:
-  - National Bank of Slovakia, fiscal consolidation package, EU recovery funds, automotive industry, Russian gas transit and nuclear energy, inflation
-  - Národná banka Slovenska, konsolidačný balíček, štátny rozpočet, eurofondy, priemysel, energetika, inflácia
+  - National Bank of Slovakia (NBS), fiscal consolidation and transaction tax, EU recovery funds, automotive industry, Slovnaft, SPP gas transit and nuclear energy (Mochovce), inflation
+  - Národná banka Slovenska, NBS, konsolidácia, transakčná daň, štátny rozpočet, eurofondy, priemysel, energetika, SPP, Slovnaft, inflácia
   foreign_policy:
-  - Slovakia policy inside the European Union and NATO, relations with Ukraine, Hungary and Czechia, Visegrad Four (V4), Brussels summits
-  - Európska únia, NATO, Ukrajina, V4, zahraničná politika, diplomacia, sankcie
+  - Slovakia policy inside the European Union and NATO, relations with Ukraine, Hungary, Czechia and Poland, Visegrad Four (V4), Gabčíkovo and Brussels summits
+  - Európska únia, NATO, Ukrajina, V4, Visegrád, zahraničná politika, diplomacia, sankcie, Maďarsko, Česko
   defence_security:
-  - Slovak Armed Forces, Ministry of Defence Robert Kaliňák, air defence, border security, police and SIS intelligence service
-  - Ozbrojené sily SR, ministerstvo obrany, Robert Kaliňák, polícia, SIS, bezpečnosť
+  - Slovak Armed Forces (OS SR), Defence Minister Robert Kaliňák, F-16 and air defence procurement, border security, police and SIS intelligence service
+  - Ozbrojené sily SR, ministerstvo obrany, Robert Kaliňák, F-16, polícia, SIS, bezpečnosť
   society:
   - healthcare and hospital doctors, education, media freedom, culture ministry, environment, weather and floods
   - zdravotníctvo, školstvo, kultúra, médiá, súdnictvo, počasie, povodne
@@ -104,3 +143,4 @@ geo: SK
 reddit:
 - Slovakia
 - Bratislava
+- Kosice

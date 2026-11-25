@@ -123,6 +123,7 @@ _STREAM_PHRASE_RE = re.compile(
     r"how\s+to\s+watch|watch\s+live|free\s+live\s+stream|canl[ıi]\s+izle|canl[ıi]\s+yay[ıi]n|"
     r"ne\s+zaman[,:\s]+saat\s+ka[cç]ta|hangi\s+kanalda|ver\s+en\s+vivo|"
     r"en\s+vivo\b.*\b(?:vs\.?|v\.?)\b|transmisi[oó]n\s+en\s+vivo|"
+    r"im\s+live-?ticker|im\s+livestream|transmisja\s+na\s+żywo|gdzie\s+oglądać|přímý\s+přenos|priamy\s+prenos|"
     r"prediction\s+and\s+betting\s+tips|betting\s+tips|betting\s+odds|"
     r"stats\s*&\s*head-to-head|head-to-head\b.*\b(?:uefa|nations\s+league|concacaf|fifa|world\s+cup|premier\s+league|la\s+liga|serie\s+a|bundesliga|champions\s+league|europa\s+league))\b",
     re.I,
@@ -142,6 +143,10 @@ _SPORTS_OUTLETS = {
     "dailysports", "tudn", "espn", "onefootball", "goal", "flashscore", "sofascore",
     "sky sports", "beinsports", "bein sports", "marca", "as", "l'équipe", "l'equipe",
     "nemzeti sport", "m4 sport", "trt spor", "a spor", "fanatik", "fotomac", "fotomaç",
+    "kicker", "sport1", "transfermarkt", "laola1", "laola1.at",
+    "sport.pl", "przegląd sportowy", "meczyki.pl",
+    "sport.cz", "isport.cz", "isport.blesk.cz", "šport.sk", "sportnet.sme.sk",
+    "ekipa24", "sportske novosti", "germanijak",
     "sportbox", "championat", "championat.com", "championat.ru", "sports.ru",
     "российский футбольный союз", "алтайский спорт", "хоккейный клуб «динамо» москва",
     "sport.ua", "ua-football",

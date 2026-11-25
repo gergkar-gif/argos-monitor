@@ -1,36 +1,88 @@
+# Switzerland's additions to the shared themes (../../themes.yaml), trilingual DE/FR/IT + strategic EU Bilaterals.
 themes:
-- id: elections
-  keywords:
-  - volksabstimmung
-  - referendum
-  - votations
-- id: party_gov
-  keywords:
-  - bundesrat
-  - bundespräsident
-  - departement
-  - berner bundeshaus
-  - conseil fédéral
-- id: econ_policy
-  keywords:
-  - snb
-  - schweizerische nationalbank
-  - leitzins
-  - franken
-  - ubs
-  - bankenregulierung
-  - finma
-- id: diplomacy
-  keywords:
-  - bilaterale iii
-  - abkommen mit eu
-  - neutralität
-  - gute dienste
-  - eda
-  - uno-sicherheitsrat
-- id: security
-  keywords:
-  - schweizer armee
-  - neutralitätsinitiative
-  - f-35 beschaffung
-  - rüstung
+  - id: elections
+    describe:
+      - Swiss direct-democracy federal and cantonal referendums, popular initiatives, National Council and Council of States elections, ballot results, voter turnout
+      - Volksabstimmung, Volksinitiative, Referendum, Nationalratswahl, Ständeratswahl, Wahlbeteiligung, votation fédérale, votazione federale, scrutin
+    keywords: ["volksabstimmung", "volksinitiative", "referendum", "votations", "votation", "votazione", "nationalratswahl", "stimmbeteiligung", "wahlbeteiligung", "stichwahl"]
+
+  - id: diplomacy
+    describe:
+      - Swiss Foreign Ministry (EDA / Ignazio Cassis), International Geneva diplomacy, Good Offices mediation, UN Security Council, OSZE, bilateral state visits
+      - Außenpolitik, EDA, Ignazio Cassis, Genf UNO, Gute Dienste, Staatsbesuch, Botschafter, diplomatie suisse, DFAE
+    keywords: ["eda", "dfae", "cassis", "gute dienste", "bons offices", "staatsbesuch", "botschafter", "genfer uno", "diplomatisch"]
+
+  - id: trade
+    describe:
+      - Swiss foreign trade, SECO export statistics, EFTA free-trade agreements, pharmaceutical and watch exports, US/EU tariffs, customs
+      - Außenhandel, SECO, EFTA, Freihandelsabkommen, Exporte, Zölle, commerce extérieur, exportations
+    keywords: ["seco", "efta", "freihandelsabkommen", "außenhandel", "zoll", "zölle", "handelsbilanz", "commerce extérieur", "exportations"]
+
+  - id: investment
+    describe:
+      - Corporate and R&D investment in Switzerland, pharmaceuticals (Novartis, Roche), Nestlé, ABB, biotech and AI hubs in Zurich, Basel and Lake Geneva
+      - Investitionen, Standort Schweiz, Novartis, Roche, ABB, Forschung, Rechenzentrum, investissements
+    keywords: ["investition", "standort schweiz", "novartis", "roche", "abb", "rechenzentrum", "investissement", "investimento"]
+
+  - id: econ_policy
+    label: "SNB Monetary Policy, UBS / FINMA Regulation & Federal Budget"
+    weight: 1.0
+    category: economics
+    describe:
+      - Swiss National Bank (SNB) monetary policy and Swiss franc strength, UBS Too-Big-To-Fail capital rules and FINMA supervision, federal debt brake and budget, inflation
+      - Schweizerische Nationalbank (SNB), Leitzins, Franken, UBS, FINMA, Bankenregulierung, Schuldenbremse, Bundeshaushalt, Karin Keller-Sutter, BNS
+    keywords: ["snb", "bns", "schweizerische nationalbank", "leitzins", "franken", "ubs", "bankenregulierung", "finma", "keller-sutter", "schuldenbremse", "teuerung"]
+
+  - id: party_gov
+    label: "Federal Council, Parliament & Cantonal Politics"
+    weight: 1.0
+    category: internal_politics
+    describe:
+      - Swiss Federal Council (Bundesrat / Conseil fédéral), 2026 President Guy Parmelin, Nationalrat and Ständerat, SVP, SP, FDP, Die Mitte, Greens, migration and AHV policy
+      - Bundesrat, Guy Parmelin, Martin Pfister, Albert Rösti, Beat Jans, Elisabeth Baume-Schneider, Nationalrat, Ständerat, Conseil fédéral, SVP, SP, FDP, Die Mitte
+    keywords: ["bundesrat", "bundespräsident", "parmelin", "pfister", "rösti", "baume-schneider", "beat jans", "conseil fédéral", "consiglio federale", "nationalrat", "ständerat", "bundeshaus"]
+
+  - id: security
+    describe:
+      - Swiss Armed Forces (Schweizer Armee / VBS), Martin Pfister, Neutrality Initiative, cybersecurity (NCSC), intelligence oversight (NDB)
+      - Schweizer Armee, VBS, Martin Pfister, Neutralitätsinitiative, Sicherheitspolitik, Nachrichtendienst NDB, Cybersicherheit
+    keywords: ["schweizer armee", "vbs", "neutralitätsinitiative", "sicherheitspolitik", "nachrichtendienst", "ndb", "cybersicherheit", "armée suisse"]
+
+  - id: defence_industry
+    describe:
+      - Swiss F-35A fighter procurement, Patriot air defence, RUAG armaments and Swiss defence export-control debates on re-export to Ukraine
+      - F-35 Beschaffung, Patriot, RUAG, Rüstung, Kriegsmaterialgesetz, Wiederausfuhr, armement
+    keywords: ["f-35", "ruag", "rüstung", "kriegsmaterial", "wiederausfuhr", "patriot", "beschaffung", "armement"]
+
+  - id: anticorruption
+    describe:
+      - Swiss financial-crime compliance, sanctions enforcement (SECO), money-laundering oversight (MROS), and federal audit (EFK)
+      - Geldwäscherei, Sanktionsumgehung, Finanzkontrolle EFK, Korruption, Bestechung, blanchiment
+    keywords: ["geldwäscherei", "blanchiment", "efk", "korruption", "bestechung", "sanktionsumgehung", "mros"]
+
+  - id: energy_infra
+    describe:
+      - Swiss Alpine hydropower, winter electricity security, nuclear phase-out / lifetime debate, Gotthard and Lötschberg rail tunnels, SBB
+      - Stromversorgung, Wasserkraft, Kernkraft, Gotthard, SBB, Energieversorgung, approvisionnement électrique
+    keywords: ["stromversorgung", "wasserkraft", "kernkraft", "gotthard", "sbb", "cff", "energieversorgung", "winterstrom"]
+
+  - id: crime_local
+    describe: ["Polizei, Festnahme, Gerichtsprozess, Urteil, Betrug, Einbruch, arrestation, procès"]
+    keywords: ["festnahme", "verhaftet", "prozess", "urteil", "betrug", "polizei", "arrestation", "procès"]
+
+  - id: accident_weather
+    describe: ["Verkehrsunfall, Lawine, Unwetter, Hochwasser, Bergsturz, Brand, intempéries, inondation"]
+    keywords: ["unfall", "lawine", "unwetter", "hochwasser", "bergsturz", "brand", "intempéries", "inondation"]
+
+  - id: sport_culture
+    describe: ["Fußball, Eishockey, Ski alpin, Super League, Filmfestival Locarno, Prominente"]
+    keywords: ["fußball", "eishockey", "super league", "skiweltcup", "schauspieler", "champions league", "locarno"]
+
+  - id: eu_bilaterals_neutrality
+    label: "EU Bilaterals III, Schengen & Swiss Neutrality"
+    weight: 1.0
+    category: foreign_policy
+    describe:
+      - Negotiations and ratification of the Switzerland-EU Bilaterals III package (electricity, food safety, wage protection, immigration safeguard clause), Schengen/Dublin border cooperation, and Swiss armed neutrality
+      - Bilaterale III, Rahmenabkommen, EU-Abkommen, Personenfreizügigkeit, Schutzklausel, Neutralität, Schengen, Bilatérales III
+    keywords: ["bilaterale iii", "bilaterale", "bilatérales", "rahmenabkommen", "personenfreizügigkeit", "neutralität", "neutralité", "schengen", "schutzklausel", "eu-abkommen"]

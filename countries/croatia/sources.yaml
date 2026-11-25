@@ -275,6 +275,54 @@ sources:
   - url: https://news.google.com/rss/search?q=(site:balkans.aljazeera.net+OR+site:balkaninsight.com+OR+site:slobodnaevropa.org)+(Hrvatska+OR+Croatia+OR+Zagreb+OR+Plenkovi%C4%87)+when:7d&hl=hr&gl=HR&ceid=HR:hr
     section: Regija
     category_hint: general
+- id: dw_hr
+  name: Deutsche Welle (Hrvatski)
+  homepage: https://www.dw.com/hr
+  language: hr
+  scope: abroad_local
+  kind: media
+  governing_body: Deutsche Welle (German public international broadcaster)
+  state_affiliated: false
+  needs_mention: true
+  notes: Deutsche Welle Croatian service; filtered for Croatia mentions.
+  feeds:
+  - url: https://rss.dw.com/xml/rss-cro-all
+    section: Hrvatska i regija
+    category_hint: foreign_policy
+- id: gnews_hr_official
+  name: Croatian Government / Sabor / HNB / MORH
+  homepage: https://vlada.gov.hr
+  language: hr
+  scope: domestic
+  kind: official
+  aggregator: google_news
+  needs_mention: true
+  governing_body: Government of Croatia / Croatian Parliament / Croatian National Bank / Ministry of Defence
+  state_affiliated: true
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:vlada.gov.hr+OR+site:sabor.hr+OR+site:hnb.hr+OR+site:morh.hr)+when:7d&hl=hr&gl=HR&ceid=HR:hr
+    section: Institucije RH
+    category_hint: internal_politics
+- id: gnews_hr_local
+  name: Google News (Croatian)
+  homepage: https://news.google.com
+  language: hr
+  scope: domestic
+  kind: media
+  aggregator: google_news
+  needs_mention: true
+  governing_body: Google LLC
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(vlada+OR+sabor+OR+Plenkovi%C4%87+OR+Milanovi%C4%87+OR+USKOK+OR+EPPO)+Hrvatska+when:2d&hl=hr&gl=HR&ceid=HR:hr
+    section: Politika
+    category_hint: internal_politics
+  - url: https://news.google.com/rss/search?q=(JANAF+OR+LNG+OR+INA+OR+HNB+OR+gospodarstvo+OR+inflacija)+Hrvatska+when:3d&hl=hr&gl=HR&ceid=HR:hr
+    section: Gospodarstvo i energija
+    category_hint: economics
+  - url: https://news.google.com/rss/search?q=(MORH+OR+OSRH+OR+Rafale+OR+Schengen+OR+%22vojni+rok%22)+Hrvatska+when:3d&hl=hr&gl=HR&ceid=HR:hr
+    section: Obrana i vanjska politika
+    category_hint: defence_security
 - id: gnews_en_hr
   name: Google News (Croatia - International)
   homepage: https://news.google.com
@@ -285,9 +333,15 @@ sources:
   governing_body: n/a (aggregator)
   state_affiliated: false
   feeds:
+  - url: https://news.google.com/rss/search?q=Croatia+when:2d&hl=en-US&gl=US&ceid=US:en
+    section: Croatia
+    category_hint: general
   - url: https://news.google.com/rss/search?q=Croatia+(Zagreb+OR+Plenkovic+OR+Milanovic+OR+government)+when:3d&hl=en-US&gl=US&ceid=US:en
     section: Croatia politics
     category_hint: internal_politics
-  - url: https://news.google.com/rss/search?q=Croatia+(JANAF+OR+LNG+OR+INA+OR+energy+OR+NATO+OR+Schengen)+when:3d&hl=en-US&gl=US&ceid=US:en
-    section: Croatia energy & security
+  - url: https://news.google.com/rss/search?q=Croatia+(JANAF+OR+LNG+OR+INA+OR+energy+OR+economy+OR+euro)+when:5d&hl=en-US&gl=US&ceid=US:en
+    section: Croatia energy & economy
     category_hint: economics
+  - url: https://news.google.com/rss/search?q=Croatia+(EU+OR+OECD+OR+NATO+OR+Schengen+OR+Bosnia+OR+Rafale)+when:5d&hl=en-US&gl=US&ceid=US:en
+    section: Croatia EU, Balkans & defence
+    category_hint: foreign_policy

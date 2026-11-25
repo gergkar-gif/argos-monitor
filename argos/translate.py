@@ -21,9 +21,14 @@ MODELS = {
     "it": "Helsinki-NLP/opus-mt-it-en",
     "id": "Helsinki-NLP/opus-mt-id-en",
     "ar": "Helsinki-NLP/opus-mt-ar-en",
+    "pl": "Helsinki-NLP/opus-mt-pl-en",
+    "cs": "Helsinki-NLP/opus-mt-cs-en",
+    "sk": "Helsinki-NLP/opus-mt-sk-en",
+    "sl": "Helsinki-NLP/opus-mt-sla-en",
+    "hr": "Helsinki-NLP/opus-mt-sla-en",
 }
 
-# Post-processing glossary to fix known archaic/Sino-Vietnamese and literal Hungarian mappings in Marian
+# Post-processing glossary to fix known archaic/Sino-Vietnamese and literal Central European mappings in Marian
 GLOSSARY = {
     "vi": [
         (r"\bSong Lin\b", "To Lam"),
@@ -42,6 +47,21 @@ GLOSSARY = {
         (r"\bTisza\s+[Pp]arty\b", "Tisza Party"),
         (r"\bFriendship\s+(?:oil\s+)?pipeline\b", "Druzhba oil pipeline"),
         (r"\bSovereignty\s+Protection\s+Office\b", "Sovereignty Protection Office"),
+    ],
+    "de": [
+        (r"\bdebt brake\b", "debt brake (Schuldenbremse)"),
+        (r"\bFederal Council\b", "Federal Council"),
+    ],
+    "cs": [
+        (r"\bChamber of Deputies\b", "Chamber of Deputies"),
+        (r"\bFriendship\s+(?:oil\s+)?pipeline\b", "Druzhba oil pipeline"),
+    ],
+    "sk": [
+        (r"\bFriendship\s+(?:oil\s+)?pipeline\b", "Druzhba oil pipeline"),
+    ],
+    "pl": [
+        (r"\bLaw and Justice\b", "Law and Justice (PiS)"),
+        (r"\bCivic Coalition\b", "Civic Coalition (KO)"),
     ],
     "uk": [
         (r"\b(\w\.\s*){3,}", ""),

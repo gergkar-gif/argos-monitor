@@ -5,12 +5,24 @@ language: de
 abroad_label: International & regional German-language outlets
 mention:
 - österreich
+- oesterreich
 - austria
 - austrian
 - wien
 - vienna
 - salzburg
 - graz
+- innsbruck
+- linz
+- klagenfurt
+- bregenz
+- burgenland
+- tirol
+- steiermark
+- kärnten
+- oberösterreich
+- niederösterreich
+- vorarlberg
 - christian stocker
 - stocker
 - herbert kickl
@@ -21,29 +33,85 @@ mention:
 - meinl-reisinger
 - van der bellen
 - nationalrat
+- bundesrat
+- bundeskanzler
+- bundesregierung
+- verfassungsgerichtshof
 - övp
 - fpö
 - spö
 - neos
+- grüne
 - oenb
-- bundeskanzler
+- bundesheer
+- wifo
+- ihs
+- wksta
+- omv
+- raiffeisen
+- erste group
+- voestalpine
+mention_regex:
+- \bösterreich\w*
+- \bwiener\w*
+mention_section: null
 url_sections:
+  foreign:
+  - ausland
+  - international
+  - welt
+  - world
+  - europa
   skip:
   - sport
   - fussball
+  - ski
+  - skisport
+  - bundesliga
   - lifestyle
   - leute
   - stars
   - boulevard
+  - kultur
+  - kino
+  - auto
+  - motor
+  - reise
+  - wetter
+  - gesundheit
+  - horoskop
+  - essen
+  - genuss
+  - panorama
 excerpt:
-  dateline: ^\s*(?:WIEN|VIENNA|APA|SALZBURG|AUSTRIA)\s*[-–:]\s*
+  dateline: ^\s*(?:WIEN|VIENNA|APA|SALZBURG|GRAZ|INNSBRUCK|LINZ|ORF|AUSTRIA)\s*[-–—:]\s*
+  noise: ^(Foto|Bild|Quelle|Video|Lesen Sie auch|Mehr dazu|Anzeige|Werbung|\(|\[)
+classify:
+  internal_politics:
+  - Federal Chancellor Christian Stocker, ÖVP-SPÖ-NEOS coalition, Andreas Babler, Beate Meinl-Reisinger, FPÖ opposition Herbert Kickl, President Alexander Van der Bellen, Nationalrat and provincial Landtag politics
+  - Bundeskanzler Christian Stocker, Bundesregierung, Nationalrat, ÖVP, SPÖ, NEOS, FPÖ, Herbert Kickl, Andreas Babler, Beate Meinl-Reisinger, Landtagswahl, Verfassungsgerichtshof, WKStA
+  economics:
+  - Austrian federal budget consolidation, Oesterreichische Nationalbank (OeNB), WIFO and IHS forecasts, OMV gas diversification, Raiffeisen Bank International, Erste Group, voestalpine, inflation
+  - Budgetdefizit, Staatshaushalt, OeNB, WIFO, IHS, OMV, Raiffeisen, Erste Group, voestalpine, Inflation, Wirtschaft, Steuern, Energiepreise
+  foreign_policy:
+  - Austrian constitutional neutrality, Central Five (C5) diplomacy, EU enlargement in the Western Balkans, bilateral ties with Germany, Hungary, Slovakia and Italy, OSCE and UN headquarters in Vienna
+  - Neutralität, Außenministerium, BMEIA, EU-Politik, Westbalkan, Südtirol, OSZE, UNO-City Wien, Schengen, Grenzkontrollen
+  defence_security:
+  - Austrian Armed Forces (Bundesheer) Aufbauplan 2032, European Sky Shield Initiative (ESSI), Directorate of State Security and Intelligence (DSN), migration and border policing
+  - Bundesheer, Aufbauplan, Sky Shield, Luftabwehr, DSN, Staatsschutz, Landesverteidigung, Migration, Asyl, Polizei
+  society:
+  - healthcare, education, pensions, housing, Alpine infrastructure, judiciary, floods and severe weather
+  - Gesundheit, Bildung, Pensionen, Wohnen, Justiz, Unwetter, Hochwasser, Gesellschaft
 reddit:
 - Austria
 - wien
+- FinanzenAT
+- graz
 geo: AT
 aggregator_outlets:
   domestic:
   - ORF
+  - ORF News
   - Der Standard
   - Die Presse
   - Kurier
@@ -65,10 +133,22 @@ aggregator_outlets:
   - Kontrast.at
   - ZackZack
   - APA
+  - APA OTS
   - Bundeskanzleramt
-  - wiener zeitung
-  - brutkasten
+  - Parlament
+  - BMEIA
+  - OeNB
+  - Bundesheer
+  - Wiener Zeitung
+  - Brutkasten
+  - Agenda Austria
+  - MeinBezirk
   abroad_local:
+  - Salto.bz
+  - Euractiv Deutsch
+  - SRF
+  - SRF News
+  - NZZ
   - The Local Austria
   - Vindobona
 last_reviewed: '2026-11-25'

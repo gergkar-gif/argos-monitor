@@ -14,9 +14,11 @@ WIRE_THRESHOLD = 0.35  # lower threshold when text explicitly credits a wire age
 
 # Explicit wire attribution markers commonly used in syndicated press copy
 WIRE_CREDIT_RE = re.compile(
-    r"\b(?:theo\s+ttxvn|nguồn:\s*ttxvn|\(ttxvn\)|theo\s+vna|\(vna\)|"
-    r"selon\s+l'aps|\(aps\)|\(belta\)|\(белта\)|\(тасс\)|\(ria\s+novosti\)|\(риа\s+новости\)|"
-    r"\(reuters\)|\(ap\)|\(afp\)|\bafp\b|\breuters\b|\(xinhua\)|\(cns\))\b|"
+    r"\b(?:theo\s+ttxvn|nguồn:\s*ttxvn|theo\s+vna|selon\s+l'aps|afp|reuters|"
+    r"laut\s+dpa|laut\s+apa|podle\s+čtk|według\s+pap|podľa\s+tasr|po\s+podatkih\s+sta|izvještava\s+hina)\b|"
+    r"\((?:ttxvn|vna|aps|belta|белта|тасс|ria\s+novosti|риа\s+новости|reuters|ap|afp|xinhua|cns|"
+    r"dpa|dpa-afx|epd|kna|apa|sda|ats|keystone-sda|pap|čtk|ctk|tasr|sita|mti|sta|hina|agerpres)\)|"
+    r"\b(?:mti|čtk|pap|apa)\s*/|"
     r"(?:新华社|新華社|中新社|据新华社|據新華社|央视新闻|央視新聞|中央社|共同通信|時事通信|연합뉴스|뉴시스)",
     re.I
 )

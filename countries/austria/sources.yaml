@@ -11,6 +11,12 @@ sources:
   feeds:
   - url: https://rss.orf.at/news.xml
     category_hint: internal_politics
+  - url: https://rss.orf.at/oesterreich.xml
+    section: Österreich
+    category_hint: internal_politics
+  - url: https://rss.orf.at/wien.xml
+    section: Wien
+    category_hint: society
 - id: der_standard_at
   name: Der Standard
   homepage: https://www.derstandard.at
@@ -25,6 +31,9 @@ sources:
     category_hint: internal_politics
   - url: https://www.derstandard.at/rss/wirtschaft
     category_hint: economics
+  - url: https://www.derstandard.at/rss/international
+    section: International
+    category_hint: foreign_policy
 - id: diepresse_at
   name: Die Presse
   homepage: https://www.diepresse.com
@@ -179,11 +188,12 @@ sources:
   language: de
   scope: domestic
   kind: media
+  aggregator: google_news
   governing_body: Russmedia
   state_affiliated: false
   notes: Western Austrian regional digital daily covering Lake Constance cross-border trade.
   feeds:
-  - url: https://www.vol.at/feed/rss
+  - url: https://news.google.com/rss/search?q=site:vol.at+when:3d&hl=de&gl=AT&ceid=AT:de
     category_hint: economics
 - id: exxpress_at
   name: eXXpress
@@ -279,12 +289,87 @@ sources:
   governing_body: Google LLC
   state_affiliated: false
   aggregator: google_news
+  needs_mention: true
   feeds:
-  - url: https://news.google.com/rss/search?q=%C3%96sterreich+OR+Wien+OR+Bundesregierung+when:2d&hl=de&gl=AT&ceid=AT:de
-    section: National News (German)
+  - url: https://news.google.com/rss/search?q=%C3%96sterreich+OR+Wien+OR+Bundesregierung+OR+Nationalrat+when:2d&hl=de&gl=AT&ceid=AT:de
+    section: Innenpolitik (German)
     category_hint: internal_politics
+  - url: https://news.google.com/rss/search?q=%C3%96sterreich+(Wirtschaft+OR+OeNB+OR+OMV+OR+Raiffeisen+OR+Budget)+when:3d&hl=de&gl=AT&ceid=AT:de
+    section: Wirtschaft (German)
+    category_hint: economics
+  - url: https://news.google.com/rss/search?q=%C3%96sterreich+(EU+OR+Neutralit%C3%A4t+OR+Bundesheer+OR+Au%C3%9Fenpolitik)+when:3d&hl=de&gl=AT&ceid=AT:de
+    section: Außenpolitik & Sicherheit (German)
+    category_hint: foreign_policy
+- id: agenda_austria_at
+  name: Agenda Austria
+  homepage: https://www.agenda-austria.at
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Agenda Austria (independent economic think tank)
+  state_affiliated: false
+  notes: Vienna economic, fiscal, and competitiveness policy institute.
+  feeds:
+  - url: https://www.agenda-austria.at/feed/
+    section: Wirtschaftspolitik
+    category_hint: economics
+- id: gnews_austria_institutions
+  name: Austrian Parliament / BMEIA / OeNB / Bundesheer
+  homepage: https://www.parlament.gv.at
+  language: de
+  scope: domestic
+  kind: official
+  aggregator: google_news
+  needs_mention: true
+  governing_body: Parliament of Austria / Federal Ministries / Oesterreichische Nationalbank
+  state_affiliated: true
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:parlament.gv.at+OR+site:bmeia.gv.at+OR+site:oenb.at+OR+site:bundesheer.at)+when:7d&hl=de&gl=AT&ceid=AT:de
+    section: Institutionen
+    category_hint: internal_politics
+- id: salto_bz_at
+  name: Salto.bz
+  homepage: https://salto.bz
+  language: de
+  scope: abroad_local
+  kind: media
+  governing_body: Demos 2.0 Genossenschaft (South Tyrol, Italy)
+  state_affiliated: false
+  notes: Independent South Tyrolean German-language daily covering cross-border Tyrol and Vienna affairs.
+  feeds:
+  - url: https://salto.bz/de/rss.xml
+    section: Südtirol & Österreich
+    category_hint: general
+- id: euractiv_de_at
+  name: Euractiv Deutsch
+  homepage: https://www.euractiv.de
+  language: de
+  scope: abroad_local
+  kind: media
+  governing_body: Euractiv Media Network
+  state_affiliated: false
+  needs_mention: true
+  notes: European Union policy portal in German; filtered for Austria mentions.
+  feeds:
+  - url: https://www.euractiv.de/feed/
+    section: EU-Politik
+    category_hint: foreign_policy
+- id: srf_intl_at
+  name: SRF News (International)
+  homepage: https://www.srf.ch
+  language: de
+  scope: abroad_local
+  kind: media
+  governing_body: SRG SSR (Swiss Broadcasting Corporation)
+  state_affiliated: false
+  needs_mention: true
+  notes: Swiss German public broadcaster international desk; filtered for Austria mentions.
+  feeds:
+  - url: https://www.srf.ch/news/bnf/rss/1922
+    section: International
+    category_hint: foreign_policy
 - id: gnews_austria_intl
-  name: Google News (Austria Coalition & Central Europe)
+  name: Google News (Austria - International)
   homepage: https://news.google.com
   language: en
   scope: international
@@ -293,6 +378,15 @@ sources:
   state_affiliated: false
   aggregator: google_news
   feeds:
-  - url: https://news.google.com/rss/search?q=(Austria+OR+Vienna)+(coalition+OR+parliament+OR+neutrality+OR+election)+when:3d&hl=en-US&gl=US&ceid=US:en
+  - url: https://news.google.com/rss/search?q=Austria+when:2d&hl=en-US&gl=US&ceid=US:en
+    section: Austria
+    category_hint: general
+  - url: https://news.google.com/rss/search?q=(Austria+OR+Vienna)+(coalition+OR+parliament+OR+neutrality+OR+election+OR+EU)+when:3d&hl=en-US&gl=US&ceid=US:en
     section: Governance & Diplomacy
     category_hint: foreign_policy
+  - url: https://news.google.com/rss/search?q=Austria+(economy+OR+OMV+OR+Raiffeisen+OR+Erste+OR+OeNB+OR+inflation)+when:5d&hl=en-US&gl=US&ceid=US:en
+    section: Economy & Banking
+    category_hint: economics
+  - url: https://news.google.com/rss/search?q=Austria+(Bundesheer+OR+Sky+Shield+OR+migration+OR+Schengen+OR+security)+when:5d&hl=en-US&gl=US&ceid=US:en
+    section: Defence & Schengen
+    category_hint: defence_security

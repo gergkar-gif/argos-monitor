@@ -1,71 +1,88 @@
 # Czechia's additions to the shared themes (../../themes.yaml).
 themes:
-- id: party_gov
-  label: Fiala Coalition, Babiš Opposition & Presidential Politics
-  weight: 1.0
-  category: internal_politics
-  describe:
-  - Prime Minister Petr Fiala, President Petr Pavel, SPOLU coalition governance, Andrej Babiš and ANO opposition, parliamentary politics and upcoming elections
-  - Petr Fiala, Petr Pavel, Andrej Babiš, vláda SPOLU, hnutí ANO, Poslanecká sněmovna, Senát, ODS, STAN, Piráti
-  keywords:
-  - fiala
-  - pavel
-  - babiš
-  - babis
-  - ano
-  - spolu
-  - ods
-  - stan
-  - piráti
-  - sněmovna
-  - senát
-  - vláda
-  - volby
-- id: diplomacy
-  label: Ukraine Ammunition Initiative, V4 & EU/NATO Policy
-  weight: 1.0
-  category: foreign_policy
-  describe:
-  - Czech international artillery ammunition initiative for Ukraine, foreign policy led by Jan Lipavský, Visegrad Four (V4) relations with Slovakia and Hungary, NATO eastern deterrence
-  - muniční iniciativa pro Ukrajinu, Jan Lipavský, V4, Visegrád, NATO, Evropská unie, vztahy se Slovenskem a Polskem
-  keywords:
-  - muniční iniciativa
-  - munice
-  - lipavský
-  - lipavsky
-  - ukrajin
-  - v4
-  - visegrad
-  - nato
-  - černochová
-  - cernochova
-- id: econ_policy
-  label: Dukovany Nuclear Expansion, ČEZ & Energy Security
-  weight: 1.0
-  category: economics
-  describe:
-  - Nuclear tender for new reactors at Dukovany power plant (KHNP contract), ČEZ utility, end of Russian energy dependence via TAL-PLUS pipeline, ČNB monetary policy
-  - jaderná elektrárna Dukovany, KHNP, ČEZ, energetická bezpečnost, ropovod TAL, Česká národní banka, ČNB
-  keywords:
-  - dukovany
-  - khnp
-  - čez
-  - cez
-  - jádro
-  - jadern
-  - tal
-  - ropovod
-  - čnb
-  - cnb
-  - škoda auto
-- id: elections
-  describe:
-  - Czech Chamber of Deputies, Senate, regional, and presidential elections, ČSÚ results, and turnout
-  - Sněmovní volby, senátní volby, volební účast, výsledky voleb
-  keywords:
-  - volební účast
-  - hlasování
-  - volby
-  - korespondenční volba
-  - ballot
-  - turnout
+  - id: elections
+    describe:
+      - Czech Chamber of Deputies, Senate, regional, municipal, and presidential elections, ČSÚ results, ballot counting, and voter turnout
+      - Sněmovní volby, senátní volby, krajské volby, prezidentské volby, volební účast, výsledky voleb, korespondenční volba
+    keywords: ["volební účast", "hlasování", "volby", "korespondenční volba", "sčítání hlasů", "kandidátka", "referendum", "volební kampaň", "průzkum"]
+
+  - id: diplomacy
+    describe:
+      - Czech foreign policy, EU Council diplomacy, NATO alliance, relations with Slovakia, Poland, Germany, Austria, US and Ukraine
+      - Zahraniční politika, Ministerstvo zahraničí, MZV, velvyslanec, státní návštěva, summit EU, NATO, bilaterální jednání
+    keywords: ["zahraniční politika", "mzv", "velvyslanec", "státní návštěva", "summit", "diplomacie", "bilaterální", "evropská unie", "nato"]
+
+  - id: trade
+    describe:
+      - Czech export-driven manufacturing trade, EU single market, customs and tariffs, automotive and machinery exports
+      - Zahraniční obchod, export, import, cla, obchodní bilance, volný obchod, dodavatelské řetězce
+    keywords: ["zahraniční obchod", "export", "import", "cla", "celní", "obchodní bilance", "dodavatelské řetězce"]
+
+  - id: investment
+    describe:
+      - Foreign direct investment in Czechia, semiconductor fabs (Onsemi Rožnov), automotive electrification, gigafactories, and industrial parks
+      - Přímé zahraniční investice, investor, továrna, polovodiče, Onsemi, gigafactory, datové centrum
+    keywords: ["investice", "investor", "polovodiče", "onsemi", "gigafactory", "továrna", "průmyslová zóna", "datové centrum"]
+
+  - id: econ_policy
+    label: "Dukovany Nuclear Expansion, ČEZ & ČNB Monetary Policy"
+    weight: 1.0
+    category: economics
+    describe:
+      - Czech National Bank (ČNB) interest rates and inflation, state budget deficit, Dukovany nuclear tender (KHNP), ČEZ utility, Škoda Auto, and ETS2 energy costs
+      - Česká národní banka (ČNB), úrokové sazby, inflace, státní rozpočet, jaderná elektrárna Dukovany, KHNP, ČEZ, Škoda Auto
+    keywords: ["čnb", "cnb", "úrokové sazby", "inflace", "státní rozpočet", "rozpočet", "dukovany", "khnp", "čez", "cez", "škoda auto", "koruna"]
+
+  - id: party_gov
+    label: "Babiš Government, President Pavel & Parliamentary Politics"
+    weight: 1.0
+    category: internal_politics
+    describe:
+      - Prime Minister Andrej Babiš and ANO cabinet, President Petr Pavel, SPOLU (ODS, KDU-ČSL, TOP 09), STAN and Pirates opposition, Chamber of Deputies (Poslanecká sněmovna), Senate and Constitutional Court
+      - Andrej Babiš, Petr Pavel, Petr Fiala, vláda, Poslanecká sněmovna, Senát, ANO, ODS, SPOLU, STAN, Piráti, SPD, Ústavní soud
+    keywords: ["babiš", "babis", "pavel", "fiala", "havlíček", "schillerová", "vláda", "sněmovna", "senát", "hnutí ano", "spolu", "ods", "stan", "piráti", "ústavní soud"]
+
+  - id: security
+    describe:
+      - Czech Armed Forces (Armáda ČR), NATO eastern flank deterrence, BIS counterintelligence, NÚKIB cybersecurity, and police
+      - Armáda ČR, obrana, národní bezpečnost, BIS, NÚKIB, kybernetická bezpečnost, NATO, policie
+    keywords: ["armáda čr", "acr", "obrana", "národní bezpečnost", "bis", "núkib", "nukib", "kyberbezpečnost", "policie"]
+
+  - id: defence_industry
+    describe:
+      - Czech defence industry and procurement (Czechoslovak Group / CSG, STV Group, Colt CZ, Aero Vodochody, Tatra Defence, F-35A, Leopard 2A8, Pandur)
+      - Obranný průmysl, zbrojní průmysl, Czechoslovak Group, CSG, Colt CZ, Aero Vodochody, Tatra, stíhačky F-35, Leopard, munice
+    keywords: ["obranný průmysl", "zbrojní průmysl", "zbrojař", "czechoslovak group", "csg", "aero vodochody", "colt cz", "tatra", "f-35", "leopard", "zbrojní zakázka"]
+
+  - id: anticorruption
+    describe:
+      - Anti-corruption investigations (NCOZ, Nejvyšší státní zastupitelství), public procurement audits (ÚOHS), conflict of interest and EU subsidy audits
+      - Korupce, NCOZ, obvinění politika, veřejné zakázky, ÚOHS, střet zájmů, dotační podvod, OLAF, EPPO
+    keywords: ["korupce", "ncoz", "úohs", "střet zájmů", "dotační podvod", "olaf", "eppo", "úplatek", "veřejná zakázka"]
+
+  - id: energy_infra
+    describe:
+      - End of Russian oil dependence via TAL-PLUS pipeline, nuclear power (Dukovany, Temelín, SMR), gas storage, high-speed rail (VRT), and motorway infrastructure
+      - Energetická bezpečnost, ropovod TAL, jaderná energetika, Temelín, Dukovany, vysokorychlostní trať, dálnice, plyn
+    keywords: ["ropovod", "tal", "temelín", "dukovany", "jaderná", "jádro", "energetika", "plyn", "vysokorychlostní trať", "dálnice"]
+
+  - id: crime_local
+    describe: ["Policie, zatčení, soudní proces, rozsudek, podvod, krádež, vražda"]
+    keywords: ["zatčen", "zadržela", "obžaloba", "rozsudek", "soud", "podvod", "krádež", "vražda", "policie"]
+
+  - id: accident_weather
+    describe: ["Dopravní nehoda, požár, předpověď počasí, bouře, povodeň, záplavy, sucho"]
+    keywords: ["nehoda", "požár", "počasí", "bouře", "povodeň", "povodně", "záplavy", "sucho", "výstraha"]
+
+  - id: sport_culture
+    describe: ["Fotbal, hokej, extraliga, mistrovství, zpěvák, herec, film, celebrity"]
+    keywords: ["fotbal", "hokej", "extraliga", "mistrovství", "reprezentace", "herec", "zpěvák", "celebrita"]
+
+  - id: munitions_eu_v4
+    label: "Ukraine Ammunition Initiative, V4 & European Alignment"
+    weight: 1.0
+    category: foreign_policy
+    describe:
+      - Czech international artillery ammunition initiative for Ukraine, Visegrad Four (V4) alignment with Hungary, Slovakia and Poland, EU Green Deal / ETS2 negotiations, and Slavkov (Austerlitz) triangle
+      - Muniční iniciativa pro Ukrajinu, Visegrádská čtyřka, V4, Slavkovský formát, ETS2, Green Deal, vztahy se Slovenskem a Polskem
+    keywords: ["muniční iniciativa", "munice", "ukrajin", "v4", "visegrád", "visegrad", "slavkov", "ets2", "green deal", "slovensko"]

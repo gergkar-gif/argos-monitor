@@ -14,24 +14,45 @@ mention:
 - plenkovic
 - milanović
 - milanovic
+- gordan grlić radman
+- grlić radman
+- ivan anušić
+- anušić
+- marko primorac
 - sabor
+- vlada rh
+- ustavni sud
 - hdz
 - sdp
+- možemo
+- domovinski pokret
+- most
+- hnb
+- hrvatska narodna banka
 - janaf
 - krk lng
+- ina
 - ina-mol
+- hep
+- morh
+- osrh
+- uskok
+- dorh
+- eppo
 - split
 - rijeka
 - osijek
 - zadar
 - dubrovnik
-- vlada rh
-- ustavni sud
+- luka rijeka
+- rimac
+- končar
 mention_regex:
 - \bhrvatsk\w*\b
 - \bzagreb\w*\b
 - \bcroat\w*\b
-- \bplenković\w*\b
+- \bplenkovi[ćc]\w*\b
+- \bmilanovi[ćc]\w*\b
 mention_section: null
 url_sections:
   foreign:
@@ -81,30 +102,42 @@ aggregator_outlets:
   - dalmatinski portal
   - dubrovački vjesnik
   - zadarski list
+  - total croatia news
+  - vlada.gov.hr
+  - sabor.hr
+  - hnb.hr
+  - morh.hr
   abroad_local:
+  - deutsche welle
+  - dw
   - al jazeera balkans
   - slobodna evropa
   - balkan insight
   - total croatia news
 excerpt:
-  dateline: ^\s*(?:HINA|Hina|HRT|ZAGREB)\s*[-–—:]\s*
+  dateline: ^\s*(?:HINA|Hina|HRT|ZAGREB|SPLIT|RIJEKA)\s*[-–—:]\s*
   noise: ^(foto|izvor|video|pročitajte više|oglas|vezane vijesti|\(|\[)
 classify:
   internal_politics:
-  - Vlada Republike Hrvatske, Hrvatski sabor, premijer Andrej Plenković, predsjednik Zoran Milanović, HDZ, SDP, Možemo, Domovinski pokret, izbori, Ustavni sud
+  - Prime Minister Andrej Plenković (HDZ coalition), President Zoran Milanović, Croatian Parliament (Sabor), SDP and Možemo opposition, USKOK, DORH and European Public Prosecutor (EPPO) corruption probes, Constitutional Court
+  - Vlada Republike Hrvatske, Hrvatski sabor, premijer Andrej Plenković, predsjednik Zoran Milanović, HDZ, Domovinski pokret, SDP, Možemo, USKOK, EPPO, Ustavni sud
   economics:
-  - gospodarstvo, inflacija, proračun, HNB, euro, JANAF, LNG terminal Krk, INA, MOL, turizam, energetika, investicije
+  - JANAF (Adria oil pipeline) transit and capacity with Hungary and Slovakia, Krk LNG terminal, INA-MOL, Port of Rijeka, Croatian National Bank (HNB), Eurozone inflation, tourism and EU funds
+  - gospodarstvo, inflacija, proračun, HNB, euro, JANAF, LNG terminal Krk, INA, MOL, Luka Rijeka, turizam, energetika, investicije
   foreign_policy:
-  - vanjska politika, Europska unija, Schengen, OECD, odnosi sa susjedima, Bosna i Hercegovina, Srbija, Mađarska, Slovenija, NATO
+  - Foreign Minister Gordan Grlić Radman, EU and Schengen policy, OECD accession, Bosnia and Herzegovina electoral law and Croats in BiH, relations with Serbia, Hungary and Slovenia, Three Seas Initiative
+  - vanjska politika, Europska unija, Schengen, OECD, Bosna i Hercegovina, Hrvati u BiH, Srbija, Mađarska, Slovenija, NATO, Tri mora
   defence_security:
-  - MORH, Hrvatska vojska, OSRH, obrana, Rafale, vojni rok, nacionalna sigurnost, granica, policija
+  - Croatian Armed Forces (OSRH), Defence Minister Ivan Anušić, Rafale fighter jets, Leopard 2A8, HIMARS, mandatory military service (vojni rok), Schengen external border security
+  - MORH, Hrvatska vojska, OSRH, Ivan Anušić, obrana, Rafale, HIMARS, vojni rok, nacionalna sigurnost, granica, policija
   society:
-  - obrazovanje, zdravstvo, mirovine, demografija, pravosuđe, USKOK, EPPO, korupcija, nesreća, vrijeme
+  - education, healthcare, pensions, demographics, judiciary, severe weather and coastal policy
+  - obrazovanje, zdravstvo, mirovine, demografija, pravosuđe, nesreća, vrijeme
 geo: HR
 reddit:
 - croatia
 - zagreb
 - Split
 - Rijeka
-- Osijek
+- financije
 last_reviewed: '2026-11-25'

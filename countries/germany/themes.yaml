@@ -1,25 +1,85 @@
-# Germany editorial policy priority themes.
+# Germany editorial policy priority themes (core 13 localized + 4 strategic Germany themes).
 themes:
+  - id: elections
+    describe:
+      - German federal Bundestag elections, state Landtag elections, European Parliament votes, ballot results, voter turnout, postal voting, and electoral law
+      - Bundestagswahl, Landtagswahl, Kommunalwahl, Wahlergebnis, Wahlbeteiligung, Stichwahl, Briefwahl, Wahlrecht, Wählerstimmen
+    keywords: ["bundestagswahl", "landtagswahl", "kommunalwahl", "wahlergebnis", "wahlbeteiligung", "stichwahl", "briefwahl", "wahlrecht", "wahlkommission", "wahlkampf"]
+
+  - id: diplomacy
+    describe:
+      - German foreign policy under Foreign Minister Johann Wadephul, European Council, Franco-German engine, Weimar Triangle, NATO, G7, and US-Germany relations
+      - Außenpolitik, Auswärtiges Amt, Johann Wadephul, Staatsbesuch, Botschafter, EU-Gipfel, G7, NATO, Weimarer Dreieck
+    keywords: ["auswärtiges amt", "wadephul", "staatsbesuch", "botschafter", "eu-gipfel", "außenpolitik", "diplomatisch", "weimarer dreieck", "g7-gipfel"]
+
+  - id: trade
+    describe:
+      - German export industry, EU trade agreements, US/China tariffs, customs, Mercosur, and supply-chain diversification
+      - Außenhandel, Exportweltmeister, Handelsbilanz, Zölle, Freihandel, Lieferketten, Mercosur
+    keywords: ["außenhandel", "handelsbilanz", "exportüberschuss", "zoll", "zölle", "freihandel", "mercosur", "lieferketten", "handelskonflikt"]
+
+  - id: investment
+    describe:
+      - Industrial and technology investments in Germany, semiconductor fabs (TSMC Dresden, Infineon), AI data centres, battery gigafactories, and infrastructure fund
+      - Investitionen, Standort Deutschland, Halbleiterfabrik, TSMC Dresden, Rechenzentrum, Ansiedlung, Infrastrukturfonds
+    keywords: ["investition", "investor", "halbleiter", "tsmc", "infineon", "rechenzentrum", "batteriefabrik", "ansiedlung", "sondervermögen"]
+
+  - id: econ_policy
+    describe:
+      - Deutsche Bundesbank, ECB monetary policy, federal budget, debt brake (Schuldenbremse), tax and pension reforms, inflation, and GDP growth
+      - Bundesbank, EZB, Leitzins, Bundeshaushalt, Schuldenbremse, Steuerreform, Inflation, Wirtschaftswachstum, Rezession
+    keywords: ["bundesbank", "schuldenbremse", "bundeshaushalt", "haushalt", "leitzins", "inflation", "rezession", "steuerreform", "wirtschaftspolitik", "konjunktur"]
+
+  - id: party_gov
+    describe:
+      - Federal Chancellor Friedrich Merz, CDU/CSU and SPD coalition, Vice Chancellor Lars Klingbeil, Bundestag, Bundesrat, Federal Constitutional Court (BVerfG), AfD, Greens, BSW
+      - Bundeskanzler Friedrich Merz, Bundesregierung, Lars Klingbeil, Bundestag, Bundesrat, CDU, CSU, SPD, AfD, Grüne, BSW, Bundesverfassungsgericht
+    keywords: ["friedrich merz", "merz", "klingbeil", "bundeskanzler", "bundesregierung", "bundestag", "bundesrat", "koalition", "verfassungsgericht", "bverfg", "cdu", "afd"]
+
+  - id: security
+    describe:
+      - Bundeswehr, Defence Minister Boris Pistorius, BND and Verfassungsschutz intelligence, hybrid sabotage protection, and NATO deterrence
+      - Bundeswehr, Boris Pistorius, Verfassungsschutz, BND, Spionageabwehr, Cybersicherheit, Landesverteidigung, NATO-Ostflanke
+    keywords: ["bundeswehr", "pistorius", "verfassungsschutz", "bnd", "cybersicherheit", "spionage", "sabotage", "landesverteidigung", "wehrpflicht"]
+
+  - id: defence_industry
+    describe:
+      - German defence industrial base (Rheinmetall, KNDS Deutschland, Hensoldt, Diehl Defence, TKMS, Airbus Defence), ammunition factories, IRIS-T, Taurus, and Leopard 2 orders
+      - Rüstungsindustrie, Rheinmetall, Hensoldt, Diehl, TKMS, KNDS, Munitionsfabrik, Rüstungsbeschaffung, Leopard, IRIS-T, Taurus
+    keywords: ["rheinmetall", "hensoldt", "diehl", "tkms", "knds", "rüstungsindustrie", "rüstungskonzern", "rüstungsbeschaffung", "munitionsfabrik", "taurus", "iris-t", "leopard"]
+
+  - id: anticorruption
+    describe:
+      - Lobbying transparency, Bundestag ethics rules, political-finance probes, CUM-EX tax investigations, and Federal Court of Auditors (Bundesrechnungshof)
+      - Korruption, Lobbyismus, Lobbyregister, Cum-Ex, Bundesrechnungshof, Bestechung, Untreue, Parteispenden
+    keywords: ["korruption", "lobbyismus", "lobbyregister", "cum-ex", "bundesrechnungshof", "bestechung", "untreue", "parteispenden", "verfassungsblog"]
+
+  - id: energy_infra
+    describe:
+      - German Energiewende, electricity grid expansion, hydrogen core network, industrial power prices, LNG terminals, and Deutsche Bahn rail modernization
+      - Energiewende, Stromnetz, Industriestrompreis, Wasserstoffnetz, LNG-Terminal, Deutsche Bahn, Infrastruktur, Kernkraft
+    keywords: ["energiewende", "stromnetz", "industriestrompreis", "wasserstoff", "lng-terminal", "deutsche bahn", "strompreis", "netzausbau", "kernkraft"]
+
+  - id: crime_local
+    describe: ["Festnahme, Gerichtsprozess, Verurteilung, Betrug, Raub, Tötungsdelikt, Polizei-Ermittlung"]
+    keywords: ["festnahme", "verhaftet", "prozess", "urteil", "betrug", "raub", "mord", "polizei", "staatsanwaltschaft"]
+
+  - id: accident_weather
+    describe: ["Verkehrsunfall, Großbrand, Unwetter, Hochwasser, Sturm, Überschwemmung, Hitzewelle"]
+    keywords: ["unfall", "unwetter", "hochwasser", "sturm", "überschwemmung", "waldbrand", "brand"]
+
+  - id: sport_culture
+    describe: ["Fußball-Bundesliga, DFB-Pokal, Champions League, Olympische Spiele, Film, Musik, Prominente"]
+    keywords: ["bundesliga", "dfb", "fußball", "champions league", "olympia", "schauspieler", "sänger", "konzert"]
+
   - id: coalition_governance_budget
     label: "Federal Government, Bundestag & Fiscal Policy"
     weight: 1.0
     category: internal_politics
     describe:
-      - Federal government under Chancellor Friedrich Merz (CDU/CSU and SPD coalition), Bundestag legislation, constitutional debt brake (Schuldenbremse) reform, special defense and infrastructure funds, and state elections
+      - Federal government under Chancellor Friedrich Merz (CDU/CSU and SPD coalition), Bundestag legislation, constitutional debt brake (Schuldenbremse) reform, special defence and infrastructure funds, and state elections
       - Bundesregierung unter Bundeskanzler Friedrich Merz, Bundestag, Schuldenbremse, Sondervermögen, Haushalt, CDU/CSU, SPD, AfD, Grüne
-    keywords:
-      - "friedrich merz"
-      - "merz"
-      - "bundeskanzler"
-      - "bundesregierung"
-      - "bundestag"
-      - "schuldenbremse"
-      - "sondervermögen"
-      - "haushalt"
-      - "koalition"
-      - "klingbeil"
-      - "pistorius"
-      - "verfassungsgericht"
+    keywords: ["friedrich merz", "merz", "bundeskanzler", "bundesregierung", "bundestag", "schuldenbremse", "sondervermögen", "haushalt", "koalition", "klingbeil", "pistorius", "verfassungsgericht"]
 
   - id: industrial_competitiveness_crisis
     label: "Industrial Competitiveness, Automotive & Energy Costs"
@@ -28,52 +88,22 @@ themes:
     describe:
       - German automotive and manufacturing supply chains (Volkswagen, BMW, Mercedes-Benz, Bosch, Continental, BASF), Central European supplier network, industrial electricity prices, and Bundesbank macroeconomic outlook
       - deutsche Automobilindustrie, Zulieferer, Volkswagen, BMW, Mercedes, Bosch, BASF, Industriestrompreis, Standort Deutschland, Rezession, Bundesbank
-    keywords:
-      - "volkswagen"
-      - "automobilindustrie"
-      - "zulieferer"
-      - "basf"
-      - "bosch"
-      - "de-industrialisierung"
-      - "energiepreise"
-      - "industriestrompreis"
-      - "standort deutschland"
-      - "kurzarbeit"
-      - "rezession"
-      - "bundesbank"
+    keywords: ["volkswagen", "automobilindustrie", "zulieferer", "basf", "bosch", "de-industrialisierung", "energiepreise", "industriestrompreis", "standort deutschland", "kurzarbeit", "rezession", "bundesbank"]
 
   - id: zeitenwende_bundeswehr_rearmament
     label: "Zeitenwende, Bundeswehr & NATO Deterrence"
     weight: 0.95
     category: defence_security
     describe:
-      - Modernization of the German armed forces (Bundeswehr), defense spending and procurement (Rheinmetall, KNDS), permanent brigade in Lithuania, air defense (IRIS-T, Patriot, Arrow 3), and conscription reform
+      - Modernization of the German armed forces (Bundeswehr), defence spending and procurement (Rheinmetall, KNDS), permanent brigade in Lithuania, air defence (IRIS-T, Patriot, Arrow 3), and conscription reform
       - Zeitenwende, Bundeswehr, Boris Pistorius, Rüstungsausgaben, Rheinmetall, Litauen-Brigade, Wehrpflicht, NATO
-    keywords:
-      - "zeitenwende"
-      - "bundeswehr"
-      - "pistorius"
-      - "litauen-brigade"
-      - "rheinmetall"
-      - "iris-t"
-      - "taurus"
-      - "nato-ziel"
-      - "wehrpflicht"
-      - "rüstungsausgaben"
+    keywords: ["zeitenwende", "bundeswehr", "pistorius", "litauen-brigade", "rheinmetall", "iris-t", "taurus", "nato-ziel", "wehrpflicht", "rüstungsausgaben"]
 
   - id: european_diplomacy_ukraine_aid
     label: "EU Policy, Schengen Migration Controls & Ukraine Assistance"
-    weight: 0.9
+    weight: 0.95
     category: foreign_policy
     describe:
       - German EU Council positions, bilateral military and financial aid to Ukraine, Weimar Triangle diplomacy with France and Poland, internal Schengen border controls and asylum policy, and China trade strategy
       - deutsche EU-Politik, Ukraine-Hilfe, deutsch-französische Beziehungen, Weimarer Dreieck, Grenzkontrollen, Asylwende, Sanktionen
-    keywords:
-      - "ukraine-hilfe"
-      - "deutsch-französische"
-      - "weimarer dreieck"
-      - "eu-erweiterung"
-      - "grenzkontrollen"
-      - "zurückweisungen"
-      - "china-strategie"
-      - "sanktionen"
+    keywords: ["ukraine-hilfe", "deutsch-französische", "weimarer dreieck", "eu-erweiterung", "grenzkontrollen", "zurückweisungen", "china-strategie", "sanktionen"]

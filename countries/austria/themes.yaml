@@ -2,84 +2,90 @@
 themes:
   - id: elections
     describe:
-      - Austrian parliamentary (Nationalrat), presidential, and provincial (Landtag) elections, ballot results, voter turnout, and coalition negotiations
-      - Nationalratswahl, Landtagswahl, Bundespräsidentenwahl, Wahlergebnis, Wahlbeteiligung, Koalitionsverhandlungen
-    keywords:
-      - "nationalratswahl"
-      - "landtagswahl"
-      - "bundespräsidentenwahl"
-      - "wahlergebnis"
-      - "stichwahl"
+      - Austrian parliamentary (Nationalrat), presidential, and provincial (Landtag) elections, ballot results, voter turnout, and referendum votes
+      - Nationalratswahl, Landtagswahl, Bundespräsidentenwahl, Wahlergebnis, Wahlbeteiligung, Stichwahl, Volksbefragung, Wahlkampf
+    keywords: ["nationalratswahl", "landtagswahl", "bundespräsidentenwahl", "wahlergebnis", "wahlbeteiligung", "stichwahl", "volksbefragung", "briefwahl", "wahlkarte", "wahlbehörde"]
 
-  - id: party_gov
-    label: "Federal Coalition, Parliament & Migration Policy"
-    weight: 1.0
-    category: internal_politics
+  - id: diplomacy
     describe:
-      - Austrian federal coalition government (ÖVP, SPÖ, NEOS) and FPÖ opposition in the Nationalrat, Chancellor Christian Stocker, President Alexander Van der Bellen, asylum and Schengen border controls with Hungary and Slovenia
-      - Österreichische Bundesregierung, Nationalrat, Bundeskanzler Christian Stocker, Herbert Kickl, Andreas Babler, Beate Meinl-Reisinger, ÖVP, SPÖ, NEOS, FPÖ, Grenzkontrollen
-    keywords:
-      - "nationalrat"
-      - "bundeskanzler"
-      - "bundesregierung"
-      - "stocker"
-      - "kickl"
-      - "babler"
-      - "meinl-reisinger"
-      - "van der bellen"
-      - "övp"
-      - "fpö"
-      - "spö"
-      - "neos"
-      - "ministerrat"
-      - "grenzkontrollen"
-      - "burgenland"
+      - Austrian bilateral diplomacy, European Council summits, OSCE and UN Vienna headquarters, Foreign Minister Beate Meinl-Reisinger
+      - Staatsbesuch, Außenministerium, BMEIA, Beate Meinl-Reisinger, Botschafter, OSZE, UNO-City Wien, EU-Gipfel
+    keywords: ["staatsbesuch", "außenministerium", "bmeia", "meinl-reisinger", "botschafter", "osze", "eu-gipfel", "diplomatisch", "außenpolitik"]
+
+  - id: trade
+    describe:
+      - Austrian export-oriented manufacturing trade, EU single market, customs and US/China tariffs, Alpine Brenner freight transit
+      - Außenhandel, Exportwirtschaft, Zölle, Freihandel, Handelsbilanz, Brenner-Transit
+    keywords: ["außenhandel", "exportwirtschaft", "zoll", "zölle", "freihandel", "handelsbilanz", "brenner", "lieferketten"]
+
+  - id: investment
+    describe:
+      - Foreign direct investment in Austria, semiconductor and life-science clusters, industrial sites, Infineon Austria, data centres
+      - Direktinvestitionen, Industrieansiedlung, Halbleiter, Infineon, Rechenzentrum, Standort Österreich
+    keywords: ["direktinvestition", "investition", "investor", "halbleiter", "infineon", "rechenzentrum", "standort österreich", "betriebsansiedlung"]
 
   - id: econ_policy
     label: "Budget Consolidation, OMV Energy & Banking (Raiffeisen / Erste)"
-    weight: 0.95
+    weight: 1.0
     category: economics
     describe:
-      - Austrian federal budget deficit consolidation, OeNB monetary policy, WIFO/IHS economic forecasts, OMV gas diversification and Neptun Deep project, Raiffeisen Bank International and Erste Group Central European operations
-      - Budgetdefizit, Sanierungspaket, OeNB, WIFO, Inflation, OMV, Gaslieferungen, Raiffeisen, Erste Group
-    keywords:
-      - "budgetdefizit"
-      - "oenb"
-      - "wifo"
-      - "omv"
-      - "raiffeisen"
-      - "erste group"
-      - "gaslieferungen"
-      - "schulden"
-      - "steuern"
-      - "sparprogramm"
+      - Austrian federal budget deficit consolidation, OeNB monetary policy, WIFO/IHS economic forecasts, OMV gas diversification, Raiffeisen Bank International and Erste Group Central European operations
+      - Budgetdefizit, Sanierungspaket, OeNB, WIFO, IHS, Inflation, OMV, Raiffeisen, Erste Group, voestalpine
+    keywords: ["budgetdefizit", "staatshaushalt", "sanierungspaket", "oenb", "wifo", "ihs", "omv", "raiffeisen", "erste group", "voestalpine", "schulden", "sparprogramm", "wirtschaftswachstum"]
 
-  - id: diplomacy
-    label: "Neutrality, Central Europe (C5) & Western Balkans Enlargement"
-    weight: 0.95
-    category: foreign_policy
+  - id: party_gov
+    label: "Federal Coalition, Nationalrat & Migration Policy"
+    weight: 1.0
+    category: internal_politics
     describe:
-      - Austrian constitutional neutrality, Central Five (C5) diplomacy, EU enlargement advocacy for the Western Balkans, bilateral relations with Hungary and neighbours, OSCE and UN headquarters in Vienna
-      - österreichische Neutralität, Außenministerium, Westbalkan, EU-Erweiterung, OSZE, UNO-City Wien, Nachbarländer
-    keywords:
-      - "neutralität"
-      - "außenministerium"
-      - "westbalkan"
-      - "osze"
-      - "botschafter"
-      - "eu-erweiterung"
+      - Austrian federal coalition government (ÖVP, SPÖ, NEOS) under Chancellor Christian Stocker, Vice Chancellor Andreas Babler, FPÖ opposition Herbert Kickl, President Alexander Van der Bellen, Nationalrat and asylum policy
+      - Österreichische Bundesregierung, Nationalrat, Bundeskanzler Christian Stocker, Herbert Kickl, Andreas Babler, ÖVP, SPÖ, NEOS, FPÖ, Grüne, Asylpolitik, Grenzkontrollen
+    keywords: ["nationalrat", "bundesrat", "bundeskanzler", "bundesregierung", "stocker", "kickl", "babler", "van der bellen", "övp", "fpö", "spö", "neos", "ministerrat", "grenzkontrollen", "asylpolitik"]
 
   - id: security
     label: "Bundesheer Modernization & European Sky Shield"
-    weight: 0.9
+    weight: 0.95
     category: defence_security
     describe:
-      - Austrian Armed Forces (Bundesheer) Aufbauplan 2032 modernization, European Sky Shield Initiative (ESSI) air defense participation, and counter-espionage reform (DSN)
-      - Bundesheer, Aufbauplan, Sky Shield, Luftabwehr, Direktion Staatsschutz und Nachrichtendienst (DSN), Sicherheitsstrategie
-    keywords:
-      - "bundesheer"
-      - "sky shield"
-      - "luftabwehr"
-      - "dsn"
-      - "staatsschutz"
-      - "sicherheitsstrategie"
+      - Austrian Armed Forces (Bundesheer) Aufbauplan 2032 modernization, European Sky Shield Initiative (ESSI) air defence, and counter-espionage Directorate of State Security and Intelligence (DSN)
+      - Bundesheer, Aufbauplan 2032, Sky Shield, Luftabwehr, Direktion Staatsschutz und Nachrichtendienst (DSN), Sicherheitsstrategie
+    keywords: ["bundesheer", "sky shield", "luftabwehr", "dsn", "staatsschutz", "sicherheitsstrategie", "landesverteidigung", "aufbauplan"]
+
+  - id: defence_industry
+    describe:
+      - Austrian defence procurement and aerospace/armaments suppliers (GDELS-Steyr Pandur, Glock, Diamond Aircraft, Leonardo M-346FA) and European Sky Shield air defence orders
+      - Rüstungsbeschaffung, GDELS-Steyr, Pandur, Abfangjäger, Leonardo, Rüstungsindustrie, Heeresbudget
+    keywords: ["rüstungsbeschaffung", "pandur", "steyr", "abfangjäger", "eurofighter", "leonardo", "rüstungsindustrie", "heeresbudget", "bewaffnung"]
+
+  - id: anticorruption
+    describe:
+      - WKStA anti-corruption investigations, parliamentary inquiry committees (U-Ausschuss), political finance transparency, Court of Audit (Rechnungshof)
+      - WKStA, Korruptionsermittlungen, Untersuchungsausschuss, Rechnungshof, Untreue, Bestechung, Parteienfinanzierung
+    keywords: ["wksta", "korruption", "untersuchungsausschuss", "u-ausschuss", "rechnungshof", "untreue", "bestechung", "schmiergeld"]
+
+  - id: energy_infra
+    describe:
+      - Austrian gas supply diversification (TAP, WAG, TAL), Alpine hydropower, Brenner Base Tunnel, Semmering Base Tunnel, ÖBB rail corridors, and electricity grid
+      - Energieversorgung, Gaslieferungen, Wasserkraft, Brennerbasistunnel, Semmering-Basistunnel, ÖBB, Stromnetz, OMV Gas
+    keywords: ["gaslieferung", "wasserkraft", "brennerbasistunnel", "semmering", "stromnetz", "energiewende", "gasversorgung", "fernwärme", "verbund"]
+
+  - id: crime_local
+    describe: ["Polizeieinsatz, Festnahme, Gerichtsprozess, Verurteilung, Einbruch, Betrug, Mord, Drogenhandel"]
+    keywords: ["festnahme", "verhaftet", "prozess", "urteil", "betrug", "einbruch", "mord", "raub", "polizei"]
+
+  - id: accident_weather
+    describe: ["Verkehrsunfall, Brand, Unwetterwarnung, Hochwasser, Sturm, Lawine, Hitzewelle"]
+    keywords: ["unfall", "unwetter", "hochwasser", "sturm", "lawine", "brand", "überschwemmung"]
+
+  - id: sport_culture
+    describe: ["Fußball, Bundesliga, Skifahren, Skiweltcup, Konzerte, Filmfestival, Prominente"]
+    keywords: ["fußball", "bundesliga", "skirennen", "skiweltcup", "champions league", "schauspieler", "sänger", "promi"]
+
+  - id: central_europe_neutrality
+    label: "Neutrality, Central Five (C5) & Western Balkans Enlargement"
+    weight: 0.95
+    category: foreign_policy
+    describe:
+      - Austrian constitutional neutrality debate, Central Five (C5) cooperation with Czechia, Slovakia, Hungary and Slovenia, EU enlargement in the Western Balkans, South Tyrol autonomy, and Schengen internal border controls
+      - österreichische Neutralität, Central Five, Westbalkan, EU-Erweiterung, Südtirol, Schengen-Grenzkontrollen, Nachbarländer Ungarn Slowakei Tschechien Slowenien
+    keywords: ["neutralität", "westbalkan", "eu-erweiterung", "südtirol", "schengen", "central five", "burgenland", "kärnten", "nachbarstaat"]

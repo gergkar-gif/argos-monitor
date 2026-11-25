@@ -10,30 +10,108 @@ mention:
 - switzerland
 - swiss
 - bern
+- berne
 - zürich
+- zurich
+- genf
 - geneva
+- genève
+- basel
+- bâle
+- lausanne
+- lugano
 - bundesrat
 - conseil fédéral
+- consiglio federale
 - nationalrat
-- viola amherd
+- ständerat
+- conseil des états
+- guy parmelin
+- parmelin
 - karin keller-sutter
+- keller-sutter
 - ignazio cassis
+- cassis
 - albert rösti
+- beat jans
+- elisabeth baume-schneider
+- martin pfister
+- pfister
 - snb
 - swiss national bank
+- schweizerische nationalbank
+- ubs
+- finma
+- seco
+- novartis
+- roche
+- nestlé
+- franken
+- kantone
+- svp
+- udc
+- fdp
+- plr
+- die mitte
+mention_regex:
+- \bschweiz\w*
+- \bsuiss\w*
+- \bsvizzer\w*
+- \bzürch\w*
+- \bgenf\w*
+mention_section: null
 url_sections:
+  foreign:
+  - ausland
+  - international
+  - monde
+  - mondo
+  - welt
+  - world
+  - estero
   skip:
   - sport
   - sport-aktuell
+  - fussball
+  - eishockey
+  - ski
   - lifestyle
   - unterhaltung
   - panorama
+  - kultur
+  - culture
+  - cultura
+  - auto
+  - reise
+  - wetter
+  - meteo
+  - people
+  - gesellschaft
 excerpt:
-  dateline: ^\s*(?:BERN|ZÜRICH|GENÈVE|SDA|ATS|KEYSTONE)\s*[-–:]\s*
+  dateline: ^\s*(?:BERN|BERNE|ZÜRICH|GENÈVE|GENF|BASEL|LAUSANNE|LUGANO|KEYSTONE-SDA|SDA|ATS|SRF|RTS|RSI)\s*[-–—:]\s*
+  noise: ^(Foto|Bild|Quelle|Photo|Crédit|Source|Lire aussi|Lesen Sie auch|Leggi anche|Anzeige|\(|\[)
+classify:
+  internal_politics:
+  - Swiss Federal Council (Bundesrat / Conseil fédéral), 2026 President Guy Parmelin, National Council and Council of States, direct-democracy referendums (Volksabstimmungen), SVP/UDC, SP/PS, FDP/PLR, Centre, Greens
+  - Bundesrat, Nationalrat, Ständerat, Volksabstimmung, Initiative, Referendum, Conseil fédéral, votation, SVP, SP, FDP, Die Mitte, Consiglio federale
+  economics:
+  - Swiss National Bank (SNB) monetary policy and Swiss franc exchange rate, UBS Too-Big-To-Fail banking regulation and FINMA, SECO trade and tariffs, pharmaceuticals (Novartis, Roche), cantonal fiscal policy
+  - SNB, Schweizerische Nationalbank, Leitzins, Franken, UBS, FINMA, SECO, Bankenregulierung, Wirtschaft, Zölle, Inflation, BNS
+  foreign_policy:
+  - Switzerland-EU Bilaterals III package and institutional agreements, Swiss neutrality and sanctions policy, International Geneva and Good Offices diplomacy, Schengen/Dublin border cooperation
+  - Bilaterale III, Rahmenabkommen, EU-Abkommen, Neutralität, Gute Dienste, Sanktionen, Schengen, EDA, Genf, politique étrangère
+  defence_security:
+  - Swiss Armed Forces modernization, F-35 fighter procurement and air defence, Neutrality Initiative, cybersecurity (NCSC), intelligence service (NDB)
+  - Schweizer Armee, VBS, Martin Pfister, F-35, Luftabwehr, Rüstung, Neutralitätsinitiative, Sicherheitspolitik, armée suisse
+  society:
+  - Healthcare premiums (Krankenkassenprämien), AHV/AVS pension funding, migration and asylum quotas, Alpine transit and rail (Gotthard), energy supply and climate
+  - Krankenkassenprämien, AHV, Migration, Asyl, Energie, Gotthard, Bildung, Gesundheit, société
 reddit:
-- switzerland
+- Switzerland
 - askswitzerland
 - zurich
+- SwissPersonalFinance
+- geneva
 geo: CH
 aggregator_outlets:
   domestic:
@@ -43,6 +121,7 @@ aggregator_outlets:
   - RTS
   - RTS Info
   - RSI
+  - RSI Info
   - Neue Zürcher Zeitung
   - NZZ
   - Le Temps
@@ -50,6 +129,7 @@ aggregator_outlets:
   - Blick
   - 20 Minuten
   - Watson
+  - Watson.ch
   - Aargauer Zeitung
   - Luzerner Zeitung
   - Handelszeitung
@@ -64,9 +144,18 @@ aggregator_outlets:
   - Basler Zeitung
   - Berner Zeitung
   - admin.ch
+  - SNB
+  - Swiss National Bank
   - cash.ch
+  - finews.ch
   - infosperber
+  - Inside Paradeplatz
   abroad_local:
+  - Euronews Français
+  - FAZ
+  - Der Standard
+  - Le Monde
+  - Corriere della Sera
   - Geneva Solutions
   - The Local Switzerland
 last_reviewed: '2026-11-25'

@@ -1,83 +1,91 @@
 # Slovakia's additions to the shared themes (../../themes.yaml).
 themes:
-- id: party_gov
-  label: Fico Coalition, Rule of Law, Public Media (STVR) & Minority Policy
-  weight: 1.0
-  category: internal_politics
-  describe:
-  - Prime Minister Robert Fico, President Peter Pellegrini, Smer-Hlas-SNS coalition, opposition led by Progressive Slovakia (Michal Šimečka), STVR public broadcaster and judicial changes, Hungarian minority policy (Magyar Szövetség, Beneš decrees, language law)
-  - Robert Fico, Peter Pellegrini, vláda Smer-Hlas-SNS, Národná rada, Progresívne Slovensko, STVR, trestný zákon, Maďarská aliancia, Benešove dekréty, jazykový zákon
-  keywords:
-  - fico
-  - pellegrini
-  - šimečka
-  - simecka
-  - kaliňák
-  - kalinak
-  - smer
-  - progresívne slovensko
-  - stvr
-  - národná rada
-  - ústavný súd
-  - maďarská aliancia
-  - benešove dekréty
-  - jazykový zákon
-- id: diplomacy
-  label: EU Funds, Ukraine Policy, Energy Transit & Visegrad Diplomacy
-  weight: 1.0
-  category: foreign_policy
-  describe:
-  - European Commission rule-of-law review and EU funds, Slovakia stance on Ukraine military aid, Druzhba oil and gas transit corridors with Hungary, Gabčíkovo–Nagymaros Danube cooperation, and Visegrad Group (V4) relations
-  - Európska komisia, eurofondy, Ukrajina, tranzit plynu, ropovod Družba, Slovnaft, Gabčíkovo, V4, NATO
-  keywords:
-  - eurofond
-  - európska komisia
-  - ukrajin
-  - v4
-  - visegrad
-  - nato
-  - sankcie
-  - plyn
-  - družba
-  - slovnaft
-  - gabčíkovo
-- id: elections
-  describe:
-  - Slovak parliamentary, presidential, and municipal elections, Statistical Office results, and voter turnout
-  - Parlamentné voľby, prezidentské voľby, volebná účasť, výsledky volieb
-  keywords:
-  - voľby
-  - volebná účasť
-  - kandidátka
-  - referendum
-  - ballot
-  - turnout
-- id: econ_policy
-  label: Fiscal Consolidation, Auto Industry & Russian Gas Transit
-  weight: 0.95
-  category: economics
-  describe:
-  - Slovak fiscal consolidation package, transaction tax, Slovnaft and SPP gas/oil transit, automotive manufacturing (VW, Kia, Jaguar Land Rover, Volvo), and EU Recovery Plan funds
-  - Konsolidácia verejných financií, transakčná daň, SPP, Slovnaft, automobilky, plán obnovy
-  keywords:
-  - konsolidácia
-  - transakčná daň
-  - slovnaft
-  - spp
-  - plán obnovy
-  - rozpočet
-  - inflácia
-- id: security
-  label: SIS Intelligence, F-16 Delivery & Eastern Border Defence
-  weight: 0.9
-  category: defence_security
-  describe:
-  - Slovak Armed Forces (OS SR) modernization, F-16 fighters and air defense, SIS intelligence oversight, and Ukraine border logistics
-  - Ozbrojené sily SR, SIS, protivzdušná obrana, stíhačky F-16, ministerstvo obrany
-  keywords:
-  - ozbrojené sily
-  - sis
-  - protivzdušná obrana
-  - f-16
-  - kaliňák
-  - zbrojný
+  - id: elections
+    describe:
+      - Slovak parliamentary, presidential, European, and municipal elections, Statistical Office results, ballot counting, and voter turnout
+      - Parlamentné voľby, prezidentské voľby, komunálne voľby, volebná účast, výsledky volieb, referendum, druhé kolo
+    keywords: ["voľby", "volebná účasť", "kandidátka", "hlasovanie", "druhé kolo", "referendum", "prieskum", "volebná komisia"]
+
+  - id: diplomacy
+    describe:
+      - Slovak foreign policy under Foreign Minister Juraj Blanár, EU Council and NATO policy, bilateral ties with Czechia, Hungary, Ukraine, Russia and US
+      - Zahraničná politika, Ministerstvo zahraničných vecí, Juraj Blanár, veľvyslanec, štátna návšteva, samit EÚ, NATO
+    keywords: ["zahraničná politika", "blanár", "veľvyslanec", "návšteva", "samit", "diplomacia", "bilateráln", "európska únia", "nato"]
+
+  - id: trade
+    describe:
+      - Slovak export economy, automotive exports, US/EU tariffs, customs, cross-border freight, and trade balance
+      - Zahraničný obchod, export, import, clá, obchodná bilancia, dodávateľské reťazce
+    keywords: ["zahraničný obchod", "export", "import", "clá", "clo", "obchodná bilancia", "dodávateľské reťazce"]
+
+  - id: investment
+    describe:
+      - Foreign direct investment in Slovakia, Volvo Košice EV plant, VW, Kia, Jaguar Land Rover, battery plants (Gotion InoBat Šurany), and industrial parks
+      - Zahraničné investície, investor, automobilky, Volvo Košice, Kia, Volkswagen, baterkáreň Šurany, priemyselný park
+    keywords: ["investícia", "investície", "investor", "volvo", "baterkáreň", "šurany", "priemyselný park", "automobilka"]
+
+  - id: econ_policy
+    label: "Fiscal Consolidation, Transaction Tax & NBS Outlook"
+    weight: 1.0
+    category: economics
+    describe:
+      - Slovak fiscal consolidation package, financial transaction tax, National Bank of Slovakia (NBS) inflation outlook, state budget, and EU Recovery Plan funds
+      - Konsolidácia verejných financií, transakčná daň, Národná banka Slovenska (NBS), Ladislav Kamenický, štátny rozpočet, inflácia, plán obnovy
+    keywords: ["konsolidácia", "transakčná daň", "nbs", "národná banka slovenska", "kamenický", "štátny rozpočet", "rozpočet", "inflácia", "plán obnovy"]
+
+  - id: party_gov
+    label: "Fico Coalition, Rule of Law, STVR & Minority Policy"
+    weight: 1.0
+    category: internal_politics
+    describe:
+      - Prime Minister Robert Fico, President Peter Pellegrini, Smer-Hlas-SNS coalition, opposition led by Progressive Slovakia (Michal Šimečka), KDH and SaS, STVR public broadcaster, judicial reforms and Hungarian minority policy
+      - Robert Fico, Peter Pellegrini, vláda Smer-Hlas-SNS, Národná rada, Progresívne Slovensko, Michal Šimečka, STVR, Ústavný súd, Maďarská aliancia
+    keywords: ["fico", "pellegrini", "šimečka", "simecka", "šutaj eštok", "smer", "hlas", "sns", "progresívne slovensko", "stvr", "národná rada", "ústavný súd", "maďarská aliancia"]
+
+  - id: security
+    label: "SIS Intelligence, Eastern Border & Armed Forces"
+    weight: 0.95
+    category: defence_security
+    describe:
+      - Slovak Armed Forces (OS SR) modernization, Defence Minister Robert Kaliňák, SIS intelligence service oversight, cybersecurity, police, and Ukraine border security
+      - Ozbrojené sily SR, Robert Kaliňák, SIS, protivzdušná obrana, kybernetická bezpečnosť, polícia, hranica s Ukrajinou
+    keywords: ["ozbrojené sily", "kaliňák", "kalinak", "sis", "protivzdušná obrana", "kyberbezpečnosť", "polícia", "národná bezpečnosť"]
+
+  - id: defence_industry
+    describe:
+      - Slovak defence manufacturing and procurement (Konštrukta-Defence Zuzana 2, VOP Nováky, ZVS Holding 155mm ammunition, F-16 Block 70 fighters, Barak MX air defence, Patria 8x8)
+      - Zbrojný priemysel, obranný priemysel, Konštrukta, Zuzana, munícia, stíhačky F-16, Barak MX, Patria, zbrojársky
+    keywords: ["zbrojný", "obranný priemysel", "konštrukta", "zuzana", "f-16", "patria", "barak", "munícia", "zbrojár"]
+
+  - id: anticorruption
+    describe:
+      - Anti-corruption probes, Special Prosecutor abolition fallout, Whistleblower Protection Office, NAKA/ÚBOK cases, EU OLAF and EPPO investigations
+      - Korupcia, úplatok, trestný zákon, EPPO, OLAF, prokuratúra, Úrad na ochranu oznamovateľov, vyšetrovanie
+    keywords: ["korupcia", "úplatok", "trestný zákon", "eppo", "olaf", "prokuratúra", "oznamovateľ", "podvod"]
+
+  - id: energy_infra
+    describe:
+      - Druzhba oil pipeline and Russian/Azerbaijani gas transit via Eustream/SPP, Slovnaft refinery, Mochovce nuclear plant, Gabčíkovo–Nagymaros hydro, and rail corridors
+      - Energetika, tranzit plynu, Eustream, SPP, ropovod Družba, Slovnaft, jadrová elektráreň Mochovce, Gabčíkovo
+    keywords: ["družba", "slovnaft", "spp", "eustream", "tranzit plynu", "mochovce", "gabčíkovo", "energetika", "plyn"]
+
+  - id: crime_local
+    describe: ["Polícia, zatknutie, súdny proces, rozsudok, podvod, krádež, vražda"]
+    keywords: ["zatknut", "zadržal", "obžaloba", "rozsudok", "súd", "podvod", "krádež", "vražda", "polícia"]
+
+  - id: accident_weather
+    describe: ["Dopravná nehoda, požiar, predpoveď počasia, búrka, povodeň, záplavy, sucho"]
+    keywords: ["nehoda", "požiar", "počasie", "búrka", "povodeň", "záplavy", "sucho", "výstraha"]
+
+  - id: sport_culture
+    describe: ["Futbal, hokej, extraliga, majstrovstvá, spevák, herec, film, celebrity"]
+    keywords: ["futbal", "hokej", "extraliga", "majstrovstvá", "reprezentácia", "herec", "spevák", "celebrita"]
+
+  - id: eu_funds_energy_minority
+    label: "EU Rule of Law, Eurofunds & Central European Ties"
+    weight: 1.0
+    category: foreign_policy
+    describe:
+      - European Commission rule-of-law review and EU structural funds (eurofondy), Slovakia stance on Ukraine aid and Russia sanctions, Visegrad Group (V4) coordination with Hungary and Czechia, Beneš decrees and minority language law
+      - Európska komisia, eurofondy, právny štát, sankcie, V4, Visegrád, Benešove dekréty, jazykový zákon, Ukrajina
+    keywords: ["eurofond", "európska komisia", "právny štát", "v4", "visegrád", "visegrad", "sankcie", "benešove dekréty", "jazykový zákon", "ukrajin"]

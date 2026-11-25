@@ -330,12 +330,15 @@ sources:
   - url: https://news.google.com/rss/search?q=Poland+when:1d&hl=en-US&gl=US&ceid=US:en
     section: Poland
     category_hint: general
-  - url: https://news.google.com/rss/search?q=Poland+(Tusk+OR+NATO+OR+defence+OR+Ukraine+OR+EU)+when:1d&hl=en-US&gl=US&ceid=US:en
-    section: Poland security & EU
+  - url: https://news.google.com/rss/search?q=Poland+(Tusk+OR+Nawrocki+OR+NATO+OR+Ukraine+OR+EU)+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Poland politics & EU
     category_hint: foreign_policy
-  - url: https://news.google.com/rss/search?q=Poland+(economy+OR+investment+OR+energy+OR+zloty)+when:1d&hl=en-US&gl=US&ceid=US:en
+  - url: https://news.google.com/rss/search?q=Poland+(economy+OR+investment+OR+energy+OR+zloty+OR+CPK)+when:2d&hl=en-US&gl=US&ceid=US:en
     section: Poland economy
     category_hint: economics
+  - url: https://news.google.com/rss/search?q=Poland+(defence+OR+military+OR+%22East+Shield%22+OR+Belarus+OR+PGZ)+when:2d&hl=en-US&gl=US&ceid=US:en
+    section: Poland defence
+    category_hint: defence_security
 - id: gnews_pl
   name: Google News (Polish)
   homepage: https://news.google.com
@@ -347,12 +350,136 @@ sources:
   governing_body: n/a (aggregator)
   state_affiliated: false
   feeds:
-  - url: https://news.google.com/rss/search?q=(rz%C4%85d+OR+Sejm+OR+Tusk+OR+PiS)+when:1d&hl=pl&gl=PL&ceid=PL:pl
+  - url: https://news.google.com/rss/search?q=(rz%C4%85d+OR+Sejm+OR+Tusk+OR+Nawrocki+OR+PiS)+when:1d&hl=pl&gl=PL&ceid=PL:pl
     section: Polityka
     category_hint: internal_politics
   - url: https://news.google.com/rss/search?q=(Wojsko+Polskie+OR+MON+OR+granica+OR+NATO)+when:1d&hl=pl&gl=PL&ceid=PL:pl
     section: Obronność
     category_hint: defence_security
+  - url: https://news.google.com/rss/search?q=(NBP+OR+KPO+OR+CPK+OR+Orlen+OR+gospodarka)+Polska+when:2d&hl=pl&gl=PL&ceid=PL:pl
+    section: Gospodarka
+    category_hint: economics
+- id: wnp_pl
+  name: WNP.pl
+  homepage: https://www.wnp.pl
+  language: pl
+  scope: domestic
+  kind: media
+  governing_body: PTWP Group (Katowice)
+  state_affiliated: false
+  notes: Major Polish industrial, energy, infrastructure, and macroeconomic business portal.
+  feeds:
+  - url: https://www.wnp.pl/rss/serwis_rss.xml
+    section: Gospodarka i Energetyka
+    category_hint: economics
+- id: frontstory_pl
+  name: Frontstory.pl
+  homepage: https://frontstory.pl
+  language: pl
+  scope: domestic
+  kind: media
+  governing_body: Fundacja Reporterów (OCCRP / VSquare partner)
+  state_affiliated: false
+  notes: Independent Polish investigative journalism center.
+  feeds:
+  - url: https://frontstory.pl/feed/
+    section: Śledztwa
+    category_hint: internal_politics
+- id: osw_pl
+  name: Centre for Eastern Studies (OSW)
+  homepage: https://www.osw.waw.pl
+  language: en
+  scope: domestic
+  kind: media
+  governing_body: Ośrodek Studiów Wschodnich (Polish statutory foreign-affairs and security institute)
+  state_affiliated: true
+  notes: Warsaw public foreign-policy research institute analyzing Eastern Europe, Germany, and European security.
+  feeds:
+  - url: https://www.osw.waw.pl/en/rss.xml
+    section: Analyses
+    category_hint: foreign_policy
+- id: gnews_pl_official
+  name: Polish Government / Sejm / Prezydent / NBP
+  homepage: https://www.gov.pl
+  language: pl
+  scope: domestic
+  kind: official
+  aggregator: google_news
+  needs_mention: true
+  governing_body: Chancellery of the Prime Minister / Sejm / Chancellery of the President / National Bank of Poland
+  state_affiliated: true
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:gov.pl+OR+site:prezydent.pl+OR+site:sejm.gov.pl+OR+site:nbp.pl)+when:7d&hl=pl&gl=PL&ceid=PL:pl
+    section: Instytucje RP
+    category_hint: internal_politics
+- id: euronews_pl
+  name: Euronews po polsku
+  homepage: https://pl.euronews.com
+  language: pl
+  scope: abroad_local
+  kind: media
+  governing_body: Euronews SA
+  state_affiliated: false
+  needs_mention: true
+  notes: European multilingual news broadcaster Polish service; filtered for Poland mentions.
+  feeds:
+  - url: https://pl.euronews.com/rss
+    section: Europa i Świat
+    category_hint: general
+- id: dw_pl
+  name: Deutsche Welle (Polski)
+  homepage: https://www.dw.com/pl
+  language: pl
+  scope: abroad_local
+  kind: media
+  governing_body: Deutsche Welle (German public international broadcaster)
+  state_affiliated: false
+  needs_mention: true
+  notes: Deutsche Welle Polish service; filtered for Poland mentions.
+  feeds:
+  - url: https://rss.dw.com/xml/rss-pol-all
+    section: Polska i Europa
+    category_hint: foreign_policy
+- id: zwrot_cz_pl
+  name: Zwrot
+  homepage: https://zwrot.cz
+  language: pl
+  scope: abroad_local
+  kind: media
+  governing_body: Kongres Polaków w Republice Czeskiej (Zaolzie, Czechia)
+  state_affiliated: false
+  notes: Cross-border Polish-language daily serving the Polish minority in Czechia (Zaolzie).
+  feeds:
+  - url: https://zwrot.cz/feed/
+    section: Zaolzie i Polska
+    category_hint: general
+- id: gnews_pl_abroad_diaspora
+  name: Polish Diaspora & Regional Press (Belsat / Kurier Wileński)
+  homepage: https://belsat.eu
+  language: pl
+  scope: abroad_local
+  kind: media
+  aggregator: google_news
+  governing_body: Belsat / Kurier Wileński / L24.lt
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:belsat.eu+OR+site:kurierwilenski.lt+OR+site:l24.lt)+(Polska+OR+Warszawa+OR+Tusk+OR+Nawrocki)+when:7d&hl=pl&gl=PL&ceid=PL:pl
+    section: Polonia i Kresy
+    category_hint: general
+- id: vsquare_intl_pl
+  name: VSquare
+  homepage: https://vsquare.org
+  language: en
+  scope: international
+  kind: media
+  governing_body: Visegrad Insight / Investigace / Átlátszó / ICJK / Frontstory
+  state_affiliated: false
+  needs_mention: true
+  notes: Cross-border Visegrad Four investigative journalism consortium; filtered for Poland mentions.
+  feeds:
+  - url: https://vsquare.org/feed/
+    section: Visegrad Investigations
+    category_hint: internal_politics
 - id: milmag_pl
   name: MILMAG
   homepage: https://milmag.pl

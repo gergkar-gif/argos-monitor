@@ -17,20 +17,48 @@ mention:
 - warszawie
 - kraków
 - gdańsk
+- wrocław
+- poznań
+- łódź
+- szczecin
+- katowice
+- lublin
 - tusk
 - donald tusk
+- karol nawrocki
+- nawrocki
 - duda
 - andrzej duda
 - sikorski
+- radosław sikorski
+- władysław kosiniak-kamysz
+- kosiniak-kamysz
+- rafał trzaskowski
+- trzaskowski
+- szymon hołownia
+- sławomir mentzen
 - kaczyński
 - sejm
+- senat
+- rada ministrów
+- trybunał konstytucyjny
 - pis
 - prawo i sprawiedliwość
 - koalicja obywatelska
+- trzecia droga
+- lewica
+- konfederacja
+- mon
+- msz
 - narodowy bank polski
 - nbp
 - złoty
 - orlen
+- kpo
+- cpk
+- pgz
+- pge
+- kghm
 mention_regex:
 - \bpolsk[aieąoęu]\b
 - \bwarszaw\w*\b
@@ -80,10 +108,12 @@ aggregator_outlets:
   - wpolityce.pl
   - niezależna
   - oko.press
+  - frontstory.pl
   - bankier.pl
   - money.pl
   - puls biznesu
   - business insider polska
+  - wnp.pl
   - defence24
   - energetyka24
   - 300polityka
@@ -95,32 +125,47 @@ aggregator_outlets:
   - kresy.pl
   - krytyka polityczna
   - klub jagielloński
+  - osw
+  - centre for eastern studies
+  - milmag
+  - zbiam
+  - gov.pl
+  - prezydent.pl
+  - sejm.gov.pl
+  - nbp.pl
   abroad_local:
   - belsat
+  - zwrot
+  - kurier wileński
+  - l24.lt
   - euronews po polsku
   - dw.com
+  - deutsche welle
+  - dw
+  abroad_regional: []
 last_reviewed: '2026-11-25'
 excerpt:
-  dateline: ^\s*(?:PAP|RMF24|TVN24|Polsat News)\s*[-–—:]\s*
+  dateline: ^\s*(?:PAP|RMF24|TVN24|Polsat News|WARSZAWA)\s*[-–—:]\s*
   noise: ^(Fot\.|Źródło|Wideo|Czytaj także|Zobacz również|\(|\[)
 classify:
   internal_politics:
-  - rząd Donalda Tuska, Sejm, Senat, prezydent, Koalicja Obywatelska, Prawo i Sprawiedliwość (PiS), wybory prezydenckie, sądownictwo, Trybunał Konstytucyjny
-  - Polish government, Prime Minister Donald Tusk, Sejm parliament, PiS opposition, judicial reform, presidential election
+  - Prime Minister Donald Tusk coalition government, President Karol Nawrocki, Sejm and Senate legislation, KO, PiS, Trzecia Droga, Lewica, Konfederacja, judicial reform and Constitutional Tribunal
+  - rząd Donalda Tuska, prezydent Karol Nawrocki, Sejm, Senat, Koalicja Obywatelska, Prawo i Sprawiedliwość, PiS, Konfederacja, sądownictwo, Trybunał Konstytucyjny
   economics:
-  - gospodarka, Narodowy Bank Polski (NBP), inflacja, stopy procentowe, złoty, budżet, KPO, inwestycje, Orlen, podatki
-  - Polish economy, NBP central bank, zloty, EU recovery funds (KPO), inflation, energy prices, foreign investment
+  - National Bank of Poland (NBP), inflation and interest rates, zloty, state budget, EU recovery funds (KPO), Orlen, CPK transport hub, nuclear power plant and industrial investment
+  - gospodarka, Narodowy Bank Polski, NBP, inflacja, stopy procentowe, złoty, budżet, KPO, inwestycje, Orlen, CPK, podatki, energetyka
   foreign_policy:
-  - polityka zagraniczna, MSZ, Radosław Sikorski, Unia Europejska, relacje z Ukrainą, USA, Niemcami, sankcje wobec Rosji
-  - Polish foreign policy, EU council, Ukraine support and grain dispute, US-Poland alliance, NATO diplomacy
+  - Foreign Minister Radosław Sikorski, European Union diplomacy, Weimar Triangle, US-Poland strategic partnership, Ukraine policy and Russia sanctions, Three Seas Initiative
+  - polityka zagraniczna, MSZ, Radosław Sikorski, Unia Europejska, Trójkąt Weimarski, relacje z Ukrainą, USA, Niemcami, sankcje wobec Rosji
   defence_security:
-  - Wojsko Polskie, MON, obronność, wschodnia granica, Tarcza Wschód, zakupy zbrojeniowe, NATO, Białoruś, cyberbezpieczeństwo
-  - Polish Armed Forces, NATO eastern flank, East Shield border fortification, defence spending, Belarus hybrid border crisis
+  - Polish Armed Forces (Wojsko Polskie), Defence Minister Władysław Kosiniak-Kamysz, East Shield (Tarcza Wschód) fortifications, PGZ defence procurement, NATO eastern flank, Belarus border security
+  - Wojsko Polskie, MON, Władysław Kosiniak-Kamysz, obronność, Tarcza Wschód, PGZ, zakupy zbrojeniowe, NATO, granica z Białorusią, cyberbezpieczeństwo
   society:
-  - edukacja, ochrona zdrowia, szpitale, prawo aborcyjne, demografia, powódź, pogoda, sądy, policja
-  - healthcare, education, social policy, floods, courts and public safety
+  - education, healthcare and hospitals, demographic policy, courts, floods and severe weather, police
+  - edukacja, ochrona zdrowia, szpitale, demografia, powódź, pogoda, sądy, policja
 geo: PL
 reddit:
 - Polska
 - warszawa
+- krakow
 - inwestowanie

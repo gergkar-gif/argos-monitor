@@ -109,9 +109,14 @@ sources:
   state_affiliated: false
   notes: Germany's premier business and financial daily of record.
   feeds:
-  - url: https://www.handelsblatt.com/contentexport/feed/politik
+  - url: https://www.handelsblatt.com/contentexport/feed/top-themen
+    section: Top-Themen
     category_hint: internal_politics
+  - url: https://www.handelsblatt.com/contentexport/feed/wirtschaft
+    section: Wirtschaft
+    category_hint: economics
   - url: https://www.handelsblatt.com/contentexport/feed/unternehmen
+    section: Unternehmen
     category_hint: economics
 - id: die_welt
   name: Die Welt
@@ -317,11 +322,12 @@ sources:
   language: de
   scope: domestic
   kind: media
+  aggregator: google_news
   governing_body: Apollo News
   state_affiliated: false
   notes: German right-leaning digital news and commentary portal.
   feeds:
-  - url: https://apollo-news.net/feed/
+  - url: https://news.google.com/rss/search?q=site:apollo-news.net+when:3d&hl=de&gl=DE&ceid=DE:de
     category_hint: internal_politics
 - id: dw_deutsch
   name: Deutsche Welle (Deutsch)
@@ -365,11 +371,12 @@ sources:
   language: de
   scope: domestic
   kind: media
+  aggregator: google_news
   governing_body: Madsack Mediengruppe
   state_affiliated: false
   notes: National editorial syndicate supplying German regional dailies with federal politics coverage.
   feeds:
-  - url: https://www.rnd.de/arc/outboundfeeds/rss/
+  - url: https://news.google.com/rss/search?q=site:rnd.de+when:2d&hl=de&gl=DE&ceid=DE:de
     category_hint: internal_politics
 - id: br24_de
   name: BR24 (Bayerischer Rundfunk)
@@ -530,10 +537,110 @@ sources:
   aggregator: google_news
   notes: Aggregator stream tracking international English-language reporting on Germany.
   feeds:
-  - url: https://news.google.com/rss/search?q=%28Germany%29%20%28diplomacy%20OR%20government%20OR%20election%20OR%20economy%20OR%20foreign%29%20when%3A3d&hl=en-US&gl=US&ceid=US:en
-    section: International Coverage
+  - url: https://news.google.com/rss/search?q=Germany+when:1d&hl=en-US&gl=US&ceid=US:en
+    section: Germany
+    category_hint: general
+  - url: https://news.google.com/rss/search?q=Germany+(EU+OR+NATO+OR+Ukraine+OR+%22Weimar+Triangle%22+OR+Merz)+when:2d&hl=en-US&gl=US&ceid=US:en
+    section: Germany EU & Diplomacy
     category_hint: foreign_policy
-    active: true
+  - url: https://news.google.com/rss/search?q=Germany+(economy+OR+Bundesbank+OR+Volkswagen+OR+%22debt+brake%22+OR+inflation)+when:2d&hl=en-US&gl=US&ceid=US:en
+    section: Germany Economy & Industry
+    category_hint: economics
+  - url: https://news.google.com/rss/search?q=Germany+(Bundeswehr+OR+Zeitenwende+OR+migration+OR+defence+OR+Rheinmetall)+when:2d&hl=en-US&gl=US&ceid=US:en
+    section: Germany Defence & Security
+    category_hint: defence_security
+- id: bundesbank_de
+  name: Deutsche Bundesbank
+  homepage: https://www.bundesbank.de
+  language: de
+  scope: domestic
+  kind: official
+  governing_body: Deutsche Bundesbank (German central bank)
+  state_affiliated: true
+  notes: Official press releases and macroeconomic policy bulletins of the German central bank.
+  feeds:
+  - url: https://www.bundesbank.de/service/rss/de/633290/feed.rss
+    section: Pressemitteilungen
+    category_hint: economics
+- id: verfassungsblog_de
+  name: Verfassungsblog
+  homepage: https://verfassungsblog.de
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: Verfassungsblog gGmbH (Berlin)
+  state_affiliated: false
+  notes: Independent German and European constitutional law, rule-of-law, and BVerfG analysis journal.
+  feeds:
+  - url: https://verfassungsblog.de/feed/
+    section: Verfassungsrecht
+    category_hint: internal_politics
+- id: lobbycontrol_de
+  name: LobbyControl
+  homepage: https://www.lobbycontrol.de
+  language: de
+  scope: domestic
+  kind: media
+  governing_body: LobbyControl e.V. (Cologne / Berlin)
+  state_affiliated: false
+  notes: Independent German anti-corruption, lobbying transparency, and political-finance watchdog.
+  feeds:
+  - url: https://www.lobbycontrol.de/feed/
+    section: Transparenz
+    category_hint: internal_politics
+- id: euronews_de_ger
+  name: Euronews Deutsch
+  homepage: https://de.euronews.com
+  language: de
+  scope: abroad_local
+  kind: media
+  governing_body: Euronews SA
+  state_affiliated: false
+  needs_mention: true
+  notes: European multilingual news broadcaster German service; filtered for Germany mentions.
+  feeds:
+  - url: https://de.euronews.com/rss
+    section: Europa & Welt
+    category_hint: general
+- id: gnews_germany_abroad
+  name: DACH Cross-Border Press on Germany (NZZ / Der Standard / Die Presse)
+  homepage: https://www.nzz.ch
+  language: de
+  scope: abroad_local
+  kind: media
+  aggregator: google_news
+  governing_body: NZZ / Der Standard / Die Presse
+  state_affiliated: false
+  feeds:
+  - url: https://news.google.com/rss/search?q=(site:nzz.ch+OR+site:derstandard.at+OR+site:diepresse.com)+(Deutschland+OR+Berlin+OR+Merz+OR+Bundestag)+when:3d&hl=de&gl=DE&ceid=DE:de
+    section: DACH Auslandspresse
+    category_hint: general
+- id: dw_en_ger
+  name: Deutsche Welle (Germany)
+  homepage: https://www.dw.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Deutsche Welle (German public international broadcaster)
+  state_affiliated: false
+  feeds:
+  - url: https://rss.dw.com/xml/rss-en-ger
+    section: Germany (English)
+    category_hint: general
+- id: euractiv_en_ger
+  name: Euractiv
+  homepage: https://www.euractiv.com
+  language: en
+  scope: international
+  kind: media
+  governing_body: Euractiv Media Network
+  state_affiliated: false
+  needs_mention: true
+  notes: Pan-European EU policy daily; filtered for Germany mentions.
+  feeds:
+  - url: https://www.euractiv.com/feed/
+    section: EU Policy
+    category_hint: foreign_policy
 - id: hartpunkt_de
   name: Hartpunkt
   homepage: https://www.hartpunkt.de
