@@ -720,9 +720,9 @@ def run(db):
             fb = lookup_rating(s.get("name", ""), bool(s.get("state_affiliated")), s.get("kind", "media"))
             sources_by_country[c].append({
                 **{k: s.get(k) for k in keep},
-                "bias": row.get("bias") if row.get("bias") and row.get("bias") != "unrated" else fb["bias"],
-                "alignment": row.get("alignment") if row.get("alignment") and row.get("alignment") != "unrated" else fb["alignment"],
-                "factuality": row.get("factuality") if row.get("factuality") and row.get("factuality") != "unrated" else fb["factuality"],
+                "bias": fb["bias"] if fb["bias"] != "unrated" else (row.get("bias") or "unrated"),
+                "alignment": fb["alignment"] if fb["alignment"] != "unrated" else (row.get("alignment") or "unrated"),
+                "factuality": fb["factuality"] if fb["factuality"] != "unrated" else (row.get("factuality") or "unrated"),
             })
     telemetry = {}
     for c in packs.pack_ids():

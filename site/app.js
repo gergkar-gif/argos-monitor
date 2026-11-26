@@ -621,6 +621,7 @@
         const alignLabel = {
           state_controlled: 'State',
           pro_government: 'Pro-Gov',
+          pro_fidesz: 'Pro-Fidesz',
           public_broadcaster: 'Public',
           independent: 'Indep',
           opposition: 'Opposition',

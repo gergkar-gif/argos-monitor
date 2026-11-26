@@ -5,7 +5,7 @@ import re
 
 # Comprehensive registry of international wires, major global broadcasters, and monitored domestic outlets.
 # bias: left | center-left | center | center-right | right | state_aligned | unrated
-# alignment: independent | public_broadcaster | state_controlled | pro_government | opposition | unrated
+# alignment: independent | public_broadcaster | state_controlled | pro_government | pro_fidesz | opposition | unrated
 # factuality: very_high | high | mostly_factual | mixed | unrated
 
 RATINGS = {
@@ -105,12 +105,12 @@ RATINGS = {
     "átlátszó": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
     "the budapest times": {"bias": "center", "alignment": "independent", "factuality": "high"},
     "budapest business journal": {"bias": "center", "alignment": "independent", "factuality": "high"},
-    "magyar nemzet": {"bias": "right", "alignment": "pro_government", "factuality": "mixed"},
-    "origo": {"bias": "right", "alignment": "pro_government", "factuality": "mixed"},
+    "magyar nemzet": {"bias": "right", "alignment": "pro_fidesz", "factuality": "mixed"},
+    "origo": {"bias": "right", "alignment": "pro_fidesz", "factuality": "mixed"},
     "mti": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mostly_factual"},
     "hirado.hu": {"bias": "state_aligned", "alignment": "state_controlled", "factuality": "mixed"},
-    "mandiner": {"bias": "right", "alignment": "pro_government", "factuality": "mixed"},
-    "index": {"bias": "center-right", "alignment": "pro_government", "factuality": "mostly_factual"},
+    "mandiner": {"bias": "right", "alignment": "pro_fidesz", "factuality": "mixed"},
+    "index": {"bias": "center-right", "alignment": "pro_fidesz", "factuality": "mostly_factual"},
 
     # Poland
     "gazeta wyborcza": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
@@ -364,8 +364,8 @@ RATINGS = {
     "chosunbiz": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
     "chosun ilbo": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
     "portfolio": {"bias": "center", "alignment": "independent", "factuality": "high"},
-    "világgazdaság": {"bias": "right", "alignment": "pro_government", "factuality": "mixed"},
-    "vilaggazdasag": {"bias": "right", "alignment": "pro_government", "factuality": "mixed"},
+    "világgazdaság": {"bias": "right", "alignment": "pro_fidesz", "factuality": "mixed"},
+    "vilaggazdasag": {"bias": "right", "alignment": "pro_fidesz", "factuality": "mixed"},
     "rtvc noticias": {"bias": "center-left", "alignment": "public_broadcaster", "factuality": "high"},
 
     # --- Expanded Coverage: Monitored Desks (Africa, Central Asia, Balkans, V4, East Asia) ---
@@ -381,10 +381,10 @@ RATINGS = {
     "civil.ge": {"bias": "center", "alignment": "independent", "factuality": "high"},
 
     # Central & Eastern Europe
-    "magyar hírlap": {"bias": "right", "alignment": "pro_government", "factuality": "mostly_factual"},
-    "magyar hirlap": {"bias": "right", "alignment": "pro_government", "factuality": "mostly_factual"},
-    "hungary today": {"bias": "center-right", "alignment": "pro_government", "factuality": "high"},
-    "hungarian conservative": {"bias": "right", "alignment": "pro_government", "factuality": "high"},
+    "magyar hírlap": {"bias": "right", "alignment": "pro_fidesz", "factuality": "mostly_factual"},
+    "magyar hirlap": {"bias": "right", "alignment": "pro_fidesz", "factuality": "mostly_factual"},
+    "hungary today": {"bias": "center-right", "alignment": "pro_fidesz", "factuality": "high"},
+    "hungarian conservative": {"bias": "right", "alignment": "pro_fidesz", "factuality": "high"},
     "maszol": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
     "maszol.ro": {"bias": "center-right", "alignment": "independent", "factuality": "high"},
     "balkan insight": {"bias": "center", "alignment": "independent", "factuality": "high"},
@@ -1621,13 +1621,13 @@ RATINGS = {
     "g7.hu": {"bias": "center", "alignment": "independent", "factuality": "high"},
     "g7": {"bias": "center", "alignment": "independent", "factuality": "high"},
     "transtelex": {"bias": "center-left", "alignment": "independent", "factuality": "high"},
-    "krónika": {"bias": "center-right", "alignment": "pro_government", "factuality": "mostly_factual"},
-    "székelyhon": {"bias": "center-right", "alignment": "pro_government", "factuality": "mostly_factual"},
+    "krónika": {"bias": "center-right", "alignment": "pro_fidesz", "factuality": "mostly_factual"},
+    "székelyhon": {"bias": "center-right", "alignment": "pro_fidesz", "factuality": "mostly_factual"},
     "új szó": {"bias": "center", "alignment": "independent", "factuality": "high"},
     "ujszo": {"bias": "center", "alignment": "independent", "factuality": "high"},
-    "ma7": {"bias": "center-right", "alignment": "pro_government", "factuality": "mostly_factual"},
+    "ma7": {"bias": "center-right", "alignment": "pro_fidesz", "factuality": "mostly_factual"},
     "paraméter": {"bias": "center-left", "alignment": "independent", "factuality": "mostly_factual"},
-    "magyar szó": {"bias": "center-right", "alignment": "pro_government", "factuality": "mostly_factual"},
+    "magyar szó": {"bias": "center-right", "alignment": "pro_fidesz", "factuality": "mostly_factual"},
     "kárpáti igaz szó": {"bias": "center", "alignment": "independent", "factuality": "high"},
     "kiszo": {"bias": "center", "alignment": "independent", "factuality": "high"},
     "hromadske": {"bias": "center", "alignment": "independent", "factuality": "high"},
@@ -2229,7 +2229,7 @@ RATINGS = {
     "budapest times": {"bias": "center-right", "alignment": "independent", "factuality": "mostly_factual"},
     "hungarian insider": {"bias": "center", "alignment": "independent", "factuality": "mostly_factual"},
     "about hungary": {"bias": "right", "alignment": "state_aligned", "factuality": "mixed"},
-    "hír tv": {"bias": "right", "alignment": "state_aligned", "factuality": "mixed"},
+    "hír tv": {"bias": "right", "alignment": "pro_fidesz", "factuality": "mixed"},
     "blikk": {"bias": "center", "alignment": "independent", "factuality": "mixed"},
     "valaszonline": {"bias": "center-right", "alignment": "independent", "factuality": "very_high"},
     "atlatszo": {"bias": "center", "alignment": "independent", "factuality": "very_high"},

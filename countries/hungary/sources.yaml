@@ -1,6 +1,6 @@
 # Hungary source registry (decision D15).
 # Combines independent Hungarian dailies and investigative portals (Telex, HVG, 444, 24.hu, Válasz Online, Átlátszó, Portfolio, Népszava),
-# statutory state wire/broadcaster (MTI / Hirado.hu) and KESMA/pro-government press (Magyar Nemzet, Origo, Mandiner, Index),
+# statutory state wire/broadcaster (MTI / Hirado.hu) and KESMA/pro-Fidesz press (Magyar Nemzet, Origo, Mandiner, Index),
 # cross-border Carpathian Basin Hungarian press in Transylvania, Slovakia, Vojvodina, and Transcarpathia (Maszol, Krónika, Transtelex, Új Szó, Ma7, Magyar Szó, KISZó),
 # and international coverage.
 sources:
@@ -242,8 +242,8 @@ sources:
   language: hu
   scope: domestic
   kind: media
-  governing_body: Mediaworks Hungary Zrt. / KESMA (Central European Press and Media Foundation — pro-government flagship daily)
-  state_affiliated: true
+  governing_body: Mediaworks Hungary Zrt. / KESMA (Central European Press and Media Foundation — pro-Fidesz flagship daily)
+  state_affiliated: false
   feeds:
   - url: https://magyarnemzet.hu/feed
     section: Latest
@@ -254,8 +254,8 @@ sources:
   language: hu
   scope: domestic
   kind: media
-  governing_body: Mediaworks Hungary Zrt. / KESMA (Central European Press and Media Foundation)
-  state_affiliated: true
+  governing_body: Mediaworks Hungary Zrt. / KESMA (Central European Press and Media Foundation — pro-Fidesz portal)
+  state_affiliated: false
   feeds:
   - url: https://www.origo.hu/publicapi/hu/rss/origo/articles
     section: Latest
@@ -266,8 +266,8 @@ sources:
   language: hu
   scope: domestic
   kind: media
-  governing_body: Mandiner Press Kft. / Mediaworks / KESMA (pro-government conservative weekly and political portal)
-  state_affiliated: true
+  governing_body: Mandiner Press Kft. / Mediaworks / KESMA (pro-Fidesz conservative weekly and political portal)
+  state_affiliated: false
   feeds:
   - url: https://news.google.com/rss/search?q=site:mandiner.hu+when:3d&hl=hu&gl=HU&ceid=HU:hu
     section: Belföld & Külföld
@@ -278,8 +278,8 @@ sources:
   language: hu
   scope: domestic
   kind: media
-  governing_body: Magyar Hírlap Kiadói Kft. (pro-government conservative daily)
-  state_affiliated: true
+  governing_body: Magyar Hírlap Kiadói Kft. (pro-Fidesz conservative daily)
+  state_affiliated: false
   feeds:
   - url: https://magyarhirlap.hu/rss
     section: Latest
@@ -290,8 +290,8 @@ sources:
   language: en
   scope: domestic
   kind: media
-  governing_body: Friends of Hungary Foundation (Magyarország Barátai Alapítvány)
-  state_affiliated: true
+  governing_body: Friends of Hungary Foundation (Magyarország Barátai Alapítvány — pro-Fidesz English-language portal)
+  state_affiliated: false
   feeds:
   - url: https://hungarytoday.hu/feed/
     section: Latest
@@ -302,8 +302,8 @@ sources:
   language: en
   scope: domestic
   kind: media
-  governing_body: Batthyány Lajos Foundation / Danube Institute (English-language conservative quarterly and portal)
-  state_affiliated: true
+  governing_body: Batthyány Lajos Foundation / Danube Institute (pro-Fidesz English-language conservative quarterly and portal)
+  state_affiliated: false
   feeds:
   - url: https://www.hungarianconservative.com/feed/
     section: Latest
@@ -338,8 +338,8 @@ sources:
   language: hu
   scope: abroad_local
   kind: media
-  governing_body: Primo Press Kft. (Erdélyi Médiatér Egyesület — Transylvanian Hungarian daily in Cluj-Napoca)
-  state_affiliated: true
+  governing_body: Primo Press Kft. (Erdélyi Médiatér Egyesület — pro-Fidesz Transylvanian Hungarian daily in Cluj-Napoca)
+  state_affiliated: false
   feeds:
   - url: https://news.google.com/rss/search?q=(site:kronikaonline.ro+OR+site:szekelyhon.ro)+when:3d&hl=hu&gl=RO&ceid=RO:hu
     section: Erdély & Székelyföld
