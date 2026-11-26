@@ -272,7 +272,7 @@ select:disabled { opacity: 0.35; cursor: not-allowed; }
   .monitor-filter select, .bilateral-controls select, .bilateral-controls input, .add-country-sel { font-size: var(--fs-base); min-height: 2.75rem; }
   .combobox-arrow { padding: 0.7rem; }
   .search-clear { min-width: 2.75rem; min-height: 2.75rem; display: inline-flex; align-items: center; justify-content: center; }
-  .search-wrap input[type=search] { padding-right: 2.75rem; }
+  .search-wrap input[type=search], .combobox-wrap .combobox-input { padding-right: 2.75rem; }
   .combobox-menu { width: 100%; max-width: none; max-height: 60vh; }
   .combobox-item { padding: 0.75rem; font-size: var(--fs-base); }
 }

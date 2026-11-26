@@ -661,7 +661,7 @@
               ...Object.entries(s.perspectives.alignment || {}).map(([k, v]) => `${v} ${k.replace(/_/g, ' ')}`),
               ...Object.entries(s.perspectives.bias || {}).map(([k, v]) => `${v} ${k.replace(/_/g, ' ')} leaning`)
             ].join(' · '))),
-        s.first && s.articles > 2 && h('div', { class: 'timeline' },
+        s.first && s.articles > 2 && s.per_day && s.per_day.length && h('div', { class: 'timeline' },
           h('span', { class: 'bars', 'aria-hidden': 'true' }, s.per_day.map(([day, n]) =>
             h('i', { style: `height:${Math.max(15, Math.round(100 * n / max))}%`, title: `${fmtDay.format(new Date(day))}: ${plural(n, 'article', 'articles')}` }))),
           h('span', { text: `First seen in ${s.first.source}, ${fmtTime.format(new Date(s.first.at))}.` })),
