@@ -38,7 +38,7 @@ DESCRIPTIONS = {
     ],
     "society": [
         "education, schools, health care, hospitals, disease, vaccines, pensions, social issues",
-        "traffic accidents, natural disasters, storms, weather, environment, crime, court cases, arrests, daily life",
+        "traffic accidents, natural disasters, storms, severe weather, environment, crime, court cases, arrests, daily life",
         "society, culture, sports, tourism, local news",
     ],
 }

@@ -168,3 +168,54 @@ def is_sports_stream_spam(title, outlet="", url=""):
     if any(h in o or h in u for h in _SPAM_HOST_OUTLETS) and re.search(r"\b(live|stream|match|canl[ıi]|izle|tv|vs\.?|v)\b", t, re.I):
         return True
     return False
+
+
+_WEATHER_FORECAST_RE = re.compile(
+    r"(?:"
+    r"\b(?:weather\s+forecast|today'?s\s+weather|daily\s+weather|weekend\s+weather|"
+    r"parashikimi\s+i\s+motit|moti\s+(?:sot|nes[ëe]r|p[ëe]r\s+\d|gjat[ëe]\s+dit[ëe]s)|"
+    r"si\s+do\s+t[ëe]\s+jet[ëe]\s+moti|si\s+do\s+variojn[ëe]\s+temperaturat|"
+    r"d[ựư]\s+b[áa]o\s+th[ờo]i\s+ti[ếe]t|th[ờo]i\s+ti[ếe]t\s+h[ôo]m\s+nay|"
+    r"vremenska\s+prognoza|prognoza\s+vremena|prognoza\s+pogody|prognoza\s+meteo|"
+    r"wettervorhersage|wetter\s+(?:heute|morgen)|m[ée]t[ée]o\s+du\s+jour|bulletin\s+m[ée]t[ée]o|"
+    r"previsioni\s+meteo|meteo\s+oggi|pron[óo]stico\s+del\s+tiempo|clima\s+hoy|tiempo\s+hoy|"
+    r"previs[ãa]o\s+do\s+tempo|id[őo]j[áa]r[áa]s-?el[őo]rejelz[ée]s|id[őo]j[áa]r[áa]s\s+ma|"
+    r"прогноз\s+погод[ыи]|погода\s+(?:сегодня|на\s+\d)|hava\s+durumu|vremea\s+azi|"
+    r"πρ[όο]γνωση\s+καιρο[ύυ]|καιρ[όο]ς\s+σ[ήη]μερα|p[řr]edpov[ěe][ďd]\s+po[čc]as[íi]|"
+    r"predpove[ďd]\s+po[čc]asia|po[čc]as[íi]\s+dnes|vreme\s+danes|weerbericht|"
+    r"v[äa]derprognos|s[äa][äa]ennuste|v[æa]rmelding|vejrudsigt)\b"
+    r"|天気予報|날씨\s*예보|天气预报|توقعات\s+الطقس|الطقس\s+اليوم|תחזית\s+מזג\s+האוויר)",
+    re.I,
+)
+_SEVERE_WEATHER_RE = re.compile(
+    r"(?:"
+    r"\b(?:typhoon|cyclone|hurricane|tornado|flood|floods|flooding|landslide|earthquake|tsunami|"
+    r"volcano|wildfire|drought|heatwave|storm|blizzard|warning|alert|emergency|evacuat\w*|"
+    r"casualt\w*|killed|dead|outage|blackout|"
+    r"p[ëe]rmbytj\w*|stuhi\w*|t[ëe]rmet\w*|paralajm[ëe]r\w*|emergjenc\w*|pa\s+drita|shembj\w*|"
+    r"vihar|[áa]rv[íi]z|riaszt[áa]s|b[ãa]o|l[ũu]|ng[ậa]p|s[ạa]t\s+l[ởo]|c[ảa]nh\s+b[áa]o|"
+    r"unwetter|hochwasser|sturm|warnung|alerte|vigilance|inondation|temp[êe]te|"
+    r"alerta|inundaci[óo]n|tormenta|hurac[áa]n|allerta|alluvione|"
+    r"ураган|шторм|наводнен\w*|паводок|предупрежден\w*|землетрясен\w*|"
+    r"f[ıi]rt[ıi]na|sel|uyar[ıi]|deprem|ostrze[żz]enie|pow[óo]d[źz]|burza|"
+    r"poplav\w*|nevrijeme|upozorenj\w*|varov[áa]n[íi]|povode[ňn]|bou[řr]e|"
+    r"κακοκαιρ[ίι]α|πλημμ[ύυ]ρ\w*|προειδοπο[ίι]ηση)\b"
+    r"|台風|大雨|警報|地震|태풍|호우|경보|暴雨|台风|预警|إعصار|فيضان|تحذير)",
+    re.I,
+)
+_HOROSCOPE_RE = re.compile(
+    r"(?:\b(?:horoskop\w*|horoscope|hor[óo]scopo|oroscopo|гороскоп|t[ửu]\s+vi\s+h[ôo]m\s+nay|bur[çc]\s+yorum\w*)\b)",
+    re.I,
+)
+
+
+def is_routine_filler(title):
+    """Reject routine daily weather forecasts (keeping severe-weather/disaster alerts) and daily horoscopes."""
+    t = (title or "").strip()
+    if not t:
+        return False
+    if _HOROSCOPE_RE.search(t):
+        return True
+    if _WEATHER_FORECAST_RE.search(t) and not _SEVERE_WEATHER_RE.search(t):
+        return True
+    return False

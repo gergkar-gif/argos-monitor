@@ -18,7 +18,7 @@ from .embed import DIM
 from .ingest import reconcile_ratings
 from .rank import dashboard_story_ids
 from .ratings import lookup_rating
-from .textutil import is_sports_stream_spam
+from .textutil import is_routine_filler, is_sports_stream_spam
 
 SITE_DATA = ROOT / "site" / "data"
 WINDOWS = {1: "24h", 7: "7d"}
@@ -444,6 +444,8 @@ def _is_sports_spam_story(s):
     return (
         is_sports_stream_spam(h.get("title"), outlet=h.get("source") or "", url=h.get("url") or "")
         or is_sports_stream_spam(h.get("en_title"), outlet=h.get("source") or "")
+        or is_routine_filler(h.get("title"))
+        or is_routine_filler(h.get("en_title"))
     )
 
 

@@ -9,13 +9,13 @@ Rule (no LLM):
   mentioned in the headline or summary, or at least twice in the article text.
 """
 from . import packs
-from .textutil import is_sports_stream_spam
+from .textutil import is_routine_filler, is_sports_stream_spam
 
 MIN_TEXT_MENTIONS = 2
 
 
 def is_relevant(pack, scope, category_hint, section, url, title, lead, text, needs_mention=False, is_gdelt=False):
-    if is_sports_stream_spam(title, url=url):
+    if is_sports_stream_spam(title, url=url) or is_routine_filler(title):
         return False
     sections = packs.url_sections(url)
     if sections & pack["skip_sections"]:
