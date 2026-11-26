@@ -599,8 +599,15 @@ summary:hover { color: var(--ink); }
 .compact-title { font: 600 0.94rem/1.38 var(--sans); color: var(--ink); text-decoration: none; margin-right: 0.45rem; }
 .compact-title:hover { color: var(--indigo); text-decoration: underline; }
 .compact-body .orig { display: block; font-size: var(--fs-xs); color: var(--ink-3); margin: 0.12rem 0 0; }
-.compact-meta { font: 400 var(--fs-xs)/1.3 var(--sans); color: var(--ink-3); white-space: nowrap; }
+.compact-meta { font: 400 var(--fs-xs)/1.3 var(--sans); color: var(--ink-3); }
 .compact-badge { justify-self: end; }
+.theme-lead-extras { padding-left: 1.5rem; margin-top: 0.35rem; }
+.compact-extras { padding-top: 0.2rem; }
+.compact-extras summary { font-size: 0.7rem; color: var(--indigo); }
+.compact-extras-list { list-style: none; margin: 0.35rem 0 0.15rem; padding: 0 0 0 0.75rem; border-left: 2px solid var(--rule); display: grid; gap: 0.3rem; }
+.compact-extras-list li { font-size: 0.84rem; line-height: 1.38; }
+.compact-extras-list a { text-decoration: none; color: var(--ink); font-weight: 500; }
+.compact-extras-list a:hover { color: var(--indigo); text-decoration: underline; }
 .theme-more { margin-top: 0.85rem; }
 .desk-matches {
   display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.65rem;

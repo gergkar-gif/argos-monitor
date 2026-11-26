@@ -505,38 +505,64 @@ def _home_themes(briefing_pool, pool):
          (s for s in briefing_pool if _is_election(s)),
          lambda s: (round(_norm_breadth(s), 4), s.get("score") or 0.0), 10, 4, 1),
         ("violent_events", "Violent Events", "Kinetic clashes, strikes, terror & armed deployments", "#991b1b",
-         viol_pool, viol_rank_key, 10, 4, 2),
+         viol_pool, viol_rank_key, 10, 4, 1),
         ("diplomacy", "Diplomacy", "Summits, treaties & bilateral talks", "#0f766e",
          (s for s in briefing_pool if _has_theme(s, "diplomacy")),
-         rank_key, 10, 4, 2),
+         rank_key, 10, 4, 1),
         ("domestic_politics", "Domestic Politics & Governance", "Cabinets, parliaments, coalitions & domestic policy", "#1e2433",
          (s for s in briefing_pool if _is_clean_domestic_politics(s)),
-         rank_key, 10, 4, 2),
+         rank_key, 10, 4, 1),
         ("defence_industry", "Defence Industry & Procurement", "Arms transfers, procurement & military budgets", "#312e81",
          (s for s in briefing_pool if _has_theme(s, "defence industry and procurement")),
-         rank_key, 10, 4, 2),
+         rank_key, 10, 4, 1),
         ("trade", "Trade & Tariffs", "Tariffs, exports, customs & trade pacts", "#1e3a8a",
          (s for s in briefing_pool if _has_theme(s, "trade")),
-         rank_key, 10, 4, 2),
+         rank_key, 10, 4, 1),
         ("economy_investment", "Economy & Investment", "Central banks, GDP, budgets, FDI & sovereign wealth", "#1e3a8a",
          (s for s in briefing_pool if _has_theme(s, "economic policy", "investment")),
-         rank_key, 10, 4, 2),
+         rank_key, 10, 4, 1),
         ("energy_infra", "Energy & Infrastructure", "Pipelines, nuclear, critical minerals & power grids", "#78350f",
          (s for s in briefing_pool if _has_theme(s, "energy and infrastructure")),
-         rank_key, 10, 4, 2),
+         rank_key, 10, 4, 1),
     ]
 
     story_bank = {}
     sections = []
     for tid, name, desc, color, src_iter, key_fn, g_lim, r_lim, c_lim in specs:
-        picked = _top_global_and_regional(src_iter, key_fn, g_lim, r_limit=r_lim, c_limit=c_lim)
+        candidates = sorted(src_iter, key=key_fn, reverse=True)
+        picked = _top_global_and_regional(candidates, key_fn, g_lim, r_limit=r_lim, c_limit=c_lim)
+        by_country = defaultdict(list)
+        for s in candidates:
+            if s.get("country"):
+                by_country[s["country"]].append(s)
         ids = []
+        more = {}
         for s in picked:
             sid = str(s["id"])
             if sid not in story_bank:
-                story_bank[sid] = s
+                # Keep home.js lean: compact rows don't render deep source lists or related/per_day arrays.
+                compact = {k: v for k, v in s.items() if k not in ("related", "per_day")}
+                compact["sources"] = (s.get("sources") or [])[:2]
+                story_bank[sid] = compact
             ids.append(sid)
-        sections.append({"id": tid, "name": name, "desc": desc, "color": color, "ids": ids})
+            if tid != "elections" and s.get("country"):
+                extras = [x for x in by_country[s["country"]] if x["id"] != s["id"]][:4]
+                if extras:
+                    more[sid] = [
+                        {
+                            "title": x["headline"]["title"],
+                            **({"en_title": x["headline"]["en_title"]} if x["headline"].get("en_title") else {}),
+                            "url": x["headline"]["url"],
+                            "source": x["headline"]["source"],
+                            "language": x["headline"].get("language", "en"),
+                            "outlets": x.get("independent_sources", 1),
+                        }
+                        for x in extras
+                    ]
+        sec_obj = {"id": tid, "name": name, "desc": desc, "color": color, "ids": ids}
+        if more:
+            sec_obj["more"] = more
+        sections.append(sec_obj)
     return sections, story_bank
 
 
@@ -569,7 +595,7 @@ def _home(now, countries):
             country_stories.append({
                 **s, "country": cid, "country_name": c["name"], "region": reg,
                 "disaster_type": d_type, "violence_type": v_type,
-                "excerpts": s.get("excerpts", [])[:1], "sources": s.get("sources", [])[:6],
+                "excerpts": s.get("excerpts", [])[:1], "sources": s.get("sources", [])[:3],
             })
         pool.extend(country_stories)
         briefing_pool.extend(_cluster_country_elections(country_stories))

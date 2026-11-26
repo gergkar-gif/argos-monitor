@@ -1636,7 +1636,31 @@
       h('div', { class: 'grid' }, list.map((s, i) => story(s, { lead: i === 0, i }))));
   }
 
-  function compactRow(s, rank) {
+  function renderCountryExtras(extras, countryName) {
+    if (!extras || !extras.length) return null;
+    const lateItems = [];
+    const listEl = h('ul', { class: 'compact-extras-list' }, extras.map((sub) => {
+      const subHasEn = Boolean(sub.en_title);
+      const subTitle = subHasEn ? sub.en_title : sub.title;
+      const subLang = subHasEn ? 'en' : (sub.language || 'en');
+      const a = h('a', { href: safeUrl(sub.url), target: '_blank', rel: 'noopener noreferrer', lang: subLang, text: subTitle });
+      const o = h('span', { class: 'orig', hidden: !subHasEn, text: subHasEn ? sub.title : '' });
+      if (!subHasEn) lateItems.push([a, sub.title, subLang, o]);
+      return h('li', null, a, o,
+        h('span', { class: 'compact-meta', text: ` ${sub.source} · ${plural(sub.outlets || 1, 'outlet', 'outlets')}` }));
+    }));
+    const det = h('details', { class: 'compact-extras' },
+      h('summary', { text: `+${extras.length} more ${countryName || 'country'} ${extras.length === 1 ? 'story' : 'stories'}` }),
+      listEl);
+    det.addEventListener('toggle', () => {
+      if (!det.open) return;
+      lateItems.splice(0).forEach((it) => track(...it));
+      translatePending();
+    });
+    return det;
+  }
+
+  function compactRow(s, rank, extras) {
     const hasEn = Boolean(s.headline && s.headline.en_title);
     const displayTitle = hasEn ? s.headline.en_title : s.headline.title;
     const headLink = h('a', {
@@ -1666,6 +1690,10 @@
     }
 
     const outlets = plural(s.independent_sources, 'outlet', 'outlets');
+    const rowExtras = extras && extras.length ? extras
+      : (s.election_cluster && s.election_cluster.stories && s.election_cluster.stories.length
+          ? s.election_cluster.stories.map((x) => ({ ...x, outlets: x.independent_sources || 1 }))
+          : null);
     return h('li', { class: 'compact-row' },
       h('span', { class: 'compact-rank', text: `${rank}.` }),
       s.country_name && h('button', {
@@ -1679,6 +1707,7 @@
         headLink,
         headOrig,
         h('span', { class: 'compact-meta', text: `${s.headline.source} · ${outlets}` }),
+        renderCountryExtras(rowExtras, s.country_name),
       ),
       badge && h('span', { class: 'compact-badge' }, badge),
     );
@@ -1688,6 +1717,8 @@
     if (!shown || !shown.length) return null;
     const cap = Math.min(10, totalAvailable);
     const remaining = cap - 6;
+    const moreMap = sec.more || {};
+    const leadExtras = moreMap[String(shown[0].id)] || null;
     const sectionEl = h('section', { class: 'drawer theme-drawer', 'aria-labelledby': `th-${sec.id}` },
       h('div', { class: 'drawer-head' },
         h('div', { class: 'theme-head-left' },
@@ -1695,9 +1726,11 @@
           h('h2', { id: `th-${sec.id}`, text: sec.name }),
           sec.desc && h('span', { class: 'theme-desc', text: `· ${sec.desc}` })),
         h('span', { class: 'count', text: `Showing ${shown.length} of ${totalAvailable}` })),
-      h('div', { class: 'theme-lead' }, story(shown[0], { lead: true, i: 0 })),
+      h('div', { class: 'theme-lead' },
+        story(shown[0], { lead: true, i: 0 }),
+        leadExtras && h('div', { class: 'theme-lead-extras' }, renderCountryExtras(leadExtras, shown[0].country_name))),
       shown.length > 1 && h('ol', { class: 'compact-list', start: '2' },
-        shown.slice(1).map((s, idx) => compactRow(s, idx + 2))),
+        shown.slice(1).map((s, idx) => compactRow(s, idx + 2, moreMap[String(s.id)]))),
       remaining > 0 && h('button', {
         type: 'button',
         class: 'more theme-more',

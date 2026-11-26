@@ -388,6 +388,7 @@ class HomeExportTests(unittest.TestCase):
                 _story("viol_small", category="defence_security", score=4.0, outlets=1, last_24h=1, themes=["Civil unrest and armed conflict"]),
                 _story("viol_big", category="defence_security", score=18.0, outlets=14, last_24h=0, themes=["Civil unrest and armed conflict"]),
                 _story("dip1", category="foreign_policy", score=15.0, outlets=12, themes=["Diplomacy"]),
+                _story("dip2", category="foreign_policy", score=9.0, outlets=6, themes=["Diplomacy"]),
                 _story("dom_clean", category="internal_politics", score=14.0, outlets=10, themes=["Government and parliament"]),
                 _story("dom_fluff", category="internal_politics", score=20.0, outlets=18, themes=[]),
                 _story("def1", category="defence_security", score=13.0, outlets=9, themes=["Defence industry and procurement"]),
@@ -409,10 +410,14 @@ class HomeExportTests(unittest.TestCase):
                 ["elections", "violent_events", "diplomacy", "domestic_politics", "defence_industry", "trade", "economy_investment", "energy_infra"],
             )
             self.assertEqual(by_id["elections"], ["el1"])
-            self.assertEqual(by_id["violent_events"][0], "viol_big")
+            self.assertEqual(by_id["violent_events"], ["viol_big"])
+            viol_sec = next(sec for sec in home["themes"] if sec["id"] == "violent_events")
+            self.assertEqual([x["title"] for x in viol_sec["more"]["viol_big"]], ["Single outlet local murder trial day 39"])
             self.assertEqual(home["violent_events"][0]["id"], "viol_big")
-            self.assertEqual(home["story_bank"]["viol_small"]["violence_type"], "Civil Unrest & Crackdown")
+            self.assertEqual(next(s for s in home["violent_events"] if s["id"] == "viol_small")["violence_type"], "Civil Unrest & Crackdown")
             self.assertEqual(by_id["diplomacy"], ["dip1"])
+            dip_sec = next(sec for sec in home["themes"] if sec["id"] == "diplomacy")
+            self.assertEqual([x["title"] for x in dip_sec["more"]["dip1"]], ["Headline dip2"])
             self.assertEqual(by_id["domestic_politics"], ["dom_clean"])
             self.assertNotIn("dom_fluff", by_id["domestic_politics"])
             self.assertEqual(by_id["defence_industry"], ["def1"])
