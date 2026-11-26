@@ -231,8 +231,7 @@
   function tabBar(items, activeId, onSelect, labelText, ariaLabel, ctxText) {
     return h('div', { class: 'tab-bar' },
       ctxText && h('div', { class: 'tab-ctx' },
-        h('span', null, h('strong', { text: ctxText })),
-        h('button', { type: 'button', class: 'desk-link', text: 'Top ↑', onclick: () => scrollTo({ top: 0, behavior: 'smooth' }) })),
+        h('span', null, h('strong', { text: ctxText }))),
       h('ul', { class: 'tabs', role: 'list', 'aria-label': ariaLabel || labelText },
         items.map(([id, label, n, style]) =>
           h('li', null, h('button', {

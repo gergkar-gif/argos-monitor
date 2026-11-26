@@ -79,7 +79,9 @@ jobs:
 
       - name: Publish to Cloudflare Pages
         run: |
-          git pull origin main || true
+          git fetch origin main
+          git checkout origin/main -- site
+          python -c "from argos.export import _stamp_html_versions; from datetime import datetime, timezone; _stamp_html_versions(datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ'))"
           npx --yes wrangler@4 pages deploy site --project-name=argos-monitor --branch=main || \
             (sleep 10 && npx --yes wrangler@4 pages deploy site --project-name=argos-monitor --branch=main) || \
             (sleep 20 && npx --yes wrangler@4 pages deploy site --project-name=argos-monitor --branch=main)
