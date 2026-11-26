@@ -162,7 +162,7 @@ sources:
   language: hu
   scope: domestic
   kind: media
-  governing_body: Klubrádió Zrt. (independent opposition talk radio and digital newsroom)
+  governing_body: Klubrádió Zrt. (independent talk radio and digital newsroom)
   state_affiliated: false
   feeds:
   - url: https://www.klubradio.hu/rss
