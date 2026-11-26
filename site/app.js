@@ -1966,55 +1966,72 @@
     translatePending();
   }
 
-  function agendaBar(d) {
+  function deskBalance(d) {
     const delta = d.agenda_delta;
     if (!delta) return null;
     const items = Object.entries(delta)
       .map(([cat, info]) => ({ cat, name: topicName(cat), ...info }))
-      .filter((x) => x.curr > 0 || x.prev > 0)
-      .sort((a, b) => Math.abs(b.share_delta_pct) - Math.abs(a.share_delta_pct));
+      .filter((x) => x.curr > 0)
+      .sort((a, b) => (a.cat === 'other') - (b.cat === 'other') || b.curr - a.curr);
     if (!items.length) return null;
 
-    const periodStr = d.period || 'window';
-    return h('div', { class: 'agenda-bar', role: 'region', 'aria-label': 'Macro agenda movement' },
-      h('div', { class: 'agenda-title' },
-        h('strong', { text: 'Agenda Movement' }),
-        h('span', { class: 'meta', text: `(vs prior ${periodStr}):` })
-      ),
-      h('ul', { class: 'agenda-list' },
-        items.map((it) => {
-          const sign = it.share_delta_pct > 0 ? '+' : '';
-          const arrow = it.share_delta_pct > 0 ? '↑' : (it.share_delta_pct < 0 ? '↓' : '·');
-          const dirClass = it.share_delta_pct >= 5.0 ? 'surging' : (it.share_delta_pct <= -5.0 ? 'cooling' : 'flat');
-          return h('li', { class: `agenda-item ${dirClass}` },
-            h('button', {
-              type: 'button',
-              class: 'agenda-btn',
-              title: `${it.name}: ${it.curr} articles (${it.share_pct}%), ${sign}${it.share_delta_pct}% share vs prior ${periodStr}`,
-              onclick: () => choose(it.cat)
-            }, `${it.name} ${arrow} ${sign}${it.share_delta_pct}%`)
-          );
-        })
-      ),
-      h('div', { class: 'agenda-filters' },
-        h('span', { class: 'meta', text: 'Filter:' }),
-        h('button', {
-          type: 'button',
-          class: 'agenda-filter-btn' + (movementFilter === 'all' ? ' active' : ''),
-          onclick: () => { movementFilter = 'all'; render(false); }
-        }, 'All'),
-        h('button', {
-          type: 'button',
-          class: 'agenda-filter-btn' + (movementFilter === 'surge_new' ? ' active' : ''),
-          onclick: () => { movementFilter = 'surge_new'; render(false); }
-        }, 'Surging & New'),
-        h('button', {
-          type: 'button',
-          class: 'agenda-filter-btn' + (movementFilter === 'pickup' ? ' active' : ''),
-          onclick: () => { movementFilter = 'pickup'; render(false); }
-        }, 'Intl Pickups')
-      )
-    );
+    const baseline = items[0].baseline || (d.period === '24h' ? 'prior 24h' : 'prior 7d');
+    const baseLabel = baseline === '7d' ? 'vs 7d avg' : `vs ${baseline}`;
+
+    return h('section', { class: 'alerts desk-balance', 'aria-label': 'Desk balance' },
+      h('div', { class: 'desk-balance-head' },
+        h('h2', { text: 'Desk balance' }),
+        h('span', { class: 'meta', text: baseLabel })),
+      h('table', { class: 'desk-balance-table' },
+        h('thead', null,
+          h('tr', null,
+            h('th', { text: 'Domain' }),
+            h('th', { class: 'num', text: 'Share' }),
+            h('th', { class: 'num', text: baseline === '7d' ? 'vs 7d' : 'Shift' }))),
+        h('tbody', null,
+          items.map((it) => {
+            const pct = Math.round(it.share_pct);
+            const pp = Math.round(it.share_delta_pct);
+            const showShift = it.cat !== 'other' && Math.abs(pp) >= 5;
+            const shiftText = showShift ? `${pp > 0 ? '+' : ''}${pp} pp` : '—';
+            const shiftClass = showShift ? (pp > 0 ? 'num shift-up' : 'num shift-dn') : 'num shift-flat';
+            const isActive = openTopic === it.cat;
+            return h('tr', { class: isActive ? 'active' : null },
+              h('td', null,
+                h('button', {
+                  type: 'button',
+                  class: 'balance-topic',
+                  title: `${it.name}: ${plural(it.curr, 'article', 'articles')} (${pct}%)`,
+                  onclick: () => choose(it.cat),
+                }, it.name),
+                h('span', { class: 'balance-track', 'aria-hidden': 'true' },
+                  h('i', { style: `width:${Math.max(3, pct)}%;background:var(--${topicVar(it.cat)})` }))),
+              h('td', { class: 'num', title: plural(it.curr, 'article', 'articles'), text: `${pct}%` }),
+              h('td', { class: shiftClass, text: shiftText }));
+          }))));
+  }
+
+  function deskFilterBar(windowStories) {
+    const nSurging = windowStories.filter((s) => s.delta && s.delta.state === 'surging').length;
+    const nPickup = windowStories.filter((s) => s.delta && s.delta.scope_shift).length;
+    if (!nSurging && !nPickup && movementFilter === 'all') return null;
+    return h('div', { class: 'desk-filter-bar no-print', role: 'group', 'aria-label': 'Filter stories by movement' },
+      h('span', { class: 'meta', text: 'Show:' }),
+      h('button', {
+        type: 'button',
+        class: 'agenda-filter-btn' + (movementFilter === 'all' ? ' active' : ''),
+        onclick: () => { movementFilter = 'all'; render(false); }
+      }, 'All'),
+      (nSurging > 0 || movementFilter === 'surging') && h('button', {
+        type: 'button',
+        class: 'agenda-filter-btn' + (movementFilter === 'surging' ? ' active' : ''),
+        onclick: () => { movementFilter = 'surging'; render(false); }
+      }, `Surging (${nSurging})`),
+      (nPickup > 0 || movementFilter === 'pickup') && h('button', {
+        type: 'button',
+        class: 'agenda-filter-btn' + (movementFilter === 'pickup' ? ' active' : ''),
+        onclick: () => { movementFilter = 'pickup'; render(false); }
+      }, `Intl pickups (${nPickup})`));
   }
 
   function flashBtn(btn, msg) {
@@ -2100,8 +2117,8 @@
     const cutoff = periodCutoff(detectedPeriod);
     const windowStories = cutoff ? d.stories.filter((s) => storyRecency(s) >= cutoff) : d.stories;
     let stories = q ? windowStories.filter((s) => matchStory(s, q)) : windowStories;
-    if (movementFilter === 'surge_new') {
-      stories = stories.filter((s) => s.delta && (s.delta.state === 'surging' || s.delta.state === 'new'));
+    if (movementFilter === 'surging') {
+      stories = stories.filter((s) => s.delta && s.delta.state === 'surging');
     } else if (movementFilter === 'pickup') {
       stories = stories.filter((s) => s.delta && s.delta.scope_shift);
     }
@@ -2154,11 +2171,11 @@
       body.push(h('p', { class: 'state', text: staleEmptyMsg || (q ? `No stories match "${q}" here.` : `No ${topicName(openTopic).toLowerCase()} stories in this period.`) }));
     }
 
-    const side = [alerts(), trends(), reddit(), social()].filter(Boolean);
+    const side = [alerts(), deskBalance(d), trends(), reddit(), social()].filter(Boolean);
     const countryObj = index.countries.find((x) => x.id === country.value) || index.countries[0];
     const filterParts = [
       openTopic !== 'all' ? topicName(openTopic) : null,
-      movementFilter === 'surge_new' ? 'Surging & New' : (movementFilter === 'pickup' ? 'Intl Pickups' : null),
+      movementFilter === 'surging' ? 'Surging' : (movementFilter === 'pickup' ? 'Intl Pickups' : null),
       q ? `Search: "${q}"` : null,
     ].filter(Boolean);
     const exportedCount = activeSections.reduce((n, sec) => n + sec.shown.length, 0);
@@ -2199,8 +2216,8 @@
           flashBtn(btn, 'Downloaded!');
         } })),
       watchbar(q),
-      agendaBar(d),
       tabs,
+      deskFilterBar(windowStories),
       side.length
         ? h('div', { class: 'country-layout' },
             h('div', { class: 'country-main' }, ...body),

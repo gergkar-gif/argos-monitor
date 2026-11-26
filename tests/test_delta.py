@@ -192,6 +192,23 @@ class TestDeltaClassification(unittest.TestCase):
         self.assertEqual(agenda["foreign_policy"]["curr"], 2)
         self.assertEqual(agenda["foreign_policy"]["prev"], 1)
         self.assertEqual(agenda["foreign_policy"]["net"], 1)
+        self.assertEqual(agenda["foreign_policy"]["baseline"], "prior 24h")
+
+        # When 7-day stories exist, 24h agenda_delta compares against the 7-day rolling baseline
+        mem.execute(
+            "INSERT INTO story (id, country, window_days, category, score, first_seen, last_seen, representative_article_id) "
+            "VALUES (20, 'vietnam', 7, 'economy', 6.0, '2026-11-12T18:00:00+00:00', '2026-11-14T04:00:00+00:00', 1)"
+        )
+        mem.execute("INSERT INTO story_article (story_id, article_id, similarity) VALUES (20, 1, 1.0), (20, 2, 0.95)")
+        mem.execute(
+            "INSERT INTO story (id, country, window_days, category, score, first_seen, last_seen, representative_article_id) "
+            "VALUES (21, 'vietnam', 7, 'foreign_policy', 6.0, '2026-11-14T00:00:00+00:00', '2026-11-14T04:00:00+00:00', 3)"
+        )
+        mem.execute("INSERT INTO story_article (story_id, article_id, similarity) VALUES (21, 3, 1.0)")
+        agenda7 = export._agenda_delta(mem, "vietnam", 1, now_iso, prev_cats)
+        self.assertEqual(agenda7["foreign_policy"]["baseline"], "7d")
+        # Today: 100% foreign_policy; 7d baseline: 1/3 (33.3%) foreign_policy -> +66.7 pp
+        self.assertAlmostEqual(agenda7["foreign_policy"]["share_delta_pct"], 66.7, places=1)
         mem.close()
 
 

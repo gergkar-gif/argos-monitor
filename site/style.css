@@ -745,61 +745,39 @@ summary:hover { color: var(--ink); }
 .monitor-filter select { font: 500 var(--fs-sm)/1.3 var(--sans); padding: 0.35rem 0.6rem; border: 1px solid var(--ink-3); background: var(--bg); }
 .slip[hidden], [hidden] { display: none !important; }
 
-/* ---- Macro Agenda Movement Bar ---- */
-.agenda-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem 1.25rem;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0.5rem 0 1rem;
-  padding: 0.6rem 0.85rem;
-  background: var(--surface-warm);
-  border: 1px solid var(--rule);
-  font: 400 0.82rem/1.3 var(--sans);
+/* ---- Sidebar Desk Balance Table & Slim Filter Bar ---- */
+.desk-balance { border-left-color: var(--ink-3); }
+.desk-balance-head { display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.55rem; }
+.desk-balance-head h2 { margin: 0; }
+.desk-balance-table {
+  width: 100%; border-collapse: collapse;
+  font: 400 0.8rem/1.3 var(--sans);
+  font-variant-numeric: tabular-nums;
 }
-.agenda-title {
-  display: flex;
-  align-items: baseline;
-  gap: 0.4rem;
-  white-space: nowrap;
+.desk-balance-table th {
+  font: 700 0.68rem/1.2 var(--sans); letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--ink-3); text-align: left; padding: 0 0 0.35rem;
+  border-bottom: 1px solid var(--rule);
 }
-.agenda-title strong {
-  font-weight: 700;
-  color: var(--ink);
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  font-size: 0.76rem;
+.desk-balance-table th.num, .desk-balance-table td.num { text-align: right; white-space: nowrap; padding-left: 0.65rem; }
+.desk-balance-table td { padding: 0.4rem 0 0.35rem; border-bottom: 1px solid var(--rule-faint, rgba(0, 0, 0, 0.06)); vertical-align: top; color: var(--ink-2); }
+.desk-balance-table tr.active .balance-topic { color: var(--ink); font-weight: 700; text-decoration: underline; }
+.balance-topic {
+  display: block; padding: 0; margin: 0 0 0.22rem;
+  background: none; border: 0; cursor: pointer; text-align: left;
+  font: 500 0.8rem/1.25 var(--sans); color: var(--ink);
 }
-.agenda-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem 0.5rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  align-items: center;
-}
-.agenda-btn {
-  background: none;
-  border: 0;
-  padding: 0.15rem 0.35rem;
-  font: 600 0.8rem/1.2 var(--sans);
-  color: var(--ink-2);
-  cursor: pointer;
-  border-radius: 2px;
-}
-.agenda-btn:hover {
-  background: rgba(0, 0, 0, 0.05);
-  color: var(--ink);
-  text-decoration: underline;
-}
-.agenda-item.surging .agenda-btn {
-  color: var(--red);
-  font-weight: 700;
-}
-.agenda-item.cooling .agenda-btn {
-  color: var(--ink-3);
+.balance-topic:hover { color: var(--indigo); text-decoration: underline; }
+.balance-track { display: block; height: 2px; background: var(--rule); width: 100%; }
+.balance-track i { display: block; height: 100%; opacity: 0.7; }
+.desk-balance-table td.shift-up { color: var(--ink); font-weight: 600; }
+.desk-balance-table td.shift-dn { color: var(--ink-3); }
+.desk-balance-table td.shift-flat { color: var(--ink-3); opacity: 0.6; }
+
+.desk-filter-bar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem;
+  margin: -0.35rem 0 1rem;
+  font: 400 var(--fs-xs)/1.2 var(--sans);
 }
 .agenda-filters {
   display: flex;

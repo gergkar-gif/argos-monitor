@@ -316,9 +316,31 @@ def _agenda_delta(db, cid, days, now_iso, prev_cats=None):
         GROUP BY s.category
     """
     rows = db.execute(q, (curr_start, prev_start, curr_start, cid, days)).fetchall()
-    by_cat = {r["category"]: (r["curr_cnt"] or 0, (prev_cats.get(r["category"], 0) if prev_cats is not None else (r["prev_cnt"] or 0))) for r in rows}
-    if prev_cats:
-        for cat, p_cnt in prev_cats.items():
+
+    # For 24h desks, compare share against the 7-day rolling mix (avoids single-day whipsaw).
+    base_cats = None
+    baseline = f"prior {'24h' if days == 1 else f'{days}d'}"
+    if days == 1:
+        week_start = (now_dt - timedelta(days=7)).isoformat(timespec="seconds")
+        w_rows = db.execute(
+            """
+            SELECT s.category, COUNT(*) AS cnt
+            FROM story_article sa
+            JOIN story s ON s.id = sa.story_id
+            JOIN article a ON a.id = sa.article_id
+            WHERE s.country = ? AND s.window_days = 7 AND COALESCE(a.published_at, a.fetched_at) >= ?
+            GROUP BY s.category
+            """,
+            (cid, week_start),
+        ).fetchall()
+        if w_rows:
+            base_cats = {r["category"]: r["cnt"] or 0 for r in w_rows}
+            baseline = "7d"
+
+    ref_cats = base_cats if base_cats is not None else prev_cats
+    by_cat = {r["category"]: (r["curr_cnt"] or 0, (ref_cats.get(r["category"], 0) if ref_cats is not None else (r["prev_cnt"] or 0))) for r in rows}
+    if ref_cats:
+        for cat, p_cnt in ref_cats.items():
             if cat not in by_cat:
                 by_cat[cat] = (0, p_cnt)
     total_curr = sum(c for c, p in by_cat.values())
@@ -331,6 +353,7 @@ def _agenda_delta(db, cid, days, now_iso, prev_cats=None):
         agenda[cat] = {
             "curr": curr, "prev": prev, "net": curr - prev,
             "share_pct": sc, "share_delta_pct": round(sc - sp, 1),
+            "baseline": baseline,
         }
     return agenda
 
