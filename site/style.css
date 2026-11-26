@@ -108,6 +108,7 @@ h1, h2, h3, p { margin: 0; }
 .field { display: flex; align-items: center; gap: 0.45rem; min-width: 0; }
 .field span { font: 700 var(--fs-xs)/1 var(--sans); letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-3); white-space: nowrap; flex-shrink: 0; }
 select, input[type=search] {
+  -webkit-appearance: none;
   appearance: none;
   height: 1.9rem;
   width: 100%;
@@ -606,7 +607,7 @@ summary:hover { color: var(--ink); }
 .compact-extras summary { font-size: 0.7rem; color: var(--indigo); }
 .compact-extras-list { list-style: none; margin: 0.35rem 0 0.15rem; padding: 0 0 0 0.75rem; border-left: 2px solid var(--rule); display: grid; gap: 0.3rem; }
 .compact-extras-list li { font-size: 0.84rem; line-height: 1.38; }
-.compact-extras-list a { text-decoration: none; color: var(--ink); font-weight: 500; }
+.compact-extras-list a { text-decoration: none; color: var(--ink); font-weight: 500; margin-right: 0.45rem; }
 .compact-extras-list a:hover { color: var(--indigo); text-decoration: underline; }
 .theme-more { margin-top: 0.85rem; }
 .desk-matches {
