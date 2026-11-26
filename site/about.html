@@ -268,7 +268,7 @@
         <div class="pipeline">
           <div class="step">
             <b>Track 1 · 0–24h live streams, field monitors &amp; sensors</b>
-            <span>Refreshed every 2 hours around the clock (and on-demand in the browser): ingests <strong>GDELT 2.0</strong> CAMEO conflict codes (18, 19, 20, 145) with verbatim headline verification, optional <strong>ACLED</strong> battle/fatality records, field reports from <strong>UN Peace &amp; Security</strong>, <strong>Crisis Group</strong>, <strong>HRW</strong>, <strong>LWJ</strong>, and <strong>MSF</strong>, <strong>US State Dept / UK FCDO</strong> security advisories, and <strong>GDACS (Orange/Red) / USGS M5.0+ / NASA EONET</strong> hazard feeds, deduplicating near-identical event rewrites to surface only the top most recent alerts.</span>
+            <span>Refreshed automatically every 2 hours around the clock: ingests <strong>GDELT 2.0</strong> CAMEO conflict codes (18, 19, 20, 145) with verbatim headline verification, optional <strong>ACLED</strong> battle/fatality records, field reports from <strong>UN Peace &amp; Security</strong>, <strong>Crisis Group</strong>, <strong>HRW</strong>, <strong>LWJ</strong>, and <strong>MSF</strong>, <strong>US State Dept / UK FCDO</strong> security advisories, and <strong>GDACS (Orange/Red) / USGS M5.0+ / NASA EONET</strong> hazard feeds, deduplicating near-identical event rewrites to surface only the top most recent alerts.</span>
           </div>
           <div class="step">
             <b>Track 2 · Kinetic conflict classification</b>
@@ -296,7 +296,7 @@
             <b>01 · Story velocity</b>
             <span>Compares each current story centroid against prior-window article embeddings (&ge; 0.895 cosine similarity) across the preceding equal period (24h or 7d):</span>
             <div class="step-tags">
-              <div class="step-tag-row"><span class="typed">New today</span><span>Zero articles in the prior period</span></div>
+              <div class="step-tag-row"><span class="typed">New today</span><span>Zero articles in the prior period (shown in expanded story signals)</span></div>
               <div class="step-tag-row"><span class="stamp red">Surging (+&Delta;N)</span><span>Gain &ge; 3 articles and velocity &ge; 1.75&times;</span></div>
               <div class="step-tag-row"><span class="typed">Cooling</span><span>Drop &ge; 3 articles and velocity &le; 0.40&times;</span></div>
             </div>

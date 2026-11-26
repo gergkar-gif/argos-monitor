@@ -550,19 +550,21 @@
       })),
       h('div', { class: 'slipline' },
         s.country_name && h('button', { type: 'button', class: 'stamp country-tag', title: `Open ${s.country_name} monitor`, text: s.country_name, onclick: () => openCountry(s.country) }),
-        s.election_cluster && s.election_cluster.count > 1 && h('span', { class: 'stamp purple', text: `${s.election_cluster.count} election stories` }),
-        s.disaster_type && h('span', { class: 'stamp teal', text: s.disaster_type }),
-        s.violence_type && h('span', { class: 'stamp red', text: s.violence_type }),
-        isDefenceIndustry(s) && h('span', { class: 'stamp indigo', text: 'Defence industry' }),
-        s.religious_traditions && s.religious_traditions.length > 0 && h('span', {
-          class: 'stamp stamp-sectarian',
-          title: `Religious & sectarian sensitivity: ${s.religious_traditions.join(', ')}`,
-          text: `Religious sensitivity: ${s.religious_traditions.join(', ')}`
-        }),
         (() => {
           const base = `${s.headline.source}, ${fmtDay.format(new Date(s.last_seen))} · ${outlets}`;
           const badges = [];
           const secondary = [];
+
+          if (s.religious_traditions && s.religious_traditions.length > 0) {
+            badges.push(h('span', {
+              class: 'stamp stamp-sectarian',
+              title: `Religious & sectarian sensitivity: ${s.religious_traditions.join(', ')}`,
+              text: `Religious sensitivity: ${s.religious_traditions.join(', ')}`
+            }));
+          }
+          if (s.violence_type) secondary.push(s.violence_type.toLowerCase());
+          if (s.disaster_type) secondary.push(s.disaster_type.toLowerCase());
+          if (isDefenceIndustry(s) && opts.themeId !== 'defence_industry') secondary.push('defence industry');
 
           if (s.evidence === 'OFFICIAL') badges.push(h('span', { class: 'stamp red', text: 'Official source' }));
           else if (s.perspectives) {
@@ -580,7 +582,7 @@
               const netStr = s.delta.net > 0 ? `+${s.delta.net}` : String(s.delta.net);
               badges.push(h('span', { class: 'stamp stamp-surge', text: `Surging (${netStr})` }));
             } else if (s.delta.state === 'new') {
-              badges.push(h('span', { class: 'stamp stamp-new', text: 'New today' }));
+              secondary.push('new today');
             } else if (s.delta.state === 'cooling') {
               secondary.push('cooling');
             }
@@ -929,11 +931,10 @@
     });
   }
 
-  function refreshCrisisAlerts(btn) {
-    if (btn) { btn.disabled = true; btn.textContent = 'Refreshing…'; }
+  function refreshCrisisAlerts() {
     const tasks = [loadScriptFresh('data/crisis.js')];
     const hmAgeMs = window.ARGOS_HOME && window.ARGOS_HOME.generated_at ? (Date.now() - Date.parse(window.ARGOS_HOME.generated_at)) : Infinity;
-    if (btn || hmAgeMs > 30 * 60 * 1000) {
+    if (hmAgeMs > 30 * 60 * 1000) {
       tasks.push(loadScriptFresh('data/index.js'), loadScriptFresh('data/home.js'));
     }
     Promise.all(tasks).then(() => {
@@ -944,7 +945,6 @@
         setupCountryCombobox();
       }
       updateAlertBadge();
-      if (btn) { btn.disabled = false; btn.textContent = 'Refresh'; }
       if (activeTab === 'alerts') renderAlerts();
       else if (activeTab === 'home') renderHome();
       else if (activeTab === 'disasters' || activeTab === 'violence') renderEventMonitor(activeTab);
@@ -1003,13 +1003,6 @@
     const shown = (showAllAlerts || filterCountry) ? all : all.slice(0, TOP_ALERTS_LIMIT);
     const countryName = filterCountry ? prettyName(filterCountry) : null;
     const periodLabel = effectivePeriod === '24h' ? '0–24 hours (live)' : 'Past 7 days';
-    const refreshBtn = h('button', {
-      type: 'button',
-      class: 'desk-link',
-      title: 'Fetch latest 0–24h crisis & sensor alerts',
-      text: '↻ Refresh 0–24h',
-      onclick: () => refreshCrisisAlerts(refreshBtn)
-    });
     const bar = h('div', { class: 'monitor-bar' },
       h('div', { class: 'monitor-filters' },
         countryPicker(monitorCountry, (val) => {
@@ -1028,8 +1021,7 @@
       h('div', { class: 'monitor-filters' },
         filterCountry
           ? h('button', { type: 'button', class: 'desk-link', text: 'All countries →', onclick: () => { monitorCountry = 'all'; showAllAlerts = false; setHash(hashFor('all')); renderAlerts(); } })
-          : h('span', { class: 'typed', text: shown.length < all.length ? `Top ${shown.length} most recent of ${all.length} (${periodLabel})` : `${all.length} active alerts (${periodLabel})` }),
-        refreshBtn
+          : h('span', { class: 'typed', text: shown.length < all.length ? `Top ${shown.length} most recent of ${all.length} (${periodLabel})` : `${all.length} active alerts (${periodLabel})` })
       )
     );
 
@@ -1451,16 +1443,15 @@
     const sign = netArticles > 0 ? '+' : '';
     const arrow = netArticles > 0 ? '↑' : (netArticles < 0 ? '↓' : '·');
 
-    const pills = [];
-    if (overallState === 'surging') pills.push(h('span', { class: 'stamp stamp-surge', text: `SURGE ${sign}${netArticles}` }));
-    else if (overallState === 'new') pills.push(h('span', { class: 'stamp stamp-new', text: 'NEW EMERGENCE' }));
-    else if (overallState === 'cooling') pills.push(h('span', { class: 'stamp stamp-cooling', text: 'COOLING' }));
+    let statusStamp = null;
+    if (overallState === 'surging') statusStamp = h('span', { class: 'stamp stamp-surge', text: `Surging (${sign}${netArticles})` });
+    else if (overallState === 'cooling') statusStamp = h('span', { class: 'stamp stamp-cooling', text: 'Cooling' });
 
-    if (nNew > 0 && overallState !== 'new') pills.push(h('span', { class: 'stamp stamp-new', text: `${nNew} NEW` }));
-    if (nSurge > 0 && overallState !== 'surging') pills.push(h('span', { class: 'stamp stamp-surge', text: `${nSurge} SURGE` }));
-    if (nIntl > 0) pills.push(h('span', { class: 'stamp stamp-pickup', text: `${nIntl} INTL PICKUP` }));
-    if (nDiaspora > 0) pills.push(h('span', { class: 'stamp stamp-pickup', text: `${nDiaspora} DIASPORA` }));
-    if (nStateSurge > 0) pills.push(h('span', { class: 'stamp red', text: `${nStateSurge} STATE SURGE` }));
+    const notes = [];
+    if (nSurge > 0 && overallState !== 'surging') notes.push(`${nSurge} surging`);
+    if (nIntl > 0) notes.push(`${nIntl} intl pickup`);
+    if (nDiaspora > 0) notes.push(`${nDiaspora} picked up abroad`);
+    if (nStateSurge > 0) notes.push(`${nStateSurge} state coverage rising`);
 
     return h('div', { class: 'bilateral-delta-panel', role: 'region', 'aria-label': 'Bilateral delta comparisons' },
       h('div', { class: 'bilateral-delta-head' },
@@ -1469,7 +1460,9 @@
         h('span', { class: 'typed', text: `${currTotal} articles across ${matchedStories.length} joint stories (${arrow} ${sign}${netArticles} articles · ${ratio} velocity)` })
       ),
       h('div', { class: 'bilateral-delta-body' },
-        pills.length > 0 && h('div', { class: 'bilateral-delta-pills' }, ...pills),
+        (statusStamp || notes.length > 0) && h('div', { class: 'bilateral-delta-pills' },
+          statusStamp,
+          notes.length > 0 && h('span', { class: 'meta', text: notes.join(' · ') })),
         topCatName && h('div', { class: 'bilateral-delta-cat' },
           h('span', { class: 'meta', text: 'Lead Focus: ' }),
           h('strong', { text: `${topCatName} (${topCatPct}%)` })
@@ -1681,10 +1674,6 @@
       badge = h('span', { class: 'stamp stamp-surge', text: `Surging (${netStr})` });
     } else if (s.delta && s.delta.scope_shift === 'international_pickup') {
       badge = h('span', { class: 'stamp stamp-pickup', text: 'Intl pickup' });
-    } else if (s.delta && s.delta.state === 'new') {
-      badge = h('span', { class: 'stamp stamp-new', text: 'New today' });
-    } else if (s.election_cluster && s.election_cluster.count > 1) {
-      badge = h('span', { class: 'stamp purple', text: `${s.election_cluster.count} election stories` });
     } else if (s.evidence === 'OFFICIAL') {
       badge = h('span', { class: 'stamp red', text: 'Official source' });
     }
@@ -1727,7 +1716,7 @@
           sec.desc && h('span', { class: 'theme-desc', text: `· ${sec.desc}` })),
         h('span', { class: 'count', text: `Showing ${shown.length} of ${totalAvailable}` })),
       h('div', { class: 'theme-lead' },
-        story(shown[0], { lead: true, i: 0 }),
+        story(shown[0], { lead: true, i: 0, themeId: sec.id }),
         leadExtras && h('div', { class: 'theme-lead-extras' }, renderCountryExtras(leadExtras, shown[0].country_name))),
       shown.length > 1 && h('ol', { class: 'compact-list', start: '2' },
         shown.slice(1).map((s, idx) => compactRow(s, idx + 2, moreMap[String(s.id)]))),
@@ -1796,13 +1785,6 @@
       setHash(hashFor('all'));
       renderHome();
     };
-    const homeRefreshBtn = h('button', {
-      type: 'button',
-      class: 'desk-link',
-      title: 'Check for newer crisis & hazard alerts',
-      text: 'Refresh',
-      onclick: () => refreshCrisisAlerts(homeRefreshBtn)
-    });
 
     const regionPickerEl = regionOpts.length > 2 && h('label', { class: 'desk-region home-region' },
       h('span', { text: 'Region' }),
@@ -1888,7 +1870,6 @@
           ` — `,
           h('a', { href: safeUrl(leadAlert.url), target: '_blank', rel: 'noopener noreferrer', text: leadAlert.title }))),
       h('div', { class: 'crisis-actions' },
-        homeRefreshBtn,
         h('button', { type: 'button', class: 'desk-link', text: `All ${allAlerts.length} →`, onclick: () => openCountry('alerts') })));
 
     const directorySection = desks.length > 0 && h('section', { class: 'drawer' },
