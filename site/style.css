@@ -761,13 +761,14 @@ summary:hover { color: var(--ink); }
 }
 .desk-balance-table th.num, .desk-balance-table td.num { text-align: right; white-space: nowrap; padding-left: 0.65rem; }
 .desk-balance-table td { padding: 0.4rem 0 0.35rem; border-bottom: 1px solid var(--rule-faint, rgba(0, 0, 0, 0.06)); vertical-align: top; color: var(--ink-2); }
-.desk-balance-table tr.active .balance-topic { color: var(--ink); font-weight: 700; text-decoration: underline; }
+.desk-balance-table tr.active .balance-topic { color: var(--ink); font-weight: 700; }
+.desk-balance-table tr.active .balance-track i { opacity: 1; }
 .balance-topic {
   display: block; padding: 0; margin: 0 0 0.22rem;
   background: none; border: 0; cursor: pointer; text-align: left;
   font: 500 0.8rem/1.25 var(--sans); color: var(--ink);
 }
-.balance-topic:hover { color: var(--indigo); text-decoration: underline; }
+.balance-topic:hover { color: var(--indigo); }
 .balance-track { display: block; height: 2px; background: var(--rule); width: 100%; }
 .balance-track i { display: block; height: 100%; opacity: 0.7; }
 .desk-balance-table td.shift-up { color: var(--ink); font-weight: 600; }
