@@ -775,11 +775,6 @@ summary:hover { color: var(--ink); }
 .desk-balance-table td.shift-dn { color: var(--ink-3); }
 .desk-balance-table td.shift-flat { color: var(--ink-3); opacity: 0.6; }
 
-.desk-filter-bar {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem;
-  margin: -0.35rem 0 1rem;
-  font: 400 var(--fs-xs)/1.2 var(--sans);
-}
 .agenda-filters {
   display: flex;
   align-items: center;

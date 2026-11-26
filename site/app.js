@@ -90,7 +90,6 @@
   let deskSort = 'attention';
   let deskFilter = '';
   let openSubType = 'all';
-  let movementFilter = 'all';
   let defenceSubFilter = 'all';
   let exportOpen = false;
   let extra = {};   // extra stories revealed per topic in the overview ("Show more")
@@ -512,7 +511,6 @@
       }
     }
     fillPeriods();
-    movementFilter = 'all';
     defenceSubFilter = 'all';
     exportOpen = false;
     research();
@@ -2012,29 +2010,6 @@
           }))));
   }
 
-  function deskFilterBar(windowStories) {
-    const nSurging = windowStories.filter((s) => s.delta && s.delta.state === 'surging').length;
-    const nPickup = windowStories.filter((s) => s.delta && s.delta.scope_shift).length;
-    if (!nSurging && !nPickup && movementFilter === 'all') return null;
-    return h('div', { class: 'desk-filter-bar no-print', role: 'group', 'aria-label': 'Filter stories by movement' },
-      h('span', { class: 'meta', text: 'Show:' }),
-      h('button', {
-        type: 'button',
-        class: 'agenda-filter-btn' + (movementFilter === 'all' ? ' active' : ''),
-        onclick: () => { movementFilter = 'all'; render(false); }
-      }, 'All'),
-      (nSurging > 0 || movementFilter === 'surging') && h('button', {
-        type: 'button',
-        class: 'agenda-filter-btn' + (movementFilter === 'surging' ? ' active' : ''),
-        onclick: () => { movementFilter = 'surging'; render(false); }
-      }, `Surging (${nSurging})`),
-      (nPickup > 0 || movementFilter === 'pickup') && h('button', {
-        type: 'button',
-        class: 'agenda-filter-btn' + (movementFilter === 'pickup' ? ' active' : ''),
-        onclick: () => { movementFilter = 'pickup'; render(false); }
-      }, `Intl pickups (${nPickup})`));
-  }
-
   function flashBtn(btn, msg) {
     const orig = btn.textContent;
     btn.textContent = msg;
@@ -2117,13 +2092,8 @@
     const periodLabel = (period.options[period.selectedIndex] ? period.options[period.selectedIndex].text : (detectedPeriod === '24h' ? 'Last 24 hours' : 'Last 7 days')).toLowerCase();
     const cutoff = periodCutoff(detectedPeriod);
     const windowStories = cutoff ? d.stories.filter((s) => storyRecency(s) >= cutoff) : d.stories;
-    let stories = q ? windowStories.filter((s) => matchStory(s, q)) : windowStories;
-    if (movementFilter === 'surging') {
-      stories = stories.filter((s) => s.delta && s.delta.state === 'surging');
-    } else if (movementFilter === 'pickup') {
-      stories = stories.filter((s) => s.delta && s.delta.scope_shift);
-    }
-    const isFiltered = Boolean(q || movementFilter !== 'all' || windowStories.length !== d.stories.length);
+    const stories = q ? windowStories.filter((s) => matchStory(s, q)) : windowStories;
+    const isFiltered = Boolean(q || windowStories.length !== d.stories.length);
     const count = (id) => (isFiltered ? stories.filter((s) => s.category === id).length : d.totals[id]);
     const byTopic = (id) => stories.filter((s) => s.category === id);
     const totalStories = isFiltered ? stories.length : Object.values(d.totals).reduce((a, b) => a + b, 0);
@@ -2161,7 +2131,7 @@
 
     const body = [];
     const staleTag = ageH > STALE_HOURS ? ` (${ageH < 48 ? Math.round(ageH) + 'h' : Math.round(ageH / 24) + 'd'} old)` : '';
-    const staleEmptyMsg = (!q && movementFilter === 'all' && windowStories.length === 0 && d.stories.length > 0)
+    const staleEmptyMsg = (!q && windowStories.length === 0 && d.stories.length > 0)
       ? `No stories in the ${periodLabel} — this snapshot was last updated ${fmtTime.format(updated)}${staleTag}. Run "python run.py" to collect fresh news.`
       : null;
     if (activeSections.length) {
@@ -2176,7 +2146,6 @@
     const countryObj = index.countries.find((x) => x.id === country.value) || index.countries[0];
     const filterParts = [
       openTopic !== 'all' ? topicName(openTopic) : null,
-      movementFilter === 'surging' ? 'Surging' : (movementFilter === 'pickup' ? 'Intl Pickups' : null),
       q ? `Search: "${q}"` : null,
     ].filter(Boolean);
     const exportedCount = activeSections.reduce((n, sec) => n + sec.shown.length, 0);
@@ -2218,7 +2187,6 @@
         } })),
       watchbar(q),
       tabs,
-      deskFilterBar(windowStories),
       side.length
         ? h('div', { class: 'country-layout' },
             h('div', { class: 'country-main' }, ...body),
