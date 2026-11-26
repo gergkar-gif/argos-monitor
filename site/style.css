@@ -85,12 +85,12 @@ h1, h2, h3, p { margin: 0; }
   text-decoration: none;
   color: var(--ink-2);
   white-space: nowrap;
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid transparent;
 }
 .topnav a:hover, .topnav a[aria-current="page"] {
   color: var(--ink);
-  text-decoration: underline;
-  text-underline-offset: 0.4rem;
-  text-decoration-thickness: 2px;
+  border-bottom-color: var(--ink);
 }
 .topnav .n {
   margin-left: 0.2rem;
@@ -347,13 +347,14 @@ main { max-width: 68rem; margin: 0 auto; padding: 1.35rem 1.5rem 5rem; outline: 
 .tab-rolldown { display: none; }
 .tabs li { flex: none; }
 .tab {
-  padding: 0;
+  padding: 0 0 0.3rem;
   font: 700 var(--fs-xs)/1.2 var(--sans);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--ink-2);
   background: none;
   border: 0;
+  border-bottom: 2px solid transparent;
   white-space: nowrap;
   cursor: pointer;
 }
@@ -361,9 +362,7 @@ main { max-width: 68rem; margin: 0 auto; padding: 1.35rem 1.5rem 5rem; outline: 
 .tab:hover { color: var(--ink); }
 .tab[aria-pressed="true"] {
   color: var(--ink);
-  text-decoration: underline;
-  text-underline-offset: 0.45rem;
-  text-decoration-thickness: 2px;
+  border-bottom-color: var(--ink);
 }
 .tab[aria-pressed="true"] .n { color: var(--ink-2); font-weight: 600; }
 
