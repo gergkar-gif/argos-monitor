@@ -477,10 +477,8 @@ main { max-width: 68rem; margin: 0 auto; padding: 1.35rem 1.5rem 5rem; outline: 
 a.stamp:hover { text-decoration: underline; }
 
 /* Delta Movement Stamps & Badges (Broadsheet style - zero emoji) */
-.stamp.stamp-new { color: var(--teal); border: 1px solid var(--teal); padding: 0 0.3rem; letter-spacing: 0.05em; }
 .stamp.stamp-surge { color: var(--red); border: 1px solid var(--red); padding: 0 0.3rem; font-weight: 700; letter-spacing: 0.04em; }
 .stamp.stamp-cooling { color: var(--ink-3); border: 1px solid var(--ink-3); padding: 0 0.3rem; }
-.stamp.stamp-pickup { color: var(--indigo); border: 1px solid var(--indigo); padding: 0 0.3rem; font-weight: 700; }
 .stamp.stamp-election { color: var(--purple); border: 1px solid var(--purple); padding: 0 0.3rem; font-weight: 700; letter-spacing: 0.05em; }
 .stamp.stamp-sectarian { color: var(--purple); border: 1px solid var(--purple); padding: 0 0.3rem; font-weight: 700; letter-spacing: 0.05em; }
 

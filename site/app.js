@@ -578,13 +578,13 @@
           if (s.delta) {
             if (s.delta.state === 'surging') {
               const netStr = s.delta.net > 0 ? `+${s.delta.net}` : String(s.delta.net);
-              badges.push(h('span', { class: 'stamp stamp-surge', text: `Surging (${netStr})` }));
+              secondary.push(`surging (${netStr})`);
             } else if (s.delta.state === 'new') {
               secondary.push('new today');
             } else if (s.delta.state === 'cooling') {
               secondary.push('cooling');
             }
-            if (s.delta.scope_shift === 'international_pickup') badges.push(h('span', { class: 'stamp stamp-pickup', text: 'Intl pickup' }));
+            if (s.delta.scope_shift === 'international_pickup') secondary.push('intl pickup');
             else if (s.delta.scope_shift === 'diaspora_pickup') secondary.push('picked up abroad');
             if (s.delta.state_surge) secondary.push('state coverage rising');
           } else {
@@ -1667,15 +1667,9 @@
     const headOrig = h('span', { class: 'orig', hidden: !hasEn, title: 'Original headline', text: hasEn ? s.headline.title : '' });
     if (!hasEn) track(headLink, s.headline.title, s.headline.language, headOrig);
 
-    let badge = null;
-    if (s.delta && s.delta.state === 'surging') {
-      const netStr = s.delta.net > 0 ? `+${s.delta.net}` : String(s.delta.net);
-      badge = h('span', { class: 'stamp stamp-surge', text: `Surging (${netStr})` });
-    } else if (s.delta && s.delta.scope_shift === 'international_pickup') {
-      badge = h('span', { class: 'stamp stamp-pickup', text: 'Intl pickup' });
-    } else if (s.evidence === 'OFFICIAL') {
-      badge = h('span', { class: 'stamp red', text: 'Official source' });
-    }
+    const badge = s.evidence === 'OFFICIAL'
+      ? h('span', { class: 'stamp red', text: 'Official source' })
+      : null;
 
     const outlets = plural(s.independent_sources, 'outlet', 'outlets');
     const rowExtras = extras && extras.length ? extras
@@ -1898,7 +1892,6 @@
             const sigs = [];
             if (d.nAlerts) sigs.push(h('span', { class: 'stamp red', text: `${d.nAlerts} alert${d.nAlerts > 1 ? 's' : ''}` }));
             if (d.elections) sigs.push(h('span', { class: 'stamp purple', text: 'Election' }));
-            if (d.surging) sigs.push(h('span', { class: 'stamp indigo', text: `↑ ${d.surging} surging` }));
             return h('tr', null,
               h('td', { class: 'cell-head' }, h('button', { type: 'button', class: 'desk-link', text: `${d.name} →`, onclick: () => openCountry(d.id) })),
               h('td', { class: 'meta', text: d.region }),
