@@ -173,18 +173,18 @@ def is_sports_stream_spam(title, outlet="", url=""):
 _WEATHER_FORECAST_RE = re.compile(
     r"(?:"
     r"\b(?:weather\s+forecast|today'?s\s+weather|daily\s+weather|weekend\s+weather|"
-    r"parashikimi\s+i\s+motit|moti\s+(?:sot|nes[ëe]r|p[ëe]r\s+\d|gjat[ëe]\s+dit[ëe]s)|"
+    r"parashikimi\s+i\s+motit|moti\s+(?:sot|nes[ëe]r|p[ëe]r\s+\d+|gjat[ëe]\s+dit[ëe]s)|"
     r"si\s+do\s+t[ëe]\s+jet[ëe]\s+moti|si\s+do\s+variojn[ëe]\s+temperaturat|"
     r"d[ựư]\s+b[áa]o\s+th[ờo]i\s+ti[ếe]t|th[ờo]i\s+ti[ếe]t\s+h[ôo]m\s+nay|"
     r"vremenska\s+prognoza|prognoza\s+vremena|prognoza\s+pogody|prognoza\s+meteo|"
     r"wettervorhersage|wetter\s+(?:heute|morgen)|m[ée]t[ée]o\s+du\s+jour|bulletin\s+m[ée]t[ée]o|"
     r"previsioni\s+meteo|meteo\s+oggi|pron[óo]stico\s+del\s+tiempo|clima\s+hoy|tiempo\s+hoy|"
     r"previs[ãa]o\s+do\s+tempo|id[őo]j[áa]r[áa]s-?el[őo]rejelz[ée]s|id[őo]j[áa]r[áa]s\s+ma|"
-    r"прогноз\s+погод[ыи]|погода\s+(?:сегодня|на\s+\d)|hava\s+durumu|vremea\s+azi|"
+    r"прогноз\s+погод[ыи]|погода\s+(?:сегодня|на\s+\d+|в\s+[^\n,:;]{2,30}\s+\d+)|hava\s+durumu|vremea\s+azi|"
     r"πρ[όο]γνωση\s+καιρο[ύυ]|καιρ[όο]ς\s+σ[ήη]μερα|p[řr]edpov[ěe][ďd]\s+po[čc]as[íi]|"
-    r"predpove[ďd]\s+po[čc]asia|po[čc]as[íi]\s+dnes|vreme\s+danes|weerbericht|"
+    r"predpove[ďd]\s+po[čc]asia|po[čc]as[íi]\s+dnes|vreme\s+dan[ae]s|weerbericht|"
     r"v[äa]derprognos|s[äa][äa]ennuste|v[æa]rmelding|vejrudsigt)\b"
-    r"|天気予報|날씨\s*예보|天气预报|توقعات\s+الطقس|الطقس\s+اليوم|תחזית\s+מזג\s+האוויר)",
+    r"|\bκαιρ[όο]ς\s*:|天気予報|날씨\s*예보|天气预报|توقعات\s+الطقس|الطقس\s+اليوم|תחזית\s+מזג\s+האוויר)",
     re.I,
 )
 _SEVERE_WEATHER_RE = re.compile(
@@ -203,18 +203,41 @@ _SEVERE_WEATHER_RE = re.compile(
     r"|台風|大雨|警報|地震|태풍|호우|경보|暴雨|台风|预警|إعصار|فيضان|تحذير)",
     re.I,
 )
-_HOROSCOPE_RE = re.compile(
-    r"(?:\b(?:horoskop\w*|horoscope|hor[óo]scopo|oroscopo|гороскоп|t[ửu]\s+vi\s+h[ôo]m\s+nay|bur[çc]\s+yorum\w*)\b)",
+_FILLER_RE = re.compile(
+    r"(?:"
+    # Horoscopes, zodiac, tarot
+    r"\b(?:horoscop\w*|horoskop\w*|hor[óo]scop\w*|oroscop\w*|гороскоп\w*|"
+    r"ramalan\s+zodiak|tarot\s+(?:do\s+dia|of\s+the\s+day|du\s+jour)|"
+    r"zodiaka\s+z[īi]mes|zodiako\s+[žz]enkl\w*|t[ửu]\s+vi\s+h[ôo]m\s+nay|bur[çc]\s+yorum\w*|csillagjegy)\b|"
+    # Routine lottery draw results (avoids false positives on news mentioning "lottery")
+    r"\b(?:rezultate\s+loto|wyniki\s+lotto|wyniki\s+losowania|lotto\s+results|lottery\s+results|"
+    r"draw\s+results|winning\s+numbers|n[úu]meros\s+ganadores|numerele\s+extrase|szcz[ęe][śs]liwe\s+liczby|"
+    r"k[ếe]t\s+qu[ảa]\s+x[ổo]\s+s[ốo]|x[ổo]\s+s[ốo]\s+(?:mi[ềe]n|h[ôo]m\s+nay|ng[àa]y)|vietlott|"
+    r"eurojackpot|euromillions|(?:powerball|mega\s+millions)\s+(?:numbers|results|drawing|jackpot)|"
+    r"say[ıi]sal\s+loto|s[üu]per\s+loto|[şs]ans\s+topu)\b|"
+    # Daily puzzles and word games
+    r"\b(?:sudoku|wordle|nyt\s+connections|connections\s+hints|strands\s+hints|"
+    r"crossword\s+(?:clues|answers|puzzle)|mini\s+crossword|spelling\s+bee\s+answers|quordle|octordle|rists[õo]na)\b|"
+    # TV schedules and reality-TV recaps
+    r"\b(?:tv-?programm|tv\s+(?:guide|listings|schedule)|tonight\s+on\s+tv|what'?s\s+on\s+tv|"
+    r"was\s+l[äa]uft\s+heute\s+abend\s+im\s+fernsehen|program\s+tv|programme\s+tv|yay[ıi]n\s+ak[ıi][şs][ıi]|"
+    r"masterchef|big\s+brother\s+vip|love\s+island|kardashian)\b|"
+    # "On this day" / "Today in history" archive columns
+    r"\b(?:today\s+in\s+history|on\s+this\s+day|this\s+day\s+in\s+history|na\s+dana[šs]nji\s+dan|"
+    r"tarihte\s+bug[üu]n|ez\s+t[öo]rt[ée]nt\s+ma|в\s+этот\s+день\s+в\s+истории|ng[àa]y\s+n[àa]y\s+n[ăa]m\s+x[ưưa])\b|"
+    # Explicit lifestyle tag
+    r"\(lifestyle\))",
     re.I,
 )
 
 
 def is_routine_filler(title):
-    """Reject routine daily weather forecasts (keeping severe-weather/disaster alerts) and daily horoscopes."""
+    """Reject routine daily weather forecasts (keeping severe-weather/disaster alerts), horoscopes,
+    lottery draw results, puzzles, TV listings/reality-TV recaps, and 'today in history' columns."""
     t = (title or "").strip()
     if not t:
         return False
-    if _HOROSCOPE_RE.search(t):
+    if _FILLER_RE.search(t):
         return True
     if _WEATHER_FORECAST_RE.search(t) and not _SEVERE_WEATHER_RE.search(t):
         return True

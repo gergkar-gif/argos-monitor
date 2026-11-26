@@ -43,7 +43,7 @@ for title in ("Bayern gegen BVB im Live-Ticker", "Polska - Niemcy transmisja na 
     assert is_sports_stream_spam(title), f"Live stream spam '{title}' must be filtered"
 assert not is_sports_stream_spam("Bundestag verabschiedet Haushalt für das kommende Jahr", outlet="Tagesschau (ARD)")
 
-# Routine daily weather forecasts and horoscopes must be filtered, while severe weather / disaster alerts stay
+# Routine daily weather forecasts, horoscopes, lotteries, puzzles, TV listings, and archive columns must be filtered
 for title in (
     "Parashikimi i motit, 25 nëntor 2026",
     "Parashikimi i motit/ Si do variojnë temperaturat përgjatë ditës",
@@ -51,7 +51,22 @@ for title in (
     "Weather Forecast For Sunday November 15",
     "Dự báo thời tiết 15/11/2026: Miền Bắc lại nắng mạnh, Hà Nội tăng lên 30 độ",
     "Прогноз погоды в Кыргызстане на 15 ноября: в Бишкеке без осадков",
+    "Погода в Беларуси 22 ноября: пройдут небольшие дожди и снег с дождем",
+    "Vreme danas: Tokom dana naoblačenje, ponegde kiša",
+    "Καιρός: Κυριακή με παροδική συννεφιά, τοπικές βροχές",
     "Horoskopi 19 nëntor 2026, zbuloni parashikimet e yjeve",
+    "Horoscop miercuri, 25 noiembrie 2026. Luna în Gemeni",
+    "Ramalan Zodiak Cancer Hari Ini 26 November 2026",
+    "Tarot do dia: previsão para os 12 signos em 21/11/2026",
+    "Rezultate LOTO - Joi, 19 noiembrie 2026. Numerele extrase",
+    "Wyniki Lotto na piątek 20 listopada 2026. Sprawdź szczęśliwe liczby",
+    "Lotería del Valle: conozca los números ganadores del miércoles",
+    "Sudoku za sredu 25.11.2026.",
+    "Was läuft heute Abend im Fernsehen? TV-Programm um 20.15 Uhr",
+    "25 Kasım MasterChef Türkiye kim kazandı, eleme adayı kim oldu?",
+    "Today in History: Rawlings imposes curfew after failed coup",
+    "Na današnji dan, 25. novembar",
+    "21:40 Pesë gabime që përshpejtojnë plakjen e lëkurës (Lifestyle)",
 ):
     assert is_routine_filler(title), f"Routine filler '{title}' must be filtered"
 
@@ -60,7 +75,10 @@ for title in (
     "Moti i keq/ Disa fshatra në Fan të Mirditës 5 ditë pa drita",
     "Weather forecast: Flood warning issued across northern provinces",
     "Parashikimi i motit: Stuhi e fortë dhe rrezik për përmbytje në Shkodër",
+    "Salvadoreño gana US$1 millón en la lotería en EE. UU. y termina capturado por el ICE",
+    "NOAA weather sounders: Northrop Grumman wins $290.6 million NASA contract",
+    "GLP-1 weight loss pills arrive in Australia: what you should know",
 ):
-    assert not is_routine_filler(title), f"Severe weather / disaster news '{title}' must be kept"
+    assert not is_routine_filler(title), f"Real news '{title}' must be kept"
 
 print("ok textutil tests passed")
