@@ -380,6 +380,46 @@ class HomeExportTests(unittest.TestCase):
         kp_ru = next(t for t in kp["themes"]["themes"] if t["id"] == "russia_dprk_military_alliance")
         self.assertGreater(policy._keyword_share([("북한군 러시아 쿠르스크 파병 확대", "")], kp_ru["keywords"]), 0.0)
 
+    def test_home_thematic_blocks_and_violent_events_ranking(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            data_dir = Path(tmp)
+            stories = [
+                _story("el1", category="internal_politics", score=12.0, outlets=8, themes=["Elections and political campaigns"]),
+                _story("viol_small", category="defence_security", score=4.0, outlets=1, last_24h=1, themes=["Civil unrest and armed conflict"]),
+                _story("viol_big", category="defence_security", score=18.0, outlets=14, last_24h=0, themes=["Civil unrest and armed conflict"]),
+                _story("dip1", category="foreign_policy", score=15.0, outlets=12, themes=["Diplomacy"]),
+                _story("dom_clean", category="internal_politics", score=14.0, outlets=10, themes=["Government and parliament"]),
+                _story("dom_fluff", category="internal_politics", score=20.0, outlets=18, themes=[]),
+                _story("def1", category="defence_security", score=13.0, outlets=9, themes=["Defence industry and procurement"]),
+                _story("tr1", category="economics", score=16.0, outlets=11, themes=["Trade"]),
+                _story("ec1", category="economics", score=11.0, outlets=7, themes=["Investment"]),
+                _story("en1", category="economics", score=10.0, outlets=6, themes=["Energy and infrastructure"]),
+            ]
+            stories[1]["headline"]["title"] = "Single outlet local murder trial day 39"
+            stories[2]["headline"]["title"] = "Air strike hits insurgent base in border region"
+            (data_dir / "testland-7d.json").write_text(json.dumps({"totals": {}, "stories": stories}), encoding="utf8")
+            (data_dir / "testland-24h.json").write_text(json.dumps({"totals": {}, "stories": []}), encoding="utf8")
+
+            with patch.object(export, "SITE_DATA", data_dir):
+                home = export._home("2026-11-26T00:00:00+00:00", [{"id": "testland", "name": "Testland", "region": "Europe"}])
+
+            by_id = {sec["id"]: sec["ids"] for sec in home["themes"]}
+            self.assertEqual(
+                list(by_id.keys()),
+                ["elections", "violent_events", "diplomacy", "domestic_politics", "defence_industry", "trade", "economy_investment", "energy_infra"],
+            )
+            self.assertEqual(by_id["elections"], ["el1"])
+            self.assertEqual(by_id["violent_events"][0], "viol_big")
+            self.assertEqual(home["violent_events"][0]["id"], "viol_big")
+            self.assertEqual(home["story_bank"]["viol_small"]["violence_type"], "Civil Unrest & Crackdown")
+            self.assertEqual(by_id["diplomacy"], ["dip1"])
+            self.assertEqual(by_id["domestic_politics"], ["dom_clean"])
+            self.assertNotIn("dom_fluff", by_id["domestic_politics"])
+            self.assertEqual(by_id["defence_industry"], ["def1"])
+            self.assertEqual(by_id["trade"], ["tr1"])
+            self.assertEqual(by_id["economy_investment"], ["ec1"])
+            self.assertEqual(by_id["energy_infra"], ["en1"])
+
 
 if __name__ == "__main__":
     unittest.main()

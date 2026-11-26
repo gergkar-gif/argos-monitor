@@ -61,7 +61,7 @@ def _classify_violence(s):
         if re.search(pat, blob, re.I):
             return label
     if "civil unrest and armed conflict" in themes or "sectarian and confessional violence" in themes:
-        return "Armed Clash & Strike"
+        return "Civil Unrest & Crackdown"
     return None
 
 
@@ -472,6 +472,74 @@ def _cluster_country_elections(stories):
     return non_elec + [lead]
 
 
+_LOW_THEME_LABELS = {"crime and courts", "accidents and weather", "sport and entertainment"}
+_CONFLICT_THEME_LABELS = {"civil unrest and armed conflict", "sectarian and confessional violence"}
+
+
+def _has_theme(s, *targets):
+    tset = {t.lower() for t in (s.get("themes") or [])}
+    return any(x in tset for x in targets)
+
+
+def _is_clean_domestic_politics(s):
+    if s.get("category") != "internal_politics":
+        return False
+    if _is_election(s) or s.get("violence_type") or s.get("disaster_type"):
+        return False
+    tset = {t.lower() for t in (s.get("themes") or [])}
+    if not tset or (tset & _LOW_THEME_LABELS) or (tset & _CONFLICT_THEME_LABELS):
+        return False
+    return True
+
+
+def _home_themes(briefing_pool, pool):
+    """Build the 8 thematic broadsheet blocks for the home page, storing each unique story once in story_bank."""
+    rank_key = lambda s: (s.get("category") != "other", round(_norm_breadth(s), 4), s.get("score") or 0.0)
+    viol_rank_key = lambda s: (round(_norm_breadth(s), 4), (s.get("last_24h") or 0) > 0, s.get("score") or 0.0)
+
+    multi_viol = [s for s in pool if s.get("violence_type") and (s.get("independent_sources") or 0) >= 2]
+    viol_pool = multi_viol if len(multi_viol) >= 3 else [s for s in pool if s.get("violence_type")]
+
+    specs = [
+        ("elections", "Elections & Campaigns", "Priority electoral & ballot coverage", "#6b21a8",
+         (s for s in briefing_pool if _is_election(s)),
+         lambda s: (round(_norm_breadth(s), 4), s.get("score") or 0.0), 10, 4, 1),
+        ("violent_events", "Violent Events", "Kinetic clashes, strikes, terror & armed deployments", "#991b1b",
+         viol_pool, viol_rank_key, 10, 4, 2),
+        ("diplomacy", "Diplomacy", "Summits, treaties & bilateral talks", "#0f766e",
+         (s for s in briefing_pool if _has_theme(s, "diplomacy")),
+         rank_key, 10, 4, 2),
+        ("domestic_politics", "Domestic Politics & Governance", "Cabinets, parliaments, coalitions & domestic policy", "#1e2433",
+         (s for s in briefing_pool if _is_clean_domestic_politics(s)),
+         rank_key, 10, 4, 2),
+        ("defence_industry", "Defence Industry & Procurement", "Arms transfers, procurement & military budgets", "#312e81",
+         (s for s in briefing_pool if _has_theme(s, "defence industry and procurement")),
+         rank_key, 10, 4, 2),
+        ("trade", "Trade & Tariffs", "Tariffs, exports, customs & trade pacts", "#1e3a8a",
+         (s for s in briefing_pool if _has_theme(s, "trade")),
+         rank_key, 10, 4, 2),
+        ("economy_investment", "Economy & Investment", "Central banks, GDP, budgets, FDI & sovereign wealth", "#1e3a8a",
+         (s for s in briefing_pool if _has_theme(s, "economic policy", "investment")),
+         rank_key, 10, 4, 2),
+        ("energy_infra", "Energy & Infrastructure", "Pipelines, nuclear, critical minerals & power grids", "#78350f",
+         (s for s in briefing_pool if _has_theme(s, "energy and infrastructure")),
+         rank_key, 10, 4, 2),
+    ]
+
+    story_bank = {}
+    sections = []
+    for tid, name, desc, color, src_iter, key_fn, g_lim, r_lim, c_lim in specs:
+        picked = _top_global_and_regional(src_iter, key_fn, g_lim, r_limit=r_lim, c_limit=c_lim)
+        ids = []
+        for s in picked:
+            sid = str(s["id"])
+            if sid not in story_bank:
+                story_bank[sid] = s
+            ids.append(sid)
+        sections.append({"id": tid, "name": name, "desc": desc, "color": color, "ids": ids})
+    return sections, story_bank
+
+
 def _home(now, countries):
     """Build a compact cross-country overview (site/data/home.json) so the front page stays fast at 100+ countries."""
     pool, briefing_pool, desks = [], [], []
@@ -534,12 +602,16 @@ def _home(now, countries):
         lambda s: (round(_norm_breadth(s), 4), s.get("score") or 0.0), 6, r_limit=3, c_limit=1)
     disasters = _top_global_and_regional(
         (s for s in pool if s.get("disaster_type")),
-        lambda s: ((s.get("last_24h") or 0) > 0, round(_norm_breadth(s), 4), s.get("score") or 0.0), 12, r_limit=5, c_limit=2)
+        lambda s: (round(_norm_breadth(s), 4), (s.get("last_24h") or 0) > 0, s.get("score") or 0.0), 12, r_limit=5, c_limit=2)
+    multi_viol = [s for s in pool if s.get("violence_type") and (s.get("independent_sources") or 0) >= 2]
+    viol_src = multi_viol if len(multi_viol) >= 3 else [s for s in pool if s.get("violence_type")]
     violent = _top_global_and_regional(
-        (s for s in pool if s.get("violence_type")),
-        lambda s: ((s.get("last_24h") or 0) > 0, round(_norm_breadth(s), 4), s.get("score") or 0.0), 12, r_limit=5, c_limit=2)
+        viol_src,
+        lambda s: (round(_norm_breadth(s), 4), (s.get("last_24h") or 0) > 0, s.get("score") or 0.0), 12, r_limit=5, c_limit=2)
+    theme_sections, story_bank = _home_themes(briefing_pool, pool)
     return {"generated_at": now, "desks": desks, "most_reported": most, "abroad_only": [],
-            "growing": growing, "elections": elections, "disasters": disasters, "violent_events": violent}
+            "growing": growing, "elections": elections, "disasters": disasters, "violent_events": violent,
+            "themes": theme_sections, "story_bank": story_bank}
 
 
 def _stamp_html_versions(ver):
