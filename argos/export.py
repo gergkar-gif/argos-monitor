@@ -669,7 +669,7 @@ def _stamp_html_versions(ver):
     """Stamp ?v=<ver> onto data/*.js script tags in site/*.html so browsers and CDN edges
     never serve a cached data bundle after an export."""
     pat = re.compile(r'(<script\s+src="data/[a-z_]+\.js)(?:\?v=[^"]*)?(")')
-    for html_name in ("index.html", "about.html", "sources.html"):
+    for html_name in ("index.html", "about.html"):
         p = ROOT / "site" / html_name
         if p.exists():
             orig = p.read_text(encoding="utf8")
