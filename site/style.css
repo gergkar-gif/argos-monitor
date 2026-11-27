@@ -225,6 +225,21 @@ select:disabled { opacity: 0.35; cursor: not-allowed; }
   color: var(--indigo);
   background: rgba(30, 58, 138, 0.03);
 }
+.combobox-item.is-region {
+  font-weight: 600;
+  background: rgba(30, 58, 138, 0.025);
+  border-bottom-color: var(--rule);
+}
+.combobox-item.is-region .c-region {
+  color: var(--indigo);
+  font-weight: 600;
+}
+.region-desks-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.45rem;
+}
 .combobox-item .c-region {
   font: 400 var(--fs-xs)/1 var(--sans);
   color: var(--ink-3);

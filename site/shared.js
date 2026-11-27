@@ -31,7 +31,18 @@
 
   const fold = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/ł/g, 'l').replace(/ı/g, 'i');
 
+  const REGION_PREFIX = 'region:';
+  const regionSlug = (name) => (name || '').toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
+  const regionId = (name) => `${REGION_PREFIX}${regionSlug(name)}`;
+  const isRegionId = (val) => typeof val === 'string' && val.startsWith(REGION_PREFIX);
+  function regionFromId(val) {
+    if (!isRegionId(val)) return null;
+    const slug = val.slice(REGION_PREFIX.length);
+    return REGIONS.find((r) => regionSlug(r) === slug) || null;
+  }
+
   function getRegion(cid, countries) {
+    if (isRegionId(cid)) return regionFromId(cid) || 'Other';
     const match = countries && countries.find((x) => x.id === cid);
     return (match && match.region) || COUNTRY_REGION[cid] || 'Other';
   }
@@ -55,6 +66,7 @@
     arrowEl,
     selectEl,
     includeAll = false,
+    includeRegions = false,
     isSelected,
     getQuerySeed,
     onSelect,
@@ -68,8 +80,8 @@
     function addOption(c, reg) {
       const sel = isSelected ? isSelected(c) : c.id === selectEl.value;
       const item = makeEl('div', {
-        id: `${optPrefix}-opt-${c.id}`,
-        class: 'combobox-item' + (sel ? ' selected' : ''),
+        id: `${optPrefix}-opt-${c.id.replace(/[^a-z0-9_-]/gi, '_')}`,
+        class: 'combobox-item' + (c.isRegion ? ' is-region' : '') + (sel ? ' selected' : ''),
         role: 'option',
         'aria-selected': String(sel),
         'data-id': c.id,
@@ -88,28 +100,38 @@
       visibleItems = [];
       menuEl.replaceChildren();
 
+      const groups = new Map(REGIONS.map((r) => [r, []]));
+      for (const c of countries) {
+        const r = c.region || getRegion(c.id, countries);
+        if (!groups.has(r)) groups.set(r, []);
+        groups.get(r).push(c);
+      }
+
       if (!q || (includeAll && (q === 'all' || q === 'all countries'))) {
         if (includeAll) addOption({ id: 'all', name: 'All countries' }, 'Global');
-        const groups = new Map(REGIONS.map((r) => [r, []]));
-        for (const c of countries) {
-          const r = c.region || getRegion(c.id, countries);
-          if (!groups.has(r)) groups.set(r, []);
-          groups.get(r).push(c);
-        }
         for (const [reg, list] of groups.entries()) {
           if (!list.length) continue;
           menuEl.append(makeEl('div', { class: 'combobox-group-label', text: reg }));
+          if (includeRegions && list.length > 1) {
+            addOption({ id: regionId(reg), name: reg, isRegion: true }, `All ${list.length} desks`);
+          }
           for (const c of list) addOption(c, reg);
         }
       } else {
+        const matchedRegions = includeRegions
+          ? [...groups.entries()].filter(([reg, list]) => list.length > 1 && fold(reg).includes(q))
+          : [];
         const matches = countries.filter((c) => {
           const reg = c.region || getRegion(c.id, countries);
           if (fold(c.name).includes(q) || fold(c.id).includes(q) || fold(reg).includes(q)) return true;
           return (c.mentions || []).some((m) => fold(m).includes(q));
         });
-        if (!matches.length) {
-          menuEl.append(makeEl('div', { class: 'combobox-empty', text: `No countries matching "${query}"` }));
+        if (!matchedRegions.length && !matches.length) {
+          menuEl.append(makeEl('div', { class: 'combobox-empty', text: `No countries or regions matching "${query}"` }));
         } else {
+          for (const [reg, list] of matchedRegions) {
+            addOption({ id: regionId(reg), name: reg, isRegion: true }, `Region · ${list.length} desks`);
+          }
           for (const c of matches) addOption(c, c.region || getRegion(c.id, countries));
         }
       }
@@ -219,5 +241,5 @@
     });
   }
 
-  window.ARGOS_SHARED = { REGIONS, COUNTRY_REGION, getRegion, fold, setupCountryCombobox };
+  window.ARGOS_SHARED = { REGIONS, COUNTRY_REGION, regionId, isRegionId, regionFromId, getRegion, fold, setupCountryCombobox };
 })();
