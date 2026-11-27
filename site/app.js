@@ -296,7 +296,7 @@
   const hashFor = (t) => {
     const qPart = $('#q').value.trim() ? `/${encodeURIComponent($('#q').value.trim())}` : '';
     if (activeTab === 'home') return homeView === 'directory' ? `#home/directory${qPart}` : `#home${qPart ? '//' + qPart.slice(1) : ''}`;
-    if (activeTab === 'relations') return `#relations/${selectedCountries.join(',')}/${relPeriod}`;
+    if (activeTab === 'relations') return selectedCountries.length ? `#relations/${selectedCountries.join(',')}/${relPeriod}` : '#relations';
     if (activeTab === 'alerts' || activeTab === 'disasters' || activeTab === 'violence') {
       const c = monitorCountry !== 'all' ? monitorCountry : 'all';
       return `#${activeTab}/${c}/${monitorPeriod}${qPart}`;
@@ -321,8 +321,9 @@
             relPeriod = t;
           }
         }
+      } else {
+        selectedCountries = [];
       }
-      if (!selectedCountries.length) selectedCountries = ['czechia', 'hungary', 'poland', 'slovakia'];
     } else if (c === 'alerts' || c === 'disasters' || c === 'violence') {
       activeTab = c;
       monitorCountry = (p && isValidTarget(p)) ? p : 'all';
@@ -1413,7 +1414,7 @@
     [['argentina', 'brazil', 'colombia'], 'South America (AR, BR, CO)'],
   ];
 
-  let selectedCountries = ['czechia', 'hungary', 'poland', 'slovakia'];
+  let selectedCountries = [];
   let relPeriod = '7d';
 
   function getCountryTerms(id) {
@@ -1517,18 +1518,20 @@
 
   async function renderRelations() {
     T.queue.length = 0;
-    if (!selectedCountries.length) selectedCountries = ['czechia', 'hungary', 'poland', 'slovakia'];
     const names = selectedCountries.map(getCountryName);
     const titleStr = names.join(names.length === 2 ? ' & ' : ', ');
 
     const unselectedCountries = index.countries.filter((c) => !selectedCountries.includes(c.id));
     const unselectedPartners = COMMON_PARTNERS.filter((p) => !selectedCountries.includes(p.id));
+    const activePresetIdx = QUICK_PRESETS.findIndex(([cids]) =>
+      cids.length === selectedCountries.length && cids.every((c, i) => c === selectedCountries[i])
+    );
 
     const chips = h('div', { class: 'country-chips' },
       ...selectedCountries.map((cid) =>
         h('span', { class: 'country-chip notranslate', translate: 'no' },
           getCountryName(cid),
-          selectedCountries.length > 1 && h('button', {
+          h('button', {
             type: 'button',
             class: 'x',
             title: `Remove ${getCountryName(cid)}`,
@@ -1560,15 +1563,41 @@
           const items = unselectedCountries.filter((c) => getRegion(c.id) === r);
           return items.length ? [h('optgroup', { label: r, class: 'notranslate', translate: 'no' }, ...items.map((c) => h('option', { value: c.id, text: c.name, class: 'notranslate', translate: 'no' })))] : [];
         })
-      )
+      ),
+      selectedCountries.length > 0 && h('button', {
+        type: 'button',
+        class: 'desk-link',
+        text: 'Clear',
+        onclick: () => {
+          selectedCountries = [];
+          setHash(hashFor('all'));
+          renderRelations();
+        }
+      })
     );
 
     const bar = h('div', { class: 'bilateral-bar' },
       h('div', { class: 'bilateral-controls' },
         h('div', { class: 'field' },
-          h('span', { text: selectedCountries.length === 2 ? 'Bilateral Partners' : 'Selected Countries' }),
+          h('span', { text: selectedCountries.length === 2 ? 'Bilateral Partners' : 'Countries' }),
           chips
         ),
+        h('label', { class: 'field' },
+          h('span', { text: 'Quick preset' }),
+          h('select', {
+            id: 'rel-sel-preset',
+            onchange: (e) => {
+              const idx = Number(e.target.value);
+              if (e.target.value !== '' && !Number.isNaN(idx) && QUICK_PRESETS[idx]) {
+                selectedCountries = [...QUICK_PRESETS[idx][0]];
+                setHash(hashFor('all'));
+                renderRelations();
+              }
+            }
+          },
+            h('option', { value: '', text: 'Choose a preset…', selected: activePresetIdx === -1 }),
+            ...QUICK_PRESETS.map(([, label], idx) =>
+              h('option', { value: String(idx), text: label, selected: idx === activePresetIdx })))),
         h('label', { class: 'field' },
           h('span', { text: 'Time Window' }),
           h('select', {
@@ -1577,24 +1606,25 @@
           },
             [['7d', 'Last 7 days'], ['24h', 'Last 24 hours']].map(([v, label]) =>
               h('option', { value: v, text: label, selected: v === relPeriod })))),
-      ),
-      h('div', { class: 'bilateral-pairs' },
-        h('span', { class: 'pair-label', text: 'Quick presets:' }),
-        ...QUICK_PRESETS.map(([cids, label]) => {
-          const isActive = cids.length === selectedCountries.length && cids.every((c, i) => c === selectedCountries[i]);
-          return h('button', {
-            type: 'button',
-            class: 'pair-pill' + (isActive ? ' active' : ''),
-            text: label,
-            onclick: () => {
-              selectedCountries = [...cids];
-              setHash(hashFor('all'));
-              renderRelations();
-            }
-          });
-        })
       )
     );
+
+    if (selectedCountries.length < 2) {
+      results.replaceChildren(
+        h('p', { class: 'result-line' },
+          h('b', { text: 'Joint & Multilateral Affairs' }),
+          ' · ',
+          h('button', { type: 'button', class: 'desk-link', text: '← Back to Overview', onclick: () => openCountry('home') })),
+        bar,
+        h('p', {
+          class: 'state',
+          text: selectedCountries.length === 0
+            ? 'Add two or more countries above (or pick a quick preset) to see if they appeared in the news together.'
+            : `Add at least one more country above to see where ${names[0]} appeared in the news together with it.`
+        })
+      );
+      return;
+    }
 
     const loadingState = h('p', { class: 'state', text: `Analyzing reporting for ${titleStr}…` });
     results.replaceChildren(
