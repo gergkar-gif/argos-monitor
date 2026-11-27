@@ -325,6 +325,8 @@
   let lastCountry = index && index.countries[0] ? index.countries[0].id : '';
   let fallbackNotice = null;
   let activeTab = 'home';
+  let renderSeq = 0;
+  const normSlug = (v) => (typeof v === 'string' && !isRegionId(v) ? v.replace(/-/g, '_') : v);
   const hashFor = (t) => {
     const qPart = $('#q').value.trim() ? `/${encodeURIComponent($('#q').value.trim())}` : '';
     if (activeTab === 'home') return homeView === 'directory' ? `#home/directory${qPart}` : `#home${qPart ? '//' + qPart.slice(1) : ''}`;
@@ -358,7 +360,8 @@
       }
     } else if (c === 'alerts' || c === 'disasters' || c === 'violence') {
       activeTab = c;
-      monitorCountry = (p && isValidTarget(p)) ? p : 'all';
+      const np = normSlug(p);
+      monitorCountry = (np && isValidTarget(np)) ? np : 'all';
       if (t && ['24h', '7d', '14d', '30d'].includes(t)) {
         monitorPeriod = (t === '14d' || t === '30d') ? '7d' : t;
         try { $('#q').value = q ? decodeURIComponent(q) : ''; } catch {}
@@ -379,7 +382,8 @@
       }
     } else {
       activeTab = 'country';
-      const cid = c === 'country' ? (lastCountry || index.countries[0].id) : (isValidTarget(c) ? c : index.countries[0].id);
+      const nc = normSlug(c);
+      const cid = nc === 'country' ? (lastCountry || index.countries[0].id) : (isValidTarget(nc) ? nc : index.countries[0].id);
       country.value = cid;
       lastCountry = cid;
       syncCountryInput(cid);
@@ -562,6 +566,237 @@
     scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  function closeStorySheet() {
+    const bd = $('#sheet-backdrop');
+    const sh = $('#story-sheet');
+    if (bd) { bd.classList.remove('open'); bd.hidden = true; }
+    if (sh) { sh.classList.remove('open'); sh.hidden = true; }
+  }
+
+  function buildStoryCitation(s) {
+    const title = (s.headline && (s.headline.en_title || T.byText.get(s.headline.title) || s.headline.title)) || '';
+    const dateStr = s.last_seen ? fmtDay.format(new Date(s.last_seen)) : '';
+    const lines = [
+      `${title} (${s.headline ? s.headline.source : ''}${dateStr ? `, ${dateStr}` : ''} · ${plural(s.independent_sources || 1, 'independent outlet', 'independent outlets')})`,
+      s.headline && s.headline.url ? safeUrl(s.headline.url) : '',
+    ];
+    const ex = s.excerpts && s.excerpts[0];
+    if (ex && ex.text) {
+      lines.push(`"${T.byText.get(ex.text) || ex.text}" — ${ex.source}`);
+    }
+    return lines.filter(Boolean).join('\n');
+  }
+
+  function openStorySheet(s) {
+    const bd = $('#sheet-backdrop');
+    const sh = $('#story-sheet');
+    if (!bd || !sh || !s) return;
+
+    const sc = scopes(s.country || country.value);
+    const present = sc.filter(([id]) => s.by_scope && s.by_scope[id]);
+    const hasEn = Boolean(s.headline && s.headline.en_title);
+    const displayTitle = hasEn ? s.headline.en_title : (T.byText.get(s.headline.title) || s.headline.title);
+    const origTitle = s.headline && s.headline.title && s.headline.title.trim() !== displayTitle.trim() ? s.headline.title : '';
+
+    const scopeParts = present.map(([id, label]) => `${s.by_scope[id]} ${label}`);
+    const scopeLine = `${plural(s.independent_sources || 1, 'independent outlet', 'independent outlets')}${scopeParts.length ? ': ' + scopeParts.join(' · ') : ''}`;
+    let perspNote = '';
+    if (s.evidence === 'OFFICIAL') {
+      perspNote = 'Includes at least one official government or ruling-party outlet ("officially stated", not independently verified).';
+    } else if (s.perspectives) {
+      const st = s.perspectives.state_share;
+      const nAlign = Object.keys(s.perspectives.alignment || {}).length;
+      const nBias = Object.keys(s.perspectives.bias || {}).length;
+      if (st >= 0.7) perspNote = 'Coverage is predominantly from state or pro-government outlets.';
+      else if (st >= 0.35) perspNote = 'Mixed coverage across state-affiliated and independent outlets.';
+      else if (nAlign > 1 || nBias > 1) perspNote = 'Corroborated across multiple independent viewpoints.';
+      else if ((s.independent_sources || 0) >= 2) perspNote = 'Corroborated across independent press.';
+    }
+
+    const rest = s.sources || [];
+    const elecCluster = s.election_cluster && s.election_cluster.stories && s.election_cluster.stories.length ? s.election_cluster : null;
+    let showAllSources = rest.length <= 15;
+
+    const renderSourceItem = (r) => {
+      const alignLabel = { state_controlled: 'State', pro_government: 'Pro-Gov', pro_fidesz: 'Pro-Fidesz', public_broadcaster: 'Public', independent: 'Independent', opposition: 'Opposition' }[r.alignment];
+      const biasLabel = { left: 'Left', 'center-left': 'Center-Left', center: 'Center', 'center-right': 'Center-Right', right: 'Right', state_aligned: 'State-aligned' }[r.bias];
+      const tag = [alignLabel, biasLabel].filter(Boolean).join(' · ');
+      const rDisp = r.en_title || T.byText.get(r.title) || r.title;
+      const a = h('a', { class: 't', href: safeUrl(r.url), target: '_blank', rel: 'noopener noreferrer', dir: 'auto', lang: r.en_title ? 'en' : (r.language || 'en'), text: rDisp });
+      const o = h('span', { class: 'orig', hidden: true, dir: 'auto' });
+      if (!r.en_title && r.language && r.language !== 'en' && !T.byText.has(r.title)) track(a, r.title, r.language, o);
+      return h('li', null, a, o,
+        h('span', { class: 'meta' },
+          h('span', { class: 'stamp indigo', text: r.source }),
+          tag && h('span', { text: tag }),
+          r.sim != null && h('span', { class: 'typed', text: `${r.sim}%` }),
+          r.published && h('span', { text: fmtTime.format(new Date(r.published)) }),
+          r.copy && h('span', { text: 'reprint, counted once' })));
+    };
+
+    const sourcesContainer = h('div', { class: 'sheet-block' });
+    const paintSources = () => {
+      const visible = showAllSources ? rest : rest.slice(0, 12);
+      const bands = [
+        ['Direct match (> 93%)', visible.filter((r) => (r.sim ?? 100) >= 93)],
+        ['Close coverage (85–93%)', visible.filter((r) => (r.sim ?? 100) >= 85 && (r.sim ?? 100) < 93)],
+        ['Broader context (< 85%)', visible.filter((r) => (r.sim ?? 100) < 85)],
+      ].filter(([, list]) => list.length > 0);
+      sourcesContainer.replaceChildren(...[
+        h('div', { class: 'sheet-label', text: `Corroborating Articles (${plural(rest.length || s.articles || 1, 'article', 'articles')})` }),
+        elecCluster && h('div', { class: 'sim-band' },
+          h('p', { class: 'band-head' }, h('b', { text: `${s.country_name || 'Country'} election cluster` }), ` (${elecCluster.count} stories)`),
+          h('ul', { class: 'sources' }, elecCluster.stories.map((sub) => h('li', null,
+            h('a', { class: 't', href: safeUrl(sub.url), target: '_blank', rel: 'noopener noreferrer', dir: 'auto', text: sub.en_title || sub.title }),
+            h('span', { class: 'meta' }, h('span', { class: 'stamp indigo', text: sub.source }), h('span', { text: plural(sub.independent_sources || 1, 'outlet', 'outlets') })))))),
+        ...bands.map(([label, list]) => h('div', { class: 'sim-band' },
+          h('p', { class: 'band-head' }, h('b', { text: label }), ` (${list.length})`),
+          h('ul', { class: 'sources' }, list.map(renderSourceItem)))),
+        !showAllSources && rest.length > visible.length && h('button', {
+          type: 'button',
+          class: 'more',
+          text: `Show all ${rest.length} articles`,
+          onclick: () => { showAllSources = true; paintSources(); translatePending(); }
+        }),
+      ].filter(Boolean));
+    };
+    paintSources();
+
+    const maxDay = s.per_day && s.per_day.length ? Math.max(...s.per_day.map((d) => d[1])) : 1;
+    const titleLink = h('a', { href: safeUrl(s.headline.url), target: '_blank', rel: 'noopener noreferrer', dir: 'auto', lang: hasEn ? 'en' : s.headline.language, text: displayTitle });
+    const titleOrigEl = origTitle ? h('p', { class: 'sheet-orig', dir: 'auto', lang: s.headline.language || '', text: `Original: ${origTitle}` }) : null;
+
+    sh.replaceChildren(
+      h('div', { class: 'sheet-head' },
+        h('span', { class: 'sheet-kicker', text: s.country_name ? `${s.country_name} · Story Investigation` : 'Story Investigation' }),
+        h('div', { class: 'sheet-head-actions' },
+          h('button', {
+            type: 'button',
+            class: 'ctrl-btn',
+            text: 'Copy citation',
+            onclick: (e) => {
+              const btn = e.currentTarget;
+              const txt = buildStoryCitation(s);
+              navigator.clipboard.writeText(txt).then(() => flashBtn(btn, 'Copied')).catch(() => prompt('Copy citation:', txt));
+            }
+          }),
+          h('button', { type: 'button', class: 'ctrl-btn', text: 'Close', onclick: closeStorySheet }))),
+      h('div', { class: 'sheet-body' },
+        h('h2', { id: 'sheet-title', class: 'sheet-title' }, titleLink),
+        titleOrigEl,
+        (s.excerpts || []).length > 0 && h('div', { class: 'sheet-block' },
+          h('div', { class: 'sheet-label', text: 'Verbatim Evidence' }),
+          ...(s.excerpts || []).map((x) => {
+            const qLang = s.headline.language !== 'en' ? s.headline.language : (T.lang !== 'multi' ? T.lang : 'en');
+            const qText = T.byText.get(x.text) || x.text;
+            const p = h('p', { dir: 'auto', lang: qLang, text: qText });
+            const orig = h('p', { class: 'orig', hidden: true, dir: 'auto' });
+            if (!T.byText.has(x.text)) track(p, x.text, qLang, orig);
+            return h('blockquote', { class: 'sheet-quote' }, p, orig,
+              h('footer', null, h('a', { href: safeUrl(x.url), target: '_blank', rel: 'noopener noreferrer', text: `${x.source} ↗` })));
+          })),
+        h('div', { class: 'sheet-block sheet-scope-box' },
+          h('div', { class: 'sheet-label', style: 'margin-bottom:0', text: 'Where Coverage Comes From' }),
+          h('div', { text: scopeLine }),
+          perspNote && h('div', { class: 'sheet-scope-sub', text: perspNote }),
+          s.first && s.articles > 2 && s.per_day && s.per_day.length && h('div', { class: 'timeline', style: 'margin-top:0.25rem' },
+            h('span', { class: 'bars', 'aria-hidden': 'true' }, s.per_day.map(([day, n]) =>
+              h('i', { style: `height:${Math.max(15, Math.round(100 * n / maxDay))}%`, title: `${fmtDay.format(new Date(day))}: ${plural(n, 'article', 'articles')}` }))),
+            h('span', { text: `First seen in ${s.first.source}, ${fmtTime.format(new Date(s.first.at))}.` }))),
+        sourcesContainer)
+    );
+
+    bd.hidden = false;
+    sh.hidden = false;
+    requestAnimationFrame(() => {
+      bd.classList.add('open');
+      sh.classList.add('open');
+    });
+    translatePending();
+  }
+
+  function pillarSection(sec) {
+    const stories = sec.shown;
+    if (!stories.length) return null;
+    const lead = stories[0];
+    const rest = stories.slice(1);
+    const leadHasEn = Boolean(lead.headline && lead.headline.en_title);
+    const leadTitle = leadHasEn ? lead.headline.en_title : lead.headline.title;
+    const leadOrig = h('p', { class: 'orig', hidden: !leadHasEn, dir: 'auto', text: leadHasEn ? lead.headline.title : '' });
+    const leadTitleEl = h('h3', { class: 'headline', dir: 'auto', lang: leadHasEn ? 'en' : lead.headline.language, text: leadTitle });
+    if (!leadHasEn) track(leadTitleEl, lead.headline.title, lead.headline.language, leadOrig);
+
+    const leadQuote = (lead.excerpts && lead.excerpts[0]) ? (() => {
+      const x = lead.excerpts[0];
+      const qLang = lead.headline.language !== 'en' ? lead.headline.language : (T.lang !== 'multi' ? T.lang : 'en');
+      const p = h('p', { dir: 'auto', lang: qLang, text: x.text });
+      const o = h('p', { class: 'orig', hidden: true, dir: 'auto' });
+      track(p, x.text, qLang, o);
+      return h('blockquote', { class: 'strip' }, p, o);
+    })() : null;
+
+    const leadBylineParts = [
+      lead.country_name && isRegionId(country.value) && h('button', { type: 'button', class: 'hl-country', text: lead.country_name, onclick: (e) => { e.stopPropagation(); openCountry(lead.country); } }),
+      h('span', { text: `${lead.headline.source} · ${plural(lead.independent_sources || 1, 'outlet', 'outlets')} · ${fmtDay.format(new Date(lead.last_seen))}` }),
+      lead.evidence === 'OFFICIAL' && h('span', { class: 'hl-flag-official', text: '· Official source' }),
+      (lead.themes || []).some((t) => /election/i.test(t)) && h('span', { class: 'hl-flag-election', text: '· Election' }),
+    ].filter(Boolean);
+
+    const leadEl = h('article', {
+      class: 'pillar-lead',
+      tabindex: '0',
+      onclick: () => openStorySheet(lead),
+      onkeydown: (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openStorySheet(lead); } }
+    },
+      leadTitleEl,
+      leadOrig,
+      leadQuote,
+      h('div', { class: 'slipline' }, ...leadBylineParts));
+
+    const listEl = rest.length > 0 && h('ul', { class: 'headline-list' }, rest.map((s) => {
+      const hasEn = Boolean(s.headline && s.headline.en_title);
+      const disp = hasEn ? s.headline.en_title : s.headline.title;
+      const tEl = h('div', { class: 'hl-title', dir: 'auto', lang: hasEn ? 'en' : s.headline.language, text: disp });
+      const oEl = h('div', { class: 'orig', hidden: !hasEn, dir: 'auto', text: hasEn ? s.headline.title : '' });
+      if (!hasEn) track(tEl, s.headline.title, s.headline.language, oEl);
+      return h('li', {
+        class: 'headline-item',
+        tabindex: '0',
+        onclick: () => openStorySheet(s),
+        onkeydown: (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openStorySheet(s); } }
+      },
+        tEl,
+        oEl,
+        h('div', { class: 'hl-byline' },
+          s.country_name && isRegionId(country.value) && h('button', { type: 'button', class: 'hl-country', text: s.country_name, onclick: (e) => { e.stopPropagation(); openCountry(s.country); } }),
+          h('span', { text: `${s.headline.source} · ${plural(s.independent_sources || 1, 'outlet', 'outlets')} · ${fmtDay.format(new Date(s.last_seen))}` }),
+          s.evidence === 'OFFICIAL' && h('span', { class: 'hl-flag-official', text: '· Official source' })));
+    }));
+
+    const showDefSub = sec.id === 'defence_security' && openTopic === 'defence_security' && sec.defIndCount > 0;
+    const moreWrap = (sec.limit && sec.stories.length > sec.limit) && h('div', { class: 'pillar-more' },
+      openTopic === 'all'
+        ? [
+            h('button', { type: 'button', class: 'desk-link', text: `Show ${Math.min(8, sec.stories.length - sec.limit)} more`, onclick: () => { extra[sec.id] = (extra[sec.id] || 0) + 8; render(false); } }),
+            h('button', { type: 'button', class: 'desk-link', text: `Open all ${sec.name} (${sec.total}) →`, onclick: () => choose(sec.id) }),
+          ]
+        : [
+            h('button', { type: 'button', class: 'desk-link', text: `Show ${Math.min(TOPIC_PAGE_CHUNK, sec.stories.length - sec.limit)} more`, onclick: () => { extra[sec.id] = (extra[sec.id] || 0) + TOPIC_PAGE_CHUNK; render(false); } }),
+            h('button', { type: 'button', class: 'desk-link', text: `Show all ${sec.stories.length} stories`, onclick: () => { extra[sec.id + '_all'] = true; render(false); } }),
+          ]);
+
+    return h('section', { class: 'pillar', 'aria-labelledby': `d-${sec.id}` },
+      h('div', { class: 'pillar-head' },
+        h('h2', { id: `d-${sec.id}`, text: sec.name }),
+        h('span', { class: 'count', text: plural(sec.total, 'story', 'stories') })),
+      showDefSub && h('div', { class: 'agenda-filters', style: 'margin:0 0 0.85rem' },
+        h('button', { type: 'button', class: 'agenda-filter-btn' + (defenceSubFilter === 'all' ? ' active' : ''), onclick: () => { defenceSubFilter = 'all'; render(false); } }, `All defence (${sec.defAllCount})`),
+        h('button', { type: 'button', class: 'agenda-filter-btn' + (defenceSubFilter === 'industry' ? ' active' : ''), onclick: () => { defenceSubFilter = 'industry'; render(false); } }, `Defence industry (${sec.defIndCount})`)),
+      leadEl,
+      listEl,
+      moreWrap);
+  }
+
   function story(s, opts) {
     const sc = scopes(s.country || country.value);
     const present = sc.filter(([id]) => s.by_scope[id]);
@@ -694,8 +929,8 @@
       };
       const storyKey = s.id != null ? String(s.id) : null;
       const sumText = elecCluster
-        ? `All ${s.articles} articles · +${elecCluster.count - 1} more election ${elecCluster.count - 1 === 1 ? 'story' : 'stories'}`
-        : `All ${s.articles} articles`;
+        ? `All ${plural(s.articles, 'article', 'articles')} · +${elecCluster.count - 1} more election ${elecCluster.count - 1 === 1 ? 'story' : 'stories'}`
+        : `All ${plural(s.articles, 'article', 'articles')}`;
       const details = h('details', { open: Boolean(storyKey && openStoryIds.has(storyKey)) },
         h('summary', { text: sumText }),
         s._secondaryMeta && s._secondaryMeta.length > 0 && h('p', { class: 'byline', text: `Signals: ${s._secondaryMeta.join(' · ')}` }),
@@ -1549,6 +1784,7 @@
   }
 
   async function renderRelations() {
+    const seq = ++renderSeq;
     T.queue.length = 0;
     const names = selectedCountries.map(getCountryName);
     const titleStr = names.join(names.length === 2 ? ' & ' : ', ');
@@ -1642,6 +1878,7 @@
     );
 
     if (selectedCountries.length < 2) {
+      const featuredPresets = [0, 10, 7, 1, 4, 9].map((i) => QUICK_PRESETS[i]).filter(Boolean);
       results.replaceChildren(
         h('p', { class: 'result-line' },
           h('b', { text: 'Joint & Multilateral Affairs' }),
@@ -1649,11 +1886,19 @@
           h('button', { type: 'button', class: 'desk-link', text: '← Back to Overview', onclick: () => openCountry('home') })),
         bar,
         h('p', {
-          class: 'state',
+          class: 'byline',
           text: selectedCountries.length === 0
-            ? 'Add two or more countries above (or pick a quick preset) to see if they appeared in the news together.'
+            ? 'Add two or more countries above, or choose a diplomatic corridor below:'
             : `Add at least one more country above to see where ${names[0]} appeared in the news together with it.`
-        })
+        }),
+        selectedCountries.length === 0 && h('div', { class: 'preset-grid' },
+          featuredPresets.map(([cids, label]) => h('button', {
+            type: 'button',
+            class: 'preset-card',
+            onclick: () => { selectedCountries = [...cids]; setHash(hashFor('all')); renderRelations(); }
+          },
+            h('strong', { text: label }),
+            h('span', { text: cids.map(getCountryName).join(' · ') }))))
       );
       return;
     }
@@ -1671,6 +1916,7 @@
     // Fetch datasets for all monitored desks in selectedCountries
     const monitoredSelected = selectedCountries.filter((cid) => index.countries.some((x) => x.id === cid));
     const rawDatasets = await Promise.all(monitoredSelected.map((cid) => loadCountryStories(cid, relPeriod)));
+    if (seq !== renderSeq || activeTab !== 'relations') return;
 
     // Combine pool: all stories from selected desks + global pool (ARGOS_HOME)
     const hm = window.ARGOS_HOME;
@@ -1767,9 +2013,16 @@
       href: safeUrl(s.headline.url),
       target: '_blank',
       rel: 'noopener noreferrer',
+      dir: 'auto',
       lang: hasEn ? 'en' : s.headline.language,
       title: displayTitle,
       text: displayTitle,
+      onclick: (e) => {
+        if (!e.metaKey && !e.ctrlKey && !e.shiftKey) {
+          e.preventDefault();
+          openStorySheet(s);
+        }
+      }
     });
     const headOrig = h('span', { class: 'orig', hidden: !hasEn, title: 'Original headline', text: hasEn ? s.headline.title : '' });
     if (!hasEn) track(headLink, s.headline.title, s.headline.language, headOrig);
@@ -2009,10 +2262,10 @@
                 const cl = d.lead.language || (index.countries.find((x) => x.id === d.id) || {}).language || 'en';
                 const hasEn = Boolean(d.lead.en_title);
                 const disp = hasEn ? d.lead.en_title : d.lead.title;
-                const a = h('a', { href: safeUrl(d.lead.url), target: '_blank', rel: 'noopener noreferrer', lang: hasEn ? 'en' : cl, text: disp });
-                const o = h('span', { class: 'orig', hidden: !hasEn, text: hasEn ? d.lead.title : '' });
+                const a = h('a', { href: safeUrl(d.lead.url), target: '_blank', rel: 'noopener noreferrer', dir: 'auto', lang: hasEn ? 'en' : cl, text: disp });
+                const o = h('span', { class: 'orig', hidden: !hasEn, dir: 'auto', text: hasEn ? d.lead.title : '' });
                 if (!hasEn) track(a, d.lead.title, cl, o);
-                return [a, o, h('span', { class: 'meta', text: ` (${d.lead.source} · ${d.lead.outlets} outlets)` })];
+                return [a, o, h('span', { class: 'meta', text: ` (${d.lead.source} · ${plural(d.lead.outlets || 1, 'outlet', 'outlets')})` })];
               })() : '—'));
           })))));
 
@@ -2315,25 +2568,24 @@
     }
     const periodLabel = (period.options[period.selectedIndex] ? period.options[period.selectedIndex].text : (detectedPeriod === '24h' ? 'Last 24 hours' : 'Last 7 days')).toLowerCase();
     const cutoff = periodCutoff(detectedPeriod);
-    const windowStories = cutoff ? d.stories.filter((s) => storyRecency(s) >= cutoff) : d.stories;
+    const windowStories = cutoff ? (d.stories || []).filter((s) => storyRecency(s) >= cutoff) : (d.stories || []);
     const stories = q ? windowStories.filter((s) => matchStory(s, q)) : windowStories;
-    const isFiltered = Boolean(q || windowStories.length !== d.stories.length);
-    const count = (id) => (isFiltered ? stories.filter((s) => s.category === id).length : d.totals[id]);
+    // Always derive counts from the actual rendered stories array so headers never contradict the canvas.
+    const count = (id) => stories.filter((s) => s.category === id).length;
     const isReg = isRegionId(country.value);
     const regName = isReg ? regionFromId(country.value) : null;
     const byTopic = (id) => {
       const list = stories.filter((s) => s.category === id);
       return (isReg && !q) ? balanceByCountry(list) : list;
     };
-    const totalStories = isFiltered ? stories.length : Object.values(d.totals).reduce((a, b) => a + b, 0);
+    const totalStories = stories.length;
 
     const tabs = tabBar(
       [['all', 'All topics', totalStories], ...TOPICS.map((t) => [t.id, t.name, count(t.id), topicVar(t.id)])],
       openTopic,
       (id) => choose(id),
       'Topic',
-      'Filter by topic',
-      `${getCountryName(country.value)} · ${periodLabel}`);
+      'Filter by topic');
 
     const order = openTopic === 'all'
       ? TOPICS.map((t) => t.id).filter((id) => byTopic(id).length)
@@ -2348,7 +2600,7 @@
       }
       const list = (isDefTab && defenceSubFilter === 'industry' && defIndList) ? defIndList : baseList;
       const limit = openTopic === 'all'
-        ? PER_TOPIC_IN_OVERVIEW + (extra[id] || 0)
+        ? 5 + (extra[id] || 0)
         : (Boolean(extra[id + '_all']) || list.length <= TOPIC_PAGE_CHUNK ? 0 : Math.min(list.length, TOPIC_PAGE_CHUNK + (extra[id] || 0)));
       return {
         id, name: topicName(id), stories: list, total: list.length,
@@ -2358,31 +2610,91 @@
       };
     });
 
-    const body = [];
     const staleTag = ageH > STALE_HOURS ? ` (${ageH < 48 ? Math.round(ageH) + 'h' : Math.round(ageH / 24) + 'd'} old)` : '';
-    const staleEmptyMsg = (!q && windowStories.length === 0 && d.stories.length > 0)
-      ? `No stories in the ${periodLabel} — this snapshot was last updated ${fmtTime.format(updated)}${staleTag}. Run "python run.py" to collect fresh news.`
+    const staleEmptyMsg = (!q && windowStories.length === 0 && (d.stories || []).length > 0)
+      ? `No stories in the ${periodLabel} — this snapshot was last updated ${fmtTime.format(updated)}${staleTag}.`
       : null;
+
+    let mainBody;
     if (activeSections.length) {
-      activeSections.forEach((sec) => body.push(drawer(sec.id, sec.stories, sec.id === 'defence_security' && openTopic === 'defence_security' ? sec.total : count(sec.id), sec.limit, sec.defAllCount, sec.defIndCount)));
+      mainBody = h('div', { class: 'pillars-grid' + (openTopic !== 'all' ? ' single-topic' : '') },
+        activeSections.map((sec) => pillarSection(sec)));
     } else if (openTopic === 'all') {
-      body.push(h('p', { class: 'state quiet', text: staleEmptyMsg || (q ? `No stories match "${q}" here.` : `No stories found for ${country.options[country.selectedIndex] ? country.options[country.selectedIndex].text : 'this desk'} in this time period.`) }));
+      mainBody = h('p', { class: 'state quiet', text: staleEmptyMsg || (q ? `No stories match "${q}" here.` : `No stories found for ${getCountryName(country.value)} in this time period.`) });
     } else {
-      body.push(h('p', { class: 'state', text: staleEmptyMsg || (q ? `No stories match "${q}" here.` : `No ${topicName(openTopic).toLowerCase()} stories in this period.`) }));
+      mainBody = h('p', { class: 'state', text: staleEmptyMsg || (q ? `No stories match "${q}" here.` : `No ${topicName(openTopic).toLowerCase()} stories in this period.`) });
     }
 
     const countryObj = isReg
       ? { id: country.value, name: regName, isRegion: true, desks: regionCountries(regName) }
       : (index.countries.find((x) => x.id === country.value) || index.countries[0]);
-    const side = isReg
-      ? [alerts(), deskBalance(d), regionDesksPanel(regName, countryObj.desks)].filter(Boolean)
-      : [alerts(), deskBalance(d), trends(), reddit(), social()].filter(Boolean);
+
+    // Quiet single-line official alert strip for this country/region
+    const crisisObj = getCrisis();
+    const deskAlerts = crisisObj
+      ? (isReg
+          ? allCrisisAlerts({ dedup: true }).filter((i) => i.region === regName || (i.countries || []).some((ct) => getRegion(ct.cid) === regName))
+          : [...(crisisObj.countries && crisisObj.countries[country.value] || [])])
+          .sort((a, b) => new Date(b.date || 0).getTime() - new Date(a.date || 0).getTime())
+      : [];
+    const quietAlertStrip = deskAlerts.length > 0 && h('div', { class: 'quiet-alert', role: 'region', 'aria-label': 'Official alerts' },
+      h('div', { class: 'crisis-lead' },
+        h('span', { class: 'crisis-heading', text: `Official Alert${deskAlerts.length > 1 ? `s (${deskAlerts.length})` : ''}` }),
+        h('span', { class: 'crisis-top-inline' },
+          h('a', { href: safeUrl(deskAlerts[0].url), target: '_blank', rel: 'noopener noreferrer', text: deskAlerts[0].title }),
+          deskAlerts[0].kind && ` (${deskAlerts[0].kind}${deskAlerts[0].date ? `, ${fmtDay.format(new Date(deskAlerts[0].date))}` : ''})`)),
+      deskAlerts.length > 1 && h('button', {
+        type: 'button',
+        class: 'desk-link',
+        text: `All ${deskAlerts.length} alerts →`,
+        onclick: () => { monitorCountry = country.value; monitorPeriod = '7d'; openCountry('alerts'); }
+      }));
+
+    // Quiet Auxiliary Footer Section: Coverage balance + collapsible unverified chatter
+    const balanceItems = d.agenda_delta
+      ? Object.entries(d.agenda_delta)
+          .map(([cat, info]) => ({ cat, name: topicName(cat), ...info }))
+          .filter((x) => x.curr > 0)
+          .sort((a, b) => (a.cat === 'other') - (b.cat === 'other') || b.curr - a.curr)
+      : [];
+    const trEl = !isReg ? trends() : null;
+    const rdEl = !isReg ? reddit() : null;
+    const tgEl = !isReg ? social() : null;
+    const hasUnverified = Boolean(trEl || rdEl || tgEl);
+    const auxBlock = (balanceItems.length > 0 || hasUnverified || isReg) && h('section', { class: 'aux-section', 'aria-label': 'Additional context' },
+      balanceItems.length > 0 && h('div', null,
+        h('div', { class: 'aux-title', text: `Coverage Balance (${periodLabel})` }),
+        h('div', { class: 'aux-balance-list' }, balanceItems.map((it) => {
+          const pct = Math.round(it.share_pct);
+          const pp = Math.round(it.share_delta_pct);
+          const shift = it.cat !== 'other' && Math.abs(pp) >= 5 ? ` (${pp > 0 ? '+' : ''}${pp} pp)` : '';
+          return h('button', {
+            type: 'button',
+            class: 'aux-balance-btn',
+            onclick: () => choose(it.cat),
+          }, `${it.name} `, h('strong', { text: `${pct}%${shift}` }));
+        }))),
+      isReg
+        ? h('div', null,
+            h('div', { class: 'aux-title', text: `Desks in ${regName} (${countryObj.desks.length})` }),
+            h('div', { class: 'region-desks-list' }, countryObj.desks.map((c) =>
+              h('button', { type: 'button', class: 'stamp country-tag', text: c.name, onclick: () => openCountry(c.id) }))))
+        : (hasUnverified && h('div', { class: 'aux-unverified' },
+            h('details', null,
+              h('summary', { text: 'Public search trends & social chatter (unverified)' }),
+              h('div', { class: 'aux-unverified-body' },
+                trEl && h('div', null, h('h3', { text: 'Google Trends' }), trEl.querySelector('ul')),
+                rdEl && h('div', null, h('h3', { text: 'Reddit' }), rdEl.querySelector('ul')),
+                tgEl && h('div', null, h('h3', { text: 'Telegram' }), tgEl.querySelector('ul')))))));
+
     const filterParts = [
       openTopic !== 'all' ? topicName(openTopic) : null,
       q ? `Search: "${q}"` : null,
     ].filter(Boolean);
     const exportedCount = activeSections.reduce((n, sec) => n + sec.shown.length, 0);
     const makeMd = () => buildBriefMarkdown({ countryObj, periodLabel, updated, filterParts, sections: activeSections });
+    const showOrigOn = document.body.classList.contains('show-orig');
+    const canToggleOrig = isReg || (countryObj && countryObj.language && countryObj.language !== 'en');
 
     results.replaceChildren(...[
       fallbackNotice && h('p', { class: 'notice quiet', text: fallbackNotice }),
@@ -2392,14 +2704,43 @@
           h('span', { text: 'UNCLASSIFIED // OSINT' })),
         h('h2', { class: 'print-title', text: `${countryObj.name} · ${periodLabel}` }),
         h('p', { class: 'print-meta', text: `Updated ${fmtTimeTz.format(updated)} · ${plural(exportedCount, 'story', 'stories')} shown${filterParts.length ? ` · Filters: ${filterParts.join(' · ')}` : ''}` })),
-      h('p', { class: 'result-line' }, h('b', { text: countryObj.name }),
-        isReg ? ` (${countryObj.desks.length} desks)` : '',
-        ` · ${periodLabel} · ${plural(totalStories, 'story', 'stories')} found · updated ${fmtTime.format(updated)}${staleTag} · `,
-        h('button', { type: 'button', class: 'desk-link', text: isPinned(country.value) ? 'Pinned' : (isReg ? '+ Pin region' : '+ Pin desk'), 'aria-pressed': String(isPinned(country.value)), onclick: () => togglePin(country.value) }),
-        exportedCount > 0 && ' · ',
-        exportedCount > 0 && h('button', { type: 'button', class: 'desk-link', text: exportOpen ? 'Export brief ▴' : 'Export brief ▾', 'aria-expanded': String(exportOpen), onclick: () => { exportOpen = !exportOpen; render(false); } }),
-        ' · ',
-        h('button', { type: 'button', class: 'desk-link', text: '← All countries overview', onclick: () => openCountry('home') })),
+      h('div', { class: 'edition-head' },
+        h('div', null,
+          h('h1', { class: 'edition-title', text: countryObj.name }),
+          h('p', { class: 'edition-meta', text: `${isReg ? `${countryObj.desks.length} desks · ` : ''}${plural(totalStories, 'story', 'stories')} · ${periodLabel} · updated ${fmtTime.format(updated)}${staleTag}` })),
+        h('div', { class: 'edition-actions' },
+          h('div', { class: 'period-switch', role: 'group', 'aria-label': 'Time window' },
+            ALL_PERIODS.map(([pid, plabel]) => h('button', {
+              type: 'button',
+              'aria-pressed': String(detectedPeriod === pid),
+              text: pid === '24h' ? 'Past 24 hours' : 'Past 7 days',
+              onclick: () => {
+                if (detectedPeriod === pid) return;
+                if (period.querySelector(`option[value="${pid}"]`)) period.value = pid;
+                research();
+              }
+            }))),
+          canToggleOrig && h('button', {
+            type: 'button',
+            class: 'ctrl-btn',
+            'aria-pressed': String(showOrigOn),
+            text: showOrigOn ? 'Original text: On' : 'Original text',
+            onclick: () => { setShowOriginal(!document.body.classList.contains('show-orig')); render(false); }
+          }),
+          h('button', {
+            type: 'button',
+            class: 'ctrl-btn',
+            'aria-pressed': String(isPinned(country.value)),
+            text: isPinned(country.value) ? 'Pinned' : (isReg ? '+ Pin region' : '+ Pin desk'),
+            onclick: () => togglePin(country.value)
+          }),
+          exportedCount > 0 && h('button', {
+            type: 'button',
+            class: 'ctrl-btn',
+            'aria-expanded': String(exportOpen),
+            text: 'Export / Print',
+            onclick: () => { exportOpen = !exportOpen; render(false); }
+          }))),
       exportOpen && exportedCount > 0 && h('div', { class: 'export-bar no-print', role: 'region', 'aria-label': isReg ? 'Export regional brief' : 'Export country brief' },
         h('span', { class: 'meta', text: `Export ${plural(exportedCount, 'story', 'stories')}${filterParts.length ? ` (${filterParts.join(' · ')})` : ''}:` }),
         h('button', { type: 'button', class: 'agenda-filter-btn', text: 'Print / Save PDF', onclick: () => { exportOpen = false; render(false); setTimeout(() => window.print(), 20); } }),
@@ -2419,13 +2760,11 @@
           setTimeout(() => URL.revokeObjectURL(url), 1000);
           flashBtn(btn, 'Downloaded!');
         } })),
+      quietAlertStrip,
       watchbar(q),
       tabs,
-      side.length
-        ? h('div', { class: 'country-layout' },
-            h('div', { class: 'country-main' }, ...body),
-            h('aside', { class: 'country-side', 'aria-label': isReg ? 'Regional signals' : 'Country signals' }, ...side))
-        : h('div', { class: 'country-main' }, ...body),
+      mainBody,
+      auxBlock,
       h('div', { id: 'trans', class: 'trans' }),
     ].filter(Boolean));
     paintTranslationBar();
@@ -2442,10 +2781,13 @@
   }
 
   async function research() {
+    const seq = ++renderSeq;
+    closeStorySheet();
     const slip = $('#slip');
     if (slip) {
       slip.hidden = activeTab !== 'country' && activeTab !== 'home';
       slip.classList.toggle('slip-home', activeTab === 'home');
+      slip.classList.toggle('slip-country', activeTab === 'country');
     }
     if ($('#q')) $('#q').placeholder = activeTab === 'home' ? 'Filter directory & stories…' : 'Words in a headline or quote';
     syncSearchClear();
@@ -2491,13 +2833,13 @@
       setHash(hashFor(topic.value)); extra = {};
       results.replaceChildren(h('p', { class: 'state', text: `Loading ${reg} (${desks.length} desks)…` }));
       let regData = await loadRegionData(reg, reqPeriod);
-      if (country.value !== targetId || activeTab !== 'country') return;
+      if (seq !== renderSeq || country.value !== targetId || activeTab !== 'country') return;
       fallbackNotice = null;
       const cut = periodCutoff(reqPeriod);
       const recentCount = cut ? regData.stories.filter((s) => storyRecency(s) >= cut).length : regData.stories.length;
       if (reqPeriod === '24h' && recentCount === 0) {
         regData = await loadRegionData(reg, '7d');
-        if (country.value !== targetId || activeTab !== 'country') return;
+        if (seq !== renderSeq || country.value !== targetId || activeTab !== 'country') return;
         if (period.querySelector('option[value="7d"]')) period.value = '7d';
         fallbackNotice = `No stories in the last 24 hours across ${reg}. Showing the last 7 days instead.`;
       }
@@ -2512,13 +2854,17 @@
     setHash(hashFor(topic.value)); extra = {};
     results.replaceChildren(h('p', { class: 'state', text: 'Loading…' }));
     try {
-      current = await load(targetFile);
+      const loaded = await load(targetFile);
+      if (seq !== renderSeq || activeTab !== 'country') return;
+      current = loaded;
       fallbackNotice = null;
       render();
     } catch {
       try {
         const requestedLabel = period.options[period.selectedIndex] ? period.options[period.selectedIndex].text : '24-hour';
-        current = await load(`${c.id}-7d.json`);
+        const loaded7 = await load(`${c.id}-7d.json`);
+        if (seq !== renderSeq || activeTab !== 'country') return;
+        current = loaded7;
         if (period.querySelector('option[value="7d"]')) {
           period.value = '7d';
         }
@@ -2574,6 +2920,10 @@
   const totop = $('#totop');
   addEventListener('scroll', () => { totop.hidden = scrollY < 800; }, { passive: true });
   totop.addEventListener('click', () => scrollTo({ top: 0, behavior: 'smooth' }));
-  window.addEventListener('hashchange', () => { readHash(); research(); });
+  if ($('#sheet-backdrop')) $('#sheet-backdrop').addEventListener('click', closeStorySheet);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && $('#story-sheet') && !$('#story-sheet').hidden) closeStorySheet();
+  });
+  window.addEventListener('hashchange', () => { readHash(); research(); scrollTo({ top: 0 }); });
   research();
 })();

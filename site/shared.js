@@ -9,7 +9,7 @@
   ];
 
   const COUNTRY_REGION = {
-    canada: 'North America', united_states: 'North America',
+    canada: 'North America', mexico: 'North America', united_states: 'North America',
     belgium: 'Western Europe', denmark: 'Western Europe', finland: 'Western Europe', france: 'Western Europe', germany: 'Western Europe', iceland: 'Western Europe', ireland: 'Western Europe', italy: 'Western Europe', luxembourg: 'Western Europe',
     netherlands: 'Western Europe', norway: 'Western Europe', portugal: 'Western Europe', spain: 'Western Europe', sweden: 'Western Europe', switzerland: 'Western Europe', united_kingdom: 'Western Europe',
     albania: 'Central & Southeast Europe', austria: 'Central & Southeast Europe', bosnia: 'Central & Southeast Europe', bulgaria: 'Central & Southeast Europe', croatia: 'Central & Southeast Europe', czechia: 'Central & Southeast Europe', hungary: 'Central & Southeast Europe', kosovo: 'Central & Southeast Europe', montenegro: 'Central & Southeast Europe', north_macedonia: 'Central & Southeast Europe', poland: 'Central & Southeast Europe', serbia: 'Central & Southeast Europe', slovakia: 'Central & Southeast Europe', slovenia: 'Central & Southeast Europe',
@@ -24,7 +24,7 @@
     philippines: 'Southeast Asia', singapore: 'Southeast Asia', thailand: 'Southeast Asia', vietnam: 'Southeast Asia',
     australia: 'Oceania', pacific_islands: 'Oceania',
     dr_congo: 'Sub-Saharan Africa', east_africa: 'Sub-Saharan Africa', ethiopia: 'Sub-Saharan Africa', kenya: 'Sub-Saharan Africa', nigeria: 'Sub-Saharan Africa', south_africa: 'Sub-Saharan Africa', west_africa: 'Sub-Saharan Africa',
-    argentina: 'South America', brazil: 'South America', chile: 'South America', colombia: 'South America', ecuador: 'South America', mexico: 'South America', peru: 'South America', venezuela: 'South America',
+    argentina: 'South America', brazil: 'South America', chile: 'South America', colombia: 'South America', ecuador: 'South America', peru: 'South America', venezuela: 'South America',
     central_america: 'Central America',
     caribbean: 'Caribbean',
   };

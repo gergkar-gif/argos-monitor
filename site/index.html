@@ -69,15 +69,14 @@
 <link rel="icon" type="image/png" sizes="16x16" href="assets/icon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/icon-180.png">
 <link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="style.css?v=5.5">
+<link rel="stylesheet" href="style.css?v=6.0">
 </head>
 <body>
 <header class="bureau">
   <div class="bureau-inner">
     <div class="masthead">
-      <div>
+      <div class="brand-wrap">
         <h1><a href="#home" id="home-link"><img src="assets/eye.png" alt="" class="logo">Argos Monitor</a></h1>
-        <p>Open-source media &amp; crisis monitor</p>
       </div>
       <button type="button" class="navtoggle" aria-expanded="false" aria-controls="topnav"><span class="bars" aria-hidden="true"></span>Menu</button>
       <nav class="topnav" id="topnav" aria-label="Primary">
@@ -94,7 +93,7 @@
       <div class="field country-field notranslate" translate="no">
         <label for="country-search"><span>Country / Region</span></label>
         <div class="combobox-wrap">
-          <input id="country-search" type="search" placeholder="Country or region…" autocomplete="off" spellcheck="false" data-1p-ignore data-lpignore="true" class="combobox-input notranslate" translate="no" role="combobox" aria-expanded="false" aria-controls="country-menu">
+          <input id="country-search" type="search" placeholder="Select country or region…" autocomplete="off" spellcheck="false" data-1p-ignore data-lpignore="true" class="combobox-input notranslate" translate="no" role="combobox" aria-expanded="false" aria-controls="country-menu">
           <button type="button" id="country-arrow" class="combobox-arrow" aria-label="Toggle country and region list" tabindex="-1">▾</button>
           <div id="country-menu" class="combobox-menu notranslate" translate="no" role="listbox" hidden></div>
         </div>
@@ -105,7 +104,7 @@
       <div class="field search-field">
         <label for="q"><span>Search</span></label>
         <div class="search-wrap">
-          <input id="q" name="q" type="search" placeholder="Words in a headline or quote" autocomplete="off">
+          <input id="q" name="q" type="search" placeholder="Search headlines or quotes…" autocomplete="off">
           <button type="button" id="q-clear" class="search-clear" aria-label="Clear search" hidden>×</button>
         </div>
       </div>
@@ -118,6 +117,9 @@
 <main id="results" tabindex="-1">
   <p class="state">Loading…</p>
 </main>
+
+<div id="sheet-backdrop" class="sheet-backdrop" hidden></div>
+<aside id="story-sheet" class="story-sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title" hidden></aside>
 
 <footer class="legend">
   <div class="legend-inner">
@@ -137,8 +139,8 @@
 <script src="data/index.js?v=20261126T023337Z"></script>
 <script src="data/home.js?v=20261126T023337Z"></script>
 <script src="data/crisis.js?v=20261126T023337Z"></script>
-<script src="shared.js?v=4.9"></script>
-<script src="app.js?v=6.3"></script>
+<script src="shared.js?v=5.0"></script>
+<script src="app.js?v=7.0"></script>
 <script src="nav.js?v=4.4"></script>
 <script src="data/trends.js?v=20261126T023337Z" async></script>
 <script src="data/reddit.js?v=20261126T023337Z" async></script>
