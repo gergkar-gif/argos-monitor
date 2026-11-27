@@ -124,13 +124,16 @@ h1, h2, h3, p { margin: 0; }
   flex-shrink: 0;
 }
 
-/* Canonical input & select styling across EVERY view (zero double carets) */
-select,
+/* Canonical input & select styling across EVERY view (clean native select caret, zero double carets) */
 input[type=search],
 .combobox-input {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+}
+select,
+input[type=search],
+.combobox-input {
   height: 2.05rem;
   width: 100%;
   padding: 0 0.65rem;
@@ -144,11 +147,9 @@ input[type=search],
   transition: border-color 0.12s ease;
 }
 select {
-  padding-right: 1.8rem;
-  background: var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='5' viewBox='0 0 10 6' fill='none' stroke='%2314171f' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1l4 4 4-4'/%3E%3C/svg%3E") no-repeat right 0.6rem center;
+  padding-right: 0.5rem;
   cursor: pointer;
 }
-select::-ms-expand { display: none; }
 input[type=search], .combobox-input { cursor: text; }
 .search-wrap { position: relative; width: 100%; display: flex; align-items: center; min-width: 0; }
 .search-wrap input[type=search] { padding-right: 1.85rem; }

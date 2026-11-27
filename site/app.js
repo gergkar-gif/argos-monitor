@@ -2570,12 +2570,14 @@
     const cutoff = periodCutoff(detectedPeriod);
     const windowStories = cutoff ? (d.stories || []).filter((s) => storyRecency(s) >= cutoff) : (d.stories || []);
     const stories = q ? windowStories.filter((s) => matchStory(s, q)) : windowStories;
+    const validTopics = new Set(TOPICS.map((t) => t.id));
+    const storyTopic = (s) => (s && validTopics.has(s.category) ? s.category : 'other');
     // Always derive counts from the actual rendered stories array so headers never contradict the canvas.
-    const count = (id) => stories.filter((s) => s.category === id).length;
+    const count = (id) => stories.filter((s) => storyTopic(s) === id).length;
     const isReg = isRegionId(country.value);
     const regName = isReg ? regionFromId(country.value) : null;
     const byTopic = (id) => {
-      const list = stories.filter((s) => s.category === id);
+      const list = stories.filter((s) => storyTopic(s) === id);
       return (isReg && !q) ? balanceByCountry(list) : list;
     };
     const totalStories = stories.length;
