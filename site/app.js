@@ -799,19 +799,38 @@
 
   function story(s, opts) {
     const sc = scopes(s.country || country.value);
-    const present = sc.filter(([id]) => s.by_scope[id]);
-    const single = present.length === 1 ? present[0][1] : '';
-    const outlets = plural(s.independent_sources, 'independent outlet', 'independent outlets');
-    const clip = h('article', { class: 'clip' + (opts.lead ? ' lead' : ''), style: `--i:${opts.i}` });
+    const present = sc.filter(([id]) => s.by_scope && s.by_scope[id]);
+    const outlets = plural(s.independent_sources || 1, 'independent outlet', 'independent outlets');
+    const clip = h('article', { class: 'clip clickable' + (opts.lead ? ' lead' : ''), style: `--i:${opts.i}` });
 
     const hasEn = Boolean(s.headline && s.headline.en_title);
     const displayTitle = hasEn ? s.headline.en_title : s.headline.title;
-    const headLink = h('a', { href: safeUrl(s.headline.url), target: '_blank', rel: 'noopener noreferrer', lang: hasEn ? 'en' : s.headline.language, title: displayTitle, text: displayTitle });
-    const headOrig = h('p', { class: 'orig', hidden: !hasEn, title: 'Original headline', text: hasEn ? s.headline.title : '' });
+    const headLink = h('a', {
+      href: safeUrl(s.headline.url),
+      target: '_blank',
+      rel: 'noopener noreferrer',
+      dir: 'auto',
+      lang: hasEn ? 'en' : s.headline.language,
+      title: displayTitle,
+      text: displayTitle,
+      onclick: (e) => {
+        if (!e.metaKey && !e.ctrlKey && !e.shiftKey) {
+          e.preventDefault();
+          openStorySheet(s);
+        }
+      }
+    });
+    const headOrig = h('p', { class: 'orig', hidden: !hasEn, dir: 'auto', title: 'Original headline', text: hasEn ? s.headline.title : '' });
     if (!hasEn) {
       track(headLink, s.headline.title, s.headline.language, headOrig);
     }
-    const shown = opts.lead ? s.excerpts : s.excerpts.slice(0, 1);
+    const shown = opts.lead ? (s.excerpts || []) : (s.excerpts || []).slice(0, 1);
+
+    const rest = s.sources || [];
+    const elecCluster = s.election_cluster && s.election_cluster.stories && s.election_cluster.stories.length ? s.election_cluster : null;
+    const invText = elecCluster
+      ? `Investigate · ${plural(s.articles || rest.length || 1, 'article', 'articles')} (+${elecCluster.count - 1} election)`
+      : `Investigate · ${plural(s.articles || rest.length || 1, 'article', 'articles')}`;
 
     clip.append(...[
       h('div', null,
@@ -820,171 +839,31 @@
       ),
       shown.length > 0 && h('div', { class: 'strips' }, shown.map((x) => {
         const qLang = s.headline.language !== 'en' ? s.headline.language : (T.lang !== 'multi' ? T.lang : 'en');
-        const main = h('p', { lang: qLang, text: x.text });
-        const orig = h('p', { class: 'orig', hidden: true, title: 'Original quote' });
+        const main = h('p', { dir: 'auto', lang: qLang, text: x.text });
+        const orig = h('p', { class: 'orig', hidden: true, dir: 'auto', title: 'Original quote' });
         track(main, x.text, qLang, orig);
         return h('blockquote', { class: 'strip' }, main, orig,
           x.source !== s.headline.source && h('footer', null, h('a', { class: 'stamp indigo', href: safeUrl(x.url), target: '_blank', rel: 'noopener noreferrer', text: x.source })));
       })),
       h('div', { class: 'slipline' },
         s.country_name && h('button', { type: 'button', class: 'stamp country-tag', title: `Open ${s.country_name} monitor`, text: s.country_name, onclick: () => openCountry(s.country) }),
-        (() => {
-          const base = `${s.headline.source}, ${fmtDay.format(new Date(s.last_seen))} · ${outlets}`;
-          const badges = [];
-          const secondary = [];
-
-          if (s.religious_traditions && s.religious_traditions.length > 0) {
-            badges.push(h('span', {
-              class: 'stamp stamp-sectarian',
-              title: `Religious & sectarian sensitivity: ${s.religious_traditions.join(', ')}`,
-              text: `Religious sensitivity: ${s.religious_traditions.join(', ')}`
-            }));
-          }
-          if (s.violence_type) secondary.push(s.violence_type.toLowerCase());
-          if (s.disaster_type) secondary.push(s.disaster_type.toLowerCase());
-          if (isDefenceIndustry(s) && opts.themeId !== 'defence_industry') secondary.push('defence industry');
-
-          if (s.evidence === 'OFFICIAL') badges.push(h('span', { class: 'stamp red', text: 'Official source' }));
-          else if (s.perspectives) {
-            const sh = s.perspectives.state_share;
-            const nAlign = Object.keys(s.perspectives.alignment || {}).length;
-            const nBias = Object.keys(s.perspectives.bias || {}).length;
-            if (sh >= 0.7) badges.push(h('span', { class: 'stamp orange', text: 'Mostly state media' }));
-            else if (sh >= 0.35) secondary.push('mixed state & independent');
-            else if (nAlign > 1 || nBias > 1) secondary.push('multiple viewpoints');
-            else if (s.independent_sources >= 2) secondary.push('independent press');
-          }
-
-          if (s.delta) {
-            if (s.delta.state === 'surging') {
-              const netStr = s.delta.net > 0 ? `+${s.delta.net}` : String(s.delta.net);
-              secondary.push(`surging (${netStr})`);
-            } else if (s.delta.state === 'new') {
-              secondary.push('new today');
-            } else if (s.delta.state === 'cooling') {
-              secondary.push('cooling');
-            }
-            if (s.delta.scope_shift === 'international_pickup') secondary.push('intl pickup');
-            else if (s.delta.scope_shift === 'diaspora_pickup') secondary.push('picked up abroad');
-            if (s.delta.state_surge) secondary.push('state coverage rising');
-          } else {
-            const tr = trend(s);
-            if (tr && tr[0] !== 'Quiet') secondary.push(tr[0].toLowerCase());
-          }
-
-          s._secondaryMeta = secondary;
-          return [
-            h('span', { text: base }),
-            present.length > 0 && h('span', { class: 'print-scope', text: `· ${present.map(([id, label]) => `${s.by_scope[id]} ${label}`).join(', ')}` }),
-            ...badges.slice(0, 2),
-          ];
-        })(),
+        h('span', { text: `${s.headline.source}, ${fmtDay.format(new Date(s.last_seen))} · ${outlets}` }),
+        present.length > 0 && h('span', { class: 'print-scope', text: `· ${present.map(([id, label]) => `${s.by_scope[id]} ${label}`).join(', ')}` }),
+        s.evidence === 'OFFICIAL' && h('span', { class: 'stamp red', text: 'Official source' }),
+        s.religious_traditions && s.religious_traditions.length > 0 && h('span', {
+          class: 'stamp stamp-sectarian',
+          title: `Religious & sectarian sensitivity: ${s.religious_traditions.join(', ')}`,
+          text: `Religious sensitivity: ${s.religious_traditions.join(', ')}`
+        }),
+        h('button', {
+          type: 'button',
+          class: 'desk-link',
+          text: invText,
+          onclick: () => openStorySheet(s)
+        }),
       ),
     ].filter(Boolean));
 
-    const rest = s.sources || [];
-    const elecCluster = s.election_cluster && s.election_cluster.stories && s.election_cluster.stories.length ? s.election_cluster : null;
-    if (rest.length || elecCluster) {
-      const lateItems = [];
-      const max = s.per_day && s.per_day.length ? Math.max(...s.per_day.map((d) => d[1])) : 1;
-      const bands = [
-        ['> 93% · Direct match', rest.filter((r) => (r.sim ?? 100) >= 93)],
-        ['85–93% · Close coverage', rest.filter((r) => (r.sim ?? 100) >= 85 && (r.sim ?? 100) < 93)],
-        ['75–85% · Broader context', rest.filter((r) => (r.sim ?? 100) < 85)],
-      ].filter(([, list]) => list.length > 0);
-      const renderItem = (r) => {
-        const a = h('a', { class: 't', href: safeUrl(r.url), target: '_blank', rel: 'noopener noreferrer', lang: r.language, text: r.title });
-        const o = h('span', { class: 'orig', hidden: true, title: 'Original headline' });
-        lateItems.push([a, r.title, r.language, o]);
-        const alignLabel = {
-          state_controlled: 'State',
-          pro_government: 'Pro-Gov',
-          pro_fidesz: 'Pro-Fidesz',
-          public_broadcaster: 'Public',
-          independent: 'Indep',
-          opposition: 'Opposition',
-        }[r.alignment];
-        const biasLabel = {
-          left: 'Left',
-          'center-left': 'Center-Left',
-          center: 'Center',
-          'center-right': 'Center-Right',
-          right: 'Right',
-          state_aligned: 'State-aligned',
-        }[r.bias];
-        const factLabel = {
-          high: 'High Factuality',
-          mostly_factual: 'Mostly Factual',
-          mixed: 'Mixed Factuality',
-        }[r.factuality];
-        const ratingTag = [alignLabel, biasLabel].filter(Boolean).join(' · ');
-        const ratingTitle = `Affiliation: ${alignLabel || 'Unrated'} · Bias: ${biasLabel || 'Unrated'} · Factuality: ${factLabel || 'Unrated'}`;
-        return h('li', null, a, o,
-          h('span', { class: 'meta' },
-            h('span', { class: 'stamp indigo', text: r.source }),
-            ratingTag && h('span', { class: 'stamp typed', title: ratingTitle, text: ratingTag }),
-            r.sim != null && h('span', { class: 'typed', text: `${r.sim}%` }),
-            r.published && h('span', { text: fmtTime.format(new Date(r.published)) }),
-            r.copy && h('span', { text: 'reprint, counted once' })));
-      };
-      const storyKey = s.id != null ? String(s.id) : null;
-      const sumText = elecCluster
-        ? `All ${plural(s.articles, 'article', 'articles')} · +${elecCluster.count - 1} more election ${elecCluster.count - 1 === 1 ? 'story' : 'stories'}`
-        : `All ${plural(s.articles, 'article', 'articles')}`;
-      const details = h('details', { open: Boolean(storyKey && openStoryIds.has(storyKey)) },
-        h('summary', { text: sumText }),
-        s._secondaryMeta && s._secondaryMeta.length > 0 && h('p', { class: 'byline', text: `Signals: ${s._secondaryMeta.join(' · ')}` }),
-        present.length > 1 && h('div', { class: 'cover', 'aria-label': 'Where the coverage comes from' },
-          present.map(([id, label]) => h('span', null, h('b', { text: String(s.by_scope[id]) }), ` ${s.by_scope[id] === 1 ? 'article' : 'articles'} from ${label}`))),
-        s.perspectives && (Object.keys(s.perspectives.alignment || {}).length > 0 || Object.keys(s.perspectives.bias || {}).length > 0) && h('div', { class: 'cover', 'aria-label': 'Perspective breakdown' },
-          h('span', null, h('b', { text: 'Perspectives: ' }),
-            [
-              ...Object.entries(s.perspectives.alignment || {}).map(([k, v]) => `${v} ${k.replace(/_/g, ' ')}`),
-              ...Object.entries(s.perspectives.bias || {}).map(([k, v]) => `${v} ${k.replace(/_/g, ' ')} leaning`)
-            ].join(' · '))),
-        s.first && s.articles > 2 && s.per_day && s.per_day.length && h('div', { class: 'timeline' },
-          h('span', { class: 'bars', 'aria-hidden': 'true' }, s.per_day.map(([day, n]) =>
-            h('i', { style: `height:${Math.max(15, Math.round(100 * n / max))}%`, title: `${fmtDay.format(new Date(day))}: ${plural(n, 'article', 'articles')}` }))),
-          h('span', { text: `First seen in ${s.first.source}, ${fmtTime.format(new Date(s.first.at))}.` })),
-        (s.related || []).length > 0 && h('p', { class: 'byline related' }, 'May be the same event: ', s.related.map((r) =>
-          h('span', null, h('a', { href: safeUrl(r.url), target: '_blank', rel: 'noopener noreferrer', text: r.title }), ` (${plural(r.articles, 'article', 'articles')}, ${r.source}) `))),
-        elecCluster && h('div', { class: 'sim-band' },
-          h('p', { class: 'band-head' },
-            h('b', { text: `${s.country_name || 'Country'} election cluster` }),
-            ` (${elecCluster.count} stories · top ${elecCluster.stories.length} additional)`),
-          h('ul', { class: 'sources' }, elecCluster.stories.map((sub) => {
-            const subHasEn = Boolean(sub.en_title);
-            const subTitle = subHasEn ? sub.en_title : sub.title;
-            const subLang = subHasEn ? 'en' : (sub.language || 'en');
-            const a = h('a', { class: 't', href: safeUrl(sub.url), target: '_blank', rel: 'noopener noreferrer', lang: subLang, text: subTitle });
-            const o = h('span', { class: 'orig', hidden: !subHasEn, title: 'Original headline', text: subHasEn ? sub.title : '' });
-            if (!subHasEn) lateItems.push([a, sub.title, sub.language || 'en', o]);
-            return h('li', null, a, o,
-              h('span', { class: 'meta' },
-                h('span', { class: 'stamp indigo', text: sub.source }),
-                h('span', { text: plural(sub.independent_sources || 1, 'outlet', 'outlets') })));
-          })),
-          elecCluster.count - 1 > elecCluster.stories.length && s.country && h('p', { class: 'byline' },
-            h('button', { type: 'button', class: 'desk-link', text: `Open all ${elecCluster.count} election stories in ${s.country_name || s.country} →`, onclick: () => openCountry(s.country) }))),
-        ...bands.map(([label, list]) => h('div', { class: 'sim-band' },
-          h('p', { class: 'band-head' }, h('b', { text: label }), ` (${list.length})`),
-          h('ul', { class: 'sources' }, list.map(renderItem)))),
-        s.articles > rest.length && h('p', { class: 'byline', text: `Showing ${rest.length} of ${s.articles}.` }),
-      );
-      if (details.open) {
-        lateItems.splice(0).forEach((it) => track(...it));
-      }
-      details.addEventListener('toggle', () => {
-        if (storyKey) {
-          if (details.open) openStoryIds.add(storyKey);
-          else openStoryIds.delete(storyKey);
-        }
-        if (!details.open) return;
-        lateItems.splice(0).forEach((it) => track(...it));
-        translatePending();
-      });
-      clip.append(details);
-    }
     return clip;
   }
 
@@ -1373,17 +1252,21 @@
     ['Other Faiths & Sites', /\b(yazidi|bahai|baha'i|hindutva|anti-conversion|blasphemy|sacred site|holy site|cemetery desecrat|pogrom|sectarian|interfaith|inter-communal|istenkaromlas|atterites|vallasi uldozes|giao phai)\b/i],
   ];
 
-  const CONFLICT_TRACKS = [
-    ['all', 'All Kinetic Conflict & Unrest'],
-    ['armed_clash', 'Armed Clashes & Strikes'],
-    ['insurgency', 'Insurgency, Terror & Kidnapping'],
-    ['unrest', 'Civil Unrest & Crackdowns'],
-    ['rel_all', 'Religious Sensitivity (All)'],
+  const CONFLICT_PRIMARY_TRACKS = [
+    ['all', 'All Conflict'],
+    ['armed_clash', 'Armed Clashes'],
+    ['insurgency', 'Insurgency & Terror'],
+    ['unrest', 'Civil Unrest'],
+    ['rel_all', 'Religious Sensitivity'],
+  ];
+  const CONFLICT_REL_SUBTRACKS = [
+    ['rel_all', 'All faiths'],
     ['rel_jewish', 'Judaism'],
     ['rel_christian', 'Christianity'],
     ['rel_islam', 'Islam'],
-    ['rel_other', 'Other Faiths & Sacred Sites'],
+    ['rel_other', 'Other faiths'],
   ];
+  const CONFLICT_TRACKS = [...CONFLICT_PRIMARY_TRACKS, ...CONFLICT_REL_SUBTRACKS.slice(1)];
 
   const ARMED_CLASH_RE = /\b(airstrike|airstrikes|air strike|drone strike|missile strike|shelling|shelled|mortar|artillery|armed clash|clashes|firefight|gunbattle|gunmen|bombardment|incursion|ceasefire|cross-border|khong kich|phao kich|giao tranh)\b/i;
   const INSURGENCY_RE = /\b(terror|terrorist|terrorism|insurgent|insurgency|militant|militants|boko haram|iswap|al-shabaab|isis|daesh|jihad|jihadist|taliban|houthi|houthis|hezbollah|hamas|ied|suicide bomb|car bomb|ambush|kidnap|kidnapped|abduct|abducted|hostage|massacre|khung bo|bat coc)\b/i;
@@ -1579,21 +1462,31 @@
     const targetName = filterRegion || (filterCountry ? prettyName(filterCountry) : null);
     const periodLabel = (MONITOR_PERIODS.find(([v]) => v === monitorPeriod) || [])[1] || 'Past 7 days';
     const ctxText = `${isDis ? 'Disasters' : 'Conflict & Security'} · ${targetName || 'All countries'} · ${periodLabel}`;
+    const isRelTrack = !isDis && openSubType.startsWith('rel_');
     const subTabs = isDis
       ? tabBar(
           [['all', 'All types', allStories.length], ...DISASTER_RULES.map(([label]) => [label, label, allStories.filter((s) => s.disaster_type === label).length])],
           openSubType,
           (id) => { openSubType = id; renderEventMonitor(mode); },
           'Event',
-          'Filter by event type',
-          ctxText)
+          'Filter by event type')
       : tabBar(
-          CONFLICT_TRACKS.map(([id, label]) => [id, label, allStories.filter((s) => matchConflictTrack(s, id)).length]),
-          openSubType,
+          CONFLICT_PRIMARY_TRACKS.map(([id, label]) => [id, label, allStories.filter((s) => matchConflictTrack(s, id)).length]),
+          isRelTrack ? 'rel_all' : openSubType,
           (id) => { openSubType = id; renderEventMonitor(mode); },
           'Track',
-          'Filter by conflict track & religious sensitivity',
-          ctxText);
+          'Filter by conflict track');
+    const relSubBar = isRelTrack && h('div', { class: 'sub-track-bar', role: 'group', 'aria-label': 'Religious sensitivity filter' },
+      h('span', { class: 'sub-track-label', text: 'Faith focus:' }),
+      ...CONFLICT_REL_SUBTRACKS.map(([id, label]) => {
+        const n = allStories.filter((s) => matchConflictTrack(s, id)).length;
+        return h('button', {
+          type: 'button',
+          class: 'agenda-filter-btn' + (openSubType === id ? ' active' : ''),
+          text: `${label} (${n})`,
+          onclick: () => { openSubType = id; renderEventMonitor(mode); }
+        });
+      }));
 
     const titleText = targetName
       ? (isDis ? `Disasters & Severe Weather · ${targetName}` : `Conflict & Security · ${targetName}`)
@@ -1624,6 +1517,7 @@
         h('button', { type: 'button', class: 'desk-link', text: '← Back to Overview', onclick: () => openCountry('home') })),
       bar,
       subTabs,
+      relSubBar,
       filteredOfficial.length > 0 && h('section', { class: 'drawer' },
         h('div', { class: 'drawer-head' },
           h('h2', { text: isDis ? 'Official satellite & seismic sensor alerts' : 'Real-time violence events, field monitors & official advisories' }),

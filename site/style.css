@@ -424,6 +424,16 @@ main { max-width: 74rem; margin: 0 auto; padding: 1.35rem 1.75rem 5rem; outline:
 .tab:hover { color: var(--ink); }
 .tab[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--ink); }
 .tab[aria-pressed="true"] .n { color: var(--ink-2); }
+.sub-track-bar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.6rem;
+  margin: -0.95rem 0 1.4rem; padding: 0.5rem 0;
+  border-bottom: 1px solid var(--rule-soft);
+  font-size: var(--fs-xs); color: var(--ink-3);
+}
+.sub-track-label {
+  font: 600 0.76rem/1 var(--cond); letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--ink-3); margin-right: 0.25rem;
+}
 
 /* ---- Broadsheet 2-Column Pillars Grid (Country Brief Full View) ---- */
 .pillars-grid {
