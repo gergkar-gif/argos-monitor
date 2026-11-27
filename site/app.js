@@ -172,28 +172,60 @@
   }
 
   function countryPicker(currentVal, onChange) {
-    const groups = new Map(REGIONS.map((r) => [r, []]));
-    for (const c of index.countries) {
-      const r = getRegion(c.id);
-      if (!groups.has(r)) groups.set(r, []);
-      groups.get(r).push(c);
+    const labelFor = (v) => (v === 'all' || !v ? 'All countries' : getCountryName(v));
+    const searchEl = h('input', {
+      id: 'mon-country-search',
+      type: 'search',
+      placeholder: 'All countries…',
+      autocomplete: 'off',
+      spellcheck: 'false',
+      'data-1p-ignore': true,
+      'data-lpignore': 'true',
+      class: 'combobox-input notranslate',
+      translate: 'no',
+      role: 'combobox',
+      'aria-expanded': 'false',
+      'aria-controls': 'mon-country-menu',
+    });
+    searchEl.value = labelFor(currentVal);
+    const arrowEl = h('button', {
+      type: 'button',
+      class: 'combobox-arrow',
+      'aria-label': 'Toggle country and region list',
+      tabindex: '-1',
+      text: '▾',
+    });
+    const menuEl = h('div', {
+      id: 'mon-country-menu',
+      class: 'combobox-menu notranslate',
+      translate: 'no',
+      role: 'listbox',
+      hidden: true,
+    });
+    const selectEl = h('select', { id: 'mon-country-sel', hidden: true },
+      h('option', { value: currentVal || 'all', text: labelFor(currentVal), selected: true }));
+    selectEl.value = currentVal || 'all';
+
+    if (SHARED.setupCountryCombobox) {
+      SHARED.setupCountryCombobox({
+        countries: index.countries,
+        searchEl,
+        menuEl,
+        arrowEl,
+        selectEl,
+        includeAll: true,
+        includeRegions: true,
+        isSelected: (c) => c.id === (currentVal || 'all'),
+        getQuerySeed: () => (searchEl.value === labelFor(currentVal) ? '' : searchEl.value),
+        onSelect: (cid) => onChange(cid),
+        onCloseSync: () => { searchEl.value = labelFor(currentVal); },
+      });
     }
-    return h('div', { class: 'monitor-filter notranslate', translate: 'no' },
-      h('label', { for: 'mon-country-sel', text: 'Country / Region:' }),
-      h('select', {
-        id: 'mon-country-sel',
-        translate: 'no',
-        class: 'notranslate',
-        onchange: (e) => onChange(e.target.value)
-      },
-        h('option', { value: 'all', text: 'All Countries', selected: currentVal === 'all', class: 'notranslate', translate: 'no' }),
-        ...[...groups.entries()].filter(([, list]) => list.length).map(([reg, list]) => {
-          const rid = regionId(reg);
-          return h('optgroup', { label: reg, class: 'notranslate', translate: 'no' },
-            list.length > 1 && h('option', { value: rid, text: `All ${reg} (${list.length} desks)`, selected: currentVal === rid, class: 'notranslate', translate: 'no' }),
-            ...list.map((c) => h('option', { value: c.id, text: c.name, selected: c.id === currentVal, class: 'notranslate', translate: 'no' })));
-        })
-      )
+
+    return h('div', { class: 'monitor-filter monitor-combobox notranslate', translate: 'no' },
+      h('label', { for: 'mon-country-search', text: 'Country / Region:' }),
+      h('div', { class: 'combobox-wrap' }, searchEl, arrowEl, menuEl),
+      selectEl
     );
   }
 

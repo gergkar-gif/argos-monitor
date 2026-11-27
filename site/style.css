@@ -204,6 +204,39 @@ select:disabled { opacity: 0.35; cursor: not-allowed; }
   top: 0;
   z-index: 1;
 }
+.combobox-group-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem 0.35rem;
+  color: var(--ink-2);
+  cursor: pointer;
+}
+.combobox-group-btn .c-region {
+  font: 500 0.68rem/1 var(--sans);
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--ink-3);
+}
+.combobox-group-btn:hover,
+.combobox-group-btn.highlighted {
+  background: rgba(30, 58, 138, 0.1);
+  color: var(--indigo);
+}
+.combobox-group-btn:hover .c-region,
+.combobox-group-btn.highlighted .c-region,
+.combobox-group-btn.selected .c-region {
+  color: var(--indigo);
+}
+.combobox-group-btn.selected {
+  color: var(--indigo);
+  background: rgba(30, 58, 138, 0.08);
+}
+.monitor-combobox .combobox-wrap { width: 14rem; max-width: 100%; }
+@media (max-width: 45.99rem) {
+  .monitor-combobox .combobox-wrap { flex: 1; width: auto; }
+}
 .combobox-item {
   display: flex;
   justify-content: space-between;

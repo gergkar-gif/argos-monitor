@@ -77,11 +77,11 @@
     let visibleItems = [];
     const optPrefix = searchEl.id || 'cb';
 
-    function addOption(c, reg) {
+    function addOption(c, reg, extraClass = '') {
       const sel = isSelected ? isSelected(c) : c.id === selectEl.value;
       const item = makeEl('div', {
         id: `${optPrefix}-opt-${c.id.replace(/[^a-z0-9_-]/gi, '_')}`,
-        class: 'combobox-item' + (c.isRegion ? ' is-region' : '') + (sel ? ' selected' : ''),
+        class: (extraClass || 'combobox-item') + (sel ? ' selected' : ''),
         role: 'option',
         'aria-selected': String(sel),
         'data-id': c.id,
@@ -111,9 +111,10 @@
         if (includeAll) addOption({ id: 'all', name: 'All countries' }, 'Global');
         for (const [reg, list] of groups.entries()) {
           if (!list.length) continue;
-          menuEl.append(makeEl('div', { class: 'combobox-group-label', text: reg }));
           if (includeRegions && list.length > 1) {
-            addOption({ id: regionId(reg), name: reg, isRegion: true }, `All ${list.length} desks`);
+            addOption({ id: regionId(reg), name: reg, isRegion: true }, `${list.length} desks`, 'combobox-group-label combobox-group-btn');
+          } else {
+            menuEl.append(makeEl('div', { class: 'combobox-group-label', text: reg }));
           }
           for (const c of list) addOption(c, reg);
         }
@@ -130,7 +131,7 @@
           menuEl.append(makeEl('div', { class: 'combobox-empty', text: `No countries or regions matching "${query}"` }));
         } else {
           for (const [reg, list] of matchedRegions) {
-            addOption({ id: regionId(reg), name: reg, isRegion: true }, `Region · ${list.length} desks`);
+            addOption({ id: regionId(reg), name: reg, isRegion: true }, `${list.length} desks`, 'combobox-group-label combobox-group-btn');
           }
           for (const c of matches) addOption(c, c.region || getRegion(c.id, countries));
         }
@@ -231,14 +232,19 @@
       });
     }
 
-    document.addEventListener('click', (e) => {
+    const onDocClick = (e) => {
+      if (!searchEl.isConnected) {
+        document.removeEventListener('click', onDocClick);
+        return;
+      }
       if (!searchEl.contains(e.target) && !menuEl.contains(e.target) && (!arrowEl || !arrowEl.contains(e.target))) {
         if (!menuEl.hidden) {
           closeMenu();
           if (onCloseSync) onCloseSync();
         }
       }
-    });
+    };
+    document.addEventListener('click', onDocClick);
   }
 
   window.ARGOS_SHARED = { REGIONS, COUNTRY_REGION, regionId, isRegionId, regionFromId, getRegion, fold, setupCountryCombobox };
