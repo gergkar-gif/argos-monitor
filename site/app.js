@@ -2219,6 +2219,27 @@
     return lines.join('\n');
   }
 
+  function balanceByCountry(list) {
+    if (list.length < 2) return list;
+    const buckets = new Map();
+    for (const s of list) {
+      const k = s.country || '_';
+      if (!buckets.has(k)) buckets.set(k, []);
+      buckets.get(k).push(s);
+    }
+    if (buckets.size < 2) return list;
+    const out = [];
+    for (let round = 0; out.length < list.length; round++) {
+      const tier = [];
+      for (const arr of buckets.values()) {
+        if (round < arr.length) tier.push(arr[round]);
+      }
+      tier.sort((a, b) => (b.score || 0) - (a.score || 0) || (b.independent_sources || 0) - (a.independent_sources || 0));
+      out.push(...tier);
+    }
+    return out;
+  }
+
   function render(animate = true) {
     const d = current;
     results.classList.toggle('still', !animate);
@@ -2236,7 +2257,12 @@
     const stories = q ? windowStories.filter((s) => matchStory(s, q)) : windowStories;
     const isFiltered = Boolean(q || windowStories.length !== d.stories.length);
     const count = (id) => (isFiltered ? stories.filter((s) => s.category === id).length : d.totals[id]);
-    const byTopic = (id) => stories.filter((s) => s.category === id);
+    const isReg = isRegionId(country.value);
+    const regName = isReg ? regionFromId(country.value) : null;
+    const byTopic = (id) => {
+      const list = stories.filter((s) => s.category === id);
+      return (isReg && !q) ? balanceByCountry(list) : list;
+    };
     const totalStories = isFiltered ? stories.length : Object.values(d.totals).reduce((a, b) => a + b, 0);
 
     const tabs = tabBar(
@@ -2283,8 +2309,6 @@
       body.push(h('p', { class: 'state', text: staleEmptyMsg || (q ? `No stories match "${q}" here.` : `No ${topicName(openTopic).toLowerCase()} stories in this period.`) }));
     }
 
-    const isReg = isRegionId(country.value);
-    const regName = isReg ? regionFromId(country.value) : null;
     const countryObj = isReg
       ? { id: country.value, name: regName, isRegion: true, desks: regionCountries(regName) }
       : (index.countries.find((x) => x.id === country.value) || index.countries[0]);
